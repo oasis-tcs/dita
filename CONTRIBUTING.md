@@ -9,7 +9,7 @@ in the TC's technical activity is invited to <a href="https://www.oasis-open.org
 <a href="https://www.oasis-open.org/policies-guidelines/tc-process#membership">TC Process</a>
 (Member, Voting Member, Persistent Non-Voting Member; Chair, Secretary...)</p>
 
-<p>Persons who are not TC members are invited to open issues and provide comments using this repository's <a href="https://github.com/oasis-tcs/dita/issues/new">GitHub Issues</a> tracking facility or using the
+<p><a name="feedback"></a>Persons who are not TC members are invited to open issues and provide comments using this repository's <a href="https://github.com/oasis-tcs/dita/issues/new">GitHub Issues</a> tracking facility or using the
 TC's <a href="https://www.oasis-open.org/committees/comments/index.php?wg_abbrev=dita">comment list</a>.  All such content created in GitHub Issues and/or posted to the TC's <a href="https://lists.oasis-open.org/archives/dita/">archived comment list</a> is governed by the terms of the <a href="https://www.oasis-open.org/policies-guidelines/ipr#appendixa">OASIS Feedback License</a>.</p>
 
 <p><b>Use of Contributions</b>.  As with all OASIS Technical Committee assets (TC <a href="https://wiki.oasis-open.org/">Wiki</a>, TC <a href="https://issues.oasis-open.org/secure/Dashboard.jspa">Issues Tracker</a>, TC <a href="https://lists.oasis-open.org/archives/">General Discussion List archives</a>, TC <a href="http://docs.oasis-open.org/">OASIS Library</a> assets), content placed into this GitHub repository is visible and publicly accessible.  Subject to applicable <a href="https://github.com/oasis-tcs/dita/blob/master/LICENSE.md">licensing</a> rules, the repository content may be re-used freely, including the creation and publication of derivative works.</p>
