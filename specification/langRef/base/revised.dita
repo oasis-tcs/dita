@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="revised" xml:lang="en-us">
+<title><xmlelement>revised</xmlelement></title>
+<shortdesc>The <xmlelement>revised</xmlelement> metadata element is used to maintain tracking
+    dates that are important in a topic development cycle, such as the last modification date, the
+    original availability date, and the expiration date.</shortdesc>
+<prolog><metadata>
+<keywords><indexterm>revised</indexterm><indexterm>prolog elements<indexterm>revised</indexterm></indexterm>
+</keywords>
+</metadata></prolog>
+<refbody>
+<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-revised/contains" otherprops="contains"></section>
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
+topic/revised </p></section>
+<example id="example" otherprops="examples"><title>Example</title><codeblock
+xml:space="preserve">&lt;prolog&gt;
+  &lt;critdates&gt;
+    &lt;created date="1999-01-01" golive="1999-02-15" expiry="9999-09-09"/&gt;
+    <b>&lt;revised modified="2003-03-03" golive="2002-02-03" expiry="9999-09-09"/&gt;</b>
+ &lt;/critdates&gt;
+&lt;/prolog&gt;</codeblock></example>
+<section id="attributes"><title>Attributes</title>
+      <p >The following attributes are available on this element: <xref
+          href="../attributes/universalAttributes.dita"/>, <xref
+          href="../attributes/dateAttributes.dita"/>, and the attribute defined below.</p>
+      <dl>
+        <dlentry id="modified">
+          <dt><xmlatt>modified</xmlatt>
+            <ph conref="../../common/conref-attribute.dita#conref-attribute/required-attr"/></dt>
+          <dd>The last modification date, entered as YYYY-MM-DD, where YYYY is the year, MM is the
+            month from 01 to 12, and DD is the day from
+            01-31.<?datatype CDATA?><?default #REQUIRED?></dd>
+        </dlentry>
+      </dl></section>
+</refbody>
+</reference>

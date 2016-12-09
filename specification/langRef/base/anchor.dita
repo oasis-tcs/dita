@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="anchor" xml:lang="en-us">
+<title><xmlelement>anchor</xmlelement></title>
+<shortdesc><ph conref="../../common/conref-file.dita#reuse_file/anchor_shortdesc"/></shortdesc>
+<prolog><metadata>
+<keywords><indexterm>elements<indexterm>basic map<indexterm><xmlelement>anchor</xmlelement></indexterm></indexterm></indexterm>
+</keywords>
+</metadata></prolog>
+<refbody>
+<section id="section-1">
+      <p>The mechanism by which map processors discover maps to be anchored is processor
+        specific.</p>
+      <p>The <xmlelement>anchor</xmlelement> element is typically used to allow integration of
+        run-time components. For build-time integration, you can use a
+          <xmlelement>topicref</xmlelement> element to reference another map, or use the
+          <xmlatt>conref</xmlatt> or <xmlatt>conkeyref</xmlatt> attribute on an element inside the
+        map.</p>
+    </section>
+<section conref="../../common/commonNavLibraryTable.dita#contentmodel-anchor/contains" id="contains" otherprops="contains"></section>
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
+map/anchor </p></section>
+<example id="example" otherprops="examples"><title>Example</title><p conref="../../common/conref-file.dita#reuse_file/anchor"/><p conref="../../common/conref-file.dita#reuse_file/anchoref"/></example>
+<section id="attributes"><title>Attributes</title>
+   <p>The following attributes are available on this element: <xref
+     href="../attributes/universalAttributes.dita"/> (with a narrowed definition of
+     <xmlatt>id</xmlatt>, given below) and <xref
+     href="../attributes/commonAttributes.dita#common-atts/outputclass"/>.</p>
+   <dl>
+    <dlentry>
+     <dt><xmlatt>id</xmlatt>
+      <ph conref="../../common/conref-attribute.dita#conref-attribute/required-attr"/></dt>
+     <dd>Provides an integration point that another map <ph rev="public-review-1">can</ph> reference
+            in order to insert its navigation into the current navigation tree. The
+              <xmlatt>anchorref</xmlatt> attribute on a map <ph rev="public-review-1">can</ph> be
+            used to reference this attribute. See <xref href="../../archSpec/base/id.dita"/> for
+            more details.
+            <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-NMTOKEN"/>--></dd>
+    </dlentry>
+   </dl></section>
+</refbody>
+</reference>
+

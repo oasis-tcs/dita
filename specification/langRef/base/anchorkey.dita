@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="anchorkey" xml:lang="en-us">
+<title><xmlelement>anchorkey</xmlelement></title>
+<shortdesc>The <xmlelement>anchorkey</xmlelement> element allows an author to define a
+      <xmlatt>conref</xmlatt> target that will be resolved dynamically when rendered for an end user
+    of the content. This element is useful when doing an initial process of the DITA content prior
+    to final rendering of the content; it allows specified keys to be preserved after that process,
+    and conref relationships which use that key will not be resolved during that initial
+    process.</shortdesc>
+<prolog><metadata>
+<keywords><indexterm>anchorkey</indexterm>
+        <indexterm>delayed conref domain<indexterm>anchorkey</indexterm></indexterm></keywords>
+</metadata></prolog>
+<refbody>
+<section id="section-1"><p>When a <xmlatt>keyref</xmlatt> attribute is specified on an <xmlelement>anchorkey</xmlelement>
+        element, it indicates that any conref relationships using that key will not be resolved.
+        Applications that support run-time resolution of <xmlatt>conref</xmlatt> with keys will then
+        be able to dynamically resolve this <xmlatt>conref</xmlatt> at display time.</p><p>There is no difference between specifying <xmlelement>anchorkey</xmlelement> within a map (in
+          <xmlelement>topicmeta</xmlelement>) and specifying <xmlelement>anchorkey</xmlelement>
+        within a topic. In both cases, processors are instructed to delay resolution of that key for
+        the current set of information. However, the best practice is to only use
+          <xmlelement>anchorkey</xmlelement> within a map. If it is specified in a topic, that topic
+        will define a usage for the key for every user of that topic. This makes the topic less
+        portable, because users that do not want to delay resolution of that specific key will not
+        be able to include the topic in their information.</p>
+      <p conref="../../common/conref-file.dita#reuse_file/export-anchors-disclaimer"/></section>
+<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-anchorkey/contains" otherprops="contains"></section>
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>+
+topic/keyword delay-d/anchorkey </p></section>
+<example id="example" otherprops="examples"><title>Example</title><p>In this example, a set of information contains multiple components. Some references to component
+        A use keys rather than a direct reference, so that <xmlatt>conref</xmlatt> can be redirected
+        to a different component when component A is not installed. The keys <ph
+          rev="public-review-1">might</ph> be exported, in addition to the IDs, so that some
+        references become bound to the actual component while other references <ph
+          rev="public-review-1">might</ph> be redirected.</p><codeblock>&lt;map>
+  &lt;topicref keys="componentAconfig commonconfig" 
+            href="componentA/configA.dita#configA">
+    &lt;topicmeta>
+      &lt;exportanchors>
+        &lt;anchorkey keyref="commonconfig"/>
+        &lt;anchorid id="step1"/>
+        &lt;anchorid id="step2"/>
+      &lt;/exportanchors>
+    &lt;/topicmeta>
+  &lt;/topicref>
+&lt;/map></codeblock><p>The <xmlatt>keys</xmlatt> attributes declares two distinct keys that <ph rev="public-review-1"
+          >can</ph> be used to refer to this topic (componentAconfig and commonconfig). Only the
+        second is preserved using <xmlelement>anchorkey</xmlelement>. A task topic from another
+        component <ph rev="public-review-1">might</ph> reuse steps within this topic in a variety of
+        ways.</p><codeblock>&lt;steps>
+  &lt;step conkeyref="componentAconfig/step1">&lt;cmd/>&lt;/step>
+  &lt;step conkeyref="componentAconfig/step1.5">&lt;cmd/>&lt;/step>
+  &lt;step conkeyref="commonconfig/step2">&lt;cmd/>&lt;/step>
+  &lt;step conkeyref="commonconfig/step2.5">&lt;cmd/>&lt;/step>
+  &lt;step>&lt;cmd>And that is the end of that&lt;/cmd>&lt;/step>
+&lt;/steps></codeblock><ul>
+<li>The componentAconfig key is not preserved, so the first <xmlelement>step</xmlelement> becomes
+            <codeph>&lt;step
+            conref="componentA/configA.dita#configA/step1">&lt;cmd/>&lt;/step></codeph>. At that
+          point the <xmlelement>anchorid</xmlelement> element instructs the step1 ID to be
+          preserved; for runtime applications which support it, this relationship will be preserved
+          in the processed DITA output.</li>
+<li>The second <xmlelement>step</xmlelement> with the same key becomes <codeph>&lt;step
+            conref="componentA/configA.dita#configA/step1.5">&lt;cmd/>&lt;/step></codeph>. However,
+          conref relationships to step1.5 are not preserved, so this conref should be resolved into
+          static content.</li>
+<li>For <xmlelement>step</xmlelement> three, the map instructs that both the key commonconfig and
+          the ID step2 should be preserved in any content generated for this DITA topic. For formats
+          that support runtime resolution through keys, a process must convert the
+            <xmlatt>conkeyref</xmlatt> value into an equivalent value for that format.</li>
+<li>Although resolution for the key used in <xmlelement>step</xmlelement> four is delayed, the
+          specific element that is referenced should not be delayed. Thus the fourth step becomes
+            <codeph>&lt;step
+            conref="componentA/configA.dita#configA/step2.5">&lt;cmd/>&lt;/step></codeph>. This
+          value is then processed as an ordinary <xmlatt>conref</xmlatt> value.</li>
+</ul><p>This allows the information assembler to resolve references
+that must be to componentA while deferring references that can be
+fulfilled by alternative component content.</p><note>This example demonstrates why the <xmlelement>anchorid</xmlelement> element cannot reference
+        an element with the usual topicid/elementid format. If the two
+          <xmlelement>anchorid</xmlelement> elements in the example had been set to config/step1 and
+        config/step2, then they would only ever apply in a topic with id="config". It would not be
+        possible to redirect the key to another topic, but still preserve conref behaviors as
+        desired.</note><note>Although it is not specifically called out in this example, it is possible to delay
+          <xmlatt>conref</xmlatt> resolution for an entire topic using the key. If
+          <xmlatt>conkeyref</xmlatt> on a task topic element is set to "componentAconfig", which
+          <i>is not</i> delayed, the <xmlatt>conref</xmlatt> will be evaluated as usual. However, if
+          <xmlatt>conkeyref</xmlatt> on the task is set to "commonconfig", which <i>is</i> delayed,
+        resolution of <xmlatt>conref</xmlatt> on that element should be delayed by a
+        processor.</note></example>
+<section id="attributes"><title>Attributes</title>
+      <p >The following attributes are available on this element: <xref
+          href="../attributes/universalAttributes.dita"/>, <xref
+          href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, and the attribute
+        defined below.</p>
+      <dl>
+        <dlentry>
+          <dt><xmlatt>keyref</xmlatt>
+            <ph conref="../../common/conref-attribute.dita#conref-attribute/required-attr"/></dt>
+          <dd>Defines a key that, when possible, <ph rev="public-review-1">is</ph> preserved in
+            content generated from the DITA source material. Conref relationships that use this key
+              <ph rev="public-review-1">are</ph> not resolved when generating that material, so that
+              <xmlatt>conref</xmlatt>
+            <ph rev="public-review-1">might</ph> be resolved at run-time when an end user is reading
+            the content. </dd>
+        </dlentry>
+      </dl>
+      </section>
+</refbody>
+</reference>

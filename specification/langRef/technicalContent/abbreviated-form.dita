@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="abbreviated-form" xml:lang="en-us">
+<title><xmlelement>abbreviated-form</xmlelement></title>
+<shortdesc>The <xmlelement>abbreviated-form</xmlelement> element represents a reference to a term
+    that might appear in an abbreviated form (often an acronym). The long and short forms of the
+    term are generally defined in a <xmlelement>glossentry</xmlelement> topic. Processors display
+    the referenced term when rendering an <xmlelement>abbreviated-form</xmlelement>
+    element.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm><xmlelement>abbreviated-form</xmlelement></indexterm>
+        <indexterm>glossary-related
+            elements<indexterm><xmlelement>abbreviated-form</xmlelement></indexterm></indexterm>
+        <indexterm>processing
+            expectations<indexterm><xmlelement>abbreviated-form</xmlelement></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+<refbody>
+    <section id="section-1">
+      <title>Rendering the <xmlelement>abbreviated-form</xmlelement> element</title>
+      <p>The <xmlelement>abbreviated-form</xmlelement> element is intended to reference a
+          <xmlelement>glossentry</xmlelement> topic that contains both a term and an abbreviated
+        form of that term. The topic <ph rev="public-review-1">might</ph> also provide a surface
+        form that differs from the original term. The full term or surface form <ph
+          rev="public-review-1">is</ph> rendered in introductory contexts where the term might be
+        unfamiliar to a reader or in other contexts where a precise term is appropriate. In other
+        contexts a <ph rev="public-review-1">processor substitutes</ph> the abbreviated form of the
+        term. Note that the definition of an introductory context will differ for every deliverable
+        format.</p>
+      <p>For instance, a process composing a book deliverable <ph rev="public-review-1">might</ph>
+        emit the surface form of a term on the first reference to the
+          <xmlelement>glossentry</xmlelement> topic within the book or for every reference within a
+        copyright or a warranty-related warning. A process generating an online page <ph
+          rev="public-review-1">might</ph> emit the surface form as a hover tooltip on every
+        instance of the term.</p>
+      <p><ph rev="public-review-1">The following rules</ph> determine how to render an
+          <xmlelement>abbreviated-form</xmlelement> element. As described, the definition of
+        "introductory context" will vary based on the rendered format and processor.<ol>
+          <li>If the referenced topic is not a <xmlelement>glossentry</xmlelement> topic (or a
+            specialization of <xmlelement>glossentry</xmlelement>), the title of the topic <term
+              outputclass="RFC-2119">SHOULD</term> be displayed.</li>
+          <li>Otherwise, if <xmlelement>abbreviated-form</xmlelement> is located in an introductory
+            context, and the referenced topic contains a non-empty
+              <xmlelement>glossSurfaceForm</xmlelement> element, processors <term
+              outputclass="RFC-2119">SHOULD</term> render the contents of the
+              <xmlelement>glossSurfaceForm</xmlelement> element from the referenced
+              <xmlelement>glossentry</xmlelement> topic.</li>
+          <li>Otherwise, if <xmlelement>abbreviated-form</xmlelement> is located in an introductory
+            context, processors <term outputclass="RFC-2119">SHOULD</term> render the contents of
+            the <xmlelement>glossterm</xmlelement> element from the referenced
+              <xmlelement>glossentry</xmlelement> topic.</li>
+          <li>Otherwise (in non-introductory contexts), if the referenced
+              <xmlelement>glossentry</xmlelement> topic contains a non-empty
+              <xmlelement>glossAcronym</xmlelement> element, processors <term outputclass="RFC-2119"
+              >SHOULD</term> render the abbreviated form of the term by displaying the contents of
+            the <xmlelement>glossAcronym</xmlelement> element from the referenced
+              <xmlelement>glossentry</xmlelement> topic.</li>
+          <li>Otherwise, processors <term outputclass="RFC-2119">SHOULD</term> render the contents
+            of the <xmlelement>glossterm</xmlelement> element from the referenced
+              <xmlelement>glossentry</xmlelement> topic.</li>
+        </ol></p>
+      <p>For instance, if an <xmlelement>abbreviated-form</xmlelement> element with the attribute
+          <codeph>keyref="abs"</codeph> provided the first occurrence of the ABS term within a book,
+        the sentence could be rendered as follows: </p>
+      <lq>"The Anti-lock Brake System (ABS) will prevent the car from skidding in adverse weather
+        conditions."</lq>
+      <p>If the ABS term had appeared previously within the book, the same sentence could instead be
+        rendered as follows: </p>
+      <lq>"The ABS will prevent the car from skidding in adverse weather conditions."</lq>
+    </section>
+<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-abbreviated-form/contains" otherprops="contains"></section>
+
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>+
+topic/term abbrev-d/abbreviated-form </p></section>
+<example id="example" otherprops="examples"><title>Example</title><p>The term and acronym <ph rev="public-review-1">can</ph> be defined as follows, in a
+          <xmlelement>glossentry</xmlelement> topic. Note that the <xmlatt>id</xmlatt> attribute of
+        the topic does not need to match the term or acronym.</p><codeblock>&lt;glossentry id="abs-definition">
+  &lt;glossterm>Anti-lock Braking System&lt;/glossterm>
+  &lt;glossBody>
+    &lt;glossSurfaceForm>Anti-lock Braking System (ABS)&lt;/glossSurfaceForm>
+    &lt;glossAlt>
+      &lt;glossAcronym>ABS&lt;/glossAcronym>
+    &lt;/glossAlt>
+  &lt;/glossBody>
+&lt;/glossentry></codeblock><p>Note that there are three important elements for the purposes of rendering the
+          <xmlelement>abbreviated-form</xmlelement> element.</p><ul>
+<li>The <xmlelement>glossSurfaceForm</xmlelement> element defines the term as it should be displayed
+          in an introductory context.</li>
+<li>The <xmlelement>glossAcronym</xmlelement> element defines the acronym associated with this
+          term.</li>
+<li>The <xmlelement>glossterm</xmlelement> element provides a fallback version of the term, which
+          will be displayed in situations where the preferred representation is unavailable. </li>
+</ul><p>The <xmlelement>glossentry</xmlelement> topic will be added to a map in the following manner.
+        Again, the key (in this case "abs") does not need to match the term or acronym value.</p><codeblock>&lt;glossref keys="abs" href="antilock.dita"/></codeblock><p>An author <ph >who wants</ph> to reference this topic <ph >can</ph>
+        do so by using the <xmlelement>abbreviated-form</xmlelement> element. The
+          <xmlatt>keyref</xmlatt> attribute <ph >references</ph> the value defined on
+        the <xmlatt>keys</xmlatt> attribute above.</p><codeblock>&lt;section>An &lt;abbreviated-form keyref="abs"/> helps a
+driver to stop. For this reason many find an
+&lt;abbreviated-form keyref="abs"/> useful.
+&lt;/section></codeblock><p>When rendered, the introductory usage
+of "abs" will display the surface form of the referenced term, while
+the later uses will display the acronym, as demonstrated here.<lq>An
+Anti-lock Braking System (ABS) helps a driver to stop. For this reason
+many find an ABS useful.</lq></p></example>
+<section id="attributes"><title>Attributes</title>
+      <p conref="../../common/conref-attribute.dita#conref-attribute/universal-outputclass-keyref"/></section>
+</refbody>
+</reference>
+

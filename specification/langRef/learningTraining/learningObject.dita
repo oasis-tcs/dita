@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference
+  PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference
+  id="learningObject" xml:lang="en-us">
+  <title><xmlelement>learningObject</xmlelement></title>
+  <shortdesc><keyword>learningObject</keyword> organizes topic references to DITA learning topics as
+    a learning object. </shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>learningObject</indexterm><indexterm>learning and training elements<indexterm
+            >learningObject</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody><section id="section-1">
+      <p>A <xmlelement>learningObject</xmlelement> follows a specific sequence of topic references
+        to learning content, starting with a learning plan, then a learning overview or learning
+        pre-assessment, one or more learning content topics, a learning summary, and one or more
+        learning post-assessment topics. </p>
+      <p>By default, the topic references in a <xmlelement>learningObject</xmlelement> are expected
+        to use the learning-specific topic types. However, the <xmlatt>href</xmlatt> can point to
+        content of any type that you want to structure as a learning object. In this way, you can
+        structure any existing DITA content as a learning object, and then take advantage of the
+        learning-specific processing available for building and packaging that content for delivery
+        in a learning system or learning context.</p>
+    </section><section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-learningObject/contains" otherprops="contains"></section>
+
+
+<section id="inheritance" otherprops="inheritance">
+      <title>Inheritance</title>
+      <p>+ map/topicref learningmap-d/learningObject</p>
+    </section>
+    <example id="example" otherprops="examples">
+      <title>Example</title>
+      <codeblock>
+&lt;map title="learningobject_example"&gt;
+ &lt;!-- learningObject clusters can appear anywhere in a map hierarchy but always
+     follow a consistent information pattern within the LO -->
+ &lt;learningObject collection-type="sequence" href="topOverview.dita" type="learningOverview">
+  &lt;learningPlanRef href="testlearningPlan.dita" type="learningPlan">
+  &lt;/learningPlanRef>
+  &lt;learningOverviewRef href="testlearningOverview.dita" type="learningOverview">
+  &lt;/learningOverviewRef>
+  &lt;learningContentRef href="testlearningContent.dita" type="learningContent">
+    &lt;learningContentComponentRef href="termA.dita" type="glossentry"/>
+    &lt;learningContentComponentRef href="termB.dita" type="glossentry"/>
+  &lt;/learningContentRef>
+  &lt;learningAssessmentRef href="testlearningAssess.dita" type="learningAssessment">
+  &lt;/learningAssessmentRef>
+  &lt;learningSummaryRef href="testlearningSummary.dita" type="learningSummary">
+  &lt;/learningSummaryRef>
+ &lt;/learningObject>
+&lt;/map&gt;
+</codeblock>
+    </example>
+    <section id="attributes"><title>Attributes</title><sectiondiv
+        conref="../../common/conref-attribute.dita#conref-attribute/learningdomain-basic-topicref"
+      /></section></refbody>
+</reference>

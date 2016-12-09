@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="fragref" xml:lang="en-us">
+<title><xmlelement>fragref</xmlelement></title>
+<shortdesc>The <xmlelement>fragref</xmlelement> element provides a logical reference to a
+<xmlelement>fragment</xmlelement> element within a syntax diagram, so that you can reference a
+syntax fragment multiple times or pull a large section of syntax out of line for easier reading. <ph
+conref="apiname.dita#apiname/progdomainelement"/></shortdesc>
+<prolog><metadata>
+<keywords>
+    <indexterm>elements<indexterm>programming
+       domain<indexterm><xmlelement>fragref</xmlelement></indexterm></indexterm></indexterm>
+    <indexterm>syntax diagrams<indexterm>fragment references</indexterm></indexterm>
+</keywords>
+</metadata></prolog>
+<refbody>
+<section conref="../../common/commonNavLibraryTable.dita#contentmodel-fragref/contains" id="contains" otherprops="contains"></section>
+
+
+
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>+
+topic/xref pr-d/fragref </p></section>
+<example id="example" otherprops="examples"><title>Example</title>This markup
+            example:<codeblock>&lt;syntaxdiagram frame="none"&gt;
+ &lt;title&gt;CopyFile&lt;/title&gt;
+ &lt;groupseq&gt;&lt;kwd&gt;COPYF&lt;/kwd&gt;&lt;/groupseq&gt;
+ &lt;groupcomp&gt;&lt;var&gt;input-filename&lt;/var&gt;&lt;kwd&gt;*INFILE&lt;/kwd&gt;&lt;/groupcomp&gt;
+ &lt;groupseq&gt;&lt;var&gt;output-filename&lt;/var&gt;&lt;kwd&gt;*OUTFILE&lt;/kwd&gt;&lt;/groupseq&gt;
+ <b>&lt;fragref href="#syntax/overlay"&gt;&lt;/fragref&gt;</b>
+ &lt;groupchoice&gt;&lt;var&gt;input-filename&lt;/var&gt;&lt;kwd&gt;*INFILE&lt;/kwd&gt;&lt;/groupchoice&gt;
+ &lt;groupchoice&gt;&lt;var&gt;output-filename&lt;/var&gt;&lt;kwd&gt;*OUTFILE&lt;/kwd&gt;&lt;/groupchoice&gt;
+ &lt;fragment id="overlay"&gt;
+  &lt;title&gt;Overlay&lt;/title&gt;
+  &lt;groupchoice&gt;&lt;kwd&gt;*OVERLAP&lt;/kwd&gt;&lt;kwd&gt;*Prompt&lt;/kwd&gt;&lt;/groupchoice&gt;
+ &lt;/fragment&gt;
+&lt;/syntaxdiagram&gt;
+</codeblock><ph
+            rev="public-review-1">might</ph> produce output like the
+         following:<pre xml:space="preserve">CopyFile
+
+&gt;&gt;-COPYF--input-filename*INFILE--output-filename--*OUTFILE------&gt;
+
+&gt;--| Overlay |--+-input-filename-+--+-output-filename-+--------&gt;&lt;
+                '-*INFILE--------'  '-*OUTFILE--------'
+
+Overlay
+
+|--+-*OVERLAP-+-------------------------------------------------|
+   '-*Prompt--'
+</pre></example>
+<section id="attributes">       <title>Attributes</title>
+<p>The following attributes are available on this element: <xref
+href="../attributes/universalAttributes.dita"/> (with a narrowed definition of
+<xmlatt>importance</xmlatt>, given below), <xref
+href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, and the attributes
+defined below.</p>
+<dl>
+<dlentry>
+<dt><xmlatt>href</xmlatt></dt>
+<dd>A reference to a syntax diagram <xmlelement>fragment</xmlelement> element. The referenced
+                     <xmlelement>fragment</xmlelement> must be in the same diagram as the
+                     <xmlelement>fragref</xmlelement> element. See <xref
+                     href="../attributes/thehrefattribute.dita"/> for detailed information on
+                  supported values and processing
+                  implications.<!--For this element, processors <ph rev="public-review-1">can</ph> assume the equivalent of <codeph>scope="local"</codeph> and <codeph>format="dita"</codeph>.--></dd>
+</dlentry>
+<dlentry conref="../../common/conref-attribute.dita#conref-attribute/importance-optreq">
+<dt/>
+<dd/>
+</dlentry>
+</dl>
+     </section>
+</refbody>
+</reference>
+

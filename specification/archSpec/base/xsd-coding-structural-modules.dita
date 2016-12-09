@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept id="xsdStructuralSpecializationReqs" xml:lang="en-us">
+  <title>XML Schema: Coding requirements for structural modules</title>
+  <shortdesc>An XSD structural module declares a top-level map or topic type. It is implemented as a
+    pair of XSD documents, one that defines groups used to integrate and override the type and one
+    that defines the element types specific to the type.</shortdesc>
+  <conbody>
+    <p conref="../../common/conref-file.dita#reuse_file/xsd-domains-documentation"/>
+    <section id="module-files">
+      <title>Module files</title>
+      <p>A structural vocabulary module has two files:</p>
+      <ul>
+        <li>A module schema document.</li>
+        <li>A module group definition schema document.</li>
+      </ul>
+    </section>
+    <section id="requried-atts">
+      <title>Required topic and map element attributes</title>
+      <p>The root element for a structural type must reference the <xmlatt>DITAArchVersion</xmlatt>
+        attribute and the <xmlatt>domains</xmlatt> attribute. These attributes give processors a
+        reliable way to check the architecture version and look up the list of domains available in
+        the document type. The attributes are referenced as in the following example:</p>
+      <codeblock>&lt;xs:attributeGroup name="concept.attributes"&gt;
+  &lt;!-- Various other attributes -->
+  &lt;xs:attribute ref="ditaarch:DITAArchVersion"/&gt;
+  &lt;xs:attributeGroup ref="domains-att"/&gt;
+  &lt;xs:attributeGroup ref="global-atts"/&gt;
+&lt;/xs:attributeGroup></codeblock>
+    </section>
+    <section id="topic-nesting">
+      <title>Controlling nesting in topic types</title>
+      <p>For topic modules, the last position in the content model is typically a reference to the
+            <codeph><varname>topictype</varname>-info-types</codeph> group. Document types shells
+        can control how topics are allowed to nest by redefining the group. If topic nesting is hard
+        coded in the structural module, and cannot be modified from the document-type shell, the
+            <codeph><varname>topictype</varname>-info-types</codeph> group is not needed.</p>
+      <p otherprops="examples">For example, the vocabulary module for the
+          <xmlelement>concept</xmlelement> structural type uses the group
+          <codeph>concept-info-types</codeph>; this group is given a default value, and then
+        referenced from the content model for the <xmlelement>concept</xmlelement> element
+        type:<codeblock>&lt;xs:group name="concept-info-types"&gt;
+  &lt;xs:choice&gt;
+    &lt;xs:group ref="concept"/&gt;
+    &lt;xs:group ref="info-types"/&gt;
+  &lt;/xs:choice&gt;
+&lt;/xs:group&gt;
+
+&lt;xs:group name="concept.content"&gt;
+  &lt;xs:sequence&gt;
+    &lt;xs:group ref="title"/&gt;
+    &lt;!-- ...other elements, such as shortdesc and body, and then... -->
+    &lt;xs:group ref="related-links" minOccurs="0"/&gt;
+    &lt;xs:group ref="concept-info-types" minOccurs="0" maxOccurs="unbounded"/&gt;
+  &lt;/xs:sequence&gt;
+&lt;/xs:group&gt;</codeblock></p>
+    </section>
+  </conbody>
+</concept>

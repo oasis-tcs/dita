@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="generalization-w-cross-specialization-dependencies" >
+ <title>Generalization with cross-specialization dependencies</title>
+ <shortdesc>Dependencies across specializations limit generalization targets to those that either
+  preserve the dependency or eliminate them. Some generalization targets will not be valid and
+  should be detected before generalization occurs.</shortdesc>
+ <conbody>
+  <p>When a structural specialization has a dependency on a domain specialization, then the domain
+   cannot be generalized without also generalizing the reusing structural specialization.</p>
+  <p >For example, a structural specialization codeConcept might incorporate and
+   require the <xmlelement>codeblock</xmlelement> element from the programming domain. A
+   generalization process that turns programming domain elements back into topic elements would
+   convert <xmlelement>codeblock</xmlelement> to <xmlelement>pre</xmlelement>, making a document
+   that uses codeConcept invalid. However, codeConcept could be generalized to concept or topic,
+   without generalizing programming domain elements, as long as the target document type includes
+   the programming domain.</p>
+  <p>When a structural specialization has a dependency on another structural specialization, then
+   both must be generalized together to a common ancestor. </p>
+  <p>For example, if the task elements in checklist were generalized without also generalizing
+   checklist elements, then the checklist content models that referenced task elements would be
+   broken. And if the checklist elements were generalized to topic without also generalizing the
+   task elements, then the task elements would be out of place, since they cannot be validly present
+   in topic. However, checklist and task can be generalized together to any ancestor they have in
+   common: in this case topic. </p>
+  <p>When possible, generalizing processes <term outputclass="RFC-2119" 
+    >SHOULD</term> detect invalid generalization target combinations and report them as errors.</p>
+ </conbody>
+</concept>

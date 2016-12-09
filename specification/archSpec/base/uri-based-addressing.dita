@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept id="uri-based-addressing" xml:lang="en-us">
+  <title>URI-based (direct) addressing</title>
+  <shortdesc>Content reference and link relationships can be established from DITA elements by using
+    URI references. DITA uses URI references in <xmlatt>href</xmlatt>, <xmlatt>conref</xmlatt>, and
+    other attributes for all direct addressing of resources. </shortdesc>
+  <conbody>
+    <p>URI references address <term>resources</term> and (in some cases) subcomponents of those
+      resources. In this context, a resource is a DITA document (map, topic, or DITA base document)
+      or a non-DITA resource (for example, an image, a Web page, or a PDF document).</p>
+    <p>URI references that are URLs must conform to the rules for URLs and URIs. Windows paths that
+      contain a backslash (\) are not valid URLs.</p>
+    <section id="URIs">
+      <title>URIs and fragment identifiers</title>
+      <p>For DITA resources, fragment identifiers can be used with the URI to address individual
+        elements. The fragment identifier is the part of the URI that starts with a number sign (#),
+        for example, <codeph>#topicid/elementid</codeph>. URI references also can include a query
+        component that is introduced with a question mark (?).  DITA processors <term
+          outputclass="RFC-2119">MAY</term> ignore queries on URI references to
+        DITA resources. <ph >URI references that address components in the same
+          document <term outputclass="RFC-2119">MAY</term> consist of just the
+          fragment identifier. </ph></p>
+      <p>For addressing DITA elements within maps and topics or individual topics within documents
+        containing multiple topics, URI references must include the appropriate DITA-defined
+        fragment identifier. URI references can be relative or absolute. A relative URI reference
+        can consist of just a fragment identifier. Such a reference is a reference to the document
+        that contains the reference.</p>
+    </section>
+    <section id="non-dita">
+      <title>Addressing non-DITA targets using a URI</title>
+      <p><ph >DITA can use URI references to directly address non-DITA
+          resources.</ph> Any fragment identifier used must conform to the fragment identifier
+        requirements that are defined for the target media type or provided by processors.</p>
+    </section>
+    <section id="elements-within-maps">
+      <title>Addressing elements within maps using a URI</title>
+      <p>When addressing elements within maps, URI references can include a fragment identifier that
+        includes the ID of the map element, for example, <codeph>filename.ditamap#mapId</codeph> or
+          <codeph>#mapId</codeph>. <ph>The same-topic, URI-reference fragment identifier of a period
+          (.) <ph rev="public-review-1">can not</ph> be used in URI references to elements within
+          maps.</ph></p>
+    </section>
+    <section id="topics-with-uri">
+      <title>Addressing topics using a URI</title>
+      <p>When addressing a DITA topic element, URI references <ph rev="public-review-1">can</ph>
+        include a fragment identifier that includes the ID of the topic element
+          (<codeph>filename.dita#topicId</codeph> or <codeph>#topicId</codeph>). <ph>When addressing
+          the DITA topic element that contains the URI reference, the URI reference <ph
+            rev="public-review-1">might</ph> include the same topic fragment identifier of "."
+            (<codeph>#.</codeph>).</ph></p>
+      <p>Topics always can be addressed by a URI reference whose fragment identifier consists of the
+        topic ID. For the purposes of linking, a reference to a topic-containing document addresses
+        the first topic within that document in document order. For the purposes of rendering, a
+        reference to a topic-containing document addresses the root element of the document. </p>
+      <p otherprops="examples" >Consider the following examples:<ul>
+          <li>Given a document whose root element is a topic, a URI reference (with no fragment
+            identifier) that addresses that document implicitly references the topic element.</li>
+          <li>Given a <xmlelement>dita</xmlelement> document that contains multiple topics, for the
+            purposes of linking, a URI reference that addresses the <xmlelement>dita</xmlelement>
+            document implicitly references the first child topic.</li>
+          <li>Given a <xmlelement>dita</xmlelement> document that contains multiple topics, for the
+            purposes of rendering, a URI reference that addresses the <xmlelement>dita</xmlelement>
+            document implicitly references all the topics that are contained by the
+              <xmlelement>dita</xmlelement> element. This means that all the topics that are
+            contained by the<xmlelement>dita</xmlelement> element are rendered in the result.</li>
+        </ul></p>
+    </section>
+    <section id="non-topic-with-uri">
+      <title>Addressing non-topic elements using a URI</title>
+      <p>When addressing a non-topic element within a DITA topic, a URI reference must use a
+        fragment identifier that contains the ID of the ancestor topic element of the non-topic
+        element being referenced, a <ph >slash</ph> ("/"), and the ID of the
+        non-topic element (<codeph>filename.dita#topicId/elementId</codeph> or
+          <codeph>#topicId/elementId</codeph>). <ph 
+          >When addressing a non-topic element within the topic that contains the URI reference, the
+          URI reference can use an abbreviated fragment-identifier syntax that replaces the topic ID
+          with "." (<codeph>#./elementId</codeph>).</ph></p>
+      <p>This addressing model makes it possible to reliably address elements that have values for
+        the <xmlatt>id</xmlatt> attribute that are unique within a single DITA topic, but which
+        might not be unique within a larger XML document that contains multiple DITA topics.</p>
+    </section>
+    <example id="example-uri-references" otherprops="examples">
+      <title>Examples: URI reference syntax</title>
+      <p>The following table shows the URI syntax for common use cases.</p>
+      <simpletable frame="all">
+        <sthead>
+          <stentry>Use case</stentry>
+          <stentry>Sample syntax</stentry>
+        </sthead>
+        <strow>
+          <stentry>Reference a table in a topic at a network location</stentry>
+          <stentry><codeph>"http://example.com/file.dita#topicID/tableID"</codeph></stentry>
+        </strow>
+        <strow>
+          <stentry>Reference a section in a topic on a local file system</stentry>
+          <stentry><codeph>"directory/file.dita#topicID/sectionID"</codeph></stentry>
+        </strow>
+        <strow>
+          <stentry>Reference a figure contained in the same XML document</stentry>
+          <stentry><codeph>"#topicID/figureID"</codeph></stentry>
+        </strow>
+        <strow >
+          <stentry>Reference a figure contained in the same topic of an XML document</stentry>
+          <stentry><codeph>"#./figureID"</codeph></stentry>
+        </strow>
+        <strow>
+          <stentry>Reference an element within a map</stentry>
+          <stentry><codeph>"http://example.com/map.ditamap#elementID"</codeph> (and a value of
+            "ditamap" for the <xmlatt>format</xmlatt> attribute)</stentry>
+        </strow>
+        <strow>
+          <stentry>Reference a map element within the same map document</stentry>
+          <stentry><codeph>"#elementID"</codeph> (and a value of "ditamap" for the
+              <xmlatt>format</xmlatt> attribute)</stentry>
+        </strow>
+        <strow>
+          <stentry>Reference an external Web site </stentry>
+          <stentry><codeph>"http://www.example.com"</codeph>,
+              <codeph>"http://www.example.com#somefragment"</codeph> or any other valid
+            URI</stentry>
+        </strow>
+        <strow>
+          <stentry>Reference an element within a local map</stentry>
+          <stentry>
+            <codeph>"filename.ditamap#elementid"</codeph> (and a value of "ditamap" for the
+              <xmlatt>format</xmlatt> attribute)</stentry>
+        </strow>
+        <strow>
+          <stentry>Reference a local map </stentry>
+          <stentry><codeph>"filename.ditamap"</codeph> (and a value of "ditamap" for the
+              <xmlatt>format</xmlatt> attribute)</stentry>
+        </strow>
+        <strow>
+          <stentry>Reference a local topic </stentry>
+          <stentry> Reference a local topic <codeph>"filename.dita"</codeph> or
+              "<codeph>path/filename.dita"</codeph></stentry>
+        </strow>
+        <strow>
+          <stentry>Reference a specific topic in a local document </stentry>
+          <stentry><codeph>"filename.dita#topicid"</codeph> or
+              <codeph>"path/filename.dita#topicid"</codeph></stentry>
+        </strow>
+        <strow>
+          <stentry>Reference a specific topic in the same file</stentry>
+          <stentry><codeph>"#topicid"</codeph></stentry>
+        </strow>
+        <strow >
+          <stentry>Reference  the same topic in the same XML document</stentry>
+          <stentry><codeph>"#."</codeph></stentry>
+        </strow>
+        <strow >
+          <stentry>Reference a peer map for cross-deliverable linking</stentry>
+          <stentry><codeph>"../book-b/book-b.ditamap"</codeph> (and a value of "ditamap" for the
+              <xmlatt>format</xmlatt> attribute, a value of "peer" for the <xmlatt>scope</xmlatt>
+            attribute, and a value for the <xmlatt>keyscope</xmlatt> attribute) </stentry>
+        </strow>
+      </simpletable>
+    </example>
+  </conbody>
+</concept>

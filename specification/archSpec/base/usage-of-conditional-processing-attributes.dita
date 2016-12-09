@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="usage-of-conditional-processing-attributes" >
+  <title>Conditional processing values and groups</title>
+  <shortdesc>Conditional processing attributes classify elements with metadata. The metadata is
+    specified using space-delimited string values <ph >or grouped
+      values.</ph></shortdesc>
+  <conbody>
+    <p>For example, the string values within <xmlatt>product</xmlatt> in <codeph>&lt;p
+        product="basic deluxe"></codeph> indicate that the paragraph applies to the “basic” product
+      and to the “deluxe” product. </p>
+    <p>Groups organize classification metadata into subcategories. <ph rev="public-review-1">This is
+intended to support situations where a predefined metadata attribute applies to multiple specialized
+subcategories. <ph otherprops="examples">For example, the <xmlatt>product</xmlatt> attribute can be
+used to classify an element based on both related databases and related application servers. Using
+groups for these subcategories allows each category to be processed independently; when filter
+conditions exclude all applicable databases within a group, the element can be safely excluded,
+regardless of any other <xmlatt>product</xmlatt> conditions.</ph></ph></p>
+<p>Groups can be used within <xmlatt>audience</xmlatt>, <xmlatt>product</xmlatt>,
+<xmlatt>platform</xmlatt>, or <xmlatt>otherprops</xmlatt>. The following rules apply:</p>
+    <ul >
+      <li>Groups consist of a name immediately followed by a parenthetical group of one or more
+        space-delimited string values. For example, <codeph>"groupName(valueOne
+        valueTwo)"</codeph>.</li>
+      <li>Groups cannot be nested.</li>
+      <li>If two groups with the same name are found in a single attribute, they should be treated
+        as if all values are specified in the same group. The following values for the
+          <xmlatt>otherprops</xmlatt> attribute are
+        equivalent:<codeblock>otherprops="groupA(a b) groupA(c) groupZ(APPNAME)"
+otherprops="groupA(a b c) groupZ(APPNAME)"</codeblock></li>
+      <li>If both grouped values and ungrouped values are found in a single attribute, the ungrouped
+        values belong to an implicit group; the name of that group matches the name of the
+        attribute. Therefore, the following values for the <xmlatt>product</xmlatt> attribute are
+        equivalent:
+        <codeblock>product="a database(dbA dbB) b appserver(mySERVER) c"
+product="product(a b c) database(dbA dbB) appserver(mySERVER)"</codeblock></li>
+    </ul>
+    <p >Setting a conditional processing attribute to an empty value,
+      such as <codeph>product=""</codeph>, is equivalent to omitting that attribute from the
+      element. An empty group within an attribute is equivalent to omitting that group from the
+      attribute. For example, <codeph>&lt;ph product="database() A"></codeph> is equivalent to
+        <codeph>&lt;ph product="A"></codeph>. Combining both rules into one example, <codeph>&lt;ph
+        product="operatingSystem()"></codeph> is equivalent to <codeph>&lt;ph></codeph>.</p>
+    <p >If two groups with the same name exist on different attributes,
+      a rule specified for that group will evaluate the same way on each attribute. For example, if
+      the group "sampleGroup" is specified within both <xmlatt>platform</xmlatt> and
+        <xmlatt>otherprops</xmlatt>, a DITAVAL rule for <codeph>sampleGroup="value"</codeph> will
+      evaluate the same in each attribute.
+      <!--Subject schemes can be used to define a group differently for two different attributes, but for the purposes of DITAVAL filtering or flagging, there is no way to distinguish.-->
+      If there is a need to distinguish between similarly named groups on different attributes, the
+      best practice is to use more specific group names such as platformGroupname and
+      productGroupname. Alternatively, DITAVAL rules can be specified based on the attribute name
+      rather than the group name.</p>
+    <p >If the same group name is used in different attributes, a
+      complex scenario could be created where different defaults are specified for different
+      attributes, with no rule set for a group or individual value. In this case a value might end
+      up evaluating differently in the different attributes. For example, a DITAVAL can set a
+      default of "exclude" for <xmlatt>platform</xmlatt> and a default of "flag" for
+        <xmlatt>product</xmlatt>. If no rules are specified for group <codeph>oddgroup()</codeph>,
+      or for the value <codeph>oddgroup="edgecase"</codeph>, the attribute
+        <codeph>platform="oddgroup(edgecase)"</codeph> will evaluate to "exclude" while
+        <codeph>product="oddgroup(edgecase)"</codeph> will resolve to "flag". See <xref
+        href="../../langRef/containers/ditaval-elements.dita"/> for information on how to change
+      default behaviors in DITAVAL provile.</p>
+    <note>While the grouped values  reuse the generalized attribute syntax found in <xref
+        href="generalization-attributes.dita#attributegeneralize" format="dita"/>, the
+        <xmlatt>audience</xmlatt>, <xmlatt>product</xmlatt>, <xmlatt>platform</xmlatt>, and
+        <xmlatt>otherprops</xmlatt> attributes cannot be specialized or generalized.</note>
+  </conbody>
+</concept>

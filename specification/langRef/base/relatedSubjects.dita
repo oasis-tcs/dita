@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="relatedSubjects" xml:lang="en-us">
+<title><xmlelement>relatedSubjects</xmlelement></title>
+<shortdesc>The <xmlelement>relatedSubjects</xmlelement> element establishes associative
+relationships between each child subject and every other child subject (unless the association is
+restricted by the <xmlatt>linking</xmlatt> attribute of the subjects).</shortdesc>
+<prolog><metadata>
+<keywords>
+        <indexterm><xmlelement>relatedSubjects</xmlelement></indexterm>
+        <indexterm>subjectScheme<indexterm>
+                elements<indexterm><xmlelement>relatedSubjects</xmlelement></indexterm></indexterm></indexterm></keywords>
+</metadata></prolog>
+<refbody>
+<section id="section-1"><p>For filtering and flagging, processors need only inspect
+the subordinate hierarchies under category subjects that are bound
+to attributes. Filtering and flagging processors do not have to understand
+specific types of relationships. Explicit relationships are useful
+primarily for information viewers with advanced capabilities.</p><p>The content provider can identify the relationship by specifying a <xmlatt>keys</xmlatt>
+attribute, label the relationship by specifying a <xmlelement>navtitle</xmlelement> element or
+<xmlatt>navtitle</xmlatt> attribute, and provide a consensus definition of the
+relationship including by referencing a topic. If the relationship has an identifying key, the
+content provider can use the <xmlatt>keyref</xmlatt> attribute to specify the same relationship for
+different subjects.</p></section>
+<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-relatedSubjects/contains" otherprops="contains"></section>
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
+map/topicref subjectScheme/relatedSubjects </p></section>
+<example id="example" otherprops="examples"><title>Example</title><p>The following scheme
+establishes that the Linux, the Apache Web Server, and the MySQL Database
+are related:<codeblock>&lt;subjectScheme>
+  &lt;!-- ... -->
+  &lt;relatedSubjects>
+    &lt;subjectdef keys="linux"     navtitle="Linux"/>
+    &lt;subjectdef keys="apacheweb" navtitle="Apache Web Server"/>
+    &lt;subjectdef keys="mysql"     navtitle="MySQL Database"/>
+  &lt;/relatedSubjects>
+  &lt;!-- ... -->
+&lt;/subjectScheme></codeblock></p></example>
+<section id="attributes"><title>Attributes</title>
+<p>The following attributes are available on this element: <xref
+href="../attributes/universalAttributes.dita"/>, <xref
+href="../attributes/linkRelationshipAttributes.dita"/> (with a narrowed definition of
+<xmlatt>href</xmlatt>, given below), <xmlatt>navtitle</xmlatt> and <xmlatt>query</xmlatt> from <xref
+href="../attributes/topicrefElementAttributes.dita"/>, <xref
+href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, <xref
+href="../attributes/thekeysattribute.dita"><xmlatt>keys</xmlatt></xref>, and <xref
+href="../attributes/thekeyrefattribute.dita"><xmlatt>keyref</xmlatt></xref>. This element also uses
+<xmlatt>processing-role</xmlatt>, <xmlatt>collection-type</xmlatt>, and a narrowed definition of
+<xmlatt>linking</xmlatt> (given below) from <xref href="../attributes/commonMapAttributes.dita"
+/>.</p>
+<dl>
+<dlentry conref="../../common/conref-attribute.dita#conref-attribute/href-on-topicref">
+<dt/>
+<dd/>
+</dlentry>
+<dlentry>
+<dt id="linking"><xmlatt>linking</xmlatt></dt>
+<dd>On this element, the <xmlatt>linking</xmlatt> attribute has a default value of "normal".
+Otherwise, the attribute is the same as defined in <xref
+href="../attributes/commonMapAttributes.dita"/>.</dd>
+</dlentry>
+</dl>
+</section>
+</refbody>
+</reference>

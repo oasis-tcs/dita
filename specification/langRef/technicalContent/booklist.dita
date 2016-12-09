@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="booklist" xml:lang="en-us">
+<title><xmlelement>booklist</xmlelement></title>
+<shortdesc>The <xmlelement>booklist</xmlelement> element is a general purpose element, designed for
+    use in specializations, that references a topic or map containing a list of items within the
+    book.
+    <!--It indicates to the processing software that the author wants that
+list of items to be generated at the particular location.-->For
+    example, it could be used to reference a topic that contains a list of authors for the book.
+    When a more specific element is already available, such as <xmlelement>tablelist</xmlelement>
+    for a list of tables, <ph rev="public-review-1">use that element instead.</ph></shortdesc>
+<prolog><metadata>
+<keywords><indexterm>booklist</indexterm><indexterm>Bookmap elements<indexterm>booklist</indexterm></indexterm>
+</keywords>
+</metadata></prolog>
+<refbody>
+<section conref="../../common/commonNavLibraryTable.dita#contentmodel-booklist/contains" id="contains" otherprops="contains"></section>
+
+
+
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
+map/topicref bookmap/booklist </p></section>
+<example id="example" otherprops="examples"><title>Example</title><p>In this case the <xmlelement>booklist</xmlelement> element references a topic that contains a
+list of authors of topics in this document.</p><codeblock>&lt;booklists>
+  &lt;toc/>
+  &lt;tablelist/>
+  <b>&lt;booklist href="authors.dita" navtitle="List of authors"/></b>
+&lt;/booklists></codeblock></example>
+<section id="attributes"><title>Attributes</title><sectiondiv
+conref="../../common/conref-attribute.dita#conref-attribute/bookmap-booklist-attributes"
+/></section>
+</refbody>
+</reference>
+

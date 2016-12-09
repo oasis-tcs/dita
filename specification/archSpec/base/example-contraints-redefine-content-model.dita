@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="reference_cfb_ck4_5p">
+  <title>Example: Redefine the content model for the <xmlelement>topic</xmlelement> element</title>
+  <shortdesc>In this scenario, an information architect for Acme, Incorporated wants to redefine the
+    content model for the topic document type. She wants to omit the
+      <xmlelement>abstract</xmlelement> element and make the <xmlelement>shortdesc</xmlelement>
+    element required; she also wants to omit the <xmlelement>related-links</xmlelement> element and
+    disallow topic nesting.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>constraints<indexterm>examples<indexterm>redefining the content
+            model</indexterm></indexterm></indexterm>
+        <indexterm>examples<indexterm>constraints<indexterm>redefining the content
+            model</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <example id="example" otherprops="examples">
+      <ol>
+        <li>She creates a .mod file using the following naming conventions:
+              <filepath><varname>qualifer</varname><varname>Tagname</varname>Constraint.mod</filepath>,
+          where <varname>qualifer</varname> is a string the describes the constraint, and
+            <varname>Tagname</varname> is the element type name with an initial capital. Her
+          contraint module is named <filepath>acme-TopicConstraint.mod</filepath>.</li>
+        <li>She adds the following content to
+          <filepath>acme-TopicConstraint.mod</filepath>:<codeblock>
+&lt;!-- ============================================================= -->
+&lt;!--                    CONSTRAINED TOPIC ENTITIES                 -->
+&lt;!-- ============================================================= -->
+
+&lt;!-- Declares the entity for the constraint module and defines     -->
+&lt;!-- its contribution to the @domains attribute.                   -->
+
+&lt;!ENTITY topic-constraints     
+  "(topic basic-Topic-c)"
+>
+
+&lt;!-- Declares the entities referenced in the constrained content  -->
+&lt;!-- model.                                                       -->
+
+&lt;!ENTITY % title            "title">
+&lt;!ENTITY % titlealts        "titlealts">
+&lt;!ENTITY % shortdesc        "shortdesc">
+&lt;!ENTITY % prolog           "prolog">
+&lt;!ENTITY % body             "body">
+
+&lt;!-- Defines the constrained content model for &lt;topic>.            -->
+
+&lt;!ENTITY % topic.content
+                       "((%title;), 
+                         (%titlealts;)?,
+                         (%shortdesc;), 
+                         (%prolog;)?, 
+                         (%body;)?)"
+></codeblock></li>
+        <li>She then integrates the constraint module into her document-type shell for topic by
+          adding the following section above the "TOPIC ELEMENT INTEGRATION"
+          comment:<codeblock>&lt;!-- ============================================================= -->
+&lt;!--                    CONTENT CONSTRAINT INTEGRATION             -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY % topic-constraints-c-def  
+  PUBLIC "-//ACME//ELEMENTS DITA Topic Constraint//EN" 
+  "acme-TopicConstraint.mod">
+%topic-constraints-c-def;</codeblock></li>
+        <li>She then adds the constraint to the list of domains and constraints that need to be
+          included in the value of the <xmlatt>domains</xmlatt> attribute for
+            <xmlelement>topic</xmlelement>:<codeblock>&lt;!-- ============================================================= -->
+&lt;!--                    DOMAINS ATTRIBUTE OVERRIDE                 -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY included-domains 
+                          "&amp;hi-d-att; 
+                           &amp;ut-d-att; 
+                           &amp;indexing-d-att;
+                           <b>&amp;topic-constraints;</b>
+  "
+></codeblock></li>
+        <li>After updating the <filepath>catalog.xml</filepath> file to include the new constraints
+          file, her work is done.</li>
+      </ol>
+    </example>
+  </conbody>
+  
+</concept>

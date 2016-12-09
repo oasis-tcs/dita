@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_igf_3c4_kn">
+ <title>Core concepts for working with keys</title>
+ <shortdesc> The concepts described below are critical for a full understanding of keys and key
+  processing.</shortdesc>
+ <conbody>
+    <section id="section">
+      <p >The use of the phases "<xmlelement>map</xmlelement> element" or
+          "<xmlelement>topicref</xmlelement> element" should be interpreted as
+          "<xmlelement>map</xmlelement> element and any specialization of
+          <xmlelement>map</xmlelement> element " or " <xmlelement>topicref</xmlelement> element or
+        any specialization of <xmlelement>topicref</xmlelement> element."</p>
+    </section>
+  <section id="definitions">
+   <title>Definitions related to keys</title>
+   <dl>
+    <dlentry  id="resource">
+     <dt>resource</dt>
+     <dd >For the purposes of keys and key resolution, one of the following:<ul>
+              <li>An object addressed by URI</li>
+              <li>Metadata specified on a resource, such as a <xmlatt>scope</xmlatt> or
+                  <xmlatt>format</xmlatt> attribute</li>
+              <li>Text or metadata located within a <xmlelement>topicmeta</xmlelement> element</li>
+            </ul></dd>
+    </dlentry>
+    <dlentry id="key">
+     <dt>key</dt>
+     <dd>A name for a resource. <ph >See <xref href="using-keys-for-addressing.dita"/>
+              for more information.</ph></dd>
+    </dlentry>
+    <dlentry id="key-definition">
+     <dt>key definition</dt>
+     <dd>A <xmlelement>topicref</xmlelement> element that binds one or more key names to <ph
+              >zero or more</ph> resources.</dd>
+    </dlentry>
+    <dlentry id="key-reference">
+     <dt>key reference</dt>
+     <dd>An attribute that references a key, such as <xmlatt>keyref</xmlatt> or
+              <xmlatt>conkeyref</xmlatt>.<!--<draft-comment author="chris.nitchie" disposition="accepted">Look for places where we talk about elements as key references to make sure we're being consistent - in some older content we referred to things like &lt;topicref> as a key reference, and need to clean it up.<p>Update April 16 2015: Kris will scan content to ensure this is complete.</p></draft-comment>--></dd>
+    </dlentry>
+    <dlentry id="key-space">
+     <dt>key space</dt>
+     <dd>A list of key definitions that are used to resolve key references.</dd>
+    </dlentry>
+    <dlentry id="effective-key-definition">
+     <dt>effective key definition</dt>
+     <dd>The definition for a key within a key space that is used to resolve references to that key.
+      A key might have multiple definitions within a key space, but only one of those definitions is
+      effective.</dd>
+    </dlentry>
+    <dlentry id="key-scope">
+     <dt>key scope</dt>
+     <dd>A map or section of a map that defines its own key space and serves as the resolution
+      context for its key references.</dd>
+    </dlentry>
+   </dl>
+  </section>
+  <section id="key-definition-full">
+   <title>Key definitions</title>
+   <p><ph >A key definition binds one or more keys to zero or more resources. <ph
+            >Resources can be:</ph></ph></p>
+   <ul >
+        <li>Any <ph >URI-addressed resource</ph> that is referenced directly by the
+            <xmlatt>href</xmlatt> attribute or indirectly by the <xmlatt>keyref</xmlatt> attribute
+            <ph >on the key definition</ph>. References to the key are
+          considered references to <ph >the URI-addressed resource</ph>.</li>
+        <li><ph >(If the key definition contains a child
+              <xmlelement>topicmeta</xmlelement> element) The child elements of the
+              <xmlelement>topicmeta</xmlelement> element.</ph> The content of those elements can be
+          used to populate the content of elements that reference <ph >the
+            key</ph>.</li>
+      </ul>
+   <p>If a key definition does not contain a <xmlelement>topicmeta</xmlelement> element and does not
+          <ph >refer to</ph> a resource by <xmlatt>href</xmlatt> or
+          <xmlatt>keyref</xmlatt>, it is nonetheless a valid key definition. References to the key
+        definition are considered resolvable, but no linking or content <ph 
+          >transclusion</ph> occurs.</p>
+  </section>
+  <section id="key-scope-full">
+   <title>Key scopes</title>
+      <p>All key definitions and key references exist within a key scope. <ph 
+          >If the <xmlatt>keyscope</xmlatt> attribute is never specified within the map hierarchy,
+          all keys exist within a single, default key scope.</ph></p>
+      <p><ph >Additional key scopes are created when the
+            <xmlatt>keyscope</xmlatt> attribute is used.</ph> The <xmlatt>keyscope</xmlatt>
+        attribute specifies a name or names for the scope. Within a map hierarchy, key scopes are
+        bounded by the following:</p>
+   <ul id="ul_nfz_hjp_kn">
+    <li>The root map.</li>
+    <li>The root element of submaps <ph >when the root elements of the
+            submaps</ph> specify the <xmlatt>keyscope</xmlatt> attribute</li>
+    <li>Any <xmlelement>topicref</xmlelement> elements that specify the <xmlatt>keyscope</xmlatt>
+          attribute</li>
+   </ul>
+  </section>
+  <section id="key-space-full">
+   <title>Key spaces</title>
+      <p>The key space associated with a key scope is used to resolve all key references that occur
+        immediately within that scope. Key references in child scopes are resolved using the key
+        spaces that are associated with those child scopes.</p>
+   <p>A key scope is associated with exactly one key space. That key space contains all key
+        definitions that are located directly within the scope; it <ph rev="public-review-1"
+          >might</ph> also contain definitions that exist in other scopes. Specifically, the key
+        space associated with a key scope is comprised of the following key definitions, in order of
+        precedence:<!--Specifically, a key scope's key space is comprised of the following key definitions, in order of precedence:--></p>
+   <ol id="ol_w41_rjp_kn">
+    <li >All key definitions from the key space associated with the parent key scope,
+          if any.<!--All key definitions from the parent key scope's key space, if any.--></li>
+    <li>Key definitions within the scope-defining element, including those defined in
+          directly-addressed, locally-scoped submaps, but excluding those defined in child scopes.
+            <ph >(Keys defined in child scopes cannot be addressed without
+            qualifiers.)</ph></li>
+    <li>The key definitions from child scopes, with each key prepended by the child scope name
+          followed by a period. If a child scope has multiple names, the keys in that scope are
+          addressable from the parent scope using any of the scope names as a prefix.</li>
+   </ol>
+   <note>Because of rules 1 and 3, the key space that is associated with a child scope includes the
+        scope-qualified copies of its own keys that are inherited from the key space of the parent
+        scope, as well as those from other "sibling" scopes.</note>
+  </section>
+  <section id="effective-key-definition-full">
+      <title>Effective key definitions</title>
+      <p>A key space can contain many definitions for a given key, but only one definition is
+        effective for the purpose of resolving key references.</p>
+      <p>When a key has a definition in <!--a parent scope's key space-->the key space that is <ph
+          >inherited from</ph> a parent scope, that definition is effective.
+        Otherwise, a key definition is effective if it is first in a breadth-first traversal of the
+        locally-scoped submaps beneath the scope-defining element. <ph >Put
+          another way, a key definition is effective if it is the first definition for that key name
+          in the shallowest map that contains that key definition.</ph> This allows higher-level map
+        authors to override keys defined in referenced submaps.</p>
+      <note>A key definition that specifies more than one key name in its <xmlatt>keys</xmlatt>
+        attribute <ph rev="public-review-1">might</ph> be the effective definition for some of its
+        keys but not for others.</note>
+      <p>Within a key scope, keys do not have to be defined before they are referenced. The key
+        space is effective for the entire scope, so the order of key definitions and key references
+        relative to one another is not significant. <ph >This has the following
+          implications for processors:</ph></p>
+      <ul>
+        <li>All key spaces for a root map must be determined before any key reference processing can
+          be performed.</li>
+        <li>Maps referenced solely by key reference have no bearing on key space contents.</li>
+      </ul>
+      <p><ph
+          conref="../../common/conref-file.dita#reuse_file/keys-scopes-and-key-precedence-shortdesc"/>
+        <ph otherprops="examples">See <xref href="example-keys-scope-defining-precedence.dita"/> for
+          more information.</ph></p>
+    </section>
+ </conbody>
+</concept>

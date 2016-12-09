@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="ditamap-attributes" xml:lang="en-us"> 
+  <title><ph>DITA map attributes</ph></title> 
+  <shortdesc>DITA maps have unique attributes that are designed to control the
+	 way that relationships are interpreted for different output purposes. In
+	 addition, DITA maps share many metadata and linking attributes with DITA
+	 topics. 
+  </shortdesc>
+	<prolog>
+		<metadata>
+			<keywords>
+				<indexterm><xmlatt>cascade</xmlatt>
+					attribute<indexterm>example</indexterm></indexterm>
+				<indexterm>examples<indexterm>maps<indexterm><xmlatt>collection-type</xmlatt> and
+								<xmlatt>linking</xmlatt> in relationship
+							tables</indexterm><indexterm>relationship
+							tables</indexterm><indexterm>use of <xmlatt>cascade</xmlatt>
+							attribute</indexterm></indexterm></indexterm>
+				<indexterm>maps<indexterm>attributes<indexterm>shared with topics</indexterm><indexterm>unique
+							to
+							maps</indexterm></indexterm><indexterm>examples<indexterm>relationship
+							tables</indexterm></indexterm></indexterm>
+				<indexterm>relationship tables<indexterm>examples</indexterm></indexterm>
+			</keywords>
+		</metadata>
+	</prolog> 
+  <conbody> 
+	 <section id="mostly-map">
+			<p>DITA maps often encode structures that are specific to a particular medium or output,
+				for example, Web pages or a PDF document. Attributes, such as
+					<xmlatt>deliveryTarget</xmlatt> and <xmlatt>toc</xmlatt>, are designed to help
+				processors interpret the DITA map for each kind of output. Many of these attributes
+				are not available in DITA topics; individual topics, once separated from the
+				high-level structures and dependencies associated with a particular kind of output,
+				should be entirely reusable regardless of the intended output format.</p>
+			<dl>
+				<dlentry>
+					<dt><xmlatt>collection-type</xmlatt>
+					</dt>
+					<dd>The <xmlatt>collection-type</xmlatt> attribute specifies how the children of
+						a <xmlelement>topicref</xmlelement> element relate to their parent and to
+						each other. This attribute, which is set on the parent element, typically is
+						used by processors to determine how to generate navigation links in the
+						rendered topics. For example, a <xmlatt>collection-type</xmlatt> value of
+						"sequence" indicates that children of the specifying
+							<xmlelement>topicref</xmlelement> element represent an ordered sequence
+						of topics; processors might add numbers to the list of child topics or
+						generate next/previous links for online presentation. This attribute is
+						available in topics on the <xmlelement>linklist</xmlelement> and
+							<xmlelement>linkpool</xmlelement> elements, where it has the same
+						behavior. Where the <xmlatt>collection-type</xmlatt> attribute is available
+						on elements that cannot directly contain elements (such as
+							<xmlelement>reltable</xmlelement> or <xmlelement>topicref</xmlelement>),
+						the behavior of the attribute is reserved for future use. </dd>
+				</dlentry>
+				<dlentry>
+					<dt><xmlatt>linking</xmlatt></dt>
+					<dd>
+						<p>By default, the relationships between the topics that are referenced in a
+							map are reciprocal:</p>
+						<ul>
+							<li>Child topics link to parent topics and vice versa. </li>
+							<li>Next and previous topics in a sequence link to each other. </li>
+							<li>Topics in a family link to their sibling topics. </li>
+							<li>Topics referenced in the table cells of the same row in a
+								relationship table link to each other. A topic referenced within a
+								table cell does not (by default) link to other topics referenced in
+								the same table cell. </li>
+						</ul>
+						<p>This behavior can be modified by using the <xmlatt>linking</xmlatt>
+							attribute, which enables an author or information architect to specify
+							how a topic should participate in a relationship. The following values
+							are valid:</p>
+						<dl>
+							<dlentry>
+								<dt>linking="none" </dt>
+								<dd>Specifies that the topic does not exist in the map for the
+									purposes of calculating links. </dd>
+							</dlentry>
+							<dlentry>
+								<dt>linking="sourceonly" </dt>
+								<dd>Specifies that the topic will link to its related topics but not
+									vice versa. </dd>
+							</dlentry>
+							<dlentry>
+								<dt>linking="targetonly" </dt>
+								<dd>Specifies that the related topics will link to it but not vice
+									versa. </dd>
+							</dlentry>
+							<dlentry>
+								<dt>linking="normal" </dt>
+								<dd>Default value. It specifies that linking will be reciprocal (the
+									topic will link to related topics, and they will link back to
+									it). </dd>
+							</dlentry>
+						</dl>
+						<p>Authors also can create links directly in a topic by using the
+								<xmlelement>xref</xmlelement> or <xmlelement>link</xmlelement>
+							elements, but in most cases map-based linking is preferable, because
+							links in topics create dependencies between topics that can hinder
+							reuse. </p>
+						<p>Note that while the relationships between the topics that are referenced
+							in a map are reciprocal, the relationships merely <i>imply</i>
+							reciprocal links in generated output that includes links. The rendered
+							navigation links are a function of the presentation style that is
+							determined by the processor. </p>
+					</dd>
+				</dlentry>
+				<dlentry>
+					<dt><xmlatt>toc</xmlatt></dt>
+					<dd>Specifies whether topics are excluded from navigation output, such as a Web
+						site map or an online table of contents. By default,
+							<xmlelement>topicref</xmlelement> hierarchies are included in navigation
+						output; relationship tables are excluded. </dd>
+				</dlentry>
+				<dlentry>
+					<dt><xmlatt>navtitle</xmlatt></dt>
+					<dd>Specifies a navigation title. This is a shorter version of the title that is
+						used in the navigation only. By default, the <xmlatt>navtitle</xmlatt>
+						attribute is ignored; it serves only to help the DITA map author keep track
+						of the title of the topic. <note
+							conref="../../common/conref-file.dita#reuse_file/deprecated_navtitle_attribute"
+						/>
+					</dd>
+				</dlentry>
+				<dlentry>
+					<dt><xmlatt>locktitle</xmlatt></dt>
+					<dd>
+						<p> If <xmlatt>locktitle</xmlatt> is set to "yes", the
+								<xmlelement>navtitle</xmlelement> element or
+								<xmlatt>navtitle</xmlatt> attribute is used if it is present.
+							Otherwise, the <xmlelement>navtitle</xmlelement> element or
+								<xmlatt>navtitle</xmlatt> attribute is ignored and the navigation
+							title is retrieved from the referenced file. </p>
+						<note
+							conref="../../common/conref-file.dita#reuse_file/deprecated_navtitle_attribute"
+						/>
+					</dd>
+				</dlentry>
+				<dlentry>
+					<dt><xmlatt>print</xmlatt></dt>
+					<dd>Specifies whether the topic should be included in printed output.</dd>
+					<dd>
+						<note
+							conref="../../common/conref-file.dita#reuse_file/deprecated-print-attribute"
+						/>
+					</dd>
+				</dlentry>
+				<dlentry>
+					<dt><xmlatt>search</xmlatt>
+					</dt>
+					<dd> Specifies whether the topic should be included in search indexes. </dd>
+				</dlentry>
+				<dlentry>
+					<dt><xmlatt>chunk</xmlatt>
+					</dt>
+					<dd>Specifies that the processor generates an interim set of DITA topics that
+						are used as the input for the final processing. This can produce the
+						following output results: <ul>
+							<li>Multi-topic files are transformed into smaller files, for example,
+								individual HTML files for each DITA topic. </li>
+							<li>Individual DITA topics are combined into a single file. </li>
+						</ul><p>Specifying a value for the <xmlatt>chunk</xmlatt> attribute on a
+								<xmlelement>map</xmlelement> element establishes chunking behavior
+							that applies to the entire map, unless overridden by
+								<xmlatt>chunk</xmlatt> attributes that are set on more specific
+							elements in the DITA map. For a detailed description of the
+								<xmlatt>chunk</xmlatt> attribute and its usage, see <xref
+								href="chunking.dita"/>. </p></dd>
+				</dlentry>
+				<dlentry>
+					<dt><xmlatt>copy-to</xmlatt>
+					</dt>
+					<dd>
+						<p>In most situations, specifies whether a duplicate version of the topic is
+							created when it is transformed. This duplicate version can be either
+							literal or virtual. The value of the <xmlatt>copy-to</xmlatt> attribute
+							specifies the uniform resource identifier (URI) by which the topic can
+							be referenced by a <xmlatt>conref</xmlatt> attribute,
+								<xmlelement>topicref</xmlelement> element, or
+								<xmlelement>xref</xmlelement> element. <ph>The duplication is a
+								convenience for output processors that use the URI of the topic to
+								generate the base address of the output. The <xmlatt>keys</xmlatt>
+								and <xmlatt>keyref</xmlatt> attributes provide an alternative
+								mechanism; they enable references to topics in specific-use
+								contexts.</ph>
+						</p>
+						<p>The <xmlatt>copy-to</xmlatt> attribute also can be used to specify the
+							name of a new chunk when topics are being chunked; it also can be used
+							to determine the name of the stub topic that is generated from a
+								<xmlelement>topicref</xmlelement> element that contains a title but
+							does not specify a target. In both of those cases, no duplicate version
+							of the topic is generated. </p>
+						<p>For information on how the <xmlatt>copy-to</xmlatt> attribute can be used
+							with the <xmlatt>chunk</xmlatt> attribute, see <xref
+								href="chunking.dita"/>. </p>
+						<!--<p><draft-comment author="Kristen James Eberlein" time="24 August 2009">Review
+suggestion from Elliot Kimber:<p>"In general, copy-to is a convenience
+for output processors that, by default, map topics to result components
+one-to-one, using the input topic's URL as a base for the result component's
+address (e.g., generating HTML pages from topics where the HTML page's
+base filename is the same as the input topic's base filename). However,
+the use of copy-to is not required simply to enable references to
+topics in a specific use context. That can be done using keys and
+keyref irrespective of how topics and result components are named
+or addressed."</p><p>Do we want to add information about the copy-to
+being handled more elegantly by keys and the @keyref attribute? Should
+the @copy-to attribute be deprecated in favor of using keys? Should
+this include more information about how and when the @copy-to attribute
+is needed even now that we have keys and @keyref? See discussion at <xref
+href="http://wiki.oasis-open.org/dita/ditaMaps" scope="external"></xref>.<draft-comment
+author="Kristen James Eberlein" time="31 December 2009">Review #3
+comment by Michael Priestley on 17 December 2009<p>"For @copy-to -
+in response to Eliot's draft comment asking if we should deprecate
+copy-to in favor of keyref - definitely not. I don't understand the
+comment about usage-specific referencing - i.e. I don't understand
+what scenario for copy-to keyref replaces - but it certainly leaves
+all the normal scenarios for copy-to, which keyref does not affect
+or replace."</p></draft-comment></p></draft-comment></p>-->
+					</dd>
+				</dlentry>
+				<dlentry>
+					<dt><xmlatt>processing-role</xmlatt>
+					</dt>
+					<dd>Specifies whether the topic or map referenced should be processed normally
+						or treated as a resource that is only included in order to resolve key or
+						content references. <dl>
+							<dlentry>
+								<dt>processing-role="normal" </dt>
+								<dd>The topic is a readable part of the information set. It is
+									included in navigation and search results. This is the default
+									value for the <xmlelement>topicref</xmlelement> element.</dd>
+							</dlentry>
+							<dlentry>
+								<dt>processing-role="resource-only" </dt>
+								<dd>The topic should be used only as a resource for processing. It
+									is not included in navigation or search results, nor is it
+									rendered as a topic. This is the default value for the
+										<xmlelement>keydef</xmlelement> element. </dd>
+							</dlentry>
+						</dl><p>If the <xmlatt>processing-role</xmlatt> attribute is not specified
+							locally, the value cascades from the closest element in the containment
+							hierarchy. </p></dd>
+				</dlentry>
+				<dlentry >
+					<dt><xmlatt>cascade</xmlatt></dt>
+					<dd>Specifies whether the default rules for the cascading of metadata attributes in a DITA map
+						apply. In addition to the following specified values, processors also <term
+							outputclass="RFC-2119">MAY</term> define additional
+							values.<dl
+							conref="../../common/conref-file.dita#reuse_file/cascade-values">
+							<dlentry>
+								<dt/>
+								<dd/>
+							</dlentry>
+						</dl><p>For more information, see <xref
+								href="example-how-cascade-att-functions.dita" format="dita"
+						/>.</p></dd>
+				</dlentry>
+				<dlentry >
+					<dt><xmlatt>keys</xmlatt></dt>
+					<dd>Specifies one or more key names.</dd>
+				</dlentry>
+				<dlentry >
+					<dt><xmlatt>keyscope</xmlatt></dt>
+					<dd>Defines a new scope for key definition and resolution, and gives the scope one or more
+						names. For more information about key scopes, see <xref
+							href="key-based-addressing.dita"/>.</dd>
+				</dlentry>
+			</dl>
+		</section> 
+	 <section id="sharedatt"> 
+		<p>Attributes in the list above are used exclusively or primarily in maps, but many important map
+				attributes are shared with elements in topics. DITA maps also use many of the
+				following attributes that are used with linking elements in DITA topics, such as
+					<xmlelement>link</xmlelement> and <xmlelement>xref</xmlelement>:<ul
+					id="ul_8EC90A51600A4EA388FCB3BCF0490924">
+					<li id="li_5893ECBE9D1943CA8F67AFAF1A33AACA"><xmlatt>format</xmlatt></li>
+					<li id="li_324682CF250345F7B2DDC8692BC00C81"><xmlatt>href</xmlatt></li>
+					<li id="li_178E6EB1985D464A867DDB89066927F5"><xmlatt>keyref</xmlatt></li>
+					<li id="li_393B3EADBBBF45029DD13F74FCB01383"><xmlatt>scope</xmlatt>
+					</li>
+					<li id="li_C214A132BF374DD681F79EA9C91DFFF2"><xmlatt>type</xmlatt>
+					</li>
+					<!--Removing @query since it is deprecated, no need to highlight it here-->
+					<!--<li id="li_C62671077C5E4A759FBD6A6EAB529D68"><xmlatt>query</xmlatt> </li>-->
+				</ul></p>
+			<p>The following metadata and reuse attributes are used by both DITA maps and DITA
+				topics: <ul>
+					<li><xmlatt>product</xmlatt>, <xmlatt>platform</xmlatt>,
+							<xmlatt>audience</xmlatt>, <xmlatt>otherprops</xmlatt>,
+							<xmlatt>rev</xmlatt>, <xmlatt>status</xmlatt>,
+							<xmlatt>importance</xmlatt></li>
+					<li><xmlatt>dir</xmlatt>, <xmlatt>xml:lang</xmlatt>, <xmlatt>translate</xmlatt>
+					</li>
+					<li><xmlatt>id</xmlatt>, <xmlatt>conref</xmlatt>, <xmlatt>conrefend</xmlatt>,
+							<xmlatt>conkeyref</xmlatt>, <xmlatt>conaction</xmlatt>
+					</li>
+					<li><xmlatt>props</xmlatt> and any attribute specialized from
+							<xmlatt>props</xmlatt> (such as <xmlatt>deliveryTarget</xmlatt>)</li>
+					<li><xmlatt>search</xmlatt>
+					</li>
+				</ul></p> 
+		<p>When new attributes are specialized from
+				<xmlatt>props</xmlatt> or <xmlatt>base</xmlatt> as a domain, they can be
+				incorporated into both map and topic structural types. </p> 
+	 </section> 
+  </conbody> 
+</concept> 

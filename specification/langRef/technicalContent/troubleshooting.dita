@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="troubleshooting" xml:lang="en-us" >
+  <title><xmlelement>troubleshooting</xmlelement></title>
+  <shortdesc>The <xmlelement>troubleshooting</xmlelement> element is the top-level element for a
+    troubleshooting topic. Troubleshooting topics document corrective action such as troubleshooting
+    or alarm clearing. Troubleshooting topics begin with a description of a condition that the
+    reader might want to correct, followed by one or more cause-remedy pairs. Each cause-remedy pair
+    is a potential solution to the trouble described in the condition.</shortdesc>
+  <!--Make sure troubleshooting.dita and dita_troubleshooting_topic.dita are in a relrow together.-->
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm><xmlelement>troubleshooting</xmlelement></indexterm>
+        <indexterm>troubleshooting
+            elements<indexterm><xmlelement>troubleshooting</xmlelement></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody>
+    <section id="section-1">
+      <p>Troubleshooting topics represent the kind of information that users typically consult to
+        fix a problem.</p>
+    </section>
+    <section conref="../../common/commonNavLibraryTable.dita#contentmodel-troubleshooting/contains" id="contains" otherprops="contains"></section>
+    <section id="inheritance" otherprops="inheritance">
+      <title>Inheritance</title>
+      <p>- topic/topic troubleshooting/troubleshooting </p>
+    </section>
+    <example id="example" otherprops="examples">
+      <title>Example</title>
+      <codeblock xml:space="preserve">
+<![CDATA[<troubleshooting id="resolve" xml:lang="en-us" >
+  <title>E247 - Memory fault has occured</title>
+  <shortdesc>The system has detected a problem in memory.
+  </shortdesc>
+  <troublebody>
+    <condition>
+      <p>The fault indicator flashes on the front panel, and
+        the error log contains the following message:
+        <msgph>E247 - Memory fault has occured</msgph></p>
+    </condition>
+    <troubleSolution>
+      <cause>
+        <p>Transient memory fault.</p>
+      </cause>
+      <remedy>
+        <responsibleParty>System administrator
+        </responsibleParty>
+        <steps>
+          <step>
+            <cmd>Reset the alarm</cmd>
+          </step>
+          <step>
+            <cmd>Monitor the system periodically to see whether
+               the alarm recurs</cmd>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+    <troubleSolution>
+      <cause>
+        <p>Recurring memory fault indicates possible problem
+          with the system memory board. Reseating the board
+          may fix the problem.</p>
+      </cause>
+      <remedy>
+        <responsibleParty>Maintenance technician
+        </responsibleParty>
+        <steps
+          conref="BoardReseat.dita#BoardReseatg/steps">
+          <step>
+            <cmd/>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+    <troubleSolution>
+      <cause>
+        <p>Reseating the system memory board did not fix
+          the problem. Replacing the board may fix the
+          problem.</p>
+      </cause>
+      <remedy>
+        <responsibleParty>Maintenance technician
+        </responsibleParty>
+        <steps
+          conref="BoardReplace.dita#BoardReplac/steps">
+          <step>
+            <cmd/>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+  </troublebody>
+</troubleshooting>]]></codeblock>
+    </example>
+    <section id="attributes"><title>Attributes</title><sectiondiv
+        conref="../../common/conref-attribute.dita#conref-attribute/topic-attributes"/></section>
+  </refbody>
+</reference>

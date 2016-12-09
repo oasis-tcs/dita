@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="ditaval" xml:lang="en-us">
+<title>DITAVAL elements</title>
+<shortdesc>A conditional processing profile (DITAVAL file) is used to identify which values are to
+        be used for conditional processing during a particular output, build, or some other purpose.
+        The profile should have an extension of <filepath>.ditaval</filepath>.</shortdesc>
+<prolog><metadata>
+<keywords>
+    <indexterm>element groups<indexterm>DITAVAL elements</indexterm></indexterm><indexterm>filtering</indexterm>
+<indexterm>flagging</indexterm><indexterm>revisions</indexterm>
+</keywords>
+</metadata></prolog>
+<refbody>
+    <section id="section-1">
+<p>The DITAVAL format has several elements: <xmlelement>val</xmlelement>, the root element, can
+                contain a <xmlelement>style-conflict</xmlelement> element followed by
+                    <xmlelement>prop</xmlelement> or <xmlelement>revprop</xmlelement> elements; the
+                    <xmlelement>prop</xmlelement> and <xmlelement>revprop</xmlelement> elements can
+                contain <xmlelement>startflag</xmlelement> and <xmlelement>endflag</xmlelement>
+                elements; and the <xmlelement>startflag</xmlelement> and
+                    <xmlelement>endflag</xmlelement> elements can contain
+                    <xmlelement>alt-text</xmlelement>
+                elements.<!--<draft-comment>jeff ogden: wanted this in a new section of the spec rather than under common attributes. now done. Also questioned whether it was normative. Reviewed with TC, and confirmed: the ditaval format was not normative in 1.0, it is normative in 1.1. There was some old wording from 1.0 earlier that confused the issue, I've removed it.</draft-comment>--></p>
+    </section>
+<section id="section-2"><title>Notes on ditaval messages</title><p>Conditional processing code should provide a report of any attribute values encountered in
+                content that do not have an action associated with them.</p></section>
+        
+<section id="section-3"><title>Note on ditaval flagging of images</title><p>If an
+image in DITA content becomes flagged using a background color, the
+color should be represented as a thick border.  If a foreground color
+is expressed, it should be represented as a  thin border.</p>
+</section>
+        
+</refbody>
+</reference>

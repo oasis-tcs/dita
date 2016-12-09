@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_ahg_25y_lp">
+ <title>Examples: Key definition</title>
+ <shortdesc >The <xmlelement>topicref</xmlelement> element, and any specialization of
+      <xmlelement>topicref</xmlelement> that allows the <xmlatt>keys</xmlatt> attribute, can be used
+    to define keys.</shortdesc>
+ <conbody>
+  <p>In the following example, a <xmlelement>topicref</xmlelement> element is used to define a key;
+   the <xmlelement>topicref</xmlelement> element also contributes to the navigation structure.</p>
+  <codeblock>&lt;map&gt;
+  &lt;!--... -->
+  &lt;topicref keys="apple-definition" href="apple-gloss-en-US.dita" /&gt;
+  &lt;!--... -->
+&lt;/map&gt;</codeblock>
+  <p>The presence of the <xmlatt>keys</xmlatt> attribute does not affect how the
+        <xmlelement>topicref</xmlelement> element is processed.</p>
+  <p>In the following example, a <xmlelement>keydef</xmlelement> element is used to define a
+   key.</p>
+  <codeblock>&lt;map&gt;
+  &lt;!--... -->
+  &lt;keydef keys="apple-definition" href="apple-gloss-en-US.dita"/&gt;
+  &lt;!--... -->
+&lt;/map&gt;</codeblock>
+  <p>Because the <xmlelement>keydef</xmlelement> element sets the default value of the
+        <xmlatt>processing-role</xmlatt> attribute to "resource-only", the key definition does not
+      contribute to the map navigation structure; it only serves as a key definition for <ph
+        >the key name</ph> "apple-definition".</p>
+ </conbody>
+</concept>

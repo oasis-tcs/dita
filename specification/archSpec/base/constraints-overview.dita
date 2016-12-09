@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_sv4_2gm_vp">
+ <title>Overview of constraints</title>
+ <shortdesc >Constraint modules enable information architects to restrict the
+  content models or attributes of OASIS-defined DITA grammars. A constraint is a simplification of
+  an XML grammar such that any instance that conforms to the constrained grammar also will conform
+  to the original grammar.<!-- The reverse is not true.--></shortdesc>
+ <prolog>
+  <metadata>
+   <keywords>
+    <indexterm>constraints<indexterm>overview</indexterm></indexterm>
+   </keywords>
+  </metadata>
+ </prolog>
+ <conbody>
+  <p>A constraint module can perform the following functions:</p>
+  <dl>
+   <dlentry>
+    <dt>Restrict the content model for an element</dt>
+    <dd>Constraint modules can modify content models by removing optional elements, making optional
+     elements required, or requiring unordered elements to occur in a specific sequence. Constraint
+     modules cannot make required elements optional or change the order of element occurrence for
+     ordered elements.<p otherprops="examples">For example, a constraint for
+       <xmlelement>topic</xmlelement> can require <xmlelement>shortdesc</xmlelement>, can remove
+       <xmlelement>abstract</xmlelement>, and can require that the first child of
+       <xmlelement>body</xmlelement> be <xmlelement>p</xmlelement>. A constraint cannot allow
+       <xmlelement>shortdesc</xmlelement> to follow <xmlelement>prolog</xmlelement>, because the
+      content model for <xmlelement>topic</xmlelement>
+      <ph >requires that <xmlelement>shortdesc</xmlelement> precedes
+        <xmlelement>prolog</xmlelement>.</ph></p></dd>
+   </dlentry>
+   <dlentry>
+    <dt>Restrict the attributes that are available on an element</dt>
+    <dd>
+     <p>Constraint modules can restrict the attributes that are available on an element. They also
+      can limit the set of permissible values for an attribute.</p>
+     <p otherprops="examples">For example, a constraint for <xmlelement>note</xmlelement> can limit
+      the set of allowed values for the <xmlatt>type</xmlatt> attribute to "note" and "tip". It also
+      can omit the <xmlatt>othertype</xmlatt> attribute, since it is needed only when the value of
+      the <xmlatt>type</xmlatt> attribute is "other".</p>
+    </dd>
+   </dlentry>
+   <dlentry>
+    <dt>Restrict the elements that are available in a domain</dt>
+    <dd>
+     <p>Constraint modules can restrict the set of extension elements that are provided in a domain.
+       <ph >They also can restrict the content models for the extension
+       elements.</ph></p>
+     <p otherprops="examples">For example, a constraint on the programming domain can reduce the
+      list of included extension elements to <xmlelement>codeph</xmlelement> and
+       <xmlelement>codeblock</xmlelement>.</p>
+    </dd>
+   </dlentry>
+   <dlentry>
+    <dt>Replace base elements with  domain extensions</dt>
+    <dd>Constraint modules can replace base element types with the domain-provided extension
+      elements.<p>For example, a constraint module can replace the <xmlelement>ph</xmlelement>
+      element with the domain-provided elements, making <xmlelement>ph</xmlelement>
+     unavailable.</p></dd>
+   </dlentry>
+  </dl>
+ </conbody>
+</concept>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_efq_qrv_vr">
+ <title>Example: How the <xmlatt>cascade</xmlatt> attribute functions</title>
+ <shortdesc>The following example illustrates how the <xmlatt>cascade</xmlatt> attribute can be used
+  to fine tune how the values for the <xmlatt>platform</xmlatt> attribute apply to topics referenced
+  in a DITA map.</shortdesc>
+ <conbody>
+  <p>Here a DITA map contains a collection of topics that apply to Windows, Linux, and Macintosh OS;
+   it also contains a topic that is only applicable to users running the application on Linux. </p>
+  <codeblock>&lt;map product="PuffinTracker" platform="win linux mac" <b>cascade="nomerge"</b>>
+  &lt;title>Puffin Tracking Software&lt;/title>
+  &lt;topicref href="intro.dita" navtitle="Introduction"/>
+  &lt;topicref href="setup.dita" navtitle="Setting up the product"/>
+  &lt;topicref href="linux-instructions.dita" navtitle="Linux instructions" platform="linux"/>
+&lt;/map></codeblock>
+  <p>The values of the <xmlatt>platform</xmlatt> attribute set at the map level cascade throughout
+   the map and apply to the "Introduction" and "Setting up the product" topics. However, since the
+   value of the <xmlatt>cascade</xmlatt> attribute is set to "nomerge", the value of the
+    <xmlatt>platform</xmlatt> attribute for the "Linux instructions" topic does not merge with the
+   values that cascade from above in the DITA map. The effective value of the
+    <xmlatt>platform</xmlatt> attribute for <filepath>linux-instructions.dita</filepath> is
+   "linux".</p>
+  <p>The same results are produced by the following mark-up:</p>
+  <codeblock>&lt;map product="PuffinTracker" platform="win linux mac">
+  &lt;title>Puffin Tracking Software&lt;/title>
+  &lt;topicref href="intro.dita" navtitle="Introduction"/>
+  &lt;topicref href="setup.dita" navtitle="Setting up the product"/>
+  &lt;topicref href="linux-instructions.dita" navtitle="Linux instructions" platform="linux" cascade="nomerge"/>
+&lt;/map></codeblock>
+ </conbody>
+</concept>

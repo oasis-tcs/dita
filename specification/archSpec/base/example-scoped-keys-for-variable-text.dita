@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_b1c_mn1_mp">
+ <title>Example: Scoped key definitions for variable text</title>
+ <shortdesc>Scoped key definitions can be used for variable text. This enables you to use the same
+    DITA topic multiple times in a DITA map, and in each instance the variable text can resolve
+    differently.</shortdesc>
+ <conbody>
+  <p>The Acme Tractor Company produces two models of tractor: X and Y. Their product manual contains
+      sets of instructions for each model. While most maintenance procedures are different for each
+      model, the instructions for changing the oil are identical for both model X and model Y. The
+      company policies call for including the specific model number in each topic, so a generic
+      topic that could be used for both models is not permitted.</p>
+  <ol>
+   <li>
+    <p>The authoring team references the model information in the
+      <filepath>changing-the-oil.dita</filepath> topic by using the following mark-up:</p>
+    <codeblock>&lt;keyword keyref="model"/></codeblock>
+   </li>
+   <li>
+    <p>The information architect examines the root map for the manual, and decides how to define key
+          scopes. Originally, the map looked like the following:</p>
+    <codeblock>&lt;map>
+  &lt;!-- Model X: Maintenance procedures -->
+  &lt;topicref href="model-x-procedures.dita">
+    &lt;topicref href="model-x/replacing-a-tire.dita"/>
+    &lt;topicref href="model-x/adding-fluid.dita"/>
+  &lt;/topicref>
+
+&lt;!-- Model Y: Maintenance procedures -->
+  &lt;topicref href="model-y-procedures.dita">
+    &lt;topicref href="model-y/replacing-a-tire.dita"/>
+    &lt;topicref href="model-y/adding-fluid.dita"/>
+  &lt;/topicref>
+&lt;/map></codeblock>
+   </li>
+   <li>
+    <p>The information architect wraps each set of procedures in a
+      <xmlelement>topicgroup</xmlelement> element and sets the <xmlatt>keyscope</xmlatt>
+     attribute.</p>
+    <codeblock>&lt;map>
+  &lt;!-- Model X: Maintenance procedures -->
+  &lt;topicgroup <b>keyscope="model-x"</b>>
+    &lt;topicref href="model-x-procedures.dita">
+      &lt;topicref href="model-x/replacing-a-tire.dita"/>
+      &lt;topicref href="model-x/adding-fluid.dita"/>
+    &lt;/topicref>
+  &lt;/topicgroup>
+
+&lt;!-- Model Y: Maintenance procedures -->
+  &lt;topicgroup <b>keyscope="model-y"</b>>
+    &lt;topicref href="model-y-procedures.dita">
+      &lt;topicref href="model-y/replacing-a-tire.dita"/>
+      &lt;topicref href="model-y/adding-fluid.dita"/>
+    &lt;/topicref>
+  &lt;/topicgroup>
+&lt;/map></codeblock>
+    <p>This defines the key scopes for each set of procedures.</p>
+   </li>
+   <li>
+    <p>The information architect then adds key definitions to each set of procedures, as well as a
+     reference to the <filepath>changing-the-oil.dita</filepath> topic.</p>
+    <codeblock>&lt;map>
+  &lt;!-- Model X: Maintenance procedures -->
+  &lt;topicgroup keyscope="model-x">
+    <b>&lt;keydef keys="model">
+      &lt;topicmeta>
+        &lt;linktext>X&lt;/linktext>
+      &lt;/topicmeta>
+    &lt;/keydef></b>
+    &lt;topicref href="model-x-procedures.dita">
+      &lt;topicref href="model-x/replacing-a-tire.dita"/>
+      &lt;topicref href="model-x/adding-fluid.dita"/>
+      <b>&lt;topicref href="common/changing-the-oil.dita"/></b>
+    &lt;/topicref>
+  &lt;/topicgroup>
+
+&lt;!-- Model Y: Maintenance procedures -->
+  &lt;topicgroup keyscope="model-y">
+    <b>&lt;keydef keys="model">
+      &lt;topicmeta>
+        &lt;linktext>Y&lt;/linktext>
+      &lt;/topicmeta>
+    &lt;/keydef></b>
+    &lt;topicref href="model-y-procedures.dita">
+      &lt;topicref href="model-y/replacing-a-tire.dita"/>
+      &lt;topicref href="model-y/adding-fluid.dita"/>
+      <b>&lt;topicref href="common/changing-the-oil.dita"/></b>
+    &lt;/topicref>
+  &lt;/topicgroup>
+&lt;/map></codeblock>
+    <p>When the DITA map is processed, the <filepath>changing-the-oil.dita</filepath> topic is
+          rendered twice. The model variable is rendered differently in each instance, using the
+          text as specified in the scoped key definition. <ph>Without key scopes, the first key
+            definition would win, and "model "X" would be used in all topics.</ph></p>
+   </li>
+  </ol>
+ </conbody>
+</concept>

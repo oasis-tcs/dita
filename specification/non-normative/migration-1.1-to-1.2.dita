@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept id="migrating_from_1.1_to_1.2" xml:lang="en-us">
+ <title>Migrating from DITA 1.1 to 1.2</title>
+ <shortdesc>DITA 1.2 is compatible with prior versions of the DITA specification in that all valid
+    DITA 1.0 and 1.1 documents are valid DITA 1.2 documents. However, some changes to existing
+    document type shells and specializations might be needed in order to maintain the same behavior
+    under DITA 1.2 or to take full advantage of new DITA 1.2 features.</shortdesc>
+ <conbody>
+  <section id="task-migration">
+   <title>Migration of task specializations</title>
+   <p>DITA 1.2 relaxes the content model for the <xmlelement>taskbody</xmlelement> element in the base <xmlelement>task</xmlelement> topic
+    type. Specializations of <xmlelement>task</xmlelement> that use the <xmlelement>taskbody</xmlelement> element unchanged or use the
+    content-model parameter entities for task body will use the more general DITA 1.2 task model
+    when used with the DITA 1.2 task module.</p>
+   <p>If a document should use the strict task model instead of the new general task model:<ul>
+     <li>Documents that use the task topic type included with the OASIS DITA 1.2 specification
+       <b>will not</b> need to migrate. This includes documents that use task inside of the ditabase
+      document type included with the DITA 1.2 specification.</li>
+     <li>Documents that use the standard task module inside of a new document type shell, or in a
+      local ditabase document type, <b>will</b> need to migrate in order to preserve the
+      module.</li>
+     <li>Documents that use a specialization of task with a specialized element to replace
+      <xmlelement>taskbody</xmlelement> <b>will not</b> need to migrate. Documents that specialize task but reuse the
+      <xmlelement>taskbody</xmlelement> element <b>will</b> need to migrate.</li>
+    </ul></p>
+   <p>For documents that do not use the standard OASIS DITA doctypes for which the strict task model
+    from DITA 1.0 and 1.1 is desired, the strict task model can be restored by using the strict
+    Taskbody Constraint module, by creating and integrating a constraint module similar to the
+    strict Taskbody Constraint, or by adjusting the specialization's content models to impose the
+    appropriate constraints.</p>
+   <p>To integrate the strict Taskbody Constraint module in a DTD, add the following content
+    immediately before the section that imports the "topic.mod" file. The
+     <filepath>strictTaskbodyConstraint.mod</filepath> file must be defined in any catalog used to
+    locate DTD modules. See the <filepath>task.dtd</filepath> file in the OASIS DITA 1.2 DTD package
+    for a
+    sample:<codeblock>&lt;!ENTITY % strictTaskbody-c-def  
+  PUBLIC "-//OASIS//ELEMENTS DITA 1.2 Strict Taskbody Constraint//EN" 
+  "strictTaskbodyConstraint.mod">
+%strictTaskbody-c-def;</codeblock></p>
+   <p>To do the same thing for a schema, the <filepath>strictTaskbodyConstraintMod.xsd</filepath>
+    file must be defined in the catalog used to resolve the schema using the following URN. The
+    <xmlelement>xs:include</xmlelement> element should be placed immediately before the <xmlelement>xs:include</xmlelement> for
+     <filepath>topicMod.xsd</filepath>:<codeblock>&lt;xs:include schemaLocation="urn:oasis:names:tc:dita:xsd:strictTaskbodyConstraintMod.xsd:1.2" /></codeblock></p>
+   <p>Documents which use the task document type from OASIS and wish to make use of the general
+    <xmlelement>taskbody</xmlelement> model must also be migrated. In this case, the documents must be updated to
+    reference the General Task document type instead of the traditional Task document type. For
+    DTD-based documents, this means that the document type declaration must change as follows within
+    each task
+    document:<codeblock>DITA 1.1:
+&lt;!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN"
+ "task.dtd">
+
+DITA 1.2:
+&lt;!DOCTYPE task PUBLIC "-//OASIS//DTD DITA General Task//EN"
+ "generalTask.dtd"></codeblock></p>
+   
+   <p>For Schema based documents, the xsi:noNamespaceSchemaLocation attribute must change on each
+    task element:
+    <codeblock>DITA 1.1:
+&lt;task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd"
+
+DITA 1.2:
+&lt;task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:generalTask.xsd"</codeblock></p>
+  </section>
+  <section id="glossary-doctype-shell">
+   <title>Use of glossary document type shell and module files</title>
+   <p>The files named <filepath>glossary.dtd</filepath>, <filepath>glossary.mod</filepath>, and
+     <filepath>glossary.ent</filepath> in DITA 1.1 have been renamed to
+     <filepath>glossentry.dtd</filepath>, <filepath>glossentry.mod</filepath>, and
+     <filepath>glossentry.ent</filepath> in order to follow the file naming requirements for
+    vocabulary modules. The XML Schema files <filepath>glossary.xsd</filepath>,
+     <filepath>glossaryGrp.xsd</filepath>, and <filepath>glossaryMod.xsd</filepath> have been
+    renamed to <filepath>glossentry.xsd</filepath>, <filepath>glossentryGrp.xsd</filepath>, and
+     <filepath>glossentryMod.xsd</filepath>.The DITA 1.2 entity resolution catalogs map the public
+    identifiers for the <filepath>glossary.*</filepath> files to the corresponding
+     <filepath>glossentry.*</filepath> files and URNs for the <filepath>glossary*.xsd</filepath>
+    files to the corresponding <filepath>glossentry*.xsd</filepath> files, meaning that existing
+    documents and shell document types that refer to the <filepath>glossary.*</filepath> files will
+    continue to work with DITA 1.2.</p>
+   <p>However, shell document types that refer to the <filepath>glossary.*</filepath> files should
+    be updated to refer to the corresponding <filepath>glossentry.*</filepath> files as it is
+    convenient to do so.</p>
+  </section>
+  <section id="section-1">
+   <title>Migration of specializations to reflect new implementation patterns</title>
+   <p>DITA 1.2 defines new implementation patterns for specializations. It is not necessary to
+    update existing specialization modules to reflect these new patterns. However, specializations
+    that want to enable the use of constraint modules must be updated to provide per-element-type
+    content model and attribute list parameter entities.</p>
+   <p>Existing specializations <ph rev="public-review-1">might</ph> benefit from the new DITA 1.2
+        ability to have structural modules that depend on and specialize elements from domains.</p>
+  </section>
+  <section id="section-2">
+   <title>Update of domains attributes for specializations</title>
+   <p>In DITA 1.1 the <xmlatt>domains</xmlatt> attribute only listed the domains on which a given map or topic type
+    depended. In DITA 1.2 the <xmlatt>domains</xmlatt> attribute should also list structural modules and constraint
+    modules, providing a complete list of the vocabulary modules that a given map or topic type
+    depends on in the context of a given DITA document type.</p>
+   <p>Existing structural specializations should be updated to include the structural module names
+    in their domains attribute configuration entities. Having a complete declaration of all
+    structural and domains modules in the <xmlatt>domains</xmlatt> attribute allows processors to determine the set
+    of required modules for a given topic or map document without also examining all the <xmlatt>class</xmlatt>
+    attributes of all the elements in the document.</p>
+  </section>
+  <section id="section-3">
+   <title>XML Schema declaration of domains attribute</title>
+   <p>For XML schema shell document types, the way the <xmlatt>domains</xmlatt> attribute is
+        declared has changed. In DITA 1.1 the <xmlatt>domains</xmlatt> attribute was defined using
+        an <xmlelement>xs:redefine</xmlelement> element. For DITA 1.2 the attribute is defined in
+        document type shells and referenced from modules, like
+        so:<codeblock>&lt;xs:attributeGroup name="domains-att">
+    &lt;xs:attribute name="domains" type="xs:string" 
+     default="(topic ui-d) 
+              (topic hi-d) 
+              (topic sw-d) 
+              (topic pr-d) 
+              (topic ut-d) 
+              (topic indexing-d) 
+              (topic hazard-d) 
+              (topic abbrev-d)"
+     />
+&lt;/xs:attributeGroup></codeblock></p>
+   <p>XML Schema document type shells must be updated to use the new declaration mechanism in order
+    to continue to be valid XSD schemas.</p>
+  </section>
+ </conbody>
+</concept>
+

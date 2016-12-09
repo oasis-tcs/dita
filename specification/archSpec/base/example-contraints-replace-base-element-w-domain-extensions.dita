@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="reference_cfb_ck4_5p">
+  <title>Example: Replace a base element with the domain extensions</title>
+  <shortdesc>In this scenario, an information architect wants to remove the
+      <xmlelement>ph</xmlelement> element but allow the extensions of <xmlelement>ph</xmlelement>
+    that exist in the highlighting, programming, software, and user interface domains.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>constraints<indexterm>examples<indexterm>replacing base element with domain
+              extensions</indexterm></indexterm></indexterm>
+        <indexterm>examples<indexterm>constraints<indexterm>replacing base element with domain
+              extensions</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <example id="example" otherprops="examples">
+      <ol>
+        <li>The information architect creates an entities file named
+            <filepath>noPhConstraint.ent</filepath>, where "no" is a qualifier string that
+          characterizes the constraint. </li>
+        <li>The information architect adds the following content to
+            <filepath>noPhConstraint.ent</filepath>:<codeblock>&lt;!-- ============================================================= -->
+&lt;!--      CONSTRAINED HIGHLIGHTING DOMAIN ENTITIES                 -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY ph-constraints     
+  "(topic noPh-ph-c)"
+></codeblock>
+          <note>Because the highlighting and programming domains cannot be generalized without the
+              <xmlelement>ph</xmlelement> element, this entity must be defined so that there is a
+            separate parenthetical expression that can be included in the <xmlatt>domains</xmlatt>
+            attribute for the topic.</note></li>
+        <li>The information architect then integrates the constraint module into a document-type
+          shell for concept by adding the following section above the "TOPIC ELEMENT INTEGRATION"
+          comment:<codeblock>&lt;!-- ============================================================= -->
+&lt;!--                    CONTENT CONSTRAINT INTEGRATION             -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY % noPh-ph-c-def  
+  PUBLIC "-//ACME//ELEMENTS DITA Ph Constraint//EN" 
+  "acme-PhConstraint-constraints" "noPhConstraint.ent">
+%noPh-ph-c-def;</codeblock></li>
+        <li>In the "DOMAIN EXTENSIONS" section, the information architect removes the reference to
+          the <xmlelement>ph</xmlelement>
+          element:<codeblock>&lt;!-- Removed "ph | " so as to make &lt;ph> not available, only the domain extensions. -->
+&lt;!ENTITY % ph           "%pr-d-ph; |
+                         %sw-d-ph; | 
+                         %ui-d-ph;
+                        "></codeblock></li>
+        <li>She then adds the constraint to the list of domains and constraints that need to be
+          included in the value of the <xmlatt>domains</xmlatt>
+          attribute:<codeblock>&lt;!-- ============================================================= -->
+&lt;!--                    DOMAINS ATTRIBUTE OVERRIDE                 -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY included-domains 
+                          "&amp;concept-att;
+                           &amp;hi-d-att; 
+                           &amp;indexing-d-att;
+                           &amp;pr-d-att; 
+                           &amp;sw-d-att;
+                           &amp;ui-d-att;
+                           <b>&amp;ph-constraint;</b>
+  "
+></codeblock></li>
+        <li>After updating the <filepath>catalog.xml</filepath> file to include the new constraints
+          file, the information architect's work is done.</li>
+      </ol>
+    </example>
+  </conbody>
+  
+</concept>

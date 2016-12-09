@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="glossentry" xml:lang="en-us">
+<title><xmlelement>glossentry</xmlelement></title>
+<shortdesc>The <xmlelement>glossentry</xmlelement> element defines a single sense of a glossary
+    term. Glossary entries for different term senses can be reused independently of one
+    another.</shortdesc>
+<prolog><metadata>
+<keywords>
+        <indexterm>glossaries<indexterm>entries</indexterm></indexterm><indexterm><xmlelement>glossentry</xmlelement></indexterm><indexterm>glossentry elements<indexterm><xmlelement>glossentry</xmlelement></indexterm></indexterm>
+</keywords>
+</metadata></prolog>
+<refbody>
+<section id="section-1">The recommended (but not required) book processing is to
+sort and group glossary entries based on the localized term so a back-of-the-book
+glossary can contain a collated list of terms with the definitions
+of the individual senses of each term indented under the term. The
+glossary can have a different organization in different languages
+depending on the translation of the terms. One possible implementation
+of a glossary in online processing is to associate a hotspot for mentions
+of terms in <xmlelement>term</xmlelement> elements and display the definition on hover
+or click.</section>
+<section conref="../../common/commonNavLibraryTable.dita#contentmodel-glossentry/contains" id="contains" otherprops="contains"></section>
+
+
+
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
+topic/topic concept/concept glossentry/glossentry </p></section>
+<example id="example" otherprops="examples"><title>Example</title><fig><title>The
+glossary term "USB flash drive" with additional information</title>
+<codeblock>&lt;glossentry id="usbfd">
+  &lt;glossterm>USB flash drive&lt;/glossterm>
+  &lt;glossdef>A small portable drive.&lt;/glossdef>
+  &lt;glossBody>
+    &lt;glossPartOfSpeech value="noun"/>
+    &lt;glossUsage>Do not provide in upper case (as in "USB Flash
+Drive") because that suggests a trademark.&lt;/glossUsage>
+    &lt;glossAlt>
+      &lt;glossAcronym>UFD&lt;/glossAcronym>
+      &lt;glossUsage>Explain the acronym on first occurrence.&lt;/glossUsage>
+    &lt;/glossAlt>
+    &lt;glossAlt id="memoryStick">
+      &lt;glossSynonym>memory stick&lt;/glossSynonym>
+      &lt;glossUsage>This is a colloquial term.&lt;/glossUsage>
+    &lt;/glossAlt>
+    &lt;glossAlt>
+      &lt;glossAbbreviation>stick&lt;/glossAbbreviation>
+      &lt;glossStatus value="prohibited"/>
+      &lt;glossUsage>This is too colloquial.&lt;/glossUsage>
+      &lt;glossAlternateFor href="#usbfd/memoryStick"/>
+    &lt;/glossAlt>
+    &lt;glossAlt>
+      &lt;glossAbbreviation>flash&lt;/glossAbbreviation>
+      &lt;glossStatus value="prohibited"/>
+      &lt;glossUsage>This short form is ambiguous.&lt;/glossUsage>
+    &lt;/glossAlt>
+  &lt;/glossBody>
+&lt;/glossentry></codeblock>
+</fig></example>
+<section id="attributes"><title>Attributes</title><sectiondiv
+        conref="../../common/conref-attribute.dita#conref-attribute/topic-attributes"/></section>
+</refbody>
+</reference>
+

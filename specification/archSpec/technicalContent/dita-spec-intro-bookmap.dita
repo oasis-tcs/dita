@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept xml:lang="en-us" id="dita_spec_intro_bookmap">
+  <title>Bookmap</title>
+  <shortdesc>The DITA bookmap specialization represents the key markup requirements for managing
+    DITA content through book-oriented publication processes, including book metadata and book
+    structures for organizing content.</shortdesc>
+  <conbody>
+    <section id="purpose">
+      <title>The purpose of the bookmap specialization</title>
+      <p>Books and other printed media are popular ways to present DITA content. By specializing the
+        general DITA map structure into the general structure and subject areas used by most
+        book-oriented DTDs, bookmaps enable users to organize their DITA information into front
+        matter, parts, chapters, and so forth. A rich set of metadata allows for recording
+        information about the book, such as its authors and owners, versions, and production
+        history.</p>
+    </section>
+    <section id="structure">
+      <title>The structure of the bookmap specialization</title>
+      <p>The <xmlelement>bookmap</xmlelement> element is the top-level element for a DITA bookmap.
+        Most of the content for a bookmap is optional, allowing for specializations that further
+        restrict the bookmap model.</p>
+      <p>A bookmap allows the following parts:</p>
+      <ul>
+        <li>An initial title or booktitle (booktitle has more semantics)</li>
+        <li>Book metadata (publisher, author, copyright holders and dates, etc.)</li>
+        <li>Front matter (placement for Table of Contents and other preliminary information) </li>
+        <li>Any number of chapters or parts (parts can group chapters, chapters can group
+          topics)</li>
+        <li>An appendices section (similar to a part or a chapter, can group multiple
+          appendices)</li>
+        <li>Back matter (similar to front matter, notices, glossary, index, etc.)</li>
+        <li>Relationship table</li>
+      </ul>
+      <p>In book-oriented XML grammars, authors typically manage content structures as external
+        entities, separate from the body of the book and referenced as embedded elements into the
+        overall structure. Bookmap follows the same organizational approach, using the
+        topicref-based structure of DITA maps as the archetype for the major divisions of a
+        book.</p>
+    </section>
+    <example id="example" otherprops="examples">
+      <p>Here is an example of a simple bookmap. It uses several mechanisms to include chapter
+        content:</p>
+      <ul>
+        <li>Referencing a DITA map</li>
+        <li>Referencing a DITA topic</li>
+        <li>Nesting <xmlelement>topicref</xmlelement> elements</li>
+      </ul>
+      <codeblock>&lt;bookmap id="taskbook">
+  &lt;booktitle>
+    &lt;mainbooktitle>Product tasks&lt;/mainbooktitle>
+    &lt;booktitlealt>Tasks and what they do&lt;/booktitlealt>
+  &lt;/booktitle>
+  &lt;bookmeta>
+    &lt;author>John Doe&lt;/author>
+    &lt;bookrights>
+      &lt;copyrfirst>
+        &lt;year>2006&lt;/year>
+      &lt;/copyrfirst>
+      &lt;bookowner>
+        &lt;person href="task_preface.dita">Jane Doe&lt;/person>
+      &lt;/bookowner>
+    &lt;/bookrights>
+  &lt;/bookmeta>
+  &lt;frontmatter>
+    &lt;preface/>
+  &lt;/frontmatter>
+  &lt;chapter format="ditamap" href="installing.ditamap"/>
+  &lt;chapter href="configuring.dita"/>
+  &lt;chapter href="maintaining.dita">
+    &lt;topicref href="maintainstorage.dita"/>
+    &lt;topicref href="maintainserver.dita"/>
+    &lt;topicref href="maintaindatabase.dita"/>
+  &lt;/chapter>
+  &lt;appendix href="task_appendix.dita"/>
+  &lt;/bookmap></codeblock>
+    </example>
+    <!--<section><title>Modules</title><p>The following DITA modules are provided for the bookmap specialization.</p><sl><sli><filepath>bookmap.dtd</filepath>, <filepath>bookmap.ent</filepath>, <filepath>bookmap.mod</filepath> (DTD)</sli><sli><filepath>bookmap.xsd,</filepath> <filepath>bookmapGrp.xsd</filepath>, <filepath>bookmapMod.xsd</filepath> (Schema)</sli><sli rev="DITA1.3 proposal-13112"><filepath>bookmap.rng</filepath>, <filepath>bookmapMod.rng</filepath> (RELAX NG XML syntax)</sli><sli rev="DITA1.3 proposal-13112"><filepath>bookmap.rnc</filepath>, <filepath>bookmapMod.rnc</filepath> (RELAX NG compact syntax)</sli></sl></section>-->
+  </conbody>
+</concept>
+

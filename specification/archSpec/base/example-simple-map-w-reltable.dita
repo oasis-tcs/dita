@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_e5c_3t5_qp">
+ <title>Example: DITA map with a simple relationship table</title>
+ <shortdesc>This example illustrates how to interpret a basic three-column relationship table used
+    to maintain links between concept, task, and reference material.</shortdesc>
+ <conbody>
+  <p>The following example contains the markup for a simple relationship table:</p>
+  <codeblock>&lt;map>
+&lt;!-- ... -->
+&lt;reltable>
+  &lt;relheader>
+    &lt;relcolspec type="concept"/>
+    &lt;relcolspec type="task"/>
+    &lt;relcolspec type="reference"/>
+  &lt;/relheader>
+  &lt;relrow>
+    &lt;relcell>
+      &lt;topicref href="A.dita"/>
+    &lt;/relcell>
+    &lt;relcell>
+      &lt;topicref href="B.dita"/>
+    &lt;/relcell>
+    &lt;relcell>
+      &lt;topicref href="C1.dita"/>
+      &lt;topicref href="C2.dita"/>
+    &lt;/relcell>
+  &lt;/relrow>
+&lt;/reltable>
+&lt;/map></codeblock>
+  <p>A DITA-aware tool might represent the relationship table graphically:<simpletable>
+    <sthead>
+     <stentry>type="concept"</stentry>
+     <stentry>type="task"</stentry>
+     <stentry>type="reference"</stentry>
+    </sthead>
+    <strow>
+     <stentry>A</stentry>
+     <stentry>B</stentry>
+     <stentry>
+      <lines>C1
+C2</lines>
+     </stentry>
+    </strow>
+   </simpletable></p>
+  <p>When the output is generated, the topics contain the following linkage:</p>
+  <dl>
+   <dlentry>
+    <dt>A</dt>
+    <dd>Links to B, C1, and C2</dd>
+   </dlentry>
+   <dlentry>
+    <dt>B</dt>
+    <dd>Links to A, C1, and C2</dd>
+   </dlentry>
+   <dlentry>
+    <dt>C1, C2</dt>
+    <dd>Links to A and B</dd>
+   </dlentry>
+  </dl>
+ </conbody>
+</concept>

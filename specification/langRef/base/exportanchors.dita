@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="exportanchors" xml:lang="en-us">
+<title><xmlelement>exportanchors</xmlelement></title>
+<shortdesc>The <xmlelement>exportanchors</xmlelement> element is used to delay
+         <xmlatt>conref</xmlatt> resolution within DITA documents. This allows you to process or
+      display DITA content in a way that will resolve only some of the <xmlatt>conref</xmlatt>
+      values in that content, while remaining values are left for later resolution. The element
+      contains a list of IDs or keys that <ph rev="public-review-1">are not</ph> resolved during the
+      initial preparation of the content for display; those IDs and keys will be preserved after
+      that preparation, as will the conref relationship itself.</shortdesc>
+<prolog><metadata>
+<keywords><indexterm>exportanchors</indexterm>
+            <indexterm>delayed conref domain<indexterm>exportanchors</indexterm></indexterm></keywords>
+</metadata></prolog>
+<refbody>
+<section id="section-1"><p>The <xmlelement>exportanchors</xmlelement> element <ph rev="public-review-1">can</ph>be used
+            within a topic prolog, in which case the defined IDs apply to IDs within that topic
+            (excluding sub-topics). Alternatively it <ph rev="public-review-1">can</ph> be defined
+            in a <xmlelement>topicmeta</xmlelement> element in a map. In the second case the IDs
+            apply to the single topic referenced by the current <xmlelement>topicref</xmlelement>
+            element. If the <xmlelement>topicref</xmlelement> references a file without referencing
+            a specific topic, it is treated as a reference to the first or root topic. In order to
+            define anchor ids for a topic that is not the first or root topic, a
+               <xmlelement>topicref</xmlelement> must directly reference the desired sub-topic.</p><note>When an element&apos;s ID is defined for delayed resolution, it must contain only the element
+ID, not the usual "topicid/elementid" syntax that is required for most other DITA references. The
+<xref href="anchorid.dita"><xmlelement>anchorid</xmlelement></xref> topic explains the format in
+detail.</note><p>One possible way to use this is with a system that renders DITA dynamically. A user <ph
+               rev="public-review-1">can</ph> process information locally in a way that resolves
+               <xmlatt>conref</xmlatt> for all static information, while delaying resolution for
+            information that is subject to change. The <xmlelement>exportanchors</xmlelement>
+            element is used to define <xmlatt>conref</xmlatt> values that are delayed.</p><p>Another potential use is when DITA is used as the source format for a publishing system that is
+            able to render information dynamically. In this case some <xmlatt>conref</xmlatt> values
+               <ph rev="public-review-1">might</ph> be resolved, while leaving pre-selected values
+            to be resolved live in that publishing system.</p>
+   <p conref="../../common/conref-file.dita#reuse_file/export-anchors-disclaimer"/></section>
+<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-exportanchors/contains" otherprops="contains"></section>
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>+
+topic/keywords delay-d/exportanchors </p></section>
+<!--Pull in examples for both anchorid and anchorkey-->
+<example conref="anchorid.dita#anchorid/example" id="example" otherprops="examples"></example>
+<example conref="anchorkey.dita#anchorkey/example" id="example2" otherprops="examples"></example>
+<section id="attributes"><title>Attributes</title>
+         <p >The following attributes are available on this element: <xref
+               href="../attributes/universalAttributes.dita"/>.</p>
+</section>
+</refbody>
+</reference>

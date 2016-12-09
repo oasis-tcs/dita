@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference xml:lang="en-us" id="equation-number" >
+  <title><xmlelement>equation-number</xmlelement></title>
+  <shortdesc>Use the <xmlelement>equation-number</xmlelement> element to indicate that a block
+    equation is numbered and, optionally, to specify the number to use for the block equation. </shortdesc>
+  <refbody>
+    <section id="rendering">
+      <p>When the <xmlelement>equation-number</xmlelement> element has empty or whitespace-only
+        content, the equation number <term outputclass="RFC-2119">SHOULD</term> be
+        generated. When the <xmlelement>equation-number</xmlelement> element has non-whitespace-only
+        content the content <term outputclass="RFC-2119">SHOULD</term> be used as
+        the equation number. For explicit numbers the content of the element <term
+          outputclass="RFC-2119">SHOULD</term> be the number value without any
+        surrounding punctuation, for example, "3.2a" rather than "(3.2a)". Processors <term
+          outputclass="RFC-2119">SHOULD</term> add punctuation or decoration to
+        the number as appropriate. </p>
+      <p>In normal usage a block equation will have at most one number. However,
+          <xmlelement>equation-number</xmlelement>
+        <ph rev="public-review-1">can</ph> occur multiple times within
+          <xmlelement>equation-block</xmlelement>, for example, to allow numbers with different (and
+        exclusive) conditional properties. </p>
+      <p>The details of equation numbering and number presentation are processor-specific. However,
+        common practice is to present the equation number to the right of the equation, centered
+        vertically within the vertical extent of the block equation.</p>
+    </section>
+    <section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-equation-number/contains" otherprops="contains"/>
+    <section id="inheritance" otherprops="inheritance">
+      <title>Inheritance</title>
+      <p>+ topic/ph equation-d/equation-number </p>
+    </section>
+    <example id="example" otherprops="examples">
+      <title>Example</title>
+      <p>An equation with a generated
+        number:<codeblock>&lt;p>A block equation using an image:&lt;/p>
+&lt;equation-block id="eq-001">
+  &lt;equation-number/>
+  &lt;image keyref="equation-image-01">
+    &lt;alt>a squared plus b squared.&lt;/alt>
+  &lt;/image>
+&lt;/equation-block></codeblock></p>
+      <p>An equation with an explicit
+        number:<codeblock>&lt;p>A block equation using an image:&lt;/p>
+&lt;equation-block id="eq-3.2a">
+  &lt;equation-number>3.2a&lt;/equation-number>
+  &lt;image keyref="equation-image-01">
+    &lt;alt>a squared plus b squared.&lt;/alt>
+  &lt;/image>
+&lt;/equation-block></codeblock></p>
+    </example>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p conref="../../common/conref-attribute.dita#conref-attribute/universal-outputclass"/>
+    </section>
+  </refbody>
+</reference>

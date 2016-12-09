@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="purpose-of-ditamaps" xml:lang="en-us">
+ <title><ph>Purpose of DITA maps</ph></title>
+ <shortdesc>DITA maps enable the scalable reuse of content across multiple contexts. They can be
+  used by information architects, writers, and publishers to plan, develop, and deliver
+  content.</shortdesc>
+ <prolog>
+  <metadata>
+   <keywords>
+    <indexterm>maps<indexterm>purposes</indexterm></indexterm>
+   </keywords>
+  </metadata>
+ </prolog>
+ <conbody>
+  <p>DITA maps support the following uses:</p>
+  <p>
+   <dl>
+    <dlentry>
+     <dt>Defining an information architecture</dt>
+     <dd>Maps can be used to define the topics that are required for a particular audience, even
+      before the topics themselves exist. DITA maps can aggregate multiple topics for a single
+      deliverable.</dd>
+    </dlentry>
+    <dlentry>
+     <dt>Defining what topics to build for a particular output</dt>
+     <dd>Maps reference topics that are included in output processing. Information architects,
+      authors, and publishers can use maps to specify a set of topics that are processed at the same
+      time, instead of processing each topic individually. In this way, a DITA map can serve as a
+      manifest or bill of materials.</dd>
+    </dlentry>
+    <dlentry>
+     <dt>Defining navigation</dt>
+     <dd>Maps can define the online navigation or table of contents for a deliverable.</dd>
+    </dlentry>
+    <dlentry>
+     <dt>Defining related links</dt>
+     <dd>Maps define relationships among the topics they reference. These relationships are defined
+      by the nesting of elements in the DITA map, relationship tables, and the use of elements on
+      which the <xmlatt>collection-type</xmlatt> attribute is set. On output, these relationships
+      might be expressed as related links or the hierarchy of a table of contents (TOC).</dd>
+    </dlentry>
+    <dlentry>
+     <dt><ph>Defining an authoring context</ph></dt>
+     <dd>The DITA map can define the authoring framework, providing a starting point for
+      authoring new topics and integrating existing ones.</dd>
+    </dlentry>
+    <dlentry>
+     <dt >Defining keys and key scopes</dt>
+     <dd>Maps can define keys, which provide an indirect addressing mechanism that enhances
+      portability of content. The keys are defined by <xmlelement>topicref</xmlelement> elements or
+      specializations of <xmlelement>topicref</xmlelement> elements, such as
+       <xmlelement>keydef</xmlelement>. The <xmlelement>keydef</xmlelement> element is a convenience
+      element; it is a specialized type of a <xmlelement>topicref</xmlelement> element with the
+      following attributes:<ul id="ul_m24_jbq_sk">
+       <li>A required <xmlatt>keys</xmlatt> attribute</li>
+       <li>A <xmlatt>processing-role</xmlatt> attribute with a default value of
+        "resource-only".</li>
+      </ul></dd>
+     <dd>Maps also define the context <ph >or contexts</ph> for
+      resolving key-based references, such as elements that specify the <xmlatt>keyref</xmlatt> or
+       <xmlatt>conkeyref</xmlatt> attribute. <ph >Elements within a map
+       structure that specify a <xmlatt>keyscope</xmlatt> attribute create a new context for key
+       reference resolution. Key references within such elements are resolved against the set of
+       effective key definitions for that scope.</ph></dd>
+    </dlentry>
+   </dl>
+  </p>
+  <p>Specialized maps can provide additional semantics beyond those of organization,
+   linking, and indirection. For example, the subjectScheme map specialization adds the semantics of
+   taxonomy and ontology definition.</p>
+ </conbody>
+</concept>
+

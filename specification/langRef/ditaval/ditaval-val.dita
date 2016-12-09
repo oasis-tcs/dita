@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="ditaval-val" xml:lang="en-us">
+<title><xmlelement>val</xmlelement></title>
+<shortdesc>The <xmlelement>val</xmlelement> element is the root element of a DITAVAL
+      file.</shortdesc>
+<prolog><metadata>
+<keywords><indexterm>DITAVAL elements<indexterm>val</indexterm></indexterm>
+</keywords>
+</metadata></prolog>
+<refbody>
+<section id="section-1"><p>For information about processing DITAVAL files,
+including how to filter or flag elements with multiple property attributes
+or multiple properties within a single attribute, see <xref
+href="../../archSpec/base/condproc.dita"></xref>. </p></section>
+<section id="contains" otherprops="contains"><title>Contains</title><p><xref
+href="ditaval-style-conflict.dita">style-conflict</xref> (<i>optional</i>)
+then (<xref href="ditaval-prop.dita">prop</xref> <i>or</i> <xref
+href="ditaval-revprop.dita">revprop</xref>) (<i>any number</i>)</p></section>
+<example id="example" otherprops="examples"><title>Example</title><fig><title>Sample
+DITAVAL file</title>
+<codeblock>&lt;val>
+   &lt;style-conflict <ph >background-conflict-color</ph>="red"/>
+   &lt;prop action="include" att="audience" val="everybody"/>
+   &lt;prop action="flag" att="product" val="YourProd" backcolor="purple"/>
+   &lt;prop action="flag" att="product" backcolor="blue"
+         color="yellow" style="underline" val="MyProd">
+      &lt;startflag imageref="startflag.jpg">
+        &lt;alt-text>This is the start of my product info&lt;/alt-text>
+      &lt;/startflag>
+      &lt;endflag imageref="endflag.jpg">
+        &lt;alt-text>This is the end of my product info&lt;/alt-text>
+      &lt;/endflag>
+   &lt;/prop>
+   &lt;revprop action="flag" val="1.2"/>
+&lt;/val></codeblock>
+<p>This sample DITAVAL file performs the following actions:<ul>
+                  <li>Elements with <codeph>audience="everybody"</codeph> are included without
+                     change.</li>
+                  <li>Elements with <codeph>product="YourProd"</codeph> get a background color of
+                     purple.</li>
+                  <li>Elements with <codeph>product="MyProd"</codeph> get the following actions:<ul>
+                        <li>The image <filepath>startflag.jpg</filepath> is placed at the start of
+                           the element.</li>
+                        <li>The image <filepath>endflag.jpg</filepath> is placed at the end of the
+                           element.</li>
+                        <li>The element gets a background color of blue.</li>
+                        <li>The text in the element appears in yellow; the text is underlined.</li>
+                     </ul></li>
+                  <li>Elements marked with are flagged with the default revision flags,
+                     which are implementation dependent.</li>
+                  <li>When there are conflicts, for example,  if an element is marked with
+                        <codeph>product="MyProd YourProd"</codeph>, it will be flagged with a
+                     background color of red.</li>
+               </ul></p>
+</fig><fig><title>DITAVAL file that overrides the default "include"
+action</title>
+<codeblock>&lt;val>
+   &lt;prop action="exclude"/>
+   &lt;prop action="include" att="audience" val="everybody"/>
+   &lt;prop action="include" att="audience" val="novice"/>
+   &lt;prop action="include" att="product" val="productA"/>
+   &lt;prop action="include" att="product" val="productB"/>
+&lt;/val></codeblock>
+<p>This simple DITAVAL file performs the following actions:<ul>
+                  <li>The first <xmlelement>prop</xmlelement> element does not specify an attribute,
+                     which sets a default action of "exclude" for every prop value. This means that,
+                     by default, any property value not otherwise defined in this file evaluates to
+                     "exclude". Note that this same behavior can be limited to a single attribute;
+                     the following <xmlelement>prop</xmlelement> element sets a default action of
+                     "exclude" for all properties specified on the <xmlatt>platform</xmlatt> attribute:
+                        <codeph>&lt;prop action="exclude" <ph 
+                           >att="platform"</ph>/></codeph></li>
+                  <li>The second and third <xmlelement>prop</xmlelement> elements set an action of
+                     "include" for two values on the <xmlatt>audience</xmlatt> attribute. All other
+                     values on the <xmlatt>audience</xmlatt> attribute still evaluate to
+                     "exclude".</li>
+                  <li>The fourth and fifth <xmlelement>prop</xmlelement> elements set an action of
+                     "include" for two values on the <xmlatt>product</xmlatt> attribute. All other
+                     values on the <xmlatt>product</xmlatt> attribute still evaluate to
+                     "exclude".</li>
+               </ul></p>
+</fig>
+   <fig >
+            <title>DITAVAL with conditions for groups</title>
+            <codeblock>&lt;val>
+   &lt;prop action="exclude" att="product" val="appserver"/>
+   &lt;prop action="include" att="product" val="mySERVER"/>
+   &lt;prop action="include" att="database" val="dbFIRST"/>
+   &lt;prop action="include" att="database" val="dbSECOND"/>
+   &lt;prop action="exclude" att="database" val="newDB"/>
+&lt;/val></codeblock>
+            <p>Assume that "database" and "appserver" are used as group names within the
+                  <xmlatt>product</xmlatt> attribute. In that case, the sample DITAVAL above
+               performs the following actions:<ul>
+                  <li>The first <xmlelement>prop</xmlelement> element excludes the value "appserver"
+                     when used within the <xmlatt>product</xmlatt> attribute. It also sets a default
+                     of "exclude" for values within any appserver() group inside of the
+                        <xmlatt>product</xmlatt> attribute.</li>
+                  <li>The second <xmlelement>prop</xmlelement> element sets "mySERVER" to include;
+                     this applies whether "mySERVER" appears alone in the <xmlatt>product</xmlatt>
+                     attribute (<codeph>product="mySERVER"</codeph>) or inside of any group
+                        (<codeph>product="appserver(mySERVER)"</codeph> or
+                        <codeph>product="otherGroup(mySERVER)"</codeph>).</li>
+                  <li>The third and fourth <xmlelement>prop</xmlelement> elements set the database
+                     values "dbFIRST" and "dbSECOND" to include. If those values appear inside of a
+                     "database" group, they are explicitly set to "include". If they appear
+                     elsewhere in a conditional attribute (such as
+                        <codeph>product="dbFIRST"</codeph> or <codeph>platform="dbSECOND"</codeph>),
+                     this rule does not apply.</li>
+                  <li>The final <xmlelement>prop</xmlelement> element sets the database value
+                     "newDB" to exclude. If that value appears inside of a database group, it is
+                     explicitly set to "exclude". If it appears in any other group or attribute,
+                     this rule does not apply.</li>
+               </ul></p>
+            <p>Remember that with groups, if all values inside of a single group evaluate to
+               "exclude", that is equivalent to an entire attribute evaluating to "exclude", which
+               results in the removal of the content. Using the above sample DITAVAL:<ul>
+                  <li><codeph>&lt;p product="appserver"></codeph> is filtered out, because this
+                     value is excluded.</li>
+                  <li><codeph>&lt;p product="appserver(A B)"></codeph> is filtered out, because
+                     there is no explicit rule for A or B, and values in the "appserver" group
+                     inside of <xmlatt>product</xmlatt> default to exclude.</li>
+                  <li><codeph>&lt;p product="appserver(A B mySERVER)"></codeph> is included, because
+                        <codeph>product="mySERVER"</codeph> evaluates to "include", which means the
+                     entire group evaluates to "include".</li>
+                  <li><codeph>&lt;p product="newDB"></codeph> is included, because no rule in the
+                     DITAVAL applies, so the "newDB" token defaults to "include".</li>
+                  <li><codeph>&lt;p product="database(newDB)"></codeph> is filtered out, because the
+                     token "newDB" is excluded when found in the database group.</li>
+                  <li><codeph>&lt;p product="database(dbFIRST dbSECOND newDB)"></codeph> is
+                     included, because both "dbFIRST" and "dbSECOND" are included, so the group
+                     evaluates to include.</li>
+                  <li><codeph>&lt;p product="database(newDB) appserver(mySERVER)"></codeph> is
+                     filtered out, because the token "newDB" is excluded when found in the database
+                     group. The entire "database" group on this paragraph evaluates to "exclude", so
+                     the element is excluded, regardless of how the "appserver" group
+                     evaluates.</li>
+               </ul></p>
+            <note>If two groups with the same name exist on different attributes, each group will
+               evaluate the same way. For example, rules for the database group in this sample would
+               evaluate the same whether the group is used within <xmlatt>product</xmlatt> or
+                  <xmlatt>platform</xmlatt>. See <xref href="../../archSpec/base/condproc.dita"/>
+               for suggestions on how to handle similar groups on different attributes.</note>
+         </fig></example>
+      <section id="attributes">
+         <title>Attributes</title>
+         <p conref="../../common/conref-attribute.dita#conref-attribute/no-atts"/>
+      </section>
+</refbody>
+</reference>
+

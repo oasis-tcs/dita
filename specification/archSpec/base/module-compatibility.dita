@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept id="module-compatibility" xml:lang="en-US">
+ <title><ph >Processing documents with different values of the
+    <xmlatt>domains</xmlatt> attribute</ph></title>
+ <shortdesc >When DITA elements are copied from one document to another, processors
+  need to determine the validity of the copied elements. This copying might occur as the result of a
+  content reference (conref) or key reference (keyref), or it might occur in the context of an
+  author editing a DITA document.</shortdesc>
+ <prolog>
+  <metadata>
+   <keywords>
+    <indexterm>conref<indexterm>determining validity</indexterm></indexterm>
+    <indexterm>copied elements<indexterm>determining validity</indexterm></indexterm>
+    <indexterm><xmlatt>domains</xmlatt> attribute</indexterm>
+    <indexterm>processing expectations<indexterm>validity of copied elements</indexterm></indexterm>
+   </keywords>
+  </metadata>
+ </prolog>
+ <conbody>
+  <p>A processor can examine the value of the <xmlatt>domains</xmlatt> attribute and compare the set
+   of modules listed to the set of modules for which it provides direct support. It then can take
+   appropriate action if it does not provide support for a given module, for example, issuing a
+   warning before applying fallback processing.</p>
+  <p>Documents might have incompatible constraints applied; see <xref
+    href="constraints-strong-and-weak.dita"/> for more information about constraint compatibility
+   checking.</p>
+  <p>When copying content from one DITA document to another, processors <term outputclass="RFC-2119"
+    >SHOULD</term> determine if the data being copied (the copy source) requires
+   modules that are not required by the document into which the data is to be copied (the copy
+   target). Such a copy operation is always safe if the copy source requires a subset of the modules
+   that are required by the copy target. Such a copy is unsafe if the copy source requires modules
+   that are not required by the copy target. </p>
+  <p>When a copy operation is unsafe, processors <term outputclass="RFC-2119" 
+    >MAY</term> compare the copy source to the copy target to determine if the copy source satisfies
+   the constraints of the copy target. If the copy source meets the copy target constraints, the
+   copy operation can proceed. Processors <term outputclass="RFC-2119" 
+    >SHOULD</term> issue a warning that the copy was allowed but the constraints are not compatible.
+   If the copy source does not meet the constraints of the copy target, processors <term
+    outputclass="RFC-2119">MAY</term> apply generalization until the generalized
+   result either satisfies the copy target constraints or no further generalization can be
+   performed. If the copy operation can be performed following generalization, the processor <term
+    outputclass="RFC-2119">SHOULD</term> issue a warning that the constraints are
+   not compatible and generalization had to be performed in order to complete the copy
+   operation.</p>
+ </conbody>
+</concept>

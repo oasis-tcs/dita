@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="conref" xml:lang="en-us">
+ <title><ph >Conref overview</ph></title>
+ <shortdesc><ph conref="../../common/conref-file.dita#reuse_file/conref-shortdesc"/></shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>conref<indexterm>overview</indexterm><indexterm>pull</indexterm><indexterm>push</indexterm><indexterm>range</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+ <conbody>
+    <p ><ph >This topic</ph> uses the definitions of <xref
+        href="dita-terminology.dita#terminology/referenced-element"/> and <xref
+        href="dita-terminology.dita#terminology/referencing-element"/> as defined in <xref
+        href="dita-terminology.dita"/>.</p>
+    <dl>
+      <dlentry>
+        <dt>Pulling content to the referencing element</dt>
+        <dd>
+          <p>When the <xmlatt>conref</xmlatt> or <xmlatt>conkeyref</xmlatt> attribute is used alone,
+            the referencing element acts as a placeholder for the referenced element, and the
+            content of the referenced element is rendered in place of the referencing element.</p>
+          <p>The combination of the <xmlatt>conrefend</xmlatt> attribute with either
+              <xmlatt>conref</xmlatt> or <xmlatt>conkeyref</xmlatt> specifies a range of elements
+            that is rendered in place of the referencing element. <ph >Although
+              the start and end elements must be of the same type as the referencing element (or
+              specialized from that element type), the elements inside the range can be any
+              type.</ph></p>
+        </dd>
+      </dlentry>
+      <dlentry>
+        <dt>Pushing content from the referencing element</dt>
+        <dd>
+          <p>The <xmlatt>conaction</xmlatt> attribute reverses the direction of reuse from pull to
+            push. <ph >With a push, the referencing element is rendered before,
+              after, or in place of the referenced element. The location (before, after, or in place
+              of) is determined by the value of the <xmlatt>conaction</xmlatt> attribute.</ph>
+            Because the <xmlatt>conaction</xmlatt> and <xmlatt>conrefend</xmlatt> attributes cannot
+            both be used within the same referencing element, it is not possible to push a range of
+            elements.</p>
+        </dd>
+      </dlentry>
+    </dl>
+    <p>A fragment of DITA content, such as an XML document that contains only a single paragraph
+      without a topic ancestor, does not contain enough information for the conref processor to be
+      able to determine the validity of a reference to it. Consequently, the value of a conref must
+      specify one of the following items:</p>
+    <ul>
+      <li>A referenced element within a DITA map</li>
+      <li>A referenced element within a DITA topic</li>
+      <li>An entire DITA map</li>
+      <li>An entire DITA topic</li>
+    </ul>
+ </conbody>
+</concept>

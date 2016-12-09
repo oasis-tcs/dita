@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_vrp_lzb_wr">
+ <title>Rules for document-type shells</title>
+ <shortdesc>This topic collects the rules that concern DITA document-type shells.</shortdesc>
+ <conbody>
+    <ul>
+      <li>
+        <p>While the DITA specification only defines coding requirements for DTD, <ph
+            >RELAX NG,</ph> and XML Schema documents, conforming DITA
+          documents <term outputclass="RFC-2119">MAY</term> use other
+          document-type constraint languages, such as Schematron.</p>
+      </li>
+      <li>
+        <p>With two exceptions, a document-type shell <term outputclass="RFC-2119" 
+            >MUST NOT</term> directly define element or attribute types; it only includes and
+          configures vocabulary <ph >and constraint</ph> modules. The
+          exceptions to this rule are the following:</p>
+        <ul>
+          <li>The ditabase document-type shell directly defines the <xmlelement>dita</xmlelement>
+            element.</li>
+          <li>RNG- and XML Schema-based shells directly specify values for the
+              <xmlatt>domains</xmlatt> attribute; these values reflect the details of the domains
+            and structural types that are integrated by the document-type shell.</li>
+        </ul>
+      </li>
+      <li>Document type shells that are not provided by OASIS <term outputclass="RFC-2119"
+          >MUST</term> have a unique public identifier, if public identifiers are
+        used.</li>
+      <li>
+        <p>Document type shells that are not provided by OASIS <term outputclass="RFC-2119"
+            >MUST NOT</term> indicate OASIS as the owner; the public identifier or
+          URN for such document-type shells <term outputclass="RFC-2119" 
+            >SHOULD</term> reflect the owner or creator of the document-type shell. </p>
+        <p otherprops="examples">For example, if example.com creates a copy of the document type
+          shell for topic, an appropriate public identifier would be "-//example.com//DTD DITA
+          Topic//EN", where "example.com" is the owner identifier component of the public
+          identifier. An appropriate URN would be "urn:example.com:names:dita:rng:topic.rng".</p>
+      </li>
+    </ul>
+ </conbody>
+</concept>

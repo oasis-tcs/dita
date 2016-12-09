@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="mathML-and-equation-domains" >
+ <title>MathML and equation domains</title>
+ <shortdesc>The MathML and equation domains provide general containers for equations (inline, block,
+  and display) and an integration with the MathML standard. The equation containers identify
+  equations separate from the data that provides the equation content, which might take many forms,
+  including MathML markup, images, and non-XML formats like TeX and ASCII equations.</shortdesc>
+ <conbody>
+  <p>These two domains provide support for mathematics elements:</p>
+  <dl>
+   <dlentry>
+    <dt>MathML domain</dt>
+    <dd>Provides the <xmlelement>mathml</xmlelement> element, which is a specialization of
+      <xmlelement>foreign</xmlelement>. The <xmlelement>mathml</xmlelement> element can contain
+     direct MathML markup, or it can use the <xmlelement>mathmlref</xmlelement> element to include
+     MathML markup that is stored in a separate, non-DITA document. When this domain is integrated
+     without additional constraints, the <xmlelement>mathml</xmlelement> element is allowed wherever
+      <xmlelement>foreign</xmlelement> is allowed. </dd>
+    <dd>The equation domain elements can be used to distinguish equations semantically. While
+     authors can include the <xmlelement>mathml</xmlelement> element directly in content, the
+     recommended best practice is to always include <xmlelement>mathml</xmlelement> within one of
+     the equation domain elements or their semantic equivalent in a non-OASIS-defined DITA
+     vocabulary.</dd>
+   </dlentry>
+   <dlentry>
+    <dt>Equation domain</dt>
+    <dd>Provides the <xmlelement>equation-inline</xmlelement>,
+      <xmlelement>equation-block</xmlelement>, and <xmlelement>equation-figure</xmlelement>
+     elements. This domain can be used independently of the MathML domain. The elements in the
+     equation domain enable authors to clearly distinguish equations from other type of content;
+     these markup distinctions can enable formatting distinctions, numbering of equations, and more. </dd>
+   </dlentry>
+  </dl>
+ </conbody>
+</concept>

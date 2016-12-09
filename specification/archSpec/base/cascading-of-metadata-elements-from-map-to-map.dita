@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="cascading-of-metadata-elements-from-map-to-map" >
+    <title>Cascading of metadata elements from map to map</title>
+    <shortdesc>Elements that are contained within <xmlelement>topicmeta</xmlelement> or
+            <xmlelement>metadata</xmlelement> elements follow the same rules for cascading from map
+        to map as the rules that apply within a single DITA map.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>cascading<indexterm>map-to-map<indexterm>metadata
+                        elements</indexterm></indexterm></indexterm>
+                <indexterm>map-to-map cascading<indexterm>metadata elements</indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <p>For a complete list of which elements cascade within a map, see the column "<ph
+                conref="../../common/conref-file.dita#reuse_file/does-it-cascade"/>" in the topic
+                <xref href="reconciling-topic-and-map-metadata.dita"/>.</p>
+        <note>It is possible that a specialization might define metadata that should replace rather
+            than add to metadata in the referenced map, but DITA (by default) does not currently
+            support this behavior.</note>
+        <example id="example" otherprops="examples">
+            <p>For example, consider the following code examples:</p>
+            <fig id="figtest2">
+                <title><filepath>test-2.ditamap</filepath></title>
+                <codeblock>&lt;map>
+    &lt;topicref href="a.ditamap" format="ditamap">
+        &lt;topicmeta>
+            &lt;shortdesc>This map contains information about Acme defects.&lt;/shortdesc>
+        &lt;/topicmeta>
+    &lt;/topicref>
+    &lt;topicref href="b.ditamap" format="ditamap">
+        &lt;topicmeta>
+            &lt;audience type="programmer"/>
+        &lt;/topicmeta>
+    &lt;/topicref>    
+    &lt;mapref href="c.ditamap" format="ditamap"/>
+    &lt;mapref href="d.ditamap" format="ditamap"/>
+    &lt;/map></codeblock>
+            </fig>
+            <fig id="figb">
+                <title><filepath>b.ditamap</filepath></title>
+                <codeblock>&lt;map>
+    &lt;topicmeta>
+        &lt;audience type="writer"/>
+    &lt;/topicmeta>
+    &lt;topicref href="b-1.dita"/>
+    &lt;topicref href="b-2.dita"/>
+&lt;/map>
+</codeblock>
+            </fig>
+            <p>When <filepath>test-2.ditamap</filepath> is processed, the following behavior occurs:<ul>
+                    <li>Because the <xmlelement>shortdesc</xmlelement> element does not cascade, it
+                        does not apply to the DITA topics that are referenced in
+                            <filepath>a.ditamap</filepath>.</li>
+                    <li>Because the <xmlelement>audience</xmlelement> element cascades, the
+                            <xmlelement>audience</xmlelement> element in the reference to
+                            <filepath>b.ditamap</filepath> combines with the
+                            <xmlelement>audience</xmlelement> element that is specified at the top
+                        level of <filepath>b.ditamap</filepath>. The result is that the
+                            <filepath>b-1.dita</filepath> topic and <filepath>b-2.dita</filepath>
+                        topic are processed as though hey each contained the following child
+                            <xmlelement>topicmeta</xmlelement>
+                        element:<codeblock>&lt;topicmeta>
+    &lt;audience type="programmer"/>
+    &lt;audience type="writer"/>
+&lt;/topicmeta></codeblock></li>
+                </ul></p>
+        </example>
+    </conbody>
+</concept>

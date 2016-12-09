@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="dtd-requirements-overview">
+ <title>DTD: Overview of coding requirements</title>
+ <shortdesc>DITA coding practices for DTDs rely heavily on entities to implement specialization and
+  constrraints. As such, an understanding of entities is critical when working with DTD
+  document-type shells, vocabulary modules, or constraint modules.</shortdesc>
+ <conbody>
+  <p>Entities can be defined multiple times within a single document type, but only the first
+   definition is effective. How entities work shapes DTD coding practices. The following list
+   describes a few of the more important entities that are used in DITA DTDs:</p>
+  <dl>
+   <dlentry>
+    <dt>Elements defined as entities</dt>
+    <dd>In DITA DTDs, every element is defined as an entity. When elements are added to a content
+     model, they are added using the entity. This enables extension with domain specializations. For
+     example, the entity <codeph>%ph;</codeph> usually just means "the ph element", but can be
+     (pre)defined in a document-type shell to mean "ph plus several elements from the highlighting
+     domain". Because the document-type shell places that entity definition before the usual
+     definition, every element that included <codeph>%ph;</codeph> in its content model now includes
+      <xmlelement>ph</xmlelement> plus every phrase specialization in the highlighting domain.</dd>
+   </dlentry>
+   <dlentry>
+    <dt>Content models defined as entities</dt>
+    <dd>Every element in a DITA DTD defines its content model using an entity. For example, rather
+     than directly setting what is allowed in <xmlelement>ph</xmlelement>, that element sets its
+     content model to <codeph>%ph.content;</codeph>; that entity defines the actual content model.
+     This is done to enable constraints; a constraint module can (pre)define the
+      <codeph>%ph.content;</codeph> model to remove selected elements.</dd>
+   </dlentry>
+   <dlentry>
+    <dt>Attribute sets defined as entities</dt>
+    <dd>Every element in a DITA DTD defines its attribute using an entity. For example, rather than
+     directly defining attributes for <xmlelement>ph</xmlelement>, that element sets its attributes
+     using the <codeph>%ph.attributes;</codeph> entity; that entity defines the actual attributes.
+     As above, this is done to enable constraints; a constraint module can (pre)define the
+      <codeph>%ph.attributes;</codeph> model to remove selected attributes.</dd>
+   </dlentry>
+  </dl>
+  <note>When constructing a constraint module or document-type shell, new entities are usually
+   viewed as "redefinitions" because they redefine entities that already exist. However, these new
+   definitions only work because they are added to a document-type shell before the existing
+   definitions, which is why they are described here as (pre)definitions. Most topics about DITA
+   DTDs, including others in this specification, will describe these overrides as redefinitions to
+   ease understanding.</note>
+ </conbody>
+</concept>

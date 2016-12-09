@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="topiccontent" xml:lang="en-us">
+<title>Topic content</title>
+<shortdesc>The content of all topics, regardless of topic type, is
+built on the same common structures.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>topics<indexterm>content</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+<conbody>
+<dl>
+<dlentry>
+<dt>Topic body</dt>
+<dd>The topic body contains all content except for that contained in the title or the short
+          description/abstract. The topic body can be constrained to remove specific elements from
+          the content model; it also can be specialized to add additional specialized elements to
+          the content model. The topic body can be generic while the topic title and prolog are
+          specialized.</dd>
+</dlentry>
+<dlentry>
+<dt>Sections and examples</dt>
+<dd>The body of a topic might contain divisions, such as sections and examples. They might contain
+          block-level elements like titles and paragraphs and phrase-level elements like API names
+          or text. It is recommend that sections have titles, whether they are entered directly into
+          the <xmlelement>title</xmlelement> element or rendered using a fixed or default title.</dd>
+<dd>Either body divisions or untitled sections or examples <ph rev="public-review-1">can</ph> be
+          used to delimit arbitrary structures within a topic body. However, body divisions <ph
+            rev="public-review-1">can</ph> nest, but sections and examples cannot contain sections. </dd></dlentry>
+<dlentry>
+<dt><xmlelement>sectiondiv</xmlelement></dt>
+<dd>The <xmlelement>sectiondiv</xmlelement> element enables the arbitrary grouping of content within
+          a section for the purpose of content reuse. The <xmlelement>sectiondiv</xmlelement>
+          element does not include a title. Content that requires a title should use
+            <xmlelement>section</xmlelement> or <xmlelement>example</xmlelement>.</dd></dlentry>
+<dlentry>
+<dt><xmlelement>bodydiv</xmlelement></dt>
+<dd>The <xmlelement>bodydiv</xmlelement> element enables the arbitrary grouping of content within
+          the body of a topic for the purpose of content reuse. The <xmlelement>bodydiv</xmlelement> element does not include a title. Content that requires a title
+          should use <xmlelement>section</xmlelement> or <xmlelement>example</xmlelement>.</dd></dlentry>
+      <dlentry >
+        <dt><xmlelement>div</xmlelement></dt>
+        <dd>The <xmlelement>div</xmlelement> element enables the arbitrary grouping of content
+          within a topic. The <xmlelement>div</xmlelement> element does not include a title. Content
+          that requires a title should use <xmlelement>section</xmlelement> or
+            <xmlelement>example</xmlelement> or, possibly, <xmlelement>fig</xmlelement>. </dd>
+      </dlentry>
+<dlentry>
+<dt>Block-level elements</dt>
+<dd>Paragraphs, lists, figures, and tables are types of "block" elements. As a class of content,
+          they can contain other blocks, phrases, or text, though the rules vary for each
+          structure.</dd>
+</dlentry>
+<dlentry>
+<dt>Phrases and keywords</dt>
+<dd>Phrase level elements can contain markup to label parts of a paragraph or parts of a sentence as
+          having special semantic meaning or presentation characteristics, such as
+            <xmlelement>uicontrol</xmlelement> or <xmlelement>b</xmlelement>. Phrases can usually
+          contain other phrases and keywords as well as text. Keywords can only contain text.</dd></dlentry>
+<dlentry>
+<dt>Images</dt>
+<dd>Images can be inserted to display photographs, illustrations, screen captures, diagrams, and
+          more. At the phrase level, they can display trademark characters, icons, toolbar buttons,
+          and so forth.</dd></dlentry>
+<dlentry>
+<dt>Multimedia</dt>
+<dd>The <xmlelement>object</xmlelement> element enables authors to include multimedia, such as
+          diagrams that can be rotated and expanded. The <xmlelement>foreign</xmlelement> element
+          enables authors to include media within topic content, for example, SVG graphics, MathML
+          equations, and so on.</dd></dlentry>
+</dl>
+</conbody>
+</concept>

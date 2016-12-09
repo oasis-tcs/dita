@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_art_5ps_sr"> 
+  <title>Addressing keys across scopes</title> 
+  <shortdesc><ph>When referencing key definitions that are defined in a
+		different key scope</ph>, key names might need to be qualified with key scope
+	 names. 
+  </shortdesc> 
+  <conbody> 
+	 <p>A root map might contain any number of key scopes; relationships between
+		key scopes are discussed using the following terms: 
+	 </p> 
+	 <dl> 
+		<dlentry> 
+		  <dt>child scope 
+		  </dt> 
+		  <dd>A key scope that occurs directly within another key scope. For
+			 example, in the figure below, key scopes "A-1" and "A-2" are child scopes of
+			 key scope "A". 
+		  </dd> 
+		</dlentry> 
+		<dlentry> 
+		  <dt>parent scope 
+		  </dt> 
+		  <dd>A key scope that occurs one level above another key scope. For
+			 example, in the figure below, key scope "A" is a parent scope of key scopes
+			 "A-1" and "A-2". 
+		  </dd> 
+		</dlentry> 
+		<dlentry> 
+		  <dt>ancestor scope 
+		  </dt> 
+		  <dd>A key scope that occurs any level above another key scope. For
+			 example, in the figure below, key scopes "A" and "Root" are both ancestor
+			 scopes of key scopes "A-1" and "A-2" 
+		  </dd> 
+		</dlentry> 
+		<dlentry> 
+		  <dt>descendant scope 
+		  </dt> 
+		  <dd>A key scope that occurs any level below another key scope. For
+			 example, in the figure below, key scopes "A", "A-1", and "A-2" are all
+			 descendant scopes of the implicit, root key scope 
+		  </dd> 
+		</dlentry> 
+		<dlentry> 
+		  <dt>sibling scope 
+		  </dt> 
+		  <dd>A key scope that shares a common parent with another key scope. For
+			 example, in the figure below, key scopes "A" and "B" are sibling scopes; they
+			 both are children of the implicit, root key scope. 
+		  </dd> 
+		</dlentry> 
+		<dlentry> 
+		  <dt>key scope hierarchy 
+		  </dt> 
+		  <dd>A key scope and all of its descendant scopes. 
+		  </dd> 
+		</dlentry> 
+	 </dl> 
+	 <fig id="fig_DE65294F6EF64C129F38A19C66C40E3E"> 
+		<title>A key scope hierarchy</title> 
+		<image placement="break" href="../../images/key-scope-hierarchy.png"
+		 id="image_3BFFE5D941FD4EB6BD976801585C893A" rev="public-review-1"> 
+		  <alt rev="public-review-1">Tree structure diagram showing a key scope
+			 hierarchy. The leftmost node is labeled 'Root'. There are two child nodes of
+			 Root labeled 'A' and 'B'. Node A has two children labeled 'A-1' and 'A-2'. Node
+			 B has two children labeled 'B-1' and 'B-2'. 
+		  </alt> 
+		</image> 
+	 </fig> 
+	 <section id="keys-in-parent-key-scope"> 
+		<title>Keys that are defined in parent key scopes</title> 
+		<p>The key space that is associated with a key scope also includes all
+		  key definitions from its parent key scope. If a key name is defined in both a
+		  key scope and its parent scope, the key definition in the parent scope takes
+		  precedence. This means that a key definition in a parent scope overrides all
+		  definitions for the same key name in all descendant scopes. This enables map
+		  authors to override the keys that are defined in submaps, regardless of whether
+		  the submaps define key scopes. 
+		</p> 
+		<p>In certain complex cases, a scope-qualified key name (such as
+		  "scope.key") can override an unqualified key name from the parent scope. See 
+		  <xref href="example-keys-scope-defining-precedence.dita"/>. 
+		</p> 
+	 </section> 
+	 <section id="keys-in-child-key-scope"> 
+		<title>Keys that are defined in child key scopes</title> 
+		<p>The key space associated with a key scope does not include the 
+		  <i>unqualified</i> key definitions from the child scopes. However, it
+		  does include scope-qualified keys from the child scopes. This enables sibling
+		  key scopes to have different key definitions for the same key name. 
+		</p> 
+		<p>A 
+		  <term>scope-qualified key name</term> is a key name, prepended by one
+		  or more key scope names 
+		  <ph>and separated by periods</ph>. For example, to reference a key
+		  "keyName" defined in a child scope named "keyScope", specify 
+		  <codeph>keyref="keyScope.keyName"</codeph>. 
+		</p> 
+		<p>If a key scope has multiple names, its keys can be addressed from its
+		  parent scope using any of the scope names. For example, if a key scope is
+		  defined with 
+		  <codeph>keyscope="a b c"</codeph>, and it contains a key name of
+		  "product", that key can be referenced from the parent scope by 
+		  <codeph>keyref="a.product"</codeph>, 
+		  <codeph>keyref="b.product"</codeph>, or 
+		  <codeph>keyref="c.product"</codeph> 
+		</p> 
+		<p>Because a child scope contributes its scope-qualified keys to its
+		  parent scope, and that parent scope contributes 
+		  <i>its</i> scope-qualified keys to 
+		  <i>its</i> parent scope, it is possible to address the keys in any
+		  descendant scope by using the scope-qualified key name. For example, consider a
+		  key scope named "ancestorScope" that has a child scope named "parentScope"
+		  which in turn has a child scope named "childScope". The scope "childScope"
+		  defines a key named "keyName". To reference the key "keyName" from scope
+		  "ancestorScope", specify the scope-qualified key name: 
+		  <codeph>keyref="parentScope.childScope.keyName"</codeph>. 
+		</p> 
+	 </section> 
+	 <section id="keys-in-sibling-key-scope"> 
+		<title>Keys that are defined in sibling key scopes</title> 
+		<p>Because a parent key scope contains scope-qualified keys from all of
+		  its child scopes, and a child scope inherits all of the key definitions
+		  (including scope-qualified keys) from its parent scope, it is possible for a
+		  child scope to reference its own scope-qualified keys, as well as those defined
+		  by its sibling scopes. 
+		</p> 
+		<p>For example, consider two sibling scopes, "scope1" and "scope2". Each
+		  scope defines the key "productName". References to "productName" in each scope
+		  resolve to the local definition. However, since each scope inherits the
+		  scope-qualified keys that are available in their parent scope, either scope can
+		  reference "scope1.productName" and "scope2.productName" to refer to the
+		  scope-specific definitions for that key. 
+		</p> 
+	 </section> 
+  </conbody>
+</concept>

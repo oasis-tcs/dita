@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept id="topicShellPattern" xml:lang="en-us">
+  <title>XML Schema: Coding requirements for document-type shells</title>
+  <shortdesc>XSD-based document-type shells are organized into sections; each section contains a
+    specific type of declaration.</shortdesc>
+  <conbody>
+    <!--<p>XSD document-type shells <term outputclass="RFC-2119" rev="terminology">MUST NOT</term> directly declare element types or attributes (except for the <xmlatt>domains</xmlatt> attribute, which always reflects the details of the domains and structural types integrated by the shell).</p>-->
+    <!--<draft-comment author="robander" time="20 February 2014">Maybe we can get consistent here? Use conref? Or does the use of @domains for XSD cause problems?<ul><li>Text from DTD doctype:<p>Each section of the document-type shell <ph rev="review-2">must</ph> occur in the following order. The modular DTD approach to specialization and constraints relies heavily upon parameter entities. Parameter entities must be declared before they are used, so the order defined below is necessary in order to support those features while complying with more basic XML parsing rules.</p></li><li>Text from RNG:<p>RELAX NG document-type shells <term outputclass="RFC-2119" rev="terminology">MUST NOT</term> directly declare element types or attributes. A RELAX NG document-type shell <term outputclass="RFC-2119" rev="terminology">MUST</term> conform to the following coding requirements, as well as the requirements defined in <xref href="using-relax-ng.dita"/>.</p></li><li>Text from XSD:<p>XSD document-type shells <term outputclass="RFC-2119" rev="terminology">MUST NOT</term> directly declare element types or attributes (except for the <xmlatt>domains</xmlatt> attribute, which always reflects the details of the domains and structural types integrated by the shell).</p></li></ul></draft-comment>-->
+    <p>XSD-based document-type shells use the XML Schema redefine feature
+        (<xmlelement>xs:redefine</xmlelement>) to override base group definitions for content models
+      and attribute lists. This facility is analogous to the parameter entities that are used for
+      DTD-based document-type shells. Unlike DTD parameter entities, an
+        <xmlelement>xs:redefine</xmlelement> both includes the XSD file that it redefines and holds
+      the redefinition that is applied to the groups in the included XSD file. Thus, for XSD files
+      that define groups, the file can be included using <xmlelement>xs:include</xmlelement> if it
+      is used without modification or using <xmlelement>xs:redefine</xmlelement> if any of its
+      groups are redefined.</p>
+    <!--<p>Shell XSDs are organized into sections. Each section <term outputclass="RFC-2119" rev="terminology">SHOULD</term> occur in the order they are presented here. <draft-comment author="robander" time="10 February 2015">Checked with Erik: the order really is not important. I think we can get rid of the "SHOULD occur in this order" and just define them. Maybe add a statement that they are not required (probably an addition to the previous paragraph).</draft-comment>Shell XSDs <term outputclass="RFC-2119" rev="terminology">SHOULD</term> have an initial set of comments that describe the shell and indicate the URNs or absolute URLs by which the shell should be referenced from document instances or otherwise associated with documents. Shell XSDs <term outputclass="RFC-2119" rev="terminology">SHOULD</term> use the XSD appinfo and documentation elements to contain additional documentation about the shell.</p>-->
+    <p>XSD-based document-type shells contain the following sections.</p>
+    <dl>
+      <dlentry>
+        <dt>Topic or map domains</dt>
+        <dd>
+          <p>For each element or attribute domain that is integrated into the document-type shell,
+            this section uses an <xmlelement>xs:include</xmlelement> element to include the XSD
+            module for that domain. </p>
+          <p otherprops="examples">For
+            example:<codeblock>&lt;xs:include schemaLocation="urn:oasis:names:tc:dita:xsd:deliveryTargetAttDomain.xsd:1.3"/&gt;
+&lt;xs:include schemaLocation="urn:oasis:names:tc:dita:xsd:highlightDomain.xsd:1.3"/&gt;
+&lt;xs:include schemaLocation="urn:oasis:names:tc:dita:xsd:indexingDomain.xsd:1.3"/&gt;</codeblock></p>
+        </dd>
+      </dlentry>
+      <dlentry>
+        <dt>Group definitions</dt>
+        <dd>
+          <p>The group inclusion section contains <xmlelement>xs:include</xmlelement> or
+              <xmlelement>xs:redefine</xmlelement> references for element groups. The group files
+            define named groups that are used to integrate domain-provided element and attribute
+            types into base content models. There is one group file for each structural type; domain
+            files can also have group files.</p>
+          <p>For both map and topic shells, this section also must include or redefine the following
+            groups; it must also include the module file for each group:</p>
+          <ul>
+            <li>Common element group (<filepath>commonElementGrp.xsd</filepath> and
+                <filepath>commonElementMod.xsd</filepath>)</li>
+            <li>Metadata declaration group (<filepath>metaDeclGrp.xsd</filepath> and
+                <filepath>metaDeclMod.xsd</filepath>)</li>
+            <li>Table model group (<filepath>tblDeclGrp.xsd</filepath> and
+                <filepath>tblDeclMod.xsd</filepath>)</li>
+          </ul>
+          <p>The group files and the module files for base groups can be specified in any order.</p>
+          <p>For each element extended by one or more domains, the document-type shell must redefine
+            the model group for the element to a list of alternatives including the literal name of
+            the element and the element extension model group from each domain that is providing
+            specializations. To integrate a new domain in the document-type shell, use the schema
+              <xmlelement>xs:redefine</xmlelement> mechanism to import a group definition file while
+            redefining and extending an element from that group. The model group requires a
+            reference to itself to extend the base model group.</p>
+          <p>For each attribute extended by one or more domains, the document-type shell must
+            redefine the attribute extension model group for the attribute to a list of alternatives
+            including the literal name of the attribute and the attribute extension model group from
+            each domain that is providing specializations. To integrate a new attribute domain in
+            the document-type shell, use the schema <xmlelement>xs:redefine</xmlelement> mechanism
+            to import the <filepath>commonElementGrp.xsd</filepath> group file while redefining and
+            extending the base attribute.</p>
+          <p otherprops="examples">For example, the following portion of a document-type shell
+            includes the common metadata module and then adds a domain extension of the
+              <xmlelement>metadata</xmlelement> element from the metadata group. It also extends the
+              <xmlatt>props</xmlatt> attribute from the common element module to add the specialized
+            attribute
+            <xmlatt>deliveryTarget</xmlatt>.<codeblock>&lt;xs:include schemaLocation="urn:oasis:names:tc:dita:xsd:metaDeclMod.xsd:1.3"/&gt;
+&lt;!-- ... -->
+&lt;xs:redefine schemaLocation="urn:oasis:names:tc:dita:xsd:commonElementGrp.xsd:1.3"&gt;
+  &lt;!-- ...Redefinition of any elements in common module -->
+  &lt;xs:attributeGroup name=&quot;props-attribute-extensions&quot;&gt;
+    &lt;xs:attributeGroup ref=&quot;props-attribute-extensions&quot;/&gt;
+    &lt;xs:attributeGroup ref=&quot;deliveryTargetAtt-d-attribute&quot;/&gt;
+  &lt;/xs:attributeGroup&gt;
+&lt;/xs:redefine>
+&lt;xs:redefine schemaLocation="urn:oasis:names:tc:dita:xsd:metaDeclGrp.xsd:1.3"&gt;
+  &lt;xs:group name="metadata"&gt;
+    &lt;xs:choice&gt;
+      &lt;xs:group ref="metadata"/&gt;
+      &lt;xs:group ref="relmgmt-d-metadata"/&gt;
+    &lt;/xs:choice&gt;
+  &lt;/xs:group&gt;
+&lt;/xs:redefine&gt;&gt;</codeblock></p>
+        </dd>
+      </dlentry>
+      <dlentry>
+        <dt>Module inclusions</dt>
+        <dd>
+          <p>The module inclusion section includes the module XSD files for structural types used in
+            the shell. These must be placed after the group and files and redefinitions. </p>
+          <p >This section must also include any other module XSD
+            files required by the topic or map types. <ph otherprops="examples">For example, if a
+              troubleshooting specialization is specialized from topic but includes elements from
+              task, then the task structural module must be included in the document shell.</ph></p>
+          <p>If a structural type is constrained, that constraint will be included rather than the
+            module itself; for example, in a document-type shell that constrains the task
+            specialization, the task constraint module will be included rather than the task
+            module.</p>
+          <p otherprops="examples">For example, the following portion of a document-type shell
+            includes the structural modules for topic and
+            concept:.<codeblock>&lt;xs:include schemaLocation="urn:oasis:names:tc:dita:xsd:topicMod.xsd:1.3"/&gt;
+&lt;xs:include schemaLocation="urn:oasis:names:tc:dita:xsd:conceptMod.xsd:1.3"/&gt;</codeblock></p>
+        </dd>
+      </dlentry>
+      <!--<dlentry rev="DITA1.3   proposal-13121"><dt>Structural definition inclusions</dt><dd><p>The structural definition inclusion section includes the element type declaration (<filepath>*Mod.xsd</filepath>) files for each topic or map type integrated into the shell. </p><p>For example, if a troubleshooting specialization is specialized from topic but includes elements from task, then the task structural model <term outputclass="RFC-2119" rev="terminology">MUST</term> be included in the document shell as well as its structural dependency on the <xmlatt>domains</xmlatt> attribute. See <xref format="dita" href="specialization-domains-attribute.dita#domainsatt"/> for details.</p><codeblock>&lt;xs:include schemaLocation="urn:oasis:names:tc:dita:xsd:taskMod.xsd:1.2" /></codeblock><draft-comment author="robander" time="October 6 2014" disposition="open">Following sentence needs to be fixed, not sure of intent - 'When getting the domains attribute value from the [element] from the [file] files ..."</draft-comment><note>When getting the <xmlatt>domains</xmlatt> attribute value from the <xmlelement>dita:domainsModule</xmlelement> from the <filepath>*Mod.xsd</filepath> files you will need to add the element type hierarchy information for the structural definition to the base value. For instance in the troubleshooting specialization case you would need to add the following to the <xmlatt>domains</xmlatt> attribute:<codeblock>&lt;xs:attributeGroup name="domains-att">
+  &lt;xs:attribute name="domains" type="xs:string"
+     default="<b>(topic troubleshooting+task) (topic task) </b>
+              etc... 
+             "
+  />
+&lt;/xs:attributeGroup></codeblock></note></dd></dlentry>-->
+      <dlentry>
+        <dt>Domains attribute declaration</dt>
+        <dd>
+          <p>The <xmlatt>domains</xmlatt> attribute declaration section declares the
+              <xmlatt>domains</xmlatt> attribute for the shell. It does this by redefining the
+              <codeph>domains-att</codeph> group, adding one token for each vocabulary and
+            constraint module integrated by the shell. See <xref format="dita"
+              href="specialization-domains-attribute.dita#domainsatt"/> for details on the syntax
+            for domains tokens.</p>
+          <p otherprops="examples">For example, the following sample defines the
+              <codeph>domains-att</codeph> to include the OASIS domains for map group, indexing, and
+              <xmlatt>deliveryTarget</xmlatt>:<codeblock>&lt;xs:attributeGroup name="domains-att">
+  &lt;xs:attribute name="domains" type="xs:string"
+     default="(map mapgroup-d) (topic indexing-d) a(props deliveryTarget)"/>
+&lt;/xs:attributeGroup></codeblock></p>
+        </dd>
+      </dlentry>
+      <dlentry>
+        <dt>Info-types definition</dt>
+        <dd>
+          <p>This section defines whether and how topics can nest by redefining the
+              <codeph>info-types</codeph> group. That group is referenced but undefined in the
+            module files, so it must be defined in the shell. Topic testing can be disallowed by
+            setting the <codeph>info-types</codeph> group to reference the
+              <xmlelement>no-topic-nesting</xmlelement> element, with the <xmlatt>maxOccurs</xmlatt>
+            and <xmlatt>minOccurs</xmlatt> attributes each set to "0".</p>
+          <p>Optionally, <codeph><varname>topictype</varname>-info-types</codeph> groups can be
+            redefined to provide more fine grained control of nesting with specialized topic types.
+            As with domain extensions, this is done by redefining the group while importing the
+            module that defines the group.</p>
+          <p otherprops="examples">For example, in the concept vocabulary module delivered by OASIS,
+            the <codeph>concept-info-types</codeph> group controls which topics can nest inside the
+              <xmlelement>concept</xmlelement> element. That group is defined as including
+              <xmlelement>concept</xmlelement> plus the <codeph>info-types</codeph> group. The
+            following examples demonstrate how to control topic nesting within
+              <xmlelement>concept</xmlelement> using a document-type shell.</p>
+          <ul otherprops="examples">
+            <li>To have <xmlelement>concept</xmlelement> only nest itself, the
+                <codeph>info-types</codeph> group must be defined so that it does not add any
+              additional
+              topics:<codeblock>&lt;xs:group name="info-types">
+  &lt;xs:choice>
+    &lt;xs:element ref="no-topic-nesting" maxOccurs="0" minOccurs="0"/>
+  &lt;/xs:choice>
+&lt;/xs:group></codeblock></li>
+            <li>In order to turn off topic nesting entirely within <xmlelement>concept</xmlelement>,
+              the <codeph>concept-info-types</codeph> group must be redefined to remove
+                <xmlelement>concept</xmlelement>, and the <codeph>info-types</codeph> group must be
+              defined as
+              above:<codeblock>&lt;xs:group name="info-types">
+  &lt;xs:choice>
+    &lt;xs:element ref="no-topic-nesting" maxOccurs="0" minOccurs="0"/>
+  &lt;/xs:choice>
+&lt;/xs:group>
+
+&lt;xs:redefine schemaLocation="urn:oasis:names:tc:dita:xsd:conceptMod.xsd:1.3" >
+  &lt;xs:group name="concept-info-types">
+    &lt;xs:choice>
+      &lt;xs:group ref="info-types"/>
+    &lt;/xs:choice>
+  &lt;/xs:group>
+&lt;/xs:redefine></codeblock></li>
+            <li>In order to add <xmlelement>topic</xmlelement> as a nesting topic within
+                <xmlelement>concept</xmlelement>, define <codeph>info-types</codeph> to allow any
+              number of <xmlelement>topic</xmlelement>
+              elements:<codeblock>&lt;xs:group name="info-types">
+  &lt;xs:choice>
+    &lt;xs:element ref="topic" maxOccurs="unbounded" minOccurs="0"/>
+  &lt;/xs:choice>
+&lt;/xs:group></codeblock></li>
+            <li>With the preceding example, <xmlelement>concept</xmlelement> is allowed to nest
+              either <xmlelement>concept</xmlelement> or <xmlelement>topic</xmlelement>. In order to
+              make <xmlelement>topic</xmlelement> the <i>only</i> valid child topic, the
+                <codeph>concept-info-types</codeph> must be redefined as
+              follows:<codeblock>&lt;xs:redefine schemaLocation="urn:oasis:names:tc:dita:xsd:conceptMod.xsd:1.3" >
+  &lt;xs:group name="concept-info-types">
+    &lt;xs:choice>
+      &lt;xs:group ref="info-types"/>
+    &lt;/xs:choice>
+  &lt;/xs:group>
+&lt;/xs:redefine></codeblock></li>
+          </ul>
+        </dd>
+      </dlentry>
+    </dl>
+  </conbody>
+</concept>

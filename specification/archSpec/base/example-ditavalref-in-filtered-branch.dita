@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="example-ditavalref-in-filtered-branch">
+  <title>Example: <xmlelement>ditavalref</xmlelement> within a branch that already uses
+      <xmlelement>ditavalref</xmlelement></title>
+  <shortdesc>When a branch is filtered because a <xmlelement>ditavalref</xmlelement> element is
+    present, another <xmlelement>ditavalref</xmlelement> deeper within that branch can supply
+    additional conditions for a subset of the branch.</shortdesc>
+  <conbody>
+    <example id="ditavalref-in-branch-with-ditavalref" otherprops="examples">
+      <p>In the following map fragment, a set of operating system conditions applies to installation
+        instructions. Within that common branch, a subset of content applies to different
+        audiences.<codeblock>&lt;topicref href="install.dita">
+  &lt;ditavalref href="linux.ditaval"/>
+  &lt;ditavalref href="mac.ditaval">
+    &lt;ditavalmeta>
+      &lt;dvrResourceSuffix>-mac&lt;/dvrResourceSuffix>
+    &lt;/ditavalmeta>
+  &lt;/ditavalref>
+  &lt;ditavalref href="win.ditaval">
+    &lt;ditavalmeta>
+      &lt;dvrResourceSuffix>-win&lt;/dvrResourceSuffix>
+    &lt;/ditavalmeta>
+  &lt;/ditavalref>
+  &lt;topicref href="perform-install.dita">
+    &lt;!-- other topics-->
+  &lt;/topicref>
+  <b>&lt;!-- Begin configuration sub-branch --></b>
+  &lt;topicref href="configure.dita">
+    &lt;ditavalref href="novice.ditaval">
+      &lt;ditavalmeta>
+        &lt;dvrResourceSuffix>-novice&lt;/dvrResourceSuffix>
+      &lt;/ditavalmeta>
+    &lt;/ditavalref>
+    &lt;ditavalref href="advanced.ditaval">
+      &lt;ditavalmeta>
+        &lt;dvrResourceSuffix>-admin&lt;/dvrResourceSuffix>
+      &lt;/ditavalmeta>
+    &lt;/ditavalref>
+    &lt;!-- Other config topics -->
+  &lt;/topicref>
+  <b>&lt;!-- End configuration sub-branch --></b>
+&lt;/topicref></codeblock></p>
+      <p >In this case, the effective map contains three copies of the complete
+        branch. The branches are filtered by operating system. Because topics in the branch are
+        filtered in different ways, processors are effectively required to handle three copies of
+        the entire branch. The map author uses the <xmlelement>dvrResourceSuffix</xmlelement>
+        elements to control naming for each copy. The Linux branch does not specify a
+          <xmlelement>dvrResourceSuffix</xmlelement> element, because it is the default copy of the
+        branch; this allows documents such as <filepath>install.dita</filepath> to retain their
+        original names. </p>
+      <p >Within each operating system instance, the configuration sub-branch
+        is repeated; it is filtered once for novice users and then again for advanced users. As a
+        result, there are actually six instances of the configuration sub-branch. Additional
+          <xmlelement>dvrResourceSuffix</xmlelement> elements are used to control naming for each
+        instance.</p>
+      <ol>
+        <li>The first instance is filtered using the conditions in
+            <filepath>linux.ditaval</filepath> and <filepath>novice.ditaval</filepath>. For this
+          instance, the resource <filepath>configure.dita</filepath> is treated as the resource
+            <filepath>configure-novice.dita</filepath>. There is no renaming based on
+            <filepath>linux.ditaval</filepath>, and the <xmlelement>ditavalref</xmlelement> the
+          references <filepath>novice.ditaval</filepath> adds the <codeph>suffix -novice</codeph>. </li>
+        <li>The second instance is filtered using the conditions in
+            <filepath>linux.ditaval</filepath> and <filepath>advanced.ditaval</filepath>. For this
+          instance, the resource <filepath>configure.dita</filepath> is treated as the resource
+            <filepath>configure-admin.dita</filepath>. There is no renaming based on
+            <filepath>linux.ditaval</filepath>, and the <xmlelement>ditavalref</xmlelement> that
+          references <filepath>advanced.ditaval</filepath> adds the suffix <codeph>-admin</codeph>. </li>
+        <li>The third instance is filtered using the conditions in <filepath>mac.ditaval</filepath>
+          and <filepath>novice.ditaval</filepath>. For this instance, the resource
+            <filepath>configure.dita</filepath> is treated as the resource
+            <filepath>configure-novice-mac.dita</filepath>. The <xmlelement>ditavalref</xmlelement>
+          that references <filepath>novice.ditaval</filepath> adds the suffix
+            <codeph>-novice</codeph>, resulting in <filepath>configure-novice.dita</filepath>, and
+          then the <xmlelement>ditavalref</xmlelement> that references
+            <filepath>mac.ditaval</filepath> adds the additional suffix <codeph>-mac</codeph>. </li>
+        <li>The fourth instance is filtered using the conditions in <filepath>mac.ditaval</filepath>
+          and <filepath>advanced.ditaval</filepath>. For this instance, the resource
+            <filepath>configure.dita</filepath> is treated as the resource
+            <filepath>configure-admin-mac.dita</filepath>. The <xmlelement>ditavalref</xmlelement>
+          that references <filepath>admin.ditaval</filepath> adds the suffix
+          <codeph>-admin</codeph>, resulting in <filepath>configure-admin.dita</filepath>, and then
+          the <xmlelement>ditavalref</xmlelement> that references <filepath>mac.ditaval</filepath>
+          adds the additional suffix <codeph>-mac</codeph>. </li>
+        <li>The fifth instance is filtered using the conditions in <filepath>win.ditaval</filepath>
+          and <filepath>novice.ditaval</filepath>. For this instance, the resource
+            <filepath>configure.dita</filepath> is treated as the resource
+            <filepath>configure-novice-win.dita</filepath>. The <xmlelement>ditavalref</xmlelement>
+          that references <filepath>novice.ditaval</filepath> adds the suffix
+            <codeph>-novice</codeph>, resulting in <filepath>configure-novice.dita</filepath>, and
+          then the <xmlelement>ditavalref</xmlelement> that references
+            <filepath>win.ditaval</filepath> adds the additional suffix <codeph>-win</codeph>. </li>
+        <li>The sixth instance is filtered using the conditions in <filepath>win.ditaval</filepath>
+          and <filepath>advanced.ditaval</filepath>. For this instance, the resource
+            <filepath>configure.dita</filepath> is treated as the resource
+            <filepath>configure-admin-win.dita</filepath>. The <xmlelement>ditavalref</xmlelement>
+          that references <filepath>admin.ditaval</filepath> adds the suffix
+          <codeph>-admin</codeph>, resulting in <filepath>configure-admin.dita</filepath>, and then
+          the <xmlelement>ditavalref</xmlelement> that references <filepath>win.ditaval</filepath>
+          adds the additional suffix <codeph>-win</codeph>. </li>
+      </ol>
+    </example>
+  </conbody>
+</concept>

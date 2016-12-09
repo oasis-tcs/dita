@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_fpj_jlx_54">
+ <title>Binding controlled values to an attribute</title>
+ <shortdesc> The controlled values defined in a subject scheme map can be bound to an attribute or
+        an element and attribute pair. This <ph >affects</ph> the expected
+        behavior for processors and authoring tools.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>binding controlled values</indexterm>
+                <indexterm>controlled values<indexterm>binding to
+                        attributes</indexterm><indexterm>precedence
+                        rules</indexterm><indexterm>validation of</indexterm></indexterm>
+                <indexterm><xmlatt>deliveryTarget</xmlatt><indexterm>defining values
+                    for</indexterm></indexterm>
+                <indexterm>examples<indexterm>subjectScheme<indexterm>binding controlled
+                            values</indexterm></indexterm></indexterm>
+                <indexterm>precedence rules<indexterm>controlled values</indexterm></indexterm>
+                <indexterm>processing expectations<indexterm>validating controlled
+                        values</indexterm></indexterm>
+                <indexterm>subjectScheme<indexterm>binding controlled
+                            values</indexterm><indexterm>examples<indexterm>binding controlled
+                            values</indexterm></indexterm></indexterm>
+                <indexterm>validating controlled values</indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+ <conbody>
+        <p>The <xmlelement>enumerationdef</xmlelement> element binds the set of controlled values to
+            an attribute. <ph >Valid attribute values are those that are
+                defined in the set of controlled values; invalid attribute values are those that are
+                not defined in the set of controlled values.</ph> An enumeration can specify an
+            empty <xmlelement>subjectdef</xmlelement> element. In that case, no value is valid for
+            the attribute. An enumeration also can specify an optional default value by using the
+                <xmlelement>defaultSubject</xmlelement> element.</p>
+        <!--<draft-comment author="Kristen Eberlein" time="5 February 2015"><p>Comment by Dick Harrison in the targeted review:</p><p>Between this paragraph and the next one, I can't tell whether an attribute that has been bound to an enumeration is considered invalid if it has a value that is not in the enumeration. In this paragraph, you clearly state that in the case of an empty enumeration, no value is valid, but in the next paragraph you say tools SHOULD validate, not MUST. </p><p>Is the intent that an attribute that has a value outside a bound enumeration is invalid, but it's ok for tools to ignore that? Or does it mean that the enumeration is advisory, and that the attribute is valid even if it has a value outside the enumeration? </p><p>Whichever it is, I think the situation should be stated clearly.</p></draft-comment>-->
+        <p>If an enumeration is bound, processors <term outputclass="RFC-2119" 
+                >SHOULD</term> validate attribute values against the controlled values that are
+            defined in the subject scheme map. For authoring tools, this validation prevents users
+            from entering misspelled or undefined values. <ph >Recovery from
+                validation errors is implementation specific.</ph></p>
+        <p>The default attribute values that are specified in a <ph >subject
+                scheme map</ph> apply only if a value is not otherwise specified in the DITA source
+            or as a default value by the XML grammar. </p>
+        <p >To determine the effective value for a DITA attribute, processors
+            check for the following in the order outlined:</p>
+        <ol>
+            <li>An explicit value in the element instance</li>
+            <li>A default value in the XML grammar</li>
+            <li>Cascaded value within the document</li>
+            <li>Cascaded value from a higher level document to the document</li>
+            <li>A default controlled value, as specified in the
+                    <xmlelement>defaultSubject</xmlelement> element </li>
+            <li>A value set by processing rules</li>
+        </ol>
+        <!--<section><title>Binding multiple categories to a single attribute</title><p>Multiple categories can be bound to single attribute, such as @otherprops to allow for additional sets of controlled values beyond those allowed by the standard conditional processing attributes.<codeblock>&lt;subjectScheme>
+    &lt;subjectdef keys="users">
+        &lt;subjectdef keys="therapist">
+        &lt;subjectdef keys="oncologist">
+        &lt;subjectdef keys="physicist">
+        &lt;subjectdef keys="radiologist">
+    &lt;/subjectdef>
+    &lt;subjectdef keys="machinetypes" navtitle="Types of machinery">
+         &lt;subjectdef keys="large">
+         &lt;subjectdef keys="small">
+    &lt;/subjectdef>
+    &lt;enumerationdef>
+        &lt;attributedef name="audience"/>
+        &lt;subjectdef keyref="users"/>
+    &lt;/enumerationdef>
+    &lt;enumerationdef>
+        &lt;attributedef name="otherprops">
+        &lt;subjectdef keyref="machinetypes">
+    &lt;/enumerationdef>
+    &lt;/subjectScheme></codeblock></p><p>When an attribute is bound to multiple enumerations, DITA processing determines exclusion for filtering based on the enumeration category rather than on the attribute. <draft-comment>Su-Laine: Is concerned about the use of a single conditional attribute for multiple meanings because both the map and a processor must be aware of this feature. Could also result in incorrect filtering in cases where two &lt;subjectdef> elements in an &lt;enumerationdef> are two lists of the "same" thing. You might have an organization with many applications developed by different teams. So you might have severallists of applications defined as &lt;subjectdef keys="apps1" navtitle="Team 1 apps"/> and &lt;subjectdef keys="apps2" navtitle="Team 2 apps"/> and &lt;subjectdef keys="apps3" navtitle="Team 3 apps"/> . Propose leaving this out. If not, propose changing the sentence above to ... DITA processors should determine ...." JTH: Su-Laine believes this issue has not been addressed and is missing from DITA 1.3. See Eric's original proposal 12031. "The writer can then supply the mysql and troubleshooting keys in the otherprops attribute to indicate that the content pertains to both the MySQL database and the troubleshooting task: </draft-comment><draft-comment>&lt;task ...> ... &lt;note otherprops="mysql troubleshoot">Please check... is running.&lt;/note> ... &lt;/task></draft-comment></p></section>-->
+        <example id="example-binding-values" otherprops="examples">
+            <title>Example: Binding a list of controlled values to the <xmlatt>audience</xmlatt>
+                attribute</title>
+            <p>The following example illustrates the use of the <xmlelement>subjectdef</xmlelement>
+                element to define controlled values for types of users. It also binds the controlled
+                values to the <xmlatt>audience</xmlatt> attribute:</p>
+            <codeblock>&lt;subjectScheme>
+  &lt;!-- Define types of users -->
+  &lt;subjectdef keys="users">
+    &lt;subjectdef keys="therapist"/>
+    &lt;subjectdef keys="oncologist"/>
+    &lt;subjectdef keys="physicist"/>
+    &lt;subjectdef keys="radiologist"/>
+  &lt;/subjectdef>
+
+  &lt;!-- Bind the "users" subject to the @audience attribute.
+       This restricts the @audience attribute to the following
+       values: therapist, oncologist, physicist, radiologist -->
+  &lt;enumerationdef>
+    &lt;attributedef name="audience"/>
+    &lt;subjectdef keyref="users"/>
+  &lt;/enumerationdef>
+&lt;/subjectScheme></codeblock>
+            <p >When the above subject scheme map is used, the only valid
+                values for the <xmlatt>audience</xmlatt> attribute are "therapist", "oncologist",
+                "physicist", and "radiologist". Note that "users" is not a valid value for the
+                    <xmlatt>audience</xmlatt> attribute; it merely identifies the parent or
+                container subject.</p>
+        </example>
+        <example  id="example-binding-empty-set" otherprops="examples">
+            <title>Example: Binding an attribute to an empty set</title>
+            <p>The following code fragment declares that there are no valid values for the
+                    <xmlatt>outputclass</xmlatt> attribute.</p>
+            <codeblock>&lt;subjectScheme>
+  &lt;enumerationdef>
+    &lt;attributedef name="outputclass"/>
+    &lt;subjectdef/>
+  &lt;/enumerationdef>
+&lt;/subjectScheme></codeblock>
+        </example>
+    </conbody>
+</concept>

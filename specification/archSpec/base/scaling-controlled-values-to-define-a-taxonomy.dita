@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_m1h_t3x_54">
+    <title>Scaling a list of controlled values to define a taxonomy</title>
+    <shortdesc>Optional classification elements make it possible to create a taxonomy from a list of
+        controlled values.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>controlled values<indexterm>defining a taxonomy</indexterm></indexterm>
+                <indexterm>examples<indexterm>subjectScheme<indexterm>defining a
+                            taxonomy</indexterm></indexterm></indexterm>
+                <indexterm>subjectScheme<indexterm>defining a
+                            taxonomy</indexterm><indexterm>examples<indexterm>defining a
+                            taxonomy</indexterm></indexterm></indexterm>
+                <indexterm>taxonomy<indexterm>defining</indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <p>A taxonomy differs from a controlled values list primarily in the degree of precision
+            with which the metadata values are defined. A controlled values list sometimes is
+            regarded as the simplest form of taxonomy. Regardless of whether the goal is a simple
+            list of controlled values or a taxonomy:</p>
+        <ul>
+            <li>The same core elements are used: <xmlelement>subjectScheme</xmlelement> and
+                    <xmlelement>subjectdef</xmlelement>.</li>
+            <li>A category and its subjects can have a binding that enumerates the values of an
+                attribute.</li>
+        </ul>
+        <p>Beyond the core elements and the attribute binding elements, sophisticated taxonomies can
+            take advantage of some optional elements. These optional elements make it possible to
+            specify more precise relationships among subjects. The
+                <xmlelement>hasNarrower</xmlelement>, <xmlelement>hasPart</xmlelement>,
+                <xmlelement>hasKind</xmlelement>, <xmlelement>hasInstance</xmlelement>, and
+                <xmlelement>hasRelated</xmlelement> elements specify the kind of relationship in a
+            hierarchy between a container subject and its contained subjects. </p>
+        <p>While users who have access to sophisticated processing tools benefit from defining
+            taxonomies with this level of precision, other users can safely ignore this advanced
+            markup and define taxonomies with hierarchies of <xmlelement>subjectdef</xmlelement>
+            elements that are not precise about the kind of relationship between the subjects.</p>
+        <example id="example-taxonomy" otherprops="examples">
+            <title>Example: A taxonomy defined using subject scheme elements</title>
+            <p>The following example defines San Francisco as both an instance of a city and a
+                geographic part of California.</p>
+            <codeblock>&lt;subjectScheme>
+  &lt;hasInstance>
+    &lt;subjectdef keys="city" navtitle="City">
+      &lt;subjectdef keys="la" navtitle="Los Angeles"/>
+      &lt;subjectdef keys="nyc" navtitle="New York City"/>
+      &lt;subjectdef keys="sf" navtitle="San Francisco"/>
+    &lt;/subjectdef>
+    &lt;subjectdef keys="state" navtitle="State">
+      &lt;subjectdef keys="ca" navtitle="California"/>
+      &lt;subjectdef keys="ny" navtitle="New York"/>
+    &lt;/subjectdef>
+  &lt;/hasInstance>
+  &lt;hasPart>
+    &lt;subjectdef keys="place" navtitle="Place">
+      &lt;subjectdef keyref="ca">
+        &lt;subjectdef keyref="la"/>
+        &lt;subjectdef keyref="sf"/>
+      &lt;/subjectdef>
+      &lt;subjectdef keyref="ny">
+        &lt;subjectdef keyref="nyc"/>
+      &lt;/subjectdef>
+    &lt;/subjectdef>
+  &lt;/hasPart>
+&lt;/subjectScheme></codeblock>
+            <p>Sophisticated tools can use this subject scheme map to associate content about San
+                Francisco with related content about other California places or with related content
+                about other cities (depending on the interests of the current user).</p>
+            <p>The subject scheme map also can define relationships between subjects that are not
+                hierarchical. For instance, cities sometimes have "sister city" relationships. An
+                information architect could add a <xmlelement>subjectRelTable</xmlelement> element
+                to define these associative relationships, with a row for each sister-city pair and
+                the two cities in different columns in the row.</p>
+        </example>
+    </conbody>
+</concept>

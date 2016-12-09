@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept id="reuse_file" xml:lang="en-us">
+        <title>Reuse file</title>
+        <shortdesc>This file contains elements used by multiple files in the DITA
+                specification.</shortdesc>
+        <conbody>
+                <section id="section-1">
+                        <title>Short descriptions for archSpec topics</title>
+                        <!--Also used in "Basic concepts" topic-->
+                        <p><ph id="topics-shortdesc">In DITA, a topic is the basic unit of authoring
+          and reuse. All DITA topics have the same basic structure: a title and, optionally, a body
+          of content. <ph product="part-2">Topics can be generic or more specialized; specialized
+            topics represent more specific information types or semantic roles, for example,
+              <xmlelement>concept</xmlelement>, <xmlelement>task</xmlelement>, or
+              <xmlelement>reference</xmlelement></ph>
+          <ph product="part-3">Topics can be generic or more specialized; specialized topics
+            represent more specific information types or semantic roles, for example,
+              <xmlelement>concept</xmlelement>, <xmlelement>task</xmlelement>,
+              <xmlelement>reference</xmlelement>, or
+          <xmlelement>learningContent</xmlelement>.</ph></ph></p>
+                        <p><ph id="maps-shortdesc">DITA maps are documents that organize topics and
+                                        other resources into structured collections of information.
+                                        DITA maps specify hierarchy and the relationships among the
+                                        topics; they also provide the <ph
+                                                >contexts</ph> in which
+                                        keys are defined and resolved. DITA maps <term
+                                                outputclass="RFC-2119" 
+                                                >SHOULD</term> have <filepath>.ditamap</filepath> as
+                                        the file extension.</ph></p>
+                        <p><ph id="information-typing-shortdesc">Information typing is the practice
+                                        of identifying types of topics, such as concept, reference,
+                                        and task, to clearly distinguish between different types of
+                                        information. Topics that answer different reader questions
+                                        (How ...? What is ...?) can be categorized with different
+                                        information types. The base information types provided by
+                                        DITA specializations (for example, technical content,
+                                        machine industry, and learning and training) provide starter
+                                        sets of information types that can be adopted immediately by
+                                        many technical and business-related organizations.</ph></p>
+                        <p><ph id="linking-shortdesc">DITA depends heavily on links. The purposes
+                                        for which it provides links include defining the content and
+                                        organization of publication structures (DITA maps),
+                                        topic-to-topic navigation links and cross references, and
+                                        reuse of content by reference. All DITA links use the same
+                                        addressing mechanisms, either URI-based addresses or
+                                        indirect addresses using keys and key references.</ph></p>
+                        <p><ph id="addressing-shortdesc" >DITA provides two
+          addressing mechanisms. DITA addresses either are direct URI-based addresses, or they are
+          indirect key-based addresses. Within DITA documents, individual elements are addressed by
+          unique identifiers specified on the <xmlatt>id</xmlatt> attribute. DITA defines two
+          fragment-identifier syntaxes; one is the full fragment-identifier syntax, and the other is
+          an abbreviated fragment-identifier syntax that can be used when addressing non-topic
+          elements from within the same topic.</ph></p>
+                        <p><ph id="conref-shortdesc">The DITA <xmlatt>conref</xmlatt>,
+            <xmlatt>conkeyref</xmlatt>, <xmlatt>conrefend</xmlatt>, and <xmlatt 
+            >conaction</xmlatt> attributes provide mechanisms for reusing content within DITA topics
+          or maps. <ph >These mechanisms can be used both to <ph 
+              >pull and push</ph> content.</ph></ph></p>
+                        <p><ph id="conditional-processing-shortdesc">Conditional processing, also
+                                        known as profiling, is the filtering or flagging of
+                                        information based on processing-time
+                                        criteria.<!--Attribute-based profiling, also known as conditional processing or applicability, is the use of classifying metadata that enables the filtering, flagging, searching, indexing, and other processing based on the association of an element with one or more values in a specific classification domain.--></ph></p>
+                        <p><ph id="configuration-shortdesc">A document type shell is an XML grammar
+          file that specifies the elements and attributes that are allowed in a DITA document. The
+          document type shell integrates structural modules, domain modules, and constraint modules.
+          In addition, a document type shell specifies whether and how topics can nest.</ph></p>
+                        <p><ph id="specialization-shortdesc">The specialization feature of DITA
+          allows for the creation of new element types and attributes that are explicitly and
+          formally derived from existing types. This facilitates interchange of conforming DITA
+          content and ensures a minimum level of common processing for all DITA content. It also
+          allows specialization-aware processors to add specialization-specific processing to
+          existing base processing. </ph></p>
+                        <p><ph id="contraints-shortdesc">Constraint modules define additional
+                                        constraints for vocabulary modules in order to restrict
+                                        content models or attribute lists for specific element
+                                        types, remove certain extension elements from an integrated
+                                        domain module, or replace base element types with
+                                        domain-provided, extension element types.</ph></p>
+      <p><ph id="coding-req-topic-type-modules-shortdesc">Topic-type vocabulary modules <term
+            outputclass="RFC-2119">MUST</term> conform to additional coding
+          requirements for defining <term>default topic nesting</term>. Default topic nesting
+          defines whether topics are permitted to nest and what topic types are permitted to
+          nest.</ph></p>
+      <p><ph id="keys-scopes-and-key-precedence-shortdesc">For purposes of key definition
+          precedence, the scope-qualified key definitions from a child scope are considered to occur
+          at the location of the scope-defining element within the parent scope.</ph></p>
+                </section>
+
+                <section id="section-2">
+                        <title>Short descriptions for langRef topics</title>
+                        <lines>
+                          <!-- Short description for language reference edition topic -->
+<ph id="langRef-shortdesc">The language reference portion of the DITA specification contains a topic for each DITA element. The topic defines the element, its inheritance hierarchy, and provides examples of usage. This portion of the DITA specification also includes information about DITA attributes.</ph>
+                          <!--Short description for <anchor>: Used in anchor.dita and dita_spec_23_mapstruct.dita-->
+<ph id="anchor_shortdesc">The <xmlelement>anchor</xmlelement> element provides an integration point that another map can reference in order to insert its navigation into the referenced map's navigation tree. For those familiar with Eclipse help systems, this serves the same purpose as the <xmlelement>anchor</xmlelement> element in that system. It might not be supported for all output formats.</ph>
+<!--Short description for <navref>: Used in navref.dita and dita_spec_23_mapstruct.dita-->
+<ph id="navtitle_shortdesc">The <xmlelement>navref</xmlelement>  element represents a pointer to another map which <ph rev="public-review-1">is</ph> preserved
+    as a transcluding link in the result deliverable rather than resolved when the deliverable is produced. Output formats that support such linking can integrate the referenced resource when displaying the referencing map to an end user. </ph></lines>
+                </section>
+                <section id="section-3">
+                        <title>Code blocks</title>
+                        <codeblock id="concept-codeblock">&lt;concept id="concept"&gt;
+ &lt;title&gt;Introduction to Bird Calling&lt;/title&gt;
+ &lt;shortdesc&gt;If you wish to attract more birds to your Acme Bird Feeder,
+learn the art of bird calling. Bird calling is an efficient way
+to alert more birds to the presence of your bird feeder.&lt;/shortdesc&gt;
+ &lt;conbody&gt;
+   &lt;p&gt;Bird calling requires learning:&lt;/p&gt;
+   &lt;ul&gt;
+    &lt;li&gt;Popular and classical bird songs&lt;/li&gt;
+    &lt;li&gt;How to whistle like a bird&lt;/li&gt;
+   &lt;/ul&gt;
+ &lt;/conbody&gt;
+&lt;/concept&gt;</codeblock>
+                </section>
+                <section id="section-4">
+                        <title>Lists</title>
+                        <ul id="cascading-attributes">
+                                <li><xmlatt>audience</xmlatt>, <xmlatt>platform</xmlatt>,
+                                                <xmlatt>product</xmlatt>,
+                                                <xmlatt>otherprops</xmlatt>,
+                                        <xmlatt>rev</xmlatt></li>
+                                <li><xmlatt>props</xmlatt> and any attribute specialized from
+                                                <xmlatt>props</xmlatt></li>
+                                <li><xmlatt>linking</xmlatt>, <xmlatt>toc</xmlatt>,
+                                                <xmlatt>print</xmlatt>, <xmlatt>search</xmlatt></li>
+                                <li><xmlatt>format</xmlatt>, <xmlatt>scope</xmlatt>,
+                                                <xmlatt>type</xmlatt></li>
+                                <li><xmlatt>xml:lang</xmlatt>, <xmlatt>dir</xmlatt>,
+                                                <xmlatt>translate</xmlatt></li>
+                                <li><xmlatt>processing-role</xmlatt></li>
+                                <li ><xmlatt>cascade</xmlatt></li>
+                        </ul>
+                        <dl>
+                                <dlentry  id="deliveryTarget">
+                                        <dt><xmlatt>deliveryTarget</xmlatt></dt>
+                                        <dd>The intended delivery target of the content, for example
+            "html", "pdf", or "epub". This attribute is a replacement for the now deprecated
+              <xmlatt>print</xmlatt> attribute.<p>The <xmlatt>deliveryTarget</xmlatt> attribute is
+              specialized from the <xmlatt>props</xmlatt> attribute. It is defined in the
+              deliveryTargetAttDomain, which is integrated into all OASIS-provided document-type
+              shells. If this domain is not integrated into a given document-type shell, the
+                <xmlatt>deliveryTarget</xmlatt> attribute will not be available.</p></dd>
+                                </dlentry>
+                        </dl>
+                        <dl id="cascade-values">
+                                <dlentry>
+                                        <dt>cascade="merge"</dt>
+                                        <dd>The metadata attributes cascade; the values of the
+                                                metadata attributes are additive. This is the
+                                                processing default for the <xmlatt>cascade</xmlatt>
+                                                attribute and was the only defined behavior for DITA
+                                                1.2 and earlier.</dd>
+                                </dlentry>
+                                <dlentry>
+                                        <dt>cascade="nomerge"</dt>
+                                        <dd>The metadata attributes cascade; however, they are not
+            additive for <xmlelement>topicref</xmlelement> elements that specify a different value
+            for a specific metadata attribute. If the cascading value for an attribute is already
+            merged based on multiple ancestor elements, that merged value continues to cascade until
+            a new value is encountered (that is, setting <codeph>cascade="nomerge"</codeph> does not
+            undo merging that took place on ancestors).</dd>
+                                </dlentry>
+                        </dl>
+                </section>
+
+                <section id="section-5">
+                        <title>Notes</title>
+                        <note id="deprecated_navtitle_attribute">The <xmlatt>navtitle</xmlatt>
+                                attribute is deprecated in favor of the
+                                        <xmlelement>navtitle</xmlelement> element. When both a
+                                        <xmlelement>navtitle</xmlelement> element and a
+                                        <xmlatt>navtitle</xmlatt> attribute are specified, the
+                                        <xmlelement>navtitle</xmlelement> element should be used. </note>
+                        <note  id="deprecated-print-attribute"
+                                >Beginning with DITA 1.3, the <xmlatt>print</xmlatt> attribute is
+                                deprecated. It is replaced with a conditional processing attribute:
+                                        <xmlatt>deliveryTarget</xmlatt>. See <xref
+                                        href="../langRef/attributes/metadataAttributes.dita#select-atts/deliveryTarget"
+                                                ><xmlatt>deliveryTarget</xmlatt></xref> for more
+                                details.</note>
+                        <note id="mapref-with-child-elements">If a <xmlelement>topicref</xmlelement>
+                                element that references a map contains child
+                                        <xmlelement>topicref</xmlelement> elements, the processing
+                                behavior regarding the child <xmlelement>topicref</xmlelement>
+                                elements is undefined.</note>
+      <note id="learning1learning2" >DITA 1.3 defines two new domains for describing
+        learning and training interactions: learningInteractionBase2Domain and learning2Domain.
+        These two new domains mirror the DITA 1.2 learningInteractionBase and general learning
+        domains, but the new versions provide support for multi-paragraph questions, answers, and
+        feedback. The new domains are otherwise semantically identical to the original domains. For
+        backwards compatibility, both interactions domains are supported in DITA 1.3. For new
+        content, use the DITA 1.3 learning2Domain elements.</note>
+                </section>
+
+                <section id="section-6">
+                        <title>Paragraphs</title>
+                        <p id="attribute-implementation-tokens">Implementers <term
+                                        outputclass="RFC-2119">MAY</term> define
+                                their own custom, implementation-specific tokens. To avoid name
+                                conflicts between implementations or with future additions to the
+                                standard, implementation-specific tokens <term
+                                        outputclass="RFC-2119">SHOULD</term>
+                                consist of a prefix that gives the name or an abbreviation for the
+                                implementation followed by a colon followed by the token or method
+                                name.</p>
+                        <p id="export-anchors-disclaimer">Many publishing systems for which DITA is
+        used as a source format do not have a way to dynamically resolve content references; those
+        systems will not see any benefit from this element. When DITA is used for those systems,
+        behaviors related to this element <ph rev="public-review-1">are</ph> ignored.</p>
+                        <p id="module-version-xpl">The identifiers listed below are declared by the
+                                OASIS DITA Technical Committee for the modules that are shipped with
+                                DITA 1.3. Values that use a version number of 1.3 refer specifically
+                                to the modules that are delivered with the DITA 1.3 specification.
+                                Values that use a version number of 1.x refer to the modules in the
+                                latest approved DITA 1.x specification. Values without a version
+                                number refer to the modules in the latest approved DITA
+                                specification, regardless of version.</p>
+                        <p id="keys-attribute-syntax">The <xmlatt>keys</xmlatt> attribute uses the
+                                following syntax:<ul id="ul_yxs_dr5_yl">
+                                        <li>The value of the <xmlatt>keys</xmlatt> attribute is one
+                                                or more space-separated key names.</li>
+                                        <li> Key names consist of characters that are legal in a
+                                                URI. The case of key names is significant.</li>
+                                        <li>The following characters are prohibited in key names:
+                                                "{", "}", "[", "]", "/", "#", "?", and whitespace
+                                                characters.</li>
+                                </ul></p>
+                        <p id="release-domain-best-practices">The recommended best practice is to
+        use date strings that conform to the ISO 8601 standard, unless a <ph 
+          >unix-style</ph> machine timestamp is used. The string might contain a date and time (for
+        example, <codeph>2007-04-05T12:30-02:00</codeph>) or just a date (for example,
+          <codeph>2014-03-04</codeph>).</p>
+                        <p id="pgwide-explain">In DITA tables, in place of the
+                                        <xmlatt>expanse</xmlatt> attribute used by other DITA
+                                elements, the <xmlatt>pgwide</xmlatt> attribute is used in order to
+                                conform to the OASIS Exchange Table Model. The
+                                        <xmlatt>pgwide</xmlatt> attribute has a similar semantic
+                                (1=page width; 0=resize to galley or column). </p>
+      <p id="sort-as-1">When a <xmlelement>sort-as</xmlelement> element is specified, processors
+        that sort the containing element <term outputclass="RFC-2119">MUST</term>
+        construct the effective sort phrase by prepending the content of the
+          <xmlelement>sort-as</xmlelement> element to the base sort phrase. This ensures that two
+        items with the same <xmlelement>sort-as</xmlelement> element but different base sort phrases
+        will sort in the appropriate order.</p>
+      <p otherprops="examples" id="sort-as-2">For example, if a processor uses the content of the
+          <xmlelement>title</xmlelement> element as the base sort phrase, and the title of a topic
+        is "24 Hour Support Hotline" and the value of the <xmlelement>sort-as</xmlelement> element
+        is "twenty-four hour", then the effective sort phrase would be "twenty-four hour24 Hour
+        Support Hotline".</p>
+      <p id="rng-domains-documentation">All vocabulary and constraint modules must document their
+          <xmlatt>domains</xmlatt> attribute contribution. The value of the contribution is
+        constructed according to the rules found in <xref
+          href="../archSpec/base/specialization-domains-attribute.dita"/>. The OASIS grammar files
+        use a <xmlelement>domainsContribution</xmlelement> element to document the contribution;
+        this element is used to help enable generation of DTD and XSD grammar files. An XML comment
+        or <xmlelement>a:documentation</xmlelement> element can also be used.</p>
+      <p id="xsd-domains-documentation">All vocabulary and constraint modules must document their
+          <xmlatt>domains</xmlatt> attribute contribution. The OASIS grammar files use a
+          <xmlelement>dita:domainsModule</xmlelement> element to document the contribution; this
+        element is used consistently to make it easy to find values when creating a document type
+        shell. An XML comment or <xmlelement>xs:appinfo</xmlelement> element can also be used.</p>
+      <p id="rng-attribute-domain-name">An attribute domain's name is the name of the attribute plus
+        "Att". For example, for the attribute named "deliveryTarget" the attribute domain name is
+        "deliveryTargetAtt". The attribute domain name is used to construct pattern names for the
+        domain. </p>
+      <p id="dtd-attribute-domain-name">An attribute domain's name is the name of the attribute plus
+        "Att". For example, for the attribute named "deliveryTarget" the attribute domain name is
+        "deliveryTargetAtt". The attribute domain name is used to construct entity names for the
+        domain. </p>
+                </section>
+
+                <section id="section-7">
+                        <title>Phrases</title>
+                        <lines>
+ <ph id="does-it-cascade">Does it cascade to child <xmlelement>topicref</xmlelement> elements?</ph>
+<ph id="highlight-caution">This element is part of the highlighting domain. Use this element only when a more semantically appropriate element is not available.</ph>
+<ph id="xml-mention-domain">This element is part of the XML mention domain.</ph>
+<ph id="groupdefn">The attribute also can include groups of values specified using the same syntax as generalized attributes within <xmlatt>props</xmlatt>; see <xref href="../archSpec/base/generalization-attributes.dita"/> for details on grouping syntax.</ph>
+<ph id="ditavalref-copyto">If <xmlatt>copy-to</xmlatt> is specified on a topic reference where <xmlelement>dvrResourcePrefix</xmlelement> or <xmlelement>dvrResourceSuffix</xmlelement> based renaming is in effect, the prefixes or suffixes are applied to the resource name inside the <xmlatt>copy-to</xmlatt> attribute.</ph>
+</lines>
+                </section>
+
+                <section id="section-8">
+                        <title>Examples</title>
+                        <!--Content used in <example> element in anchor.dita and dita_23_mapstruct.dita-->
+                        <p id="anchor" >In this example, the
+                                        <filepath>map1.ditamap</filepath> contains an
+                                        <xmlelement>anchor</xmlelement> element with an
+                                        <xmlatt>id</xmlatt> attribute set to "a1". <fig>
+                                        <title>DITA map that contains an anchor</title>
+                                        <codeblock>&lt;map>
+  &lt;title&gt;MyComponent tasks&lt;/title&gt;
+  &lt;topicref navtitle="Start here" href="start.dita" toc="yes">
+    &lt;navref mapref="othermap2.ditamap"/>
+    &lt;navref mapref="othermap3.ditamap"/>
+    &lt;anchor id="a1"/>
+  &lt;/topicref>
+&lt;/map></codeblock>
+                                </fig></p>
+                        <p id="anchoref" >The <xmlatt>id</xmlatt> on an
+                                        <xmlelement>anchor</xmlelement> element can be referenced by
+                                the <xmlatt>anchorref</xmlatt> attribute on another map's
+                                        <xmlelement>map</xmlelement> element. For example, the map
+                                to be integrated at that spot could be defined as follows.<fig>
+                                        <title>DITA map that references an anchor</title>
+                                        <codeblock>&lt;map anchorref="map1.ditamap#a1"&gt;
+  &lt;title&gt;This map is pulled into the MyComponent task map&lt;/title&gt;
+  &lt;!-- ... -->
+&lt;/map&gt;</codeblock>
+                                </fig></p>
+                </section>
+                <section id="section-9"><title>Reused error conditions</title><ph id="index-sort-as">When located
+                                within the <xmlelement>indexterm</xmlelement> element, the
+                                        <xmlelement>sort-as</xmlelement> element is equivalent to
+                                        <xmlelement>index-sort-as</xmlelement>. It is an error for
+                                an <xmlelement>indexterm</xmlelement> element to directly contain
+                                both <xmlelement>sort-as</xmlelement> and
+                                        <xmlelement>index-sort-as</xmlelement>
+                        elements.</ph></section>
+    <section id="section-10">
+      <title>Constraints material</title>
+      <ul id="dtd-domains-contribution">
+        <li id="inheritance-hierarchy-li"><varname>inheritance-hierarchy</varname> is the
+          specialization hierarchy, for example, <codeph>topic task</codeph>.</li>
+        <li id="qualifier-li"><varname>qualifier</varname> is a string that is specific to the
+          constraints module and characterizes it, for example, "strict" or "requiredTitle" or
+          "myCompany-".</li>
+        <li id="Tagname-li"><varname>Tagname</varname> is the element type name with an initial
+          capital, for example, "Taskbody"<ph > or "Topic"</ph>.</li>
+        <li id="literal-c-li">The literal "-c" indicates that the name is the name of a
+          constraint.</li>
+      </ul>
+      <ul id="dtd-domains-contribution-domain-constraint">
+        <li><varname>inheritance-hierarchy</varname> is the specialization hierarchy, for example,
+            <codeph>topic hi-d</codeph>.</li>
+        <li><varname>qualifier</varname> is a string that is specific to the constraints module and
+          characterizes it, for example, "noSyntaxDiagram" or "myCompany-".</li>
+        <li><varname>domain</varname> is the name of the domain to which the constraints apply, for
+          example, "Highlighting" or "Programming".</li>
+        <li conref="#reuse_file/literal-c-li"/>
+      </ul>
+      <ul id="dtd-domains-constraint">
+        <li><varname>qualifier</varname> is a string that is specific to the constraints module and
+          characterizes it, for example, "noSyntaxDiagram" or "myCompany-".</li>
+        <li><ph id="domain-variable-ph"><varname>domain</varname> is the name of the domain to which
+            the constraints apply, for example, "Highlighting" or "Programming".</ph></li>
+      </ul>
+    </section>
+    <section id="section-11">
+      <title>File naming conventions</title>
+      <p  id="see-file-naming-conventions">See <xref
+          href="../non-normative/file-naming-conventions.dita"/> for information about best
+        practices for file naming.</p>
+      <p  id="indicating-strong-constraint">Optionally, a domains contribution
+        can indicate a strong constraint by preceding the domains contribution with the letter "s".
+        For example, <codeph>"s(topic task strictTaskbody-c)"</codeph> indicates a strong
+        constraint.</p>
+    </section>
+        </conbody>
+</concept>

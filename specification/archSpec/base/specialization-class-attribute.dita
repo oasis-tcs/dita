@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept
+  id="classatt"
+  xml:lang="en-us">
+  <title><xmlatt>class</xmlatt> attribute rules and syntax</title>
+  <shortdesc>The specialization hierarchy of each DITA element is declared as the value of the
+      <xmlatt>class</xmlatt> attribute. The <xmlatt>class</xmlatt> attribute provides a mapping from
+    the current name of the element to its more general equivalents, but it also can provide a
+    mapping from the current name to more specialized equivalents. All specialization-aware
+    processing can be defined in terms of <xmlatt>class</xmlatt> attribute values.</shortdesc>
+  <conbody>
+    <p>The <xmlatt>class</xmlatt> attribute tells a processor what general classes of elements the
+      current element belongs to. DITA scopes elements by module type (for example topic type,
+      domain type, or map type) instead of document type, which lets document type developers
+      combine multiple <ph >module</ph> types in a single document without
+      complicating transformation logic.</p>
+    <p>The sequence of values in the <xmlatt>class</xmlatt> attribute is important because it tells
+      processors which value is the most general and which is most specific.
+        <!--This is especially important for "specializing" transformations, where you can apply a general rule that says: if the element doesn't have a mapping to the target topic type, simply use the last value of the <xmlatt>class</xmlatt> attribute (and assume that the specialized topic type is reusing some general element declarations, which only have mappings for the level at which they were declared).--><ph
+        >This sequence is what enables both specialization aware processing and
+        generalization.</ph></p>
+    <section id="syntax">
+      <title>Syntax</title>
+      <p>Values for the <xmlatt>class</xmlatt> attribute have the following syntax requirements:<ul>
+          <li>An initial "-" or "+" character followed by one or more spaces. Use "-" for element
+            types that are defined in structural vocabulary modules, and use "+" for element types
+            that are defined in domain modules.</li>
+          <li>A sequence of one or more tokens of the form
+                <codeph>"<varname>modulename</varname>/<varname>typename</varname>",</codeph> with
+            each taoken separated by one or more spaces, where <varname>modulename</varname> is the
+            short name of the vocabulary module and <varname>typename</varname> is the element type
+            name. Tokens are ordered left to right from most general to most specialized.<p>These
+              tokens provide a mapping for every structural type or domain in the ancestry of the
+              specialized element. The specialization hierarchy for a given element type must
+              reflect any intermediate modules between the base type and the specialization type,
+              even those in which no element renaming occurs.</p></li>
+          <li>At least one trailing space character (" "). The trailing space ensures that string
+            matches on the tokens can always include a leading and trailing space in order to
+            reliably match full tokens. </li>
+        </ul></p>
+    </section>
+    <section id="rules">
+      <title>Rules</title>
+      <p>When the <xmlatt>class</xmlatt> attribute is declared in an <ph >XML
+          grammar</ph>, it <term outputclass="RFC-2119">MUST</term> be declared
+        with a default value. In order to support generalization round-tripping (generalizing
+        specialized content into a generic form and then returning it to the specialized form) the
+        default value <term outputclass="RFC-2119">MUST NOT</term> be fixed. This
+        allows a generalization process to overwrite the default values that are defined by a
+        general document type with specialized values taken from the document being generalized.</p>
+      <p>A vocabulary module <term outputclass="RFC-2119">MUST NOT</term> change
+        the <xmlatt>class</xmlatt> attribute for elements that it does not specialize, but simply
+        reuses by reference from more generic levels. For example, if <xmlelement>task</xmlelement>,
+          <xmlelement>bctask</xmlelement>, and <xmlelement>guitask</xmlelement> use the
+          <xmlelement>p</xmlelement> element without specializing it, they <term
+          outputclass="RFC-2119">MUST NOT</term> declare mappings for it. </p>
+      <p>Authors <term outputclass="RFC-2119">SHOULD NOT</term> modify the
+          <xmlatt>class</xmlatt> attribute.</p>
+    </section>
+    <example id="example" otherprops="examples">
+      <title>Example: DTD declaration for <xmlatt>class</xmlatt> attribute for the
+          <xmlelement>step</xmlelement> element</title>
+      <p>The following code sample lists the DTD declaration for the <xmlatt>class</xmlatt>
+        attribute for the <xmlelement>step</xmlelement> element:</p>
+      <codeblock>&lt;!ATTLIST step         class  CDATA "- topic/li task/step "></codeblock>
+      <p>This indicates that the <xmlelement>step</xmlelement> element is specialized from the
+          <xmlelement>li</xmlelement> element in a generic topic. It also indicates explicitly that
+        the <xmlelement>step</xmlelement> element is available in a task topic; this enables
+        round-trip migration between upper level and lower level types without the loss of
+        information.</p>
+    </example>
+    <example id="example2" otherprops="examples">
+      <title>Example: Element with <xmlatt>class</xmlatt> attribute made explicit</title>
+      <p>The following code sample shows the value of the <xmlatt>class</xmlatt> attribute for the
+          <xmlelement>wintitle</xmlelement> element:</p>
+      <codeblock>&lt;wintitle class="+ topic/keyword ui-d/wintitle ">A specialized keyword&lt;/wintitle></codeblock>
+      <p>The <xmlatt>class</xmlatt> attribute and its value is generally not surfaced in authored
+        DITA topics, although it might be made explicit as part of a processing operation.</p>
+    </example>
+    <example id="example3" otherprops="examples">
+      <title>Example: <xmlatt>class</xmlatt> attribute with intermediate value</title>
+      <p>The following code sample shows the value of a <xmlatt>class</xmlatt> attribute for an
+        element in the guitask module, which is specialized from <xmlelement>task</xmlelement>. The
+        element is specialized from <xmlelement>keyword</xmlelement> in the base topic vocabulary,
+        rather than from an element in the task module:</p>
+      <codeblock>&lt;windowname class="- topic/keyword task/keyword guitask/windowname ">...&lt;/windowname></codeblock>
+      <p>The intermediate values are necessary so that generalizing and specializing transformations
+        can map the values simply and accurately. For example, if <codeph>task/keyword</codeph> was
+        missing as a value, and a user decided to generalize this guitask up to a task topic, then
+        the transformation would have to guess whether to map to keyword (appropriate if task is
+        more general than guitask, which it is) or leave it as windowname (appropriate if task were
+        more specialized, which it isn't). By always providing mappings for more general values,
+        processors can then apply the simple rule that missing mappings must by default be to more
+        specialized values than the one we are generalizing to, which means the last value in the
+        list is appropriate. For example, when generalizing <xmlelement>guitask</xmlelement> to
+          <xmlelement>task</xmlelement>, if a <xmlelement>p</xmlelement> element has no target value
+        for <xmlelement>task</xmlelement>, we can safely assume that <xmlelement>p</xmlelement> does
+        not specialize from <xmlelement>task</xmlelement> and should not be generalized.</p>
+    </example>
+  </conbody>
+</concept>

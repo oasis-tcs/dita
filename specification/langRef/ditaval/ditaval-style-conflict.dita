@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="ditaval-style-conflict" xml:lang="en-us">
+<title><xmlelement>style-conflict</xmlelement></title>
+<shortdesc>The <xmlelement>style-conflict</xmlelement> element declares behavior to be used when one
+  or more flagging methods collide on a single content element. </shortdesc>
+<prolog><metadata>
+<keywords><indexterm>DITAVAL elements<indexterm>style-conflict</indexterm></indexterm>
+</keywords>
+</metadata></prolog>
+<refbody>
+<section id="section-1"><p>In case of conflicts between flagging methods at different
+levels (for example, a section is flagged green and a paragraph within
+the section is flagged red), the most deeply nested flagging method
+applies. </p><p>In case of conflicts between flagging methods on the
+same element (for example, a single element is being flagged with
+both green and red color), it is recommended that the conflicts be
+resolved as follows:<dl>
+<dlhead>
+<dthd>Flagging method</dthd><ddhd>Conflict behavior</ddhd>
+</dlhead>
+<dlentry>
+<dt><xmlelement>startflag</xmlelement> / <xmlelement>endflag</xmlelement></dt>
+<dd>Add all flags that apply.</dd>
+</dlentry><dlentry>
+<dt>color</dt>
+<dd>Follow the <xmlelement>style-conflict</xmlelement>
+       <xmlatt>foreground-conflict-color</xmlatt> setting, or use an output-appropriate default
+       color if no conflict color is set.</dd>
+</dlentry><dlentry>
+<dt>backcolor</dt>
+<dd>Follow the <xmlelement>style-conflict</xmlelement>
+       <xmlatt>background-conflict-color</xmlatt> setting, or use an output-appropriate default
+       color if no conflict color is set.</dd>
+</dlentry><dlentry>
+<dt>style</dt>
+<dd>Add all font styles that apply. If two different kinds of underline are used, default to the
+       heaviest (double underline) and use the <xmlatt>foreground-conflict-color</xmlatt>.</dd>
+</dlentry><dlentry>
+<dt>changebar</dt>
+<dd>Add all change bars that apply.</dd>
+</dlentry></dl></p></section>
+<section id="contains" otherprops="contains"><title>Contains</title><p><i>(empty)</i></p></section>
+<section id="containedby" otherprops="containedby"><title>Contained by</title><p><xref
+href="ditaval-val.dita">val</xref></p></section>
+<example id="example" otherprops="examples"><title>Example</title><p>See the example
+in the <xref href="ditaval-val.dita">&lt;val></xref> description.</p></example>
+<section id="attributes"><title>Attributes</title>
+   <p>The following attributes are available on this element: <dl>
+     <dlentry>
+      <dt><xmlatt>foreground-conflict-color</xmlatt></dt>
+      <dd>The color to be used when more than one flagging color applies to a single content
+              element.</dd>
+     </dlentry>
+     <dlentry>
+      <dt><xmlatt>background-conflict-color</xmlatt></dt>
+      <dd>The color to be used when more than one flagging background color applies to a single
+              content element.</dd>
+     </dlentry>
+    </dl></p></section>
+</refbody>
+</reference>
+

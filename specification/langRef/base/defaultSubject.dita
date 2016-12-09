@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="defaultSubject" xml:lang="en-us">
+<title><xmlelement>defaultSubject</xmlelement></title>
+<shortdesc>The <xmlelement>defaultSubject</xmlelement> element is used within an attribute
+    enumeration to set the default value for the attribute in cases where no value is specified for
+    the attribute. The default subject must be one of the controlled values that are bound to the
+    attribute.</shortdesc>
+<prolog><metadata>
+<keywords>
+        <indexterm><xmlelement>defaultSubject</xmlelement></indexterm>
+        <indexterm>subjectScheme<indexterm>elements<indexterm><xmlelement>defaultSubject</xmlelement></indexterm></indexterm></indexterm></keywords>
+</metadata></prolog>
+<refbody>
+<section conref="../../common/commonNavLibraryTable.dita#contentmodel-defaultSubject/contains" id="contains" otherprops="contains"></section>
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
+map/topicref subjectScheme/defaultSubject </p></section>
+<example id="example" otherprops="examples"><title>Example</title><p>The following example declares that each of the four defined "os" values is valid within the
+          <xmlatt>platform</xmlatt> attribute; if no value is specified, the default is "linux".</p><codeblock>&lt;subjectScheme>
+  &lt;subjectdef keys="os">
+    &lt;subjectdef keys="linux"/>
+    &lt;subjectdef keys="mswin"/>
+    &lt;subjectdef keys="zos"/>
+    &lt;subjectdef keys="macos"/>
+  &lt;/subjectdef>
+  &lt;enumerationdef>
+    &lt;attributedef name="platform"/>
+    <b>&lt;defaultSubject keyref="linux"/></b>
+    &lt;subjectdef keyref="os"/>
+  &lt;/enumerationdef>
+&lt;/subjectScheme></codeblock></example>
+<section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref
+          href="../attributes/universalAttributes.dita"/>, <xref
+          href="../attributes/linkRelationshipAttributes.dita"/> (with a narrowed definition of
+          <xmlatt>href</xmlatt>, given below), <xref
+          href="../attributes/topicrefElementAttributes.dita"/>, <xref
+          href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, <xref
+          href="../attributes/thekeysattribute.dita"><xmlatt>keys</xmlatt></xref>, and <xref
+          href="../attributes/thekeyrefattribute.dita"><xmlatt>keyref</xmlatt></xref>. This
+        element also uses <xmlatt>processing-role</xmlatt>, <xmlatt>locktitle</xmlatt>, and
+          <xmlatt>toc</xmlatt> from <xref href="../attributes/commonMapAttributes.dita"/>.</p>
+      <dl>
+        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/href-on-topicref">
+          <dt/>
+          <dd/>
+        </dlentry>
+      </dl>
+    </section>
+</refbody>
+</reference>
+

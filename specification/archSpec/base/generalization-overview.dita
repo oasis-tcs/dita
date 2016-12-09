@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="generalization-overview">
+ <title>Overview of generalization</title>
+ <shortdesc>Specialized content can be generalized to any ancestor type. The generalization process
+  can preserve information about the former level of specialization to allow round-tripping between
+  specialized and unspecialized forms of the same content.</shortdesc>
+ <conbody>
+  <p>All DITA documents contain a mix of markup from at least one structural type and zero or more
+   domains. When generalizing the document, any individual structural type or domain can be left
+   as-is, or it can be generalized to any of its ancestors. If the document will be edited or
+   processed in generalized form, it might be necessary to have a document-type shell that includes
+   all non-generalized modules from the original document-type shell.</p>
+  <p>Generalization serves several purposes:</p>
+  <ul id="purposes">
+   <li>It can be used to migrate content. For example, if a specialization is unsuccessful or is no
+    longer needed, the content can be generalized back to a less specialized form.</li>
+   <li>It can be used for temporary round-tripping. For example, if content is shared with a process
+    that is not specialization aware, it can be temporarily generalized for that process and then
+    returned to specialized form.</li>
+   <li>It can allow reuse of specialized content in an enviroment that does not support the
+    specialization. Similar to round-tripping, content can be generalized for sharing, without the
+    need to re-specialize.</li>
+  </ul>
+  <p>When generalizing for migration, the <xmlatt>class</xmlatt> attribute and
+    <xmlatt>domains</xmlatt> attribute should be absent from the generalized instance document, so
+   that the default values in the document-type shell are used. When generalizing for
+   round-tripping, the <xmlatt>class</xmlatt> attribute and <xmlatt>domains</xmlatt> attribute <term
+    outputclass="RFC-2119">SHOULD</term> retain the original specialized values in
+   the generalized instance document.</p>
+<p>Note that when using constraints, a document instance can always be converted from a constrained
+document type to an unconstrained document type merely by switching the binding of the document
+instance to the less restricted document type shell (which would also have a different
+<xmlatt>domains</xmlatt> attribute declaration). No renaming of elements is needed to remove
+constraints.</p>
+ </conbody>
+</concept>

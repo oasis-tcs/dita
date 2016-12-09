@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="anchorref" xml:lang="en-us">
+<title><xmlelement>anchorref</xmlelement></title>
+<shortdesc><ph>The <xmlelement>anchorref</xmlelement> element is used to reference an
+                <xmlelement>anchor</xmlelement> element in a map.</ph> The contents of an
+            <xmlelement>anchorref</xmlelement> element are rendered both in the original authored
+        location and at the location of the referenced <xmlelement>anchor</xmlelement> element. The
+        referenced <xmlelement>anchor</xmlelement> element <ph rev="public-review-1">might</ph> be
+        defined in the current map or another map. <ph>When possible, this integration is done when
+            displaying the map with <xmlelement>anchor</xmlelement> to an end user.
+        </ph></shortdesc>
+<prolog><metadata>
+<keywords><indexterm>elements<indexterm>mapgroup<indexterm><xmlelement>anchorref</xmlelement></indexterm></indexterm></indexterm></keywords>
+</metadata></prolog>
+<refbody>
+<section id="section-1"><p>This function of the <xmlelement>anchorref</xmlelement> element is similar to that provided by
+                the <xmlatt>anchorref</xmlatt> attribute of the <xmlelement>map</xmlelement>
+                element. However, instead of attaching an entire map to an anchor point, this
+                element allows the author to attach only the contents of a single map branch. This
+                enables architects to reuse a branch of content without reusing the entire map.</p><p>If the rendering platform does not support runtime integration of navigation based on the anchor
+                point, a build system should treat the <xmlelement>anchorref</xmlelement> element
+                similar to a "conref push" instruction by pushing the content to the spot that
+                contains the <xmlelement>anchor</xmlelement>. Note that many
+                    <xmlelement>anchorref</xmlelement> elements <ph rev="public-review-1">might</ph>
+                push content to the same point; the order in which items are pushed is left
+                undefined, although the order within a single <xmlelement>anchorref</xmlelement> is
+                preserved.</p><p>Metadata cascading <ph rev="public-review-1">takes place</ph> in the original authored context,
+because the branch of content defined with the <xmlelement>anchorref</xmlelement> remains
+independent from the referenced map. The <xmlelement>anchorref</xmlelement> content does not take on
+the cascading metadata at the <xmlelement>anchor</xmlelement> location. For example, if the map
+containing the <xmlelement>anchorref</xmlelement> element sets a local copyright, that copyright
+cascades to the <xmlelement>anchorref</xmlelement> element and its children; it is retained after
+the content is rendered at the target <xmlelement>anchor</xmlelement> element.</p><p>By default, the content of the <xmlelement>anchorref</xmlelement> element is rendered at both the
+                anchor target and the original location. To prevent the content from being rendered
+                at the location of the <xmlelement>anchorref</xmlelement> element, set
+                    <codeph>toc="no"</codeph> on the <xmlelement>anchorref</xmlelement> element, and
+                then set <codeph>toc="yes"</codeph> on each of its children so that they will not
+                inherit the <codeph>toc="no"</codeph> setting.</p></section>
+<section conref="../../common/commonNavLibraryTable.dita#contentmodel-anchorref/contains" id="contains" otherprops="contains"></section>
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>+
+map/topicref mapgroup-d/anchorref </p></section>
+<example id="example" otherprops="examples"><title>Example</title><fig><title>Initial map
+contents</title>
+<codeblock>&lt;topicref href="carPrep.dita">
+    &lt;topicref href="beforePrep.dita"/>
+    &lt;anchor id="prepDetail"/>
+    &lt;topicref href="afterPrep.dita"/>
+&lt;/topicref>
+&lt;!-- ... -->
+&lt;topicref href="astroTasks.dita">
+    &lt;topicref href="astroOverview.dita"/>
+    <b>&lt;anchorref href="#prepDetail"></b>
+        &lt;topicref href="astroChecklist.dita"/>
+        &lt;topicref href="otherPreparation.dita"/>
+    <b>&lt;/anchorref></b>
+    &lt;topicref href="astroConclusion.dita"/>
+&lt;/topicref></codeblock>
+</fig><fig>
+                <title>Effective result of evaluating the <xmlelement>anchorref</xmlelement>
+                    element</title>
+                <codeblock>&lt;topicref href="carPrep.dita">
+    &lt;topicref href="beforePrep.dita"/>
+    &lt;anchor id="prepDetail"/>
+    &lt;topicref href="astroChecklist.dita"/>
+    &lt;topicref href="otherPreparation.dita"/>
+    &lt;topicref href="afterPrep.dita"/>
+&lt;/topicref>
+&lt;!-- ... -->
+&lt;topicref href="astroTasks.dita">
+    &lt;topicref href="astroOverview.dita"/>
+    &lt;topicref href="astroChecklist.dita"/>
+    &lt;topicref href="otherPreparation.dita"/>
+    &lt;topicref href="astroConclusion.dita"/>
+&lt;/topicref></codeblock>
+            </fig></example>
+<section id="attributes"><title>Attributes</title><sectiondiv id="standard-topicref-attributes">
+                <p>The following attributes are available on this element: <xref
+                        href="../attributes/universalAttributes.dita"/>, <xref
+                        href="../attributes/linkRelationshipAttributes.dita"/> (with narrowed
+                    definitions of <xmlatt>href</xmlatt>, <xmlatt>type</xmlatt>, and
+                        <xmlatt>format</xmlatt>, all given below), <xref
+                        href="../attributes/commonMapAttributes.dita"/>, <xref
+                        href="../attributes/topicrefElementAttributes.dita"/>, <xref
+                        href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, <xref
+                        href="../attributes/thekeysattribute.dita"><xmlatt>keys</xmlatt></xref>, and
+                        <xref href="../attributes/thekeyrefattribute.dita"
+                        ><xmlatt>keyref</xmlatt></xref>. </p>
+                <dl>
+                    <dlentry>
+                        <dt><xmlatt>href</xmlatt></dt>
+                        <dd>A pointer to an <xmlelement>anchor</xmlelement> element in this or
+                            another DITA map. When rendered, the contents of the current element
+                            will be copied to the location of the <xmlelement>anchor</xmlelement>.
+                                <ph >See <xref
+                                    href="../attributes/thehrefattribute.dita"/> for supported
+                                syntax when referencing a map element.</ph>
+                            <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><xmlatt>type</xmlatt></dt>
+                        <dd>Describes the target of a reference. For the
+                                <xmlelement>anchorref</xmlelement> element, this value defaults to
+                            "anchor", because the element is expected to point to an
+                                <xmlelement>anchor</xmlelement> element in this or another map.</dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><xmlatt>format</xmlatt></dt>
+                        <dd>The <xmlatt>format</xmlatt> attribute identifies the format of the
+                            resource being referenced. For the <xmlelement>anchorref</xmlelement>
+                            element, this value defaults to "ditamap", because the element
+                            references a point in a map.</dd>
+                    </dlentry>
+                </dl>
+            </sectiondiv></section>
+</refbody>
+</reference>

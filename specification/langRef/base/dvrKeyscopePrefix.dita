@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="dvrKeyscopePrefix" xml:lang="en-us" >
+  <title><xmlelement>dvrKeyscopePrefix</xmlelement></title>
+  <shortdesc>The <xmlelement>dvrKeyscopePrefix</xmlelement> element specifies the prefix to use
+    when constructing the effective key scope names for the map branch that is implied by the
+    ancestor <xmlelement>ditavalref</xmlelement> element.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>dvrKeyscopePrefix</indexterm>
+        <indexterm>DITAVAL reference domain<indexterm>dvrKeyscopePrefix</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody>
+    <section id="section-1">
+      <p>For map branches that are implied by <xmlelement>ditavalref</xmlelement> elements, the
+        value of the <xmlelement>dvrKeyscopePrefix</xmlelement> element contributes to the
+        effective key scope names of the branch. The effective key scope names start with the value
+        of the <xmlelement>dvrKeyscopePrefix</xmlelement> element. Note that if the branch as
+        authored does not specify a <xmlatt>keyscope</xmlatt> value, specifying
+          <xmlelement>dvrKeyscopePrefix</xmlelement> (without also specifying
+          <xmlelement>dvrKeyscopeSuffix</xmlelement>) results in the branch establishing a key
+        scope whose name is the value of the <xmlelement>dvrKeyscopePrefix</xmlelement> element.
+        The full key scope names also will reflect the value of a
+          <xmlelement>dvrKeyscopeSuffix</xmlelement> element if one is specified, regardless of
+        whether the branch as authored specifies a <xmlatt>keyscope</xmlatt> value.</p>
+    </section>
+    <section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-dvrKeyscopePrefix/contains" otherprops="contains"></section>
+    <section id="inheritance" otherprops="inheritance">
+      <title>Inheritance</title>
+      <p>+ topic/data ditavalref-d/dvrKeyscopePrefix </p>
+    </section>
+    <example id="example" otherprops="examples">
+      <title>Example</title>
+      <p>If the <xmlelement>dvrKeyscopePrefix</xmlelement> is specified in the following
+        way:<codeblock>&lt;topicref keys="branch-01"
+    href="branch-01.dita" 
+    keyscope="branch-01"
+  >
+  &lt;ditavalref href="condition-01.ditaval">
+    &lt;ditavalmeta>
+      &lt;dvrKeyscopePrefix>cond01-&lt;/dvrKeyscopePrefix>
+    &lt;/ditavalmeta>
+  &lt;/ditavalref>
+  &lt;topicref href="topics/subtopic-01.dita"/>
+&lt;/topicref></codeblock></p>
+      <p>Then the effective key scope name for the branch "branch-01" is "cond01-branch-01".</p>
+    </example>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref
+          href="../attributes/universalAttributes.dita"/> (except for <xmlatt>conkeyref</xmlatt>,
+        which is removed for all elements in this domain) and the attribute defined below.</p>
+      <dl>
+        <dlentry>
+          <dt><xmlatt>name</xmlatt></dt>
+          <dd>The name of the metadata item. For this element the default value is
+            "dvrKeyscopePrefix".</dd>
+        </dlentry>
+      </dl>
+    </section>
+  </refbody>
+</reference>

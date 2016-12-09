@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="concept-1" xml:lang="en-us">
+  <title>Specializing to include non-DITA content</title>
+  <shortdesc>You can extend DITA to incorporate standard vocabularies for non-textual content, such
+    as MathML and SVG, <ph >as markup within DITA documents.</ph> This
+    is done by specializing the <xmlelement>foreign</xmlelement> or <xmlelement>unknown</xmlelement>
+    elements.</shortdesc>
+  <conbody>
+    <section id="foreign-methods">
+      <p>There are three methods of incorporating foreign content into DITA. </p>
+      <ul>
+        <li>A domain specialization of the <xmlelement>foreign</xmlelement> or
+            <xmlelement>unknown</xmlelement> element. This is the usual implementation.</li>
+        <li>A structural specialization using the <xmlelement>foreign</xmlelement> or
+            <xmlelement>unknown</xmlelement> element. This affords more control over the
+          content.</li>
+        <li>Directly embedding the non-DITA content within <xmlelement>foreign</xmlelement> or
+            <xmlelement>unknown</xmlelement> elements. If the non-DITA content has interoperability
+          or vocabulary naming issues such as those that are addressed by specialization in DITA,
+          they must be addressed by means that are appropriate to the non-DITA content.</li>
+      </ul>
+      <p>The <xmlelement>foreign</xmlelement> or <xmlelement>unknown</xmlelement> elements should
+        not be used to include textual content or metadata in DITA documents, except where such
+        content acts as an example or display, rather than as the primary content of a topic.</p>
+      <note  product="technicalContent">Beginning with DITA 1.3, both
+        MathML and SVG are domains shipped with the OASIS grammars; they serve as working examples
+        of <xmlelement>foreign</xmlelement> specializations.</note>
+    </section>
+    <example id="example-svgcontainer"  product="technicalContent" otherprops="examples">
+      <title>Example: Including SVG markup within a specialization of
+          <xmlelement>foreign</xmlelement></title>
+      <p>The following code sample shows how SVG markup can be included within the
+          <xmlelement>svgcontainer</xmlelement> element, which is part of the SVG domain and a
+        specialization of the <xmlelement>foreign</xmlelement> element.</p>
+      <codeblock>&lt;p&gt;This is an ellipse:
+  &lt;svg-container&gt;
+    &lt;svg:svg width="100%" height="100%" version="1.1"
+xmlns="http://www.w3.org/2000/svg"&gt;
+
+&lt;ellipse cx="300" cy="150" rx="200" ry="80"
+style="fill:rgb(200,100,50);
+stroke:rgb(0,0,100);stroke-width:2"/&gt;
+
+    &lt;/svg:svg&gt;    
+  &lt;/svg-container&gt;.
+&lt;/p&gt; </codeblock>
+    </example>
+    <example id="example-svgDomain"  otherprops="examples">
+      <title>Example: Creating an element domain specialization for SVG</title>
+      <p>The following code sample, which is from the <filepath>svgDomain.ent</filepath> file, shows
+        the domain declaration for the SVG domain.</p>
+      <codeblock>&lt;!-- ============================================================= -->
+&lt;!--                   SVG DOMAIN ENTITIES                         -->
+&lt;!-- ============================================================= -->
+
+&lt;!-- SVG elements must be prefixed, otherwise they conflict with
+     existing DITA elements (e.g., &lt;desc> and &lt;title>.
+  -->
+&lt;!ENTITY % NS.prefixed "INCLUDE" >
+&lt;!ENTITY % SVG.prefix "svg" >
+
+&lt;!ENTITY % svg-d-foreign
+   "svg-container
+   "
+>
+
+&lt;!ENTITY   svg-d-att     
+  "(topic svg-d)"
+></codeblock>
+      <p>Note that the SVG-specific <parameterentity>SVG.prefix</parameterentity> parameter entity
+        is declared. This establishes the default namespace prefix to be used for the SVG content
+        embedded with this domain. The namespace can be overridden in a document-type shell by
+        declaring the parameter entity before the reference to the
+          <filepath>svgDomain.ent</filepath> file. Other foreign domains <ph rev="public-review-1"
+          >might</ph> need similar entities when required by the new vocabulary.</p>
+      <p>For more information, see the <filepath>svgDomain.mod</filepath> file that is shipped with
+        the OASIS DITA distributions. For an example of including the SVG domain in a document type
+        shell, see <filepath>task.dtd</filepath>.</p>
+    </example>
+    <!--<example rev="DITA1.3 proposal-13112" id="example-rng"><title>Example of specializing foreign content using RELAX NG</title> The code sample below illustrates how to create a domain declaration for the RELAX NG <xmlelement>grammar</xmlelement> element and integrate it into a document-type shell. Domain modules that include foreign grammars should use the <xmlelement>externalRef</xmlelement> element to refer to the foreign grammar when the grammar specifies a <xmlelement>start</xmlelement> element. When using the <xmlelement>externalRef</xmlelement> element, it is possible to safely include foreign vocabularies that are not in a namespace, because the externally-referenced grammar patterns are not merged with those of the referencing grammar. <p>The following domain specialization specializes <xmlelement>foreign</xmlelement> in order to contain RELAX NG <xmlelement>grammar</xmlelement> elements, for example, to document document types by rendering the grammar markup as diagrams. </p> <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+                         schematypens="http://relaxng.org/ns/structure/1.0"?>
+&lt;grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" 
+  xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/"
+  xmlns="http://relaxng.org/ns/structure/1.0">
+&lt;moduleDesc xmlns="http://dita.oasis-open.org/architecture/2005/">
+   &lt;moduleTitle>RelaxNG Foreign Domain&lt;/moduleTitle>
+   &lt;headerComment>
+============================================================= 
+Define the Relax NG XML syntax as a DITA foreign vocabulary
+=============================================================      
+&lt;/headerComment>
+   &lt;moduleMetadata>
+     &lt;moduleType>elementdomain&lt;/moduleType>
+     &lt;moduleShortName>rnggrammar-d&lt;/moduleShortName>
+     &lt;modulePublicIds>
+       &lt;dtdMod>urn:oasis.org:elements:dita:dtd:rnggrammarDomain.mod&lt;/dtdMod>
+       &lt;dtdEnt>urn:oasis.org:entities:dita:dtd:rnggrammarDomain.ent&lt;/dtdEnt>
+       &lt;xsdMod>urn:oasis.org:names:dita:xsd:rnggrammarDomain.xsd&lt;/xsdMod>
+       &lt;rncMod>urn:oasis.org:names:dita:rnc:rnggrammarDomain.rnc&lt;/rncMod>
+       &lt;rngMod>urn:oasis.org:names:dita:rng:rnggrammarDomain.rng&lt;/rngMod>
+     &lt;/modulePublicIds>
+     &lt;domainsContribution>(topic rnggrammar-d)&lt;/domainsContribution>
+   &lt;/moduleMetadata>
+ &lt;/moduleDesc>  
+  
+ &lt;div>
+   &lt;a:documentation>DOMAIN EXTENSION PATTERNS&lt;/a:documentation>
+ 
+  &lt;define name="rnggrammar-d-foreign">
+    &lt;choice>
+      &lt;ref name="rng_grammar"/>
+    &lt;/choice>
+  &lt;/define>
+  
+  &lt;define name="foreign" combine="choice">
+    &lt;ref name="rnggrammar-d-foreign"/>
+  &lt;/define>
+ &lt;/div>
+ &lt;div>
+   &lt;a:documentation>ELEMENT TYPE NAME PATTERNS&lt;/a:documentation>
+  &lt;define name="rng_grammar">
+    &lt;ref name="rng_grammar.element"/>
+  &lt;/define>
+ &lt;/div>
+ &lt;div>
+   &lt;a:documentation>ELEMENT TYPE DECLARATIONS&lt;/a:documentation>  
+    &lt;div>&lt;a:documentation>LONG NAME: RNG Grammar Container&lt;/a:documentation>
+      &lt;define name="rng_grammar.content">
+        &lt;zeroOrMore>
+          &lt;choice>
+            &lt;externalRef href="rngGrammarProxy.rng"
+              ditaarch:dtdPublicId="-//OASIS//DTD DITA RNG Grammar//EN"
+              ditaarch:dtdSystemId="rngGrammar.dtd"
+              ditaarch:xsdURI="rngGrammar.xsd"
+              dita:xsdTargetNamespace="http://relaxng.org/ns/structure/1.0"   
+            />
+            &lt;ref name="data"/>
+            &lt;ref name="data-about"/>
+          &lt;/choice>
+        &lt;/zeroOrMore>
+      &lt;/define>
+      &lt;define
+        name="rng_grammar.attributes">
+        &lt;ref name="univ-atts"/>
+        &lt;optional>
+          &lt;attribute name="outputclass"/>
+        &lt;/optional>
+      &lt;/define>
+      &lt;define name="rng_grammar.element">
+        &lt;element name="rng_grammar" ditaarch:longName="RNG grammar">
+          &lt;ref name="rng_grammar.attlist"/>
+          &lt;ref name="rng_grammar.content"/>
+        &lt;/element>
+      &lt;/define>
+      &lt;define name="rng_grammar.attlist"
+        combine="interleave">
+        &lt;ref name="rng_grammar.attributes"/>
+      &lt;/define>
+    &lt;/div>  
+ &lt;/div>
+ &lt;div>
+   &lt;a:documentation>SPECIALIZATION ATTRIBUTE DECLARATIONS&lt;/a:documentation>
+  &lt;define name="rng_grammar.attlist" combine="interleave">
+    &lt;ref name="global-atts"/>
+    &lt;optional>
+      &lt;attribute name="class" a:defaultValue="+ topic/foreign rnggrammar-d/rng_grammar "/>
+    &lt;/optional>
+  &lt;/define>
+ &lt;/div>
+&lt;/grammar> </codeblock> <p>Because the RELAX NG grammar defines patterns that match any element with any content (patterns named "other" and "any" in the RELAX NG grammar), the domain requires overriding these patterns to exclude the element names that define an attribute with an ID type in order to satisfy <xmlatt>id</xmlatt> attribute declaration consistency requirements that are imposed by the RELAX NG DTD compatibility facility, elements that are referred to explicitly in these patterns with the reference to the "idElements" pattern. This is done through an intermediate file, <filepath>rngGrammarProxy.rng</filepath>, which then references the main grammar document and overrides the two patterns:</p><draft-comment author="Kristen Eberlein" time="8 April 2014" disposition="open"><p>From review #1:</p><p>Eberlein: "We need to edit and upack [the first] sentence, Eliot. It is too dense and difficult to read and parse."</p><p>Kimber: "Need to say a bit more about "proxy" grammars for foreign vocabs anyway. In particular, that the proxy may need to be locally modified in order to reflect all the shell topic or map types into which the foreign vocabulary is integrated. So we need to do a bit more writing around this whole subject."</p></draft-comment> <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;grammar datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+  ns="http://relaxng.org/ns/structure/1.0"
+  xmlns="http://relaxng.org/ns/structure/1.0">
+  &lt;include href="rngGrammar.rng">
+    &lt;define name="other">
+      &lt;zeroOrMore>
+        &lt;choice>
+          &lt;parentRef name="idElements"/>
+          &lt;element>
+            &lt;anyName>
+              &lt;except>
+                &lt;name ns="">topic&lt;/name>
+                &lt;nsName/>
+              &lt;/except>
+            &lt;/anyName>
+            &lt;zeroOrMore>
+              &lt;choice>
+                &lt;attribute>
+                  &lt;anyName/>
+                &lt;/attribute>
+                &lt;text/>
+                &lt;ref name="any"/>
+              &lt;/choice>
+            &lt;/zeroOrMore>
+          &lt;/element>  
+        &lt;/choice>
+      &lt;/zeroOrMore>
+    &lt;/define>
+    
+    &lt;define name="any">
+      &lt;choice>
+        &lt;parentRef name="idElements"/>      
+        &lt;element>
+          &lt;anyName>
+            &lt;except>
+              &lt;name ns="">topic&lt;/name>
+            &lt;/except>
+          &lt;/anyName>
+          &lt;zeroOrMore>
+            &lt;choice>
+              &lt;attribute>
+                &lt;anyName/>
+              &lt;/attribute>
+              &lt;text/>
+              &lt;ref name="any"/>
+            &lt;/choice>
+          &lt;/zeroOrMore>
+        &lt;/element>
+      &lt;/choice>
+    &lt;/define>
+  &lt;/include>
+  
+&lt;/grammar></codeblock> </example>-->
+    <!--<example id="example-xsd" rev="DITA1.3 proposal-13119"><title>Example of specializing foreign content using XML Schemas</title><p>The sample below describes how to create a domain declaration of the mathML element, but does not show how to integrate that declaration in a DITA document-type shell. For more specific information on creating document-type shells, see <xref href="schemamod.dita#modSchema" format="dita"/></p><codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:m="http://www.w3.org/1998/Math/MathML"  
+  elementFormDefault="qualified">
+  
+  &lt;xs:import schemaLocation="mathml3/mathml3.xsd"
+    namespace="http://www.w3.org/1998/Math/MathML"
+  />
+  
+  &lt;xs:group name="mathml-d-foreign">
+    &lt;xs:sequence>
+      &lt;xs:choice>
+        &lt;xs:element ref="mathml_container"/>
+      &lt;/xs:choice>
+    &lt;/xs:sequence>
+  &lt;/xs:group>
+  
+  &lt;xs:group name="mathml_container.content">
+    &lt;xs:choice  minOccurs="0" maxOccurs="unbounded">
+      &lt;xs:element ref="m:math"/>
+      &lt;xs:group ref="data.elements.incl" minOccurs="0"/>
+    &lt;/xs:choice>
+  &lt;/xs:group>
+  
+  &lt;xs:attributeGroup name="mathml_container.attributes">
+    &lt;xs:attribute name="outputclass" type="xs:string"/>
+    &lt;xs:attributeGroup ref="global-atts"/>
+    &lt;xs:attributeGroup ref="univ-atts"/>
+  &lt;/xs:attributeGroup>
+  
+  &lt;xs:complexType name="mathml_container.class" mixed="false">
+    &lt;xs:sequence>  
+      &lt;xs:group ref="mathml_container.content"/>
+    &lt;/xs:sequence>        
+    &lt;xs:attributeGroup ref="mathml_container.attributes"/>
+  &lt;/xs:complexType>
+  
+  &lt;xs:element name="mathml_container">
+    &lt;xs:annotation>
+      &lt;xs:documentation>
+        The mathml_container (&amp;lt;&lt;keyword>mathml_container&lt;/keyword>&amp;gt;) element 
+        contains zero or more MathML equations, along with optional &amp;lt;&lt;keyword>data&lt;/keyword>&amp;gt;
+        or &amp;lt;&lt;keyword>data-about&lt;/keyword>&amp;gt; elements, which act as metadata for the
+        equations.
+      &lt;/xs:documentation>
+    &lt;/xs:annotation>
+    &lt;xs:complexType mixed="false">
+      &lt;xs:complexContent>
+        &lt;xs:extension base="mathml_container.class">
+          &lt;xs:attribute ref="class" default="+ topic/foreign mathml-d/mathml_container "/>
+        &lt;/xs:extension>
+      &lt;/xs:complexContent>
+    &lt;/xs:complexType>
+  &lt;/xs:element>
+  
+&lt;/xs:schema>  </codeblock></example>-->
+    <!--<example id="example-mathml" rev="DITA1.3 proposal-13119"><title>Example of MathML within an <xmlelement>equation-block</xmlelement> element </title><codeblock>&lt;p>
+
+&lt;equation-block>
+  &lt;mathML>
+    &lt;m:math display="block">
+      &lt;m:mrow>
+        &lt;m:mo>sum&lt;/m:mo>
+        &lt;m:mn>4&lt;/m:mn>
+        &lt;m:mo>+&lt;/m:mo>
+        &lt;m:mi>x&lt;/m:mi>
+      &lt;/m:mrow>
+    &lt;/m:math>    
+  &lt;/mathML>
+ &lt;/equation-block>.
+&lt;/p> </codeblock></example>-->
+  </conbody>
+</concept>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="diratt" xml:lang="en-US">
+  <title>The <xmlatt>dir</xmlatt> attribute</title>
+  <shortdesc>The <xmlatt>dir</xmlatt> attribute provides <ph >instructions</ph> to
+    processors about how <term>bi-directional text</term> should be rendered.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>bi-directional text</indexterm>
+        <indexterm><xmlatt>dir</xmlatt> attribute</indexterm>
+        <indexterm>processing expectations<indexterm>bi-directional text</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody>
+    <section id="biditext">
+      <p>Bi-directional text is text that contains text in both text directionalities, right-to-left
+        (RTL) and left-to-right (LTR). For example, languages such as Arabic, Hebrew, Farsi, Urdu,
+        and Yiddish have text written from right-to-left; however, numerics and embedded sections of
+        Western language text are written from left to right. Some multilingual documents also
+        contain a mixture of text segments in two directions.</p>
+      <p>DITA contains the following attributes that have an effect on bi-directional text processing:<dl>
+          <dlentry>
+            <dt><xmlatt>xml:lang</xmlatt></dt>
+            <dd>Identifies the language and locale, and so can be used to identify text that
+              requires bi-directional rendering.</dd>
+          </dlentry>
+          <dlentry>
+            <dt><xmlatt>dir</xmlatt></dt>
+            <dd>Identifies or overrides the text directionality. It can be set to "ltr", "rtl",
+              "lro", or "rlo"</dd>
+          </dlentry>
+        </dl></p>
+      <p>In general, properly-written mixed text does not need any special markers; the Unicode
+        bidirectional algorithm positions the punctuation correctly for a given language. The
+        processor is responsible for displaying the text properly. However, some rendering systems
+        might need directions for displaying bidirectional text, such as Arabic, properly. For
+        example, Apache FOP might not render Arabic properly unless the left-to-right and
+        right-to-left indicators are used.</p>
+      <p>The use of the <xmlatt>dir</xmlatt> attribute and the Unicode algorithm is explained in the
+        article <xref href="http://www.w3.org/TR/html4/struct/dirlang.html#h-8.2" scope="external"
+          format="html"> Specifying the direction of text and tables: the <codeph>dir</codeph>
+          attribute (http://www.w3.org/TR/html4/struct/dirlang.html#h-8.2) </xref>. This article
+        contains several examples of how to use the <xmlatt>dir</xmlatt> attribute set to either
+        "ltr" or "rtl". There is no example of setting the <xmlatt>dir</xmlatt> attribute to either
+        "lro" or "rlo", although it can be inferred from the example that uses the
+          <xmlelement>bdo</xmlelement> element, a now-deprecated W3C mechanism for overriding the
+        entire Unicode bidirectional algorithm.</p>
+    </section>
+    <section id="recommended-usage">
+      <title>Recommended usage</title>
+      <p>The <xmlatt>dir</xmlatt> attribute, together with the <xmlatt>xml:lang</xmlatt> attribute,
+        is essential for rendering table columns and definition lists in the proper order.</p>
+      <p>In general text, the Unicode Bidirectional algorithm, as specified by the
+          <xmlatt>xml:lang</xmlatt> attribute together with the <xmlatt>dir</xmlatt> attribute,
+        provides for various levels of bidirectionality:<ul>
+          <li>Directionality is either explicitly specified via the <xmlatt>xml:lang</xmlatt>
+            attribute in combination with the <xmlatt>dir</xmlatt> attribute on the highest level
+            element (topic or derived peer for topics, map for ditamaps) or assumed by the
+            processing application. If used, <!--it is recommended to specify--> the
+              <xmlatt>dir</xmlatt> attribute <term outputclass="RFC-2119" 
+              >SHOULD</term> be specified on the highest level element in the topic or document
+            element of the map. </li>
+          <li>When embedding a right-to-left text run inside a left-to-right text run (or
+            vice-versa), the default direction might provide incorrect results based on the
+            rendering mechanism, especially if the embedded text run includes punctuation that is
+            located at one end of the embedded text run. Unicode defines spaces and punctuation as
+            having neutral directionality and defines directionality for these neutral characters
+            when they appear between characters having a strong directionality (most characters that
+            are not spaces or punctuation). While the default direction is often sufficient to
+            determine the correct directionality of the language, sometimes it renders the
+            characters incorrectly (for example, a question mark at the end of a Hebrew question
+            might appear at the beginning of the question instead of at the end or a parenthesis
+            might render incorrectly). To control this behavior, the <xmlatt>dir</xmlatt> attribute
+            is set to "ltr" or "rtl" as needed, to ensure that the desired direction is applied to
+            the characters that have neutral bidirectionality. The "ltr" and "rtl" values override
+            only the neutral characters (for example, spaces and punctuation), not all Unicode
+            characters. <note>Problems with Unicode rendering can be caused by the rendering
+              mechanism. The problems are not due to the XML markup itself. </note></li>
+          <li>Sometimes you might want to override the default directionality for strongly
+            bidirectional characters. Overrides are done using the "lro" and "rlo" values, which
+            overrides the Unicode Bidirectional algorithm. This override forces a direction on the
+            contents of the element. These override attributes give the author a brute force way of
+            setting the directionality independent of the Unicode Bidirectional algorithm. The
+            gentler "ltr" and "rtl" values have a less radical effect, only affecting punctuation
+            and other so-called neutral characters. </li>
+        </ul></p>
+      <p>For most authoring needs, the "ltr" and "rtl" values are sufficient.
+        <!--Only when the desired effect cannot be achieved using these values, should the override values be used. -->Use
+        the override values only when you cannot achieve the desired effect using the the "ltr" and
+        "rtl" values.</p>
+      <!-- [JTH: 21 Sept 2009] This comment appears to be seriously out of date.
+                <p>While the Unicode standard includes hidden markers for directionality without the
+                need for markup, these markers should not be used. It is strongly recommended to
+                mark up the document using the dir attribute <ph>with the xml:lang
+                attribute</ph> to set directionality. Using <ph>XML</ph> markup
+                instead of the Unicode markers has the following advantages: <ul>
+                <li>The document will be as portable as possible. </li>
+                <li>The document can be processed by applications that do not fully implement
+                the Unicode BIDI algorithm. </li>
+                <li>The marked-up document can be read and understood by humans. </li>
+                <li>When updating the document, the boundaries of each text flow are clear,
+                which makes it much easier for the author to update the document. </li>
+                </ul></p> -->
+    </section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <!--<p>Users should be aware that descriptive markup isnâ•˙t necessarily
+            the end of their work. Each possible output rendition or display tool
+            may have different requirements for managing bidirectional text. Just
+            as different HTML browsers offer different levels of support for CSS,
+            different output tools implement the bidirectional algorithm, and
+            its accompanying directional controls, differently. For example, HTML
+            displayed in Internet Explorer may have different requirements than
+            HTML displayed in Firefox. Similarly, a control that works in one
+            part of an HTML file, such as the body of the page, might not work
+            in another, such as the title or the index in compiled HTML Help.
+            The same uncertainty can be found in almost any output. PostScript
+            or PDF rendering tools treat bidirectional text differently. Microsoft
+            Word and OpenOffice Writer donâ•˙t handle bidirectional RTF in the same
+            way. Flash has little concern for directional markup of any kind,
+            but does format strings according to the Unicode algorithm. </p><p>Because
+            input is unpredictably dependent on eventual output, it is not sufficient
+            to apply the â•˛dirâ•ˇ attribute in such a way as to make the XML appear
+            as it should in an editor. Additional care must be taken to make sure
+            that markup is correctly transformed (or added to the source XML,
+            if needed), with respect both to the target output format and the
+            target output tool. To use the case of HTML, this could mean creating
+            output tailored to the capabilities of the most common likely browser
+            or creating output tailored to the least capable browser and ensuring
+            the markup functions for the most likely and capable one. For example,
+            bidirectional HTML that displays perfectly in Internet Explorer might
+            not display correctly in Safari. However, if the HTML displays perfectly
+            in Safari, chances are very good it will display correctly in Internet
+            Explorer as well. This isnâ•˙t a certainty, however. Each case should
+            be tested and confirmed by qualified individuals. </p>-->
+      <p>Applications that process DITA documents, whether at the authoring, translation,
+        publishing, or any other stage, <term outputclass="RFC-2119">SHOULD</term> fully support the
+        Unicode bidirectional algorithm to correctly implement the script and directionality for
+        each language that is used in the document.</p>
+      <p>Applications <term outputclass="RFC-2119">SHOULD</term> ensure that the
+        root element in every topic document and the root element in the root map has values for the
+          <xmlatt>dir</xmlatt> and <xmlatt>xml:lang</xmlatt> attributes.</p>
+    </section>
+    <!--<section><title>Content removed</title><ph>For example, to correctly render in a Web browser a text in Arabic with embedded English content, the root element should contain <codeph>xml:lang="ar"</codeph> and <codeph>dir="rtl"</codeph>. All text, including punctuation marks, will be set correctly. </ph></section>-->
+  </refbody>
+</reference>
+

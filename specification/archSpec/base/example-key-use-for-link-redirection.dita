@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_qz4_35z_lp">
+ <title>Example: Link redirection</title>
+ <shortdesc>This scenario outlines how different authors can redirect links to a common topic by
+    using key definitions. <ph >This could apply to
+        <xmlelement>xref</xmlelement>, <xmlelement>link</xmlelement>, or any elements (such as
+        <xmlelement>keyword</xmlelement> or <xmlelement>term</xmlelement>) that become navigation
+      links.</ph></shortdesc>
+ <conbody>
+  <p>A company wants to use a common DITA topic for information about recycling:
+    <filepath>recycling.dita</filepath>. However, the topic contains a cross-reference to a topic
+   that needs to be unique for each product line; each such topic contains product-specific
+   URLs.</p>
+  <ol>
+   <li>
+    <p>The editing team creates a <filepath>recycling.dita</filepath> topic that includes a
+     cross-reference to the product-specific topic. The cross reference is implemented using a key
+     reference:</p>
+    <codeblock>&lt;xref keyref="product-recycling-info" href="generic-recycling-info.dita"/></codeblock>
+    <p>The value of the <xmlatt>href</xmlatt> attribute provides a fallback in the event that a
+     product team forgets to include a key definition for "product-recycling-info".</p>
+   </li>
+   <li>
+    <p>Each product documentation group creates a unique key definition for
+     "product-recycling-info". Each group authors the key definition in a DITA map, for example:</p>
+    <codeblock>&lt;map>
+  &lt;!-- ... -->
+  &lt;keydef keys="product-recycling-info" href="acme-server-recycling.dita"/>
+  &lt;!-- ... -->
+&lt;/map></codeblock>
+    <p>Each team can use the <filepath>recycling.dita</filepath> topic, and the cross reference in
+     the topic resolves differently for each team.</p>
+   </li>
+   <li>
+    <p>A year later, there is an acquisition. The newly-acquired team wants to reuse Acme's common
+     material, but it needs to direct its users to an external Web site that lists the URLs, rather
+     than a topic in the product documentation. Their key definition looks like the following:</p>
+    <codeblock>&lt;topicref  keys="product-recycling-info" 
+                  href="http://acme.example.com/server/recycling" 
+                  scope="external" format="html"/&gt;
+ </codeblock>
+    <p>When newly-acquired team uses the <filepath>recycling.dita</filepath> topic, it resolves to
+     the external Web site; however for all other teams, the cross reference in the topic continues
+     to resolves to their product-specific topic.</p>
+   </li>
+   <li>
+    <p>A new product team is formed, and the team forgets to include a key definition for
+     "product-recycling-info" in one of their root maps. Because the cross reference in the
+      <filepath>recycling.dita</filepath> topic contains a value for the <xmlatt>href</xmlatt>
+     attribute, the link falls back to <filepath>generic-recycling-info.dita</filepath>, thus
+     avoiding a broken cross reference in the output.</p>
+   </li>
+  </ol>
+ </conbody>
+</concept>

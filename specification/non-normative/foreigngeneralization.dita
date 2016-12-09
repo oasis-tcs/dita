@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="foreigngeneralization" xml:lang="en-us">
+  <title>Considerations for generalizing <xmlelement>foreign</xmlelement> elements</title>
+  <shortdesc>The <xmlelement>foreign</xmlelement> element can contain a mixture of DITA and non-DITA
+    content. Non-DITA content that is contained within a <xmlelement>foreign</xmlelement> element
+    cannot be generalized. However, the <xmlelement>foreign</xmlelement> element itself, as well as
+    any DITA elements that it contains, can be generalized using normal rules.</shortdesc>
+  <conbody>
+    <p>If a <xmlelement>foreign</xmlelement> element contains non-DITA content, the non-DITA content
+      can be exported to a separate file and replaced in-line with an
+        <xmlelement>object</xmlelement> element. The <xmlatt>data</xmlatt> attribute of the
+        <xmlelement>object</xmlelement> element would reference the generated file, and the
+        <xmlatt>type</xmlatt> attribute of the <xmlelement>object</xmlelement> element would be set
+      to the value "DITA-foreign".</p>
+    <section id="section_318E527E9A464F2AA3B2E154E7D3F2D4">
+      <p>If an <xmlelement>object</xmlelement> element is present within the
+          <xmlelement>foreign</xmlelement> element during generalization, it is not included with
+        the content that is exported to the separate file. This original
+          <xmlelement>object</xmlelement>element is used to specify alternate content in publishing
+        systems that cannot display the foreign content. It would not be modified except as the
+        ordinary rules of generalization require it.</p>
+      <p>In the exported file, exported content would be enclosed within a root
+          <xmlelement>foreign</xmlelement> element in order to accommodate the possibility that it
+        might contain several main elements apart from the alternate content. </p>
+      <p>For easy recognition, the name of the exported file would start with
+          <q>dita-generalized-</q> , and it is recommended that the file name also contain the topic
+        ID, specialization type, and element ID or generated identifier.</p>
+    </section>
+    <example id="example-simple" otherprops="examples">
+      <title>Example: Simple object generalization</title>
+      <p>For example, a DITA document could contain a specialization of
+          <xmlelement>foreign</xmlelement> for MathML using the MathML domain that ships with DITA
+        1.3. It could look like this:</p>
+      <codeblock>&lt;mathml class="+ topic/foreign mathml-d/mathml "&gt;
+  &lt;m:math&gt;
+    &lt;m:mi&gt;x&lt;/m:mi&gt;&lt;m:mo&gt;+&lt;/m:mo&gt;&lt;m:mn&gt;3&lt;/m:mn&gt;
+  &lt;/m:math&gt;
+  &lt;data-about&gt;X plus three&lt;/data-about&gt;
+&lt;/mathml&gt;</codeblock>
+      <p>The <xmlelement>mathml</xmlelement> container is a DITA element, so it should be
+        generalized using normal rules. The <xmlelement>m:math</xmlelement> element, which is not a
+        DITA element, will be exported to another file. The <xmlelement>data-about</xmlelement>
+        element will remain:</p>
+      <codeblock>&lt;foreign class="+ topic/foreign mathml-d/mathml "&gt;
+  &lt;object data="dita-generalized-topicid_mathml1.xml" type="DITA-foreign"/&gt;
+  &lt;data-about&gt;X plus three&lt;/data-about&gt;
+&lt;/foreign&gt;
+
+Contents of dita-generalized-topicid_mathml1.xml:
+&lt;foreign class="+ topic/foreign mathml-d/mathml "
+         xmlns:m="http://www.w3.org/1998/Math/MathML"&gt;
+&gt;
+  &lt;m:math&gt;
+    &lt;m:mi&gt;x&lt;/m:mi&gt;&lt;m:mo&gt;+&lt;/m:mo&gt;&lt;m:mn&gt;3&lt;/m:mn&gt;
+  &lt;/m:math&gt;
+&lt;/foreign&gt;</codeblock>
+    </example>
+    <example id="example-multiple" otherprops="examples">
+      <title>Example: Multiple object generalization</title>
+      <p>An object might also contain multiple object elements:</p>
+      <codeblock>&lt;mathml class="+ topic/foreign mathml-d/mathml "&gt;
+  &lt;m:math&gt;
+    &lt;m:mi&gt;x&lt;/m:mi&gt;&lt;m:mo&gt;+&lt;/m:mo&gt;&lt;m:mn&gt;3&lt;/m:mn&gt;
+  &lt;/m:math&gt;
+  &lt;data-about&gt;X plus three&lt;/data-about&gt;
+  &lt;m:math&gt;
+    &lt;m:mi&gt;y&lt;/m:mi&gt;&lt;m:mo&gt;-&lt;/m:mo&gt;&lt;m:mn&gt;2&lt;/m:mn&gt;
+  &lt;/m:math&gt;
+&lt;/mathml&gt;</codeblock>
+      <p>The <xmlelement>mathml</xmlelement> container, which is a normal DITA element, should be
+        generalized using normal rules. A file should generated for each set of elements bounded by
+        the container and any existing object elements. In this case, two files will be generated,
+        and two new object elements added to the source.</p>
+      <p>The modified source:</p>
+      <codeblock>&lt;foreign class="+ topic/foreign mathml-d/mathml "&gt;
+  &lt;object data="dita-generalized-topicid_mathml1.xml" type="DITA-foreign"/&gt;
+  &lt;data-about&gt;X plus three&lt;/data-about&gt;
+  &lt;object data="dita-generalized-topicid_mathml2.xml" type="DITA-foreign"/&gt;
+&lt;/foreign&gt;
+</codeblock>
+      <p>The contents of dita-generalized-topicid_mathml1.xml, the first exported file:</p>
+      <codeblock>&lt;foreign class="+ topic/foreign mathml-d/mathml "
+         xmlns:m="http://www.w3.org/1998/Math/MathML"&gt;
+  &lt;m:math&gt;
+    &lt;m:mi&gt;x&lt;/m:mi&gt;&lt;m:mo&gt;+&lt;/m:mo&gt;&lt;m:mn&gt;3&lt;/m:mn&gt;
+  &lt;/m:math&gt;
+&lt;/foreign&gt;
+</codeblock>
+      <p>The contents of dita-generalized-topicid_mathml2.xml, the second exported file:</p>
+      <codeblock>&lt;foreign class="+ topic/foreign mathml-d/mathml "
+         xmlns:m="http://www.w3.org/1998/Math/MathML"&gt;
+  &lt;m:math&gt;
+    &lt;m:mi&gt;y&lt;/m:mi&gt;&lt;m:mo&gt;-&lt;/m:mo&gt;&lt;m:mn&gt;2&lt;/m:mn&gt;
+  &lt;/m:math&gt;
+&lt;/foreign&gt;</codeblock>
+    </example>
+  </conbody>
+</concept>

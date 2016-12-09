@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="example-ditavalref-error-conditions">
+  <title>Example: <xmlelement>ditavalref</xmlelement> error conditions</title>
+  <shortdesc>It is an error condition when multiple, non-equivalent copies of the same file are
+    created with the same resource name.</shortdesc>
+  <conbody>
+    <example id="ditavalref-error-conditions" otherprops="examples">
+      <p>The following map fragment contains several error conditions that result in name
+        clashes:</p>
+      <codeblock>&lt;topicref href="a.dita" keys="a">
+  &lt;ditavalref href="one.ditaval"/>
+  &lt;ditavalref href="two.ditaval"/>
+  &lt;topicref href="b.dita" keys="b"/>
+&lt;/topicref>
+&lt;topicref href="a.dita"/>
+&lt;topicref href="c.dita" keys="c">
+  &lt;ditavalref href="one.ditaval">
+    &lt;ditavalmeta>
+      &lt;dvrResourceSuffix>-token&lt;/dvrResourceSuffix>
+    &lt;/ditavalmeta>
+  &lt;/ditavalref>
+  &lt;ditavalref href="two.ditaval">
+    &lt;ditavalmeta>
+      &lt;dvrResourceSuffix>-token&lt;/dvrResourceSuffix>
+    &lt;/ditavalmeta>
+  &lt;/ditavalref>
+&lt;/topicref>
+</codeblock>
+      <p>In this sample, the effective map that results from evaluating the filter conditions has
+        several clashes. In some cases the same document must be processed with conflicting
+        conditions, using the same URI. In addition, because no key scope is added or modified, keys
+        in the branch are duplicated in such a way that only one version is available for use. When
+        the branches are evaluated to create distinct copies, the filtered branches result in the
+        following equivalent
+        map:<codeblock>&lt;topicref href="a.dita" keys="a"> &lt;!-- a.dita to be filtered by one.ditaval -->
+  &lt;topicref href="b.dita" keys="b"/>  &lt;!-- b.dita to be filtered by one.ditaval -->
+&lt;/topicref>
+&lt;topicref href="a.dita" keys="a"> &lt;!-- a.dita to be filtered by two.ditaval; key "a" ignored -->
+  &lt;topicref href="b.dita" keys="b"/>  &lt;!-- b.dita to be filtered by two.ditaval; key "b" ignored -->
+&lt;/topicref>
+&lt;topicref href="a.dita"/>
+&lt;topicref href="c-token.dita" keys="c"> 
+  &lt;!-- c-token.ditaval to be filtered by one.ditaval -->
+&lt;/topicref>
+&lt;topicref href="c-token.dita" keys="c"> 
+  &lt;!-- c-token.ditaval to be filtered by two.ditaval, key "c" ignored -->
+&lt;/topicref></codeblock>
+      </p>
+      <p>The equivalent map highlights several problems with the original source:<ul>
+          <li>The key names "a" and "b" are present in a branch that will be duplicated. No key
+            scope is introduced for either version of the branch, meaning that the keys will be
+            duplicated. Because there can only be one effective key definition for "a" or "b", it
+            only is possible to reference one version of the topic using keys.</li>
+          <li>The key name "c" is present on another branch that will be duplicated, resulting in
+            the same problem.</li>
+          <li>The file <filepath>c.dita</filepath> is filtered with two sets of conditions, each of
+            which explicitly maps the filtered resource to <filepath>c-token.dita</filepath>. This
+            is an error condition that should be reported by processors.</li>
+          <li>In situations where resource names map directly to output file names, such as an HTML5
+            rendering that creates files based on the original resource name, the following name
+            conflicts also occur. In this case a processor would need to report an error, use an
+            alternate naming scheme, or both:<ol>
+              <li><filepath>a.dita</filepath> generates <filepath>a.html</filepath> using three
+                alternate set of conditions. One version uses <filepath>one.ditaval</filepath>, one
+                version uses <filepath>two.ditaval</filepath>, and the third version uses no
+                filtering.</li>
+              <li><filepath>b.dita</filepath> generates <filepath>b.html</filepath> using two
+                alternate set of conditions. One version uses <filepath>one.ditaval</filepath>, and
+                the other version uses <filepath>two.ditaval</filepath>.</li>
+            </ol></li>
+        </ul></p>
+    </example>
+  </conbody>
+</concept>

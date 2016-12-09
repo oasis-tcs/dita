@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="evaluating-conditional-processing-attributes">
+ <title>Example: Filtering and flagging topic content</title>
+ <shortdesc>A publisher might want to flag information that applies to administrators, and to
+    exclude information that applies to the extended product.</shortdesc>
+ <conbody>
+  <p>Consider the following DITA source fragment and conditional processing profile:</p>
+    <fig>
+      <title>DITA source fragment</title>
+      <codeblock>&lt;p audience="administrator">Set the configuration options:
+  &lt;ul>
+    &lt;li product="extendedprod">Set foo to bar&lt;/li>
+    &lt;li product="basicprod extendedprod">Set your blink rate&lt;/li>
+    &lt;li>Do some other stuff&lt;/li>
+    &lt;li>Do a special thing for Linux&lt;/li>
+  &lt;/ul>
+&lt;/p></codeblock>
+    </fig>
+    <fig>
+      <title>DITAVAL profile</title>
+      <codeblock>&lt;val>
+  &lt;prop att="audience" val="administrator" action="flag">
+    &lt;startflag>&lt;alt-text>ADMIN&lt;/alt-text>&lt;/startflag>
+  &lt;/prop>
+  &lt;prop att="product" val="extendedprod" action="exclude"/>
+&lt;/val></codeblock>
+    </fig>
+  <p>When the content is rendered, the paragraph is flagged, and the first list item is excluded
+      (since it applies to extendedprod). The second list item is still included; even though it
+      does apply to extendedprod, it also applies to basicprod, which was not excluded.</p>
+  <p>The result should look something like the following: <fig>
+    <p><b>ADMIN</b> Set the configuration options: <ul>
+      <li>Set your blink rate</li>
+      <li>Do some other stuff </li>
+      <li>Do a special thing for Linux</li>
+     </ul></p>
+   </fig></p>
+ </conbody>
+</concept>

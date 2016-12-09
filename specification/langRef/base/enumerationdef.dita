@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="enumerationdef" xml:lang="en-us">
+<title><xmlelement>enumerationdef</xmlelement></title>
+<shortdesc>The <xmlelement>enumerationdef</xmlelement> element identifies one attribute and one or
+        more categories that contain the controlled values for the enumeration. The
+            <xmlatt>type</xmlatt> attribute has a default value of "keys". </shortdesc>
+<prolog><metadata>
+<keywords><indexterm><xmlelement>enumerationdef</xmlelement></indexterm>
+                <indexterm>subjectScheme<indexterm>elements<indexterm><xmlelement>enumerationdef</xmlelement></indexterm></indexterm></indexterm></keywords>
+</metadata></prolog>
+<refbody>
+<section id="section-1">
+            <p >When the <xmlelement>enumerationdef</xmlelement> element contains both
+                an <xmlelement>attributedef</xmlelement> and an <xmlelement>elementdef</xmlelement>
+                element, the enumeration applies to the specified attribute <b>only</b> on the
+                specified element. The enumeration does not apply to the attribute on other
+                elements. For example, when the <xmlelement>enumerationdef</xmlelement> element
+                contains both <codeph>&lt;attributedef name="value"/></codeph> and
+                    <codeph>&lt;elementdef name="lomDifficulty"/></codeph>, only the
+                    <xmlatt>value</xmlatt> attribute on the <xmlelement>lomDifficulty</xmlelement>
+                element is limited to the specified enumeration. The possible values for the
+                    <xmlatt>value</xmlatt> attribute on other elements are not affected.</p>
+            <p >When the <xmlelement>enumerationdef</xmlelement> element contain an
+                    <xmlelement>attributedef</xmlelement> element but no
+                    <xmlelement>elementdef</xmlelement> element, the controlled set of values bound
+                to the attribute apply to all elements. For example, when
+                    <xmlelement>enumerationdef</xmlelement> contains only <codeph>&lt;attributedef
+                    name="value"/></codeph>, the <xmlatt>value</xmlatt> attribute is limited to the
+                specified enumeration for all elements.</p>
+            <p >When the <xmlelement>enumerationdef</xmlelement> element is empty, no
+                value is valid for the attribute.</p>
+            <p >Whether an attribute takes a single value or multiple values from the
+                enumeration is part of the structural definition of the element. An attribute that
+                is defined as CDATA can take multiple values, while an attribute defined as NMTOKEN
+                can take only one.</p>
+        </section>
+<section conref="../../common/commonNavLibraryTable.dita#contentmodel-enumerationdef/contains" id="contains" otherprops="contains"></section>
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
+map/topicref subjectScheme/enumerationdef </p></section>
+<example id="example" otherprops="examples"><title>Example</title><p id="enumeration-xpl">In this example, enumerations are specified for the
+                    <xmlatt>platform</xmlatt> and <xmlatt>otherprops</xmlatt> attributes. Note that
+                the enumeration identifies a category of values; the values within the category are
+                valid, while the category itself is not a valid value. For example, in the code
+                sample here, the <xmlatt>platform</xmlatt> attribute is associated with the
+                enumeration for the category "os"; all values within the "os" category are thus
+                valid on the <xmlatt>platform</xmlatt> attribute, while the value "os" itself is
+                not.</p>
+            <codeblock conref="../../common/conref-examples.dita#conref-examples/codesample"/></example>
+<section id="attributes"><title>Attributes</title>
+            <p>The following attributes are available on this element: <xref
+                    href="../attributes/idAttributes.dita"/>, <xmlatt>status</xmlatt> and
+                    <xmlatt>base</xmlatt> from <xref href="../attributes/metadataAttributes.dita"/>,
+                    <xref href="../attributes/commonAttributes.dita#common-atts/outputclass"/>,
+                    <xref href="../attributes/debugAttributes.dita"/>, and <xref
+                    href="../attributes/universalAttributes.dita#univ-atts/class"/>.</p></section>
+</refbody>
+</reference>
+

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference xml:lang="en-us" id="example-deliveryTarget" >
+  <title><ph >Example: Defining values for
+    <xmlatt>deliveryTarget</xmlatt></ph></title>
+  <shortdesc>You can use a subject scheme map to define the values for the
+      <xmlatt>deliveryTarget</xmlatt> attribute. This filtering attribute, which is new in DITA 1.3,
+    is intended for use with a set of hierarchical, controlled values.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>examples<indexterm>subjectScheme<indexterm>defining values for
+                <xmlatt>deliveryTarget</xmlatt></indexterm></indexterm></indexterm>
+        <indexterm>subjectScheme<indexterm>examples<indexterm>defining values for
+                <xmlatt>deliveryTarget</xmlatt></indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody>
+    <example id="example" otherprops="examples">
+      <p >In this scenario, one department produces electronic publications
+        (EPUB, EPUB2, EPUB3, Kindle, etc.) while another department produces traditional,
+        print-focused output. Each department needs to exclude a certain category of content when
+        they build documentation deliverables.</p>
+      <p>The following subject scheme map provides a set of values for the
+          <xmlatt>deliveryTarget</xmlatt> attribute that accommodates the needs of both
+        departments.</p>
+      <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;!DOCTYPE subjectScheme PUBLIC "-//OASIS//DTD DITA Subject Scheme Map//EN" "subjectScheme.dtd"> 
+&lt;subjectScheme>
+  &lt;subjectHead>
+    &lt;subjectHeadMeta>
+      &lt;navtitle>Example of values for the @deliveryTarget attribute&lt;/navtitle>
+      &lt;shortdesc>Provides a set of values for use with the
+        @deliveryTarget conditional-processing attribute. This set of values is
+        illustrative only; you can use any values with the @deliveryTarget 
+        attribute.&lt;/shortdesc>      
+    &lt;/subjectHeadMeta>
+  &lt;/subjectHead>
+  &lt;subjectdef keys="deliveryTargetValues">
+    &lt;topicmeta>&lt;navtitle>Values for @deliveryTarget attributes&lt;/navtitle>&lt;/topicmeta>
+    &lt;!-- A tree of related values -->
+    &lt;subjectdef keys="print">
+      &lt;topicmeta>&lt;navtitle>Print-primary deliverables&lt;/navtitle>&lt;/topicmeta>
+      &lt;subjectdef keys="pdf">
+        &lt;topicmeta>&lt;navtitle>PDF&lt;/navtitle>&lt;/topicmeta>
+      &lt;/subjectdef>
+      &lt;subjectdef keys="css-print">
+        &lt;topicmeta>&lt;navtitle>CSS for print&lt;/navtitle>&lt;/topicmeta>
+      &lt;/subjectdef>
+      &lt;subjectdef keys="xsl-fo">
+        &lt;topicmeta>&lt;navtitle>XSL-FO&lt;/navtitle>&lt;/topicmeta>
+      &lt;/subjectdef>
+      &lt;subjectdef keys="afp">
+        &lt;topicmeta>&lt;navtitle>Advanced Function Printing&lt;/navtitle>&lt;/topicmeta>
+      &lt;/subjectdef>
+      &lt;subjectdef keys="ms-word">
+        &lt;topicmeta>&lt;navtitle>Microsoft Word&lt;/navtitle>&lt;/topicmeta>
+      &lt;/subjectdef>
+      &lt;subjectdef keys="indesign">
+        &lt;topicmeta>&lt;navtitle>Adobe InDesign&lt;/navtitle>&lt;/topicmeta>
+      &lt;/subjectdef>
+      &lt;subjectdef keys="open-office">
+        &lt;topicmeta>&lt;navtitle>Open Office&lt;/navtitle>&lt;/topicmeta>
+      &lt;/subjectdef>
+    &lt;/subjectdef>
+    &lt;subjectdef keys="online">
+      &lt;topicmeta>&lt;navtitle>Online deliverables&lt;/navtitle>&lt;/topicmeta>
+      &lt;subjectdef keys="html-based">
+        &lt;topicmeta>&lt;navtitle>HTML-based deliverables&lt;/navtitle>&lt;/topicmeta>
+        &lt;subjectdef keys="html">
+          &lt;topicmeta>&lt;navtitle>HTML&lt;/navtitle>&lt;/topicmeta>
+          &lt;subjectdef keys="html5">
+            &lt;topicmeta>&lt;navtitle>HTML5&lt;/navtitle>&lt;/topicmeta>
+          &lt;/subjectdef>
+        &lt;/subjectdef>
+        &lt;subjectdef keys="help">
+          &lt;topicmeta>&lt;navtitle>Contextual help&lt;/navtitle>&lt;/topicmeta>
+          &lt;subjectdef keys="htmlhelp">
+            &lt;topicmeta>&lt;navtitle>HTML Help&lt;/navtitle>&lt;/topicmeta>
+          &lt;/subjectdef>
+          &lt;subjectdef keys="webhelp">
+            &lt;topicmeta>&lt;navtitle>Web help&lt;/navtitle>&lt;/topicmeta>
+          &lt;/subjectdef>
+          &lt;subjectdef keys="javahelp">
+            &lt;topicmeta>&lt;navtitle>Java Help&lt;/navtitle>&lt;/topicmeta>
+          &lt;/subjectdef>
+          &lt;subjectdef keys="eclipseinfocenter">
+            &lt;topicmeta>&lt;navtitle>Eclipse InfoCenter&lt;/navtitle>&lt;/topicmeta>
+          &lt;/subjectdef>
+        &lt;/subjectdef>
+        &lt;subjectdef keys="epub">
+          &lt;topicmeta>&lt;navtitle>EPUB&lt;/navtitle>&lt;/topicmeta>
+          &lt;subjectdef keys="epub2">
+            &lt;topicmeta>&lt;navtitle>EPUB2&lt;/navtitle>&lt;/topicmeta>
+          &lt;/subjectdef>
+          &lt;subjectdef keys="epub3">
+            &lt;topicmeta>&lt;navtitle>EPUB3&lt;/navtitle>&lt;/topicmeta>
+          &lt;/subjectdef>
+          &lt;subjectdef keys="ibooks">
+            &lt;topicmeta>&lt;navtitle>iBooks&lt;/navtitle>&lt;/topicmeta>
+          &lt;/subjectdef>
+          &lt;subjectdef keys="nook">
+            &lt;topicmeta>&lt;navtitle>nook&lt;/navtitle>&lt;/topicmeta>
+          &lt;/subjectdef>
+        &lt;/subjectdef>
+        &lt;subjectdef keys="kindle">
+          &lt;topicmeta>&lt;navtitle>Amazon Kindle&lt;/navtitle>&lt;/topicmeta>
+          &lt;subjectdef keys="kindle8">
+            &lt;topicmeta>&lt;navtitle>Kindle Version 8&lt;/navtitle>&lt;/topicmeta>
+          &lt;/subjectdef>
+        &lt;/subjectdef>
+      &lt;/subjectdef>
+    &lt;/subjectdef>
+  &lt;/subjectdef>
+  &lt;enumerationdef>
+    &lt;attributedef name="deliveryTarget"/>
+    &lt;subjectdef   keyref="deliveryTargetValues"/>
+  &lt;/enumerationdef>
+&lt;/subjectScheme></codeblock>
+    </example>
+  </refbody>
+</reference>

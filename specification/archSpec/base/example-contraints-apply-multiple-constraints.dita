@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="reference_cfb_ck4_5p">
+  <title>Example: Apply multiple constraints to a single document-type shell</title>
+  <shortdesc>You can apply multiple constraints to a single document-type shell. However, there can
+    be only one constraint for a given element or domain. </shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>constraints<indexterm>examples<indexterm>applying multiple
+              constraints</indexterm></indexterm></indexterm>
+        <indexterm>examples<indexterm>constraints<indexterm>applying multiple
+              constraints</indexterm></indexterm><indexterm><xmlatt>domains</xmlatt>
+              attribute<indexterm>constraint contribution to</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <example id="example" otherprops="examples">
+      <p>Here is a list of constraint modules and what they do:</p>
+      <simpletable frame="all" relcolwidth="1.0* 1.0* 1.0* 1.0*">
+        <sthead>
+          <stentry>File name</stentry>
+          <stentry>What it constrains</stentry>
+          <stentry>Details</stentry>
+          <stentry>Contribution to the <xmlatt>domains</xmlatt> attribute</stentry>
+        </sthead>
+        <strow>
+          <stentry><filepath>example-TopicConstraint.mod</filepath></stentry>
+          <stentry><xmlelement>topic</xmlelement></stentry>
+          <stentry>
+            <ul>
+              <li>Removes <xmlelement>abstract</xmlelement></li>
+              <li>Makes <xmlelement>shortdesc</xmlelement> required</li>
+              <li>Removes <xmlelement>related-links</xmlelement></li>
+              <li>Disallows topic nesting</li>
+            </ul>
+          </stentry>
+          <stentry><codeph>(topic basic-Topic-c)</codeph></stentry>
+        </strow>
+        <strow>
+          <stentry><filepath>example-SectionConstraint.mod</filepath></stentry>
+          <stentry><xmlelement>section</xmlelement></stentry>
+          <stentry>
+            <ul>
+              <li>Makes <xmlatt>id</xmlatt> required</li>
+              <li>Removes <xmlatt>spectitle</xmlatt> attribute</li>
+            </ul>
+          </stentry>
+          <stentry><codeph>(topic idRequired-section-c)</codeph></stentry>
+        </strow>
+        <strow>
+          <stentry><filepath>example-HighlightingDomainConstraint.mod</filepath></stentry>
+          <stentry>Highlighting domain</stentry>
+          <stentry>Reduces the highlighting domain elements to <xmlelement>b</xmlelement> and
+              <xmlelement>i</xmlelement></stentry>
+          <stentry><codeph>(topic hi-d basic-HighlightingDomain-c)</codeph></stentry>
+        </strow>
+        <strow>
+          <stentry><filepath>example-PhConstraint.ent</filepath></stentry>
+          <stentry><xmlelement>ph</xmlelement></stentry>
+          <stentry>Removes the <xmlelement>ph</xmlelement> element</stentry>
+          <stentry>(topic noPh-ph-c)</stentry>
+        </strow>
+      </simpletable>
+      <p>All of these constraints can be integrated into a single document-type shell for
+          <xmlelement>topic</xmlelement>, since they constrain distinct element types and domains.
+        The constraint for the highlighting domain must be integrated before the "DOMAIN ENTITIES"
+        section, but the order in which the other three constraints are listed does not matter.</p>
+      <p>Each constraint module provides a unique contribution to the <xmlatt>domains</xmlatt>
+        attribute. When integrated into the document-type shell for <xmlelement>topic</xmlelement>,
+        the effective value of the domains attribute will include the following values, as well as
+        values for any other modules that are integrated into the document-type shell:</p>
+      <codeblock>(topic basic-Topic-c) (topic idRequired-section-c) (topic hi-d basic-HighlightingDomain-c) (topic noPh-ph-c)</codeblock>
+    </example>
+  </conbody>
+  
+</concept>

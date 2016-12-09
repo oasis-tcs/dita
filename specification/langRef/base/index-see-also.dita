@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="index-see-also" xml:lang="en-us">
+<title><xmlelement>index-see-also</xmlelement></title>
+<shortdesc>An <xmlelement>index-see-also</xmlelement> element within an <xmlelement>indexterm</xmlelement> redirects
+the reader to another index entry that the reader should reference in addition to the current
+one.</shortdesc>
+<prolog><metadata>
+<keywords><indexterm>index-see-also</indexterm>
+            <indexterm>indexing domain<indexterm>index-see-also</indexterm></indexterm>
+</keywords>
+</metadata></prolog>
+<refbody>
+<section conref="index-see.dita#index-see/index-redirection" id="section-1"></section>
+<section id="section-2"><p>In addition to its "see also" redirection, an <xmlelement>index-see-also</xmlelement> functions
+as a pointwise index term, thereby typically generating a page reference as well as the "see also"
+indication.</p><p>It is not an error for there to be multiple <xmlelement>index-see-also</xmlelement> elements for
+a single index entry.</p></section>
+<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-index-see-also/contains" otherprops="contains"></section>
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>+
+topic/index-base indexing-d/index-see-also </p></section>
+<example id="example" otherprops="examples"><p>The following example illustrates the use of an <xmlelement>index-see-also</xmlelement>
+redirection element within an <xmlelement>indexterm</xmlelement>:</p><codeblock
+xml:space="preserve">&lt;indexterm&gt;Carp
+   &lt;index-see-also&gt;Goldfish&lt;/index-see-also&gt;
+&lt;/indexterm&gt;</codeblock><p>This will typically generate a page
+reference to "Carp" and a redirection: <ul>
+<li id="WS31ee95e0b0c9e7e91643e4b10c8d987a95-7ff5">Carp, 56<ul>
+<li id="WS31ee95e0b0c9e7e91643e4b10c8d987a95-7ff4"><i>see also</i> Goldfish</li>
+</ul></li>
+</ul></p><p>The following example illustrates the use of an <xmlelement>index-see-also</xmlelement>
+redirection element to a more complex (multilevel) <xmlelement>indexterm</xmlelement>:</p><codeblock
+xml:space="preserve">&lt;indexterm&gt;Feeding
+   &lt;index-see-also&gt;Goldfish &lt;indexterm&gt;feeding&lt;/indexterm&gt;&lt;/index-see-also&gt;
+&lt;/indexterm&gt;</codeblock><p>This is part of the indexing markup
+that might generate index entries such as:</p><ul>
+<li>Feeding, 348<ul>
+<li><i>see also</i> Goldfish feeding</li>
+</ul></li>
+<li>Goldfish<ul>
+<li>feeding, 56</li>
+<li>flushing, 128, 345</li>
+</ul></li>
+</ul>
+         <p >The following example illustrates using a specialization of
+<xmlelement>ph</xmlelement> within
+<xmlelement>index-see-also</xmlelement>:<codeblock>&lt;indexterm>μ = E&lt;sub>0&lt;/sub>/V&lt;sup>2&lt;/sup>
+  &lt;index-see-also>E=mc&lt;sup>2&lt;/sup>&lt;/index-see-also>
+&lt;/indexterm></codeblock></p></example>
+<section id="attributes"><title>Attributes</title>
+         <p >The following attributes are available on this element: <xref
+               href="../attributes/universalAttributes.dita"/> and <xref
+               href="../attributes/thekeyrefattribute.dita"><xmlatt>keyref</xmlatt></xref>.</p></section>
+</refbody>
+</reference>

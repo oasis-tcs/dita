@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept id="constraintsDomainDesignPattern-xsd" xml:lang="en-us" >
+  <title>XML Schema: Coding requirements for constraint modules</title>
+  <shortdesc>A structural constraint module defines the constraints for a map or topic element type.
+    A domain constraint module defines the constraints for an element or attribute
+    domain.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>coding
+          requirements<indexterm>XSD<indexterm>constraints</indexterm></indexterm></indexterm>
+        <indexterm>constraints<indexterm>XSD<indexterm>coding
+              requirements</indexterm><indexterm>examples</indexterm><indexterm>integrating into
+              document-type shells</indexterm></indexterm></indexterm>
+        <indexterm>domain constraint modules<indexterm>XSD<indexterm>coding
+              requirements</indexterm><indexterm>examples</indexterm></indexterm></indexterm>
+        <indexterm>file names<indexterm>XSD<indexterm>domain constraint
+              modules</indexterm><indexterm>structural contraint
+          modules</indexterm></indexterm></indexterm>
+        <indexterm>structural constraint modules<indexterm>XSD<indexterm>coding
+              requirements</indexterm><indexterm>examples</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p conref="../../common/conref-file.dita#reuse_file/xsd-domains-documentation"/>
+    <p><ph >For each vocabulary module with a content model or attributes to be
+        constrained</ph>, there <ph >must</ph> be <ph 
+        >an</ph>
+      <xmlelement>xs:redefine</xmlelement> element that references the vocabulary module. Within the
+        <xmlelement>xs:redefine</xmlelement> element, for each element type content model to be
+      constrained, an <xmlelement>xs:group</xmlelement> element is needed with the name
+          <codeph><varname>element</varname>.content</codeph>. Also within the
+        <xmlelement>xs:redefine</xmlelement> element, for each attribute set to be constrained, an
+        <xmlelement>xs:attributeGroup</xmlelement> element is needed with the name
+          <codeph><varname>element</varname>.attributes</codeph>. The constrained model is defined
+      inside of the <xmlelement>xs:group</xmlelement> or
+      <xmlelement>xs:attributeGroup</xmlelement>.</p>
+    <note>This means that when adding a constraint module to an existing document-type shell, you
+      must remove any <xmlelement>xs:include</xmlelement> elements that refer to the XSD module to
+      which the redefine is applied. For example, to redefine groups defined in
+        <filepath>commonElementsMod.xsd</filepath>, you must remove any
+        <xmlelement>xs:include</xmlelement> reference to
+      <filepath>commonElementsMod.xsd</filepath>.</note>
+    <p>Because the constraint module includes the module that it modifies, only one constraint
+      module can be used per vocabulary module (otherwise the module being constrained would be
+      included multiple times). If multiple constraint modules are needed for a single vocabulary
+      module, they must be combined into a single XSD module. For example, when combining existing
+      constraint modules for <xmlelement>p</xmlelement> and <xmlelement>div</xmlelement>, a single
+      module must be created that combines the <xmlelement>xs:group</xmlelement> and
+        <xmlelement>xs:attributeGroup</xmlelement> constraints from existing modules inside a single
+        <xmlelement>xs:redefine</xmlelement> reference to
+      <filepath>commonElementsMod.xsd</filepath>. </p>
+    <p>When constraining a list of elements provided by a domain, there must be a group <ph
+        >that lists the subset of domain elements in a constraints module</ph>. The
+      group name <term outputclass="RFC-2119">SHOULD</term> be named
+        "<varname>qualifier</varname><varname>domain</varname>-c-<varname>tagname</varname>" where
+        <varname>qualifier</varname> is a description for the <ph >constraint
+        module</ph>, <varname>domain</varname> is the name of the domain, map, or topic being
+      constrained, and <varname>tagname</varname> is the name of the extension element being
+      restricted.</p>
+    <example id="example-structural-constraint" otherprops="examples">
+      <title>Example: Structural constraint module</title>
+      <p>The following code <ph >fragment</ph> shows how the
+          <xmlelement>topic</xmlelement> element can be constrained to disallow the
+          <xmlelement>body</xmlelement> element. This <xmlelement>xs:redefine</xmlelement> element
+        is located in a constraint module that references the file <filepath 
+          >topicMod.xsd</filepath>, which means that a document-type shell using this constraint
+        would reference this module <i>instead of</i> referencing <filepath 
+          >topicMod.xsd</filepath> (it would not reference both).</p>
+      <codeblock>&lt;xs:redefine schemaLocation="urn:oasis:names:tc:dita:xsd:topicMod.xsd:1.2">
+  &lt;xs:group name="topic.content">
+    &lt;xs:sequence>
+      &lt;xs:sequence>
+        &lt;xs:group ref="title"/>
+        &lt;xs:group ref="titlealts" minOccurs="0"/>
+        &lt;xs:choice minOccurs="1" >
+          &lt;xs:group ref="shortdesc" />
+          &lt;xs:group ref="abstract" />
+        &lt;/xs:choice>
+        &lt;xs:group ref="prolog" minOccurs="0"/>
+        <b>&lt;!--&lt;xs:group ref="body" minOccurs="0"/>--></b>
+        &lt;xs:group ref="related-links" minOccurs="0"/>
+        &lt;xs:group ref="topic-info-types" minOccurs="0"
+          maxOccurs="unbounded"/>
+      &lt;/xs:sequence>
+    &lt;/xs:sequence>
+  &lt;/xs:group>
+&lt;/xs:redefine></codeblock>
+      <p>For a more complete example, see <filepath>strictTaskbodyConstraintMod.xsd</filepath>,
+        delivered with the DITA 1.3 grammar files.</p>
+    </example>
+    <example id="example-domain-constraint" otherprops="examples">
+      <title>Example: Domain constraint module</title>
+      <p>The following code <ph >fragment</ph> shows how the highlighting
+        domain can be constrained to limit the elements that are available in the domain to only
+          <xmlelement>b</xmlelement> and <xmlelement>i</xmlelement>.</p>
+      <codeblock><![CDATA[<xs:group name="basicHighlight-c-ph">
+  <xs:choice>
+    <xs:element ref="b"/>
+    <xs:element ref="i"/>
+  </xs:choice>
+</xs:group>]]></codeblock>
+    </example>
+  </conbody>
+</concept>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="stepsection" xml:lang="en-us">
+<title><xmlelement>stepsection</xmlelement></title>
+<shortdesc>The <xmlelement>stepsection</xmlelement> element provides expository text before a
+<xmlelement>step</xmlelement> element. Although the element is specialized from <xmlelement>li</xmlelement> and has the
+same content model as a list item, it is not intended to represent a step in a task.</shortdesc>
+<prolog><metadata>
+<keywords><indexterm><xmlelement>stepsection</xmlelement></indexterm>
+        <indexterm>task elements</indexterm>
+        <indexterm><xmlelement>stepsection</xmlelement></indexterm></keywords>
+</metadata></prolog>
+<refbody>
+<section id="section-1"><note>DITA applications which render <xmlelement>stepsection</xmlelement> elements
+among the <xmlelement>step</xmlelement> elements must provide a way to number the steps
+without numbering the <xmlelement>stepsection</xmlelement> elements (although this does
+not need to be the only or default presentation).</note></section>
+<section conref="../../common/commonNavLibraryTable.dita#contentmodel-stepsection/contains" id="contains" otherprops="contains"></section>
+
+
+
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
+topic/li task/stepsection </p></section>
+<example id="example" otherprops="examples"><title>Example</title><codeblock>&lt;steps>
+  &lt;step>&lt;cmd>Get out a bowl&lt;/cmd>&lt;/step>
+  &lt;stepsection>The next two steps are very important!&lt;/stepsection>
+  &lt;step>&lt;cmd>Put on safety gloves&lt;/cmd>&lt;/step>
+  &lt;step>&lt;cmd>Put on goggles&lt;/cmd>&lt;/step>
+  &lt;step>&lt;cmd>Pour milk and cereal into the bowl&lt;/cmd>&lt;/step>
+&lt;/steps></codeblock><p>The sample above would typically be rendered
+with "Get out a bowl" as step number one, "Put on safety gloves" as
+step number two, and "The next two steps are very important!" as an
+unnumbered item in between the first two items.</p></example>
+<section id="attributes"><title>Attributes</title>
+      <p conref="../../common/conref-attribute.dita#conref-attribute/universal-outputclass"/>
+      </section>
+</refbody>
+</reference>
+

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="relax-ng-structural-module-coding-requirements">
+ <title>RELAX NG: Coding requirements for structural modules</title>
+ <shortdesc>A structural vocabulary module defines a new topic or map type as a specialization of a
+    topic or map type.</shortdesc>
+ <conbody>
+    <p conref="../../common/conref-file.dita#reuse_file/rng-domains-documentation"/>
+  <section id="architectural-attributes">
+      <title>Required topic and map element attributes</title>
+      <p>The topic or map element type must reference the <codeph>arch-atts</codeph> pattern, which
+        defines the <xmlatt>DITAArchVersion</xmlatt> attribute in the DITA architecture namespace
+        and sets the attribute to the version of DITA in use. In addition, the topic or map element
+        type must reference the <codeph>domains-att</codeph> pattern, which will pull in a
+        definition for the <xmlatt>domains</xmlatt> attribute. These attributes give processors a
+        reliable way to check the architecture version and list of available domains.</p>
+      <p otherprops="examples">For example, the following definition
+        references the <codeph>arch-atts</codeph> and <codeph>domains-att</codeph> patterns as part
+        of the definition for the <xmlelement>concept</xmlelement>
+        element.<codeblock>&lt;div&gt;
+  &lt;a:documentation&gt; LONG NAME: Concept &lt;/a:documentation&gt;
+  &lt;!-- ... -->
+  &lt;define name="concept.attlist" combine="interleave"&gt;
+    &lt;ref name="concept.attributes"/&gt;
+    &lt;ref name="arch-atts"/&gt;
+    &lt;ref name="domains-att"/&gt;
+  &lt;/define&gt;
+  &lt;!-- ... -->
+&lt;/div>
+</codeblock></p>
+    </section>
+    <section id="topic-nesting">
+      <title>Controlling nesting in topic types</title>
+      <p>Specialized topics typically define an <codeph>info-types</codeph> style pattern to specify
+        default topic nesting. Document type shells can then control  how topics are allowed to nest
+        by redefining the pattern. While there are known exceptions described below, the following
+        rules apply when using a pattern to control topic nesting.</p>
+      <dl>
+        <dlentry>
+          <dt>Pattern name</dt>
+          <dd>The pattern name is the topic element name plus the suffix
+              <codeph>-info-types</codeph>. <ph otherprops="examples">For example, the info-types
+              pattern for the concept topic type is <codeph>concept-info-types</codeph>.</ph>
+          </dd>
+        </dlentry>
+        <dlentry>
+          <dt>Pattern value</dt>
+          <dd>To set up default topic nesting rules, set the pattern to the desired topic elements.
+            The default topic nesting will be used when a document-type shell does not set up
+            different rules. For example:
+              <codeblock>&lt;div>
+  &lt;a:documentation>INFO TYPES PATTERNS&lt;/a:documentation>
+  &lt;define name="mytopic-info-types">
+    &lt;ref name="subtopictype-01.element"/>
+    &lt;ref name="subtopictype-02.element"/>
+  &lt;/define>
+  &lt;!-- ... -->
+&lt;/div></codeblock><p>If
+              the topic does not permit nested topics by default, this pattern uses the
+                <xmlelement>empty</xmlelement> element. For example:
+              </p><codeblock>&lt;define name="learningAssessment-info-types"&gt;
+  &lt;empty/&gt;
+&lt;/define&gt;</codeblock><p>The
+                <codeph>info-types</codeph> pattern can also be used to refer to common nesting
+              rules across the document-type shell. For
+            example:</p><codeblock>&lt;div>
+  &lt;a:documentation>INFO TYPES PATTERNS&lt;/a:documentation>
+  &lt;define name="mytopic-info-types">
+    &lt;ref name="info-types"/>
+  &lt;/define>
+  &lt;!-- ... -->
+&lt;/div></codeblock></dd>
+        </dlentry>
+        <dlentry>
+          <dt>Content model of the root element</dt>
+          <dd>In the declaration of the root element of a topic type, the last position in the
+            content model <term outputclass="RFC-2119">SHOULD</term> be the
+                <codeph><varname>topictype</varname>-info-types</codeph> pattern. For example, the
+              <xmlelement>concept</xmlelement> element places the pattern after
+              <xmlelement>related-links</xmlelement>:<codeblock>&lt;div>
+  &lt;a:documentation>LONG NAME: Concept&lt;/a:documentation>
+  &lt;define name="concept.content">
+    &lt;!-- ... -->
+    &lt;optional>
+      &lt;ref name="related-links"/>
+    &lt;/optional>
+    &lt;zeroOrMore>
+      &lt;ref name="concept-info-types"/>
+    &lt;/zeroOrMore>
+  &lt;/define>
+&lt;/div></codeblock></dd>
+        </dlentry>
+      </dl>
+      <p>In rare cases, it <ph rev="public-review-1">might</ph> not be desirable to control topic
+        nesting with the <codeph>info-types</codeph> pattern. For example:</p>
+      <ul>
+        <li>If a specialized topic type should never allow any nested topics, regardless of context,
+          it can be defined without any pattern or any nested topics.</li>
+        <li>If a specialized topic type should only ever allow specific nesting patterns, such as
+          allowing only other topic types that are defined in the same module, it can nest those
+          topics directly in the same way that other nested elements are defined.</li>
+      </ul>
+    </section>
+ </conbody>
+</concept>

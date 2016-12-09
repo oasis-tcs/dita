@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference xml:lang="en-us" id="xml-schema-catalog-identifiers">
+  <title>XML Schema catalog identifiers</title>
+  <shortdesc>Each Schema document must be uniquely identified using a Uniform Resource Name (URN).
+    Each Schema document has a version-independent as well as a version-specific URN. </shortdesc>
+  <refbody>
+    <section id="section-1">
+      <p>An XML resolver should be used to uniquely identify an XML Schema in order to map to a
+        local resource. The DITA specification includes both URN- and URL-based versions of the XML
+        schemas. The URL versions are included as a convenience for use with tools that do not
+        support catalog based resolution and are not normative.</p>
+      <p>The catalog identifiers use the following patterns.</p>
+      <simpletable frame="all" relcolwidth="1.0* 2.0*">
+        <sthead>
+          <stentry>Creator</stentry>
+          <stentry>Pattern</stentry>
+        </sthead>
+        <strow>
+          <stentry>OASIS DITA Technical Committee</stentry>
+          <stentry><codeph>urn:oasis:names:tc:dita:xsd:<varname>filename</varname>.xsd:<varname>version</varname>
+            </codeph></stentry>
+        </strow>
+        <strow>
+          <stentry>Subcommittee of the OASIS DITA Technical Committee</stentry>
+          <stentry><codeph>urn:oasis:names:tc:dita:spec:<varname>subcomittee-specialization</varname>:xsd:<varname>filename</varname>.xsd:<varname>version</varname>
+            </codeph></stentry>
+        </strow>
+      </simpletable>
+      <p>where:<ul>
+          <li><varname>subcomittee-specialization</varname> indicates the subcommittee and
+            specialization, for example, "machinery" or "learning".</li>
+          <li><varname>filename</varname> is the base name of the document-type shell or module
+            component.</li>
+          <li><varname>version</varname> either is a DITA version number (for example, 1.0, 1.1,
+            1.2, or 1.3) or is omitted entirely.</li>
+        </ul></p>
+      <p>Note that "oasis" is the owner identifier; this indicates that the artifacts are owned by
+        OASIS. The keyword "dita" is a convention that indicates that the artifact is DITA-related.
+        The pattern "urn:oasis:names:tc:dita" is a convention that indicates that the artifact is
+        DITA-related and defined by the OASIS DITA Technical Committee.</p>
+    </section>
+    <!--<section><title>Topic and topic-based specializations</title><p conref="../../common/conref-file.dita#reuse_file/module-version-xpl"/><dl><dlentry product="base"><dt>Base topic</dt><dd><lines>urn:oasis:names:tc:dita:xsd:basetopic.xsd:1.3
+urn:oasis:names:tc:dita:xsd:basetopic.xsd:1.x
+urn:oasis:names:tc:dita:xsd:basetopic.xsd</lines></dd></dlentry><dlentry product="technicalContent"><dt>Concept</dt><dd><lines>urn:oasis:names:tc:dita:xsd:concept.xsd:1.3
+urn:oasis:names:tc:dita:xsd:concept.xsd:1.x
+urn:oasis:names:tc:dita:xsd:concept.xsd</lines></dd></dlentry><dlentry product="technicalContent"><dt>DITAbase</dt><dd><lines>urn:oasis:names:tc:dita:xsd:ditabase.xsd:1.3
+urn:oasis:names:tc:dita:xsd:ditabase.xsd:1.x
+urn:oasis:names:tc:dita:xsd:ditabase.xsd</lines></dd></dlentry><dlentry product="technicalContent"><dt>Glossary</dt><dd><lines>urn:oasis:names:tc:dita:xsd:glossary.xsd:1.3
+urn:oasis:names:tc:dita:xsd:glossary.xsd:1.x
+urn:oasis:names:tc:dita:xsd:glossary.xsd</lines></dd><dd><note>The <filepath>glossary.xsd</filepath> file is provided only for backward compatibility with DITA 1.1. Use the <filepath>glossentry.xsd</filepath> file in new documents.</note></dd></dlentry><dlentry product="technicalContent"><dt>Glossary entry</dt><dd><lines>urn:oasis:names:tc:dita:xsd:glossentry.xsd:1.3
+urn:oasis:names:tc:dita:xsd:glossentry.xsd:1.x
+urn:oasis:names:tc:dita:xsd:glossentry.xsd</lines></dd></dlentry><dlentry product="learningTraining"><dt>Learning assessment</dt><dd><lines>urn:oasis:names:tc:dita:spec:learning:xsd:learningAssessment.xsd:1.3
+urn:oasis:names:tc:dita:spec:learning:xsd:learningAssessment.xsd:1.x
+urn:oasis:names:tc:dita:spec:learning:xsd:learningAssessment.xsd</lines></dd></dlentry><dlentry product="learningTraining"><dt>Learning content</dt><dd><lines>urn:oasis:names:tc:dita:spec:learning:xsd:learningContent.xsd:1.3
+urn:oasis:names:tc:dita:spec:learning:xsd:learningContent.xsd:1.x
+urn:oasis:names:tc:dita:spec:learning:xsd:learningContent.xsd</lines></dd></dlentry><dlentry product="learningTraining"><dt>Learning overview</dt><dd><lines>urn:oasis:names:tc:dita:spec:learning:xsd:learningOverview.xsd:1.3
+urn:oasis:names:tc:dita:spec:learning:xsd:learningOverview.xsd:1.x
+urn:oasis:names:tc:dita:spec:learning:xsd:learningOverview.xsd</lines></dd></dlentry><dlentry product="learningTraining"><dt>Learning plan</dt><dd><lines>urn:oasis:names:tc:dita:spec:learning:xsd:learningPlan.xsd:1.3
+urn:oasis:names:tc:dita:spec:learning:xsd:learningPlan.xsd:1.x
+urn:oasis:names:tc:dita:spec:learning:xsd:learningPlan.xsd</lines></dd></dlentry><dlentry product="learningTraining"><dt>Learning summary</dt><dd><lines>urn:oasis:names:tc:dita:spec:learning:xsd:learningSummary.xsd:1.3
+urn:oasis:names:tc:dita:spec:learning:xsd:learningSummary.xsd:1.x
+urn:oasis:names:tc:dita:spec:learning:xsd:learningSummary.xsd</lines></dd></dlentry><dlentry product="technicalContent"><dt>Machinery task</dt><dd><lines>urn:oasis:names:tc:dita:spec:machinery:xsd:machineryTask.xsd:1.3
+urn:oasis:names:tc:dita:spec:machinery:xsd:machineryTask.xsd:1.x
+urn:oasis:names:tc:dita:spec:machinery:xsd:machineryTask.xsd</lines></dd></dlentry><dlentry product="technicalContent"><dt>Reference</dt><dd><lines>urn:oasis:names:tc:dita:xsd:reference.xsd:1.3
+urn:oasis:names:tc:dita:xsd:reference.xsd:1.x
+urn:oasis:names:tc:dita:xsd:reference.xsd</lines></dd></dlentry><dlentry product="technicalContent"><dt>Task (general)</dt><dd><lines>urn:oasis:names:tc:dita:xsd:generalTask.xsd:1.3
+urn:oasis:names:tc:dita:xsd:generalTask.xsd:1.x
+urn:oasis:names:tc:dita:xsd:generalTask.xsd</lines></dd></dlentry><dlentry product="technicalContent"><dt>Task (strict)</dt><dd><lines>urn:oasis:names:tc:dita:xsd:task.xsd:1.3
+urn:oasis:names:tc:dita:xsd:task.xsd:1.x
+urn:oasis:names:tc:dita:xsd:task.xsd</lines></dd></dlentry><dlentry product="technicalContent"><dt>Topic</dt><dd><lines>urn:oasis:names:tc:dita:xsd:topic.xsd:1.3
+urn:oasis:names:tc:dita:xsd:topic.xsd:1.x
+urn:oasis:names:tc:dita:xsd:topic.xsd</lines></dd></dlentry><dlentry product="technicalContent" rev="DITA1.3 proposal-13097"><dt>Troubleshooting</dt><dd><lines>urn:oasis:names:tc:dita:xsd:troubleshooting.xsd:1.3
+urn:oasis:names:tc:dita:xsd:troubleshooting.xsd:1.x
+urn:oasis:names:tc:dita:xsd:troubleshooting.xsd</lines></dd></dlentry></dl></section>-->
+    <!--<section><title>Map and map-based specializations</title><p conref="../../common/conref-file.dita#reuse_file/module-version-xpl"/><dl><dlentry product="base"><dt>Base map</dt><dd><lines>urn:oasis:names:tc:dita:xsd:basemap.xsd:1.3
+urn:oasis:names:tc:dita:xsd:basemap.xsd:1.x
+urn:oasis:names:tc:dita:xsd:basemap.xsd</lines></dd></dlentry><dlentry product="technicalContent"><dt>Bookmap</dt><dd><lines>urn:oasis:names:tc:dita:xsd:bookmap.xsd:1.3
+urn:oasis:names:tc:dita:xsd:bookmap.xsd:1.x
+urn:oasis:names:tc:dita:xsd:bookmap.xsd</lines></dd></dlentry><dlentry product="base"><dt>Classification</dt><dd><lines>urn:oasis:names:tc:dita:spec:classification:xsd:classifyMap.xsd:1.3
+urn:oasis:names:tc:dita:spec:classification:xsd:classifyMap.xsd:1.x
+urn:oasis:names:tc:dita:spec:classification:xsd:classifyMap.xsd</lines></dd></dlentry><dlentry product="learningTraining"><dt>Learning bookmap</dt><dd><lines>urn:oasis:names:tc:dita:spec:learning:xsd:learningBookmap.xsd:1.3
+urn:oasis:names:tc:dita:spec:learning:xsd:learningBookmap.xsd:1.x
+urn:oasis:names:tc:dita:spec:learning:xsd:learningBookmap.xsd</lines></dd></dlentry><dlentry product="learningTraining"><dt>Learning map</dt><dd><lines>urn:oasis:names:tc:dita:spec:learning:xsd:learningMap.xsd:1.3
+urn:oasis:names:tc:dita:spec:learning:xsd:learningMap.xsd:1.x
+urn:oasis:names:tc:dita:spec:learning:xsd:learningMap.xsd</lines></dd></dlentry><dlentry product="learningTraining" rev="DITA1.3 proposal-13089"><dt>Learning group map</dt><dd><lines>urn:oasis:names:tc:dita:xsd:learningGroupMap.xsd:1.3
+urn:oasis:names:tc:dita:xsd:learningGroupMap.xsd:1.x
+urn:oasis:names:tc:dita:xsd:learningGroupMap.xsd</lines></dd></dlentry><dlentry product="learningTraining" rev="DITA1.3 proposal-13089"><dt>Learning object map</dt><dd><lines>urn:oasis:names:tc:dita:xsd:learningObjectMap.xsd:1.3
+urn:oasis:names:tc:dita:xsd:learningObjectMap.xsd:1.x
+urn:oasis:names:tc:dita:xsd:learningObjectMap.xsd</lines></dd></dlentry><dlentry product="technicalContent"><dt>Map</dt><dd><lines>urn:oasis:names:tc:dita:xsd:map.xsd:1.3
+urn:oasis:names:tc:dita:xsd:map.xsd:1.x
+urn:oasis:names:tc:dita:xsd:map.xsd</lines></dd></dlentry><dlentry product="base"><dt>Subject scheme</dt><dd><lines>urn:oasis:names:tc:dita:spec:classification:xsd:subjectScheme.xsd:1.3
+urn:oasis:names:tc:dita:spec:classification:xsd:subjectScheme.xsd:1.x
+urn:oasis:names:tc:dita:spec:classification:xsd:subjectScheme.xsd</lines></dd></dlentry></dl></section>-->
+    <!--<section><title>DITAVAL for conditional processing</title><p conref="../../common/conref-file.dita#reuse_file/module-version-xpl"/><lines>urn:oasis:names:tc:dita:xsd:ditaval.xsd:1.3
+urn:oasis:names:tc:dita:xsd:ditaval.xsd:1.x
+urn:oasis:names:tc:dita:xsd:ditaval.xsd</lines></section>-->
+  </refbody>
+</reference>

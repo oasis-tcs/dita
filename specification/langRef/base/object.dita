@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="object" xml:lang="en-us">
+<title><xmlelement>object</xmlelement></title>
+<shortdesc>The DITA <xmlelement>object</xmlelement> element corresponds to the
+            HTML <xmlelement>object</xmlelement> element, and attribute semantics derive from their
+        HTML definitions. For example, the <xmlatt>type</xmlatt> attribute differs from the
+            <xmlatt>type</xmlatt> attribute on many other DITA elements.</shortdesc>
+<prolog><metadata>
+<keywords><indexterm>objects<indexterm>overview</indexterm></indexterm>
+                <indexterm>elements<indexterm>body<indexterm><xmlelement>object</xmlelement></indexterm></indexterm></indexterm>
+</keywords>
+</metadata></prolog>
+<refbody>
+<section id="section-1"><p>The <xmlelement>object</xmlelement> element enables authors to include animated images, applets,
+                plug-ins, ActiveX controls, video clips, and other multimedia objects in a
+                topic.</p></section>
+<section conref="../../common/commonNavLibraryTable.dita#contentmodel-object/contains" id="contains" otherprops="contains"></section>
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
+topic/object </p></section>
+<example id="example" otherprops="examples">
+            <title>Example</title>
+            <p>Output processors might need to modify data in order to enable compatible function
+                across various browsers, so these examples are only representative:</p>
+            <codeblock>&lt;p&gt;Cutting the keys from the system unit:&lt;/p&gt;
+&lt;object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+ codebase="http://download.macromedia.com/pub/shockwave/cabs/
+flash/swflash.cab#version=6,0,0,0"
+ data="cutkey370.swf"
+ type="application/x-shockwave-flash"
+ height="280"
+ width="370"
+ id="cutkey370"&gt;
+ &lt;desc&gt;A description of the task&lt;/desc&gt;
+ &lt;param name="movie" value="cutkey370.swf"/&gt;
+ &lt;param name="quality" value="high"/&gt;
+ &lt;param name="bgcolor" value="#FFFFFF"/&gt;
+&lt;/object&gt;
+</codeblock>
+            <codeblock>&lt;p&gt;What's EIM?&lt;/p&gt;
+&lt;object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+ codebase="http://download.macromedia.com/pub/shockwave/cabs/
+flash/swflash.cab#version=6,0,0,0"
+ data="eim.swf"
+ height="400"
+ width="500"
+ id="eim"&gt;
+ &lt;desc&gt;Some great, glorious info&lt;/desc&gt;
+ &lt;param name="movie" value="eim.swf"/&gt;
+ &lt;param name="quality" value="high"/&gt;
+ &lt;param name="bgcolor" value="#FFFFFF"/&gt;
+ &lt;param name="pluginspace"
+ value="http://www.macromedia.com/go/getflashplayer"/&gt;
+&lt;/object&gt;</codeblock>
+            <fig id="fig_o2l_bfb_4k" >
+                <title>Object with reference to video using key reference on the
+                        <xmlelement>param</xmlelement> elements</title>
+                <codeblock>&lt;object
+  id="E5123_026.mp4"
+  width="300"
+  height="300">
+  &lt;param name="poster"
+     <b>keyref="E5123_026_poster"</b>
+  />
+  &lt;param name="source"
+     <b>keyref="E5123_026_video"</b>
+  />
+&lt;/object></codeblock>
+                <p>Where the keys could
+                    be:<codeblock>&lt;map>
+  &lt;!-- ... -->
+  &lt;keydef keys="E5123_026_poster"
+      href="../images/E5123_026_poster.png"
+      type="video/mp4"
+  />
+  &lt;keydef keys="E5123_026_video"
+      href="../media/E5123_026_poster.mp4"
+      type="video/mp4"
+  />
+  &lt;!-- ... -->
+&lt;/map></codeblock></p>
+            </fig>
+            <fig >
+                <title>Object with indirect reference to a flash file and fallback
+                        <xmlatt>data</xmlatt> value</title>
+                <codeblock>&lt;object 
+ <b>classidkeyref="video_classid"</b>
+ <b>codebasekeyref="video_codebase"</b>
+ <b>datakeyref="cutkey370"</b>
+ height="280"
+ width="370"
+ id="cutkey370">
+ &lt;desc>A description of the task&lt;/desc>
+ &lt;param name="movie" <b>keyref="cutkey370"</b>/>
+ &lt;param name="quality" value="high"/>
+ &lt;param name="bgcolor" value="#FFFFFF"/>
+&lt;/object></codeblock>
+                <p>Where the key could
+                    be:<codeblock>&lt;map>
+  &lt;!-- ... -->
+  &lt;!-- NOTE: Using @scope="external" because
+       the class ID is a URI that is not intended to
+       be directly resolved.
+    -->
+  &lt;keydef keys="video_classid"
+    href="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+    scope="external"
+  />
+  &lt;!-- NOTE: Using @scope="external" to avoid systems trying to
+             download this file when they don't need to.
+    -->
+  &lt;keydef keys="video_codebase"
+    href="http://download.macromedia.com/pub/shockwave/cabs/
+flash/swflash.cab#version=6,0,0,0"
+    format="shockwave"
+    scope="external"
+  />
+  &lt;!-- Using @scope="external" here because the referenced URL
+       is not intended to be resolved in isolation but relative
+       to the codebase URI.
+    -->
+  &lt;keydef keys="cutkey370"
+      href="cutkey370.swf"
+      type="application/x-shockwave-flash"
+      scope="external"
+  />
+  &lt;!-- ... -->
+&lt;/map></codeblock></p>
+            </fig>
+        </example>
+<section id="attributes"><title>Attributes</title>
+            <p>The following attributes are available on this element: <xref
+                    href="../attributes/universalAttributes.dita"/>, <xref
+                    href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, and the
+                attributes defined below.</p>
+   <dl>
+                <dlentry>
+                    <dt><xmlatt>archive</xmlatt></dt>
+                    <dd>Specifies a space-separated list of URIs indicating resources needed by the
+                        object. These resources <ph rev="public-review-1">might</ph> include those
+                        URIs specified by the <xmlatt>classid</xmlatt> and <xmlatt>data</xmlatt>
+                        attributes. Preloading these resources usually results in faster loadtimes
+                        for objects. The URIs in the list should be relative to the URI specified in
+                        the <xmlatt>codebase</xmlatt> attribute.
+                        <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
+                </dlentry>
+    <dlentry >
+     <dt><xmlatt>archivekeyrefs</xmlatt></dt>
+     <dd>Key references to one or more archives, as for <xmlatt>archive</xmlatt>. The value is a
+                        space-separated list of key names. Each resolvable key reference is treated
+                        as a URI as though it had been specified on the <xmlatt>archive</xmlatt>
+                        attribute. When specified, and at least one key name is resolvable, the
+                        key-provided archive list is used. If <xmlatt>archive</xmlatt> is specified,
+                        it is used as a fallback when no key names can be resolved to a URI.
+                        <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
+    </dlentry>
+                <dlentry>
+                    <dt><xmlatt>classid</xmlatt></dt>
+                    <dd>Contains a URI that specifies the location of an object&apos;s
+                        implementation. It can be used together with the <xmlatt>data</xmlatt>
+                        attribute which is specified relative to the value of the
+                            <xmlatt>codebase</xmlatt> attribute.
+                        <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
+                </dlentry>
+    <dlentry >
+     <dt><xmlatt>classidkeyref</xmlatt></dt>
+     <dd>Key reference to the URI that specifies the location of an object's implementation, as for
+                            <xmlatt>classid</xmlatt>. When specified, and the key is resolvable, the
+                        key-provided class ID URI is used. If <xmlatt>classid</xmlatt> is specified,
+                        it is used as a fallback when the key cannot be resolved to a URI.
+                        <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
+    </dlentry>
+                <dlentry>
+                    <dt><xmlatt>codebase</xmlatt></dt>
+                    <dd>Specifies the base URI used for resolving the relative URI values given for
+                            <xmlatt>classid</xmlatt>, <xmlatt>data</xmlatt>, and
+                            <xmlatt>archive</xmlatt> attributes. If <xmlatt>codebase</xmlatt> is not
+                        set, the default is the base URI of the current element.
+                        <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
+                </dlentry>
+    <dlentry >
+     <dt><xmlatt>codebasekeyref</xmlatt></dt>
+     <dd>Key reference to the base URI used for resolving other attributes, as for
+                            <xmlatt>codebase</xmlatt>. When specified, and the key is resolvable,
+                        the key-provided code base URI is used. If <xmlatt>codebase</xmlatt> is
+                        specified, it is used as a fallback if the key cannot be resolved to a URI.
+                        If no URI results from processing <xmlatt>codebasekeyref</xmlatt> and
+                            <xmlatt>codebase</xmlatt> is not specified, the default is the base URL
+                        of the current element.
+                        <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
+    </dlentry>
+                <dlentry>
+                    <dt><xmlatt>data</xmlatt></dt>
+                    <dd>Contains a reference to the location of an object&apos;s data. If this
+                        attribute is a relative URL, it is specified relative to the value of the
+                            <xmlatt>codebase</xmlatt> attribute. If this attribute is set, the
+                            <xmlatt>type</xmlatt> attribute should also be set.
+                        <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
+                </dlentry>
+    <dlentry >
+     <dt><xmlatt>datakeyref</xmlatt></dt>
+     <dd>Key reference to the location of an object's data, as for <xmlatt>data</xmlatt>. When
+                        specified and the key is resolvable, the key-provided URI is used. A key
+                        that has no associated resource, only link text, is considered to be
+                        unresolved for the purpose of the <xmlatt>datakeyref</xmlatt> attribute. If
+                            <xmlatt>data</xmlatt> is specified, it is used as a fallback when the
+                        key cannot be resolved to a resource.
+                        <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
+    </dlentry>
+                <dlentry>
+                    <dt><xmlatt>declare</xmlatt></dt>
+                    <dd>When this attribute is set to "declare", the current object definition is a
+                        declaration only. The object must be instantiated by a later nested object
+                        definition referring to this declaration. The only allowable value is
+                        "declare".</dd>
+                </dlentry>
+                <dlentry>
+                    <dt><xmlatt>type</xmlatt></dt>
+                    <dd>Indicates the content type (MIME type) for the data specified by the
+                            <xmlatt>data</xmlatt>
+                        <ph >or <xmlatt>datakeyref</xmlatt>
+                        </ph> attribute. This attribute should be set when the <xmlatt>data</xmlatt>
+                        attribute is set to avoid loading unsupported content types. Note that this
+                        differs from the <xmlatt>type</xmlatt> attribute on many other DITA elements
+                        (it specifies a MIME type rather than a content type). <ph
+                            >If <xmlatt>type</xmlatt> is not specified,
+                            the effective type value for the key named by the
+                                <xmlatt>datakeyref</xmlatt> attribute is used as the this
+                            attribute's value.</ph></dd>
+                </dlentry>
+                <dlentry>
+                    <dt><xmlatt>standby</xmlatt></dt>
+                    <dd>Contains a message to be displayed while an object is loading.
+                        <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
+                </dlentry>
+                <dlentry>
+                    <dt><xmlatt>height</xmlatt></dt>
+                    <dd>Indicates the vertical dimension for the resulting object display. If
+                        necessary, the object is scaled to the specified size. <ph
+                            conref="../../common/conref-attribute.dita#conref-attribute/height-width-units"
+                        /> If a height value is specified and no width value is specified, the width
+                        will be scaled by the same factor as the height. <ph
+                            conref="../../common/conref-attribute.dita#conref-attribute/height-width-warning"/>
+                        <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-NMTOKEN"/>--></dd>
+                </dlentry>
+                <dlentry>
+                    <dt><xmlatt>width</xmlatt></dt>
+                    <dd>Indicates the horizontal dimension for the resulting object display. If
+                        necessary, the object is scaled to the specified size. <ph
+                            conref="../../common/conref-attribute.dita#conref-attribute/height-width-units"
+                        /> If a width value is specified and no height value is specified, the
+                        height will be scaled by the same factor as the width. <ph
+                            conref="../../common/conref-attribute.dita#conref-attribute/height-width-warning"/>
+                        <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-NMTOKEN"/>--></dd>
+                </dlentry>
+                <dlentry>
+                    <dt><xmlatt>usemap</xmlatt></dt>
+                    <dd>Indicates that a client-side image map is to be used. An image map specifies
+                        active geometric regions of an included object and assigns a link to each
+                        region. When a link is selected, a document <ph rev="public-review-1"
+                            >might</ph> be retrieved or a program <ph rev="public-review-1"
+                            >might</ph> run on the server.
+                        <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
+                </dlentry>
+                <dlentry>
+                    <dt><xmlatt>name</xmlatt></dt>
+                    <dd>Defines a unique name for the object.
+                        <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
+                </dlentry>
+   </dl>
+            <dl>
+                <dlentry>
+                    <dt><xmlatt>tabindex</xmlatt></dt>
+                    <dd>Position the object in tabbing order.
+                        <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-NMTOKEN"/>--></dd>
+                </dlentry>
+                <dlentry>
+                    <dt><xmlatt>longdescref</xmlatt>
+                        <ph
+                            conref="../../common/conref-attribute.dita#conref-attribute/deprecated-attr"
+                        />
+                    </dt>
+                    <dd>A reference to a textual description of the graphic or object. This
+                        attribute supports creating accessible content. See <xref
+                            href="../attributes/thehrefattribute.dita"/> for detailed information on
+                        supported values and processing implications. <ph>For examples of how this
+                            attribute is used in output, see this topic on <xref format="html"
+                                href="http://www.w3.org/TR/WCAG10-HTML-TECHS/#long-descriptions"
+                                scope="external">long descriptions</xref>.</ph> NOTE: This attribute
+                        is deprecated in favor of the <xref href="longdescref.dita"/> subelement to
+                        this element.
+                        <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
+                </dlentry>
+            </dl></section>
+</refbody>
+</reference>

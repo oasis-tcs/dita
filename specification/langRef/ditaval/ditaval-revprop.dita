@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="ditaval-revprop" xml:lang="en-us">
+<title><xmlelement>revprop</xmlelement></title>
+<shortdesc>Identifies a value in the <xmlatt>rev</xmlatt> attribute that should be flagged in some
+        manner. Unlike the other conditional processing attributes, which <ph rev="public-review-1"
+            >can</ph> be used for both filtering and flagging, the <xmlatt>rev</xmlatt> attribute
+            <ph rev="public-review-1">can</ph> only be used for flagging. </shortdesc>
+<prolog><metadata>
+<keywords><indexterm>DITAVAL elements<indexterm>revprop</indexterm></indexterm>
+</keywords>
+</metadata></prolog>
+<refbody>
+<section outputclass="RFC-2119"  id="section-1">It is an error to include more than one
+                <xmlelement>revprop</xmlelement> element with the same <xmlatt>val</xmlatt>
+            attribute setting. Recovery from this error is implementation dependent; in such cases
+            processors <term outputclass="RFC-2119">MAY</term> provide an error or warning
+            message.</section>
+<section id="section-2"><ph id="default-text">When no alternate text is specified for a revision flag, the default
+                alternate text for <xmlelement>revprop</xmlelement> start of change is a localized
+                translation of "Start of change", and the default alternate text for
+                    <xmlelement>revprop</xmlelement> end of change is a localized translation of
+                "End of change". </ph></section>
+<section id="section-3">The <xmlatt>rev</xmlatt> attribute identifies when a particular section of a document was
+            added in the lifetime of that document. The attribute is not considered a filtering
+            attribute because this is not sufficient to be used for full version control, such as
+            single-sourcing multiple product variants based on version level – it only represents
+            one aspect of the revision level. </section>
+<section id="contains" otherprops="contains"><title>Contains</title><p><xref
+href="ditaval-startflag.dita">startflag</xref> (<i>optional</i>) then <xref
+href="ditaval-endflag.dita">endflag</xref> (<i>optional</i>)</p></section>
+<section id="containedby" otherprops="containedby"><title>Contained by</title><p><xref
+href="ditaval-val.dita">val</xref></p></section>
+<example id="example" otherprops="examples"><title>Example</title><p>See the example
+in the <xref href="ditaval-val.dita">&lt;val></xref> description.</p></example>
+<section id="attrs"><title>Attributes</title>
+            <p>The following attributes are available on this element:<dl>
+                    <dlentry>
+                        <dt><xmlatt>val</xmlatt></dt>
+                        <dd>The value to be acted upon. If the <xmlatt>val</xmlatt> attribute is
+                            absent, then the <xmlelement>revprop</xmlelement> element declares a
+                            default behavior for any value in the <xmlatt>rev</xmlatt>
+                            attribute.</dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><xmlatt>action</xmlatt>
+                            <ph
+                                conref="../../common/conref-attribute.dita#conref-attribute/required-attr"
+                            /></dt>
+                        <dd>The action to be taken. Allowable values are:<dl>
+                                <dlentry>
+                                    <dt>include</dt>
+                                    <dd>Include the content in output without flags. This is the
+                                        default behavior unless otherwise set.</dd>
+                                </dlentry>
+                                <dlentry>
+                                    <dt>passthrough</dt>
+                                    <dd>Include the content in output, and preserve the attribute
+                                        value as part of the output stream for further processing by
+                                        a runtime engine, for example runtime filtering based on
+                                        individual user settings. The value should be preserved in
+                                        whatever syntax is required by the target runtime. Values
+                                        that are not explicitly passed through should be removed
+                                        from the output stream, even though the content is still
+                                        included.</dd>
+                                </dlentry>
+                                <dlentry>
+                                    <dt>flag</dt>
+                                    <dd>Include and flag the content on output (if the content has
+                                        not been excluded).</dd>
+                                </dlentry>
+                            </dl></dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><xmlatt>changebar</xmlatt></dt>
+                        <dd>When flag has been set, specify a changebar color, style, or character,
+                            according to the changebar support of the target output format. If flag
+                            has not been set, this attribute is ignored.</dd>
+                    </dlentry>
+                    <dlentry
+                        conref="../../common/conref-attribute.dita#conref-attribute/ditaval-color">
+                        <dt/>
+                        <dd/>
+                    </dlentry>
+                    <dlentry
+                        conref="../../common/conref-attribute.dita#conref-attribute/ditaval-backcolor">
+                        <dt/>
+                        <dd/>
+                    </dlentry>
+                    <dlentry
+                        conref="../../common/conref-attribute.dita#conref-attribute/ditaval-style">
+                        <dt/>
+                        <dd/>
+                    </dlentry>
+                </dl></p></section>
+</refbody>
+</reference>
+

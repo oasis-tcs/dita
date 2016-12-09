@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept id="conditional-processing-attributes" xml:lang="en-us">
+   <title>Conditional processing attributes</title>
+   <shortdesc>The metadata attributes specify properties of the content that can be used to
+      determine how the content should be processed. Specialized metadata attributes can be defined
+      to enable specific business-processing needs, such as semantic processing and data
+      mining.</shortdesc>
+   <prolog>
+      <metadata>
+         <keywords>
+            <indexterm>attributes<indexterm>conditional processing</indexterm></indexterm>
+            <indexterm>conditional processing<indexterm>attributes</indexterm></indexterm>
+            <indexterm>filtering<indexterm>attributes</indexterm></indexterm>
+            <indexterm>flagging<indexterm>attributes</indexterm></indexterm>
+            <indexterm>metadata<indexterm>conditional processing attributes</indexterm></indexterm>
+            <indexterm>outputclass
+                  attribute<indexterm>example</indexterm><indexterm>overview</indexterm></indexterm>
+         </keywords>
+      </metadata>
+   </prolog>
+   <conbody>
+      <p>Metadata attributes typically are used for the following purposes:</p>
+      <ul>
+         <li>Filtering content based on the attribute values, for example, to suppress or publish
+            profiled content</li>
+         <li>Flagging content based on the attribute values, for example, to highlight specific
+            content on output</li>
+         <li>Performing custom processing, for example, to extract business-critical data and store
+            it in a database</li>
+      </ul>
+      <p>Typically <xmlatt>audience</xmlatt>, <xmlatt>platform</xmlatt>, <xmlatt>product</xmlatt>,
+            <xmlatt>otherprops</xmlatt>, <xmlatt>props</xmlatt>, <xmlatt >deliveryTarget</xmlatt>, and
+         specializations of the <xmlatt>props</xmlatt> attributes are used for filtering; the same
+         attributes plus the <xmlatt>rev</xmlatt> attribute are used for flagging. The
+            <xmlatt>status</xmlatt> and <xmlatt>importance</xmlatt> attributes, as well as custom
+         attributes specialized from <xmlatt>base</xmlatt>, are used for application-specific
+         behavior, such as identifying metadata to aid in search and retrieval.</p>
+      <section id="filtering-and-flagging-attributes">
+         <title>Filtering and flagging attributes</title>
+         <p>The following conditional-processing attributes are available on most elements:</p>
+         <dl>
+            <dlentry>
+               <dt><xmlatt>product</xmlatt></dt>
+               <dd>The product that is the subject of the discussion. </dd>
+            </dlentry>
+            <dlentry>
+               <dt><xmlatt>platform</xmlatt></dt>
+               <dd>The platform on which the product is deployed.</dd>
+            </dlentry>
+            <dlentry>
+               <dt><xmlatt>audience</xmlatt></dt>
+               <dd>The intended audience of the content.</dd>
+            </dlentry>
+            <dlentry conref="../../common/conref-file.dita#reuse_file/deliveryTarget">
+               <dt/>
+               <dd/>
+            </dlentry>
+            <dlentry>
+               <dt><xmlatt>rev</xmlatt></dt>
+               <dd>The revision or draft number of the current document. (This is used only for
+                  flagging.)</dd>
+            </dlentry>
+            <dlentry>
+               <dt><xmlatt>otherprops</xmlatt></dt>
+               <dd>Other properties that do not require semantic identification.</dd>
+            </dlentry>
+            <dlentry>
+               <dt><xmlatt>props</xmlatt></dt>
+               <dd>A generic conditional processing attribute that can be specialized to create new
+                  semantic conditional-processing attributes.</dd>
+            </dlentry>
+         </dl>
+         <!--<p>In general, a conditional processing attribute provides a list of one or more values separated with whitespace, <ph rev="DITA1.3 proposal-13056">or it contains one or more groups that subcategorize the attribute</ph>. For instance, <codeph>audience="administrator programmer"</codeph> qualifies the content as applying to administrators and programmers. <ph rev="DITA1.3 proposal-13056">Using groups, <codeph>product="database(A B) appserver(C)"</codeph> qualifies the content as applying to databases A and B, as well as to application server C.</ph></p>-->
+      </section>
+      <section id="other-metadata-attributes">
+         <title>Other metadata attributes</title>
+         <p>Other attributes are still considered metadata on an element, but they are not designed
+            for filtering or flagging.</p>
+         <dl>
+            <dlentry>
+               <dt><xmlatt>importance</xmlatt></dt>
+               <dd>The degree of priority of the content. This attribute takes a single value from
+                  an enumeration. </dd>
+            </dlentry>
+            <dlentry>
+               <dt><xmlatt>status</xmlatt></dt>
+               <dd>The current state of the content. This attribute takes a single value from an
+                  enumeration.</dd>
+            </dlentry>
+            <dlentry>
+               <dt><xmlatt>base</xmlatt></dt>
+               <dd>A generic attribute that has no specific purpose, but is intended to act as the
+                  basis for specialized attributes that have a simple value syntax like the
+                  conditional processing attributes (one or more alphanumeric values separated by
+                  whitespace or parenthesized groups of values).</dd>
+            </dlentry>
+            <dlentry>
+               <dt><xmlatt>outputclass</xmlatt></dt>
+               <dd>Provides a label on one or more element instances, typically to specify a role or
+                  other semantic distinction. As the <xmlatt>outputclass</xmlatt> attribute does not
+                  provide a formal type declaration or the structural consistency of specialization,
+                  it should be used sparingly, usually only as a temporary measure while a
+                  specialization is developed. For example, <xmlelement>uicontrol</xmlelement>
+                  elements that define button labels could be distinguished by adding an
+                     <xmlatt>outputclass</xmlatt> attribute:
+                  <codeblock>&lt;uicontrol outputclass="button">Cancel&lt;/uicontrol></codeblock>The
+                  value of the <xmlatt>outputclass</xmlatt> attribute can be used to trigger XSLT or
+                  CSS rules, while providing a mapping to be used for future migration to a more
+                  specialized set of user interface elements.</dd>
+            </dlentry>
+         </dl>
+      </section>
+   </conbody>
+</concept>
+

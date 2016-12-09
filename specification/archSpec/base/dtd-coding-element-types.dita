@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="general-coding-requirements" xml:lang="en-us">
+  <title>DTD: Coding requirements for element type declarations</title>
+  <shortdesc>This topic covers general coding requirements for defining element types in both
+    structural and element-domain vocabulary modules. In addition, it covers how to create the
+      <xmlatt>domains</xmlatt> attribute contribution for these modules.</shortdesc>
+  <conbody>
+    <p>A vocabulary module that defines a structural or element domain specialization is composed of
+      two files:</p>
+    <ul otherprops="examples">
+      <li>An entity declaration (<filepath>.ent</filepath>) file, which declares the text entities
+        that are used to integrate the vocabulary module into a document-type shell</li>
+      <li>A definition module (<filepath>.mod</filepath>) file, which declares the <ph
+          >element names, content models, and attribute lists</ph> for the
+        element types that are defined in the vocabulary module</li>
+    </ul>
+    <section id="domains-contribution">
+      <title><xmlatt>domains</xmlatt> attribute contribution</title>
+      <p>A domain declaration entity is used to construct the effective value of the
+          <xmlatt>domains</xmlatt> attribute for a map or topic type.</p>
+      <dl>
+        <dlentry>
+          <dt>Text entity name</dt>
+          <dd>
+            <p>The name of the text entity is the structural type name or the domain abbreviation,
+              followed by a hyphen ("-") and the literal <codeph>att</codeph>.</p>
+          </dd>
+        </dlentry>
+        <dlentry>
+          <dt>Text entity values</dt>
+          <dd>
+            <p>The value of the text entity is the <xmlatt>domains</xmlatt> attribute contribution
+              for the current module. See <xref
+                href="specialization-domains-attribute.dita#domainsatt"/> for details on how to
+              construct this value.</p>
+          </dd>
+        </dlentry>
+      </dl>
+      <p otherprops="examples">For example, the <xmlatt>domains</xmlatt> attribute contributions for
+        the concept structural module and the highlighting domain module are are constructed as
+        follows.</p>
+      <ul otherprops="examples">
+        <li>
+          <codeph>&lt;!ENTITY concept-att "(topic concept)"></codeph></li>
+        <li><codeph>&lt;!ENTITY hi-d-att "(topic hi-d)"></codeph>.</li>
+      </ul>
+    </section>
+    <section id="element-definitions">
+      <title>Element definitions</title>
+      <p>A structural or domain vocabulary module must contain a declaration for each element type
+        that is named by the module. While the XML standard allows content models to refer to
+        undeclared element types, the DITA standard does not permit this. All element types or
+        attribute lists that are named within a vocabulary module must be declared in one of the
+        following objects:</p>
+      <ul>
+        <li>The vocabulary module</li>
+        <li>A base module of which the vocabulary module is a direct or indirect specialization</li>
+        <li>(If the vocabulary module is a structural module) A required domain module</li>
+      </ul>
+      <p>The following components make up a single element definition in a DITA DTD-based vocabulary
+        module.</p>
+      <dl>
+        <dlentry>
+          <dt>Element name entities</dt>
+          <dd>
+            <p>For each element type, there must be a parameter entity with a name that matches the
+              element type name. The default value is the element type name. This parameter entity
+              provides a layer of abstraction when setting up content models; it can be redefined in
+              a document-type shell in order to create domain extensions or constraints. Element
+              name entities for a single vocabulary module are typically grouped together at the top
+              of the vocabulary module.</p>
+            <p otherprops="examples">For example:
+                <codeph><![CDATA[<!ENTITY % topichead "topichead">]]></codeph></p>
+          </dd>
+        </dlentry>
+        <dlentry>
+          <dt>Content-model parameter entity</dt>
+          <dd>
+            <p>For each element type, there must be a parameter entity that defines the content
+              model. The name of the parameter entity is
+                <codeph><varname>tagname</varname>.content</codeph>, and the value is the content
+              model definition. Consistent use and naming of the
+                <codeph><varname>tagname</varname>.content</codeph> parameter entity enables the use
+              of constraint modules to restrict the content model.</p>
+            <p otherprops="examples">For
+              example:<codeblock>&lt;!ENTITY % topichead.content
+  "((%topicmeta;)?, 
+    (%anchor; | 
+     %data.elements.incl; | 
+     %navref; | 
+     %topicref;)*)
+"></codeblock></p>
+          </dd>
+        </dlentry>
+        <dlentry>
+          <dt>Attribute-list parameter entity</dt>
+          <dd>
+            <p>For each element type, there must be a parameter entity that declares the attributes
+              that are available on the element. The name of the parameter entity is
+                  <codeph><varname>tagname</varname>.attributes</codeph>, and the value is a list of
+              the attributes that are used by the element type (except for <xmlatt>class</xmlatt>
+              and the attributes provided by the <codeph>global-atts</codeph>
+              parameter entity). Consistent use and naming of the
+                <codeph><varname>tagname</varname>.attributes</codeph> parameter entity enables the
+              use of constraint modules to restrict attributes.</p>
+            <p otherprops="examples">For
+              example:<codeblock>&lt;!ENTITY % topichead.attributes
+ "navtitle CDATA #IMPLIED
+  outputclass CDATA #IMPLIED
+  keys CDATA #IMPLIED
+  copy-to CDATA #IMPLIED
+  %topicref-atts;
+  %univ-atts;"
+></codeblock></p>
+          </dd>
+        </dlentry>
+        <dlentry>
+          <dt>Element declaration</dt>
+          <dd>
+            <p>For each element type, there must be an element declaration that consists of a
+              reference to the content-model parameter entity.</p>
+            <p otherprops="examples">For
+              example:<codeblock>&lt;!ELEMENT topichead    %topichead.content;></codeblock></p>
+          </dd>
+        </dlentry>
+        <dlentry>
+          <dt>Attribute list declaration</dt>
+          <dd>
+            <p>For each element type, there must be an attribute list declaration that consists of a
+              reference to the attribute-list parameter entity.</p>
+            <p otherprops="examples">For
+              example:<codeblock>&lt;!ATTLIST topichead    %topichead.attributes;></codeblock></p>
+          </dd>
+        </dlentry>
+        <dlentry>
+          <dt>Specialization attribute declarations</dt>
+          <dd>
+            <p>A vocabulary module must define a <xmlatt>class</xmlatt> attribute for every <ph
+                >element that is </ph>declared in the module. The value of the
+              attribute is constructed according to the rules in <xref
+                href="specialization-class-attribute.dita"/>. The <codeph>ATTLIST</codeph>
+              declaration for the <xmlatt>class</xmlatt> attribute should also include a reference
+              to the <codeph>global-atts</codeph> parameter entity.</p>
+            <p otherprops="examples">For example, the <codeph>ATTLIST</codeph>
+              definition for the <xmlelement>topichead</xmlelement> element (a specialization of the
+                <xmlelement>topicref</xmlelement> element in the base map type) includes global
+              attributes with an entity, then the definition of the <xmlatt>class</xmlatt>
+              attribute, as
+              follows:<codeblock>&lt;!ATTLIST topichead  %global-atts;  class CDATA "+ map/topicref  mapgroup-d/topichead "&gt;</codeblock></p>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+  </conbody>
+</concept>
+

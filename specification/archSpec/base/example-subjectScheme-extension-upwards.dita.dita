@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_uny_kjz_vp">
+  <title>Example: Extending a subject scheme upwards</title>
+  <shortdesc>You can broaden the scope of a subject category by creating a new subject scheme map
+    that defines the original subject category as a child of a broader category.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>examples<indexterm>subjectScheme<indexterm>extending a subject
+            scheme</indexterm></indexterm></indexterm>
+        <indexterm>subjectScheme<indexterm>examples<indexterm>extending a subject
+            scheme</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <example id="example" otherprops="examples">
+      <p>The following subject scheme map creates a "Software" category that includes operating
+        systems as well as applications. The subject scheme map that defines the operation system
+        subjects is pulled in by reference, while the application subjects are defined directly in
+        the subject scheme map below.</p>
+      <codeblock>&lt;subjectScheme>
+  &lt;schemeref href="baseOS.ditamap"/>
+  &lt;subjectdef keys="sw" navtitle="Software">
+    &lt;subjectdef keyref="os"/>
+    &lt;subjectdef keys="app" navtitle="Applications">
+      &lt;subjectdef keys="apacheserv" navtitle="Apache Web Server"/>
+      &lt;subjectdef keys="mysql" navtitle="MySQL Database"/>
+    &lt;/subjectdef>
+  &lt;/subjectdef>
+&lt;/subjectScheme></codeblock>
+      <p>If the subject scheme that is defined in <filepath>baseOS.ditamap</filepath> binds the "os"
+        subject to the <xmlatt>platform</xmlatt> attribute, the app subjects that are defined in the
+        extension subject scheme do not become part of that enumeration, since they are not part of
+        the "os" subject</p>
+      <p>To enable the upward extension of an enumeration, information architects can define the
+        controlled values in one subject scheme map and bind the controlled values to the attribute
+        in another subject scheme map. This approach will let information architects bind an
+        attribute to a different set of controlled values with less rework.</p>
+      <p>An adopter would use the extension subject scheme as the subject scheme that governs the
+        controlled values. Any subject scheme maps that are referenced by the extension subject
+        scheme are effectively part of the extension subject scheme.</p>
+    </example>
+  </conbody>
+</concept>

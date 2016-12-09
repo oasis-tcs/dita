@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="foreign" xml:lang="en-us">
+<title><xmlelement>foreign</xmlelement></title>
+<shortdesc>The <xmlelement>foreign</xmlelement> element allows the introduction of non-DITA content,
+    for example, MathML, SVG, or Rich Text Format (RTF). The <xmlelement>foreign</xmlelement>
+    element or a specialization <ph rev="public-review-1">can</ph> contain more than one type of
+    non-DITA content or a mix of DITA and non-DITA content. Specialization of the
+      <xmlelement>foreign</xmlelement> element generally is implemented as a domain, but architects
+    looking for more control over the content <ph rev="public-review-1">can</ph> implement foreign
+    vocabularies as structural specializations.</shortdesc>
+<prolog><metadata>
+<keywords>
+<indexterm>foreign</indexterm>
+        <indexterm>specialization elements<indexterm>foreign</indexterm></indexterm><indexterm>foreign vocabularies, including</indexterm>
+</keywords>
+</metadata></prolog>
+<refbody>
+<section id="section-1">       <p>Processors should attempt to display <xmlelement>foreign</xmlelement> content unless
+        otherwise instructed. If the processor cannot render the content, it <term
+          outputclass="RFC-2119">MAY</term> issue a warning.</p><p>The enabler of the foreign vocabulary must provide the processing and override the base
+        processing for <xmlelement>foreign</xmlelement>. </p><ul>
+<li>If <xmlelement>foreign</xmlelement> contains more than one alternative content element, they
+          should all be processed. In the case of <xmlelement>desc</xmlelement> they should be
+          concatenated in a similar way to <xmlelement>section</xmlelement>, but with no title
+          (analogous to <xmlelement>div</xmlelement> in HTML). </li>
+<li>If alternate content is desired, specialize the <xmlelement>desc</xmlelement> element to contain
+          it. This specialization of <xmlelement>desc</xmlelement> should be used within the element
+          specialized from <xmlelement>foreign</xmlelement>. Such alternate content must of course
+          be valid wherever the <xmlelement>foreign</xmlelement> specialization is valid.</li>
+<li> If no <xmlelement>desc</xmlelement>, <xmlelement>object</xmlelement>, or
+            <xmlelement>image</xmlelement> element is found within an instance of the
+            <xmlelement>foreign</xmlelement> element, the base processing <ph rev="public-review-1"
+            >can</ph> emit a warning about the absence of processable content.</li>
+<li>The base processing for <xmlelement>object</xmlelement>
+          <ph rev="public-review-1">might</ph> emit the content of <xmlelement>foreign</xmlelement>
+          as a file at the location specified by the <xmlatt>data</xmlatt> attribute of the
+            <xmlelement>object</xmlelement> element. The <xmlelement>object</xmlelement> element
+          should have a data attribute or a <xmlelement>foreign</xmlelement> sub-element but not
+          both. In the event that an <xmlelement>object</xmlelement> element contains both a data
+          attribute and an <xmlelement>foreign</xmlelement> sub-element the processing system should
+          ignore one of them.</li>
+</ul>     </section>
+<section conref="../../common/commonNavLibraryTable.dita#contentmodel-foreign/contains" id="contains" otherprops="contains"></section>
+<section id="inheritance" otherprops="inheritance">       <title>Inheritance</title> 
+     <p>- topic/foreign </p>     </section>
+<example id="example" otherprops="examples">       <title>SVG Example within a <xmlelement>p</xmlelement> element</title><codeblock>&lt;p&gt;... as in the formula 
+  &lt;svg&gt;
+    &lt;svg:svg width="100%" height="100%" version="1.1"
+xmlns="http://www.w3.org/2000/svg"&gt;
+
+&lt;ellipse cx="300" cy="150" rx="200" ry="80"
+style="fill:rgb(200,100,50);
+stroke:rgb(0,0,100);stroke-width:2"/&gt;
+
+    &lt;/svg:svg&gt;    
+  &lt;/svg&gt;.
+&lt;/p&gt; </codeblock>     </example>
+<example id="example-math" otherprops="examples">
+      <title>MathML Example within an <xmlelement>object</xmlelement> element</title>
+      <codeblock>&lt;p&gt;... as in the formula 
+&lt;object&gt;
+  &lt;desc&gt;4 + x&lt;/desc&gt;
+  &lt;mathml&gt;
+    &lt;m:math display="block"&gt;
+      &lt;m:mrow&gt;
+        &lt;m:mo&gt;sum&lt;/m:mo&gt;
+        &lt;m:mn&gt;4&lt;/m:mn&gt;
+        &lt;m:mo&gt;+&lt;/m:mo&gt;
+        &lt;m:mi&gt;x&lt;/m:mi&gt;
+      &lt;/m:mrow&gt;
+    &lt;/m:math&gt;    
+  &lt;/mathml&gt;
+ &lt;/object&gt;.
+&lt;/p&gt; </codeblock>
+    </example>
+<section id="attributes"><title>Attributes</title>
+      <p conref="../../common/conref-attribute.dita#conref-attribute/universal-outputclass"/>
+</section>
+</refbody>
+</reference>
+
