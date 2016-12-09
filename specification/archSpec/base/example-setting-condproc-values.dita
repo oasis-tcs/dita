@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="example-condproc-values">
+  <title>Example: Setting conditional processing values and groups</title>
+  <shortdesc rev="public-review-1">Conditional processing attributes can be used to classify content
+    using either individual values or using groups.</shortdesc>
+  <conbody>
+    <example id="example" otherprops="examples">
+      <title>Example: Simple product values</title>
+      <p>In the following example, the first configuration option applies only to the "extendedprod"
+        product, while the second option applies to both "extendedprod" and to "baseprod". The
+        entire <xmlelement>p</xmlelement> element containing the list applies to an audience of
+        "administrator".</p>
+      <codeblock>&lt;p audience="administrator">Set the configuration options:
+  &lt;ul>
+    &lt;li product="extendedprod">Set foo to bar&lt;/li>
+    &lt;li product="basicprod extendedprod">Set your blink rate&lt;/li>
+    &lt;li>Do some other stuff&lt;/li>
+    &lt;li>Do a special thing for Linux&lt;/li>
+  &lt;/ul>
+&lt;/p>
+</codeblock>
+    </example>
+    <example id="groupexample"  otherprops="examples">
+      <title>Example: Grouped values on an attribute</title>
+      <p>The following example indicates that a step applies to one application server and two
+        databases. Specifically, this step only applies when it is taken on the server "mySERVER";
+        likewise, it only applies when used with the databases "ABC" or "dbOtherName". </p>
+      <codeblock id="groupcodesample">&lt;steps>
+  &lt;step>&lt;cmd>Common step&lt;/cmd>&lt;/step>
+  &lt;step product="appserver(mySERVER) database(ABC dbOtherName)">
+    &lt;cmd>Do something special for databases ABC or OtherName when installing on mySERVER&lt;/cmd>
+  &lt;/step>
+  &lt;!-- additional steps -->
+&lt;/steps></codeblock>
+    </example>
+  </conbody>
+</concept>

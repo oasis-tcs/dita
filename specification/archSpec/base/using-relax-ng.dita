@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="using-relax-ng" >
+ <title>Normative versions of DITA grammar files</title>
+ <shortdesc>The OASIS DITA Technical Committee uses the RELAX NG XML syntax for the normative
+    versions of the XML grammar files that comprise the DITA release. </shortdesc>
+ <conbody>
+    <p>The DITA Technical Committee chose the RELAX NG XML syntax for the following reasons:</p>
+    <dl>
+      <dlentry>
+        <dt>Easy use of foreign markup</dt>
+        <dd>The DITA grammar files maintained by OASIS depend on this feature of RELAX NG in order
+          to capture metadata about document-type shells and modules; such metadata is used to
+          generate the DTD- and XSD-based versions of the grammar files.<p>The foreign vocabulary
+            feature also can be used to include Schematron rules directly in RELAX NG grammars.
+            Schematron rules can check for patterns that either are not expressible with RELAX NG
+            directly or that would be difficult to express.</p></dd>
+      </dlentry>
+      <dlentry>
+        <dt>RELAX NG <xmlelement>div</xmlelement> element </dt>
+        <dd>This general grouping element allows for arbitrary organization and grouping of patterns
+          within grammar documents. Such grouping tends to make the grammar documents easier to work
+          with, especially in XML-aware editors. <ph >The use or non-use of the RELAX
+            NG <xmlelement>div</xmlelement> element does not affect the meaning of the patterns that
+            are defined in a RELAX NG schema.</ph></dd>
+      </dlentry>
+      <dlentry>
+        <dt>Capability of expressing precise restrictions</dt>
+        <dd>RELAX NG is capable of expressing constraints that are more precise than is possible
+          with either DTDs or XSDs. For example, RELAX NG patterns can be context specific such that
+          the same element type can allow different content or attributes in different
+            contexts.<p>If you plan to generate DTD- or XSD-based modules from RELAX NG modules,
+            avoid RELAX NG features that cannot be translated into DTD or XSD constructs. When RELAX
+            NG is used directly for DITA document validation, the document-type shells for those
+            documents can integrate constraint modules that use the full power of RELAX NG to
+            enforce constraints that cannot be enforced by DTDs or XSDs. The grammar files provided
+            by the OASIS DITA Technical Committee do not use any features of RELAX NG that cannot be
+            translated into equivalent DTD or XSD constructs.</p></dd>
+      </dlentry>
+    </dl>
+    <p>The DITA use of RELAX NG depends on the <cite>RELAX NG DTD Compatibility</cite>
+      specification, which provides a mechanism for defining default attribute values and embedded
+      documentation. Processors that use RELAX NG for DITA documents in which required attributes
+      (for example, the <xmlatt>domains</xmlatt> and <xmlatt>class</xmlatt> attributes)  are not
+      explicitly present must implement the DTD compatibility specification in order to get default
+      attribute values.</p>
+ </conbody>
+</concept>

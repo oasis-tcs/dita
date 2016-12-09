@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_zms_tw1_mp">
+ <title>Example: <ph >References to scoped keys</ph></title>
+ <shortdesc>You can address scoped keys from outside the key scope <ph >in which the
+   keys are defined</ph>.</shortdesc>
+ <conbody>
+  <codeblock>&lt;map xml:lang="en">
+  &lt;title>Examples of scoped key references&lt;/title>
+
+  &lt;!-- Key scope #1 -->
+  &lt;topicgroup keyscope="scope-1">
+    <b>&lt;keydef keys="key-1" href="topic-1.dita"/></b>
+    &lt;topicref keyref="key-1"/>
+    &lt;topicref keyref="scope-1.key-1"/>
+    &lt;topicref keyref="scope-2.key-1"/>
+  &lt;/topicgroup>
+
+  &lt;!-- Key scope #2 -->
+  &lt;topicgroup keyscope="scope-2">
+    <b>&lt;keydef keys="key-1" href="topic-2.dita"/></b>
+    &lt;topicref keyref="key-1"/>
+    &lt;topicref keyref="scope-1.key-1"/>
+    &lt;topicref keyref="scope-2.key-1" />
+  &lt;/topicgroup>
+
+  &lt;topicref keyref="key-1" />
+  &lt;topicref keyref="scope-1.key-1" />
+  &lt;topicref keyref="scope-2.key-1" />
+
+&lt;/map></codeblock>
+  <p>For this example, the effective key definitions are listed in the following tables.</p>
+  <table frame="all" rowsep="1" colsep="1">
+   <title>Effective key definitions for <ph >scope-1</ph></title>
+   <tgroup cols="2">
+    <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+    <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+    <thead>
+     <row>
+      <entry>Key reference</entry>
+      <entry>Resource</entry>
+     </row>
+    </thead>
+    <tbody>
+     <row>
+      <entry>key-1</entry>
+      <entry><filepath>topic-1.dita</filepath></entry>
+     </row>
+     <row>
+      <entry>scope-1.key-1</entry>
+      <entry><filepath>topic-1.dita</filepath></entry>
+     </row>
+     <row>
+      <entry>scope-2.key-1</entry>
+      <entry><filepath>topic-2.dita</filepath></entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </table>
+  <table frame="all" rowsep="1" colsep="1">
+   <title>Effective key definitions for <ph >scope-2</ph></title>
+   <tgroup cols="2">
+    <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+    <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+    <thead>
+     <row>
+      <entry>Key reference</entry>
+      <entry>Resource</entry>
+     </row>
+    </thead>
+    <tbody>
+     <row>
+      <entry>key-1</entry>
+      <entry><filepath>topic-2.dita</filepath></entry>
+     </row>
+     <row>
+      <entry>scope-1.key-1</entry>
+      <entry><filepath>topic-1.dita</filepath></entry>
+     </row>
+     <row>
+      <entry>scope-2.key-1</entry>
+      <entry><filepath>topic-2.dita</filepath></entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </table>
+  <table frame="all" rowsep="1" colsep="1">
+   <title><ph >Effective key definitions for the key scope associated with the root
+     map</ph></title>
+   <tgroup cols="2">
+    <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+    <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+    <thead>
+     <row>
+      <entry>Key reference</entry>
+      <entry>Resource</entry>
+     </row>
+    </thead>
+    <tbody>
+     <row>
+      <entry>key-1</entry>
+      <entry>Undefined</entry>
+     </row>
+     <row>
+      <entry>scope-1.key-1</entry>
+      <entry><filepath>topic-1.dita</filepath></entry>
+     </row>
+     <row>
+      <entry>scope-2.key-1</entry>
+      <entry><filepath>topic-2.dita</filepath></entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </table>
+ </conbody>
+</concept>

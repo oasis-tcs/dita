@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="topicsubject" xml:lang="en-us">
+<title><xmlelement>topicsubject</xmlelement></title>
+<shortdesc>The <xmlelement>topicsubject</xmlelement> element identifies the subjects covered by a
+topic or map.</shortdesc>
+<prolog><metadata>
+<keywords><indexterm>topicsubject</indexterm>
+        <indexterm>classification domain elements<indexterm>topicsubject</indexterm></indexterm></keywords>
+</metadata></prolog>
+<refbody>
+<section id="section-1"><p>In order to identify a primary subject, refer to the subject with the
+<xmlelement>topicsubject</xmlelement> itself. Subjects can be identified by <xmlatt>keys</xmlatt>
+(if defined in the scheme) or, if the subject definition topic exists, by <xmlatt>href</xmlatt> (as
+with ordinary topic references).</p><p>Additional secondary subjects can be specified by nested <xmlelement>subjectref</xmlelement>
+elements.</p></section>
+<section conref="../../common/commonNavLibraryTable.dita#contentmodel-topicsubject/contains" id="contains" otherprops="contains"></section>
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>+
+map/topicref classify-d/topicsubject </p></section>
+<example id="example" otherprops="examples"><title>Example</title><p>In the following example, the map is classified as covering Linux as the primary subject; the
+topic "Developing web applications" also covers the secondary web and development subjects. These
+subjects (and their keys) are defined externally in a subject scheme map; in order to reference the
+subject directly without the subject scheme map, the <xmlatt>href</xmlatt> attribute would be used
+in place of <xmlatt>keyref</xmlatt>.</p><codeblock>&lt;map>
+  &lt;title>Working with Linux&lt;/title>
+  <b>&lt;topicsubject keyref="linux"/></b>
+  &lt;!-- ... -->
+  &lt;topicref href="webapp.dita" navtitle="Developing web applications">
+    <b>&lt;topicsubject></b>
+      &lt;subjectref keyref="web"/>
+      &lt;subjectref keyref="development"/>
+    <b>&lt;/topicsubject></b>
+    &lt;!-- ... -->
+  &lt;/topicref>
+  &lt;!-- ... -->
+&lt;/map></codeblock></example>
+<section id="attributes"><title>Attributes</title>
+<p>The following attributes are available on this element: <xref
+href="../attributes/universalAttributes.dita"/>, <xref
+href="../attributes/linkRelationshipAttributes.dita"/> (with a narrowed definition of
+<xmlatt>href</xmlatt>, given below), <xmlatt>navtitle</xmlatt> and <xmlatt>query</xmlatt> from <xref
+href="../attributes/topicrefElementAttributes.dita"/>, <xref
+href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, <xref
+href="../attributes/thekeyrefattribute.dita"><xmlatt>keyref</xmlatt></xref>, and <xref
+href="../attributes/thekeysattribute.dita"><xmlatt>keys</xmlatt></xref>. This element also uses
+narrowed definitions of <xmlatt>processing-role</xmlatt> and <xmlatt>toc</xmlatt> (given below) from
+<xref href="../attributes/commonMapAttributes.dita"/>.</p>
+<dl>
+<dlentry conref="../../common/conref-attribute.dita#conref-attribute/href-on-topicref">
+<dt/>
+<dd/>
+</dlentry>
+<dlentry
+conref="../../common/conref-attribute.dita#conref-attribute/processing-role-default-resource-only">
+<dt/>
+<dd/>
+</dlentry>
+<dlentry conref="../../common/conref-attribute.dita#conref-attribute/toc-default-no">
+<dt/>
+<dd/>
+</dlentry>
+</dl>
+</section>
+</refbody>
+</reference>
+

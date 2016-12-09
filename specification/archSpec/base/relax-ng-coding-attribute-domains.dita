@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="relax-ng-attribute-domain-module-coding-requirements" >
+ <title>RELAX NG: Coding requirements for <ph >attribute domain modules</ph></title>
+ <shortdesc>An attribute domain vocabulary module declares a new attribute specialized from either
+    the <xmlatt>props</xmlatt> or <xmlatt>base</xmlatt> attribute. An attribute domain module
+    defines exactly one new attribute type.</shortdesc>
+ <conbody>
+    <p conref="../../common/conref-file.dita#reuse_file/rng-domains-documentation"/>
+    <p conref="../../common/conref-file.dita#reuse_file/rng-attribute-domain-name"/>
+   <p>An attribute domain consists of one file, which has three sections:</p>
+    <dl>
+      <dlentry>
+        <dt>Domains attribute contribution</dt>
+        <dd>
+          <p>The <xmlatt>domains</xmlatt> contribution must be documented in the module. The value
+            is constructed according to the rules found in <xref
+              href="specialization-domains-attribute.dita"/>.</p>
+        </dd>
+      </dlentry>
+      <dlentry>
+        <dt>Attribute extension pattern</dt>
+        <dd>The attribute extension pattern extends either the <xmlatt>props</xmlatt> or
+            <xmlatt>base</xmlatt> attribute set pattern to include the attribute
+            specialization.<p>For specializations of <xmlatt>props</xmlatt> the pattern is named
+              <codeph>props-attribute-extensions</codeph>. The pattern specifies a
+              <xmlatt>combine</xmlatt> value of "interleave", and the content of the pattern is a
+            reference to the specialized attribute declaration pattern. For
+            example:<codeblock>&lt;define name="props-attribute-extensions" combine="interleave">
+    &lt;ref name="deliveryTargetAtt-d-attribute"/>
+&lt;/define></codeblock></p><p>For
+            specializations of <xmlatt>base</xmlatt> the pattern is named
+              <codeph>base-attribute-extensions</codeph>. The pattern specifies a
+              <xmlatt>combine</xmlatt> value of "interleave", and the content of the pattern is a
+            reference to the specialized attribute declaration pattern. For
+            example:<codeblock>&lt;define name="base-attribute-extensions" combine="interleave">
+    &lt;ref name="myBaseSpecializationAtt-d-attribute"/>
+&lt;/define></codeblock></p></dd>
+      </dlentry>
+      <dlentry>
+        <dt>Attribute declaration pattern</dt>
+        <dd>The specialized attribute is declared in a pattern named <codeph rev="public-review-1"
+><varname>domainName</varname>-d-attribute</codeph>. The attribute must be defined as optional. For
+example, the <xmlatt>deliveryTarget</xmlatt> specialization of <xmlatt>props</xmlatt> is defined as
+follows:<codeblock>&lt;define name="deliveryTargetAtt-d-attribute">
+  &lt;optional>
+    &lt;attribute name="deliveryTarget"/>
+  &lt;/optional>    
+&lt;/define></codeblock></dd>
+      </dlentry>
+    </dl>
+ </conbody>
+</concept>

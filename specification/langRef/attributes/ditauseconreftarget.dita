@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="usingthe-dita-use-conref-targetvalue" xml:lang="en-us">
+<title>Using the -dita-use-conref-target value</title>
+<shortdesc>The value -dita-use-conref-target is available on enumerated attributes and <ph
+      rev="public-review-1">can</ph> also be specified on other attributes. When an element uses
+      <xmlatt>conref</xmlatt> to pull in content, for any of its attributes assigned a value of
+    "-dita-use-conref-target", the resulting value for those attributes is also pulled in from the
+    referenced element.</shortdesc>
+<prolog><metadata>
+<keywords><indexterm>-dita-use-conref-target attribute value</indexterm>
+</keywords>
+</metadata></prolog>
+<refbody>
+<section id="section-1"><p>Ordinarily, when an element uses <xmlatt>conref</xmlatt>, any other attributes specified locally
+        will be preserved when the reference is resolved. This causes problems when attributes are
+        required, because required attributes must be specified regardless of whether the
+          <xmlatt>conref</xmlatt> attribute is present. The purpose of the -dita-use-conref-target
+        value is to allow the author to specify a value for a required attribute while still
+        allowing the conref resolution process to use the matching attribute from the referenced
+        element. The value has the same result when the attribute is not required.</p>
+      <p >The -dita-use-conref-target token is allowed on any attribute where
+        it is not prohibited by the XML grammar files or by the specification. For example, while
+          <xmlatt>cols</xmlatt> on the <xmlelement>tgroup</xmlelement> element is defined as being a
+        number, this token is implicitly allowed in order to support conref processing for
+          <xmlelement>tgroup</xmlelement>. However, the token is not allowed for the
+          <xmlatt>id</xmlatt> attribute on the <xmlelement>topic</xmlelement> element, because
+        "-dita-use-conref-target" does not fit the syntax required by the XML grammar files.</p></section>
+<example id="example" otherprops="examples">
+      <p>This example shows a map where the <xmlelement>topichead</xmlelement> element uses
+          <xmlatt>conref</xmlatt>. It specifies the <xmlatt>navtitle</xmlatt> attribute as well as
+        the <xmlatt>toc</xmlatt> attribute. In the resolved element, <xmlatt>navtitle</xmlatt> from
+        the referencing element is not preserved because it uses -dita-use-conref-target. The
+          <xmlatt>toc</xmlatt> attribute from the referencing element overrides the
+          <xmlatt>toc</xmlatt> attribute on the referenced element using normal conref resolution
+        rules.</p>
+      <note >In earlier versions of DITA, <xmlatt>navtitle</xmlatt> was required on
+        the <xmlelement>topichead</xmlelement> element. While it is no longer required, the example
+        still illustrates the expected processing for both required and non-required
+        attributes.</note>
+      <fig id="example-fig1">
+        <title>Pre-resolution</title>
+        <codeblock>&lt;map>&lt;title>Conref demonstration&lt;/title>
+  &lt;topichead id="heading"
+             navtitle="This is a heading"
+             toc="yes"
+             linking="normal">
+    &lt;topicref href="topic.dita" navtitle="content"/>
+  &lt;/topichead>
+
+  &lt;topichead conref="#heading"
+             navtitle="-dita-use-conref-target"
+             toc="no">
+  &lt;/topichead>
+&lt;/map></codeblock>
+      </fig>
+      <fig id="example-fig2">
+        <title>Effective result post-resolution</title>
+        <codeblock rev="public-review-1">&lt;map>&lt;title>Conref demonstration&lt;/title>
+  &lt;topichead id="heading"
+             navtitle="This is a heading"
+             toc="yes"
+             linking="normal">
+    &lt;topicref href="topic.dita" navtitle="content"/>
+  &lt;/topichead>
+
+  &lt;topichead navtitle="This is a heading"
+             toc="no"
+             linking="normal">
+    &lt;topicref href="topic.dita" navtitle="content"/>
+  &lt;/topichead>
+&lt;/map>
+</codeblock>
+      </fig>
+    </example>
+</refbody>
+</reference>
+

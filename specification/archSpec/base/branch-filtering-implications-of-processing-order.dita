@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="branch-filtering-implications-of-processing-order">
+ <title>Branch filtering: Implications of processing order</title>
+ <shortdesc>Because the branch filtering process can result in new or renamed keys, key scopes, or
+    URIs, the full effects of the branch filtering process <term outputclass="RFC-2119"
+      >MUST</term> be calculated by processors before they construct the effective
+    map and key scope structure.</shortdesc>
+ <conbody>
+    <note>The <xmlatt>keyref</xmlatt> attribute and related attributes are explicitly disallowed on
+        <xmlelement>ditavalref</xmlelement>. This prevents any confusion resulting from a
+        <xmlatt>keyref</xmlatt> that resolves to additional key- or resource-renaming
+      metadata.</note>
+  <p>In general, the DITA specification refrains from mandating a processing order; thus publication
+      results can vary slightly depending on the order in which processes are run. With branch
+      filtering, processors are not required to apply filter conditions specified outside of the map
+      and filter conditions specified with <xmlelement>ditavalref</xmlelement> at the same time in a
+      publishing process.</p>
+  <p >For example, a processor might use the following processing order:</p>
+    <ol>
+      <li>Apply externally-specified filter conditions to maps</li>
+      <li>Apply filtering  based on <xmlelement>ditavalref</xmlelement> elements</li>
+    </ol>
+    <p >Because externally-specified "exclude" conditions always take precedence over
+      branch-specific conditions, content excluded based on external conditions will always be
+      removed, regardless of the order in which processors evaluate conditions.</p>
+  <p>Processors should consider the following points when determining a processing order:</p>
+    <ul>
+      <li>If links are generated based on the map hierarchy, those links should be created using the
+        renamed keys and URIs that result from evaluating the <xmlelement>ditavalref</xmlelement>
+        filter conditions, to ensure that the links are consistent within the modified branches. For
+        example, sequential links based on a map hierarchy should remain within the appropriate
+        modified branch.</li>
+      <li>If conrefs are resolved in topics before the <xmlelement>ditavalref</xmlelement> filtering
+        conditions are evaluated, content that applies to multiple audiences can be brought in and
+        (later in the process) selectively filtered by branch. For example, if a set of installation
+        steps is pulled in with conref (from outside the branch), it might contain information that
+        is later filtered by platform based on <xmlelement>ditavalref</xmlelement>. This results in
+        copies of the steps that are specific to each operating system. If conref is processed after
+        the <xmlelement>ditavalref</xmlelement>, content might be pulled in that has not been
+        appropriately filtered for the new context.</li>
+      <li>The same scenario applies to conref values that push content into the branch.<ul>
+          <li>Pushing content into a branch before resolving the <xmlelement>ditavalref</xmlelement>
+            conditions allows content for multiple conditions to be pushed and then filtered by
+            branch based on the <xmlelement>ditavalref</xmlelement> conditions.</li>
+          <li>If the branch using <xmlelement>ditavalref</xmlelement> pushes content elsewhere,
+            resolving <xmlelement>ditavalref</xmlelement> first could result in multiple copies of
+            the content to be pushed (one for each branch), resulting in multiple potentially
+            conflicting copies pushed to the new destination.</li>
+        </ul>
+      </li>
+    </ul>
+ </conbody>
+</concept>

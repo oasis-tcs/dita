@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference
+  PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference
+  id="learningContentRef" xml:lang="en-us">
+  <title><xmlelement>learningContentRef</xmlelement></title>
+  <shortdesc>Use a <xmlelement>learningContentRef</xmlelement> element to include a topic reference
+    to a learning content topic as part of a DITA <xmlelement>learningObject</xmlelement>
+    element.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>learningContentRef</indexterm><indexterm>learning and training elements<indexterm
+            >learningContentRef</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody><section id="section-1">
+      <!--<draft-comment author="WEK">Removed "the href" as you can also use keyref and the addressing details are not relevant to this discussion.</draft-comment>-->
+      <p>By default, a <xmlelement>learningContentRef</xmlelement> is expected to link to a
+          <xmlelement>learningContent</xmlelement> topic. However, a
+          <xmlelement>learningContentRef</xmlelement> can link to content of any type that you want
+        to use as a learning content in a learning object. In this way, you can structure any
+        existing DITA content as a learning object, and then take advantage of the learning-specific
+        processing available for building and packaging that content for delivery in a learning
+        system or learning context. </p>
+      <p>The presentation intent for <xmlelement>learningContent</xmlelement> is that the topic be
+        presented as an atomic unit of presentation, for example, as required by SCORM delivery
+        requirements. Thus the default value for the <xmlatt>chunk</xmlatt> attribute is
+        "to-content". You can use <xmlelement>learningContentComponentRef</xmlelement> elements to
+        include subordinate topics.</p>
+      <!--RDA 18 February 2014: As part of the update to 1.3, John Hunt suggested removing defaults for @type. So, I've removed the following paragraph:
+ <p>When you include a reference to a DITA topic that is not learningContent, change the type attribute value to match the type of topic being referenced.</p>-->
+    </section><section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-learningContentRef/contains" otherprops="contains"></section>
+
+
+<section id="inheritance" otherprops="inheritance">
+      <title>Inheritance</title>
+      <p>+ map/topicref learningmap-d/learningContentRef </p>
+    </section>
+    <example id="example" otherprops="examples">
+      <title>Example</title>
+      <p>See <xref
+        href="learningObject.dita#learningObject/example">learningObject</xref>.</p>
+    </example>
+    <section id="attributes"><title>Attributes</title><sectiondiv
+        conref="../../common/conref-attribute.dita#conref-attribute/learningdomain-chunk-to-content"
+      /></section></refbody>
+</reference>

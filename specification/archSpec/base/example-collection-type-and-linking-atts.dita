@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_czm_brv_vr">
+ <title>Example: How the <xmlatt>collection-type</xmlatt> and <xmlatt>linking</xmlatt> attributes
+    determine links</title>
+  <shortdesc>In this scenario, a simple map establishes basic hierarchical and relationship table
+    links. The <xmlatt>collection-type</xmlatt> and <xmlatt>linking</xmlatt> attributes are then
+    added to modify how links are generated.</shortdesc>
+ <conbody>
+  <p>The following example illustrates how linkage is defined in a DITA map: </p>
+  <fig>
+   <title>Simple linking example</title>
+   <codeblock>&lt;topicref href="A.dita" collection-type="sequence"&gt;
+  &lt;topicref href="A1.dita"/&gt;
+  &lt;topicref href="A2.dita"/&gt;
+&lt;/topicref&gt;
+&lt;reltable&gt;
+  &lt;relrow&gt;
+    <ph>&lt;relcell&gt;&lt;topicref href="A.dita"/&gt;&lt;/relcell&gt;
+    &lt;relcell&gt;&lt;topicref href="B.dita"/&gt;&lt;/relcell&gt;</ph>
+  &lt;/relrow&gt;
+&lt;/reltable&gt;</codeblock>
+  </fig>
+  <p>When the output is generated, the topics contain the following linkage. Sequential
+      (next/previous) links between A1 and A2 are present because of the
+        <xmlatt>collection-type</xmlatt> attribute on the parent:</p>
+  <dl>
+   <dlentry>
+    <dt>A </dt>
+    <dd>Links to A1, A2 as children</dd>
+    <dd>Links to B as related</dd>
+   </dlentry>
+   <dlentry>
+    <dt>A1 </dt>
+    <dd>Links to A as a parent</dd>
+    <dd>Links to A2 as next in the sequence </dd>
+   </dlentry>
+   <dlentry>
+    <dt>A2 </dt>
+    <dd>Links to A as a parent </dd>
+    <dd>Links to A1 as previous in the sequence </dd>
+   </dlentry>
+   <dlentry>
+    <dt>B </dt>
+    <dd>Links to A as related </dd>
+   </dlentry>
+  </dl>
+  <p>The following example illustrates how setting the <xmlatt>linking</xmlatt> attribute can change
+   the default behavior: </p>
+  <fig>
+   <title>Linking example with the <xmlatt>linking</xmlatt> attribute</title>
+   <codeblock>&lt;topicref href="A.dita" collection-type="sequence"&gt;
+  &lt;topicref href="B.dita" linking="none"/&gt;
+  &lt;topicref href="A1.dita"/&gt;
+  &lt;topicref href="A2.dita"/&gt;
+&lt;/topicref&gt;
+&lt;reltable&gt;
+  &lt;relrow&gt;
+    <ph>&lt;relcell&gt;&lt;topicref href="A.dita"/&gt;&lt;/relcell&gt;
+    &lt;relcell linking="sourceonly"&gt;&lt;topicref href="B.dita"/&gt;&lt;/relcell&gt;</ph>
+  &lt;/relrow&gt;
+&lt;/reltable&gt;</codeblock>
+  </fig>
+  <p>When the output is generated, the topics contain the following linkage: </p>
+  <dl>
+   <dlentry>
+    <dt>A </dt>
+    <dd>Links to A1, A2 as children </dd>
+    <dd>Does not link to B as a child or related topic </dd>
+   </dlentry>
+   <dlentry>
+    <dt>A1 </dt>
+    <dd>Links to A as a parent </dd>
+    <dd>Links to A2 as next in the sequence </dd>
+    <dd>Does not link to B as previous in the sequence </dd>
+   </dlentry>
+   <dlentry>
+    <dt>A2 </dt>
+    <dd>Links to A as a parent </dd>
+    <dd>Links to A1 as previous in the sequence </dd>
+   </dlentry>
+   <dlentry>
+    <dt>B </dt>
+    <dd>Links to A as a related topic </dd>
+   </dlentry>
+  </dl>
+ </conbody>
+</concept>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="document-type-shells-equivalence">
+  <title>Equivalence of document-type shells</title>
+  <shortdesc>Two distinct DITA document types that are taken from different tools or environments
+    might be functionally equivalent.</shortdesc>
+  <conbody>
+    <p>A DITA document type is defined by the following:</p>
+    <ul>
+      <li>The set of modules that are declared in the <xmlatt>domains</xmlatt> attribute on the root
+        element of the document</li>
+      <li>The values of the <xmlatt>class</xmlatt> attributes of all the elements in the
+        document</li>
+      <li>Rules for topic nesting</li>
+    </ul>
+    <p>Two document-type shells define the same DITA document type if they integrate identical
+      vocabulary modules, constraint modules, and rules for topic nesting. For example, a document
+      type shell that is an unmodified copy of the OASIS-provided  document-type shell for topic
+      defines the same DITA document type as the original document-type shell. However, the new
+      document-type shell has the following differences:</p>
+    <ul>
+      <li>It is a distinct file that is stored in a different location.</li>
+      <li>It has a distinct system identifier.</li>
+      <li>If it has a public identifier, the public identifier is unique.</li>
+    </ul>
+    <note>The public or system identifier that is associated with a given document-type shell is
+      not, by itself, necessarily distinguishing. <ph >This is because two different
+        people or groups might use the same modules and constraints to assemble equivalent document
+        type shells, while giving them different names or public identifiers.</ph>
+    </note>
+  </conbody>
+</concept>

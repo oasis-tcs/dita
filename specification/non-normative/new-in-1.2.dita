@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept id="new-in_1_2" xml:lang="en-us">
+<title>Changes from DITA 1.1 to DITA 1.2</title>
+<shortdesc>DITA 1.2 added a number of new features to DITA, including indirect addressing using
+            map-defined keys; the ability to define content-model constraints for DITA document
+            types; specializations for learning content and the machine industry; and taxonomies,
+            ontologies, and controlled vocabularies. Other refinements include extended markup for
+            glossaries and terminology.</shortdesc>
+<conbody>
+<section id="new-features">       <title>New features</title>       <p>The following
+features are new in DITA 1.2:<ul>
+<li>Keys and key references.</li>
+<li>Constraint modules. Constraint modules allow base content models to be further restricted
+                                    without the need for specialization. For example, a constraint
+                                    module can make optional elements required or disallow optional
+                                    elements in a specific content model.</li>
+<li>Topic and map specializations for learning and training information, including interactive
+      assessments.</li>
+<li>New elements for use with glossary entry topics for more complete
+description of             terms, definition of acronyms, and so on. </li>
+<li>New map specialization for defining controlled vocabularies and taxonomies.</li>
+<li>New machine-industry task specialization.</li>
+                              <li >New general-task information type.</li>
+</ul></p>     </section>
+<section id="new-element-types">       <title>New element types</title>       <p>The following
+base element types are new in DITA 1.2:<dl><dlentry>
+<dt><xmlelement>text</xmlelement></dt>
+<dd>Allowed in most contexts where text is allowed but neither <xmlelement>ph</xmlelement> nor
+        <xmlelement>keyword</xmlelement> are allowed. Enables reuse of text in almost any
+       context.</dd>
+</dlentry><dlentry>
+<dt><xmlelement>bodydiv</xmlelement></dt>
+<dd>Allows creation of untitled containers within topic bodies. Intended
+primarily for               specialization.</dd>
+</dlentry><dlentry>
+<dt><xmlelement>sectiondiv</xmlelement></dt>
+<dd>Allows creation of untitled containers within sections. Intended
+primarily for               specialization.</dd>
+</dlentry><dlentry>
+<dt><xmlelement>keydef</xmlelement></dt>
+<dd>Topicref specialization for defining keys. Sets the default value for the
+        processing-<xmlatt>role</xmlatt> attribute to "resource-only".</dd>
+</dlentry><dlentry>
+<dt><xmlelement>mapref</xmlelement></dt>
+<dd>Topicref specialization for referring to DITA maps. Sets the default value for the
+        <xmlatt>format</xmlatt> attribute to "ditamap".</dd>
+</dlentry><dlentry>
+<dt><xmlelement>topicset</xmlelement></dt>
+<dd>Used to define sets of topicrefs that represent an atomic unit of reusable navigation structure.
+       Requires the <xmlatt>id</xmlatt> attribute be specified.</dd>
+</dlentry><dlentry>
+<dt><xmlelement>topicsetref</xmlelement></dt>
+<dd>References a <xmlelement>topicset</xmlelement> element. Enables preservation of the identity of
+       the referenced topic set.</dd>
+</dlentry><dlentry>
+<dt><xmlelement>anchor</xmlelement></dt>
+<dd>Defines a point within a map to which <xmlelement>topicref</xmlelement> elements can be bound
+       using the <xmlelement>anchorref</xmlelement> element.</dd>
+</dlentry><dlentry>
+<dt><xmlelement>anchorref</xmlelement></dt>
+<dd>"Pushes" one or more <xmlelement>topicref</xmlelement> elements onto an anchor point defined by
+       an <xmlelement>anchor</xmlelement> element. Similar to a conref push but allows the
+       relationship to be managed dynamically by the renderer.</dd>
+</dlentry></dl></p>     </section>
+<section id="refinements-to-maps">       <title>Refinements to maps</title>       <p>     
+   <ul>
+                              <li>Map elements can use the <xmlelement>title</xmlelement> element in
+                                    place of the <xmlatt>title</xmlatt> attribute.</li>
+                              <li>Relationship table elements can have
+                                          <xmlelement>title</xmlelement> as an optional first
+                                    child.</li>
+                              <li>Topicref elements can use the <xmlelement>navtitle</xmlelement>
+                                    element in place of the <xmlatt>navtitle</xmlatt>
+                                    attribute.</li>
+                              <li>Maps and topicrefs can now contain the same metadata elements as
+                                    topic prologs.</li>
+                              <li>New <xmlelement>topicref</xmlelement> attribute named
+                                          <xmlatt>processing-role</xmlatt>. Indicates whether or not
+                                    a topic reference contributes to the navigation structure of the
+                                    containing map.</li>
+                        </ul>       </p>     </section>
+<section id="refinements-to-conref">       <title>Refinements to content references</title> 
+     <p>         <ul>
+                              <li>Content references can now point to ranges of elements. For
+                                    example, a single content reference from a
+                                          <xmlelement>step</xmlelement> element can include a
+                                    sequence of <xmlelement>step</xmlelement> elements.</li>
+                              <li>Content references can "push" elements into a target context,
+                                    allowing unilateral augmentation of topics from other topics.
+                                    For example, given a base topic with generic content, a using
+                                    map could include both the generic topic and a separate topic
+                                    that uses conref push to add map-specific content to the generic
+                                    topic.</li>
+                              <li>Content reference resolution can be deferred so that it is done
+                                    later in a rendering process or completely deferred so that it
+                                    can be done by a separate delivery mechanism, for example,
+                                    Eclipse information centers.</li>
+                        </ul>       </p>     </section>
+<section id="refinements-to-topic-elements">       <title>Refinements to topic elements</title>     
+ <p>         <ul>
+                              <li>The base task topic type has a more relaxed content model. This
+                                    enables creation of a wider variety of specialized tasks,
+                                    including task specializations that do not have formal markup
+                                    for individual steps. The strict-task document type integrates a
+                                    constraint module that imposes the same constrained content
+                                    model as defined in the DITA 1.1 task topic type.</li>
+                              <li>A number of content elements allow the new <xmlatt>keyref</xmlatt>
+                                    attribute, including the <xmlelement>ph</xmlelement>,
+                                          <xmlelement>keyword</xmlelement>, and
+                                          <xmlelement>term</xmlelement> elements. When using the
+                                          <xmlatt>keyref</xmlatt> attribute, these elements can get
+                                    their effective content from the key-defining
+                                          <xmlelement>topicref</xmlelement> element and can also be
+                                    treated as navigation links to the resource pointed to by the
+                                    key-defining <xmlelement>topicref</xmlelement> element, if any.
+                                    For example, a <xmlelement>term</xmlelement> element can use
+                                          <xmlatt>keyref</xmlatt> to link to the glossary entry
+                                    topics for the term.</li>
+                              <li>The <xmlelement>image</xmlelement> element takes the new
+                                          <xmlatt>scalefit</xmlatt> attribute, which indicates
+                                    whether or not the image should be scaled to fit the
+                                    presentation context.</li>
+                              <li>The <xmlelement>draft-comment</xmlelement> element is now allowed
+                                    in most contexts.</li>
+                              <li>The <xmlelement>figgroup</xmlelement> element now allows
+                                          <xmlelement>data</xmlelement> as a subelement.</li>
+                        </ul>       </p>     </section>
+<section id="refinements-to-specialization">       <title>Refinements to specialization</title>     
+ <p>         <ul>
+                              <li>Structural and domain vocabulary modules can now both be listed in
+                                    the <xmlatt>domains</xmlatt> attribute. Structural modules can
+                                    depend on and specialize elements from domains. For example, a
+                                    structural domain for reference topics for a specific
+                                    programming language could depend on the Programming domain
+                                    (pr-d) and specialize elements from that domain.</li>
+                              <li>Information architects can indicate whether the use of a given
+                                    vocabulary module requires strict or weak checking of content
+                                    reference constraints.</li>
+                              <li>The implementation patterns for vocabulary modules have been
+                                    refined. In particular, each element type now defines a separate
+                                    parameter entity for its content model and attribute list,
+                                    allowing per-element configuration of content models and
+                                    attribute lists through constraint modules.</li>
+                        </ul>       </p>     </section>
+<section id="other">       <title>Other refinements</title>       <p>       
+ <ul>
+                              <li>The <xmlelement>dita</xmlelement> element now has the
+                                          <xmlatt>DITAArchVersion</xmlatt> attribute.</li>
+                              <li>A number of processing details have been clarified where they were
+                                    underspecified in DITA 1.1.</li>
+                              <li>Most attributes that had enumerated values in DITA 1.1 are now
+                                    unenumerated, allowing specializations to define different
+                                    enumerations if they choose.</li>
+                        </ul>       </p>     </section>
+</conbody>
+</concept>
+

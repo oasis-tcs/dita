@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="param" xml:lang="en-us">
+<title><xmlelement>param</xmlelement></title>
+<shortdesc>The <xmlelement>param</xmlelement> (parameter) element specifies a set of values that <ph
+      rev="public-review-1">might</ph> be required by an <xmlelement>object</xmlelement> at runtime.
+    Any number of <xmlelement>param</xmlelement> elements <ph rev="public-review-1">might</ph>
+    appear in the content of an <xmlelement>object</xmlelement> in any order, but must be placed at
+    the start of the content of the enclosing object. This element is comparable to the XHMTL
+      <xmlelement>param</xmlelement> element, and its attributes' semantics derive from their HTML
+    definitions. For example, the <xmlatt>type</xmlatt> attribute differs from the
+      <xmlatt>type</xmlatt> attribute on many other DITA elements. </shortdesc>
+<prolog><metadata>
+<keywords>
+        <indexterm>elements<indexterm>body<indexterm><xmlelement>param</xmlelement></indexterm></indexterm></indexterm>
+        <indexterm>objects<indexterm>parameters</indexterm></indexterm>
+</keywords>
+</metadata></prolog>
+<refbody>
+<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-param/contains" otherprops="contains"></section>
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
+topic/param </p></section>
+<example id="example" otherprops="examples"><title>Example</title><p>See <xref href="object.dita"></xref>.</p></example>
+<section id="attributes"><title>Attributes</title>
+   <p>The following attributes are available on this element: <xref
+     href="../attributes/universalAttributes.dita"/> and the attributes defined below.</p>
+   <dl>
+    <dlentry>
+     <dt><xmlatt>name</xmlatt>
+            <ph conref="../../common/conref-attribute.dita#conref-attribute/required-attr"/></dt>
+     <dd>The name of the parameter.
+            <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
+    </dlentry>
+    <dlentry>
+     <dt><xmlatt>value</xmlatt></dt>
+     <dd>Specifies the value of a run-time parameter that is specified by the <xmlatt>name</xmlatt>
+            attribute.
+            <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
+    </dlentry>
+    <dlentry>
+     <dt><xmlatt>valuetype</xmlatt></dt>
+     <dd>Specifies the type of the <xmlatt>value</xmlatt> attribute. Allowed values are: <dl>
+              <dlentry>
+                <dt>data </dt>
+                <dd>A value of data means that the value will be evaluated and passed to the
+                  object&apos;s implementation as a string. </dd>
+              </dlentry>
+              <dlentry>
+                <dt>ref </dt>
+                <dd>A value of ref indicates that the value of the <xmlatt>value</xmlatt> attribute
+                  is a URL that designates a resource where run-time values are stored. This allows
+                  support tools to identify URLs that are given as parameters. </dd>
+              </dlentry>
+              <dlentry>
+                <dt>object</dt>
+                <dd>A value of object indicates that the value of <xmlatt>valuetype</xmlatt> is an
+                  identifier that refers to an object declaration in the document. The identifier
+                  must be the value of the ID attribute set for the declared object element. </dd>
+              </dlentry>
+              <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditauseconref">
+                <dt/>
+                <dd/>
+              </dlentry>
+            </dl></dd>
+    </dlentry>
+    <dlentry>
+     <dt><xmlatt>type</xmlatt></dt>
+     <dd>This attribute specifies for a user agent the type of values that will be found at the URI
+            designated by <xmlatt>value</xmlatt>. <ph
+              conref="../../common/conref-attribute.dita#conref-attribute/nonstandard-type"/>
+            <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>-->
+            <ol>
+              <li>When <xmlatt>valuetype</xmlatt> is set to "ref", this attribute directly specifies
+                the content type of the resource designated by <xmlatt>value</xmlatt>.</li>
+              <li><ph >Otherwise, if <xmlatt>type</xmlatt> is specified
+                  and <xmlatt>keyref</xmlatt> is specified and resolvable, this attribute specifies
+                  the content type of the resource designated by <xmlatt>keyref</xmlatt>.</ph></li>
+              <li><ph >Otherwise, if <xmlatt>type</xmlatt> is not
+                  specified and <xmlatt>keyref</xmlatt> is specified and is resolvable, the
+                  effective type value specified for the key that is named by the
+                    <xmlatt>keyref</xmlatt> attribute is used as the value of the
+                    <xmlatt>type</xmlatt> attribute.</ph></li>
+            </ol></dd>
+    </dlentry>
+    <dlentry >
+     <dt><xmlatt>keyref</xmlatt></dt>
+     <dd>Key reference to the thing the parameter references. If <xmlatt>valuetype</xmlatt> is
+            specified but is not set to "ref", this attribute is ignored. When
+              <xmlatt>valuetype</xmlatt> is not specified and <xmlatt>keyref</xmlatt> is specified,
+            it implies a setting of <codeph>valuetype="ref"</codeph>. When <xmlatt>keyref</xmlatt>
+            is specified and the effective value of <xmlatt>valuetype</xmlatt> is "ref":<ol>
+              <li>When the key specified by <xmlatt>keyref</xmlatt> is resolvable and has an
+                associated URI, that URI is used as the value of this element (overriding
+                  <xmlatt>value</xmlatt>, if that is specified).</li>
+              <li>When the key specified by <xmlatt>keyref</xmlatt> is resolvable and has no
+                associated resource (only link text), the <xmlatt>keyref</xmlatt> attribute
+                is considered to be unresolvable for this element. If <xmlatt>value</xmlatt> is
+                specified, it is used as fallback.</li>
+              <li>When the key specified by <xmlatt>keyref</xmlatt> is not resolvable, the value of
+                the <xmlatt>value</xmlatt> attribute is used as a fallback target for the
+                  <xmlelement>param</xmlelement> element.</li>
+            </ol><p><!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></p>
+          </dd>
+    </dlentry>
+   </dl></section>
+</refbody>
+</reference>

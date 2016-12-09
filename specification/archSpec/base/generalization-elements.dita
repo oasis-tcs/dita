@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept id="generalize" xml:lang="en-us">
+  <title>Element generalization</title>
+  <shortdesc>Elements are generalized by examining the <xmlatt>class</xmlatt> attribute. When a
+    generalization process detects that an element belongs to one of the modules that is being
+    generalized, the element is renamed to a more general form.</shortdesc>
+  <conbody>
+    <p otherprops="examples">For example, the <xmlelement>step</xmlelement> element has a
+        <xmlatt>class</xmlatt> attribute value of <codeph>"- topic/li task/step "</codeph>. If the
+      task module is being generalized, the <xmlelement>step</xmlelement> element is renamed to its
+      more general form from the topic module: <xmlelement>li</xmlelement>.</p>
+    <p >For specific concerns when generalizing structural types with
+      dependencies on non-ancestor modules, see <xref
+        href="generalization-w-cross-specialization-dependencies.dita"/>.</p>
+    <p>While the tag name of a given element is normally the same as the type name of the last token
+      in the <xmlatt>class</xmlatt> value, this is not required. <ph otherprops="examples">For
+        example, if a generalization process has already run on the element, the
+          <xmlatt>class</xmlatt> attribute could contain tokens from two or more modules based on
+        the original specialization. In that case, the element name could already match the first
+        token or an intermediate token in the <xmlatt>class</xmlatt> attribute. A second
+        generalization process could end up renaming the element again or could leave it alone,
+        depending on the target module or document type.</ph></p>
+<section id="generalization-and-conref">
+<title>Generalization and conref</title>
+<p>To determine compatibility between a document instance and a target document type when resolving
+a conref reference, a generalization processor can use the <xmlatt>domains</xmlatt> and
+<xmlatt>class</xmlatt> attributes for the document instance and the <xmlatt>domains</xmlatt>
+attribute for the target document type to determine how to rename elements in the resolved instance.
+For each element type, a generalization processor:</p>
+<ul>
+<li>Iterates over the <xmlatt>class</xmlatt> attribute from specific to general, inspecting the
+vocabulary modules.</li>
+<li>Identifies the first vocabulary module that is both present in each document type, with a
+compatible set of constraints for that vocabulary module. If such a module is not found, the
+instance can only be generalized to a less constrained document type.</li>
+</ul>
+</section>
+  </conbody>
+</concept>
+

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="conref-examples" xml:lang="en-us">
+ <title>Conref: Examples</title>
+ <shortdesc>Contains <xmlelement>example</xmlelement> elements that are reused throughout the DITA
+  specification.</shortdesc>
+ <conbody>
+    <example id="release-management" product="technicalContent" otherprops="examples">
+      <title>Example</title>
+      <p>See <xref href="../langRef/technicalContent/change-historylist.dita"/>.</p>
+    </example>
+    <example id="example-subjectScheme" otherprops="examples">
+      <title>Example</title>
+      <codeblock id="codesample">&lt;subjectScheme>
+  &lt;!-- Pull in a scheme that defines unix OS values -->
+  &lt;schemeref href="unixOS.ditamap"/>
+  &lt;!-- Define new OS values that are merged with those in the unixOS scheme -->
+  &lt;subjectdef keys="os">
+    &lt;subjectdef keys="linux"/>
+    &lt;subjectdef keys="mswin"/>
+    &lt;subjectdef keys="zos"/>
+  &lt;/subjectdef>
+  &lt;!-- Define application values -->
+  &lt;subjectdef keys="app" navtitle="Applications">
+    &lt;subjectdef keys="apacheserv" href="subject/apache.dita"/>
+    &lt;subjectdef keys="mysql"      href="subject/sql.dita"/>
+  &lt;/subjectdef>
+
+  &lt;!-- Define an enumeration of the platform attribute, equal to
+       each value in the OS subject. This makes the following values
+       valid for the platform attribute: linux, mswin, zos -->
+  &lt;enumerationdef>
+    &lt;attributedef name="platform"/>
+    &lt;subjectdef keyref="os"/>
+  &lt;/enumerationdef>
+  &lt;!-- Define an enumeration of the otherprops attribute, equal to
+       each value in the application subjects.
+       This makes the following values valid for the otherprops attribute:
+       apacheserv, mysql -->
+  &lt;enumerationdef>
+    &lt;attributedef name="otherprops"/>
+    &lt;subjectdef keyref="app"/>
+  &lt;/enumerationdef>
+&lt;/subjectScheme></codeblock>
+    </example>
+    <example id="example-subjectHead" otherprops="examples">
+      <title>Example</title>
+      <p>In this example the “Server setup” label doesn't classify content but, when selected, is
+        equivalent to the union of its child subjects. That is, the heading covers content about
+        planning for any application, installing for any application, any task for web servers, or
+        any task for database servers.</p>
+      <codeblock>&lt;subjectScheme toc="yes" search="no">
+  &lt;!-- ... -->
+  &lt;subjectHead>
+    &lt;subjectHeadMeta>
+      &lt;navtitle>Server setup&lt;/navtitle>
+    &lt;/subjectHeadMeta>
+    &lt;subjectdef href="planningTaskType.dita"/>
+    &lt;subjectdef href="installingTaskType.dita"/>
+    &lt;subjectdef href="webServerApp.dita"/>
+    &lt;subjectdef href="databaseApp.dita"/>
+  &lt;/subjectHead>
+  &lt;!-- ... -->
+&lt;/subjectScheme></codeblock>
+    </example>
+ </conbody>
+</concept>

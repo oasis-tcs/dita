@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="part" xml:lang="en-us">
+<title><xmlelement>part</xmlelement></title>
+<shortdesc>The <xmlelement>part</xmlelement> element references a part topic or a map that
+references part topics for the book.<!-- A new part is started.--> Use <xmlelement>part</xmlelement>
+to divide a document's chapters into logical groupings. For example, in a document that contains
+both guide and reference information, you can define two parts, one containing the guide information
+and the other containing the reference information. </shortdesc>
+<prolog><metadata>
+<keywords><indexterm>Bookmap elements<indexterm>part</indexterm></indexterm>
+<indexterm>part</indexterm></keywords>
+</metadata></prolog>
+<refbody>
+<section conref="../../common/commonNavLibraryTable.dita#contentmodel-part/contains" id="contains" otherprops="contains"></section>
+
+
+
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
+map/topicref bookmap/part </p></section>
+<example id="example" otherprops="examples"><title>Example</title><p>Part topics that include
+chapters and subtopics:<codeblock xml:space="preserve">&lt;part href="guide.dita"&gt;
+ &lt;chapter href="intro.dita"&gt;
+  &lt;topicref href="caring.dita"/&gt;
+  &lt;topicref href="feeding.dita"/&gt;
+ &lt;/chapter&gt;
+ &lt;chapter href="setup.dita"&gt;
+  &lt;topicref href="prereq.dita"/&gt;
+  &lt;topicref href="download.dita"/&gt;
+ &lt;/chapter&gt; 
+&lt;/part&gt;
+&lt;part href="ref.dita"&gt;
+ &lt;chapter href="commands.dita"&gt;
+  &lt;topicref href="care.dita"/&gt;
+  &lt;topicref href="feed.dita"/&gt;
+ &lt;/chapter&gt;
+ &lt;chapter href="apis.dita"&gt;
+  &lt;topicref href="acare.dita"/&gt;
+  &lt;topicref href="afeed.dita"/&gt;
+ &lt;/chapter&gt; 
+&lt;/part&gt;</codeblock></p><p>Parts that reference ditamaps of content:<codeblock
+xml:space="preserve">&lt;part href="intro.ditamap" format="ditamap"/&gt;
+&lt;part href="guide.ditamap" format="ditamap"/&gt;
+</codeblock></p></example>
+<section id="attributes"><title>Attributes</title><sectiondiv
+conref="../../common/conref-attribute.dita#conref-attribute/bookmap-topicrefs"
+/></section>
+</refbody>
+</reference>
+

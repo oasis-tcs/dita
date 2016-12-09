@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_nqd_ys5_kq">
+ <title>Constraints, processing, and interoperability</title>
+ <shortdesc>Because constraints can make optional elements required, documents that use the same
+  vocabulary modules might have incompatible constraints. Thus the use of constraints can affect the
+  ability for content from one topic or map to be used in another topic or map.</shortdesc>
+ <prolog>
+  <metadata>
+   <keywords>
+    <indexterm>constraints<indexterm>processing and interoperability</indexterm></indexterm>
+    <indexterm>interoperability<indexterm>constraints</indexterm></indexterm>
+   </keywords>
+  </metadata>
+ </prolog>
+ <conbody>
+  <p>A constraint does not change basic or inherited element semantics. The constrained instances
+   remain valid instances of the unconstrained element type, and the element type retains the same
+   semantics and <xmlatt>class</xmlatt> attribute declaration. Thus, a constraint never creates a
+   new case to which content processing might need to react. </p>
+  <p otherprops="examples">For example, a document type constrained to require the
+    <xmlelement>shortdesc</xmlelement> element allows a subset of the possible instances of the
+   unconstrained document type with an optional <xmlelement>shortdesc</xmlelement> element. Thus,
+   the content processing for topic still works when <xmlelement>topic</xmlelement> is constrained
+   to require a short description.</p>
+  <p>A constrained document type allows only a subset of the possible instances of the unconstrained
+   document type. Thus, for a processor to determine whether a document instance is compatible with
+   another document type, the document instance <term outputclass="RFC-2119" 
+    >MUST</term> declare any constraints on the document type. </p>
+  <p otherprops="examples">For example, an unconstrained task is compatible with an unconstrained
+   topic, because the <xmlelement>task</xmlelement> element can be generalized to
+    <xmlelement>topic</xmlelement>. However, if the topic is constrained to require the
+    <xmlelement>shortdesc</xmlelement> element, a document type with an unconstrained task is not
+   compatible with the constrained document type, because some instances of the task might not have
+   a <xmlelement>shortdesc</xmlelement> element. However, if the task document type also has been
+   constrained to require the <xmlelement>shortdesc</xmlelement> element, it is compatible with the
+   constrained topic document type. </p>
+ </conbody>
+</concept>

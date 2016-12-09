@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="simpletable" xml:lang="en-us">
+<title><xmlelement>simpletable</xmlelement></title>
+<shortdesc>The <xmlelement>simpletable</xmlelement> element is used for tables that are regular in
+  structure and do not need a caption. Choose the <xmlelement>simpletable</xmlelement> element when
+  you want to show information in regular rows and columns. For example, multi-column tabular data
+  such as phone directory listings or parts lists are good candidates for
+   <xmlelement>simpletable</xmlelement>. Another good use of <xmlelement>simpletable</xmlelement> is
+  for information that seems to beg for a three-part definition list; the <xmlatt>keycol</xmlatt>
+  attribute <ph rev="public-review-1">can</ph> be used to indicate which column represents the "key"
+  or term-like column of your structure.</shortdesc>
+<prolog><metadata>
+<keywords><indexterm>simpletable</indexterm><indexterm>table elements<indexterm>simpletable</indexterm></indexterm>
+</keywords>
+</metadata></prolog>
+<refbody>
+<section id="section-1"><p>This close match of <xmlelement>simpletable</xmlelement> to tabular, regular data makes
+<xmlelement>simpletable</xmlelement> suitable as the basis for specialized structures such as
+<xmlelement>properties</xmlelement> (for programming information) and choice tables (for tasks).</p></section>
+<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-simpletable/contains" otherprops="contains"></section>
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
+topic/simpletable </p></section>
+<example id="example" otherprops="examples"><title>Example</title><dl><dlentry>
+<dt>Source: </dt>
+<dd><codeblock>&lt;simpletable&gt;
+ &lt;sthead&gt;
+  &lt;stentry&gt;Type style&lt;/stentry&gt;
+  &lt;stentry&gt;Elements used&lt;/stentry&gt;
+ &lt;/sthead&gt;
+ &lt;strow&gt;
+  &lt;stentry&gt;Bold&lt;/stentry&gt;
+  &lt;stentry&gt;b&lt;/stentry&gt;
+ &lt;/strow&gt;
+ &lt;strow&gt;
+  &lt;stentry&gt;Italic&lt;/stentry&gt;
+  &lt;stentry&gt;i&lt;/stentry&gt;
+ &lt;/strow&gt;
+ &lt;strow&gt;
+  &lt;stentry&gt;Underlined&lt;/stentry&gt;
+  &lt;stentry&gt;u&lt;/stentry&gt;
+ &lt;/strow&gt;
+&lt;/simpletable&gt;</codeblock></dd>
+</dlentry><dlentry>
+<dt>Formatted output:</dt>
+<dd><simpletable relcolwidth="2* 2*">
+<sthead>
+<stentry>Type style</stentry>
+<stentry>Elements used</stentry>
+</sthead>
+<strow>
+<stentry>Bold</stentry>
+<stentry>b</stentry>
+</strow>
+<strow>
+<stentry>Italic</stentry>
+<stentry>i</stentry>
+</strow>
+<strow>
+<stentry>Underlined</stentry>
+<stentry>u</stentry>
+</strow>
+</simpletable></dd>
+</dlentry></dl></example>
+<example id="example2" otherprops="examples"><title>Example using
+<xmlatt>keycol</xmlatt></title><p>In this sample, the first column is identified as a header column through the use of
+<codeph>keycol="1"</codeph> on the <xmlelement>simpletable</xmlelement> element. This indicates that
+items in the first column should be treated as headers for the row that follows. Rendering of the
+header column is left up to the implementation.</p><dl><dlentry>
+<dt>Source:</dt>
+<dd><codeblock>&lt;simpletable keycol="1">
+ &lt;sthead>
+  &lt;stentry>Term&lt;/stentry>
+  &lt;stentry>Categorization&lt;/stentry>
+  &lt;stentry>Definition&lt;/stentry>
+ &lt;/sthead>
+ &lt;strow>
+  &lt;stentry>Widget&lt;/stentry>
+  &lt;stentry>noun&lt;/stentry>
+  &lt;stentry>Thing that is used for something&lt;/stentry>
+ &lt;/strow>
+ &lt;strow>
+  &lt;stentry>Frustration&lt;/stentry>
+  &lt;stentry>noun&lt;/stentry>
+  &lt;stentry>What you feel when you drop the widget&lt;/stentry>
+ &lt;/strow>
+&lt;/simpletable></codeblock></dd>
+</dlentry><dlentry>
+<dt>Formatted output:</dt>
+<dd><simpletable keycol="1">
+<sthead>
+<stentry>Term</stentry>
+<stentry>Categorization</stentry>
+<stentry>Definition</stentry>
+</sthead>
+<strow>
+<stentry>Widget</stentry>
+<stentry>noun</stentry>
+<stentry>Thing that is used for something</stentry>
+</strow>
+<strow>
+<stentry>Frustration</stentry>
+<stentry>noun</stentry>
+<stentry>What you feel when you drop the widget</stentry>
+</strow>
+</simpletable></dd>
+</dlentry></dl></example>
+<section id="attributes"><title>Attributes</title>
+<p conref="../../common/conref-attribute.dita#conref-attribute/simpletable-attributes"/>
+   </section>
+</refbody>
+</reference>

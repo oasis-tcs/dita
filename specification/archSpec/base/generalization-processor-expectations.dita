@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="generalization-processor-expectations">
+ <title>Processor expectations when generalizing elements</title>
+ <shortdesc>Generalization processors convert elements from one or more modules into their less
+  specialized form. The list of modules <ph >can be supplied to a
+   generalization processor</ph>, or it can be inferred based on knowledge of a target document-type
+  shell.</shortdesc>
+ <conbody>
+  <p>The person or application initiating a generalization process can supply the source and target
+   modules for each generalization, for example, "generalize from reference to topic". Multiple
+   target modules can be specified, for example, "generalize from reference to topic and from ui-d
+   to topic". When the source and target modules are not supplied, the generalization process is
+   assumed to be from all structural types to the base (topic or map), and no generalization is
+   performed for domains. </p>
+  <p>The person or application initiating a generalization process also can supply the target
+   document-type shell. When the target document-type shell is not supplied, the generalized
+   document will not contain a reference to a document-type shell.</p>
+  <!--<draft-comment author="robander" time="16 February 2015">Note: all of this content has changed little since DITA 1.0, but seems to contain a lot of rules-by-example, with examples showing how a user (generalizer) interacts with the process. I'm a little uncomfortable that we define rules based on user interaction with the processor. That is: a really smart generalization tool could know every module and every doctype in the user's environment, and just let the user pick from valid doctype targets; this gives all necessary function, but does not comply with the SHOULD rule that follows this draft comment. Then again, SHOULD isn't MUST.<p>I've reorganized the content slightly to split it into multiple topics: generalization overview (what is it), how to generalize an element, and processor expectations. Most of the older content ended up in "processor expectations".</p><p>For reference, the topic in DITA 1.0: <xref href="http://docs.oasis-open.org/dita/v1.0/archspec/generalize.html" format="html" scope="external"/></p></draft-comment>-->
+  <p>A generalization processor <term outputclass="RFC-2119">SHOULD</term> be able
+   to handle cases where it is given:</p>
+  <ul>
+   <li>Only source modules for generalization (in which case the designated source types are
+    generalized to topic or map)</li>
+   <li>Only target modules for generalization (in which case all descendants of each target are
+    generalized to that target)</li>
+   <li>Both (in which case only the specified descendants of each target are generalized to that
+    target)</li>
+  </ul>
+  <p>For each structural type instance, the generalization processor checks whether the structural
+   type instance is a candidate for generalization, or whether it has domains that are candidates
+   for generalization. It is important to be selective about which structural type instances to
+   process; if the process simply generalizes every element based on its <xmlatt>class</xmlatt>
+   attribute values, an instruction to generalize "reference" to "topic" could leave a
+   specialization of reference with an invalid content model, since any elements it reuses from
+   "reference" would have been renamed to topic-level equivalents.</p>
+  <p>The <xmlatt>class</xmlatt> attribute for the root element of the structural type is checked
+   before generalizing structural types:</p>
+  <simpletable keycol="1">
+   <sthead>
+    <stentry/>
+    <stentry>Source module unspecified</stentry>
+    <stentry>Source module specified</stentry>
+   </sthead>
+   <strow>
+    <stentry>Target module unspecified</stentry>
+    <stentry>Generalize this structural type to its base ancestor</stentry>
+    <stentry>Check whether the root element of the topic type matches a specified source module;
+     generalize to its base ancestor if it does, otherwise ignore the structural type instance
+     unless it has domains to generalize.</stentry>
+   </strow>
+   <strow>
+    <stentry>Target module specified</stentry>
+    <stentry>Check whether the <xmlatt>class</xmlatt> attribute contains the target module. If it
+     does contain the target, rename the element to the value associated with the target module.
+     Otherwise, ignore the element.</stentry>
+    <stentry>It is an error if the root element matches a specified source but its
+      <xmlatt>class</xmlatt> attribute does not contain the target. If the root element matches a
+     specified source module and its <xmlatt>class</xmlatt> attribute does contain the target
+     module, generalize to the target module. Otherwise, ignore the structural type instance unless
+     it has domains to generalize.</stentry>
+   </strow>
+  </simpletable>
+  <p>The <xmlatt>domains</xmlatt> attribute for the root element of the structural type is checked
+   before generalizing domains:</p>
+  <simpletable keycol="1">
+   <sthead>
+    <stentry/>
+    <stentry>Source module unspecified</stentry>
+    <stentry>Source module specified</stentry>
+   </sthead>
+   <strow>
+    <stentry>Target module unspecified</stentry>
+    <stentry>Do not generalize domain specializations in this structural type.</stentry>
+    <stentry>Check whether the <xmlatt>domains</xmlatt> attribute lists the specified domain;
+     proceed with generalization if it does, otherwise ignore the structural type instance unless it
+     is itself a candidate for generalization.</stentry>
+   </strow>
+   <strow>
+    <stentry>Target module specified</stentry>
+    <stentry>Check whether the <xmlatt>domains</xmlatt> attribute contains the target module. If it
+     does, generalize to the target module. Otherwise, skip the structural type instance unless it
+     is itself a candidate for generalization.</stentry>
+    <stentry>It is an error if the <xmlatt>domains</xmlatt> attribute matches a specified source but
+     the domain value string does not contain the target. If the <xmlatt>domains</xmlatt> attribute
+     matches a specified source module and the domain value string does contain the target module,
+     generalize to the target module. Otherwise, ignore the structural type instance unless it is
+     itself a candidate for generalization.</stentry>
+   </strow>
+  </simpletable>
+  <p>For each element in a candidate structural type instance:</p>
+  <simpletable keycol="1">
+   <sthead>
+    <stentry/>
+    <stentry>Source module unspecified</stentry>
+    <stentry>Source module specified</stentry>
+   </sthead>
+   <strow>
+    <stentry>Target module unspecified</stentry>
+    <stentry>If the <xmlatt>class</xmlatt> attribute starts with "-" (part of a structural type),
+     rename the element to its base ancestor equivalent. Otherwise ignore it.</stentry>
+    <stentry>Check whether the last value of the <xmlatt>class</xmlatt> attribute matches a
+     specified source; generalize to its base ancestor if it does, otherwise ignore the
+     element.</stentry>
+   </strow>
+   <strow>
+    <stentry>Target module specified</stentry>
+    <stentry>Check whether the <xmlatt>class</xmlatt> attribute contains the target module; rename
+     the element to the value associated with the target module if it does contain the target,
+     otherwise ignore the element.</stentry>
+    <stentry>It is an error if the last value in the <xmlatt>class</xmlatt> attribute matches a
+     specified source but the previous values do not include the target. If the last value in the
+      <xmlatt>class</xmlatt> attribute matches a specified source module and the previous values do
+     include the target module, rename the element to the value associated with the target module.
+     Otherwise, ignore the element.</stentry>
+   </strow>
+  </simpletable>
+  <p>When renaming elements during round-trip generalization, the generalization processor <term
+    outputclass="RFC-2119">SHOULD</term> preserve the values of all attributes.
+   When renaming elements during one-way or migration generalization, the process <term
+    outputclass="RFC-2119">SHOULD</term> preserve the values of all attributes
+   except the <xmlatt>class</xmlatt> and <xmlatt>domains</xmlatt> attribute, both of which should be
+   supplied by the target document type.</p>
+ </conbody>
+</concept>

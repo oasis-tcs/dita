@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="lq" xml:lang="en-us">
+<title><xmlelement>lq</xmlelement></title>
+<shortdesc> The <xmlelement>lq</xmlelement> is used to provide extended content quoted from another
+    source. Use the quote element <xmlelement>q</xmlelement> for short, inline quotations, and long
+    quote <xmlelement>lq</xmlelement> for quotations that are too long for inline use, following
+    normal guidelines for quoting other sources. The <xmlatt>href</xmlatt> and
+      <xmlatt>keyref</xmlatt> attributes are available to specify the source of the quotation.
+      <ph>The <xmlelement>longquoteref</xmlelement> element is available for more complex references
+      to the source of a quote.</ph></shortdesc>
+<prolog><metadata>
+<keywords>
+        <indexterm>elements<indexterm>body<indexterm><xmlelement>lq</xmlelement></indexterm></indexterm></indexterm>
+        <indexterm>formatting
+          expectations<indexterm><xmlelement>lq</xmlelement></indexterm></indexterm>
+        <indexterm>quotations<indexterm>long</indexterm></indexterm></keywords>
+</metadata></prolog>
+<refbody>
+    <!--Most of the following comment was pulled from the HTML 4.01 specification's description of BLOCKQUOTE, 
+after a review comment indicated that the spec should describe rendering expectations.-->
+<section id="section-1">Although rendering is left up to implementations, processors generally render
+        <xmlelement>lq</xmlelement> as an indented block.</section>
+<section conref="../../common/commonNavLibraryTable.dita#contentmodel-lq/contains" id="contains" otherprops="contains"></section>
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
+topic/lq </p></section>
+<example id="example" otherprops="examples"><title>Example</title><codeblock>&lt;p&gt;This is the first line of the address that 
+Abraham Lincoln delivered on November 19, 1863 for the dedication 
+of the cemetery at Gettysburg, Pennsylvania.&lt;/p&gt;
+&lt;lq&gt;Four score and seven years ago our fathers brought forth on this continent a new
+nation, conceived in liberty, and dedicated to the proposition that all men
+are created equal.&lt;/lq&gt;</codeblock></example>
+<section id="attributes"><title>Attributes</title>
+   <p>The following attributes are available on this element: <xref
+     href="../attributes/universalAttributes.dita"/>, <xref
+     href="../attributes/linkRelationshipAttributes.dita"/> (with a narrowed definition for
+     <xmlatt>type</xmlatt>, given below), <xref
+     href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, and <xref
+     href="../attributes/thekeyrefattribute.dita"><xmlatt>keyref</xmlatt></xref>, and the attributes defined
+    below.</p>
+   <dl>
+    <dlentry id="reftitle">
+     <dt><xmlatt>reftitle</xmlatt></dt>
+     <dd>The title of the document or topic being quoted.<?datatype CDATA?><?default #IMPLIED?></dd>
+    </dlentry>
+    <dlentry id="type">
+     <dt><xmlatt>type</xmlatt></dt>
+     <dd>Indicates the location of the source of the quote. <ph
+              conref="../../common/conref-attribute.dita#conref-attribute/nonstandard-type"/> See
+              <xref href="../attributes/thetypeattribute.dita"/> for detailed information on the
+            usual supported values and processing implications.
+            <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>-->
+            The following attribute values are allowed (but deprecated) for backward compatibility: <dl>
+              <dlentry>
+                <dt>external </dt>
+                <dd>The <xmlatt>href</xmlatt> is to a Web site. This value is deprecated in favor of
+                  use of the <xmlatt>scope</xmlatt> and <xmlatt>format</xmlatt> attributes. </dd>
+              </dlentry>
+              <dlentry>
+                <dt>internal </dt>
+                <dd>The <xmlatt>href</xmlatt> is to a DITA topic. This value is deprecated in favor
+                  of use of the <xmlatt>scope</xmlatt> and <xmlatt>format</xmlatt> attributes. </dd>
+              </dlentry>
+              <!--<dlentry>
+<dt>bibliographic</dt>
+<dd>the href is to a specialized bibliographic topic. There is not
+currently a standard bibliographic topic type at OASIS.</dd>
+</dlentry><dlentry conref="#commonLRdefs/ditauseconref">
+<dt></dt>
+<dd></dd>
+</dlentry>-->
+            </dl>
+          </dd>
+    </dlentry>
+   </dl>
+   </section>
+</refbody>
+</reference>
+

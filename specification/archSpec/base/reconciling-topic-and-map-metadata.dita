@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="reconciling-topic-and-map-metadata" xml:lang="en-us">
+<title><ph>Reconciling topic and map metadata elements</ph></title>
+<shortdesc>The <xmlelement>topicmeta</xmlelement> element in maps contains numerous elements that
+  can be used to declare metadata. These metadata elements have an effect on the parent
+   <xmlelement>topicref</xmlelement> element, any child <xmlelement>topicref</xmlelement> elements,
+  and – if a direct child of the <xmlelement>map</xmlelement> element – on the map as a
+  whole.</shortdesc>
+<refbody>
+<section id="section"><p>For each element that can be contained in the <xmlelement>topicmeta</xmlelement> element, the
+    following table addresses the following questions:<dl>
+     <dlentry>
+      <dt>How does it apply to the topic?</dt>
+      <dd>This column describes how the metadata specified within the
+        <xmlelement>topicmeta</xmlelement> element interacts with the metadata specified in the
+       topic. In most cases, the properties are additive. For example, when the
+        <xmlelement>audience</xmlelement> element is set to "user" at the map level, the value
+       "user" is added during processing to any audience metadata that is specified within the
+       topic.</dd>
+     </dlentry>
+     <dlentry>
+      <dt>Does it cascade to other topics in the map?</dt>
+      <dd>This column indicates whether the specified metadata value cascades to nested
+                <xmlelement>topicref</xmlelement> elements. For example, when an
+                <xmlelement>audience</xmlelement> element is set to "user" at the map level, all
+              child <xmlelement>topicref</xmlelement> elements implicitly have an
+                <xmlelement>audience</xmlelement> element set to "user" also. Elements that can
+              apply only to the specific <xmlelement>topicref</xmlelement> element, such as
+                <xmlelement>linktext</xmlelement>, do not cascade.</dd>
+     </dlentry>
+     <dlentry>
+      <dt>What is the purpose when specified on the <xmlelement>map</xmlelement> element?</dt>
+      <dd>The map element allows metadata to be specified for the entire map. This column describes
+       what effect, if any, an element has when specified at this level.</dd>
+     </dlentry>
+    </dl></p></section>
+<table><title>Topicmeta elements and their properties</title>
+<tgroup cols="4"><colspec colname="col1"/><colspec colname="col2"/>
+<colspec colname="COLSPEC0"/><colspec colname="COLSPEC1"/>
+<thead>
+<row valign="bottom">
+<entry colname="col1">Element</entry>
+<entry colname="col2">How does it apply to the topic?</entry>
+<entry colname="COLSPEC0"><ph conref="../../common/conref-file.dita#reuse_file/does-it-cascade"
+       /></entry>
+<entry colname="COLSPEC1">What is the purpose when set on the <xmlelement>map</xmlelement>
+element?</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry colname="col1"><xmlelement>audience</xmlelement></entry>
+<entry colname="col2">Add to the topic</entry>
+<entry colname="COLSPEC0">Yes</entry>
+<entry colname="COLSPEC1">Specify an audience for the entire map</entry>
+</row>
+<row>
+<entry colname="col1"><xmlelement>author</xmlelement></entry>
+<entry colname="col2">Add to the topic</entry>
+<entry colname="COLSPEC0">Yes</entry>
+<entry colname="COLSPEC1">Specify an author for the entire map</entry>
+</row>
+<row>
+<entry colname="col1"><xmlelement>category</xmlelement></entry>
+<entry colname="col2">Add to the topic</entry>
+<entry colname="COLSPEC0">Yes</entry>
+<entry colname="COLSPEC1">Specify a category for the entire map</entry>
+</row>
+<row>
+<entry colname="col1"><xmlelement>copyright</xmlelement></entry>
+<entry colname="col2">Add to the topic</entry>
+<entry colname="COLSPEC0">Yes</entry>
+<entry colname="COLSPEC1">Specify a copyright for the entire map</entry>
+</row>
+<row>
+<entry colname="col1"><xmlelement>critdates</xmlelement></entry>
+<entry colname="col2">Add to the topic</entry>
+<entry colname="COLSPEC0">Yes</entry>
+<entry colname="COLSPEC1">Specify critical dates for the entire map</entry>
+</row>
+<row>
+<entry colname="col1"><xmlelement>data</xmlelement></entry>
+<entry colname="col2">Add to the topic</entry>
+<entry colname="COLSPEC0">No, unless specialized for a purpose that
+cascades</entry>
+<entry colname="COLSPEC1">No stated purpose, until the element is specialized</entry>
+</row>
+<row>
+<entry colname="col1"><xmlelement>data-about</xmlelement></entry>
+<entry colname="col2">Add the property to the specified target</entry>
+<entry colname="COLSPEC0">No, unless specialized for a purpose that
+cascades</entry>
+<entry colname="COLSPEC1">No stated purpose, until the element is
+specified</entry>
+</row>
+<row>
+<entry colname="col1"><xmlelement>foreign</xmlelement></entry>
+<entry colname="col2">Add to the topic</entry>
+<entry colname="COLSPEC0">No, unless specialized for a purpose that
+cascades</entry>
+<entry colname="COLSPEC1">No stated purpose, until the element is
+specified</entry>
+</row>
+<row>
+<entry colname="col1"><xmlelement>keywords</xmlelement></entry>
+<entry colname="col2">Add to the topic</entry>
+<entry colname="COLSPEC0">No</entry>
+<entry colname="COLSPEC1">No stated purpose</entry>
+</row>
+<row>
+<entry colname="col1"><xmlelement>linktext</xmlelement></entry>
+<entry colname="col2">Not added to the topic; applies only to links
+created based on this occurrence in the map</entry>
+<entry colname="COLSPEC0">No</entry>
+<entry colname="COLSPEC1">No stated purpose</entry>
+</row>
+<row>
+<entry colname="col1"><xmlelement>metadata</xmlelement></entry>
+<entry colname="col2">Add to the topic</entry>
+<entry colname="COLSPEC0">Yes</entry>
+<entry colname="COLSPEC1">Specify metadata for the entire map</entry>
+</row>
+<row>
+<entry colname="col1"><xmlelement>navtitle</xmlelement></entry>
+<entry colname="col2">Not added to the topic; applies only to navigation that is created based on
+              this occurrence in the map. The navigation title will be used whenever the
+                <xmlatt>locktitle</xmlatt> attribute on the containing
+                <xmlelement>topicref</xmlelement> element is set to "yes".</entry>
+<entry colname="COLSPEC0">No</entry>
+<entry colname="COLSPEC1">No stated purpose</entry>
+</row>
+<row>
+<entry colname="col1"><xmlelement>othermeta</xmlelement></entry>
+<entry colname="col2">Add to the topic</entry>
+<entry colname="COLSPEC0">No</entry>
+<entry colname="COLSPEC1">Define metadata for the entire map</entry>
+</row>
+<row>
+<entry colname="col1"><xmlelement>permissions</xmlelement></entry>
+<entry colname="col2">Add to the topic</entry>
+<entry colname="COLSPEC0">Yes</entry>
+<entry colname="COLSPEC1">Specify permissions for the entire map</entry>
+</row>
+<row>
+<entry colname="col1"><xmlelement>prodinfo</xmlelement></entry>
+<entry colname="col2">Add to the topic</entry>
+<entry colname="COLSPEC0">Yes</entry>
+<entry colname="COLSPEC1">Specify product info for the entire map</entry>
+</row>
+<row>
+<entry colname="col1"><xmlelement>publisher</xmlelement></entry>
+<entry colname="col2">Add to the topic</entry>
+<entry colname="COLSPEC0">Yes</entry>
+<entry colname="COLSPEC1">Specify a publisher for the map</entry>
+</row>
+<row>
+<entry colname="col1"><xmlelement>resourceid</xmlelement></entry>
+<entry colname="col2">Add to the topic</entry>
+<entry colname="COLSPEC0">No</entry>
+<entry colname="COLSPEC1">Specify a resource ID for the map</entry>
+</row>
+<row>
+<entry colname="col1"><xmlelement>searchtitle</xmlelement></entry>
+<entry colname="col2">Replace the one in the topic. If multiple <xmlelement>searchtitle</xmlelement>
+              elements are specified for a single target, processors <ph rev="public-review-1"
+                >can</ph> choose to issue a warning.</entry>
+<entry colname="COLSPEC0">No</entry>
+<entry colname="COLSPEC1">No stated purpose</entry>
+</row>
+<row>
+<entry colname="col1"><xmlelement>shortdesc</xmlelement></entry>
+<entry colname="col2"><ph>Only added to the topic when the <xmlelement>topicref</xmlelement> element
+        specifies a <xmlatt>copy-to</xmlatt> attribute. Otherwise, it applies only to links created
+        based on this occurrence in the map.</ph><note>Processors <term outputclass="RFC-2119" 
+         >MAY</term> or <term outputclass="RFC-2119">MAY NOT</term> implement this
+       behavior.</note></entry>
+<entry colname="COLSPEC0">No</entry>
+<entry colname="COLSPEC1">Provide a description of the map</entry>
+</row>
+<row>
+<entry colname="col1"><xmlelement>source</xmlelement></entry>
+<entry colname="col2">Add to the topic</entry>
+<entry colname="COLSPEC0">No</entry>
+<entry colname="COLSPEC1">Specify a source for the map</entry>
+</row>
+<row>
+<entry colname="col1"><xmlelement>unknown</xmlelement></entry>
+<entry colname="col2">Add to the topic</entry>
+<entry colname="COLSPEC0">No, unless specialized for a purpose that
+cascades</entry>
+<entry colname="COLSPEC1">No stated purpose, until the element is
+specified</entry>
+</row>
+<row >
+  <entry colname="col1"><xmlelement>ux-window</xmlelement></entry>
+  <entry colname="col2">Not added to the topic</entry>
+  <entry colname="COLSPEC0">No</entry>
+  <entry colname="COLSPEC1">Definitions are global, so setting at map level is equivalent to setting
+              anywhere else.</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+    <example id="attr-cascade-example" otherprops="examples">
+      <title>Example of metadata elements cascading in a DITA map</title>
+      <p>The following code sample illustrates how an information architect can apply certain
+        metadata to all the DITA topics in a
+        map:<codeblock>&lt;map title="DITA maps" xml:lang="en-us">
+	&lt;topicmeta>
+		&lt;author>Kristen James Eberlein&lt;/author>
+		&lt;copyright>
+			&lt;copyryear year="2009"/>
+			&lt;copyrholder>OASIS&lt;/copyrholder>
+		&lt;/copyright>
+	&lt;/topicmeta>
+	&lt;topicref href="dita_maps.dita" navtitle="DITA maps">
+		&lt;topicref href="definition_ditamaps.dita" navtitle="Definition of DITA maps">&lt;/topicref>
+		&lt;topicref href="purpose_ditamaps.dita" navtitle="Purpose of DITA maps">&lt;/topicref>
+		&lt;!-- ... -->
+       &lt;/topicref>
+&lt;/map></codeblock></p>
+      <p>The author and copyright information cascades to each of the DITA topics referenced in the
+        DITA map. When the DITA map is processed to XHTML, for example, each XHTML file contains the
+        metadata information.</p>
+    </example>
+</refbody>
+</reference>

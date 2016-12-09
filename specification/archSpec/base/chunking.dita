@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept id="chunking" xml:lang="en-us">
+   <title>Chunking</title>
+   <shortdesc>Content can be chunked (divided or merged into new output documents) in different ways
+      for the purposes of delivering content and navigation. For example, content best authored as a
+      set of separate topics might need to be delivered as a single Web page. A map author can use
+      the <xmlatt>chunk</xmlatt> attribute to split up multi-topic documents into component topics
+      or to combine multiple topics into a single document as part of output processing.</shortdesc>
+   <conbody>
+      <example id="example" otherprops="examples">
+         <p>The <xmlatt>chunk</xmlatt> attribute is commonly used for the following use cases.</p>
+         <dl>
+            <dlentry>
+               <dt>Reuse of a nested topic</dt>
+               <dd>A content provider creates a set of topics as a single document. Another user
+                  wants to incorporate only one of the nested topics from the document. The new user
+                  can reference the nested topic from a DITA map, using the <xmlatt>chunk</xmlatt>
+                  attribute to specify that the topic should be produced in its own document.</dd>
+            </dlentry>
+            <dlentry>
+               <dt>Identification of a set of topics as a unit</dt>
+               <dd>A curriculum developer wants to compose a lesson for a SCORM LMS (Learning
+                  Management System) from a set of topics without constraining reuse of those
+                  topics. The LMS can save and restore the learner's progress through the lesson if
+                  the lesson is identified as a referenceable unit. The curriculum developer defines
+                  the collection of topics with a DITA map, using the <xmlatt>chunk</xmlatt>
+                  attribute to identify the learning module as a unit before generating the SCORM
+                  manifest. </dd>
+            </dlentry>
+         </dl>
+      </example>
+   </conbody>
+</concept>
+

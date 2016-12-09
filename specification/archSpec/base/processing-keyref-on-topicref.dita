@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="processing-keyref-on-topicref">
+    <title>Processing key references on <xmlelement>topicref</xmlelement> elements</title>
+    <shortdesc>While <xmlelement>topicref</xmlelement> elements are used to define keys, they also
+        can reference keys that are defined elsewhere. This topic explains how to evaluate key
+        references on <xmlelement>topicref</xmlelement> elements and its
+        specializations.</shortdesc>
+    <conbody>
+        <p>For topic references that use the <xmlatt>keyref</xmlatt> attribute, the effective value
+            of the <xmlelement>topicref</xmlelement> element is determined in the following way:</p>
+        <dl>
+            <dlentry>
+                <dt>Determining the effective resource</dt>
+                <dd>
+                    <p>The effective resource bound to the <xmlelement>topicref</xmlelement> element
+                        is determined by resolving all intermediate key references. Each key
+                        reference is resolved either to a resource addressed directly by URI
+                        reference in an <xmlatt>href</xmlatt> attribute, or to no resource.
+                        Processors <term outputclass="RFC-2119">MAY</term> impose
+                        reasonable limits on the number of intermediate key references that they
+                        will resolve. Processors <term outputclass="RFC-2119" 
+                            >SHOULD</term> support at least three levels of key references.</p>
+                    <note>This rule applies to all topic references, including those that define
+                        keys. The effective bound resource for a key definition that uses the
+                            <xmlatt>keyref</xmlatt> attribute cannot be determined until the key
+                        space has been constructed.</note>
+                </dd>
+                <dd/>
+            </dlentry>
+            <dlentry>
+                <dt>Combining metadata</dt>
+                <dd>
+                    <p>Content from a key-defining element cascades to the key-referencing element
+                        following the rules for combining metadata between maps and other maps and
+                        between maps and topics. The <xmlatt>lockmeta</xmlatt> attribute is honored
+                        when metadata content is combined.</p>
+                    <p>The combined attributes and content cascade from one map to another or from a
+                        map to a topic, but this is controlled by existing rules for cascading,
+                        which are not affected by the use of key references.</p>
+                </dd>
+            </dlentry>
+        </dl>
+        <p> If, in addition to the <xmlatt>keys</xmlatt> attribute, a key definition specifies a
+                <xmlatt>keyref</xmlatt> attribute that can be resolved after the key resolution
+            context for the key definition has been determined, the resources bound to the
+            referenced key definition take precedence.</p>
+        <!--<p>Key references on elements that also appear in topics, such as <xmlelement>keyword</xmlelement>, are evaluated using the same rules as in a topic.</p>-->
+    </conbody>
+</concept>

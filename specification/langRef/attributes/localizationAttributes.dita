@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="localization-atts" xml:lang="en-us">
+<title>Localization attribute group</title>
+<shortdesc>The localization attribute group defines a set of common attributes related to
+  translation and localization. These attributes are available on most DITA elements.</shortdesc>
+<prolog><metadata>
+<keywords><indexterm>Localization attribute group</indexterm><indexterm>Commonly
+referenced attribute descriptions<indexterm>localization-atts</indexterm></indexterm>
+</keywords>
+</metadata></prolog>
+<refbody>
+<section id="section-1">       
+   <dl>
+        <!--<dlhead conref="../../common/conref-file.dita#reuse_file/attributeDlhead"><dthd/><ddhd/></dlhead>-->
+    <dlentry id="translate">
+     <dt><xmlatt>translate</xmlatt></dt>
+     <dd><indexterm>translate
+                attribute</indexterm><indexterm>Attributes<indexterm>translate</indexterm></indexterm>Indicates
+            whether the content of the element should be translated or not. <ph 
+              >Allowable values are yes, no, and -dita-use-conref-target. See <xref
+                href="../../non-normative/elementsMerged.dita"/> for suggested processing defaults
+              for each element.</ph></dd>
+    </dlentry>
+    <dlentry id="xml-lang">
+     <dt><xmlatt>xml:lang</xmlatt></dt>
+     <dd><indexterm>xml:lang
+                attribute</indexterm><indexterm>Attributes<indexterm>xml:lang</indexterm></indexterm>Specifies
+            the language of the element content. The <xmlatt>xml:lang</xmlatt> attribute and its
+            values are described in the XML Recommendation at <xref format="html" scope="external"
+              href="http://www.w3.org/TR/REC-xml/#sec-lang-tag"
+              >http://www.w3.org/TR/REC-xml/#sec-lang-tag</xref>. Allowable values are language
+            tokens or the null string.</dd>
+    </dlentry>
+     <dlentry id="dir">
+     <dt><xmlatt>dir</xmlatt></dt>
+     <dd><indexterm>dir
+       attribute</indexterm><indexterm>Attributes<indexterm>dir</indexterm></indexterm>Specifies the
+      directionality of text: left-to-right (ltr, the processing default) or right-to-left (rtl).
+      The value lro indicates an override of normal bidi text presentation, forcing the element into
+      left-to-right mode; rlo overrides normal rules to force right-to-left presentation. Allowable
+      values are ltr, rtl, lro, rlo, and -dita-use-conref-target. See <xref
+       href="../../archSpec/base/diratt.dita"/> for more information.</dd>
+    </dlentry>
+   </dl>     </section>
+<example id="example" otherprops="examples">
+      <p>The <xmlatt>translate</xmlatt>, <xmlatt>xml:lang</xmlatt>, and <xmlatt>dir</xmlatt>
+        attributes identify language-specific words or phrases for specific processing (or
+        non-processing, in the case of <codeph>translate=&quot;no&quot;</codeph>).</p>
+      <codeblock>&lt;p&gt;The cordial response to the question is 
+&lt;q translate=&quot;no&quot; xml:lang=&quot;de-de&quot; dir=&quot;ltr&quot;&gt;nein.&lt;/q&gt;&lt;/p&gt;</codeblock>
+    </example>
+</refbody>
+</reference>

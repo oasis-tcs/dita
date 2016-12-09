@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="reference_cfb_ck4_5p">
+  <title>Example: Constrain a domain module</title>
+  <shortdesc>In this scenario, an information architect wants to use only a subset of the elements
+    defined in the highlighting domain. She wants to use <xmlelement>b</xmlelement> and
+      <xmlelement>i,</xmlelement> but not <xmlelement>line-through</xmlelement>,
+      <xmlelement>overline</xmlelement>, <xmlelement>sup</xmlelement>, <xmlelement>sup</xmlelement>,
+      <xmlelement>tt</xmlelement>, or <xmlelement>u</xmlelement>. She wants to integrate this
+    constraint into the document-type shell for task.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>constraints<indexterm>examples<indexterm>restricting content model for a
+              domain</indexterm></indexterm></indexterm>
+        <indexterm>examples<indexterm>constraints<indexterm>restricting content model for a
+              domain</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <example id="example" otherprops="examples">
+      <ol>
+        <li >She creates
+            <filepath>reducedHighlightingDomainConstraint.mod</filepath>, where "reduced" is a
+          string that characterizes the constraint.</li>
+        <li>She adds the following content to <filepath 
+            >reducedHighlightingDomainConstraint.mod</filepath>:<codeblock>&lt;!-- ============================================================= -->
+&lt;!--      CONSTRAINED HIGHLIGHTING DOMAIN ENTITIES                 -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY HighlightingDomain-constraints     
+  "(topic hi-d basic-HighlightingDomain-c)"
+>
+
+&lt;!ENTITY % HighlightingDomain-c-ph     "b | i"                 >  </codeblock></li>
+        <li>She then integrates the constraint module into her company-specific, document-type shell
+          for the task topic by adding the following section directly before the "DOMAIN ENTITY
+          DECLARATIONS"
+          comment:<codeblock>&lt;!-- ============================================================= -->
+&lt;!--                    DOMAIN CONSTRAINT INTEGRATION              -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY % HighlightingDomain-c-dec  
+  PUBLIC "-//ACME//ENTITIES DITA Highlighting Domain Constraint//EN" 
+  "acme-HighlightingDomainConstraint.mod"
+>%basic-HighlightingDomain-c-dec;</codeblock></li>
+        <li>In the "DOMAIN EXTENSIONS" section, she replaces the parameter entity for the
+          highlighting domain with the parameter entity for the constrained highlighting
+          domain:<codeblock>&lt;!ENTITY % ph           "ph |
+                         <b>%HighlightingDomain-c-ph;</b> |
+                         %sw-d-ph; | 
+                         %ui-d-ph;
+                        "></codeblock></li>
+        <li>She then adds the constraint to the list of domains and constraints that need to be
+          included in the value of the <xmlatt>domains</xmlatt> attribute for
+            <xmlelement>task</xmlelement>:<codeblock>&lt;!-- ============================================================= -->
+&lt;!--                    DOMAINS ATTRIBUTE OVERRIDE                 -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY included-domains 
+                          "&amp;task-att;
+                           &amp;hi-d-att; 
+                           &amp;indexing-d-att;
+                           &amp;pr-d-att; 
+                           &amp;sw-d-att;
+                           &amp;ui-d-att;
+                           &amp;taskbody-constraints;
+                           <b>&amp;HighlightingDomain-constraints;</b>
+  "
+></codeblock></li>
+        <li>After updating the <filepath>catalog.xml</filepath> file to include the new constraints
+          file, her work is done.</li>
+      </ol>
+    </example>
+  </conbody>
+  
+</concept>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="keydef" xml:lang="en-us">
+<title><xmlelement>keydef</xmlelement></title>
+<shortdesc>The <xmlelement>keydef</xmlelement> element is a convenience element that is used to
+    define keys without any of the other effects that occur when using a
+      <xmlelement>topicref</xmlelement> element: no content is included in output, no title is
+    included in the table of contents, and no linking or other relationships are defined. The
+      <xmlelement>keydef</xmlelement> element is not the only way to define keys; its purpose is to
+    simplify the process by defaulting several attributes to achieve the described
+    behaviors.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>convenience
+          elements<indexterm><xmlelement>keydef</xmlelement></indexterm></indexterm>
+        <indexterm>elements<indexterm>mapgroup<indexterm><xmlelement>keydef</xmlelement></indexterm></indexterm></indexterm>
+        <indexterm>keys<indexterm>definition<indexterm>examples</indexterm></indexterm></indexterm>
+        <indexterm>maps<indexterm>examples<indexterm>key
+          definition</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+<refbody>
+<section conref="../../common/commonNavLibraryTable.dita#contentmodel-keydef/contains" id="contains" otherprops="contains"></section>
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>+ map/topicref <ph >mapgroup-d</ph>/keydef </p></section>
+<example id="example" otherprops="examples"><title>Example</title><p>The following example defines keys that can be used to refer to the indicated topics. These keys
+          <ph rev="public-review-1">can</ph> be used within the map, from any topic in this map, or
+        in any context where this map is imported. Note that the <xmlatt>processing-role</xmlatt>
+        attribute defaults to "resource-only", which ensures that specified topics will not be
+        rendered in a print document or in a navigation TOC based on this definition in the map. In
+        addition, it means that links will not be generated to or from the
+          <xmlelement>keydef</xmlelement> elements.</p><codeblock>&lt;map>
+  &lt;title>Defining bird keys&lt;/title>
+  &lt;keydef keys="darwinfinch galapagosfinch"  href="galapagosfinch.dita"/>
+  &lt;keydef keys="goldfinch"  href="about-goldfinches.dita"/>
+  &lt;keydef keys="puffin"     href="about-puffins.dita"/>
+  &lt;keydef keys="loon diver" href="common-loon.dita"/>
+&lt;/map></codeblock></example>
+<section id="attributes"><title>Attributes</title><sectiondiv id="keydef-attributes">
+        <p>The following attributes are available on this element: <xref
+            href="../attributes/universalAttributes.dita"/>, <xref
+            href="../attributes/linkRelationshipAttributes.dita"/> (with a narrowed definition of
+            <xmlatt>href</xmlatt>, given below), <xref href="../attributes/commonMapAttributes.dita"
+          /> (with a narrowed definition of <xmlatt>processing-role</xmlatt>, given below), <xref
+            href="../attributes/topicrefElementAttributes.dita"/>, <xref
+            href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, <xref
+            href="../attributes/thekeyrefattribute.dita"><xmlatt>keyref</xmlatt></xref>, and the
+          attributes defined below.</p>
+        <dl>
+          <dlentry>
+            <dt><xmlatt>keys</xmlatt>
+              <ph conref="../../common/conref-attribute.dita#conref-attribute/required-attr"/></dt>
+            <dd>On this element the <xmlatt>keys</xmlatt> attribute is required, because the purpose
+              of the element is to define a key. Otherwise, the attribute is the same as described
+              in <xref href="../attributes/thekeysattribute.dita"/>.</dd>
+          </dlentry>
+          <dlentry conref="../../common/conref-attribute.dita#conref-attribute/href-on-topicref">
+            <dt/>
+            <dd/>
+          </dlentry>
+          <dlentry
+            conref="../../common/conref-attribute.dita#conref-attribute/processing-role-default-resource-only">
+            <dt/>
+            <dd/>
+          </dlentry>
+        </dl>
+      </sectiondiv></section>
+</refbody>
+</reference>
+

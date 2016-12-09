@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="dvrResourceSuffix" xml:lang="en-us" >
+  <title><xmlelement>dvrResourceSuffix</xmlelement></title>
+  <shortdesc>The <xmlelement>dvrResourceSuffix</xmlelement> element specifies the suffix to use
+    when constructing the effective file names of resources that are referenced from within the map
+    branch that is implied by the ancestor <xmlelement>ditavalref</xmlelement> element.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>dvrResourceSuffix</indexterm>
+        <indexterm>DITAVAL reference domain<indexterm>dvrResourceSuffix</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody>
+    <section id="section-1">
+      <p>For map branches that are implied by <xmlelement>ditavalref</xmlelement> elements, the
+        value of the <xmlelement>dvrResourceSuffix</xmlelement> element contributes to the
+        effective file names of the resources that are referenced within the branch. The base part
+        of the effective resource file name ends with the value of the
+          <xmlelement>dvrResourceSuffix</xmlelement> element. The base part of the resource file
+        name consists of the portion of the file name after any directory information, and before
+        any period followed by the file extension. For example, in the original file name
+          <filepath>task/install.dita</filepath>, the base portion of the file name is "install".
+          <ph conref="../../common/conref-file.dita#reuse_file/ditavalref-copyto"/></p>
+      <p>Some resources are not eligible for renaming, such as those marked with
+          <codeph>scope="external"</codeph>. Rules for which resources are eligible for renaming,
+        and what names are allowed as valid resource names, are the same as those for the
+          <xmlatt>copy-to</xmlatt> attribute defined in <xref
+          href="../attributes/topicrefElementAttributes.dita#topicref-element-atts"/>, with one
+        exception. Where <xmlatt>copy-to</xmlatt> and <xmlelement>dvrResourcePrefix</xmlelement>
+        <ph rev="public-review-1">might</ph> include path information, path information is not valid
+        in <xmlelement>dvrResourceSuffix</xmlelement>.</p>
+    </section>
+    <section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-dvrResourceSuffix/contains" otherprops="contains"></section>
+    <section id="inheritance" otherprops="inheritance">
+      <title>Inheritance</title>
+      <p>+ topic/data ditavalref-d/dvrResourceSuffix </p>
+    </section>
+    <example id="example" otherprops="examples">
+      <title>Example</title>
+      <p>If the <xmlelement>dvrResourceSuffix</xmlelement> is specified in the following
+        way:<codeblock>&lt;topicref href="branch-01.dita">
+  &lt;ditavalref href="condition-01.ditaval">
+    &lt;ditavalmeta>
+      &lt;dvrResourceSuffix>-cond01&lt;/dvrResourceSuffix>
+    &lt;/ditavalmeta>
+  &lt;/ditavalref>
+  &lt;topicref href="topics/subtopic-01.dita"/>
+&lt;/topicref></codeblock></p>
+      <p>Then the effective file name of resource <filepath>topics/subtopic-01.dita</filepath> is
+          <filepath>topics/subtopic-01-cond01.dita</filepath>, as though the
+          <xmlatt>copy-to</xmlatt> attribute had been specified with that value on the
+          <xmlelement>topicref</xmlelement> to <filepath>topics/subtopic-01.dita</filepath>.
+        Similarly, the effective file name of resource <filepath>branch-01.dita</filepath> is
+          <filepath>branch-01-cond01.dita</filepath>.</p>
+    </example>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref
+          href="../attributes/universalAttributes.dita"/> (except for <xmlatt>conkeyref</xmlatt>,
+        which is removed for all elements in this domain) and the attribute defined below.</p>
+      <dl>
+        <dlentry>
+          <dt><xmlatt>name</xmlatt></dt>
+          <dd>The name of the metadata item. For this element the default value is
+            "dvrResourceSuffix".</dd>
+        </dlentry>
+      </dl>
+    </section>
+  </refbody>
+</reference>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="sectiondiv" xml:lang="en-us">
+<title><xmlelement>sectiondiv</xmlelement></title>
+<shortdesc>The <xmlelement>sectiondiv</xmlelement> element allows logical grouping of content within
+    a section. There is no additional meaning associated with the
+      <xmlelement>sectiondiv</xmlelement> element. The <xmlelement>sectiondiv</xmlelement> element
+    does not contain a title; the lowest level of titled content within a topic is the section
+    itself. If additional hierarchy is required, <ph rev="public-review-1">use</ph> nested topics
+      <ph rev="public-review-1">instead</ph> of the section.</shortdesc>
+<prolog><metadata>
+<keywords>
+        <indexterm>elements<indexterm>body<indexterm><xmlelement>sectiondiv</xmlelement></indexterm></indexterm></indexterm>
+        <indexterm>grouping
+          elements<indexterm><xmlelement>sectiondiv</xmlelement></indexterm></indexterm>
+</keywords>
+</metadata></prolog>
+<refbody>
+<section id="section-1">
+      <p>The <xmlelement>sectiondiv</xmlelement> element nests itself, so it can be specialized to
+        create structured information within sections. Another common use case for the
+          <xmlelement>sectiondiv</xmlelement> element is to group a sequence of related elements for
+        reuse, so that another topic <ph rev="public-review-1">can</ph> reference the entire set
+        with a single <xmlatt>conref</xmlatt> attribute.</p>
+      <p rev="public-review-1">Because the
+<xmlelement>sectiondiv</xmlelement> element can only be used within <xmlelement>section</xmlelement>
+elements, use the <xmlelement>div</xmlelement> element to group content that might occur in both
+topic bodies and sections.</p>
+    </section>
+<section conref="../../common/commonNavLibraryTable.dita#contentmodel-sectiondiv/contains" id="contains" otherprops="contains"></section>
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
+topic/sectiondiv </p></section>
+<example id="example" otherprops="examples"><title>Example</title><p>In the example below, the <xmlelement>sectiondiv</xmlelement> element is used to group content
+        that can be reused elsewhere.</p><codeblock>&lt;section>
+  &lt;title>Nice pets&lt;/title>
+  &lt;sectiondiv id="smallpets">
+    &lt;p>Cats are nice.&lt;/p>
+    &lt;p>Dogs are nice.&lt;/p>
+    &lt;p>Friends of mine really love their hedgehogs.&lt;/p>
+  &lt;/sectiondiv>
+  &lt;sectiondiv id="biggerpets">
+    &lt;p>Lots of people want ponies when they grow up.&lt;/p>
+    &lt;p>Llamas are also popular.&lt;/p>
+  &lt;/sectiondiv>
+&lt;/section></codeblock></example>
+<section id="attributes"><title>Attributes</title>
+      <p conref="../../common/conref-attribute.dita#conref-attribute/universal-outputclass"/>
+      </section>
+</refbody>
+</reference>
+

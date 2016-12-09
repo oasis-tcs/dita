@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="filtering">
+ <title>Filtering</title>
+ <shortdesc>At processing time, a conditional processing profile can be used to specify profiling
+  attribute values that determine whether an element with those values is included or
+  excluded.</shortdesc>
+ <conbody>
+  <p>By default, values in conditional processing attributes that are not defined in a DITAVAL
+   profile evaluate to "include". For example, if the value audience="novice" is used on a
+   paragraph, but this value is not defined in a DITAVAL profile, the attribute evaluates to
+   "include".</p>
+  <p>However, the DITAVAL profile can change this default to "exclude", so that any value not
+   explicitly defined in the DITAVAL profile will evaluate to "exclude". The DITAVAL profile also
+   can be used to change the default for a single attribute; for example, it can declare that values
+   in the <xmlatt>platform</xmlatt> attribute default to "exclude", while those in the
+    <xmlatt>product</xmlatt> attribute default to include. See <xref
+    href="../../langRef/containers/ditaval-elements.dita"/> for information on how to set up a
+   DITAVAL profile and how to change default behaviors.</p>
+  <p>When deciding whether to include or exclude a particular element, a processor should evaluate
+   each attribute independently:</p>
+  <ol>
+   <li>For each attribute:<ul>
+<li rev="public-review-1">If the attribute is empty, or contains only empty groups, it is equivalent
+to omitting the attribute from the element. If evaluated for the purposes of filtering, the
+attribute is treated as "include", because an omitted attribute cannot evaluate to "exclude".</li>
+     <li>If the attribute value does not contain any groups, then if any token in the attribute
+      value evaluates to "include", the element evaluates to "include"; otherwise it evaluates to
+      "exclude". In other words, the attribute evaluates to "exclude" only when <b>all</b> the
+      values in that attribute evaluate to "exclude".</li>
+     <li >If the attribute value does include groups, evaluate as
+      follows, treating ungrouped tokens together as a group: <ol>
+       <li>For each group (including the group of ungrouped tokens), if any token inside the group
+        evaluates to "include", the group evaluates to "include"; otherwise it evaluates to
+        "exclude". In other words, a group evaluates to "exclude" only when every token in that
+        group evaluates to "exclude".</li>
+       <li>If any group within an attribute evaluates to "exclude", that attribute evaluates to
+        "exclude"; otherwise it evaluates to "include".</li>
+      </ol></li>
+    </ul></li>
+   <li>If <b>any single attribute</b> evaluates to exclude, the element is excluded.</li>
+  </ol>
+  <!--<draft-comment author="Kristen Eberlein" time="8 February 2014">We need to make this wording more precise and less ambiguous. Is the following content what was intended?<ul><li>(For an attribute with a single value) If the attribute value is set to "exclude", the element is excluded.</li><li>(For an attribute with multiple values) If all the attribute values are set to "exclude", the element is excluded</li><li>(For an attribute with a single group of values) If all the attribute values in the group are set to "exclude", the element is excluded.</li></ul>I'm not sure I understand what is meant by "When deciding whether to include or exclude a particular element, a processor should evaluate each attribute, and then evaluate the set of attributes." What's the difference between evaluating each attribute and evaluating a set of attributes?</draft-comment><draft-comment author="robander" time="21 April 2014">I think that is resolved now. I've tweaked the wording a bit - the list in the previous draft comment was not correct.</draft-comment>-->
+  <p>For example, if a paragraph applies to three products and the publisher has chosen to exclude
+   all of them, the processor should exclude the paragraph. This is true even if the paragraph
+   applies to an audience or platform that is not excluded. But if the paragraph applies to an
+   additional product that has not been excluded, then its content is still relevant for the
+   intended output and should be preserved.</p>
+  <p >Similarly, with groups, a step might apply to one application
+   server and two database applications:
+   <codeblock id="groupcodesample">&lt;steps>
+  &lt;step>&lt;cmd>Common step&lt;/cmd>&lt;/step>
+  &lt;step product="appserver(mySERVER) database(ABC dbOtherName)">
+    &lt;cmd>Do something special for databases ABC or OtherName when installing on mySERVER&lt;/cmd>
+  &lt;/step>
+  &lt;!-- additional steps -->
+&lt;/steps></codeblock></p>
+  <p >If a publisher decides to exclude the application server mySERVER,
+   then the appserver() group evaluates to exclude. This can be done by setting
+    <codeph>product="mySERVER"</codeph> to exclude <i>or</i> by setting
+    <codeph>appserver="mySERVER"</codeph> to exclude. This means the step should be excluded,
+   regardless of how the values "ABC" or "dbOtherName" evaluate. If a rule is specified for both
+    <codeph>product="mySERVER"</codeph> and <codeph>appserver="mySERVER"</codeph>, the rule for the
+   more specific group name "appserver" takes precedence.</p>
+  <p >Similarly, if both "ABC" and "dbOtherName" evaluate to exclude,
+   then the database() group evaluates to exclude and the element should be excluded regardless of
+   how the "mySERVER" value is set.</p>
+  <p >In more advanced usage, a DITAVAL can be used to specify a rule
+   for a group name. For example, an author could create a DITAVAL rule that sets
+    <codeph>product="database"</codeph> to "exclude". This is equivalent to setting a default of
+   "exclude" for any individual value in a database() group; it also excludes the more common usage
+   of "database" as a single value within the <xmlatt>product</xmlatt> attribute. Thus when "myDB"
+   appears in a database() group within the <xmlatt>product</xmlatt> attribute, the full precedence
+   for determining whether to include or exclude the value is as follows: <ol>
+    <li>Check for a DITAVAL rule for <codeph>database="myDB"</codeph></li>
+    <li>Check for a DITAVAL rule for <codeph>product="myDB"</codeph></li>
+    <li>Check for a DITAVAL rule for <codeph>product="database"</codeph> (default for the database
+     group)</li>
+    <li>Check for a DITAVAL rule for "product" (default for the <xmlatt>product</xmlatt>
+     attribute)</li>
+    <li>Check for a default rule for all conditions (default of include or exclude for all
+     attributes)</li>
+    <li>Otherwise, evaluate to "include"</li>
+   </ol></p>
+ </conbody>
+</concept>

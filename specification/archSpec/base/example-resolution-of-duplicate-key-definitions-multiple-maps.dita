@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_zpw_51z_lp">
+ <title>Example: Duplicate key definitions across multiple maps</title>
+ <shortdesc >In this scenario, the root map contains references to two submaps,
+    each of which defines the same key. The effective key definition depends upon the document order
+    of the direct URI references to the maps.</shortdesc>
+ <conbody>
+  <p>In the following example, a root map contains a key definition for the <ph >key
+    "toner-specs" and references to two submaps.</ph></p>
+  <codeblock>&lt;map&gt;
+  <b>&lt;keydef keys="toner-specs" href="toner-type-a-specs.dita"/&gt;</b>
+  &lt;mapref href="submap-01.ditamap"/&gt;
+  &lt;mapref href="submap-02.ditamap"/&gt;
+&lt;/map&gt;
+</codeblock>
+  <p>The first submap, <filepath>submap-01.ditamap</filepath>, contains definitions for the <ph
+    >keys "toner-specs" and "toner-handling":</ph></p>
+  <codeblock>&lt;map&gt;
+  &lt;keydef keys="toner-specs" href="toner-type-b-specs.dita"/&gt;
+  <b>&lt;keydef keys="toner-handling" href="toner-type-b-handling.dita"/&gt;</b>
+&lt;/map&gt;</codeblock>
+  <p>The second submap, <filepath>submap-02.ditamap</filepath>, contains definitions for the <ph
+    >keys "toner-specs", "toner-handling", and "toner-disposal":</ph></p>
+  <codeblock>&lt;map&gt;
+  &lt;keydef keys="toner-specs" href="toner-type-c-specs.dita"/&gt;
+  &lt;keydef keys="toner-handling" href="toner-type-c-handling.dita"/&gt;
+  <b>&lt;keydef keys="toner-disposal" href="toner-type-c-disposal.dita"/&gt;</b>
+&lt;/map&gt;</codeblock>
+  <p>For this example, the effective key definitions are listed in the following table.</p>
+  <simpletable frame="topbot" id="simpletable_a459d096-5695-474b-9e7f-3797b458437c">
+   <sthead>
+    <stentry>Key</stentry>
+    <stentry>Bound resource</stentry>
+   </sthead>
+   <strow>
+    <stentry>toner-specs</stentry>
+    <stentry><filepath>toner-type-a-specs.dita</filepath></stentry>
+   </strow>
+   <strow>
+    <stentry>toner-handling</stentry>
+    <stentry><filepath>toner-type-b-handling.dita</filepath></stentry>
+   </strow>
+   <strow>
+    <stentry>toner-disposal</stentry>
+    <stentry><filepath>toner-type-c-disposal.dita</filepath></stentry>
+   </strow>
+  </simpletable>
+  <p>The key definition for "toner-specs" in the root map is effective, because it is the first
+      encountered in a breadth-first traversal of the root map. The key definition for
+      "toner-handling" in <filepath>submap-01.ditamap</filepath> is effective, because submap-01 is
+      included before submap-02 and so comes first in a breadth-first traversal of the submaps. The
+      key definition for "toner-disposal" is effective because it is the only definition of the
+      key.</p>
+ </conbody>
+</concept>

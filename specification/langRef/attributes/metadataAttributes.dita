@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference
+  id="select-atts"
+  xml:lang="en-us">
+  <title>Metadata attribute group</title>
+  <shortdesc>The metadata attribute group includes common metadata attributes, several of which
+    support conditional processing (filtering and flagging) or the creation of new attribute domain
+    specializations.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords><indexterm>Metadata attribute group</indexterm><indexterm>Commonly referenced attribute descriptions<indexterm>Metadata
+          attributes</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody>
+    <section id="specializeable">
+      <dl>
+        <dlentry id="props">
+          <dt><xmlatt>props</xmlatt></dt>
+          <dd><indexterm>props
+                attribute</indexterm><indexterm>Attributes<indexterm>props</indexterm></indexterm>Root
+            attribute from which new metadata attributes can be specialized. <ph
+              conref="../../common/conref-attribute.dita#conref-attribute/propertyvalueattr"/>
+            <ph conref="../../common/conref-attribute.dita#conref-attribute/may-inherit"/>
+          </dd>
+        </dlentry>
+        <dlentry id="base">
+          <dt><xmlatt>base</xmlatt></dt>
+          <dd><indexterm>base
+              attribute</indexterm><indexterm>Attributes<indexterm>base</indexterm></indexterm>A
+            generic attribute that has no specific purpose. It is intended to act as a base for
+            specialized attributes that have a simple value syntax like the conditional processing
+            attributes (one or more alphanumeric values separated by whitespace), but is not itself
+            a filtering or flagging attribute.  </dd>
+        </dlentry>
+      </dl>
+      <p>The <xmlatt>props</xmlatt> and <xmlatt>base</xmlatt> attributes each take a space-delimited
+        set of values. However, when acting as a container for generalized attributes, the attribute
+        values will be more complex; see <xref href="../../archSpec/base/generalization-attributes.dita"/>
+        for more details.</p>
+    </section>
+    <section id="originalfilter">
+      <dl>
+        <dlentry id="platform">
+          <dt><xmlatt>platform</xmlatt></dt>
+          <dd><indexterm>platform
+                attribute</indexterm><indexterm>Attributes<indexterm>platform</indexterm></indexterm>Indicates
+            operating system and hardware. <ph
+              conref="../../common/conref-attribute.dita#conref-attribute/may-inherit"/>
+          </dd>
+        </dlentry>
+        <dlentry id="product">
+          <dt><xmlatt>product</xmlatt></dt>
+          <dd><indexterm>product
+                attribute</indexterm><indexterm>Attributes<indexterm>product</indexterm></indexterm>Contains
+            the name of the product to which the element applies. <ph
+              conref="../../common/conref-attribute.dita#conref-attribute/may-inherit"/>
+          </dd>
+        </dlentry>
+        <dlentry id="audience">
+          <dt><xmlatt>audience</xmlatt></dt>
+          <dd><indexterm>audience
+                attribute</indexterm><indexterm>Attributes<indexterm>audience</indexterm></indexterm>Indicates
+            the intended audience for the element. <ph
+              conref="../../common/conref-attribute.dita#conref-attribute/may-inherit"/>
+          </dd>
+        </dlentry>
+        <dlentry id="otherprops">
+          <dt><xmlatt>otherprops</xmlatt></dt>
+          <dd><indexterm>otherprops
+                attribute</indexterm><indexterm>Attributes<indexterm>otherprops</indexterm></indexterm>This
+            attribute can be used for any other properties that might be needed to describe an
+            audience, or to provide selection criteria for the element. Alternatively, the
+              <xmlatt>props</xmlatt> attribute <ph rev="public-review-1">can</ph> be specialized to
+            provide a new metadata attribute instead of using the general
+              <xmlatt>otherprops</xmlatt> attribute. <ph
+              conref="../../common/conref-attribute.dita#conref-attribute/may-inherit"/>
+          </dd>
+        </dlentry>
+      </dl>
+      <p >The <xmlatt>audience</xmlatt>, <xmlatt>platform</xmlatt>,
+          <xmlatt>product</xmlatt>, and <xmlatt>otherprops</xmlatt> attributes are property
+        attributes which support conditional processing for filtering or flagging. Each takes a
+        space-delimited set of values, with optional groups of space-delimited properties. Although
+        these attributes are not specialized and not specializeable, the group syntax matches that
+        for generalized attributes in <xref href="../../archSpec/base/generalization-attributes.dita"
+        />.</p>
+    </section>
+    <section id="specialized">
+      <dl>
+        <dlentry conref="../../common/conref-file.dita#reuse_file/deliveryTarget"
+          id="deliveryTarget">
+          <dt/>
+          <dd/>
+        </dlentry>
+      </dl>
+    </section><section id="othermetaattributes">
+      <dl>
+        <!--<dlhead conref="../../common/conref-file.dita#reuse_file/attributeDlhead"><dthd/><ddhd/></dlhead>-->
+        <dlentry id="importance">
+          <dt><xmlatt>importance</xmlatt></dt>
+          <dd><indexterm>importance
+                attribute</indexterm><indexterm>Attributes<indexterm>importance</indexterm></indexterm>A
+            range of values that describe an importance or priority attributed to an element. For
+            example, in steps of a task, the attribute indicates whether a step is optional or
+            required. This attribute is not used for DITAVAL-based filtering or flagging;
+            applications <ph rev="public-review-1">might</ph> use the importance value to highlight
+            elements. Allowable values are: obsolete, deprecated, optional, default, low, normal,
+            high, recommended, required, urgent, and -dita-use-conref-target. </dd>
+        </dlentry>
+        <dlentry id="rev">
+          <dt><xmlatt>rev</xmlatt></dt>
+          <dd><indexterm>rev
+              attribute</indexterm><indexterm>Attributes<indexterm>rev</indexterm></indexterm>Indicates
+            a revision level of an element that identifies when the element was added or modified.
+            It can be used to flag outputs when it matches a run-time parameter; it cannot be used
+            for filtering. It is not sufficient to be used for version control. <ph
+              conref="../../common/conref-attribute.dita#conref-attribute/may-inherit"/>
+          </dd>
+        </dlentry>
+        <dlentry id="status">
+          <dt><xmlatt>status</xmlatt></dt>
+          <dd><indexterm>status
+                attribute</indexterm><indexterm>Attributes<indexterm>status</indexterm></indexterm>The
+            modification status of the current element. Allowable values are: new, changed, deleted,
+            unchanged, and -dita-use-conref-target.</dd>
+        </dlentry>
+      </dl>
+    </section>
+  </refbody>
+</reference>

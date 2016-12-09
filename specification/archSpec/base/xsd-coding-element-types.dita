@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept id="xsdGeneralCodingReq" xml:lang="en-us">
+  <title>XML Schema: Coding requirements for element type declarations</title>
+  <shortdesc>Structural and domain vocabulary modules have the same XSD coding requirements for
+    element type declarations.</shortdesc>
+  <conbody>
+    <section id="element-definitions">
+      <title>Element definitions</title>
+      <p>A structural or domain vocabulary module must contain a declaration for each specialized
+        element type named by the module. While the XSD standard allows content models to refer to
+        undeclared element types, all element types named in content models within a vocabulary
+        module must have an <xmlelement>xs:element</xmlelement> declaration, either in the
+        vocabulary module, in a base module from which the vocabulary module is specialized, or in a
+        required domain module.</p>
+      <p>Domain modules consist of a single XSD document. Structural modules consist of two modules;
+        one module contains all element name groups, and the other contains all other declarations
+        for the module.</p>
+      <p>For each element type that is declared in the vocabulary module, the following set of
+        groups and declarations must be used to define the content model and attributes for the
+        element type. These groups are typically placed together within the module for clarity.</p>
+      <ul>
+        <li>For each element type declared in the vocabulary module there must be an
+            <xmlelement>xs:group</xmlelement> element whose name is the element type name, and whose
+          one member is a reference to the element type. This element name group provides a layer of
+          abstraction that facilitates redefinition. A document-type shell can redefine an element
+          group to add domain-specialized elements or to replace a base element type with one or
+          more specializations of that type.</li>
+        <li>Each element type must have a corresponding content model group named
+              <codeph><i>tagname</i>.content</codeph>. The value of the group is the complete
+          content model definition; the content model group can be overridden in constraint modules
+          to further constrain the content model.</li>
+        <li>Each element type must have a corresponding attribute group named
+            <codeph><i>tagname</i>.attributes</codeph>. The value of the group is the complete
+          attribute set for the element type, except for the <xmlatt>class</xmlatt> attribute. Like
+          the content model, this group can be overridden in a constraint module to constrain the
+          attribute set.</li>
+        <li>Each element type must have a complex type definition named
+              <codeph><varname>tagname</varname>.class</codeph>, which references the
+              <codeph><varname>tagname</varname>.content</codeph> and
+              <codeph><varname>tagname</varname>.attributes</codeph> groups.</li>
+        <li>Each element type must have an <xmlelement>xs:element</xmlelement> declaration named
+              <codeph><varname>tagname</varname></codeph>, that uses as its type the
+              <codeph><varname>tagname</varname>.class</codeph> complex type and extends that
+          complex type to add the <xmlatt>class</xmlatt> attribute for the element.</li>
+      </ul>
+      <p otherprops="examples">For example, the following set of declarations shows each of the
+        required groups and definitions for the specialized <xmlelement>codeph</xmlelement>
+        element.<codeblock>&lt;xs:group name="codeph">
+  &lt;xs:sequence>
+    &lt;xs:choice>
+      &lt;xs:element ref="codeph"/>
+    &lt;/xs:choice>
+  &lt;/xs:sequence>
+&lt;/xs:group>
+
+&lt;xs:group name="codeph.content"&gt;
+  &lt;xs:sequence&gt;
+    &lt;xs:choice minOccurs="0" maxOccurs="unbounded"&gt;
+      &lt;xs:group ref="basic.ph.notm"/&gt;
+      &lt;xs:group ref="data.elements.incl"/&gt;
+      &lt;xs:group ref="draft-comment"/&gt;
+      &lt;xs:group ref="foreign.unknown.incl"/&gt;
+      &lt;xs:group ref="required-cleanup"/&gt;
+    &lt;/xs:choice&gt;
+  &lt;/xs:sequence&gt;
+&lt;/xs:group&gt;
+
+&lt;xs:attributeGroup name="codeph.attributes">
+  &lt;xs:attributeGroup ref="univ-atts"/>
+  &lt;xs:attribute name="outputclass" type="xs:string"/>
+  &lt;xs:attributeGroup ref="global-atts"/>
+&lt;/xs:attributeGroup>
+
+&lt;xs:complexType name="codeph.class" mixed="true">
+  &lt;xs:sequence>  
+    &lt;xs:group ref="codeph.content"/>
+  &lt;/xs:sequence>        
+  &lt;xs:attributeGroup ref="codeph.attributes"/>
+&lt;/xs:complexType>
+
+&lt;xs:element name="codeph">
+  &lt;xs:annotation>
+    &lt;xs:documentation> &lt;!-- documentation for codeph --> &lt;/xs:documentation>
+  &lt;/xs:annotation>
+  &lt;xs:complexType>
+    &lt;xs:complexContent>
+      &lt;xs:extension base="codeph.class">
+        &lt;xs:attribute ref="class" default="+ topic/ph pr-d/codeph "/>
+      &lt;/xs:extension>
+    &lt;/xs:complexContent>
+  &lt;/xs:complexType>
+&lt;/xs:element></codeblock></p>
+    </section>
+  </conbody>
+</concept>
+

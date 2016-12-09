@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_bgq_np2_mp">
+ <title>Example: Key scopes and omnibus publications</title>
+ <shortdesc>Key scopes enable you to create omnibus publications that include multiple submaps that
+    define the same <ph >key names for common items, such as product names or common
+      topic clusters.</ph></shortdesc>
+ <conbody>
+  <p>In this scenario, a training organization wants to produce a deliverable that includes all of
+   their training course materials. Each course manual uses common keys for standard parts of the
+   course materials, including "prerequisites," "overview", "assessment", and "summary.</p>
+  <p>An information architect creates a root map that contains the following markup:</p>
+  <codeblock>&lt;map xml:lang="en">
+  &lt;title>Training courses&lt;/title>
+  &lt;mapref href="course-1.ditamap"/>
+  &lt;mapref href="course-2.ditamap"/>
+  &lt;mapref href="course-3.ditamap"/>
+  &lt;topicref href="omnibus-summary.dita"/>
+&lt;/map></codeblock>
+  <p>Each of the submaps contain <xmlelement>topicref</xmlelement> elements that <ph 
+        >refer to</ph> resources using the <xmlatt>keyref</xmlatt> attribute. Each submap uses
+      common keys for standard parts of the course materials, including "prerequisites," "overview",
+      "assessment", and "summary", and their key definitions <ph >bind</ph> the
+      key names to course-specific resources. For example:</p>
+  <codeblock>&lt;map xml:lang="en">
+  &lt;title>Training course #1&lt;/title>
+  &lt;mapref href="course-1/key-definitions.ditamap"/>
+  &lt;topicref keyref="prerequisites"/>
+  &lt;topicref keyref="overview"/>
+  &lt;topicref keyref="assessment"/>
+  &lt;topicref keyref="summary"/>
+&lt;/map></codeblock>
+  <p>Without using key scopes, the effective key definitions for the common keys resolve to those
+   found in <filepath>course-1.ditamap</filepath>. This is not the desired outcome. By adding key
+   scopes to the submaps, however, the information architect can ensure that the key references in
+   the submaps resolve to the course-specific key definitions.</p>
+  <codeblock>&lt;map xml:lang="en">
+  &lt;title>Training courses&lt;/title>
+  &lt;mapref href="course-1.ditamap" <b>keyscope="course-1"</b>/>
+  &lt;mapref href="course-2.ditamap" <b>keyscope="course-2"</b>/>
+  &lt;mapref href="course-3.ditamap" <b>keyscope="course-3"</b>/>
+  &lt;topicref href="omnibus-summary.dita"/>
+&lt;/map></codeblock>
+  <p>The information architect does <b>not</b> set <codeph>keys="summary"</codeph> on the
+        <xmlelement>topicref</xmlelement> element in the root map. Doing so would mean that all key
+      references to "summary" in the submaps would resolve to
+        <filepath>omnibus-summary.dita</filepath>, rather than the course-specific summary topics.
+      This is because key definitions located in parent scopes override those located in child
+      scopes.</p>
+ </conbody>
+</concept>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_m3j_jvb_lq">
+ <title><ph >Processing attributes when resolving conrefs</ph></title>
+ <shortdesc>When resolving conrefs, processors need to combine the attributes that are specified on
+    the referencing and referenced element.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>-dita-use-conref-target<index-sort-as>dita-use-conref-target</index-sort-as></indexterm>
+        <indexterm>conref<indexterm>combining attributes</indexterm></indexterm>
+        <indexterm>precedence rules<indexterm>combining attributes on
+          conrefs</indexterm></indexterm>
+        <indexterm>processing<indexterm>conrefs</indexterm></indexterm>
+        <indexterm>processing expectations<indexterm>combining attributes on
+          conrefs</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+ <conbody>
+  <p>The attribute specifications on the resolved element <ph >are</ph> drawn
+      from both the referencing element and the referenced element, according to the following
+      priority:</p>
+  <ol>
+   <li>All attributes as specified on the referencing element, except for attributes set to
+        "-dita-use-conref-target".</li>
+   <li>All attributes as specified on the referenced element except the <xmlatt>id</xmlatt>
+        attribute.</li>
+   <li>The <xmlatt>xml:lang</xmlatt> attribute has special treatment as described in <xref
+     href="xmllang.dita"/>.</li>
+  </ol>
+  <p>The token <ph >-dita-use-conref-target is defined by the specification to
+        enable easier use of <xmlatt>conref</xmlatt> on elements with required attributes. </ph>The
+      only time the resolved element would include an attribute whose specified value is
+      "-dita-use-conref-target" is when the referenced element had that attribute specified with the
+      "-dita-use-conref-target" value and the referencing element either had no specification for
+      that attribute or had it also specified with the "-dita-use-conref-target" value. If the final
+      resolved element (after the complete resolution of any conref chain, as explained below) has
+      an attribute with the "-dita-use-conref-target" value, that element <term
+        outputclass="RFC-2119">MUST</term> be treated as equivalent to having that
+      attribute unspecified.</p>
+  <p>A given attribute value on the resolved element comes in its entirety from either the
+   referencing element or the referenced element; the attribute values of the referencing and
+   referenced elements for a given attribute are never additive, even if the property (such as
+    <xmlatt>audience</xmlatt>) takes a list of values.</p>
+  <p>If the referenced element has a <xmlatt>conref</xmlatt> attribute specified, the above rules
+   should be applied recursively with the resolved element from one referencing/referenced
+   combination becoming one of the two elements participating in the next referencing/referenced
+   combination. The result should preserve without generalization all elements that are valid in the
+   originating context, even if they are not valid in an intermediate context. </p>
+  <p otherprops="examples">For example, if topic A and topic C allow highlighting, and topic B does
+      not, then a content reference chain of topic A-to-topic B-to-topic C should preserve any
+      highlighting elements in the referenced content. The result, however it is achieved, must be
+      equivalent to the result of resolving the conref pairs recursively starting from the original
+      referencing element in topic A.</p>
+ </conbody>
+</concept>

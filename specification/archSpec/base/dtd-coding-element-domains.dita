@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept
+  id="domainpattern"
+  xml:lang="en-us">
+  <title>DTD: Coding requirements for element domain modules</title>
+  <shortdesc>The vocabulary modules that define element domains have an additional coding
+    requirement. The entity declaration file must include a parameter entity for each element <ph
+      >that the domain extends</ph>.</shortdesc>
+  <conbody>
+    <dl>
+      <dlentry>
+        <dt>Parameter entity name</dt>
+        <dd>
+          <p>The name of the parameter entity is the abbreviation for the domain, followed by a
+            hyphen ("-"), and the name of the element that is extended.</p>
+        </dd>
+      </dlentry>
+      <dlentry>
+        <dt>Parameter entity value</dt>
+        <dd>
+          <p>The value of the parameter entity is a list of the specialized elements that can occur
+            in the same locations as the extended element. Each element must be separated by the
+            vertical line ( | ) symbol.</p>
+        </dd>
+      </dlentry>
+    </dl>
+    <example id="example" otherprops="examples">
+      <title>Example</title>
+      <p otherprops="examples">Because the highlighting domain extends the
+          <xmlelement>ph</xmlelement> element, the entity declaration file for that domain must
+        include a parameter entity corresponding to the <xmlelement>ph</xmlelement> element. The
+        name of the entity uses the short name of the domain (<codeph>hi-d</codeph>) followed by the
+        name of the base element. The value includes each specialization of
+          <xmlelement>ph</xmlelement> in the domain.</p>
+      <codeblock>&lt;!ENTITY % hi-d-ph "b | u | i | <ph >line-through | overline |</ph> tt | sup | sub"></codeblock>
+    </example>
+  </conbody>
+</concept>

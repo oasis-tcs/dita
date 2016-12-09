@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept id="conformance" xml:lang="en-us">
+  <title>Conformance</title>
+  <!--<shortdesc>This section outlines the requirements that documents, document types, vocabulary and constraint modules, and processors <term outputclass="RFC-2119" rev="terminology">MUST</term> meet in order to be considered DITA conforming. This section also defines conformance-related terminology and categories.</shortdesc>-->
+  <shortdesc>Conformance to the DITA specification allows documents and document types that are used
+    with different processors or different versions of a processor to produce the same or similar
+    results with little or no reimplementation or modification.</shortdesc>
+  <conbody>
+    <!--<section><title><ph>Key words</ph></title><p>The key words <term outputclass="RFC-2119" rev="terminology">MUST</term>, <term outputclass="RFC-2119" rev="terminology">MUST NOT</term>, <term outputclass="RFC-2119" rev="terminology">REQUIRED</term>, <term outputclass="RFC-2119" rev="terminology">SHALL</term>, <term outputclass="RFC-2119" rev="terminology">SHALL NOT</term>, <term outputclass="RFC-2119" rev="terminology">SHOULD</term>, <term outputclass="RFC-2119" rev="terminology">SHOULD NOT</term>, <term outputclass="RFC-2119" rev="terminology">RECOMMENDED</term>, <term outputclass="RFC-2119" rev="terminology">OPTIONAL</term> in the DITA specification are to be interpreted as described in <xref format="txt" href="http://www.ietf.org/rfc/rfc2119.txt" scope="external">IETF RFC 2119: Key words for use in RFCs to Indicate Requirement Levels</xref>.</p><p>The use of these key words and other conformance requirements increase the level of interoperability that is available between DITA conforming implementations. Their use is not meant to impose particular methods on implementers where the method is not required for interoperability.</p><p>The key words <term>informative</term> and <term>non-normative</term> identify content that is not normative. The DITA specifications include examples and other suggestions that are informative rather than normative. While informative information is often very helpful, it is never a binding part of the DITA specification even when the example or other information is about a feature that is required. Unless it is clearly stated otherwise, examples and the appendices are always informative rather than normative.</p></section>-->
+    <!--<section><title>Conformance statement</title><p>Documents, document types, document type shells, vocabulary and constraint modules, and processors that implement the requirements given in the DITA specification are considered conforming.</p></section>-->
+    <section  id="implementations">
+      <title>4.1 Conformance of DITA implementations</title>
+      <p>A DITA implementation can consist of any combination of processing components that claim
+        DITA awareness, custom vocabulary and constraint modules, or custom document-types shells. </p>
+      <p>For example, a DITA implementation might be a DITA-based authoring and publishing system
+        within an enterprise; a task-specific product, such a DITA-aware XML editor or component
+        management system; or a set of specialization and constraint modules that are packaged for
+        integration with larger implementations.</p>
+      <p>Conforming DITA implementations <term outputclass="RFC-2119"  base="">MUST</term> include a
+        conformance statement that gives the version of the DITA specification that is supported.
+        The conformance statement must include one of the following:</p>
+      <ul>
+        <li>List of the DITA features that are supported by the implementation in accordance with
+          the requirements of the DITA specification</li>
+        <li>Statement that the implementation includes all features except for a specific list of
+          features that are not supported in accordance with the requirements of the DITA
+          specification</li>
+      </ul>
+      <p>Implementations that include some (but not all) DITA features are considered conforming as
+        long as
+        <!--long as all <term outputclass="RFC-2119" rev="terminology">REQUIRED</term> features relevant to the implementation are included, and -->all
+        of the features that are included follow the requirements that are given in the DITA
+        specification.</p>
+      <p>An implementation that does not include a particular optional feature <term
+          outputclass="RFC-2119">MUST</term> be prepared to interoperate with other implementations
+        that do include the feature, though perhaps with reduced functionality. An implementation
+        that does include a particular optional feature <term outputclass="RFC-2119">MUST</term> be
+        prepared to interoperate with other implementations that do not include the feature.</p>
+      <p>Organizations and individuals can impose additional restrictions on their own use of DITA
+        that go beyond the requirements imposed by the DITA specification. These restrictions can
+        include enforcement of the restrictions by their local processors, as long as the result
+        continues to meet the requirements that are given in the DITA specification. For example, a
+        user community can impose rules on how files must be named or organized, even if those rules
+        go beyond the requirements given in the DITA specification.</p>
+      <!--<p>Processors that are not DITA-aware (as defined here) are not considered conforming, but such processors might still be useful when working with DITA. </p>-->
+    </section>
+    <section id="documents">
+      <title>4.2 Conformance of DITA documents</title>
+      <p>A <term>conforming DITA document</term> is a document that meets all of the following criteria:<ul>
+          <li>It is a well-formed XML document.</li>
+          <li>Its elements either are DITA elements or non-DITA elements that are contained within
+            <xmlelement>foreign</xmlelement> or <xmlelement>unknown</xmlelement> elements.</li>
+          <li>Its content conforms to all DITA requirements for element content and attribute
+            values.</li>
+          <!--<li>If the document has a document type declaration or an associated XSD, the referenced document type or XSD is a conforming DITA document-type shell.</li>-->
+        </ul></p>
+      <p><ph rev="public-review-1">If using non-DITA-conforming grammar files for conforming DITA
+          documents, those grammar files</ph>
+        <term outputclass="RFC-2119">MUST NOT</term>
+        <ph rev="public-review-1">be structured in a way that</ph> affects the ability of processors
+        to process those documents. The use of non-conforming document types or schemas might impede
+        interchange or interoperation of those documents with tools that expect or require the use
+        of conforming DITA document types or schemas. </p>
+    </section>
+    <!--<section><title>Conformation of document types and modules</title><p>A <term>conforming document type</term> is a document type that consists only of conforming DITA vocabulary and constraint modules. </p><p>A <term>conforming document-type shell</term> is a document type shell that represents a conforming DITA document type and conforms to the requirements for DITA document-type shells.</p><p>A <term>conforming vocabulary module</term> is a vocabulary module that conforms to the requirements for its module type.</p><p>A <term>conforming constraint module</term> is a constraint module that conforms to the requirements for its module type.</p></section>-->
+    <section id="processors">
+      <title>4.3 Conformance of DITA processors</title>
+      <p>The conformance of processors can only be determined for <term>DITA-aware
+        processors</term>. We define three types of DITA-aware processors.</p>
+      <dl>
+        <dlentry>
+          <dt>DITA-aware processor</dt>
+          <dd>A processor that implements all required processing relevant to the vocabulary modules
+            that it claims to support. A DITA-aware processor <term outputclass="RFC-2119"
+              >MUST</term> support at least one map or topic type, whether defined
+            by the DITA standard or defined as a custom vocabulary module.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>Specialization-aware processor</dt>
+          <dd>A DITA-aware processor that can handle any document specialized from some set of DITA
+            vocabulary modules, though it might not be able to support all base topic or map
+            elements.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>Fully aware processor</dt>
+          <dd>A DITA-aware processor that unconditionally supports all base vocabulary modules,
+            which implies support for all non-vocabulary-specific DITA features, such as content
+            references and key references. It applies relevant processing to all DITA elements based
+            on their <xmlatt>class</xmlatt> and <xmlatt>domains</xmlatt> attribute values.</dd>
+        </dlentry>
+      </dl>
+      <p>For example, a general-purpose processor that can process XML documents to produce a
+        particular output using user-created configurations or scripts is not itself DITA-aware.
+        However, that same processor packaged with a DITA-specific configuration or script would be
+        a DITA-aware processor. A script or configuration for this processor that only operates on
+        tag names as defined in specific DITA vocabulary modules would make the tool DITA aware but
+        not specialization aware. A script or configuration that operated on DITA
+          <xmlatt>class</xmlatt> attribute values would be both DITA aware and specialization
+        aware.</p>
+      <!--<note>A processor that does not claim to be DITA-aware can be neither a conforming nor a non-conforming DITA processor. In particular, processors that process XML generally but do not claim to be DITA aware cannot be described as non-conforming DITA processors. Such processors are simply DITA unaware.</note>-->
+      <!--<p>A <term>conforming DITA processor</term> is a DITA aware <draft-comment author="Kristen Eberlein" time="16 November 2013">Should this be changed to read "that applies relevant processing for the vocabulary modules that it claims to support"? Parallelism with the next term definition.</draft-comment></p>-->
+      <!--<p>A <term>conforming specialization-aware processor</term> is </p>-->
+      <p>In general, specialization-aware processors will be able to reliably process all conforming
+        DITA documents, providing at least some default behavior for all DITA elements, while
+        DITA-aware processors might only be able to reliably process documents that use the
+        vocabulary modules that those processors support.</p>
+      <p>DITA-aware processors support the following functional areas:</p>
+      <dl>
+        <dlentry>
+          <dt>Production of output</dt>
+          <dd>The production of final form output from DITA documents. Examples of processors that
+            perform this function are publishing systems and tools, such as the DITA Open
+            Toolkit.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>Editing, managing, and storage</dt>
+          <dd>The editing, managing, and storage of DITA documents. Examples of processors that
+            perform this function are authoring tools and component content management systems
+            (CCMS).</dd>
+        </dlentry>
+      </dl>
+      <p>A given processor might provide some or all of this function. For example, a DITA-aware
+        editor that includes the ability to generate print versions of DITA documents represents
+        both a final-form processor and an editing processor. Likewise, a content or component
+        management system might tightly integrate final-form DITA processors. Each processor type
+          <ph rev="public-review-1">might</ph> have different conformance requirements, even though
+        the processors are part of a single product or package. </p>
+      <p>For processors that produce final form output, all features that are relevant to the type
+        of processing that the processor performs <term outputclass="RFC-2119" 
+          base="">MUST</term> be implemented, with the exception of features that are
+        vocabulary-specific. In particular, such processors <term outputclass="RFC-2119"
+          >MUST</term> implement address resolution and content reference
+        resolution. Such processors <term outputclass="RFC-2119">SHOULD</term>
+        implement filtering.</p>
+      <p>For example, a specialization-aware processor that produces final-form output need not
+        provide special presentation results for glossary entry topics, but it must implement
+        resolution of key-based references to glossary entry topics from
+          <xmlelement>keyword</xmlelement> or <xmlelement>term</xmlelement> elements, because
+        address resolution is both required and not vocabulary specific.</p>
+      <p>Processors that store, manage, or edit DITA documents might not implement specific features
+        that would be required for final-form processing. However, such processors <term
+          outputclass="RFC-2119">MUST</term> enable the creation or storage of DITA documents that
+        use all DITA features, even if the processor is not aware of the DITA semantics for those
+        features. </p>
+      <p>For example, a DITA-aware editor need not provide specific support for creating or
+        resolving content references, but it must allow, using normal XML editing methods, the
+        creation and editing of content references. A content management system that supports map
+        types that allow relationship tables but does not directly support relationship table
+        processing must be able to store and manage conforming map documents that include
+        relationship tables.</p>
+    </section>
+  </conbody>
+</concept>
+

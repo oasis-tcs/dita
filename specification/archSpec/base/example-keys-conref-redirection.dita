@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_cw3_cl1_mp">
+ <title>Example: conref redirection</title>
+ <shortdesc>The <xmlatt>conkeyref</xmlatt> attribute enables authors to share DITA topics that reuse
+    content. It also enables <ph >map authors</ph> to specify different key
+    definitions for common keys. </shortdesc>
+ <conbody>
+  <p>In this scenario, Acme produces content for a product that is also resold through a business
+      partner. When the DITA content is published for the partner, several items must be different,
+      including the following:</p>
+  <ul>
+   <li>Product names</li>
+   <li>Standard notes that contain admonitions</li>
+  </ul>
+  <p>Simply using the <xmlatt>conref</xmlatt> attribute would not be possible for teams that use a
+      component content management system where every DITA topic is addressed by a globally-unique
+      identifier (GUID).</p>
+  <ol>
+   <li>
+    <p>Authors reference the reusable content in their topics by using the
+      <xmlatt>conkeyref</xmlatt> attribute, for example:</p>
+    <codeblock>&lt;task id="reusable-product-content">
+  &lt;title>&lt;keyword conkeyref="reuse/product-name"/> prerequisites&lt;/title>
+  &lt;taskbody>
+    &lt;prereq>&lt;note conkeyref="reuse/warning-1"/>&lt;/prereq>
+    &lt;!-- ... -->
+  &lt;/taskbody>
+&lt;/task>
+</codeblock>
+   </li>
+   <li >
+        <p>Authors create two different topics; one topic contains elements appropriate for Acme,
+          and the other topic contains elements appropriate for the partner. Note that each reuse
+          topic must use the <ph >same element types (or compatible
+            specializations)</ph> and values for the <xmlatt>id</xmlatt> attribute. For example, the
+          following reuse file is appropriate for use by Acme:</p>
+        <codeblock>&lt;topic id="acme-reuse">
+  &lt;title>Reuse topic for Acme&lt;/title>
+  &lt;body>
+    &lt;note <b>id="warning-1"</b>>Admonitions for Acme&lt;/note>
+    &lt;p>&lt;keyword <b>id="product-name"</b>>Acme product name&lt;/keyword>&lt;/p>
+    &lt;!-- ... -->
+  &lt;/body>
+&lt;/topic></codeblock>
+        <p>The following reuse file is appropriate for use by the OEM partner:</p>
+        <codeblock>&lt;topic id="oem-reuse">
+  &lt;title>Reuse topic for OEM partner&lt;/title>
+  &lt;body>
+    &lt;note <b>id="warning-1"</b>>Admonitions for partner&lt;/note>
+    &lt;p>&lt;keyword <b>id="product-name"</b>>OEM product name&lt;/keyword>&lt;/p>
+    &lt;!-- ... -->
+  &lt;/body>
+&lt;/topic></codeblock>
+      </li>
+   <li>
+    <p>The two versions of the DITA maps each contain different key definitions for the key name
+          "reuse". (This associates a key with the topic that contains the appropriate reusable
+          elements.) For example:</p>
+    <fig>
+     <title>DITA map for Acme</title>
+     <codeblock>&lt;map>
+  &lt;!-- ... -->
+  &lt;keydef keys="reuse" href="acme-reuse.dita"/>
+  &lt;!-- ... -->
+&lt;/map></codeblock>
+    </fig>
+    <fig>
+     <title>DITA map for OEM partner</title>
+     <codeblock>&lt;map>
+  &lt;!-- ... -->
+  &lt;keydef keys="reuse" href="oem-reuse.dita"/>
+  &lt;!-- ... -->
+&lt;/map></codeblock>
+    </fig>
+   </li>
+  </ol>
+  <p>When each of the DITA maps is published, the elements that are referenced by
+        <xmlatt>conkeyref</xmlatt> will use the reuse topic that is referenced by the
+        <xmlelement>keydef</xmlelement> element in the map. The product names and warnings will be
+      different in the output.</p>
+ </conbody>
+</concept>

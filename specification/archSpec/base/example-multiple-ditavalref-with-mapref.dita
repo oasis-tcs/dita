@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="example-multiple-ditavalref-with-mapref" >
+  <title>Example: Multiple <xmlelement>ditavalref</xmlelement> elements in a reference to a
+    map</title>
+  <shortdesc>Using multiple instances of the <xmlelement>ditavalref</xmlelement> element in a
+    reference to a map is equivalent to referencing that map multiple times, with each reference
+    nesting one of the <xmlelement>ditavalref</xmlelement> elements.</shortdesc>
+  <conbody>
+    <example id="multiple-ditavalref-in-reference-to-map" otherprops="examples">
+      <p>In the following example, <filepath>other.ditamap</filepath> is referenced by a root map.
+        The <xmlelement>ditavalref</xmlelement> elements provide conflicting sets of filter
+        conditions.</p>
+      <fig id="fragment">
+        <title>Map fragment</title>
+        <codeblock>&lt;topicref href="parent.dita">
+  &lt;topicref href="other.ditamap" format="ditamap">
+    &lt;ditavalref href="audienceA.ditaval"/>
+    &lt;ditavalref href="audienceB.ditaval"/>
+    &lt;ditavalref href="audienceC.ditaval"/>
+  &lt;/topicref>
+&lt;/topicref></codeblock>
+      </fig>
+      <p>This markup is functionally equivalent to referencing <filepath>other.ditamap</filepath>
+        three times, with each reference including a single <xmlelement>ditavalref</xmlelement>
+        elements. The fragment could be rewritten as:</p>
+      <fig id="fig_szk_hhh_1r">
+        <title>Map fragment</title>
+        <codeblock>&lt;topicref href="parent.dita">
+  &lt;topicref href="other.ditamap" format="ditamap">
+    &lt;ditavalref href="audienceA.ditaval"/>
+  &lt;/topicref>
+  &lt;topicref href="other.ditamap" format="ditamap">
+    &lt;ditavalref href="audienceB.ditaval"/>
+  &lt;/topicref>
+  &lt;topicref href="other.ditamap" format="ditamap">
+    &lt;ditavalref href="audienceC.ditaval"/>
+  &lt;/topicref>
+&lt;/topicref></codeblock>
+      </fig>
+    </example>
+  </conbody>
+</concept>

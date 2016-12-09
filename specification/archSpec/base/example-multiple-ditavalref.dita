@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="example-multiple-ditavalref">
+  <title>Example: Multiple <xmlelement>ditavalref</xmlelement> elements on a branch</title>
+  <shortdesc>Multiple <xmlelement>ditavalref</xmlelement> elements can be used on a single map
+    branch to create multiple distinct copies of the branch.</shortdesc>
+  <conbody>
+    <example id="mutltiple-ditavalref-create-multiple-branches" otherprops="examples">
+      <p>Consider the following DITA map that contains a branch with three peer
+          <xmlelement>ditavalref</xmlelement> elements. <ph >Because topics in
+          the branch are filtered in three different ways, processors are effectively required to
+          handle three copies of the entire branch. Sub-elements within the
+            <xmlelement>ditavalref</xmlelement> elements are used to control how new resource names
+          are constructed for two copies of the branch; one copy (based on the conditions in
+            <filepath>win.ditaval</filepath>) is left with the original file names.</ph></p>
+      <fig id="fig_gmm_phj_ln">
+        <title><filepath>input.ditamap</filepath></title>
+        <codeblock>&lt;map>
+  &lt;topicref href="intro.dita"/>
+  <b>&lt;!-- Begining of installing branch --></b>
+  &lt;topicref href="install.dita">
+    &lt;ditavalref href="win.ditaval"/>
+    &lt;ditavalref href="mac.ditaval">
+      &lt;ditavalmeta>
+        &lt;dvrResourceSuffix>-apple&lt;/dvrResourceSuffix>
+      &lt;/ditavalmeta>
+    &lt;/ditavalref>
+    &lt;ditavalref href="linux.ditaval">
+      &lt;ditavalmeta>
+        &lt;dvrResourceSuffix>-linux&lt;/dvrResourceSuffix>
+      &lt;/ditavalmeta>
+    &lt;/ditavalref>
+    &lt;topicref href="do-stuff.dita">
+      &lt;topicref href="mac-specific-stuff.dita" platform="mac"/>
+    &lt;/topicref>
+    <b>&lt;!-- End of installing branch --></b>
+    &lt;topicref href="cleanup.dita"/>
+  &lt;/topicref>
+&lt;/map></codeblock>
+      </fig>
+      <fig id="fig_fsm_phj_ln">
+        <title>Contents of <filepath>win.ditaval</filepath></title>
+        <codeblock>&lt;val>
+  &lt;prop att="platform" val="win" action="include"/>
+  &lt;prop att="platform" action="exclude"/>
+&lt;/val></codeblock>
+      </fig>
+      <fig id="fig_dym_phj_ln">
+        <title>Contents of <filepath>mac.ditaval</filepath></title>
+        <codeblock>&lt;val>
+  &lt;prop att="platform" val="mac" action="include"/>
+  &lt;prop att="platform" action="exclude"/>
+&lt;/val></codeblock>
+      </fig>
+      <fig id="fig_d2n_phj_ln">
+        <title>Contents of <filepath>linux.ditaval</filepath></title>
+        <codeblock>&lt;val>
+  &lt;prop att="platform" val="linux" action="include"/>
+  &lt;prop att="platform" action="exclude"/>
+&lt;/val></codeblock>
+      </fig>
+      <p>When a processor evaluates this markup, it results in three copies of the installing
+        branch. The following processing takes place:<ul>
+          <li>The first topic (<filepath>intro.dita</filepath>) is published normally, potentially
+            using any other DITAVAL conditions that are specified externally.</li>
+          <li>The installing branch appears three times, once for each DITAVAL document. The
+            branches are created as follows:<ul>
+              <li>The first branch uses the first DITAVAL document
+                (<filepath>win.ditaval</filepath>). Resources use their original names as specified
+                in the map. The <filepath>mac-specific-stuff.dita</filepath> topic is removed. The
+                resulting branch, with indenting to show the hierarchy, matches the original without
+                the mac topic:
+                <codeblock>install.dita
+   do-stuff.dita
+     ...more topics and nested branches...
+   cleanup.dita
+</codeblock></li>
+              <li>The second branch uses the second DITAVAL document
+                  (<filepath>mac.ditaval</filepath>). Resources are renamed based on the
+                  <xmlelement>dvrResourceSuffix</xmlelement> element. The
+                  <filepath>mac-specific-stuff.dita</filepath> topic is included. The resulting
+                branch, with indenting to show the hierarchy, is as follows:
+                <codeblock>install-apple.dita
+   do-stuff-apple.dita
+      mac-specific-stuff-apple.dita
+      ...more topics and nested branches...
+   cleanup-apple.dita
+</codeblock></li>
+              <li>The third branch uses the last DITAVAL document
+                  (<filepath>linux.ditaval</filepath>). Resources are renamed based on the
+                  <xmlelement>dvrResourceSuffix</xmlelement> element. The
+                  <filepath>mac-specific-stuff.dita</filepath> topic is removed. The resulting
+                branch, with indenting to show the hierarchy, is as follows:
+                <codeblock>install-linux.dita
+   do-stuff-linux.dita
+     ...more topics and nested branches...
+   cleanup-linux.dita
+</codeblock></li>
+            </ul></li>
+        </ul></p>
+      <p>The example used three DITAVAL documents to avoid triple maintenance of the installing
+        branch in a map; the following map is functionally equivalent, but it requires parallel
+        maintenance of each branch.</p>
+      <fig id="fig_akn_phj_ln">
+        <title><filepath>input.ditamap</filepath></title>
+        <codeblock>&lt;map>
+  &lt;topicref href="intro.dita"/>
+  <b>&lt;!-- Windows installing branch --></b>
+  &lt;topicref href="install.dita">
+    &lt;ditavalref href="win.ditaval"/>
+    &lt;topicref href="do-stuff.dita">
+      &lt;!-- more topics and nested branches -->
+    &lt;/topicref>
+    &lt;topicref href="cleanup.dita"/>
+  &lt;/topicref>
+  <b>&lt;!-- Mac installing branch --></b>
+  &lt;topicref href="install.dita">
+    &lt;ditavalref href="mac.ditaval">
+      &lt;ditavalmeta>&lt;dvrResourceSuffix>-apple&lt;/dvrResourceSuffix>&lt;/ditavalmeta>
+    &lt;/ditavalref>
+    &lt;topicref href="do-stuff.dita">
+      &lt;topicref href="mac-specific-stuff.dita" platform="mac"/>
+      &lt;!-- more topics and nested branches -->
+    &lt;/topicref>
+    &lt;topicref href="cleanup.dita"/>
+  &lt;/topicref>
+  <b>&lt;!-- Linux installing branch --></b>
+  &lt;topicref href="install.dita">
+    &lt;ditavalref href="linux.ditaval">
+      &lt;ditavalmeta>&lt;dvrResourceSuffix>-linux&lt;/dvrResourceSuffix>&lt;/ditavalmeta>
+    &lt;/ditavalref>
+    &lt;topicref href="do-stuff.dita">
+      &lt;!-- more topics and nested branches -->
+    &lt;/topicref>
+    &lt;topicref href="cleanup.dita"/>
+  &lt;/topicref>
+  &lt;!-- Several chapters worth of other material -->
+&lt;/map></codeblock>
+      </fig>
+    </example>
+  </conbody>
+</concept>

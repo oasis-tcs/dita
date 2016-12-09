@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="handling-xref-and-conref-within-topics" >
+ <title><ph >Processing</ph> xrefs and conrefs within a conref</title>
+ <shortdesc>When referenced content contains a content reference or cross reference, the effective
+    target of the reference depends on the form of address that is used in the referenced content.
+    It also might depend on the map context, especially when key scopes are present.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>addressing mechanisms<indexterm>effect on conref
+            resolution</indexterm><indexterm>same-topic fragment identifier<indexterm>authoring
+              responsibility</indexterm><indexterm>effect on conref
+            resolution</indexterm></indexterm></indexterm>
+        <indexterm>conref<indexterm>xrefs and conref within a conref</indexterm></indexterm>
+        <indexterm>cross references<indexterm>resolving within conrefs</indexterm></indexterm>
+        <indexterm>examples<indexterm>processing<indexterm>xrefs and conref within a
+              conref</indexterm></indexterm></indexterm>
+        <indexterm>key reference<indexterm>conref resolution, effect on</indexterm></indexterm>
+        <indexterm>key scopes<indexterm>conref resolution, effect on</indexterm></indexterm>
+        <indexterm>processing<indexterm>examples<indexterm>xrefs and conref within a
+              conref</indexterm></indexterm><indexterm>xrefs and conref within a
+          conref</indexterm></indexterm>
+        <indexterm>processing expectations<indexterm>xrefs and conref within a
+          conref</indexterm></indexterm>
+        <indexterm>same-topic fragment identifier<indexterm>authoring
+            responsibility</indexterm><indexterm>effect on conref resolution</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+ <conbody>
+    <dl>
+      <dlentry>
+        <dt>Direct URI reference (but not a same-topic fragment identifier )</dt>
+        <dd>When the address is a direct URI reference of any form other than a same-topic fragment
+          identifier, processors <term outputclass="RFC-2119">MUST</term> resolve
+          it relative to <ph >the source document that contains the original URI
+            reference</ph>.</dd>
+      </dlentry>
+      <dlentry>
+        <dt>Same-topic fragment identifier</dt>
+        <dd>When the address is a same-topic fragment identifier, processors <term
+            outputclass="RFC-2119">MUST</term> resolve it relative to the location
+          of the content reference (referencing context). </dd>
+      </dlentry>
+      <dlentry>
+        <dt>Key reference</dt>
+        <dd>When the address is a key reference, processors <term outputclass="RFC-2119"
+            >MUST</term> resolve it relative to the location of the content
+          reference (referencing context). </dd>
+      </dlentry>
+    </dl>
+    <p >When resolving key references or same-topic fragment identifiers, the phrase
+        <term>location of the content reference</term> means the final resolved context. For
+      example, in a case where content references are chained (topic A pulls from topic B, which in
+      turn pulls a reference from topic C), the reference is resolved relative to the topic that is
+      rendered. When topic B is rendered, the reference is resolved relative to the content
+      reference in topic B; when topic A is rendered, the reference is resolved relative to topic A.
+        <ph >If content is pushed from topic A to topic B to topic C, then the
+        same-topic fragment identifier is resolved in the context of topic C.</ph></p>
+    <p >The implication is that a content reference or cross reference can resolve to
+      different targets in different use contexts. This is because a URI reference that contains a
+      same-topic fragment identifier is resolved in the context of the topic that contains the
+      content reference, and a key reference is resolved in the context of the key scope that is in
+      effect for each use of the topic that contains the content reference. </p>
+    <note>In the case of same-topic fragment identifiers, it is the responsibility of the author of
+      the content reference to ensure that any element IDs that are specified in same-topic fragment
+      identifiers in the referenced content will also <ph >be available</ph> in the
+      referencing topic <ph >at resolution time</ph>.</note>
+  <example id="example" otherprops="examples">
+      <title>Example: Resolving conrefs to elements that contain cross references</title>
+      <p>Consider the following paragraphs in <filepath>paras-01.dita</filepath> that are intended
+        to be used by reference from other topics:</p>
+      <codeblock>&lt;topic id="paras-01">&lt;title>Reusable paragraphs&lt;/title>
+    &lt;body>
+        &lt;p id="p1">See &lt;xref href="#paras-01/p5"/>.&lt;/p>
+        &lt;p id="p2">See &lt;xref href="topic-02.dita#topic02/fig-01"/>.&lt;/p>
+        &lt;p id="p3">See &lt;xref href="#./p5"/>.&lt;/p>
+        &lt;p id="p4">See &lt;xref keyref="task-remove-cover"/>.&lt;/p>
+        &lt;p id="p5">Paragraph 5 in paras-01.&lt;/p>
+    &lt;/body>
+&lt;/topic></codeblock>
+      <p>The paragraphs are used by content reference from other topics, including the
+          <filepath>using-topic-01.dita</filepath> topic:</p>
+      <codeblock>&lt;topic id="using-topic-01">&lt;title>Using topic one&lt;/title>
+    &lt;body>
+        &lt;p id="A" conref="paras-01.dita#paras-01/p1"/> 
+        &lt;p id="B" conref="paras-01.dita#paras-01/p2"/> 
+        &lt;p id="C" conref="paras-01.dita#paras-01/p3"/>
+        &lt;p id="D" conref="paras-01.dita#paras-01/p4"/>
+        &lt;p id="p5">Paragraph 5 in using-topic-01&lt;/p>  
+    &lt;/body>
+&lt;/topic></codeblock>
+      <p>Following resolution of the content references and processing of the
+          <xmlelement>xref</xmlelement> elements in the referenced paragraphs, the rendered cross
+        references in <filepath>using-topic-01.dita</filepath> are <ph >shown
+          in the following table</ph>.</p>
+      <simpletable frame="all" relcolwidth="1.0* 1.0* 2.0* 3.0*">
+        <sthead>
+          <stentry>Paragraph</stentry>
+          <stentry>Value of <xmlatt>id</xmlatt> attribute on conrefed paragraph</stentry>
+          <stentry><xmlelement>xref</xmlelement> within conrefed paragraph</stentry>
+          <stentry>Resolution</stentry>
+        </sthead>
+        <strow>
+          <stentry>A</stentry>
+          <stentry>p1</stentry>
+          <stentry><codeph>&lt;xref href="#paras-01/p5"/></codeph></stentry>
+          <stentry>The cross reference in paragraph p1 is a direct URI reference that does not
+            contain a same-topic fragment identifier. It can be resolved only to paragraph p5 in
+              <filepath>paras-01.dita</filepath>, which contains the content "Paragraph 5 in
+            paras-01".</stentry>
+        </strow>
+        <strow>
+          <stentry>B</stentry>
+          <stentry>p2</stentry>
+          <stentry><codeph>&lt;xref href="topic-02.dita#topic02/fig-01"/></codeph></stentry>
+          <stentry>The cross reference in paragraph p2 is a direct URI reference. It can be resolved
+            only to the element with <codeph>id="fig-01"</codeph> in
+              <filepath>topic-02.dita</filepath>.</stentry>
+        </strow>
+        <strow>
+          <stentry>C</stentry>
+          <stentry>p3</stentry>
+          <stentry><codeph>&lt;xref href="#./p5"/></codeph></stentry>
+          <stentry>
+            <p>The cross reference in paragraph p3  is a direct URI reference that contains a
+              same-topic fragment identifier.  Because the URI reference contains a same-topic
+              fragment identifier, the reference is resolved in the context of the referencing topic
+                (<filepath>using-topic-01.dita</filepath>). </p>
+            <p>If <filepath>using-topic-01.dita</filepath> did not contain an element with
+                <codeph>id="p5"</codeph>, then the conref to paragraph p3 would result in a link
+              resolution failure.</p>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry>D</stentry>
+          <stentry>p4</stentry>
+          <stentry><codeph>&lt;xref keyref="task-remove-cover"/></codeph></stentry>
+          <stentry>The cross reference in paragraph p4 is a key reference. It is resolved to
+            whatever resource is bound to the key name "task-remove-cover" in the applicable map
+            context.</stentry>
+        </strow>
+      </simpletable>
+    </example>
+    <example id="example-w-scoped-keys" otherprops="examples">
+      <title>Example: Resolving conrefs to elements that contain key-based cross references </title>
+      <p >Consider the following map, which uses the topics from the previous
+        example:</p>
+      <codeblock>&lt;map>
+  &lt;topicgroup keyscope="product-1">
+    &lt;topicref keys="task-remove-cover" href="prod-1-task-remove-cover.dita"/>
+    &lt;topicref href="using-topic-01.dita"/>
+  &lt;/topicgroup>
+  &lt;topicgroup keyscope="product-2">
+    &lt;topicref keys="task-remove-cover" href="prod-2-task-remove-cover.dita"/>
+    &lt;topicref href="using-topic-01.dita"/>
+  &lt;/topicgroup>
+&lt;/map></codeblock>
+      <p>The map establishes two key scopes: "product-1" and "product-2". Within the map branches,
+        the key name "task-remove-cover" is bound to a different topic. The topic
+          <filepath>using-topic-01.dita</filepath>, which includes a conref to a paragraph that
+        includes a cross reference to the key name "task-remove-cover", is also referenced in each
+        branch. When each branch is rendered, the target of the cross reference is different.</p>
+      <p>In the first branch with the key scope set to "product-1", the cross reference from
+        paragraph p4 is resolved to <filepath>prod-1-task-remove-cover.dita</filepath>. In the
+        second branch with the key scope set to "product-2", the cross reference from paragraph p4
+        is resolved to <filepath>prod-2-task-remove-cover.dita</filepath>.</p>
+    </example>
+ </conbody>
+</concept>

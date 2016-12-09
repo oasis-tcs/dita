@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_fwk_bhf_mp">
+ <title>Example: Links from <xmlelement>term</xmlelement> or <xmlelement>keyword</xmlelement>
+  elements</title>
+ <shortdesc>The <xmlatt>keyref</xmlatt> attribute enables authors to specify that references to
+  keywords or terms in a DITA topic can be rendered as a link to an associated resource.</shortdesc>
+ <conbody>
+  <p>In this scenario, a company with well-developed glossary wants to ensure that instances of a
+   term that is defined in the glossary always include a link to the glossary topic.</p>
+  <ol>
+   <li>
+    <p>An information architect adds values for the <xmlatt>keys</xmlatt> attribute to all the of
+     the <xmlelement>topicref</xmlelement> elements that are in the DITA map for the glossary, for
+     example:</p>
+    <codeblock>&lt;map>
+  &lt;title>Company-wide glossary&lt;/title>
+  &lt;topicref keys="term-1" href="term-1.dita"/>
+  &lt;topicref keys="term-2" href="term-2.dita"/>
+  &lt;topicref keys="term-3" href="term-3.dita"/>
+  &lt;topicref keys="term-4" href="term-4.dita"/>
+&lt;/map></codeblock>
+   </li>
+   <li>
+    <p>When authors refer to a term in a topic, they use the following mark-up:</p>
+    <codeblock>&lt;term keyref="term-1"/></codeblock>
+    <p>When the <xmlelement>term</xmlelement> element is rendered, the content <ph>is provided</ph>
+     by the <xmlelement>title</xmlelement> element of the glossary topic. The
+      <xmlelement>term</xmlelement> element <ph >also is rendered as</ph> a
+     link to the glossary topic.</p>
+   </li>
+  </ol>
+ </conbody>
+</concept>

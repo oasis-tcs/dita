@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="dita-linking">
+  <title>DITA linking</title>
+  <shortdesc>DITA supports many different linking elements,
+    but they all use the same set of attributes to describe
+    relationships between content.</shortdesc>
+  <conbody>
+    <section id="uri">
+      <title>URI-based addressing</title>
+      <p>URI-based links are described by the following attributes.</p>
+      <dl>
+        <dlentry>
+          <dt><xmlatt>href</xmlatt></dt>
+          <dd>The <xmlatt>href</xmlatt> attribute specifies the URI of the resource that is being
+            addressed.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>format</xmlatt></dt>
+          <dd>The <xmlatt>format</xmlatt> attribute identifies the format of the resource being
+            addressed. For example, references to DITA topics are identified with
+              <codeph>format="dita"</codeph>, whereas references to DITA maps use
+              <codeph>format="ditamap"</codeph>. References to other types of content should use
+            other values for this attribute. By default, references to non-XML content use the
+            extension of the URI in the <xmlatt>href</xmlatt> attribute as the effective
+            format.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>scope</xmlatt></dt>
+          <dd>The <xmlatt>scope</xmlatt> attribute describes the closeness of the relationship
+            between the current document and the target resource. Resources in the same information
+            unit are considered <codeph>"local"</codeph>; resources in the same system as the
+            referencing content but not part of the same information unit are considered
+              <codeph>"peer"</codeph>; and resources outside the system, such as Web pages, are
+            considered <codeph>"external"</codeph>.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>type</xmlatt></dt>
+          <dd>The <xmlatt>type</xmlatt> attribute is used on cross-references to describe the target
+            of the reference. Most commonly, the <xmlatt>type</xmlatt> attribute names the element
+            type being referenced when <codeph>format="dita"</codeph>.</dd>
+        </dlentry>
+      </dl>
+      <p>These four attributes act as a unit, describing whatever link is established by the element
+        that carries them.</p>
+      <p>The <xmlatt>format</xmlatt> and <xmlatt>scope</xmlatt> attributes are assigned default
+        values based on the URI that is specified in the <xmlatt>href</xmlatt> attribute. Thus they
+        rarely need to be explicitly specified in most cases. However, they can be useful in many
+        non-traditional linking scenarios or environments.</p>
+    </section>
+    <section id="keys">
+      <title>Indirect key-based addressing</title>
+      <p>DITA also supports indirect links and cross-references in which a DITA map assigns unique
+        names, or keys, to the resources being referenced by the publication. This is done using
+          <xmlelement>topicref</xmlelement> elements that specify the <xmlatt>keys</xmlatt>
+        attribute. Using the <xmlatt>keyref</xmlatt> attribute, individual links, cross-references,
+        and images then reference resources by their keys instead of their URIs . Links defined
+        using <xmlatt>keyref</xmlatt> thus allow context-specific linking behavior. That is, the
+        links in a topic or map might resolve to one set of resources in one context, and a
+        completely different set of resources in another, without the need for any modifications to
+        the link markup.</p>
+      <p>When links are defined using <xmlatt>keyref</xmlatt>, values for the four linking
+        attributes described above are typically all specified (or given default values) on the key
+        defining element.</p>
+    </section>
+  </conbody>
+</concept>

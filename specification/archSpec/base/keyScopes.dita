@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_nsb_nv4_3q">
+ <title>Key scopes</title>
+ <shortdesc>Key scopes enable map authors to specify different sets of key definitions for different
+    map branches.</shortdesc>
+ <conbody>
+    <p>A key scope is defined by a <xmlelement>map</xmlelement> or <xmlelement>topicref</xmlelement>
+      element that specifies the <xmlatt>keyscope</xmlatt> attribute. The <xmlatt>keyscope</xmlatt>
+      attribute specifies the names of the scope, separated by spaces.</p>
+    <p>A key scope includes the following components:</p>
+    <ul>
+      <li>The scope-defining element</li>
+      <li>The elements that are contained by the scope-defining element, minus the elements that are
+        contained by child key scopes</li>
+      <li>The elements that are referenced by the scope-defining element or its descendants, minus
+        the elements that are contained by child key scopes</li>
+    </ul>
+    <p >If the <xmlatt>keyscope</xmlatt> attribute is specified on both a
+      reference to a DITA map and the root element of the referenced map, only one scope is created;
+      the submap does not create another level of scope hierarchy. The single key scope that results
+      from this scenario has multiple names; its names are the union of the values of the
+        <xmlatt>keyscope</xmlatt> attribute on the map reference and the root element of the submap.
+      This means that processors can resolve references to both the key scopes specified on the map
+      reference and the key scopes specified on the root element of the submap.</p>
+    <p>The root element of a root map always defines a key scope, regardless of whether a
+        <xmlatt>keyscope</xmlatt> attribute is present. All key definitions and key references exist
+      within a key scope, even if it is an unnamed, implicit key scope that is defined by the root
+      element in the root map.</p>
+    <p>Each key scope has its own key space that is used to resolve the key references that occur
+      within the scope. The key space that is associated with a key scope includes all of the key
+      definitions within the key scope. This means that different key scopes can have different
+      effective key definitions:</p>
+    <ul>
+      <li>A given key can be defined in one scope, but not another.</li>
+      <li> A given key also can be defined differently in different key scopes.</li>
+    </ul>
+    <p> Key references in each key scope are resolved using the effective key definition that is
+      specified within its own key scope.</p>
+    <!--<draft-comment author="Kristen Eberlein" time="9 May 2015"><p>Neither Stan or Nancy could understand the above paragraph. Here are their comments from the targeted review:</p><ul><li>Stan: Diagram? FWIW - did not follow this paragraph.</li><li>Nancy: I don't understand this well enough to even propose changes to it.</li></ul></draft-comment>-->
+    <example  id="example-1" otherprops="examples">
+      <title>Example: Key scopes specified on both the map reference and the root element of the
+        submap</title>
+      <p>Consider the following scenario:</p>
+      <fig>
+        <title>Root map</title>
+        <codeblock>&lt;map>
+  &lt;mapref keyscope="A" href="installation.ditamap"/>
+  &lt;!-- ... -->
+&lt;/map></codeblock>
+      </fig>
+      <fig>
+        <title><filepath>installation.ditamap</filepath></title>
+        <codeblock>&lt;map keyscope="B">
+  &lt;!-- ... -->
+&lt;/map></codeblock>
+      </fig>
+      <p>Only one key scope is created; it has key scope names of "A" and "B".</p>
+    </example>
+  </conbody>
+</concept>

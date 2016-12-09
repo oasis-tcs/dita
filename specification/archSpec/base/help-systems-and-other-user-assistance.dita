@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="help-systems-and-other-user-assistance" >
+ <title>Context hooks and window metadata for user assistance</title>
+ <shortdesc>Context hook information specified in the <xmlelement>resourceid</xmlelement> element in
+    the DITA map or in a DITA topic enables processors to generate the header, map, alias and other
+    types of support files that are required to integrate the user assistance with the application.
+    Some user assistance topics might need to be displayed in a specific window or viewport, and
+    this windowing metadata can be defined in the DITA map within the
+      <xmlelement>ux-window</xmlelement> element.</shortdesc>
+ <conbody>
+    <p>Context hook and windowing information is ignored if the processor does not support this
+      metadata.</p>
+  <p>User interfaces for software application often are linked to user assistance (such as help
+systems and tool tips) through <term>context hooks</term>. Context hooks are identifiers that
+associate a part of the user interface with the location of a help topic. Context hooks can be
+direct links to URIs, but more often they are indirect links (numeric context identifiers and
+context strings) that can processed into external resource files. These external resource and
+mapping files are then used directly by context-sensitive help systems and other downstream
+applications.</p>
+  <p>Context hooks can define either one-to-one or one-to-many relationships between user interface
+      controls and target help content.</p>
+    <p>The metadata that is available in <xmlelement>resourceid</xmlelement> and
+        <xmlelement>ux-window</xmlelement> provides flexibility for content developers: </p>
+    <ul>
+      <li>You can overload maps and topics with all the metadata needed to support multiple target
+        help systems. This supports single-sourcing of help content and help metadata.</li>
+      <li>You can choose whether to add <xmlelement>resourceid</xmlelement> metadata to
+          <xmlelement>topicref</xmlelement> elements, <xmlelement>prolog</xmlelement> elements, or
+        both. Context-dependent metadata might be best be kept with maps, while persistent,
+        context-independent metadata might best stay with topics in <xmlelement>prolog</xmlelement>
+        elements</li>
+    </ul>
+    <p>Context hook information is defined within DITA topics and DITA maps through attributes of
+the <xmlelement>resourceid</xmlelement> element.</p>
+  <p>In some help systems, a topic might need to be displayed in a specifically sized or featured
+      window. For example, a help topic might need to be displayed immediately adjacent to the user
+      interface control that it supports in a window of a specific size that always remains on top,
+      regardless of the focus within the operating system. Windowing metadata can be defined in the
+      DITA map within the <xmlelement>ux-window</xmlelement> element.</p>
+  <p>The <xmlelement>ux-window</xmlelement> element provides the <xmlatt>top</xmlatt>,
+        <xmlatt>left</xmlatt>, <xmlatt>height</xmlatt>, <xmlatt>width</xmlatt>,
+        <xmlatt>on-top</xmlatt>, <xmlatt>features</xmlatt>, <xmlatt>relative</xmlatt>, and
+        <xmlatt>full-screen</xmlatt> attributes.</p>
+ </conbody>
+</concept>

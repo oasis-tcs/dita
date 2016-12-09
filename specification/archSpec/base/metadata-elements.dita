@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="metadata-elements" xml:lang="en-us">
+ <title>Metadata elements</title>
+ <shortdesc>The metadata elements, many of which map to Dublin core metadata, are available in
+  topics and DITA maps. This design enables authors and information architects to use identical
+  metadata markup in both topics and maps.</shortdesc>
+ <prolog>
+  <metadata>
+   <keywords>
+    <indexterm>metadata<indexterm>cascading</indexterm><indexterm>elements</indexterm></indexterm>
+   </keywords>
+  </metadata>
+ </prolog>
+ <conbody>
+ <p>The <xmlelement>metadata</xmlelement> element is a wrapper element that contains many of the
+   metadata elements. In topics, the <xmlelement>metadata</xmlelement> element is available in the
+    <xmlelement>prolog</xmlelement> element. In maps, the <xmlelement>metadata</xmlelement> element
+   is available in the <xmlelement>topicmeta</xmlelement> element. </p>
+   <p>In DITA maps, the metadata elements also are available directly in the
+    <xmlelement>topicmeta</xmlelement> element. Collections of metadata can be shared between DITA
+   maps and topics by using the conref or keyref mechanism.</p>
+   <p>In general, specifying metadata in a <xmlelement>topicmeta</xmlelement> element is equivalent
+   to specifying it in the <xmlelement>prolog</xmlelement> element of a referenced topic. The value
+   of specifying the metadata at the map level is that the topic then can be reused in other maps
+   where different metadata might apply. Many items in the <xmlelement>topicmeta</xmlelement>
+   element also cascade to nested <xmlelement>topicref</xmlelement> elements within the map.</p>
+   <note>Not all metadata elements are available in the <xmlelement>metadata</xmlelement> element.
+      However, they are available in either the topic <xmlelement>prolog</xmlelement> element or the
+      map <xmlelement>topicmeta</xmlelement> element.</note>
+ </conbody>
+</concept>

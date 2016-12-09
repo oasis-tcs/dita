@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="links-between-maps" >
+ <title><ph >Cross-deliverable addressing and linking</ph></title>
+ <shortdesc>A map can use scoped keys to reference keys that are defined in a different root map.
+        This cross-deliverable addressing can support the production of deliverables that contain
+        working links to other deliverables.</shortdesc>
+ <conbody>
+        <p >When maps are referenced and the value of the
+                <xmlatt>scope</xmlatt> attribute is set to "peer", the implications are that the two
+            maps are managed in tandem, and that the author of the referencing map might have access
+            to the referenced map. Adding a key scope to the reference indicates that the peer map
+            should be treated as a separate deliverable for the purposes of linking.</p>
+  <p>The keys that are defined by the peer map belong to <ph >any key scopes
+                that are</ph> declared on the <xmlelement>topicref</xmlelement> element that
+            references that map. Such keys can be referenced from content in the referencing map by
+            using scope-qualified key names. However, processors handle references to keys that are
+            defined in peer maps differently from how they handle references to keys that are
+            defined in submaps.</p>
+  <p>DITA processors are not required to resolve key references to peer maps. However, if all
+            resources are available in the same processing or management context, processors have
+            the potential to resolve key references to peer maps. There might be performance, scale,
+            and user interface challenges in implementing such systems, but the ability to resolve
+            any given reference is ensured when the source files are physically accessible.</p>
+  <p>Note the inverse implication; if the peer map is not available, then it is impossible to
+            resolve the key reference. Processors that resolve key references to peer maps should
+            provide appropriate messages when a reference to a peer map cannot be resolved.
+            Depending on how DITA resources are authored, managed, and processed, references to peer
+            maps might not be resolvable at certain points in the content life cycle.</p>
+  <p>The peer map might specify <xmlatt>keyscope</xmlatt> on its root element. In that case, the
+                <xmlatt>keyscope</xmlatt> on the peer map is ignored for the purpose of resolving
+            scoped key references from the referencing map. This avoids the need for processors to
+            have access to the peer map in order to determine whether a given key definition comes
+            from the peer map.</p>
+        <example id="example-root-declares-peer" otherprops="examples">
+            <title>Example: A root map that declares a peer map</title>
+            <p>Consider the DITA maps <filepath>map-a.ditamap</filepath> and
+                    <filepath>map-b.ditamap</filepath>. Map A designates Map B as a peer map by
+                using the following markup:</p>
+            <codeblock>&lt;map>
+  &lt;title>Map A&lt;/title>
+  &lt;topicref 
+    scope="peer"
+    format="ditamap"
+    keyscope="map-b"
+    href="../map-b/map-b.ditamap"
+    processing-role="resource-only"
+  />
+  &lt;!-- ... -->
+&lt;/map></codeblock>
+            <p>In this example, <filepath>map-b.ditamap</filepath> is not a submap of Map A; it is a
+                peer map.</p>
+        </example>
+        <example id="example-peer-keyscope" otherprops="examples">
+            <title>Example: Key resolution in a peer map that contains a <xmlatt>keyscope</xmlatt>
+                attribute on the root element</title>
+            <p>Consider the map reference in map Map A:</p>
+            <codeblock>&lt;mapref 
+  keyscope="scope-b"
+  scope="peer"  
+  href="map-b.ditamap"
+/> </codeblock>
+            <p>where <filepath>map-b.ditamap</filepath> contains the following markup:</p>
+            <codeblock>&lt;map keyscope="product-x">
+ &lt;!-- ... -->
+&lt;/map></codeblock>
+            <p>From the context of Map A, key references of the form "scope-b.somekey" are resolved
+                to keys that are defined in the global scope of map B, but key references of the
+                form "product-x.somekey" are not. The presence of a <xmlatt>keyscope</xmlatt>
+                attribute on the <xmlelement>map</xmlelement> element in Map B has no effect. A key
+                reference to the scope "scope-b.somekey" is equivalent to the unscoped reference
+                "somekey" when processed in the context of Map B as the root map. In both cases, the
+                presence of <xmlatt>keyscope</xmlatt> on the root element of Map B has no effect; in
+                the first case it is explicitly ignored, and in the second case the key reference is
+                within the scope "product-x" and so does not need to be scope qualified.</p>
+        </example>
+ </conbody>
+</concept>

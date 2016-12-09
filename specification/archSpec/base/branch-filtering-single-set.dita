@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="branch-filter-single-set" xml:lang="en-us" >
+    <title>Branch filtering: Single condition set for a branch</title>
+    <shortdesc>Using a single <xmlelement>ditavalref</xmlelement> element as a child of a map or map
+        branch indicates that the map or map branch must be conditionally processed using the rules
+        specified in the referenced DITAVAL document.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>branch filtering</indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <!--<p>When a <xmlelement>ditavalref</xmlelement> element occurs within a map branch, the rules in the referenced DITAVAL document are used to process the entire branch, including the parent element that contains the <xmlelement>ditavalref</xmlelement> element. When a <xmlelement>ditavalref</xmlelement> element occurs as a direct child of a map, the referenced conditions are applied to the entire map.</p><p>When a <xmlelement>ditavalref</xmlelement> element occurs within a <xmlelement>topicref</xmlelement> reference to a local map, the conditions are applied to the referenced map. When a <xmlelement>ditavalref</xmlelement> element occurs within a <xmlelement>topicref</xmlelement> reference to a map with <xmlatt>scope</xmlatt> set to "peer" or "external", the conditions are not applied to the referenced map.</p>-->
+        <p >The following rules outline how the filtering conditions that are
+            specified in DITAVAL document are applied:</p>
+        <dl >
+            <dlentry>
+                <dt><xmlelement>ditavalref</xmlelement> element as a direct child of a map</dt>
+                <dd>The filtering conditions are applied to the entire map.</dd>
+            </dlentry>
+            <dlentry>
+                <dt><xmlelement>ditavalref</xmlelement> element within a map branch</dt>
+                <dd>The filtering conditions are used to process the entire branch, including the
+                    parent element that contains the <xmlelement>ditavalref</xmlelement> element.
+                </dd>
+            </dlentry>
+            <dlentry>
+                <dt><xmlelement>ditavalref</xmlelement> element within a
+                        <xmlelement>topicref</xmlelement> reference to a local map</dt>
+                <dd>The filtering conditions are applied to the submap.</dd>
+            </dlentry>
+            <dlentry>
+                <dt><xmlelement>ditavalref</xmlelement> element within a
+                        <xmlelement>topicref</xmlelement> reference to peer map</dt>
+                <dd>The reference conditions are <b>not</b> applied to the peer map.</dd>
+            </dlentry>
+        </dl>
+    </conbody>
+</concept>
+

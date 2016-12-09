@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference xml:lang="en-us" id="equation-figure" >
+  <title><xmlelement>equation-figure</xmlelement></title>
+  <shortdesc>Use the <xmlelement>equation-figure</xmlelement> element to represent an equation that
+    functions as form of figure or display. Display equations are intended to be numbered when
+    numbering is desired.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>equation-figure</indexterm>
+        <indexterm>equation domain<indexterm>equation-figure</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody>
+    <section id="section-1">
+      <p>Since the <xmlelement>equation-figure</xmlelement> element is specialized from
+          <xmlelement>fig</xmlelement>, display equations can have titles, descriptions, figure
+        groups, and all other figure components. The direct children of
+          <xmlelement>equation-figure</xmlelement> can be the equation content itself (for example,
+          <xmlelement>mathml</xmlelement> or an image reference), or it can be one or more
+          <xmlelement>equation-block</xmlelement> elements, along with other elements allowed within
+          <xmlelement>fig</xmlelement>, such as paragraphs. </p>
+      <p>When an <xmlelement>equation-figure</xmlelement> element has multiple direct child
+          <xmlelement>mathml</xmlelement>, <xmlelement>image</xmlelement>, or
+          <xmlelement>pre</xmlelement> elements, each child represents an alternative form of the
+        equation. Processors are free to choose the form or forms that they use in deliverables. For
+        example, if there is both an image and MathML markup, an HTML-generating processor could
+        output both the image reference and the MathML with appropriate HTML <xmlatt>class</xmlatt>
+        or <xmlatt>id</xmlatt> values to enable dynamic showing or hiding of one form or the other
+        based on browser capability. All other direct-child elements of
+          <xmlelement>equation-figure</xmlelement> are treated normally.</p>
+      <p>When the intent is to have equations combined with other commentary within an
+          <xmlelement>equation-figure</xmlelement>, the recommended best practice is to use child
+          <xmlelement>equation-block</xmlelement> elements to contain the equations and clearly
+        distinguish them from the commentary.</p>
+    </section>
+    <section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-equation-figure/contains" otherprops="contains"></section>
+    
+    <section id="inheritance" otherprops="inheritance">
+      <title>Inheritance</title>
+      <p>+ topic/fig equation-d/equation-figure </p>
+    </section>
+    <example id="example" otherprops="examples">
+      <title>Example</title>
+      <p>In the following example, the <xmlelement>equation-figure</xmlelement> element contains a
+        title and
+        MathML:<codeblock>&lt;equation-figure>
+  &lt;title>Display equation with a MathML container&lt;/title>
+  &lt;mathml>
+    &lt;m:math display='block'>
+      &lt;m:semantics>
+        &lt;m:mrow>
+          &lt;m:mfrac>
+            &lt;m:mrow>
+              &lt;m:mi>n&lt;/m:mi>&lt;m:mo>!&lt;/m:mo>
+            &lt;/m:mrow>
+            &lt;m:mrow>
+              &lt;m:mi>r&lt;/m:mi>&lt;m:mo>!&lt;/m:mo>&lt;m:mrow>&lt;m:mo>(&lt;/m:mo>
+                &lt;m:mrow>
+                  &lt;m:mi>n&lt;/m:mi>&lt;m:mo>&amp;#x2212;&lt;/m:mo>&lt;m:mi>r&lt;/m:mi>
+                &lt;/m:mrow>
+                &lt;m:mo>)&lt;/m:mo>&lt;/m:mrow>&lt;m:mo>!&lt;/m:mo>
+            &lt;/m:mrow>
+          &lt;/m:mfrac>         
+        &lt;/m:mrow>
+      &lt;/m:semantics>
+    &lt;/m:math>
+  &lt;/mathml>
+&lt;/equation-figure></codeblock></p>
+      <p>In the following example, the <xmlelement>equation-figure</xmlelement> element contains a
+        title and an <xmlelement>equation-block</xmlelement> element that contains MathML and
+        commentary:<codeblock>&lt;equation-figure>
+  &lt;title>Display equation with a MathML container&lt;/title>
+  &lt;equation-block>
+    &lt;mathml>
+      &lt;m:math display='block'>
+        &lt;m:semantics>
+          &lt;m:mrow>
+            &lt;m:mfrac>
+              &lt;m:mrow>
+                &lt;m:mi>n&lt;/m:mi>&lt;m:mo>!&lt;/m:mo>
+              &lt;/m:mrow>
+              &lt;m:mrow>
+                &lt;m:mi>r&lt;/m:mi>&lt;m:mo>!&lt;/m:mo>&lt;m:mrow>&lt;m:mo>(&lt;/m:mo>
+                  &lt;m:mrow>
+                    &lt;m:mi>n&lt;/m:mi>&lt;m:mo>&amp;#x2212;&lt;/m:mo>&lt;m:mi>r&lt;/m:mi>
+                  &lt;/m:mrow>
+                  &lt;m:mo>)&lt;/m:mo>&lt;/m:mrow>&lt;m:mo>!&lt;/m:mo>
+              &lt;/m:mrow>
+            &lt;/m:mfrac>            
+          &lt;/m:mrow>
+        &lt;/m:semantics>
+      &lt;/m:math>
+    &lt;/mathml>
+  &lt;/equation-block>
+  &lt;p>Where 
+&lt;equation-inline>&lt;mathml>&lt;m:math>&lt;m:mi>r&lt;/m:mi>&lt;/m:math>&lt;/mathml>&lt;/equation-inline>
+is greater than 1.&lt;/p>
+&lt;/equation-figure></codeblock></p>
+    </example>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p conref="../../common/conref-attribute.dita#conref-attribute/fig-attributes"/>
+      
+    </section>
+  </refbody>
+</reference>

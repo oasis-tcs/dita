@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference xml:lang="en-us" id="learningGroupMap" >
+  <title><xmlelement>learningGroupMap</xmlelement></title>
+  <shortdesc>Use a <xmlelement>learningGroupMap</xmlelement> to create standalone aggregations of
+      <xmlelement>learningObject</xmlelement> and <xmlelement>learningGroup</xmlelement> elements,
+    as well as overviews, summaries, and assessments, according to the needs identified by the
+    learning goals and objectives.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>learningGroupMap</indexterm>
+        <indexterm>learning and training
+            elements<indexterm>learningMap</indexterm><indexterm>learningGroupMap</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody>
+    <section id="section-1">
+      <title>Description and Semantics</title>
+      <p>The <xmlelement>learningGroupMap</xmlelement> is a map specialization which supports the
+        DITA learning and training map domain. It is used to aggregate
+          <xmlelement>learningObject</xmlelement> and <xmlelement>learningGroup</xmlelement>
+        elements, together with their supporting files and assessments, into a single standalone map
+        type. The <xmlelement>learningGroupMap</xmlelement> references one and only one
+          <xmlelement>learningGroup</xmlelement>. Any <xmlelement>topicref</xmlelement> elements
+        that occur before the <xmlelement>learningGroup</xmlelement> are intended to be
+        resource-only references such as key definitions.</p>
+      <p>Recursion is provided to support complex aggregations of learning content and can be used
+        as necessary to support the creation of complex learning structures, such as learning units,
+        sections, and courses.</p>
+    </section>
+    <section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-learningGroupMap/contains" otherprops="contains"></section>
+    
+    <section id="inheritance" otherprops="inheritance">
+      <title>Inheritance</title>
+      <p>- map/map learningGroupMap/learningGroupMap</p>
+    </section>
+    <example id="learningGroupMapexample" otherprops="examples">
+      <title>Example</title>
+      <codeblock>&lt;learningGroupMap id="learningGroupMap1">
+        &lt;title>Sample learningGroup map&lt;/title>
+        &lt;learningGroup>
+            &lt;learningObject>
+                &lt;learningOverviewRef href="learningOverview.dita" scope="local" 
+                    type="learningOverview" format="dita"/>
+                &lt;learningContentRef href="learningContent.dita" scope="local" 
+                    type="learningContent" format="dita"/>
+                &lt;learningSummaryRef href="learningSummary.dita" scope="local" 
+                    type="learningSummary" format="dita"/>
+            &lt;/learningObject>
+            &lt;learningGroupMapRef href="learningGroupMap2.ditamap" scope="local"
+                type="learningGroupMap" format="ditamap"/>
+        &lt;/learningGroup>   
+&lt;/learningGroupMap></codeblock>
+    </example>
+    <section id="attributes"><title>Attributes</title><sectiondiv
+        conref="../../common/conref-attribute.dita#conref-attribute/all-map-attributes"
+      /></section>
+  </refbody>
+</reference>

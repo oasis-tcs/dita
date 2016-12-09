@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="xnaldetails" xml:lang="en-us"> 
+  <title>xNAL usage guidelines</title> 
+  <shortdesc>Extended information and usage examples for DITA bookmap metadata
+	 elements associated with OASIS xNAL Standard (extensible Name and Address
+	 Language).
+  </shortdesc> 
+  <conbody> 
+	 <p id="p_B29FA4D529414071B5C45D2715DB7FCC">DITA bookmaps use a set of
+		elements associated with a subset of the 
+		<xref format="html"
+		 href="http://www.oasis-open.org/committees/ciq/ciq.html#4">OASIS extensible
+		  Name and Address Language (xNAL)</xref> specification (Version 2) to denote
+		name and address information related to persons and organizations. 
+	 </p> 
+	 <p id="p_3DC44EF4DA42415EAF62DFA4B425CEAA">While the elements share element names, and the
+			expectation is that content written using this type of metadata <ph
+				rev="public-review-1">is</ph> be straightforward to transform, the element name
+			pairs do not share content models. The difference in content models reflects the
+			different purposes of the two standards. The purpose of the name and address elements in
+			DITA is to identify persons or organizations associated with the creation of a document;
+			the purpose of the name and address elements in xNAL is to support customer resource
+			management. </p> 
+	 <p id="p_2310CD60E1304A739D80B033BCF55A9F">The examples shown after the
+		table provide sample tagging methods for name and address information, using
+		the DITA elements associated with xNAL.
+	 </p> 
+	 <section id="section_6A5636FF23794D3E991B8C3406A6A784"> 
+		<title>DITA elements associated with xNAL elements</title> 
+		<p id="p_667A2CE5B0A748A3B511F7C652E0767F">The set of bookmap elements
+		  associated with elements from the 
+		  <xref format="html"
+			href="http://www.oasis-open.org/committees/ciq/ciq.html#4">OASIS extensible
+			 Name and Address Language (xNAL)</xref> standard are listed in the table below.
+		  
+		</p> 
+		<table colsep="0" frame="none" rowsep="0"
+		 id="table_21DE0DDF9261488DB735C53ABD5CE5E2">
+		<title>DITA elements associated with xNAL elements</title> 
+		<tgroup cols="3"><colspec colname="col1"
+		  colwidth="60*"/><colspec colname="col2" colwidth="60*"/><colspec colname="col3"
+		  colwidth="60*"/> 
+		  <tbody> 
+			 <row> 
+				<entry colname="col1"><xmlelement>addressdetails</xmlelement>
+				</entry> 
+				<entry colname="col2"><xmlelement>honorific</xmlelement>
+				</entry> 
+				<entry><xmlelement>otherinfo</xmlelement>
+				</entry> 
+			 </row> 
+			 <row> 
+				<entry colname="col1"><xmlelement>administrativearea</xmlelement>
+				</entry> 
+				<entry colname="col2"><xmlelement>lastname</xmlelement>
+				</entry> 
+				<entry><xmlelement>person</xmlelement>
+				</entry> 
+			 </row> 
+			 <row> 
+				<entry colname="col1"><xmlelement>authorinformation</xmlelement>
+				</entry> 
+				<entry colname="col2"><xmlelement>locality</xmlelement>
+				</entry> 
+				<entry><xmlelement>personinfo</xmlelement>
+				</entry> 
+			 </row> 
+			 <row> 
+				<entry colname="col1"><xmlelement>contactnumber</xmlelement>
+				</entry> 
+				<entry colname="col2"><xmlelement>localityname</xmlelement>
+				</entry> 
+				<entry><xmlelement>personname</xmlelement>
+				</entry> 
+			 </row> 
+			 <row> 
+				<entry colname="col1"><xmlelement>contactnumbers</xmlelement>
+				</entry> 
+				<entry colname="col2"><xmlelement>middlename</xmlelement>
+				</entry> 
+				<entry><xmlelement>postalcode</xmlelement>
+				</entry> 
+			 </row> 
+			 <row> 
+				<entry colname="col1"><xmlelement>country</xmlelement>
+				</entry> 
+				<entry colname="col2"><xmlelement>namedetails</xmlelement>
+				</entry> 
+				<entry><xmlelement>thoroughfare</xmlelement>
+				</entry> 
+			 </row> 
+			 <row> 
+				<entry colname="col1"><xmlelement>emailaddress</xmlelement>
+				</entry> 
+				<entry colname="col2"><xmlelement>organization</xmlelement>
+				</entry> 
+				<entry><xmlelement>url</xmlelement>
+				</entry> 
+			 </row> 
+			 <row> 
+				<entry colname="col1"><xmlelement>emailaddresses</xmlelement>
+				</entry> 
+				<entry colname="col2"><xmlelement>organizationinfo</xmlelement>
+				</entry> 
+				<entry><xmlelement>urls</xmlelement>
+				</entry> 
+			 </row> 
+			 <row> 
+				<entry colname="col1"><xmlelement>firstname</xmlelement>
+				</entry> 
+				<entry colname="col2"><xmlelement>organizationname</xmlelement>
+				</entry> 
+			 </row> 
+			 <row> 
+				<entry colname="col1"><xmlelement>generationidentifier</xmlelement>
+				</entry> 
+				<entry
+				 colname="col2"><xmlelement>organizationnamedetails</xmlelement>
+				</entry> 
+				<entry>
+				</entry> 
+			 </row> 
+		  </tbody> 
+		</tgroup> 
+		</table> 
+	 </section> 
+	 <example id="example_5F30E23EACBE4DEBAA4D616C02297AA8" otherprops="examples"> 
+		<title>Example 1: Tagging personal information in DITA</title> 
+		<p id="p_40E40573E285471A8581DFEE4192F1DD">This example shows a way to
+		  tag the following personal name and description. 
+		</p> 
+		<lines>Mr. Ram V. Kumar Jr.
+Chief Technologist
+MSI Business Solutions</lines> 
+		<codeblock>&lt;authorinformation&gt;
+  &lt;personinfo&gt;
+    &lt;namedetails&gt;
+      &lt;personname&gt;
+        &lt;honorific&gt;Mr.&lt;/honorific&gt;
+        &lt;firstname&gt;Ram&lt;/firstname&gt;
+        &lt;middlename&gt;V.&lt;/middlename&gt;
+        &lt;lastname&gt;Kumar&lt;/lastname&gt;
+        &lt;generationidentifier&gt;Jr.&lt;/generationidentifier&gt;
+        &lt;otherinfo&gt;Chief Technologist&lt;/otherinfo&gt;
+      &lt;/personname&gt;
+    &lt;/namedetails&gt;
+  &lt;/personinfo&gt;
+  &lt;organizationinfo&gt;
+    &lt;namedetails&gt;
+      &lt;organizationnamedetails&gt;
+        &lt;organizationname&gt;MSI Business Solutions&lt;/organizationname&gt;
+      &lt;/organizationnamedetails&gt;
+    &lt;/namedetails&gt;
+  &lt;/organizationinfo&gt;
+&lt;/authorinformation&gt;</codeblock> 
+	 </example> 
+	 <example id="example_33E552FE3AEE4193AD31A36E9BF5B7E0" otherprops="examples"> 
+		<title>Example 2: Tagging address information in DITA</title> 
+		<p id="p_5CE68C3776AA4714AA38C6D5826DC7E7">This example shows a way to
+		  tag the following address. 
+		</p> 
+		<lines>23 Archer St.
+Chatsworth
+NSW 2067
+Australia</lines> 
+		<codeblock>&lt;addressdetails&gt;
+  &lt;thoroughfare&gt;123 Archer St.&lt;/thoroughfare&gt;
+  &lt;locality&gt;
+    &lt;localityname&gt;Chatsworth&lt;/localityname&gt;
+    &lt;postalcode&gt;2067&lt;/postalcode&gt;
+  &lt;/locality&gt;
+  &lt;administrativearea&gt;NSW&lt;/administrativearea&gt;
+  &lt;country&gt;Australia&lt;/country&gt;
+&lt;/addressdetails&gt;
+</codeblock> 
+	 </example> 
+	 <example id="example_4D3CD2DB133E44D4876CF95FE34DC31D" otherprops="examples"> 
+		<title>Example 3: Tagging complex name and address information in
+		  DITA</title> 
+		<p id="p_9F22BCC7477E47B5A75C5495E12EE773">This example shows two ways to
+		  tag a fairly complex collection of personal, organizational, and address
+		  information. 
+		</p> 
+		<lines>Mr. Samuel L. Johnson Jr.
+Chief Technologist
+c/o XYZ Corporation
+52 New Main St. 
+Carrboro,  NC  27510  USA
+email: johnson@example.com
+phone: 919-555-7987</lines> 
+		<p id="p_6BC147F1530A40709A1AA182108CA716">This method tags all the
+		  organizational information as associated with the identified person.
+		</p> 
+		<codeblock>&lt;personinfo&gt;
+   &lt;namedetails&gt;
+      &lt;personname&gt;
+          &lt;firstname&gt;Samuel&lt;/firstname&gt;
+          &lt;middlename&gt;L.&lt;/middlename&gt;
+          &lt;lastname&gt;Johnson&lt;/lastname&gt;
+          &lt;generationidentifier&gt;Jr.&lt;/generationidentifier&gt;
+          &lt;otherinfo&gt;Chief Technologist&lt;/otherinfo&gt;
+          &lt;otherinfo&gt;c/o XYZ Corporation &lt;/otherinfo&gt;
+      &lt;/personname&gt;
+   &lt;/namedetails&gt;
+   &lt;addressdetails&gt;
+      &lt;thoroughfare&gt;52 New Main St.&lt;/thoroughfare&gt;
+      &lt;locality&gt;
+         &lt;localityname&gt;Carrboro&lt;/localityname&gt;
+         &lt;postalcode&gt;27510&lt;/postalcode&gt;
+      &lt;/locality&gt;
+      &lt;administrativearea&gt;NC&lt;/administrativearea&gt;
+      &lt;country&gt;USA&lt;/country&gt;
+   &lt;/addressdetails&gt;
+   &lt;contactnumbers&gt;
+      &lt;contactnumber&gt;919-555-7987&lt;/contactnumber&gt;
+   &lt;/contactnumbers&gt;
+   &lt;emailaddresses&gt;
+      &lt;emailaddress&gt;johnson@example.com&lt;/emailaddress&gt;
+   &lt;/emailaddresses&gt;
+&lt;/personinfo&gt;  </codeblock> 
+		<p id="p_2025803872EA4F4BB1A98332AE416C9C">The following method separates
+		  the person and organization information. It might be used if it were necessary
+		  to associate address information with organizations rather than persons. 
+		</p> 
+		<codeblock>&lt;authorinformation&gt;
+  &lt;personinfo&gt;
+    &lt;namedetails&gt;
+      &lt;personname&gt;
+        &lt;firstname&gt;Samuel&lt;/firstname&gt;
+        &lt;middlename&gt;L.&lt;/middlename&gt;
+        &lt;lastname&gt;Johnson&lt;/lastname&gt;
+        &lt;generationidentifier&gt;Jr.&lt;/generationidentifier&gt;
+        &lt;otherinfo&gt;Chief Technologist&lt;/otherinfo&gt;
+      &lt;/personname&gt;
+    &lt;/namedetails&gt;
+    &lt;contactnumbers&gt;
+      &lt;contactnumber&gt;919-555-7987&lt;/contactnumber&gt;
+    &lt;/contactnumbers&gt;
+    &lt;emailaddresses&gt;
+      &lt;emailaddress&gt;johnson@example.com&lt;/emailaddress&gt;
+    &lt;/emailaddresses&gt;
+  &lt;/personinfo&gt;  
+  &lt;organizationinfo&gt;
+    &lt;namedetails&gt;
+      &lt;organizationnamedetails&gt;
+        &lt;organizationname&gt;XYZ Corporation&lt;/organizationname&gt;
+        &lt;otherinfo&gt;c/o &lt;/otherinfo&gt;
+      &lt;/organizationnamedetails&gt;
+    &lt;/namedetails&gt;
+    &lt;addressdetails&gt;
+      &lt;thoroughfare&gt;52 New Main St.&lt;/thoroughfare&gt;
+      &lt;locality&gt;
+         &lt;localityname&gt;Carrboro&lt;/localityname&gt;
+         &lt;postalcode&gt;27510&lt;/postalcode&gt;
+      &lt;/locality&gt;
+      &lt;administrativearea&gt;NC&lt;/administrativearea&gt;
+      &lt;country&gt;USA&lt;/country&gt;
+    &lt;/addressdetails&gt;
+  &lt;/organizationinfo&gt;
+&lt;/authorinformation&gt;</codeblock> 
+	 </example> 
+  </conbody> 
+</concept> 

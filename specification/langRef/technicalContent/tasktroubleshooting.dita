@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="tasktroubleshooting" xml:lang="en-us" >
+  <title><xmlelement>tasktroubleshooting</xmlelement></title>
+  <shortdesc>The <xmlelement>tasktroubleshooting</xmlelement> element provides information designed
+    to help users remedy the situation when a task does not complete as expected. In particular,
+    this element can be used to explain how users can recover when the results of a task do not
+    match those listed in the <xmlelement>result</xmlelement> element. The troubleshooting remedy
+    typically contains one or more actions for solving a problem. For complex remedies, link to
+    another task.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm><xmlelement>tasktroubleshooting</xmlelement></indexterm>
+        <indexterm>task
+          elements<indexterm><xmlelement>tasktroubleshooting</xmlelement></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody>
+    <section id="section-1">
+      <note type="tip">Do not use <codeph rev="public-review-1">&lt;note type="trouble"></codeph>
+        inside of <xmlelement>tasktroubleshooting</xmlelement> because its meaning there would be
+        ambiguous.</note>
+    </section>
+    <section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-tasktroubleshooting/contains" otherprops="contains"></section>
+    
+    <section id="inheritance" otherprops="inheritance">
+      <title>Inheritance</title>
+      <p>- topic/section task/tasktroubleshooting </p>
+    </section>
+    <example id="example" otherprops="examples">
+      <title>Example</title>
+      <codeblock><![CDATA[
+  <steps>
+    <step><cmd>...</cmd></step>
+    <!-- ... more steps ... -->
+  </steps>
+  <result>
+    <p>The <uicontrol>User Type</uicontrol> menu updates to
+      display the new types you added.</p>
+  </result>
+  <tasktroubleshooting>
+    <p>If the User Type menu does not display the additions, try
+      one or more of the following:
+      <ul>
+        <li>Refresh the page</li>
+        <li>Verify that <wintitle>Add Types</wintitle> is not
+          still open; if so, go to it and press
+          <uicontrol>OK</uicontrol>.</li>
+      </ul>
+    </p>
+  </tasktroubleshooting>
+  <example>
+    <p>For example, you could also do xyz.</p>
+  </example>
+  <postreq>
+    <p>Once completed, you need to consider abc.</p>
+  </postreq>
+]]>
+</codeblock>
+      
+    </example>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p conref="../../common/conref-attribute.dita#conref-attribute/universal-outputclass"/>
+      
+    </section>
+  </refbody>
+</reference>
+

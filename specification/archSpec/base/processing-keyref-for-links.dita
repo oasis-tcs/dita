@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="processing_key_references">
+    <title><ph >Processing key references for navigation links and images</ph></title>
+    <shortdesc>Keys can be used to create or redirect links and cross references. Keys also can be
+        used to address resources such as images or videos. This topic explains how to evaluate key
+        references on links and cross references to determine a link target. </shortdesc>
+    <conbody>
+        <p>When a key definition is bound to a resource that is addressed by the
+                <xmlatt>href</xmlatt> or <xmlatt>keyref</xmlatt> attributes, and does not specify
+            "none" for the <xmlatt>linking</xmlatt> attribute, all references to that key definition
+            become links to the bound resource. When a key definition is not bound to a resource or
+            specifies "none" for the <xmlatt>linking</xmlatt> attribute, references to that key
+            definition do not become links.</p>
+        <p>When a key definition has no <xmlatt>href</xmlatt> value and no <xmlatt>keyref</xmlatt>
+            value, references to that key will not result in a link, even if they do contain an
+                <xmlatt>href</xmlatt> attribute of their own. If the key definition also does not
+            contain a <xmlelement>topicmeta</xmlelement> subelement, empty elements that refer to
+            the key (such as <codeph>&lt;link keyref="a"/></codeph> or <codeph>&lt;xref keyref="a"
+                href="fallback.dita"/></codeph>) are <ph >ignored</ph>.</p>
+        <p>The <xmlelement>object</xmlelement> element has additional key-referencing attributes
+                (<xmlatt>archivekeyrefs</xmlatt>, <xmlatt>classidkeyref</xmlatt>,
+                <xmlatt>codebasekeyref</xmlatt>, and <xmlatt>datakeyref</xmlatt>). Key names in
+            these attributes are resolved using the same processing that is described for the normal
+                <xmlatt>keyref</xmlatt> attribute.</p>
+        <!--<p>For key references to undefined keys, if there is an @href attribute
+on         the referencing element, the value of the @href attribute
+is used as the         reference and the key reference element is
+processed as if there were no key reference. If         the key reference
+element does not specify @href, the element is not
+        treated as a navigation link. It is an error for the element
+to be empty, and an         implementation <keyword>may</keyword> give
+an error message, and <keyword>may</keyword>         recover from
+this error condition by leaving the key reference element empty. </p>-->
+    </conbody>
+</concept>

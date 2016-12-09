@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_cmm_rwy_lp">
+ <title>Example: Duplicate key definitions within a single map</title>
+ <shortdesc><ph >In this scenario, a DITA map contains duplicate key
+      definitions.</ph> How a processor finds the effective key definition depends on document order
+      <ph >and the effect of filtering applied to the key
+    definitions.</ph></shortdesc>
+ <conbody>
+    <!--<draft-comment author="Kristen Eberlein" time="3 December 2014"><p>Comment by Eliot Kimber in review #2</p><p>Note that the effect of filtering must be the same for a map and set of conditions.</p><p>The effective key definition for a key reference is determined at key resolution time using the key spaces constructed from the root map. Processors can choose how they construct the key spaces:</p><ul><li>They can filter the map and then construct the key space.</li><li>They can construct the key space from the unfiltered map, preserving the priority order and conditional properties of each key definition. </li></ul><p> In the first case, using the pre-filtered map, the conditions have already been applied, so the key space reflects only the effective key definitions for a specific set of conditions. In the second case, using the unfiltered map, the conditions to apply must be included as part of the key resolution request. Using those conditions, the processor then determines the effective key definition by considering only those key definitions that are included by the specified conditions.</p><p>In both cases the result will be the same. The first approach, using the pre-filtered map, is appropriate for batch processors where the entire process reflects a single set of conditions. The second approach, using the unfiltered map, is appropriate for interactive processors, such as editors and content management systems, where the user may want to quickly see the effect of setting different sets of conditions. </p></draft-comment>-->
+  <p>In the following example, a map contains two definitions for the key "load-toner":</p>
+  <codeblock>&lt;map&gt;
+  &lt;!--... -->
+  &lt;keydef keys="load-toner" href="model-1235-load-toner-proc.dita"/&gt;
+  &lt;keydef keys="load-toner" href="model-4545-load-toner-proc.dita"
+  /&gt;
+  &lt;!--... -->
+&lt;/map&gt;</codeblock>
+  <p>In this example, only the first key definition (in document order) of the "load-toner" key is
+      effective. All references to the key within the scope of the map resolve to the topic
+        <filepath>model-1235-load-toner-proc.dita</filepath>.</p>
+  <p>In the following example, a map contains two definitions for the "file-chooser-dialog" key;
+   each key definition specifies a different value for the <xmlatt>platform</xmlatt> attribute.</p>
+  <codeblock>&lt;map&gt;
+  &lt;!--... -->
+  &lt;keydef keys="file-chooser-dialog" href="file-chooser-osx.dita" <b>platform="osx"</b>/&gt;
+  &lt;keydef keys="file-chooser-dialog" href="file-chooser-win7.dita" <b>platform="windows7"</b>/&gt;
+  &lt;!--... -->
+&lt;/map&gt;</codeblock>
+  <p>In this case, the effective key definition is determined not only by the order in which the
+      definitions occur, but also by whether the active value of the platform <ph
+        >condition</ph> is "osx" or "windows7". Both key definitions are
+        <i>potentially</i> effective because they have distinct values for the conditional
+      attribute. Note that if no active value is specified for the <xmlatt>platform</xmlatt>
+      attribute at processing time, then both of the key definitions are present and so the first
+      one in document order is the effective definition. </p>
+  <p>If the DITAVAL settings are defined so that both "osx" and "windows" values for the
+        <xmlatt>platform</xmlatt> attribute are excluded, then neither definition is effective and
+      the key is undefined. That case can be avoided by specifying an unconditional key definition
+      after any conditional key definitions, for
+      example:<codeblock>&lt;map&gt;
+  &lt;!--... -->
+  &lt;keydef keys="file-chooser-dialog" href="file-chooser-osx.dita" platform="osx"/&gt;
+  &lt;keydef keys="file-chooser-dialog" href="file-chooser-win7.dita" platform="windows7"/&gt;
+  <b>&lt;keydef keys="file-chooser-dialog" href="file-chooser-generic.dita"/&gt;</b>
+  &lt;!--... -->
+&lt;/map&gt;</codeblock></p>
+  <p>If the above map is processed with both "osx" and "windows" values for the
+        <xmlatt>platform</xmlatt> attribute excluded, then the effective key definition for
+      "file-chooser-dialog" is the <filepath>file-chooser-generic.dita</filepath> resource.</p>
+ </conbody>
+</concept>

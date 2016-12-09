@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="steptroubleshooting" xml:lang="en-us" >
+  <title><xmlelement>steptroubleshooting</xmlelement></title>
+  <shortdesc>The <xmlelement>steptroubleshooting</xmlelement> element provides information that is
+    designed to help remedy the situation when a step does not complete as expected. In particular,
+    this element can be used to explain how users can recover when the results of a step do not
+    match those listed in the <xmlelement>stepresult</xmlelement> element.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm><xmlelement>steptroubleshooting</xmlelement></indexterm>
+        <indexterm>task
+          elements<indexterm><xmlelement>steptroubleshooting</xmlelement></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody>
+    <section id="section-1">
+      <note type="tip">Do not use <codeph rev="public-review-1">&lt;note type="trouble"></codeph>
+        inside of <xmlelement>steptroubleshooting</xmlelement> because its meaning there would be
+        ambiguous.</note>
+    </section>
+    <section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-steptroubleshooting/contains" otherprops="contains"></section>
+    
+    <section id="inheritance" otherprops="inheritance">
+      <title>Inheritance</title>
+      <p>- topic/itemgroup task/steptroubleshooting </p>
+    </section>
+    <example id="example" otherprops="examples">
+      <title>Example</title>
+      <p>The following example illustrates using the <xmlelement>steptroubleshooting</xmlelement>
+        element with a single action:</p>
+      <codeblock><![CDATA[
+  <step>
+    <cmd>Select <uicontrol>Perform system backup</uicontrol></cmd>
+    <stepresult>
+      <p>The message <systemoutput>Backup successfully
+        completed</systemoutput> displays.</p>
+    </stepresult>
+    <steptroubleshooting>
+      <p>If an error message displays during the system backup,
+        locate the error ID in the <cite>Troubleshooting Guide
+        </cite> and follow the instructions there.</p>
+    </steptroubleshooting>
+  </step>]]>
+
+</codeblock>
+      <p>The following example illustrates using the <xmlelement>steptroubleshooting</xmlelement>
+        element with several actions:</p>
+      <codeblock><![CDATA[
+  <step>
+    <cmd>Log in to the system</cmd>
+    <stepresult>
+      <p>The <wintitle>Welcome</wintitle> screen appears.</p>
+    </stepresult>
+    <steptroubleshooting>
+      <p>If the <wintitle>Welcome</wintitle> screen does not
+        appear, try one or more of the following:
+        <ul>
+          <li>Verify that the user name was entered correctly</li>
+          <li>Verify that the password was entered correctly</li>
+          <li>Confirm that the maintenance contract is still
+            active</li>
+        </ul>
+      </p>
+    </steptroubleshooting>
+  </step>]]>
+</codeblock>
+    </example>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p conref="../../common/conref-attribute.dita#conref-attribute/universal-outputclass"/>
+      
+    </section>
+  </refbody>
+</reference>

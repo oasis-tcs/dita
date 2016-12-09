@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="ditaval-prop" xml:lang="en-us">
+<title><xmlelement>prop</xmlelement></title>
+<shortdesc>The <xmlelement>prop</xmlelement> element identifies an attribute, and usually values in
+    the attribute, to take an action on. The attribute either must be a conditional-processing
+    attribute (<xmlatt>platform</xmlatt>, <xmlatt>product</xmlatt>, <xmlatt>audience</xmlatt>,
+      <xmlatt >deliveryTarget</xmlatt>, <xmlatt>props</xmlatt>, and
+      <xmlatt>otherprops</xmlatt>) or a specialization of the <xmlatt>props</xmlatt> attribute. </shortdesc>
+<prolog><metadata>
+<keywords><indexterm>DITAVAL elements<indexterm>prop</indexterm></indexterm>
+</keywords>
+</metadata></prolog>
+<refbody>
+<section id="section-1">A <xmlelement>prop</xmlelement> element <ph rev="public-review-1">can</ph>
+      do one of the following:<ul>
+        <li>A <xmlelement>prop</xmlelement> element with no <xmlatt>att</xmlatt> attribute specified
+          sets a default action for every <xmlelement>prop</xmlelement> element. It is an error to
+          use more than one <xmlelement>prop</xmlelement> element with no attribute in a single
+          document. Recovery from this error is implementation dependent; in such cases processors
+            <term outputclass="RFC-2119">MAY</term> provide an error or warning message.</li>
+        <li>A <xmlelement>prop</xmlelement> element with an <xmlatt>att</xmlatt> attribute but no
+            <xmlatt>val</xmlatt> attribute sets a default action for that specific attribute <ph
+            rev="public-review-1">or attribute group</ph>. For each specific attribute, it is an
+          error to use more than one <xmlelement>prop</xmlelement> element with that attribute and
+          no value in a single document. Recovery from this error is implementation dependent; in
+          such cases processors <term outputclass="RFC-2119">MAY</term> provide an error or warning
+          message.</li>
+        <li>A <xmlelement>prop</xmlelement> element with an <xmlatt>att</xmlatt> attribute and a
+            <xmlatt>val</xmlatt> attribute sets an action for that value within that attribute <ph
+            rev="public-review-1">or attribute group</ph>. It is an error to use more than one
+            <xmlelement>prop</xmlelement> element with the same attribute and value. Recovery from
+          this error is implementation dependent; in such cases processors <term
+            outputclass="RFC-2119">MAY</term> provide an error or warning message. </li>
+      </ul></section>
+<section id="contains" otherprops="contains"><title>Contains</title><p><xref
+href="ditaval-startflag.dita">startflag</xref> (<i>optional</i>) then <xref
+href="ditaval-endflag.dita">endflag</xref> (<i>optional</i>)</p></section>
+<section id="containedby" otherprops="containedby"><title>Contained by</title><p><xref
+href="ditaval-val.dita">val</xref></p></section>
+<example id="example" otherprops="examples"><title>Example</title><p>See the example
+in the <xref href="ditaval-val.dita">&lt;val></xref> description.</p></example>
+<section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element:<dl>
+          <dlentry>
+            <dt><xmlatt>att</xmlatt></dt>
+            <dd>The attribute to be acted upon. <ph >If using a literal
+                attribute name, it must be one of <xmlatt>props</xmlatt>, <xmlatt>audience</xmlatt>,
+                  <xmlatt>platform</xmlatt>, <xmlatt>product</xmlatt>, <xmlatt>otherprops</xmlatt>,
+                  <xmlatt >deliveryTarget</xmlatt>, or a specialization of
+                  <xmlatt>props</xmlatt>. Otherwise, the value should be the name of a group used
+                within the <xmlatt>audience</xmlatt>, <xmlatt>platform</xmlatt>,
+                  <xmlatt>product</xmlatt>, or <xmlatt>otherprops</xmlatt> attributes.</ph> If the
+                <xmlatt>att</xmlatt> attribute is absent, then the <xmlelement>prop</xmlelement>
+              element declares a default behavior for any conditional processing attribute.</dd>
+          </dlentry>
+          <dlentry>
+            <dt><xmlatt>val</xmlatt></dt>
+            <dd>The value to be acted upon. If the <xmlatt>val</xmlatt> attribute is absent, then
+              the <xmlelement>prop</xmlelement> element declares a default behavior for any value in
+              the specified attribute.</dd>
+          </dlentry>
+          <dlentry>
+            <dt><xmlatt>action</xmlatt>
+              <ph conref="../../common/conref-attribute.dita#conref-attribute/required-attr"/></dt>
+            <dd>The action to be taken. Allowable values are:<dl>
+                <dlentry>
+                  <dt>include</dt>
+                  <dd>Include the content in output. This is the default behavior unless otherwise
+                    set.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt>exclude</dt>
+                  <dd>Exclude the content from output (if all values in the particular attribute are
+                    excluded).</dd>
+                </dlentry>
+                <dlentry>
+                  <dt>passthrough</dt>
+                  <dd>Include the content in output, and preserve the attribute value as part of the
+                    output stream for further processing by a runtime engine, for example runtime
+                    filtering based on individual user settings. The value should be preserved in
+                    whatever syntax is required by the target runtime. Values that are not
+                    explicitly passed through should be removed from the output stream, even though
+                    the content is still included.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt>flag</dt>
+                  <dd>Include and flag the content on output (if the content has not been
+                    excluded).</dd>
+                </dlentry>
+              </dl></dd>
+          </dlentry>
+          <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditaval-color">
+            <dt/>
+            <dd/>
+          </dlentry>
+          <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditaval-backcolor">
+            <dt/>
+            <dd/>
+          </dlentry>
+          <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditaval-style">
+            <dt/>
+            <dd/>
+          </dlentry>
+        </dl></p>
+    </section>
+</refbody>
+</reference>
+

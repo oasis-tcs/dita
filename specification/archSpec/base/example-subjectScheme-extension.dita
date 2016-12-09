@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_mgb_f5n_wp">
+  <title>Example: Extending a subject scheme</title>
+  <shortdesc>You can extend a subject scheme by creating another subject scheme map and referencing
+    the original map using a <xmlelement>schemeref</xmlelement> element. This enables information
+    architects to add new relationships to existing subjects and extend enumerations of controlled
+    values.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>examples<indexterm>subjectScheme<indexterm>extending a subject
+            scheme</indexterm></indexterm></indexterm>
+        <indexterm>subjectScheme<indexterm>examples<indexterm>extending a subject
+            scheme</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <example id="example" otherprops="examples">
+      <p>A company uses a common subject scheme map (<filepath>baseOS.ditamap</filepath>) to set the
+        values for the <xmlatt>platform</xmlatt> attribute.</p>
+      <codeblock>&lt;subjectScheme>
+  &lt;subjectdef keys="os" navtitle="Operating system">
+    &lt;subjectdef keys="linux" navtitle="Linux">
+      &lt;subjectdef keys="redhat" navtitle="RedHat Linux"/>
+      &lt;subjectdef keys="suse" navtitle="SuSE Linux"/>
+    &lt;/subjectdef>
+    &lt;subjectdef keys="windows" navtitle="Windows"/>
+    &lt;subjectdef keys="zos" navtitle="z/OS"/>
+  &lt;/subjectdef>
+  &lt;enumerationdef>
+    &lt;attributedef name="platform"/>
+    &lt;subjectdef keyref="os"/>
+  &lt;/enumerationdef>
+&lt;/subjectScheme></codeblock>
+      <p>The following subject scheme map extends the enumeration defined in
+          <filepath>baseOS.ditamap</filepath>. It adds "macos" as a child of the existing "os"
+        subject; it also adds special versions of Windows as children of the existing "windows"
+        subject:</p>
+      <codeblock>&lt;subjectScheme>
+  &lt;schemeref href="baseOS.ditamap"/>
+  &lt;subjectdef keyref="os">
+    &lt;subjectdef keys="macos" navtitle="Macintosh"/>
+    &lt;subjectdef keyref="windows">
+      &lt;subjectdef keys="winxp" navtitle="Windows XP"/>
+      &lt;subjectdef keys="winvis" navtitle="Windows Vista"/>
+    &lt;/subjectdef>
+  &lt;/subjectdef>
+&lt;/subjectScheme></codeblock>
+      <p>Note that the references to the subjects that are defined in
+          <filepath>baseOS.ditamap</filepath> use the <xmlatt>keyref</xmlatt> attribute. This avoids
+        duplicate definitions of the keys and ensures that the new subjects are added to the base
+        enumeration. </p>
+      <p>The effective result is the same as the following subject scheme map:</p>
+      <codeblock>&lt;subjectScheme>
+  &lt;subjectdef keys="os" navtitle="Operating system">
+    &lt;subjectdef keys="linux" navtitle="Linux">
+      &lt;subjectdef keys="redhat" navtitle="RedHat Linux"/>
+      &lt;subjectdef keys="suse" navtitle="SuSE Linux"/>
+    &lt;/subjectdef>
+    &lt;subjectdef keys="macos" navtitle="Macintosh"/>
+    &lt;subjectdef keys="windows" navtitle="Windows">
+      &lt;subjectdef keys="winxp" navtitle="Windows XP"/>
+      &lt;subjectdef keys="win98" navtitle="Windows Vista"/>
+    &lt;/subjectdef>
+    &lt;subjectdef keys="zos" navtitle="z/OS"/>
+  &lt;/subjectdef>
+  &lt;enumerationdef>
+    &lt;attributedef name="platform"/>
+    &lt;subjectdef keyref="os"/>
+  &lt;/enumerationdef>
+&lt;/subjectScheme></codeblock>
+    </example>
+  </conbody>
+</concept>

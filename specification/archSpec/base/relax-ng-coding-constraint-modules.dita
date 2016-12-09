@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="relax-ng-constraint-module-coding-requirements" >
+ <title>RELAX NG: Coding requirements for constraint modules</title>
+ <shortdesc>A structural constraint module defines the constraints for a map or topic element type.
+  A domain constraint module defines the constraints for an element or attribute domain.</shortdesc>
+ <prolog>
+  <metadata>
+   <keywords>
+    <indexterm>coding requirements<indexterm>RELAX
+     NG<indexterm>constraints</indexterm></indexterm></indexterm>
+    <indexterm>constraints<indexterm>RELAX NG<indexterm>coding
+       requirements</indexterm><indexterm>integrating into document type
+      shells</indexterm></indexterm></indexterm>
+    <indexterm>domain constraint modules<indexterm>RELAX NG<indexterm>coding
+       requirements</indexterm></indexterm></indexterm>
+    <indexterm>file names<indexterm>RELAX NG<indexterm>domain constraint
+       modules</indexterm><indexterm>structural constraint
+     modules</indexterm></indexterm></indexterm>
+    <indexterm>structural constraint modules<indexterm>RELAX NG<indexterm>coding
+       requirements</indexterm></indexterm></indexterm>
+   </keywords>
+  </metadata>
+ </prolog>
+ <conbody>
+  <p conref="../../common/conref-file.dita#reuse_file/rng-domains-documentation"/>
+  <p>Constraint modules are implemented by importing the constraint module into a document type
+   shell in place of the module that the constraint modifies. The constraint module itself imports
+   the base module to be constrained; within the import, the module redefines patterns as needed to
+   implement the constraint.</p>
+  <p otherprops="examples">For example, a constraint module that modifies the
+    <xmlelement>section</xmlelement> element needs to import the base module
+    <filepath>topicMod.rng</filepath>. Within that import, it will constrain the
+    <codeph>section.content</codeph>
+   pattern:<codeblock>&lt;include href="topicMod.rng"&gt;
+  &lt;define name="section.content"&gt;
+    &lt;!-- Define constrained model here -->
+  &lt;/define>
+&lt;/include>
+</codeblock></p>
+  <p otherprops="examples">For a more complete example, see
+    <filepath>strictTaskbodyConstraintMod.rng</filepath>, delivered with the DITA 1.3 grammar
+   files.</p>
+  <p>Because the constraint module imports the module that it modifies, only one constraint module
+   can be used per vocabulary module (otherwise the module being constrained would be imported
+   multiple times). If multiple constraints are combined for a single vocabulary module, they must
+   be implemented in one of the following ways:<ul>
+    <li>The constraints <ph rev="public-review-1">can</ph> be combined into a single module. For
+          example, when combining separate constraints for <xmlelement>section</xmlelement> and
+            <xmlelement>shortdesc</xmlelement>, a single module <ph rev="public-review-1">can</ph>
+          be defined as
+          follows:<codeblock>&lt;include href="topicMod.rng"&gt;
+  &lt;define name="section.content"&gt;
+    &lt;!-- Constrained model for section -->
+  &lt;/define>
+  &lt;define name="shortdesc.content">
+    &lt;!-- Constrained model for shortdesc -->
+  &lt;/define>
+&lt;/include>
+</codeblock></li>
+    <li>Constraints <ph rev="public-review-1">can</ph> be chained so that each constraint imports
+          another, until the final constraint imports the base vocabulary module. For example, when
+          combining separate constraints for <xmlelement>section</xmlelement>,
+            <xmlelement>shortdesc</xmlelement>, and <xmlelement>li</xmlelement> from the base
+          vocabulary, the <xmlelement>section</xmlelement> constraint can import the
+            <xmlelement>shortdesc</xmlelement> constraint, which in turn imports the
+            <xmlelement>li</xmlelement> constraint, which finally imports
+            <filepath>topicMod.rng</filepath>.</li>
+   </ul>
+  </p>
+  <example id="structural-constraint-contribution" otherprops="examples">
+      <title>Example: contribution to the <xmlatt>domains</xmlatt> attribute for structural
+        constraint module</title>
+      <p otherprops="examples">The following code fragment specifies the contribution to the
+          <xmlatt>domains</xmlatt> attribute as <codeph>(topic task
+        strictTaskbody-c)</codeph>:<codeblock>&lt;moduleDesc>
+  &lt;!-- ... -->
+  &lt;moduleMetadata>
+    &lt;!-- ... -->  
+    &lt;domainsContribution>(topic task strictTaskbody-c)&lt;/domainsContribution>
+  &lt;/moduleMetadata>
+&lt;/moduleDesc></codeblock></p>
+    </example>
+  <example id="domain-constraint-contribution" otherprops="examples">
+      <title>Example: contribution to the <xmlatt>domains</xmlatt> attribute for domain constraint
+        module</title>
+      <p otherprops="examples">The following code fragment illustrates the domains contribution for
+        a constraint module <ph >that restricts the task requirements
+          domain:</ph><codeblock>&lt;moduleDesc>
+  &lt;!-- ... -->
+  &lt;moduleMetadata>
+    &lt;!-- ... -->   
+    &lt;domainsContribution>(topic task taskreq-d requiredReqcondsTaskreq-c)&lt;/domainsContribution>
+  &lt;/moduleMetadata>
+&lt;/moduleDesc></codeblock></p>
+    </example>
+ </conbody>
+</concept>

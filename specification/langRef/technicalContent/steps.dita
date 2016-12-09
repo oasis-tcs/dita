@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="steps" xml:lang="en-us">
+<title><xmlelement>steps</xmlelement></title>
+<shortdesc>The <xmlelement>steps</xmlelement> element provides the
+main content of a task topic. The task is described as a series of
+steps that the user must follow to accomplish the task. At least one <xmlelement>step</xmlelement>
+element is required inside the <xmlelement>steps</xmlelement> element.</shortdesc>
+<prolog><metadata>
+<keywords>
+    <indexterm>rendering
+     expectations<indexterm><xmlelement>steps</xmlelement></indexterm></indexterm><indexterm><xmlelement>steps</xmlelement></indexterm><indexterm>task elements<indexterm><xmlelement>steps</xmlelement></indexterm></indexterm>
+</keywords>
+</metadata></prolog>
+<refbody>
+<section id="section-1"><p>Steps with only a single step <ph rev="public-review-1">might</ph> be rendered as a paragraph
+    rather than as a list. Two or more steps should typically be rendered as an ordered list. If all
+    of the contained steps are simple (that is, have no more than a <xmlelement>cmd</xmlelement>
+    element each) then the step list should default to compact. Otherwise it should be rendered as
+    expanded (with blank lines between each step).</p>
+   <!--<note id="multiple-steps">Beginning with DITA 1.2, the general task model allows multiple <xmlelement>steps</xmlelement> and <xmlelement>steps-unordered</xmlelement> elements. However, the default task model in the OASIS distribution (known as strict task) continues to allow only one <xmlelement>steps</xmlelement> or one <xmlelement>steps-unordered</xmlelement> element.</note>--></section>
+<section conref="../../common/commonNavLibraryTable.dita#contentmodel-steps/contains" id="contains" otherprops="contains"></section>
+
+
+
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
+topic/ol task/steps </p></section>
+<example id="example" otherprops="examples"><title>Example</title><codeblock
+xml:space="preserve">&lt;task id="sqlj"&gt;
+&lt;title&gt;Creating an SQLJ file&lt;/title&gt;
+ &lt;taskbody&gt;
+ &lt;context&gt;Once you have set up SQLJ, you need to create a new SQLJ file.&lt;/context&gt;
+  &lt;steps&gt;
+   &lt;step&gt;
+    &lt;cmd&gt;In a text editor, create a new file.&lt;/cmd&gt;
+   &lt;/step&gt;
+   &lt;step&gt;
+    &lt;cmd&gt;Enter the first query statement.&lt;/cmd&gt;
+   &lt;/step&gt;
+  &lt;/steps&gt;
+ &lt;/taskbody&gt;
+&lt;/task&gt;</codeblock></example>
+<section id="attributes"><title>Attributes</title>
+   <p conref="../../common/conref-attribute.dita#conref-attribute/universal-outputclass"/></section>
+</refbody>
+</reference>
+

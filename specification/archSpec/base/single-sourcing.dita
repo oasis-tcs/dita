@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept id="single_sourcing" xml:lang="en-US">
+ <title>Producing different deliverables from a single source</title>
+ <shortdesc>DITA is designed to enable the production of multiple deliverable formats from a single
+  set of DITA content. This means that many rendition details are specified neither in the DITA
+  specification nor in the DITA content; the rendition details are defined and controlled by the
+  processors.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>formatting<indexterm>processing expectations</indexterm></indexterm>
+        <indexterm>processing expectations<indexterm>formatting</indexterm></indexterm>
+        <indexterm>single sourcing</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+ <conbody>
+  <p>Like many XML-based applications for human-readable documentation, DITA supports the separation
+   of content from presentation. This is necessary when content is used in different contexts, since
+   authors cannot predict how or where the material that they author will be used. The following
+   features and mechanisms enable users to produce different deliverable formats from a
+   single source:<dl>
+    <dlentry>
+     <dt>DITA maps</dt>
+     <dd>Different DITA maps can be optimized for different delivery formats. For example, you might
+      have a book map for printed output and another DITA map to generate online help; each map uses
+      the same content set.</dd>
+    </dlentry>
+    <dlentry>
+     <dt>Specialization</dt>
+     <dd >The DITA specialization facility enables users to create XML elements that
+      can provide appropriate rendition distinctions. Because the use of specializations does not
+      impede interchange or interoperability, DITA users can safely create the specializations that
+      are demanded by their local delivery and rendition requirements, with a minimum of additional
+      impact on the systems and business processes that depend on or use the content. While general
+      XML practices suggest that element types should be semantic, specialization can be used to
+      define element types that are purely presentational in nature. The highlighting domain is an
+      example of such a specialization.</dd>
+    </dlentry>
+    <dlentry>
+     <dt>Conditional processing</dt>
+     <dd>Conditional processing makes it possible to have a DITA topic or map that contains
+            delivery-specific content.</dd>
+    </dlentry>
+    <dlentry>
+     <dt>Content referencing</dt>
+     <dd>The conref mechanism makes it possible to construct delivery-specific maps or topics from a
+      combination of generic components and delivery-context-specific components.</dd>
+    </dlentry>
+    <dlentry>
+     <dt>Key referencing</dt>
+     <dd >The keyref mechanism makes it possible to have key words be displayed
+      differently in different deliverables. It also allows a single link to resolve to different
+      targets in different deliverables.</dd>
+    </dlentry>
+    <dlentry>
+     <dt><xmlatt>outputclass</xmlatt> attribute</dt>
+     <dd>The <xmlatt>outputclass</xmlatt> attribute provides a mechanism whereby authors can
+      indicate specific rendition intent where necessary. Note that the DITA specification does not
+      define any values for the <xmlatt>outputclass</xmlatt> attribute; the use of the
+       <xmlatt>outputclass</xmlatt> attribute is processor specific.</dd>
+    </dlentry>
+   </dl></p>
+  <p>While DITA is independent of any particular delivery format, it is a standard that supports the
+   creation of human-readable content. As such, it defines some fundamental document components
+   including paragraphs, lists, and tables. When there is a reasonable expectation that such basic
+   document components be rendered consistently, the DITA specification defines default or suggested
+   renderings.</p>
+ </conbody>
+</concept>
+

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="xsd-requirements-overview">
+ <title>XML Schema: Overview and limitations of coding requirements</title>
+ <shortdesc>DITA coding practices for XML Schema rely on the XSD redefine facility in order to
+  implement specializations or constraints. However, limitations in the redefine facility can
+  present problems for some DITA modules implemented in XML Schema.</shortdesc>
+ <conbody>
+  <p>Specializations and constraints in XML Schema are implemented using the XSD
+    <xmlelement>xs:redefine</xmlelement> facility. However, this facility does not allow sequence
+   groups to be directly constrained. Thus, to support both specialization and constraints, it might
+   be necessary to refactor content models into named groups that can be redefined. In order to keep
+   the XSD, RELAX NG, and DTD implementations as consistent as possible, the DITA Technical
+   Committee only refactored those content models that were required for OASIS-provided <ph
+    >grammars, the strict task body and machinery-industry task</ph>. The other DITA
+   content models distributed by OASIS have not been refactored.</p>
+  <p>You <term outputclass="RFC-2119">MAY</term> modify OASIS-provided XSD modules
+   to refactor content models if required by your constraint. You <term outputclass="RFC-2119"
+    >SHOULD</term> notify the DITA Technical Committee (TC) of your constraint
+   requirements, so the TC can consider adding the required refactoring to the OASIS-provided
+   XSDs.</p>
+ </conbody>
+</concept>

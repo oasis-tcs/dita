@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="constraintsDomainDesignPattern-dtd" xml:lang="en-us" >
+  <title>DTD: Coding requirements for constraint modules</title>
+  <shortdesc>A structural constraint module defines the constraints for a map or topic element type.
+    A domain constraint module defines the constraints for an element or attribute
+    domain.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>coding
+          requirements<indexterm>DTD<indexterm>constraints</indexterm></indexterm></indexterm>
+        <indexterm>constraints<indexterm>DTD<indexterm>coding
+              requirements</indexterm><indexterm>integrating into document type
+            shells</indexterm></indexterm></indexterm>
+        <indexterm>domain constraint modules<indexterm>DTD<indexterm>coding
+            requirements</indexterm></indexterm></indexterm>
+        <indexterm>file names<indexterm>DTD<indexterm>domain constraint
+              modules</indexterm><indexterm>structural constraint
+          modules</indexterm></indexterm></indexterm>
+        <indexterm>structural constraint modules<indexterm>DTD<indexterm>coding
+              requirements</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <section id="structural">
+      <title>Structural constraint modules</title>
+      <p>Structural constraint modules have the following requirements:</p>
+      <dl>
+        <dlentry>
+          <dt><xmlatt>domains</xmlatt> contribution entity name and value</dt>
+          <dd>The constraint module should contain a declaration for a text entity with the name
+                <codeph><varname>tagname</varname>-constraints</codeph>, where
+              <varname>tagname</varname> is the name of the element type to which the constraints
+            apply. The value of the text entity is the <xmlatt>domains</xmlatt> attribute
+            contribution for the module; see <xref href="specialization-domains-attribute.dita"/>
+            for details on how to construct this value. <p otherprops="examples">For example, the
+              following text entity provides the declaration for the strict task constraint that is
+              shipped with the DITA
+              standard.<codeblock>&lt;!ENTITY taskbody-constraints     
+  "(topic task strictTaskbody-c)"
+></codeblock></p></dd>
+        </dlentry>
+        <dlentry >
+          <dt>The <codeph><varname>tagname</varname>.attributes</codeph> parameter entity</dt>
+          <dd>
+            <p>When the attribute set for an element is constrained, there <ph 
+                >must</ph> be a declaration of the
+                <codeph><varname>tagname</varname>.attributes</codeph> parameter entity that defines
+              the constrained attributes.</p>
+            <p otherprops="examples">For example, the following parameter
+              entity defines a constrained set of attributes for the <xmlelement>note</xmlelement>
+              element that removes most of the values defined for <xmlatt>type</xmlatt>, and also
+              removes <xmlatt>spectitle</xmlatt> and <xmlatt>othertype</xmlatt>:</p>
+            <codeblock>&lt;!ENTITY % note.attributes  
+       "type  (attention | caution | note ) #IMPLIED
+        %univ-atts;
+        outputclass  CDATA  #IMPLIED"&gt;</codeblock>
+          </dd>
+        </dlentry>
+        <dlentry>
+          <dt>The <codeph><varname>tagname</varname>.content</codeph> parameter entity</dt>
+          <dd>
+            <p><ph >When the content model for an element is constrained,</ph>
+              there <ph >must</ph> be a declaration of the
+                  <codeph><varname>tagname</varname>.content</codeph> parameter entity that defines
+              the constrained content model.</p>
+            <p otherprops="examples">For example, the following parameter entity defines a more
+              restricted content model for <xmlelement>topic</xmlelement>, in which the
+                <xmlelement>shortdesc</xmlelement> element is
+              required.<codeblock>&lt;!ENTITY % topic.content 
+
+  "((%title;), 
+    (%titlealts;)?, 
+    (%shortdesc;), 
+    (%prolog;)?, 
+    (%body;)?, 
+    (%topic-info-types;)*)"
+></codeblock></p>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+    <section id="domain">
+      <title>Domain constraint modules</title>
+      <p>Domain constraint modules have the following requirements:</p>
+      <dl>
+        <dlentry>
+          <dt><xmlatt>domains</xmlatt> contribution entity name and value</dt>
+          <dd>
+            <p>The constraint module should contain a declaration for a text entity with the name
+                <codeph ><varname>domain</varname>Domain-constraints</codeph>, where
+                <ph conref="../../common/conref-file.dita#reuse_file/domain-variable-ph"/> The value
+              of the text entity is the <xmlatt>domains</xmlatt> attribute contribution for the
+              module; see <xref href="specialization-domains-attribute.dita"/> for details on how to
+              construct this value. </p>
+            <p otherprops="examples" >For example, the following text entity provides
+              the declaration for a constraint module that restricts the highlighting domain:</p>
+            <codeblock >&lt;!ENTITY HighlightingDomain-constraints     
+  "(topic hi-d basic-HighlightingDomain-c)"
+></codeblock>
+          </dd>
+        </dlentry>
+        <dlentry>
+          <dt>Parameter entity</dt>
+          <dd>
+            <p><ph >When the set of extension elements are restricted, there
+                must</ph> be a parameter entity that defines the constrained content model.</p>
+            <p otherprops="examples" >For example, the following
+              parameter entity restricts the highlighting domain to <xmlelement>b</xmlelement> and
+                <xmlelement>i</xmlelement>:</p>
+            <codeblock >
+&lt;!ENTITY % HighlightingDomain-c-ph     "b | i"  ></codeblock>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+    <section id="remove-base-element">
+      <title>Constraining to replace a base element with domain extensions</title>
+      <p>When element domains are used to extend a base element, those extensions can be used to
+        replace the base element. This form of constraint is done inside the document-type
+        shell.</p>
+      <p>Within a document-type shell, <xref
+          href="dtd-coding-doctype-shell.dita#shell-dtd-coding-reqs/domain-extensions">domain
+          extensions</xref> are implemented by declaring an entity for a base element. The value of
+        the entity can omit any base element types from which the other element types that are
+        listed are specialized. Omitting a base type constitutes a form of constraint; as with any
+        other constraint, this form of constraint must contribute a token to the
+          <xmlatt>domains</xmlatt> attribute. That token can be defined in a module file (which does
+        not define any other entities or values), or the token can be placed directly into the
+        document-type shell definition for the <codeph>included-domains</codeph> entity.</p>
+      <p otherprops="examples">In the following example, the <xmlelement>pre</xmlelement> base type
+        is removed from the entity declaration, effectively allowing only specializations of
+          <xmlelement>pre</xmlelement> but not <xmlelement>pre</xmlelement> itself. This omission
+        would require the use of a <xmlatt>domains</xmlatt> contribution token within the
+          <codeph>included-domains</codeph> entity.<codeblock otherprops="examples"><![CDATA[<!ENTITY % pre
+    "%pr-d-pre; | 
+     %sw-d-pre; | 
+     %ui-d-pre;">]]></codeblock></p>
+    </section>
+  </conbody>
+</concept>
+

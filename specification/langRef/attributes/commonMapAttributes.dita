@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="topicref-atts" xml:lang="en-us">
+ <title>Attributes common to many map elements</title>
+ <shortdesc>This attribute group collects several attributes that are used on a variety of map
+  elements. For a few elements, the group is modified slightly to remove an attribute such as
+   <xmlatt>toc</xmlatt> or <xmlatt>format</xmlatt>; in those cases the element definition will
+  clarify that the element does not use this full set. That is generally done in order to specify a
+  default for one attribute, such as defaulting <xmlatt>format</xmlatt> to "ditamap" on the
+   <xmlelement>mapref</xmlelement> element.</shortdesc>
+ <prolog>
+  <metadata>
+   <keywords>
+    <indexterm>Common map attribute group</indexterm>
+    <indexterm>Commonly referenced attribute descriptions<indexterm>Common map
+      attributes</indexterm></indexterm>
+   </keywords>
+  </metadata>
+ </prolog>
+ <refbody>
+  <section id="section-1">
+   <dl>
+    <!--<dlhead conref="../../common/conref-file.dita#reuse_file/attributeDlhead"><dthd/><ddhd/></dlhead>-->
+    <dlentry id="cascade" >
+     <dt><xmlatt>cascade</xmlatt></dt>
+     <dd>Controls how metadata attributes cascade within a map. There are two defined values that
+      should be supported: "merge" and "nomerge". If no value is set, and no value cascades from an
+      ancestor element, processors <term outputclass="RFC-2119">SHOULD</term> assume a default of
+      "merge". See <xref href="../../archSpec/base/cascading-in-a-ditamap.dita"/> for more
+      information about how this attribute interacts with metadata attributes.</dd>
+    </dlentry>
+    <dlentry id="collection-type">
+     <dt><xmlatt>collection-type</xmlatt></dt>
+     <dd><indexterm>collection-type
+        attribute</indexterm><indexterm>Attributes<indexterm>collection-type</indexterm></indexterm>Collection
+      types describe how links relate to each other. The processing default is "unordered", although
+      no default is specified in the DTD or Schema. Allowable values are:<dl id="colltypevalues">
+       <dlentry>
+        <dt>unordered </dt>
+        <dd>Indicates that the order of the child topics is not significant. </dd>
+       </dlentry>
+       <dlentry>
+        <dt>sequence </dt>
+        <dd>Indicates that the order of the child topics is significant; output processors will
+         typically link between them in order. </dd>
+       </dlentry>
+       <dlentry>
+        <dt>choice </dt>
+        <dd>Indicates that one of the children should be selected. </dd>
+       </dlentry>
+       <dlentry>
+        <dt>family </dt>
+        <dd>Represents a tight grouping in which each of the referenced topics not only relates to
+         the current topic but also relate to each other. </dd>
+       </dlentry>
+       <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditauseconref">
+        <dt> </dt>
+        <dd> </dd>
+       </dlentry>
+      </dl><p>Usage of the <xmlatt>collection-type</xmlatt> attribute on
+        <xmlelement>reltable</xmlelement> and <xmlelement>relcolspec</xmlelement> is currently
+       undefined and reserved for future use. </p></dd>
+    </dlentry>
+    <dlentry id="processing-role">
+     <dt><xmlatt>processing-role</xmlatt></dt>
+     <dd><indexterm>processing-role
+        attribute</indexterm><indexterm>Attributes<indexterm>processing-role</indexterm></indexterm>Describes
+      the processing role of the referenced topic. The processing default is "normal". <ph
+       conref="../../common/conref-attribute.dita#conref-attribute/may-inherit"/> Allowable values are:<dl>
+       <dlentry>
+        <dt>normal </dt>
+        <dd>Normal topic that is a readable part of the information. </dd>
+       </dlentry>
+       <dlentry>
+        <dt>resource-only </dt>
+        <dd>The topic is used as a resource for processing purposes. This topic should not be
+         included in a rendered table of contents, and the topic should not be rendered on its own.
+        </dd>
+       </dlentry>
+       <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditauseconref">
+        <dt> </dt>
+        <dd> </dd>
+       </dlentry>
+      </dl></dd>
+    </dlentry>
+    <dlentry id="locktitle">
+     <dt><xmlatt>locktitle</xmlatt></dt>
+     <dd ><indexterm>locktitle
+        attribute</indexterm><indexterm>Attributes<indexterm>locktitle</indexterm></indexterm>If the
+       <xmlatt>locktitle</xmlatt> attribute is set to "yes", the content of the
+       <xmlelement>navtitle</xmlelement> element or <xmlatt>navtitle</xmlatt> attribute is used for
+      a navigation title, if it is present. If the <xmlatt>locktitle</xmlatt> attribute is not
+      present or set to "no", the content of the <xmlelement>navtitle</xmlelement> element or
+       <xmlatt>navtitle</xmlatt> attribute is ignored, and the title of the referenced topic is used
+      as a navigation title. <note
+       conref="../../common/conref-file.dita#reuse_file/deprecated_navtitle_attribute"/><p>Allowable
+       values for <xmlatt>locktitle</xmlatt> are:<dl>
+        <dlentry>
+         <dt>yes </dt>
+         <dd>The content of the <xmlelement>navtitle</xmlelement> element or
+           <xmlatt>navtitle</xmlatt> attribute is used for a navigation title.</dd>
+        </dlentry>
+        <dlentry>
+         <dt>no </dt>
+         <dd>The content of the <xmlelement>navtitle</xmlelement> element or
+           <xmlatt>navtitle</xmlatt> attribute is ignored. This is the processing default. </dd>
+        </dlentry>
+        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditauseconref">
+         <dt> </dt>
+         <dd> </dd>
+        </dlentry>
+       </dl></p></dd>
+    </dlentry>
+    <dlentry id="linking">
+     <dt><xmlatt>linking</xmlatt></dt>
+     <dd><indexterm>linking
+       attribute</indexterm><indexterm>Attributes<indexterm>linking</indexterm></indexterm>Defines
+      some specific linking characteristics of a topic&apos;s current location in the map. <ph
+       conref="../../common/conref-attribute.dita#conref-attribute/inherit-in-map"/> Allowable
+      values are:<dl>
+       <dlentry>
+        <dt>targetonly </dt>
+        <dd>A topic can only be linked to and cannot link to other topics. </dd>
+       </dlentry>
+       <dlentry>
+        <dt>sourceonly </dt>
+        <dd>A topic cannot be linked to but can link to other topics. </dd>
+       </dlentry>
+       <dlentry>
+        <dt>normal </dt>
+        <dd>A topic can be linked to and can link to other topics. Use this to override the linking
+         value of a parent topic. </dd>
+       </dlentry>
+       <dlentry>
+        <dt>none </dt>
+        <dd>A topic cannot be linked to or link to other topics. </dd>
+       </dlentry>
+       <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditauseconref">
+        <dt> </dt>
+        <dd> </dd>
+       </dlentry>
+      </dl></dd>
+    </dlentry>
+    <dlentry id="toc">
+     <dt><xmlatt>toc</xmlatt></dt>
+     <dd><indexterm>toc
+       attribute</indexterm><indexterm>Attributes<indexterm>toc</indexterm></indexterm>Specifies
+      whether a topic appears in the table of contents (TOC). <ph
+       conref="../../common/conref-attribute.dita#conref-attribute/inherit-in-map"/> Allowable
+      values are:<dl>
+       <dlentry>
+        <dt>yes </dt>
+        <dd rev="public-review-1">The topic appears in a generated TOC.</dd>
+       </dlentry>
+       <dlentry>
+        <dt>no </dt>
+        <dd rev="public-review-1">The topic does not appear in a generated TOC.</dd>
+       </dlentry>
+       <dlentry>
+        <dt>-dita-use-conref-target </dt>
+        <dd>See <xref href="ditauseconreftarget.dita"/> for more information. </dd>
+       </dlentry>
+      </dl></dd>
+    </dlentry>
+    <dlentry id="print">
+     <dt><xmlatt>print</xmlatt></dt>
+     <dd><indexterm>print
+       attribute</indexterm><indexterm>Attributes<indexterm>print</indexterm></indexterm>Specifies
+      whether the topic should be included in a print-specific rendition, such as PDF. The
+      processing default is "yes". <ph
+       conref="../../common/conref-attribute.dita#conref-attribute/inherit-in-map"/>
+      <note conref="../../common/conref-file.dita#reuse_file/deprecated-print-attribute"
+       /><p>Allowable values are: <dl
+        conref="../../common/conref-attribute.dita#conref-attribute/printvalues">
+        <dlentry>
+         <dt/>
+         <dd/>
+        </dlentry>
+       </dl></p></dd>
+    </dlentry>
+    <dlentry id="search">
+     <dt><xmlatt>search</xmlatt></dt>
+     <dd><indexterm>search
+       attribute</indexterm><indexterm>Attributes<indexterm>search</indexterm></indexterm>Describes
+      whether the target is available for searching. <ph
+       conref="../../common/conref-attribute.dita#conref-attribute/inherit-in-map"/> Allowable
+      values are: <dl>
+       <dlentry>
+        <dt>yes </dt>
+        <dd> </dd>
+       </dlentry>
+       <dlentry>
+        <dt>no </dt>
+        <dd> </dd>
+       </dlentry>
+       <dlentry>
+        <dt><xref href="ditauseconreftarget.dita">-dita-use-conref-target</xref>
+        </dt>
+        <dd> </dd>
+       </dlentry>
+      </dl></dd>
+    </dlentry>
+    <dlentry id="chunk">
+     <dt><xmlatt>chunk</xmlatt></dt>
+     <dd><indexterm>chunk
+       attribute</indexterm><indexterm>Attributes<indexterm>chunk</indexterm></indexterm>When a set
+      of topics is transformed using a map, the <xmlatt>chunk</xmlatt> attribute allows multi-topic
+      documents to be broken into smaller files and multiple individual topics to be combined into
+      larger combined documents.<p>For a detailed description of the <xmlatt>chunk</xmlatt>
+       attribute and its usage, see <xref href="../../archSpec/base/chunking.dita"/>.</p></dd>
+    </dlentry>
+    <dlentry id="keyscope" >
+     <dt><xmlatt>keyscope</xmlatt></dt>
+     <dd>Specifies that the element marks the boundaries of a key scope. See <xref
+       href="the-key-scope-attribute.dita"/> for details on how to use the <xmlatt>keyscope</xmlatt>
+      attribute.</dd>
+    </dlentry>
+   </dl>
+  </section>
+ </refbody>
+</reference>
+
+

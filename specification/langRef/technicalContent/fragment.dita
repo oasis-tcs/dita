@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="fragment" xml:lang="en-us">
+<title><xmlelement>fragment</xmlelement></title>
+<shortdesc>The <xmlelement>fragment</xmlelement> element contains a labeled subpart of the syntax
+within a <xmlelement>syntaxdiagram</xmlelement>. The <xmlelement>fragment</xmlelement> element
+allows breaking out logical chunks of a large syntax diagram into named fragments. <ph
+conref="apiname.dita#apiname/progdomainelement"/></shortdesc>
+<prolog><metadata>
+<keywords>
+    <indexterm>elements<indexterm>programming
+       domain<indexterm><xmlelement>fragment</xmlelement></indexterm></indexterm></indexterm>
+    <indexterm>syntax diagrams<indexterm>fragments</indexterm></indexterm>
+</keywords>
+</metadata></prolog>
+<refbody>
+<section conref="../../common/commonNavLibraryTable.dita#contentmodel-fragment/contains" id="contains" otherprops="contains"></section>
+
+
+
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>+
+topic/figgroup pr-d/fragment </p></section>
+<example id="example" otherprops="examples"><title>Example</title><codeblock>&lt;syntaxdiagram frame="none"&gt;
+ &lt;title&gt;CopyFile&lt;/title&gt;
+ &lt;groupseq&gt;&lt;kwd&gt;COPYF&lt;/kwd&gt;&lt;/groupseq&gt;
+ &lt;groupcomp&gt;&lt;var&gt;input-filename&lt;/var&gt;&lt;kwd&gt;*INFILE&lt;/kwd&gt;&lt;/groupcomp&gt;
+ &lt;groupseq&gt;&lt;var&gt;output-filename&lt;/var&gt;&lt;kwd&gt;*OUTFILE&lt;/kwd&gt;&lt;/groupseq&gt;
+ &lt;groupchoice&gt;&lt;var&gt;input-filename&lt;/var&gt;&lt;kwd&gt;*INFILE&lt;/kwd&gt;&lt;/groupchoice&gt;
+ &lt;groupchoice&gt;&lt;var&gt;output-filename&lt;/var&gt;&lt;kwd&gt;*OUTFILE&lt;/kwd&gt;&lt;/groupchoice&gt;
+ <b>&lt;fragment&gt;</b>
+  &lt;groupchoice&gt;&lt;kwd&gt;*OVERLAP&lt;/kwd&gt;&lt;kwd&gt;*Prompt&lt;/kwd&gt;&lt;/groupchoice&gt;
+ <b>&lt;/fragment&gt;</b>
+&lt;/syntaxdiagram&gt;</codeblock></example>
+<section id="attributes"><title>Attributes</title>
+   <p conref="../../common/conref-attribute.dita#conref-attribute/universal-outputclass"/>
+   </section>
+</refbody>
+</reference>
+

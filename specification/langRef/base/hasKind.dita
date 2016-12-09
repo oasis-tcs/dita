@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="hasKind" xml:lang="en-us">
+<title><xmlelement>hasKind</xmlelement></title>
+<shortdesc>The <xmlelement>hasKind</xmlelement> element specifies that the contained hierarchy
+    expresses KIND-OF relationships between subjects.</shortdesc>
+<prolog><metadata>
+<keywords><indexterm><xmlelement>hasKind</xmlelement></indexterm>
+        <indexterm>subjectScheme<indexterm>elements<indexterm><xmlelement>hasKind</xmlelement></indexterm></indexterm></indexterm></keywords>
+</metadata></prolog>
+<refbody>
+<section id="section-1">In a KIND-OF hierarchy, the child subject is a particular
+variety of the parent subject. A KIND-OF hierarchy is sometimes known
+as an IS-A, generic, or subsumption hierarchy. </section>
+<section conref="../../common/commonNavLibraryTable.dita#contentmodel-hasKind/contains" id="contains" otherprops="contains"></section>
+<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
+map/topicref subjectScheme/hasKind </p></section>
+<example id="example"  otherprops="examples">
+      <title>Example</title>
+      <p>This example specifies that cities, towns, and villages are each a kind of settlement.
+        Additionally, bigcity, mediumcity, and smallcity are each a kind of city.</p>
+      <codeblock>&lt;subjectScheme>
+  &lt;hasKind>
+    &lt;subjectdef keys="settlement" navtitle="Human settlement">
+      &lt;subjectdef keys="city" navtitle="City">
+        &lt;subjectdef keys="bigcity" navtitle="Big city"/>
+        &lt;subjectdef keys="mediumcity" navtitle="Medium city"/>
+        &lt;subjectdef keys="smallcity" navtitle="Small city"/>
+      &lt;/subjectdef>
+      &lt;subjectdef keys="town" navtitle="Town"/>
+      &lt;subjectdef keys="village" navtitle="Village"/>
+    &lt;/subjectdef>
+  &lt;/hasKind>
+&lt;/subjectScheme></codeblock>
+      <!--<p>This example specifies that cars, trucks, and motorcycles are kinds of vehicles. In addition, compact, sedan, and station wagon are each a kind of car, while pickup and van are each a type of truck.</p><codeblock>&lt;subjectScheme>
+  &lt;hasKind>
+    &lt;subjectdef keys="vehicle" navtitle="Vehicle">
+      &lt;subjectdef keys="car" navtitle="Passenger car">
+          &lt;subjectdef keys="compact" navtitle="Compact car"/>
+          &lt;subjectdef keys="sedan" navtitle="Sedan"/>
+          &lt;subjectdef keys="stationWagon" navtitle="Station wagon"/>
+      &lt;/subjectdef>
+      &lt;subjectdef keys="truck" navtitle="Truck">
+          &lt;subjectdef keys="pickup" navtitle="Pickup truck"/>
+          &lt;subjectdef keys="van" navtitle="Van"/>
+      &lt;/subjectdef>
+      &lt;subjectdef keys="motorcycle" navtitle="Motorcycle"/>
+    &lt;/subjectdef>
+  &lt;/hasKind>
+&lt;/subjectScheme></codeblock>-->
+    </example>
+<section id="attributes"><title>Attributes</title><sectiondiv
+        conref="../../common/conref-attribute.dita#conref-attribute/scheme-HAS-elements"
+      /></section>
+</refbody>
+</reference>
+

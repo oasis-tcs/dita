@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept id="branch-filter-overview" xml:lang="en-us" >
+    <title>Overview of branch filtering</title>
+    <shortdesc >Maps or map branches can be filtered by adding a
+            <xmlelement>ditavalref</xmlelement> element that specifies the DITAVAL document to use
+        for that map or map branch.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>branch filtering</indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <p >The <xmlelement>ditavalref</xmlelement> element <ph
+                >is designed to manage</ph> conditional processing for the
+            following use cases.</p>
+        <ol>
+            <li >A map branch needs to be filtered using conditions that do
+                not apply to the rest of the publication. <ph otherprops="examples">For example, a
+                    root map might contain content that is written for both novice and expert users.
+                    However, the authors want to add a section that targets only novice users. Using
+                    branch filtering, a map branch can be filtered so that it only includes content
+                    germane to a novice audience, while the content of the rest of the map remains
+                    appropriate for multiple audiences.</ph></li>
+            <li>A map branch needs to be presented differently for different audiences. <ph
+                    otherprops="examples">For example, a set of software documentation might contain
+                    installation instructions that differ between operating systems. In that case,
+                    the map branch with the installation instructions needs to be filtered multiple
+                    times with distinct sets of conditions, while the rest of the map remains common
+                    to all operating systems.</ph></li>
+        </ol>
+        <p>Filtering rules often are specified globally, outside of the content. When global
+            conditions set a property value to "exclude", that setting overrides any other settings
+            for the same property that are specified at a branch level. Global conditions that set a
+            conditional property to "include" or "flag" do not override branch-level conditions that
+            set the same property to "exclude".</p>
+        <p>Using <xmlelement>ditavalref</xmlelement> elements, it is possible to specify one set of
+            conditions for a branch and another set of conditions for a subset of the branch. As
+            with global conditions, properties set to "exclude" for a map branch override any other
+            settings for the same property specified for a subset of the branch. Branch conditions
+            that set a conditional property to "include" or "flag" do not override conditions on a
+            subset of the branch that explicitly set the same property to "exclude".</p>
+        <p>In addition to filtering, applications <term outputclass="RFC-2119"
+                >MAY</term> support flagging at the branch level based on
+            conditions that are specified in referenced DITAVAL documents.</p>
+    </conbody>
+</concept>
+

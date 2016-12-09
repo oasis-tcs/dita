@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="concept_yvl_ncv_dn">
+ <title>RELAX NG: Coding requirements for element type declarations</title>
+ <shortdesc>Structural and domain vocabulary modules have the same coding requirements for element
+    type declarations. Each RELAX NG vocabulary module consists of a single module file.</shortdesc>
+ <conbody>
+  <section id="section_AF5B8ABA77DA4474A0AF0DF0AFD8E018">
+   <title>Element definitions</title>
+   <p>A structural or element-domain vocabulary module must contain a declaration for each
+        specialized element type that is named in the module. While the XML standard allows content
+        models to refer to undeclared element types, all element types that are named in content
+        models or attribute list declarations within a vocabulary module must have a RELAX NG
+        element declaration. The RELAX NG element declaration can occur in one of the following:</p>
+      <ul>
+        <li>The vocabulary module</li>
+        <li>A base module of which the vocabulary module is a direct or indirect specialization</li>
+        <li>(If the vocabulary module is a structural module) A required domain or structural
+          module</li>
+      </ul>
+   <p>The element type patterns are organized into the following sections:</p>
+      <dl>
+        <dlentry>
+          <dt>Element type name patterns</dt>
+          <dd>
+            <p>For each element type that is declared in the vocabulary module, there must be a
+              pattern whose name is the element type name and whose content is a reference to the
+              element type <codeph><varname>tagname</varname>.element</codeph> pattern. For
+              example:<codeblock>&lt;div>
+  &lt;a:documentation>ELEMENT TYPE NAME PATTERNS&lt;/a:documentation>
+  &lt;define name="b">
+    &lt;ref name="b.element"/>
+  &lt;/define>
+  &lt;!-- ... -->
+&lt;/div></codeblock></p>
+            <p>The element-type name pattern provides a layer of abstraction that facilitates
+              redefinition. The element-type name patterns are referenced from content model and
+              domain extension patterns. Specialization modules can re-declare the patterns to
+              include specializations of the type, allowing the specialized types in all contexts
+              where the base type is allowed.</p>
+            <p>The declarations can occur in any order.</p>
+          </dd>
+        </dlentry>
+        <dlentry>
+          <dt>Common content-model patterns</dt>
+          <dd>Structural and element-domain modules can include a section that defines the patterns
+            that contribute to the content models of the element types that are defined in the
+            module.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>Common attribute sets</dt>
+          <dd>Structural and element-domain modules can include a section that defines patterns for
+            attribute sets that are common to one or more of the element types that are defined in
+            the module.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>Element type declarations</dt>
+          <dd>For each element type that is declared in the vocabulary module, the following set of
+            patterns must be used to define the content model and attributes for the element type.
+            Each set of patterns is typically grouped within a <xmlelement>div</xmlelement> element
+            for clarity.<ul>
+              <li><codeph><varname>tagname</varname>.content</codeph> defines the complete content
+                model for the element <varname>tagname</varname>. The content model pattern <ph
+                  >can</ph> be overridden in constraint modules to further constrain
+                the content model for the element type.</li>
+              <li><codeph><varname>tagname</varname>.attributes</codeph> defines the complete
+                attribute list for the element <varname>tagname</varname>, except for
+                  <xmlatt>class</xmlatt> and the attributes provided by the
+                  <codeph>global-atts</codeph> pattern. The attribute list declaration <ph
+                  >can</ph> be overridden in constraint modules to further constrain
+                the attribute list for the element type.</li>
+              <li><codeph><varname>tagname</varname>.attlist</codeph> is an additional attribute
+                list pattern with a <xmlatt>combine</xmlatt> attribute set to the value
+                "interleave". This pattern contains only a reference to the
+                    <codeph><varname>tagname</varname>.attributes</codeph> pattern.</li>
+              <li><codeph><varname>tagname</varname>.element</codeph> is the actual element type
+                definition. It contains an <xmlelement>element</xmlelement> element whose
+                  <xmlatt>name</xmlatt> value is the element type name and whose content is a
+                reference to the <codeph><varname>tagname</varname>.content</codeph> and
+                    <codeph><varname>tagname</varname>.attlist</codeph> patterns. In OASIS grammar
+                files, the <xmlatt>longName</xmlatt> attribute in the DITA architecture namespace is
+                also used to help enable generation of DTD and XSD grammar files.</li>
+            </ul><p otherprops="examples">The following example shows the
+              declaration for the <xmlelement>topichead</xmlelement> element, including the
+              definition for each pattern described
+            above.</p><codeblock otherprops="examples">&lt;div>
+  &lt;a:documentation>LONG NAME: Topic Head&lt;/a:documentation>
+  &lt;define name="topichead.content">
+    &lt;optional>
+      &lt;ref name="topicmeta"/>
+    &lt;/optional>
+    &lt;zeroOrMore>
+      &lt;choice>
+        &lt;ref name="anchor"/>
+        &lt;ref name="data.elements.incl"/>
+        &lt;ref name="navref"/>
+        &lt;ref name="topicref"/>
+      &lt;/choice>
+    &lt;/zeroOrMore>
+  &lt;/define>
+  &lt;define name="topichead.attributes">
+    &lt;optional>
+      &lt;attribute name="navtitle"/>
+    &lt;/optional>
+    &lt;optional>
+      &lt;attribute name="outputclass"/>
+    &lt;/optional>
+    &lt;optional>
+      &lt;attribute name="keys"/>
+    &lt;/optional>
+    &lt;optional>
+      &lt;attribute name="copy-to"/>
+    &lt;/optional>
+    &lt;ref name="topicref-atts"/>
+    &lt;ref name="univ-atts"/>
+  &lt;/define>
+  &lt;define name="topichead.element">
+    &lt;element name="topichead" ditaarch:longName="Topic head">
+      &lt;a:documentation>The &amp;lt;topichead> element provides a title-only entry in a navigation map,
+        as an alternative to the fully-linked title provided by the &amp;lt;topicref> element. 
+        Category: Mapgroup elements&lt;/a:documentation>
+      &lt;ref name="topichead.attlist"/>
+      &lt;ref name="topichead.content"/>
+    &lt;/element>
+  &lt;/define>
+  &lt;define name="topichead.attlist" combine="interleave">
+    &lt;ref name="topichead.attributes"/>
+  &lt;/define>
+&lt;/div></codeblock></dd>
+        </dlentry>
+        <dlentry>
+          <dt>idElements pattern contribution</dt>
+          <dd>Element types that declare the <xmlatt>id</xmlatt> attribute as type "ID", including
+            all topic and map element types, must provide a declaration for the
+              <codeph>idElements</codeph> pattern. This is needed to correctly configure the "any"
+            pattern override in document-type shells and avoid errors from RELAX NG parsers. The
+            declaration is specified with a <xmlatt>combine</xmlatt> attribute set to the value
+            "choice". For
+            example:<codeblock>&lt;div>
+  &lt;a:documentation>LONG NAME: Map&lt;/a:documentation>
+  &lt;!-- ... -->
+  &lt;define name="idElements" combine="choice">
+    &lt;ref name="map.element"/>
+  &lt;/define>
+&lt;/div></codeblock></dd>
+        </dlentry>
+        <dlentry>
+          <dt>Specialization attribute declarations</dt>
+          <dd>
+            <p>A vocabulary module must define a <xmlatt>class</xmlatt> attribute for every
+              specialized element. This is done in a section at the end of each module that includes
+              a <codeph><varname>tagname</varname>.attlist</codeph> pattern for each element type
+              that is defined in the module. The declarations can occur in any order.</p>
+            <p>The <codeph><varname>tagname</varname>.attlist</codeph> pattern for each element
+              defines that element's <xmlatt>class</xmlatt> attribute, and also includes a reference
+              to the <codeph>global-atts</codeph> attribute list pattern. <xmlatt>class</xmlatt> is
+              declared as an optional attribute; the default value is declared using the
+                <xmlatt>a:defaultValue</xmlatt> attribute, and the value of the attribute is
+              constructed according to the rules in <xref href="specialization-class-attribute.dita"
+              />.</p>
+            <p otherprops="examples">For
+              example:<codeblock>&lt;define name="anchorref.attlist" combine="interleave">
+  &lt;ref name="global-atts"/>
+  &lt;optional>
+    &lt;attribute name="class" 
+        a:defaultValue="+ map/topicref mapgroup-d/anchorref "
+    />
+  &lt;/optional>
+&lt;/define></codeblock></p>
+          </dd>
+        </dlentry>
+      </dl>
+  </section>
+ </conbody>
+</concept>

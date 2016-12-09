@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="example-key-precedence-with-scopes">
+  <title>Example: How key scopes affect key precedence</title>
+  <shortdesc><ph
+      conref="../../common/conref-file.dita#reuse_file/keys-scopes-and-key-precedence-shortdesc"
+    /></shortdesc>
+  <conbody>
+    <p>Within a single key scope, key precedence is determined by which key definition comes first
+      in the map, or by the depth of the submap that defines the key. This was true for all key
+      definitions prior to DITA 1.3, because all key definitions were implicitly in the same key
+      scope. Scope-qualified key names differ in that precedence is determined by the location where
+      the key scope is defined.</p>
+    <p>This distinction is particularly important when key names or key scope names contain periods.
+      While avoiding periods within these names will avoid this sort of issue, such names are legal
+      so processors will need to handle them properly.</p>
+    <p>The following root map contains one submap and one key definition. The submap defines a key
+      named "sample".</p>
+    <fig id="fig_uqd_4rz_sr">
+      <title>Root map</title>
+      <codeblock>&lt;map>
+  &lt;!-- The following mapref defines the key scope "scopeName" -->
+  &lt;mapref href="submap.ditamap" keyscope="scopeName"/>
+
+  &lt;!-- The following keydef defines the key "scopeName.sample" -->
+  &lt;keydef keys="scopeName.sample" href="losing-key.dita"/>
+
+  &lt;!-- Other content, key definitions, etc. -->
+&lt;/map></codeblock>
+    </fig>
+    <fig>
+      <title>Submap</title>
+      <codeblock>&lt;map>
+  &lt;keydef keys="sample" href="winning-key.dita"/>
+  &lt;!-- Other content, key definitions, etc. -->
+&lt;/map></codeblock>
+    </fig>
+    <p>When determining precedence, all keys from the key scope "scopeName" occur at the location of
+      the scope-defining element -- in this case, the <xmlelement>mapref</xmlelement> element in the
+      root map. Because the <xmlelement>mapref</xmlelement> comes first in the root map, the
+      scope-qualified key name "scopeName.sample" that is pulled from
+        <filepath>submap.ditamap</filepath> occurs before the definition of "scopeName.sample" in
+      the root map. This means that in the context of the root map, the effective definition of
+      "scopeName.sample" is the scope-qualified key definition that references
+        <filepath>winning-key.dita</filepath>.</p>
+    <p>The following illustration shows a root map and several submaps. Each submap defines a new
+      key scope, and each map defines a key. In order to aid understanding, this sample does not use
+      valid DITA markup; instead, it shows the content of submaps inline where they are
+      referenced.</p>
+    <fig id="fig_qxt_3lz_sr">
+      <title>Complex map with multiple submaps and scopes</title>
+      <codeblock>&lt;map>   &lt;!-- Start of the root map -->
+
+  &lt;mapref href="submapA.ditamap" keyscope="scopeA">  
+    &lt;!-- Contents of submapA.ditamap begin here -->
+    &lt;mapref href="submapB.ditamap" keyscope="scopeB">
+      &lt;!-- Contents of submapB.ditamap: define key MYKEY -->
+      <b>&lt;keydef keys="MYKEY" href="example-ONE.dita"/></b>
+    &lt;/mapref>
+    <b>&lt;keydef keys="scopeB.MYKEY" href="example-TWO.dita"/></b>
+    &lt;!-- END contents of submapA.ditamap -->
+  &lt;/mapref>
+
+  &lt;mapref href="submapC.ditamap" keyscope="scopeA.scopeB">
+    &lt;!-- Contents of submapC.ditamap begin here -->
+    <b>&lt;keydef keys="MYKEY" href="example-THREE.dita"/></b>
+  &lt;/mapref>
+
+  <b>&lt;keydef keys="scopeA.scopeB.MYKEY" href="example-FOUR.dita"/></b>
+&lt;/map></codeblock>
+      <!--<ol><li>Within the context of scopeB, the reference to <filepath>example-ONE.dita</filepath> is the only definition.</li><li>Within the context of scopeA, that definition occurs where scopeB is defined. The key scope "scopeB" is defined before the <xmlelement>keydef</xmlelement> in <filepath>submapA.ditamap</filepath>, so the effective definition of "scopeB.MYKEY" is the one pulled from scopeB.</li><li>Within the context of the root scope, effective definitions from scopeA occur where scopeA is defined. Within the root map, the key scope "scopeA" is defined before "scopeA.scopeB" as well as before the <xmlelement>keydef</xmlelement>. Thus, the effective definition is the one from scopeA, referencing <filepath>example-ONE.dita</filepath>.</li></ol>-->
+    </fig>
+    <p>The sample map shows four key definitions. <ph >From the context of the
+        root scope, all have key names of "scopeA.scopeB.MYKEY".</ph></p>
+    <ol>
+      <li><filepath>submapB.ditamap</filepath> defines the key "MYKEY". The key scope "scopeB" is
+        defined on the <xmlelement>mapref</xmlelement> to <filepath>submapB.ditamap</filepath>, so
+        from the context of <filepath>submapA.ditamap</filepath>, the scope-qualified key name is
+        "scopeB.MYKEY". The key scope "scopeA" is defined on the <xmlelement>mapref</xmlelement> to
+          <filepath>submapA.ditamap</filepath>, so from the context of the root map, the
+        scope-qualified key name is "scopeA.scopeB.MYKEY".</li>
+      <li><filepath>submapA.ditamap</filepath> defines the key "scopeB.MYKEY". The key scope
+        "scopeA" is defined on the <xmlelement>mapref</xmlelement> to
+          <filepath>submapA.ditamap</filepath>, so from the context of the root map, the
+        scope-qualified key name is "scopeA.scopeB.MYKEY".</li>
+      <li><filepath>submapC.ditamap</filepath> defines the key "MYKEY". The key scope
+        "scopeA.scopeB" is defined on the <xmlelement>mapref</xmlelement> to
+          <filepath>submapC.ditamap</filepath>, so from the context of the root map, the
+        scope-qualified key name is "scopeA.scopeB.MYKEY".</li>
+      <li>Finally, the root map defines the key "scopeA.scopeB.MYKEY".</li>
+    </ol>
+    <p>Because scope-qualified key definitions are considered to occur at the location of the
+      scope-defining element, the effective key definition is the one from
+        <filepath>submapB.ditamap</filepath> (the definition that references
+        <filepath>example-ONE.dita</filepath>).</p>
+  </conbody>
+</concept>

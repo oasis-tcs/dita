@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept id="dita_spec_2_1_info_tasks" xml:lang="en-us">
+     <title>Machinery task topic</title>
+     <shortdesc>The machinery task document type supports the development of instructions for the
+          completion of a procedure. The machinery task document type is built using the general
+          task information type combined with the Machinery Taskbody Constraint.</shortdesc>
+     <conbody>
+          <section id="purpose">
+               <title>The purpose of the machinery task information type</title>
+               <p>The machinery-task is designed to provide procedural information, similar to the
+                    strict task topic, and has a well-defined semantic structure that describes how
+                    to perform the steps required to accomplish a specific goal. Compared to the
+                    strict task information type, the machinery-task information type contains
+                    additional descriptive elements in the prelreqs section that add detail to the
+                    pre-requisites required to perform a task. The machinery-task topic is developed
+                    using the DITA constraint mechanism, in addition to specializations for new
+                    elements. </p>
+               <p>Machinery tasks are the essential building blocks to provide procedural
+                    information for machines, machinery equipment, assemblies, and apparatuses. A
+                    machinery-task information type answers the "How do I?" question by providing
+                    precise step-by-step instructions detailing the requirements that must be
+                    fulfilled, the actions that must be performed, and the order in which the
+                    actions must be performed. The machinery-task topic includes sections for
+                    describing the context, preliminary requirements, expected results, examples,
+                    closing requirements, and other aspects of a task. </p>
+          </section>
+          <section id="structure">
+               <title>The structure of the machinery-task topic</title>
+               <p>Similar to a strict DITA task, the <xmlelement>task</xmlelement> element is the top-level element for
+                    a machinery task topic. The machinery task document type contains a title and a
+                    taskbody with optional alternative titles (titlealts), a short description or
+                    abstract, a prolog,and related-links.</p>
+               <p>The <xmlelement>taskbody</xmlelement> element is the main body element inside a machinery-task topic.
+                    A machinery-task body has a very specific structure, with the following elements
+                    in this order: (&lt;prelreqs> or <xmlelement>context</xmlelement> or <xmlelement>section</xmlelement>)*, <xmlelement>steps</xmlelement>,
+                    <xmlelement>result</xmlelement>, <xmlelement>example</xmlelement>, and <xmlelement>closereqs</xmlelement>. Each of the body sections is
+                    optional.</p>
+               <p>The machinery task includes two specialized element groups: <xmlelement>prelreqs</xmlelement> and
+                    <xmlelement>closereqs</xmlelement>. All other element groups are the same as the general task
+                    model.</p>
+               <dl>
+                    <dlentry>
+                         <dt>&lt;prelreqs></dt>
+                         <dd>The preliminary-requirements section of a task is used to describe what
+                              the user needs to know or do before starting the immediate task. The
+                              <xmlelement>prelreqs</xmlelement> element is similar to the prerequisites section of the
+                              general task model but contains a more descriptive content model. The
+                              <xmlelement>prelreqs</xmlelement> element contains required conditions, required
+                              personnel, required equipment, supplies, spares, and safety
+                              information. </dd>
+                    </dlentry>
+                    <dlentry>
+                         <dt>&lt;closereqs></dt>
+                         <dd>The close-requirements section is used to describe conditions that must
+                              be fulfilled after the successful completion of the current task. It
+                              is often supported by links to the next task or tasks in the
+                              <xmlelement>related-links</xmlelement> section. The <xmlelement>closereqs</xmlelement> element contains
+                              required conditions <xmlelement>reqconds</xmlelement>.</dd>
+                    </dlentry>
+               </dl>
+          </section>
+          <!--<section><title>Modules</title><p>The following DITA modules are provided for the machinery task topic.</p><sl><sli><filepath>machineryTask.dtd</filepath>, <filepath>machineryTaskbodyConstraint.mod</filepath> (DTD)</sli><sli><filepath>machineryTask.xsd</filepath>, <filepath>machineryTaskbodyConstraintMod.xsd</filepath>, <filepath>machineryTaskbodyConstraintIntMod.xsd</filepath> (Schema)</sli><sli rev="DITA1.3 proposal-13112"><filepath>machineryTask.rng</filepath>, <filepath>machineryTaskbodyConstraint.rng</filepath> (RELAX NG XML syntax)</sli><sli rev="DITA1.3 proposal-13112"><filepath>machineryTask.rnc</filepath>, <filepath>machineryTaskbodyConstraint.rnc</filepath> (RELAX NG compact syntax)</sli></sl></section>-->
+     </conbody>
+</concept>
+

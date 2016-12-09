@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="theconkeyrefattribute" xml:lang="en-us">
+<title>The <xmlatt>conkeyref</xmlatt> attribute</title>
+  <shortdesc>The <xmlatt>conkeyref</xmlatt> attribute provides an indirect content reference to
+    topic elements, map elements, or elements within maps or topics. When the DITA content is
+    processed, the key references are resolved using key definitions from DITA maps.</shortdesc>
+<refbody>
+    <section id="section-1">
+      <p>For content references from map elements to map elements or topic elements to topic
+        elements, the value of the <xmlatt>conkeyref</xmlatt> attribute is a key name, where the key
+        must be bound to a map element (for references from map elements) or a topic element (for
+        references from topic elements). For all other elements, the value of the
+          <xmlatt>conkeyref</xmlatt> attribute is a key name, an optional <ph 
+          >slash</ph> ("/"), and the ID of the target element, where the key name must be bound to
+        the map or topic that contains the topic element. </p>
+      <p>When the key name specified by the <xmlatt>conkeyref</xmlatt> attribute is not defined and
+        the element also specifies a <xmlatt>conref</xmlatt> attribute, the <xmlatt>conref</xmlatt>
+        attribute is used to determine the content reference relationship. If no
+          <xmlatt>conref</xmlatt> attribute is specified there is no content reference relationship.
+        Processors <term outputclass="RFC-2119">SHOULD</term> issue a warning when
+        a <xmlatt>conkeyref</xmlatt> reference cannot be resolved and there is no
+          <xmlatt>conref</xmlatt> attribute to use as a fallback. Processors <term 
+          outputclass="RFC-2119">MAY</term> issue a warning when a <xmlatt>conkeyref</xmlatt> cannot
+        be resolved to an element and a specified <xmlatt>conref</xmlatt> is used as a fallback.</p>
+      <p>The <xmlatt>conrefend</xmlatt> attribute, which defines the end of a conref range, <ph
+          rev="public-review-1">cannot</ph> include a key. Instead the map or topic element
+        addressed by the key name component of the <xmlatt>conkeyref</xmlatt> is used in place of
+        whatever map or topic element is addressed by the <xmlatt>conrefend</xmlatt> attribute. See
+          <xref href="theconrefendattribute.dita#theconrefendattribute/conkeyref"/> for more
+        information and for examples of this behavior.</p>
+    </section>
+</refbody>
+</reference>

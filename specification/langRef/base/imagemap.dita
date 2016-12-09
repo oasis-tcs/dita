@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="imagemap" xml:lang="en-us"> 
+  <title><xmlelement>imagemap</xmlelement></title> 
+  <shortdesc>The <xmlelement>imagemap</xmlelement> element supports the basic
+	 functionality of the HTML "client-side" image map markup.
+	 <xmlelement>imagemap</xmlelement> allows you to designate a linkable area or
+	 region over an image, allowing a link in that region to display another topic. 
+  </shortdesc> 
+  <prolog><metadata> 
+		<keywords><indexterm>imagemap</indexterm> 
+		  <indexterm>utilities domain<indexterm>imagemap</indexterm></indexterm> 
+		</keywords> </metadata>
+  </prolog> 
+  <refbody> 
+	 <section id="section-1"> 
+		<p>An HTML client-side image map binds an image to the navigation
+		  structure (the "map") by means of an ID association from the map to the image.
+		  In contrast, the DITA version of <xmlelement>imagemap</xmlelement> markup
+		  simply includes the target image as the first required element in the markup,
+		  followed by a sequence of <xmlelement>area</xmlelement> elements that represent
+		  the links associated with the contained image. 
+		</p> 
+		<p>An <xmlelement>imagemap</xmlelement> structure can be output either to a standard HTML image
+				map or to alternative forms of navigation (such as table-based image maps). When
+				output as PDF, the minimal form would be to represent at least the image; advanced
+				PDF output processors should provide equivalent region-oriented hyperlinks. </p> 
+		<p>The <xmlelement>xref</xmlelement> content within
+		  <xmlelement>area</xmlelement> contains the intended alternative text or hover
+		  text for that image map area. 
+		</p> 
+	 </section> 
+	 <section
+	  conref="../../common/commonNavLibraryTable.dita#contentmodel-imagemap/contains"
+	  id="contains" otherprops="contains"> 
+	 </section> 
+	 <section id="inheritance" otherprops="inheritance"> 
+		<title>Inheritance</title> 
+		<p>+ topic/fig ut-d/imagemap 
+		</p> 
+	 </section> 
+	 <example id="example" otherprops="examples"> 
+		<title>Example</title> 
+		<p>A simple <xmlelement>imagemap</xmlelement> looks like this (note that
+		  the rendering will depend on how this markup is supported for particular output
+		  formats): 
+		  <codeblock xml:space="preserve">&lt;imagemap&gt;
+ &lt;image href="imagemapworld.jpg"&gt;
+   &lt;alt&gt;Map of the world showing 5 areas&lt;/alt&gt;
+ &lt;/image&gt;
+ &lt;area&gt;&lt;shape&gt;rect&lt;/shape&gt;&lt;coords&gt;2,0,53,59&lt;/coords&gt;
+  &lt;xref href="d1-s1.dita"&gt;Section 1 alternative text&lt;/xref&gt;
+ &lt;/area&gt;
+ &lt;area&gt;&lt;shape&gt;rect&lt;/shape&gt;&lt;coords&gt;54,1,117,60&lt;/coords&gt;
+  &lt;xref href="d1-s2.dita"&gt;&lt;!-- Pull title from d1-s2.dita --&gt;&lt;/xref&gt;
+ &lt;/area&gt;
+ &lt;area&gt;&lt;shape&gt;rect&lt;/shape&gt;&lt;coords&gt;54,62,114,116&lt;/coords&gt;
+  &lt;xref href="#inline" type="topic"&gt;Alternative text for this rectangle&lt;/xref&gt;
+ &lt;/area&gt;
+ &lt;area&gt;&lt;shape&gt;circle&lt;/shape&gt;&lt;coords&gt;120,154,29&lt;/coords&gt;
+  &lt;xref format="html" href="test.html"&gt;Link to a test html file&lt;/xref&gt;
+ &lt;/area&gt;
+ &lt;area&gt;&lt;shape&gt;poly&lt;/shape&gt;
+  &lt;coords&gt;246,39,200,35,173,52,177,86,215,90,245,84,254,65&lt;/coords&gt;
+  &lt;xref format="pdf" href="test.pdf"&gt;Link to a test PDF file&lt;/xref&gt;
+ &lt;/area&gt;
+&lt;/imagemap&gt;</codeblock> 
+		</p> 
+		<p>The areas defined correspond to this graphic image with the areas visible:<image
+					href="../../images/imagemapworld.png" placement="break"
+					id="image_445FC20D011A400F8D51CD6C31A3E1F4" rev="public-review-1">
+					<alt rev="public-review-1">Diagram showing a graphic image annotated to show the
+						areas of an imagemap. Each area is indicated with a bordered region on the
+						image. To the right of the image there is a list correlating the areas of
+						the imagemap to the targets of their respective links. </alt>
+				</image>
+			</p> 
+		<p>The values for use in the <xmlelement>shape</xmlelement> and
+		  <xmlelement>coords</xmlelement> elements follow the guidelines defined for
+		  image maps in HTML 4.1, 
+		  <xref format="html"
+			href="http://www.w3.org/TR/html401/struct/objects.html#edef-MAP"
+			scope="external">Client-side image maps: the MAP and AREA elements</xref> 
+		</p> 
+	 </example> 
+	 <section id="attributes"> 
+		<title>Attributes</title> 
+		<p
+		 conref="../../common/conref-attribute.dita#conref-attribute/fig-attributes"/> 
+	 </section> 
+  </refbody> 
+</reference> 

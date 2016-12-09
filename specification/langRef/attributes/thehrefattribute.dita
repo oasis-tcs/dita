@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="thehrefattribute" xml:lang="en-us">
+ <title>The <xmlatt>href</xmlatt> attribute</title>
+ <shortdesc>The <xmlatt>href</xmlatt> attribute is used to reference another DITA topic or map,  a
+  specific element inside a DITA topic or map, an external Web page, or another non-DITA
+  resource.</shortdesc>
+ <prolog>
+  <metadata>
+   <keywords>
+    <indexterm>href attribute</indexterm>
+   </keywords>
+  </metadata>
+ </prolog>
+ <refbody>
+  <section id="section-1">
+   <p>The value of a DITA <xmlatt>href</xmlatt> attribute must be a valid URI reference [<xref
+     format="txt" href="http://www.ietf.org/rfc/rfc3986.txt" scope="external">RFC 3986</xref>]. It
+    is an error if the value is not a valid URI reference. An implementation <term
+     outputclass="RFC-2119">MAY</term> generate an error message; it <term
+     outputclass="RFC-2119">MAY</term> recover from this error condition by
+    attempting to convert the value to a valid URI reference. Note that the path separator character
+    in a URI is the forward slash (“/”); the backward slash character (“\”) is not permitted
+    unescaped within URIs.</p>
+   <p>When an <xmlatt>href</xmlatt> attribute references a DITA resource, an <xmlatt>href</xmlatt>
+    value that consists of a URI without a fragment identifier resolves to the document element in
+    the referenced document. For the purposes of rendering, such as when a
+     <xmlelement>topicref</xmlelement> reference to a DITA document is used to render the content as
+    HTML, this means that all topics (and topic specializations) in the target document are included
+    in the reference. For the purpose of linking, the reference resolves to the first (or only)
+    topic (or topic specialization) in the document.
+    <!--If the reference is from a topicref element or a topicref element
+specialization, all topics (and topic specializations) in the document
+are referenced. If the reference is not from a topicref element or
+a topicref element specialization, the reference resolves to the first
+(or only) topic (or topic specialization) in the document.--></p>
+   <p>An <xmlatt>href</xmlatt> value that consists of a URI with a fragment identifier must have a
+    DITA local identifier as the portion after the hash. A DITA local identifier consists of
+      <codeph><varname>topicID</varname>/<varname>elementID</varname></codeph> for a subelement of a
+    topic, and of <varname>elementID</varname> for topics, maps, and subelements of a map. <ph
+     >If the topic referenced by a DITA local identifier is for the same
+     topic, then <varname>topicID</varname> can be replaced by a period; see <xref
+      href="../../archSpec/base/handling-xref-and-conref-within-topics.dita#handling-xref-and-conref-within-topics"
+     /> for more information on how this syntax relates to conref resolution.</ph></p>
+   <p>Note that certain characters - including but not limited to the hash sign ("#"), question mark
+    ("?"), back slash ("\"), and space - are not permitted unescaped within URIs. Such characters
+    must be percent-encoded. Also note that the ampersand ("&amp;") and less than (“&lt;”)
+    characters are not permitted in XML attribute values; they must be represented by appropriate
+    character or entity references. Some tools might perform this encoding automatically, while
+    other tools might require that users either avoid the special characters or manually insert the
+    encoding.</p>
+  </section>
+  <example id="example" otherprops="examples">
+   <title>Example: Common syntax for the <xmlatt>href</xmlatt> attribute</title>
+   <p>The following table includes some examples of common <xmlatt>href</xmlatt> syntax. Note that
+    these examples represent only a few common scenarios and are not all inclusive.</p>
+   <simpletable frame="all" relcolwidth="1.0* 3.0*">
+    <sthead>
+     <stentry>Target</stentry>
+     <stentry>Syntax</stentry>
+    </sthead>
+    <strow>
+     <stentry>The first topic in a DITA document</stentry>
+     <stentry><codeph>href="file.dita"</codeph></stentry>
+    </strow>
+    <strow>
+     <stentry>A specific topic in a DITA document</stentry>
+     <stentry><codeph>href="file.dita#<varname>topicid</varname>"</codeph></stentry>
+    </strow>
+    <strow>
+     <stentry>A non-topic element inside a DITA topic</stentry>
+     <stentry><codeph>href="#<varname>topicid</varname>/<varname>elementid</varname>"</codeph></stentry>
+    </strow>
+    <strow >
+     <stentry>A non-topic element inside the same DITA topic as the reference</stentry>
+     <stentry><codeph>href="#./<varname>elementid</varname>"</codeph></stentry>
+    </strow>
+    <strow>
+     <stentry>An element in a DITA map</stentry>
+     <stentry><codeph>href="myMap.ditamap#<varname>map-branch</varname>"</codeph></stentry>
+    </strow>
+    <strow>
+     <stentry>An image</stentry>
+     <stentry><codeph>href="exampleImage.jpg"</codeph></stentry>
+    </strow>
+    <strow>
+     <stentry>An external resource</stentry>
+     <stentry><codeph>href="http://www.example.org"</codeph></stentry>
+    </strow>
+   </simpletable>
+   <p>where:</p>
+   <ul>
+    <li><varname>topicid</varname> is the value of the <xmlatt>id</xmlatt> attribute on the DITA
+     topic.</li>
+    <li><varname>elementid</varname> is the value of the <xmlatt>id</xmlatt> attribute on the
+     (non-topic) DITA element.</li>
+    <li><varname>map-branch</varname> is the value of the <xmlatt>id</xmlatt> attribute on the DITA
+     map element.</li>
+   </ul>
+  </example>
+ </refbody>
+</reference>
+

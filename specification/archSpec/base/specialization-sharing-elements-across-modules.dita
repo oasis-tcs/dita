@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="topic_nt3_b12_zl" >
+  <title>Sharing elements across specializations</title>
+  <shortdesc>Specialization enables easy reuse of elements from ancestor specializations. However,
+    it is also possible to reuse elements from non-ancestor specializations, as long as the
+    dependency is properly declared in order to prevent invalid generalization or conref
+    processing.</shortdesc>
+  <conbody>
+    <section id="sharing">
+      <p>A structural specialization can incorporate elements from unrelated domains or other
+        structural specializations by referencing them in the content model of a specialized
+        element. The elements included in this manner must be specialized from ancestor content that
+        is valid in the new context. If the reusing and reused specializations share common
+        ancestry, the reused elements must be valid in the reusing context at every level they share
+        in common.</p>
+      <p>Although a well-designed structural specialization hierarchy with controlled use of domains
+        is still the primary means of sharing and reusing elements in DITA, the ability to also
+        share elements declared elsewhere in the hierarchy allows for situations where relevant
+        markup comes from multiple sources and would otherwise be developed redundantly.</p>
+    </section>
+    <example id="conceptexample" otherprops="examples">
+      <title>Example: A specialization of <xmlelement>concept</xmlelement> reuses an element from
+        the task module</title>
+      <p>A specialized concept topic could declare a specialized <xmlelement>process</xmlelement>
+        section that contains the <xmlelement>steps</xmlelement> element that is defined in the task
+        module. This is possible because of the following factors:</p>
+      <ul>
+        <li>The <xmlelement>steps</xmlelement> element is specialized from
+            <xmlelement>ol</xmlelement>.</li>
+        <li>The <xmlelement>process</xmlelement> element is specialized from
+            <xmlelement>section</xmlelement>, and the content model of
+            <xmlelement>section</xmlelement> includes <xmlelement>ol</xmlelement>.</li>
+      </ul>
+      <p>The <xmlelement>steps</xmlelement> element in <xmlelement>process</xmlelement> always can
+        be generalized back to <xmlelement>ol</xmlelement> in <xmlelement>section</xmlelement>.</p>
+    </example>
+    <example id="referenceexample" otherprops="examples">
+      <title>Example: A specialization of <xmlelement>reference</xmlelement> reuses an element from
+        the programming domain</title>
+      <p>A specialized reference topic could declare a specialized list
+          (<xmlelement>apilist</xmlelement>) in which each <xmlelement>apilistitem</xmlelement>
+        contains an <xmlelement>apiname</xmlelement> element that is borrowed from the programming
+        domain. </p>
+      <!--<p>For example, suppose that <xmlelement>yourtask</xmlelement> is a valid specialization of <xmlelement>task</xmlelement> and that the <xmlelement>yoursteps</xmlelement> element in <xmlelement>yourtask</xmlelement> is a specialization of the <xmlelement>steps</xmlelement> element from <xmlelement>task</xmlelement>. The <xmlelement>yoursteps</xmlelement> ancestry is <codeph>- topic/ol task/steps yourtask/yoursteps</codeph>. Consquently, <xmlelement>yoursteps</xmlelement> must only appear in a context in <xmlelement>yourtask</xmlelement> that can be generalized back to <xmlelement>steps</xmlelement> in <xmlelement>task</xmlelement>. Now, suppose that another specializer wants to create a second specialization of <xmlelement>task</xmlelement>, called <xmlelement>mytask</xmlelement>. The specializer borrows the <xmlelement>yoursteps</xmlelement> element from the <xmlelement>yourtask</xmlelement> specialization for use in <xmlelement>mytask</xmlelement>, because <xmlelement>yoursteps</xmlelement> is exactly what is needed. As was the case in <xmlelement>yourtask</xmlelement>, the placement of <xmlelement>yoursteps</xmlelement> in <xmlelement>mytask</xmlelement> must also appear in a context that can be generalized back to <xmlelement>steps</xmlelement> in <xmlelement>task</xmlelement>. This is because the ancestry for <xmlelement>yoursteps</xmlelement> is still <codeph>- topic/ol task/steps yourtask/yoursteps</codeph>, even though <xmlelement>yoursteps</xmlelement> is being used in the <xmlelement>mytask</xmlelement> specialization. If we allowed <xmlelement>mytask</xmlelement> to transplant specializations of <xmlelement>steps</xmlelement> anywhere they wanted in the <xmlelement>mytask</xmlelement> model, then <xmlelement>mytask</xmlelement> would cease to be a valid specialization of <xmlelement>task</xmlelement>. </p>-->
+    </example>
+  </conbody>
+</concept>
