@@ -26,7 +26,7 @@
 <div>
 <h3>Further Description of this Repository</h3>
 
-<p>The initial commit for this repository comprises the source for all parts of DITA Version 1.3: http://docs.oasis-open.org/dita/dita/v1.3/os/part0-overview/dita-v1.3-os-part0-overview.html</p>
+<p>Early commits for this repository begin with the source for all parts of DITA Version 1.3: http://docs.oasis-open.org/dita/dita/v1.3/os/part0-overview/dita-v1.3-os-part0-overview.html</p>
 </div>
 
 <div>
