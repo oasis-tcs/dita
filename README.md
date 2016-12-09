@@ -23,13 +23,13 @@
 <p>Please see the <a href="https://github.com/oasis-tcs/dita/blob/master/LICENSE.md">LICENSE</a> file for description of the license terms and OASIS policies applicable to the TC's work in this GitHub project. Content in this repository is intended to be part of the DITA TC's permanent record of activity, visible and freely available for all to use, subject to applicable OASIS policies, as presented in the repository <a href="https://github.com/oasis-tcs/dita/blob/master/LICENSE.md">LICENSE</a> file.</p>
 </div>
 
-<div>
+<!--<div>
 <h3>Further Description of this Repository</h3>
 
 <p>[Any narrative content may be provided here by the TC, for example, if the Members wish to provide an extended statement of purpose.]</p>
 </div>
 
-<div>
+<div>-->
 
 <h3>Contact</h3>
 <p>Please send questions or comments about <a href="https://www.oasis-open.org/resources/tcadmin/github-repositories-for-oasis-tc-members-chartered-work">OASIS TC GitHub repositories</a> to <a href="mailto:robin@oasis-open.org">Robin Cover</a> and <a href="mailto:chet.ensign@oasis-open.org">Chet Ensign</a>.  For questions about content in this repository, please contact the TC Chair or Co-Chairs as listed on the the DITA TC's <a href="https://www.oasis-open.org/committees/dita/">home page</a>.</p>
