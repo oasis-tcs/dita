@@ -34,17 +34,17 @@
         primary impact of the <xmlelement>anchorid</xmlelement> element is on
           <xmlatt>conref</xmlatt> resolution.</p>
       <p conref="../../common/conref-file.dita#reuse_file/export-anchors-disclaimer"/></section>
-<section id="syntax-differences"><title>Why not use topicid/elementid?</title><p>This element differs from normal DITA referencing syntax in that it <ph rev="public-review-1"
+<section id="syntax-differences"><title>Why not use topicid/elementid?</title><p>This element differs from normal DITA referencing syntax in that it <ph 
           >can</ph> reference an element within a topic without using the topic's ID. There are two
         reasons for this. First, the <xmlelement>anchorid</xmlelement> element <ph
-          rev="public-review-1">might</ph> only be defined in a situation that refers unambiguously
+          >might</ph> only be defined in a situation that refers unambiguously
         to a single topic (in the <xmlelement>prolog</xmlelement>, or in the
           <xmlelement>topicmeta</xmlelement> for a reference to a topic). Second, it allows the
           <xmlelement>anchorid</xmlelement> to be combined with key values.</p><p>It is possible to combine an <xmlelement>anchorid</xmlelement> with a key in order to delay
         resolution of <xmlatt>conref</xmlatt> in the topic represented by that key (see the second
         set of examples below). This would not be possible if the <xmlelement>anchorid</xmlelement>
         element required both the topic id and the element id. That is, <xmlatt>keyref</xmlatt>
-        allows a modifiable reference to a topic, so a map <ph rev="public-review-1">might</ph>
+        allows a modifiable reference to a topic, so a map <ph >might</ph>
         instruct processors to delay conref for item "step1" in the topic represented by the key
         "commonconfig". If the <xmlelement>anchorid</xmlelement> element required a topic id, the
         delayed conref would always be bound to that specific topic.</p></section>
@@ -98,7 +98,7 @@ topic/keyword delay-d/anchorid </p></section>
             process knows to preserve the reuse relationship rather than resolve it - so the
               <xmlatt>conref</xmlatt> reference to the steps becomes an equivalent reuse artifact in
             that deliverable format. This way the relationship to component A can be resolved at
-            runtime, and pick up the user's version of component A, which <ph rev="public-review-1"
+            runtime, and pick up the user's version of component A, which <ph 
               >might</ph> be more up-to-date than the one used by Author 2 when component B was
             built.</li>
         </ol>
@@ -173,9 +173,9 @@ that id, because processors will match on the topic's id first.</li>
             <ph conref="../../common/conref-attribute.dita#conref-attribute/required-attr"/></dt>
           <dd>Indicates an ID within the specific topic that will be preserved during processing.
             Any <xmlatt>conref</xmlatt> values referencing the indicated ID will not be resolved;
-            when possible, the original relationship <ph rev="public-review-1">is</ph> preserved in
+            when possible, the original relationship <ph >is</ph> preserved in
             any processed document. Note that this element creates an exception to the general rules
-            that IDs <ph rev="public-review-1">can</ph> only be used once within a single topic or
+            that IDs <ph >can</ph> only be used once within a single topic or
             within a map; this is because the ID is actually a pointer to another target, rather
             than being a target itself. <ph
               conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/></dd>

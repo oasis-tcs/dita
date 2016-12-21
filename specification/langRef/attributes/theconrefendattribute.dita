@@ -41,7 +41,7 @@ of a range do not have to match the referencing element.</li>
           into <xmlelement>body</xmlelement>, because <xmlelement>conbody</xmlelement> is
           generalizable to <xmlelement>body</xmlelement>. It is not possible to pull a range from
             <xmlelement>body</xmlelement> into <xmlelement>conbody</xmlelement>, because the result
-            <ph rev="public-review-1">might</ph> not be valid in
+            <ph >might</ph> not be valid in
           <xmlelement>conbody</xmlelement>.</li>
 <li>With single conref, an <xmlatt>id</xmlatt> attribute from the referenced element will not be
           preserved on the resolved content. With a range, an <xmlatt>id</xmlatt> on both the start
@@ -49,7 +49,7 @@ of a range do not have to match the referencing element.</li>
           or child nodes should be preserved; if this results in duplicate <xmlatt>id</xmlatt>
           values, an application <ph >can recover by changing the <xmlatt>id</xmlatt>,
             warning the user, or implementing another strategy.</ph></li>
-<li>With a single conref, attributes specified on the referencing element<ph rev="public-review-1"
+<li>With a single conref, attributes specified on the referencing element<ph 
             >can</ph> be used to override attributes on the referenced element. With a conref range,
           the same is true, with the following clarifications: <ul>
             <li>When an <xmlatt>id</xmlatt> attribute is specified on the referencing element, it
@@ -165,7 +165,7 @@ of a range do not have to match the referencing element.</li>
       <p>When the <xmlatt>conkeyref</xmlatt> attribute is used in place of <xmlatt>conref</xmlatt>,
         a key is used to address the target of the reference. The <xmlatt>conrefend</xmlatt>
         attribute, which indicates the end of a <xmlatt>conref</xmlatt> range, <ph
-          rev="public-review-1">cannot</ph> use a key. Instead the the map or topic element
+          >cannot</ph> use a key. Instead the the map or topic element
         addressed by the key name component of the <xmlatt>conkeyref</xmlatt> is used in place of
         whatever map or topic element is addressed by the <xmlatt>conrefend</xmlatt> attribute.</p>
       <p>For example, if the value of the <xmlatt>conkeyref</xmlatt> attribute is "config/step1" and
@@ -251,13 +251,13 @@ examples.dita:
           <tbody>
             <row>
               <entry colname="col1">The <xmlatt>conref</xmlatt> attribute cannot be resolved in the
-                target document (the target element <ph rev="public-review-1">might</ph> have been
+                target document (the target element <ph >might</ph> have been
                 removed or its id has changed). </entry>
               <entry colname="col2">The <xmlatt>conref</xmlatt> is ignored.</entry>
             </row>
             <row>
               <entry colname="col1">The <xmlatt>conrefend</xmlatt> attribute cannot be resolved in
-                the target document (the target element <ph rev="public-review-1">might</ph> have
+                the target document (the target element <ph >might</ph> have
                 been removed or its id has changed).</entry>
               <entry colname="col2">Range cannot be resolved, optional recovery processes the result
                 as a simple conref.</entry>

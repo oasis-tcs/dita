@@ -33,14 +33,14 @@
         within <xmlelement>indexterm</xmlelement> elements that do contain
           <xmlelement>indexterm</xmlelement> children are ignored.) In the case of this error
         condition, an implementation <term outputclass="RFC-2119">MAY</term> give an error message,
-        and <ph rev="public-review-1">might</ph> recover by treating all such
+        and <ph >might</ph> recover by treating all such
           <xmlelement>index-see</xmlelement> elements as <xmlelement>index-see-also</xmlelement>
         elements.</p><note>The <xmlelement>index-see</xmlelement> and <xmlelement>index-see-also</xmlelement> elements
         are domain specializations of the <xmlelement>index-base</xmlelement> element, and are discussed in detail with
         the indexing domain.</note></section>
 <section id="section-2"><p>The <xmlatt>start</xmlatt> and <xmlatt>end</xmlatt> attribute on
           <xmlelement>indexterm</xmlelement> can be used in cases where one wants to index an
-        extended discussion that <ph rev="public-review-1">might</ph> continue over a number of
+        extended discussion that <ph >might</ph> continue over a number of
         pages. The start of a range is indicated by an <xmlelement>indexterm</xmlelement> with a
           <xmlatt>start</xmlatt> attribute. The end of a range is indicated with an
           <xmlelement>indexterm</xmlelement> with an <xmlatt>end</xmlatt> attribute whose value
@@ -52,13 +52,13 @@
         ancestors; however, an implementation should be able to handle an end-of-range
           <xmlelement>indexterm</xmlelement> that is nested within one or more
           <xmlelement>indexterm</xmlelement> elements.</p><p>The <xmlatt>start</xmlatt> and <xmlatt>end</xmlatt> attributes are defined as CDATA, <ph
-          rev="public-review-1">although it is a best practice</ph> that the values should not
+          >although it is a best practice</ph> that the values should not
         contain any whitespace characters (such as a space or tab) or control characters. Matching
         of <xmlatt>start</xmlatt> and <xmlatt>end</xmlatt> attributes is done as a
         character-by-character comparison with all characters significant and no case folding
         occurring. The <xmlatt>start</xmlatt> and <xmlatt>end</xmlatt> attributes are ignored if
         they occur on an <xmlelement>indexterm</xmlelement> element that has child
-          <xmlelement>indexterm</xmlelement> elements.</p><p>Index range indications <ph rev="public-review-1">can</ph> occur in the
+          <xmlelement>indexterm</xmlelement> elements.</p><p>Index range indications <ph >can</ph> occur in the
           <xmlelement>topicmeta</xmlelement> of a <xmlelement>topicref</xmlelement> at the map
         level, in the prolog of a topic, or in the body of a topic, and are interpreted as follows
         (see <xref href="#indexterm/ranges" type="fig"/> for samples):<ul>
@@ -83,7 +83,7 @@ by last-in-first-out. In other words, the ranges are interpreted as
 nested rather than overlapping with the highest-level container taking
 precedence over narrower contained ranges.</p><p>As defined above, there is no such thing as an index range start that isn't terminated by either
         a matching end or some maximum scope. There can, however, be unmatched index range end
-        indications; these <ph rev="public-review-1">are</ph> ignored.</p></section>
+        indications; these <ph >are</ph> ignored.</p></section>
 <section conref="../../common/commonNavLibraryTable.dita#contentmodel-indexterm/contains" id="contains" otherprops="contains"></section>
 <section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
 topic/indexterm </p></section>
@@ -168,7 +168,7 @@ the range is specified for the tertiary index entry "pecorino":<codeblock>&lt;in
 </ul></li>
 </ul></li>
 </ul></p>
-<p>There are three locations that <ph rev="public-review-1">can</ph> declare a range - the body of a
+<p>There are three locations that <ph >can</ph> declare a range - the body of a
           topic, the prolog of a topic, and a map.</p>
 <ul>
 <li>In the following example, the range begins at the start of the
