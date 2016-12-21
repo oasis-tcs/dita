@@ -26,7 +26,11 @@
 <div>
 <h3>Further Description of this Repository</h3>
 
-<p>Early commits for this repository begin with the source for all parts of DITA Version 1.3: http://docs.oasis-open.org/dita/dita/v1.3/os/part0-overview/dita-v1.3-os-part0-overview.html</p>
+<p>Early commits for this repository begin with the source for all parts of DITA Version 1.3: 
+http://docs.oasis-open.org/dita/dita/v1.3/os/part0-overview/dita-v1.3-os-part0-overview.html</p>
+<p>Version 1.3 source is updated with 1.3 Errata 01; both of these versions were orginally maintained in SVN:
+http://docs.oasis-open.org/dita/dita/v1.3/errata01/os/complete/part0-overview/dita-v1.3-errata01-os-part0-overview-complete.html</p>
+<p>From this point, GitHub is used for work on both DITA 2.0 and any other DITA 1.3 Errata.</p>
 </div>
 
 <div>
