@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
  "concept.dtd">
-<concept
-  id="classatt"
-  xml:lang="en-us">
+<concept id="classatt" xml:lang="en-us">
   <title><xmlatt>class</xmlatt> attribute rules and syntax</title>
   <shortdesc>The specialization hierarchy of each DITA element is declared as the value of the
       <xmlatt>class</xmlatt> attribute. The <xmlatt>class</xmlatt> attribute provides a mapping from
@@ -14,13 +12,12 @@
     <p>The <xmlatt>class</xmlatt> attribute tells a processor what general classes of elements the
       current element belongs to. DITA scopes elements by module type (for example topic type,
       domain type, or map type) instead of document type, which lets document type developers
-      combine multiple <ph >module</ph> types in a single document without
-      complicating transformation logic.</p>
+      combine multiple <ph>module</ph> types in a single document without complicating
+      transformation logic.</p>
     <p>The sequence of values in the <xmlatt>class</xmlatt> attribute is important because it tells
       processors which value is the most general and which is most specific.
-        <!--This is especially important for "specializing" transformations, where you can apply a general rule that says: if the element doesn't have a mapping to the target topic type, simply use the last value of the <xmlatt>class</xmlatt> attribute (and assume that the specialized topic type is reusing some general element declarations, which only have mappings for the level at which they were declared).--><ph
-        >This sequence is what enables both specialization aware processing and
-        generalization.</ph></p>
+        <!--This is especially important for "specializing" transformations, where you can apply a general rule that says: if the element doesn't have a mapping to the target topic type, simply use the last value of the <xmlatt>class</xmlatt> attribute (and assume that the specialized topic type is reusing some general element declarations, which only have mappings for the level at which they were declared).--><ph>This
+        sequence is what enables both specialization aware processing and generalization.</ph></p>
     <section id="syntax">
       <title>Syntax</title>
       <p>Values for the <xmlatt>class</xmlatt> attribute have the following syntax requirements:<ul>
@@ -29,13 +26,14 @@
             that are defined in domain modules.</li>
           <li>A sequence of one or more tokens of the form
                 <codeph>"<varname>modulename</varname>/<varname>typename</varname>",</codeph> with
-            each taoken separated by one or more spaces, where <varname>modulename</varname> is the
-            short name of the vocabulary module and <varname>typename</varname> is the element type
-            name. Tokens are ordered left to right from most general to most specialized.<p>These
-              tokens provide a mapping for every structural type or domain in the ancestry of the
-              specialized element. The specialization hierarchy for a given element type must
-              reflect any intermediate modules between the base type and the specialization type,
-              even those in which no element renaming occurs.</p></li>
+            each <ph rev="errata-01-public-review">token</ph> separated by one or more spaces, where
+              <varname>modulename</varname> is the short name of the vocabulary module and
+              <varname>typename</varname> is the element type name. Tokens are ordered left to right
+            from most general to most specialized.<p>These tokens provide a mapping for every
+              structural type or domain in the ancestry of the specialized element. The
+              specialization hierarchy for a given element type must reflect any intermediate
+              modules between the base type and the specialization type, even those in which no
+              element renaming occurs.</p></li>
           <li>At least one trailing space character (" "). The trailing space ensures that string
             matches on the tokens can always include a leading and trailing space in order to
             reliably match full tokens. </li>
@@ -43,21 +41,21 @@
     </section>
     <section id="rules">
       <title>Rules</title>
-      <p>When the <xmlatt>class</xmlatt> attribute is declared in an <ph >XML
-          grammar</ph>, it <term outputclass="RFC-2119">MUST</term> be declared
-        with a default value. In order to support generalization round-tripping (generalizing
-        specialized content into a generic form and then returning it to the specialized form) the
-        default value <term outputclass="RFC-2119">MUST NOT</term> be fixed. This
-        allows a generalization process to overwrite the default values that are defined by a
-        general document type with specialized values taken from the document being generalized.</p>
-      <p>A vocabulary module <term outputclass="RFC-2119">MUST NOT</term> change
-        the <xmlatt>class</xmlatt> attribute for elements that it does not specialize, but simply
+      <p>When the <xmlatt>class</xmlatt> attribute is declared in an <ph>XML grammar</ph>, it <term
+          outputclass="RFC-2119">MUST</term> be declared with a default value. In order to support
+        generalization round-tripping (generalizing specialized content into a generic form and then
+        returning it to the specialized form) the default value <term outputclass="RFC-2119">MUST
+          NOT</term> be fixed. This allows a generalization process to overwrite the default values
+        that are defined by a general document type with specialized values taken from the document
+        being generalized.</p>
+      <p>A vocabulary module <term outputclass="RFC-2119">MUST NOT</term> change the
+          <xmlatt>class</xmlatt> attribute for elements that it does not specialize, but simply
         reuses by reference from more generic levels. For example, if <xmlelement>task</xmlelement>,
           <xmlelement>bctask</xmlelement>, and <xmlelement>guitask</xmlelement> use the
           <xmlelement>p</xmlelement> element without specializing it, they <term
           outputclass="RFC-2119">MUST NOT</term> declare mappings for it. </p>
-      <p>Authors <term outputclass="RFC-2119">SHOULD NOT</term> modify the
-          <xmlatt>class</xmlatt> attribute.</p>
+      <p>Authors <term outputclass="RFC-2119">SHOULD NOT</term> modify the <xmlatt>class</xmlatt>
+        attribute.</p>
     </section>
     <example id="example" otherprops="examples">
       <title>Example: DTD declaration for <xmlatt>class</xmlatt> attribute for the

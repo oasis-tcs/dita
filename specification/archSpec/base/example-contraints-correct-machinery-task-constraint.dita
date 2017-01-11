@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="example-contraints-correct-machinery-task-constraint" rev="errata-01">
+ <title>Example: Correct the constraint for the machinery task</title>
+ <shortdesc>For DITA 1.3, the OASIS DITA TC failed to update the constraint for the machinery task.
+  In this scenario, an information architect corrects that oversight; she makes the (new for DITA
+  1.3) <xmlelement>tasktroubleshooting</xmlelement> element available in the body of the machinery
+  task.</shortdesc>
+ <conbody>
+  <example>
+   <note>This example assumes that the information architect has already implemented her own
+    document-type shell for the machinery task information type.</note>
+   <ol>
+    <li>She makes a copy of the <filepath>machineryTaskbodyConstraint.mod</filepath> file and
+     renames it <filepath>correctedMachineryTaskbodyConstraint.mod</filepath>.</li>
+    <li>She modifies the <filepath>correctedMachineryTaskbodyConstraint.mod</filepath> file to
+     declare the entity for the <xmlelement>tasktroubleshooting</xmlelement> element and make it
+     available at the correct place within the task body. (Her modifications are highlighted in bold
+     below.)<codeblock>&lt;!ENTITY taskbody-constraints
+  "(topic task+taskreq-d machineryTaskbody-c)"
+>
+&lt;!ENTITY % prelreqs                                        "prelreqs">
+&lt;!ENTITY % context                                         "context">
+&lt;!ENTITY % section                                         "section">
+&lt;!ENTITY % steps                                           "steps">
+&lt;!ENTITY % steps-unordered                                 "steps-unordered">
+&lt;!ENTITY % steps-informal                                  "steps-informal">
+&lt;!ENTITY % result                                          "result">
+<b>&lt;!ENTITY % tasktroubleshooting                             "tasktroubleshooting"></b>
+&lt;!ENTITY % example                                         "example">
+&lt;!ENTITY % closereqs                                       "closereqs">
+
+
+&lt;!ENTITY % taskbody.content
+              "((%prelreqs; |
+                 %context; |
+                 %section;)*,
+                (%steps; |
+                 %steps-unordered; |
+                 %steps-informal;)?,
+                (%result;)?,
+                <b>(%tasktroubleshooting;)?,</b>
+                (%example;)*,
+                (%closereqs;)?)"</codeblock></li>
+    <li>She updates her company-specific document-type shell to integrate the updated
+     constraint.</li>
+    <li>After updating the <filepath>catalog.xml</filepath> file to include the new constraints
+     file, her work is done.</li>
+   </ol>
+  </example>
+ </conbody>
+</concept>

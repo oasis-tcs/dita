@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="reference_kd4_c4c_pw">
+  <title>Written specification</title>
+  <shortdesc>The table lists the changes that have been made to the written portion of the DITA 1.3
+    specification.</shortdesc>
+  <refbody>
+    <section>
+      <simpletable frame="all" relcolwidth="1.0* 1.0* 1.0*">
+        <sthead>
+          <stentry>Topic</stentry>
+          <stentry>Original text</stentry>
+          <stentry>Revised text</stentry>
+        </sthead>
+        <strow>
+          <stentry>1.6 Formatting conventions in errata versions of the specification</stentry>
+          <stentry>None</stentry>
+          <stentry>[A new topic that explains how content that has been modified in errata versions
+            of the specification is highlighted with coloring and visual indicators.]</stentry>
+        </strow>
+        <strow>
+          <stentry>2.2.2.3 DITA map elements<ph rev="errata-01-review"> [Explanation of
+                <xmlelement>topicsetref</xmlelement>]</ph></stentry>
+          <stentry>Enables authors to reference a navigation branch that is defined in another DITA
+            map.</stentry>
+          <stentry>Enables authors to reference a navigation branch that is defined in <u>the
+              current map or in</u> another DITA map.</stentry>
+        </strow>
+        <strow>
+          <stentry>2.3.4.2 Key scopes</stentry>
+          <stentry>A key scope is defined by a <ph rev="errata-01-review"
+                ><xmlelement>map</xmlelement> or</ph>
+            <xmlelement>topicref</xmlelement> element that specifies the <xmlatt>keyscope</xmlatt>
+            attribute. The <xmlatt>keyscope</xmlatt> attribute specifies the names of the scope,
+            separated by spaces.</stentry>
+          <stentry>A key scope is defined by a <ph rev="errata-01-review"
+                ><xmlelement>map</xmlelement> or</ph>
+            <xmlelement>topicref</xmlelement> element that specifies the <xmlatt>keyscope</xmlatt>
+            attribute. The <xmlatt>keyscope</xmlatt> attribute specifies the names of the scope,
+            separated by spaces. <u>The legal characters for a key scope name are the same as those
+              for keys.</u></stentry>
+        </strow>
+        <strow>
+          <stentry>2.4.2 Content reference (conref)</stentry>
+          <stentry>None</stentry>
+          <stentry>
+            <p>
+              <b><u>Related concept:</u></b>
+            </p>
+            <p><u>2.5.5.4 Weak and strong constraints</u></p>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry>2.4.4.6.2 Example: Multiple <xmlelement>ditavalref</xmlelement> elements on a
+            branch</stentry>
+          <stentry>
+            <codeblock>&lt;map> &lt;topicref href="intro.dita"/> <b>&lt;!-- Begining of installing
+              branch --></b> &lt;topicref href="install.dita"> &lt;ditavalref href="win.ditaval"/>
+              &lt;ditavalref href="mac.ditaval"> &lt;ditavalmeta>
+              &lt;dvrResourceSuffix>-apple&lt;/dvrResourceSuffix> &lt;/ditavalmeta> &lt;/ditavalref>
+              &lt;ditavalref href="linux.ditaval"> &lt;ditavalmeta>
+              &lt;dvrResourceSuffix>-linux&lt;/dvrResourceSuffix> &lt;/ditavalmeta> &lt;/ditavalref>
+              &lt;topicref href="do-stuff.dita"> &lt;topicref href="mac-specific-stuff.dita"
+              platform="mac"/> &lt;/topicref> <b>&lt;!-- End of installing branch --></b>
+              &lt;topicref href="cleanup.dita"/> &lt;/topicref> &lt;/map></codeblock>
+          </stentry>
+          <stentry>
+            <codeblock>&lt;map> &lt;topicref href="intro.dita"/> <b>&lt;!-- Begining of installing
+              branch --></b> &lt;topicref href="install.dita"> &lt;ditavalref href="win.ditaval"/>
+              &lt;ditavalref href="mac.ditaval"> &lt;ditavalmeta>
+              &lt;dvrResourceSuffix>-apple&lt;/dvrResourceSuffix> &lt;/ditavalmeta> &lt;/ditavalref>
+              &lt;ditavalref href="linux.ditaval"> &lt;ditavalmeta>
+              &lt;dvrResourceSuffix>-linux&lt;/dvrResourceSuffix> &lt;/ditavalmeta> &lt;/ditavalref>
+              &lt;topicref href="do-stuff.dita"> <u>&lt;!-- more topics and nested branches --></u>
+              &lt;topicref href="mac-specific-stuff.dita" platform="mac"/> &lt;/topicref> <b>&lt;!--
+                End of installing branch --></b> &lt;topicref href="cleanup.dita"/> &lt;/topicref>
+              &lt;/map></codeblock>
+          </stentry>
+        </strow>
+        <strow rev="errata-01-public-review">
+          <stentry>2.5.3.6 <xmlatt>class</xmlatt> attribute rules and syntax</stentry>
+          <stentry>A sequence of one or more tokens of the form
+                <codeph>"<varname>modulename</varname>/<varname>typename</varname>",</codeph> with
+            each taoken separated by one or more spaces, where <varname>modulename</varname> is the
+            short name of the vocabulary module and <varname>typename</varname> is the element type
+            name. </stentry>
+          <stentry>A sequence of one or more tokens of the form
+                <codeph>"<varname>modulename</varname>/<varname>typename</varname>",</codeph> with
+            each <line-through>taoken</line-through>
+            <u>token</u> separated by one or more spaces, where <varname>modulename</varname> is the
+            short name of the vocabulary module and <varname>typename</varname> is the element type
+            name. </stentry>
+        </strow>
+        <strow>
+          <stentry>2.5.5.6.<ph rev="errata-01-review">6</ph> Example: Correct the constraint for the
+            machinery task</stentry>
+          <stentry>None</stentry>
+          <stentry>[New example topic]</stentry>
+        </strow>
+        <strow>
+          <stentry>2.6.3.1 DTD: Overview of coding requirements</stentry>
+          <stentry>DITA coding practices for DTDs rely heavily on entities to implement
+            specialization and constrraints.</stentry>
+          <stentry>DITA coding practices for DTDs rely heavily on entities to implement
+            specialization and <line-through>constrraints</line-through>
+            <u>constraints</u>.</stentry>
+        </strow>
+        <strow>
+          <stentry>2.7.1.3 General task topic</stentry>
+          <stentry>None</stentry>
+          <stentry>[Added an additional row to the table that compares the structure of the general
+            and strict task topics]<p><u>tasktroubleshooting (optional, one only)</u> |
+                <u>tasktroubleshooting (optional, one only)</u></p></stentry>
+        </strow>
+        <strow>
+          <stentry>2.7.1.4 Task topic (strict task)</stentry>
+          <stentry>None</stentry>
+          <stentry>
+            <dl>
+              <dlentry>
+                <dt><u><xmlelement>tasktroubleshooting</xmlelement></u></dt>
+                <dd><u>Describes actions that a user might take if the task does not produce the
+                    expected results.</u></dd>
+              </dlentry>
+            </dl>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry>3 Language reference: Technical content edition</stentry>
+          <stentry>Each element defined in the techical content specializations</stentry>
+          <stentry>Each element defined in the <line-through>techical</line-through><u>technical</u>
+            content specializations</stentry>
+        </strow>
+        <strow>
+          <stentry>3 Language reference: All-inclusive edition</stentry>
+          <stentry>Each element defined in the techical content specializations</stentry>
+          <stentry>Each element defined in the <line-through>techical</line-through><u>technical</u>
+            content specializations</stentry>
+        </strow>
+        <strow>
+          <stentry>3.2.3.1 <xmlelement>table</xmlelement></stentry>
+          <stentry>The following attributes are available on this element: Universal attribute
+            group, <xmlatt>outputclass</xmlatt>, <xmlatt>display</xmlatt>, and
+              <xmlatt>scale</xmlatt> from Display attribute group, and the attributes defined
+            below.</stentry>
+          <stentry>The following attributes are available on this element: Universal attribute
+            group, <xmlatt>outputclass</xmlatt>,
+              <line-through><xmlatt>display</xmlatt></line-through>
+            <u><xmlatt>frame</xmlatt></u>, and <xmlatt>scale</xmlatt> from Display attribute group,
+            and the attributes defined below.</stentry>
+        </strow>
+        <strow rev="errata-01-review">
+          <stentry>3.3.1.11 <xmlelement>ux-window</xmlelement></stentry>
+          <stentry>
+            <codeblock>&amp;lt;ux-window id="p76" name="ux-tablet" top="5%" left="5%" height="90%" width="90%" 
+    features="status=no,toolbar=no,menubar=no,location=no" relative="no"
+    full-screen="no" /></codeblock>
+          </stentry>
+          <stentry>
+            <codeblock>&amp;lt;ux-window id="p76" name="ux-tablet" top="<line-through>5%</line-through>1cm" left="<line-through>5%</line-through><u>1cm</u>" height="<line-through>90%</line-through><u>4cm</u>" width="<line-through>90%</line-through><u>3cm</u>" 
+    features="status=no,toolbar=no,menubar=no,location=no" relative="no"
+    full-screen="no" /></codeblock>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry>3.4.3.1 <xmlelement>exportanchors</xmlelement></stentry>
+          <stentry>The <xmlelement>exportanchors</xmlelement> element canbe used within a topic
+            prolog, in which case the defined IDs apply to IDs within that topic (excluding
+            sub-topics). </stentry>
+          <stentry>The <xmlelement>exportanchors</xmlelement> element <u>can be</u> used within a
+            topic prolog, in which case the defined IDs apply to IDs within that topic (excluding
+            sub-topics). </stentry>
+        </strow>
+        <strow>
+          <stentry>3.5.4.2 <xmlelement>ditavalmeta</xmlelement></stentry>
+          <stentry>The <xmlelement>ditavalmeta</xmlelement> element also can contain other
+            information, such as author and navigation title, that might be useful for map
+            architects but is not rendered in the output.</stentry>
+          <stentry>The <xmlelement>ditavalmeta</xmlelement> element also can contain other
+            information, such as <line-through>author and</line-through> navigation title, that
+            might be useful for map architects but is not rendered in the output.</stentry>
+        </strow>
+        <strow rev="errata-01-review">
+          <stentry>3.10 Technical content elements</stentry>
+          <stentry>Elements in the technical content section include the original Concept, Task, and
+            Reference specializations, as well as the Bookmap and Glossary specializations added
+            with DITA 1.1. It also includes domains designed primarily for technical content, such
+            as the task requirements and software domains.</stentry>
+          <stentry>Elements in the technical content section include the original Concept, Task, and
+            Reference specializations, as well as <line-through>the Bookmap and
+              Glossary</line-through> specializations added <line-through>with DITA
+              1.1</line-through>
+            <u>in later releases</u>. It also includes domains designed primarily for technical
+              content<line-through>, such as the task requirements and software
+              domains</line-through>.</stentry>
+        </strow>
+        <strow>
+          <stentry>3.10.4 Troubleshooting elements</stentry>
+          <stentry>Short description needed</stentry>
+          <stentry>
+            <line-through>Short description needed</line-through>
+            <u>Troubleshooting topics document corrective action such as troubleshooting or alarm
+              clearing.</u>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry>3.10.4.1 <xmlelement>troubleshooting</xmlelement></stentry>
+          <stentry>The <xmlelement>troubleshooting</xmlelement> element is the top-level element for
+            a troubleshooting topic. Troubleshooting topics document corrective action such as
+            troubleshooting or alarm clearing. Troubleshooting topics begin with a description of a
+            condition that the reader might want to correct, followed by one or more cause-remedy
+            pairs. Each cause-remedy pair is a potential solution to the trouble described in the
+            condition.</stentry>
+          <stentry>The <xmlelement>troubleshooting</xmlelement> element is the top-level element for
+            a troubleshooting topic. <line-through>Troubleshooting topics document corrective action
+              such as troubleshooting or alarm clearing.</line-through> Troubleshooting topics begin
+            with a description of a condition that the reader might want to correct, followed by one
+            or more cause-remedy pairs. Each cause-remedy pair is a potential solution to the
+            trouble described in the condition.</stentry>
+        </strow>
+        <strow rev="errata-01-public-review">
+          <stentry>3.11.2.2 <xmlelement>learningObjectMap</xmlelement></stentry>
+          <stentry>The <xmlelement>learningObjectMap</xmlelement> references one and only one
+              <xmlelement>learningObject</xmlelement>. Any <xmlelement>topicref</xmlelement>
+            elements that occur before the <xmlelement>learningObject</xmlelement> are intended to
+            be resource-only references such as key definitions.</stentry>
+          <stentry><u>Use the</u>
+            <line-through>The</line-through>
+            <xmlelement>learningObjectMap</xmlelement>
+            <line-through>references one and only one</line-through>
+            <u>to reference a single</u>
+            <xmlelement>learningObject</xmlelement>. Any <u>specializations of
+              </u><xmlelement>topicref</xmlelement> elements that occur before the
+              <xmlelement>learningObject</xmlelement> are intended to be resource-only references
+            such as key definitions.</stentry>
+        </strow>
+      </simpletable>
+    </section>
+  </refbody>
+</reference>
