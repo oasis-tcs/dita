@@ -4,25 +4,27 @@
  "reference.dtd">
 <reference id="draft-comment" xml:lang="en-us">
 <title><xmlelement>draft-comment</xmlelement></title>
-<shortdesc>The <xmlelement>draft-comment</xmlelement> element is designed to facilitate review and
-    discussion of topic contents within the marked-up content. Use the
-      <xmlelement>draft-comment</xmlelement> element to ask a question or to make a comment that you
-    want others to review. To indicate the source of the draft comment or the status of the comment,
-    use the <xmlatt>author</xmlatt>, <xmlatt>time</xmlatt>, or <xmlatt>disposition</xmlatt>
-    attributes.</shortdesc>
+<shortdesc>The <xmlelement>draft-comment</xmlelement> specifies content that is intended for review
+    and discussion, such as questions, comments, and notes to reviewers.</shortdesc>
 <prolog><metadata>
 <keywords><indexterm>elements<indexterm>body<indexterm><xmlelement>draft-comment</xmlelement></indexterm></indexterm></indexterm>
         <indexterm>processing
             expectations<indexterm><xmlelement>draft-comment</xmlelement></indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
-<section id="section-1">Processing systems <term  outputclass="RFC-2119">SHOULD</term> provide a
-      mechanism that causes the content of this element to be rendered in draft output only. By
-      default, processors <term  outputclass="RFC-2119">SHOULD</term> strip them
-      out to prevent publishing internal comments by mistake.</section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-draft-comment/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-topic/draft-comment </p></section>
+    <section id="section-0">
+      <title>Usage information</title>
+      <p>Authors can use the <xmlelement>draft-comment</xmlelement> element to ask a question or to
+        make a comment that they want others to review. To indicate the source, date, or status of
+        the draft comment, use the <xmlatt>author</xmlatt>, <xmlatt>time</xmlatt>, or
+          <xmlatt>disposition</xmlatt> attributes.</p>
+    </section>
+<section id="section-1"><title>Processing expectations</title>Processors <term
+        outputclass="RFC-2119">SHOULD</term> provide a mechanism that causes the content of the
+        <xmlelement>draft-comment</xmlelement> element to be rendered in draft output only. By
+      default, processors <term outputclass="RFC-2119">SHOULD</term> strip out  out
+        <xmlelement>draft-comment</xmlelement> elements to prevent publishing internal comments by
+      mistake.</section>
 <example id="example" otherprops="examples"><title>Example</title><codeblock
 xml:space="preserve">&lt;draft-comment author="EBP"&gt;Where's the usage information for this 
 section?&lt;/draft-comment&gt;</codeblock></example>
