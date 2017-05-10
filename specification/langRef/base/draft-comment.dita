@@ -5,24 +5,32 @@
 <reference id="draft-comment" xml:lang="en-us">
 <title><xmlelement>draft-comment</xmlelement></title>
 <shortdesc>The <xmlelement>draft-comment</xmlelement> specifies content that is intended for review
-    and discussion, such as questions, comments, and notes to reviewers.</shortdesc>
+    and discussion, such as questions, comments, and notes to reviewers. This content is not
+    intended to be included in production output.</shortdesc>
 <prolog><metadata>
 <keywords><indexterm>elements<indexterm>body<indexterm><xmlelement>draft-comment</xmlelement></indexterm></indexterm></indexterm>
         <indexterm>processing
+            expectations<indexterm><xmlelement>draft-comment</xmlelement></indexterm></indexterm>
+        <indexterm>rendering
             expectations<indexterm><xmlelement>draft-comment</xmlelement></indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
-    <section id="section-0">
+    <section id="usage-information">
       <title>Usage information</title>
       <p>Authors can use the <xmlelement>draft-comment</xmlelement> element to ask a question or to
         make a comment that they want others to review. To indicate the source, date, or status of
-        the draft comment, use the <xmlatt>author</xmlatt>, <xmlatt>time</xmlatt>, or
+        the draft comment, authors can use the <xmlatt>author</xmlatt>, <xmlatt>time</xmlatt>, or
           <xmlatt>disposition</xmlatt> attributes.</p>
     </section>
-<section id="section-1"><title>Processing expectations</title>Processors <term
+    <section id="rendering-expecttions">
+      <title>Rendering expectations</title>
+      <p>Processors should render the content of  <xmlelement>draft-comment</xmlelement> elements in
+        a way that distinguishes them it from content that is intended for production output.</p>
+    </section>
+<section id="processing-expectations"><title>Processing expectations</title>Processors <term
         outputclass="RFC-2119">SHOULD</term> provide a mechanism that causes the content of the
         <xmlelement>draft-comment</xmlelement> element to be rendered in draft output only. By
-      default, processors <term outputclass="RFC-2119">SHOULD</term> strip out  out
+      default, processors <term outputclass="RFC-2119">SHOULD</term> strip out out
         <xmlelement>draft-comment</xmlelement> elements to prevent publishing internal comments by
       mistake.</section>
 <example id="example" otherprops="examples"><title>Example</title><codeblock
