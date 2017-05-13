@@ -3,11 +3,9 @@
  "reference.dtd">
 <reference id="li" xml:lang="en-us">
 <title><xmlelement>li</xmlelement></title>
-<shortdesc>A <xmlelement>li</xmlelement> element is a single item in an ordered
-            (<xmlelement>ol</xmlelement>) or unordered (<xmlelement>ul</xmlelement>) list. When a
-        DITA topic is rendered, numbers and alpha characters are typically displayed with list items
-        in ordered lists, while bullets and dashes are typically displayed with list items in
-        unordered lists.</shortdesc>
+<shortdesc>A <xmlelement>li</xmlelement> element specifies a single item in list. The list can be
+        ordered (<xmlelement>ol</xmlelement>) or unordered
+        (<xmlelement>ul</xmlelement>).</shortdesc>
 <prolog><metadata>
 <keywords><indexterm>elements<indexterm>body<indexterm><xmlelement>li</xmlelement></indexterm></indexterm></indexterm>
                 <indexterm>lists<indexterm>ordered<indexterm>list
@@ -20,9 +18,17 @@
 </keywords>
 </metadata></prolog>
 <refbody>
-<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-li/contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-topic/li </p></section>
+        <section id="formatting-expecttions">
+            <title>Formatting expectations</title>
+            <p>Although rendering is left up to implementations, processors typically use the
+                following conventions for displaying the contents of <xmlelement>li</xmlelement>
+                elements:</p>
+            <ul>
+                <li>In ordered lists, list items are indicated by numbers or alphabetical
+                    characters.</li>
+                <li>In unordered lists, list items are indicated by bullets or dashes.</li>
+            </ul>
+        </section>
 <example id="example" otherprops="examples"><title>Example</title><codeblock
 xml:space="preserve">&lt;ul&gt;
   &lt;li&gt;This is an item in an unordered list.&lt;/li&gt;
