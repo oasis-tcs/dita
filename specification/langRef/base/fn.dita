@@ -5,28 +5,64 @@
 <reference id="fn" xml:lang="en-us">
 <title><xmlelement>fn</xmlelement></title>
 <shortdesc>The <xmlelement>fn</xmlelement> element specifies content for an ancillary note placed in
-    the footer of a page. Such content is usually inappropriate for inline inclusion. The
-      <xmlelement>fn</xmlelement> element also is used to indicate the source for facts or other
-    material cited in the text. </shortdesc>
+    the footer of a page or at the end of an online article. Such content is usually inappropriate
+    for inline inclusion. The <xmlelement>fn</xmlelement> element also is used to indicate the
+    source for facts or other material cited in the text. </shortdesc>
 <prolog><metadata>
 <keywords>
     <indexterm>processing expectations<indexterm><xmlelement>fn</xmlelement></indexterm></indexterm>
 </keywords>
 </metadata></prolog>
 <refbody>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>There are two types of footnotes: <term>single-use footnote</term> and
+          <term>use-by-reference footnote</term>.</p>
+      <dl>
+        <dlentry>
+          <dt>Single-use footnote</dt>
+          <dd>This is produced by a <xmlelement>fn</xmlelement> element that does not specify a
+            value for the <xmlatt>id</xmlatt> attribute. When rendered, a superscript symbol
+            (numeral or character) is produced at the location of the <xmlelement>fn</xmlelement>
+            element. The superscript symbol is hyperlinked to the content of the footnote, which is
+            placed at the bottom of a PDF page or the end of an online article. The superscript
+            symbol can be specified by the value of the <xmlatt>callout</xmlatt> attribute.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>Use-by-reference footnote</dt>
+          <dd>This is produced by a <xmlelement>fn</xmlelement> element that specifies a value for
+            the <xmlatt>id</xmlatt> attribute. Nothing is rendered at the location of the
+              <xmlelement>fn</xmlelement> element. The content of a use-by-reference footnote is
+            only rendered when it is referenced by an <xmlelement>xref</xmlelement> with the
+              <xmlatt>type</xmlatt> attribute set to "fn".</dd>
+        </dlentry>
+      </dl>
+      <p>Unless conref is used, the fn and </p>
+    </section>
+    <section id="rendering-expecttions">
+      <title>Rendering expectations</title>
+      <p>The two footnotes produce different types of output:</p>
+      <dl>
+        <dlentry>
+          <dt>Single-use footnote</dt>
+          <dd>A superscript symbol (numeral or character) is produced at the location of the
+              <xmlelement>fn</xmlelement> element. The superscript symbol is hyperlinked to the
+            footnote, which is placed at the bottom of a PDF page or the end of an online article.
+            The superscript symbol can be specified by the value of the <xmlatt>callout</xmlatt>
+            attribute. </dd>
+        </dlentry>
+        <dlentry>
+          <dt>Use-by-reference footnote</dt>
+          <dd>Nothing is rendered at the location of the <xmlelement>fn</xmlelement> element. The
+            content of a use-by-reference footnote is only rendered when it is referenced by an
+              <xmlelement>xref</xmlelement> with the <xmlatt>type</xmlatt> attribute set to "fn".
+            Unless conref is used, the <xmlelement>fn</xmlelement> and <xmlelement>xref</xmlelement>
+            must be located in the same topic.</dd>
+        </dlentry>
+      </dl>
+    </section>
 <section id="section-1">Footnote content is skipped at the place where it was entered and rendered
       elsewhere, according to these rules: <ul>
-        <li>A footnote with no specified <xmlatt>id</xmlatt> attribute is a <term>single-use
-            footnote</term>. Upon output, it generates a number as a superscript "callout" that is
-          linked to the placement of the footnote, such as at the bottom of the immediate printed
-          page or at the end of an online article. If a character is specified in the
-            <xmlatt>callout</xmlatt> attribute for the footnote, that character <ph
-            >is</ph> used as the superscript "callout" that is linked to the
-          placement of the footnote.</li>
-        <li>A footnote that specifies an <xmlatt>id</xmlatt> attribute is a <term>use-by-reference
-            footnote</term>. Upon output, it does not appear anywhere unless it has been referenced
-          using an <xmlelement>xref</xmlelement> with the <xmlatt>type</xmlatt> attribute set to
-          "fn". </li>
         <li>Ordinarily, a footnote in one topic can't be referenced in another topic. The previous
           behaviors are local to each topic. But by using the conref mechanism, you can create a new
           copy of another topic's footnote within the local topic where it will then follow these behaviors:<ul>
