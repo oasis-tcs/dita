@@ -21,6 +21,51 @@
             therapist.</stentry>
         </strow>
         <strow>
+          <stentry>2.2.3.8.2 Example: Extending a subject scheme</stentry>
+          <stentry>
+            <p>The effective result is the same as the following subject scheme map:</p>
+            <codeblock>&lt;subjectScheme>
+  &lt;subjectdef keys="os" navtitle="Operating system">
+    &lt;subjectdef keys="linux" navtitle="Linux">
+      &lt;subjectdef keys="redhat" navtitle="RedHat Linux"/>
+      &lt;subjectdef keys="suse" navtitle="SuSE Linux"/>
+    &lt;/subjectdef>
+    &lt;subjectdef keys="macos" navtitle="Macintosh"/>
+    &lt;subjectdef keys="windows" navtitle="Windows">
+      &lt;subjectdef keys="winxp" navtitle="Windows XP"/>
+      &lt;subjectdef keys="win98" navtitle="Windows Vista"/>
+    &lt;/subjectdef>
+    &lt;subjectdef keys="zos" navtitle="z/OS"/>
+  &lt;/subjectdef>
+  &lt;enumerationdef>
+    &lt;attributedef name="platform"/>
+    &lt;subjectdef keyref="os"/>
+  &lt;/enumerationdef>
+&lt;/subjectScheme></codeblock>
+          </stentry>
+          <stentry>
+            <p>The effective result is the same as the following subject scheme map:</p>
+            <codeblock>&lt;subjectScheme>
+  &lt;subjectdef keys="os" navtitle="Operating system">
+    &lt;subjectdef keys="linux" navtitle="Linux">
+      &lt;subjectdef keys="redhat" navtitle="RedHat Linux"/>
+      &lt;subjectdef keys="suse" navtitle="SuSE Linux"/>
+    &lt;/subjectdef>
+    &lt;subjectdef keys="macos" navtitle="Macintosh"/>
+    &lt;subjectdef keys="windows" navtitle="Windows">
+      &lt;subjectdef keys="winxp" navtitle="Windows XP"/>
+      &lt;subjectdef keys="<line-through>win98</line-through><u>winvis</u>" navtitle="Windows Vista"/>
+    &lt;/subjectdef>
+    &lt;subjectdef keys="zos" navtitle="z/OS"/>
+  &lt;/subjectdef>
+  &lt;enumerationdef>
+    &lt;attributedef name="platform"/>
+    &lt;subjectdef keyref="os"/>
+  &lt;/enumerationdef>
+&lt;/subjectScheme></codeblock>
+          </stentry>
+        </strow>
+        <strow>
           <stentry>2.4.3.1 Conditional processing values and groups</stentry>
           <stentry>Groups consist of a name immediately followed by a parenthetical group of one or
             more space-delimited string values.</stentry>
