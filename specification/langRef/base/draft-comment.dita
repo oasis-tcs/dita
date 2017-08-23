@@ -4,54 +4,92 @@
  "reference.dtd">
 <reference id="draft-comment" xml:lang="en-us">
 <title><xmlelement>draft-comment</xmlelement></title>
-<shortdesc>The <xmlelement>draft-comment</xmlelement> element is designed to facilitate review and
-    discussion of topic contents within the marked-up content. Use the
-      <xmlelement>draft-comment</xmlelement> element to ask a question or to make a comment that you
-    want others to review. To indicate the source of the draft comment or the status of the comment,
-    use the <xmlatt>author</xmlatt>, <xmlatt>time</xmlatt>, or <xmlatt>disposition</xmlatt>
-    attributes.</shortdesc>
+<shortdesc>A draft comment is content that is intended for review and discussion, such as questions,
+    comments, and notes to reviewers. This content is not intended to be included in production
+    output.</shortdesc>
 <prolog><metadata>
-<keywords><indexterm>elements<indexterm>body<indexterm><xmlelement>draft-comment</xmlelement></indexterm></indexterm></indexterm>
+<keywords>
+        <indexterm>draft comments</indexterm><indexterm>elements<indexterm>body<indexterm><xmlelement>draft-comment</xmlelement></indexterm></indexterm></indexterm>
         <indexterm>processing
-            expectations<indexterm><xmlelement>draft-comment</xmlelement></indexterm></indexterm></keywords>
+            expectations<indexterm><xmlelement>draft-comment</xmlelement></indexterm></indexterm>
+        <indexterm>normative
+          statements<indexterm><xmlelement>draft-comment</xmlelement></indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
-<section id="section-1">Processing systems <term  outputclass="RFC-2119">SHOULD</term> provide a
-      mechanism that causes the content of this element to be rendered in draft output only. By
-      default, processors <term  outputclass="RFC-2119">SHOULD</term> strip them
-      out to prevent publishing internal comments by mistake.</section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-draft-comment/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-topic/draft-comment </p></section>
-<example id="example" otherprops="examples"><title>Example</title><codeblock
-xml:space="preserve">&lt;draft-comment author="EBP"&gt;Where's the usage information for this 
-section?&lt;/draft-comment&gt;</codeblock></example>
-<section id="attributes"><title>Attributes</title>
-   <p>The following attributes are available on this element: <xref
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>Authors can use the <xmlelement>draft-comment</xmlelement> element to ask a question or to
+        make a comment that they want others to review. To indicate the source, date, or status of
+        the draft comment, authors can use the <xmlatt>author</xmlatt>, <xmlatt>time</xmlatt>, or
+          <xmlatt>disposition</xmlatt> attributes.</p>
+      <draft-comment author="Kristen J Eberlein" time="23 May 2017">
+        <p>Robert and I think that the above section should be removed from the spec. It is basic,
+          user guide material, and the information is already covered in the "Attributes" section. I
+          enhanced the example section to cover usage of all three attributes.</p>
+      </draft-comment>
+    </section>
+<section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>Processors <term outputclass="RFC-2119">SHOULD</term> provide a mechanism that causes the
+        content of the <xmlelement>draft-comment</xmlelement> element to be rendered in draft output
+        only. By default, processors <term outputclass="RFC-2119">SHOULD</term> strip out
+          <xmlelement>draft-comment</xmlelement> elements to prevent publishing internal comments by
+        mistake.</p>
+      <draft-comment author="Kristen J Eberlein" time="23 May 2017">
+        <p>Note that the above normative statements were revised in order to clearly state the
+          element. That will enable such content to be viewed in ancillary materials as standalone
+          content.</p>
+        <p>(DITA 1.3 content) Processing systems <term outputclass="RFC-2119">SHOULD</term> provide
+          a mechanism that causes the content of this element to be rendered in draft output only.
+          By default, processors <term outputclass="RFC-2119">SHOULD</term> strip them out to
+          prevent publishing internal comments by mistake.</p>
+      </draft-comment>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref
           href="../attributes/universalAttributes.dita"/> (with a narrowed definition for
           <xmlatt>translate</xmlatt>, given below), <xref
           href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, and the attributes
         defined below.</p>
-   <dl>
+      <dl>
         <dlentry conref="../../common/conref-attribute.dita#conref-attribute/translate-NO">
           <dt/>
           <dd/>
         </dlentry>
-    <dlentry id="author">
-     <dt><xmlatt>author</xmlatt></dt>
-     <dd>Designates the originator of the draft comment.<?datatype CDATA?><?default #IMPLIED?></dd>
-    </dlentry>
-    <dlentry id="time">
-     <dt><xmlatt>time</xmlatt></dt>
-     <dd>Describes when the draft comment was created.<?datatype CDATA?><?default #IMPLIED?></dd>
-    </dlentry>
-    <dlentry id="disposition">
-     <dt><xmlatt>disposition</xmlatt></dt>
-     <dd>Status of the draft comment. Prior to DITA 1.2, this attribute was limited to the following
-            values: issue, open, accepted, rejected, deferred, duplicate, reopened, unassigned, or
-            completed.<?datatype CDATA?><?default #IMPLIED?></dd>
-    </dlentry>
-   </dl></section>
+        <dlentry id="author">
+          <dt><xmlatt>author</xmlatt></dt>
+          <dd>Designates the originator of the draft comment.</dd>
+        </dlentry>
+        <dlentry id="time">
+          <dt><xmlatt>time</xmlatt></dt>
+          <dd>Describes when the draft comment was created.</dd>
+        </dlentry>
+        <dlentry id="disposition">
+          <dt><xmlatt>disposition</xmlatt></dt>
+          <dd>Status of the draft comment. <draft-comment author="Kristen J Eberlein"
+              time="23 May 2017">
+              <p>I removed the following sentence: "Prior to DITA 1.2, this attribute was limited to
+                the following values: issue, open, accepted, rejected, deferred, duplicate,
+                reopened, unassigned, or completed."</p>
+            </draft-comment></dd>
+        </dlentry>
+      </dl>
+    </section>
+<example id="example" otherprops="examples">
+      <title>Example</title>
+      <p>The following example illustrates how an content developer can use a
+          <xmlelement>draft-comment</xmlelement> element to pose a question to reviewers.</p>
+      <codeblock>&lt;draft-comment 
+  <b>author="EBP"</b> 
+  <b>time="23 May 2017"</b> 
+  status="missing-info"&gt;
+Where's the usage information for this section?
+&lt;/draft-comment&gt;</codeblock>
+      <p>Processors might render the information from the highlighted attributes at viewing or
+        publishing time. Authors might use the value of the status <xmlatt>attribute</xmlatt> to
+        track the work that remains to be done on a content collection.</p>
+    </example>
 </refbody>
 </reference>
 

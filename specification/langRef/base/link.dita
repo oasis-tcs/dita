@@ -5,9 +5,7 @@
 <reference id="link" xml:lang="en-us">
 <title><xmlelement>link</xmlelement></title>
 <shortdesc>The <xmlelement>link</xmlelement> element defines a relationship to another topic or
-    non-DITA resource. <ph>When displayed, links are typically sorted based on their attributes,
-      which define the type or role of the link&apos;s target in relation to the current
-    topic.</ph></shortdesc>
+    non-DITA resource.</shortdesc>
 <prolog><metadata>
 <keywords><indexterm>elements<indexterm>related
             links<indexterm><xmlelement>link</xmlelement></indexterm></indexterm></indexterm>
@@ -17,17 +15,31 @@
 </keywords>
 </metadata></prolog>
 <refbody>
-<section id="section-1">The optional container elements for link (<xmlelement>linkpool</xmlelement>
-      and <xmlelement>linklist</xmlelement>) allow authors to define groups with common attributes
-      or to preserve the authored sequence of links on output. <ph id="1.1">Links placed in a
-          <xmlelement>linkpool</xmlelement>
-        <ph >might</ph> be rearranged or removed for display purposes (combined
-        with other local or map-based links); links in a <xmlelement>linklist</xmlelement> should be
-        displayed in the order they are defined. Refer to those elements for additional
-        explanation.</ph></section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-link/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-topic/link </p></section>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>The optional container elements for link (<xmlelement>linkpool</xmlelement> and
+          <xmlelement>linklist</xmlelement>) allow authors to define groups with common attributes
+        or to preserve the authored sequence of links on output.</p>
+    </section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p><ph>When displayed, links are typically sorted based on their attributes, which define the
+          type or role of the link&apos;s target in relation to the current topic.</ph></p>
+      <p><ph id="1.1">Links placed in a <xmlelement>linkpool</xmlelement> might be rearranged or
+          removed for display purposes (combined with other local or map-based links); links in a
+            <xmlelement>linklist</xmlelement> should be displayed in the order they are defined.
+          Refer to those elements for additional explanation.</ph></p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref
+          href="../attributes/universalAttributes.dita"/>, <xref
+          href="../attributes/linkRelationshipAttributes.dita"/>, <xref
+          href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, <xref
+          href="../attributes/thekeyrefattribute.dita"><xmlatt>keyref</xmlatt></xref>, <xref
+          href="../attributes/theroleattribute.dita#theroleattribute"/>, and <xref
+          href="../attributes/topicrefElementAttributes.dita#topicref-element-atts/query"/>.</p>
+    </section>
 <example id="example" otherprops="examples"><title>Example</title><codeblock>&lt;related-links&gt;
   &lt;linkpool type="concept"&gt;
     &lt;link href="czez.dita#czez" role="next">&lt;/link>
@@ -42,15 +54,6 @@ topic/link </p></section>
   &lt;/linkpool&gt;
 &lt;/related-links&gt;
 </codeblock></example>
-<section id="attributes"><title>Attributes</title>
-      <p>The following attributes are available on this element: <xref
-          href="../attributes/universalAttributes.dita"/>, <xref
-          href="../attributes/linkRelationshipAttributes.dita"/>, <xref
-          href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, <xref
-          href="../attributes/thekeyrefattribute.dita"><xmlatt>keyref</xmlatt></xref>, <xref
-          href="../attributes/theroleattribute.dita#theroleattribute"/>, and <xref
-          href="../attributes/topicrefElementAttributes.dita#topicref-element-atts/query"/>.</p>
-      </section>
 </refbody>
 </reference>
 
