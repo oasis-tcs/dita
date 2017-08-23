@@ -14,27 +14,26 @@
 </keywords>
 </metadata></prolog>
 <refbody>
-    <section id="section-1">
+    <section id="usage-information">
+      <title>Usage information</title>
       <p>The <xmlelement>image</xmlelement> element has an optional <xmlatt>placement</xmlatt>
-        attribute that indicates whether the included graphic or artwork <ph 
-          >is rendered inline</ph> (a button or icon) or on a separate line for a larger image.
-        There also are attributes that indicate the size to which the included graphic or artwork
-          <ph >is</ph> scaled.</p>
+        attribute that indicates whether the included graphic or artwork is rendered inline (a
+        button or icon) or on a separate line for a larger image. There also are attributes that
+        indicate the size to which the included graphic or artwork is scaled.</p>
+      <p>To make the intent of the image more accessible for users using screen readers or text-only
+        readers, authors should include a description of the image content in the
+          <xmlelement>alt</xmlelement> element.</p>
+    </section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
       <p>An image element specifies an <xmlatt>href</xmlatt> attribute, a <xmlatt>keyref</xmlatt>
         attribute, or both. When both <xmlatt>keyref</xmlatt> and <xmlatt>href</xmlatt> are
         specified, the <xmlatt>href</xmlatt> is used as a fallback when the key reference cannot be
         resolved. The image addressed by the <xmlatt>keyref</xmlatt> or <xmlatt>href</xmlatt> is
         brought into the main flow of the content as rendered. </p>
-      <p>To make the intent of the image more accessible for users using screen readers or text-only
-        readers, authors should include a description of the image content in the <xmlelement>alt</xmlelement> element.</p>
     </section>
-<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-image/contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-topic/image </p></section>
-<example id="example" otherprops="examples"><title>Example</title><codeblock>&lt;image href="bike.gif" placement="break"&gt;
-  &lt;alt&gt;Two-wheeled bicycle&lt;/alt&gt;
-&lt;/image&gt;</codeblock></example>
-<section id="attributes"><title>Attributes</title>
+    <section id="attributes">
+      <title>Attributes</title>
       <p>The following attributes are available on this element: <xref
           href="../attributes/universalAttributes.dita"/>, <xref
           href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, <xref
@@ -85,6 +84,10 @@ topic/image </p></section>
           <dt/>
           <dd/>
         </dlentry>
-      </dl></section>
+      </dl>
+    </section>
+<example id="example" otherprops="examples"><title>Example</title><codeblock>&lt;image href="bike.gif" placement="break"&gt;
+  &lt;alt&gt;Two-wheeled bicycle&lt;/alt&gt;
+&lt;/image&gt;</codeblock></example>
 </refbody>
 </reference>

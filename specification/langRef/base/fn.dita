@@ -61,11 +61,15 @@
         </dlentry>
       </dl>
     </section>
-<section id="section-1">Footnote content is skipped at the place where it was entered and rendered
-      elsewhere, according to these rules: <ul>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>Footnote content is skipped at the place where it was entered and rendered elsewhere,
+        according to these rules:</p>
+      <ul id="ul_yb2_b22_z1b">
         <li>Ordinarily, a footnote in one topic can't be referenced in another topic. The previous
           behaviors are local to each topic. But by using the conref mechanism, you can create a new
-          copy of another topic's footnote within the local topic where it will then follow these behaviors:<ul>
+          copy of another topic's footnote within the local topic where it will then follow these
+            behaviors:<ul id="ul_zb2_b22_z1b">
             <li>If you use <codeph>&lt;fn conref="file.dita#topic/thatid"&gt;&lt;/fn&gt;</codeph>
               all by itself, the result will be the same as the single-use footnote entered
               literally in the same location. That is, it creates a local copy of the footnote with
@@ -79,14 +83,16 @@
               of "thisid"; that local copy is then referenced by the <xmlelement>xref</xmlelement>
               element.</li>
           </ul></li>
-      </ul><p>The details of footnote processing and styling are implementation and/or stylesheet
-        dependent. For example, a tool that renders DITA as PDF <ph >might</ph>
-        lack support for the <xmlatt>callout</xmlatt> attribute, or footnotes <ph
-          >might</ph> be collected as endnotes for certain types of
-        publications.</p></section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-fn/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-topic/fn </p></section>
+      </ul>
+      <p>The details of footnote processing and styling are implementation and/or stylesheet
+        dependent. For example, a tool that renders DITA as PDF <ph>might</ph> lack support for the
+          <xmlatt>callout</xmlatt> attribute, or footnotes <ph>might</ph> be collected as endnotes
+        for certain types of publications.</p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <sectiondiv conref="../../common/conref-attribute.dita#conref-attribute/fn-attributes"/>
+    </section>
 <example id="example" otherprops="examples"><title>Example</title><p>The first example is of a <b>single-use</b> footnote. It uses a simple
           <xmlelement>fn</xmlelement> element, with no <xmlatt>id</xmlatt> and no
           <xmlatt>callout</xmlatt> attribute. In that case, markup such as the
@@ -127,8 +133,6 @@ llama&lt;xref href="#topic/reuse-fn" type="fn"/&gt;.</codeblock>and
           <p>----- [bottom of page]
             -----------------------------------------------------------------</p>
         </lq></p></example>
-<section id="attributes"><title>Attributes</title><sectiondiv
-    conref="../../common/conref-attribute.dita#conref-attribute/fn-attributes"/></section>
 </refbody>
 </reference>
 
