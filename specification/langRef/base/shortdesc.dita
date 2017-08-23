@@ -20,15 +20,11 @@
     </metadata>
   </prolog>
 <refbody>
-    <section id="section-1">
+    <section id="usage-information">
+      <title>Usage information</title>
+      <!--Short descriptions in topics-->
       <p>The short description should be a single, concise paragraph containing one or two sentences
         of no more than 50 words.</p>
-    </section>
-    <section id="section-2">
-      <title>Short descriptions in topics</title>
-      <p >The content of the <xmlelement>shortdesc</xmlelement> element <term
-        outputclass="RFC-2119">SHOULD</term> be rendered as the initial paragraph of the
-        topic.</p>
       <p>Use the <xmlelement>shortdesc</xmlelement> element when the first paragraph of topic
         content is simple enough to be suitable for use as a link preview or for summaries.
         Otherwise use the <xmlelement>abstract</xmlelement> element to provide richer content around
@@ -39,7 +35,8 @@
         topics contain this element. When a topic contains only one paragraph, it is preferable to
         include the text in the <xmlelement>shortdesc</xmlelement> and omit the topic body or leave
         it empty. </p>
-      <table colsep="0" frame="topbot" rowheader="firstcol" product="technicalContent">
+      <table colsep="0" frame="topbot" rowheader="firstcol" product="technicalContent"
+        id="table_b1y_4yd_z1b">
         <tgroup cols="2">
           <colspec colname="col1" colwidth="44*"/>
           <colspec colname="col2" colwidth="153*"/>
@@ -95,13 +92,11 @@
           </tbody>
         </tgroup>
       </table>
-    </section>
-    <section id="section-3">
-      <title>Short descriptions in maps</title>
-      <p >The <xmlelement>shortdesc</xmlelement> element can be used in DITA maps and
-        associated with <xmlelement>topicref</xmlelement> elements. This enables map authors to
-        accomplish the following goals:</p>
-      <ul >
+      <!--Short descriptions in maps-->
+      <p>The <xmlelement>shortdesc</xmlelement> element can be used in DITA maps and associated with
+          <xmlelement>topicref</xmlelement> elements. This enables map authors to accomplish the
+        following goals:</p>
+      <ul id="ul_hgj_vyd_z1b">
         <li>Associate a short description with a non-DITA object.</li>
         <li>Provide a short description that is specific to the map context and used for link
           previews.</li>
@@ -109,21 +104,27 @@
             <xmlatt>copy-to</xmlatt> attribute is specified. Processors might not implement this
           behavior.</li>
       </ul>
-      <p >When processors generate link previews that are based on the map context,
-        they <term outputclass="RFC-2119">SHOULD</term> use the content of the
+      <p>When a <xmlelement>shortdesc</xmlelement> element applies to an entire DITA map, it serves
+        as description only.</p>
+    </section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>The content of the <xmlelement>shortdesc</xmlelement> element <term outputclass="RFC-2119"
+          >SHOULD</term> be rendered as the initial paragraph of the topic.</p>
+      <p>When processors generate link previews that are based on the map context, they <term
+          outputclass="RFC-2119">SHOULD</term> use the content of the
           <xmlelement>shortdesc</xmlelement> that is located in the map rather than the
           <xmlelement>shortdesc</xmlelement> that is located in the DITA topic. However, processors
           <term outputclass="RFC-2119">SHOULD</term> use the content of the
           <xmlelement>shortdesc</xmlelement> element in the DITA topic when they render the topic
         itself, unless the <xmlatt>copy-to</xmlatt> attribute is specified on the topic reference to
         the element.</p>
-      <p >When a <xmlelement>shortdesc</xmlelement> element applies to an entire DITA
-        map, it serves as description only.</p>
     </section>
-    <section conref="../../common/commonNavLibraryTable.dita#contentmodel-shortdesc/contains" id="contains" otherprops="contains"/>
-    <section id="inheritance" otherprops="inheritance">
-      <title>Inheritance</title>
-      <p>"- topic/shortdesc " when used in topics, and "- map/shortdesc " when used in maps.</p>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref
+          href="../attributes/universalAttributes.dita"/> and <xref
+          href="../attributes/commonAttributes.dita#common-atts/outputclass"/>.</p>
     </section>
     <example id="example" otherprops="examples">
       <title>Examples</title>
@@ -146,15 +147,12 @@
   &lt;/topicmeta>
 &lt;/topicref></codeblock>
     </example>
-    <example conref="abstract.dita#abstract/example" id="example-shortdesc-in-abstract" otherprops="examples"/>
-    <example conref="abstract.dita#abstract/example2" id="example-shortdesc-in-abstract2" otherprops="examples"/>
-    <example conref="abstract.dita#abstract/example3" id="example-shortdesc-in-abstract3" otherprops="examples"/>
-    <section id="attributes">
-      <title>Attributes</title>
-      <p>The following attributes are available on this element: <xref
-          href="../attributes/universalAttributes.dita"/> and <xref
-          href="../attributes/commonAttributes.dita#common-atts/outputclass"/>.</p>
-    </section>
+    <example conref="abstract.dita#abstract/example" id="example-shortdesc-in-abstract"
+      otherprops="examples"/>
+    <example conref="abstract.dita#abstract/example2" id="example-shortdesc-in-abstract2"
+      otherprops="examples"/>
+    <example conref="abstract.dita#abstract/example3" id="example-shortdesc-in-abstract3"
+      otherprops="examples"/>
   </refbody>
 </reference>
 
