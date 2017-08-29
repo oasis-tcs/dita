@@ -6,21 +6,26 @@
 <shortdesc>The <xmlelement>component</xmlelement> element describes the component of the product
   that this topic is concerned with. For example, a product might be made up of many components,
   each of which is installable separately. Components might also be shared by several products so
-  that the same component is available for installation with many products. An implementation <ph
-   >might</ph> use this identification to check cross-component dependencies
-  when some components are installed, but not others. An implementation <ph 
-   >might</ph> use the identification to make sure that topics are hidden, removed, or flagged in
-  some way when the component they describe isn't
-  installed.<!--Such process-control
-logic is not currently supported in DITA processing.--></shortdesc>
+  that the same component is available for installation with many products. </shortdesc>
 <prolog><metadata>
 <keywords><indexterm>component</indexterm><indexterm>prolog elements<indexterm>component</indexterm></indexterm>
 </keywords>
 </metadata></prolog>
 <refbody>
-<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-component/contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-topic/component </p></section>
+  <section id="processing-expectations">
+   <title>Processing expectations</title>
+   <p>An implementation might use this identification to check cross-component dependencies when
+    some components are installed, but not others. An implementation might use the identification to
+    make sure that topics are hidden, removed, or flagged in some way when the component they
+    describe isn't
+    installed.<!--Such process-control
+logic is not currently supported in DITA processing.--></p>
+  </section>
+  <section id="attributes">
+   <title>Attributes</title>
+   <p>The following attributes are available on this element: <xref
+     href="../attributes/universalAttributes.dita"/>.</p>
+  </section>
 <example id="example" otherprops="examples"><title>Example</title><codeblock>&lt;prodinfo&gt;
  &lt;prodname&gt;BatCom&lt;/prodname&gt;
  &lt;vrmlist&gt;
@@ -29,8 +34,5 @@ topic/component </p></section>
  <b>&lt;component&gt;</b>TCP/IP<b>&lt;/component&gt;</b>
 &lt;/prodinfo&gt;
 </codeblock></example>
-<section id="attributes"><title>Attributes</title>
-   <p >The following attributes are available on this element: <xref
-     href="../attributes/universalAttributes.dita"/>.</p></section>
 </refbody>
 </reference>

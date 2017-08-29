@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="reference" />
+<meta name="DC.Title" content="Attributes common to many map elements" />
+<meta name="abstract" content="This attribute group collects several attributes that are used on a variety of map elements. For a few elements, the group is modified slightly to remove an attribute such as toc or format; in those cases the element definition will clarify that the element does not use this full set. That is generally done in order to specify a default for one attribute, such as defaulting format to &#34;ditamap&#34; on the mapref element." />
+<meta name="description" content="This attribute group collects several attributes that are used on a variety of map elements. For a few elements, the group is modified slightly to remove an attribute such as toc or format; in those cases the element definition will clarify that the element does not use this full set. That is generally done in order to specify a default for one attribute, such as defaulting format to &#34;ditamap&#34; on the mapref element." />
+<meta name="DC.subject" content="Common map attribute group, Commonly referenced attribute descriptions, Common map attributes" />
+<meta name="keywords" content="Common map attribute group, Commonly referenced attribute descriptions, Common map attributes" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="topicref-atts" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../commonltr.css" />
+<title>Attributes common to many map elements</title>
+</head>
+<body id="topicref-atts">
+
+ <h1 class="title topictitle1" id="ariaid-title1">Attributes common to many map elements</h1>
+
+ 
+ 
+ <div class="body refbody"><p class="shortdesc">This attribute group collects several attributes that are used on a variety of map
+  elements. For a few elements, the group is modified slightly to remove an attribute such as
+   <code class="keyword markupname xmlatt">@toc</code> or <code class="keyword markupname xmlatt">@format</code>; in those cases the element definition will
+  clarify that the element does not use this full set. That is generally done in order to specify a
+  default for one attribute, such as defaulting <code class="keyword markupname xmlatt">@format</code> to "ditamap" on the
+   <code class="keyword markupname xmlelement">&lt;mapref&gt;</code> element.</p>
+
+  <div class="section" id="topicref-atts__section-1">
+   <dl class="dl">
+    
+    
+     <dt class="dt dlterm" id="topicref-atts__cascade"><code class="keyword markupname xmlatt">@cascade</code></dt>
+
+     <dd class="dd">Controls how metadata attributes cascade within a map. There are two defined values that
+      should be supported: "merge" and "nomerge". If no value is set, and no value cascades from an
+      ancestor element, processors <dfn class="term RFC-2119">SHOULD</dfn> assume a default of
+      "merge". See <a class="xref" href="../../archSpec/base/cascading-in-a-ditamap.html" title="Certain map-level attributes cascade throughout a map, which facilitates attribute and metadata management. When attributes cascade, they apply to the elements that are children of the element where the attributes were specified. Cascading applies to a containment hierarchy, as opposed to a element-type hierarchy.">Cascading of metadata attributes in a DITA map</a> for more
+      information about how this attribute interacts with metadata attributes.</dd>
+
+    
+    
+     <dt class="dt dlterm" id="topicref-atts__collection-type"><code class="keyword markupname xmlatt">@collection-type</code></dt>
+
+     <dd class="dd">Collection
+      types describe how links relate to each other. The processing default is "unordered", although
+      no default is specified in the DTD or Schema. Allowable values are:<dl class="dl" id="topicref-atts__colltypevalues">
+       
+        <dt class="dt dlterm">unordered </dt>
+
+        <dd class="dd">Indicates that the order of the child topics is not significant. </dd>
+
+       
+       
+        <dt class="dt dlterm">sequence </dt>
+
+        <dd class="dd">Indicates that the order of the child topics is significant; output processors will
+         typically link between them in order. </dd>
+
+       
+       
+        <dt class="dt dlterm">choice </dt>
+
+        <dd class="dd">Indicates that one of the children should be selected. </dd>
+
+       
+       
+        <dt class="dt dlterm">family </dt>
+
+        <dd class="dd">Represents a tight grouping in which each of the referenced topics not only relates to
+         the current topic but also relate to each other. </dd>
+
+       
+       
+                                        <dt class="dt dlterm">-dita-use-conref-target </dt>
+
+                                        <dd class="dd">See <a class="xref" href="../../common/../langRef/attributes/ditauseconreftarget.html" title="The value -dita-use-conref-target is available on enumerated attributes and can also be specified on other attributes. When an element uses conref to pull in content, for any of its attributes assigned a value of &#34;-dita-use-conref-target&#34;, the resulting value for those attributes is also pulled in from the referenced element.">Using the -dita-use-conref-target value</a> for more information. </dd>
+
+                                
+      </dl>
+<p class="p">Usage of the <code class="keyword markupname xmlatt">@collection-type</code> attribute on
+        <code class="keyword markupname xmlelement">&lt;reltable&gt;</code> and <code class="keyword markupname xmlelement">&lt;relcolspec&gt;</code> is currently
+       undefined and reserved for future use. </p>
+</dd>
+
+    
+    
+     <dt class="dt dlterm" id="topicref-atts__processing-role"><code class="keyword markupname xmlatt">@processing-role</code></dt>
+
+     <dd class="dd">Describes
+      the processing role of the referenced topic. The processing default is "normal". <span class="ph">If no value is
+                                        specified, but the attribute is specified on an ancestor
+                                        within a map or within the related-links section, the value
+                                        will cascade from the closest ancestor.</span> Allowable values are:<dl class="dl">
+       
+        <dt class="dt dlterm">normal </dt>
+
+        <dd class="dd">Normal topic that is a readable part of the information. </dd>
+
+       
+       
+        <dt class="dt dlterm">resource-only </dt>
+
+        <dd class="dd">The topic is used as a resource for processing purposes. This topic should not be
+         included in a rendered table of contents, and the topic should not be rendered on its own.
+        </dd>
+
+       
+       
+                                        <dt class="dt dlterm">-dita-use-conref-target </dt>
+
+                                        <dd class="dd">See <a class="xref" href="../../common/../langRef/attributes/ditauseconreftarget.html" title="The value -dita-use-conref-target is available on enumerated attributes and can also be specified on other attributes. When an element uses conref to pull in content, for any of its attributes assigned a value of &#34;-dita-use-conref-target&#34;, the resulting value for those attributes is also pulled in from the referenced element.">Using the -dita-use-conref-target value</a> for more information. </dd>
+
+                                
+      </dl>
+</dd>
+
+    
+    
+     <dt class="dt dlterm" id="topicref-atts__locktitle"><code class="keyword markupname xmlatt">@locktitle</code></dt>
+
+     <dd class="dd">If the
+       <code class="keyword markupname xmlatt">@locktitle</code> attribute is set to "yes", the content of the
+       <code class="keyword markupname xmlelement">&lt;navtitle&gt;</code> element or <code class="keyword markupname xmlatt">@navtitle</code> attribute is used for
+      a navigation title, if it is present. If the <code class="keyword markupname xmlatt">@locktitle</code> attribute is not
+      present or set to "no", the content of the <code class="keyword markupname xmlelement">&lt;navtitle&gt;</code> element or
+       <code class="keyword markupname xmlatt">@navtitle</code> attribute is ignored, and the title of the referenced topic is used
+      as a navigation title. <div class="note note"><span class="notetitle">Note:</span> The <code class="keyword markupname xmlatt">@navtitle</code>
+                                attribute is deprecated in favor of the
+                                        <code class="keyword markupname xmlelement">&lt;navtitle&gt;</code> element. When both a
+                                        <code class="keyword markupname xmlelement">&lt;navtitle&gt;</code> element and a
+                                        <code class="keyword markupname xmlatt">@navtitle</code> attribute are specified, the
+                                        <code class="keyword markupname xmlelement">&lt;navtitle&gt;</code> element should be used. </div>
+<div class="p">Allowable
+       values for <code class="keyword markupname xmlatt">@locktitle</code> are:<dl class="dl">
+        
+         <dt class="dt dlterm">yes </dt>
+
+         <dd class="dd">The content of the <code class="keyword markupname xmlelement">&lt;navtitle&gt;</code> element or
+           <code class="keyword markupname xmlatt">@navtitle</code> attribute is used for a navigation title.</dd>
+
+        
+        
+         <dt class="dt dlterm">no </dt>
+
+         <dd class="dd">The content of the <code class="keyword markupname xmlelement">&lt;navtitle&gt;</code> element or
+           <code class="keyword markupname xmlatt">@navtitle</code> attribute is ignored. This is the processing default. </dd>
+
+        
+        
+                                        <dt class="dt dlterm">-dita-use-conref-target </dt>
+
+                                        <dd class="dd">See <a class="xref" href="../../common/../langRef/attributes/ditauseconreftarget.html" title="The value -dita-use-conref-target is available on enumerated attributes and can also be specified on other attributes. When an element uses conref to pull in content, for any of its attributes assigned a value of &#34;-dita-use-conref-target&#34;, the resulting value for those attributes is also pulled in from the referenced element.">Using the -dita-use-conref-target value</a> for more information. </dd>
+
+                                
+       </dl>
+</div>
+</dd>
+
+    
+    
+     <dt class="dt dlterm" id="topicref-atts__linking"><code class="keyword markupname xmlatt">@linking</code></dt>
+
+     <dd class="dd">Defines
+      some specific linking characteristics of a topic's current location in the map. <span class="ph">If
+                                        the value is not specified locally, the value <span class="ph">might</span> cascade from
+                                        another element in the map (for cascade rules, see <a class="xref" href="../../common/../archSpec/base/cascading-in-a-ditamap.html#cascading-in-a-ditamap" title="Certain map-level attributes cascade throughout a map, which facilitates attribute and metadata management. When attributes cascade, they apply to the elements that are children of the element where the attributes were specified. Cascading applies to a containment hierarchy, as opposed to a element-type hierarchy.">Cascading of metadata attributes in a DITA map</a>).</span> Allowable
+      values are:<dl class="dl">
+       
+        <dt class="dt dlterm">targetonly </dt>
+
+        <dd class="dd">A topic can only be linked to and cannot link to other topics. </dd>
+
+       
+       
+        <dt class="dt dlterm">sourceonly </dt>
+
+        <dd class="dd">A topic cannot be linked to but can link to other topics. </dd>
+
+       
+       
+        <dt class="dt dlterm">normal </dt>
+
+        <dd class="dd">A topic can be linked to and can link to other topics. Use this to override the linking
+         value of a parent topic. </dd>
+
+       
+       
+        <dt class="dt dlterm">none </dt>
+
+        <dd class="dd">A topic cannot be linked to or link to other topics. </dd>
+
+       
+       
+                                        <dt class="dt dlterm">-dita-use-conref-target </dt>
+
+                                        <dd class="dd">See <a class="xref" href="../../common/../langRef/attributes/ditauseconreftarget.html" title="The value -dita-use-conref-target is available on enumerated attributes and can also be specified on other attributes. When an element uses conref to pull in content, for any of its attributes assigned a value of &#34;-dita-use-conref-target&#34;, the resulting value for those attributes is also pulled in from the referenced element.">Using the -dita-use-conref-target value</a> for more information. </dd>
+
+                                
+      </dl>
+</dd>
+
+    
+    
+     <dt class="dt dlterm" id="topicref-atts__toc"><code class="keyword markupname xmlatt">@toc</code></dt>
+
+     <dd class="dd">Specifies
+      whether a topic appears in the table of contents (TOC). <span class="ph">If
+                                        the value is not specified locally, the value <span class="ph">might</span> cascade from
+                                        another element in the map (for cascade rules, see <a class="xref" href="../../common/../archSpec/base/cascading-in-a-ditamap.html#cascading-in-a-ditamap" title="Certain map-level attributes cascade throughout a map, which facilitates attribute and metadata management. When attributes cascade, they apply to the elements that are children of the element where the attributes were specified. Cascading applies to a containment hierarchy, as opposed to a element-type hierarchy.">Cascading of metadata attributes in a DITA map</a>).</span> Allowable
+      values are:<dl class="dl">
+       
+        <dt class="dt dlterm">yes </dt>
+
+        <dd class="dd">The topic appears in a generated TOC.</dd>
+
+       
+       
+        <dt class="dt dlterm">no </dt>
+
+        <dd class="dd">The topic does not appear in a generated TOC.</dd>
+
+       
+       
+        <dt class="dt dlterm">-dita-use-conref-target </dt>
+
+        <dd class="dd">See <a class="xref" href="ditauseconreftarget.html" title="The value -dita-use-conref-target is available on enumerated attributes and can also be specified on other attributes. When an element uses conref to pull in content, for any of its attributes assigned a value of &#34;-dita-use-conref-target&#34;, the resulting value for those attributes is also pulled in from the referenced element.">Using the -dita-use-conref-target value</a> for more information. </dd>
+
+       
+      </dl>
+</dd>
+
+    
+    
+     <dt class="dt dlterm" id="topicref-atts__print"><code class="keyword markupname xmlatt">@print</code></dt>
+
+     <dd class="dd">Specifies
+      whether the topic should be included in a print-specific rendition, such as PDF. The
+      processing default is "yes". <span class="ph">If
+                                        the value is not specified locally, the value <span class="ph">might</span> cascade from
+                                        another element in the map (for cascade rules, see <a class="xref" href="../../common/../archSpec/base/cascading-in-a-ditamap.html#cascading-in-a-ditamap" title="Certain map-level attributes cascade throughout a map, which facilitates attribute and metadata management. When attributes cascade, they apply to the elements that are children of the element where the attributes were specified. Cascading applies to a containment hierarchy, as opposed to a element-type hierarchy.">Cascading of metadata attributes in a DITA map</a>).</span>
+      <div class="note note"><span class="notetitle">Note:</span> Beginning with DITA 1.3, the <code class="keyword markupname xmlatt">@print</code> attribute is
+                                deprecated. It is replaced with a conditional processing attribute:
+                                        <code class="keyword markupname xmlatt">@deliveryTarget</code>. See <a class="xref" href="../../common/../langRef/attributes/metadataAttributes.html#select-atts__deliveryTarget"><code class="keyword markupname xmlatt">@deliveryTarget</code></a> for more
+                                details.</div>
+<div class="p">Allowable values are: <dl class="dl">
+                                        
+                                                <dt class="dt dlterm">yes </dt>
+
+                                                <dd class="dd">Include the topic in the print-oriented file.
+                                                </dd>
+
+                                        
+                                        
+                                                <dt class="dt dlterm">no </dt>
+
+                                                <dd class="dd">Do not include the topic in a print-oriented
+                                                  file. </dd>
+
+                                        
+                                        
+                                                <dt class="dt dlterm">printonly </dt>
+
+                                                <dd class="dd">Only include the topic when rendering the DITA
+                                                  content in a print-oriented context; the topic <span class="ph">is not appropriate for other
+                                                  contexts</span>, such as when rendering as
+                                                  HTML.
+                                                </dd>
+
+                                        
+                                        
+                                        <dt class="dt dlterm">-dita-use-conref-target </dt>
+
+                                        <dd class="dd">See <a class="xref" href="../../common/../langRef/attributes/ditauseconreftarget.html" title="The value -dita-use-conref-target is available on enumerated attributes and can also be specified on other attributes. When an element uses conref to pull in content, for any of its attributes assigned a value of &#34;-dita-use-conref-target&#34;, the resulting value for those attributes is also pulled in from the referenced element.">Using the -dita-use-conref-target value</a> for more information. </dd>
+
+                                
+                                </dl>
+</div>
+</dd>
+
+    
+    
+     <dt class="dt dlterm" id="topicref-atts__search"><code class="keyword markupname xmlatt">@search</code></dt>
+
+     <dd class="dd">Describes
+      whether the target is available for searching. <span class="ph">If
+                                        the value is not specified locally, the value <span class="ph">might</span> cascade from
+                                        another element in the map (for cascade rules, see <a class="xref" href="../../common/../archSpec/base/cascading-in-a-ditamap.html#cascading-in-a-ditamap" title="Certain map-level attributes cascade throughout a map, which facilitates attribute and metadata management. When attributes cascade, they apply to the elements that are children of the element where the attributes were specified. Cascading applies to a containment hierarchy, as opposed to a element-type hierarchy.">Cascading of metadata attributes in a DITA map</a>).</span> Allowable
+      values are: <dl class="dl">
+       
+        <dt class="dt dlterm">yes </dt>
+
+        <dd class="dd"> </dd>
+
+       
+       
+        <dt class="dt dlterm">no </dt>
+
+        <dd class="dd"> </dd>
+
+       
+       
+        <dt class="dt dlterm"><a class="xref" href="ditauseconreftarget.html" title="The value -dita-use-conref-target is available on enumerated attributes and can also be specified on other attributes. When an element uses conref to pull in content, for any of its attributes assigned a value of &#34;-dita-use-conref-target&#34;, the resulting value for those attributes is also pulled in from the referenced element.">-dita-use-conref-target</a>
+        </dt>
+
+        <dd class="dd"> </dd>
+
+       
+      </dl>
+</dd>
+
+    
+    
+     <dt class="dt dlterm" id="topicref-atts__chunk"><code class="keyword markupname xmlatt">@chunk</code></dt>
+
+     <dd class="dd">When a set
+      of topics is transformed using a map, the <code class="keyword markupname xmlatt">@chunk</code> attribute allows multi-topic
+      documents to be broken into smaller files and multiple individual topics to be combined into
+      larger combined documents.<p class="p">For a detailed description of the <code class="keyword markupname xmlatt">@chunk</code>
+       attribute and its usage, see <a class="xref" href="../../archSpec/base/chunking.html" title="Content can be chunked (divided or merged into new output documents) in different ways for the purposes of delivering content and navigation. For example, content best authored as a set of separate topics might need to be delivered as a single Web page. A map author can use the chunk attribute to split up multi-topic documents into component topics or to combine multiple topics into a single document as part of output processing.">Chunking</a>.</p>
+</dd>
+
+    
+    
+     <dt class="dt dlterm" id="topicref-atts__keyscope"><code class="keyword markupname xmlatt">@keyscope</code></dt>
+
+     <dd class="dd">Specifies that the element marks the boundaries of a key scope. See <a class="xref" href="the-key-scope-attribute.html" title="The keyscope attribute consists of one or more space-separated key scope names. Map authors define the boundaries for key scopes by specifying the keyscope attribute on map elements, topicref elements, or elements that are specializations of map or topicref. Such elements, their contents, and any locally-scoped content referenced from within the element, are considered to be part of the scope. Keys defined within a scope are only directly referenceable from within the same scope. They can be referenced from the parent scope using the scope's name, followed by a period, followed by the key name.">The keyscope attribute</a> for details on how to use the <code class="keyword markupname xmlatt">@keyscope</code>
+      attribute.</dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+</body>
+</html>

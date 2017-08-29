@@ -10,28 +10,24 @@
       <keywords><indexterm>audience</indexterm><indexterm>prolog elements<indexterm>audience</indexterm></indexterm></keywords>
     </metadata>
   </prolog>
-  <refbody><section id="section-1">
+  <refbody>
+    <section id="usage-information">
+      <title>Usage information</title>
       <p>Since a topic can have multiple audiences, you can include multiple audience elements. For
         each audience you specify, you can identify the high-level task they are trying to
         accomplish with the <xmlatt>job</xmlatt> attribute, and the level of experience expected
         with the <xmlatt>experiencelevel</xmlatt> attribute. <ph>The
-            <xmlelement>audience</xmlelement> element <ph >can</ph> be used to
-          provide a more detailed definition of values used throughout the map or topic on the
+            <xmlelement>audience</xmlelement> element <ph>can</ph> be used to provide a more
+          detailed definition of values used throughout the map or topic on the
             <xmlatt>audience</xmlatt> attribute.</ph></p>
       <p>Many of the attributes on the <xmlelement>audience</xmlelement> element have enumerated
-        values, which <ph >can</ph> be restricted by using constraints or
-        extended by using associated attributes. For instance, the <xmlatt>othertype</xmlatt>
-        attribute can be used to extend the audience type enumeration.</p>
-    </section><section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-audience/contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance">
-      <title>Inheritance</title>
-      <p>- topic/audience </p>
-    </section><example id="example" otherprops="examples">
-      <title>Example</title>
-      <p>For a command reference topic for experienced programmers, the following might be an
-        appropriate indication of that audience:</p>
-      <codeblock>&lt;audience type="programmer" job="programming" experiencelevel="expert"/&gt;</codeblock>
-    </example><section id="attributes"><title>Attributes</title><p>The following attributes are available on this element: <xref
+        values, which can be restricted by using constraints or extended by using associated
+        attributes. For instance, the <xmlatt>othertype</xmlatt> attribute can be used to extend the
+        audience type enumeration.</p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref
           href="../attributes/universalAttributes.dita"/> and the attributes defined below.</p>
       <dl>
         <dlentry id="type">
@@ -56,10 +52,9 @@
         <dlentry id="job">
           <dt><xmlatt>job</xmlatt></dt>
           <dd>Indicates the high-level task the audience for the topic is trying to accomplish.
-            Different audiences <ph >might</ph> read the same topic in terms of
-            different high-level tasks; for example, an administrator <ph 
-              >might</ph> read the topic while administering, while a programmer <ph
-              >might</ph> read the same topic while customizing. Beginning with
+            Different audiences <ph>might</ph> read the same topic in terms of different high-level
+            tasks; for example, an administrator <ph>might</ph> read the topic while administering,
+            while a programmer <ph>might</ph> read the same topic while customizing. Beginning with
             DITA 1.2, values in this attribute are not limited to a small number of choices; the
             following values were used in DITA 1.0 and DITA 1.1, and are still provided as sample
             values: <keyword>installing</keyword>, <keyword>customizing</keyword>,
@@ -78,19 +73,24 @@
         <dlentry id="experiencelevel">
           <dt><xmlatt>experiencelevel</xmlatt></dt>
           <dd>Indicates the level of experience the audience is assumed to possess. Different
-            audiences <ph >might</ph> have different experience levels with
-            respect to the same topic; for example, a topic <ph >might</ph>
-            require general knowledge from a programmer, but expert knowledge from a user. Beginning
-            with DITA 1.2, values in this attribute are not limited to a small number of choices;
-            the following values were used in DITA 1.0 and DITA 1.1, and are still provided as
-            sample values: <keyword>novice</keyword>, <keyword>general</keyword>,
-              <keyword>expert</keyword>, and <xref href="../attributes/ditauseconreftarget.dita"
-              >-dita-use-conref-target</xref>.</dd>
+            audiences <ph>might</ph> have different experience levels with respect to the same
+            topic; for example, a topic <ph>might</ph> require general knowledge from a programmer,
+            but expert knowledge from a user. Beginning with DITA 1.2, values in this attribute are
+            not limited to a small number of choices; the following values were used in DITA 1.0 and
+            DITA 1.1, and are still provided as sample values: <keyword>novice</keyword>,
+              <keyword>general</keyword>, <keyword>expert</keyword>, and <xref
+              href="../attributes/ditauseconreftarget.dita">-dita-use-conref-target</xref>.</dd>
         </dlentry>
         <dlentry id="name">
           <dt><xmlatt>name</xmlatt></dt>
           <dd>Used to associate the <xmlelement>audience</xmlelement> element with values used in
             the <xmlatt>audience</xmlatt> attribute.</dd>
         </dlentry>
-      </dl></section></refbody>
+      </dl>
+    </section><example id="example" otherprops="examples">
+      <title>Example</title>
+      <p>For a command reference topic for experienced programmers, the following might be an
+        appropriate indication of that audience:</p>
+      <codeblock>&lt;audience type="programmer" job="programming" experiencelevel="expert"/&gt;</codeblock>
+    </example></refbody>
 </reference>
