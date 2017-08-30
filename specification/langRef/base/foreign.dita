@@ -5,12 +5,7 @@
 <reference id="foreign" xml:lang="en-us">
 <title><xmlelement>foreign</xmlelement></title>
 <shortdesc>The <xmlelement>foreign</xmlelement> element allows the introduction of non-DITA content,
-    for example, MathML, SVG, or Rich Text Format (RTF). The <xmlelement>foreign</xmlelement>
-    element or a specialization <ph >can</ph> contain more than one type of
-    non-DITA content or a mix of DITA and non-DITA content. Specialization of the
-      <xmlelement>foreign</xmlelement> element generally is implemented as a domain, but architects
-    looking for more control over the content <ph >can</ph> implement foreign
-    vocabularies as structural specializations.</shortdesc>
+    for example, MathML, SVG, or Rich Text Format (RTF).</shortdesc>
 <prolog><metadata>
 <keywords>
 <indexterm>foreign</indexterm>
@@ -18,31 +13,45 @@
 </keywords>
 </metadata></prolog>
 <refbody>
-<section id="section-1">       <p>Processors should attempt to display <xmlelement>foreign</xmlelement> content unless
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>The <xmlelement>foreign</xmlelement> element or a specialization can contain more than one
+        type of non-DITA content or a mix of DITA and non-DITA content. Specialization of the
+          <xmlelement>foreign</xmlelement> element generally is implemented as a domain, but
+        architects looking for more control over the content can implement foreign vocabularies as
+        structural specializations.</p>
+      <p>If alternate content is desired, specialize the <xmlelement>desc</xmlelement> element to
+        contain it. This specialization of <xmlelement>desc</xmlelement> should be used within the
+        element specialized from <xmlelement>foreign</xmlelement>. Such alternate content must of
+        course be valid wherever the <xmlelement>foreign</xmlelement> specialization is valid.</p>
+    </section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>Processors should attempt to display <xmlelement>foreign</xmlelement> content unless
         otherwise instructed. If the processor cannot render the content, it <term
-          outputclass="RFC-2119">MAY</term> issue a warning.</p><p>The enabler of the foreign vocabulary must provide the processing and override the base
-        processing for <xmlelement>foreign</xmlelement>. </p><ul>
-<li>If <xmlelement>foreign</xmlelement> contains more than one alternative content element, they
-          should all be processed. In the case of <xmlelement>desc</xmlelement> they should be
+          outputclass="RFC-2119">MAY</term> issue a warning.</p>
+      <p>The enabler of the foreign vocabulary must provide the processing and override the base
+        processing for <xmlelement>foreign</xmlelement>. </p>
+      <ul id="ul_f2h_3kf_bbb">
+        <li>If <xmlelement>foreign</xmlelement> contains more than one alternative content element,
+          they should all be processed. In the case of <xmlelement>desc</xmlelement> they should be
           concatenated in a similar way to <xmlelement>section</xmlelement>, but with no title
           (analogous to <xmlelement>div</xmlelement> in HTML). </li>
-<li>If alternate content is desired, specialize the <xmlelement>desc</xmlelement> element to contain
-          it. This specialization of <xmlelement>desc</xmlelement> should be used within the element
-          specialized from <xmlelement>foreign</xmlelement>. Such alternate content must of course
-          be valid wherever the <xmlelement>foreign</xmlelement> specialization is valid.</li>
-<li> If no <xmlelement>desc</xmlelement>, <xmlelement>object</xmlelement>, or
+        <li> If no <xmlelement>desc</xmlelement>, <xmlelement>object</xmlelement>, or
             <xmlelement>image</xmlelement> element is found within an instance of the
-            <xmlelement>foreign</xmlelement> element, the base processing <ph 
-            >can</ph> emit a warning about the absence of processable content.</li>
-<li>The base processing for <xmlelement>object</xmlelement>
-          <ph >might</ph> emit the content of <xmlelement>foreign</xmlelement>
-          as a file at the location specified by the <xmlatt>data</xmlatt> attribute of the
-            <xmlelement>object</xmlelement> element. The <xmlelement>object</xmlelement> element
-          should have a data attribute or a <xmlelement>foreign</xmlelement> sub-element but not
-          both. In the event that an <xmlelement>object</xmlelement> element contains both a data
-          attribute and an <xmlelement>foreign</xmlelement> sub-element the processing system should
-          ignore one of them.</li>
-</ul>     </section>
+            <xmlelement>foreign</xmlelement> element, the base processing can emit a warning about
+          the absence of processable content.</li>
+        <li>The base processing for <xmlelement>object</xmlelement> might emit the content of
+            <xmlelement>foreign</xmlelement> as a file at the location specified by the
+            <xmlatt>data</xmlatt> attribute of the <xmlelement>object</xmlelement> element. The
+            <xmlelement>object</xmlelement> element should have a data attribute or a
+            <xmlelement>foreign</xmlelement> sub-element but not both. In the event that an
+            <xmlelement>object</xmlelement> element contains both a data attribute and an
+            <xmlelement>foreign</xmlelement> sub-element the processing system should ignore one of
+          them.</li>
+      </ul>
+    </section>
+<section id="section-1"/>
 <section conref="../../common/commonNavLibraryTable.dita#contentmodel-foreign/contains" id="contains" otherprops="contains"></section>
 <section id="inheritance" otherprops="inheritance">       <title>Inheritance</title> 
      <p>- topic/foreign </p>     </section>
