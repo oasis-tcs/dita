@@ -6,29 +6,38 @@
 <title><xmlelement>topicSubjectTable</xmlelement></title>
 <shortdesc>The <xmlelement>topicSubjectTable</xmlelement> element is a specialized relationship
     table which allows a map to use relationship tables to associate topics with subjects. Tools
-    (such as search tools) <ph >might</ph> use these classifications to
-    retrieve content that is relative to a specific subject or combination of subjects.</shortdesc>
+    (such as search tools) might use these classifications to retrieve content that is relative to a
+    specific subject or combination of subjects.</shortdesc>
 <prolog><metadata>
 <keywords><indexterm>topicSubjectTable</indexterm>
         <indexterm>classification domain
           elements<indexterm>topicSubjectTable</indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
-<section id="section-1"><p>In a <xmlelement>topicSubjectTable</xmlelement>, the first column is reserved for references to
-        content. Subsequent columns are reserved for subjects that classify the content, each column
-        supplying the subjects for a different category as identified in the header. The table
-        resembles a traditional relationship table in which the first column identifies the source
-        and the other columns identify the targets, but the relationship reflects the subjects
-        covered by the content rather than linking between documents. </p><note>In a traditional <xmlelement>reltable</xmlelement>, topics in any given column establish
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>In a <xmlelement>topicSubjectTable</xmlelement>, the first column is reserved for
+        references to content. Subsequent columns are reserved for subjects that classify the
+        content, each column supplying the subjects for a different category as identified in the
+        header. The table resembles a traditional relationship table in which the first column
+        identifies the source and the other columns identify the targets, but the relationship
+        reflects the subjects covered by the content rather than linking between documents.</p>
+      <p>In a traditional <xmlelement>reltable</xmlelement>, topics in any given column establish
         relationships with topics in every other cell of the same row. In a
           <xmlelement>topicSubjectTable</xmlelement>, topics in the first column are related to all
         of the subjects in the row, but no relationship is implied between subjects in different
         columns of the same row. Instead, relationships are defined between subjects using a subject
         scheme map (which provides a <xmlelement>subjectRelTable</xmlelement> element for
-        non-hierarchical relationships between subjects).</note></section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-topicSubjectTable/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>+
+        non-hierarchical relationships between subjects).</p>
+    </section>
+<section id="inheritance" otherprops="inheritance">
+      <title>Specialization hierarchy</title><p>+
 map/reltable classify-d/topicSubjectTable </p></section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <sectiondiv conref="../../common/conref-attribute.dita#conref-attribute/reltable-minus-title"
+      />
+    </section>
     <example id="example" otherprops="examples">
       <title>Example</title>
       <p>The topic subject table below classifies topics with goals for retrieval and with operating
@@ -152,9 +161,6 @@ windows</lines>
         </simpletable>
       </fig>
     </example>
-<section id="attributes"><title>Attributes</title><sectiondiv
-        conref="../../common/conref-attribute.dita#conref-attribute/reltable-minus-title"
-      /></section>
 </refbody>
 </reference>
 
