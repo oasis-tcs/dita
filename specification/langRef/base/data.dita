@@ -5,37 +5,35 @@
 <title><xmlelement>data</xmlelement></title>
 <shortdesc>The <xmlelement>data</xmlelement> element represents a property within a DITA topic or
     map. While the <xmlelement>data</xmlelement> element can be used directly to capture properties,
-    it is particularly useful as a basis for specialization. Default processing should treat the
-    content as an unknown kind of metadata and ignore it for rendering, but custom processing <ph
-      >might</ph> match the <xmlatt>name</xmlatt> attribute or specialized
-    element and use the element for automated manipulation or to format data associated with the
-    body flow. For example, a specialized <xmlelement>data</xmlelement> element <ph
-      >might</ph> be used to format properties as sidebars or other adornments
-    or to harvest properties for automated processing.</shortdesc>
+    it is particularly useful as a basis for specialization. </shortdesc>
 <prolog><metadata>
 <keywords><indexterm>data</indexterm><indexterm>property <indexterm>data</indexterm></indexterm>
 <indexterm>specialization elements<indexterm>data</indexterm></indexterm>
 </keywords>
 </metadata></prolog>
 <refbody>
-<section id="section-1"> <p>The subject of the property is ordinarily the container of the <xmlelement>data</xmlelement>
-        element. In the content model for the <xmlelement>prolog</xmlelement> and
-          <xmlelement>metadata</xmlelement> elements, the property applies to the topic as a whole.
-        In the <xmlelement>topicmeta</xmlelement> element, the property applies to the referenced
-        topic. The <xmlelement>data-about</xmlelement> element <ph >can</ph> be
-        used to identify the subject of the property with an explicit reference.</p><p>The <xmlatt>name</xmlatt> attribute names the property for processes. A
-          <xmlelement>title</xmlelement> subelement <ph >can</ph> provide a
-        label for the property. The <xmlatt>datatype</xmlatt> attribute <ph 
-          >can</ph> be used to identify the type for the value. The value of the property can be any
-        of the following:</p><ul>
-<li>A simple text value expressed with the <xmlatt>value</xmlatt> attribute or textual content.</li>
-<li>A reference to either DITA content or a non-DITA resource expressed with the
-            <xmlatt>href</xmlatt> attribute.</li>
-<li>An image or other non-textual object. </li>
-<li>A brief unit of descriptive text that is not part of the body
-text flow.</li>
-<li>A complex structure composed of nested <xmlelement>data</xmlelement> elements.</li>
-</ul><note type="caution">Processors should ignore the content of the <xmlelement>data</xmlelement>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>The subject of the property is ordinarily the container of the
+          <xmlelement>data</xmlelement> element. In the content model for the
+          <xmlelement>prolog</xmlelement> and <xmlelement>metadata</xmlelement> elements, the
+        property applies to the topic as a whole. In the <xmlelement>topicmeta</xmlelement> element,
+        the property applies to the referenced topic. The <xmlelement>data-about</xmlelement>
+        element can be used to identify the subject of the property with an explicit reference.</p>
+      <p>The <xmlatt>name</xmlatt> attribute names the property for processes. A
+          <xmlelement>title</xmlelement> subelement can provide a label for the property. The
+          <xmlatt>datatype</xmlatt> attribute can be used to identify the type for the value. The
+        value of the property can be any of the following:</p>
+      <ul id="ul_cb3_fcf_bbb">
+        <li>A simple text value expressed with the <xmlatt>value</xmlatt> attribute or textual
+          content</li>
+        <li>A reference to either DITA content or a non-DITA resource expressed with the
+            <xmlatt>href</xmlatt> attribute</li>
+        <li>An image or other non-textual object </li>
+        <li>A brief unit of descriptive text that is not part of the body text flow</li>
+        <li>A complex structure composed of nested <xmlelement>data</xmlelement> elements</li>
+      </ul>
+      <note type="caution">Processors should ignore the content of the <xmlelement>data</xmlelement>
         element by default, so the <xmlelement>data</xmlelement> element should only be used for
         properties and not to embed text for formatting as part of the flow of the topic body. It
         might be tempting to specialize the <xmlelement>data</xmlelement> element for text that is
@@ -43,49 +41,63 @@ text flow.</li>
         abuse of the DITA architecture will cause problems. For example, if a particular kind of
         paragraph is specialized from <xmlelement>data</xmlelement> rather than from
           <xmlelement>p</xmlelement>, then when the content is exchanged with others that do not
-        recognize the specialized element, their processors will skip the content.</note><p>The <xmlelement>data</xmlelement> element <ph >can</ph> be nested to create
-        structures for complex properties. The <xmlatt>name</xmlatt> attribute <ph
-          >might be used to</ph> distinguish different semantics associated
-        with different instances of the <xmlelement>data</xmlelement> element such as addresses,
-        times, amounts, and so on. In many cases, however, it is preferable to specialize the
-          <xmlelement>data</xmlelement> element for more precise semantics, structures, and values.
-        For instance, a specialization can specify an enumeration for the <xmlatt>value</xmlatt>
-        attribute. </p><p>A <xmlelement>data</xmlelement> element containing properties of a topic as a whole should be
-        located in the topic&apos;s <xmlelement>prolog</xmlelement> or
+        recognize the specialized element, their processors will skip the content.</note>
+      <p>The <xmlelement>data</xmlelement> element can be nested to create structures for complex
+        properties. The <xmlatt>name</xmlatt> attribute might be used to distinguish different
+        semantics associated with different instances of the <xmlelement>data</xmlelement> element
+        such as addresses, times, amounts, and so on. In many cases, however, it is preferable to
+        specialize the <xmlelement>data</xmlelement> element for more precise semantics, structures,
+        and values. For instance, a specialization can specify an enumeration for the
+          <xmlatt>value</xmlatt> attribute. </p>
+      <p>A <xmlelement>data</xmlelement> element containing properties of a topic as a whole should
+        be located in the topic&apos;s <xmlelement>prolog</xmlelement> or
           <xmlelement>metadata</xmlelement> element, or in a <xmlelement>topicmeta</xmlelement>
         element related to a <xmlelement>topicref</xmlelement> that references the topic. The
           <xmlelement>data</xmlelement> element generally goes at the beginning of the element to
         which the properties in it refer. Where this is unwieldy, the <xmlelement>data</xmlelement>
         element can go in the <xmlelement>prolog</xmlelement>, with the
           <xmlelement>data-about</xmlelement> element identifying which specific element in the
-        topic is the reference.</p><!--RDA: Removed this paragraph in draft 1.2.3, it seems to duplicate info above:
-<p>A process can harvest the values of these properties for a machine-processable
-representation such as RDF. The default formatting ignores the &lt;data>
-element within the &lt;body> element. Customized or specialized processing
-can render property values, given an appropriate specification of
-which values should be displayed, in which outputs, and how and where
-they should appear in output.</p>--> </section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-data/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"> <title>Inheritance</title><p>-
-topic/data </p> </section>
-<example id="example" otherprops="examples"><title>Example</title><p>Uses of the <xmlelement>data</xmlelement> element <ph >can</ph> include the
-        following:</p><ul>
-<li>Complex metadata properties such as bibliographic records corresponding
-to citations.</li>
-<li>Hybrid documents with data values as part of the content, such
-as word processor formats using form fields.</li>
-<li>Messages in which the payload includes human-readable content. Such applications can use the
-            <xmlelement>data</xmlelement> element to define the addressing on the message envelope.
-          For instance, a topic could model an email message by representing the address with
-          specialized <xmlelement>data</xmlelement> elements in the <xmlelement>prolog</xmlelement>
-          element and the content with the <xmlelement>body</xmlelement> element.</li>
-<li>Transactional documents in which the values are processed but also displayed with human-readable
-          content. In particular, a library of building blocks for transaction documents can be
-          implemented through a DITA domain as specialized <xmlelement>data</xmlelement> elements
-          including those from the UN/CEFACT Core Components Technical Specification (<xref
-            format="html" href="http://www.unece.org/cefact/" scope="external"
-            >http://www.unece.org/cefact/</xref>). </li>
-</ul><fig>
+        topic is the reference.</p>
+    </section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>Default processing should treat the content as an unknown kind of metadata and ignore it
+        for rendering.</p>
+      <p>Custom processing might match the <xmlatt>name</xmlatt> attribute or specialized element
+        and use the element for automated manipulation or to format data associated with the body
+        flow. For example, a specialized <xmlelement>data</xmlelement> element might be used to
+        format properties as sidebars or other adornments or to harvest properties for automated
+        processing.</p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p
+        conref="../../common/conref-attribute.dita#conref-attribute/data-link-universal-keyref-outputclass"
+      />
+    </section>
+    <example id="example" otherprops="examples">
+      <title>Example</title>
+      <p>Uses of the <xmlelement>data</xmlelement> element can include the following:</p>
+      <ul>
+        <li>Complex metadata properties such as bibliographic records corresponding to
+          citations.</li>
+        <li>Hybrid documents with data values as part of the content, such as word processor formats
+          using form fields.</li>
+        <li>Messages in which the payload includes human-readable content. Such applications can use
+          the <xmlelement>data</xmlelement> element to define the addressing on the message
+          envelope. For instance, a topic could model an email message by representing the address
+          with specialized <xmlelement>data</xmlelement> elements in the
+            <xmlelement>prolog</xmlelement> element and the content with the
+            <xmlelement>body</xmlelement> element.</li>
+        <li>Transactional documents in which the values are processed but also displayed with
+          human-readable content. In particular, a library of building blocks for transaction
+          documents can be implemented through a DITA domain as specialized
+            <xmlelement>data</xmlelement> elements including those from the UN/CEFACT Core
+          Components Technical Specification (<xref format="html"
+            href="http://www.unece.org/cefact/" scope="external"
+          >http://www.unece.org/cefact/</xref>). </li>
+      </ul>
+      <fig>
         <title>Using the <xmlatt>name</xmlatt> attribute on unspecialized
             <xmlelement>data</xmlelement> elements</title>
         <p>This structure identifies the library and version demonstrated by a code sample. The
@@ -101,7 +113,8 @@ as word processor formats using form fields.</li>
   &lt;/data>
   &lt;!-- ... -->
 &lt;/codeblock></codeblock>
-      </fig><fig>
+      </fig>
+      <fig>
         <title>Specializing <xmlelement>data</xmlelement> to annotate a code sample</title>
         <p>The following example specifies the delimited source code for a code fragment so an
           automated process can refresh the code fragment. The
@@ -124,7 +137,8 @@ as word processor formats using form fields.</li>
     </codeFragment>
 </example>
 ]]></codeblock>
-      </fig><fig>
+      </fig>
+      <fig>
         <title>Specializing <xmlelement>data</xmlelement> to annotate housing information</title>
         <p>The following example identifies a real estate property as part of a house description.
           The <xmlelement>realEstateProperty</xmlelement> element and its child elements are
@@ -143,10 +157,8 @@ as word processor formats using form fields.</li>
   <object data="B7_4003_tour360Degrees.swf"/>
 </houseDescription>
 ]]></codeblock>
-      </fig></example>
-<section id="attributes"> <title>Attributes</title>
-      <p
-        conref="../../common/conref-attribute.dita#conref-attribute/data-link-universal-keyref-outputclass"/> </section>
-</refbody>
+      </fig>
+    </example>
+  </refbody>
 </reference>
 
