@@ -14,48 +14,51 @@
     </metadata>
   </prolog>
 <refbody>
-<section id="section-1"><p>For example, if a map is converted to the Eclipse help system format, the DITA element
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>For example, if a map is converted to the Eclipse help system format, the DITA element
           <codeph>&lt;navref mapref="other.ditamap"/&gt;</codeph>
-        <ph >is</ph> converted to the Eclipse element <codeph>&lt;link
-          toc="other.xml"/&gt;</codeph>. When Eclipse loads the referencing map, it will replace
-        this link element with the contents of the file <filepath>other.xml</filepath>, provided
-        that the file <filepath>other.xml</filepath> is available.</p><p>Note that not all output formats support such linking. In order to include another map directly
-    without depending on the output format, use a <xmlelement>topicref</xmlelement> element with the
-     <xmlatt>format</xmlatt> attribute set to "ditamap". The effect is similar to using a
-     <xmlatt>conref</xmlatt> attribute. For example, the following markup represents a literal
-    inclusion of the map
-    <filepath>other.ditamap</filepath>:<codeblock>&lt;topicref href="other.ditamap" format="ditamap"/&gt;</codeblock></p></section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-navref/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-map/navref </p></section>
+        <ph>is</ph> converted to the Eclipse element <codeph>&lt;link toc="other.xml"/&gt;</codeph>.
+        When Eclipse loads the referencing map, it will replace this link element with the contents
+        of the file <filepath>other.xml</filepath>, provided that the file
+          <filepath>other.xml</filepath> is available.</p>
+      <p>Note that not all output formats support such linking. In order to include another map
+        directly without depending on the output format, use a <xmlelement>topicref</xmlelement>
+        element with the <xmlatt>format</xmlatt> attribute set to "ditamap". The effect is similar
+        to using a <xmlatt>conref</xmlatt> attribute. For example, the following markup represents a
+        literal inclusion of the map <filepath>other.ditamap</filepath>:</p>
+      <codeblock>&lt;topicref href="other.ditamap" format="ditamap"/&gt;</codeblock>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p id="universal-outputclass">The following attributes are available on this element: <xref
+          href="../attributes/universalAttributes.dita"/>, <xref
+          href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, <xref
+          href="../attributes/thekeyrefattribute.dita"><xmlatt>keyref</xmlatt></xref>, and the
+        attribute defined below.</p>
+      <dl>
+        <dlentry>
+          <dt><xmlatt>mapref</xmlatt></dt>
+          <dd>Specifies the URI of the map file or non-DITA resource to be referenced. It
+              <ph>might</ph> reference a DITA map or a resource that is appropriate for your output
+            format (such as XML TOC file for Eclipse output).
+            <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>keyref</xmlatt>
+            <ph conref="../../common/conref-attribute.dita#conref-attribute/deprecated-attr"/></dt>
+          <dd>The <xmlatt>keyref</xmlatt> attribute was unintentionally defined for
+              <xmlelement>navref</xmlelement> in the original DITA grammar files. It is retained for
+            backwards compatibility. The attribute will be removed in a future release, and
+            processors are not expected to support it.</dd>
+        </dlentry>
+      </dl>
+    </section>
 <example id="example" otherprops="examples"><title>Example</title><p>In this example, the map titled "MyComponent tasks" references the maps
 <filepath>othermap2.ditamap</filepath> and <filepath>othermap3.ditamap</filepath>.</p><codeblock>&lt;map title="MyComponent tasks"&gt;
  &lt;navref mapref="../com.ibm.xml.doc/othermap1.ditamap"/&gt;
  &lt;navref mapref="../com.ibm.xml.doc/othermap2.ditamap"/&gt;
 &lt;/map&gt;</codeblock></example>
-<section id="attributes"><title>Attributes</title>
-   <p id="universal-outputclass">The following attributes are available on this element: <xref
-     href="../attributes/universalAttributes.dita"/>, <xref
-      href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, <xref
-       href="../attributes/thekeyrefattribute.dita"><xmlatt>keyref</xmlatt></xref>, and the attribute
-    defined below.</p>
-   <dl>
-    <dlentry>
-     <dt><xmlatt>mapref</xmlatt></dt>
-     <dd>Specifies the URI of the map file or non-DITA resource to be referenced. It <ph
-              >might</ph> reference a DITA map or a resource that is
-            appropriate for your output format (such as XML TOC file for Eclipse output).
-            <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
-    </dlentry>
-    <dlentry>
-     <dt><xmlatt>keyref</xmlatt>
-      <ph conref="../../common/conref-attribute.dita#conref-attribute/deprecated-attr"/></dt>
-     <dd>The <xmlatt>keyref</xmlatt> attribute was unintentionally defined for
-       <xmlelement>navref</xmlelement> in the original DITA grammar files. It is retained for
-      backwards compatibility. The attribute will be removed in a future release, and processors are
-      not expected to support it.</dd>
-    </dlentry>
-   </dl></section>
 </refbody>
 </reference>
 

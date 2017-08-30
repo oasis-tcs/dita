@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="reference" />
+<meta name="DC.Title" content="The format attribute" />
+<meta name="abstract" content="The format attribute identifies the format of the resource that is referenced. If no value is specified, but the attribute is specified on an ancestor within a map or within the related-links section, the value will cascade from the closest ancestor." />
+<meta name="description" content="The format attribute identifies the format of the resource that is referenced. If no value is specified, but the attribute is specified on an ancestor within a map or within the related-links section, the value will cascade from the closest ancestor." />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="theformatattribute" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../commonltr.css" />
+<title>The format attribute</title>
+</head>
+<body id="theformatattribute">
+
+<h1 class="title topictitle1" id="ariaid-title1">The <code class="keyword markupname xmlatt">@format</code> attribute</h1>
+
+
+<div class="body refbody"><p class="shortdesc"><span class="ph">The <code class="keyword markupname xmlatt">@format</code> attribute identifies the format of
+   the resource that is referenced.</span>
+  <span class="ph">If no value is
+                                        specified, but the attribute is specified on an ancestor
+                                        within a map or within the related-links section, the value
+                                        will cascade from the closest ancestor.</span></p>
+
+<div class="section" id="theformatattribute__section-1"><p class="p">The following values for <code class="keyword markupname xmlatt">@format</code> have special processing
+                        implications: </p>
+<dl class="dl">
+                        
+                              <dt class="dt dlterm">dita</dt>
+
+                              <dd class="dd">The destination uses DITA topic markup or markup specialized from
+                                    a DITA topic. Unless otherwise specified, when
+                                          <code class="keyword markupname xmlatt">@format</code> is set to "dita", the value for
+                                    the <code class="keyword markupname xmlatt">@type</code> attribute will be treated as
+                                    "topic".</dd>
+
+                        
+                        
+                              <dt class="dt dlterm">ditamap</dt>
+
+                              <dd class="dd">The linked-to resource is a DITA map. It represents the referenced
+                                    hierarchy at the current point in the referencing map.
+                                    References to other maps can occur at any point in a map, but
+                                    because relationship tables are only valid as children of a map,
+                                    referenced relationship tables are treated as children of the
+                                    referencing map. <div class="note note"><span class="notetitle">Note:</span> If a <code class="keyword markupname xmlelement">&lt;topicref&gt;</code>
+                                element that references a map contains child
+                                        <code class="keyword markupname xmlelement">&lt;topicref&gt;</code> elements, the processing
+                                behavior regarding the child <code class="keyword markupname xmlelement">&lt;topicref&gt;</code>
+                                elements is undefined.</div>
+</dd>
+
+                        
+                        
+                              <dt class="dt dlterm">(no value)</dt>
+
+                              <dd class="dd">The processing default is used. The
+                                    processing default for the <code class="keyword markupname xmlatt">@format</code> attribute is
+                                    determined by inspecting the value of the <code class="keyword markupname xmlatt">@href</code>
+                                    attribute. If the <code class="keyword markupname xmlatt">@href</code> attribute specifies a
+                                    file extension, the processing default for the
+                                          <code class="keyword markupname xmlatt">@format</code> attribute is that extension, after
+                                    conversion to lower-case and with no leading period. The only
+                                    exception to this is if the extension is "xml", in which case
+                                    the default format is "dita". If there is no extension, but the
+                                          <code class="keyword markupname xmlatt">@href</code> value is an absolute URI whose
+                                    scheme is "http" or "https", then the processing default is
+                                    "html". In all other cases where no extension is available, the
+                                    processing default is "dita".<p class="p">If the
+                                          actual format of the referenced content differs from the
+                                          effective value of the <code class="keyword markupname xmlatt">@format</code> attribute,
+                                          and a processor is capable of identifying such cases, it
+                                                <dfn class="term RFC-2119">MAY</dfn> recover gracefully and treat the content
+                                          as its actual format, but <dfn class="term RFC-2119">SHOULD</dfn> also issue a
+                                          message.</p>
+</dd>
+
+                        
+                  </dl>
+<div class="sectiondiv" id="theformatattribute__sample-formats">
+                        <p class="p">For other formats, using the file extension without the "." character
+                              typically represents the format. For example, the following values are
+                              all possible values for <code class="keyword markupname xmlatt">@format</code>:</p>
+
+                        <dl class="dl">
+                              
+                                    <dt class="dt dlterm">html</dt>
+
+                                    <dd class="dd">The format of the linked-to resource is HTML or XHTML.</dd>
+
+                              
+                              
+                                    <dt class="dt dlterm">pdf</dt>
+
+                                    <dd class="dd">The format of the linked-to resource is PDF.
+                                          </dd>
+
+                              
+                              
+                                    <dt class="dt dlterm">txt</dt>
+
+                                    <dd class="dd">The format of the linked-to resource is a text file.</dd>
+
+                              
+                        </dl>
+
+                  </div>
+            </div>
+
+</div>
+
+</body>
+</html>

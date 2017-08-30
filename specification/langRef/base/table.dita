@@ -13,18 +13,59 @@
 </keywords>
 </metadata></prolog>
 <refbody>
-<section id="section-1"><p>The DITA table is based on the OASIS Exchange Table Model, augmented with DITA attributes that
-        enable it for accessibility, specialization, conref, and other DITA processing. In addition,
-        the table includes a <xmlelement>desc</xmlelement> element, which enables table description
-        that is parallel with figure description. See <xref href="simpletable.dita"/> for a
-        simplified table model that can be specialized to represent more regular relationships of
-        data.</p>
-      <p conref="../../common/conref-file.dita#reuse_file/pgwide-explain"/><note>The <xmlatt>scale</xmlatt> attribute represents a stylistic markup property that is currently
-        maintained in tables for legacy purposes. External stylesheets should enable less dependency
-        on this attribute. Use the <xmlatt>scale</xmlatt> attribute judiciously.</note></section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-table/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-topic/table </p></section>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>The DITA table is based on the OASIS Exchange Table Model, augmented with DITA attributes
+        that enable it for accessibility, specialization, conref, and other DITA processing. In
+        addition, the table includes a <xmlelement>desc</xmlelement> element, which enables table
+        description that is parallel with figure description. See <xref href="simpletable.dita"/>
+        for a simplified table model that can be specialized to represent more regular relationships
+        of data.</p>
+      <p conref="../../common/conref-file.dita#reuse_file/pgwide-explain"/>
+      <note>The <xmlatt>scale</xmlatt> attribute represents a stylistic markup property that is
+        currently maintained in tables for legacy purposes. External stylesheets should enable less
+        dependency on this attribute. Use the <xmlatt>scale</xmlatt> attribute judiciously.</note>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref
+          href="../attributes/universalAttributes.dita"/>, <xref
+          href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, <xmlatt
+          rev="errata-01">frame</xmlatt> and <xmlatt>scale</xmlatt> from <xref
+          href="../attributes/displayAttributes.dita"/>, and the attributes defined below. This
+        element also uses <xmlatt>colsep</xmlatt>, <xmlatt>rowsep</xmlatt>, and
+          <xmlatt>rowheader</xmlatt> from <xref href="../attributes/calsTableAttributes.dita"/>.</p>
+      <dl>
+        <dlentry id="orient">
+          <dt><xmlatt>orient</xmlatt></dt>
+          <dd>Specifies the orientation of the table in page-based outputs. <ph>This attribute is
+              primarily useful for print-oriented display.</ph> Allowable values are:<dl>
+              <dlentry>
+                <dt>port</dt>
+                <dd>The same orientation as the text flow.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>land</dt>
+                <dd>90 degrees counterclockwise from the text flow.</dd>
+              </dlentry>
+              <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditauseconref">
+                <dt/>
+                <dd/>
+              </dlentry>
+            </dl><p>In situations where a stylesheet or other formatting mechanism specifies table
+              orientation based on other criteria, or for non-paginated outputs, the
+                <xmlatt>orient</xmlatt> attribute can be ignored.</p></dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>pgwide</xmlatt></dt>
+          <dd>Determines the horizontal placement of the element. Supported values are 1 and 0,
+            although these are not mandated by the DTD, Schema, or RNG.<p>For print-oriented
+              display, the value &quot;1&quot; places the element on the left page margin;
+              &quot;0&quot; aligns the element with the left margin of the current text line and
+              takes indention into account. </p></dd>
+        </dlentry>
+      </dl>
+    </section>
 <example id="example" otherprops="examples"><title>Example</title>
       <fig>
         <title>DITA source</title>
@@ -367,44 +408,6 @@ expected points in column c2 and actual points in column c3.&lt;/desc>
         </tgroup>
       </table>
     </example>
-<section id="attributes"><title>Attributes</title>
-      <p>The following attributes are available on this element: <xref
-          href="../attributes/universalAttributes.dita"/>, <xref
-          href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, <xmlatt
-          rev="errata-01">frame</xmlatt> and <xmlatt>scale</xmlatt> from <xref
-          href="../attributes/displayAttributes.dita"/>, and the attributes defined below. This
-        element also uses <xmlatt>colsep</xmlatt>, <xmlatt>rowsep</xmlatt>, and
-          <xmlatt>rowheader</xmlatt> from <xref href="../attributes/calsTableAttributes.dita"/>.</p>
-      <dl>
-        <dlentry  id="orient">
-          <dt><xmlatt>orient</xmlatt></dt>
-          <dd>Specifies the orientation of the table in page-based outputs. <ph>This attribute is
-              primarily useful for print-oriented display.</ph> Allowable values are:<dl>
-              <dlentry>
-                <dt>port</dt>
-                <dd>The same orientation as the text flow.</dd>
-              </dlentry>
-              <dlentry>
-                <dt>land</dt>
-                <dd>90 degrees counterclockwise from the text flow.</dd>
-              </dlentry>
-              <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditauseconref">
-                <dt/>
-                <dd/>
-              </dlentry>
-            </dl><p>In situations where a stylesheet or other formatting mechanism specifies table
-              orientation based on other criteria, or for non-paginated outputs, the
-                <xmlatt>orient</xmlatt> attribute can be ignored.</p></dd>
-        </dlentry>
-        <dlentry>
-          <dt><xmlatt>pgwide</xmlatt></dt>
-          <dd>Determines the horizontal placement of the element. Supported values are 1 and 0,
-            although these are not mandated by the DTD, Schema, or RNG.<p>For print-oriented
-              display, the value &quot;1&quot; places the element on the left page margin;
-              &quot;0&quot; aligns the element with the left margin of the current text line and
-              takes indention into account. </p></dd>
-        </dlentry>
-      </dl></section>
 </refbody>
 </reference>
 

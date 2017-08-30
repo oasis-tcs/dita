@@ -3,24 +3,32 @@
  "reference.dtd">
 <reference id="title" xml:lang="en-us">
 <title><xmlelement>title</xmlelement></title>
-<shortdesc>The <xmlelement>title</xmlelement> element contains a heading or label for the main parts
-    of a topic: the topic as a whole, sections, examples, and labelled content such as figures and
-    tables. The element also can be used to provide a title for a map or a relationship table; when
-    used in a relationship table, the title typically is used as a authoring convenience and is not
-    rendered for display to an end user.</shortdesc>
+  <shortdesc>A title is a heading or label for an object. Titles can be associated with topics,
+    maps, sections, examples, figures, and tables.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
         <indexterm>processing expectations<indexterm><xmlelement>title</xmlelement> in a
             relationship table</indexterm></indexterm>
         <indexterm>relationship tables<indexterm>titles</indexterm></indexterm>
+        <indexterm>titles</indexterm>
       </keywords>
     </metadata>
   </prolog>
 <refbody>
-<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-title/contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-topic/title </p></section>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>When a title is associated with a relationship table, the title is typical used as an
+        authoring convenience and is not rendered for display in generated publications.</p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref
+          href="../attributes/universalAttributes.dita"/> (without the Metadata attribute group),
+          <xmlatt>base</xmlatt> and <xmlatt>rev</xmlatt> from the <xref
+          href="../attributes/metadataAttributes.dita"/>, and <xref
+          href="../attributes/commonAttributes.dita#common-atts/outputclass"/>.</p>
+    </section>
 <example id="example" otherprops="examples"><title>Example</title>
    <codeblock >&lt;topic id="topicid">
   &lt;title <b>rev="121212"</b>>Monitoring the patient following the procedure
@@ -37,10 +45,5 @@ topic/title </p></section>
     &lt;!-- ... -->
   &lt;/body>
 &lt;/topic></codeblock></example>
-<section id="attributes"><title>Attributes</title>
-      <p>The following attributes are available on this element: <xref
-          href="../attributes/universalAttributes.dita"/> (without the Metadata attribute group),
-        <xmlatt>base</xmlatt> and <xmlatt>rev</xmlatt> from the <xref href="../attributes/metadataAttributes.dita"/>, and <xref
-          href="../attributes/commonAttributes.dita#common-atts/outputclass"/>.</p></section>
 </refbody>
 </reference>
