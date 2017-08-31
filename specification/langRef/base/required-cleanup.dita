@@ -4,33 +4,30 @@
 <reference id="required-cleanup" xml:lang="en-us">
 <title><xmlelement>required-cleanup</xmlelement></title>
 <shortdesc>A <xmlelement>required-cleanup</xmlelement> element is used as a placeholder for migrated
-    elements that cannot be appropriately tagged without manual intervention. As the element name
-    implies, the intent for authors is to clean up the contained material and eventually remove the
-      <xmlelement>required-cleanup</xmlelement> element. Authors should not insert this element into
-    documents. </shortdesc>
+    elements that cannot be appropriately tagged without manual intervention.</shortdesc>
 <prolog><metadata>
 <keywords><indexterm>required-cleanup</indexterm><indexterm>legacy conversion elements<indexterm>required-cleanup</indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
-<section id="section-1"><note othertype="Processing notes" type="other"><ul>
-<li>Processors must strip this element from output by default. The content of
-              <xmlelement>required-cleanup</xmlelement> is not considered to be verified data.</li>
-<li>Processor options <ph >might</ph> be provided to allow a draft view of
-            migrated content in context.</li>
-</ul></note></section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-required-cleanup/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-topic/required-cleanup </p></section>
-<example id="example" otherprops="examples"><title>Example</title><p>Presuming an original HTML document had contained some content within a
-          <xmlelement>center</xmlelement> tag (for which there is no clear migrational equivalent in
-        DITA), the following might be the result that is valid within an XML editor, but which
-        requires an author to decide how to better tag or revise this original content:</p><codeblock xml:space="preserve">&lt;section&gt;
-  &lt;title&gt;Some section title&lt;/title&gt;
-  &lt;required-cleanup remap="center"&gt;Some original content migrated
-  from a &amp;lt;center&gt; tag.&lt;/required-cleanup&gt;
-&lt;/section&gt;
-</codeblock></example>
-<section id="attributes"><title>Attributes</title>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>As the element name implies, the intent for authors is to clean up the contained material
+        and eventually remove the <xmlelement>required-cleanup</xmlelement> element. Authors should
+        not insert this element into documents.</p>
+    </section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>Processors must strip this element from output by default. The content of
+          <xmlelement>required-cleanup</xmlelement> is not considered to be verified data.</p>
+      <p>Processor options might be provided to allow a draft view of migrated content in
+        context.</p>
+    </section>
+    <section id="specialization-hierarchy">
+      <title>Specialization hierarchy</title>
+      <p>- topic/required-cleanup </p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
       <p>The following attributes are available on this element: <xref
           href="../attributes/universalAttributes.dita"/> (with a modified definition of
           <xmlatt>translate</xmlatt>, given below), <xref
@@ -52,7 +49,17 @@ topic/required-cleanup </p></section>
               this element uses an actual default, it will always be treated as
                 <codeph>translate="no"</codeph> unless overridden as described.</dd>
           </dlentry>
-        </dl></p></section>
+        </dl></p>
+    </section>
+<example id="example" otherprops="examples"><title>Example</title><p>Presuming an original HTML document had contained some content within a
+          <xmlelement>center</xmlelement> tag (for which there is no clear migrational equivalent in
+        DITA), the following might be the result that is valid within an XML editor, but which
+        requires an author to decide how to better tag or revise this original content:</p><codeblock>&lt;section&gt;
+  &lt;title&gt;Some section title&lt;/title&gt;
+  &lt;required-cleanup remap="center"&gt;Some original content migrated
+  from a &amp;lt;center&gt; tag.&lt;/required-cleanup&gt;
+&lt;/section&gt;
+</codeblock></example>
 </refbody>
 </reference>
 
