@@ -4,11 +4,9 @@
  "reference.dtd">
 <reference id="subjectref" xml:lang="en-us">
 <title><xmlelement>subjectref</xmlelement></title>
-<shortdesc>The <xmlelement>subjectref</xmlelement> element identifies a subject to classify content.
-The <xmlelement>subjectref</xmlelement> can identify the subject with a <xmlatt>keyref</xmlatt>
-attribute (if the scheme has a <xmlelement>subjectdef</xmlelement> with a <xmlatt>keys</xmlatt>
-attribute that assigns a key to the subject) or an <xmlatt>href</xmlatt> attribute (if the scheme is
-not available and a topic exists that defines the subject).</shortdesc>
+<shortdesc>The <xmlelement>subjectref</xmlelement> element identifies a subject with which to
+    classify the content.
+    <!--The <xmlelement>subjectref</xmlelement> can identify the subject with a <xmlatt>keyref</xmlatt> attribute (if the scheme has a <xmlelement>subjectdef</xmlelement> with a <xmlatt>keys</xmlatt> attribute that assigns a key to the subject) or an <xmlatt>href</xmlatt> attribute (if the scheme is not available and a topic exists that defines the subject).--></shortdesc>
 <prolog><metadata>
 <keywords><indexterm>subjectref</indexterm>
         <indexterm>classification domain elements<indexterm>subjectref</indexterm></indexterm></keywords>
@@ -16,7 +14,8 @@ not available and a topic exists that defines the subject).</shortdesc>
 <refbody>
 <section id="inheritance" otherprops="inheritance">
       <title>Specialization hierarchy</title>
-      <p>This element is specialized from <xref keyref="topicref"/> in the map module.</p>
+      <p>This element is specialized from <xref keyref="topicref"/> in the map module. It is part of
+        the classify-d domain.</p>
       <!--<p>+ map/topicref classify-d/subjectref </p>--></section>
     <section id="attributes">
       <title>Attributes</title>
@@ -47,11 +46,11 @@ not available and a topic exists that defines the subject).</shortdesc>
         </dlentry>
       </dl>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><p>In the following example, the map is classified as covering the Linux subject and the "Developing
-web applications" topic as covering the web and development subjects. These subjects (and their
-keys) are defined externally in a subject scheme map; in order to reference the subject directly
-without the subject scheme map, the <xmlatt>href</xmlatt> attribute would be used in place of
-<xmlatt>keyref</xmlatt>.</p><codeblock>&lt;map>
+<example id="example" otherprops="examples"><title>Example</title><p>In the following example, the map is classified as covering the Linux subject, and the
+        "Developing web applications" topic is classified as covering the web and development
+        subjects. These subjects (and their keys) are defined externally in a subject scheme map; in
+        order to reference the subject directly without the subject scheme map, the
+          <xmlatt>href</xmlatt> attribute would be used in place of <xmlatt>keyref</xmlatt>.</p><codeblock>&lt;map>
   &lt;title>Working with Linux&lt;/title>
   &lt;topicsubject keyref="linux"/>
   &lt;!-- ... -->
