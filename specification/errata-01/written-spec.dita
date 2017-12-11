@@ -13,275 +13,226 @@
           <stentry>Revised text</stentry>
         </sthead>
         <strow>
-          <stentry>2.2.3.4 Processing controlled attribute values</stentry>
-          <stentry>If "therapist" is flagged and "novice-therapist" is not explicitly flagged,
-            processors automatically should flag "novice" since it is a type of therapist.</stentry>
-          <stentry>If "therapist" is flagged and "novice-therapist" is not explicitly flagged,
-            processors automatically should flag "novice<u>-therapist</u>" since it is a type of
-            therapist.</stentry>
+          <stentry>1.6 Formatting conventions in errata versions of the specification</stentry>
+          <stentry>None</stentry>
+          <stentry>[A new topic that explains how content that has been modified in errata versions
+            of the specification is highlighted with coloring and visual indicators.]</stentry>
         </strow>
         <strow>
-          <stentry>2.2.3.8.2 Example: Extending a subject scheme</stentry>
+          <stentry>2.2.2.3 DITA map elements<ph rev="errata-01-review"> [Explanation of
+                <xmlelement>topicsetref</xmlelement>]</ph></stentry>
+          <stentry>Enables authors to reference a navigation branch that is defined in another DITA
+            map.</stentry>
+          <stentry>Enables authors to reference a navigation branch that is defined in <u>the
+              current map or in</u> another DITA map.</stentry>
+        </strow>
+        <strow>
+          <stentry>2.3.4.2 Key scopes</stentry>
+          <stentry>A key scope is defined by a <ph rev="errata-01-review"
+                ><xmlelement>map</xmlelement> or</ph>
+            <xmlelement>topicref</xmlelement> element that specifies the <xmlatt>keyscope</xmlatt>
+            attribute. The <xmlatt>keyscope</xmlatt> attribute specifies the names of the scope,
+            separated by spaces.</stentry>
+          <stentry>A key scope is defined by a <ph rev="errata-01-review"
+                ><xmlelement>map</xmlelement> or</ph>
+            <xmlelement>topicref</xmlelement> element that specifies the <xmlatt>keyscope</xmlatt>
+            attribute. The <xmlatt>keyscope</xmlatt> attribute specifies the names of the scope,
+            separated by spaces. <u>The legal characters for a key scope name are the same as those
+              for keys.</u></stentry>
+        </strow>
+        <strow>
+          <stentry>2.4.2 Content reference (conref)</stentry>
+          <stentry>None</stentry>
           <stentry>
-            <p>The effective result is the same as the following subject scheme map:</p>
-            <codeblock>&lt;subjectScheme>
-  &lt;subjectdef keys="os" navtitle="Operating system">
-    &lt;subjectdef keys="linux" navtitle="Linux">
-      &lt;subjectdef keys="redhat" navtitle="RedHat Linux"/>
-      &lt;subjectdef keys="suse" navtitle="SuSE Linux"/>
-    &lt;/subjectdef>
-    &lt;subjectdef keys="macos" navtitle="Macintosh"/>
-    &lt;subjectdef keys="windows" navtitle="Windows">
-      &lt;subjectdef keys="winxp" navtitle="Windows XP"/>
-      &lt;subjectdef keys="win98" navtitle="Windows Vista"/>
-    &lt;/subjectdef>
-    &lt;subjectdef keys="zos" navtitle="z/OS"/>
-  &lt;/subjectdef>
-  &lt;enumerationdef>
-    &lt;attributedef name="platform"/>
-    &lt;subjectdef keyref="os"/>
-  &lt;/enumerationdef>
-&lt;/subjectScheme></codeblock>
-          </stentry>
-          <stentry>
-            <p>The effective result is the same as the following subject scheme map:</p>
-            <codeblock>&lt;subjectScheme>
-  &lt;subjectdef keys="os" navtitle="Operating system">
-    &lt;subjectdef keys="linux" navtitle="Linux">
-      &lt;subjectdef keys="redhat" navtitle="RedHat Linux"/>
-      &lt;subjectdef keys="suse" navtitle="SuSE Linux"/>
-    &lt;/subjectdef>
-    &lt;subjectdef keys="macos" navtitle="Macintosh"/>
-    &lt;subjectdef keys="windows" navtitle="Windows">
-      &lt;subjectdef keys="winxp" navtitle="Windows XP"/>
-      &lt;subjectdef keys="<line-through>win98</line-through><u>winvis</u>" navtitle="Windows Vista"/>
-    &lt;/subjectdef>
-    &lt;subjectdef keys="zos" navtitle="z/OS"/>
-  &lt;/subjectdef>
-  &lt;enumerationdef>
-    &lt;attributedef name="platform"/>
-    &lt;subjectdef keyref="os"/>
-  &lt;/enumerationdef>
-&lt;/subjectScheme></codeblock>
+            <p>
+              <b><u>Related concept:</u></b>
+            </p>
+            <p><u>2.5.5.4 Weak and strong constraints</u></p>
           </stentry>
         </strow>
         <strow>
-          <stentry>2.4.3.1 Conditional processing values and groups</stentry>
-          <stentry>Groups consist of a name immediately followed by a parenthetical group of one or
-            more space-delimited string values.</stentry>
-          <stentry>Groups consist of a name immediately followed by a parenthetical group of
-              <line-through>one</line-through>
-            <u>zero</u> or more space-delimited string values.</stentry>
+          <stentry>2.4.4.6.2 Example: Multiple <xmlelement>ditavalref</xmlelement> elements on a
+            branch</stentry>
+          <stentry>
+            <codeblock>&lt;map> &lt;topicref href="intro.dita"/> <b>&lt;!-- Begining of installing
+              branch --></b> &lt;topicref href="install.dita"> &lt;ditavalref href="win.ditaval"/>
+              &lt;ditavalref href="mac.ditaval"> &lt;ditavalmeta>
+              &lt;dvrResourceSuffix>-apple&lt;/dvrResourceSuffix> &lt;/ditavalmeta> &lt;/ditavalref>
+              &lt;ditavalref href="linux.ditaval"> &lt;ditavalmeta>
+              &lt;dvrResourceSuffix>-linux&lt;/dvrResourceSuffix> &lt;/ditavalmeta> &lt;/ditavalref>
+              &lt;topicref href="do-stuff.dita"> &lt;topicref href="mac-specific-stuff.dita"
+              platform="mac"/> &lt;/topicref> <b>&lt;!-- End of installing branch --></b>
+              &lt;topicref href="cleanup.dita"/> &lt;/topicref> &lt;/map></codeblock>
+          </stentry>
+          <stentry>
+            <codeblock>&lt;map> &lt;topicref href="intro.dita"/> <b>&lt;!-- Begining of installing
+              branch --></b> &lt;topicref href="install.dita"> &lt;ditavalref href="win.ditaval"/>
+              &lt;ditavalref href="mac.ditaval"> &lt;ditavalmeta>
+              &lt;dvrResourceSuffix>-apple&lt;/dvrResourceSuffix> &lt;/ditavalmeta> &lt;/ditavalref>
+              &lt;ditavalref href="linux.ditaval"> &lt;ditavalmeta>
+              &lt;dvrResourceSuffix>-linux&lt;/dvrResourceSuffix> &lt;/ditavalmeta> &lt;/ditavalref>
+              &lt;topicref href="do-stuff.dita"> <u>&lt;!-- more topics and nested branches --></u>
+              &lt;topicref href="mac-specific-stuff.dita" platform="mac"/> &lt;/topicref> <b>&lt;!--
+                End of installing branch --></b> &lt;topicref href="cleanup.dita"/> &lt;/topicref>
+              &lt;/map></codeblock>
+          </stentry>
+        </strow>
+        <strow rev="errata-01-public-review">
+          <stentry>2.5.3.6 <xmlatt>class</xmlatt> attribute rules and syntax</stentry>
+          <stentry>A sequence of one or more tokens of the form
+                <codeph>"<varname>modulename</varname>/<varname>typename</varname>",</codeph> with
+            each taoken separated by one or more spaces, where <varname>modulename</varname> is the
+            short name of the vocabulary module and <varname>typename</varname> is the element type
+            name. </stentry>
+          <stentry>A sequence of one or more tokens of the form
+                <codeph>"<varname>modulename</varname>/<varname>typename</varname>",</codeph> with
+            each <line-through>taoken</line-through>
+            <u>token</u> separated by one or more spaces, where <varname>modulename</varname> is the
+            short name of the vocabulary module and <varname>typename</varname> is the element type
+            name. </stentry>
         </strow>
         <strow>
-          <stentry>2.5.3.1 Overview of specialization</stentry>
-          <stentry>Domain specialization can be added to document-type shells.</stentry>
-          <stentry>Domain specialization<u>s</u> can be added to document-type shells.</stentry>
+          <stentry>2.5.5.6.<ph rev="errata-01-review">6</ph> Example: Correct the constraint for the
+            machinery task</stentry>
+          <stentry>None</stentry>
+          <stentry>[New example topic]</stentry>
+        </strow>
+        <strow>
+          <stentry>2.6.3.1 DTD: Overview of coding requirements</stentry>
+          <stentry>DITA coding practices for DTDs rely heavily on entities to implement
+            specialization and constrraints.</stentry>
+          <stentry>DITA coding practices for DTDs rely heavily on entities to implement
+            specialization and <line-through>constrraints</line-through>
+            <u>constraints</u>.</stentry>
+        </strow>
+        <strow>
+          <stentry>2.7.1.3 General task topic</stentry>
+          <stentry>None</stentry>
+          <stentry>[Added an additional row to the table that compares the structure of the general
+            and strict task topics]<p><u>tasktroubleshooting (optional, one only)</u> |
+                <u>tasktroubleshooting (optional, one only)</u></p></stentry>
         </strow>
         <strow>
           <stentry>2.7.1.4 Task topic (strict task)</stentry>
-          <stentry>
-            <codeblock>&lt;task id="birdhousebuilding"&gt;
-              &lt;title&gt;Building a bird house&lt;/title&gt;
-              &lt;shortdesc&gt;Building a birdhouse is a perfect activity 
-              for adults to share with their children or grandchildren. 
-              It can be used to teach about birds, as well as the proper use of tools.
-              &lt;/shortdesc&gt;
-              &lt;taskbody&gt;
-              &lt;context&gt;Birdhouses provide safe locations for birds to build nests and raise their young. They also provide shelter during cold and rainy spells.&lt;/context&gt;
-              &lt;prereq&gt;To build a sound birdhouse, you will need a complete set of tools:
-              &lt;ul&gt;&lt;li&gt;hand saw&lt;/li&gt;
-              &lt;li&gt;hammer ... &lt;/li&gt;
-              &lt;/ul&gt;&lt;/prereq&gt;
-              &lt;steps&gt;
-              &lt;step&gt;&lt;cmd&gt;Lay out the dimensions for the birdhouse elements.&lt;/cmd&gt;&lt;/step&gt;
-              &lt;step&gt;&lt;cmd&gt;Cut the elements to size.&lt;/cmd&gt;&lt;/step&gt;
-              &lt;step&gt;&lt;cmd&gt;Drill a 1 1/2" diameter hole for the bird entrance on the front.&lt;/cmd&gt;
-              &lt;info&gt;You need to look at the drawing for the correct placement of the 
-              hole.&lt;/info&gt;&lt;/step&gt;
-              &lt;!--...--&gt;
-              &lt;/steps&gt;
-              &lt;result&gt;You now have a beautiful new birdhouse!&lt;/result&gt;
-              &lt;postreq&gt;Now find a good place to mount it.&lt;/postreq&gt;
-              &lt;/taskbody&gt;
-              &lt;/task&gt;</codeblock>
-          </stentry>
-          <stentry>
-            <codeblock>&lt;task id="birdhousebuilding"&gt;
-              &lt;title&gt;Building a bird house&lt;/title&gt;
-              &lt;shortdesc&gt;Building a birdhouse is a perfect activity 
-              for adults to share with their children or grandchildren. 
-              It can be used to teach about birds, as well as the proper use of tools.
-              &lt;/shortdesc&gt;
-              &lt;taskbody&gt;
-              <line-through>&lt;context&gt;Birdhouses provide safe locations for birds to build nests and raise their young. They also provide shelter during cold and rainy spells.&lt;/context&gt;</line-through>
-              &lt;prereq&gt;To build a sound birdhouse, you will need a complete set of tools:
-              &lt;ul&gt;&lt;li&gt;hand saw&lt;/li&gt;
-              &lt;li&gt;hammer ... &lt;/li&gt;
-              &lt;/ul&gt;&lt;/prereq&gt;
-              <u>&lt;context&gt;Birdhouses provide safe locations for birds to build nests and raise their young. They also provide shelter during cold and rainy spells.&lt;/context&gt;</u>
-              &lt;steps&gt;
-              &lt;step&gt;&lt;cmd&gt;Lay out the dimensions for the birdhouse elements.&lt;/cmd&gt;&lt;/step&gt;
-              &lt;step&gt;&lt;cmd&gt;Cut the elements to size.&lt;/cmd&gt;&lt;/step&gt;
-              &lt;step&gt;&lt;cmd&gt;Drill a 1 1/2" diameter hole for the bird entrance on the front.&lt;/cmd&gt;
-              &lt;info&gt;You need to look at the drawing for the correct placement of the 
-              hole.&lt;/info&gt;&lt;/step&gt;
-              &lt;!--...--&gt;
-              &lt;/steps&gt;
-              &lt;result&gt;You now have a beautiful new birdhouse!&lt;/result&gt;
-              &lt;postreq&gt;Now find a good place to mount it.&lt;/postreq&gt;
-              &lt;/taskbody&gt;
-              &lt;/task&gt;</codeblock>
-          </stentry>
-        </strow>
-        <strow>
-          <stentry>3.4.1.10 <xmlelement>&lt;created></xmlelement></stentry>
-          <stentry>
-            <codeblock>&lt;prolog&gt;
- &lt;critdates&gt;
-  <b>&lt;created date="2001-06-12"&gt;&lt;/created&gt;</b>
-  &lt;revised golive="2001-08-20"&gt;&lt;/revised&gt;
- &lt;/critdates&gt;
-&lt;/prolog&gt;</codeblock>
-          </stentry>
-          <stentry>
-            <codeblock>&lt;prolog&gt;
- &lt;critdates&gt;
-  <b>&lt;created date="2001-06-12"&gt;&lt;/created&gt;</b>
-  &lt;revised golive="2001-08-20" <u>modified="2001-07-01"</u>&gt;&lt;/revised&gt;
- &lt;/critdates&gt;
-&lt;/prolog&gt;</codeblock>
-          </stentry>
-        </strow>
-        <strow>
-          <stentry>3.4.2 Indexing group elements</stentry>
-          <stentry>
-            <lines><b>Related reference</b>
-              3.7.5 index-base
-              index-base</lines>
-          </stentry>
-          <stentry>
-            <lines><b>Related reference</b>
-              3.7.5 index-base<line-through>
-                index-base</line-through></lines>
-          </stentry>
-        </strow>
-        <strow>
-          <stentry>3.4.2.1 <xmlelement>indexterm</xmlelement></stentry>
-          <stentry>
-            <codeblock>&lt;topic id="accounting">
-  &lt;title>Accounting rugulations&lt;/title>
-  &lt;prolog>
-    &lt;metadata>
-      &lt;keywords>&lt;indexterm start="acct">Accounting&lt;/indexterm>&lt;/keywords>
-    &lt;/metadata>
-  &lt;/prolog>
-  &lt;!-- Body and sub-topics -->
-&lt;/topic></codeblock>
-          </stentry>
-          <stentry>
-            <codeblock>&lt;topic id="accounting">
-  &lt;title>Accounting r<line-through>u</line-through><u>e</u>gulations&lt;/title>
-  &lt;prolog>
-    &lt;metadata>
-      &lt;keywords>&lt;indexterm start="acct">Accounting&lt;/indexterm>&lt;/keywords>
-    &lt;/metadata>
-  &lt;/prolog>
-  &lt;!-- Body and sub-topics -->
-&lt;/topic></codeblock>
-          </stentry>
-        </strow>
-        <strow>
-          <stentry>3.4.2.4 <xmlelement>index-see-also</xmlelement></stentry>
           <stentry>None</stentry>
-          <stentry><u>Example</u></stentry>
-        </strow>
-        <strow>
-          <stentry>3.6.1.12 <xmlelement>&lt;subjectHead></xmlelement></stentry>
-          <stentry>For instance, a scheme<ph>might</ph> be displayed to let a user select subjects
-            as part of faceted browsing.</stentry>
-          <stentry>For instance, a <line-through>schememight</line-through>
-            <u>scheme might</u> be displayed to let a user select subjects as part of faceted
-            browsing.</stentry>
-        </strow>
-        
-        <strow>
-          <stentry>3.7.5 <xmlelement>index-base</xmlelement></stentry>
-          <stentry>
-            <p>The <xmlelement>index-see-also</xmlelement> element is specialized from
-                <xmlelement>index-base</xmlelement>; see <xmlelement>index-see-also</xmlelement> for
-              an example of how <xmlelement>index-base</xmlelement>
-              <ph>can</ph> be used with specialization.</p>
-          </stentry>
-          <stentry>
-            <p><line-through>The <xmlelement>index-see-also</xmlelement> element is specialized from
-                  <xmlelement>index-base</xmlelement>; see <xmlelement>index-see-also</xmlelement>
-                for an example of how <xmlelement>index-base</xmlelement>
-                <ph>can</ph> be used with specialization.</line-through></p>
-            <p><u><i>This element is not intended to be used in source files.</i></u></p>
-          </stentry>
-        </strow>
-<strow>
-<stentry>3.5.4.2 <xmlelement>ditavalmeta</xmlelement></stentry>
-<stentry>
-<lines><b>Example</b>
-See ditavalref.</lines>
-</stentry>
-<stentry>
-<lines><b>Example</b>
-<line-through>See ditavalref.</line-through>
-<u>See Examples of branch filtering for several examples of the <xmlelement>ditavalref</xmlelement> element.</u></lines>
-</stentry></strow>
-        <strow>
-          <stentry>3.8.1 <xmlelement>&lt;required-cleanup></xmlelement></stentry>
           <stentry>
             <dl>
               <dlentry>
-                <dt><xmlatt>remap</xmlatt></dt>
-                <dd>Indicates the element that the contents of the
-                    <xmlelement>required-cleanup</xmlelement> element were mapped from (provides an
-                  idea about what the new intent should be).</dd>
-              </dlentry>
-            </dl>
-          </stentry>
-          <stentry>
-            <dl>
-              <dlentry>
-                <dt><xmlatt>remap</xmlatt></dt>
-                <dd><line-through>Indicates the element that the contents of the
-                      <xmlelement>required-cleanup</xmlelement> element were mapped from (provides
-                    an idea about what the new intent should be).</line-through></dd>
-                <dd><u>Provides information about the origins of the content of the
-                      <xmlelement>required-cleanup</xmlelement> element. This provides authors
-                    context for determining how the migrated content should be tagged.</u></dd>
+                <dt><u><xmlelement>tasktroubleshooting</xmlelement></u></dt>
+                <dd><u>Describes actions that a user might take if the task does not produce the
+                    expected results.</u></dd>
               </dlentry>
             </dl>
           </stentry>
         </strow>
         <strow>
-          <stentry>3.10.7.1.1 <xmlelement>equation-block</xmlelement></stentry>
+          <stentry>3 Language reference: Technical content edition</stentry>
+          <stentry>Each element defined in the techical content specializations</stentry>
+          <stentry>Each element defined in the <line-through>techical</line-through><u>technical</u>
+            content specializations</stentry>
+        </strow>
+        <strow>
+          <stentry>3 Language reference: All-inclusive edition</stentry>
+          <stentry>Each element defined in the techical content specializations</stentry>
+          <stentry>Each element defined in the <line-through>techical</line-through><u>technical</u>
+            content specializations</stentry>
+        </strow>
+        <strow>
+          <stentry>3.2.3.1 <xmlelement>table</xmlelement></stentry>
+          <stentry>The following attributes are available on this element: Universal attribute
+            group, <xmlatt>outputclass</xmlatt>, <xmlatt>display</xmlatt>, and
+              <xmlatt>scale</xmlatt> from Display attribute group, and the attributes defined
+            below.</stentry>
+          <stentry>The following attributes are available on this element: Universal attribute
+            group, <xmlatt>outputclass</xmlatt>,
+              <line-through><xmlatt>display</xmlatt></line-through>
+            <u><xmlatt>frame</xmlatt></u>, and <xmlatt>scale</xmlatt> from Display attribute group,
+            and the attributes defined below.</stentry>
+        </strow>
+        <strow rev="errata-01-review">
+          <stentry>3.3.1.11 <xmlelement>ux-window</xmlelement></stentry>
           <stentry>
-            <p><b>Inheritance</b></p>
-            <p>+ topic/p equation-d/equation-block </p>
+            <codeblock>&amp;lt;ux-window id="p76" name="ux-tablet" top="5%" left="5%" height="90%" width="90%" 
+    features="status=no,toolbar=no,menubar=no,location=no" relative="no"
+    full-screen="no" /></codeblock>
           </stentry>
           <stentry>
-            <p><b>Inheritance</b></p>
-            <p>+ topic/<line-through>p</line-through><u>div</u> equation-d/equation-block </p>
+            <codeblock>&amp;lt;ux-window id="p76" name="ux-tablet" top="<line-through>5%</line-through>1cm" left="<line-through>5%</line-through><u>1cm</u>" height="<line-through>90%</line-through><u>4cm</u>" width="<line-through>90%</line-through><u>3cm</u>" 
+    features="status=no,toolbar=no,menubar=no,location=no" relative="no"
+    full-screen="no" /></codeblock>
           </stentry>
         </strow>
         <strow>
-        <stentry>3.2.2.17 <xmlelement>image</xmlelement></stentry>
-        <stentry>None</stentry>
-        <stentry>
-        <p><b>Attributes</b></p>
-<dl>
-<dlentry>
-<dt><xmlatt>format</xmlatt></dt>
-<dd>The <xmlatt>format</xmlatt> attribute identifies the format of the resource being referenced.
-See <i>The format attribute</i> for details on supported values.</dd>
-</dlentry>
-</dl>
-        </stentry>
+          <stentry>3.4.3.1 <xmlelement>exportanchors</xmlelement></stentry>
+          <stentry>The <xmlelement>exportanchors</xmlelement> element canbe used within a topic
+            prolog, in which case the defined IDs apply to IDs within that topic (excluding
+            sub-topics). </stentry>
+          <stentry>The <xmlelement>exportanchors</xmlelement> element <u>can be</u> used within a
+            topic prolog, in which case the defined IDs apply to IDs within that topic (excluding
+            sub-topics). </stentry>
+        </strow>
+        <strow>
+          <stentry>3.5.4.2 <xmlelement>ditavalmeta</xmlelement></stentry>
+          <stentry>The <xmlelement>ditavalmeta</xmlelement> element also can contain other
+            information, such as author and navigation title, that might be useful for map
+            architects but is not rendered in the output.</stentry>
+          <stentry>The <xmlelement>ditavalmeta</xmlelement> element also can contain other
+            information, such as <line-through>author and</line-through> navigation title, that
+            might be useful for map architects but is not rendered in the output.</stentry>
+        </strow>
+        <strow rev="errata-01-review">
+          <stentry>3.10 Technical content elements</stentry>
+          <stentry>Elements in the technical content section include the original Concept, Task, and
+            Reference specializations, as well as the Bookmap and Glossary specializations added
+            with DITA 1.1. It also includes domains designed primarily for technical content, such
+            as the task requirements and software domains.</stentry>
+          <stentry>Elements in the technical content section include the original Concept, Task, and
+            Reference specializations, as well as <line-through>the Bookmap and
+              Glossary</line-through> specializations added <line-through>with DITA
+              1.1</line-through>
+            <u>in later releases</u>. It also includes domains designed primarily for technical
+              content<line-through>, such as the task requirements and software
+              domains</line-through>.</stentry>
+        </strow>
+        <strow>
+          <stentry>3.10.4 Troubleshooting elements</stentry>
+          <stentry>Short description needed</stentry>
+          <stentry>
+            <line-through>Short description needed</line-through>
+            <u>Troubleshooting topics document corrective action such as troubleshooting or alarm
+              clearing.</u>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry>3.10.4.1 <xmlelement>troubleshooting</xmlelement></stentry>
+          <stentry>The <xmlelement>troubleshooting</xmlelement> element is the top-level element for
+            a troubleshooting topic. Troubleshooting topics document corrective action such as
+            troubleshooting or alarm clearing. Troubleshooting topics begin with a description of a
+            condition that the reader might want to correct, followed by one or more cause-remedy
+            pairs. Each cause-remedy pair is a potential solution to the trouble described in the
+            condition.</stentry>
+          <stentry>The <xmlelement>troubleshooting</xmlelement> element is the top-level element for
+            a troubleshooting topic. <line-through>Troubleshooting topics document corrective action
+              such as troubleshooting or alarm clearing.</line-through> Troubleshooting topics begin
+            with a description of a condition that the reader might want to correct, followed by one
+            or more cause-remedy pairs. Each cause-remedy pair is a potential solution to the
+            trouble described in the condition.</stentry>
+        </strow>
+        <strow rev="errata-01-public-review">
+          <stentry>3.11.2.2 <xmlelement>learningObjectMap</xmlelement></stentry>
+          <stentry>The <xmlelement>learningObjectMap</xmlelement> references one and only one
+              <xmlelement>learningObject</xmlelement>. Any <xmlelement>topicref</xmlelement>
+            elements that occur before the <xmlelement>learningObject</xmlelement> are intended to
+            be resource-only references such as key definitions.</stentry>
+          <stentry><u>Use the</u>
+            <line-through>The</line-through>
+            <xmlelement>learningObjectMap</xmlelement>
+            <line-through>references one and only one</line-through>
+            <u>to reference a single</u>
+            <xmlelement>learningObject</xmlelement>. Any <u>specializations of
+              </u><xmlelement>topicref</xmlelement> elements that occur before the
+              <xmlelement>learningObject</xmlelement> are intended to be resource-only references
+            such as key definitions.</stentry>
         </strow>
       </simpletable>
     </section>
