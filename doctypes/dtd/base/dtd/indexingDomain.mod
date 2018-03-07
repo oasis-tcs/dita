@@ -97,9 +97,9 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  index-see    %global-atts;  class CDATA "+ topic/index-base indexing-d/index-see ">
-<!ATTLIST  index-see-also %global-atts;  class CDATA "+ topic/index-base indexing-d/index-see-also ">
-<!ATTLIST  index-sort-as %global-atts;  class CDATA "+ topic/index-base indexing-d/index-sort-as ">
+<!ATTLIST  index-see      class CDATA "+ topic/index-base indexing-d/index-see ">
+<!ATTLIST  index-see-also   class CDATA "+ topic/index-base indexing-d/index-see-also ">
+<!ATTLIST  index-sort-as   class CDATA "+ topic/index-base indexing-d/index-sort-as ">
 
 <!-- ================== End of DITA Indexing Domain ==================== -->
  

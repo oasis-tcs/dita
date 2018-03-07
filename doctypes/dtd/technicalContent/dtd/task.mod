@@ -625,35 +625,35 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  task         %global-atts;  class CDATA "- topic/topic task/task ">
-<!ATTLIST  taskbody     %global-atts;  class CDATA "- topic/body task/taskbody ">
-<!ATTLIST  steps        %global-atts;  class CDATA "- topic/ol task/steps ">
-<!ATTLIST  steps-unordered %global-atts;  class CDATA "- topic/ul task/steps-unordered ">
-<!ATTLIST  stepsection  %global-atts;  class CDATA "- topic/li task/stepsection ">
-<!ATTLIST  step         %global-atts;  class CDATA "- topic/li task/step ">
-<!ATTLIST  cmd          %global-atts;  class CDATA "- topic/ph task/cmd ">
-<!ATTLIST  substeps     %global-atts;  class CDATA "- topic/ol task/substeps ">
-<!ATTLIST  substep      %global-atts;  class CDATA "- topic/li task/substep ">
-<!ATTLIST  tutorialinfo %global-atts;  class CDATA "- topic/itemgroup task/tutorialinfo ">
-<!ATTLIST  info         %global-atts;  class CDATA "- topic/itemgroup task/info ">
-<!ATTLIST  stepxmp      %global-atts;  class CDATA "- topic/itemgroup task/stepxmp ">
-<!ATTLIST  stepresult   %global-atts;  class CDATA "- topic/itemgroup task/stepresult ">
-<!ATTLIST  steptroubleshooting %global-atts;  class CDATA "- topic/itemgroup task/steptroubleshooting ">
-<!ATTLIST  choices      %global-atts;  class CDATA "- topic/ul task/choices ">
-<!ATTLIST  choice       %global-atts;  class CDATA "- topic/li task/choice ">
-<!ATTLIST  result       %global-atts;  class CDATA "- topic/section task/result ">
-<!ATTLIST  tasktroubleshooting %global-atts;  class CDATA "- topic/section task/tasktroubleshooting ">
-<!ATTLIST  prereq       %global-atts;  class CDATA "- topic/section task/prereq ">
-<!ATTLIST  postreq      %global-atts;  class CDATA "- topic/section task/postreq ">
-<!ATTLIST  context      %global-atts;  class CDATA "- topic/section task/context ">
-<!ATTLIST  steps-informal %global-atts;  class CDATA "- topic/section task/steps-informal ">
-<!ATTLIST  choicetable  %global-atts;  class CDATA "- topic/simpletable task/choicetable ">
-<!ATTLIST  chhead       %global-atts;  class CDATA "- topic/sthead task/chhead ">
-<!ATTLIST  chrow        %global-atts;  class CDATA "- topic/strow task/chrow ">
-<!ATTLIST  choptionhd   %global-atts;  class CDATA "- topic/stentry task/choptionhd ">
-<!ATTLIST  chdeschd     %global-atts;  class CDATA "- topic/stentry task/chdeschd ">
-<!ATTLIST  choption     %global-atts;  class CDATA "- topic/stentry task/choption ">
-<!ATTLIST  chdesc       %global-atts;  class CDATA "- topic/stentry task/chdesc ">
+<!ATTLIST  task           class CDATA "- topic/topic task/task ">
+<!ATTLIST  taskbody       class CDATA "- topic/body task/taskbody ">
+<!ATTLIST  steps          class CDATA "- topic/ol task/steps ">
+<!ATTLIST  steps-unordered   class CDATA "- topic/ul task/steps-unordered ">
+<!ATTLIST  stepsection    class CDATA "- topic/li task/stepsection ">
+<!ATTLIST  step           class CDATA "- topic/li task/step ">
+<!ATTLIST  cmd            class CDATA "- topic/ph task/cmd ">
+<!ATTLIST  substeps       class CDATA "- topic/ol task/substeps ">
+<!ATTLIST  substep        class CDATA "- topic/li task/substep ">
+<!ATTLIST  tutorialinfo   class CDATA "- topic/itemgroup task/tutorialinfo ">
+<!ATTLIST  info           class CDATA "- topic/itemgroup task/info ">
+<!ATTLIST  stepxmp        class CDATA "- topic/itemgroup task/stepxmp ">
+<!ATTLIST  stepresult     class CDATA "- topic/itemgroup task/stepresult ">
+<!ATTLIST  steptroubleshooting   class CDATA "- topic/itemgroup task/steptroubleshooting ">
+<!ATTLIST  choices        class CDATA "- topic/ul task/choices ">
+<!ATTLIST  choice         class CDATA "- topic/li task/choice ">
+<!ATTLIST  result         class CDATA "- topic/section task/result ">
+<!ATTLIST  tasktroubleshooting   class CDATA "- topic/section task/tasktroubleshooting ">
+<!ATTLIST  prereq         class CDATA "- topic/section task/prereq ">
+<!ATTLIST  postreq        class CDATA "- topic/section task/postreq ">
+<!ATTLIST  context        class CDATA "- topic/section task/context ">
+<!ATTLIST  steps-informal   class CDATA "- topic/section task/steps-informal ">
+<!ATTLIST  choicetable    class CDATA "- topic/simpletable task/choicetable ">
+<!ATTLIST  chhead         class CDATA "- topic/sthead task/chhead ">
+<!ATTLIST  chrow          class CDATA "- topic/strow task/chrow ">
+<!ATTLIST  choptionhd     class CDATA "- topic/stentry task/choptionhd ">
+<!ATTLIST  chdeschd       class CDATA "- topic/stentry task/chdeschd ">
+<!ATTLIST  choption       class CDATA "- topic/stentry task/choption ">
+<!ATTLIST  chdesc         class CDATA "- topic/stentry task/chdesc ">
 
 <!-- ================== End of DITA Task ==================== -->
  

@@ -99,8 +99,8 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  learningContent %global-atts;  class CDATA "- topic/topic learningBase/learningBase learningContent/learningContent ">
-<!ATTLIST  learningContentbody %global-atts;  class CDATA "- topic/body  learningBase/learningBasebody learningContent/learningContentbody ">
+<!ATTLIST  learningContent   class CDATA "- topic/topic learningBase/learningBase learningContent/learningContent ">
+<!ATTLIST  learningContentbody   class CDATA "- topic/body  learningBase/learningBasebody learningContent/learningContentbody ">
 
 <!-- ================== End of DITA learningContent Module ==================== -->
  

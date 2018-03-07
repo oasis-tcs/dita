@@ -229,12 +229,12 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  hazardstatement %global-atts;  class CDATA "+ topic/note hazard-d/hazardstatement ">
-<!ATTLIST  messagepanel %global-atts;  class CDATA "+ topic/ul hazard-d/messagepanel ">
-<!ATTLIST  hazardsymbol %global-atts;  class CDATA "+ topic/image hazard-d/hazardsymbol ">
-<!ATTLIST  typeofhazard %global-atts;  class CDATA "+ topic/li hazard-d/typeofhazard ">
-<!ATTLIST  consequence  %global-atts;  class CDATA "+ topic/li hazard-d/consequence ">
-<!ATTLIST  howtoavoid   %global-atts;  class CDATA "+ topic/li hazard-d/howtoavoid ">
+<!ATTLIST  hazardstatement   class CDATA "+ topic/note hazard-d/hazardstatement ">
+<!ATTLIST  messagepanel   class CDATA "+ topic/ul hazard-d/messagepanel ">
+<!ATTLIST  hazardsymbol   class CDATA "+ topic/image hazard-d/hazardsymbol ">
+<!ATTLIST  typeofhazard   class CDATA "+ topic/li hazard-d/typeofhazard ">
+<!ATTLIST  consequence    class CDATA "+ topic/li hazard-d/consequence ">
+<!ATTLIST  howtoavoid     class CDATA "+ topic/li hazard-d/howtoavoid ">
 
 <!-- ================== End of DITA Hazard Statement Domain ==================== -->
  

@@ -1167,64 +1167,64 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  learningPlan %global-atts;  class CDATA "- topic/topic learningBase/learningBase learningPlan/learningPlan ">
-<!ATTLIST  learningPlanbody %global-atts;  class CDATA "- topic/body  learningBase/learningBasebody learningPlan/learningPlanbody ">
-<!ATTLIST  lcProject    %global-atts;  class CDATA "- topic/section  learningBase/section learningPlan/lcProject ">
-<!ATTLIST  lcNeedsAnalysis %global-atts;  class CDATA "- topic/section  learningBase/section learningPlan/lcNeedsAnalysis ">
-<!ATTLIST  lcGapAnalysis %global-atts;  class CDATA "- topic/section  learningBase/section learningPlan/lcGapAnalysis ">
-<!ATTLIST  lcIntervention %global-atts;  class CDATA "- topic/section  learningBase/section learningPlan/lcIntervention ">
-<!ATTLIST  lcTechnical  %global-atts;  class CDATA "- topic/section  learningBase/section learningPlan/lcTechnical ">
-<!ATTLIST  lcClient     %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcClient ">
-<!ATTLIST  lcPlanTitle  %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcPlanTitle ">
-<!ATTLIST  lcCIN        %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcCIN ">
-<!ATTLIST  lcModDate    %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcModDate ">
-<!ATTLIST  lcDelivDate  %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcDelivDate ">
-<!ATTLIST  lcPlanSubject %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcPlanSubject ">
-<!ATTLIST  lcPlanDescrip %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcPlanDescrip ">
-<!ATTLIST  lcPlanPrereqs %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcPlanPrereqs ">
-<!ATTLIST  lcOrganizational %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcOrganizational ">
-<!ATTLIST  lcGoals      %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcGoals ">
-<!ATTLIST  lcNeeds      %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcNeeds ">
-<!ATTLIST  lcValues     %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcValues ">
-<!ATTLIST  lcOrgConstraints %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcOrgConstraints ">
-<!ATTLIST  lcPlanAudience %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcPlanAudience ">
-<!ATTLIST  lcGeneralDescription %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcGeneralDescription ">
-<!ATTLIST  lcEdLevel    %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcEdLevel ">
-<!ATTLIST  lcAge        %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcAge ">
-<!ATTLIST  lcBackground %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcBackground ">
-<!ATTLIST  lcSkills     %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcSkills ">
-<!ATTLIST  lcKnowledge  %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcKnowledge ">
-<!ATTLIST  lcMotivation %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcMotivation ">
-<!ATTLIST  lcSpecChars  %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcSpecChars ">
-<!ATTLIST  lcWorkEnv    %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcWorkEnv ">
-<!ATTLIST  lcWorkEnvDescription %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcWorkEnvDescription ">
-<!ATTLIST  lcPlanResources %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcPlanResources ">
-<!ATTLIST  lcProcesses  %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcProcesses ">
-<!ATTLIST  lcTask       %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcTask ">
-<!ATTLIST  lcTaskItem   %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcTaskItem ">
-<!ATTLIST  lcAttitude   %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcAttitude ">
-<!ATTLIST  lcGapItem    %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcGapItem ">
-<!ATTLIST  lcPlanObjective %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcPlanObjective ">
-<!ATTLIST  lcJtaItem    %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcJtaItem ">
-<!ATTLIST  lcGapItemDelta %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcGapItemDelta ">
-<!ATTLIST  lcInterventionItem %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcInterventionItem ">
-<!ATTLIST  lcLearnStrat %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcLearnStrat ">
-<!ATTLIST  lcAssessment %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcAssessment ">
-<!ATTLIST  lcDelivery   %global-atts;  class CDATA "- topic/p  learningBase/p learningPlan/lcDelivery ">
-<!ATTLIST  lcLMS        %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcLMS ">
-<!ATTLIST  lcNoLMS      %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcNoLMS ">
-<!ATTLIST  lcHandouts   %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcHandouts ">
-<!ATTLIST  lcClassroom  %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcClassroom ">
-<!ATTLIST  lcOJT        %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcOJT ">
-<!ATTLIST  lcConstraints %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcConstraints ">
-<!ATTLIST  lcW3C        %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcW3C ">
-<!ATTLIST  lcPlayers    %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcPlayers ">
-<!ATTLIST  lcGraphics   %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcGraphics ">
-<!ATTLIST  lcViewers    %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcViewers ">
-<!ATTLIST  lcResolution %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcResolution ">
-<!ATTLIST  lcFileSizeLimitations %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcFileSizeLimitations ">
-<!ATTLIST  lcDownloadTime %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcDownloadTime ">
-<!ATTLIST  lcSecurity   %global-atts;  class CDATA "- topic/fig  learningBase/fig learningPlan/lcSecurity ">
+<!ATTLIST  learningPlan   class CDATA "- topic/topic learningBase/learningBase learningPlan/learningPlan ">
+<!ATTLIST  learningPlanbody   class CDATA "- topic/body  learningBase/learningBasebody learningPlan/learningPlanbody ">
+<!ATTLIST  lcProject      class CDATA "- topic/section  learningBase/section learningPlan/lcProject ">
+<!ATTLIST  lcNeedsAnalysis   class CDATA "- topic/section  learningBase/section learningPlan/lcNeedsAnalysis ">
+<!ATTLIST  lcGapAnalysis   class CDATA "- topic/section  learningBase/section learningPlan/lcGapAnalysis ">
+<!ATTLIST  lcIntervention   class CDATA "- topic/section  learningBase/section learningPlan/lcIntervention ">
+<!ATTLIST  lcTechnical    class CDATA "- topic/section  learningBase/section learningPlan/lcTechnical ">
+<!ATTLIST  lcClient       class CDATA "- topic/fig  learningBase/fig learningPlan/lcClient ">
+<!ATTLIST  lcPlanTitle    class CDATA "- topic/fig  learningBase/fig learningPlan/lcPlanTitle ">
+<!ATTLIST  lcCIN          class CDATA "- topic/fig  learningBase/fig learningPlan/lcCIN ">
+<!ATTLIST  lcModDate      class CDATA "- topic/fig  learningBase/fig learningPlan/lcModDate ">
+<!ATTLIST  lcDelivDate    class CDATA "- topic/fig  learningBase/fig learningPlan/lcDelivDate ">
+<!ATTLIST  lcPlanSubject   class CDATA "- topic/fig  learningBase/fig learningPlan/lcPlanSubject ">
+<!ATTLIST  lcPlanDescrip   class CDATA "- topic/fig  learningBase/fig learningPlan/lcPlanDescrip ">
+<!ATTLIST  lcPlanPrereqs   class CDATA "- topic/fig  learningBase/fig learningPlan/lcPlanPrereqs ">
+<!ATTLIST  lcOrganizational   class CDATA "- topic/fig  learningBase/fig learningPlan/lcOrganizational ">
+<!ATTLIST  lcGoals        class CDATA "- topic/p  learningBase/p learningPlan/lcGoals ">
+<!ATTLIST  lcNeeds        class CDATA "- topic/p  learningBase/p learningPlan/lcNeeds ">
+<!ATTLIST  lcValues       class CDATA "- topic/p  learningBase/p learningPlan/lcValues ">
+<!ATTLIST  lcOrgConstraints   class CDATA "- topic/p  learningBase/p learningPlan/lcOrgConstraints ">
+<!ATTLIST  lcPlanAudience   class CDATA "- topic/fig  learningBase/fig learningPlan/lcPlanAudience ">
+<!ATTLIST  lcGeneralDescription   class CDATA "- topic/p  learningBase/p learningPlan/lcGeneralDescription ">
+<!ATTLIST  lcEdLevel      class CDATA "- topic/p  learningBase/p learningPlan/lcEdLevel ">
+<!ATTLIST  lcAge          class CDATA "- topic/p  learningBase/p learningPlan/lcAge ">
+<!ATTLIST  lcBackground   class CDATA "- topic/p  learningBase/p learningPlan/lcBackground ">
+<!ATTLIST  lcSkills       class CDATA "- topic/p  learningBase/p learningPlan/lcSkills ">
+<!ATTLIST  lcKnowledge    class CDATA "- topic/p  learningBase/p learningPlan/lcKnowledge ">
+<!ATTLIST  lcMotivation   class CDATA "- topic/p  learningBase/p learningPlan/lcMotivation ">
+<!ATTLIST  lcSpecChars    class CDATA "- topic/p  learningBase/p learningPlan/lcSpecChars ">
+<!ATTLIST  lcWorkEnv      class CDATA "- topic/fig  learningBase/fig learningPlan/lcWorkEnv ">
+<!ATTLIST  lcWorkEnvDescription   class CDATA "- topic/p  learningBase/p learningPlan/lcWorkEnvDescription ">
+<!ATTLIST  lcPlanResources   class CDATA "- topic/p  learningBase/p learningPlan/lcPlanResources ">
+<!ATTLIST  lcProcesses    class CDATA "- topic/p  learningBase/p learningPlan/lcProcesses ">
+<!ATTLIST  lcTask         class CDATA "- topic/fig  learningBase/fig learningPlan/lcTask ">
+<!ATTLIST  lcTaskItem     class CDATA "- topic/p  learningBase/p learningPlan/lcTaskItem ">
+<!ATTLIST  lcAttitude     class CDATA "- topic/p  learningBase/p learningPlan/lcAttitude ">
+<!ATTLIST  lcGapItem      class CDATA "- topic/fig  learningBase/fig learningPlan/lcGapItem ">
+<!ATTLIST  lcPlanObjective   class CDATA "- topic/p  learningBase/p learningPlan/lcPlanObjective ">
+<!ATTLIST  lcJtaItem      class CDATA "- topic/p  learningBase/p learningPlan/lcJtaItem ">
+<!ATTLIST  lcGapItemDelta   class CDATA "- topic/p  learningBase/p learningPlan/lcGapItemDelta ">
+<!ATTLIST  lcInterventionItem   class CDATA "- topic/fig  learningBase/fig learningPlan/lcInterventionItem ">
+<!ATTLIST  lcLearnStrat   class CDATA "- topic/p  learningBase/p learningPlan/lcLearnStrat ">
+<!ATTLIST  lcAssessment   class CDATA "- topic/p  learningBase/p learningPlan/lcAssessment ">
+<!ATTLIST  lcDelivery     class CDATA "- topic/p  learningBase/p learningPlan/lcDelivery ">
+<!ATTLIST  lcLMS          class CDATA "- topic/fig  learningBase/fig learningPlan/lcLMS ">
+<!ATTLIST  lcNoLMS        class CDATA "- topic/fig  learningBase/fig learningPlan/lcNoLMS ">
+<!ATTLIST  lcHandouts     class CDATA "- topic/fig  learningBase/fig learningPlan/lcHandouts ">
+<!ATTLIST  lcClassroom    class CDATA "- topic/fig  learningBase/fig learningPlan/lcClassroom ">
+<!ATTLIST  lcOJT          class CDATA "- topic/fig  learningBase/fig learningPlan/lcOJT ">
+<!ATTLIST  lcConstraints   class CDATA "- topic/fig  learningBase/fig learningPlan/lcConstraints ">
+<!ATTLIST  lcW3C          class CDATA "- topic/fig  learningBase/fig learningPlan/lcW3C ">
+<!ATTLIST  lcPlayers      class CDATA "- topic/fig  learningBase/fig learningPlan/lcPlayers ">
+<!ATTLIST  lcGraphics     class CDATA "- topic/fig  learningBase/fig learningPlan/lcGraphics ">
+<!ATTLIST  lcViewers      class CDATA "- topic/fig  learningBase/fig learningPlan/lcViewers ">
+<!ATTLIST  lcResolution   class CDATA "- topic/fig  learningBase/fig learningPlan/lcResolution ">
+<!ATTLIST  lcFileSizeLimitations   class CDATA "- topic/fig  learningBase/fig learningPlan/lcFileSizeLimitations ">
+<!ATTLIST  lcDownloadTime   class CDATA "- topic/fig  learningBase/fig learningPlan/lcDownloadTime ">
+<!ATTLIST  lcSecurity     class CDATA "- topic/fig  learningBase/fig learningPlan/lcSecurity ">
 
 <!-- ================== End of DITA learningPlan ==================== -->
  

@@ -67,8 +67,8 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  svg-container %global-atts;  class CDATA "+ topic/foreign svg-d/svg-container ">
-<!ATTLIST  svgref       %global-atts;  class CDATA "+ topic/xref svg-d/svgref ">
+<!ATTLIST  svg-container   class CDATA "+ topic/foreign svg-d/svg-container ">
+<!ATTLIST  svgref         class CDATA "+ topic/xref svg-d/svgref ">
 
 <!-- ================== End of DITA SVG Domain ==================== -->
  

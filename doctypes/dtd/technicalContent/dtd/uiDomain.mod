@@ -153,11 +153,11 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  menucascade  %global-atts;  class CDATA "+ topic/ph ui-d/menucascade ">
-<!ATTLIST  screen       %global-atts;  class CDATA "+ topic/pre ui-d/screen ">
-<!ATTLIST  shortcut     %global-atts;  class CDATA "+ topic/keyword ui-d/shortcut ">
-<!ATTLIST  uicontrol    %global-atts;  class CDATA "+ topic/ph ui-d/uicontrol ">
-<!ATTLIST  wintitle     %global-atts;  class CDATA "+ topic/keyword ui-d/wintitle ">
+<!ATTLIST  menucascade    class CDATA "+ topic/ph ui-d/menucascade ">
+<!ATTLIST  screen         class CDATA "+ topic/pre ui-d/screen ">
+<!ATTLIST  shortcut       class CDATA "+ topic/keyword ui-d/shortcut ">
+<!ATTLIST  uicontrol      class CDATA "+ topic/ph ui-d/uicontrol ">
+<!ATTLIST  wintitle       class CDATA "+ topic/keyword ui-d/wintitle ">
 
 <!-- ================== End of DITA User Interface Domain ==================== -->
  

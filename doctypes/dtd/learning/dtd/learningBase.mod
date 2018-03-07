@@ -407,24 +407,24 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  learningBase %global-atts;  class CDATA "- topic/topic learningBase/learningBase ">
-<!ATTLIST  learningBasebody %global-atts;  class CDATA "- topic/body learningBase/learningBasebody ">
-<!ATTLIST  lcIntro      %global-atts;  class CDATA "- topic/section learningBase/lcIntro ">
-<!ATTLIST  lcObjectives %global-atts;  class CDATA "- topic/section learningBase/lcObjectives ">
-<!ATTLIST  lcObjectivesStem %global-atts;  class CDATA "- topic/ph learningBase/lcObjectivesStem ">
-<!ATTLIST  lcObjectivesGroup %global-atts;  class CDATA "- topic/ul learningBase/lcObjectivesGroup ">
-<!ATTLIST  lcObjective  %global-atts;  class CDATA "- topic/li learningBase/lcObjective ">
-<!ATTLIST  lcAudience   %global-atts;  class CDATA "- topic/section learningBase/lcAudience ">
-<!ATTLIST  lcDuration   %global-atts;  class CDATA "- topic/section learningBase/lcDuration ">
-<!ATTLIST  lcTime       %global-atts;  class CDATA "- topic/data learningBase/lcTime ">
-<!ATTLIST  lcPrereqs    %global-atts;  class CDATA "- topic/section learningBase/lcPrereqs ">
-<!ATTLIST  lcSummary    %global-atts;  class CDATA "- topic/section learningBase/lcSummary ">
-<!ATTLIST  lcNextSteps  %global-atts;  class CDATA "- topic/section learningBase/lcNextSteps ">
-<!ATTLIST  lcReview     %global-atts;  class CDATA "- topic/section learningBase/lcReview ">
-<!ATTLIST  lcResources  %global-atts;  class CDATA "- topic/section learningBase/lcResources ">
-<!ATTLIST  lcChallenge  %global-atts;  class CDATA "- topic/section learningBase/lcChallenge ">
-<!ATTLIST  lcInstruction %global-atts;  class CDATA "- topic/section learningBase/lcInstruction ">
-<!ATTLIST  lcInteraction %global-atts;  class CDATA "- topic/section learningBase/lcInteraction ">
+<!ATTLIST  learningBase   class CDATA "- topic/topic learningBase/learningBase ">
+<!ATTLIST  learningBasebody   class CDATA "- topic/body learningBase/learningBasebody ">
+<!ATTLIST  lcIntro        class CDATA "- topic/section learningBase/lcIntro ">
+<!ATTLIST  lcObjectives   class CDATA "- topic/section learningBase/lcObjectives ">
+<!ATTLIST  lcObjectivesStem   class CDATA "- topic/ph learningBase/lcObjectivesStem ">
+<!ATTLIST  lcObjectivesGroup   class CDATA "- topic/ul learningBase/lcObjectivesGroup ">
+<!ATTLIST  lcObjective    class CDATA "- topic/li learningBase/lcObjective ">
+<!ATTLIST  lcAudience     class CDATA "- topic/section learningBase/lcAudience ">
+<!ATTLIST  lcDuration     class CDATA "- topic/section learningBase/lcDuration ">
+<!ATTLIST  lcTime         class CDATA "- topic/data learningBase/lcTime ">
+<!ATTLIST  lcPrereqs      class CDATA "- topic/section learningBase/lcPrereqs ">
+<!ATTLIST  lcSummary      class CDATA "- topic/section learningBase/lcSummary ">
+<!ATTLIST  lcNextSteps    class CDATA "- topic/section learningBase/lcNextSteps ">
+<!ATTLIST  lcReview       class CDATA "- topic/section learningBase/lcReview ">
+<!ATTLIST  lcResources    class CDATA "- topic/section learningBase/lcResources ">
+<!ATTLIST  lcChallenge    class CDATA "- topic/section learningBase/lcChallenge ">
+<!ATTLIST  lcInstruction   class CDATA "- topic/section learningBase/lcInstruction ">
+<!ATTLIST  lcInteraction   class CDATA "- topic/section learningBase/lcInteraction ">
 
 <!-- ================== End of DITA learningBase ==================== -->
  

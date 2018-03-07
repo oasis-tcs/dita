@@ -75,7 +75,7 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  glossgroup   %global-atts;  class CDATA "- topic/topic concept/concept glossgroup/glossgroup ">
+<!ATTLIST  glossgroup     class CDATA "- topic/topic concept/concept glossgroup/glossgroup ">
 
 <!-- ================== End of DITA Glossary Group ==================== -->
  

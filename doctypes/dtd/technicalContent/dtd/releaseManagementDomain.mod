@@ -222,17 +222,17 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  change-historylist %global-atts;  class CDATA "+ topic/metadata relmgmt-d/change-historylist ">
-<!ATTLIST  change-item  %global-atts;  class CDATA "+ topic/data relmgmt-d/change-item ">
-<!ATTLIST  change-person %global-atts;  class CDATA "+ topic/data relmgmt-d/change-person ">
-<!ATTLIST  change-organization %global-atts;  class CDATA "+ topic/data relmgmt-d/change-organization ">
-<!ATTLIST  change-revisionid %global-atts;  class CDATA "+ topic/data relmgmt-d/change-revisionid ">
-<!ATTLIST  change-request-reference %global-atts;  class CDATA "+ topic/data relmgmt-d/change-request-reference ">
-<!ATTLIST  change-request-system %global-atts;  class CDATA "+ topic/data relmgmt-d/change-request-system ">
-<!ATTLIST  change-request-id %global-atts;  class CDATA "+ topic/data relmgmt-d/change-request-id ">
-<!ATTLIST  change-started %global-atts;  class CDATA "+ topic/data relmgmt-d/change-started ">
-<!ATTLIST  change-completed %global-atts;  class CDATA "+ topic/data relmgmt-d/change-completed ">
-<!ATTLIST  change-summary %global-atts;  class CDATA "+ topic/data relmgmt-d/change-summary ">
+<!ATTLIST  change-historylist   class CDATA "+ topic/metadata relmgmt-d/change-historylist ">
+<!ATTLIST  change-item    class CDATA "+ topic/data relmgmt-d/change-item ">
+<!ATTLIST  change-person   class CDATA "+ topic/data relmgmt-d/change-person ">
+<!ATTLIST  change-organization   class CDATA "+ topic/data relmgmt-d/change-organization ">
+<!ATTLIST  change-revisionid   class CDATA "+ topic/data relmgmt-d/change-revisionid ">
+<!ATTLIST  change-request-reference   class CDATA "+ topic/data relmgmt-d/change-request-reference ">
+<!ATTLIST  change-request-system   class CDATA "+ topic/data relmgmt-d/change-request-system ">
+<!ATTLIST  change-request-id   class CDATA "+ topic/data relmgmt-d/change-request-id ">
+<!ATTLIST  change-started   class CDATA "+ topic/data relmgmt-d/change-started ">
+<!ATTLIST  change-completed   class CDATA "+ topic/data relmgmt-d/change-completed ">
+<!ATTLIST  change-summary   class CDATA "+ topic/data relmgmt-d/change-summary ">
 
 <!-- ================== End of DITA Release Management Domain ==================== -->
  

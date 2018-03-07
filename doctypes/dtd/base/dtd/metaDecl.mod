@@ -515,32 +515,32 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  author       %global-atts;  class CDATA "- topic/author "     >
-<!ATTLIST  source       %global-atts;  class CDATA "- topic/source "     >
-<!ATTLIST  publisher    %global-atts;  class CDATA "- topic/publisher "  >
-<!ATTLIST  copyright    %global-atts;  class CDATA "- topic/copyright "  >
-<!ATTLIST  copyryear    %global-atts;  class CDATA "- topic/copyryear "  >
-<!ATTLIST  copyrholder  %global-atts;  class CDATA "- topic/copyrholder ">
-<!ATTLIST  critdates    %global-atts;  class CDATA "- topic/critdates "  >
-<!ATTLIST  created      %global-atts;  class CDATA "- topic/created "    >
-<!ATTLIST  revised      %global-atts;  class CDATA "- topic/revised "    >
-<!ATTLIST  permissions  %global-atts;  class CDATA "- topic/permissions ">
-<!ATTLIST  category     %global-atts;  class CDATA "- topic/category "   >
-<!ATTLIST  metadata     %global-atts;  class CDATA "- topic/metadata "   >
-<!ATTLIST  audience     %global-atts;  class CDATA "- topic/audience "   >
-<!ATTLIST  keywords     %global-atts;  class CDATA "- topic/keywords "   >
-<!ATTLIST  prodinfo     %global-atts;  class CDATA "- topic/prodinfo "   >
-<!ATTLIST  prodname     %global-atts;  class CDATA "- topic/prodname "   >
-<!ATTLIST  vrmlist      %global-atts;  class CDATA "- topic/vrmlist "    >
-<!ATTLIST  vrm          %global-atts;  class CDATA "- topic/vrm "        >
-<!ATTLIST  brand        %global-atts;  class CDATA "- topic/brand "      >
-<!ATTLIST  series       %global-atts;  class CDATA "- topic/series "     >
-<!ATTLIST  platform     %global-atts;  class CDATA "- topic/platform "   >
-<!ATTLIST  prognum      %global-atts;  class CDATA "- topic/prognum "    >
-<!ATTLIST  featnum      %global-atts;  class CDATA "- topic/featnum "    >
-<!ATTLIST  component    %global-atts;  class CDATA "- topic/component "  >
-<!ATTLIST  othermeta    %global-atts;  class CDATA "- topic/othermeta "  >
-<!ATTLIST  resourceid   %global-atts;  class CDATA "- topic/resourceid " >
+<!ATTLIST  author         class CDATA "- topic/author "     >
+<!ATTLIST  source         class CDATA "- topic/source "     >
+<!ATTLIST  publisher      class CDATA "- topic/publisher "  >
+<!ATTLIST  copyright      class CDATA "- topic/copyright "  >
+<!ATTLIST  copyryear      class CDATA "- topic/copyryear "  >
+<!ATTLIST  copyrholder    class CDATA "- topic/copyrholder ">
+<!ATTLIST  critdates      class CDATA "- topic/critdates "  >
+<!ATTLIST  created        class CDATA "- topic/created "    >
+<!ATTLIST  revised        class CDATA "- topic/revised "    >
+<!ATTLIST  permissions    class CDATA "- topic/permissions ">
+<!ATTLIST  category       class CDATA "- topic/category "   >
+<!ATTLIST  metadata       class CDATA "- topic/metadata "   >
+<!ATTLIST  audience       class CDATA "- topic/audience "   >
+<!ATTLIST  keywords       class CDATA "- topic/keywords "   >
+<!ATTLIST  prodinfo       class CDATA "- topic/prodinfo "   >
+<!ATTLIST  prodname       class CDATA "- topic/prodname "   >
+<!ATTLIST  vrmlist        class CDATA "- topic/vrmlist "    >
+<!ATTLIST  vrm            class CDATA "- topic/vrm "        >
+<!ATTLIST  brand          class CDATA "- topic/brand "      >
+<!ATTLIST  series         class CDATA "- topic/series "     >
+<!ATTLIST  platform       class CDATA "- topic/platform "   >
+<!ATTLIST  prognum        class CDATA "- topic/prognum "    >
+<!ATTLIST  featnum        class CDATA "- topic/featnum "    >
+<!ATTLIST  component      class CDATA "- topic/component "  >
+<!ATTLIST  othermeta      class CDATA "- topic/othermeta "  >
+<!ATTLIST  resourceid     class CDATA "- topic/resourceid " >
 
 <!-- ================== End of DITA Metadata ==================== -->
  
