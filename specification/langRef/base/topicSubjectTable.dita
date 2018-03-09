@@ -65,17 +65,20 @@
             <xmlelement>topicSubjectTable</xmlelement>, the first column is used to specify topics.
           In this specific example, the second column is used to specify a goal, based on the "goal"
           subject in the header. The third column is used to specify an operating system. Based on
-          those definitions, the following classifications are made by this table:<ul>
-            <li>The topics "Configuring cron for efficient startup" and "Allocating raw storage" are
-              each classified by the goal of "performance"; they also are classified by the
-              operating systems "linux" and "unix".</li>
-            <li>The topics "Analyzing web logs for service issues" and "Detecting denial-of-service
-              attacks" are each classified by the goal of "reliability"; they also are classified by
-              the operating systems "linux", "unix", and "windows".</li>
-            <li>No relationship is defined between subjects in the table, meaning that this table
-              does not define any relationship between the goal of "performance" and the operating
-              systems "linux" or "unix".</li>
-          </ul></p>
+          those definitions, the following classifications are made by this table:</p>
+        <ul>
+          <li>The topics <filepath>configure-cron-for-efficiency.dita</filepath> and
+              <filepath>allocating-raw-storage.dita</filepath> are each classified by the goal of
+            "performance"; they also are classified by the operating systems "linux" and
+            "unix".</li>
+          <li>The topics <filepath>analyze-web-logs.dita</filepath> and
+              <filepath>detect-denial-of-service-attacks.dita</filepath> are each classified by the
+            goal of "reliability"; they also are classified by the operating systems "linux",
+            "unix", and "windows".</li>
+          <li>No relationship is defined between subjects in the table, meaning that this table does
+            not define any relationship between the goal of "performance" and the operating systems
+            "linux" or "unix".</li>
+        </ul>
         <codeblock>&lt;map>
 &lt;!-- ... -->
 &lt;topicSubjectTable>
@@ -90,8 +93,8 @@
   &lt;/topicSubjectHeader>
   &lt;topicSubjectRow>
     &lt;topicCell>
-      &lt;topicref href="webServerStart.dita" navtitle="Configuring cron for efficient startup"/>
-      &lt;topicref href="dbDisk.dita" navtitle="Allocating raw storage"/>
+      &lt;topicref href="configure-cron-for-efficiency.dita"/>
+      &lt;topicref href="allocating-raw-storage.dita"/>
     &lt;/topicCell>
     &lt;subjectCell>
       &lt;topicsubject keyref="performance"/>
@@ -103,8 +106,8 @@
   &lt;/topicSubjectRow>
   &lt;topicSubjectRow>
     &lt;topicCell>
-      &lt;topicref href="webLogAnalyze.dita" navtitle="Analyzing web logs for service issues"/>
-      &lt;topicref href="webDenialService.dita" navtitle="Detecting denial-of-service attacks"/>
+      &lt;topicref href="analyze-web-logs.dita"/>
+      &lt;topicref href="detect-denial-of-service-attacks.dita"/>
     &lt;/topicCell>
     &lt;subjectCell>
       &lt;topicsubject keyref="reliability"/>
@@ -120,8 +123,8 @@
 &lt;/map></codeblock>
         <p>A table view of this <xmlelement>topicSubjectTable</xmlelement> might look as follows.
           This is only one of many possible views; to aid in understanding the example, the content
-          topics in the first column are displayed using only their titles, and related subjects are
-          displayed using only their <xmlatt>keyref</xmlatt> attribute value.</p>
+          topics in the first column are displayed using only their file names, and related subjects
+          are displayed using only their <xmlatt>keyref</xmlatt> attribute value.</p>
         <simpletable frame="all" relcolwidth="1.0* 1.0* 1.0*" id="simpletable_h14_kc1_cbb">
           <sthead>
             <stentry>task</stentry>
@@ -130,9 +133,9 @@
           </sthead>
           <strow>
             <stentry>
-              <lines>Configuring cron for efficient startup
+              <lines><filepath>configure-cron-for-efficiency.dita</filepath>
 
-Allocating raw storage</lines>
+<filepath>allocating-raw-storage.dita</filepath></lines>
             </stentry>
             <stentry>
               <lines>performance</lines>
@@ -144,9 +147,10 @@ unix</lines>
           </strow>
           <strow>
             <stentry>
-              <lines>Analyzing web logs for service issues
+              <lines><filepath>analyze-web-logs.dita</filepath>
 
-Detecting denial-of-service attacks</lines>
+<filepath>
+detect-denial-of-service-attacks.dita</filepath></lines>
             </stentry>
             <stentry>
               <lines>reliability</lines>
