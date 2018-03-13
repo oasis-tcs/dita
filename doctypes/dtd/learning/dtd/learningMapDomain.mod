@@ -373,17 +373,17 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  learningObject %global-atts;  class CDATA "+ map/topicref learningmap-d/learningObject ">
-<!ATTLIST  learningGroup %global-atts;  class CDATA "+ map/topicref learningmap-d/learningGroup ">
-<!ATTLIST  learningGroupMapRef %global-atts;  class CDATA "+ map/topicref learningmap-d/learningGroupMapRef ">
-<!ATTLIST  learningObjectMapRef %global-atts;  class CDATA "+ map/topicref learningmap-d/learningObjectMapRef ">
-<!ATTLIST  learningPlanRef %global-atts;  class CDATA "+ map/topicref learningmap-d/learningPlanRef ">
-<!ATTLIST  learningOverviewRef %global-atts;  class CDATA "+ map/topicref learningmap-d/learningOverviewRef ">
-<!ATTLIST  learningContentRef %global-atts;  class CDATA "+ map/topicref learningmap-d/learningContentRef ">
-<!ATTLIST  learningContentComponentRef %global-atts;  class CDATA "+ map/topicref learningmap-d/learningContentComponentRef ">
-<!ATTLIST  learningSummaryRef %global-atts;  class CDATA "+ map/topicref learningmap-d/learningSummaryRef ">
-<!ATTLIST  learningPreAssessmentRef %global-atts;  class CDATA "+ map/topicref learningmap-d/learningPreAssessmentRef ">
-<!ATTLIST  learningPostAssessmentRef %global-atts;  class CDATA "+ map/topicref learningmap-d/learningPostAssessmentRef ">
+<!ATTLIST  learningObject   class CDATA "+ map/topicref learningmap-d/learningObject ">
+<!ATTLIST  learningGroup   class CDATA "+ map/topicref learningmap-d/learningGroup ">
+<!ATTLIST  learningGroupMapRef   class CDATA "+ map/topicref learningmap-d/learningGroupMapRef ">
+<!ATTLIST  learningObjectMapRef   class CDATA "+ map/topicref learningmap-d/learningObjectMapRef ">
+<!ATTLIST  learningPlanRef   class CDATA "+ map/topicref learningmap-d/learningPlanRef ">
+<!ATTLIST  learningOverviewRef   class CDATA "+ map/topicref learningmap-d/learningOverviewRef ">
+<!ATTLIST  learningContentRef   class CDATA "+ map/topicref learningmap-d/learningContentRef ">
+<!ATTLIST  learningContentComponentRef   class CDATA "+ map/topicref learningmap-d/learningContentComponentRef ">
+<!ATTLIST  learningSummaryRef   class CDATA "+ map/topicref learningmap-d/learningSummaryRef ">
+<!ATTLIST  learningPreAssessmentRef   class CDATA "+ map/topicref learningmap-d/learningPreAssessmentRef ">
+<!ATTLIST  learningPostAssessmentRef   class CDATA "+ map/topicref learningmap-d/learningPostAssessmentRef ">
 
 <!-- ================== End of DITA Learning Map Domain ==================== -->
  

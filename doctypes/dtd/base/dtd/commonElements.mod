@@ -567,14 +567,6 @@
                %select-atts;
                %localization-atts-translate-no;"
 >
-<!ENTITY % global-atts
-              "xtrc
-                          CDATA
-                                    #IMPLIED
-               xtrf
-                          CDATA
-                                    #IMPLIED"
->
 <!--                    LONG NAME: Data About                      -->
 <!ENTITY % data-about.content
                        "((%data;),
@@ -1776,60 +1768,60 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  alt          %global-atts;  class CDATA "- topic/alt "        >
-<!ATTLIST  boolean      %global-atts;  class CDATA "- topic/boolean "    >
-<!ATTLIST  cite         %global-atts;  class CDATA "- topic/cite "       >
-<!ATTLIST  dd           %global-atts;  class CDATA "- topic/dd "         >
-<!ATTLIST  data         %global-atts;  class CDATA "- topic/data "       >
-<!ATTLIST  data-about   %global-atts;  class CDATA "- topic/data-about " >
-<!ATTLIST  ddhd         %global-atts;  class CDATA "- topic/ddhd "       >
-<!ATTLIST  desc         %global-atts;  class CDATA "- topic/desc "       >
-<!ATTLIST  div          %global-atts;  class CDATA "- topic/div "        >
-<!ATTLIST  dl           %global-atts;  class CDATA "- topic/dl "         >
-<!ATTLIST  dlentry      %global-atts;  class CDATA "- topic/dlentry "    >
-<!ATTLIST  dlhead       %global-atts;  class CDATA "- topic/dlhead "     >
-<!ATTLIST  draft-comment %global-atts;  class CDATA "- topic/draft-comment ">
-<!ATTLIST  dt           %global-atts;  class CDATA "- topic/dt "         >
-<!ATTLIST  dthd         %global-atts;  class CDATA "- topic/dthd "       >
-<!ATTLIST  fig          %global-atts;  class CDATA "- topic/fig "        >
-<!ATTLIST  figgroup     %global-atts;  class CDATA "- topic/figgroup "   >
-<!ATTLIST  fn           %global-atts;  class CDATA "- topic/fn "         >
-<!ATTLIST  foreign      %global-atts;  class CDATA "- topic/foreign "    >
-<!ATTLIST  image        %global-atts;  class CDATA "- topic/image "      >
-<!ATTLIST  indexterm    %global-atts;  class CDATA "- topic/indexterm "  >
-<!ATTLIST  index-base   %global-atts;  class CDATA "- topic/index-base " >
-<!ATTLIST  indextermref %global-atts;  class CDATA "- topic/indextermref ">
-<!ATTLIST  itemgroup    %global-atts;  class CDATA "- topic/itemgroup "  >
-<!ATTLIST  keyword      %global-atts;  class CDATA "- topic/keyword "    >
-<!ATTLIST  li           %global-atts;  class CDATA "- topic/li "         >
-<!ATTLIST  lines        %global-atts;  class CDATA "- topic/lines "      >
-<!ATTLIST  longdescref  %global-atts;  class CDATA "- topic/longdescref ">
-<!ATTLIST  longquoteref %global-atts;  class CDATA "- topic/longquoteref ">
-<!ATTLIST  lq           %global-atts;  class CDATA "- topic/lq "         >
-<!ATTLIST  navtitle     %global-atts;  class CDATA "- topic/navtitle "   >
-<!ATTLIST  note         %global-atts;  class CDATA "- topic/note "       >
-<!ATTLIST  object       %global-atts;  class CDATA "- topic/object "     >
-<!ATTLIST  ol           %global-atts;  class CDATA "- topic/ol "         >
-<!ATTLIST  p            %global-atts;  class CDATA "- topic/p "          >
-<!ATTLIST  param        %global-atts;  class CDATA "- topic/param "      >
-<!ATTLIST  ph           %global-atts;  class CDATA "- topic/ph "         >
-<!ATTLIST  pre          %global-atts;  class CDATA "- topic/pre "        >
-<!ATTLIST  q            %global-atts;  class CDATA "- topic/q "          >
-<!ATTLIST  required-cleanup %global-atts;  class CDATA "- topic/required-cleanup ">
-<!ATTLIST  simpletable  %global-atts;  class CDATA "- topic/simpletable ">
-<!ATTLIST  sl           %global-atts;  class CDATA "- topic/sl "         >
-<!ATTLIST  sli          %global-atts;  class CDATA "- topic/sli "        >
-<!ATTLIST  state        %global-atts;  class CDATA "- topic/state "      >
-<!ATTLIST  stentry      %global-atts;  class CDATA "- topic/stentry "    >
-<!ATTLIST  sthead       %global-atts;  class CDATA "- topic/sthead "     >
-<!ATTLIST  strow        %global-atts;  class CDATA "- topic/strow "      >
-<!ATTLIST  term         %global-atts;  class CDATA "- topic/term "       >
-<!ATTLIST  text         %global-atts;  class CDATA "- topic/text "       >
-<!ATTLIST  title        %global-atts;  class CDATA "- topic/title "      >
-<!ATTLIST  tm           %global-atts;  class CDATA "- topic/tm "         >
-<!ATTLIST  ul           %global-atts;  class CDATA "- topic/ul "         >
-<!ATTLIST  unknown      %global-atts;  class CDATA "- topic/unknown "    >
-<!ATTLIST  xref         %global-atts;  class CDATA "- topic/xref "       >
+<!ATTLIST  alt            class CDATA "- topic/alt "        >
+<!ATTLIST  boolean        class CDATA "- topic/boolean "    >
+<!ATTLIST  cite           class CDATA "- topic/cite "       >
+<!ATTLIST  dd             class CDATA "- topic/dd "         >
+<!ATTLIST  data           class CDATA "- topic/data "       >
+<!ATTLIST  data-about     class CDATA "- topic/data-about " >
+<!ATTLIST  ddhd           class CDATA "- topic/ddhd "       >
+<!ATTLIST  desc           class CDATA "- topic/desc "       >
+<!ATTLIST  div            class CDATA "- topic/div "        >
+<!ATTLIST  dl             class CDATA "- topic/dl "         >
+<!ATTLIST  dlentry        class CDATA "- topic/dlentry "    >
+<!ATTLIST  dlhead         class CDATA "- topic/dlhead "     >
+<!ATTLIST  draft-comment   class CDATA "- topic/draft-comment ">
+<!ATTLIST  dt             class CDATA "- topic/dt "         >
+<!ATTLIST  dthd           class CDATA "- topic/dthd "       >
+<!ATTLIST  fig            class CDATA "- topic/fig "        >
+<!ATTLIST  figgroup       class CDATA "- topic/figgroup "   >
+<!ATTLIST  fn             class CDATA "- topic/fn "         >
+<!ATTLIST  foreign        class CDATA "- topic/foreign "    >
+<!ATTLIST  image          class CDATA "- topic/image "      >
+<!ATTLIST  indexterm      class CDATA "- topic/indexterm "  >
+<!ATTLIST  index-base     class CDATA "- topic/index-base " >
+<!ATTLIST  indextermref   class CDATA "- topic/indextermref ">
+<!ATTLIST  itemgroup      class CDATA "- topic/itemgroup "  >
+<!ATTLIST  keyword        class CDATA "- topic/keyword "    >
+<!ATTLIST  li             class CDATA "- topic/li "         >
+<!ATTLIST  lines          class CDATA "- topic/lines "      >
+<!ATTLIST  longdescref    class CDATA "- topic/longdescref ">
+<!ATTLIST  longquoteref   class CDATA "- topic/longquoteref ">
+<!ATTLIST  lq             class CDATA "- topic/lq "         >
+<!ATTLIST  navtitle       class CDATA "- topic/navtitle "   >
+<!ATTLIST  note           class CDATA "- topic/note "       >
+<!ATTLIST  object         class CDATA "- topic/object "     >
+<!ATTLIST  ol             class CDATA "- topic/ol "         >
+<!ATTLIST  p              class CDATA "- topic/p "          >
+<!ATTLIST  param          class CDATA "- topic/param "      >
+<!ATTLIST  ph             class CDATA "- topic/ph "         >
+<!ATTLIST  pre            class CDATA "- topic/pre "        >
+<!ATTLIST  q              class CDATA "- topic/q "          >
+<!ATTLIST  required-cleanup   class CDATA "- topic/required-cleanup ">
+<!ATTLIST  simpletable    class CDATA "- topic/simpletable ">
+<!ATTLIST  sl             class CDATA "- topic/sl "         >
+<!ATTLIST  sli            class CDATA "- topic/sli "        >
+<!ATTLIST  state          class CDATA "- topic/state "      >
+<!ATTLIST  stentry        class CDATA "- topic/stentry "    >
+<!ATTLIST  sthead         class CDATA "- topic/sthead "     >
+<!ATTLIST  strow          class CDATA "- topic/strow "      >
+<!ATTLIST  term           class CDATA "- topic/term "       >
+<!ATTLIST  text           class CDATA "- topic/text "       >
+<!ATTLIST  title          class CDATA "- topic/title "      >
+<!ATTLIST  tm             class CDATA "- topic/tm "         >
+<!ATTLIST  ul             class CDATA "- topic/ul "         >
+<!ATTLIST  unknown        class CDATA "- topic/unknown "    >
+<!ATTLIST  xref           class CDATA "- topic/xref "       >
 
 <!-- ================== End of DITA Common Elements ==================== -->
  

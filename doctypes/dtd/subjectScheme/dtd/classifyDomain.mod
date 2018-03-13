@@ -327,14 +327,14 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  topicsubject %global-atts;  class CDATA "+ map/topicref classify-d/topicsubject ">
-<!ATTLIST  topicapply   %global-atts;  class CDATA "+ map/topicref classify-d/topicapply ">
-<!ATTLIST  subjectref   %global-atts;  class CDATA "+ map/topicref classify-d/subjectref ">
-<!ATTLIST  topicSubjectTable %global-atts;  class CDATA "+ map/reltable classify-d/topicSubjectTable ">
-<!ATTLIST  topicSubjectHeader %global-atts;  class CDATA "+ map/relrow classify-d/topicSubjectHeader ">
-<!ATTLIST  topicSubjectRow %global-atts;  class CDATA "+ map/relrow classify-d/topicSubjectRow ">
-<!ATTLIST  topicCell    %global-atts;  class CDATA "+ map/relcell classify-d/topicCell ">
-<!ATTLIST  subjectCell  %global-atts;  class CDATA "+ map/relcell classify-d/subjectCell ">
+<!ATTLIST  topicsubject   class CDATA "+ map/topicref classify-d/topicsubject ">
+<!ATTLIST  topicapply     class CDATA "+ map/topicref classify-d/topicapply ">
+<!ATTLIST  subjectref     class CDATA "+ map/topicref classify-d/subjectref ">
+<!ATTLIST  topicSubjectTable   class CDATA "+ map/reltable classify-d/topicSubjectTable ">
+<!ATTLIST  topicSubjectHeader   class CDATA "+ map/relrow classify-d/topicSubjectHeader ">
+<!ATTLIST  topicSubjectRow   class CDATA "+ map/relrow classify-d/topicSubjectRow ">
+<!ATTLIST  topicCell      class CDATA "+ map/relcell classify-d/topicCell ">
+<!ATTLIST  subjectCell    class CDATA "+ map/relcell classify-d/subjectCell ">
 
 <!-- ================== End of DITA Subject Classification Domain ==================== -->
  

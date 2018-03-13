@@ -476,32 +476,32 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  prelreqs     %global-atts;  class CDATA "+ topic/section task/prereq taskreq-d/prelreqs ">
-<!ATTLIST  closereqs    %global-atts;  class CDATA "+ topic/section task/postreq taskreq-d/closereqs ">
-<!ATTLIST  reqconds     %global-atts;  class CDATA "+ topic/ul task/ul taskreq-d/reqconds ">
-<!ATTLIST  noconds      %global-atts;  class CDATA "+ topic/li task/li taskreq-d/noconds ">
-<!ATTLIST  reqcond      %global-atts;  class CDATA "+ topic/li task/li taskreq-d/reqcond ">
-<!ATTLIST  reqcontp     %global-atts;  class CDATA "+ topic/li task/li taskreq-d/reqcontp ">
-<!ATTLIST  reqpers      %global-atts;  class CDATA "+ topic/ul task/ul taskreq-d/reqpers ">
-<!ATTLIST  personnel    %global-atts;  class CDATA "+ topic/li task/li taskreq-d/personnel ">
-<!ATTLIST  perscat      %global-atts;  class CDATA "+ topic/li task/li taskreq-d/perscat ">
-<!ATTLIST  perskill     %global-atts;  class CDATA "+ topic/li task/li taskreq-d/perskill ">
-<!ATTLIST  esttime      %global-atts;  class CDATA "+ topic/li task/li taskreq-d/esttime ">
-<!ATTLIST  supequip     %global-atts;  class CDATA "+ topic/p task/p taskreq-d/supequip ">
-<!ATTLIST  nosupeq      %global-atts;  class CDATA "+ topic/data task/data taskreq-d/nosupeq ">
-<!ATTLIST  supeqli      %global-atts;  class CDATA "+ topic/ul task/ul taskreq-d/supeqli ">
-<!ATTLIST  supequi      %global-atts;  class CDATA "+ topic/li task/li taskreq-d/supequi ">
-<!ATTLIST  supplies     %global-atts;  class CDATA "+ topic/p task/p taskreq-d/supplies ">
-<!ATTLIST  nosupply     %global-atts;  class CDATA "+ topic/data task/data taskreq-d/nosupply ">
-<!ATTLIST  supplyli     %global-atts;  class CDATA "+ topic/ul task/ul taskreq-d/supplyli ">
-<!ATTLIST  supply       %global-atts;  class CDATA "+ topic/li task/li taskreq-d/supply ">
-<!ATTLIST  spares       %global-atts;  class CDATA "+ topic/p task/p taskreq-d/spares ">
-<!ATTLIST  nospares     %global-atts;  class CDATA "+ topic/data task/data taskreq-d/nospares ">
-<!ATTLIST  sparesli     %global-atts;  class CDATA "+ topic/ul task/ul taskreq-d/sparesli ">
-<!ATTLIST  spare        %global-atts;  class CDATA "+ topic/li task/li taskreq-d/spare ">
-<!ATTLIST  safety       %global-atts;  class CDATA "+ topic/ol task/ol taskreq-d/safety ">
-<!ATTLIST  nosafety     %global-atts;  class CDATA "+ topic/li task/li taskreq-d/nosafety ">
-<!ATTLIST  safecond     %global-atts;  class CDATA "+ topic/li task/li taskreq-d/safecond ">
+<!ATTLIST  prelreqs       class CDATA "+ topic/section task/prereq taskreq-d/prelreqs ">
+<!ATTLIST  closereqs      class CDATA "+ topic/section task/postreq taskreq-d/closereqs ">
+<!ATTLIST  reqconds       class CDATA "+ topic/ul task/ul taskreq-d/reqconds ">
+<!ATTLIST  noconds        class CDATA "+ topic/li task/li taskreq-d/noconds ">
+<!ATTLIST  reqcond        class CDATA "+ topic/li task/li taskreq-d/reqcond ">
+<!ATTLIST  reqcontp       class CDATA "+ topic/li task/li taskreq-d/reqcontp ">
+<!ATTLIST  reqpers        class CDATA "+ topic/ul task/ul taskreq-d/reqpers ">
+<!ATTLIST  personnel      class CDATA "+ topic/li task/li taskreq-d/personnel ">
+<!ATTLIST  perscat        class CDATA "+ topic/li task/li taskreq-d/perscat ">
+<!ATTLIST  perskill       class CDATA "+ topic/li task/li taskreq-d/perskill ">
+<!ATTLIST  esttime        class CDATA "+ topic/li task/li taskreq-d/esttime ">
+<!ATTLIST  supequip       class CDATA "+ topic/p task/p taskreq-d/supequip ">
+<!ATTLIST  nosupeq        class CDATA "+ topic/data task/data taskreq-d/nosupeq ">
+<!ATTLIST  supeqli        class CDATA "+ topic/ul task/ul taskreq-d/supeqli ">
+<!ATTLIST  supequi        class CDATA "+ topic/li task/li taskreq-d/supequi ">
+<!ATTLIST  supplies       class CDATA "+ topic/p task/p taskreq-d/supplies ">
+<!ATTLIST  nosupply       class CDATA "+ topic/data task/data taskreq-d/nosupply ">
+<!ATTLIST  supplyli       class CDATA "+ topic/ul task/ul taskreq-d/supplyli ">
+<!ATTLIST  supply         class CDATA "+ topic/li task/li taskreq-d/supply ">
+<!ATTLIST  spares         class CDATA "+ topic/p task/p taskreq-d/spares ">
+<!ATTLIST  nospares       class CDATA "+ topic/data task/data taskreq-d/nospares ">
+<!ATTLIST  sparesli       class CDATA "+ topic/ul task/ul taskreq-d/sparesli ">
+<!ATTLIST  spare          class CDATA "+ topic/li task/li taskreq-d/spare ">
+<!ATTLIST  safety         class CDATA "+ topic/ol task/ol taskreq-d/safety ">
+<!ATTLIST  nosafety       class CDATA "+ topic/li task/li taskreq-d/nosafety ">
+<!ATTLIST  safecond       class CDATA "+ topic/li task/li taskreq-d/safecond ">
 
 <!-- ================== End of DITA Task Requirements Domain ==================== -->
  

@@ -910,25 +910,25 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  subjectScheme %global-atts;  class CDATA "- map/map subjectScheme/subjectScheme ">
-<!ATTLIST  schemeref    %global-atts;  class CDATA "- map/topicref subjectScheme/schemeref ">
-<!ATTLIST  hasNarrower  %global-atts;  class CDATA "- map/topicref subjectScheme/hasNarrower ">
-<!ATTLIST  hasKind      %global-atts;  class CDATA "- map/topicref subjectScheme/hasKind ">
-<!ATTLIST  hasPart      %global-atts;  class CDATA "- map/topicref subjectScheme/hasPart ">
-<!ATTLIST  hasInstance  %global-atts;  class CDATA "- map/topicref subjectScheme/hasInstance ">
-<!ATTLIST  hasRelated   %global-atts;  class CDATA "- map/topicref subjectScheme/hasRelated ">
-<!ATTLIST  enumerationdef %global-atts;  class CDATA "- map/topicref subjectScheme/enumerationdef ">
-<!ATTLIST  elementdef   %global-atts;  class CDATA "- topic/data subjectScheme/elementdef ">
-<!ATTLIST  attributedef %global-atts;  class CDATA "- topic/data subjectScheme/attributedef ">
-<!ATTLIST  defaultSubject %global-atts;  class CDATA "- map/topicref subjectScheme/defaultSubject ">
-<!ATTLIST  subjectHead  %global-atts;  class CDATA "- map/topicref subjectScheme/subjectHead ">
-<!ATTLIST  subjectHeadMeta %global-atts;  class CDATA "- map/topicmeta subjectScheme/subjectHeadMeta ">
-<!ATTLIST  subjectdef   %global-atts;  class CDATA "- map/topicref subjectScheme/subjectdef ">
-<!ATTLIST  relatedSubjects %global-atts;  class CDATA "- map/topicref subjectScheme/relatedSubjects ">
-<!ATTLIST  subjectRelTable %global-atts;  class CDATA "- map/reltable subjectScheme/subjectRelTable ">
-<!ATTLIST  subjectRelHeader %global-atts;  class CDATA "- map/relrow subjectScheme/subjectRelHeader ">
-<!ATTLIST  subjectRel   %global-atts;  class CDATA "- map/relrow subjectScheme/subjectRel ">
-<!ATTLIST  subjectRole  %global-atts;  class CDATA "- map/relcell subjectScheme/subjectRole ">
+<!ATTLIST  subjectScheme   class CDATA "- map/map subjectScheme/subjectScheme ">
+<!ATTLIST  schemeref      class CDATA "- map/topicref subjectScheme/schemeref ">
+<!ATTLIST  hasNarrower    class CDATA "- map/topicref subjectScheme/hasNarrower ">
+<!ATTLIST  hasKind        class CDATA "- map/topicref subjectScheme/hasKind ">
+<!ATTLIST  hasPart        class CDATA "- map/topicref subjectScheme/hasPart ">
+<!ATTLIST  hasInstance    class CDATA "- map/topicref subjectScheme/hasInstance ">
+<!ATTLIST  hasRelated     class CDATA "- map/topicref subjectScheme/hasRelated ">
+<!ATTLIST  enumerationdef   class CDATA "- map/topicref subjectScheme/enumerationdef ">
+<!ATTLIST  elementdef     class CDATA "- topic/data subjectScheme/elementdef ">
+<!ATTLIST  attributedef   class CDATA "- topic/data subjectScheme/attributedef ">
+<!ATTLIST  defaultSubject   class CDATA "- map/topicref subjectScheme/defaultSubject ">
+<!ATTLIST  subjectHead    class CDATA "- map/topicref subjectScheme/subjectHead ">
+<!ATTLIST  subjectHeadMeta   class CDATA "- map/topicmeta subjectScheme/subjectHeadMeta ">
+<!ATTLIST  subjectdef     class CDATA "- map/topicref subjectScheme/subjectdef ">
+<!ATTLIST  relatedSubjects   class CDATA "- map/topicref subjectScheme/relatedSubjects ">
+<!ATTLIST  subjectRelTable   class CDATA "- map/reltable subjectScheme/subjectRelTable ">
+<!ATTLIST  subjectRelHeader   class CDATA "- map/relrow subjectScheme/subjectRelHeader ">
+<!ATTLIST  subjectRel     class CDATA "- map/relrow subjectScheme/subjectRel ">
+<!ATTLIST  subjectRole    class CDATA "- map/relcell subjectScheme/subjectRole ">
 
 <!-- ================== End of DITA Subject Scheme Map Type ==================== -->
  

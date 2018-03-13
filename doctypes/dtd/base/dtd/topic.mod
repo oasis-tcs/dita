@@ -617,24 +617,24 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  abstract     %global-atts;  class CDATA "- topic/abstract "   >
-<!ATTLIST  body         %global-atts;  class CDATA "- topic/body "       >
-<!ATTLIST  bodydiv      %global-atts;  class CDATA "- topic/bodydiv "    >
-<!ATTLIST  example      %global-atts;  class CDATA "- topic/example "    >
-<!ATTLIST  link         %global-atts;  class CDATA "- topic/link "       >
-<!ATTLIST  linkinfo     %global-atts;  class CDATA "- topic/linkinfo "   >
-<!ATTLIST  linklist     %global-atts;  class CDATA "- topic/linklist "   >
-<!ATTLIST  linkpool     %global-atts;  class CDATA "- topic/linkpool "   >
-<!ATTLIST  linktext     %global-atts;  class CDATA "- topic/linktext "   >
-<!ATTLIST  no-topic-nesting %global-atts;  class CDATA "- topic/no-topic-nesting ">
-<!ATTLIST  prolog       %global-atts;  class CDATA "- topic/prolog "     >
-<!ATTLIST  related-links %global-atts;  class CDATA "- topic/related-links ">
-<!ATTLIST  searchtitle  %global-atts;  class CDATA "- topic/searchtitle ">
-<!ATTLIST  section      %global-atts;  class CDATA "- topic/section "    >
-<!ATTLIST  sectiondiv   %global-atts;  class CDATA "- topic/sectiondiv " >
-<!ATTLIST  titlealts    %global-atts;  class CDATA "- topic/titlealts "  >
-<!ATTLIST  topic        %global-atts;  class CDATA "- topic/topic "      >
-<!ATTLIST  shortdesc    %global-atts;  class CDATA "- topic/shortdesc "  >
+<!ATTLIST  abstract       class CDATA "- topic/abstract "   >
+<!ATTLIST  body           class CDATA "- topic/body "       >
+<!ATTLIST  bodydiv        class CDATA "- topic/bodydiv "    >
+<!ATTLIST  example        class CDATA "- topic/example "    >
+<!ATTLIST  link           class CDATA "- topic/link "       >
+<!ATTLIST  linkinfo       class CDATA "- topic/linkinfo "   >
+<!ATTLIST  linklist       class CDATA "- topic/linklist "   >
+<!ATTLIST  linkpool       class CDATA "- topic/linkpool "   >
+<!ATTLIST  linktext       class CDATA "- topic/linktext "   >
+<!ATTLIST  no-topic-nesting   class CDATA "- topic/no-topic-nesting ">
+<!ATTLIST  prolog         class CDATA "- topic/prolog "     >
+<!ATTLIST  related-links   class CDATA "- topic/related-links ">
+<!ATTLIST  searchtitle    class CDATA "- topic/searchtitle ">
+<!ATTLIST  section        class CDATA "- topic/section "    >
+<!ATTLIST  sectiondiv     class CDATA "- topic/sectiondiv " >
+<!ATTLIST  titlealts      class CDATA "- topic/titlealts "  >
+<!ATTLIST  topic          class CDATA "- topic/topic "      >
+<!ATTLIST  shortdesc      class CDATA "- topic/shortdesc "  >
 
 <!-- ================== End of DITA Topic Module ==================== -->
  
