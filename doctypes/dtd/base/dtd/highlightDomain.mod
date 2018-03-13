@@ -188,14 +188,14 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  b              class CDATA "+ topic/ph hi-d/b "  >
-<!ATTLIST  i              class CDATA "+ topic/ph hi-d/i "  >
-<!ATTLIST  line-through   class CDATA "+ topic/ph hi-d/line-through ">
-<!ATTLIST  overline       class CDATA "+ topic/ph hi-d/overline ">
-<!ATTLIST  sub            class CDATA "+ topic/ph hi-d/sub ">
-<!ATTLIST  sup            class CDATA "+ topic/ph hi-d/sup ">
-<!ATTLIST  tt             class CDATA "+ topic/ph hi-d/tt " >
-<!ATTLIST  u              class CDATA "+ topic/ph hi-d/u "  >
+<!ATTLIST  b            %global-atts;  class CDATA "+ topic/ph hi-d/b "  >
+<!ATTLIST  i            %global-atts;  class CDATA "+ topic/ph hi-d/i "  >
+<!ATTLIST  line-through %global-atts;  class CDATA "+ topic/ph hi-d/line-through ">
+<!ATTLIST  overline     %global-atts;  class CDATA "+ topic/ph hi-d/overline ">
+<!ATTLIST  sub          %global-atts;  class CDATA "+ topic/ph hi-d/sub ">
+<!ATTLIST  sup          %global-atts;  class CDATA "+ topic/ph hi-d/sup ">
+<!ATTLIST  tt           %global-atts;  class CDATA "+ topic/ph hi-d/tt " >
+<!ATTLIST  u            %global-atts;  class CDATA "+ topic/ph hi-d/u "  >
 
 <!-- ================== End of DITA Highlight Domain ==================== -->
  

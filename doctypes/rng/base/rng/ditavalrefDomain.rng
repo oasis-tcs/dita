@@ -99,9 +99,11 @@
     <div>
       <a:documentation>LONG NAME: DITAVAL Reference</a:documentation>
       <define name="ditavalref.content">
-        <optional>
-          <ref name="ditavalmeta"/>
-        </optional>
+        <zeroOrMore>
+          <choice>
+            <ref name="ditavalmeta"/>
+          </choice>
+        </zeroOrMore>
       </define>
       <define name="ditavalref.attributes">
         <optional>
@@ -316,31 +318,37 @@
   <div>
     <a:documentation>SPECIALIZATION ATTRIBUTE DECLARATIONS</a:documentation>
     <define name="ditavalref.attlist" combine="interleave">
+      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ map/topicref ditavalref-d/ditavalref "/>
       </optional>
     </define>
     <define name="ditavalmeta.attlist" combine="interleave">
+      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ map/topicmeta ditavalref-d/ditavalmeta "/>
       </optional>
     </define>
     <define name="dvrResourcePrefix.attlist" combine="interleave">
+      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ topic/data ditavalref-d/dvrResourcePrefix "/>
       </optional>
     </define>
     <define name="dvrResourceSuffix.attlist" combine="interleave">
+      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ topic/data ditavalref-d/dvrResourceSuffix "/>
       </optional>
     </define>
     <define name="dvrKeyscopePrefix.attlist" combine="interleave">
+      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ topic/data ditavalref-d/dvrKeyscopePrefix "/>
       </optional>
     </define>
     <define name="dvrKeyscopeSuffix.attlist" combine="interleave">
+      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ topic/data ditavalref-d/dvrKeyscopeSuffix "/>
       </optional>

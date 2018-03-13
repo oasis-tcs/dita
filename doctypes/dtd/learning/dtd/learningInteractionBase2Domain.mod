@@ -97,9 +97,9 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  lcInteractionBase2   class CDATA "+ topic/div learningInteractionBase2-d/lcInteractionBase2 ">
-<!ATTLIST  lcInteractionLabel2   class CDATA "+ topic/p   learningInteractionBase2-d/lcInteractionLabel2 ">
-<!ATTLIST  lcQuestionBase2   class CDATA "+ topic/div   learningInteractionBase2-d/lcQuestionBase2 ">
+<!ATTLIST  lcInteractionBase2 %global-atts;  class CDATA "+ topic/div learningInteractionBase2-d/lcInteractionBase2 ">
+<!ATTLIST  lcInteractionLabel2 %global-atts;  class CDATA "+ topic/p   learningInteractionBase2-d/lcInteractionLabel2 ">
+<!ATTLIST  lcQuestionBase2 %global-atts;  class CDATA "+ topic/div   learningInteractionBase2-d/lcQuestionBase2 ">
 
 <!-- ================== End of DITA Learning Interaction Base 2 Domain ==================== -->
  

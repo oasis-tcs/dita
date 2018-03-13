@@ -667,32 +667,32 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  apiname        class CDATA "+ topic/keyword pr-d/apiname ">
-<!ATTLIST  codeblock      class CDATA "+ topic/pre pr-d/codeblock ">
-<!ATTLIST  codeph         class CDATA "+ topic/ph pr-d/codeph ">
-<!ATTLIST  coderef        class CDATA "+ topic/xref pr-d/coderef ">
-<!ATTLIST  delim          class CDATA "+ topic/ph pr-d/delim ">
-<!ATTLIST  fragment       class CDATA "+ topic/figgroup pr-d/fragment ">
-<!ATTLIST  fragref        class CDATA "+ topic/xref pr-d/fragref ">
-<!ATTLIST  groupchoice    class CDATA "+ topic/figgroup pr-d/groupchoice ">
-<!ATTLIST  groupcomp      class CDATA "+ topic/figgroup pr-d/groupcomp ">
-<!ATTLIST  groupseq       class CDATA "+ topic/figgroup pr-d/groupseq ">
-<!ATTLIST  kwd            class CDATA "+ topic/keyword pr-d/kwd ">
-<!ATTLIST  oper           class CDATA "+ topic/ph pr-d/oper ">
-<!ATTLIST  option         class CDATA "+ topic/keyword pr-d/option ">
-<!ATTLIST  parml          class CDATA "+ topic/dl pr-d/parml ">
-<!ATTLIST  parmname       class CDATA "+ topic/keyword pr-d/parmname ">
-<!ATTLIST  pd             class CDATA "+ topic/dd pr-d/pd " >
-<!ATTLIST  plentry        class CDATA "+ topic/dlentry pr-d/plentry ">
-<!ATTLIST  pt             class CDATA "+ topic/dt pr-d/pt " >
-<!ATTLIST  repsep         class CDATA "+ topic/ph pr-d/repsep ">
-<!ATTLIST  sep            class CDATA "+ topic/ph pr-d/sep ">
-<!ATTLIST  synblk         class CDATA "+ topic/figgroup pr-d/synblk ">
-<!ATTLIST  synnote        class CDATA "+ topic/fn pr-d/synnote ">
-<!ATTLIST  synnoteref     class CDATA "+ topic/xref pr-d/synnoteref ">
-<!ATTLIST  synph          class CDATA "+ topic/ph pr-d/synph ">
-<!ATTLIST  syntaxdiagram   class CDATA "+ topic/fig pr-d/syntaxdiagram ">
-<!ATTLIST  var            class CDATA "+ topic/ph pr-d/var ">
+<!ATTLIST  apiname      %global-atts;  class CDATA "+ topic/keyword pr-d/apiname ">
+<!ATTLIST  codeblock    %global-atts;  class CDATA "+ topic/pre pr-d/codeblock ">
+<!ATTLIST  codeph       %global-atts;  class CDATA "+ topic/ph pr-d/codeph ">
+<!ATTLIST  coderef      %global-atts;  class CDATA "+ topic/xref pr-d/coderef ">
+<!ATTLIST  delim        %global-atts;  class CDATA "+ topic/ph pr-d/delim ">
+<!ATTLIST  fragment     %global-atts;  class CDATA "+ topic/figgroup pr-d/fragment ">
+<!ATTLIST  fragref      %global-atts;  class CDATA "+ topic/xref pr-d/fragref ">
+<!ATTLIST  groupchoice  %global-atts;  class CDATA "+ topic/figgroup pr-d/groupchoice ">
+<!ATTLIST  groupcomp    %global-atts;  class CDATA "+ topic/figgroup pr-d/groupcomp ">
+<!ATTLIST  groupseq     %global-atts;  class CDATA "+ topic/figgroup pr-d/groupseq ">
+<!ATTLIST  kwd          %global-atts;  class CDATA "+ topic/keyword pr-d/kwd ">
+<!ATTLIST  oper         %global-atts;  class CDATA "+ topic/ph pr-d/oper ">
+<!ATTLIST  option       %global-atts;  class CDATA "+ topic/keyword pr-d/option ">
+<!ATTLIST  parml        %global-atts;  class CDATA "+ topic/dl pr-d/parml ">
+<!ATTLIST  parmname     %global-atts;  class CDATA "+ topic/keyword pr-d/parmname ">
+<!ATTLIST  pd           %global-atts;  class CDATA "+ topic/dd pr-d/pd " >
+<!ATTLIST  plentry      %global-atts;  class CDATA "+ topic/dlentry pr-d/plentry ">
+<!ATTLIST  pt           %global-atts;  class CDATA "+ topic/dt pr-d/pt " >
+<!ATTLIST  repsep       %global-atts;  class CDATA "+ topic/ph pr-d/repsep ">
+<!ATTLIST  sep          %global-atts;  class CDATA "+ topic/ph pr-d/sep ">
+<!ATTLIST  synblk       %global-atts;  class CDATA "+ topic/figgroup pr-d/synblk ">
+<!ATTLIST  synnote      %global-atts;  class CDATA "+ topic/fn pr-d/synnote ">
+<!ATTLIST  synnoteref   %global-atts;  class CDATA "+ topic/xref pr-d/synnoteref ">
+<!ATTLIST  synph        %global-atts;  class CDATA "+ topic/ph pr-d/synph ">
+<!ATTLIST  syntaxdiagram %global-atts;  class CDATA "+ topic/fig pr-d/syntaxdiagram ">
+<!ATTLIST  var          %global-atts;  class CDATA "+ topic/ph pr-d/var ">
 
 <!-- ================== End of DITA Programming Domain ==================== -->
  

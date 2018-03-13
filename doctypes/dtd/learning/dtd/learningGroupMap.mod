@@ -122,7 +122,7 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  learningGroupMap   class CDATA "- map/map learningGroupMap/learningGroupMap ">
+<!ATTLIST  learningGroupMap %global-atts;  class CDATA "- map/map learningGroupMap/learningGroupMap ">
 
 <!-- ================== End of DITA Learning Group Map Module ==================== -->
  

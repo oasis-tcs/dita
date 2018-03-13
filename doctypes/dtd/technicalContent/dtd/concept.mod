@@ -128,9 +128,9 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  concept        class CDATA "- topic/topic concept/concept ">
-<!ATTLIST  conbody        class CDATA "- topic/body  concept/conbody ">
-<!ATTLIST  conbodydiv     class CDATA "- topic/bodydiv concept/conbodydiv ">
+<!ATTLIST  concept      %global-atts;  class CDATA "- topic/topic concept/concept ">
+<!ATTLIST  conbody      %global-atts;  class CDATA "- topic/body  concept/conbody ">
+<!ATTLIST  conbodydiv   %global-atts;  class CDATA "- topic/bodydiv concept/conbodydiv ">
 
 <!-- ================== End of DITA Concept ==================== -->
  

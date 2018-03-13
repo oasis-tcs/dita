@@ -2,11 +2,11 @@
 <!-- ============================================================= -->
 <!--                    HEADER                                     -->
 <!-- ============================================================= -->
-<!-- Darwin Information Typing Architecture (DITA) Version 1.3 Plus Errata 02     -->
+<!-- Darwin Information Typing Architecture (DITA) Version 1.3 Plus Errata 01     -->
 <!-- OASIS Standard                                           -->
-<!-- 16 January 2018                                           -->
-<!-- Copyright (c) OASIS Open 2018. All rights reserved.           -->
-<!-- Source: http://docs.oasis-open.org/dita/dita/v1.3/errata02/csprd01/complete/part0-overview/dita-v1.3-errata02-csprd01-part0-overview-complete.html                                -->
+<!-- 25 October 2016                                           -->
+<!-- Copyright (c) OASIS Open 2016. All rights reserved.           -->
+<!-- Source: http://docs.oasis-open.org/dita/dita/v1.3/errata01/os/complete/part0-overview/dita-v1.3-errata01-os-part0-overview-complete.html                                -->
 <!--                                                               -->
 <!-- ============================================================= -->
 <!--  MODULE:    DITA Map                                          -->
@@ -711,20 +711,20 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  map            class CDATA "- map/map "          >
-<!ATTLIST  navref         class CDATA "- map/navref "       >
-<!ATTLIST  topicref       class CDATA "- map/topicref "     >
-<!ATTLIST  anchor         class CDATA "- map/anchor "       >
-<!ATTLIST  reltable       class CDATA "- map/reltable "     >
-<!ATTLIST  relheader      class CDATA "- map/relheader "    >
-<!ATTLIST  relcolspec     class CDATA "- map/relcolspec "   >
-<!ATTLIST  relrow         class CDATA "- map/relrow "       >
-<!ATTLIST  relcell        class CDATA "- map/relcell "      >
-<!ATTLIST  topicmeta      class CDATA "- map/topicmeta "    >
-<!ATTLIST  linktext       class CDATA "- map/linktext "     >
-<!ATTLIST  searchtitle    class CDATA "- map/searchtitle "  >
-<!ATTLIST  shortdesc      class CDATA "- map/shortdesc "    >
-<!ATTLIST  ux-window      class CDATA "- map/ux-window "    >
+<!ATTLIST  map          %global-atts;  class CDATA "- map/map "          >
+<!ATTLIST  navref       %global-atts;  class CDATA "- map/navref "       >
+<!ATTLIST  topicref     %global-atts;  class CDATA "- map/topicref "     >
+<!ATTLIST  anchor       %global-atts;  class CDATA "- map/anchor "       >
+<!ATTLIST  reltable     %global-atts;  class CDATA "- map/reltable "     >
+<!ATTLIST  relheader    %global-atts;  class CDATA "- map/relheader "    >
+<!ATTLIST  relcolspec   %global-atts;  class CDATA "- map/relcolspec "   >
+<!ATTLIST  relrow       %global-atts;  class CDATA "- map/relrow "       >
+<!ATTLIST  relcell      %global-atts;  class CDATA "- map/relcell "      >
+<!ATTLIST  topicmeta    %global-atts;  class CDATA "- map/topicmeta "    >
+<!ATTLIST  linktext     %global-atts;  class CDATA "- map/linktext "     >
+<!ATTLIST  searchtitle  %global-atts;  class CDATA "- map/searchtitle "  >
+<!ATTLIST  shortdesc    %global-atts;  class CDATA "- map/shortdesc "    >
+<!ATTLIST  ux-window    %global-atts;  class CDATA "- map/ux-window "    >
 
 <!-- ================== End of DITA Map Module ==================== -->
  

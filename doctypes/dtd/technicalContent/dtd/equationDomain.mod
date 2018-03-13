@@ -100,10 +100,10 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  equation-inline   class CDATA "+ topic/ph equation-d/equation-inline ">
-<!ATTLIST  equation-block   class CDATA "+ topic/div equation-d/equation-block ">
-<!ATTLIST  equation-number   class CDATA "+ topic/ph equation-d/equation-number ">
-<!ATTLIST  equation-figure   class CDATA "+ topic/fig equation-d/equation-figure ">
+<!ATTLIST  equation-inline %global-atts;  class CDATA "+ topic/ph equation-d/equation-inline ">
+<!ATTLIST  equation-block %global-atts;  class CDATA "+ topic/div equation-d/equation-block ">
+<!ATTLIST  equation-number %global-atts;  class CDATA "+ topic/ph equation-d/equation-number ">
+<!ATTLIST  equation-figure %global-atts;  class CDATA "+ topic/fig equation-d/equation-figure ">
 
 <!-- ================== End of DITA Equation Domain ==================== -->
  

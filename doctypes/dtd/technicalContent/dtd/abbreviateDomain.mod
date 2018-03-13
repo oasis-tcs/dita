@@ -64,7 +64,7 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  abbreviated-form   class CDATA "+ topic/term abbrev-d/abbreviated-form ">
+<!ATTLIST  abbreviated-form %global-atts;  class CDATA "+ topic/term abbrev-d/abbreviated-form ">
 
 <!-- ================== End of DITA Abbreviated Form Domain ==================== -->
  

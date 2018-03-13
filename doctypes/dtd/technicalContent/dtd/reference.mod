@@ -331,19 +331,19 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  reference      class CDATA "- topic/topic       reference/reference ">
-<!ATTLIST  refbody        class CDATA "- topic/body        reference/refbody ">
-<!ATTLIST  refbodydiv     class CDATA "- topic/bodydiv     reference/refbodydiv ">
-<!ATTLIST  refsyn         class CDATA "- topic/section     reference/refsyn ">
-<!ATTLIST  properties     class CDATA "- topic/simpletable reference/properties ">
-<!ATTLIST  property       class CDATA "- topic/strow       reference/property ">
-<!ATTLIST  proptype       class CDATA "- topic/stentry     reference/proptype ">
-<!ATTLIST  propvalue      class CDATA "- topic/stentry     reference/propvalue ">
-<!ATTLIST  propdesc       class CDATA "- topic/stentry     reference/propdesc ">
-<!ATTLIST  prophead       class CDATA "- topic/sthead      reference/prophead ">
-<!ATTLIST  proptypehd     class CDATA "- topic/stentry     reference/proptypehd ">
-<!ATTLIST  propvaluehd    class CDATA "- topic/stentry     reference/propvaluehd ">
-<!ATTLIST  propdeschd     class CDATA "- topic/stentry     reference/propdeschd ">
+<!ATTLIST  reference    %global-atts;  class CDATA "- topic/topic       reference/reference ">
+<!ATTLIST  refbody      %global-atts;  class CDATA "- topic/body        reference/refbody ">
+<!ATTLIST  refbodydiv   %global-atts;  class CDATA "- topic/bodydiv     reference/refbodydiv ">
+<!ATTLIST  refsyn       %global-atts;  class CDATA "- topic/section     reference/refsyn ">
+<!ATTLIST  properties   %global-atts;  class CDATA "- topic/simpletable reference/properties ">
+<!ATTLIST  property     %global-atts;  class CDATA "- topic/strow       reference/property ">
+<!ATTLIST  proptype     %global-atts;  class CDATA "- topic/stentry     reference/proptype ">
+<!ATTLIST  propvalue    %global-atts;  class CDATA "- topic/stentry     reference/propvalue ">
+<!ATTLIST  propdesc     %global-atts;  class CDATA "- topic/stentry     reference/propdesc ">
+<!ATTLIST  prophead     %global-atts;  class CDATA "- topic/sthead      reference/prophead ">
+<!ATTLIST  proptypehd   %global-atts;  class CDATA "- topic/stentry     reference/proptypehd ">
+<!ATTLIST  propvaluehd  %global-atts;  class CDATA "- topic/stentry     reference/propvaluehd ">
+<!ATTLIST  propdeschd   %global-atts;  class CDATA "- topic/stentry     reference/propdeschd ">
 
 <!-- ================== End of DITA Reference ==================== -->
  

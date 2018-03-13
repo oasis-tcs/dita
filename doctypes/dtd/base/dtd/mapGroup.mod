@@ -535,13 +535,13 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  anchorref      class CDATA "+ map/topicref mapgroup-d/anchorref ">
-<!ATTLIST  keydef         class CDATA "+ map/topicref mapgroup-d/keydef ">
-<!ATTLIST  mapref         class CDATA "+ map/topicref mapgroup-d/mapref ">
-<!ATTLIST  topicgroup     class CDATA "+ map/topicref mapgroup-d/topicgroup ">
-<!ATTLIST  topichead      class CDATA "+ map/topicref mapgroup-d/topichead ">
-<!ATTLIST  topicset       class CDATA "+ map/topicref mapgroup-d/topicset ">
-<!ATTLIST  topicsetref    class CDATA "+ map/topicref mapgroup-d/topicsetref ">
+<!ATTLIST  anchorref    %global-atts;  class CDATA "+ map/topicref mapgroup-d/anchorref ">
+<!ATTLIST  keydef       %global-atts;  class CDATA "+ map/topicref mapgroup-d/keydef ">
+<!ATTLIST  mapref       %global-atts;  class CDATA "+ map/topicref mapgroup-d/mapref ">
+<!ATTLIST  topicgroup   %global-atts;  class CDATA "+ map/topicref mapgroup-d/topicgroup ">
+<!ATTLIST  topichead    %global-atts;  class CDATA "+ map/topicref mapgroup-d/topichead ">
+<!ATTLIST  topicset     %global-atts;  class CDATA "+ map/topicref mapgroup-d/topicset ">
+<!ATTLIST  topicsetref  %global-atts;  class CDATA "+ map/topicref mapgroup-d/topicsetref ">
 
 <!-- ================== End of DITA Map Group Domain ==================== -->
  

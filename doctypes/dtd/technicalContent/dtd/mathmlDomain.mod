@@ -86,8 +86,8 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  mathml         class CDATA "+ topic/foreign mathml-d/mathml ">
-<!ATTLIST  mathmlref      class CDATA "+ topic/xref mathml-d/mathmlref ">
+<!ATTLIST  mathml       %global-atts;  class CDATA "+ topic/foreign mathml-d/mathml ">
+<!ATTLIST  mathmlref    %global-atts;  class CDATA "+ topic/xref mathml-d/mathmlref ">
 
 <!-- ================== End of DITA MathML Domain ==================== -->
  

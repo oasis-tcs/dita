@@ -45,7 +45,7 @@
 <!--     %select-atts; [for selection, conditional processing]     -->
 <!--     %id-atts; [for conref and linking]                        -->
 <!--     %localization-atts (@translate + @xml:lang) [for NLS processing support] -->
-<!--     %global-atts (@xtrf + @xtrc) [for tracing and messaging support in processors] -->
+<!--     %global-atts; (@xtrf + @xtrc) [for tracing and messaging support in processors] -->
 <!--     @class [for specialization support]                       -->
 <!--   @outputclass [for role designation (ie, styles, future migrations)] -->
 <!--   @rowheader [for accessibility support in processing]        -->
@@ -55,7 +55,7 @@
 <!--     @pgwide (already part of table, same intent as original @expanse) -->
 <!-- For <tgroup>, <thead>, <tbody>, and <row>, add:               -->
 <!--   %univ-atts;                                                 -->
-<!--   %global-atts                                                -->
+<!--   %global-atts;                                               -->
 <!--   @class                                                      -->
 <!--   @outputclass [for role designation (ie, styles, future migrations)] -->
 <!-- For <entry>, add:                                             -->
@@ -322,7 +322,7 @@
                            headers |
                            norowheader |
                            -dita-use-conref-target)
-                                    #IMPLIED
+                                    'headers'
                %tbl.colspec.att;
                %dita.colspec.attributes;"
 >
@@ -442,13 +442,13 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  table          class CDATA "- topic/table "      >
-<!ATTLIST  tgroup         class CDATA "- topic/tgroup "     >
-<!ATTLIST  colspec        class CDATA "- topic/colspec "    >
-<!ATTLIST  thead          class CDATA "- topic/thead "      >
-<!ATTLIST  tbody          class CDATA "- topic/tbody "      >
-<!ATTLIST  row            class CDATA "- topic/row "        >
-<!ATTLIST  entry          class CDATA "- topic/entry "      >
+<!ATTLIST  table        %global-atts;  class CDATA "- topic/table "      >
+<!ATTLIST  tgroup       %global-atts;  class CDATA "- topic/tgroup "     >
+<!ATTLIST  colspec      %global-atts;  class CDATA "- topic/colspec "    >
+<!ATTLIST  thead        %global-atts;  class CDATA "- topic/thead "      >
+<!ATTLIST  tbody        %global-atts;  class CDATA "- topic/tbody "      >
+<!ATTLIST  row          %global-atts;  class CDATA "- topic/row "        >
+<!ATTLIST  entry        %global-atts;  class CDATA "- topic/entry "      >
 
 <!-- ================== End of XML EXCHANGE TABLE MODEL DECLARATION ==================== -->
  

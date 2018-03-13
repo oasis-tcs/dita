@@ -83,8 +83,8 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  lcInteractionBase   class CDATA "+ topic/fig learningInteractionBase-d/lcInteractionBase ">
-<!ATTLIST  lcQuestionBase   class CDATA "+ topic/p   learningInteractionBase-d/lcQuestionBase ">
+<!ATTLIST  lcInteractionBase %global-atts;  class CDATA "+ topic/fig learningInteractionBase-d/lcInteractionBase ">
+<!ATTLIST  lcQuestionBase %global-atts;  class CDATA "+ topic/p   learningInteractionBase-d/lcQuestionBase ">
 
 <!-- ================== End of DITA Learning Interaction Base Domain ==================== -->
  

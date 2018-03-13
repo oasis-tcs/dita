@@ -122,7 +122,7 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  learningObjectMap   class CDATA "- map/map learningObjectMap/learningObjectMap ">
+<!ATTLIST  learningObjectMap %global-atts;  class CDATA "- map/map learningObjectMap/learningObjectMap ">
 
 <!-- ================== End of DITA Learning Object Map Module ==================== -->
  

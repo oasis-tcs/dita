@@ -489,22 +489,22 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  lcLom          class CDATA "+ topic/metadata learningmeta-d/lcLom ">
-<!ATTLIST  lomCoverage    class CDATA "+ topic/data learningmeta-d/lomCoverage ">
-<!ATTLIST  lomStructure   class CDATA "+ topic/data learningmeta-d/lomStructure ">
-<!ATTLIST  lomAggregationLevel   class CDATA "+ topic/data learningmeta-d/lomAggregationLevel ">
-<!ATTLIST  lomTechRequirement   class CDATA "+ topic/data learningmeta-d/lomTechRequirement ">
-<!ATTLIST  lomInstallationRemarks   class CDATA "+ topic/data learningmeta-d/lomInstallationRemarks ">
-<!ATTLIST  lomOtherPlatformRequirements   class CDATA "+ topic/data learningmeta-d/lomOtherPlatformRequirements ">
-<!ATTLIST  lomInteractivityType   class CDATA "+ topic/data learningmeta-d/lomInteractivityType ">
-<!ATTLIST  lomLearningResourceType   class CDATA "+ topic/data learningmeta-d/lomLearningResourceType ">
-<!ATTLIST  lomInteractivityLevel   class CDATA "+ topic/data learningmeta-d/lomInteractivityLevel ">
-<!ATTLIST  lomSemanticDensity   class CDATA "+ topic/data learningmeta-d/lomSemanticDensity ">
-<!ATTLIST  lomIntendedUserRole   class CDATA "+ topic/data learningmeta-d/lomIntendedUserRole ">
-<!ATTLIST  lomContext     class CDATA "+ topic/data learningmeta-d/lomContext ">
-<!ATTLIST  lomTypicalAgeRange   class CDATA "+ topic/data learningmeta-d/lomTypicalAgeRange ">
-<!ATTLIST  lomDifficulty   class CDATA "+ topic/data learningmeta-d/lomDifficulty ">
-<!ATTLIST  lomTypicalLearningTime   class CDATA "+ topic/data learningmeta-d/lomTypicalLearningTime ">
+<!ATTLIST  lcLom        %global-atts;  class CDATA "+ topic/metadata learningmeta-d/lcLom ">
+<!ATTLIST  lomCoverage  %global-atts;  class CDATA "+ topic/data learningmeta-d/lomCoverage ">
+<!ATTLIST  lomStructure %global-atts;  class CDATA "+ topic/data learningmeta-d/lomStructure ">
+<!ATTLIST  lomAggregationLevel %global-atts;  class CDATA "+ topic/data learningmeta-d/lomAggregationLevel ">
+<!ATTLIST  lomTechRequirement %global-atts;  class CDATA "+ topic/data learningmeta-d/lomTechRequirement ">
+<!ATTLIST  lomInstallationRemarks %global-atts;  class CDATA "+ topic/data learningmeta-d/lomInstallationRemarks ">
+<!ATTLIST  lomOtherPlatformRequirements %global-atts;  class CDATA "+ topic/data learningmeta-d/lomOtherPlatformRequirements ">
+<!ATTLIST  lomInteractivityType %global-atts;  class CDATA "+ topic/data learningmeta-d/lomInteractivityType ">
+<!ATTLIST  lomLearningResourceType %global-atts;  class CDATA "+ topic/data learningmeta-d/lomLearningResourceType ">
+<!ATTLIST  lomInteractivityLevel %global-atts;  class CDATA "+ topic/data learningmeta-d/lomInteractivityLevel ">
+<!ATTLIST  lomSemanticDensity %global-atts;  class CDATA "+ topic/data learningmeta-d/lomSemanticDensity ">
+<!ATTLIST  lomIntendedUserRole %global-atts;  class CDATA "+ topic/data learningmeta-d/lomIntendedUserRole ">
+<!ATTLIST  lomContext   %global-atts;  class CDATA "+ topic/data learningmeta-d/lomContext ">
+<!ATTLIST  lomTypicalAgeRange %global-atts;  class CDATA "+ topic/data learningmeta-d/lomTypicalAgeRange ">
+<!ATTLIST  lomDifficulty %global-atts;  class CDATA "+ topic/data learningmeta-d/lomDifficulty ">
+<!ATTLIST  lomTypicalLearningTime %global-atts;  class CDATA "+ topic/data learningmeta-d/lomTypicalLearningTime ">
 
 <!-- ================== End of DITA Learning Metadata Domain ==================== -->
  

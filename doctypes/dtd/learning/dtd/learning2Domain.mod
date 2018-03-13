@@ -648,37 +648,37 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  lcInstructornote2   class CDATA "+ topic/note learningInteractionBase2-d/note learning2-d/lcInstructornote2 ">
-<!ATTLIST  lcTrueFalse2   class CDATA "+ topic/div learningInteractionBase2-d/lcInteractionBase2 learning2-d/lcTrueFalse2 ">
-<!ATTLIST  lcSingleSelect2   class CDATA "+ topic/div learningInteractionBase2-d/lcInteractionBase2 learning2-d/lcSingleSelect2 ">
-<!ATTLIST  lcMultipleSelect2   class CDATA "+ topic/div learningInteractionBase2-d/lcInteractionBase2 learning2-d/lcMultipleSelect2 ">
-<!ATTLIST  lcSequencing2   class CDATA "+ topic/div learningInteractionBase2-d/lcInteractionBase2 learning2-d/lcSequencing2 ">
-<!ATTLIST  lcMatching2    class CDATA "+ topic/div learningInteractionBase2-d/lcInteractionBase2 learning2-d/lcMatching2 ">
-<!ATTLIST  lcHotspot2     class CDATA "+ topic/div learningInteractionBase2-d/lcInteractionBase2 learning2-d/lcHotspot2 ">
-<!ATTLIST  lcOpenQuestion2   class CDATA "+ topic/div learningInteractionBase2-d/lcInteractionBase2 learning2-d/lcOpenQuestion2 ">
-<!ATTLIST  lcQuestion2    class CDATA "+ topic/div learningInteractionBase2-d/lcQuestionBase2 learning2-d/lcQuestion2 ">
-<!ATTLIST  lcOpenAnswer2   class CDATA "+ topic/div learningInteractionBase2-d/div learning2-d/lcOpenAnswer2 ">
-<!ATTLIST  lcAsset2       class CDATA "+ topic/div learningInteractionBase2-d/div learning2-d/lcAsset2 ">
-<!ATTLIST  lcFeedback2    class CDATA "+ topic/div learningInteractionBase2-d/div learning2-d/lcFeedback2 ">
-<!ATTLIST  lcFeedbackCorrect2   class CDATA "+ topic/div learningInteractionBase2-d/div learning2-d/lcFeedbackCorrect2 ">
-<!ATTLIST  lcFeedbackIncorrect2   class CDATA "+ topic/div learningInteractionBase2-d/div learning2-d/lcFeedbackIncorrect2 ">
-<!ATTLIST  lcAnswerOption2   class CDATA "+ topic/li learningInteractionBase2-d/li learning2-d/lcAnswerOption2 ">
-<!ATTLIST  lcAnswerOptionGroup2   class CDATA "+ topic/ul learningInteractionBase2-d/ul learning2-d/lcAnswerOptionGroup2 ">
-<!ATTLIST  lcAnswerContent2   class CDATA "+ topic/div learningInteractionBase2-d/div learning2-d/lcAnswerContent2 ">
-<!ATTLIST  lcMatchTable2   class CDATA "+ topic/simpletable learningInteractionBase2-d/simpletable learning2-d/lcMatchTable2 ">
-<!ATTLIST  lcMatchingHeader2   class CDATA "+ topic/sthead learningInteractionBase2-d/sthead learning2-d/lcMatchingHeader2 ">
-<!ATTLIST  lcMatchingPair2   class CDATA "+ topic/strow learningInteractionBase2-d/strow learning2-d/lcMatchingPair2 ">
-<!ATTLIST  lcItem2        class CDATA "+ topic/stentry learningInteractionBase2-d/stentry learning2-d/lcItem2 ">
-<!ATTLIST  lcMatchingItem2   class CDATA "+ topic/stentry learningInteractionBase2-d/stentry learning2-d/lcMatchingItem2 ">
-<!ATTLIST  lcMatchingItemFeedback2   class CDATA "+ topic/stentry learningInteractionBase2-d/stentry learning2-d/lcMatchingItemFeedback2 ">
-<!ATTLIST  lcSequenceOptionGroup2   class CDATA "+ topic/ol learningInteractionBase2-d/ol learning2-d/lcSequenceOptionGroup2 ">
-<!ATTLIST  lcSequenceOption2   class CDATA "+ topic/li learningInteractionBase2-d/li learning2-d/lcSequenceOption2 ">
-<!ATTLIST  lcSequence2    class CDATA "+ topic/data learningInteractionBase2-d/data learning2-d/lcSequence2 ">
-<!ATTLIST  lcCorrectResponse2   class CDATA "+ topic/data learningInteractionBase2-d/data learning2-d/lcCorrectResponse2 ">
-<!ATTLIST  lcHotspotMap2   class CDATA "+ topic/fig learningInteractionBase2-d/figgroup learning2-d/lcHotspotMap2 ">
-<!ATTLIST  lcArea2        class CDATA "+ topic/figgroup learningInteractionBase2-d/figgroup learning2-d/lcArea2 ">
-<!ATTLIST  lcAreaShape2   class CDATA "+ topic/keyword learningInteractionBase2-d/keyword learning2-d/lcAreaShape2 ">
-<!ATTLIST  lcAreaCoords2   class CDATA "+ topic/ph learningInteractionBase2-d/ph learning2-d/lcAreaCoords2 ">
+<!ATTLIST  lcInstructornote2 %global-atts;  class CDATA "+ topic/note learningInteractionBase2-d/note learning2-d/lcInstructornote2 ">
+<!ATTLIST  lcTrueFalse2 %global-atts;  class CDATA "+ topic/div learningInteractionBase2-d/lcInteractionBase2 learning2-d/lcTrueFalse2 ">
+<!ATTLIST  lcSingleSelect2 %global-atts;  class CDATA "+ topic/div learningInteractionBase2-d/lcInteractionBase2 learning2-d/lcSingleSelect2 ">
+<!ATTLIST  lcMultipleSelect2 %global-atts;  class CDATA "+ topic/div learningInteractionBase2-d/lcInteractionBase2 learning2-d/lcMultipleSelect2 ">
+<!ATTLIST  lcSequencing2 %global-atts;  class CDATA "+ topic/div learningInteractionBase2-d/lcInteractionBase2 learning2-d/lcSequencing2 ">
+<!ATTLIST  lcMatching2  %global-atts;  class CDATA "+ topic/div learningInteractionBase2-d/lcInteractionBase2 learning2-d/lcMatching2 ">
+<!ATTLIST  lcHotspot2   %global-atts;  class CDATA "+ topic/div learningInteractionBase2-d/lcInteractionBase2 learning2-d/lcHotspot2 ">
+<!ATTLIST  lcOpenQuestion2 %global-atts;  class CDATA "+ topic/div learningInteractionBase2-d/lcInteractionBase2 learning2-d/lcOpenQuestion2 ">
+<!ATTLIST  lcQuestion2  %global-atts;  class CDATA "+ topic/div learningInteractionBase2-d/lcQuestionBase2 learning2-d/lcQuestion2 ">
+<!ATTLIST  lcOpenAnswer2 %global-atts;  class CDATA "+ topic/div learningInteractionBase2-d/div learning2-d/lcOpenAnswer2 ">
+<!ATTLIST  lcAsset2     %global-atts;  class CDATA "+ topic/div learningInteractionBase2-d/div learning2-d/lcAsset2 ">
+<!ATTLIST  lcFeedback2  %global-atts;  class CDATA "+ topic/div learningInteractionBase2-d/div learning2-d/lcFeedback2 ">
+<!ATTLIST  lcFeedbackCorrect2 %global-atts;  class CDATA "+ topic/div learningInteractionBase2-d/div learning2-d/lcFeedbackCorrect2 ">
+<!ATTLIST  lcFeedbackIncorrect2 %global-atts;  class CDATA "+ topic/div learningInteractionBase2-d/div learning2-d/lcFeedbackIncorrect2 ">
+<!ATTLIST  lcAnswerOption2 %global-atts;  class CDATA "+ topic/li learningInteractionBase2-d/li learning2-d/lcAnswerOption2 ">
+<!ATTLIST  lcAnswerOptionGroup2 %global-atts;  class CDATA "+ topic/ul learningInteractionBase2-d/ul learning2-d/lcAnswerOptionGroup2 ">
+<!ATTLIST  lcAnswerContent2 %global-atts;  class CDATA "+ topic/div learningInteractionBase2-d/div learning2-d/lcAnswerContent2 ">
+<!ATTLIST  lcMatchTable2 %global-atts;  class CDATA "+ topic/simpletable learningInteractionBase2-d/simpletable learning2-d/lcMatchTable2 ">
+<!ATTLIST  lcMatchingHeader2 %global-atts;  class CDATA "+ topic/sthead learningInteractionBase2-d/sthead learning2-d/lcMatchingHeader2 ">
+<!ATTLIST  lcMatchingPair2 %global-atts;  class CDATA "+ topic/strow learningInteractionBase2-d/strow learning2-d/lcMatchingPair2 ">
+<!ATTLIST  lcItem2      %global-atts;  class CDATA "+ topic/stentry learningInteractionBase2-d/stentry learning2-d/lcItem2 ">
+<!ATTLIST  lcMatchingItem2 %global-atts;  class CDATA "+ topic/stentry learningInteractionBase2-d/stentry learning2-d/lcMatchingItem2 ">
+<!ATTLIST  lcMatchingItemFeedback2 %global-atts;  class CDATA "+ topic/stentry learningInteractionBase2-d/stentry learning2-d/lcMatchingItemFeedback2 ">
+<!ATTLIST  lcSequenceOptionGroup2 %global-atts;  class CDATA "+ topic/ol learningInteractionBase2-d/ol learning2-d/lcSequenceOptionGroup2 ">
+<!ATTLIST  lcSequenceOption2 %global-atts;  class CDATA "+ topic/li learningInteractionBase2-d/li learning2-d/lcSequenceOption2 ">
+<!ATTLIST  lcSequence2  %global-atts;  class CDATA "+ topic/data learningInteractionBase2-d/data learning2-d/lcSequence2 ">
+<!ATTLIST  lcCorrectResponse2 %global-atts;  class CDATA "+ topic/data learningInteractionBase2-d/data learning2-d/lcCorrectResponse2 ">
+<!ATTLIST  lcHotspotMap2 %global-atts;  class CDATA "+ topic/fig learningInteractionBase2-d/figgroup learning2-d/lcHotspotMap2 ">
+<!ATTLIST  lcArea2      %global-atts;  class CDATA "+ topic/figgroup learningInteractionBase2-d/figgroup learning2-d/lcArea2 ">
+<!ATTLIST  lcAreaShape2 %global-atts;  class CDATA "+ topic/keyword learningInteractionBase2-d/keyword learning2-d/lcAreaShape2 ">
+<!ATTLIST  lcAreaCoords2 %global-atts;  class CDATA "+ topic/ph learningInteractionBase2-d/ph learning2-d/lcAreaCoords2 ">
 
 <!-- ================== End of DITA Learning 2 Domain ==================== -->
  

@@ -42,7 +42,7 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  markupname     class CDATA "+ topic/keyword markup-d/markupname ">
+<!ATTLIST  markupname   %global-atts;  class CDATA "+ topic/keyword markup-d/markupname ">
 
 <!-- ================== End of DITA Markup Name Mention Domain ==================== -->
  

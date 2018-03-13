@@ -151,13 +151,13 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  numcharref     class CDATA "+ topic/keyword markup-d/markupname xml-d/numcharref ">
-<!ATTLIST  parameterentity   class CDATA "+ topic/keyword markup-d/markupname xml-d/parameterentity ">
-<!ATTLIST  textentity     class CDATA "+ topic/keyword markup-d/markupname xml-d/textentity ">
-<!ATTLIST  xmlatt         class CDATA "+ topic/keyword markup-d/markupname xml-d/xmlatt ">
-<!ATTLIST  xmlelement     class CDATA "+ topic/keyword markup-d/markupname xml-d/xmlelement ">
-<!ATTLIST  xmlnsname      class CDATA "+ topic/keyword markup-d/markupname xml-d/xmlnsname ">
-<!ATTLIST  xmlpi          class CDATA "+ topic/keyword markup-d/markupname xml-d/xmlpi ">
+<!ATTLIST  numcharref   %global-atts;  class CDATA "+ topic/keyword markup-d/markupname xml-d/numcharref ">
+<!ATTLIST  parameterentity %global-atts;  class CDATA "+ topic/keyword markup-d/markupname xml-d/parameterentity ">
+<!ATTLIST  textentity   %global-atts;  class CDATA "+ topic/keyword markup-d/markupname xml-d/textentity ">
+<!ATTLIST  xmlatt       %global-atts;  class CDATA "+ topic/keyword markup-d/markupname xml-d/xmlatt ">
+<!ATTLIST  xmlelement   %global-atts;  class CDATA "+ topic/keyword markup-d/markupname xml-d/xmlelement ">
+<!ATTLIST  xmlnsname    %global-atts;  class CDATA "+ topic/keyword markup-d/markupname xml-d/xmlnsname ">
+<!ATTLIST  xmlpi        %global-atts;  class CDATA "+ topic/keyword markup-d/markupname xml-d/xmlpi ">
 
 <!-- ================== End of DITA XML Construct Domain ==================== -->
  

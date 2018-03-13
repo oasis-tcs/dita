@@ -192,14 +192,14 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  cmdname        class CDATA "+ topic/keyword sw-d/cmdname ">
-<!ATTLIST  filepath       class CDATA "+ topic/ph sw-d/filepath ">
-<!ATTLIST  msgblock       class CDATA "+ topic/pre sw-d/msgblock ">
-<!ATTLIST  msgnum         class CDATA "+ topic/keyword sw-d/msgnum ">
-<!ATTLIST  msgph          class CDATA "+ topic/ph sw-d/msgph ">
-<!ATTLIST  systemoutput   class CDATA "+ topic/ph sw-d/systemoutput ">
-<!ATTLIST  userinput      class CDATA "+ topic/ph sw-d/userinput ">
-<!ATTLIST  varname        class CDATA "+ topic/keyword sw-d/varname ">
+<!ATTLIST  cmdname      %global-atts;  class CDATA "+ topic/keyword sw-d/cmdname ">
+<!ATTLIST  filepath     %global-atts;  class CDATA "+ topic/ph sw-d/filepath ">
+<!ATTLIST  msgblock     %global-atts;  class CDATA "+ topic/pre sw-d/msgblock ">
+<!ATTLIST  msgnum       %global-atts;  class CDATA "+ topic/keyword sw-d/msgnum ">
+<!ATTLIST  msgph        %global-atts;  class CDATA "+ topic/ph sw-d/msgph ">
+<!ATTLIST  systemoutput %global-atts;  class CDATA "+ topic/ph sw-d/systemoutput ">
+<!ATTLIST  userinput    %global-atts;  class CDATA "+ topic/ph sw-d/userinput ">
+<!ATTLIST  varname      %global-atts;  class CDATA "+ topic/keyword sw-d/varname ">
 
 <!-- ================== End of DITA Software Domain ==================== -->
  

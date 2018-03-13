@@ -65,7 +65,7 @@ For the <table> element, add:
     %select-atts; [for selection, conditional processing]
     %id-atts; [for conref and linking]
     %localization-atts (@translate + @xml:lang) [for NLS processing support]
-    %global-atts (@xtrf + @xtrc) [for tracing and messaging support in processors]
+    %global-atts; (@xtrf + @xtrc) [for tracing and messaging support in processors]
     @class [for specialization support]
   @outputclass [for role designation (ie, styles, future migrations)]
   @rowheader [for accessibility support in processing]
@@ -76,7 +76,7 @@ For the <table> element, add:
 
 For <tgroup>, <thead>, <tbody>, and <row>, add:
   %univ-atts;
-  %global-atts
+  %global-atts;
   @class
   @outputclass [for role designation (ie, styles, future migrations)]
 
@@ -439,7 +439,8 @@ For <entry>, add:
       </attribute>
     </optional>
     <optional>
-      <attribute name="rowheader" dita:since="1.3">
+      <attribute name="rowheader" dita:since="1.3"
+        a:defaultValue="headers">
         <choice>
           <value>firstcol</value>
           <value dita:since="1.3">headers</value>
@@ -647,36 +648,43 @@ For <entry>, add:
   <!-- Specialization attributes. Global attributes and class defaults -->
 
   <define name="table.attlist" combine="interleave">
+    <ref name="global-atts"/>
     <optional>
       <attribute name="class" a:defaultValue="- topic/table "/>
     </optional>
   </define>
   <define name="tgroup.attlist" combine="interleave">
+    <ref name="global-atts"/>
     <optional>
       <attribute name="class" a:defaultValue="- topic/tgroup "/>
     </optional>
   </define>
   <define name="colspec.attlist" combine="interleave">
+    <ref name="global-atts"/>
     <optional>
       <attribute name="class" a:defaultValue="- topic/colspec "/>
     </optional>
   </define>
   <define name="thead.attlist" combine="interleave">
+    <ref name="global-atts"/>
     <optional>
       <attribute name="class" a:defaultValue="- topic/thead "/>
     </optional>
   </define>
   <define name="tbody.attlist" combine="interleave">
+    <ref name="global-atts"/>
     <optional>
       <attribute name="class" a:defaultValue="- topic/tbody "/>
     </optional>
   </define>
   <define name="row.attlist" combine="interleave">
+    <ref name="global-atts"/>
     <optional>
       <attribute name="class" a:defaultValue="- topic/row "/>
     </optional>
   </define>
   <define name="entry.attlist" combine="interleave">
+    <ref name="global-atts"/>
     <optional>
       <attribute name="class" a:defaultValue="- topic/entry "/>
     </optional>

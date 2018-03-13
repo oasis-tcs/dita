@@ -148,11 +148,11 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  imagemap       class CDATA "+ topic/fig ut-d/imagemap ">
-<!ATTLIST  area           class CDATA "+ topic/figgroup ut-d/area ">
-<!ATTLIST  shape          class CDATA "+ topic/keyword ut-d/shape ">
-<!ATTLIST  coords         class CDATA "+ topic/ph ut-d/coords ">
-<!ATTLIST  sort-as        class CDATA "+ topic/data ut-d/sort-as ">
+<!ATTLIST  imagemap     %global-atts;  class CDATA "+ topic/fig ut-d/imagemap ">
+<!ATTLIST  area         %global-atts;  class CDATA "+ topic/figgroup ut-d/area ">
+<!ATTLIST  shape        %global-atts;  class CDATA "+ topic/keyword ut-d/shape ">
+<!ATTLIST  coords       %global-atts;  class CDATA "+ topic/ph ut-d/coords ">
+<!ATTLIST  sort-as      %global-atts;  class CDATA "+ topic/data ut-d/sort-as ">
 
 <!-- ================== End of DITA Utilities Domain ==================== -->
  
