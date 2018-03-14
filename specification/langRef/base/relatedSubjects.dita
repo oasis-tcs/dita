@@ -16,11 +16,11 @@ restricted by the <xmlatt>linking</xmlatt> attribute of the subjects).</shortdes
     <section id="usage-information">
       <title>Usage information</title>
       <p>The content provider can identify the relationship by specifying a <xmlatt>keys</xmlatt>
-        attribute, label the relationship by specifying a <xmlelement>navtitle</xmlelement> element
-        or <xmlatt>navtitle</xmlatt> attribute, and provide a consensus definition of the
-        relationship including by referencing a topic. If the relationship has an identifying key,
-        the content provider can use the <xmlatt>keyref</xmlatt> attribute to specify the same
-        relationship for different subjects.</p>
+        attribute, label the relationship by specifying a <xmlelement>navtitle</xmlelement> element,
+        and provide a consensus definition of the relationship including by referencing a topic. If
+        the relationship has an identifying key, the content provider can use the
+          <xmlatt>keyref</xmlatt> attribute to specify the same relationship for different
+        subjects.</p>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
@@ -38,8 +38,7 @@ restricted by the <xmlatt>linking</xmlatt> attribute of the subjects).</shortdes
       <p>The following attributes are available on this element: <xref
           href="../attributes/universalAttributes.dita"/>, <xref
           href="../attributes/linkRelationshipAttributes.dita"/> (with a narrowed definition of
-          <xmlatt>href</xmlatt>, given below), <xmlatt>navtitle</xmlatt> and <xmlatt>query</xmlatt>
-        from <xref href="../attributes/topicrefElementAttributes.dita"/>, <xref
+          <xmlatt>href</xmlatt>, given below), <xref
           href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, <xref
           href="../attributes/thekeysattribute.dita"><xmlatt>keys</xmlatt></xref>, and <xref
           href="../attributes/thekeyrefattribute.dita"><xmlatt>keyref</xmlatt></xref>. This element
@@ -59,14 +58,14 @@ restricted by the <xmlatt>linking</xmlatt> attribute of the subjects).</shortdes
         </dlentry>
       </dl>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><p>The following scheme
-establishes that the Linux, the Apache Web Server, and the MySQL Database
-are related:<codeblock>&lt;subjectScheme>
+<example id="example" otherprops="examples"><title>Example</title><p>The following scheme establishes that the Linux, the Apache Web Server, and the MySQL Database
+        are
+        related:<codeblock>&lt;subjectScheme>
   &lt;!-- ... -->
   &lt;relatedSubjects>
-    &lt;subjectdef keys="linux"     navtitle="Linux"/>
-    &lt;subjectdef keys="apacheweb" navtitle="Apache Web Server"/>
-    &lt;subjectdef keys="mysql"     navtitle="MySQL Database"/>
+    &lt;subjectdef keys="linux">
+    &lt;subjectdef keys="apache-web-server"/>
+    &lt;subjectdef keys="my-sql"/>
   &lt;/relatedSubjects>
   &lt;!-- ... -->
 &lt;/subjectScheme></codeblock></p></example>
