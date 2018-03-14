@@ -54,6 +54,8 @@
 <!--    2008.02.12 RDA: Move navtitle decl. here from topic.mod    -->
 <!--    2008.02.13 RDA: Create .content and .attributes entities   -->
 <!--    2008.11.10 RDA: Make href optional on image                -->
+<!--    2018.03.14 KJE: Removed boolean and indextermref; @alt and -->
+<!--                    @longdescref on image; @refcols            -->
 <!-- =============================================================      -->
 <!--                                                               -->
 
@@ -71,8 +73,7 @@
 <!-- ============================================================= -->
 
 <!ENTITY % basic.ph
-              "%boolean; |
-               %cite; |
+              "%%cite; |
                %keyword; |
                %ph; |
                %q; |
@@ -104,8 +105,7 @@
                %basic.ph;"
 >
 <!ENTITY % basic.ph.noxref.nocite
-              "%boolean; |
-               %keyword; |
+              "%%keyword; |
                %ph; |
                %q; |
                %term; |
@@ -118,8 +118,7 @@
                %cite;"
 >
 <!ENTITY % basic.ph.notm
-              "%boolean; |
-               %cite; |
+              "%cite; |
                %keyword; |
                %ph; |
                %q; |
@@ -221,7 +220,6 @@
 <!ENTITY % txt.incl
               "%draft-comment; |
                %fn; |
-               %indextermref; |
                %indexterm; |
                %required-cleanup;"
 >
@@ -1275,26 +1273,6 @@
 <!ELEMENT  tm %tm.content;>
 <!ATTLIST  tm %tm.attributes;>
 
-
-<!--                    LONG NAME: Boolean  (deprecated)           -->
-<!ENTITY % boolean.content
-                       "EMPTY"
->
-<!ENTITY % boolean.attributes
-              "state
-                          (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #REQUIRED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
->
-<!ELEMENT  boolean %boolean.content;>
-<!ATTLIST  boolean %boolean.attributes;>
-
-
 <!--                    LONG NAME: State                           -->
 <!ENTITY % state.content
                        "EMPTY"
@@ -1331,12 +1309,6 @@
                            -dita-use-conref-target)
                                     #IMPLIED
                keyref
-                          CDATA
-                                    #IMPLIED
-               alt
-                          CDATA
-                                    #IMPLIED
-               longdescref
                           CDATA
                                     #IMPLIED
                height
@@ -1535,9 +1507,6 @@
                keycol
                           NMTOKEN
                                     #IMPLIED
-               refcols
-                          NMTOKENS
-                                    #IMPLIED
                %display-atts;
                spectitle
                           CDATA
@@ -1693,21 +1662,6 @@
 <!ELEMENT  index-base %index-base.content;>
 <!ATTLIST  index-base %index-base.attributes;>
 
-
-<!--                    LONG NAME: Index term reference            -->
-<!ENTITY % indextermref.content
-                       "EMPTY"
->
-<!ENTITY % indextermref.attributes
-              "keyref
-                          CDATA
-                                    #REQUIRED
-               %univ-atts;"
->
-<!ELEMENT  indextermref %indextermref.content;>
-<!ATTLIST  indextermref %indextermref.attributes;>
-
-
 <!--                    LONG NAME: Citation (bibliographic source) -->
 <!ENTITY % cite.content
                        "(%xrefph.cnt;)*"
@@ -1769,7 +1723,6 @@
 <!-- ============================================================= -->
   
 <!ATTLIST  alt            class CDATA "- topic/alt "        >
-<!ATTLIST  boolean        class CDATA "- topic/boolean "    >
 <!ATTLIST  cite           class CDATA "- topic/cite "       >
 <!ATTLIST  dd             class CDATA "- topic/dd "         >
 <!ATTLIST  data           class CDATA "- topic/data "       >
@@ -1790,7 +1743,6 @@
 <!ATTLIST  image          class CDATA "- topic/image "      >
 <!ATTLIST  indexterm      class CDATA "- topic/indexterm "  >
 <!ATTLIST  index-base     class CDATA "- topic/index-base " >
-<!ATTLIST  indextermref   class CDATA "- topic/indextermref ">
 <!ATTLIST  itemgroup      class CDATA "- topic/itemgroup "  >
 <!ATTLIST  keyword        class CDATA "- topic/keyword "    >
 <!ATTLIST  li             class CDATA "- topic/li "         >
