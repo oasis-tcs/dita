@@ -37,6 +37,9 @@
 <!--    2008.02.12 RDA: Navtitle no longer required on topichead   -->
 <!--    2008.02.13 RDA: Create .content and .attributes entities   -->
 <!--    2010.09.20 RDA: Add copy-to to topichead                   -->
+<!--    2018.03.14 KJE: Added new attribute group for use on       -->
+<!--                    topichead and topicgroup (removes          -->
+<!--                    @collection-type); removed @query          -->
 <!-- ============================================================= -->
 <!--                                                               -->
 <!--                                                               -->
@@ -52,6 +55,63 @@
 <!ENTITY % topicset    "topicset"                                    >
 <!ENTITY % topicsetref "topicsetref"                                 >
 <!ENTITY % keydef      "keydef"                                      >
+
+<!-- ============================================================= -->
+<!--                    COMMON ATTLIST SETS                        -->
+<!-- ============================================================= -->  
+
+<!ENTITY % topicref-atts-no-locktitle
+              "collection-type
+                          (choice |
+                           family |
+                           sequence |
+                           unordered |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               type
+                          CDATA
+                                    #IMPLIED
+               cascade
+                          CDATA
+                                    #IMPLIED
+               processing-role
+                          (normal |
+                           resource-only |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               scope
+                          (external |
+                           local |
+                           peer |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               format
+                          CDATA
+                                    #IMPLIED
+               linking
+                          (none |
+                           normal |
+                           sourceonly |
+                           targetonly |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               toc
+                          (no |
+                           yes |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               search
+                          (no |
+                           yes |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               chunk
+                          CDATA
+                                    #IMPLIED
+               keyscope
+                          CDATA
+                                    #IMPLIED"
+>
 
 <!-- ============================================================= -->
 <!--                    ELEMENT DECLARATIONS                       -->
@@ -78,7 +138,7 @@
                copy-to
                           CDATA
                                     #IMPLIED
-               %topicref-atts;
+               %topicref-atts-no-locktitle;
                %univ-atts;"
 >
 <!ELEMENT  topichead %topichead.content;>
@@ -97,7 +157,7 @@
               "outputclass
                           CDATA
                                     #IMPLIED
-               %topicref-atts;
+               %topicref-atts-no-locktitle;
                %univ-atts;"
 >
 <!ELEMENT  topicgroup %topicgroup.content;>
@@ -124,9 +184,6 @@
                           CDATA
                                     #IMPLIED
                keyscope
-                          CDATA
-                                    #IMPLIED
-               query
                           CDATA
                                     #IMPLIED
                copy-to
@@ -217,9 +274,6 @@
                keys
                           CDATA
                                     #IMPLIED
-               query
-                          CDATA
-                                    #IMPLIED
                copy-to
                           CDATA
                                     #IMPLIED
@@ -258,9 +312,6 @@
                           CDATA
                                     #IMPLIED
                keyscope
-                          CDATA
-                                    #IMPLIED
-               query
                           CDATA
                                     #IMPLIED
                copy-to
@@ -360,9 +411,6 @@
                keyscope
                           CDATA
                                     #IMPLIED
-               query
-                          CDATA
-                                    #IMPLIED
                copy-to
                           CDATA
                                     #IMPLIED
@@ -455,9 +503,6 @@
                           CDATA
                                     #REQUIRED
                keyscope
-                          CDATA
-                                    #IMPLIED
-               query
                           CDATA
                                     #IMPLIED
                copy-to

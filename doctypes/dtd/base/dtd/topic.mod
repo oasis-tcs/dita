@@ -65,6 +65,8 @@
 <!--    2008.02.13 RDA: Create .content and .attributes entities   -->
 <!--    2008.05.06 RDA: Moved sectiondiv to section.cnt; created   -->
 <!--                    example.cnt for use by example element     -->
+<!--    2018.03.14 KJE: Removed @collection-type="tree"; removed   -->
+<!--                    @role="external" and "sample"              -->
 <!-- ============================================================= -->
 
 <!-- ============================================================= -->
@@ -247,13 +249,11 @@
                            child |
                            cousin |
                            descendant |
-                           external |
                            friend |
                            next |
                            other |
                            parent |
                            previous |
-                           sample |
                            sibling |
                            -dita-use-conref-target)
                                     #IMPLIED
@@ -270,13 +270,11 @@
                            child |
                            cousin |
                            descendant |
-                           external |
                            friend |
                            next |
                            other |
                            parent |
                            previous |
-                           sample |
                            sibling |
                            -dita-use-conref-target)
                                     #IMPLIED
@@ -545,8 +543,7 @@
                            family |
                            sequence |
                            unordered |
-                           -dita-use-conref-target |
-                           tree)
+                           -dita-use-conref-target)
                                     #IMPLIED
                duplicates
                           (no |
@@ -591,8 +588,7 @@
                            family |
                            sequence |
                            unordered |
-                           -dita-use-conref-target |
-                           tree)
+                           -dita-use-conref-target)
                                     #IMPLIED
                duplicates
                           (no |
