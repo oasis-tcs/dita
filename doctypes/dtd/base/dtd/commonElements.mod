@@ -65,7 +65,7 @@
 
 
 <!ENTITY % commonDefns
-  PUBLIC "-//OASIS//ENTITIES DITA 1.3 Common Elements//EN"          "commonElements.ent" 
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Common Elements//EN"          "commonElements.ent" 
 >%commonDefns;
 
 <!-- ============================================================= -->
@@ -1714,7 +1714,7 @@
 
 
 <!ENTITY % tblDecl-def
-  PUBLIC "-//OASIS//ELEMENTS DITA 1.3 Exchange Table Model//EN"
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Exchange Table Model//EN"
          "tblDecl.mod"
 >%tblDecl-def;
 
