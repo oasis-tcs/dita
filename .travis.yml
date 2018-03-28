@@ -1,0 +1,29 @@
+sudo: false
+language: java
+jdk:
+- oraclejdk8
+env:
+  global:
+  - DITA_OT_VERSION=3.0.2
+script: 
+- curl -L https://github.com/dita-ot/dita-ot/releases/download/$DITA_OT_VERSION/dita-ot-$DITA_OT_VERSION.zip -o dita-ot-$DITA_OT_VERSION.zip
+- unzip dita-ot-$DITA_OT_VERSION.zip
+- export DITA_HOME=$PWD/dita-ot-$DITA_OT_VERSION
+# Create and install plugin for 2.0 with latest doctypes
+- mkdir $DITA_HOME/plugins/org.oasis-open.dita.v2_0/
+- cp -a ./doctypes/. $DITA_HOME/plugins/org.oasis-open.dita.v2_0/
+- cp .travis/ditaotplugin.xml $DITA_HOME/plugins/org.oasis-open.dita.v2_0/plugin.xml
+- $DITA_HOME/bin/dita -install
+# Install RNG support
+- curl -L https://github.com/oxygenxml/dita-relaxng-defaults/archive/master.zip -o dita-ng.zip
+- $DITA_HOME/bin/dita -install dita-ng.zip -v
+# Grab test files
+- curl -L https://github.com/robander/metadita-sampledocs/archive/master.zip -o testfiles.zip
+- unzip testfiles.zip
+# Build 1.3 doctype to ensure builds working properly
+#- $DITA_HOME/bin/dita -i $PWD/metadita-sampledocs-master/doctypes/dita1.3/dtd/base/basemap.ditamap -f html5
+# Build beta 2.0 doctype
+#- $DITA_HOME/bin/dita -i $PWD/metadita-sampledocs-master/doctypes/dita20/dtd/base/basetopic.dita -f html5
+#- $DITA_HOME/bin/dita -i $PWD/metadita-sampledocs-master/doctypes/dita20/dtd/base/basemap.ditamap -f html5
+#- $DITA_HOME/bin/dita -i $PWD/metadita-sampledocs-master/doctypes/dita20/dtd/2.0.versionSpecificDTD.ditamap -f html5
+- $DITA_HOME/bin/dita -i $PWD/metadita-sampledocs-master/doctypes/dita20/2.0grammars.ditamap -f html5
