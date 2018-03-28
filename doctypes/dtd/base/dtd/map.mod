@@ -394,13 +394,13 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
 
 <!--           Content elements common to map and topic            -->
 <!ENTITY % commonElements-def
-  PUBLIC "-//OASIS//ELEMENTS DITA 1.3 Common Elements//EN"
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
          "commonElements.mod"
 >%commonElements-def;
 
 <!--                       MetaData Elements                       -->
 <!ENTITY % metaDecl-def
-  PUBLIC "-//OASIS//ELEMENTS DITA 1.3 Metadata//EN"
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Metadata//EN"
          "metaDecl.mod"
 >%metaDecl-def;
       

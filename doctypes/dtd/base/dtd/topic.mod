@@ -99,19 +99,19 @@
 
 <!--                    Definitions of declared elements           -->
 <!ENTITY % topicDefns
-    PUBLIC "-//OASIS//ENTITIES DITA 1.3 Topic Definitions//EN" "topicDefn.ent" 
+    PUBLIC "-//OASIS//ENTITIES DITA 2.0 Topic Definitions//EN" "topicDefn.ent" 
 >%topicDefns;
 
 <!--                      Content elements common to map and topic -->
 <!ENTITY % commonElements
 
-  PUBLIC "-//OASIS//ELEMENTS DITA 1.3 Common Elements//EN"
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
          "commonElements.mod" 
 >%commonElements;
 
 <!--                       MetaData Elements, plus indexterm       -->
 <!ENTITY % metaXML 
-  PUBLIC "-//OASIS//ELEMENTS DITA 1.3 Metadata//EN"
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Metadata//EN"
          "metaDecl.mod" 
 >%metaXML;
 
