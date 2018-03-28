@@ -73,7 +73,7 @@
 <!-- ============================================================= -->
 
 <!ENTITY % basic.ph
-              "%%cite; |
+              "%cite; |
                %keyword; |
                %ph; |
                %q; |
@@ -105,7 +105,7 @@
                %basic.ph;"
 >
 <!ENTITY % basic.ph.noxref.nocite
-              "%%keyword; |
+              "%keyword; |
                %ph; |
                %q; |
                %term; |
