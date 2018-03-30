@@ -346,10 +346,7 @@
                          %xref;)*"
 >
 <!ENTITY % shortdesc.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  shortdesc %shortdesc.content;>
 <!ATTLIST  shortdesc %shortdesc.attributes;>
@@ -360,10 +357,7 @@
                        "(%abstract.cnt;)*"
 >
 <!ENTITY % abstract.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  abstract %abstract.content;>
 <!ATTLIST  abstract %abstract.attributes;>
@@ -377,10 +371,7 @@
                          %section;)*"
 >
 <!ENTITY % body.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  body %body.content;>
 <!ATTLIST  body %body.attributes;>
@@ -393,10 +384,7 @@
                          %section;)*"
 >
 <!ENTITY % bodydiv.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  bodydiv %bodydiv.content;>
 <!ATTLIST  bodydiv %bodydiv.attributes;>
@@ -414,10 +402,7 @@
               "spectitle
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  section %section.content;>
 <!ATTLIST  section %section.attributes;>
@@ -429,10 +414,7 @@
                          %sectiondiv;)*"
 >
 <!ENTITY % sectiondiv.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  sectiondiv %sectiondiv.content;>
 <!ATTLIST  sectiondiv %sectiondiv.attributes;>
@@ -446,10 +428,7 @@
               "spectitle
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  example %example.content;>
 <!ATTLIST  example %example.attributes;>
@@ -483,10 +462,7 @@
 >
 <!ENTITY % related-links.attributes
               "%relational-atts;
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  related-links %related-links.content;>
 <!ATTLIST  related-links %related-links.attributes;>
@@ -508,10 +484,7 @@
                           CDATA
                                     #IMPLIED
                %relational-atts;
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  link %link.content;>
 <!ATTLIST  link %link.attributes;>
@@ -557,9 +530,6 @@
                %univ-atts;
                spectitle
                           CDATA
-                                    #IMPLIED
-               outputclass
-                          CDATA
                                     #IMPLIED"
 >
 <!ELEMENT  linklist %linklist.content;>
@@ -599,10 +569,7 @@
                           CDATA
                                     #IMPLIED
                %relational-atts;
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  linkpool %linkpool.content;>
 <!ATTLIST  linkpool %linkpool.attributes;>

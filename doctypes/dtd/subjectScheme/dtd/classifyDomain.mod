@@ -104,9 +104,6 @@
                            yes |
                            -dita-use-conref-target)
                                     'no'
-               outputclass
-                          CDATA
-                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  topicsubject %topicsubject.content;>
@@ -175,9 +172,6 @@
                            yes |
                            -dita-use-conref-target)
                                     'no'
-               outputclass
-                          CDATA
-                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  topicapply %topicapply.content;>
@@ -244,9 +238,6 @@
                            yes |
                            -dita-use-conref-target)
                                     'no'
-               outputclass
-                          CDATA
-                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  subjectref %subjectref.content;>
@@ -262,9 +253,6 @@
 >
 <!ENTITY % topicSubjectTable.attributes
               "%topicref-atts-no-toc;
-               outputclass
-                          CDATA
-                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  topicSubjectTable %topicSubjectTable.content;>

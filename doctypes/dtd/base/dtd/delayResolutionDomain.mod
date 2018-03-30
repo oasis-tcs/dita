@@ -77,10 +77,7 @@
               "keyref
                           CDATA
                                     #REQUIRED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  anchorkey %anchorkey.content;>
 <!ATTLIST  anchorkey %anchorkey.attributes;>

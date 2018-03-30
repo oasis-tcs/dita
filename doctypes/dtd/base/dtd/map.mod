@@ -459,9 +459,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
               "%univ-atts;
                mapref
                           CDATA
-                                    #IMPLIED
-               outputclass
-                          CDATA
                                     #IMPLIED"
 >
 <!ELEMENT  navref %navref.content;>
@@ -487,9 +484,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                           CDATA
                                     #IMPLIED
                copy-to
-                          CDATA
-                                    #IMPLIED
-               outputclass
                           CDATA
                                     #IMPLIED
                %topicref-atts;
@@ -527,9 +521,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
 >
 <!ENTITY % reltable.attributes
               "title
-                          CDATA
-                                    #IMPLIED
-               outputclass
                           CDATA
                                     #IMPLIED
                %topicref-atts-for-reltable;
@@ -638,10 +629,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                          %xref;)*"
 >
 <!ENTITY % shortdesc.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  shortdesc %shortdesc.content;>
 <!ATTLIST  shortdesc %shortdesc.attributes;>

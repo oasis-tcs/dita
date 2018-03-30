@@ -215,9 +215,6 @@
                            peer |
                            -dita-use-conref-target)
                                     #IMPLIED
-               outputclass
-                          CDATA
-                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  schemeref %schemeref.content;>
@@ -263,9 +260,6 @@
                           CDATA
                                     #IMPLIED
                cascade
-                          CDATA
-                                    #IMPLIED
-               outputclass
                           CDATA
                                     #IMPLIED
                %univ-atts;"
@@ -315,9 +309,6 @@
                cascade
                           CDATA
                                     #IMPLIED
-               outputclass
-                          CDATA
-                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  hasKind %hasKind.content;>
@@ -365,9 +356,6 @@
                cascade
                           CDATA
                                     #IMPLIED
-               outputclass
-                          CDATA
-                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  hasPart %hasPart.content;>
@@ -413,9 +401,6 @@
                           CDATA
                                     #IMPLIED
                cascade
-                          CDATA
-                                    #IMPLIED
-               outputclass
                           CDATA
                                     #IMPLIED
                %univ-atts;"
@@ -472,9 +457,6 @@
                cascade
                           CDATA
                                     #IMPLIED
-               outputclass
-                          CDATA
-                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  hasRelated %hasRelated.content;>
@@ -511,9 +493,6 @@
                           CDATA
                                     #IMPLIED
                copy-to
-                          CDATA
-                                    #IMPLIED
-               outputclass
                           CDATA
                                     #IMPLIED
                collection-type
@@ -595,9 +574,6 @@
                           (no |
                            yes |
                            -dita-use-conref-target)
-                                    #IMPLIED
-               outputclass
-                          CDATA
                                     #IMPLIED
                %univ-atts;"
 >
@@ -740,9 +716,6 @@
                copy-to
                           CDATA
                                     #IMPLIED
-               outputclass
-                          CDATA
-                                    #IMPLIED
                type
                           CDATA
                                     #IMPLIED
@@ -842,9 +815,6 @@
                            targetonly |
                            -dita-use-conref-target)
                                     'normal'
-               outputclass
-                          CDATA
-                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  relatedSubjects %relatedSubjects.content;>
@@ -860,9 +830,6 @@
 >
 <!ENTITY % subjectRelTable.attributes
               "%topicref-atts-no-toc;
-               outputclass
-                          CDATA
-                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  subjectRelTable %subjectRelTable.content;>
