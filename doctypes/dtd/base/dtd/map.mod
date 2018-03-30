@@ -703,7 +703,10 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                            -dita-use-conref-target)
                                     'no'
                %id-atts;
-               %select-atts;"
+               %select-atts;
+               outputclass
+                          CDATA
+                                    #IMPLIED"
 >
 <!ELEMENT  ux-window %ux-window.content;>
 <!ATTLIST  ux-window %ux-window.attributes;>

@@ -209,7 +209,10 @@
 >
 <!ENTITY % dita.colspec.attributes
               "%id-atts;
-               %localization-atts;"
+               %localization-atts;
+               outputclass
+                          CDATA
+                                    #IMPLIED"
 >
 <!--                    LONG NAME: Table                           -->
 <!ENTITY % table.content
