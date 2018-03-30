@@ -479,12 +479,7 @@
                        "(%data.elements.incl;)*"
 >
 <!ENTITY % resourceid.attributes
-              "%select-atts;
-               %localization-atts;
-               id
-                          CDATA
-                                    #IMPLIED
-               %conref-atts;
+              "%univ-atts;
                appname
                           CDATA
                                     #IMPLIED
