@@ -96,10 +96,7 @@
                othertype
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  hazardstatement %hazardstatement.content;>
 <!ATTLIST  hazardstatement %hazardstatement.attributes;>
@@ -148,10 +145,7 @@
                            inline |
                            -dita-use-conref-target)
                                     'inline'
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  hazardsymbol %hazardsymbol.content;>
 <!ATTLIST  hazardsymbol %hazardsymbol.attributes;>
@@ -169,10 +163,7 @@
               "spectitle
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  messagepanel %messagepanel.content;>
 <!ATTLIST  messagepanel %messagepanel.attributes;>
@@ -185,10 +176,7 @@
                          %tm;)*"
 >
 <!ENTITY % typeofhazard.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  typeofhazard %typeofhazard.content;>
 <!ATTLIST  typeofhazard %typeofhazard.attributes;>
@@ -201,10 +189,7 @@
                          %tm;)*"
 >
 <!ENTITY % consequence.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  consequence %consequence.content;>
 <!ATTLIST  consequence %consequence.attributes;>
@@ -215,10 +200,7 @@
                        "(%hazard.cnt;)*"
 >
 <!ENTITY % howtoavoid.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  howtoavoid %howtoavoid.content;>
 <!ATTLIST  howtoavoid %howtoavoid.attributes;>

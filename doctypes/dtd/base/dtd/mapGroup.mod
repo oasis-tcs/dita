@@ -129,9 +129,6 @@
               "navtitle
                           CDATA
                                     #IMPLIED
-               outputclass
-                          CDATA
-                                    #IMPLIED
                keys
                           CDATA
                                     #IMPLIED
@@ -187,9 +184,6 @@
                           CDATA
                                     #IMPLIED
                copy-to
-                          CDATA
-                                    #IMPLIED
-               outputclass
                           CDATA
                                     #IMPLIED
                collection-type
@@ -275,9 +269,6 @@
                           CDATA
                                     #IMPLIED
                copy-to
-                          CDATA
-                                    #IMPLIED
-               outputclass
                           CDATA
                                     #IMPLIED
                format
@@ -414,9 +405,6 @@
                copy-to
                           CDATA
                                     #IMPLIED
-               outputclass
-                          CDATA
-                                    #IMPLIED
                collection-type
                           (choice |
                            family |
@@ -506,9 +494,6 @@
                           CDATA
                                     #IMPLIED
                copy-to
-                          CDATA
-                                    #IMPLIED
-               outputclass
                           CDATA
                                     #IMPLIED
                collection-type

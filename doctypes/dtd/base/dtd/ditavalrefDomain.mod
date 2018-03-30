@@ -39,7 +39,10 @@
                            -dita-use-conref-target)
                                     #IMPLIED
                %select-atts;
-               %localization-atts;"
+               %localization-atts;
+               outputclass
+                          CDATA
+                                    #IMPLIED"
 >
 <!--                    LONG NAME: DITAVAL Reference               -->
 <!ENTITY % ditavalref.content
@@ -50,9 +53,6 @@
                           CDATA
                                     #IMPLIED
                href
-                          CDATA
-                                    #IMPLIED
-               outputclass
                           CDATA
                                     #IMPLIED
                scope

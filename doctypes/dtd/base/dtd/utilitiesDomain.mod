@@ -64,10 +64,7 @@
                spectitle
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  imagemap %imagemap.content;>
 <!ATTLIST  imagemap %imagemap.attributes;>
@@ -80,10 +77,7 @@
                          (%xref;))"
 >
 <!ENTITY % area.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  area %area.content;>
 <!ATTLIST  area %area.attributes;>
@@ -98,10 +92,7 @@
               "keyref
                           CDATA
                                     #IMPLIED
-               %univ-atts-translate-no;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts-translate-no;"
 >
 <!ELEMENT  shape %shape.content;>
 <!ATTLIST  shape %shape.attributes;>
@@ -115,10 +106,7 @@
               "keyref
                           CDATA
                                     #IMPLIED
-               %univ-atts-translate-no;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts-translate-no;"
 >
 <!ELEMENT  coords %coords.content;>
 <!ATTLIST  coords %coords.attributes;>
