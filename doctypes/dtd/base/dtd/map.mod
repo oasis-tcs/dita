@@ -51,7 +51,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
 <!--    2006.06.07 RDA: Make universal attributes universal        -->
 <!--                      (DITA 1.1 proposal #12)                  -->
 <!--    2006.06.14 RDA: Add dir attribute to localization-atts     -->
-<!--    2006.06.14 RDA: Add outputclass attribute to most elemetns -->
+<!--    2006.06.14 RDA: Add outputclass attribute to most elements -->
 <!--    2006.11.30 RDA: Add -dita-use-conref-target to enumerated  -->
 <!--                      attributes                               -->
 <!--    2006.11.30 RDA: Remove #FIXED from DITAArchVersion         -->
@@ -68,6 +68,8 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
 <!--                    reltable and relcolspec; removed @keyref   -->
 <!--                    from navref; removed @navtitle@print, and  -->
 <!--                    @query; removed @title on map              -->
+<!--    2018.04.09 KJE: Removed outputclass various elements that  -->
+<!--                    take univ-atts                             -->
 <!-- ============================================================= -->
 
 <!-- ============================================================= -->
@@ -548,10 +550,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                          (%topicref;)*)"
 >
 <!ENTITY % relcolspec.attributes
-              "outputclass
-                          CDATA
-                                    #IMPLIED
-               %topicref-atts-for-reltable;
+              "%topicref-atts-for-reltable;
                %univ-atts;"
 >
 <!ELEMENT  relcolspec %relcolspec.content;>
@@ -563,10 +562,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                        "(%relcell;)*"
 >
 <!ENTITY % relrow.attributes
-              "outputclass
-                          CDATA
-                                    #IMPLIED
-               %univ-atts;"
+              "%univ-atts;"
 >
 <!ELEMENT  relrow %relrow.content;>
 <!ATTLIST  relrow %relrow.attributes;>
@@ -578,10 +574,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                          %data.elements.incl;)*"
 >
 <!ENTITY % relcell.attributes
-              "outputclass
-                          CDATA
-                                    #IMPLIED
-               %topicref-atts-no-toc-no-keyscope;
+              "%topicref-atts-no-toc-no-keyscope;
                %univ-atts;"
 >
 <!ELEMENT  relcell %relcell.content;>
@@ -641,10 +634,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                          %ph;)*"
 >
 <!ENTITY % linktext.attributes
-              "outputclass
-                          CDATA
-                                    #IMPLIED
-               %univ-atts;"
+              "%univ-atts;"
 >
 <!ELEMENT  linktext %linktext.content;>
 <!ATTLIST  linktext %linktext.attributes;>
@@ -655,10 +645,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                        "(%words.cnt;)*"
 >
 <!ENTITY % searchtitle.attributes
-              "outputclass
-                          CDATA
-                                    #IMPLIED
-               %univ-atts;"
+              "%univ-atts;"
 >
 <!ELEMENT  searchtitle %searchtitle.content;>
 <!ATTLIST  searchtitle %searchtitle.attributes;>
