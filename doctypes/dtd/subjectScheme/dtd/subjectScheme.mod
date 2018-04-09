@@ -31,6 +31,7 @@
 <!--  UPDATES:                                                     -->
 <!--    2008.02.13 RDA: Created file based upon prototype from IBM -->
 <!--    2014.04.16 WEK: Redefined as RNG                           -->
+<!--    2018.04.09 KJE: Removed @navtitle                          -->
 <!-- ============================================================= -->
 
 <!-- ============================================================= -->
@@ -180,10 +181,7 @@
                          (%data.elements.incl;)*)"
 >
 <!ENTITY % schemeref.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -230,10 +228,7 @@
                           %topicref;)*)"
 >
 <!ENTITY % hasNarrower.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -277,10 +272,7 @@
                           %topicref;)*)"
 >
 <!ENTITY % hasKind.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -324,10 +316,7 @@
                           %topicref;)*)"
 >
 <!ENTITY % hasPart.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -371,10 +360,7 @@
                           %topicref;)*)"
 >
 <!ENTITY % hasInstance.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -418,10 +404,7 @@
                           %topicref;)*)"
 >
 <!ENTITY % hasRelated.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -477,10 +460,7 @@
                           %topicref;)*)"
 >
 <!ENTITY % subjectdef.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -554,10 +534,7 @@
                           %topicref;)*)"
 >
 <!ENTITY % subjectHead.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               collection-type
+              "collection-type
                           (sequence |
                            unordered |
                            -dita-use-conref-target)
@@ -698,10 +675,7 @@
                        "(%data.elements.incl;)*"
 >
 <!ENTITY % defaultSubject.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -766,10 +740,7 @@
                          %topicref;)*"
 >
 <!ENTITY % relatedSubjects.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
