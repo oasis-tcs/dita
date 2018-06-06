@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="media-source">
+  <title><xmlelement>media-source</xmlelement></title>
+  <shortdesc>The <xmlelement>media-source</xmlelement> element specifies the location of a resource
+    containing a representation of the media being referenced by the enclosing
+      <xmlelement>video</xmlelement> or <xmlelement>audio</xmlelement> element in a particular
+    format. It is analogous to the <xmlelement>source</xmlelement> element used in HTML5 multimedia
+    elements.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>media-source</indexterm>
+        <indexterm>multimedia domain<indexterm>media-source</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>The resource location is specified using <xmlatt>value</xmlatt> or <xmlatt>keyref</xmlatt>
+        attribute. The content type (MIME type) of the content is specified using the
+          <xmlatt>type</xmlatt> attribute.</p>
+    </section>
+    <!--<section id="formatting-expectations"><title>Formatting expectations</title></section>-->
+    <!--<section id="processing-expectations"><title>Processing expectations</title></section>-->
+    <section id="specialization-hierarchy">
+      <title>Specialization hierarchy</title>
+      <p>+ topic/param media-d/media-source </p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref keyref="attributes-universal"
+        /> and the attributes defined below.</p>
+      <dl>
+        <dlentry>
+          <dt><xmlatt>value</xmlatt></dt>
+          <dd>Specifies the URL of the media resource.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>keyref</xmlatt></dt>
+          <dd>A key reference to the media resource. If both <xmlatt>keyref</xmlatt> and
+              <xmlatt>value</xmlatt> are specified, the resource referenced by
+              <xmlatt>keyref</xmlatt> takes precedence unless the key cannot be resolved, in which
+            case the resource specified by <xmlatt>value</xmlatt> is used as a fallback.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>type</xmlatt></dt>
+          <dd>Specifies the content type (MIME type) of the resource specified by
+              <xmlatt>value</xmlatt>.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>name</xmlatt></dt>
+          <dd>This attribute is required due to this element's derivation from the
+              <xmlelement>param</xmlelement> element. The value is fixed to "source" by the grammar
+            definition.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>valuetype</xmlatt></dt>
+          <dd>This attribute is present due to this element's derivation from the
+              <xmlelement>param</xmlelement> element. The value is fixed to "ref" by the grammar
+            definition.</dd>
+        </dlentry>
+      </dl>
+    </section>
+    <example id="example" otherprops="examples">
+      <title>Example</title>
+      <p>See <xref keyref="video"><xmlelement>video</xmlelement></xref> and <xref keyref="audio"
+            ><xmlelement>audio</xmlelement></xref> for examples of this element.</p>
+    </example>
+  </refbody>
+</reference>
