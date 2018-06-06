@@ -3,23 +3,30 @@
  "reference.dtd">
 <reference id="linkinfo" xml:lang="en-us">
 <title><xmlelement>linkinfo</xmlelement></title>
-<shortdesc>The <xmlelement>linkinfo</xmlelement> element allows
-you to place a descriptive paragraph after the links that are contained
-in a <xmlelement>linklist</xmlelement> element. </shortdesc>
+<shortdesc>The <xmlelement>linkinfo</xmlelement> element enables authors to place a descriptive
+    paragraph after the links that are contained in a <xmlelement>linklist</xmlelement> element. </shortdesc>
 <prolog><metadata>
 <keywords><indexterm>elements<indexterm>related
             links<indexterm><xmlelement>linkinfo</xmlelement></indexterm></indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <draft-comment author="Kristen J Eberlein" time="01 June 2018">
+        <p>What processing expectations do we have for this element? I'm assuming that we expect
+          processors to render the content somewhere and probably in a paragraph format, based on
+          the short description.</p>
+      </draft-comment>
+    </section>
     <section id="attributes">
       <title>Attributes</title>
       <p conref="../../common/conref-attribute.dita#conref-attribute/only-universal"/>
     </section>
 <example id="example" otherprops="examples"><title>Example</title><codeblock>&lt;linklist&gt;
   &lt;title&gt;Repairing widgets&lt;/title&gt;
-  &lt;link href="debug.dita" type="task"&gt;&lt;/link&gt;
-  &lt;link href="repair.dita" type="task"&gt;&lt;/link&gt;
-  &lt;link href="test.dita" type="task"&gt;&lt;/link&gt;
+  &lt;link href="debug.dita" type="task"/&gt;
+  &lt;link href="repair.dita" type="task"/&gt;
+  &lt;link href="test.dita" type="task"/&gt;
   &lt;linkinfo&gt;To repair a reciprocating widget,
 you must follow the instructions very carefully. Note
 the sequence to follow. Do it.&lt;/linkinfo&gt;
