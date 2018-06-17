@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="shortdesc" xml:lang="en-us">
 <title><xmlelement>shortdesc</xmlelement></title>
-<shortdesc>The <xmlelement>shortdesc</xmlelement> element provides a short description of the topic.
-    The short description, which represents the purpose or theme of the topic, is also intended to
-    be used as a link preview and for search results. The element can occur both in topics and
-    maps.</shortdesc>
+<shortdesc>A short description describes the purpose or main point of a topic.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -22,25 +18,16 @@
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <!--Short descriptions in topics-->
-      <p>The short description should be a single, concise paragraph containing one or two sentences
-        of no more than 50 words.</p>
-      <p>Use the <xmlelement>shortdesc</xmlelement> element when the first paragraph of topic
-        content is simple enough to be suitable for use as a link preview or for summaries.
-        Otherwise use the <xmlelement>abstract</xmlelement> element to provide richer content around
-        the <xmlelement>shortdesc</xmlelement>. See the <xref href="abstract.dita"/> description for
-        more information about the behavior of <xmlelement>shortdesc</xmlelement> in an
-        abstract.</p>
-      <p>While the <xmlelement>shortdesc</xmlelement> element is optional, it is recommended that
-        topics contain this element. When a topic contains only one paragraph, it is preferable to
-        include the text in the <xmlelement>shortdesc</xmlelement> and omit the topic body or leave
-        it empty. </p>
+      <p>The element can occur both in topics and maps.</p>
+      <p>When present in topics, the content of the <xmlelement>shortdesc</xmlelement> element is
+        the first paragraph of the topic. It also is used for link previews and search results.</p>
+      <!--<p>The short description should be a single, concise paragraph containing one or two sentences of no more than 50 words.</p><p>Use the <xmlelement>shortdesc</xmlelement> element when the first paragraph of topic content is simple enough to be suitable for use as a link preview or for summaries. Otherwise use the <xmlelement>abstract</xmlelement> element to provide richer content around the <xmlelement>shortdesc</xmlelement>. See the <xref href="abstract.dita"/> description for more information about the behavior of <xmlelement>shortdesc</xmlelement> in an abstract.</p><p>While the <xmlelement>shortdesc</xmlelement> element is optional, it is recommended that topics contain this element. When a topic contains only one paragraph, it is preferable to include the text in the <xmlelement>shortdesc</xmlelement> and omit the topic body or leave it empty. </p>-->
 <!--<table colsep="0" frame="topbot" rowheader="firstcol" product="technicalContent" id="table_b1y_4yd_z1b"><tgroup cols="2"><colspec colname="col1" colwidth="44*"/><colspec colname="col2" colwidth="153*"/><thead><row><entry colname="col1" valign="top">Type</entry><entry colname="col2" valign="top">Recommended content</entry></row></thead><tbody><row><entry colname="col1">Task</entry><entry colname="col2"><p id="twhattosay">The short description should explain what the task information helps users accomplish, the benefits of the task, or the purpose of the task. Do not simply repeat the title. Try to include information that will help users understand when the task is appropriate or why the task is necessary. Avoid stating the obvious, such as <q>You can use XYZ to do A</q> as the only statement in the short description for Task A. In some cases, add more information about why the task is beneficial.</p><p id="tphrasing">Do not use sentence fragments. Use complete sentences. Avoid starting short descriptions with phrases such as <q>This topic describes . . . .</q> or <q>This topic is about . . . .</q></p></entry></row><row><entry colname="col1">Concept</entry><entry colname="col2"><p id="cwhattosay">Introduce the concept and provide a concise answer to the question "What is this?" and in some cases "Why do I care about this?" If the concept is unfamiliar, you can start with a brief definition. Avoid using the short description to lead in or build up to a topic. The short description paragraph should contain the main point of the concept topic. The concept short description should clearly apply to a concept. Avoid turning the concept topic into a task. Do not simply repeat the title.</p><p id="cphrasing">Do not use sentence fragments. Use complete sentences. Avoid starting short descriptions with phrases such as <q>This topic describes . . . .</q> or <q>This topic is about . . . .</q></p></entry></row><row><entry colname="col1">Reference</entry><entry colname="col2"><p id="rwhattosay">Briefly describe what the reference item does, what it is, or what it is used for.</p><p id="rphrasing">In most cases, use a complete sentence. You can use a sentence fragment only for a topic that is very short, such as an API topic and each of its subtopics. Use consistent phrasing across libraries and information centers so that your information can be seamlessly integrated with another product's information.</p></entry></row></tbody></tgroup></table>-->
       <!--Short descriptions in maps-->
       <p>The <xmlelement>shortdesc</xmlelement> element can be used in DITA maps and associated with
           <xmlelement>topicref</xmlelement> elements. This enables map authors to accomplish the
         following goals:</p>
-      <ul id="ul_hgj_vyd_z1b">
+      <ul>
         <li>Associate a short description with a non-DITA object.</li>
         <li>Provide a short description that is specific to the map context and used for link
           previews.</li>
@@ -53,8 +40,8 @@
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>The content of the <xmlelement>shortdesc</xmlelement> element <term outputclass="RFC-2119"
-          >SHOULD</term> be rendered as the initial paragraph of the topic.</p>
+      <p>Processors <term outputclass="RFC-2119">SHOULD</term> render the content of the
+          <xmlelement>shortdesc</xmlelement> element as the initial paragraph of the topic.</p>
       <p>When processors generate link previews that are based on the map context, they <term
           outputclass="RFC-2119">SHOULD</term> use the content of the
           <xmlelement>shortdesc</xmlelement> that is located in the map rather than the
@@ -70,31 +57,52 @@
     </section>
     <example id="example" otherprops="examples">
       <title>Examples</title>
-      <p>The following example demonstrates the use of a stand-alone
-          <xmlelement>shortdesc</xmlelement> inside of a concept topic.</p>
-      <codeblock conref="../../common/conref-file.dita#reuse_file/concept-codeblock" id="shortdesc-in-concept"/>
+      <fig>
+        <title>Short description in a topic</title>
+        <p>The following example demonstrates the use of a <xmlelement>shortdesc</xmlelement>
+          element in a topic.</p>
+        <codeblock conref="../../common/conref-file.dita#reuse_file/concept-codeblock" id="shortdesc-in-concept"/>
+      </fig>
+      <fig>
+        <title>Short description in a map</title>
+        <p>The following code sample illustrates how a short description can be used in a DITA map
+          to provide information about a non-DITA resource. The content of the
+            <xmlelement>short</xmlelement> element is used when a link preview to the Web site for
+          the American Birding Association is generated.</p>
+        <codeblock>&lt;map>
+  &lt;title>Enjoying birds&lt;/title>
+    ...
+    &lt;topicref href="birds-in-colorado.dita"/>
+    &lt;topicref href="bird-calling.dita"/>
+    &lt;topicref href="https://www.aba.org/" format="external" type="html">
+      &lt;topicmeta>
+        &lt;shortdesc>The American Birding Association is only organization 
+        in North America that specifically caters to recreational birders.
+        Its mission is to "inspire all people to enjoy and protect wild birds."
+      &lt;/topicmeta>
+    &lt;/topicref>
+    ...
+&lt;/map>
+<!--<topicref href="myThing.dita">
+  <topicmeta>
+    <navtitle>Navigation title for my topic</navtitle>
+    <shortdesc>A description of myThing that is specific to this context.</shortdesc>
+  </topicmeta>
+</topicref>
+<topicref href="http://www.example.org" scope="external">
+  <topicmeta>
+    <navtitle>Example website</navtitle>
+    <shortdesc>The example.org address is often used in examples</shortdesc>
+  </topicmeta>
+</topicref>--></codeblock>
+      </fig>
+      <draft-comment author="Kristen J Eberlein" time="16 June 2018">
+        <p>Needs link to <xmlelement>abstract</xmlelement> topic.</p>
+      </draft-comment>
     </example>
-    <example id="example-shortdesc-in-map" otherprops="examples">
-      <title>Example: short description within a map</title>
-      <codeblock>&lt;topicref href="myThing.dita">
-  &lt;topicmeta>
-    &lt;navtitle>Navigation title for my topic&lt;/navtitle>
-    &lt;shortdesc>A description of myThing that is specific to this context.&lt;/shortdesc>
-  &lt;/topicmeta>
-&lt;/topicref>
-&lt;topicref href="http://www.example.org" scope="external">
-  &lt;topicmeta>
-    &lt;navtitle>Example website&lt;/navtitle>
-    &lt;shortdesc>The example.org address is often used in examples&lt;/shortdesc>
-  &lt;/topicmeta>
-&lt;/topicref></codeblock>
-    </example>
-    <example conref="abstract.dita#abstract/example" id="example-shortdesc-in-abstract"
-      otherprops="examples"/>
-    <example conref="abstract.dita#abstract/example2" id="example-shortdesc-in-abstract2"
-      otherprops="examples"/>
-    <example conref="abstract.dita#abstract/example3" id="example-shortdesc-in-abstract3"
-      otherprops="examples"/>
+    <!--<example conref="abstract.dita#abstract/example" id="example-shortdesc-in-abstract" otherprops="examples"/>-->
+    <!--<example conref="abstract.dita#abstract/example2" id="example-shortdesc-in-abstract2" otherprops="examples"/>-->
+    <!--<example conref="abstract.dita#abstract/example3" id="example-shortdesc-in-abstract3" otherprops="examples"/>-->
   </refbody>
 </reference>
 
