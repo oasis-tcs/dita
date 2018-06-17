@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="topicref" xml:lang="en-us">
 <title><xmlelement>topicref</xmlelement></title>
  <shortdesc>A topic reference is the mechanism for referencing a topic from a DITA map. It can nest,
@@ -34,21 +32,44 @@
    <sectiondiv
     conref="../../common/conref-attribute.dita#conref-attribute/standard-topicref-attributes"/>
   </section>
-<example id="example" otherprops="examples">
-<title>Example</title>
-<p>In this example, there are six <xmlelement>topicref</xmlelement> elements. They are nested and
-have a hierarchical relationship. <filepath>bats.dita</filepath> is the parent topic and the other
-topics are its children.</p>
-<codeblock xml:space="preserve">&lt;map title="Bats"&gt;
- &lt;topicref href="bats.dita" type="topic"&gt;
-  &lt;topicref href="batcaring.dita" type="task"&gt;&lt;/topicref&gt;
-  &lt;topicref href="batfeeding.dita" type="task"&gt;&lt;/topicref&gt;
-  &lt;topicref href="batsonar.dita" type="concept"&gt;&lt;/topicref&gt;
-  &lt;topicref href="batguano.dita" type="reference"&gt;&lt;/topicref&gt;
-  &lt;topicref href="bathistory.dita" type="reference"&gt;&lt;/topicref&gt;
+  <example id="example" otherprops="examples">
+   <title>Example</title>
+   <fig>
+    <title>DITA map defining hierarchy for topics</title>
+    <p>In this example, there are six <xmlelement>topicref</xmlelement> elements. They are nested
+     and have a hierarchical relationship. <filepath>bats.dita</filepath> is the parent topic and
+     the other topics are its children.</p>
+    <codeblock>&lt;map title="Bats"&gt;
+ &lt;topicref href="bats.dita"&gt;
+  &lt;topicref href="bat-caring.dita"/&gt;
+  &lt;topicref href="bat-feeding.dita"/&gt;
+  &lt;topicref href="bat-sonar.dita"/&gt;
+  &lt;topicref href="bat-guano.dita/&gt;
+  &lt;topicref href="bat-history.dita"/&gt;
  &lt;/topicref&gt;
 &lt;/map&gt;</codeblock>
-</example>
-</refbody>
+   </fig>
+   <fig>
+    <title>DITA map defining relationship between topics</title>
+    <p>In the example, the <xmlatt>collection-type</xmlatt> attribute is used to specify that the
+     topics should be read in a sequential order.</p>
+    <codeblock>&lt;map title="Bats"&gt;
+ &lt;topicref href="bats.dita" <b>collection-type="sequence"</b>&gt;
+  &lt;topicref href="bat-caring.dita"/&gt;
+  &lt;topicref href="bat-feeding.dita"/&gt;
+  &lt;topicref href="bat-sonar.dita"/&gt;
+  &lt;topicref href="bat-guano.dita/&gt;
+  &lt;topicref href="bat-history.dita"/&gt;
+ &lt;/topicref&gt;
+&lt;/map&gt;</codeblock>
+   </fig>
+  </example>
+  <example>
+   <draft-comment author="Kristen J Eberlein" time="17 June 2018">
+    <p>I think this topic should have lots of examples that demonstrate what can be done by setting
+     attributes. The <xmlelement>topicref</xmlelement> element is core (and unique) to DITA.</p>
+   </draft-comment>
+  </example>
+ </refbody>
 </reference>
 
