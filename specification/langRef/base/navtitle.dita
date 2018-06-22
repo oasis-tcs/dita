@@ -3,11 +3,9 @@
  "reference.dtd">
 <reference id="navtitle" xml:lang="en-us">
 <title><xmlelement>navtitle</xmlelement></title>
-  <abstract>
-    <shortdesc>A navigation title is an alternate title that is designed for situations when the
-      topic title is unsuitable for use in a table of contents or navigation pane. This might be the
-      case when the topic title is very long.</shortdesc>
-  </abstract>
+<shortdesc>A navigation title provides a title for a resource. When used in topics, it is an
+alternate title that is designed for situations when the topic title is unsuitable for use in a
+table of contents or navigation pane.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -19,7 +17,7 @@
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>The <xmlelement>navtitle</xmlelement> element is available in both topics and maps.</p>
+<!--<p>The <xmlelement>navtitle</xmlelement> element is available in both topics and maps.</p>-->
       <p>Because the <xmlelement>navtitle</xmlelement> element is available within
           <xmlelement>topicmeta</xmlelement>, and <xmlelement>topicmeta</xmlelement> is used in many
         different contexts, it is possible that <xmlelement>navtitle</xmlelement> can be specified
@@ -29,6 +27,8 @@
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
+<draft-comment author="robander">Question: should these be normative statements? If normative,
+should they be SHOULD or MUST?</draft-comment>
       <p>When the <xmlelement>navtitle</xmlelement> element is used in a topic, processors should
         use the contents of the element to generate the navigation title.</p>
       <p>When the <xmlelement>navtitle</xmlelement> element is used in a map, processors should
@@ -50,15 +50,18 @@
 <example id="example" otherprops="examples"><title>Example</title><fig>
         <title><xmlelement>navtitle</xmlelement> sample in a topic</title>
         <codeblock>&lt;task id="progexample">
- &lt;title>Publishing a DITA information set in PDF&lt;/title>
+  &lt;title>Publishing a DITA information set in PDF&lt;/title>
   &lt;titlealts>&lt;navtitle>Publishing in PDF&lt;/navtitle>&lt;/titlealts>
- &lt;taskbody>&lt;context>Some text&lt;/context>&lt;/taskbody>
+  &lt;shortdesc>In no time at all you can get set up to publish
+             your DITA information in PDF.&lt;/shortdesc>
+  &lt;!-- ... -->
 &lt;/task></codeblock>
       </fig><fig>
         <title><xmlelement>navtitle</xmlelement> samples in a map</title>
-        <p>In this sample, the first title is not locked, and will generally be replaced with a
-          title retrieved from <filepath>a.dita</filepath>. The second title is locked, and will be
-          displayed when this map is used as a basis for navigation.</p>
+        <p><draft-comment>Would like to update this example based on decisions about rules
+above.</draft-comment>In this sample, the first title is not locked, and will generally be replaced
+with a title retrieved from <filepath>a.dita</filepath>. The second title is locked, and will be
+displayed when this map is used as a basis for navigation.</p>
         <codeblock>&lt;map xml:lang="en">
   &lt;title>This is a sample map&lt;/title>
   &lt;topicref href="a.dita">
