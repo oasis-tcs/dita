@@ -1,36 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="navtitle" xml:lang="en-us">
 <title><xmlelement>navtitle</xmlelement></title>
   <shortdesc conkeyref="library-short-descriptions/navtitle"/>
   <prolog>
     <metadata>
       <keywords>
-        <indexterm>processing expectations<indexterm><xmlelement>navtitle</xmlelement> and
-              <xmlatt>navtitle</xmlatt></indexterm></indexterm>
+        <indexterm>processing
+          expectations<indexterm><xmlelement>navtitle</xmlelement></indexterm></indexterm>
       </keywords>
     </metadata>
   </prolog>
 <refbody>
+    <section>
+      <draft-comment author="Kristen J Eberlein" time="03 July 2018">
+        <p>Should we also include a sentence in the short description of what purpose a navigation
+          title serves in a map? For example, <q>When used in maps, a navigation title can serve as
+            an alternate title or simply as an aid to  understanding the DITA map.</q></p>
+        <p>I added the content to the shortdesc; we can review it and possible remove it.</p>
+      </draft-comment>
+    </section>
     <section id="usage-information">
       <title>Usage information</title>
 <!--<p>The <xmlelement>navtitle</xmlelement> element is available in both topics and maps.</p>-->
       <p>Because the <xmlelement>navtitle</xmlelement> element is available within
-          <xmlelement>topicmeta</xmlelement>, and <xmlelement>topicmeta</xmlelement> is used in many
-        different contexts, it is possible that <xmlelement>navtitle</xmlelement> can be specified
-        in contexts where a navigation title does not make sense (for example, on the
-          <xmlelement>topicgroup</xmlelement> element). In those situations, the
-          <xmlelement>navtitle</xmlelement> element has no defined purpose.</p>
+          <xmlelement>topicmeta</xmlelement>,
+        <!--and <xmlelement>topicmeta</xmlelement> is used in many different contexts, --> a
+          <xmlelement>navtitle</xmlelement> element might occur in contexts where a navigation title
+        does not make sense, for example, on a <xmlelement>topicgroup</xmlelement> element. In those
+        situations, the <xmlelement>navtitle</xmlelement> element has no defined purpose.</p>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-<draft-comment author="robander">Question: should these be normative statements? If normative,
-should they be SHOULD or MUST?</draft-comment>
-      <p>When the <xmlelement>navtitle</xmlelement> element is used in a topic, processors should
-        use the contents of the element to generate the navigation title.</p>
-      <p>When the <xmlelement>navtitle</xmlelement> element is used in a map, processors should
-        retrieve the navigation title in the following order:</p>
+      <p>When the <xmlelement>navtitle</xmlelement> element is used in a topic, processors <term
+          outputclass="RFC-2119">SHOULD</term> use the contents of the element to generate the
+        navigation title.</p>
+      <p>When the <xmlelement>navtitle</xmlelement> element is used in a map, processors <term
+          outputclass="RFC-2119">SHOULD</term> retrieve the navigation title in the following
+        order:</p>
       <ol>
         <li>From the content of a <xmlelement>navtitle</xmlelement> element in the map, if the
           containing <xmlelement>topicref</xmlelement> element sets the value of the
@@ -46,33 +53,47 @@ should they be SHOULD or MUST?</draft-comment>
           keyref="attributes-universal"/>.</p>
     </section>
 <example id="example" otherprops="examples"><title>Example</title><fig>
-        <title><xmlelement>navtitle</xmlelement> sample in a topic</title>
-        <codeblock>&lt;task id="progexample">
+        <title><xmlelement>navtitle</xmlelement> in a topic</title>
+        <p>In the following example, the <xmlelement>navtitle</xmlelement> element is used in a
+          topic. It contains a shorter title that will be used in a TOC or navigation pane when the
+          topic is published.</p>
+        <codeblock>&lt;task id="publishing-dita">
   &lt;title>Publishing a DITA information set in PDF&lt;/title>
-  &lt;titlealts>&lt;navtitle>Publishing in PDF&lt;/navtitle>&lt;/titlealts>
-  &lt;shortdesc>In no time at all you can get set up to publish
-             your DITA information in PDF.&lt;/shortdesc>
+  &lt;titlealts>
+    &lt;navtitle>Publishing in PDF&lt;/navtitle>
+  &lt;/titlealts>
+  &lt;shortdesc>You can quickly publish your DITA information to PDF.
+  &lt;/shortdesc>
   &lt;!-- ... -->
 &lt;/task></codeblock>
       </fig><fig>
-        <title><xmlelement>navtitle</xmlelement> samples in a map</title>
-        <p><draft-comment>Would like to update this example based on decisions about rules
-above.</draft-comment>In this sample, the first title is not locked, and will generally be replaced
-with a title retrieved from <filepath>a.dita</filepath>. The second title is locked, and will be
-displayed when this map is used as a basis for navigation.</p>
+        <title><xmlelement>navtitle</xmlelement> in a map</title>
+        <p>In this example, two <xmlelement>navtitle</xmlelement> elements are used in a DITA map.
+          The first <xmlelement>navtitle</xmlelement> is not locked; its content simply serves to
+          indicate information about the content of the referenced DITA topic. When the DITA map is
+          published, the navigation title is retrieved from
+          <filepath>GUID-gibberish.dita</filepath>. However, the second
+            <xmlelement>navtitle</xmlelement> is locked, so when the DITA map is published,
+            <q>Publishing to ePub</q> is used for a navigation title.</p>
         <codeblock>&lt;map xml:lang="en">
-  &lt;title>This is a sample map&lt;/title>
-  &lt;topicref href="a.dita">
+  &lt;title>Publishing a DITA information set&lt;/title>
+  &lt;topicref href="GUID-gibberish.dita">
     &lt;topicmeta>
-      &lt;navtitle>Title of A&lt;/navtitle>
+      &lt;navtitle>Publishing to PDF&lt;/navtitle>
     &lt;/topicmeta>
   &lt;/topicref>
-  &lt;topicref href="b.dita" locktitle="yes">
+  &lt;topicref href="publishing-ePub.dita" locktitle="yes">
     &lt;topicmeta>
-      &lt;navtitle>Short Title for B&lt;/navtitle>
+      &lt;navtitle>Publishing to ePub&lt;/navtitle>
     &lt;/topicmeta>
   &lt;/topicref>
 &lt;/map></codeblock>
+        <p>
+          <draft-comment author="Kristen J Eberlein" time="03 July 2018">
+            <p>Do we need a third example that illustrates what happens when a topic contains a
+                <xmlelement>navtitle</xmlelement>?</p>
+          </draft-comment>
+        </p>
       </fig></example>
 </refbody>
 </reference>
