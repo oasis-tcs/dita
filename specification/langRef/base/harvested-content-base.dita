@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="harvested-content-base">
+ <title>Content removed from base element-reference topics</title>
+ <conbody>
+  <section>
+   <title><xmlelement>div</xmlelement></title>
+   <p>The <xmlelement>div</xmlelement> element is used to organize subsets of content into logical
+    groups that are not intended to be or should not be contained as a topic.</p>
+   <p>The <xmlelement>div</xmlelement> element cannot contain a title. This avoids enabling the
+    creation of deeply-nested content that would otherwise be written as separate topics. If the
+    content requires a title, use a <xmlelement>section</xmlelement> element, a nested
+     <xmlelement>topic</xmlelement>, or possibly a <xmlelement>fig</xmlelement> element.</p>
+  </section>
+  <section>
+   <title><xmlelement>draft-comment</xmlelement></title>
+   <p>Authors can use the <xmlelement>draft-comment</xmlelement> element to ask a question or to
+    make a comment that they want others to review. To indicate the source, date, or status of the
+    draft comment, authors can use the <xmlatt>author</xmlatt>, <xmlatt>time</xmlatt>, or
+     <xmlatt>disposition</xmlatt> attributes.</p>
+  </section>
+  <section>
+   <title><xmlelement>keyword</xmlelement></title>
+   <p>Where there is an element that has a better meaning for what you are describing, use that
+    element. The <xmlelement>keyword</xmlelement> element is a generic element; use it when no other
+    element applies.</p>
+   <p>Specific markup recommendations:</p>
+   <ul id="ul_xcy_kb2_z1b">
+    <li>Use <xmlelement>apiname</xmlelement> for API names and <xmlelement>cmdname</xmlelement> for
+     command names.</li>
+    <li>Use <xref href="term.dita"><xmlelement>term</xmlelement></xref> to indicate what you are
+     defining with inline paragraph definitions.</li>
+    <li>Use <xref href="ph.dita"><xmlelement>ph</xmlelement></xref> for general phrases when
+      <xmlelement>keyword</xmlelement> is not appropriate.</li>
+    <li>Use <xmlelement>kwd</xmlelement> to indicate programming keywords in syntax diagrams and
+     syntax phrases.</li>
+   </ul>
+   <p>All <xmlelement>keyword</xmlelement> or <xmlelement>indexterm</xmlelement> elements in the
+     <xmlelement>keywords</xmlelement> metadata element are considered part of the topic's metadata
+    and should be processed as appropriate for the given output medium.</p>
+   <p>While the <xmlelement>keyword</xmlelement> element can be used inline, the <xref
+     href="keywords.dita"><xmlelement>keywords</xmlelement></xref> element is not an inline element.
+    The <xmlelement>keywords</xmlelement> element only appears in the
+     <xmlelement>topicmeta</xmlelement> or <xmlelement>prolog</xmlelement> elements; it is used to
+    specify keywords that apply to the topic.</p>
+  </section>
+  <section>
+   <title><xmlelement>lq</xmlelement></title>
+   <p>Authors can use the <xmlatt>href</xmlatt> and <xmlatt>keyref</xmlatt> attributes to specify
+    the source of the quotation. Use the quote element <xmlelement>q</xmlelement> for short
+    quotations that are intended to be rendered inline. The <xmlelement>longquoteref</xmlelement>
+    element is available for more complex references to the source of a quotation.</p>
+  </section>
+  <section>
+   <title><xmlelement>navtitle</xmlelement></title>
+   <p>The navigation title (<xmlelement>navtitle</xmlelement>) is one of a set of alternative titles
+    that can be included inside the <xmlelement>titlealts</xmlelement> element. This navigation
+    title might differ from the first level heading that shows in the main browser window.</p>
+  </section>
+  <section>
+   <title><xmlelement>q</xmlelement></title>
+   <p>Authors should not add quote punctuation manually when using the <xmlelement>q</xmlelement>
+    element. Use the long quote element (<xmlelement>lq</xmlelement>) for quotations that should be
+    set off from the surrounding text or that contain multiple paragraphs.</p>
+  </section>
+ </conbody>
+</concept>
