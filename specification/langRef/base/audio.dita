@@ -2,8 +2,7 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="audio">
   <title><xmlelement>audio</xmlelement></title>
-  <shortdesc>The <xmlelement>audio</xmlelement> element is used to reference sound content in a DITA
-    topic. It is modeled roughly on the HTML5 element of the same name.</shortdesc>
+  <shortdesc conkeyref="library-short-descriptions/audio"/>
   <prolog>
     <metadata>
       <keywords>
@@ -15,18 +14,25 @@
   <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>Media can be referenced either using the <xmlatt>data</xmlatt> or
-          <xmlatt>datakeyref</xmlatt> attributes or using nested
-          <xmlelement>media-source</xmlelement> elements. Extensive configuration of the
-        presentation of the media can be configured using optional nested elements.</p>
+      <p>The <xmlelement>audio</xmlelement> element is modeled on the HTML5 element of the same
+        name.</p>
+      <p>Media can be referenced by the following mechanisms:</p>
+      <ul>
+        <li><xmlatt>data</xmlatt> attribute</li>
+        <li><xmlatt>datakeyref</xmlatt> attribute</li>
+        <li>Nested <xmlelement>media-source</xmlelement> elements</li>
+      </ul>
+      <p>Using nested <xmlelement>media-source</xmlelement> elements enables extensive configuration
+        of how the audio is presented.</p>
     </section>
     <section id="formatting-expectations">
       <title>Formatting expectations</title>
-      <p>Presentation of the <xmlelement>audio</xmlelement> element will vary depending on the
-        presentation format. When possible, HTML-based outputs should present the audio object using
-        the analogous HTML <xmlelement>audio</xmlelement> element. When the media cannot be
-        presented in a meaningful way, the contents of the <xmlelement>fallback</xmlelement>
-        element, if any, should be presented.</p>
+      <p>Presentation of the <xmlelement>audio</xmlelement> element varies depending on the
+        presentation format.</p>
+      <p>Processors generating HTML-based output should present the audio object using the analogous
+        HTML <xmlelement>audio</xmlelement> element. When the audio object cannot be presented in a
+        meaningful way, processors should present the contents of the
+          <xmlelement>fallback</xmlelement> element, if it is present.</p>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
@@ -37,7 +43,8 @@
     </section>
     <section id="specialization-hierarchy">
       <title>Specialization hierarchy</title>
-      <p>+ topic/object media-d/audio </p>
+      <p>The <xmlelement>audio</xmlelement> element is specialized from
+          <xmlelement>object</xmlelement> . It is part of the multimedia domain.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
