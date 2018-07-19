@@ -4,64 +4,48 @@
  "reference.dtd">
 <reference id="subjectref" xml:lang="en-us">
 <title><xmlelement>subjectref</xmlelement></title>
-<shortdesc>The <xmlelement>subjectref</xmlelement> element identifies a subject to classify content.
-The <xmlelement>subjectref</xmlelement> can identify the subject with a <xmlatt>keyref</xmlatt>
-attribute (if the scheme has a <xmlelement>subjectdef</xmlelement> with a <xmlatt>keys</xmlatt>
-attribute that assigns a key to the subject) or an <xmlatt>href</xmlatt> attribute (if the scheme is
-not available and a topic exists that defines the subject).</shortdesc>
+<shortdesc>The <xmlelement>subjectref</xmlelement> element identifies a subject with which to
+    classify the content.
+    <!--The <xmlelement>subjectref</xmlelement> can identify the subject with a <xmlatt>keyref</xmlatt> attribute (if the scheme has a <xmlelement>subjectdef</xmlelement> with a <xmlatt>keys</xmlatt> attribute that assigns a key to the subject) or an <xmlatt>href</xmlatt> attribute (if the scheme is not available and a topic exists that defines the subject).--></shortdesc>
 <prolog><metadata>
 <keywords><indexterm>subjectref</indexterm>
         <indexterm>classification domain elements<indexterm>subjectref</indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-subjectref/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>+
-map/topicref classify-d/subjectref </p></section>
-<example id="example" otherprops="examples"><title>Example</title><p>In the following example, the map is classified as covering the Linux subject and the "Developing
-web applications" topic as covering the web and development subjects. These subjects (and their
-keys) are defined externally in a subject scheme map; in order to reference the subject directly
-without the subject scheme map, the <xmlatt>href</xmlatt> attribute would be used in place of
-<xmlatt>keyref</xmlatt>.</p><codeblock>&lt;map>
-  &lt;title>Working with Linux&lt;/title>
-  &lt;topicsubject keyref="linux"/>
-  &lt;!-- ... -->
-  &lt;topicref href="webapp.dita" navtitle="Developing web applications">
-    &lt;topicsubject>
-      <b>&lt;subjectref keyref="web"/></b>
-      <b>&lt;subjectref keyref="development"/></b>
-    &lt;/topicsubject>
-    &lt;!-- ... -->
-  &lt;/topicref>
-  &lt;!-- ... -->
-&lt;/map></codeblock></example>
-<section id="attributes"><title>Attributes</title>
-<p>The following attributes are available on this element: <xref
-href="../attributes/universalAttributes.dita"/>, <xref
-href="../attributes/linkRelationshipAttributes.dita"/> (with a narrowed definition of
-<xmlatt>href</xmlatt>, given below), <xmlatt>navtitle</xmlatt> and <xmlatt>query</xmlatt> from <xref
-href="../attributes/topicrefElementAttributes.dita"/>, <xref
-href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, <xref
-href="../attributes/thekeyrefattribute.dita"><xmlatt>keyref</xmlatt></xref>, and <xref
-href="../attributes/thekeysattribute.dita"><xmlatt>keys</xmlatt></xref>. This element also uses
-<xmlatt>collection-type</xmlatt>, <xmlatt>linking</xmlatt>, and narrowed definitions of
-<xmlatt>processing-role</xmlatt> and <xmlatt>toc</xmlatt> (given below), from <xref
-href="../attributes/commonMapAttributes.dita"/>.</p>
-<dl>
-<dlentry conref="../../common/conref-attribute.dita#conref-attribute/href-on-topicref">
-<dt/>
-<dd/>
-</dlentry>
-<dlentry
-conref="../../common/conref-attribute.dita#conref-attribute/processing-role-default-resource-only">
-<dt/>
-<dd/>
-</dlentry>
-<dlentry conref="../../common/conref-attribute.dita#conref-attribute/toc-default-no">
-<dt/>
-<dd/>
-</dlentry>
-</dl>
-</section>
+<section id="inheritance" otherprops="inheritance">
+      <title>Specialization hierarchy</title>
+      <p>This element is specialized from <xref keyref="topicref"/> in the map module. It is part of
+        the classify-d domain.</p>
+      <!--<p>+ map/topicref classify-d/subjectref </p>--></section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref
+          keyref="attributes-universal"/>, <xref
+          keyref="attributes-linkRelationship"/> (with a narrowed definition of
+          <xmlatt>href</xmlatt>, given below), <xmlatt>navtitle</xmlatt> and <xmlatt>query</xmlatt>
+        from <xref keyref="attributes-topicrefElement"/>, <xref
+          keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>, and <xref
+          keyref="attributes-keys"><xmlatt>keys</xmlatt></xref>. This element also
+        uses <xmlatt>collection-type</xmlatt>, <xmlatt>linking</xmlatt>, and narrowed definitions of
+          <xmlatt>processing-role</xmlatt> and <xmlatt>toc</xmlatt> (given below), from <xref
+          keyref="attributes-commonMap"/>.</p>
+      <dl>
+        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/href-on-topicref">
+          <dt/>
+          <dd/>
+        </dlentry>
+        <dlentry
+          conref="../../common/conref-attribute.dita#conref-attribute/processing-role-default-resource-only">
+          <dt/>
+          <dd/>
+        </dlentry>
+        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/toc-default-no">
+          <dt/>
+          <dd/>
+        </dlentry>
+      </dl>
+    </section>
+    <example conref="../../common/conref-examples.dita#conref-examples/example-subjectref"/>
 </refbody>
 </reference>
 

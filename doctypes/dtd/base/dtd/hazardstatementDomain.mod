@@ -96,10 +96,7 @@
                othertype
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  hazardstatement %hazardstatement.content;>
 <!ATTLIST  hazardstatement %hazardstatement.attributes;>
@@ -148,10 +145,7 @@
                            inline |
                            -dita-use-conref-target)
                                     'inline'
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  hazardsymbol %hazardsymbol.content;>
 <!ATTLIST  hazardsymbol %hazardsymbol.attributes;>
@@ -169,10 +163,7 @@
               "spectitle
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  messagepanel %messagepanel.content;>
 <!ATTLIST  messagepanel %messagepanel.attributes;>
@@ -185,10 +176,7 @@
                          %tm;)*"
 >
 <!ENTITY % typeofhazard.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  typeofhazard %typeofhazard.content;>
 <!ATTLIST  typeofhazard %typeofhazard.attributes;>
@@ -201,10 +189,7 @@
                          %tm;)*"
 >
 <!ENTITY % consequence.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  consequence %consequence.content;>
 <!ATTLIST  consequence %consequence.attributes;>
@@ -215,10 +200,7 @@
                        "(%hazard.cnt;)*"
 >
 <!ENTITY % howtoavoid.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  howtoavoid %howtoavoid.content;>
 <!ATTLIST  howtoavoid %howtoavoid.attributes;>
@@ -229,12 +211,12 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  hazardstatement %global-atts;  class CDATA "+ topic/note hazard-d/hazardstatement ">
-<!ATTLIST  messagepanel %global-atts;  class CDATA "+ topic/ul hazard-d/messagepanel ">
-<!ATTLIST  hazardsymbol %global-atts;  class CDATA "+ topic/image hazard-d/hazardsymbol ">
-<!ATTLIST  typeofhazard %global-atts;  class CDATA "+ topic/li hazard-d/typeofhazard ">
-<!ATTLIST  consequence  %global-atts;  class CDATA "+ topic/li hazard-d/consequence ">
-<!ATTLIST  howtoavoid   %global-atts;  class CDATA "+ topic/li hazard-d/howtoavoid ">
+<!ATTLIST  hazardstatement   class CDATA "+ topic/note hazard-d/hazardstatement ">
+<!ATTLIST  messagepanel   class CDATA "+ topic/ul hazard-d/messagepanel ">
+<!ATTLIST  hazardsymbol   class CDATA "+ topic/image hazard-d/hazardsymbol ">
+<!ATTLIST  typeofhazard   class CDATA "+ topic/li hazard-d/typeofhazard ">
+<!ATTLIST  consequence    class CDATA "+ topic/li hazard-d/consequence ">
+<!ATTLIST  howtoavoid     class CDATA "+ topic/li hazard-d/howtoavoid ">
 
 <!-- ================== End of DITA Hazard Statement Domain ==================== -->
  

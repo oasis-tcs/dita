@@ -22,29 +22,52 @@
     </metadata>
   </prolog>
 <refbody>
-<section id="section-1"><p>A frequently-used type of relationship table
-establishes relationships between task, concept, and reference topics.
-Each column in a relationship table typically represents a specific
-role in a set of relationships; for example, the first column often
-contains references to tasks, while the second and third columns often
-reference concept and reference topics. The relationship table rows
-define relationships between the resources referenced in different
-cells of the same row; in this example, each row establishes relationships
-between tasks and the concept and reference topics that support the
-tasks. When used in this manner, relationship tables make it easy
-to determine where related information is missing or undefined.</p><p>By default, the contents of a <xmlelement>reltable</xmlelement>
-element are not output for navigation or TOC purposes; they are used
-only to define relationships that can be expressed as topic-to-topic
-links. The <xmlelement>relcell</xmlelement> elements can contain <xmlelement>topicref</xmlelement>
-elements, which are then related to other <xmlelement>topicref</xmlelement>
-elements in the same row (although not necessarily in the same cell).</p><p>Relationship
-tables can be used in conjunction with hierarchies and groups to manage
-all the related links in an information set.</p>
-      <p >Within a map tree, the effective relationship table is the union of
-        all relationship tables in the map.</p></section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-reltable/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-map/reltable </p></section>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>A frequently-used type of relationship table establishes relationships between task,
+        concept, and reference topics. Each column in a relationship table typically represents a
+        specific role in a set of relationships; for example, the first column often contains
+        references to tasks, while the second and third columns often reference concept and
+        reference topics. The relationship table rows define relationships between the resources
+        referenced in different cells of the same row; in this example, each row establishes
+        relationships between tasks and the concept and reference topics that support the tasks.
+        When used in this manner, relationship tables make it easy to determine where related
+        information is missing or undefined.</p>
+      <p>Relationship tables can be used in conjunction with hierarchies and groups to manage all
+        the related links in an information set.</p>
+    </section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>By default, the contents of a <xmlelement>reltable</xmlelement> element are not output for
+        navigation or TOC purposes; they are used only to define relationships that can be expressed
+        as topic-to-topic links. The <xmlelement>relcell</xmlelement> elements can contain
+          <xmlelement>topicref</xmlelement> elements, which are then related to other
+          <xmlelement>topicref</xmlelement> elements in the same row (although not necessarily in
+        the same cell).</p>
+      <p>Within a map tree, the effective relationship table is the union of all relationship tables
+        in the map.</p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref
+          keyref="attributes-universal"/>, <xref
+          keyref="attributes-commonMap"/> (without <xmlatt>keyscope</xmlatt> or
+          <xmlatt>collection-type</xmlatt>, and with a narrowed definition of
+          <xmlatt>toc</xmlatt>, given below), and the attributes
+        defined below. This element also uses <xmlatt>type</xmlatt>, <xmlatt>scope</xmlatt>, and
+          <xmlatt>format</xmlatt> from <xref keyref="attributes-linkRelationship"
+        />.</p>
+      <dl>
+        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/toc-default-no">
+          <dt/>
+          <dd/>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>title</xmlatt></dt>
+          <dd>An identifying title for this element.</dd>
+        </dlentry>
+      </dl>
+    </section>
 <example id="example" otherprops="examples"><title>Example</title><p>In this example, a relationship table is defined with three columns; one for "concept", one for
         "task", and one for "reference". Three cells are defined within one row. The first cell
         contains one concept topic: <filepath>batsonar.dita</filepath>. The second cell contains two
@@ -124,24 +147,6 @@ links would be as follows:<dl><dlentry>
           <filepath>batcaring.dita</filepath> have the same relationships to supporting information
         is clear from the table, but would require some comparison and counting to determine from
         the list summary just before this paragraph.</p></example>
-<section id="attributes"><title>Attributes</title>
-      <p>The following attributes are available on this element: <xref
-href="../attributes/universalAttributes.dita"/>, <xref href="../attributes/commonMapAttributes.dita"
-/> (without the <xmlatt>keyscope</xmlatt> attribute, and with a narrowed definition of
-<xmlatt>toc</xmlatt>, given below), <xref
-href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, and the attributes defined
-below. This element also uses <xmlatt>type</xmlatt>, <xmlatt>scope</xmlatt>, and
-<xmlatt>format</xmlatt> from <xref href="../attributes/linkRelationshipAttributes.dita"/>.</p>
-      <dl>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/toc-default-no">
-          <dt/>
-          <dd/>
-        </dlentry>
-        <dlentry>
-          <dt><xmlatt>title</xmlatt></dt>
-          <dd>An identifying title for this element.</dd>
-        </dlentry>
-      </dl></section>
 </refbody>
 </reference>
 

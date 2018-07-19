@@ -45,7 +45,11 @@ ORIGINAL CREATION DATE:
    2008.02.01 RDA: Added keydef element, keys attributes     
    2008.02.12 RDA: Navtitle no longer required on topichead  
    2008.02.13 RDA: Create .content and .attributes entities  
-   2010.09.20 RDA: Add copy-to to topichead                  
+   2010.09.20 RDA: Add copy-to to topichead      
+   2018.03.14 KJE: Removed @query; added attribute group for
+                   use on topichead and topicgroup (to remove
+                   @collection-type)
+   2018.04.09 KJE: Removed @navtitle  
 =============================================================
       
     </headerComment>
@@ -62,7 +66,85 @@ ORIGINAL CREATION DATE:
       <domainsContribution>(map mapgroup-d)</domainsContribution>
     </moduleMetadata>
   </moduleDesc>
-
+<div>
+    <a:documentation>COMMON ATTRIBUTE SETS</a:documentation>   
+    <define name="topicref-atts-no-locktitle">
+      <optional>
+        <attribute name="collection-type">
+          <choice>
+            <value>choice</value>
+            <value>family</value>
+            <value>sequence</value>
+            <value>unordered</value>
+            <value>-dita-use-conref-target</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="type"/>
+      </optional>
+      <optional>
+        <attribute name="cascade" dita:since="1.3"/>
+      </optional>
+      <optional>
+        <attribute name="processing-role">
+          <choice>
+            <value>normal</value>
+            <value>resource-only</value>
+            <value>-dita-use-conref-target</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="scope">
+          <choice>
+            <value>external</value>
+            <value>local</value>
+            <value>peer</value>
+            <value>-dita-use-conref-target</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="format"/>
+      </optional>
+      <optional>
+        <attribute name="linking">
+          <choice>
+            <value>none</value>
+            <value>normal</value>
+            <value>sourceonly</value>
+            <value>targetonly</value>
+            <value>-dita-use-conref-target</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="toc">
+          <choice>
+            <value>no</value>
+            <value>yes</value>
+            <value>-dita-use-conref-target</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="search">
+          <choice>
+            <value>no</value>
+            <value>yes</value>
+            <value>-dita-use-conref-target</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="chunk"/>
+      </optional>
+      <optional>
+        <attribute name="keyscope" dita:since="1.3"/>
+      </optional>
+    </define>
+  </div>
   <div>
     <a:documentation>ELEMENT TYPE NAME PATTERNS</a:documentation>
     <define name="anchorref">
@@ -125,18 +207,12 @@ ORIGINAL CREATION DATE:
       </define>
       <define name="topichead.attributes">
         <optional>
-          <attribute name="navtitle"/>
-        </optional>
-        <optional>
-          <attribute name="outputclass"/>
-        </optional>
-        <optional>
           <attribute name="keys"/>
         </optional>
         <optional>
           <attribute name="copy-to"/>
         </optional>
-        <ref name="topicref-atts"/>
+        <ref name="topicref-atts-no-locktitle"/>
         <ref name="univ-atts"/>
       </define>
       <define name="topichead.element">
@@ -168,10 +244,7 @@ ORIGINAL CREATION DATE:
         </zeroOrMore>
       </define>
       <define name="topicgroup.attributes">
-        <optional>
-          <attribute name="outputclass"/>
-        </optional>
-        <ref name="topicref-atts"/>
+        <ref name="topicref-atts-no-locktitle"/>
         <ref name="univ-atts"/>
       </define>
       <define name="topicgroup.element">
@@ -203,9 +276,6 @@ ORIGINAL CREATION DATE:
       </define>
       <define name="anchorref.attributes">
         <optional>
-          <attribute name="navtitle"/>
-        </optional>
-        <optional>
           <attribute name="href"/>
         </optional>
         <optional>
@@ -218,13 +288,7 @@ ORIGINAL CREATION DATE:
           <attribute name="keyscope" dita:since="1.3"/>
         </optional>
         <optional>
-          <attribute name="query"/>
-        </optional>
-        <optional>
           <attribute name="copy-to"/>
-        </optional>
-        <optional>
-          <attribute name="outputclass"/>
         </optional>
         <optional>
           <attribute name="collection-type">
@@ -343,9 +407,6 @@ ORIGINAL CREATION DATE:
       </define>
       <define name="mapref.attributes">
         <optional>
-          <attribute name="navtitle"/>
-        </optional>
-        <optional>
           <attribute name="href"/>
         </optional>
         <optional>
@@ -355,13 +416,7 @@ ORIGINAL CREATION DATE:
           <attribute name="keys"/>
         </optional>
         <optional>
-          <attribute name="query"/>
-        </optional>
-        <optional>
           <attribute name="copy-to"/>
-        </optional>
-        <optional>
-          <attribute name="outputclass"/>
         </optional>
         <optional>
           <attribute name="format" a:defaultValue="ditamap"/>
@@ -400,9 +455,6 @@ ORIGINAL CREATION DATE:
       </define>
       <define name="topicset.attributes">
         <optional>
-          <attribute name="navtitle"/>
-        </optional>
-        <optional>
           <attribute name="href"/>
         </optional>
         <optional>
@@ -413,9 +465,6 @@ ORIGINAL CREATION DATE:
         </optional>
         <optional>
           <attribute name="keyscope" dita:since="1.3"/>
-        </optional>
-        <optional>
-          <attribute name="query"/>
         </optional>
         <optional>
           <attribute name="copy-to"/>
@@ -549,9 +598,6 @@ ORIGINAL CREATION DATE:
       </define>
       <define name="topicsetref.attributes">
         <optional>
-          <attribute name="navtitle"/>
-        </optional>
-        <optional>
           <attribute name="href"/>
         </optional>
         <optional>
@@ -564,13 +610,7 @@ ORIGINAL CREATION DATE:
           <attribute name="keyscope" dita:since="1.3"/>
         </optional>
         <optional>
-          <attribute name="query"/>
-        </optional>
-        <optional>
           <attribute name="copy-to"/>
-        </optional>
-        <optional>
-          <attribute name="outputclass"/>
         </optional>
         <optional>
           <attribute name="collection-type">
@@ -693,9 +733,6 @@ ORIGINAL CREATION DATE:
       </define>
       <define name="keydef.attributes">
         <optional>
-          <attribute name="navtitle"/>
-        </optional>
-        <optional>
           <attribute name="href"/>
         </optional>
         <optional>
@@ -706,13 +743,7 @@ ORIGINAL CREATION DATE:
           <attribute name="keyscope" dita:since="1.3"/>
         </optional>
         <optional>
-          <attribute name="query"/>
-        </optional>
-        <optional>
           <attribute name="copy-to"/>
-        </optional>
-        <optional>
-          <attribute name="outputclass"/>
         </optional>
         <optional>
           <attribute name="collection-type">
@@ -823,43 +854,36 @@ ORIGINAL CREATION DATE:
   <div>
     <a:documentation>Specialization attributes. Global attributes and class defaults</a:documentation>
     <define name="anchorref.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ map/topicref mapgroup-d/anchorref "/>
       </optional>
     </define>
     <define name="keydef.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ map/topicref mapgroup-d/keydef "/>
       </optional>
     </define>
     <define name="mapref.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ map/topicref mapgroup-d/mapref "/>
       </optional>
     </define>
     <define name="topicgroup.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ map/topicref mapgroup-d/topicgroup "/>
       </optional>
     </define>
     <define name="topichead.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ map/topicref mapgroup-d/topichead "/>
       </optional>
     </define>
     <define name="topicset.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ map/topicref mapgroup-d/topicset "/>
       </optional>
     </define>
     <define name="topicsetref.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ map/topicref mapgroup-d/topicsetref "/>
       </optional>

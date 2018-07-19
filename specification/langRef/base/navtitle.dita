@@ -1,80 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="navtitle" xml:lang="en-us">
 <title><xmlelement>navtitle</xmlelement></title>
-<shortdesc>The navigation title (<xmlelement>navtitle</xmlelement>) element is one of a set of
-    alternate titles that can be included inside the <xmlelement>titlealts</xmlelement> element.
-    This navigation title <ph >might</ph> differ from the first level heading
-    that shows in the main browser window. Use <xmlelement>navtitle</xmlelement> when the actual
-    title of the topic isn't appropriate for use in a table of contents, navigation pane, or online
-    content (for example, because the actual title is too long). <ph>Beginning with DITA 1.2, the
-        <xmlelement>navtitle</xmlelement> element is also available in the
-        <xmlelement>topicmeta</xmlelement> element in a <xmlelement>topicref</xmlelement> in a map,
-      and its use is preferred over the <xmlelement>topicref</xmlelement> element's
-        <xmlatt>navtitle</xmlatt> attribute.</ph></shortdesc>
+  <shortdesc conkeyref="library-short-descriptions/navtitle"/>
   <prolog>
     <metadata>
       <keywords>
-        <indexterm>processing expectations<indexterm><xmlelement>navtitle</xmlelement> and
-              <xmlatt>navtitle</xmlatt></indexterm></indexterm>
+        <indexterm>processing
+          expectations<indexterm><xmlelement>navtitle</xmlelement></indexterm></indexterm>
       </keywords>
     </metadata>
   </prolog>
 <refbody>
-<section id="section-1"><p>When <xmlelement>navtitle</xmlelement> is used in a map, it functions in the same way as the
-          <xmlatt>navtitle</xmlatt> attribute; both are used to specify a navigation title for the
-        target of the <xmlelement>topicref</xmlelement> element. That is, the title itself will only
-        be used as an actual navigation title when the title is locked; the title is locked when the
-          <xmlelement>topicref</xmlelement> element sets the attribute
-          <codeph>locktitle="yes"</codeph>. If the title is not locked, processing systems will
-        typically retrieve the current title from the target topic, looking first for a
-          <xmlelement>navtitle</xmlelement> element and second for the general
-          <xmlelement>title</xmlelement>.</p>
-      <!--RDA February 2014: In the previous paragraph, the 1.2 spec stated: 
-"That is, the title itself will only be used as an actual navigation title when the title is locked; 
-the title is locked when the closest ancestor topicref element sets or inherits the attribute locktitle="yes". 
-However, the 1.2 spec itself does not list @locktitle as an inheritable attribute; it does not cascade. 
-I've changed the text above to indicate that locktitle must be specified on the topicref itself.--><p>When both a <xmlelement>navtitle</xmlelement> element and a <xmlatt>navtitle</xmlatt> attribute
-        are specified, the <xmlelement>navtitle</xmlelement> element <term outputclass="RFC-2119"
-          >SHOULD</term> be used.</p><p>Because the <xmlelement>navtitle</xmlelement> element is available within
-          <xmlelement>topicmeta</xmlelement>, and <xmlelement>topicmeta</xmlelement> is used in many
-        different contexts, it is possible that <xmlelement>navtitle</xmlelement> can be specified
-        in contexts where a navigation title does not make sense (for example, on the
-          <xmlelement>topicgroup</xmlelement> element). In those situations, the
-          <xmlelement>navtitle</xmlelement> element has no defined purpose.</p></section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-navtitle/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-topic/navtitle </p></section>
+    <section>
+      <draft-comment author="Kristen J Eberlein" time="03 July 2018">
+        <p>Should we also include a sentence in the short description of what purpose a navigation
+          title serves in a map? For example, <q>When used in maps, a navigation title can serve as
+            an alternate title or simply as an aid to  understanding the DITA map.</q></p>
+        <p>I added the content to the shortdesc; we can review it and possible remove it.</p>
+      </draft-comment>
+    </section>
+    <section id="usage-information">
+      <title>Usage information</title>
+<!--<p>The <xmlelement>navtitle</xmlelement> element is available in both topics and maps.</p>-->
+      <p>Because the <xmlelement>navtitle</xmlelement> element is available within
+          <xmlelement>topicmeta</xmlelement>,
+        <!--and <xmlelement>topicmeta</xmlelement> is used in many different contexts, --> a
+          <xmlelement>navtitle</xmlelement> element might occur in contexts where a navigation title
+        does not make sense, for example, on a <xmlelement>topicgroup</xmlelement> element. In those
+        situations, the <xmlelement>navtitle</xmlelement> element has no defined purpose.</p>
+    </section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>When the <xmlelement>navtitle</xmlelement> element is used in a topic, processors <term
+          outputclass="RFC-2119">SHOULD</term> use the contents of the element to generate the
+        navigation title.</p>
+      <p>When the <xmlelement>navtitle</xmlelement> element is used in a map, processors <term
+          outputclass="RFC-2119">SHOULD</term> retrieve the navigation title in the following
+        order:</p>
+      <ol>
+        <li>From the content of a <xmlelement>navtitle</xmlelement> element in the map, if the
+          containing <xmlelement>topicref</xmlelement> element sets the value of the
+            <xmlatt>locktitle</xmlatt> attribute to "yes"</li>
+        <li>From the contents of a <xmlelement>navtitle</xmlelement> element in the referenced
+          topic</li>
+        <li>From the title of the referenced topic</li>
+      </ol>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref
+          keyref="attributes-universal"/>.</p>
+    </section>
 <example id="example" otherprops="examples"><title>Example</title><fig>
-        <title><xmlelement>navtitle</xmlelement> sample in a topic</title>
-        <codeblock>&lt;task id="progexample">
- &lt;title>Publishing a DITA information set in PDF&lt;/title>
-  &lt;titlealts>&lt;navtitle>Publishing in PDF&lt;/navtitle>&lt;/titlealts>
- &lt;taskbody>&lt;context>Some text&lt;/context>&lt;/taskbody>
+        <title><xmlelement>navtitle</xmlelement> in a topic</title>
+        <p>In the following example, the <xmlelement>navtitle</xmlelement> element is used in a
+          topic. It contains a shorter title that will be used in a TOC or navigation pane when the
+          topic is published.</p>
+        <codeblock>&lt;task id="publishing-dita">
+  &lt;title>Publishing a DITA information set in PDF&lt;/title>
+  &lt;titlealts>
+    &lt;navtitle>Publishing in PDF&lt;/navtitle>
+  &lt;/titlealts>
+  &lt;shortdesc>You can quickly publish your DITA information to PDF.
+  &lt;/shortdesc>
+  &lt;!-- ... -->
 &lt;/task></codeblock>
       </fig><fig>
-        <title><xmlelement>navtitle</xmlelement> samples in a map</title>
-        <p>In this sample, the first title is not locked, and will generally be replaced with a
-          title retrieved from <filepath>a.dita</filepath>. The second title is locked, and will be
-          displayed when this map is used as a basis for navigation.</p>
+        <title><xmlelement>navtitle</xmlelement> in a map</title>
+        <p>In this example, two <xmlelement>navtitle</xmlelement> elements are used in a DITA map.
+          The first <xmlelement>navtitle</xmlelement> is not locked; its content simply serves to
+          indicate information about the content of the referenced DITA topic. When the DITA map is
+          published, the navigation title is retrieved from
+          <filepath>GUID-gibberish.dita</filepath>. However, the second
+            <xmlelement>navtitle</xmlelement> is locked, so when the DITA map is published,
+            <q>Publishing to ePub</q> is used for a navigation title.</p>
         <codeblock>&lt;map xml:lang="en">
-  &lt;title>This is a sample map&lt;/title>
-  &lt;topicref href="a.dita">
+  &lt;title>Publishing a DITA information set&lt;/title>
+  &lt;topicref href="GUID-gibberish.dita">
     &lt;topicmeta>
-      &lt;navtitle>Title of A&lt;/navtitle>
+      &lt;navtitle>Publishing to PDF&lt;/navtitle>
     &lt;/topicmeta>
   &lt;/topicref>
-  &lt;topicref href="b.dita" locktitle="yes">
+  &lt;topicref href="publishing-ePub.dita" locktitle="yes">
     &lt;topicmeta>
-      &lt;navtitle>Short Title for B&lt;/navtitle>
+      &lt;navtitle>Publishing to ePub&lt;/navtitle>
     &lt;/topicmeta>
   &lt;/topicref>
 &lt;/map></codeblock>
+        <p>
+          <draft-comment author="Kristen J Eberlein" time="03 July 2018">
+            <p>Do we need a third example that illustrates what happens when a topic contains a
+                <xmlelement>navtitle</xmlelement>?</p>
+          </draft-comment>
+        </p>
       </fig></example>
-<section id="attributes"><title>Attributes</title>
-      <p >The following attributes are available on this element: <xref
-          href="../attributes/universalAttributes.dita"/>.</p></section>
 </refbody>
 </reference>
 

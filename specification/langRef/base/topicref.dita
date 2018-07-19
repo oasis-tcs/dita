@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="topicref" xml:lang="en-us">
 <title><xmlelement>topicref</xmlelement></title>
-<shortdesc>The <xmlelement>topicref</xmlelement> element identifies a topic (such as a concept,
-task, or reference) or other resource. A <xmlelement>topicref</xmlelement> can contain other
-<xmlelement>topicref</xmlelement> elements, allowing you to express navigation or table-of-contents
-hierarchies, as well as implying relationships between a containing (parent)
-<xmlelement>topicref</xmlelement> and its children. You can set the collection type of a parent
-<xmlelement>topicref</xmlelement> to determine how its children are related to each other. You can
-also express relationships among <xmlelement>topicref</xmlelement> elements by using group and table
-structures (such as <xmlelement>topicgroup</xmlelement> and <xmlelement>reltable</xmlelement>).
-Relationships are expressed as links in the output; by default, each participant in a relationship
-has links to the other participants in that relationship. </shortdesc>
  <prolog>
   <metadata>
    <keywords>
@@ -22,31 +10,63 @@ has links to the other participants in that relationship. </shortdesc>
   </metadata>
  </prolog>
 <refbody>
-<section id="section-1"><p>You can fine tune the output from your map by setting different attributes on the <xmlelement>topicref</xmlelement>
-element. For example, the <xmlatt>linking</xmlatt> attribute controls how a topic&apos;s
-relationships to other topics are expressed as links, and the <xmlatt>toc</xmlatt> attribute
-controls whether the topic shows up in TOC or navigation output.</p></section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-topicref/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-map/topicref </p></section>
-<example id="example" otherprops="examples">
-<title>Example</title>
-<p>In this example, there are six <xmlelement>topicref</xmlelement> elements. They are nested and
-have a hierarchical relationship. <filepath>bats.dita</filepath> is the parent topic and the other
-topics are its children.</p>
-<codeblock xml:space="preserve">&lt;map title="Bats"&gt;
- &lt;topicref href="bats.dita" type="topic"&gt;
-  &lt;topicref href="batcaring.dita" type="task"&gt;&lt;/topicref&gt;
-  &lt;topicref href="batfeeding.dita" type="task"&gt;&lt;/topicref&gt;
-  &lt;topicref href="batsonar.dita" type="concept"&gt;&lt;/topicref&gt;
-  &lt;topicref href="batguano.dita" type="reference"&gt;&lt;/topicref&gt;
-  &lt;topicref href="bathistory.dita" type="reference"&gt;&lt;/topicref&gt;
+  <section id="usage-information">
+   <title>Usage information</title>
+   <p>You can set the collection type of a parent <xmlelement>topicref</xmlelement> to determine how
+    its children are related to each other. You can also express relationships among
+     <xmlelement>topicref</xmlelement> elements by using group and table structures (such as
+     <xmlelement>topicgroup</xmlelement> and <xmlelement>reltable</xmlelement>). Relationships are
+    expressed as links in the output; by default, each participant in a relationship has links to
+    the other participants in that relationship. </p>
+   <p>You can fine tune the output from your map by setting different attributes on the
+     <xmlelement>topicref</xmlelement> element. For example, the <xmlatt>linking</xmlatt> attribute
+    controls how a topic&apos;s relationships to other topics are expressed as links, and the
+     <xmlatt>toc</xmlatt> attribute controls whether the topic shows up in TOC or navigation
+    output.</p>
+  </section>
+  <section id="attributes">
+   <title>Attributes</title>
+   <sectiondiv
+    conref="../../common/conref-attribute.dita#conref-attribute/standard-topicref-attributes"/>
+  </section>
+  <example id="example" otherprops="examples">
+   <title>Example</title>
+   <fig>
+    <title>DITA map defining hierarchy for topics</title>
+    <p>In this example, there are six <xmlelement>topicref</xmlelement> elements. They are nested
+     and have a hierarchical relationship. <filepath>bats.dita</filepath> is the parent topic and
+     the other topics are its children.</p>
+    <codeblock>&lt;map title="Bats"&gt;
+ &lt;topicref href="bats.dita"&gt;
+  &lt;topicref href="bat-caring.dita"/&gt;
+  &lt;topicref href="bat-feeding.dita"/&gt;
+  &lt;topicref href="bat-sonar.dita"/&gt;
+  &lt;topicref href="bat-guano.dita/&gt;
+  &lt;topicref href="bat-history.dita"/&gt;
  &lt;/topicref&gt;
 &lt;/map&gt;</codeblock>
-</example>
-<section id="attributes"><title>Attributes</title><sectiondiv
-    conref="../../common/conref-attribute.dita#conref-attribute/standard-topicref-attributes"
-   /></section>
-</refbody>
+   </fig>
+   <fig>
+    <title>DITA map defining relationship between topics</title>
+    <p>In the example, the <xmlatt>collection-type</xmlatt> attribute is used to specify that the
+     topics should be read in a sequential order.</p>
+    <codeblock>&lt;map title="Bats"&gt;
+ &lt;topicref href="bats.dita" <b>collection-type="sequence"</b>&gt;
+  &lt;topicref href="bat-caring.dita"/&gt;
+  &lt;topicref href="bat-feeding.dita"/&gt;
+  &lt;topicref href="bat-sonar.dita"/&gt;
+  &lt;topicref href="bat-guano.dita/&gt;
+  &lt;topicref href="bat-history.dita"/&gt;
+ &lt;/topicref&gt;
+&lt;/map&gt;</codeblock>
+   </fig>
+  </example>
+  <example>
+   <draft-comment author="Kristen J Eberlein" time="17 June 2018">
+    <p>I think this topic should have lots of examples that demonstrate what can be done by setting
+     attributes. The <xmlelement>topicref</xmlelement> element is core (and unique) to DITA.</p>
+   </draft-comment>
+  </example>
+ </refbody>
 </reference>
 

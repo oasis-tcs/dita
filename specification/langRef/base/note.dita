@@ -3,9 +3,7 @@
  "reference.dtd">
 <reference id="note" xml:lang="en-us">
 <title><xmlelement>note</xmlelement></title>
-<shortdesc>A <xmlelement>note</xmlelement> element contains information that expands on or calls
-attention to a particular point. This information is typically differentiated from the main
-text.</shortdesc>
+    <shortdesc conkeyref="library-short-descriptions/note"/>
 <prolog><metadata>
 <keywords><indexterm>elements<indexterm>body<indexterm><xmlelement>note</xmlelement></indexterm></indexterm></indexterm>
                 <indexterm>formatting
@@ -13,12 +11,25 @@ text.</shortdesc>
 </keywords>
 </metadata></prolog>
 <refbody>
-<section id="section-1"><note type="tip">Variant types of <xmlelement>note</xmlelement> (tip, caution, danger, restriction,
-etc.) can be indicated through values selected on the <xmlatt>type</xmlatt> attribute. This
-<xmlelement>note</xmlelement> uses the attribute <codeph>type="tip"</codeph></note></section>
-<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-note/contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-topic/note </p></section>
+        <section id="usage-information">
+            <title>Usage information</title>
+            <p>Variant types of <xmlelement>note</xmlelement> (tip, caution, danger, restriction,
+                etc.) can be indicated through values selected on the <xmlatt>type</xmlatt>
+                attribute.</p>
+        </section>
+        <section id="formatting-expectations">
+            <title>Formatting expectations</title>
+<draft-comment author="robander">Should we say that the note element typically results in some
+prefixed word like "Note" or "Caution"? That seems to be the intent of the current "may be formatted
+as xyz" in our example.</draft-comment>
+            <p>A note is typically formatted in a way that stands out from the surrounding
+content.</p>
+        </section>
+        <section id="attributes">
+            <title>Attributes</title>
+            <sectiondiv conref="../../common/conref-attribute.dita#conref-attribute/note-attributes"
+            />
+        </section>
 <example id="example" otherprops="examples">
 <title>Example</title>
 <p>The following code sample demonstrates the use of a <xmlelement>note</xmlelement> with
@@ -26,12 +37,12 @@ topic/note </p></section>
 <codeblock xml:space="preserve">&lt;note type="tip"&gt;Thinking of a seashore, green meadow, or cool
 mountain overlook can help you to relax and be more
 patient.&lt;/note&gt;</codeblock>
+<draft-comment author="robander">Robert does not really like explicitly addressing formatting in the
+example, as below, with "It could be formatted as <b>xyz</b>", because ... sure, it could, but it
+could be formatted lots of other ways too?</draft-comment>
 <p>The sample markup could produce output such as the following:</p>
 <p><b>Tip:</b> Thinking of a seashore, green meadow, or cool mountain overlook can help you to relax
 and be more patient.</p>
 </example>
-<section id="attributes"><title>Attributes</title><sectiondiv
-                conref="../../common/conref-attribute.dita#conref-attribute/note-attributes"
-            /></section>
 </refbody>
 </reference>
