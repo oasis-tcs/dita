@@ -25,16 +25,16 @@
     element. The <xmlelement>keyword</xmlelement> element is a generic element; use it when no other
     element applies.</p>
    <p>Specific markup recommendations:</p>
-   <ul id="ul_xcy_kb2_z1b">
-    <li>Use <xmlelement>apiname</xmlelement> for API names and <xmlelement>cmdname</xmlelement> for
-     command names.</li>
-    <li>Use <xref href="term.dita"><xmlelement>term</xmlelement></xref> to indicate what you are
-     defining with inline paragraph definitions.</li>
-    <li>Use <xref href="ph.dita"><xmlelement>ph</xmlelement></xref> for general phrases when
-      <xmlelement>keyword</xmlelement> is not appropriate.</li>
-    <li>Use <xmlelement>kwd</xmlelement> to indicate programming keywords in syntax diagrams and
-     syntax phrases.</li>
-   </ul>
+   <ul>
+        <li>Use <xmlelement>apiname</xmlelement> for API names and <xmlelement>cmdname</xmlelement>
+          for command names.</li>
+        <li>Use <xref href="term.dita"><xmlelement>term</xmlelement></xref> to indicate what you are
+          defining with inline paragraph definitions.</li>
+        <li>Use <xref href="ph.dita"><xmlelement>ph</xmlelement></xref> for general phrases when
+            <xmlelement>keyword</xmlelement> is not appropriate.</li>
+        <li>Use <xmlelement>kwd</xmlelement> to indicate programming keywords in syntax diagrams and
+          syntax phrases.</li>
+      </ul>
    <p>All <xmlelement>keyword</xmlelement> or <xmlelement>indexterm</xmlelement> elements in the
      <xmlelement>keywords</xmlelement> metadata element are considered part of the topic's metadata
     and should be processed as appropriate for the given output medium.</p>
@@ -83,6 +83,51 @@
       <p>You can place any number of <xmlelement>stentry</xmlelement> cells in either an
           <xmlelement>sthead</xmlelement> element (for headings) or <xmlelement>strow</xmlelement>
         element (for rows of data).</p>
+    </section>
+    <section>
+      <title><xmlelement>topicref</xmlelement></title>
+      <p>You can set the collection type of a parent <xmlelement>topicref</xmlelement> to determine
+        how its children are related to each other. You can also express relationships among
+          <xmlelement>topicref</xmlelement> elements by using group and table structures (such as
+          <xmlelement>topicgroup</xmlelement> and <xmlelement>reltable</xmlelement>). Relationships
+        are expressed as links in the output; by default, each participant in a relationship has
+        links to the other participants in that relationship. </p>
+      <p>You can fine tune the output from your map by setting different attributes on the
+          <xmlelement>topicref</xmlelement> element. For example, the <xmlatt>linking</xmlatt>
+        attribute controls how a topic&apos;s relationships to other topics are expressed as links,
+        and the <xmlatt>toc</xmlatt> attribute controls whether the topic shows up in TOC or
+        navigation output.</p>
+    </section>
+    <section>
+      <title><xmlelement>u</xmlelement></title>
+      <p>This element is part of the highlighting domain. Use this element only when a more
+        semantically appropriate element is not available. For example, for specific items such as
+        GUI controls, use the <xmlelement>uicontrol</xmlelement> element.</p>
+    </section>
+    <section>
+      <title><xmlelement>xref</xmlelement></title>
+      <p>When creating a cross-reference, link to the element structure, not the
+          <xmlelement>title</xmlelement> element of the object. For example, to create a
+        cross-reference to a figure, link to the <xmlelement>fig</xmlelement> element, not the
+          <xmlelement>title</xmlelement> element within the <xmlelement>fig</xmlelement> element.
+        Output processing determines whether the text of the <xmlelement>title</xmlelement> element
+        is used to render the cross-reference.</p>
+      <p>Cross references that link to elements in other topics can employ key-based addressing by
+        using the <xmlatt>keyref</xmlatt> attribute. This enables the cross-reference to point to
+        different topics in the context of different top-level maps. Cross references that employ
+        direct URI-based addressing using the <xmlatt>href</xmlatt> attribute create dependencies;
+        if the topic with the cross-reference is included in a map, the target topic also might need
+        to be included for the cross-reference to be resolvable in the context of that map. While
+        you can use conditional processing to have different cross-references for different
+        contexts, it is usually easier and more effective to use keys. By using keys, the
+        cross-reference can be independent of the contexts it might be used in, because it is up to
+        each different map to bind the key used by the cross-reference to the appropriate target. </p>
+      <p>In many cases it is best to avoid inline cross references in favor of links of links that
+        are generated by the <xref href="related-links.dita"/> element or relationship tables. Such
+        links typically are rendered at the end of the topic. This prevents readers from leaving a
+        topic and missing important information. Using relationship tables also enables the links to
+        be managed at a DITA map level, making it possible for topics to be quickly integrated into
+        new contexts without breaking links.</p>
     </section>
  </conbody>
 </concept>
