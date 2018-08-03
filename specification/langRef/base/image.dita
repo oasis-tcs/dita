@@ -13,11 +13,23 @@
 </keywords>
 </metadata></prolog>
 <refbody>
-<!--<section id="usage-information"><title>Usage information</title><p>The <xmlelement>image</xmlelement> element has an optional <xmlatt>placement</xmlatt> attribute that indicates whether the included graphic or artwork is rendered inline (a button or icon) or on a separate line for a larger image. There also are attributes that indicate the size to which the included graphic or artwork is scaled.</p><p>To make the intent of the image more accessible for users using screen readers or text-only readers, authors should include a description of the image content in the <xmlelement>alt</xmlelement> element.</p></section>-->
+    <!--<section id="usage-information"><title>Usage information</title></section>-->
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>The image addressed by the <xmlatt>keyref</xmlatt> or <xmlatt>href</xmlatt> attribute is
-typically rendered in the main flow of the content.</p>
+      <p>The image addressed by the <xmlatt>keyref</xmlatt> or <xmlatt>href</xmlatt> attribute
+        typically is rendered in the main flow of the content.</p>
+      <p>Processors <term outputclass="RFC-2119">SHOULD</term> scale images when values are provided
+        for the <xmlatt>height</xmlatt> and <xmlatt>width</xmlatt> attributes. The following
+        expectations apply:</p>
+      <ul>
+        <li>If a height value is specified and no width value is specified, processors <term
+            outputclass="RFC-2119">SHOULD</term> scale the width by the same factor as the
+          height.</li>
+        <li>If a width value is specified and no height value is specified, processors <term
+            outputclass="RFC-2119">SHOULD</term> scale the height by the same factor as the
+          width.</li>
+        <li><ph conref="#conref-attribute/height-width-warning"/></li>
+      </ul>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -66,7 +78,9 @@ keyref="attributes-format"/> for details on supported values.</dd>
         </dlentry>
       </dl>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><codeblock>&lt;image href="bike.gif" placement="break"&gt;
+<example id="example" otherprops="examples"><title>Example</title>
+      <p>In the following code sample, the <xmlatt>placement</xmlatt> attribute is set to "break".
+        This ensures that the image will not be rendered as an inline image.</p><codeblock>&lt;image href="bike.gif" placement="break"&gt;
   &lt;alt&gt;Two-wheeled bicycle&lt;/alt&gt;
 &lt;/image&gt;</codeblock></example>
 </refbody>
