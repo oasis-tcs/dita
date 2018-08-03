@@ -32,27 +32,26 @@
     </section>
     <example id="example" otherprops="examples">
       <title>Example</title>
-      <draft-comment author="Kristen J Eberlein" time="26 July 2018">
-        <p>Need an example that uses something OTHER than the attributes on
-            <xmlelement>audience</xmlelement> which no one uses.</p>
-        <p>How about <xmlelement>navtitle</xmlelement> and/or
-          <xmlelement>shortdesc</xmlelement>?</p>
-      </draft-comment>
-      <p>In this example, the metadata defined by the <xmlelement>topicmeta</xmlelement> element
-        applies to the associated <xmlelement>topicref</xmlelement> (<filepath>bats.dita</filepath>)
-        and all of its children. The <xmlelement>topicmeta</xmlelement> element contains an audience
-        definition that indicates that <filepath>bats.dita</filepath> and its children are of
-        interest to experienced programmers who are troubleshooting. </p>
-      <codeblock>&lt;map&gt;
+      <!--<draft-comment author="Kristen J Eberlein" time="26 July 2018"><p>Need an example that uses something OTHER than the attributes on <xmlelement>audience</xmlelement> which no one uses.</p><p>How about <xmlelement>navtitle</xmlelement> and/or <xmlelement>shortdesc</xmlelement>?</p></draft-comment>-->
+      <p>In the following example, the <xmlelement>topicmeta</xmlelement> element contains a
+        navigation title.</p>
+      <codeblock>&lt;map>
+  &lt;title>Highlighting domain elements&lt;/title>        
+  &lt;topicref href=sub.dita">
+    &lt;topicmeta>
+      &lt;navtitle>Subscript&lt;/navtitle>
+    &lt;/topicmeta>
+  &lt;/topicref>
+&lt;/map></codeblock>
+      <!--<p>In this example, the metadata defined by the <xmlelement>topicmeta</xmlelement> element applies to the associated <xmlelement>topicref</xmlelement> (<filepath>bats.dita</filepath>) and all of its children. The <xmlelement>topicmeta</xmlelement> element contains an audience definition that indicates that <filepath>bats.dita</filepath> and its children are of interest to experienced programmers who are troubleshooting. </p><codeblock>&lt;map&gt;
   &lt;topicref href="bats.dita"&gt;
     <b>&lt;topicmeta&gt;</b>
       &lt;audience type="programmer" job="troubleshooting" experiencelevel="expert"/&gt;
     <b>&lt;/topicmeta&gt;</b>
-    &lt;topicref href="batcaring.dita"&gt;&lt;/topicref&gt;
-    &lt;topicref href="batfeeding.dita"&gt;&lt;/topicref&gt;
+    &lt;topicref href="batcaring.dita"/&gt;
+    &lt;topicref href="batfeeding.dita"/&gt;
   &lt;/topicref&gt;
-&lt;/map&gt;</codeblock>
+&lt;/map&gt;</codeblock>-->
     </example>
   </refbody>
 </reference>
-

@@ -39,18 +39,42 @@
       <p>When used in conjunction with <xmlelement>xref</xmlelement> or
           <xmlelement>link</xmlelement> elements, processors <term outputclass="RFC-2119">MAY</term>
         choose to display the content of a <xmlelement>desc</xmlelement> element as hover help.</p>
+      <draft-comment author="Kristen J Eberlein" time="02 August 2018">
+        <p>Should we make a normative statement that processors SHOULD render the content of the
+            <xmlelement>desc</xmlelement> element? I've certainly seen implementations that consider
+          it metadata and do not render it.</p>
+      </draft-comment>
     </section>
     <section id="attributes">
       <title>Attributes</title>
     <p conref="../../common/conref-attribute.dita#conref-attribute/only-universal"/>
     </section>
-<example id="example" otherprops="examples">       <title>Example</title>
-<!--TODO: Need to work on this example; current example of desc would belong in alternate text-->       <codeblock>&lt;fig&gt;&lt;title&gt;The Handshake&lt;/title&gt;
-<b>&lt;desc&gt;</b>This image shows two hands clasped in a formal, 
-business-like handshake.<b>&lt;/desc&gt;</b>
-&lt;image href="handshake.jpg"&gt;
- &lt;alt&gt;The handshake&lt;/alt&gt;
+<example id="example" otherprops="examples">
+      <title>Examples</title>
+      <fig>
+        <title>Description of a figure</title>
+        <p>In the following code sample, the figure contains an image of a famous painting by
+          Leonardo Da Vinci. The title provides the name of the painting, while the
+            <xmlelement>desc</xmlelement> element contains information about when the portrait is
+          thought to have been painted.</p>
+        <codeblock>&lt;fig>
+&lt;title&gt;Mona Lisa&lt;/title&gt;
+<b>&lt;desc&gt;</b>Circa 1503–06, perhaps continuing until 1517<b>&lt;/desc&gt;</b>
+&lt;image href="mona-lisa.jpg"&gt;
+ &lt;alt&gt;Photograph of Mona Lisa painting&lt;/alt&gt;
 &lt;/image&gt;
-&lt;/fig&gt;</codeblock>     </example>
+&lt;/fig&gt;</codeblock>
+      </fig>
+      <fig>
+        <title>Description of a cross reference</title>
+        <p>In the following code sample, a <xmlelement>desc</xmlelement> element is used within a
+          link. Some processors might use the content of the <xmlelement>desc</xmlelement> element
+          as hover help. </p>
+        <codeblock>&lt;link keyref="dita-13-02">
+  &lt;linktext>DITA 1.3 Errata 02&lt;/linktext>
+  <b>&lt;desc></b>Final errata version of DITA 1.3, published 19 June 2018<b>&lt;/desc></b>
+&lt;/link></codeblock>
+      </fig>
+    </example>
 </refbody>
 </reference>
