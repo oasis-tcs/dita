@@ -26,15 +26,30 @@
         portable, because users that do not want to delay resolution of that specific key will not
         be able to include the topic in their information.</p>
       <p conref="../../common/conref-file.dita#reuse_file/export-anchors-disclaimer"/></section>
-<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-anchorkey/contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>+
+<section id="inheritance" otherprops="inheritance">
+      <title>Specialization hierarchy</title><p>+
 topic/keyword delay-d/anchorkey </p></section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref
+          keyref="attributes-universal"/> and the attribute
+        defined below.</p>
+      <dl>
+        <dlentry>
+          <dt><xmlatt>keyref</xmlatt>
+            <ph conref="../../common/conref-attribute.dita#conref-attribute/required-attr"/></dt>
+          <dd>Defines a key that, when possible, is preserved in content generated from the DITA
+            source material. Conref relationships that use this key are not resolved when generating
+            that material, so that <xmlatt>conref</xmlatt> might be resolved at run-time when an end
+            user is reading the content. </dd>
+        </dlentry>
+      </dl>
+    </section>
 <example id="example" otherprops="examples"><title>Example</title><p>In this example, a set of information contains multiple components. Some references to component
         A use keys rather than a direct reference, so that <xmlatt>conref</xmlatt> can be redirected
-        to a different component when component A is not installed. The keys <ph
-          >might</ph> be exported, in addition to the IDs, so that some
-        references become bound to the actual component while other references <ph
-          >might</ph> be redirected.</p><codeblock>&lt;map>
+        to a different component when component A is not installed. The keys might be exported, in
+        addition to the IDs, so that some references become bound to the actual component while
+        other references might be redirected.</p><codeblock>&lt;map>
   &lt;topicref keys="componentAconfig commonconfig" 
             href="componentA/configA.dita#configA">
     &lt;topicmeta>
@@ -45,11 +60,10 @@ topic/keyword delay-d/anchorkey </p></section>
       &lt;/exportanchors>
     &lt;/topicmeta>
   &lt;/topicref>
-&lt;/map></codeblock><p>The <xmlatt>keys</xmlatt> attributes declares two distinct keys that <ph 
-          >can</ph> be used to refer to this topic (componentAconfig and commonconfig). Only the
-        second is preserved using <xmlelement>anchorkey</xmlelement>. A task topic from another
-        component <ph >might</ph> reuse steps within this topic in a variety of
-        ways.</p><codeblock>&lt;steps>
+&lt;/map></codeblock><p>The <xmlatt>keys</xmlatt> attributes declares two distinct keys that can be used to refer to this
+        topic (componentAconfig and commonconfig). Only the second is preserved using
+          <xmlelement>anchorkey</xmlelement>. A task topic from another component might reuse steps
+        within this topic in a variety of ways.</p><codeblock>&lt;steps>
   &lt;step conkeyref="componentAconfig/step1">&lt;cmd/>&lt;/step>
   &lt;step conkeyref="componentAconfig/step1.5">&lt;cmd/>&lt;/step>
   &lt;step conkeyref="commonconfig/step2">&lt;cmd/>&lt;/step>
@@ -89,23 +103,5 @@ fulfilled by alternative component content.</p><note>This example demonstrates w
           <xmlatt>conkeyref</xmlatt> on the task is set to "commonconfig", which <i>is</i> delayed,
         resolution of <xmlatt>conref</xmlatt> on that element should be delayed by a
         processor.</note></example>
-<section id="attributes"><title>Attributes</title>
-      <p >The following attributes are available on this element: <xref
-          href="../attributes/universalAttributes.dita"/>, <xref
-          href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, and the attribute
-        defined below.</p>
-      <dl>
-        <dlentry>
-          <dt><xmlatt>keyref</xmlatt>
-            <ph conref="../../common/conref-attribute.dita#conref-attribute/required-attr"/></dt>
-          <dd>Defines a key that, when possible, <ph >is</ph> preserved in
-            content generated from the DITA source material. Conref relationships that use this key
-              <ph >are</ph> not resolved when generating that material, so that
-              <xmlatt>conref</xmlatt>
-            <ph >might</ph> be resolved at run-time when an end user is reading
-            the content. </dd>
-        </dlentry>
-      </dl>
-      </section>
 </refbody>
 </reference>

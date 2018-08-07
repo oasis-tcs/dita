@@ -54,6 +54,8 @@
 <!--    2008.02.12 RDA: Move navtitle decl. here from topic.mod    -->
 <!--    2008.02.13 RDA: Create .content and .attributes entities   -->
 <!--    2008.11.10 RDA: Make href optional on image                -->
+<!--    2018.03.14 KJE: Removed boolean and indextermref; @alt and -->
+<!--                    @longdescref on image; @refcols            -->
 <!-- =============================================================      -->
 <!--                                                               -->
 
@@ -63,7 +65,7 @@
 
 
 <!ENTITY % commonDefns
-  PUBLIC "-//OASIS//ENTITIES DITA 1.3 Common Elements//EN"          "commonElements.ent" 
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Common Elements//EN"          "commonElements.ent" 
 >%commonDefns;
 
 <!-- ============================================================= -->
@@ -71,8 +73,7 @@
 <!-- ============================================================= -->
 
 <!ENTITY % basic.ph
-              "%boolean; |
-               %cite; |
+              "%cite; |
                %keyword; |
                %ph; |
                %q; |
@@ -104,8 +105,7 @@
                %basic.ph;"
 >
 <!ENTITY % basic.ph.noxref.nocite
-              "%boolean; |
-               %keyword; |
+              "%keyword; |
                %ph; |
                %q; |
                %term; |
@@ -118,8 +118,7 @@
                %cite;"
 >
 <!ENTITY % basic.ph.notm
-              "%boolean; |
-               %cite; |
+              "%cite; |
                %keyword; |
                %ph; |
                %q; |
@@ -221,7 +220,6 @@
 <!ENTITY % txt.incl
               "%draft-comment; |
                %fn; |
-               %indextermref; |
                %indexterm; |
                %required-cleanup;"
 >
@@ -560,18 +558,16 @@
 <!ENTITY % univ-atts
               "%id-atts;
                %select-atts;
-               %localization-atts;"
+               %localization-atts;
+               outputclass
+                          CDATA
+                                    #IMPLIED"
 >
 <!ENTITY % univ-atts-translate-no
               "%id-atts;
                %select-atts;
-               %localization-atts-translate-no;"
->
-<!ENTITY % global-atts
-              "xtrc
-                          CDATA
-                                    #IMPLIED
-               xtrf
+               %localization-atts-translate-no;
+               outputclass
                           CDATA
                                     #IMPLIED"
 >
@@ -600,9 +596,6 @@
                            local |
                            peer |
                            -dita-use-conref-target)
-                                    #IMPLIED
-               outputclass
-                          CDATA
                                     #IMPLIED"
 >
 <!ELEMENT  data-about %data-about.content;>
@@ -637,9 +630,6 @@
                            local |
                            peer |
                            -dita-use-conref-target)
-                                    #IMPLIED
-               outputclass
-                          CDATA
                                     #IMPLIED"
 >
 <!--                    LONG NAME: Data                            -->
@@ -658,10 +648,7 @@
                        "ANY "
 >
 <!ENTITY % unknown.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  unknown %unknown.content;>
 <!ATTLIST  unknown %unknown.attributes;>
@@ -672,10 +659,7 @@
                        "ANY "
 >
 <!ENTITY % foreign.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  foreign %foreign.content;>
 <!ATTLIST  foreign %foreign.attributes;>
@@ -722,10 +706,7 @@
                        "(%desc.cnt;)*"
 >
 <!ENTITY % desc.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  desc %desc.content;>
 <!ATTLIST  desc %desc.attributes;>
@@ -736,10 +717,7 @@
                        "(%para.cnt;)*"
 >
 <!ENTITY % p.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  p %p.content;>
 <!ATTLIST  p %p.attributes;>
@@ -772,10 +750,7 @@
                othertype
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  note %note.content;>
 <!ATTLIST  note %note.attributes;>
@@ -804,10 +779,7 @@
                            peer |
                            -dita-use-conref-target)
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  longquoteref %longquoteref.content;>
 <!ATTLIST  longquoteref %longquoteref.attributes;>
@@ -839,10 +811,7 @@
                reftitle
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  lq %lq.content;>
 <!ATTLIST  lq %lq.attributes;>
@@ -853,10 +822,7 @@
                        "(%shortquote.cnt;)*"
 >
 <!ENTITY % q.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  q %q.content;>
 <!ATTLIST  q %q.attributes;>
@@ -877,10 +843,7 @@
                spectitle
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  sl %sl.content;>
 <!ATTLIST  sl %sl.attributes;>
@@ -891,10 +854,7 @@
                        "(%ph.cnt;)*"
 >
 <!ENTITY % sli.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  sli %sli.content;>
 <!ATTLIST  sli %sli.attributes;>
@@ -915,10 +875,7 @@
                spectitle
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  ul %ul.content;>
 <!ATTLIST  ul %ul.attributes;>
@@ -939,10 +896,7 @@
                spectitle
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  ol %ol.content;>
 <!ATTLIST  ol %ol.attributes;>
@@ -953,10 +907,7 @@
                        "(%listitem.cnt;)*"
 >
 <!ENTITY % li.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  li %li.content;>
 <!ATTLIST  li %li.attributes;>
@@ -967,10 +918,7 @@
                        "(%itemgroup.cnt;)*"
 >
 <!ENTITY % itemgroup.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  itemgroup %itemgroup.content;>
 <!ATTLIST  itemgroup %itemgroup.attributes;>
@@ -992,10 +940,7 @@
                spectitle
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  dl %dl.content;>
 <!ATTLIST  dl %dl.attributes;>
@@ -1007,10 +952,7 @@
                          (%ddhd;)?)"
 >
 <!ENTITY % dlhead.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  dlhead %dlhead.content;>
 <!ATTLIST  dlhead %dlhead.attributes;>
@@ -1021,10 +963,7 @@
                        "(%title.cnt;)*"
 >
 <!ENTITY % dthd.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  dthd %dthd.content;>
 <!ATTLIST  dthd %dthd.attributes;>
@@ -1035,10 +974,7 @@
                        "(%title.cnt;)*"
 >
 <!ENTITY % ddhd.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  ddhd %ddhd.content;>
 <!ATTLIST  ddhd %ddhd.attributes;>
@@ -1050,10 +986,7 @@
                          (%dd;)+)"
 >
 <!ENTITY % dlentry.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  dlentry %dlentry.content;>
 <!ATTLIST  dlentry %dlentry.attributes;>
@@ -1067,10 +1000,7 @@
               "keyref
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  dt %dt.content;>
 <!ATTLIST  dt %dt.attributes;>
@@ -1081,10 +1011,7 @@
                        "(%defn.cnt;)*"
 >
 <!ENTITY % dd.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  dd %dd.content;>
 <!ATTLIST  dd %dd.attributes;>
@@ -1102,10 +1029,7 @@
                spectitle
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  fig %fig.content;>
 <!ATTLIST  fig %fig.attributes;>
@@ -1118,10 +1042,7 @@
                           %figgroup.cnt;)*)"
 >
 <!ENTITY % figgroup.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  figgroup %figgroup.content;>
 <!ATTLIST  figgroup %figgroup.attributes;>
@@ -1140,10 +1061,7 @@
                           (preserve)
                                     #FIXED 
                                     'preserve'
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  pre %pre.content;>
 <!ATTLIST  pre %pre.attributes;>
@@ -1162,10 +1080,7 @@
                           (preserve)
                                     #FIXED 
                                     'preserve'
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  lines %lines.content;>
 <!ATTLIST  lines %lines.attributes;>
@@ -1176,10 +1091,7 @@
                        "(%div.cnt;)*"
 >
 <!ENTITY % div.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  div %div.content;>
 <!ATTLIST  div %div.attributes;>
@@ -1209,10 +1121,7 @@
               "keyref
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  keyword %keyword.content;>
 <!ATTLIST  keyword %keyword.attributes;>
@@ -1230,10 +1139,7 @@
               "keyref
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  term %term.content;>
 <!ATTLIST  term %term.attributes;>
@@ -1247,10 +1153,7 @@
               "keyref
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  ph %ph.content;>
 <!ATTLIST  ph %ph.attributes;>
@@ -1283,26 +1186,6 @@
 <!ELEMENT  tm %tm.content;>
 <!ATTLIST  tm %tm.attributes;>
 
-
-<!--                    LONG NAME: Boolean  (deprecated)           -->
-<!ENTITY % boolean.content
-                       "EMPTY"
->
-<!ENTITY % boolean.attributes
-              "state
-                          (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #REQUIRED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
->
-<!ELEMENT  boolean %boolean.content;>
-<!ATTLIST  boolean %boolean.attributes;>
-
-
 <!--                    LONG NAME: State                           -->
 <!ENTITY % state.content
                        "EMPTY"
@@ -1314,10 +1197,7 @@
                value
                           CDATA
                                     #REQUIRED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  state %state.content;>
 <!ATTLIST  state %state.attributes;>
@@ -1339,12 +1219,6 @@
                            -dita-use-conref-target)
                                     #IMPLIED
                keyref
-                          CDATA
-                                    #IMPLIED
-               alt
-                          CDATA
-                                    #IMPLIED
-               longdescref
                           CDATA
                                     #IMPLIED
                height
@@ -1369,10 +1243,10 @@
                            inline |
                            -dita-use-conref-target)
                                     'inline'
-               %univ-atts;
-               outputclass
+               format
                           CDATA
-                                    #IMPLIED"
+                                    #IMPLIED
+               %univ-atts;"
 >
 <!ELEMENT  image %image.content;>
 <!ATTLIST  image %image.attributes;>
@@ -1386,10 +1260,7 @@
                          %ph;)*"
 >
 <!ENTITY % alt.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  alt %alt.content;>
 <!ATTLIST  alt %alt.attributes;>
@@ -1418,10 +1289,7 @@
                            peer |
                            -dita-use-conref-target)
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  longdescref %longdescref.content;>
 <!ATTLIST  longdescref %longdescref.attributes;>
@@ -1490,9 +1358,6 @@
                           CDATA
                                     #IMPLIED
                %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED
                longdescre CDATA     #IMPLIED"
 >
 <!ELEMENT  object %object.content;>
@@ -1540,17 +1405,11 @@
                keycol
                           NMTOKEN
                                     #IMPLIED
-               refcols
-                          NMTOKENS
-                                    #IMPLIED
                %display-atts;
                spectitle
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  simpletable %simpletable.content;>
 <!ATTLIST  simpletable %simpletable.attributes;>
@@ -1561,10 +1420,7 @@
                        "(%stentry;)+"
 >
 <!ENTITY % sthead.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  sthead %sthead.content;>
 <!ATTLIST  sthead %sthead.attributes;>
@@ -1575,10 +1431,7 @@
                        "(%stentry;)*"
 >
 <!ENTITY % strow.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  strow %strow.content;>
 <!ATTLIST  strow %strow.attributes;>
@@ -1592,10 +1445,7 @@
               "specentry
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  stentry %stentry.content;>
 <!ATTLIST  stentry %stentry.attributes;>
@@ -1618,10 +1468,7 @@
                disposition
                           CDATA
                                     #IMPLIED
-               %univ-atts-translate-no;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts-translate-no;"
 >
 <!ELEMENT  draft-comment %draft-comment.content;>
 <!ATTLIST  draft-comment %draft-comment.attributes;>
@@ -1635,10 +1482,7 @@
               "remap
                           CDATA
                                     #IMPLIED
-               %univ-atts-translate-no;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts-translate-no;"
 >
 <!ELEMENT  required-cleanup %required-cleanup.content;>
 <!ATTLIST  required-cleanup %required-cleanup.attributes;>
@@ -1652,10 +1496,7 @@
               "callout
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  fn %fn.content;>
 <!ATTLIST  fn %fn.attributes;>
@@ -1698,21 +1539,6 @@
 <!ELEMENT  index-base %index-base.content;>
 <!ATTLIST  index-base %index-base.attributes;>
 
-
-<!--                    LONG NAME: Index term reference            -->
-<!ENTITY % indextermref.content
-                       "EMPTY"
->
-<!ENTITY % indextermref.attributes
-              "keyref
-                          CDATA
-                                    #REQUIRED
-               %univ-atts;"
->
-<!ELEMENT  indextermref %indextermref.content;>
-<!ATTLIST  indextermref %indextermref.attributes;>
-
-
 <!--                    LONG NAME: Citation (bibliographic source) -->
 <!ENTITY % cite.content
                        "(%xrefph.cnt;)*"
@@ -1721,10 +1547,7 @@
               "keyref
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  cite %cite.content;>
 <!ATTLIST  cite %cite.attributes;>
@@ -1754,10 +1577,7 @@
                            peer |
                            -dita-use-conref-target)
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  xref %xref.content;>
 <!ATTLIST  xref %xref.attributes;>
@@ -1765,7 +1585,7 @@
 
 
 <!ENTITY % tblDecl-def
-  PUBLIC "-//OASIS//ELEMENTS DITA 1.3 Exchange Table Model//EN"
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Exchange Table Model//EN"
          "tblDecl.mod"
 >%tblDecl-def;
 
@@ -1773,60 +1593,58 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  alt          %global-atts;  class CDATA "- topic/alt "        >
-<!ATTLIST  boolean      %global-atts;  class CDATA "- topic/boolean "    >
-<!ATTLIST  cite         %global-atts;  class CDATA "- topic/cite "       >
-<!ATTLIST  dd           %global-atts;  class CDATA "- topic/dd "         >
-<!ATTLIST  data         %global-atts;  class CDATA "- topic/data "       >
-<!ATTLIST  data-about   %global-atts;  class CDATA "- topic/data-about " >
-<!ATTLIST  ddhd         %global-atts;  class CDATA "- topic/ddhd "       >
-<!ATTLIST  desc         %global-atts;  class CDATA "- topic/desc "       >
-<!ATTLIST  div          %global-atts;  class CDATA "- topic/div "        >
-<!ATTLIST  dl           %global-atts;  class CDATA "- topic/dl "         >
-<!ATTLIST  dlentry      %global-atts;  class CDATA "- topic/dlentry "    >
-<!ATTLIST  dlhead       %global-atts;  class CDATA "- topic/dlhead "     >
-<!ATTLIST  draft-comment %global-atts;  class CDATA "- topic/draft-comment ">
-<!ATTLIST  dt           %global-atts;  class CDATA "- topic/dt "         >
-<!ATTLIST  dthd         %global-atts;  class CDATA "- topic/dthd "       >
-<!ATTLIST  fig          %global-atts;  class CDATA "- topic/fig "        >
-<!ATTLIST  figgroup     %global-atts;  class CDATA "- topic/figgroup "   >
-<!ATTLIST  fn           %global-atts;  class CDATA "- topic/fn "         >
-<!ATTLIST  foreign      %global-atts;  class CDATA "- topic/foreign "    >
-<!ATTLIST  image        %global-atts;  class CDATA "- topic/image "      >
-<!ATTLIST  indexterm    %global-atts;  class CDATA "- topic/indexterm "  >
-<!ATTLIST  index-base   %global-atts;  class CDATA "- topic/index-base " >
-<!ATTLIST  indextermref %global-atts;  class CDATA "- topic/indextermref ">
-<!ATTLIST  itemgroup    %global-atts;  class CDATA "- topic/itemgroup "  >
-<!ATTLIST  keyword      %global-atts;  class CDATA "- topic/keyword "    >
-<!ATTLIST  li           %global-atts;  class CDATA "- topic/li "         >
-<!ATTLIST  lines        %global-atts;  class CDATA "- topic/lines "      >
-<!ATTLIST  longdescref  %global-atts;  class CDATA "- topic/longdescref ">
-<!ATTLIST  longquoteref %global-atts;  class CDATA "- topic/longquoteref ">
-<!ATTLIST  lq           %global-atts;  class CDATA "- topic/lq "         >
-<!ATTLIST  navtitle     %global-atts;  class CDATA "- topic/navtitle "   >
-<!ATTLIST  note         %global-atts;  class CDATA "- topic/note "       >
-<!ATTLIST  object       %global-atts;  class CDATA "- topic/object "     >
-<!ATTLIST  ol           %global-atts;  class CDATA "- topic/ol "         >
-<!ATTLIST  p            %global-atts;  class CDATA "- topic/p "          >
-<!ATTLIST  param        %global-atts;  class CDATA "- topic/param "      >
-<!ATTLIST  ph           %global-atts;  class CDATA "- topic/ph "         >
-<!ATTLIST  pre          %global-atts;  class CDATA "- topic/pre "        >
-<!ATTLIST  q            %global-atts;  class CDATA "- topic/q "          >
-<!ATTLIST  required-cleanup %global-atts;  class CDATA "- topic/required-cleanup ">
-<!ATTLIST  simpletable  %global-atts;  class CDATA "- topic/simpletable ">
-<!ATTLIST  sl           %global-atts;  class CDATA "- topic/sl "         >
-<!ATTLIST  sli          %global-atts;  class CDATA "- topic/sli "        >
-<!ATTLIST  state        %global-atts;  class CDATA "- topic/state "      >
-<!ATTLIST  stentry      %global-atts;  class CDATA "- topic/stentry "    >
-<!ATTLIST  sthead       %global-atts;  class CDATA "- topic/sthead "     >
-<!ATTLIST  strow        %global-atts;  class CDATA "- topic/strow "      >
-<!ATTLIST  term         %global-atts;  class CDATA "- topic/term "       >
-<!ATTLIST  text         %global-atts;  class CDATA "- topic/text "       >
-<!ATTLIST  title        %global-atts;  class CDATA "- topic/title "      >
-<!ATTLIST  tm           %global-atts;  class CDATA "- topic/tm "         >
-<!ATTLIST  ul           %global-atts;  class CDATA "- topic/ul "         >
-<!ATTLIST  unknown      %global-atts;  class CDATA "- topic/unknown "    >
-<!ATTLIST  xref         %global-atts;  class CDATA "- topic/xref "       >
+<!ATTLIST  alt            class CDATA "- topic/alt "        >
+<!ATTLIST  cite           class CDATA "- topic/cite "       >
+<!ATTLIST  dd             class CDATA "- topic/dd "         >
+<!ATTLIST  data           class CDATA "- topic/data "       >
+<!ATTLIST  data-about     class CDATA "- topic/data-about " >
+<!ATTLIST  ddhd           class CDATA "- topic/ddhd "       >
+<!ATTLIST  desc           class CDATA "- topic/desc "       >
+<!ATTLIST  div            class CDATA "- topic/div "        >
+<!ATTLIST  dl             class CDATA "- topic/dl "         >
+<!ATTLIST  dlentry        class CDATA "- topic/dlentry "    >
+<!ATTLIST  dlhead         class CDATA "- topic/dlhead "     >
+<!ATTLIST  draft-comment   class CDATA "- topic/draft-comment ">
+<!ATTLIST  dt             class CDATA "- topic/dt "         >
+<!ATTLIST  dthd           class CDATA "- topic/dthd "       >
+<!ATTLIST  fig            class CDATA "- topic/fig "        >
+<!ATTLIST  figgroup       class CDATA "- topic/figgroup "   >
+<!ATTLIST  fn             class CDATA "- topic/fn "         >
+<!ATTLIST  foreign        class CDATA "- topic/foreign "    >
+<!ATTLIST  image          class CDATA "- topic/image "      >
+<!ATTLIST  indexterm      class CDATA "- topic/indexterm "  >
+<!ATTLIST  index-base     class CDATA "- topic/index-base " >
+<!ATTLIST  itemgroup      class CDATA "- topic/itemgroup "  >
+<!ATTLIST  keyword        class CDATA "- topic/keyword "    >
+<!ATTLIST  li             class CDATA "- topic/li "         >
+<!ATTLIST  lines          class CDATA "- topic/lines "      >
+<!ATTLIST  longdescref    class CDATA "- topic/longdescref ">
+<!ATTLIST  longquoteref   class CDATA "- topic/longquoteref ">
+<!ATTLIST  lq             class CDATA "- topic/lq "         >
+<!ATTLIST  navtitle       class CDATA "- topic/navtitle "   >
+<!ATTLIST  note           class CDATA "- topic/note "       >
+<!ATTLIST  object         class CDATA "- topic/object "     >
+<!ATTLIST  ol             class CDATA "- topic/ol "         >
+<!ATTLIST  p              class CDATA "- topic/p "          >
+<!ATTLIST  param          class CDATA "- topic/param "      >
+<!ATTLIST  ph             class CDATA "- topic/ph "         >
+<!ATTLIST  pre            class CDATA "- topic/pre "        >
+<!ATTLIST  q              class CDATA "- topic/q "          >
+<!ATTLIST  required-cleanup   class CDATA "- topic/required-cleanup ">
+<!ATTLIST  simpletable    class CDATA "- topic/simpletable ">
+<!ATTLIST  sl             class CDATA "- topic/sl "         >
+<!ATTLIST  sli            class CDATA "- topic/sli "        >
+<!ATTLIST  state          class CDATA "- topic/state "      >
+<!ATTLIST  stentry        class CDATA "- topic/stentry "    >
+<!ATTLIST  sthead         class CDATA "- topic/sthead "     >
+<!ATTLIST  strow          class CDATA "- topic/strow "      >
+<!ATTLIST  term           class CDATA "- topic/term "       >
+<!ATTLIST  text           class CDATA "- topic/text "       >
+<!ATTLIST  title          class CDATA "- topic/title "      >
+<!ATTLIST  tm             class CDATA "- topic/tm "         >
+<!ATTLIST  ul             class CDATA "- topic/ul "         >
+<!ATTLIST  unknown        class CDATA "- topic/unknown "    >
+<!ATTLIST  xref           class CDATA "- topic/xref "       >
 
 <!-- ================== End of DITA Common Elements ==================== -->
  

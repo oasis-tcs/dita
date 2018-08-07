@@ -64,10 +64,7 @@
                spectitle
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  imagemap %imagemap.content;>
 <!ATTLIST  imagemap %imagemap.attributes;>
@@ -80,10 +77,7 @@
                          (%xref;))"
 >
 <!ENTITY % area.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  area %area.content;>
 <!ATTLIST  area %area.attributes;>
@@ -98,10 +92,7 @@
               "keyref
                           CDATA
                                     #IMPLIED
-               %univ-atts-translate-no;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts-translate-no;"
 >
 <!ELEMENT  shape %shape.content;>
 <!ATTLIST  shape %shape.attributes;>
@@ -115,10 +106,7 @@
               "keyref
                           CDATA
                                     #IMPLIED
-               %univ-atts-translate-no;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts-translate-no;"
 >
 <!ELEMENT  coords %coords.content;>
 <!ATTLIST  coords %coords.attributes;>
@@ -148,11 +136,11 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  imagemap     %global-atts;  class CDATA "+ topic/fig ut-d/imagemap ">
-<!ATTLIST  area         %global-atts;  class CDATA "+ topic/figgroup ut-d/area ">
-<!ATTLIST  shape        %global-atts;  class CDATA "+ topic/keyword ut-d/shape ">
-<!ATTLIST  coords       %global-atts;  class CDATA "+ topic/ph ut-d/coords ">
-<!ATTLIST  sort-as      %global-atts;  class CDATA "+ topic/data ut-d/sort-as ">
+<!ATTLIST  imagemap       class CDATA "+ topic/fig ut-d/imagemap ">
+<!ATTLIST  area           class CDATA "+ topic/figgroup ut-d/area ">
+<!ATTLIST  shape          class CDATA "+ topic/keyword ut-d/shape ">
+<!ATTLIST  coords         class CDATA "+ topic/ph ut-d/coords ">
+<!ATTLIST  sort-as        class CDATA "+ topic/data ut-d/sort-as ">
 
 <!-- ================== End of DITA Utilities Domain ==================== -->
  

@@ -2,11 +2,11 @@
 <!-- ============================================================= -->
 <!--                    HEADER                                     -->
 <!-- ============================================================= -->
-<!-- Darwin Information Typing Architecture (DITA) Version 1.3 Plus Errata 01     -->
+<!-- Darwin Information Typing Architecture (DITA) Version 1.3 Plus Errata 02     -->
 <!-- OASIS Standard                                           -->
-<!-- 25 October 2016                                           -->
-<!-- Copyright (c) OASIS Open 2016. All rights reserved.           -->
-<!-- Source: http://docs.oasis-open.org/dita/dita/v1.3/errata01/os/complete/part0-overview/dita-v1.3-errata01-os-part0-overview-complete.html                                -->
+<!-- 16 January 2018                                           -->
+<!-- Copyright (c) OASIS Open 2018. All rights reserved.           -->
+<!-- Source: http://docs.oasis-open.org/dita/dita/v1.3/errata02/csprd01/complete/part0-overview/dita-v1.3-errata02-csprd01-part0-overview-complete.html                                -->
 <!--                                                               -->
 <!-- ============================================================= -->
 <!--  MODULE:    DITA Map                                          -->
@@ -51,7 +51,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
 <!--    2006.06.07 RDA: Make universal attributes universal        -->
 <!--                      (DITA 1.1 proposal #12)                  -->
 <!--    2006.06.14 RDA: Add dir attribute to localization-atts     -->
-<!--    2006.06.14 RDA: Add outputclass attribute to most elemetns -->
+<!--    2006.06.14 RDA: Add outputclass attribute to most elements -->
 <!--    2006.11.30 RDA: Add -dita-use-conref-target to enumerated  -->
 <!--                      attributes                               -->
 <!--    2006.11.30 RDA: Remove #FIXED from DITAArchVersion         -->
@@ -64,6 +64,12 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
 <!--    2008.02.12 RDA: Add navtitle to topicmeta                  -->
 <!--    2008.02.13 RDA: Create .content and .attributes entities   -->
 <!--    2010.09.20 RDA: Bring linktext content in sync with topic  -->
+<!--    2018.03.14 KJE: Added new attribute group for use on       -->
+<!--                    reltable and relcolspec; removed @keyref   -->
+<!--                    from navref; removed @navtitle@print, and  -->
+<!--                    @query; removed @title on map              -->
+<!--    2018.04.09 KJE: Removed outputclass various elements that  -->
+<!--                    take univ-atts                             -->
 <!-- ============================================================= -->
 
 <!-- ============================================================= -->
@@ -157,12 +163,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                            yes |
                            -dita-use-conref-target)
                                     #IMPLIED
-               print
-                          (no |
-                           printonly |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
                search
                           (no |
                            yes |
@@ -220,12 +220,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                            yes |
                            -dita-use-conref-target)
                                     'no'
-               print
-                          (no |
-                           printonly |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
                search
                           (no |
                            yes |
@@ -283,12 +277,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                            yes |
                            -dita-use-conref-target)
                                     'no'
-               print
-                          (no |
-                           printonly |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
                search
                           (no |
                            yes |
@@ -340,12 +328,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                            yes |
                            -dita-use-conref-target)
                                     #IMPLIED
-               print
-                          (no |
-                           printonly |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
                search
                           (no |
                            yes |
@@ -358,6 +340,53 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                           CDATA
                                     #IMPLIED"
 >
+<!ENTITY % topicref-atts-for-reltable
+              "type
+                          CDATA
+                                    #IMPLIED
+               cascade
+                          CDATA
+                                    #IMPLIED
+               processing-role
+                          (normal |
+                           resource-only |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               scope
+                          (external |
+                           local |
+                           peer |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               locktitle
+                          (no |
+                           yes |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               format
+                          CDATA
+                                    #IMPLIED
+               linking
+                          (none |
+                           normal |
+                           sourceonly |
+                           targetonly |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               toc
+                          (no |
+                           yes |
+                           -dita-use-conref-target)
+                                    'no'
+               search
+                          (no |
+                           yes |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               chunk
+                          CDATA
+                                    #IMPLIED"
+>
 
     
 <!-- ============================================================= -->
@@ -367,13 +396,13 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
 
 <!--           Content elements common to map and topic            -->
 <!ENTITY % commonElements-def
-  PUBLIC "-//OASIS//ELEMENTS DITA 1.3 Common Elements//EN"
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
          "commonElements.mod"
 >%commonElements-def;
 
 <!--                       MetaData Elements                       -->
 <!ENTITY % metaDecl-def
-  PUBLIC "-//OASIS//ELEMENTS DITA 1.3 Metadata//EN"
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Metadata//EN"
          "metaDecl.mod"
 >%metaDecl-def;
       
@@ -401,10 +430,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                           %topicref;)*)"
 >
 <!ENTITY % map.attributes
-              "title
-                          CDATA
-                                    #IMPLIED
-               id
+              "id
                           ID
                                     #IMPLIED
                %conref-atts;
@@ -433,13 +459,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
 >
 <!ENTITY % navref.attributes
               "%univ-atts;
-               keyref
-                          CDATA
-                                    #IMPLIED
                mapref
-                          CDATA
-                                    #IMPLIED
-               outputclass
                           CDATA
                                     #IMPLIED"
 >
@@ -456,10 +476,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                           %topicref;)*)"
 >
 <!ENTITY % topicref.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -468,13 +485,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                keys
                           CDATA
                                     #IMPLIED
-               query
-                          CDATA
-                                    #IMPLIED
                copy-to
-                          CDATA
-                                    #IMPLIED
-               outputclass
                           CDATA
                                     #IMPLIED
                %topicref-atts;
@@ -514,10 +525,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
               "title
                           CDATA
                                     #IMPLIED
-               outputclass
-                          CDATA
-                                    #IMPLIED
-               %topicref-atts-no-toc-no-keyscope;
+               %topicref-atts-for-reltable;
                %univ-atts;"
 >
 <!ELEMENT  reltable %reltable.content;>
@@ -542,10 +550,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                          (%topicref;)*)"
 >
 <!ENTITY % relcolspec.attributes
-              "outputclass
-                          CDATA
-                                    #IMPLIED
-               %topicref-atts-no-toc-no-keyscope;
+              "%topicref-atts-for-reltable;
                %univ-atts;"
 >
 <!ELEMENT  relcolspec %relcolspec.content;>
@@ -557,10 +562,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                        "(%relcell;)*"
 >
 <!ENTITY % relrow.attributes
-              "outputclass
-                          CDATA
-                                    #IMPLIED
-               %univ-atts;"
+              "%univ-atts;"
 >
 <!ELEMENT  relrow %relrow.content;>
 <!ATTLIST  relrow %relrow.attributes;>
@@ -572,10 +574,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                          %data.elements.incl;)*"
 >
 <!ENTITY % relcell.attributes
-              "outputclass
-                          CDATA
-                                    #IMPLIED
-               %topicref-atts-no-toc-no-keyscope;
+              "%topicref-atts-no-toc-no-keyscope;
                %univ-atts;"
 >
 <!ELEMENT  relcell %relcell.content;>
@@ -623,10 +622,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                          %xref;)*"
 >
 <!ENTITY % shortdesc.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  shortdesc %shortdesc.content;>
 <!ATTLIST  shortdesc %shortdesc.attributes;>
@@ -638,10 +634,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                          %ph;)*"
 >
 <!ENTITY % linktext.attributes
-              "outputclass
-                          CDATA
-                                    #IMPLIED
-               %univ-atts;"
+              "%univ-atts;"
 >
 <!ELEMENT  linktext %linktext.content;>
 <!ATTLIST  linktext %linktext.attributes;>
@@ -652,10 +645,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                        "(%words.cnt;)*"
 >
 <!ENTITY % searchtitle.attributes
-              "outputclass
-                          CDATA
-                                    #IMPLIED
-               %univ-atts;"
+              "%univ-atts;"
 >
 <!ELEMENT  searchtitle %searchtitle.content;>
 <!ATTLIST  searchtitle %searchtitle.attributes;>
@@ -700,7 +690,10 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                            -dita-use-conref-target)
                                     'no'
                %id-atts;
-               %select-atts;"
+               %select-atts;
+               outputclass
+                          CDATA
+                                    #IMPLIED"
 >
 <!ELEMENT  ux-window %ux-window.content;>
 <!ATTLIST  ux-window %ux-window.attributes;>
@@ -711,20 +704,20 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  map          %global-atts;  class CDATA "- map/map "          >
-<!ATTLIST  navref       %global-atts;  class CDATA "- map/navref "       >
-<!ATTLIST  topicref     %global-atts;  class CDATA "- map/topicref "     >
-<!ATTLIST  anchor       %global-atts;  class CDATA "- map/anchor "       >
-<!ATTLIST  reltable     %global-atts;  class CDATA "- map/reltable "     >
-<!ATTLIST  relheader    %global-atts;  class CDATA "- map/relheader "    >
-<!ATTLIST  relcolspec   %global-atts;  class CDATA "- map/relcolspec "   >
-<!ATTLIST  relrow       %global-atts;  class CDATA "- map/relrow "       >
-<!ATTLIST  relcell      %global-atts;  class CDATA "- map/relcell "      >
-<!ATTLIST  topicmeta    %global-atts;  class CDATA "- map/topicmeta "    >
-<!ATTLIST  linktext     %global-atts;  class CDATA "- map/linktext "     >
-<!ATTLIST  searchtitle  %global-atts;  class CDATA "- map/searchtitle "  >
-<!ATTLIST  shortdesc    %global-atts;  class CDATA "- map/shortdesc "    >
-<!ATTLIST  ux-window    %global-atts;  class CDATA "- map/ux-window "    >
+<!ATTLIST  map            class CDATA "- map/map "          >
+<!ATTLIST  navref         class CDATA "- map/navref "       >
+<!ATTLIST  topicref       class CDATA "- map/topicref "     >
+<!ATTLIST  anchor         class CDATA "- map/anchor "       >
+<!ATTLIST  reltable       class CDATA "- map/reltable "     >
+<!ATTLIST  relheader      class CDATA "- map/relheader "    >
+<!ATTLIST  relcolspec     class CDATA "- map/relcolspec "   >
+<!ATTLIST  relrow         class CDATA "- map/relrow "       >
+<!ATTLIST  relcell        class CDATA "- map/relcell "      >
+<!ATTLIST  topicmeta      class CDATA "- map/topicmeta "    >
+<!ATTLIST  linktext       class CDATA "- map/linktext "     >
+<!ATTLIST  searchtitle    class CDATA "- map/searchtitle "  >
+<!ATTLIST  shortdesc      class CDATA "- map/shortdesc "    >
+<!ATTLIST  ux-window      class CDATA "- map/ux-window "    >
 
 <!-- ================== End of DITA Map Module ==================== -->
  

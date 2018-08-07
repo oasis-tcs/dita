@@ -5,8 +5,7 @@
 <reference id="topicSubjectTable" xml:lang="en-us">
 <title><xmlelement>topicSubjectTable</xmlelement></title>
 <shortdesc>The <xmlelement>topicSubjectTable</xmlelement> element is a specialized relationship
-    table which allows a map to use relationship tables to associate topics with subjects. Tools
-    (such as search tools) <ph >might</ph> use these classifications to
+    table that associates topics with subjects. Search tools might use these classifications to
     retrieve content that is relative to a specific subject or combination of subjects.</shortdesc>
 <prolog><metadata>
 <keywords><indexterm>topicSubjectTable</indexterm>
@@ -14,26 +13,35 @@
           elements<indexterm>topicSubjectTable</indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
-<section id="section-1"><p>In a <xmlelement>topicSubjectTable</xmlelement>, the first column is reserved for references to
-        content. Subsequent columns are reserved for subjects that classify the content, each column
-        supplying the subjects for a different category as identified in the header. The table
-        resembles a traditional relationship table in which the first column identifies the source
-        and the other columns identify the targets, but the relationship reflects the subjects
-        covered by the content rather than linking between documents. </p><note>In a traditional <xmlelement>reltable</xmlelement>, topics in any given column establish
-        relationships with topics in every other cell of the same row. In a
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>In a <xmlelement>topicSubjectTable</xmlelement>, the first column is reserved for
+        references to content. Subsequent columns are reserved for subjects that classify the
+        content; each column supplies the subjects for the category that is identified in the
+        header. The table resembles a traditional relationship table in which the first column
+        identifies the source and the other columns identify the targets, but the relationship
+        reflects the subjects covered by the content rather than linking between documents.</p>
+      <p>In a <xmlelement>reltable</xmlelement>, topics in any given column establish relationships
+        with topics in every other cell of the same row. In a
           <xmlelement>topicSubjectTable</xmlelement>, topics in the first column are related to all
         of the subjects in the row, but no relationship is implied between subjects in different
-        columns of the same row. Instead, relationships are defined between subjects using a subject
-        scheme map (which provides a <xmlelement>subjectRelTable</xmlelement> element for
-        non-hierarchical relationships between subjects).</note></section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-topicSubjectTable/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>+
-map/reltable classify-d/topicSubjectTable </p></section>
+        columns of the same row. (Relationships between subjects are defined in the
+          <xmlelement>subjectRelTable</xmlelement> in the subject scheme map.)</p>
+    </section>
+<section id="inheritance" otherprops="inheritance">
+      <title>Specialization hierarchy</title>
+      <p>This element is specialized from <xref keyref="reltable"/> in the map module. It is part of
+        the classify-d domain.</p>
+      <!--<p>+ map/reltable classify-d/topicSubjectTable </p>--></section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <sectiondiv conref="../../common/conref-attribute.dita#conref-attribute/reltable-minus-title"
+      />
+    </section>
     <example id="example" otherprops="examples">
       <title>Example</title>
-      <p>The topic subject table below classifies topics with goals for retrieval and with operating
-        systems for filtering. The map makes use of definitions in a subject scheme map, defined
-        separately.</p>
+      <p>The topic subject table below associates topics with goals for retrieval and with operating
+        systems for filtering. The subjects are defined in a separate subject scheme map.</p>
       <fig id="fig_ff4_g3h_dn">
         <title>Subject scheme map</title>
         <codeblock>&lt;subjectScheme>
@@ -53,21 +61,24 @@ map/reltable classify-d/topicSubjectTable </p></section>
       <fig id="fig_t34_g3h_dn">
         <title>Topic subject table</title>
         <p>The following <xmlelement>topicSubjectTable</xmlelement> classifies several topics
-          according to subjects in the previous map. As with any
+          according to subjects defined in the previous map. As with any
             <xmlelement>topicSubjectTable</xmlelement>, the first column is used to specify topics.
           In this specific example, the second column is used to specify a goal, based on the "goal"
           subject in the header. The third column is used to specify an operating system. Based on
-          those definitions, the following classifications are made by this table:<ul>
-            <li>The topics "Configuring cron for efficient startup" and "Allocating raw storage" are
-              each classified by the goal of "performance"; in addition, they are classified by the
-              operating systems "linux" and "unix".</li>
-            <li>The topics "Analyzing web logs for service issues" and "Detecting denial-of-service
-              attacks" are each classified by the goal of "reliability"; in addition, they are
-              classified by the operating systems "linux", "unix", and "windows".</li>
-            <li>No relationship is defined between subjects in the table, meaning that this table
-              does not define any relationship between the goal of "performance" and the operating
-              systems "linux" or "unix".</li>
-          </ul></p>
+          those definitions, the following classifications are made by this table:</p>
+        <ul>
+          <li>The topics <filepath>configure-cron-for-efficiency.dita</filepath> and
+              <filepath>allocating-raw-storage.dita</filepath> are each classified by the goal of
+            "performance"; they also are classified by the operating systems "linux" and
+            "unix".</li>
+          <li>The topics <filepath>analyze-web-logs.dita</filepath> and
+              <filepath>detect-denial-of-service-attacks.dita</filepath> are each classified by the
+            goal of "reliability"; they also are classified by the operating systems "linux",
+            "unix", and "windows".</li>
+          <li>No relationship is defined between subjects in the table, meaning that this table does
+            not define any relationship between the goal of "performance" and the operating systems
+            "linux" or "unix".</li>
+        </ul>
         <codeblock>&lt;map>
 &lt;!-- ... -->
 &lt;topicSubjectTable>
@@ -82,8 +93,8 @@ map/reltable classify-d/topicSubjectTable </p></section>
   &lt;/topicSubjectHeader>
   &lt;topicSubjectRow>
     &lt;topicCell>
-      &lt;topicref href="webServerStart.dita" navtitle="Configuring cron for efficient startup"/>
-      &lt;topicref href="dbDisk.dita" navtitle="Allocating raw storage"/>
+      &lt;topicref href="configure-cron-for-efficiency.dita"/>
+      &lt;topicref href="allocating-raw-storage.dita"/>
     &lt;/topicCell>
     &lt;subjectCell>
       &lt;topicsubject keyref="performance"/>
@@ -95,8 +106,8 @@ map/reltable classify-d/topicSubjectTable </p></section>
   &lt;/topicSubjectRow>
   &lt;topicSubjectRow>
     &lt;topicCell>
-      &lt;topicref href="webLogAnalyze.dita" navtitle="Analyzing web logs for service issues"/>
-      &lt;topicref href="webDenialService.dita" navtitle="Detecting denial-of-service attacks"/>
+      &lt;topicref href="analyze-web-logs.dita"/>
+      &lt;topicref href="detect-denial-of-service-attacks.dita"/>
     &lt;/topicCell>
     &lt;subjectCell>
       &lt;topicsubject keyref="reliability"/>
@@ -112,19 +123,19 @@ map/reltable classify-d/topicSubjectTable </p></section>
 &lt;/map></codeblock>
         <p>A table view of this <xmlelement>topicSubjectTable</xmlelement> might look as follows.
           This is only one of many possible views; to aid in understanding the example, the content
-          topics in the first column are displayed using only their titles, and related subjects are
-          displayed using only their <xmlatt>keyref</xmlatt> attribute value.</p>
-        <simpletable>
+          topics in the first column are displayed using only their file names, and related subjects
+          are displayed using only their <xmlatt>keyref</xmlatt> attribute value.</p>
+        <simpletable frame="all" relcolwidth="1.0* 1.0* 1.0*" id="simpletable_h14_kc1_cbb">
           <sthead>
-            <stentry><i>task</i></stentry>
-            <stentry><i>goal</i></stentry>
-            <stentry><i>os</i></stentry>
+            <stentry>task</stentry>
+            <stentry>goal</stentry>
+            <stentry>os</stentry>
           </sthead>
           <strow>
             <stentry>
-              <lines>Configuring cron for efficient startup
+              <lines><filepath>configure-cron-for-efficiency.dita</filepath>
 
-Allocating raw storage</lines>
+<filepath>allocating-raw-storage.dita</filepath></lines>
             </stentry>
             <stentry>
               <lines>performance</lines>
@@ -136,9 +147,10 @@ unix</lines>
           </strow>
           <strow>
             <stentry>
-              <lines>Analyzing web logs for service issues
+              <lines><filepath>analyze-web-logs.dita</filepath>
 
-Detecting denial-of-service attacks</lines>
+<filepath>
+detect-denial-of-service-attacks.dita</filepath></lines>
             </stentry>
             <stentry>
               <lines>reliability</lines>
@@ -152,9 +164,6 @@ windows</lines>
         </simpletable>
       </fig>
     </example>
-<section id="attributes"><title>Attributes</title><sectiondiv
-        conref="../../common/conref-attribute.dita#conref-attribute/reltable-minus-title"
-      /></section>
 </refbody>
 </reference>
 

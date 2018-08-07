@@ -9,27 +9,45 @@ a graphic. The graphic might represent a hazard, a hazardous situation,
 a result of not avoiding a hazard, or any combination of these messages.</shortdesc>
 <prolog><metadata>
 <keywords><indexterm>hazardsymbol</indexterm>
-        <indexterm>hazard statement domain<indexterm>hazardsymbol</indexterm></indexterm></keywords>
+        <indexterm>hazard statement domain<indexterm>hazardsymbol</indexterm></indexterm>
+        <indexterm>processing expectations<indexterm>hazardsymbol</indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-hazardsymbol/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>+
-topic/image hazard-d/hazardsymbol</p></section>
-<example id="example" otherprops="examples"><title>Example</title><codeblock
-xml:space="preserve">&lt;hazardstatement type="danger">
-  &lt;messagepanel>
-    &lt;typeofhazard>Rotating blade.&lt;/typeofhazard>
-    &lt;consequence>Moving parts can crush and cut.&lt;/consequence>
-    &lt;howtoavoid>Follow lockout procedure before servicing.&lt;/howtoavoid>
-  &lt;/messagepanel>
-  <b>&lt;hazardsymbol href="rotatingblade.png"/></b>
-&lt;/hazardstatement></codeblock></example>
-<section id="attributes"><title>Attributes</title>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <draft-comment author="Kristen J Eberlein" time="31 May 2018">
+        <p>The following content should be shared with at least the <xmlelement>image</xmlelement>
+          topic. We could use either branch filtering or scoped keys to ensure that each paragraph
+          references the correct element name.</p>
+      </draft-comment>
+      <p>If the <xmlatt>height</xmlatt> attribute is specified on the
+          <xmlelement>hazardsymbol</xmlelement> element, processors <term outputclass="RFC-2119"
+          >SHOULD</term> scale the image to the specified size. If a <xmlatt>height</xmlatt>
+        attribute is specified and no width value is specified, the width <term
+          outputclass="RFC-2119">SHOULD</term> be scaled by the same factor as the height. If both a
+        height value and width value are specified, implementations <term outputclass="RFC-2119"
+          >MAY</term> ignore one of the two values when they are unable to scale to each direction
+        using different factors.</p>
+      <p>If the <xmlatt>width</xmlatt> attribute is specified on the
+          <xmlelement>hazardsymbol</xmlelement> element, processors <term outputclass="RFC-2119"
+          >SHOULD</term> scale the image to the specified size. If a <xmlatt>width</xmlatt>
+        attribute is specified and no height value is specified, the height <term
+          outputclass="RFC-2119">SHOULD</term> be scaled by the same factor as the width. If both a
+        height value and width value are specified, implementations <term outputclass="RFC-2119"
+          >MAY</term> ignore one of the two values when they are unable to scale to each direction
+        using different factors.</p>
+    </section>
+<section id="inheritance" otherprops="inheritance">
+      <title>Specialization hierarchy</title>
+      <p>The <xmlelement>hazardsymbol</xmlelement> element is specialized from
+          <xmlelement>image</xmlelement> in the topic module. It is part of the hazard statement
+        domain (hazard-d).</p></section>
+    <section id="attributes">
+      <title>Attributes</title>
       <!--Note that this is an exact copy of the attribute list for image, EXCEPT that this element dropped the deprecated alt and makes @href required, which makes it harder to reuse that full list. It is an exact copy of glossSymbol.-->
       <p>The following attributes are available on this element: <xref
-          href="../attributes/universalAttributes.dita"/>, <xref
-          href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, <xref
-          href="../attributes/thekeyrefattribute.dita"><xmlatt>keyref</xmlatt></xref>, and the
+          keyref="attributes-universal"/>, <xref
+          keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>, and the
         attributes defined below.</p>
       <dl>
         <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-href">
@@ -64,11 +82,17 @@ xml:space="preserve">&lt;hazardstatement type="danger">
           <dt/>
           <dd/>
         </dlentry>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-longdescref">
-          <dt/>
-          <dd/>
-        </dlentry>
-      </dl></section>
+      </dl>
+    </section>
+<example id="example" otherprops="examples"><title>Example</title><codeblock
+xml:space="preserve">&lt;hazardstatement type="danger">
+  &lt;messagepanel>
+    &lt;typeofhazard>Rotating blade.&lt;/typeofhazard>
+    &lt;consequence>Moving parts can crush and cut.&lt;/consequence>
+    &lt;howtoavoid>Follow lockout procedure before servicing.&lt;/howtoavoid>
+  &lt;/messagepanel>
+  <b>&lt;hazardsymbol href="rotatingblade.png"/></b>
+&lt;/hazardstatement></codeblock></example>
 </refbody>
 </reference>
 

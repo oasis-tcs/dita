@@ -3,8 +3,7 @@
  "reference.dtd">
 <reference id="image" xml:lang="en-us">
 <title><xmlelement>image</xmlelement></title>
-<shortdesc>Use the <xmlelement>image</xmlelement> element to include artwork or images in a DITA
-    topic.</shortdesc>
+  <shortdesc conkeyref="library-short-descriptions/image"/>
   <prolog>
     <metadata>
       <keywords>
@@ -14,31 +13,31 @@
 </keywords>
 </metadata></prolog>
 <refbody>
-    <section id="section-1">
-      <p>The <xmlelement>image</xmlelement> element has an optional <xmlatt>placement</xmlatt>
-        attribute that indicates whether the included graphic or artwork <ph 
-          >is rendered inline</ph> (a button or icon) or on a separate line for a larger image.
-        There also are attributes that indicate the size to which the included graphic or artwork
-          <ph >is</ph> scaled.</p>
-      <p>An image element specifies an <xmlatt>href</xmlatt> attribute, a <xmlatt>keyref</xmlatt>
-        attribute, or both. When both <xmlatt>keyref</xmlatt> and <xmlatt>href</xmlatt> are
-        specified, the <xmlatt>href</xmlatt> is used as a fallback when the key reference cannot be
-        resolved. The image addressed by the <xmlatt>keyref</xmlatt> or <xmlatt>href</xmlatt> is
-        brought into the main flow of the content as rendered. </p>
-      <p>To make the intent of the image more accessible for users using screen readers or text-only
-        readers, authors should include a description of the image content in the <xmlelement>alt</xmlelement> element.</p>
+    <!--<section id="usage-information"><title>Usage information</title></section>-->
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>The image addressed by the <xmlatt>keyref</xmlatt> or <xmlatt>href</xmlatt> attribute
+        typically is rendered in the main flow of the content.</p>
+      <p>Processors <term outputclass="RFC-2119">SHOULD</term> scale images when values are provided
+        for the <xmlatt>height</xmlatt> and <xmlatt>width</xmlatt> attributes. The following
+        expectations apply:</p>
+      <ul>
+        <li>If a height value is specified and no width value is specified, processors <term
+            outputclass="RFC-2119">SHOULD</term> scale the width by the same factor as the
+          height.</li>
+        <li>If a width value is specified and no height value is specified, processors <term
+            outputclass="RFC-2119">SHOULD</term> scale the height by the same factor as the
+          width.</li>
+        <li><ph>If both a height value and width value are specified, implementations <term
+              outputclass="RFC-2119">MAY</term> ignore one of the two values when they are unable to
+            scale to each direction using different factors.</ph></li>
+      </ul>
     </section>
-<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-image/contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-topic/image </p></section>
-<example id="example" otherprops="examples"><title>Example</title><codeblock>&lt;image href="bike.gif" placement="break"&gt;
-  &lt;alt&gt;Two-wheeled bicycle&lt;/alt&gt;
-&lt;/image&gt;</codeblock></example>
-<section id="attributes"><title>Attributes</title>
+    <section id="attributes">
+      <title>Attributes</title>
       <p>The following attributes are available on this element: <xref
-          href="../attributes/universalAttributes.dita"/>, <xref
-          href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, <xref
-          href="../attributes/thekeyrefattribute.dita"><xmlatt>keyref</xmlatt></xref>, and the
+          keyref="attributes-universal"/>, <xref
+          keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>, and the
         attributes defined below.</p>
       <dl>
         <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-href">
@@ -49,6 +48,12 @@ topic/image </p></section>
           <dt/>
           <dd/>
         </dlentry>
+<dlentry id="format" rev="errata-02">
+<dt><xmlatt>format</xmlatt></dt>
+<dd><!--TODO: In 2.0 make this common with version in link attribute group.-->The
+<xmlatt>format</xmlatt> attribute identifies the format of the resource being referenced. See <xref
+keyref="attributes-format"/> for details on supported values.</dd>
+</dlentry>
         <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-height">
           <dt/>
           <dd/>
@@ -73,18 +78,12 @@ topic/image </p></section>
           <dt/>
           <dd/>
         </dlentry>
-        <dlentry id="alt">
-          <dt><xmlatt>alt</xmlatt>
-            <ph conref="../../common/conref-attribute.dita#conref-attribute/deprecated-attr"/></dt>
-          <dd>Alternative text that describes the image to provide accessibility to page readers or
-            provides a text description when an image cannot be displayed by the user&apos;s
-            software. The <xmlatt>alt</xmlatt> attribute is deprecated; use the <xref
-              href="../base/alt.dita"/> element instead.</dd>
-        </dlentry>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-longdescref">
-          <dt/>
-          <dd/>
-        </dlentry>
-      </dl></section>
+      </dl>
+    </section>
+<example id="example" otherprops="examples"><title>Example</title>
+      <p>In the following code sample, the <xmlatt>placement</xmlatt> attribute is set to "break".
+        This ensures that the image will not be rendered as an inline image.</p><codeblock>&lt;image href="bike.gif" placement="break"&gt;
+  &lt;alt&gt;Two-wheeled bicycle&lt;/alt&gt;
+&lt;/image&gt;</codeblock></example>
 </refbody>
 </reference>

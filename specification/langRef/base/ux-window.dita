@@ -16,62 +16,19 @@
     </metadata>
   </prolog>
   <refbody>
-    <section id="section-1">
+    <section id="usage-information">
+      <title>Usage information</title>
       <p>The <xmlelement>ux-window</xmlelement> element can be used anywhere within a map. If more
         than one <xmlelement>ux-window</xmlelement> element in a map has the same
           <xmlatt>name</xmlatt> attribute, the first window specification in document order with
         that <xmlatt>name</xmlatt> attribute is used.</p>
     </section>
-    <section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-ux-window/contains" otherprops="contains"></section>
-    <section id="inheritance" otherprops="inheritance">
-      <title>Inheritance</title>
-      <p>- map/ux-window </p>
-    </section>
-    <example id="example" otherprops="examples">
-      <title>Example</title>
-      <p>In this example, a window with a name of "csh" is defined in the map. The window name is
-        later referenced by the <xmlatt>ux-windowref</xmlatt> attribute on the
-          <xmlelement>resourceid</xmlelement> element.</p>
-      <codeblock>&lt;map title="Widget Help">
- &lt;topicmeta>
-  <b>&lt;ux-window id="fg23" name="csh" top="10" left="20" height="400" width="500" 
-     features="status=yes,toolbar=no,menubar=no,location=no" relative="yes"
-     full-screen="no" /></b>
- &lt;/topicmeta>
- &lt;topicref href="file_ops.dita" type="concept">
-   &lt;topicref href="saving.dita" type="task" />
-   &lt;topicref href="deleting.dita" type="task" />
-   &lt;topicref href="editing.dita" type="task">
-     &lt;topicmeta>  
-       <b>&lt;resourceid id="ab43" appname="ua" 
-          appid="5432" ux-context-string="idh_fileedit" ux-windowref="csh" /></b>
-     &lt;/topicmeta>
-   &lt;/topicref>
-&lt;/topicref>
-&lt;/map&gt;</codeblock>
-      <p>In this example, different window specifications are defined for tablet and desktop
-        presentation:</p>
-      <codeblock>&lt;map title="Puggles Help"&gt;
- &lt;topicmeta>
- <b rev="errata-01">&lt;ux-window id="p76" name="ux-tablet" top="1cm" left="1cm" height="4cm" width="3cm" 
-    features="status=no,toolbar=no,menubar=no,location=no" relative="no"
-    full-screen="no" /></b>
- <b rev="errata-01">&lt;ux-window id="p80" name="ux-desktop" top="5cm" left="10cm" height="16cm" width="12cm" 
-    features="status=yes,toolbar=no,menubar=no,location=yes" relative="no"
-    full-screen="no" /></b>
- &lt;/topicmeta>
- &lt;topicref href="c_puggles_intro.dita" type="concept">
-  &lt;!-- ... -->
- &lt;/topicref>
-&lt;/map&gt;</codeblock>
-    </example>
     <section id="attributes">
       <title>Attributes</title>
       <p>The following attributes are available on this element: <xref
-          href="../attributes/idAttributes.dita"/>, <xref
-          href="../attributes/metadataAttributes.dita#select-atts"/>, <xref
-          href="../attributes/debugAttributes.dita"/>, <xref
-          href="../attributes/universalAttributes.dita#univ-atts/class"/>, and the attributes
+          keyref="attributes-id"/>, <xref
+          keyref="attributes-metadata"/>, <xref
+          keyref="attributes-universal/class"/>, and the attributes
         defined below.</p>
       <dl>
         <dlentry>
@@ -117,15 +74,14 @@
           <dt id="uxatt-on-top"><xmlatt>on-top</xmlatt></dt>
           <dd>Indicates whether the initial z-order of the target help window is on top of all
             windows on the desktop. Allowable values are: "yes", "no", and <xref
-              href="../attributes/ditauseconreftarget.dita">-dita-use-conref-target</xref>. The
+              keyref="attributes-useconreftarget">-dita-use-conref-target</xref>. The
             default value is "no".</dd>
         </dlentry>
         <dlentry>
           <dt id="uxatt-features"><xmlatt>features</xmlatt></dt>
           <dd>A list of other features (size, position, scrollbars, etc.) of the window. Each
-            feature name and value <ph >can not</ph> contain any blank space,
-            and each feature name and value <ph >is</ph> separated by a comma
-            or other delimiter character.</dd>
+            feature name and value <ph>can not</ph> contain any blank space, and each feature name
+            and value <ph>is</ph> separated by a comma or other delimiter character.</dd>
         </dlentry>
         <dlentry>
           <dt id="uxatt-relative"><xmlatt>relative</xmlatt></dt>
@@ -150,10 +106,48 @@
         <dlentry>
           <dt id="uxatt-full-screen"><xmlatt>full-screen</xmlatt></dt>
           <dd>Indicates whether the window is initially displayed in a maximized state. Allowable
-values are: "yes", "no", and <xref href="../attributes/ditauseconreftarget.dita"
->-dita-use-conref-target</xref>. The default value is "no".</dd>
+            values are: "yes", "no", and <xref keyref="attributes-useconreftarget"
+              >-dita-use-conref-target</xref>. The default value is "no".</dd>
         </dlentry>
       </dl>
     </section>
+    <example id="example" otherprops="examples">
+      <title>Example</title>
+      <p>In this example, a window with a name of "csh" is defined in the map. The window name is
+        later referenced by the <xmlatt>ux-windowref</xmlatt> attribute on the
+          <xmlelement>resourceid</xmlelement> element.</p>
+      <codeblock>&lt;map title="Widget Help">
+ &lt;topicmeta>
+  <b>&lt;ux-window id="fg23" name="csh" top="10" left="20" height="400" width="500" 
+     features="status=yes,toolbar=no,menubar=no,location=no" relative="yes"
+     full-screen="no" /></b>
+ &lt;/topicmeta>
+ &lt;topicref href="file_ops.dita" type="concept">
+   &lt;topicref href="saving.dita" type="task" />
+   &lt;topicref href="deleting.dita" type="task" />
+   &lt;topicref href="editing.dita" type="task">
+     &lt;topicmeta>  
+       <b>&lt;resourceid id="ab43" appname="ua" 
+          appid="5432" ux-context-string="idh_fileedit" ux-windowref="csh" /></b>
+     &lt;/topicmeta>
+   &lt;/topicref>
+&lt;/topicref>
+&lt;/map&gt;</codeblock>
+      <p>In this example, different window specifications are defined for tablet and desktop
+        presentation:</p>
+      <codeblock>&lt;map title="Puggles Help"&gt;
+ &lt;topicmeta>
+ <b rev="errata-01">&lt;ux-window id="p76" name="ux-tablet" top="1cm" left="1cm" height="4cm" width="3cm" 
+    features="status=no,toolbar=no,menubar=no,location=no" relative="no"
+    full-screen="no" /></b>
+ <b rev="errata-01">&lt;ux-window id="p80" name="ux-desktop" top="5cm" left="10cm" height="16cm" width="12cm" 
+    features="status=yes,toolbar=no,menubar=no,location=yes" relative="no"
+    full-screen="no" /></b>
+ &lt;/topicmeta>
+ &lt;topicref href="c_puggles_intro.dita" type="concept">
+  &lt;!-- ... -->
+ &lt;/topicref>
+&lt;/map&gt;</codeblock>
+    </example>
   </refbody>
 </reference>

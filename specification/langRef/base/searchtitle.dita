@@ -3,13 +3,8 @@
  "reference.dtd">
 <reference id="searchtitle" xml:lang="en-us">
 <title><xmlelement>searchtitle</xmlelement></title>
-<shortdesc>The <xmlelement>searchtitle</xmlelement> element is used to specify a title that <ph
-      >is</ph> displayed by search tools that locate the topic. This is most
-    useful when the topic has a title that makes sense in the context of a single information set,
-    but <ph >might</ph> be too general in a list of search results; for
-    example, a topic title of "Markup example" <ph >might</ph> make sense as
-    part of a guide to DITA, but when found among thousands of unrelated topics, a search title of
-    "DITA markup example" is more useful.</shortdesc>
+<shortdesc>The <xmlelement>searchtitle</xmlelement> element is used to specify a title that
+      <ph>is</ph> displayed by search tools that locate the topic.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -19,15 +14,24 @@
     </metadata>
   </prolog>
 <refbody>
-<section id="section-1">When a topic is rendered as XHTML, the contents of the
-        <xmlelement>searchtitle</xmlelement> will typically appear in the XHTML&apos;s title
-      element, which used in the result summary for many search engines. This element <ph
-        >might</ph> not be supported for output formats that do not support
-      distinct search titles for topics.</section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-searchtitle/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>"-
-topic/searchtitle " when used in topics, and "- map/searchtitle "
-when used in maps.</p></section>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>This is most useful when the topic has a title that makes sense in the context of a single
+        information set, but might be too general in a list of search results; for example, a topic
+        title of "Markup example" might make sense as part of a guide to DITA, but when found among
+        thousands of unrelated topics, a search title of "DITA markup example" is more useful.</p>
+    </section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>When a topic is rendered as XHTML, the contents of the <xmlelement>searchtitle</xmlelement>
+        will typically appear in the XHTML&apos;s title element, which used in the result summary
+        for many search engines. This element might not be supported for output formats that do not
+        support distinct search titles for topics.</p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+    <p conref="../../common/conref-attribute.dita#conref-attribute/only-universal"/>
+    </section>
 <example id="example" otherprops="examples"><title>Example</title><p>In the
 following example, the general title "Programming Example" is likely
 very useful in a set of information about XSLT basics; however, the
@@ -48,13 +52,6 @@ be much more helpful.</p><codeblock>&lt;task id="progexample"&gt;
     &lt;searchtitle>Example of programming in XSLT&lt;/searchtitle>
   &lt;/topicmeta>
 &lt;/topicref></codeblock></p></example>
-<section id="attributes">
-      <title>Attributes</title>
-      <p >The following attributes are available on this element: <xref
-          href="../attributes/universalAttributes.dita"/> and <xref
-          href="../attributes/commonAttributes.dita#common-atts/outputclass"/>.</p>
-      
-    </section>
 </refbody>
 </reference>
 

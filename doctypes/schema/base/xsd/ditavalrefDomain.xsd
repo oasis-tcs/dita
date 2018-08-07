@@ -119,11 +119,9 @@
       <xs:attributeGroup ref="ditavalref.attributes"/>
    </xs:complexType>
    <xs:group name="ditavalref.content">
-      <xs:sequence>
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="ditavalmeta"/>
-         </xs:choice>
-      </xs:sequence>
+     <xs:sequence>
+       <xs:group ref="ditavalmeta" minOccurs="0"/>
+     </xs:sequence>
    </xs:group>
    <xs:attributeGroup name="ditavalref.attributes">
       <xs:attribute name="navtitle" type="xs:string"/>
@@ -142,7 +140,6 @@
       <xs:attribute name="format" type="xs:string" default="ditaval"/>
       <xs:attribute name="processing-role" type="xs:string" default="resource-only"/>
       <xs:attributeGroup ref="ditavalref-univ-atts"/>
-      <xs:attributeGroup ref="global-atts"/>
    </xs:attributeGroup>
    <xs:element name="ditavalmeta">
       <xs:annotation>
@@ -186,7 +183,6 @@
          </xs:simpleType>
       </xs:attribute>
       <xs:attributeGroup ref="ditavalref-univ-atts"/>
-      <xs:attributeGroup ref="global-atts"/>
    </xs:attributeGroup>
    <xs:element name="dvrResourcePrefix">
       <xs:annotation>
@@ -222,7 +218,6 @@
          </xs:simpleType>
       </xs:attribute>
       <xs:attributeGroup ref="ditavalref-univ-atts"/>
-      <xs:attributeGroup ref="global-atts"/>
    </xs:attributeGroup>
    <xs:element name="dvrResourceSuffix">
       <xs:annotation>
@@ -258,7 +253,6 @@
          </xs:simpleType>
       </xs:attribute>
       <xs:attributeGroup ref="ditavalref-univ-atts"/>
-      <xs:attributeGroup ref="global-atts"/>
    </xs:attributeGroup>
    <xs:element name="dvrKeyscopePrefix">
       <xs:annotation>
@@ -294,7 +288,6 @@
          </xs:simpleType>
       </xs:attribute>
       <xs:attributeGroup ref="ditavalref-univ-atts"/>
-      <xs:attributeGroup ref="global-atts"/>
    </xs:attributeGroup>
    <xs:element name="dvrKeyscopeSuffix">
       <xs:annotation>
@@ -330,6 +323,5 @@
          </xs:simpleType>
       </xs:attribute>
       <xs:attributeGroup ref="ditavalref-univ-atts"/>
-      <xs:attributeGroup ref="global-atts"/>
    </xs:attributeGroup>
 </xs:schema>

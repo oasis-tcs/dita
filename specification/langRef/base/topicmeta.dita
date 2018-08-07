@@ -4,12 +4,7 @@
  "reference.dtd">
 <reference id="topicmeta" xml:lang="en-us">
   <title><xmlelement>topicmeta</xmlelement></title>
-  <shortdesc>The <xmlelement>topicmeta</xmlelement> element defines the metadata that applies to a
-    topic when it appears in a map. When appropriate, that metadata also applies to the other topics
-    in the map that are contained by the same element that contains the <xmlelement>topicmeta</xmlelement> element.
-    When creating links, <xmlelement>topicmeta</xmlelement> content can also be used to override the title and short
-    description that are used for the link. In addition, it can be used to add index entries to
-    referenced content using the <xmlelement>keywords</xmlelement> element.</shortdesc>
+  <shortdesc conkeyref="library-short-descriptions/topicmeta"/>
   <prolog>
     <metadata>
       <keywords><indexterm>elements<indexterm>basic map<indexterm><xmlelement>topicmeta</xmlelement></indexterm></indexterm></indexterm>
@@ -20,41 +15,43 @@
         <indexterm>metadata<indexterm>maps</indexterm></indexterm></keywords>
     </metadata>
   </prolog>
-  <refbody><section id="section-1">The metadata given in a <xmlelement>topicmeta</xmlelement> element is
-      specific to a given context within a map. If a reference to a single resource appears more
-      than once in a map or set of maps, unique metadata <ph >can</ph> be
-      specified in each instance. For example, the two references to a single resource <ph
-        >might</ph> specify different navigation titles or search titles, each
-      of which is specific to a single context.<note>The topic <xref
-          href="../../archSpec/base/cascading-in-a-ditamap.dita" format="dita"/> in the DITA
-        Architectural Specification provides more information about which metadata elements inside
-          <xmlelement>topicmeta</xmlelement> cascade to other <xmlelement>topicref</xmlelement>
-        elements. In addition, the topic <xref
-          href="../../archSpec/base/reconciling-topic-and-map-metadata.dita"/> provides more
-        information about how metadata specified in the map interacts with metadata specified in
-        each topic.</note></section><section conref="../../common/commonNavLibraryTable.dita#contentmodel-topicmeta/contains" id="contains" otherprops="contains"></section><section id="inheritance" otherprops="inheritance">
-      <title>Inheritance</title>
-      <p>- map/topicmeta </p>
+  <refbody>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>The metadata specified in a <xmlelement>topicmeta</xmlelement> element is specific to a
+        given context within a map. If a reference to a single resource appears more than once in a
+        map or set of maps, unique metadata can be specified in each instance. For example, when the
+        parent <xmlelement>topicref</xmlelement> element results in a link, elements within the
+          <xmlelement>topicmeta</xmlelement> element can be used to provide context-specific
+        information about the link, such as link text or a short description. </p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <sectiondiv
+        conref="../../common/conref-attribute.dita#conref-attribute/standard-topicmeta-attributes"/>
     </section>
     <example id="example" otherprops="examples">
       <title>Example</title>
-      <p>In this example, the metadata defined by the <xmlelement>topicmeta</xmlelement> element
-        applies to the associated <xmlelement>topicref</xmlelement> (<filepath>bats.dita</filepath>)
-        and all of its children. The <xmlelement>topicmeta</xmlelement> element contains an audience
-        definition that indicates that <filepath>bats.dita</filepath> and its children are of
-        interest to experienced programmers who are troubleshooting. </p>
-      <codeblock>&lt;map&gt;
+      <!--<draft-comment author="Kristen J Eberlein" time="26 July 2018"><p>Need an example that uses something OTHER than the attributes on <xmlelement>audience</xmlelement> which no one uses.</p><p>How about <xmlelement>navtitle</xmlelement> and/or <xmlelement>shortdesc</xmlelement>?</p></draft-comment>-->
+      <p>In the following example, the <xmlelement>topicmeta</xmlelement> element contains a
+        navigation title.</p>
+      <codeblock>&lt;map>
+  &lt;title>Highlighting domain elements&lt;/title>        
+  &lt;topicref href=sub.dita">
+    &lt;topicmeta>
+      &lt;navtitle>Subscript&lt;/navtitle>
+    &lt;/topicmeta>
+  &lt;/topicref>
+&lt;/map></codeblock>
+      <!--<p>In this example, the metadata defined by the <xmlelement>topicmeta</xmlelement> element applies to the associated <xmlelement>topicref</xmlelement> (<filepath>bats.dita</filepath>) and all of its children. The <xmlelement>topicmeta</xmlelement> element contains an audience definition that indicates that <filepath>bats.dita</filepath> and its children are of interest to experienced programmers who are troubleshooting. </p><codeblock>&lt;map&gt;
   &lt;topicref href="bats.dita"&gt;
     <b>&lt;topicmeta&gt;</b>
       &lt;audience type="programmer" job="troubleshooting" experiencelevel="expert"/&gt;
     <b>&lt;/topicmeta&gt;</b>
-    &lt;topicref href="batcaring.dita"&gt;&lt;/topicref&gt;
-    &lt;topicref href="batfeeding.dita"&gt;&lt;/topicref&gt;
+    &lt;topicref href="batcaring.dita"/&gt;
+    &lt;topicref href="batfeeding.dita"/&gt;
   &lt;/topicref&gt;
-&lt;/map&gt;</codeblock>
+&lt;/map&gt;</codeblock>-->
     </example>
-    <section id="attributes"><title>Attributes</title><sectiondiv
-        conref="../../common/conref-attribute.dita#conref-attribute/standard-topicmeta-attributes"
-      /></section></refbody>
+  </refbody>
 </reference>
-

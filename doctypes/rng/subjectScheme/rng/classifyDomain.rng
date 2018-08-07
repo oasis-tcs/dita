@@ -39,7 +39,8 @@ ORIGINAL CREATION DATE:
  UPDATES:                                                    
    2008.02.13 RDA: Created file based upon prototype from IBM
    2010.01.21 RDA: Update subjectCell content to remove      
-                   duplicate element inclusion               
+                   duplicate element inclusion      
+   2018.04.09 KJE: Removed @navtitle
 =============================================================
     </headerComment>
     <moduleMetadata>
@@ -113,9 +114,6 @@ ORIGINAL CREATION DATE:
       </define>
       <define name="topicsubject.attributes">
         <optional>
-          <attribute name="navtitle"/>
-        </optional>
-        <optional>
           <attribute name="href"/>
         </optional>
         <optional>
@@ -163,9 +161,6 @@ ORIGINAL CREATION DATE:
               <value>-dita-use-conref-target</value>
             </choice>
           </attribute>
-        </optional>
-        <optional dita:since="DITA 1.3">
-          <attribute name="outputclass"/>
         </optional>
         <ref name="univ-atts"/>
       </define>
@@ -197,9 +192,6 @@ ORIGINAL CREATION DATE:
       </define>
       <define name="topicapply.attributes">
         <optional>
-          <attribute name="navtitle"/>
-        </optional>
-        <optional>
           <attribute name="href"/>
         </optional>
         <optional>
@@ -269,9 +261,6 @@ ORIGINAL CREATION DATE:
               <value>-dita-use-conref-target</value>
             </choice>
           </attribute>
-        </optional>
-        <optional dita:since="DITA 1.3">
-          <attribute name="outputclass"/>
         </optional>
         <ref name="univ-atts"/>
       </define>
@@ -296,9 +285,6 @@ ORIGINAL CREATION DATE:
       </define>
       <define name="subjectref.attributes">
         <optional>
-          <attribute name="navtitle"/>
-        </optional>
-        <optional>
           <attribute name="href"/>
         </optional>
         <optional>
@@ -368,9 +354,6 @@ ORIGINAL CREATION DATE:
               <value>-dita-use-conref-target</value>
             </choice>
           </attribute>
-        </optional>
-        <optional dita:since="DITA 1.3">
-          <attribute name="outputclass"/>
         </optional>
         <ref name="univ-atts"/>
       </define>
@@ -404,9 +387,6 @@ ORIGINAL CREATION DATE:
       </define>
       <define name="topicSubjectTable.attributes">
         <ref name="topicref-atts-no-toc"/>
-        <optional dita:since="DITA 1.3">
-          <attribute name="outputclass"/>
-        </optional>
         <ref name="univ-atts"/>
       </define>
       <a:documentation><![CDATA[The <topicSubjectTable> element is a specialized relationship table which allows a map to use relationship tables to associate topics with subjects. In a <topicSubjectTable>, the first column is reserved for references to content. Subsequent columns are reserved for subjects that classify the content, each column supplying the subjects for a different category as identified in the header. The table resembles a traditional relationship table in which the first column identifies the source and the other columns identify the targets, but the relationship reflects the subjects covered by the content rather than linking between documents.]]></a:documentation>
@@ -526,49 +506,41 @@ ORIGINAL CREATION DATE:
   <div>
     <a:documentation>SPECIALIZATION ATTRIBUTE DECLARATIONS</a:documentation>
     <define name="topicsubject.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ map/topicref classify-d/topicsubject "/>
       </optional>
     </define>
     <define name="topicapply.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ map/topicref classify-d/topicapply "/>
       </optional>
     </define>
     <define name="subjectref.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ map/topicref classify-d/subjectref "/>
       </optional>
     </define>
     <define name="topicSubjectTable.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ map/reltable classify-d/topicSubjectTable "/>
       </optional>
     </define>
     <define name="topicSubjectHeader.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ map/relrow classify-d/topicSubjectHeader "/>
       </optional>
     </define>
     <define name="topicSubjectRow.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ map/relrow classify-d/topicSubjectRow "/>
       </optional>
     </define>
     <define name="topicCell.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ map/relcell classify-d/topicCell "/>
       </optional>
     </define>
     <define name="subjectCell.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ map/relcell classify-d/subjectCell "/>
       </optional>

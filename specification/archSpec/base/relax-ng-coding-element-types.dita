@@ -60,15 +60,14 @@
             Each set of patterns is typically grouped within a <xmlelement>div</xmlelement> element
             for clarity.<ul>
               <li><codeph><varname>tagname</varname>.content</codeph> defines the complete content
-                model for the element <varname>tagname</varname>. The content model pattern <ph
-                  >can</ph> be overridden in constraint modules to further constrain
-                the content model for the element type.</li>
+                model for the element <varname>tagname</varname>. The content model pattern
+                  <ph>can</ph> be overridden in constraint modules to further constrain the content
+                model for the element type.</li>
               <li><codeph><varname>tagname</varname>.attributes</codeph> defines the complete
                 attribute list for the element <varname>tagname</varname>, except for
-                  <xmlatt>class</xmlatt> and the attributes provided by the
-                  <codeph>global-atts</codeph> pattern. The attribute list declaration <ph
-                  >can</ph> be overridden in constraint modules to further constrain
-                the attribute list for the element type.</li>
+                  <xmlatt>class</xmlatt>. The attribute list declaration <ph>can</ph> be overridden
+                in constraint modules to further constrain the attribute list for the element
+                type.</li>
               <li><codeph><varname>tagname</varname>.attlist</codeph> is an additional attribute
                 list pattern with a <xmlatt>combine</xmlatt> attribute set to the value
                 "interleave". This pattern contains only a reference to the
@@ -80,9 +79,9 @@
                     <codeph><varname>tagname</varname>.attlist</codeph> patterns. In OASIS grammar
                 files, the <xmlatt>longName</xmlatt> attribute in the DITA architecture namespace is
                 also used to help enable generation of DTD and XSD grammar files.</li>
-            </ul><p otherprops="examples">The following example shows the
-              declaration for the <xmlelement>topichead</xmlelement> element, including the
-              definition for each pattern described
+            </ul><p otherprops="examples">The following example shows the declaration for the
+                <xmlelement>topichead</xmlelement> element, including the definition for each
+              pattern described
             above.</p><codeblock otherprops="examples">&lt;div>
   &lt;a:documentation>LONG NAME: Topic Head&lt;/a:documentation>
   &lt;define name="topichead.content">
@@ -100,18 +99,12 @@
   &lt;/define>
   &lt;define name="topichead.attributes">
     &lt;optional>
-      &lt;attribute name="navtitle"/>
-    &lt;/optional>
-    &lt;optional>
-      &lt;attribute name="outputclass"/>
-    &lt;/optional>
-    &lt;optional>
       &lt;attribute name="keys"/>
     &lt;/optional>
     &lt;optional>
       &lt;attribute name="copy-to"/>
     &lt;/optional>
-    &lt;ref name="topicref-atts"/>
+    &lt;ref name="topicref-atts-no-locktitle"/>
     &lt;ref name="univ-atts"/>
   &lt;/define>
   &lt;define name="topichead.element">
@@ -152,15 +145,13 @@
               a <codeph><varname>tagname</varname>.attlist</codeph> pattern for each element type
               that is defined in the module. The declarations can occur in any order.</p>
             <p>The <codeph><varname>tagname</varname>.attlist</codeph> pattern for each element
-              defines that element's <xmlatt>class</xmlatt> attribute, and also includes a reference
-              to the <codeph>global-atts</codeph> attribute list pattern. <xmlatt>class</xmlatt> is
+              defines that element's <xmlatt>class</xmlatt> attribute. <xmlatt>class</xmlatt> is
               declared as an optional attribute; the default value is declared using the
                 <xmlatt>a:defaultValue</xmlatt> attribute, and the value of the attribute is
               constructed according to the rules in <xref href="specialization-class-attribute.dita"
               />.</p>
             <p otherprops="examples">For
               example:<codeblock>&lt;define name="anchorref.attlist" combine="interleave">
-  &lt;ref name="global-atts"/>
   &lt;optional>
     &lt;attribute name="class" 
         a:defaultValue="+ map/topicref mapgroup-d/anchorref "
