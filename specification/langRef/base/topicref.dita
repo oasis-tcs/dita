@@ -19,34 +19,26 @@
   <example id="example" otherprops="examples">
    <title>Example</title>
    <fig>
-    <title>DITA map defining hierarchy for topics</title>
-    <p>In this example, there are six <xmlelement>topicref</xmlelement> elements. They are nested
-     and have a hierarchical relationship. <filepath>bats.dita</filepath> is the parent topic and
-     the other topics are its children.</p>
-    <codeblock>&lt;map title="Bats"&gt;
- &lt;topicref href="bats.dita"&gt;
-  &lt;topicref href="bat-caring.dita"/&gt;
-  &lt;topicref href="bat-feeding.dita"/&gt;
-  &lt;topicref href="bat-sonar.dita"/&gt;
-  &lt;topicref href="bat-guano.dita/&gt;
-  &lt;topicref href="bat-history.dita"/&gt;
- &lt;/topicref&gt;
+<title>Common map hierarchy using <xmlelement>topicref</xmlelement> elements</title>
+<p>The following code sample illustrates a simple map organizing several topics about the software
+product ExampleToolBuilder. The initial <xmlelement>topicref</xmlelement>  that refers to
+<filepath>setup.dita</filepath> uses the <xmlatt>collection-type</xmlatt> attribute to indicate that
+the order of topics in that section is
+important.</p><codeblock>&lt;map&gt;
+  &lt;title>ExampleToolBuilder version 1.2.3&lt;/title>
+  &lt;topicref href="setup.dita" collection-type="sequence">
+    &lt;topicref href="prerequisites.dita"/&gt;
+    &lt;topicref href="installing.dita"/&gt;
+    &lt;topicref href="validating.dita"/>
+  &lt;/topicref>
+  &lt;topicref href="everyday-use.dita"&gt;
+    &lt;!-- ... -->
+  &lt;/topicref>
+  &lt;topicref href="troubleshooting.dita">
+    &lt;!-- ... -->
+  &lt;/topicref>
 &lt;/map&gt;</codeblock>
-   </fig>
-   <fig>
-    <title>DITA map defining relationship between topics</title>
-    <p>In the example, the <xmlatt>collection-type</xmlatt> attribute is used to specify that the
-     topics should be read in a sequential order.</p>
-    <codeblock>&lt;map title="Bats"&gt;
- &lt;topicref href="bats.dita" <b>collection-type="sequence"</b>&gt;
-  &lt;topicref href="bat-caring.dita"/&gt;
-  &lt;topicref href="bat-feeding.dita"/&gt;
-  &lt;topicref href="bat-sonar.dita"/&gt;
-  &lt;topicref href="bat-guano.dita/&gt;
-  &lt;topicref href="bat-history.dita"/&gt;
- &lt;/topicref&gt;
-&lt;/map&gt;</codeblock>
-   </fig>
+</fig>
   </example>
   <example>
    <draft-comment author="Kristen J Eberlein" time="17 June 2018">
@@ -56,6 +48,11 @@
       <xmlatt>linking</xmlatt>. Try and illustrate the most important base behaviors.</p>
     <p>Need examples that use non-DITA references.</p>
    </draft-comment>
+<draft-comment author="robander">Significantly updated the initial "simple" example, and mace
+<xmlatt>collection-type</xmlatt> into that example. Not sure how best to add examples of other
+attributes -- the most common way I see <xmlatt>linking</xmlatt> used is with relationship tables,
+but it feels odd to have code examples in <xmlelement>topicref</xmlelement> that are really
+highlighting the linking behavior of <xmlelement>reltable</xmlelement>.</draft-comment>
   </example>
  </refbody>
 </reference>

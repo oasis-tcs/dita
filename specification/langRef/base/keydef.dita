@@ -52,18 +52,29 @@
         </dl>
       </sectiondiv>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><p>The following example defines keys that can be used to refer to the indicated topics. These keys
-          <ph >can</ph> be used within the map, from any topic in this map, or
-        in any context where this map is imported. Note that the <xmlatt>processing-role</xmlatt>
-        attribute defaults to "resource-only", which ensures that specified topics will not be
-        rendered in a print document or in a navigation TOC based on this definition in the map. In
-        addition, it means that links will not be generated to or from the
-          <xmlelement>keydef</xmlelement> elements.</p><codeblock>&lt;map>
-  &lt;title>Defining bird keys&lt;/title>
-  &lt;keydef keys="darwinfinch galapagosfinch"  href="galapagosfinch.dita"/>
-  &lt;keydef keys="goldfinch"  href="about-goldfinches.dita"/>
-  &lt;keydef keys="puffin"     href="about-puffins.dita"/>
-  &lt;keydef keys="loon diver" href="common-loon.dita"/>
+<example id="example" otherprops="examples"><title>Example</title>
+<p>In the following code sample, several keys are defined that might be used as part of publishing
+this DITA specification.</p>
+<ul id="ul_gzs_1wc_t2b">
+<li>The first <xmlelement>keydef</xmlelement> defines a key that links to the home page for the
+OASIS DITA Technical Committee</li>
+<li>The second <xmlelement>keydef</xmlelement> defines a key for a local DITA topic about addressing
+in DITA; that topic is available to resolve link text.</li>
+<li>The third <xmlelement>keydef</xmlelement> defines a text-only key that specifies the current
+DITA version number.</li>
+</ul><codeblock>&lt;map>
+  &lt;title>Possible keys for use in the DITA specification&lt;/title>
+
+  &lt;keydef keys="dita-tc" scope="external" format="html"
+          href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=dita">
+    &lt;topicmeta>&lt;linktext>DITA Technical Committee&lt;/linktext>&lt;/topicmeta>
+  &lt;/keydef>
+
+  &lt;keydef keys="addressing" href="dita-addressing.dita"/>
+
+  &lt;keydef keys="dita-version">
+    &lt;topicmeta>&lt;linktext>2.0&lt;/linktext>&lt;/topicmeta>
+  &lt;/keydef>
 &lt;/map></codeblock></example>
 </refbody>
 </reference>

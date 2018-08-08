@@ -14,7 +14,8 @@
 <draft-comment author="robander">This usage information needs to be entirely reworked. It currently
 contains processing information, tutorial information, and also ignores the fact that link text is
 now often used for text within a key definition (that does not actually specify a
-link).</draft-comment>
+link).<p>Additionally: it says to use this ONLY when (x, y, or z) -- implying that it is incorrect
+to use link text for links to local topics.</p></draft-comment>
       <p>For links to local DITA topics, the text of a link typically can be resolved during
                 processing. Use the <xmlelement>linktext</xmlelement> element only when the target
                 cannot be reached, such as when it is a peer or external link, or when the target is
@@ -28,12 +29,39 @@ link).</draft-comment>
       <p conref="../../common/conref-attribute.dita#conref-attribute/only-universal"/>
     </section>
 <example id="example" otherprops="examples"><title>Example</title>
-<draft-comment author="robander">Should add examples of link text used in key definitions / in
-maps.</draft-comment>
-<p>This is an example of a link to a local HTML file, including link text for the referenced
-resource.</p><codeblock>&lt;link href="tzover.htm#accsqlj" format="html"&gt;
-  &lt;linktext&gt;Accessing relational data with SQLJ&lt;/linktext&gt;
-&lt;/link&gt;
-</codeblock></example>
+<fig id="fig_jjs_czc_t2b"><title>Link text with key definitions</title><p>See <xref
+href="keydef.dita"/> for an example of <xmlelement>linktext</xmlelement> used with key
+definitions.</p></fig>
+<fig id="fig_hq3_zxc_t2b"><title>Link text in a map</title><p>In the following code sample, link
+text is specified for a local topic in a relationship table. This table will typically result in
+links between the topic in the first cell and the topic in the second cell. The generated link from
+<filepath>maintenance.dita</filepath> to <filepath>installation.dita</filepath> should use the
+specified link text, while the link back from <filepath>installation.dita</filepath> to
+<filepath>maintenance.dita</filepath> will use whatever link text the processor is able to
+generate.</p><p>The link text should be used for any links generated , rather than generating text
+based on the title of the
+topic.</p><codeblock>&lt;map>
+  &lt;title>Relationship map&lt;/title>
+  &lt;reltable>
+    &lt;relrow>
+      &lt;relcell>
+        &lt;topicref href="installation.dita">
+          &lt;topicmeta>
+            <b>&lt;linktext></b>Initial set-up information<b>&lt;/linktext></b>
+          &lt;/topicmeta>
+        &lt;/topicref>
+      &lt;/relcell>
+      &lt;relcell>
+        &lt;topicref href="maintenance.dita"/>
+      &lt;/relcell>
+    &lt;/relrow>
+  &lt;/reltable>
+&lt;/map></codeblock></fig>
+<fig id="fig_nlj_fzc_t2b"><title>Link text within a topic</title><p>In the following code example, a
+topic contains a related link to local non-DITA content.</p></fig><codeblock>&lt;related-links>
+  &lt;link href="SQLJ-example.html" format="html" scope="local"&gt;
+    <b>&lt;linktext&gt;</b>Accessing relational data with SQLJ<b>&lt;/linktext&gt;</b>
+  &lt;/link&gt;
+&lt;/related-links></codeblock></example>
 </refbody>
 </reference>
