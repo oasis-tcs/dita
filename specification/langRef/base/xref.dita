@@ -32,7 +32,7 @@
                <fig id="fig_vgv_rnd_t2b">
 <title>Cross reference to another topic, without link text</title>
 <p>In the following code sample, the topic title typically is used as the link
-text.</p><codeblock>&lt;p&gt;Background information about DITA is provided in the topic entitled
+text.</p><codeblock>&lt;p&gt;Background information about DITA is provided in
 &lt;xref href="overview-of-dita.dita"/&gt;.&lt;/p&gt;</codeblock><p>The
 same cross reference could be created using <xmlatt>keyref</xmlatt> instead of
 <xmlatt>href</xmlatt>; using <xmlatt>keyref</xmlatt> allows the link to be redirected to different
@@ -41,20 +41,21 @@ resources when the topic is used in different contexts.</p>
 <fig id="fig_wgv_rnd_t2b"><title>Cross references with link text specified</title><p>In the
 following code sample, text contained within each <xmlelement>xref</xmlelement> is used as link
 text.</p><codeblock>&lt;p&gt;While this set of tutorials gives several simple examples of
-&lt;xref href="markup-examples.dita"&gt;common DITA features&lt;/xref&gt;, a comprehensive
+&lt;xref keyref="markup-examples"&gt;common DITA features&lt;/xref&gt;, a comprehensive
 list of DITA features is avaialble in the DITA Specification's 
 &lt;xref keyref="dita-conformance">conformance clause&lt;/xref>.&lt;/p&gt;</codeblock>
 </fig>
                <fig>
-<title>Cross reference to a non-DITA URI that contains an ampersand</title>
+<title>Cross reference to a URI that contains an ampersand</title>
 <p>In the following code sample, a the link address contains an ampersand, which must be escaped
-using an entity.</p><p>Because the <xmlatt>href</xmlatt> attribute must be encoded as a valid URI,
-characters such as <codeph>&amp;</codeph> must be escaped:
-</p><codeblock>&lt;xref href="https://www.example.com/docview.wss?rs=757<b>&amp;amp;</b>context=SSVNX5"
-scope="external" format="html"&gt;Part number SSVNX5&lt;/xref&gt;</codeblock><p>Although
-the entity is there in the DITA content, the ampersand character may not show up when the link
-target is displayed in an editor or in a browser, which would render that URI
-as:</p><codeblock>https://www.example.com/docview.wss?rs=757<b>&amp;</b>context=SSVNX5</codeblock>
+using an entity.</p>
+<p>Because the <xmlatt>href</xmlatt> attribute must be encoded as a valid URI, characters such as
+<codeph>&amp;</codeph> must be escaped: </p>
+<codeblock>&lt;xref href="https://www.example.com/docview.wss?rs=757<b>&amp;amp;</b>context=SSVNX5"
+scope="external" format="html"&gt;Part number SSVNX5&lt;/xref&gt;</codeblock>
+<p>Although the entity is there in the DITA content, the ampersand character may not show up when
+the link target is displayed in an editor or in a browser, which would render that URI as:</p>
+<codeblock>https://www.example.com/docview.wss?rs=757<b>&amp;</b>context=SSVNX5</codeblock>
 </fig>
                <draft-comment author="Kristen J Eberlein" time="20 June 2018">
                     <p>Replace the following paragraph – removed from Examples section – with
