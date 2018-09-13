@@ -3,6 +3,55 @@
 <concept id="harvested-content-base">
  <title>Content removed from base element-reference topics</title>
  <conbody>
+<section>
+<title><xmlelement>data</xmlelement></title>
+<p>Uses of the <xmlelement>data</xmlelement> element can include the following:</p>
+<ul id="ul_g3p_tjc_t2b">
+<li>Complex metadata properties such as bibliographic records corresponding to citations.</li>
+<li>Hybrid documents with data values as part of the content, such as word processor formats using
+form fields.</li>
+<li>Messages in which the payload includes human-readable content. Such applications can use the
+<xmlelement>data</xmlelement> element to define the addressing on the message envelope. For
+instance, a topic could model an email message by representing the address with specialized
+<xmlelement>data</xmlelement> elements in the <xmlelement>prolog</xmlelement> element and the
+content with the <xmlelement>body</xmlelement> element.</li>
+<li>Transactional documents in which the values are processed but also displayed with human-readable
+content. In particular, a library of building blocks for transaction documents can be implemented
+through a DITA domain as specialized <xmlelement>data</xmlelement> elements including those from the
+UN/CEFACT Core Components Technical Specification (<xref format="html"
+href="http://www.unece.org/cefact/" scope="external">http://www.unece.org/cefact/</xref>). </li>
+</ul>
+<p>The <xmlatt>name</xmlatt> attribute names the property for processors. A
+<xmlelement>title</xmlelement> subelement can provide a label for the property. The
+<xmlatt>datatype</xmlatt> attribute can be used to identify the type for the value.</p>
+<p>For example, the value of the property can be any of the following:</p>
+<ul id="ul_cb3_fcf_bbb">
+<li>A simple text value expressed with the <xmlatt>value</xmlatt> attribute or textual content</li>
+<li>A reference to either DITA content or a non-DITA resource expressed with the
+<xmlatt>href</xmlatt> attribute</li>
+<li>An image or other non-textual object </li>
+<li>A brief unit of descriptive text that is not part of the body text flow</li>
+<li>A complex structure composed of nested <xmlelement>data</xmlelement> elements</li>
+</ul>
+<p>The <xmlatt>name</xmlatt> attribute might be used to distinguish different semantics associated
+with different instances of the <xmlelement>data</xmlelement> element such as addresses, times,
+amounts, and so on. In many cases, however, it is preferable to specialize the
+<xmlelement>data</xmlelement> element for more precise semantics, structures, and values. For
+instance, a specialization can specify an enumeration for the <xmlatt>value</xmlatt> attribute. </p>
+<p>A <xmlelement>data</xmlelement> element containing properties of a topic as a whole should be
+located in the topic&apos;s <xmlelement>prolog</xmlelement> or <xmlelement>metadata</xmlelement>
+element, or in a <xmlelement>topicmeta</xmlelement> element related to a
+<xmlelement>topicref</xmlelement> that references the topic. The <xmlelement>data</xmlelement>
+element generally goes at the beginning of the element to which the properties in it refer. Where
+this is unwieldy, the <xmlelement>data</xmlelement> element can go in the
+<xmlelement>prolog</xmlelement>, with the <xmlelement>data-about</xmlelement> element identifying
+which specific element in the topic is the reference.</p>
+</section>
+<section>
+<title><xmlelement>dl</xmlelement></title>
+<p>An optional heading for the terms and definitions can be provided using the
+<xmlelement>dlhead</xmlelement> element, which contains header elements for those columns.</p>
+</section>
   <section>
    <title><xmlelement>div</xmlelement></title>
    <p>The <xmlelement>div</xmlelement> element is used to organize subsets of content into logical
