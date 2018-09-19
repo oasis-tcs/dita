@@ -24,22 +24,7 @@
     sub-categories for Linux, Windows, and z/OS, as well as specific Linux variants: Red Hat Linux
     and SuSE Linux. The company then binds the values that are enumerated in the "Operating system"
     category to the <xmlatt>platform</xmlatt> attribute.</p>
-   <codeblock>&lt;!-- This examples uses @navtitle rather than &lt;navtitle> solely
-to conserve space. Best practises for translate include using &lt;navtitle>. -->
-&lt;subjectScheme>
-  &lt;subjectdef keys="os" navtitle="Operating system">
-    &lt;subjectdef keys="linux" navtitle="Linux">
-      &lt;subjectdef keys="redhat" navtitle="RedHat Linux"/>
-      &lt;subjectdef keys="suse" navtitle="SuSE Linux"/>
-    &lt;/subjectdef>
-    &lt;subjectdef keys="windows" navtitle="Windows"/>
-    &lt;subjectdef keys="zos" navtitle="z/OS"/>
-  &lt;/subjectdef>
-  &lt;enumerationdef>
-    &lt;attributedef name="platform"/>
-    &lt;subjectdef keyref="os"/>
-  &lt;/enumerationdef>
-&lt;/subjectScheme></codeblock>
+            <codeblock conref="../../common/conref-code-samples.dita#reuse-code-samples/basic-subjectScheme"/>
    <p>The enumeration limits valid values for the <xmlatt>platform</xmlatt> attribute to the
     following: "linux", "redhat", "suse", "windows", and "zos". If any other values are encountered,
     processors validating against the scheme should issue a warning.</p>

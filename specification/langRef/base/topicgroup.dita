@@ -6,10 +6,8 @@
 <title><xmlelement>topicgroup</xmlelement></title>
 <shortdesc>The <xmlelement>topicgroup</xmlelement> element groups <xmlelement>topicref</xmlelement>
     elements for common treatment without affecting the structural hierarchy of the map, as opposed
-    to nesting <xmlelement>topicref</xmlelement> elements, which does imply a structural hierarchy.
-    The <xmlelement>topicgroup</xmlelement> element can provide linking relationships and shared,
-    inherited attributes to the set of elements that it contains without affecting the resulting
-    table of contents or navigation.</shortdesc>
+    to nesting <xmlelement>topicref</xmlelement> elements, which does imply a structural
+    hierarchy.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -25,17 +23,32 @@
     </metadata>
   </prolog>
 <refbody>
-<section id="section-1">Beginning with DITA 1.2, you are able to specify a <xmlelement>navtitle</xmlelement>
-      element within the <xmlelement>topicmeta</xmlelement> element inside of a
+    <section id="usage-information"><title>Usage information</title>The
+        <xmlelement>topicgroup</xmlelement> element can provide linking relationships and shared,
+      inherited attributes to the set of elements that it contains without affecting the resulting
+      table of contents or navigation.</section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>You can specify a <xmlelement>navtitle</xmlelement> element within the
+          <xmlelement>topicmeta</xmlelement> element inside of a
         <xmlelement>topicgroup</xmlelement>. The <xmlelement>topicgroup</xmlelement> element is
-      meant as a non-titled grouping element, so adding a <xmlelement>navtitle</xmlelement> element
-      to the <xmlelement>topicgroup</xmlelement> element has no defined purpose, and processors
-        <term outputclass="RFC-2119">MUST</term> ignore the title. Processors
-        <term outputclass="RFC-2119">MAY</term> issue a message when ignoring the
-      title.</section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-topicgroup/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>+
-map/topicref mapgroup-d/topicgroup </p></section>
+        meant as a non-titled grouping element, so adding a <xmlelement>navtitle</xmlelement>
+        element to the <xmlelement>topicgroup</xmlelement> element has no defined purpose, and
+        processors <term outputclass="RFC-2119">MUST</term> ignore the title. Processors <term
+          outputclass="RFC-2119">MAY</term> issue a message when ignoring the title.</p>
+    </section>
+    <section id="specialization-hierarchy">
+      <title>Specialization hierarchy</title>
+      <p>+ map/topicref mapgroup-d/topicgroup</p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref
+          keyref="attributes-universal"/> and <xref
+          keyref="attributes-commonMap"/> (except for <xmlatt>locktitle</xmlatt>).</p>
+      <p>The <xmlatt>scope</xmlatt>, <xmlatt>format</xmlatt>, and <xmlatt>type</xmlatt> attributes
+        from <xref keyref="attributes-linkRelationship"/> are also available.</p>
+    </section>
 <example id="example" otherprops="examples"><title>Example</title><p>Each <xmlelement>topicref</xmlelement> element in the following example inherits the
           <xmlatt>audience</xmlatt> and <xmlatt>linking</xmlatt> attributes. In this way the common
         attributes are set for the entire group of <xmlelement>topicref</xmlelement> elements
@@ -45,17 +58,6 @@ xml:space="preserve">&lt;topicgroup audience="novice" linking="none"&gt;
   &lt;topicref href="that.dita"/&gt;
   &lt;topicref href="theother.dita"/&gt;
 &lt;/topicgroup&gt;</codeblock></example>
-<section id="attributes">
-      <title>Attributes</title>
-      <p>The following attributes are available on this element: <xref
-          href="../attributes/universalAttributes.dita"/>, <xref
-          href="../attributes/commonMapAttributes.dita"/>, and <xref
-          href="../attributes/commonAttributes.dita#common-atts/outputclass"/>. <ph
-          conref="../../common/conref-attribute.dita#conref-attribute/locktitle-no-purpose"/></p>
-      <p>The <xmlatt>scope</xmlatt>, <xmlatt>format</xmlatt>, and <xmlatt>type</xmlatt> attributes
-        from <xref href="../attributes/linkRelationshipAttributes.dita"/> are also available.</p>
-      
-    </section>
 </refbody>
 </reference>
 

@@ -4,34 +4,42 @@
  "reference.dtd">
 <reference id="metadata" xml:lang="en-us">
 <title><xmlelement>metadata</xmlelement></title>
-<shortdesc>The <xmlelement>metadata</xmlelement> section of the <xmlelement>prolog</xmlelement>
+  <shortdesc>The <xmlelement>metadata</xmlelement> section of the <xmlelement>prolog</xmlelement>
     contains information about a topic such as audience and product information. Metadata can be
     used by computational processes to select particular topics or to prepare search indexes or to
-    customize navigation. Elements inside of <xmlelement>metadata</xmlelement> provide information
-    about the content and subject of a topic; <xmlelement>prolog</xmlelement> elements outside of
-      <xmlelement>metadata</xmlelement> provide lifecycle information for the content unit (such
-    as the author or copyright), which are unrelated to the subject.</shortdesc>
+    customize navigation.</shortdesc>
 <prolog><metadata>
 <keywords><indexterm>metadata</indexterm><indexterm>prolog elements<indexterm>metadata</indexterm></indexterm>
 </keywords>
 </metadata></prolog>
 <refbody>
-<section id="section-1">Beginning with DITA 1.2, the <xmlelement>metadata</xmlelement> element is available inside
-        <xmlelement>topicmeta</xmlelement> in maps, although the contents of
-        <xmlelement>metadata</xmlelement> are still available directly inside
-        <xmlelement>topicmeta</xmlelement>. As with the <xmlelement>prolog</xmlelement>, the
-        <xmlelement>metadata</xmlelement> element within <xmlelement>topicmeta</xmlelement> allows
-      you to group elements that describe the content or subject of the target. The primary purpose
-      for enabling the <xmlelement>metadata</xmlelement> element within maps is to allow easier
-      reuse between topics and maps.</section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-metadata/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-topic/metadata </p></section>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>Elements inside of <xmlelement>metadata</xmlelement> provide information about the content
+        and subject of a topic; <xmlelement>prolog</xmlelement> elements outside of
+          <xmlelement>metadata</xmlelement> provide lifecycle information for the content unit (such
+        as the author or copyright), which are unrelated to the subject.</p>
+      <p>Beginning with DITA 1.2, the <xmlelement>metadata</xmlelement> element is available inside
+          <xmlelement>topicmeta</xmlelement> in maps, although the contents of
+          <xmlelement>metadata</xmlelement> are still available directly inside
+          <xmlelement>topicmeta</xmlelement>. As with the <xmlelement>prolog</xmlelement>, the
+          <xmlelement>metadata</xmlelement> element within <xmlelement>topicmeta</xmlelement> allows
+        you to group elements that describe the content or subject of the target. The primary
+        purpose for enabling the <xmlelement>metadata</xmlelement> element within maps is to allow
+        easier reuse between topics and maps.</p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref
+          keyref="attributes-universal"/> and <xref
+          keyref="attributes-common/mapkeyref"/>.</p>
+    </section>
 <example id="example" otherprops="examples"><title>Example</title><p>Metadata within a topic:</p><codeblock>&lt;prolog&gt;
   <b>&lt;metadata&gt;</b>
     &lt;audience type="user" job="using" experiencelevel="novice"/&gt;
   <b>&lt;/metadata&gt;</b>
-&lt;/prolog&gt;</codeblock><p>Metadata within a map:</p><codeblock>&lt;topicref href="metadata.dita" navtitle="metadata element">
+&lt;/prolog&gt;</codeblock><p>Metadata within a map:</p>
+      <codeblock>&lt;topicref href="metadata.dita">
   &lt;topicmeta>
     <b>&lt;metadata></b>
       &lt;keywords>
@@ -40,11 +48,6 @@ topic/metadata </p></section>
     <b>&lt;/metadata></b>
   &lt;/topicmeta>
 &lt;/topicref></codeblock></example>
-<section id="attributes"><title>Attributes</title>
-      <p >The following attributes are available on this element: <xref
-          href="../attributes/universalAttributes.dita"/> and <xref
-          href="../attributes/commonAttributes.dita#common-atts/mapkeyref"/>.</p>
-      </section>
 </refbody>
 </reference>
 

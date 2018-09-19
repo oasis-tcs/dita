@@ -2,11 +2,11 @@
 <!-- ============================================================= -->
 <!--                    HEADER                                     -->
 <!-- ============================================================= -->
-<!-- Darwin Information Typing Architecture (DITA) Version 1.3 Plus Errata 01     -->
+<!-- Darwin Information Typing Architecture (DITA) Version 1.3 Plus Errata 02     -->
 <!-- OASIS Standard                                           -->
-<!-- 25 October 2016                                           -->
-<!-- Copyright (c) OASIS Open 2016. All rights reserved.           -->
-<!-- Source: http://docs.oasis-open.org/dita/dita/v1.3/errata01/os/complete/part0-overview/dita-v1.3-errata01-os-part0-overview-complete.html                                -->
+<!-- 16 January 2018                                           -->
+<!-- Copyright (c) OASIS Open 2018. All rights reserved.           -->
+<!-- Source: http://docs.oasis-open.org/dita/dita/v1.3/errata02/csprd01/complete/part0-overview/dita-v1.3-errata02-csprd01-part0-overview-complete.html                                -->
 <!--                                                               -->
 <!-- ============================================================= -->
 <!--  MODULE:    DITA DITA Topic                                   -->
@@ -65,6 +65,8 @@
 <!--    2008.02.13 RDA: Create .content and .attributes entities   -->
 <!--    2008.05.06 RDA: Moved sectiondiv to section.cnt; created   -->
 <!--                    example.cnt for use by example element     -->
+<!--    2018.03.14 KJE: Removed @collection-type="tree"; removed   -->
+<!--                    @role="external" and "sample"              -->
 <!-- ============================================================= -->
 
 <!-- ============================================================= -->
@@ -97,19 +99,19 @@
 
 <!--                    Definitions of declared elements           -->
 <!ENTITY % topicDefns
-    PUBLIC "-//OASIS//ENTITIES DITA 1.3 Topic Definitions//EN" "topicDefn.ent" 
+    PUBLIC "-//OASIS//ENTITIES DITA 2.0 Topic Definitions//EN" "topicDefn.ent" 
 >%topicDefns;
 
 <!--                      Content elements common to map and topic -->
 <!ENTITY % commonElements
 
-  PUBLIC "-//OASIS//ELEMENTS DITA 1.3 Common Elements//EN"
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
          "commonElements.mod" 
 >%commonElements;
 
 <!--                       MetaData Elements, plus indexterm       -->
 <!ENTITY % metaXML 
-  PUBLIC "-//OASIS//ELEMENTS DITA 1.3 Metadata//EN"
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Metadata//EN"
          "metaDecl.mod" 
 >%metaXML;
 
@@ -247,13 +249,11 @@
                            child |
                            cousin |
                            descendant |
-                           external |
                            friend |
                            next |
                            other |
                            parent |
                            previous |
-                           sample |
                            sibling |
                            -dita-use-conref-target)
                                     #IMPLIED
@@ -270,13 +270,11 @@
                            child |
                            cousin |
                            descendant |
-                           external |
                            friend |
                            next |
                            other |
                            parent |
                            previous |
-                           sample |
                            sibling |
                            -dita-use-conref-target)
                                     #IMPLIED
@@ -348,10 +346,7 @@
                          %xref;)*"
 >
 <!ENTITY % shortdesc.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  shortdesc %shortdesc.content;>
 <!ATTLIST  shortdesc %shortdesc.attributes;>
@@ -362,10 +357,7 @@
                        "(%abstract.cnt;)*"
 >
 <!ENTITY % abstract.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  abstract %abstract.content;>
 <!ATTLIST  abstract %abstract.attributes;>
@@ -379,10 +371,7 @@
                          %section;)*"
 >
 <!ENTITY % body.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  body %body.content;>
 <!ATTLIST  body %body.attributes;>
@@ -395,10 +384,7 @@
                          %section;)*"
 >
 <!ENTITY % bodydiv.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  bodydiv %bodydiv.content;>
 <!ATTLIST  bodydiv %bodydiv.attributes;>
@@ -416,10 +402,7 @@
               "spectitle
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  section %section.content;>
 <!ATTLIST  section %section.attributes;>
@@ -431,10 +414,7 @@
                          %sectiondiv;)*"
 >
 <!ENTITY % sectiondiv.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  sectiondiv %sectiondiv.content;>
 <!ATTLIST  sectiondiv %sectiondiv.attributes;>
@@ -448,10 +428,7 @@
               "spectitle
                           CDATA
                                     #IMPLIED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  example %example.content;>
 <!ATTLIST  example %example.attributes;>
@@ -485,10 +462,7 @@
 >
 <!ENTITY % related-links.attributes
               "%relational-atts;
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  related-links %related-links.content;>
 <!ATTLIST  related-links %related-links.attributes;>
@@ -510,10 +484,7 @@
                           CDATA
                                     #IMPLIED
                %relational-atts;
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  link %link.content;>
 <!ATTLIST  link %link.attributes;>
@@ -545,8 +516,7 @@
                            family |
                            sequence |
                            unordered |
-                           -dita-use-conref-target |
-                           tree)
+                           -dita-use-conref-target)
                                     #IMPLIED
                duplicates
                           (no |
@@ -559,9 +529,6 @@
                %relational-atts;
                %univ-atts;
                spectitle
-                          CDATA
-                                    #IMPLIED
-               outputclass
                           CDATA
                                     #IMPLIED"
 >
@@ -591,8 +558,7 @@
                            family |
                            sequence |
                            unordered |
-                           -dita-use-conref-target |
-                           tree)
+                           -dita-use-conref-target)
                                     #IMPLIED
                duplicates
                           (no |
@@ -603,10 +569,7 @@
                           CDATA
                                     #IMPLIED
                %relational-atts;
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  linkpool %linkpool.content;>
 <!ATTLIST  linkpool %linkpool.attributes;>
@@ -617,24 +580,24 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  abstract     %global-atts;  class CDATA "- topic/abstract "   >
-<!ATTLIST  body         %global-atts;  class CDATA "- topic/body "       >
-<!ATTLIST  bodydiv      %global-atts;  class CDATA "- topic/bodydiv "    >
-<!ATTLIST  example      %global-atts;  class CDATA "- topic/example "    >
-<!ATTLIST  link         %global-atts;  class CDATA "- topic/link "       >
-<!ATTLIST  linkinfo     %global-atts;  class CDATA "- topic/linkinfo "   >
-<!ATTLIST  linklist     %global-atts;  class CDATA "- topic/linklist "   >
-<!ATTLIST  linkpool     %global-atts;  class CDATA "- topic/linkpool "   >
-<!ATTLIST  linktext     %global-atts;  class CDATA "- topic/linktext "   >
-<!ATTLIST  no-topic-nesting %global-atts;  class CDATA "- topic/no-topic-nesting ">
-<!ATTLIST  prolog       %global-atts;  class CDATA "- topic/prolog "     >
-<!ATTLIST  related-links %global-atts;  class CDATA "- topic/related-links ">
-<!ATTLIST  searchtitle  %global-atts;  class CDATA "- topic/searchtitle ">
-<!ATTLIST  section      %global-atts;  class CDATA "- topic/section "    >
-<!ATTLIST  sectiondiv   %global-atts;  class CDATA "- topic/sectiondiv " >
-<!ATTLIST  titlealts    %global-atts;  class CDATA "- topic/titlealts "  >
-<!ATTLIST  topic        %global-atts;  class CDATA "- topic/topic "      >
-<!ATTLIST  shortdesc    %global-atts;  class CDATA "- topic/shortdesc "  >
+<!ATTLIST  abstract       class CDATA "- topic/abstract "   >
+<!ATTLIST  body           class CDATA "- topic/body "       >
+<!ATTLIST  bodydiv        class CDATA "- topic/bodydiv "    >
+<!ATTLIST  example        class CDATA "- topic/example "    >
+<!ATTLIST  link           class CDATA "- topic/link "       >
+<!ATTLIST  linkinfo       class CDATA "- topic/linkinfo "   >
+<!ATTLIST  linklist       class CDATA "- topic/linklist "   >
+<!ATTLIST  linkpool       class CDATA "- topic/linkpool "   >
+<!ATTLIST  linktext       class CDATA "- topic/linktext "   >
+<!ATTLIST  no-topic-nesting   class CDATA "- topic/no-topic-nesting ">
+<!ATTLIST  prolog         class CDATA "- topic/prolog "     >
+<!ATTLIST  related-links   class CDATA "- topic/related-links ">
+<!ATTLIST  searchtitle    class CDATA "- topic/searchtitle ">
+<!ATTLIST  section        class CDATA "- topic/section "    >
+<!ATTLIST  sectiondiv     class CDATA "- topic/sectiondiv " >
+<!ATTLIST  titlealts      class CDATA "- topic/titlealts "  >
+<!ATTLIST  topic          class CDATA "- topic/topic "      >
+<!ATTLIST  shortdesc      class CDATA "- topic/shortdesc "  >
 
 <!-- ================== End of DITA Topic Module ==================== -->
  

@@ -20,20 +20,7 @@
     <example id="example" otherprops="examples">
       <p>A company uses a common subject scheme map (<filepath>baseOS.ditamap</filepath>) to set the
         values for the <xmlatt>platform</xmlatt> attribute.</p>
-      <codeblock>&lt;subjectScheme>
-  &lt;subjectdef keys="os" navtitle="Operating system">
-    &lt;subjectdef keys="linux" navtitle="Linux">
-      &lt;subjectdef keys="redhat" navtitle="RedHat Linux"/>
-      &lt;subjectdef keys="suse" navtitle="SuSE Linux"/>
-    &lt;/subjectdef>
-    &lt;subjectdef keys="windows" navtitle="Windows"/>
-    &lt;subjectdef keys="zos" navtitle="z/OS"/>
-  &lt;/subjectdef>
-  &lt;enumerationdef>
-    &lt;attributedef name="platform"/>
-    &lt;subjectdef keyref="os"/>
-  &lt;/enumerationdef>
-&lt;/subjectScheme></codeblock>
+      <codeblock conref="../../common/conref-code-samples.dita#reuse-code-samples/basic-subjectScheme"/>
       <p>The following subject scheme map extends the enumeration defined in
           <filepath>baseOS.ditamap</filepath>. It adds "macos" as a child of the existing "os"
         subject; it also adds special versions of Windows as children of the existing "windows"
@@ -41,10 +28,10 @@
       <codeblock>&lt;subjectScheme>
   &lt;schemeref href="baseOS.ditamap"/>
   &lt;subjectdef keyref="os">
-    &lt;subjectdef keys="macos" navtitle="Macintosh"/>
+    &lt;subjectdef keys="macos"/>
     &lt;subjectdef keyref="windows">
-      &lt;subjectdef keys="winxp" navtitle="Windows XP"/>
-      &lt;subjectdef keys="winvis" navtitle="Windows Vista"/>
+      &lt;subjectdef keys="winxp"/>
+      &lt;subjectdef keys="winvis"/>
     &lt;/subjectdef>
   &lt;/subjectdef>
 &lt;/subjectScheme></codeblock>
@@ -54,17 +41,17 @@
         enumeration. </p>
       <p>The effective result is the same as the following subject scheme map:</p>
       <codeblock>&lt;subjectScheme>
-  &lt;subjectdef keys="os" navtitle="Operating system">
-    &lt;subjectdef keys="linux" navtitle="Linux">
-      &lt;subjectdef keys="redhat" navtitle="RedHat Linux"/>
-      &lt;subjectdef keys="suse" navtitle="SuSE Linux"/>
+  &lt;subjectdef keys="os">
+    &lt;subjectdef keys="linux">
+      &lt;subjectdef keys="redhat"/>
+      &lt;subjectdef keys="suse"/>
     &lt;/subjectdef>
-    &lt;subjectdef keys="macos" navtitle="Macintosh"/>
-    &lt;subjectdef keys="windows" navtitle="Windows">
-      &lt;subjectdef keys="winxp" navtitle="Windows XP"/>
-      &lt;subjectdef keys="win98" navtitle="Windows Vista"/>
+    &lt;subjectdef keys="macos">
+    &lt;subjectdef keys="windows">
+      &lt;subjectdef keys="winxp"/>
+      &lt;subjectdef keys="winvis"/>
     &lt;/subjectdef>
-    &lt;subjectdef keys="zos" navtitle="z/OS"/>
+    &lt;subjectdef keys="zos"/>
   &lt;/subjectdef>
   &lt;enumerationdef>
     &lt;attributedef name="platform"/>

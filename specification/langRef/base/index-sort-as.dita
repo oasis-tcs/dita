@@ -11,73 +11,73 @@ index entry would be sorted.</shortdesc>
 </keywords>
 </metadata></prolog>
 <refbody>
-<section id="section-1">
-<p>This element gives an author the flexibility to sort an index entry in an index differently from
-                                how its text normally would be sorted. The common use for this is to
-                                disregard insignificant leading text, such as punctuation or words
-                                like "the" or "a". For example, the author <ph 
-                                        >might</ph> want <codeph>&lt;data&gt;</codeph> to be sorted
-                                under the letter D rather than the left angle bracket (&lt;). An
-                                author <ph >might</ph> want to include such an
-                                entry under both the punctuation heading and the letter D, in which
-                                case there can be two index entry directives differentiated only by
-                                the sort order. </p>
-<p>Certain languages have special sort order needs. For example, Japanese index entries might be
-                                written partially or wholly in kanji, but need to be sorted in
-                                phonetic order according to its hiragana/katakana rendition. There
-                                is no reliable automated way to map written to phonetic text: for
-                                kanji text, there can be multiple phonetic possibilities depending
-                                on the context. The only way to correctly sort Japanese index
-                                entries is to keep the phonetic counterparts with the written forms.
-                                The phonetic text would be presented as the sort order text for
-                                indexing purposes.</p>
-<!--<p>While this markup allows you to specify
-different sort orders for different instances
-of the same index entry, this can lead to
-inconsistent sort orders in cases where you
-want the same sort order. You may specify
-a global default sort order by placing an
-indexterm instance in a map's metadata (map/topicmeta/keywords/indexterm).
-There, the indexterm has no content context
-and will not generate an index page reference.
-Using index-sort-as there will set the global
-sort order expression for that term. The individual
-indexterm instances in the content may override
-this global default with their own index-sort-as
-elements.</p>-->
-<!--<p>The <xmlelement>index-sort-as</xmlelement> element's content is logically augmented by the textual content of its parent <xmlelement>indexterm</xmlelement> element to produce the effective sort phrase (in other words, the textual content acts as a secondary sort field), so two <xmlelement>indexterm</xmlelement> elements with different content but the same <xmlelement>index-sort-as</xmlelement> value would never merge into a single index entry.</p>-->
-<!--
-DITA 1.3 review: removed previous paragraph in favor of the following,
-which is taken from the content of the <sort as> element.-->
-<p >When an <xmlelement>index-sort-as</xmlelement> element is specified,
-processors that sort the containing index term <term outputclass="RFC-2119" 
->MUST</term> construct the effective sort phrase by prepending the content of the
-<xmlelement>index-sort-as</xmlelement> element to the textual content of its parent
-<xmlelement>indexterm</xmlelement> element. This ensures that two index entries with the same
-<xmlelement>index-sort-as</xmlelement> element but different base sort phrases will sort in the
-appropriate order, and will not merge into a single index entry.</p>
-<p>An <xmlelement>index-sort-as</xmlelement> element provides sort phrase information for the
-<xmlelement>indexterm</xmlelement> that is its parent; therefore, in a multiple level
-<xmlelement>indexterm</xmlelement>, the <xmlelement>index-sort-as</xmlelement> only affects the
-level in which it occurs.</p>
-<p id="multiple-index-sort-as">It is an error if there is more than one
+                <section id="usage-information">
+                        <title>Usage information</title>
+                        <p>This element gives an author the flexibility to sort an index entry in an
+                                index differently from how its text normally would be sorted. The
+                                common use for this is to disregard insignificant leading text, such
+                                as punctuation or words like "the" or "a". For example, the author
+                                mighgt want <codeph>&lt;data&gt;</codeph> to be sorted under the
+                                letter D rather than the left angle bracket (&lt;). An author might
+                                want to include such an entry under both the punctuation heading and
+                                the letter D, in which case there can be two index entry directives
+                                differentiated only by the sort order. </p>
+                        <p>Certain languages have special sort order needs. For example, Japanese
+                                index entries might be written partially or wholly in kanji, but
+                                need to be sorted in phonetic order according to its
+                                hiragana/katakana rendition. There is no reliable automated way to
+                                map written to phonetic text: for kanji text, there can be multiple
+                                phonetic possibilities depending on the context. The only way to
+                                correctly sort Japanese index entries is to keep the phonetic
+                                counterparts with the written forms. The phonetic text would be
+                                presented as the sort order text for indexing purposes.</p>
+                        <p>The <xmlelement>index-sort-as</xmlelement> element's content is logically
+                                augmented by the textual content of its parent
+                                        <xmlelement>indexterm</xmlelement> element to produce the
+                                effective sort phrase (in other words, the textual content acts as a
+                                secondary sort field), so two <xmlelement>indexterm</xmlelement>
+                                elements with different content but the same
+                                        <xmlelement>index-sort-as</xmlelement> value would never
+                                merge into a single index entry.</p>
+                        <p>An <xmlelement>index-sort-as</xmlelement> element provides sort phrase
+                                information for the <xmlelement>indexterm</xmlelement> that is its
+                                parent; therefore, in a multiple level
+                                        <xmlelement>indexterm</xmlelement>, the
+                                        <xmlelement>index-sort-as</xmlelement> only affects the
+                                level in which it occurs.</p>
+                </section>
+                <section id="processing-expectations">
+                        <title>Processing expectations</title>
+                        <p>When an <xmlelement>index-sort-as</xmlelement> element is specified,
+                                processors that sort the containing index term <term
+                                        outputclass="RFC-2119">MUST</term> construct the effective
+                                sort phrase by prepending the content of the
+                                        <xmlelement>index-sort-as</xmlelement> element to the
+                                textual content of its parent <xmlelement>indexterm</xmlelement>
+                                element. This ensures that two index entries with the same
+                                        <xmlelement>index-sort-as</xmlelement> element but different
+                                base sort phrases will sort in the appropriate order, and will not
+                                merge into a single index entry.</p>
+                        <p id="multiple-index-sort-as">It is an error if there is more than one
                                         <xmlelement>index-sort-as</xmlelement> child for a given
-                                        <xmlelement>indexterm</xmlelement>. An implementation<ph
-                                        >might</ph> give an error message, and
-                                        <ph >might</ph> recover from this error
-                                condition by ignoring all but the last
-                                        <xmlelement>index-sort-as</xmlelement>.</p>
-<p><ph conref="../../common/conref-file.dita#reuse_file/index-sort-as" id="sort-as-error"/></p>
-</section>
-<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-index-sort-as/contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>+
+                                        <xmlelement>indexterm</xmlelement>. An implementation might
+                                give an error message, and might recover from this error condition
+                                by ignoring all but the last
+                                <xmlelement>index-sort-as</xmlelement>.</p>
+                        <p><ph conref="../../common/conref-file.dita#reuse_file/index-sort-as"
+                                        id="sort-as-error"/></p>
+                </section>
+<section id="inheritance" otherprops="inheritance">
+                        <title>Specialization hierarchy</title><p>+
 topic/index-base indexing-d/index-sort-as </p></section>
+                <section id="attributes">
+                        <title>Attributes</title>
+                        <p>The following attributes are available on this element: <xref
+                                        keyref="attributes-universal"/> and <xref
+                                        keyref="attributes-keyref"
+                                                ><xmlatt>keyref</xmlatt></xref>.</p>
+                </section>
 <example id="example" otherprops="examples"><p>This is an example of an index entry for <codeph>&lt;data&gt;</codeph> that will be sorted as
 "data":</p><codeblock xml:space="preserve">&lt;indexterm&gt;&amp;lt;data&amp;gt;&lt;index-sort-as&gt;data&lt;/index-sort-as&gt;&lt;/indexterm&gt;</codeblock></example>
-<section id="attributes"><title>Attributes</title>
-            <p >The following attributes are available on this element: <xref
-                    href="../attributes/universalAttributes.dita"/> and <xref
-                    href="../attributes/thekeyrefattribute.dita"><xmlatt>keyref</xmlatt></xref>.</p>
-            </section>
 </refbody>
 </reference>

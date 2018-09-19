@@ -4,14 +4,14 @@
  "reference.dtd">
 <reference id="q" xml:lang="en-us">
 <title><xmlelement>q</xmlelement></title>
-<shortdesc>The <xmlelement>q</xmlelement> element includes content quoted from another source. This
-element is used for short quotes that are displayed inline. Use the long quote element (&lt;lq&gt;)
-for quotations that should be set off from the surrounding text or that contain multiple
-paragraphs.</shortdesc>
+<shortdesc>A quotation is a small group of words that is taken from a text or speech and repeated by
+      someone other than the original author or speaker.</shortdesc>
    <prolog>
       <metadata>
          <keywords>
             <indexterm>elements<indexterm>body<indexterm><xmlelement>q</xmlelement></indexterm></indexterm></indexterm>
+            <indexterm>processing
+               expectations<indexterm><xmlelement>q</xmlelement></indexterm></indexterm>
             <indexterm>formatting
                expectations<indexterm><xmlelement>q</xmlelement></indexterm></indexterm>
             <indexterm>quotations<indexterm>short</indexterm></indexterm>
@@ -19,20 +19,23 @@ paragraphs.</shortdesc>
       </metadata>
    </prolog>
 <refbody>
-<section id="section-1"><p>Authors should not add quote punctuation manually when using the <xmlelement>q</xmlelement>
-element. Processors that render the <xmlelement>q</xmlelement> element <term outputclass="RFC-2119"
->SHOULD</term> add appropriate styling, such as locale-specific quotation
-marks.</p>
-<!--<draft-comment>Question added end of 2008: How much should we describe of the behavior? HTML says:<p>Visual user agents must ensure that the content of the Q element is rendered with delimiting quotation marks. Authors should not put quotation marks at the beginning and end of the content of a Q element.</p><p>User agents should render quotation marks in a language-sensitive manner (see the lang attribute). Many languages adopt different quotation styles for outer and inner (nested) quotations, which should be respected by user-agents.</p></draft-comment>-->
-<!--<draft-comment>For DITA 1.2, added the styling behavior based on the decision recorded here in March 2009: http://lists.oasis-open.org/archives/dita/200903/msg00005.html</draft-comment>--></section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-q/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-topic/q </p></section>
-<example id="example" otherprops="examples"><title>Example</title><codeblock
-xml:space="preserve">George said, &lt;q&gt;Disengage the power supply before servicing the unit.&lt;/q&gt;</codeblock></example>
-<section id="attributes"><title>Attributes</title>
-   <p conref="../../common/conref-attribute.dita#conref-attribute/universal-outputclass"/>
-   </section>
+      <!--<section id="usage-information"><title>Usage information</title><p>Authors should not add quote punctuation manually when using the <xmlelement>q</xmlelement> element. Use the long quote element (<xmlelement>lq</xmlelement>) for quotations that should be set off from the surrounding text or that contain multiple paragraphs.</p></section>-->
+      <section id="formatting-expectations">
+         <title>Formatting expectations</title>
+         <p>Processors typically render a quotation inline.</p>
+      </section>
+      <section id="processing-expectations">
+         <title>Processing expectations</title>
+         <p>Processors that render the <xmlelement>q</xmlelement> element <term
+               outputclass="RFC-2119">SHOULD</term> add appropriate styling, such as locale-specific
+            quotation marks.</p>
+      </section>
+      <section id="attributes">
+         <title>Attributes</title>
+         <p conref="../../common/conref-attribute.dita#conref-attribute/only-universal"/>
+      </section>
+<example id="example" otherprops="examples"><title>Example</title>
+         <p>In the following code sample ...</p><codeblock>George said, &lt;q&gt;Disengage the power supply before servicing the unit.&lt;/q&gt;</codeblock></example>
 </refbody>
 </reference>
 

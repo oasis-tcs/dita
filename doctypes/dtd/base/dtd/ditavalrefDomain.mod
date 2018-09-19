@@ -39,20 +39,20 @@
                            -dita-use-conref-target)
                                     #IMPLIED
                %select-atts;
-               %localization-atts;"
+               %localization-atts;
+               outputclass
+                          CDATA
+                                    #IMPLIED"
 >
 <!--                    LONG NAME: DITAVAL Reference               -->
 <!ENTITY % ditavalref.content
-                       "(%ditavalmeta;)*"
+                       "(%ditavalmeta;)?"
 >
 <!ENTITY % ditavalref.attributes
               "navtitle
                           CDATA
                                     #IMPLIED
                href
-                          CDATA
-                                    #IMPLIED
-               outputclass
                           CDATA
                                     #IMPLIED
                scope
@@ -158,12 +158,12 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  ditavalref   %global-atts;  class CDATA "+ map/topicref ditavalref-d/ditavalref ">
-<!ATTLIST  ditavalmeta  %global-atts;  class CDATA "+ map/topicmeta ditavalref-d/ditavalmeta ">
-<!ATTLIST  dvrResourcePrefix %global-atts;  class CDATA "+ topic/data ditavalref-d/dvrResourcePrefix ">
-<!ATTLIST  dvrResourceSuffix %global-atts;  class CDATA "+ topic/data ditavalref-d/dvrResourceSuffix ">
-<!ATTLIST  dvrKeyscopePrefix %global-atts;  class CDATA "+ topic/data ditavalref-d/dvrKeyscopePrefix ">
-<!ATTLIST  dvrKeyscopeSuffix %global-atts;  class CDATA "+ topic/data ditavalref-d/dvrKeyscopeSuffix ">
+<!ATTLIST  ditavalref     class CDATA "+ map/topicref ditavalref-d/ditavalref ">
+<!ATTLIST  ditavalmeta    class CDATA "+ map/topicmeta ditavalref-d/ditavalmeta ">
+<!ATTLIST  dvrResourcePrefix   class CDATA "+ topic/data ditavalref-d/dvrResourcePrefix ">
+<!ATTLIST  dvrResourceSuffix   class CDATA "+ topic/data ditavalref-d/dvrResourceSuffix ">
+<!ATTLIST  dvrKeyscopePrefix   class CDATA "+ topic/data ditavalref-d/dvrKeyscopePrefix ">
+<!ATTLIST  dvrKeyscopeSuffix   class CDATA "+ topic/data ditavalref-d/dvrKeyscopeSuffix ">
 
 <!-- ================== End of DITAVAL Reference Domain ==================== -->
  

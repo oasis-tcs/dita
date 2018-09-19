@@ -11,11 +11,11 @@
 =============================================================
                    HEADER                                    
 ============================================================
-Darwin Information Typing Architecture (DITA) Version 1.3 Plus Errata 01
+Darwin Information Typing Architecture (DITA) Version 1.3 Plus Errata 02
 OASIS Standard
-25 October 2016 
-Copyright (c) OASIS Open 2016. All rights reserved. 
-Source: http://docs.oasis-open.org/dita/dita/v1.3/errata01/os/complete/part0-overview/dita-v1.3-errata01-os-part0-overview-complete.html
+16 January 2018 
+Copyright (c) OASIS Open 2018. All rights reserved. 
+Source: http://docs.oasis-open.org/dita/dita/v1.3/errata02/csprd01/complete/part0-overview/dita-v1.3-errata02-csprd01-part0-overview-complete.html
 =============================================================
  MODULE:    DITA Map                                         
  VERSION:   1.3                                              
@@ -72,6 +72,10 @@ ORIGINAL CREATION DATE:
    2008.02.12 RDA: Add navtitle to topicmeta                 
    2008.02.13 RDA: Create .content and .attributes entities  
    2010.09.20 RDA: Bring linktext content in sync with topic 
+   2018.03.14 KJE: Removed keyref on navref; @navtitle,
+                   @print, and @query; @title on map; added
+                   new attr group for use on reltable and
+                   relcolspec (to remove @collection-type)
 =============================================================
 ]]></headerComment>
     <moduleMetadata>
@@ -224,16 +228,6 @@ ORIGINAL CREATION DATE:
         </attribute>
       </optional>
       <optional>
-        <attribute name="print">
-          <choice>
-            <value>no</value>
-            <value>printonly</value>
-            <value>yes</value>
-            <value>-dita-use-conref-target</value>
-          </choice>
-        </attribute>
-      </optional>
-      <optional>
         <attribute name="search">
           <choice>
             <value>no</value>
@@ -314,16 +308,6 @@ ORIGINAL CREATION DATE:
         <attribute name="toc" a:defaultValue="no">
           <choice>
             <value>no</value>
-            <value>yes</value>
-            <value>-dita-use-conref-target</value>
-          </choice>
-        </attribute>
-      </optional>
-      <optional>
-        <attribute name="print">
-          <choice>
-            <value>no</value>
-            <value>printonly</value>
             <value>yes</value>
             <value>-dita-use-conref-target</value>
           </choice>
@@ -414,16 +398,6 @@ ORIGINAL CREATION DATE:
         </attribute>
       </optional>
       <optional>
-        <attribute name="print">
-          <choice>
-            <value>no</value>
-            <value>printonly</value>
-            <value>yes</value>
-            <value>-dita-use-conref-target</value>
-          </choice>
-        </attribute>
-      </optional>
-      <optional>
         <attribute name="search">
           <choice>
             <value>no</value>
@@ -503,11 +477,74 @@ ORIGINAL CREATION DATE:
         </attribute>
       </optional>
       <optional>
-        <attribute name="print">
+        <attribute name="search">
           <choice>
             <value>no</value>
-            <value>printonly</value>
             <value>yes</value>
+            <value>-dita-use-conref-target</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="chunk"/>
+      </optional>
+      <optional>
+        <attribute name="keyscope" dita:since="1.3"/>
+      </optional>
+    </define>
+    <define name="topicref-atts-for-reltable" dita:since="2.0">
+      <optional>
+        <attribute name="type"/>
+      </optional>
+      <optional>
+        <attribute name="cascade" dita:since="1.3"/>
+      </optional>
+      <optional>        
+        <attribute name="processing-role">
+          <choice>
+            <value>normal</value>
+            <value>resource-only</value>
+            <value>-dita-use-conref-target</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="scope">
+          <choice>
+            <value>external</value>
+            <value>local</value>
+            <value>peer</value>
+            <value>-dita-use-conref-target</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="locktitle">
+          <choice>
+            <value>no</value>
+            <value>yes</value>
+            <value>-dita-use-conref-target</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="format"/>
+      </optional>
+      <optional>
+        <attribute name="linking">
+          <choice>
+            <value>none</value>
+            <value>normal</value>
+            <value>sourceonly</value>
+            <value>targetonly</value>
+            <value>-dita-use-conref-target</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="toc" a:defaultValue="no">
+          <choice>
+            <value>no</value>
             <value>-dita-use-conref-target</value>
           </choice>
         </attribute>
@@ -524,11 +561,9 @@ ORIGINAL CREATION DATE:
       <optional>
         <attribute name="chunk"/>
       </optional>
-      <optional>
-        <attribute name="keyscope" dita:since="1.3"/>
-      </optional>
     </define>
   </div>
+  
 
   <div>
     <a:documentation>ELEMENT TYPE PATTERNS</a:documentation>
@@ -553,9 +588,6 @@ ORIGINAL CREATION DATE:
         </zeroOrMore>
       </define>
       <define name="map.attributes">
-        <optional>
-          <attribute name="title"/>
-        </optional>
         <optional>
           <attribute name="id">
             <data type="ID"/>
@@ -598,13 +630,7 @@ ORIGINAL CREATION DATE:
       <define name="navref.attributes">
         <ref name="univ-atts"/>
         <optional>
-          <attribute name="keyref"/>
-        </optional>
-        <optional>
           <attribute name="mapref"/>
-        </optional>
-        <optional>
-          <attribute name="outputclass"/>
         </optional>
       </define>
       <define name="navref.element">
@@ -637,9 +663,6 @@ ORIGINAL CREATION DATE:
       </define>
       <define name="topicref.attributes">
         <optional>
-          <attribute name="navtitle"/>
-        </optional>
-        <optional>
           <attribute name="href"/>
         </optional>
         <optional>
@@ -649,13 +672,7 @@ ORIGINAL CREATION DATE:
           <attribute name="keys"/>
         </optional>
         <optional>
-          <attribute name="query"/>
-        </optional>
-        <optional>
           <attribute name="copy-to"/>
-        </optional>
-        <optional>
-          <attribute name="outputclass"/>
         </optional>
         <ref name="topicref-atts"/>
         <ref name="univ-atts"/>
@@ -729,10 +746,7 @@ ORIGINAL CREATION DATE:
         <optional>
           <attribute name="title"/>
         </optional>
-        <optional>
-          <attribute name="outputclass"/>
-        </optional>
-        <ref name="topicref-atts-no-toc-no-keyscope"/>
+        <ref name="topicref-atts-for-reltable"/>
         <ref name="univ-atts"/>
       </define>
       <define name="reltable.element">
@@ -787,10 +801,7 @@ ORIGINAL CREATION DATE:
         </zeroOrMore>
       </define>
       <define name="relcolspec.attributes">
-        <optional>
-          <attribute name="outputclass"/>
-        </optional>
-        <ref name="topicref-atts-no-toc-no-keyscope"/>
+        <ref name="topicref-atts-for-reltable"/>
         <ref name="univ-atts"/>
       </define>
       <define name="relcolspec.element">
@@ -814,9 +825,6 @@ ORIGINAL CREATION DATE:
         </zeroOrMore>
       </define>
       <define name="relrow.attributes">
-        <optional>
-          <attribute name="outputclass"/>
-        </optional>
         <ref name="univ-atts"/>
       </define>
       <define name="relrow.element">
@@ -843,9 +851,6 @@ ORIGINAL CREATION DATE:
         </zeroOrMore>
       </define>
       <define name="relcell.attributes">
-        <optional>
-          <attribute name="outputclass"/>
-        </optional>
         <ref name="topicref-atts-no-toc-no-keyscope"/>
         <ref name="univ-atts"/>
       </define>
@@ -965,9 +970,6 @@ ORIGINAL CREATION DATE:
         </define>
         <define name="shortdesc.attributes">
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="shortdesc.element">
           <element name="shortdesc" dita:longName="Short Description">
@@ -994,9 +996,6 @@ ORIGINAL CREATION DATE:
         </zeroOrMore>
       </define>
       <define name="linktext.attributes">
-        <optional>
-          <attribute name="outputclass"/>
-        </optional>
         <ref name="univ-atts"/>
       </define>
       <define name="linktext.element">
@@ -1022,9 +1021,6 @@ ORIGINAL CREATION DATE:
         </zeroOrMore>
       </define>
       <define name="searchtitle.attributes">
-        <optional>
-          <attribute name="outputclass"/>
-        </optional>
         <ref name="univ-atts"/>
       </define>
       <define name="searchtitle.element">
@@ -1091,6 +1087,9 @@ ORIGINAL CREATION DATE:
         </optional>
         <ref name="id-atts"/>
         <ref name="select-atts"/>
+        <optional>
+          <attribute name="outputclass"/>
+        </optional>
       </define>
       <define name="ux-window.element">
         <a:documentation> Category: Map elements</a:documentation>
@@ -1108,85 +1107,71 @@ ORIGINAL CREATION DATE:
     <a:documentation>SPECIALIZATION ATTRIBUTES</a:documentation>
 
     <define name="map.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- map/map "/>
       </optional>
     </define>
     <define name="navref.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- map/navref "/>
       </optional>
     </define>
     <define name="topicref.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- map/topicref "/>
       </optional>
     </define>
     <define name="anchor.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- map/anchor "/>
       </optional>
     </define>
     <define name="reltable.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- map/reltable "/>
       </optional>
     </define>
     <define name="relheader.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- map/relheader "/>
       </optional>
     </define>
     <define name="relcolspec.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- map/relcolspec "/>
       </optional>
     </define>
     <define name="relrow.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- map/relrow "/>
       </optional>
     </define>
     <define name="relcell.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- map/relcell "/>
       </optional>
     </define>
     <define name="topicmeta.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- map/topicmeta "/>
       </optional>
     </define>
     <define name="linktext.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- map/linktext "/>
       </optional>
     </define>
     <define name="searchtitle.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- map/searchtitle "/>
       </optional>
     </define>
     <define name="shortdesc.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- map/shortdesc "/>
       </optional>
     </define>
     <define name="ux-window.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- map/ux-window "/>
       </optional>

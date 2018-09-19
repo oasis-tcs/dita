@@ -11,31 +11,49 @@ reader should reference instead of the current one.</shortdesc>
             <indexterm>indexing domain<indexterm>index-see</indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
-<section id="index-redirection"><p>The <xmlelement>index-see</xmlelement> and <xmlelement>index-see-also</xmlelement> elements allow
-a form of redirection to another index entry within the generated index. The
-<xmlelement>index-see</xmlelement> element refers to an index entry that the reader should use
-<i>instead of</i> the current one, whereas the <xmlelement>index-see-also</xmlelement> element refers
-to an index entry that the reader should use <i>in addition to</i> the current one. </p>
-<!--Verifed in following paragraph: using lower case "should" rather than RFC SHOULD.--><p>Processors should ignore <xmlelement>index-see</xmlelement> and
-<xmlelement>index-see-also</xmlelement> elements if their parent <xmlelement>indexterm</xmlelement>
-element contains any <xmlelement>indexterm</xmlelement> children.</p></section>
-<section id="section-1"><p>Because an <xmlelement>index-see</xmlelement> indicates a redirection to use instead of the
-current entry, it is an error if, for any <xmlelement>index-see</xmlelement>, there is also an
-<xmlelement>index-see-also</xmlelement> or an <xmlelement>indexterm</xmlelement> for the same index
-entry (that is, another entry with an identical sort key). For example, if an
-<xmlelement>indexterm</xmlelement> element with the content "Memory stick" also includes
-<codeph>&lt;index-see>USB drive&lt;/index-see></codeph>, it is an error if there is also an
-<xmlelement>indexterm</xmlelement> with the contents "Memory stick". This is to prevent index
-entries that are both a redirect and a page reference, such as:</p>
-<lines>* Memory stick     42, 106
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p id="index-redirection">The <xmlelement>index-see</xmlelement> and
+          <xmlelement>index-see-also</xmlelement> elements allow a form of redirection to another
+        index entry within the generated index. The <xmlelement>index-see</xmlelement> element
+        refers to an index entry that the reader should use <i>instead of</i> the current one,
+        whereas the <xmlelement>index-see-also</xmlelement> element refers to an index entry that
+        the reader should use <i>in addition to</i> the current one. </p>
+      <p>There can be multiple <xmlelement>index-see</xmlelement> elements for a single index
+        entry.</p>
+    </section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <!--Verifed in following paragraph: using lower case "should" rather than RFC SHOULD.-->
+      <p>Processors should ignore <xmlelement>index-see</xmlelement> and
+          <xmlelement>index-see-also</xmlelement> elements if their parent
+          <xmlelement>indexterm</xmlelement> element contains any <xmlelement>indexterm</xmlelement>
+        children.</p>
+      <p>Because an <xmlelement>index-see</xmlelement> indicates a redirection to use instead of the
+        current entry, it is an error if, for any <xmlelement>index-see</xmlelement>, there is also
+        an <xmlelement>index-see-also</xmlelement> or an <xmlelement>indexterm</xmlelement> for the
+        same index entry (that is, another entry with an identical sort key). For example, if an
+          <xmlelement>indexterm</xmlelement> element with the content "Memory stick" also includes
+          <codeph>&lt;index-see>USB drive&lt;/index-see></codeph>, it is an error if there is also
+        an <xmlelement>indexterm</xmlelement> with the contents "Memory stick". This is to prevent
+        index entries that are both a redirect and a page reference, such as:</p>
+      <lines>* Memory stick     42, 106
      * See USB drive</lines>
-<p>An implementation <term outputclass="RFC-2119">MAY</term> give an error message
-when it encounters this condition, and <term outputclass="RFC-2119">MAY</term>
-recover from this error condition by treating the <xmlelement>index-see</xmlelement> as an
-<xmlelement>index-see-also</xmlelement>.</p><p>There can be multiple <xmlelement>index-see</xmlelement> elements for a single index entry.</p></section>
-<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-index-see/contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>+
+      <p>An implementation <term outputclass="RFC-2119">MAY</term> give an error message when it
+        encounters this condition, and <term outputclass="RFC-2119">MAY</term> recover from this
+        error condition by treating the <xmlelement>index-see</xmlelement> as an
+          <xmlelement>index-see-also</xmlelement>.</p>
+    </section>
+<section id="section-1"/>
+<section id="inheritance" otherprops="inheritance">
+      <title>Specialization hierarchy</title><p>+
 topic/index-base indexing-d/index-see </p></section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref
+          keyref="attributes-universal"/> and <xref
+          keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
+    </section>
 <example id="example" otherprops="examples">
 <title>Example</title><p>The following example illustrates the use of an <xmlelement>index-see</xmlelement> redirection
 element within an <xmlelement>indexterm</xmlelement>:</p><codeblock
@@ -65,10 +83,5 @@ feeding</li>
 <xmlelement>index-see</xmlelement>:<codeblock>&lt;indexterm>Einstein's mass and energy equation
   &lt;index-see>E=mc&lt;sup>2&lt;/sup>&lt;/index-see>
 &lt;/indexterm></codeblock></p></example>
-<section id="attributes"><title>Attributes</title>
-         <p >The following attributes are available on this element: <xref
-               href="../attributes/universalAttributes.dita"/> and <xref
-               href="../attributes/thekeyrefattribute.dita"><xmlatt>keyref</xmlatt></xref>.</p>
-         </section>
 </refbody>
 </reference>

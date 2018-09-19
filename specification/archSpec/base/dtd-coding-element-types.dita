@@ -8,12 +8,12 @@
   <conbody>
     <p>A vocabulary module that defines a structural or element domain specialization is composed of
       two files:</p>
-    <ul otherprops="examples">
+    <ul>
       <li>An entity declaration (<filepath>.ent</filepath>) file, which declares the text entities
         that are used to integrate the vocabulary module into a document-type shell</li>
-      <li>A definition module (<filepath>.mod</filepath>) file, which declares the <ph
-          >element names, content models, and attribute lists</ph> for the
-        element types that are defined in the vocabulary module</li>
+      <li>A definition module (<filepath>.mod</filepath>) file, which declares the <ph>element
+          names, content models, and attribute lists</ph> for the element types that are defined in
+        the vocabulary module</li>
     </ul>
     <section id="domains-contribution">
       <title><xmlatt>domains</xmlatt> attribute contribution</title>
@@ -99,18 +99,14 @@
             <p>For each element type, there must be a parameter entity that declares the attributes
               that are available on the element. The name of the parameter entity is
                   <codeph><varname>tagname</varname>.attributes</codeph>, and the value is a list of
-              the attributes that are used by the element type (except for <xmlatt>class</xmlatt>
-              and the attributes provided by the <codeph>global-atts</codeph>
-              parameter entity). Consistent use and naming of the
+              the attributes that are used by the element type (except for <xmlatt>class</xmlatt>). Consistent use and naming of the
                 <codeph><varname>tagname</varname>.attributes</codeph> parameter entity enables the
               use of constraint modules to restrict attributes.</p>
             <p otherprops="examples">For
-              example:<codeblock>&lt;!ENTITY % topichead.attributes
- "navtitle CDATA #IMPLIED
-  outputclass CDATA #IMPLIED
-  keys CDATA #IMPLIED
+example:<codeblock>&lt;!ENTITY % topichead.attributes
+ "keys CDATA #IMPLIED
   copy-to CDATA #IMPLIED
-  %topicref-atts;
+  %topicref-atts-no-locktitle;
   %univ-atts;"
 ></codeblock></p>
           </dd>
@@ -139,15 +135,12 @@
             <p>A vocabulary module must define a <xmlatt>class</xmlatt> attribute for every <ph
                 >element that is </ph>declared in the module. The value of the
               attribute is constructed according to the rules in <xref
-                href="specialization-class-attribute.dita"/>. The <codeph>ATTLIST</codeph>
-              declaration for the <xmlatt>class</xmlatt> attribute should also include a reference
-              to the <codeph>global-atts</codeph> parameter entity.</p>
+                href="specialization-class-attribute.dita"/>.</p>
             <p otherprops="examples">For example, the <codeph>ATTLIST</codeph>
               definition for the <xmlelement>topichead</xmlelement> element (a specialization of the
-                <xmlelement>topicref</xmlelement> element in the base map type) includes global
-              attributes with an entity, then the definition of the <xmlatt>class</xmlatt>
-              attribute, as
-              follows:<codeblock>&lt;!ATTLIST topichead  %global-atts;  class CDATA "+ map/topicref  mapgroup-d/topichead "&gt;</codeblock></p>
+                <xmlelement>topicref</xmlelement> element in the base map type) includes
+              the definition of the <xmlatt>class</xmlatt> attribute, as
+              follows:<codeblock>&lt;!ATTLIST topichead  class CDATA "+ map/topicref  mapgroup-d/topichead "&gt;</codeblock></p>
           </dd>
         </dlentry>
       </dl>

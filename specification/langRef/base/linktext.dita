@@ -1,31 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="linktext" xml:lang="en-us">
 <title><xmlelement>linktext</xmlelement></title>
-<shortdesc>The <xmlelement>linktext</xmlelement> element provides the literal label or line of
-text for a link. For links to local DITA topics, the text of a link can typically be resolved during
-processing. Use the <xmlelement>linktext</xmlelement> element only when the target cannot be
-reached, such as when it is a peer or external link, or when the target is local but
-not in DITA format. <ph>When used inside a topic, <xmlelement>linktext</xmlelement> is used as the
-text for the specified link; when used within a map, <xmlelement>linktext</xmlelement> is used as
-the text for generated links that point to the specified topic.</ph></shortdesc>
+  <shortdesc conkeyref="library-short-descriptions/linktext"/>
 <prolog><metadata>
 <keywords><indexterm>elements<indexterm>related
       links<indexterm><xmlelement>linktext</xmlelement></indexterm></indexterm></indexterm>
     <indexterm>links<indexterm>labels</indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
-<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-linktext/contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>"-
-topic/linktext " when used in topics, and "- map/linktext " when used
-in maps.</p></section>
-<example id="example" otherprops="examples"><title>Example</title><codeblock
-xml:space="preserve">&lt;link href="tzover.htm#accsqlj"&gt;
- &lt;linktext&gt;Accessing relational data with SQLJ&lt;/linktext&gt;
+    <section id="usage-information">
+      <title>Usage information</title>
+<draft-comment author="robander">This usage information needs to be entirely reworked. It currently
+contains processing information, tutorial information, and also ignores the fact that link text is
+now often used for text within a key definition (that does not actually specify a
+link).</draft-comment>
+      <p>For links to local DITA topics, the text of a link typically can be resolved during
+                processing. Use the <xmlelement>linktext</xmlelement> element only when the target
+                cannot be reached, such as when it is a peer or external link, or when the target is
+                local but not in DITA format. When used inside a topic,
+                    <xmlelement>linktext</xmlelement> is used as the text for the specified link;
+                when used within a map, <xmlelement>linktext</xmlelement> is used as the text for
+                generated links that point to the specified topic.</p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p conref="../../common/conref-attribute.dita#conref-attribute/only-universal"/>
+    </section>
+<example id="example" otherprops="examples"><title>Example</title>
+<draft-comment author="robander">Should add examples of link text used in key definitions / in
+maps.</draft-comment>
+<p>This is an example of a link to a local HTML file, including link text for the referenced
+resource.</p><codeblock>&lt;link href="tzover.htm#accsqlj" format="html"&gt;
+  &lt;linktext&gt;Accessing relational data with SQLJ&lt;/linktext&gt;
 &lt;/link&gt;
 </codeblock></example>
-<section id="attributes"><title>Attributes</title>
-   <p conref="../../common/conref-attribute.dita#conref-attribute/universal-outputclass"/></section>
 </refbody>
 </reference>

@@ -5,10 +5,7 @@
  <title><xmlelement>othermeta</xmlelement></title>
  <shortdesc>The <xmlelement>othermeta</xmlelement> element can be used to identify properties not
   otherwise included in <xmlelement>metadata</xmlelement> and to assign name/content values to those
-  properties. The <xmlatt>name</xmlatt> attribute identifies the property and the
-   <xmlatt>content</xmlatt> attribute specifies the property's value. All <xmlelement>othermeta</xmlelement> elements
-  are considered part of the topic's metadata and should be reflected in the output as appropriate
-  for the output medium.</shortdesc>
+  properties.</shortdesc>
  <prolog>
   <metadata>
    <keywords><indexterm>othermeta</indexterm><indexterm>prolog elements<indexterm
@@ -16,18 +13,21 @@
    </keywords>
   </metadata>
  </prolog>
- <refbody><section conref="../../common/commonNavLibraryTable.dita#contentmodel-othermeta/contains" id="contains" otherprops="contains"></section><section id="inheritance" otherprops="inheritance">
-   <title>Inheritance</title>
-   <p>- topic/othermeta </p>
+ <refbody>
+  <section id="usage-information">
+   <title>Usage information</title>
+   <p>The <xmlatt>name</xmlatt> attribute identifies the property and the <xmlatt>content</xmlatt>
+    attribute specifies the property's value. </p>
   </section>
-  <example id="example" otherprops="examples">
-   <title>Example</title>
-   <codeblock xml:space="preserve">&lt;othermeta name="ThreadWidthSystem" content="metric"/&gt;</codeblock>
-  </example>
+  <section id="processing-expectations">
+   <title>Processing expectations</title>
+   <p>All <xmlelement>othermeta</xmlelement> elements are considered part of the topic's metadata
+    and should be reflected in the output as appropriate for the output medium.</p>
+  </section>
   <section id="attributes">
    <title>Attributes</title>
-   <p >The following attributes are available on this element: <xref
-     href="../attributes/universalAttributes.dita"/> and the attributes defined below.</p>
+   <p>The following attributes are available on this element: <xref
+     keyref="attributes-universal"/> and the attributes defined below.</p>
    <dl>
     <dlentry id="name">
      <dt><xmlatt>name</xmlatt>
@@ -47,8 +47,13 @@
      <dt><xmlatt>translate-content</xmlatt></dt>
      <dd>Indicates whether the <xmlatt>content</xmlatt> attribute of the defined metadata property
       should be translated or not. Allowable values are <keyword>yes</keyword>,
-       <keyword>no</keyword>, and <xref href="../attributes/ditauseconreftarget.dita"
+       <keyword>no</keyword>, and <xref keyref="attributes-useconreftarget"
        >-dita-use-conref-target</xref>.</dd>
     </dlentry>
-   </dl></section></refbody>
+   </dl>
+  </section>
+  <example id="example" otherprops="examples">
+   <title>Example</title>
+   <codeblock xml:space="preserve">&lt;othermeta name="ThreadWidthSystem" content="metric"/&gt;</codeblock>
+  </example></refbody>
 </reference>
