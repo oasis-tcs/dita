@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="harvested-content-base">
+ <title>Content removed from base element-reference topics</title>
+ <conbody>
+<section>
+<title><xmlelement>data</xmlelement></title>
+<p>Uses of the <xmlelement>data</xmlelement> element can include the following:</p>
+<ul id="ul_g3p_tjc_t2b">
+<li>Complex metadata properties such as bibliographic records corresponding to citations.</li>
+<li>Hybrid documents with data values as part of the content, such as word processor formats using
+form fields.</li>
+<li>Messages in which the payload includes human-readable content. Such applications can use the
+<xmlelement>data</xmlelement> element to define the addressing on the message envelope. For
+instance, a topic could model an email message by representing the address with specialized
+<xmlelement>data</xmlelement> elements in the <xmlelement>prolog</xmlelement> element and the
+content with the <xmlelement>body</xmlelement> element.</li>
+<li>Transactional documents in which the values are processed but also displayed with human-readable
+content. In particular, a library of building blocks for transaction documents can be implemented
+through a DITA domain as specialized <xmlelement>data</xmlelement> elements including those from the
+UN/CEFACT Core Components Technical Specification (<xref format="html"
+href="http://www.unece.org/cefact/" scope="external">http://www.unece.org/cefact/</xref>). </li>
+</ul>
+<p>The <xmlatt>name</xmlatt> attribute names the property for processors. A
+<xmlelement>title</xmlelement> subelement can provide a label for the property. The
+<xmlatt>datatype</xmlatt> attribute can be used to identify the type for the value.</p>
+<p>For example, the value of the property can be any of the following:</p>
+<ul id="ul_cb3_fcf_bbb">
+<li>A simple text value expressed with the <xmlatt>value</xmlatt> attribute or textual content</li>
+<li>A reference to either DITA content or a non-DITA resource expressed with the
+<xmlatt>href</xmlatt> attribute</li>
+<li>An image or other non-textual object </li>
+<li>A brief unit of descriptive text that is not part of the body text flow</li>
+<li>A complex structure composed of nested <xmlelement>data</xmlelement> elements</li>
+</ul>
+<p>The <xmlatt>name</xmlatt> attribute might be used to distinguish different semantics associated
+with different instances of the <xmlelement>data</xmlelement> element such as addresses, times,
+amounts, and so on. In many cases, however, it is preferable to specialize the
+<xmlelement>data</xmlelement> element for more precise semantics, structures, and values. For
+instance, a specialization can specify an enumeration for the <xmlatt>value</xmlatt> attribute. </p>
+<p>A <xmlelement>data</xmlelement> element containing properties of a topic as a whole should be
+located in the topic&apos;s <xmlelement>prolog</xmlelement> or <xmlelement>metadata</xmlelement>
+element, or in a <xmlelement>topicmeta</xmlelement> element related to a
+<xmlelement>topicref</xmlelement> that references the topic. The <xmlelement>data</xmlelement>
+element generally goes at the beginning of the element to which the properties in it refer. Where
+this is unwieldy, the <xmlelement>data</xmlelement> element can go in the
+<xmlelement>prolog</xmlelement>, with the <xmlelement>data-about</xmlelement> element identifying
+which specific element in the topic is the reference.</p>
+</section>
+<section>
+<title><xmlelement>dl</xmlelement></title>
+<p>An optional heading for the terms and definitions can be provided using the
+<xmlelement>dlhead</xmlelement> element, which contains header elements for those columns.</p>
+</section>
+  <section>
+   <title><xmlelement>div</xmlelement></title>
+   <p>The <xmlelement>div</xmlelement> element is used to organize subsets of content into logical
+    groups that are not intended to be or should not be contained as a topic.</p>
+   <p>The <xmlelement>div</xmlelement> element cannot contain a title. This avoids enabling the
+    creation of deeply-nested content that would otherwise be written as separate topics. If the
+    content requires a title, use a <xmlelement>section</xmlelement> element, a nested
+     <xmlelement>topic</xmlelement>, or possibly a <xmlelement>fig</xmlelement> element.</p>
+  </section>
+  <section>
+   <title><xmlelement>draft-comment</xmlelement></title>
+   <p>Authors can use the <xmlelement>draft-comment</xmlelement> element to ask a question or to
+    make a comment that they want others to review. To indicate the source, date, or status of the
+    draft comment, authors can use the <xmlatt>author</xmlatt>, <xmlatt>time</xmlatt>, or
+     <xmlatt>disposition</xmlatt> attributes.</p>
+  </section>
+    <section>
+      <title><xmlelement>fig</xmlelement></title>
+      <p>Use the <xmlelement>desc</xmlelement> element, placed after the title, to provide a longer
+        description of the figure. </p>
+    </section>
+    <section>
+      <title><xmlelement>image</xmlelement></title>
+      <p>The <xmlelement>image</xmlelement> element has an optional <xmlatt>placement</xmlatt>
+        attribute that indicates whether the included graphic or artwork is rendered inline (a
+        button or icon) or on a separate line for a larger image. There also are attributes that
+        indicate the size to which the included graphic or artwork is scaled.</p>
+      <p>To make the intent of the image more accessible for users using screen readers or text-only
+        readers, authors should include a description of the image content in the
+          <xmlelement>alt</xmlelement> element.</p>
+    </section>
+  <section>
+   <title><xmlelement>keyword</xmlelement></title>
+   <p>Where there is an element that has a better meaning for what you are describing, use that
+    element. The <xmlelement>keyword</xmlelement> element is a generic element; use it when no other
+    element applies.</p>
+   <p>Specific markup recommendations:</p>
+   <ul>
+        <li>Use <xmlelement>apiname</xmlelement> for API names and <xmlelement>cmdname</xmlelement>
+          for command names.</li>
+        <li>Use <xref href="term.dita"><xmlelement>term</xmlelement></xref> to indicate what you are
+          defining with inline paragraph definitions.</li>
+        <li>Use <xref href="ph.dita"><xmlelement>ph</xmlelement></xref> for general phrases when
+            <xmlelement>keyword</xmlelement> is not appropriate.</li>
+        <li>Use <xmlelement>kwd</xmlelement> to indicate programming keywords in syntax diagrams and
+          syntax phrases.</li>
+      </ul>
+   <p>All <xmlelement>keyword</xmlelement> or <xmlelement>indexterm</xmlelement> elements in the
+     <xmlelement>keywords</xmlelement> metadata element are considered part of the topic's metadata
+    and should be processed as appropriate for the given output medium.</p>
+   <p>While the <xmlelement>keyword</xmlelement> element can be used inline, the <xref
+     href="keywords.dita"><xmlelement>keywords</xmlelement></xref> element is not an inline element.
+    The <xmlelement>keywords</xmlelement> element only appears in the
+     <xmlelement>topicmeta</xmlelement> or <xmlelement>prolog</xmlelement> elements; it is used to
+    specify keywords that apply to the topic.</p>
+      <p>With DITA 1.2, another option for reusable text is the <xref href="text.dita"/> element,
+        which is designed to be free of any extra semantic information. The
+          <xmlelement>text</xmlelement> element is available within
+        <xmlelement>keyword</xmlelement>, and at least one of those elements should be available to
+        allow content reuse in any context.</p>
+  </section>
+  <section>
+   <title><xmlelement>lq</xmlelement></title>
+   <p>Authors can use the <xmlatt>href</xmlatt> and <xmlatt>keyref</xmlatt> attributes to specify
+    the source of the quotation. Use the quote element <xmlelement>q</xmlelement> for short
+    quotations that are intended to be rendered inline. The <xmlelement>longquoteref</xmlelement>
+    element is available for more complex references to the source of a quotation.</p>
+  </section>
+    <section>
+      <title><xmlelement>map</xmlelement></title>
+      <p>The containing element for a map is the <xmlelement>map</xmlelement> element. Within the
+        map, use the <xmlelement>topicref</xmlelement> element to add and organize references to the
+        topics, and the <xmlelement>topicgroup</xmlelement> and <xmlelement>reltable</xmlelement>
+        elements to provide non-hierarchical relationships. You can use the
+          <xmlelement>map</xmlelement> element to set default attribute values for all
+          <xmlelement>topicref</xmlelement> elements in the map.</p>
+    </section>
+  <section>
+   <title><xmlelement>navtitle</xmlelement></title>
+   <p>The navigation title (<xmlelement>navtitle</xmlelement>) is one of a set of alternative titles
+    that can be included inside the <xmlelement>titlealts</xmlelement> element. This navigation
+    title might differ from the first level heading that shows in the main browser window.</p>
+  </section>
+    <section>
+      <title><xmlelement>prolog</xmlelement></title>
+      <p>Typically, the metadata defined within the <xmlelement>prolog</xmlelement> is displayed
+        with the topic when the topic is rendered, but it might be used by processes that generate
+        search indexes or customize navigation.</p>
+    </section>
+  <section>
+   <title><xmlelement>q</xmlelement></title>
+   <p>Authors should not add quote punctuation manually when using the <xmlelement>q</xmlelement>
+    element. Use the long quote element (<xmlelement>lq</xmlelement>) for quotations that should be
+    set off from the surrounding text or that contain multiple paragraphs.</p>
+  </section>
+    <section>
+      <title><xmlelement>section</xmlelement></title>
+      <p>For example, the titles <b>Reference Syntax</b> and <b>Properties</b> might represent
+        section-level discourse within a topic about a command-line process—the content in each
+          <xmlelement>section</xmlelement> relates uniquely to the subject of that topic.</p>
+    </section>
+    <section>
+      <title><xmlelement>shortdesc</xmlelement></title>
+      <p>The short description should be a single, concise paragraph containing one or two sentences
+        of no more than 50 words.</p>
+      <p>Use the <xmlelement>shortdesc</xmlelement> element when the first paragraph of topic
+        content is simple enough to be suitable for use as a link preview or for summaries.
+        Otherwise use the <xmlelement>abstract</xmlelement> element to provide richer content around
+        the <xmlelement>shortdesc</xmlelement>. See the <xref href="abstract.dita"/> description for
+        more information about the behavior of <xmlelement>shortdesc</xmlelement> in an
+        abstract.</p>
+      <p>While the <xmlelement>shortdesc</xmlelement> element is optional, it is recommended that
+        topics contain this element. When a topic contains only one paragraph, it is preferable to
+        include the text in the <xmlelement>shortdesc</xmlelement> and omit the topic body or leave
+        it empty. </p>
+      <table colsep="0" frame="topbot" rowheader="firstcol" product="technicalContent"
+        id="table_b1y_4yd_z1b">
+        <tgroup cols="2">
+          <colspec colname="col1" colwidth="44*"/>
+          <colspec colname="col2" colwidth="153*"/>
+          <thead>
+            <row>
+              <entry colname="col1" valign="top">Type</entry>
+              <entry colname="col2" valign="top">Recommended content</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry colname="col1">Task</entry>
+              <entry colname="col2">
+                <p id="twhattosay">The short description should explain what the task information
+                  helps users accomplish, the benefits of the task, or the purpose of the task. Do
+                  not simply repeat the title. Try to include information that will help users
+                  understand when the task is appropriate or why the task is necessary. Avoid
+                  stating the obvious, such as <q>You can use XYZ to do A</q> as the only statement
+                  in the short description for Task A. In some cases, add more information about why
+                  the task is beneficial.</p>
+                <p id="tphrasing">Do not use sentence fragments. Use complete sentences. Avoid
+                  starting short descriptions with phrases such as <q>This topic describes . . .
+                    .</q> or <q>This topic is about . . . .</q></p>
+              </entry>
+            </row>
+            <row>
+              <entry colname="col1">Concept</entry>
+              <entry colname="col2">
+                <p id="cwhattosay">Introduce the concept and provide a concise answer to the
+                  question "What is this?" and in some cases "Why do I care about this?" If the
+                  concept is unfamiliar, you can start with a brief definition. Avoid using the
+                  short description to lead in or build up to a topic. The short description
+                  paragraph should contain the main point of the concept topic. The concept short
+                  description should clearly apply to a concept. Avoid turning the concept topic
+                  into a task. Do not simply repeat the title.</p>
+                <p id="cphrasing">Do not use sentence fragments. Use complete sentences. Avoid
+                  starting short descriptions with phrases such as <q>This topic describes . . .
+                    .</q> or <q>This topic is about . . . .</q></p>
+              </entry>
+            </row>
+            <row>
+              <entry colname="col1">Reference</entry>
+              <entry colname="col2">
+                <p id="rwhattosay">Briefly describe what the reference item does, what it is, or
+                  what it is used for.</p>
+                <p id="rphrasing">In most cases, use a complete sentence. You can use a sentence
+                  fragment only for a topic that is very short, such as an API topic and each of its
+                  subtopics. Use consistent phrasing across libraries and information centers so
+                  that your information can be seamlessly integrated with another product's
+                  information.</p>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+    <section>
+      <title><xmlelement>simpletable</xmlelement></title>
+      <p>Choose the <xmlelement>simpletable</xmlelement> element when you want to show information
+        in regular rows and columns. For example, multi-column tabular data such as phone directory
+        listings or parts lists are good candidates for <xmlelement>simpletable</xmlelement>.
+        Another good use of <xmlelement>simpletable</xmlelement> is for information that seems to
+        beg for a three-part definition list; the <xmlatt>keycol</xmlatt> attribute can be used to
+        indicate which column represents the "key" or term-like column of the structure.</p>
+    </section>
+    <section>
+      <title><xmlelement>stentry</xmlelement></title>
+      <p>You can place any number of <xmlelement>stentry</xmlelement> cells in either an
+          <xmlelement>sthead</xmlelement> element (for headings) or <xmlelement>strow</xmlelement>
+        element (for rows of data).</p>
+    </section>
+    <section>
+      <title><xmlelement>topicgroup</xmlelement></title>
+      <p>The <xmlelement>topicgroup</xmlelement> element groups <xmlelement>topicref</xmlelement>
+        elements for common treatment without affecting the structural hierarchy of the map, as
+        opposed to nesting <xmlelement>topicref</xmlelement> elements, which does imply a structural
+        hierarchy.</p>
+      <p>The <xmlelement>topicgroup</xmlelement> element can provide linking relationships and
+        shared, inherited attributes to the set of elements that it contains without affecting the
+        resulting table of contents or navigation.</p>
+    </section>
+    <section>
+      <title><xmlelement>topicref</xmlelement></title>
+      <p>You can set the collection type of a parent <xmlelement>topicref</xmlelement> to determine
+        how its children are related to each other. You can also express relationships among
+          <xmlelement>topicref</xmlelement> elements by using group and table structures (such as
+          <xmlelement>topicgroup</xmlelement> and <xmlelement>reltable</xmlelement>). Relationships
+        are expressed as links in the output; by default, each participant in a relationship has
+        links to the other participants in that relationship. </p>
+      <p>You can fine tune the output from your map by setting different attributes on the
+          <xmlelement>topicref</xmlelement> element. For example, the <xmlatt>linking</xmlatt>
+        attribute controls how a topic&apos;s relationships to other topics are expressed as links,
+        and the <xmlatt>toc</xmlatt> attribute controls whether the topic shows up in TOC or
+        navigation output.</p>
+    </section>
+    <section>
+      <title><xmlelement>u</xmlelement></title>
+      <p>This element is part of the highlighting domain. Use this element only when a more
+        semantically appropriate element is not available. For example, for specific items such as
+        GUI controls, use the <xmlelement>uicontrol</xmlelement> element.</p>
+    </section>
+    <section>
+      <title><xmlelement>xref</xmlelement></title>
+      <p>When creating a cross-reference, link to the element structure, not the
+          <xmlelement>title</xmlelement> element of the object. For example, to create a
+        cross-reference to a figure, link to the <xmlelement>fig</xmlelement> element, not the
+          <xmlelement>title</xmlelement> element within the <xmlelement>fig</xmlelement> element.
+        Output processing determines whether the text of the <xmlelement>title</xmlelement> element
+        is used to render the cross-reference.</p>
+      <p>Cross references that link to elements in other topics can employ key-based addressing by
+        using the <xmlatt>keyref</xmlatt> attribute. This enables the cross-reference to point to
+        different topics in the context of different top-level maps. Cross references that employ
+        direct URI-based addressing using the <xmlatt>href</xmlatt> attribute create dependencies;
+        if the topic with the cross-reference is included in a map, the target topic also might need
+        to be included for the cross-reference to be resolvable in the context of that map. While
+        you can use conditional processing to have different cross-references for different
+        contexts, it is usually easier and more effective to use keys. By using keys, the
+        cross-reference can be independent of the contexts it might be used in, because it is up to
+        each different map to bind the key used by the cross-reference to the appropriate target. </p>
+      <p>In many cases it is best to avoid inline cross references in favor of links of links that
+        are generated by the <xref href="related-links.dita"/> element or relationship tables. Such
+        links typically are rendered at the end of the topic. This prevents readers from leaving a
+        topic and missing important information. Using relationship tables also enables the links to
+        be managed at a DITA map level, making it possible for topics to be quickly integrated into
+        new contexts without breaking links.</p>
+    </section>
+ </conbody>
+</concept>

@@ -14,22 +14,27 @@
 <section id="section-1">In a KIND-OF hierarchy, the child subject is a particular
 variety of the parent subject. A KIND-OF hierarchy is sometimes known
 as an IS-A, generic, or subsumption hierarchy. </section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-hasKind/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-map/topicref subjectScheme/hasKind </p></section>
+<section id="inheritance" otherprops="inheritance">
+      <title>Specialization hierarchy</title>
+      <p>This element is specialized from <xref keyref="topicref"/> in the map module.</p>
+      <!--<p>- map/topicref subjectScheme/hasKind </p>--></section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <sectiondiv conref="../../common/conref-attribute.dita#conref-attribute/scheme-HAS-elements"/>
+    </section>
 <example id="example"  otherprops="examples">
       <title>Example</title>
       <p>This example specifies that cities, towns, and villages are each a kind of settlement.
-        Additionally, bigcity, mediumcity, and smallcity are each a kind of city.</p>
+        Additionally, big-city, medium-city, and small-city are each a kind of city.</p>
       <codeblock>&lt;subjectScheme>
   &lt;hasKind>
-    &lt;subjectdef keys="settlement" navtitle="Human settlement">
-      &lt;subjectdef keys="city" navtitle="City">
-        &lt;subjectdef keys="bigcity" navtitle="Big city"/>
-        &lt;subjectdef keys="mediumcity" navtitle="Medium city"/>
-        &lt;subjectdef keys="smallcity" navtitle="Small city"/>
+    &lt;subjectdef keys="settlement">
+      &lt;subjectdef keys="city">
+        &lt;subjectdef keys="big-city"/>
+        &lt;subjectdef keys="medium-city"/>
+        &lt;subjectdef keys="small-city"/>
       &lt;/subjectdef>
-      &lt;subjectdef keys="town" navtitle="Town"/>
+      &lt;subjectdef keys="town"/>
       &lt;subjectdef keys="village" navtitle="Village"/>
     &lt;/subjectdef>
   &lt;/hasKind>
@@ -51,9 +56,6 @@ map/topicref subjectScheme/hasKind </p></section>
   &lt;/hasKind>
 &lt;/subjectScheme></codeblock>-->
     </example>
-<section id="attributes"><title>Attributes</title><sectiondiv
-        conref="../../common/conref-attribute.dita#conref-attribute/scheme-HAS-elements"
-      /></section>
 </refbody>
 </reference>
 

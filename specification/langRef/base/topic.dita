@@ -4,42 +4,21 @@
  "reference.dtd">
 <reference id="topic" xml:lang="en-us">
 <title><xmlelement>topic</xmlelement></title>
-<shortdesc>The <xmlelement>topic</xmlelement> element is the top-level DITA element for a
-  single-subject topic or article. <ph product="technicalContent learningTraining">Other top-level DITA elements that
-   are more content-specific are <xmlelement>concept</xmlelement>, <xmlelement>task</xmlelement>,
-    <xmlelement>reference</xmlelement>, and <xmlelement>glossentry</xmlelement>, all of which are
-   specializations of the <xmlelement>topic</xmlelement> element.</ph></shortdesc>
+ <shortdesc conkeyref="library-short-descriptions/topic"/>
 <refbody>
-<section id="section-1">      <!--RDA: Removed the following paragraph, per comments 
-in the DITA 1.3 Third Draft Review. These attributes are 
-already given in the attribute table, with more complete and 
-up-to-date definitions in the arch spec.
-
-<p>To support applications that are namespace-aware, DITA DTDs and
-Schemas provide the following namespaced declarations for topic, and
-for topic-level elements derived from topic: <pre xml:space="preserve">
-ditaarch:DITAArchVersion="1.0" 
-xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" 
-</pre> In DTDs, the <q>ditaarch</q> prefix is parameterized to enable
-future specialization.</p>--> <!--All DITA elements take the &lt;codeph>xmlns=&quot;&quot;&lt;/codeph> fixed
-attribute, which puts them into the null namespace by default.  This attribute
-is applied via the %global-atts; group.-->    </section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-topic/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-topic/topic </p></section>
-<example id="example" otherprops="examples">       <title>Example</title><codeblock
-xml:space="preserve">&lt;topic id="topic"&gt;
- &lt;title&gt;Some little topic&lt;/title&gt;
- &lt;body&gt;
-  &lt;p&gt;Here's a little topic.&lt;/p&gt;
-  &lt;ul&gt;
-   &lt;li&gt;Some item&lt;/li&gt;
-   &lt;li&gt;Another item&lt;/li&gt;
-  &lt;/ul&gt;
- &lt;/body&gt;
+  <section id="attributes">
+   <title>Attributes</title>
+   <sectiondiv conref="../../common/conref-attribute.dita#conref-attribute/topic-attributes"/>
+  </section>
+<example id="example" otherprops="examples">       <title>Example</title>
+   <p>The following code sample illustrates the primary structural components of a topic: title,
+        short description, prolog, body, and related links.</p><codeblock>&lt;topic id="topic"&gt;
+  &lt;title&gt;The basic structure of a topic&lt;/title&gt;
+  &lt;shortdesc/>
+  &lt;prolog/>
+  &lt;body/&gt;
+  &lt;related-links/>
 &lt;/topic&gt;</codeblock></example>
-<section id="attributes"><title>Attributes</title><sectiondiv
-    conref="../../common/conref-attribute.dita#conref-attribute/topic-attributes"/></section>
 </refbody>
 </reference>
 

@@ -4,31 +4,69 @@
  "reference.dtd">
 <reference id="fn" xml:lang="en-us">
 <title><xmlelement>fn</xmlelement></title>
-<shortdesc>The <xmlelement>fn</xmlelement> element is a footnote used to annotate text with notes
-  that are inappropriate for inline inclusion. It is also used to indicate the source for facts or
-  other material used in the text. </shortdesc>
+  <shortdesc conkeyref="library-short-descriptions/fn"/>
 <prolog><metadata>
 <keywords>
     <indexterm>processing expectations<indexterm><xmlelement>fn</xmlelement></indexterm></indexterm>
 </keywords>
 </metadata></prolog>
 <refbody>
-<section id="section-1">Footnote content is skipped at the place where it was entered and rendered
-      elsewhere, according to these rules: <ul>
-        <li>A footnote with no specified <xmlatt>id</xmlatt> attribute is a <term>single-use
-            footnote</term>. Upon output, it generates a number as a superscript "callout" that is
-          linked to the placement of the footnote, such as at the bottom of the immediate printed
-          page or at the end of an online article. If a character is specified in the
-            <xmlatt>callout</xmlatt> attribute for the footnote, that character <ph
-            >is</ph> used as the superscript "callout" that is linked to the
-          placement of the footnote.</li>
-        <li>A footnote that specifies an <xmlatt>id</xmlatt> attribute is a <term>use-by-reference
-            footnote</term>. Upon output, it does not appear anywhere unless it has been referenced
-          using an <xmlelement>xref</xmlelement> with the <xmlatt>type</xmlatt> attribute set to
-          "fn". </li>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>There are two types of footnotes: <term>single-use footnote</term> and
+          <term>use-by-reference footnote</term>.</p>
+      <dl>
+        <dlentry>
+          <dt>Single-use footnote</dt>
+          <dd>This is produced by a <xmlelement>fn</xmlelement> element that does not specify a
+            value for the <xmlatt>id</xmlatt> attribute. When rendered, a superscript symbol
+            (numeral or character) is produced at the location of the <xmlelement>fn</xmlelement>
+            element. The superscript symbol is hyperlinked to the content of the footnote, which is
+            placed at the bottom of a PDF page or the end of an online article. The superscript
+            symbol can be specified by the value of the <xmlatt>callout</xmlatt> attribute.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>Use-by-reference footnote</dt>
+          <dd>This is produced by a <xmlelement>fn</xmlelement> element that specifies a value for
+            the <xmlatt>id</xmlatt> attribute. Nothing is rendered at the location of the
+              <xmlelement>fn</xmlelement> element. The content of a use-by-reference footnote is
+            only rendered when it is referenced by an <xmlelement>xref</xmlelement> with the
+              <xmlatt>type</xmlatt> attribute set to "fn".</dd>
+        </dlentry>
+      </dl>
+      <p>Unless conref is used, the fn and </p>
+    </section>
+    <section id="rendering-expecttions">
+      <title>Rendering expectations</title>
+      <p>The two footnotes produce different types of output:</p>
+      <dl>
+        <dlentry>
+          <dt>Single-use footnote</dt>
+          <dd>A superscript symbol (numeral or character) is produced at the location of the
+              <xmlelement>fn</xmlelement> element. The superscript symbol is hyperlinked to the
+            footnote, which is placed at the bottom of a PDF page or the end of an online article.
+            The superscript symbol can be specified by the value of the <xmlatt>callout</xmlatt>
+            attribute. </dd>
+        </dlentry>
+        <dlentry>
+          <dt>Use-by-reference footnote</dt>
+          <dd>Nothing is rendered at the location of the <xmlelement>fn</xmlelement> element. The
+            content of a use-by-reference footnote is only rendered when it is referenced by an
+              <xmlelement>xref</xmlelement> with the <xmlatt>type</xmlatt> attribute set to "fn".
+            Unless conref is used, the <xmlelement>fn</xmlelement> and <xmlelement>xref</xmlelement>
+            must be located in the same topic.</dd>
+        </dlentry>
+      </dl>
+    </section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>Footnote content is skipped at the place where it was entered and rendered elsewhere,
+        according to these rules:</p>
+      <ul id="ul_yb2_b22_z1b">
         <li>Ordinarily, a footnote in one topic can't be referenced in another topic. The previous
           behaviors are local to each topic. But by using the conref mechanism, you can create a new
-          copy of another topic's footnote within the local topic where it will then follow these behaviors:<ul>
+          copy of another topic's footnote within the local topic where it will then follow these
+            behaviors:<ul id="ul_zb2_b22_z1b">
             <li>If you use <codeph>&lt;fn conref="file.dita#topic/thatid"&gt;&lt;/fn&gt;</codeph>
               all by itself, the result will be the same as the single-use footnote entered
               literally in the same location. That is, it creates a local copy of the footnote with
@@ -42,14 +80,16 @@
               of "thisid"; that local copy is then referenced by the <xmlelement>xref</xmlelement>
               element.</li>
           </ul></li>
-      </ul><p>The details of footnote processing and styling are implementation and/or stylesheet
-        dependent. For example, a tool that renders DITA as PDF <ph >might</ph>
-        lack support for the <xmlatt>callout</xmlatt> attribute, or footnotes <ph
-          >might</ph> be collected as endnotes for certain types of
-        publications.</p></section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-fn/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-topic/fn </p></section>
+      </ul>
+      <p>The details of footnote processing and styling are implementation and/or stylesheet
+        dependent. For example, a tool that renders DITA as PDF <ph>might</ph> lack support for the
+          <xmlatt>callout</xmlatt> attribute, or footnotes <ph>might</ph> be collected as endnotes
+        for certain types of publications.</p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <sectiondiv conref="../../common/conref-attribute.dita#conref-attribute/fn-attributes"/>
+    </section>
 <example id="example" otherprops="examples"><title>Example</title><p>The first example is of a <b>single-use</b> footnote. It uses a simple
           <xmlelement>fn</xmlelement> element, with no <xmlatt>id</xmlatt> and no
           <xmlatt>callout</xmlatt> attribute. In that case, markup such as the
@@ -90,8 +130,6 @@ llama&lt;xref href="#topic/reuse-fn" type="fn"/&gt;.</codeblock>and
           <p>----- [bottom of page]
             -----------------------------------------------------------------</p>
         </lq></p></example>
-<section id="attributes"><title>Attributes</title><sectiondiv
-    conref="../../common/conref-attribute.dita#conref-attribute/fn-attributes"/></section>
 </refbody>
 </reference>
 

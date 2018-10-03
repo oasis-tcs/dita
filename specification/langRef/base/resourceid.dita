@@ -3,9 +3,8 @@
  "reference.dtd">
 <reference id="resourceid" xml:lang="en-us">
 <title><xmlelement>resourceid</xmlelement></title>
-<shortdesc>The <xmlelement>resourceid</xmlelement> element provides an identifier for applications
-    that <ph >must use their own identifier scheme, such as
-      context-sensitive help systems and databases.</ph></shortdesc>
+<shortdesc>A resource ID provides an identifier for applications that must use their own identifier
+    scheme, such as context-sensitive help systems and databases.</shortdesc>
 <prolog><metadata>
 <keywords>
         <indexterm>appid attribute (resourceid)</indexterm>
@@ -13,23 +12,80 @@
 </keywords>
 </metadata></prolog>
 <refbody>
-<section  id="section-1">
+    <section id="usage-information">
+      <title>Usage information</title>
       <p>The <xmlatt>appid</xmlatt> and <xmlatt>appname</xmlatt> attributes are available to
-associate an ID with an application. Multiple <xmlatt>appid</xmlatt> values can be associated with a
-single <xmlatt>appname</xmlatt> value, and multiple <xmlatt>appname</xmlatt> values can be
-associated with a single <xmlatt>appid</xmlatt> value. <ph >Because the values
-for the <xmlatt>appid</xmlatt> and <xmlatt>appname</xmlatt> attributes work in combination to
-specify a specific ID for a specific application, each combination of values for the
-<xmlatt>appid</xmlatt> and <xmlatt>appname</xmlatt> attributes should be unique within the context
-of a single root map.</ph></p>
-      <p>Versions of DITA before 1.3 used the <xmlatt>id</xmlatt> attribute on the
-          <xmlelement>resourceid</xmlelement> element to specify an ID for an external application.
-        Beginning with DITA 1.3, this use of the <xmlatt>id</xmlatt> attribute is deprecated in
-        favor of using the <xmlatt>appid</xmlatt> attribute.</p>
+        associate an ID with an application. Multiple <xmlatt>appid</xmlatt> values can be
+        associated with a single <xmlatt>appname</xmlatt> value, and multiple
+          <xmlatt>appname</xmlatt> values can be associated with a single <xmlatt>appid</xmlatt>
+        value. <ph>Because the values for the <xmlatt>appid</xmlatt> and <xmlatt>appname</xmlatt>
+          attributes work in combination to specify a specific ID for a specific application, each
+          combination of values for the <xmlatt>appid</xmlatt> and <xmlatt>appname</xmlatt>
+          attributes should be unique within the context of a single root map.</ph></p>
     </section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-resourceid/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance">    <title>Inheritance</title> 
-  <p>- topic/resourceid </p>   </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref
+          keyref="attributes-universal"/> (with a narrowed definition of
+          <xmlatt>id</xmlatt>, given below) and the attributes defined below.</p>
+      <dl>
+        <dlentry id="appname">
+          <dt><xmlatt>appname</xmlatt></dt>
+          <dd><ph>A name for the external application that references the topic.</ph>
+          </dd>
+        </dlentry>
+        <dlentry id="appid">
+          <dt><xmlatt>appid</xmlatt></dt>
+          <dd>An ID used by an application to identify the topic. </dd>
+        </dlentry>
+      </dl>
+      <dl>
+        <dlentry>
+          <dt><xmlatt>ux-context-string</xmlatt></dt>
+          <dd>Contains the value of a user-assistance context-string that is used to identify the
+            topic.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>ux-source-priority</xmlatt></dt>
+          <dd>
+            <p>Specifies precedence for handling <xmlelement>resourceid</xmlelement> definitions
+              that exist in both a map and a topic. This attribute only is valid when used within a
+                <xmlelement>topicref</xmlelement> element in a map. <ph>The allowable values are
+                -dita-use-conref-target and the following:</ph></p>
+            <dl>
+              <dlentry>
+                <dt>topic-and-map</dt>
+                <dd>Use IDs from both the topic and map.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>topic-only</dt>
+                <dd>Use IDs from the topic only.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>map-only</dt>
+                <dd>Use IDs from the map only.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>map-takes-priority</dt>
+                <dd>Use the IDs from the map (if they exist); otherwise, use IDs from the
+                  topic.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>topic-takes-priority</dt>
+                <dd>Use the IDs from the topic (if they exist); otherwise, use IDs from the
+                  map.</dd>
+              </dlentry>
+            </dl>
+          </dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>ux-windowref</xmlatt></dt>
+          <dd>References the <xmlatt>name</xmlatt> attribute on the
+              <xmlelement>ux-window</xmlelement> element that is used to display the topic when
+            called from a help API.</dd>
+        </dlentry>
+      </dl>
+    </section>
 <example id="example"  otherprops="examples">
       <title>Example</title>
       <p>In the following example, user-assistance context hooks are applied to three topics that
@@ -78,76 +134,6 @@ of a single root map.</ph></p>
  &lt;/taskbody>
 &lt;/task></codeblock>
     </example>
-<section id="attributes">    <title>Attributes</title>
-      <p>The following attributes are available on this element: <xref
-          href="../attributes/universalAttributes.dita"/> (with a narrowed definition of
-          <xmlatt>id</xmlatt>, given below) and the attributes defined below.</p>
-      <dl>
-        <dlentry id="id">
-          <dt><xmlatt>id</xmlatt></dt>
-          <dd><ph >Before DITA 1.3, this attribute
-              specified a value that was used by a specific application to identify the topic. That
-              usage is deprecated in favor of using the <xmlatt>appid</xmlatt> attribute.</ph>
-            <ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>
-          </dd>
-        </dlentry>
-        <dlentry id="appname">
-          <dt><xmlatt>appname</xmlatt></dt>
-          <dd><ph >A name for the external application that references
-              the topic.</ph>
-          </dd>
-        </dlentry>
-        <dlentry id="appid">
-          <dt><xmlatt>appid</xmlatt></dt>
-          <dd>An ID used by an application to identify the topic. </dd>
-        </dlentry>
-      </dl>
-      <dl>
-        <dlentry >
-          <dt><xmlatt>ux-context-string</xmlatt></dt>
-          <dd>Contains the value of a user-assistance context-string that is used to identify the
-            topic.</dd>
-        </dlentry>
-        <dlentry >
-          <dt><xmlatt>ux-source-priority</xmlatt></dt>
-          <dd>
-            <p>Specifies precedence for handling <xmlelement>resourceid</xmlelement> definitions
-              that exist in both a map and a topic. This attribute only is valid when used within a
-                <xmlelement>topicref</xmlelement> element in a map. <ph>The allowable values are
-                -dita-use-conref-target and the following:</ph></p>
-            <dl >
-              <dlentry>
-                <dt>topic-and-map</dt>
-                <dd>Use IDs from both the topic and map.</dd>
-              </dlentry>
-              <dlentry>
-                <dt>topic-only</dt>
-                <dd>Use IDs from the topic only.</dd>
-              </dlentry>
-              <dlentry>
-                <dt>map-only</dt>
-                <dd>Use IDs from the map only.</dd>
-              </dlentry>
-              <dlentry>
-                <dt>map-takes-priority</dt>
-                <dd>Use the IDs from the map (if they exist); otherwise, use IDs from the
-                  topic.</dd>
-              </dlentry>
-              <dlentry>
-                <dt>topic-takes-priority</dt>
-                <dd>Use the IDs from the topic (if they exist); otherwise, use IDs from the
-                  map.</dd>
-              </dlentry>
-            </dl>
-          </dd>
-        </dlentry>
-        <dlentry >
-          <dt><xmlatt>ux-windowref</xmlatt></dt>
-          <dd>References the <xmlatt>name</xmlatt> attribute on the
-              <xmlelement>ux-window</xmlelement> element that is used to display the topic when
-            called from a help API.</dd>
-        </dlentry>
-      </dl>   </section>
 </refbody>
 </reference>
 

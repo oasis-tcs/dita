@@ -14,42 +14,50 @@
         <indexterm>delayed conref domain<indexterm>anchorid</indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
-<section id="section-1"><p>When the <xmlelement>anchorid</xmlelement> element is defined within a topic prolog, the
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>When the <xmlelement>anchorid</xmlelement> element is defined within a topic prolog, the
         specified IDs will be found within that topic. When an <xmlelement>anchorid</xmlelement>
         element is defined within a <xmlelement>topicref</xmlelement> element, the specified IDs
         will be found within the referenced topic (if the <xmlelement>topicref</xmlelement>
         references a collection of topics, such as a reference that uses only a file name, the IDs
-        will be found within the first or root topic).</p><p>The only difference between specifying an <xmlelement>anchorid</xmlelement> in the
+        will be found within the first or root topic).</p>
+      <p>The only difference between specifying an <xmlelement>anchorid</xmlelement> in the
           <xmlelement>prolog</xmlelement> and specifying it in the
           <xmlelement>topicmeta</xmlelement> is that from the map it is possible to export the ID of
         the entire referenced topic. If <codeph>&lt;anchorid id="zero"/></codeph> is specified in
         the <xmlelement>topicmeta</xmlelement>, and the referenced topic has an id of "zero", this
         means that the <xmlelement>anchorid</xmlelement> is a reference to the entire topic. If the
         topic id is not "zero", then the <xmlelement>anchorid</xmlelement> is a reference to the
-        element with id="zero" within that topic.</p><p>Along with the preservation of the element's ID, any <xmlatt>conref</xmlatt> attribute that
+        element with id="zero" within that topic.</p>
+    </section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>Along with the preservation of the element's ID, any <xmlatt>conref</xmlatt> attribute that
         references the element's ID will not be resolved during an initial process. In that case,
-        the <xmlatt>conref</xmlatt> will be resolved during a later rendering process.</p><p>This description does not imply that IDs are not discarded when <xmlelement>anchorid</xmlelement>
-        is not used; though this element requires that IDs be preserved in some manner, it is also
-        common for IDs to be preserved when <xmlelement>anchorid</xmlelement> is not used. Thus the
-        primary impact of the <xmlelement>anchorid</xmlelement> element is on
-          <xmlatt>conref</xmlatt> resolution.</p>
-      <p conref="../../common/conref-file.dita#reuse_file/export-anchors-disclaimer"/></section>
-<section id="syntax-differences"><title>Why not use topicid/elementid?</title><p>This element differs from normal DITA referencing syntax in that it <ph 
-          >can</ph> reference an element within a topic without using the topic's ID. There are two
-        reasons for this. First, the <xmlelement>anchorid</xmlelement> element <ph
-          >might</ph> only be defined in a situation that refers unambiguously
-        to a single topic (in the <xmlelement>prolog</xmlelement>, or in the
+        the <xmlatt>conref</xmlatt> will be resolved during a later rendering process.</p>
+      <p>This description does not imply that IDs are not discarded when
+          <xmlelement>anchorid</xmlelement> is not used; though this element requires that IDs be
+        preserved in some manner, it is also common for IDs to be preserved when
+          <xmlelement>anchorid</xmlelement> is not used. Thus the primary impact of the
+          <xmlelement>anchorid</xmlelement> element is on <xmlatt>conref</xmlatt> resolution.</p>
+      <p conref="../../common/conref-file.dita#reuse_file/export-anchors-disclaimer"/>
+    </section>
+<section id="syntax-differences"><title>Why not use topicid/elementid?</title><p>This element differs from normal DITA referencing syntax in that it can reference an element
+        within a topic without using the topic's ID. There are two reasons for this. First, the
+          <xmlelement>anchorid</xmlelement> element might only be defined in a situation that refers
+        unambiguously to a single topic (in the <xmlelement>prolog</xmlelement>, or in the
           <xmlelement>topicmeta</xmlelement> for a reference to a topic). Second, it allows the
           <xmlelement>anchorid</xmlelement> to be combined with key values.</p><p>It is possible to combine an <xmlelement>anchorid</xmlelement> with a key in order to delay
         resolution of <xmlatt>conref</xmlatt> in the topic represented by that key (see the second
         set of examples below). This would not be possible if the <xmlelement>anchorid</xmlelement>
         element required both the topic id and the element id. That is, <xmlatt>keyref</xmlatt>
-        allows a modifiable reference to a topic, so a map <ph >might</ph>
-        instruct processors to delay conref for item "step1" in the topic represented by the key
-        "commonconfig". If the <xmlelement>anchorid</xmlelement> element required a topic id, the
-        delayed conref would always be bound to that specific topic.</p></section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-anchorid/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>+
+        allows a modifiable reference to a topic, so a map might instruct processors to delay conref
+        for item "step1" in the topic represented by the key "commonconfig". If the
+          <xmlelement>anchorid</xmlelement> element required a topic id, the delayed conref would
+        always be bound to that specific topic.</p></section>
+<section id="inheritance" otherprops="inheritance">
+      <title>Specialization hierarchy</title><p>+
 topic/keyword delay-d/anchorid </p></section>
 <example id="example" otherprops="examples"><title>Example</title><fig>
         <title>Use case 1: Runtime resolution of <xmlatt>conref</xmlatt> to an id, determined by
@@ -163,10 +171,9 @@ that id, because processors will match on the topic's id first.</li>
 <example conref="anchorkey.dita#anchorkey/example" id="example2" otherprops="examples"/>
 <section id="attributes"><title>Attributes</title>
       <p>The following attributes are available on this element: <xref
-          href="../attributes/universalAttributes.dita"/> (with a narrowed definition of
-          <xmlatt>id</xmlatt>, given below), <xref href="../attributes/thekeyrefattribute.dita"
-            ><xmlatt>keyref</xmlatt></xref>, and <xref
-          href="../attributes/commonAttributes.dita#common-atts/outputclass"/>.</p>
+          keyref="attributes-universal"/> (with a narrowed definition of
+          <xmlatt>id</xmlatt>, given below) and <xref keyref="attributes-keyref"
+            ><xmlatt>keyref</xmlatt></xref>.</p>
       <dl>
         <dlentry>
           <dt><xmlatt>id</xmlatt>

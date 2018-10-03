@@ -18,8 +18,8 @@
     </metadata>
   </prolog>
   <refbody>
-    <section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-sort-as/contains" otherprops="contains"></section>
-    <section id="section-1">
+    <section id="section_pfp_2ty_1bb">
+      <title>Usage information</title>
       <p>The <xmlelement>sort-as</xmlelement> element can contain <xmlelement>text</xmlelement> and
           <xmlelement>keyword</xmlelement> elements in order to enable content referencing. If a
           <xmlelement>keyword</xmlelement> element is used within <xmlelement>sort-as</xmlelement>,
@@ -27,6 +27,29 @@
           <xmlelement>keyword</xmlelement> uses <xmlatt>keyref</xmlatt> and would otherwise also act
         as a navigation link, the link aspect of the <xmlatt>keyref</xmlatt> attribute is
         ignored.</p>
+      <p>Some elements in the base DITA vocabulary are natural candidates for sorting, including
+        topics, definition list entries, and rows in tables and simple tables. Authors are likely to
+        include <xmlelement>sort-as</xmlelement> elements in the following locations:</p>
+      <ul id="ul_ush_jnn_zj">
+        <li>For topics, the <xmlelement>sort-as</xmlelement> element can be included directly in
+            <xmlelement>title</xmlelement>, <xmlelement>searchtitle</xmlelement>, or
+            <xmlelement>navtitle</xmlelement> when the different forms of title need different
+          effective sort phrases. If the effective sort phrase is common to all the titles for a
+          topic, the <xmlelement>sort-as</xmlelement> element can be included as a direct child of
+          the topic prolog anywhere <xmlelement>data</xmlelement> is allowed. </li>
+        <li>For glossary entry topics, the <xmlelement>sort-as</xmlelement> element can be included
+          directly in <xmlelement>glossterm</xmlelement> or as a direct child of
+            <xmlelement>prolog</xmlelement>.</li>
+        <li>For topic references, the <xmlelement>sort-as</xmlelement> element can be included
+          directly in the <xmlelement>navtitle</xmlelement> or <xmlelement>title</xmlelement>
+          element within <xmlelement>topicmeta</xmlelement> or as a child of
+            <xmlelement>topicmeta</xmlelement>.</li>
+        <li>For definition list items, include the <xmlelement>sort-as</xmlelement> element in the
+            <xmlelement>dt</xmlelement> element.</li>
+      </ul>
+    </section>
+    <section id="section_rfp_2ty_1bb">
+      <title>Processing expectations</title>
       <p>As a specialization of <xmlelement>data</xmlelement>, the <xmlelement>sort-as</xmlelement>
         element is allowed in any context where <xmlelement>data</xmlelement> is allowed. However,
         the presence of <xmlelement>sort-as</xmlelement> within an element does not, by itself,
@@ -34,31 +57,10 @@
         DITA elements for any reason. Likewise, processors are not required to sort any elements.
         See <xref href="../../archSpec/base/sort-as-processing.dita"/> for more information on
         sorting.</p>
-      <p>Some elements in the base DITA vocabulary are natural candidates for sorting, including
-        topics, definition list entries, and rows in tables and simple tables. Authors are likely to
-        include <xmlelement>sort-as</xmlelement> elements in the following locations:<ul
-          id="ul_ush_jnn_zj">
-          <li>For topics, the <xmlelement>sort-as</xmlelement> element can be included directly in
-              <xmlelement>title</xmlelement>, <xmlelement>searchtitle</xmlelement>, or
-              <xmlelement>navtitle</xmlelement> when the different forms of title need different
-            effective sort phrases. If the effective sort phrase is common to all the titles for a
-            topic, the <xmlelement>sort-as</xmlelement> element can be included as a direct child of
-            the topic prolog anywhere <xmlelement>data</xmlelement> is allowed. </li>
-          <li>For glossary entry topics, the <xmlelement>sort-as</xmlelement> element can be
-            included directly in <xmlelement>glossterm</xmlelement> or as a direct child of
-              <xmlelement>prolog</xmlelement>.</li>
-          <li>For topic references, the <xmlelement>sort-as</xmlelement> element can be included
-            directly in the <xmlelement>navtitle</xmlelement> or <xmlelement>title</xmlelement>
-            element within <xmlelement>topicmeta</xmlelement> or as a child of
-              <xmlelement>topicmeta</xmlelement>.</li>
-          <li>For definition list items, include the <xmlelement>sort-as</xmlelement> element in the
-              <xmlelement>dt</xmlelement> element.</li>
-        </ul></p>
       <p>Processors <term outputclass="RFC-2119">SHOULD</term> expect to encounter
           <xmlelement>sort-as</xmlelement> elements in the above locations. Processors that sort
-          <term outputclass="RFC-2119">SHOULD</term> use the following precedence
-        rules:</p>
-      <ul>
+          <term outputclass="RFC-2119">SHOULD</term> use the following precedence rules:</p>
+      <ul id="ul_zxs_mty_1bb">
         <li>A <xmlelement>sort-as</xmlelement> element that is specified in a title takes precedence
           over a <xmlelement>sort-as</xmlelement> element that is specified as a child of the topic
           prolog.</li>
@@ -78,8 +80,30 @@
       <p conref="../../common/conref-file.dita#reuse_file/sort-as-2"/>
     </section>
     <section id="inheritance" otherprops="inheritance">
-      <title>Inheritance</title>
+      <title>Specialization hierarchy</title>
       <p>+ topic/data ut-d/sort-as </p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p id="only-universal">The following attributes are available on this element: <xref
+          keyref="attributes-universal"/> and the attributes defined below.</p>
+      <dl>
+        <dlentry>
+          <dt><xmlatt>name</xmlatt></dt>
+          <dd>Names the metadata item that the element represents. The default value is "sort-as".
+            Specializations of <xmlelement>sort-as</xmlelement> can set the default value of the
+              <xmlatt>name</xmlatt> attribute to reflect the tag name of the specialized
+            element.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>value</xmlatt></dt>
+          <dd>The value of the metadata item. When the <xmlelement>sort-as</xmlelement> element has
+            content and the <xmlatt>value</xmlatt> attribute is specified, the
+              <xmlatt>value</xmlatt> attribute takes precedence. If the <xmlatt>value</xmlatt>
+            attribute is not specified and the <xmlelement>sort-as</xmlelement> element does not
+            contain content, then the <xmlelement>sort-as</xmlelement> element has no effect.</dd>
+        </dlentry>
+      </dl>
     </section>
     <example id="example" otherprops="examples">
       <title>Example</title>
@@ -106,27 +130,5 @@
 &lt;/glossentry></codeblock>
       </fig>
     </example>
-    <section id="attributes">
-      <title>Attributes</title>
-      <p id="only-universal">The following attributes are available on this element: <xref
-          href="../attributes/universalAttributes.dita"/> and the attributes defined below.</p>
-      <dl>
-        <dlentry>
-          <dt><xmlatt>name</xmlatt></dt>
-          <dd>Names the metadata item that the element represents. The default value is "sort-as".
-            Specializations of <xmlelement>sort-as</xmlelement> can set the default value of the
-              <xmlatt>name</xmlatt> attribute to reflect the tag name of the specialized
-            element.</dd>
-        </dlentry>
-        <dlentry>
-          <dt><xmlatt>value</xmlatt></dt>
-          <dd>The value of the metadata item. When the <xmlelement>sort-as</xmlelement> element has
-            content and the <xmlatt>value</xmlatt> attribute is specified, the
-              <xmlatt>value</xmlatt> attribute takes precedence. If the <xmlatt>value</xmlatt>
-            attribute is not specified and the <xmlelement>sort-as</xmlelement> element does not
-            contain content, then the <xmlelement>sort-as</xmlelement> element has no effect.</dd>
-        </dlentry>
-      </dl>
-    </section>
   </refbody>
 </reference>

@@ -10,34 +10,38 @@
         <indexterm>subjectScheme<indexterm>elements<indexterm><xmlelement>hasRelated</xmlelement></indexterm></indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
-<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-hasRelated/contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-map/topicref subjectScheme/hasRelated </p></section>
-<example id="example" otherprops="examples"><title>Example</title><p>This example specifies
-that myProgram runs on Linux and Windows.</p><codeblock>&lt;subjectScheme>
-  &lt;subjectdef keys="myProgram" navtitle="My Program">
-    &lt;hasRelated keys="runsOn" navtitle="runs on">
-      &lt;subjectdef keys="linux" navtitle="Linux"/>
-      &lt;subjectdef keys="mswin" navtitle="Microsoft Windows"/>
-    &lt;/hasRelated>
-  &lt;/subjectdef>
-&lt;/subjectScheme></codeblock></example>
-  <section id="attributes"><title>Attributes</title><sectiondiv id="scheme-HAS-elements">
+<section id="inheritance" otherprops="inheritance">
+      <title>Specialization hierarchy</title>
+      <p>This element is specialized from <xref keyref="topicref"/> in the map module.</p>
+      <!--<p>- map/topicref subjectScheme/hasRelated </p>--></section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <sectiondiv id="scheme-HAS-elements">
         <p>The following attributes are available on this element: <xref
-            href="../attributes/universalAttributes.dita"/>, <xref
-            href="../attributes/linkRelationshipAttributes.dita"/> (with a narrowed definition of
+            keyref="attributes-universal"/>, <xref
+            keyref="attributes-linkRelationship"/> (with a narrowed definition of
             <xmlatt>href</xmlatt>, given below), processing-role from <xref
-            href="../attributes/commonMapAttributes.dita"/>, navtitle from <xref
-            href="../attributes/topicrefElementAttributes.dita"/>, <xref
-            href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, <xref
-            href="../attributes/thekeysattribute.dita"><xmlatt>keys</xmlatt></xref>, and <xref
-            href="../attributes/thekeyrefattribute.dita"><xmlatt>keyref</xmlatt></xref>.</p>
+            keyref="attributes-commonMap"/>, navtitle from <xref
+            keyref="attributes-topicrefElement"/>, <xref
+            keyref="attributes-keys"><xmlatt>keys</xmlatt></xref>, and <xref
+            keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
         <dl>
           <dlentry conref="../../common/conref-attribute.dita#conref-attribute/href-on-topicref">
             <dt/>
             <dd/>
           </dlentry>
         </dl>
-      </sectiondiv></section>
+      </sectiondiv>
+    </section>
+<example id="example" otherprops="examples"><title>Example</title><p>This example specifies
+that myProgram runs on Linux and Windows.</p>
+      <codeblock>&lt;subjectScheme>
+  &lt;subjectdef keys="myProgram">
+    &lt;hasRelated keys="platforms">
+      &lt;subjectdef keys="linux">
+      &lt;subjectdef keys="windows"/>
+    &lt;/hasRelated>
+  &lt;/subjectdef>
+&lt;/subjectScheme></codeblock></example>
 </refbody>
 </reference>

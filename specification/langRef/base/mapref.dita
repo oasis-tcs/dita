@@ -4,11 +4,7 @@
  "reference.dtd">
 <reference id="mapref" xml:lang="en-us">
 <title><xmlelement>mapref</xmlelement></title>
-<shortdesc>The <xmlelement>mapref</xmlelement> element is a convenience element that is equivalent
-    to a <xmlelement>topicref</xmlelement> element with the <xmlatt>format</xmlatt> attribute set to
-    "ditamap". The hierarchy of the referenced map is merged into the container map at the position
-    of the reference, and the relationship tables of the child map are added to the parent
-    map.</shortdesc>
+  <shortdesc>A map reference is a mechanism for referencing a DITA map from a DITA map.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -19,45 +15,36 @@
     </metadata>
   </prolog>
 <refbody>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-mapref/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>+
-map/topicref mapgroup-d/mapref </p></section>
-<example id="example" otherprops="examples"><title>Example</title><fig>
-        <title>Sample document <filepath>lib.ditamap</filepath> that is reusable in other
-          locations</title>
-        <codeblock>&lt;map id="lib">
-  &lt;topicref href="netlib.dita"/>
-  &lt;topicref href="dblib.dita"/>
-  &lt;!-- ... -->
-&lt;/map></codeblock>
-      </fig><fig>
-        <title>Map that reuses <filepath>lib.ditamap</filepath></title>
-        <codeblock>&lt;map id="standardlib">
-  &lt;topichead navtitle="Developing with standard libraries">
-    &lt;mapref href="lib.ditamap"/>
-  &lt;/topichead>
-  &lt;!-- ... -->
-&lt;/map></codeblock>
-      </fig><fig><title>Rendered result</title>
-<codeblock>&lt;map id="standardlib">
-  &lt;topichead navtitle="Developing with standard libraries">
-    &lt;topicref href="netlib.dita"/>
-    &lt;topicref href="dblib.dita"/>
-    &lt;!-- ... -->
-  &lt;/topichead>
-  &lt;!-- ... -->
-&lt;/map></codeblock>
-</fig></example>
-<section id="attributes"><title>Attributes</title><sectiondiv id="mapref-attributes">
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>The <xmlelement>mapref</xmlelement> element is a convenience element. It is equivalent to a
+          <xmlelement>topicref</xmlelement> element with the <xmlatt>format</xmlatt> attribute set
+        to "ditamap".</p>
+    </section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>The hierarchy of the referenced map is merged into the container map at the position of the
+        reference, and the relationship tables of the child map are added to the parent map.</p>
+      <draft-comment author="Kristen J Eberlein" time="06 August 2018">
+        <p>Should we make normative statements about the above points?</p>
+      </draft-comment>
+    </section>
+    <section id="specialization-hierarchy">
+      <title>Specialization hierarchy</title>
+      <p>The <xmlelement>mapref</xmlelement> element is specialized from
+          <xmlelement>topicref</xmlelement>. It is defined in the map-group module.</p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <sectiondiv id="mapref-attributes">
         <p>The following attributes are available on this element: <xref
-            href="../attributes/universalAttributes.dita"/>, <xref
-            href="../attributes/linkRelationshipAttributes.dita"/> (with narrowed definitions of
+            keyref="attributes-universal"/>, <xref
+            keyref="attributes-linkRelationship"/> (with narrowed definitions of
             <xmlatt>href</xmlatt> and <xmlatt>format</xmlatt>, given below), <xref
-            href="../attributes/commonMapAttributes.dita"/>, <xref
-            href="../attributes/topicrefElementAttributes.dita"/>, <xref
-            href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, <xref
-            href="../attributes/thekeyrefattribute.dita"><xmlatt>keyref</xmlatt></xref>, and <xref
-            href="../attributes/thekeysattribute.dita"><xmlatt>keys</xmlatt></xref>.</p>
+            keyref="attributes-commonMap"/>, <xref
+            keyref="attributes-topicrefElement"/>, <xref
+            keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>, and <xref
+            keyref="attributes-keys"><xmlatt>keys</xmlatt></xref>.</p>
         <dl>
           <dlentry conref="../../common/conref-attribute.dita#conref-attribute/format-mapref">
             <dt/>
@@ -68,7 +55,43 @@ map/topicref mapgroup-d/mapref </p></section>
             <dd/>
           </dlentry>
         </dl>
-      </sectiondiv></section>
+      </sectiondiv>
+    </section>
+<example id="example" otherprops="examples"><title>Example</title>
+      <p>In this example, XXX </p>
+      <fig>
+        <title>DITA map for map-group elements
+          (<filepath>map-group-elements.ditamap)</filepath></title>
+        <p>The <filepath>map-group-elements.ditamap)</filepath> document contains references to the
+          element-reference topics for the map group domain. It is constructed as a map in order to
+          enable easy editing of the child topics. </p>
+        <codeblock>&lt;map>
+ &lt;title>Map group elements&lt;/title>
+ &lt;topicref keyref="mapgroup-d" >
+  &lt;topicref keyref="anchorref" />
+  &lt;topicref keyref="keydef" />
+  &lt;topicref keyref="mapref" />
+  &lt;topicref keyref="topicgroup" />
+  &lt;topicref keyref="topichead" />
+ &lt;/topicref>
+&lt;/map></codeblock>
+      </fig>
+      <fig>
+        <title>DITA map for all element-reference topics (elements.ditamap)</title>
+        <p>The <filepath>elements.ditamap</filepath> document references
+            <filepath>map-group-elements.ditamap)</filepath>.</p>
+        <codeblock>&lt;map>
+ &lt;title>Base elements&lt;/title>
+ ...
+ &lt;topicref href="containers/map-elements.dita" >
+  &lt;mapref href="basic-map-elements.ditamap"/>
+  &lt;mapref href="map-group-elements.ditamap"/>
+ &lt;/topicref>
+ ...
+&lt;/map></codeblock>
+      </fig><fig><title>Rendered result</title>
+<codeblock>XXX</codeblock>
+</fig></example>
 </refbody>
 </reference>
 

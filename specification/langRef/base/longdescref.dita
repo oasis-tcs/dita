@@ -1,44 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="longdescref" xml:lang="en-us">
 <title><xmlelement>longdescref</xmlelement></title>
-<shortdesc>The <xmlelement>longdescref</xmlelement> element supports a reference to a text description of the graphic or
-    object. This element replaces the deprecated <xmlatt>longdescref</xmlatt> attribute on
-      <xmlelement>image</xmlelement> and <xmlelement>object</xmlelement> elements.</shortdesc>
+  <shortdesc>A long description reference is a reference to a textual description of a graphic or
+    object.</shortdesc>
 <prolog><metadata>
 <keywords>
+        <indexterm>Long description reference</indexterm>
         <indexterm>elements<indexterm>body<indexterm><xmlelement>longdescref</xmlelement></indexterm></indexterm></indexterm>
         <indexterm>images<indexterm>long descriptions</indexterm></indexterm>
         <indexterm>objects<indexterm>long descriptions</indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-longdescref/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-topic/longdescref </p></section>
-<example id="example" otherprops="examples"><title>Example</title><fig>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref
+          keyref="attributes-universal"/>, <xref
+          keyref="attributes-linkRelationship"/>, and <xref
+          keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
+    </section>
+    <example id="example" otherprops="examples">
+      <title>Example</title>
+      <fig>
         <title><xmlelement>longdescref</xmlelement> which references a local DITA
           description</title>
+        <p>In the following code sample, the <xmlelement>longdescref</xmlelement> references a
+          detailed image description that is stored in a DITA topic.</p>
         <codeblock>&lt;image href="llama.jpg">
   &lt;alt>Llama picture&lt;/alt>
   &lt;longdescref href="my-pet-llama.dita"/>
 &lt;/image></codeblock>
-      </fig><fig>
+      </fig>
+      <fig>
         <title><xmlelement>longdescref</xmlelement> which references an external description</title>
+        <p>In this code sample, the long description is stored remotely, on a external Web site.</p>
         <codeblock>&lt;image href="puffin.jpg">
   &lt;alt>Puffin pigure&lt;/alt>
   &lt;longdescref href="http://www.example.org/birds/puffin.html"
                scope="external"
                format="html"/>
 &lt;/image></codeblock>
-      </fig></example>
-<section id="attributes"><title>Attributes</title>
-      <p >The following attributes are available on this element: <xref
-          href="../attributes/universalAttributes.dita"/>, <xref
-          href="../attributes/linkRelationshipAttributes.dita"/>, <xref
-          href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, and <xref
-          href="../attributes/thekeyrefattribute.dita"><xmlatt>keyref</xmlatt></xref>.</p></section>
-</refbody>
+      </fig>
+    </example>
+  </refbody>
 </reference>
 

@@ -5,10 +5,10 @@
 <reference id="subjectHead" xml:lang="en-us">
 <title><xmlelement>subjectHead</xmlelement></title>
 <shortdesc>The <xmlelement>subjectHead</xmlelement> element provides a heading for a group of
-    subjects, for use if the scheme is displayed. For instance, a scheme<ph 
-      >might</ph> be displayed to let a user select subjects as part of faceted browsing. The
-      <xmlelement>subjectHead</xmlelement> element itself does not reference a file and cannot be
-    referenced as a key, so it does not define any controlled values.</shortdesc>
+subjects, for use if the scheme is displayed. For instance, a scheme might be displayed to let a
+user select subjects as part of faceted browsing. The <xmlelement>subjectHead</xmlelement> element
+itself does not reference a file and cannot be referenced as a key, so it does not define any
+controlled values.</shortdesc>
 <prolog><metadata>
 <keywords>
         <indexterm><xmlelement>subjectHead</xmlelement></indexterm>
@@ -16,9 +16,46 @@
               elements<indexterm><xmlelement>subjectHead</xmlelement></indexterm></indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-subjectHead/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-map/topicref subjectScheme/subjectHead </p></section>
+<section id="inheritance" otherprops="inheritance">
+      <title>Specialization hierarchy</title>
+      <p>This element is specialized from <xref keyref="topicref"/>in the map module.</p>
+      <!--<p>- map/topicref subjectScheme/subjectHead </p>--></section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref
+          keyref="attributes-universal"/>. This element also
+        uses <xmlatt>processing-role</xmlatt>, <xmlatt>toc</xmlatt>, and narrowed definitions of
+          <xmlatt>collection-type</xmlatt> and <xmlatt>linking</xmlatt> from <xref
+          keyref="attributes-commonMap"/>. <dl>
+          <dlentry>
+            <dt id="collection-type"><xmlatt>collection-type</xmlatt></dt>
+            <dd>Collection types describe how links relate to each other. The processing default is
+              "unordered", although no default is specified in the DTD or Schema. Allowable values
+              for <xmlatt>collection-type</xmlatt> on this element are:<dl>
+                <dlentry>
+                  <dt>unordered </dt>
+                  <dd>Indicates that the order of the child topics is not significant. </dd>
+                </dlentry>
+                <dlentry>
+                  <dt>sequence </dt>
+                  <dd>Indicates that the order of the child topics is significant; output processors
+                    will typically link between them in order. </dd>
+                </dlentry>
+                <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditauseconref">
+                  <dt/>
+                  <dd/>
+                </dlentry>
+              </dl></dd>
+          </dlentry>
+          <dlentry>
+            <dt id="linking"><xmlatt>linking</xmlatt></dt>
+            <dd>Defines some specific linking characteristics of subject topics. "normal" is the
+              only valid value, and is specified as the default in the DTD, XSD Schema, and RELAX NG
+              implementations. When attribute values cascade, this causes a linking value of
+              "normal" to cascade to the subjects.</dd>
+          </dlentry>
+        </dl></p>
+    </section>
 <example conref="../../common/conref-examples.dita#conref-examples/example-subjectHead" id="example" otherprops="examples"/>
 <!--<example id="example"><title>Example</title><p>In this example the <q>Server setup</q> label doesn't classify content but, when selected, is equivalent to the union of its child subjects. That is, the heading covers content about planning for any application, installing for any application, any task for web servers, or any task for database servers.</p><codeblock>&lt;subjectScheme toc="yes" search="no">
   ...
@@ -33,44 +70,6 @@ map/topicref subjectScheme/subjectHead </p></section>
   &lt;/subjectHead>
   ...
 &lt;/subjectScheme></codeblock></example>-->
-<section id="attributes">
-<title>Attributes</title>
-<p>The following attributes are available on this element: <xref
-href="../attributes/universalAttributes.dita"/>, <xmlatt>navtitle</xmlatt> from <xref
-href="../attributes/topicrefElementAttributes.dita"/>, and <xref
-href="../attributes/commonAttributes.dita#common-atts/outputclass"/>. This element also uses
-<xmlatt>processing-role</xmlatt>, <xmlatt>toc</xmlatt>, and narrowed definitions of
-<xmlatt>collection-type</xmlatt> and <xmlatt>linking</xmlatt> from <xref
-href="../attributes/commonMapAttributes.dita"/>. <dl>
-<dlentry>
-<dt id="collection-type"><xmlatt>collection-type</xmlatt></dt>
-<dd>Collection types describe how links relate to each other. The processing default is "unordered",
-although no default is specified in the DTD or Schema. Allowable values for
-<xmlatt>collection-type</xmlatt> on this element are:<dl>
-<dlentry>
-<dt>unordered </dt>
-<dd>Indicates that the order of the child topics is not significant. </dd>
-</dlentry>
-<dlentry>
-<dt>sequence </dt>
-<dd>Indicates that the order of the child topics is significant; output processors will typically
-link between them in order. </dd>
-</dlentry>
-<dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditauseconref">
-<dt/>
-<dd/>
-</dlentry>
-</dl></dd>
-</dlentry>
-<dlentry>
-<dt id="linking"><xmlatt>linking</xmlatt></dt>
-<dd>Defines some specific linking characteristics of subject topics. "normal" is the only valid
-value, and is specified as the default in the DTD, XSD Schema, and RELAX NG implementations. When
-attribute values cascade, this causes a linking value of "normal" to cascade to the subjects.</dd>
-</dlentry>
-</dl></p>
-
-</section>
 </refbody>
 </reference>
 

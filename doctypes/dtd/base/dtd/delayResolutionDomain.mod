@@ -77,10 +77,7 @@
               "keyref
                           CDATA
                                     #REQUIRED
-               %univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  anchorkey %anchorkey.content;>
 <!ATTLIST  anchorkey %anchorkey.attributes;>
@@ -91,9 +88,9 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  exportanchors %global-atts;  class CDATA "+ topic/keywords delay-d/exportanchors ">
-<!ATTLIST  anchorid     %global-atts;  class CDATA "+ topic/keyword delay-d/anchorid ">
-<!ATTLIST  anchorkey    %global-atts;  class CDATA "+ topic/keyword delay-d/anchorkey ">
+<!ATTLIST  exportanchors   class CDATA "+ topic/keywords delay-d/exportanchors ">
+<!ATTLIST  anchorid       class CDATA "+ topic/keyword delay-d/anchorid ">
+<!ATTLIST  anchorkey      class CDATA "+ topic/keyword delay-d/anchorkey ">
 
 <!-- ================== End of DITA Delay Resolution Domain ==================== -->
  

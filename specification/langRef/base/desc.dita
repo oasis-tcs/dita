@@ -3,16 +3,19 @@
  "reference.dtd">
 <reference id="desc" xml:lang="en-us">
 <title><xmlelement>desc</xmlelement></title>
-<shortdesc>The <xmlelement>desc</xmlelement> element contains the description of the current
-    element.</shortdesc>
+  <shortdesc conkeyref="library-short-descriptions/desc"/>
 <prolog><metadata>
 <keywords>
+        <indexterm>description</indexterm>
         <indexterm>elements<indexterm>body<indexterm><xmlelement>desc</xmlelement></indexterm></indexterm></indexterm>
+        <indexterm>normative
+          statements<indexterm><xmlelement>desc</xmlelement></indexterm></indexterm>
 </keywords>
 </metadata></prolog>
 <refbody>
-    <section  id="section-1">
-      <p>The following list outlines some usages of the <xmlelement>desc</xmlelement> element:</p>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>The following list outlines common uses of the <xmlelement>desc</xmlelement> element:</p>
       <dl>
         <dlentry>
           <dt><xmlelement>table</xmlelement> and <xmlelement>fig</xmlelement></dt>
@@ -20,9 +23,9 @@
         </dlentry>
         <dlentry>
           <dt><xmlelement>xref</xmlelement> and <xmlelement>link</xmlelement></dt>
-          <dd>Provides a description of the target; processors <term outputclass="RFC-2119"
-              >MAY</term> choose to display this text as hover help for a
-            link.</dd>
+          <dd>
+            <p>Provides a description of the target.</p>
+          </dd>
         </dlentry>
         <dlentry>
           <dt><xmlelement>object</xmlelement></dt>
@@ -31,20 +34,45 @@
         </dlentry>
       </dl>
     </section>
-<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-desc/contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-topic/desc </p></section>
-<example id="example" otherprops="examples">       <title>Example</title>       <codeblock
-xml:space="preserve">&lt;fig&gt;&lt;title&gt;The Handshake&lt;/title&gt;
-<b>&lt;desc&gt;</b>This image shows two hands clasped in a formal, 
-business-like handshake.<b>&lt;/desc&gt;</b>
-&lt;image href="handshake.jpg"&gt;
- &lt;alt&gt;The handshake&lt;/alt&gt;
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>When used in conjunction with <xmlelement>fig</xmlelement> or <xmlelement>table,
+        </xmlelement> processors <term outputclass="RFC-2119">SHOULD</term> consider a description
+        to be part of the content flow.</p>
+      <p>When used in conjunction with <xmlelement>xref</xmlelement> or
+          <xmlelement>link</xmlelement> elements, processors <term outputclass="RFC-2119">MAY</term>
+        choose to render the content of a <xmlelement>desc</xmlelement> element as hover help.</p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+    <p conref="../../common/conref-attribute.dita#conref-attribute/only-universal"/>
+    </section>
+<example id="example" otherprops="examples">
+      <title>Examples</title>
+      <fig>
+        <title>Description of a figure</title>
+        <p>In the following code sample, the figure contains an image of a famous painting by
+          Leonardo Da Vinci. The title provides the name of the painting, while the
+            <xmlelement>desc</xmlelement> element contains information about when the portrait is
+          thought to have been painted.</p>
+        <codeblock>&lt;fig>
+&lt;title&gt;Mona Lisa&lt;/title&gt;
+<b>&lt;desc&gt;</b>Circa 1503–06, perhaps continuing until 1517<b>&lt;/desc&gt;</b>
+&lt;image href="mona-lisa.jpg"&gt;
+ &lt;alt&gt;Photograph of Mona Lisa painting&lt;/alt&gt;
 &lt;/image&gt;
-&lt;/fig&gt;</codeblock>     </example>
-<section id="attributes">       <title>Attributes</title>
-   <p >The following attributes are available on this element: <xref
-     href="../attributes/universalAttributes.dita"/> and <xref
-     href="../attributes/commonAttributes.dita#common-atts/outputclass"/>.</p>     </section>
+&lt;/fig&gt;</codeblock>
+      </fig>
+      <fig>
+        <title>Description of a cross reference</title>
+        <p>In the following code sample, a <xmlelement>desc</xmlelement> element is used within a
+          link. Some processors might use the content of the <xmlelement>desc</xmlelement> element
+          as hover help. </p>
+        <codeblock>&lt;link keyref="dita-13-02">
+  &lt;linktext>DITA 1.3 Errata 02&lt;/linktext>
+  <b>&lt;desc></b>Final errata version of DITA 1.3, published 19 June 2018<b>&lt;/desc></b>
+&lt;/link></codeblock>
+      </fig>
+    </example>
 </refbody>
 </reference>

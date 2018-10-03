@@ -41,10 +41,7 @@
                          %required-cleanup;)*"
 >
 <!ENTITY % b.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  b %b.content;>
 <!ATTLIST  b %b.attributes;>
@@ -60,10 +57,7 @@
                          %required-cleanup;)*"
 >
 <!ENTITY % u.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  u %u.content;>
 <!ATTLIST  u %u.attributes;>
@@ -79,10 +73,7 @@
                          %required-cleanup;)*"
 >
 <!ENTITY % i.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  i %i.content;>
 <!ATTLIST  i %i.attributes;>
@@ -98,10 +89,7 @@
                          %required-cleanup;)*"
 >
 <!ENTITY % line-through.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  line-through %line-through.content;>
 <!ATTLIST  line-through %line-through.attributes;>
@@ -117,10 +105,7 @@
                          %required-cleanup;)*"
 >
 <!ENTITY % overline.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  overline %overline.content;>
 <!ATTLIST  overline %overline.attributes;>
@@ -136,10 +121,7 @@
                          %required-cleanup;)*"
 >
 <!ENTITY % tt.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  tt %tt.content;>
 <!ATTLIST  tt %tt.attributes;>
@@ -155,10 +137,7 @@
                          %required-cleanup;)*"
 >
 <!ENTITY % sup.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  sup %sup.content;>
 <!ATTLIST  sup %sup.attributes;>
@@ -174,10 +153,7 @@
                          %required-cleanup;)*"
 >
 <!ENTITY % sub.attributes
-              "%univ-atts;
-               outputclass
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  sub %sub.content;>
 <!ATTLIST  sub %sub.attributes;>
@@ -188,14 +164,14 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  b            %global-atts;  class CDATA "+ topic/ph hi-d/b "  >
-<!ATTLIST  i            %global-atts;  class CDATA "+ topic/ph hi-d/i "  >
-<!ATTLIST  line-through %global-atts;  class CDATA "+ topic/ph hi-d/line-through ">
-<!ATTLIST  overline     %global-atts;  class CDATA "+ topic/ph hi-d/overline ">
-<!ATTLIST  sub          %global-atts;  class CDATA "+ topic/ph hi-d/sub ">
-<!ATTLIST  sup          %global-atts;  class CDATA "+ topic/ph hi-d/sup ">
-<!ATTLIST  tt           %global-atts;  class CDATA "+ topic/ph hi-d/tt " >
-<!ATTLIST  u            %global-atts;  class CDATA "+ topic/ph hi-d/u "  >
+<!ATTLIST  b              class CDATA "+ topic/ph hi-d/b "  >
+<!ATTLIST  i              class CDATA "+ topic/ph hi-d/i "  >
+<!ATTLIST  line-through   class CDATA "+ topic/ph hi-d/line-through ">
+<!ATTLIST  overline       class CDATA "+ topic/ph hi-d/overline ">
+<!ATTLIST  sub            class CDATA "+ topic/ph hi-d/sub ">
+<!ATTLIST  sup            class CDATA "+ topic/ph hi-d/sup ">
+<!ATTLIST  tt             class CDATA "+ topic/ph hi-d/tt " >
+<!ATTLIST  u              class CDATA "+ topic/ph hi-d/u "  >
 
 <!-- ================== End of DITA Highlight Domain ==================== -->
  
