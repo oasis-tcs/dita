@@ -155,10 +155,11 @@ keyref="attributes-universal"/> and the attribute defined below.</p>
 <dl>
 <dlentry id="callout">
 <dt><xmlatt>callout</xmlatt></dt>
-<dd>Specifies what character is used for the footnote link, for example a number or an alpha
-character. The attribute <ph>can</ph> also specify a short string of characters. When no
-<xmlatt>callout</xmlatt> value is specified, footnotes are typically
-numbered.<?datatype CDATA?><?default #IMPLIED?></dd>
+<dd>Specifies the character that is used for the footnote link, for example, a number or an
+                                                  alphabetical character. The attribute can also
+                                                  specify a short string of characters. When no
+                                                  <xmlatt>callout</xmlatt> value is specified,
+                                                  footnotes are typically numbered.</dd>
 </dlentry>
 </dl>
 </sectiondiv>
@@ -291,10 +292,9 @@ from <xref keyref="attributes-linkRelationship"/>.</p>
                                                 <dd>On this element the <xmlatt>format</xmlatt>
                                                   attribute sets a default value of "ditamap",
                                                   because the purpose of the element is to reference
-                                                  a ditamap document. Otherwise, the attribute is
+                                                  a DITA map document. Otherwise, the attribute is
                                                   the same as described in <xref
-                                                  keyref="attributes-linkRelationship"
-                                                  />.</dd>
+                                                  keyref="attributes-linkRelationship"/>.</dd>
                                         </dlentry>
                                 </dl>
                         </sectiondiv><sectiondiv>
@@ -638,31 +638,17 @@ keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
                                 </dlentry>
                                 <dlentry id="image-height">
                                         <dt><xmlatt>height</xmlatt></dt>
-                                        <dd>Indicates the vertical dimension for the resulting image
-                                                display. If necessary, the image <term
-                                                   outputclass="RFC-2119"
-                                                  >SHOULD</term> be scaled to the specified size.
-                                                  <ph conref="#conref-attribute/height-width-units"
-                                                /> If a height value is specified and no width value
-                                                is specified, the width <term 
-                                                  outputclass="RFC-2119">SHOULD</term> be scaled by
-                                                the same factor as the height. <ph
-                                                  conref="#conref-attribute/height-width-warning"
-                                                /></dd>
+                                        <dd>Indicates the vertical dimension for the resulting image display.<!-- If necessary, the image <term outputclass="RFC-2119">SHOULD</term> be scaled to the specified size.-->
+                                                <ph conref="#conref-attribute/height-width-units"/>
+                                                <!--If a height value is specified and no width value is specified, the width <term outputclass="RFC-2119">SHOULD</term> be scaled by the same factor as the height. --><!--<ph conref="#conref-attribute/height-width-warning"/>--></dd>
                                 </dlentry>
                                 <dlentry id="image-width">
                                         <dt><xmlatt>width</xmlatt></dt>
                                         <dd>Indicates the horizontal dimension for the resulting
-                                                image display. If necessary, the image <term
-                                                   outputclass="RFC-2119"
-                                                  >SHOULD</term> be scaled to the specified size.
-                                                  <ph conref="#conref-attribute/height-width-units"
-                                                /> If a width value is specified and no height value
-                                                is specified, the height <term 
-                                                  outputclass="RFC-2119">SHOULD</term> be scaled by
-                                                the same factor as the width. <ph
-                                                  conref="#conref-attribute/height-width-warning"
-                                                /></dd>
+                                                image display.
+                                                  <!--If necessary, the image <term outputclass="RFC-2119">SHOULD</term> be scaled to the specified size. --><ph
+                                                  conref="#conref-attribute/height-width-units"/>
+                                                <!--If a width value is specified and no height value is specified, the height <term outputclass="RFC-2119">SHOULD</term> be scaled by the same factor as the width. <ph conref="#conref-attribute/height-width-warning"/>--></dd>
                                 </dlentry>
                                 <dlentry id="image-align">
                                         <dt><xmlatt>align</xmlatt></dt>
@@ -678,15 +664,14 @@ keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
                                                 to scale the image in the absence of any specified
                                                 image height or width; a value of 100 implies that
                                                 the image should be presented at its intrinsic size.
-                                                If a value has been specified for this image's
+                                                If a value has been specified for the
                                                   <xmlatt>height</xmlatt> or <xmlatt>width</xmlatt>
                                                 attribute (or both), the <xmlatt>scale</xmlatt>
                                                 attribute is ignored.<p>It is an error if the value
                                                   of this attribute is not an unsigned integer. In
-                                                  this case, the implementation <ph
-                                                  >might</ph> give an error
-                                                  message and <ph >might</ph>
-                                                  recover by ignoring this attribute. </p>
+                                                  this case, the implementation might give an error
+                                                  message and might recover by ignoring this
+                                                  attribute. </p>
                                         </dd>
                                 </dlentry>
                                 <dlentry id="image-scalefit">
@@ -716,31 +701,13 @@ keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
                                 </dlentry>
                                 <dlentry id="image-placement">
                                         <dt><xmlatt>placement</xmlatt></dt>
-                                        <dd>Indicates whether an image should be displayed inline or
-                                                separated from the surrounding text. The default is
-                                                inline. Allowable values are: inline, break, or and
-                                                  <xref
+                                        <dd>Indicates whether an image is displayed inline or on a
+                                                separate line. The default value is inline.
+                                                Allowable values are: inline, break, or and <xref
                                                   keyref="attributes-useconreftarget"
                                                   >-dita-use-conref-target</xref>.</dd>
                                 </dlentry>
-                                <dlentry id="image-longdescref">
-                                        <dt><xmlatt>longdescref</xmlatt>
-                                                <ph conref="#conref-attribute/deprecated-attr"
-                                                /></dt>
-                                        <dd>A reference to a textual description of the graphic or
-                                                object. This attribute supports creating accessible
-                                                content. See <xref
-                                                  keyref="attributes-href"
-                                                /> for detailed information on supported values and
-                                                processing implications. <ph>For examples of how
-                                                  this attribute is used in output, see this topic
-                                                  on <xref format="html"
-                                                  href="http://www.w3.org/TR/WCAG10-HTML-TECHS/#long-descriptions"
-                                                  scope="external">long descriptions</xref>.</ph>
-                                                NOTE: This attribute is deprecated in favor of the
-                                                  <xref href="../langRef/base/longdescref.dita"/>
-                                                subelement to this element.</dd>
-                                </dlentry>
+                                <!--<dlentry id="image-longdescref"><dt><xmlatt>longdescref</xmlatt> <ph conref="#conref-attribute/deprecated-attr"/></dt><dd>A reference to a textual description of the graphic or object. This attribute supports creating accessible content. See <xref keyref="attributes-href"/> for detailed information on supported values and processing implications. <ph>For examples of how this attribute is used in output, see this topic on <xref format="html" href="http://www.w3.org/TR/WCAG10-HTML-TECHS/#long-descriptions" scope="external">long descriptions</xref>.</ph> NOTE: This attribute is deprecated in favor of the <xref href="../langRef/base/longdescref.dita"/> subelement to this element.</dd></dlentry>-->
                         </dl>
                 </section>
                         <section id="section-4"><title>Attributes used on the <xmlelement>map</xmlelement> element</title><sectiondiv
