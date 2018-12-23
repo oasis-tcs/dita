@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 export DITA_HOME=$PWD/dita-ot-$DITA_OT_VERSION
 
 # Build 1.3 doctype to ensure builds working properly
