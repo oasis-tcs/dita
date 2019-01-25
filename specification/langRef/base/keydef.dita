@@ -19,21 +19,18 @@
 <refbody>
 <section id="usage-information">
 <title>Usage information</title>
-<p>The <xmlelement>keydef</xmlelement> element is a convenience element, which means that anything
-it does can also be accomplished with a <xmlelement>topicref</xmlelement> element: where
-<xmlelement>keydef</xmlelement> uses defaulted attributes to do things like keeping the definition
-out of a table of contents, a <xmlelement>topicref</xmlelement> element could do the same thing by
-explicitly setting <xmlatt>toc</xmlatt> to "no". These defaulted attributes on
-<xmlelement>keydef</xmlelement> ensure that these simple definitions do not appear in the TOC, do
-not add extra links, and are not rendered as topics unless referenced as part of the normal
-content.</p>
+<p>The <xmlelement>keydef</xmlelement> element is a convenience element. Anything that the
+          <xmlelement>keydef</xmlelement> element  does can also be accomplished with a
+          <xmlelement>topicref</xmlelement> element.  Attributes defaulted on the
+          <xmlelement>keydef</xmlelement> element ensure that key definitions do not appear in the
+        TOC, do not add extra links, and are not rendered as topics .</p>
 </section>
 <section id="processing-expectations">
 <title>Processing expectations</title>
 <p>The <xmlelement>keydef</xmlelement> element has several defaulted attribute values that
-processors may want to be aware of; as long as the default values are respected, no additional
-processing expectations exist beyond what those same attributes do for
-<xmlelement>topicref</xmlelement>.</p>
+        processors might want to be aware of; as long as the default values are respected, no
+        additional processing expectations exist beyond what those same attributes do for
+          <xmlelement>topicref</xmlelement>.</p>
 </section>
 <section id="specialization-hierarchy">
 <title>Specialization hierarchy</title>
@@ -51,10 +48,9 @@ keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>, and the attributes de
 <dl>
 <dlentry>
 <dt><xmlatt>keys</xmlatt>
-<ph conref="../../common/conref-attribute.dita#conref-attribute/required-attr"/></dt>
-<dd>On this element the <xmlatt>keys</xmlatt> attribute is required, because the purpose of the
-element is to define a key. Otherwise, the attribute is the same as described in <xref
-keyref="attributes-keys"/>.</dd>
+              <ph conref="../../common/conref-attribute.dita#conref-attribute/required-attr"/></dt>
+            <dd>Defines a key and is required. Otherwise,the attribute is the same as that described
+              in <xref keyref="attributes-keys"/>.</dd>
 </dlentry>
 <dlentry conref="../../common/conref-attribute.dita#conref-attribute/href-on-topicref">
 <dt/>
@@ -71,14 +67,14 @@ conref="../../common/conref-attribute.dita#conref-attribute/processing-role-defa
 <example id="example" otherprops="examples"><title>Examples</title>
 <p>In the following code sample, several keys are defined that might be used as part of publishing
 this DITA specification.</p>
-<ul id="ul_gzs_1wc_t2b">
-<li>The first <xmlelement>keydef</xmlelement> defines a key that links to the home page for the
-OASIS DITA Technical Committee</li>
-<li>The second <xmlelement>keydef</xmlelement> defines a key for a local DITA topic about addressing
-in DITA; that topic is available to resolve link text.</li>
-<li>The third <xmlelement>keydef</xmlelement> defines a text-only key that specifies the current
-DITA version number.</li>
-</ul><codeblock>&lt;map>
+<ul>
+        <li>The first <xmlelement>keydef</xmlelement> defines a key that links to the home page for
+          the OASIS DITA Technical Committee.</li>
+        <li>The second <xmlelement>keydef</xmlelement> defines a key for a local DITA topic about
+          addressing in DITA; that topic is available to resolve link text.</li>
+        <li>The third <xmlelement>keydef</xmlelement> defines a text-only key that specifies the
+          current DITA version number.</li>
+      </ul><codeblock>&lt;map>
   &lt;title>Possible keys for use in the DITA specification&lt;/title>
 
   &lt;keydef keys="dita-tc" scope="external" format="html"
