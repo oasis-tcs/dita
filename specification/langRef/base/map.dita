@@ -18,16 +18,25 @@
           maybe in both. Editors think that map is a core and critical DITA concept, and so this
           might need to be covered here as well.</p>
       </draft-comment>
-      <p>A map describes the relationships among a set of DITA topics. The following are some
-        examples of relationships that can be described in a map:</p>
-      <ul>
-        <li>Hierarchical (Parent/Child). Nested topics create a hierarchical relationship. The topic
-          that does the nesting is the parent, and the topics that are nested are the children.</li>
-        <li>Ordered. Child topics can be labeled as having an ordered relationship, which means they
-          are referenced in a definite sequence.</li>
-        <li>Family. Child topics can be labeled as having a family relationship, which means they
-          all refer to each other.</li>
-      </ul>
+      <p>A map describes the relationships among a set of DITA topics. The following are types of
+        relationships that can be described in a map:</p>
+      <dl>
+        <dlentry>
+          <dt>Hierarchical</dt>
+          <dd>Nested topics create a hierarchical relationship. The topic that does the nesting is
+            the parent, and the topics that are nested are the children.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>Ordered</dt>
+          <dd>Child topics can be labeled as having an ordered relationship, which means they are
+            referenced in a definite sequence.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>Family</dt>
+          <dd>Child topics can be labeled as having a family relationship, which means they all
+            refer to each other.</dd>
+        </dlentry>
+      </dl>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
@@ -36,19 +45,20 @@
         between topics in the output.</p>
       <p>The <xmlelement>title</xmlelement> element can be used to provide a title for the map. In
         some scenarios the title is purely informational; it is present only as an aid to the
-        author. In other scenarios, it might be useful or even required. In a map referenced by
-        another map, the <xmlelement>title</xmlelement> might be discarded as topics from the submap
-        are aggregated into a larger publication.</p>
+        author. In other scenarios, the title might be useful or even required. In a map referenced
+        by another map, the title might be discarded as topics from the submap are aggregated into a
+        larger publication.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
       <sectiondiv conref="../../common/conref-attribute.dita#conref-attribute/all-map-attributes"/>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><p>In this example, there are six <xmlelement>topicref</xmlelement> elements. They are nested and
-        have a hierarchical relationship. The file <filepath>bats.dita</filepath> is the parent
-        topic and the other topics are its children. The hierarchy could be used to generate a PDF,
-        a navigation pane in an information center, a summary of the topics, or related links
-        between the parent topic and its children.</p><codeblock>&lt;map id="mybats"&gt;
+<example id="example" otherprops="examples"><title>Example</title><p>The following code sample contains six <xmlelement>topicref</xmlelement> elements. The
+          <xmlelement>topicref</xmlelement> elements are nested and have a hierarchical
+        relationship. The file <filepath>bats.dita</filepath> is the parent topic and the other
+        topics are its children. The hierarchy could be used to generate a PDF, a navigation pane in
+        an information center, a summary of the topics, or related links between the parent topic
+        and its children.</p><codeblock>&lt;map id="mybats"&gt;
   &lt;title&gt;Bats&lt;/title&gt;
   &lt;topicref href="bats.dita"&gt;
     &lt;topicref href="batcaring.dita"/&gt;
