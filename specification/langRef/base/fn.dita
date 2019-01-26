@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="fn" xml:lang="en-us">
 <title><xmlelement>fn</xmlelement></title>
   <shortdesc conkeyref="library-short-descriptions/fn"/>
@@ -24,15 +22,15 @@
         <dlentry>
           <dt>Use-by-reference footnote</dt>
           <dd>This is produced by a <xmlelement>fn</xmlelement> element that specifies a value for
-            the <xmlatt>id</xmlatt> attribute.</dd>
+            the <xmlatt>id</xmlatt> attribute. It must be used in conjunction with an
+              <xmlelement>xref</xmlelement> element with <xmlatt>type</xmlatt> set to "fn."</dd>
         </dlentry>
       </dl>
-      <p>A footnote that is located in one topic cannot be referenced in another topic, unless the
-        conref mechanism is used.</p>
+      <p>To reference a footnote that is located in another topic, the conref mechanism is used.</p>
     </section>
-    <section id="rendering-expecttions">
-      <title>Rendering expectations</title>
-      <p>The two footnotes produce different types of output:</p>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>The two footnote types typically produce different types of output:</p>
       <dl>
         <dlentry>
           <dt>Single-use footnote</dt>
@@ -40,7 +38,8 @@
             of the <xmlelement>fn</xmlelement> element. The superscript symbol is hyperlinked to the
             content of the footnote, which is placed at the bottom of a PDF page or the end of an
             online article. The superscript symbol can be specified by the value of the
-              <xmlatt>callout</xmlatt> attribute.</dd>
+              <xmlatt>callout</xmlatt> attribute. When no <xmlatt>callout</xmlatt> value is
+            specified, footnotes are typically numbered.</dd>
         </dlentry>
         <dlentry>
           <dt>Use-by-reference footnote</dt>
@@ -54,12 +53,10 @@
             same topic.</dd>
         </dlentry>
       </dl>
-    </section>
-    <section id="processing-expectations">
-      <title>Processing expectations</title>
-      <p>The details of footnote processing and styling are implementation dependent. For example, a
-        tool that renders DITA as PDF might lack support for the <xmlatt>callout</xmlatt> attribute,
-        or footnotes might be collected as endnotes for certain types of publications.</p>
+      <p>However, the details of footnote processing and formatting are implementation dependent.
+        For example, a tool that renders DITA as PDF might lack support for the
+          <xmlatt>callout</xmlatt> attribute, or footnotes might be collected as end notes for
+        certain types of publications.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -68,18 +65,18 @@
 <example id="example" otherprops="examples"><title>Examples</title>
       <fig>
         <title>Example of a single-use footnote</title>
-        <p>The following example is of a single-use footnote. It uses a simple
+        <p>The following code sample shows a single-use footnote. It contains a simple
             <xmlelement>fn</xmlelement> element, with no <xmlatt>id</xmlatt> or
             <xmlatt>callout</xmlatt> attribute.</p>
         <codeblock>The memory storage capacity of the computer is 
 2 GB&lt;fn&gt;A GB (gigabyte) is equal to 
 1000 million bytes&lt;/fn&gt; with error correcting support.</codeblock>
-        <p>Typically, a superscript symbol will be rendered at the location of the
-            <xmlelement>fn</xmlelement> element; the superscript symbol is hyperlinked to the
-          content of the <xmlelement>fn</xmlelement>, which is generally placed at the bottom of a
-          PDF page or the end of an online article. The type of symbol used is implementation
+        <p>When rendered, typically a superscript symbol is placed at the location of the
+            <xmlelement>fn</xmlelement> element; this superscript symbol is hyperlinked to the
+          content of the <xmlelement>fn</xmlelement>, which is typically is placed at the bottom of
+          a PDF page or the end of an online article. The type of symbol used is implementation
           specific.</p>
-        <p>It might produce output similar to the following:<lq>
+        <p>The above code sample might produce output similar to the following:<lq>
             <p>The memory storage capacity of the computer is 2 GB<sup>1</sup> with error correcting
               support.</p>
             <p><codeph>......</codeph></p>
@@ -90,20 +87,21 @@
       </fig>
       <fig>
         <title>Example of a single-use footnote with a <xmlatt>callout</xmlatt> attribute</title>
-        <p>The second example is a single-use footnote that uses a <xmlatt>callout</xmlatt>
-          attribute. It is marked up as follows:</p>
+        <p>The following code sample shows a single-use footnote that uses a
+            <xmlatt>callout</xmlatt> attribute:</p>
         <codeblock>The memory storage capacity of the computer is 
 2 GB&lt;fn callout="#"&gt;A GB (gigabyte) is equal to 
 1000 million bytes&lt;/fn&gt; with error correcting support.</codeblock>
         <p>The rendered output is similar to that of the previous example, although processors that
-          support it will render the footnote symbols as # (hashtag).</p>
+          support it will render the footnote symbol as # (hashtag).</p>
         <!--<p>That DITA markup might produce output similar to the following:<lq><p>The memory storage capacity of the computer is 2 GB<sup>#</sup> with error correcting support.</p><p><codeph>......</codeph></p><p><sup>#</sup> A GB (gigabyte) is equal to 1000 million bytes</p><p>[bottom of page]</p></lq></p>-->
       </fig>
       <fig>
         <title>Example of a use-by-reference footnote</title>
-        <p>The third example is a use-by-reference footnote. It uses an <xmlatt>id</xmlatt> on a
-          footnote, and then references that <xmlatt>id</xmlatt> by an <xmlelement>xref</xmlelement>
-          element. The DITA markup might look like the following:</p>
+        <p>The following code sample shows use-by-reference footnotes. The
+            <xmlelement>fn</xmlelement> elements have <xmlatt>id</xmlatt> attributes, and inline
+            <xmlelement>xref</xmlelement> elements reference those <xmlelement>fn</xmlelement>
+          elements:</p>
         <codeblock>&lt;fn id="dog-name"&gt;Fido&lt;/fn&gt;
 &lt;fn id="cat-name">Puss&lt;/fn>
 &lt;fn id="llama-name">My llama&lt;/fn>
@@ -111,7 +109,7 @@
 &lt;p>I like pets. At my house, I have a dog&lt;xref href="#topic/dog-name" type="fn"/&gt;, a
 cat&lt;xref href="#topic/cat-name" type="fn"/&gt;, and a 
 llama&lt;xref href="#topic/llama-name" type="fn"/&gt;.&lt;/p></codeblock>
-        <p>It might produce output similar to the following:<lq>
+        <p>The code sample might produce output similar to the following:<lq>
             <p><codeph>......</codeph></p>
             <p>I like pets. At my house, I have a dog<sup>1</sup>, a cat<sup>2</sup>, and a
                 llama<sup>3</sup>.</p>
@@ -124,32 +122,34 @@ llama&lt;xref href="#topic/llama-name" type="fn"/&gt;.&lt;/p></codeblock>
           </lq></p>
       </fig>
       <fig>
-        <title>Examples of footnotes referenced by conref</title>
-        <p>In the following example, a company stores footnotes in a shared topic
+        <title>Example of a single-use footnotes that uses conref</title>
+        <p>The following code sample shows footnotes stored in a shared topic
             (<filepath>footnotes.dita</filepath>):</p>
-        <codeblock>&lt;fn id="strunk">Elements of Style&lt;/fn>
-&lt;fn id="DQTI">Developing Quality Technical Information, 2nd edition&lt;/fn>
-...</codeblock>
-        <p>To use those footnotes, authors conref them into the relevant topics, and then insert a
-          cross-reference at the applicable point of the topic. The following is an example of a
-          single-use footnote.</p>
-        <codeblock>
-  &lt;p>See online resources&lt;fn conref="footnotes.dita#footnotes/DQTI"/> for more information about how to
-     access the quality of technical documentation ...&lt;/p></codeblock>
-        <p>The following is an example of a use-by-reference footnote:</p>
-        <p>
-          <codeblock>&lt;topic id="evaluating-quality">
+        <codeblock>&lt;!-- Content from footnotes.dita -->
+&lt;topic id="footnotes">
+...
+  &lt;fn id="strunk">Elements of Style&lt;/fn>
+  &lt;fn id="DQTI">Developing Quality Technical Information, 2nd edition&lt;/fn>
+...
+&lt;/topic></codeblock>
+        <p>To use those footnotes, authors conref them into the relevant topics:</p>
+        <codeblock>&lt;p>See the online resource&lt;fn conref="footnotes.dita#footnotes/DQTI"/> for more 
+   information about how to assess the quality of technical documentation ...&lt;/p></codeblock>
+      </fig>
+      <fig>
+        <title>Example of a use-by-reference footnote that uses conref</title>
+        <p>The following code sample shows a use-by-reference footnote that uses conref:</p>
+        <codeblock>&lt;topic id="evaluating-quality">
   &lt;title>Evaluating documentation quality&lt;/title>
   &lt;body>
   ...
   &lt;fn conref="footnotes.dita#footnotes/DQTI" id="dqti"/>
   ...
-  &lt;p>See online resources&lt;xref="./evaluating-quality/dqti" type="fn"/> for more information about how to
-     access the quality of technical documentation ...&lt;/p>
+  &lt;p>See the online resource&lt;xref="./evaluating-quality/dqti" type="fn"/> for more 
+     information about how to assess the quality of technical documentation ...&lt;/p>
   ...
   &lt;/body>
 &lt;topic></codeblock>
-        </p>
       </fig></example>
 </refbody>
 </reference>
