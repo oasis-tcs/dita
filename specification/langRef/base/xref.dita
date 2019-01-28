@@ -35,24 +35,18 @@ list of DITA features is available in the DITA specification
 </fig>
                <fig>
 <title>Cross reference to a URI that contains an ampersand</title>
-<p>In the following code sample, a the link address contains an ampersand, which must be escaped
-using an entity.</p>
-<p>Because the <xmlatt>href</xmlatt> attribute must be encoded as a valid URI, characters such as
-<codeph>&amp;</codeph> must be escaped: </p>
+<p>The following code sample shows a cross reference that contains an ampersand:</p>
+                    <codeblock>&lt;xref href="https://www.example.com/docview.wss?rs=757<b>&amp;</b>context=SSVNX5"
+scope="external" format="html"&gt;Part number SSVNX5&lt;/xref&gt;</codeblock>
+<p>Because the <xmlatt>href</xmlatt> attribute value needs to be a valid URI, the ampersand must be
+                         escaped, as shown in the revised code sample below: </p>
 <codeblock>&lt;xref href="https://www.example.com/docview.wss?rs=757<b>&amp;amp;</b>context=SSVNX5"
 scope="external" format="html"&gt;Part number SSVNX5&lt;/xref&gt;</codeblock>
-<p>Although the entity is there in the DITA content, the ampersand character may not show up when
-the link target is displayed in an editor or in a browser, which would render that URI as:</p>
+<p>Although the entity is in the DITA source, the entity might not show up when the link target is
+                         displayed in an editor or a Web browser; the URI might be shown as the
+                         following:</p>
 <codeblock>https://www.example.com/docview.wss?rs=757<b>&amp;</b>context=SSVNX5</codeblock>
 </fig>
-               <draft-comment author="Kristen J Eberlein" time="20 June 2018">
-                    <p>Replace the following paragraph – removed from Examples section – with
-                         related links:</p>
-                    <p>See <xref href="../../archSpec/base/ditaaddressing.dita"/> for details on
-                         using URI references and <xref
-                              href="../../archSpec/base/key-based-addressing.dita#key-based_addressing"
-                         /> for details on using key references.</p>
-               </draft-comment>
           </example>
 </refbody>
 </reference>

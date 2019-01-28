@@ -12,31 +12,32 @@
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-<p>The <xmlelement>data</xmlelement> element is primarily intended for use with specialization. The
-ability to nest <xmlelement>data</xmlelement> within itself allows the creation of complex metadata
-structures. Because it is generally available in both block and inline contexts,
-<xmlelement>data</xmlelement> allows the specification of properties for most element types.</p>
-<p>A metadata property specified using <xmlelement>data</xmlelement> ordinarily applies to the
-container of that <xmlelement>data</xmlelement> element. In the content model for the
-<xmlelement>prolog</xmlelement> and <xmlelement>metadata</xmlelement> elements, the property applies
-to the topic as a whole. In the <xmlelement>topicmeta</xmlelement> element, the property applies to
-the referenced topic. The <xmlelement>data-about</xmlelement> element can be used to identify the
-subject of the property with an explicit reference.</p>
-      <note type="caution">Processors by default will not render the content of the
-<xmlelement>data</xmlelement> element. The <xmlelement>data</xmlelement> element should be used only
-for properties and not to embed text for formatting as part of the flow of the topic body. For
-example, it would be possible to specialize <xmlelement>data</xmlelement> to create a special kind
-of paragraph where <xmlelement>p</xmlelement> is not allowed; however, when the content is shared,
-other tools or processors will ignore the specialized <xmlelement>data</xmlelement> element.</note>
+<p>The primary purpose of the <xmlelement>data</xmlelement> element is as a specialization base.
+        Because it can nest, it can be used  to create complex metadata structures. Since it is
+        available in both block and inline contexts, the <xmlelement>data</xmlelement>  element can
+        specify properties for most element types.</p>
+<p>A metadata property specified using a <xmlelement>data</xmlelement> element usually applies to
+        the element that contains the <xmlelement>data</xmlelement> element. When located in
+          <xmlelement>prolog</xmlelement> and <xmlelement>metadata</xmlelement> elements, the
+        property applies to the topic as a whole. When located in the
+          <xmlelement>topicmeta</xmlelement> element, the property applies to the referenced topic.
+        The <xmlelement>data-about</xmlelement> element can be used to identify the subject of the
+        property with an explicit reference.</p>
+      <note type="caution">By default, processors do not render the content of the
+          <xmlelement>data</xmlelement> element. Use the <xmlelement>data</xmlelement> element only
+        for properties; do not use it to embed text as part of the content flow. For example, while
+        it is possible to specialize <xmlelement>data</xmlelement> to create a special kind of
+        paragraph where <xmlelement>p</xmlelement> is not allowed, when the content is shared, other
+        tools or processors will ignore the specialized <xmlelement>data</xmlelement>
+        element.</note>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>Default processing <term outputclass="RFC-2119">SHOULD</term> treat a
-          <xmlelement>data</xmlelement> element as an unknown kind of metadata and not render its
-        content.</p>
+      <p>By default, processors <term outputclass="RFC-2119">SHOULD</term> treat
+          <xmlelement>data</xmlelement> elements as unknown metadata and not render its content.</p>
 <p>Processors that recognize a particular <xmlelement>data</xmlelement> element can make use of that
         data as appropriate. For example, a specialized <xmlelement>data</xmlelement> element could
-        be used to alter the rendering of related content.</p>
+        be used to trigger specialized rendering.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -51,14 +52,15 @@ other tools or processors will ignore the specialized <xmlelement>data</xmleleme
 elements</title>
 <p>The following code sample shows how the <xmlelement>data</xmlelement> element can be used to
           provide metdata. Rendering tools that recognize this metadata can automatically apply
-          highlighting to the code.</p><codeblock>&lt;codeblock>&lt;data name="codestyle" value="javascript"/>
+          highlighting to the code.</p><codeblock>&lt;codeblock>
+  &lt;data name="codestyle" value="javascript"/>
   &lt;!-- JavaScript code block -->
 &lt;/codeblock></codeblock>
 </fig>
 <fig id="fig_qsw_2lc_t2b"><title>Nesting <xmlelement>data</xmlelement> elements for complex
 metadata</title><p>The following code sample shows how nested <xmlelement>data</xmlelement> elements can provide
           complex inventory metadata for a part that is described in the topic.</p><codeblock>&lt;topic id="sample">
-  &lt;title>How to purchase SuperWidgets from BigWarehouse&lt;/title>
+  &lt;title>How to purchase items from the warehouse&lt;/title>
   &lt;prolog>
     &lt;data name="inventory">
       &lt;data name="aisle" value="4"/>
@@ -78,7 +80,6 @@ metadata</title><p>The following code sample shows how nested <xmlelement>data</
           default for <xmlatt>name</xmlatt> inside the grammar files, so that processors can work
           with the data without authors having to specify the attribute.</p><codeblock>&lt;topic id="data">
   &lt;title>&lt;xmlelement>data&lt;/xmlelement>&lt;/title>
-  &lt;shortdesc>&lt;!-- ... -->&lt;/shortdesc>
   &lt;prolog>
     &lt;change-historylist>
       &lt;change-item>

@@ -64,17 +64,8 @@ conref="../../common/conref-attribute.dita#conref-attribute/processing-role-defa
 </dl>
 </sectiondiv>
 </section>
-<example id="example" otherprops="examples"><title>Examples</title>
-<p>In the following code sample, several keys are defined that might be used as part of publishing
-this DITA specification.</p>
-<ul>
-        <li>The first <xmlelement>keydef</xmlelement> defines a key that links to the home page for
-          the OASIS DITA Technical Committee.</li>
-        <li>The second <xmlelement>keydef</xmlelement> defines a key for a local DITA topic about
-          addressing in DITA; that topic is available to resolve link text.</li>
-        <li>The third <xmlelement>keydef</xmlelement> defines a text-only key that specifies the
-          current DITA version number.</li>
-      </ul><codeblock>&lt;map>
+<example id="example" otherprops="examples"><title>Example</title>
+<p>The following code sample shows several different types of key definitions:</p><codeblock>&lt;map>
   &lt;title>Possible keys for use in the DITA specification&lt;/title>
 
   &lt;keydef keys="dita-tc" scope="external" format="html"
@@ -88,7 +79,17 @@ this DITA specification.</p>
     &lt;topicmeta>&lt;linktext>2.0&lt;/linktext>&lt;/topicmeta>
   &lt;/keydef>
 
-&lt;/map></codeblock></example>
+&lt;/map></codeblock>
+      <ol>
+        <li>The first <xmlelement>keydef</xmlelement> defines a key that links to a Web page. It
+          contains link text; it also specifies the necessary <xmlatt>scope</xmlatt> and
+            <xmlatt>format</xmlatt> attributes, so that authors do not need to include them when
+          they reference this key.</li>
+        <li>The second <xmlelement>keydef</xmlelement> defines a key for a local DITA topic about
+          addressing in DITA; that topic is available to resolve link text.</li>
+        <li>The third <xmlelement>keydef</xmlelement> defines a text-only key that specifies the
+          current DITA version number.</li>
+      </ol></example>
 </refbody>
 </reference>
 
