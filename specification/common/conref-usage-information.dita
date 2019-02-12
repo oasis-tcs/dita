@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="conref-usage-information">
+    <title>Conref usage information</title>
+    <refbody>
+        <section id="data">
+            <title>Usage information</title>
+            <p>The primary purpose of the <xmlelement>data</xmlelement> element is as a
+                specialization base. Because it can nest, it can be used to create complex metadata
+                structures. Since it is available in both block and inline contexts, the
+                    <xmlelement>data</xmlelement> element can specify properties for most element
+                types.</p>
+            <p>A metadata property specified using a <xmlelement>data</xmlelement> element usually
+                applies to the element that contains the <xmlelement>data</xmlelement> element. When
+                located in <xmlelement>prolog</xmlelement> and <xmlelement>metadata</xmlelement>
+                elements, the property applies to the topic as a whole. When located in the
+                    <xmlelement>topicmeta</xmlelement> element, the property applies to the
+                referenced topic. <ph props="full-dita">The <xmlelement>data-about</xmlelement>
+                    element can be used to identify the subject of the property with an explicit
+                    reference.</ph></p>
+            <note type="caution">By default, processors do not render the content of the
+                    <xmlelement>data</xmlelement> element. Use the <xmlelement>data</xmlelement>
+                element only for properties; do not use it to embed text as part of the content
+                flow. For example, while it is possible to specialize <xmlelement>data</xmlelement>
+                to create a special kind of paragraph where <xmlelement>p</xmlelement> is not
+                allowed, when the content is shared, other tools or processors will ignore the
+                specialized <xmlelement>data</xmlelement> element.</note>
+        </section>
+        <section id="desc">
+            <title>Usage information</title>
+            <p>The following list outlines common uses of the <xmlelement>desc</xmlelement>
+                element:</p>
+            <dl>
+                <dlentry>
+                    <dt><xmlelement>table</xmlelement> and <xmlelement>fig</xmlelement></dt>
+                    <dd>Provides more information than can be contained in the title</dd>
+                </dlentry>
+                <dlentry>
+                    <dt><xmlelement>xref</xmlelement><ph props="full-dita"> and
+                                <xmlelement>link</xmlelement></ph></dt>
+                    <dd>Provides a description of the target</dd>
+                </dlentry>
+                <dlentry props="full-dita">
+                    <dt><xmlelement>object</xmlelement></dt>
+                    <dd>Provides alternate content to use when the context does not permit
+                        displaying the object</dd>
+                </dlentry>
+            </dl>
+        </section>
+        <section id="fn">
+            <title>Usage information</title>
+            <p>There are two types of footnotes: <term>single-use footnote</term> and
+                    <term>use-by-reference footnote</term>.</p>
+            <dl>
+                <dlentry>
+                    <dt>Single-use footnote</dt>
+                    <dd>This is produced by a <xmlelement>fn</xmlelement> element that does not
+                        specify a value for the <xmlatt>id</xmlatt> attribute.</dd>
+                </dlentry>
+                <dlentry>
+                    <dt>Use-by-reference footnote</dt>
+                    <dd>This is produced by a <xmlelement>fn</xmlelement> element that specifies a
+                        value for the <xmlatt>id</xmlatt> attribute. It must be used in conjunction
+                        with an <xmlelement>xref</xmlelement> element with <xmlatt>type</xmlatt> set
+                        to "fn."</dd>
+                </dlentry>
+            </dl>
+            <p>To reference a footnote that is located in another topic, the conref mechanism is
+                used.</p>
+        </section>
+        <section id="keydef">
+            <title>Usage information</title>
+            <p>The <xmlelement>keydef</xmlelement> element is a convenience element. Anything that
+                the <xmlelement>keydef</xmlelement> element does can also be accomplished with a
+                    <xmlelement>topicref</xmlelement> element. Attributes defaulted on the
+                    <xmlelement>keydef</xmlelement> element ensure that key definitions do not
+                appear in the TOC, do not add extra links, and are not rendered as topics .</p>
+        </section>
+    </refbody>
+</reference>
