@@ -2,10 +2,9 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="media-autoplay">
   <title><xmlelement>media-autoplay</xmlelement></title>
-  <shortdesc>The <xmlelement>media-autoplay</xmlelement> element controls whether or not the media
-    referenced by the surrounding <xmlelement>video</xmlelement> or <xmlelement>audio</xmlelement>
-    element should begin playing immediately when the topic is displayed. It is analogous to the
-      <xmlatt>autoplay</xmlatt> attribute on HTML5 media elements.</shortdesc>
+  <shortdesc>The <xmlelement>media-autoplay</xmlelement> element controls whether the media that is
+    referenced by the containing <xmlelement>video</xmlelement> or <xmlelement>audio</xmlelement>
+    element plays automatically when the topic is displayed.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -17,20 +16,18 @@
   <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>The boolean <xmlatt>value</xmlatt> attribute specifies whether the media should
-        automatically begin playing. The default value for this attribute is <codeph>true</codeph>,
-        so the mere presence of this element within <xmlelement>video</xmlelement> or
-          <xmlelement>audio</xmlelement> is sufficient to turn the setting on. The
-          <xmlatt>value</xmlatt> attribute must be explicitly set to <codeph>false</codeph> to
-        disable automatic starting.</p>
-      <p>If this element is not present, the default behavior is determined by the user agent being
-        used to present the media.</p>
+      <p>The <xmlelement>media-autoplay</xmlelement> element is analogous to the
+          <xmlatt>autoplay</xmlatt> attribute on HTML5 media elements.</p>
+      <!--<p>The boolean <xmlatt>value</xmlatt> attribute specifies whether the media should automatically begin playing. The default value for this attribute is <codeph>true</codeph>, so the mere presence of this element within <xmlelement>video</xmlelement> or <xmlelement>audio</xmlelement> is sufficient to turn the setting on. The <xmlatt>value</xmlatt> attribute must be explicitly set to <codeph>false</codeph> to disable automatic starting.</p>-->
+      <p>If this element is not present, the default behavior is determined by the user agent that
+        is used to present the media.</p>
     </section>
     <!--<section id="formatting-expectations"><title>Formatting expectations</title></section>-->
     <!--<section id="processing-expectations"><title>Processing expectations</title></section>-->
     <section id="specialization-hierarchy">
       <title>Specialization hierarchy</title>
-      <p>+ topic/param media-d/media-autoplay </p>
+      <p>The <xmlelement>media-autoplay</xmlelement> element is specialized from
+          <xmlelement>param</xmlelement>. It is defined in the multimedia-domain module.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -39,11 +36,11 @@
       <dl>
         <dlentry>
           <dt><xmlatt>value</xmlatt></dt>
-          <dd>Specifies whether the media should automatically begin playing when the topic is
-            displayed. The following values are recognized:<dl>
+          <dd>Specifies whether the media object automatically plays when the topic is displayed.
+            The following values are recognized:<dl>
               <dlentry>
                 <dt>true</dt>
-                <dd>Default. Autoplaying is enabled.</dd>
+                <dd>Default. Auto-playing is enabled.</dd>
               </dlentry>
               <dlentry>
                 <dt>false</dt>
@@ -57,16 +54,14 @@
         </dlentry>
         <dlentry>
           <dt><xmlatt>name</xmlatt></dt>
-          <dd>This attribute is required due to this element's derivation from the
-              <xmlelement>param</xmlelement> element. The value is fixed to "autoplay" by the
-            grammar definition.</dd>
+          <dd><!--This attribute is required due to the specialization hierarchy of the element. -->The
+            value is fixed to "autoplay".</dd>
         </dlentry>
       </dl>
     </section>
     <example id="example" otherprops="examples">
       <title>Example</title>
-      <p>See <xref keyref="video"><xmlelement>video</xmlelement></xref> and <xref keyref="audio"
-            ><xmlelement>audio</xmlelement></xref> for examples of this element.</p>
+      <p>See <xref keyref="video"/> and <xref keyref="audio"/>.</p>
     </example>
   </refbody>
 </reference>
