@@ -2,9 +2,10 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="media-muted">
   <title><xmlelement>media-muted</xmlelement></title>
-  <shortdesc>The <xmlelement>media-muted</xmlelement> element controls whether or the media plays
-    without sound. surrounding <xmlelement>video</xmlelement> or <xmlelement>audio</xmlelement>
-    element should play without sound. </shortdesc>
+  <shortdesc>The <xmlelement>media-muted</xmlelement> element controls whether or not the media
+    referenced by the surrounding <xmlelement>video</xmlelement> or <xmlelement>audio</xmlelement>
+    element should play without sound. It is analogous to the <xmlatt>muted</xmlatt> attribute on
+    HTML5 media elements.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -16,9 +17,11 @@
   <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>The <xmlelement>media-muted</xmlelement> element is analogous to the <xmlatt>muted</xmlatt>
-        attribute on HTML5 media elements.</p>
-      <!--<p>The boolean <xmlatt>value</xmlatt> attribute specifies whether the media should be muted. The default value for this attribute is <codeph>true</codeph>, so the mere presence of this element within <xmlelement>video</xmlelement> or <xmlelement>audio</xmlelement> is sufficient to mute playback. The <xmlatt>value</xmlatt> attribute must be explicitly set to <codeph>false</codeph> to unmute playback by default.</p>-->
+      <p>The boolean <xmlatt>value</xmlatt> attribute specifies whether the media should be muted.
+        The default value for this attribute is <codeph>true</codeph>, so the mere presence of this
+        element within <xmlelement>video</xmlelement> or <xmlelement>audio</xmlelement> is
+        sufficient to mute playback. The <xmlatt>value</xmlatt> attribute must be explicitly set to
+          <codeph>false</codeph> to unmute playback by default.</p>
       <p>If this element is not present, the default behavior is determined by the user agent being
         used to present the media.</p>
     </section>
@@ -26,8 +29,7 @@
     <!--<section id="processing-expectations"><title>Processing expectations</title></section>-->
     <section id="specialization-hierarchy">
       <title>Specialization hierarchy</title>
-      <p>The <xmlelement>media-muted</xmlelement> element is specialized from
-          <xmlelement>param</xmlelement>. It is defined in the multimedia-domain module.</p>
+      <p>+ topic/param media-d/media-muted </p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -36,14 +38,14 @@
       <dl>
         <dlentry>
           <dt><xmlatt>value</xmlatt></dt>
-          <dd>Specifies whether the media is muted. The following values are recognized:<dl>
+          <dd>Specifies whether the media should be muted. The following values are recognized:<dl>
               <dlentry>
                 <dt>true</dt>
-                <dd>Default. Playback is muted.</dd>
+                <dd>Default. Playback will be muted by default.</dd>
               </dlentry>
               <dlentry>
                 <dt>false</dt>
-                <dd>Playback is not muted.</dd>
+                <dd>Playback will not be muted.</dd>
               </dlentry>
               <dlentry>
                 <dt>-dita-use-conref-target </dt>
@@ -53,14 +55,16 @@
         </dlentry>
         <dlentry>
           <dt><xmlatt>name</xmlatt></dt>
-          <dd><!--This attribute is required due to this element's derivation from the <xmlelement>param</xmlelement> element. -->The
-            value is fixed to "muted".</dd>
+          <dd>This attribute is required due to this element's derivation from the
+              <xmlelement>param</xmlelement> element. The value is fixed to "muted" by the grammar
+            definition.</dd>
         </dlentry>
       </dl>
     </section>
     <example id="example" otherprops="examples">
       <title>Example</title>
-      <p>See <xref keyref="video"/> and <xref keyref="audio"/>.</p>
+      <p>See <xref keyref="video"><xmlelement>video</xmlelement></xref> and <xref keyref="audio"
+            ><xmlelement>audio</xmlelement></xref> for examples of this element.</p>
     </example>
   </refbody>
 </reference>
