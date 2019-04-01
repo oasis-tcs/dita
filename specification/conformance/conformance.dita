@@ -4,15 +4,15 @@
 <concept id="conformance" xml:lang="en-us">
   <title>Conformance</title>
   <shortdesc>An implementation is a conforming implementation of DITA if the implementation meets
-the conditions in Section X.1. A document is a conforming DITA document if the document meets the
-conditions in Section X.2.</shortdesc>
+    the conditionsthat are described in Section 4.1. A document is a conforming DITA document if the
+    document meets the conditions in that are described in Section 4.2.</shortdesc>
   <conbody>
 <p>Conformance to the DITA specification allows documents and document types that are used with
 different processors to produce the same or similar results with little or no reimplementation or
 modification. Conformance also allows DITA specializations to work with any conforming DITA
 application, with at least the same level of support available to unspecialized documents.</p>
     <section id="implementations">
-<title>X.1 Conformance of DITA implementations</title>
+<title>4.1 Conformance of DITA implementations</title>
 <p>The DITA specification defines several core features, as summarized in the following list. Any
 implementation that supports a feature <term outputclass="RFC-2119">MUST</term> conform to all rules
 laid out in the section that describes the feature.</p>
@@ -27,21 +27,34 @@ topics that would <i>push</i> content into the same topic.</p></draft-comment>
 <li>Resolving <xmlatt>keyref</xmlatt> attributes to a key defined in a map, as described in section
 X.</li>
 <li>Resolving <xmlatt>keyref</xmlatt> attributes across key scopes, as described in section X.</li>
-<li>Pulling content references, as described in section X and X.</li>
-<li>Pushing content references, as described in section X.</li>
-<li>Resolving conditional processing based on DITAVAL documents, as described in section X.</li>
-<li>Resolving branch filtering markup, as described in section X.</li>
-<li>Resolving <xmlatt>chunk</xmlatt> attributes, as described in section X.</li>
+<li>Pulling content references, as described in <xref keyref="conref"/></li>
+<li>Pushing content references, as described in <xref keyref="conref"/>.</li>
+<li>Resolving conditional processing based on DITAVAL documents, as described in <xref
+            keyref="conditional-processing"/>.</li>
+<li>Resolving branch filtering markup, as described in <xref keyref="branch-filtering"/>.</li>
+<li>Resolving <xmlatt>chunk</xmlatt> attributes, as described in <xref keyref="chunking"/>.</li>
 </ol>
 <draft-comment author="robander">The section about rendering should be removed if we do not actually
 end up with any base DITA 2.0 elements with normative rendering expectations.</draft-comment>
-<p>In addition, several base DITA elements provide normative rules regarding how to render those
-elements. Applications that render these elements <term outputclass="RFC-2119">MUST</term> support
-some way to render these elements as described.</p>
+<p>In addition, certain DITA elements have normative rules associated regarding how to render or
+        process those elements. </p>
 <ol>
-<li><xmlelement>element</xmlelement>, as described in X</li>
-<li><xmlelement>element</xmlelement>, as described in X</li>
-<li><xmlelement>element</xmlelement>, as described in X</li>
+<li><xmlelement>desc</xmlelement>, as described in <xref keyref="desc"/></li>
+        <li><xmlelement>draft-comment</xmlelement>, as described in <xref keyref="draft-comment"
+          /></li>
+        <li><xmlelement>image</xmlelement>, as described in <xref keyref="image"/></li>
+        <li><xmlelement>linklist</xmlelement>, as described in <xref keyref="linklist"/></li>
+        <li><xmlelement>navtitle</xmlelement>, as described in <xref keyref="navtitle"/></li>
+        <li><xmlelement>pre</xmlelement>, as described in <xref keyref="pre"/></li>
+        <li><xmlelement>q</xmlelement>, as described in <xref keyref="q"/></li>
+        <li><xmlelement>related-links</xmlelement>, as described in <xref keyref="related-links"
+          /></li>
+        <li><xmlelement>relcolspec</xmlelement>, as described in <xref keyref="relcolspec"/></li>
+        <li><xmlelement>reltable</xmlelement>, as described in <xref keyref="reltable"/></li>
+        <li><xmlelement>searchtitle</xmlelement>, as described in <xref keyref="searchtitle"/></li>
+<li><xmlelement>shortdesc</xmlelement>, as described in <xref keyref="shortdesc"/></li>
+        <li><xmlelement>title</xmlelement>, as described in <xref keyref="title"/></li>
+<li><xmlelement>topichead</xmlelement>, as described in <xref keyref="topichead"/></li>
 </ol>
 <p>Conforming DITA implementations <term outputclass="RFC-2119">SHOULD</term> include a conformance
 statement that gives the version of the DITA specification that is supported, indicate if all
@@ -52,16 +65,17 @@ supported.</p>
 rendering DITA elements but does not render all elements as described above, that application <term
 outputclass="RFC-2119">SHOULD</term> indicate which elements are (or are not) supported.</p>
 <p>Not all DITA features are relevant for all implementations. For example, a DITA editor that does
-not render content references in context does not need to conform to rules regarding the
-<xmlatt>conref</xmlatt> attribute. However, any application that renders content references <term
-outputclass="RFC-2119">MUST</term> conform to rules in Section <i>X.X Content references</i>.</p>
+        not render content references in context does not need to conform to rules regarding the
+          <xmlatt>conref</xmlatt> attribute. However, any application that renders content
+        references <term outputclass="RFC-2119">MUST</term> conform to the rules described in<xref
+          keyref="conref"/>.</p>
 <p>Implementations that support only a subset of DITA features are considered conforming as long as
 all supported features follow the requirements that are given in the DITA specification. An
 implementation that does not support a particular feature <term outputclass="RFC-2119">MUST</term>
 be prepared to interoperate with other implementations that do support the feature.</p>
 </section>
     <section id="documents">
-<title>X.2 Conformance of DITA documents</title>
+<title>4.2 Conformance of DITA documents</title>
 <p>A document conforms with the DITA standard if it meets all of the following conditions.</p>
 <ol>
 <li>A DITA document that refers to document type shells distributed by OASIS <term

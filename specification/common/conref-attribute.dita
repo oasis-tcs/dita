@@ -94,8 +94,8 @@ keyref="attributes-architectural"/>.</p>
                                                 <dt><xmlatt>id</xmlatt>
                                                   <ph conref="#conref-attribute/required-attr"
                                                   /></dt>
-                                                <dd>An anchor point. This ID is usually required as
-                                                  part of the <xmlatt>href</xmlatt> or
+                                                <dd>Provides an anchor point. This ID is usually
+                                                  required as part of the <xmlatt>href</xmlatt> or
                                                   <xmlatt>conref</xmlatt> syntax when cross
                                                   referencing or reusing content within the topic;
                                                   it also enables <xmlelement>topicref</xmlelement>
@@ -156,10 +156,9 @@ keyref="attributes-universal"/> and the attribute defined below.</p>
 <dlentry id="callout">
 <dt><xmlatt>callout</xmlatt></dt>
 <dd>Specifies the character that is used for the footnote link, for example, a number or an
-                                                  alphabetical character. The attribute can also
-                                                  specify a short string of characters. When no
-                                                  <xmlatt>callout</xmlatt> value is specified,
-                                                  footnotes are typically numbered.</dd>
+                                                  alphabetical character. The attribute also can
+                                                  specify a short string of
+                                                  characters.<!-- When no <xmlatt>callout</xmlatt> value is specified, footnotes are typically numbered.--></dd>
 </dlentry>
 </dl>
 </sectiondiv>
@@ -222,16 +221,16 @@ keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
                                 <dl>
                                         <dlentry id="href-on-topicref">
                                                 <dt><xmlatt>href</xmlatt></dt>
-                                                <dd>A pointer to the resource represented by the
-                                                  <xmlelement>topicref</xmlelement>. See <xref
-                                                  keyref="attributes-href"
-                                                  /> for detailed information on supported values
-                                                  and processing implications. References to DITA
-                                                  content cannot be below the topic level: that is,
-                                                  you cannot reference individual elements inside a
-                                                  topic. References to content other than DITA
-                                                  topics should use the <xmlatt>format</xmlatt>
-                                                  attribute to identify the kind of resource being
+                                                <dd>Points to the resource that is represented by
+                                                  the <xmlelement>topicref</xmlelement>. See <xref
+                                                  keyref="attributes-href"/> for detailed
+                                                  information on supported values and processing
+                                                  implications. References to DITA content cannot be
+                                                  below the topic level: that is, you cannot
+                                                  reference individual elements inside a topic.
+                                                  References to content other than DITA topics
+                                                  should use the <xmlatt>format</xmlatt> attribute
+                                                  to identify the kind of resource being
                                                   referenced.</dd>
                                         </dlentry>
                                 </dl>
@@ -366,12 +365,11 @@ of map.-->
                                 <dl>
                                         <dlentry id="processing-role-default-resource-only">
                                                 <dt><xmlatt>processing-role</xmlatt></dt>
-                                                <dd>For this element, the default value for
+                                                <dd>Defines how the  the default value for
                                                   <xmlatt>processing-role</xmlatt> is
                                                   "resource-only". Otherwise, the definition matches
                                                   the one found in <xref
-                                                  keyref="attributes-commonMap"
-                                                  />.</dd>
+                                                  keyref="attributes-commonMap"/>.</dd>
                                         </dlentry>
                                 </dl>
                         </sectiondiv><sectiondiv id="scheme-HAS-elements">
@@ -411,15 +409,13 @@ keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
                                         <dlentry>
                                                 <dt><xmlatt>lockmeta</xmlatt></dt>
                                                 <dd >
-                                                  <p>By default, metadata in the map supplements or
-                                                  overrides metadata that is specified at the topic
-                                                  level, unless the <xmlatt>lockmeta</xmlatt>
-                                                  attribute of the
-                                                  <xmlelement>topicmeta</xmlelement> element is set
-                                                  to "no". Allowable values are "yes", "no", and
-                                                  <xref
-                                                  keyref="attributes-useconreftarget"
-                                                  />.</p>
+                                                  <p>Determines whether the metadata that is
+                                                  specified in the map supplements or overrides the
+                                                  metadata that is specified in the topic. When the
+                                                  <xmlatt>lockmeta</xmlatt> attribute is set to
+                                                  "yes", the topic metadata is overriden. Allowable
+                                                  values are "yes", "no", and <xref
+                                                  keyref="attributes-useconreftarget"/>.</p>
                                                 </dd>
                                         </dlentry>
                                 </dl>
@@ -433,8 +429,8 @@ keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
                                         <dlentry id="translate-NO">
                                                 <dt><xmlatt>translate</xmlatt></dt>
                                                 <dd>Indicates whether the content of the element
-                                                  should be translated or not. For this element the
-                                                  default value is "no". Setting to "yes" will
+                                                  should be translated. The default value is "no".
+                                                  Setting to <xmlatt>translate</xmlatt> "yes" will
                                                   override the default. The DITA architectural
                                                   specification contains a list of each OASIS DITA
                                                   element and its common processing default for the
@@ -627,14 +623,13 @@ keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
                                 </dlentry>
                                 <dlentry id="image-scope">
                                         <dt><xmlatt>scope</xmlatt></dt>
-                                        <dd>The <xmlatt>scope</xmlatt> attribute identifies the
-                                                closeness of the relationship between the current
-                                                document and the target resource. Allowable values
-                                                are local, peer, external, and <xref
+                                        <dd>Identifies the closeness of the relationship between the
+                                                current document and the target resource. Allowable
+                                                values are local, peer, external, and <xref
                                                   keyref="attributes-useconreftarget"
                                                   >-dita-use-conref-target</xref>. See <xref
-                                                  keyref="attributes-scope"/> for more
-                                                information on values.</dd>
+                                                  keyref="attributes-scope"/> for more information
+                                                on values.</dd>
                                 </dlentry>
                                 <dlentry id="image-height">
                                         <dt><xmlatt>height</xmlatt></dt>
@@ -676,10 +671,9 @@ keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
                                 </dlentry>
                                 <dlentry id="image-scalefit">
                                         <dt><xmlatt>scalefit</xmlatt></dt>
-                                        <dd>Allow an image to be scaled up or down to fit within
+                                        <dd>Allows an image to be scaled up or down to fit within
                                                 available space. Allowable values are yes, no, and
-                                                  <xref
-                                                  keyref="attributes-useconreftarget"
+                                                  <xref keyref="attributes-useconreftarget"
                                                   >-dita-use-conref-target</xref>. If, for a given
                                                 image, any one of <xmlatt>height</xmlatt>,
                                                   <xmlatt>width</xmlatt>, or <xmlatt>scale</xmlatt>

@@ -24,6 +24,9 @@
     good use of <xmlelement>simpletable</xmlelement> is for information that seems to beg for a
     three-part definition list; the <xmlatt>keycol</xmlatt> attribute can be used to indicate which
     column represents the "key" or term-like column of the structure.</p>
+      <draft-comment author="Kristen J Eberlein" time="24 January 2019">
+        <p>The above content is tutorial-type information ...</p>
+      </draft-comment>
    <p>The <xmlatt>keycol</xmlatt> attribute indicates which column represents the "key" or term-like
     column of the structure.</p>
    <p>The close match of <xmlelement>simpletable</xmlelement> to tabular, regular data makes
@@ -35,8 +38,12 @@
    <title>Attributes</title>
    <p conref="../../common/conref-attribute.dita#conref-attribute/simpletable-attributes"/>
   </section>
-<example id="example" otherprops="examples"><title>Example</title><p>The following code shows a simple table used to represent a truth table from Boolean logic:</p>
-      <codeblock>&lt;simpletable&gt;
+<example id="example" otherprops="examples"><title>Examples</title>
+      <fig>
+        <title>Example of a simple table</title>
+        <p>The following code sample shows a simple table that is used to represent a truth table
+          from Boolean logic:</p>
+        <codeblock>&lt;simpletable&gt;
   &lt;sthead&gt;
     &lt;stentry&gt;P&lt;/stentry&gt;
     &lt;stentry&gt;not P&lt;/stentry&gt;
@@ -49,13 +56,15 @@
     &lt;stentry&gt;false&lt;/stentry&gt;
     &lt;stentry&gt;true&lt;/stentry&gt;
   &lt;/strow&gt;
-&lt;/simpletable&gt;</codeblock></example>
-<example id="example2" otherprops="examples"><title>Example using
-<xmlatt>keycol</xmlatt></title><p>In this sample, the first column is identified as a header column through the use of
-<codeph>keycol="1"</codeph> on the <xmlelement>simpletable</xmlelement> element. This indicates that
-items in the first column should be treated as headers for the row that follows. Rendering of the
-header column is left up to the implementation.</p>
-      <codeblock>&lt;simpletable keycol="1"&gt;
+&lt;/simpletable&gt;</codeblock>
+      </fig>
+      <fig>
+        <title>Example using <xmlatt>keycol</xmlatt></title>
+        <p>The following code sample shows how the <xmlatt>keycol</xmlatt> attribute can be used.
+          The value of the <xmlatt>keycol</xmlatt> attribute specifies that the first column is the
+          header column. This indicates that items in the first column are headers for the row.
+          Rendering of the header column is left up to the implementation.</p>
+        <codeblock>&lt;simpletable keycol="1"&gt;
  &lt;sthead&gt;
   &lt;stentry&gt;Term&lt;/stentry&gt;
   &lt;stentry&gt;Categorization&lt;/stentry&gt;
@@ -71,6 +80,7 @@ header column is left up to the implementation.</p>
   &lt;stentry&gt;noun&lt;/stentry&gt;
   &lt;stentry&gt;What you feel when you drop the widget&lt;/stentry&gt;
  &lt;/strow&gt;
-&lt;/simpletable&gt;</codeblock></example>
+&lt;/simpletable&gt;</codeblock>
+      </fig></example>
 </refbody>
 </reference>

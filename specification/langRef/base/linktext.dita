@@ -32,15 +32,12 @@ specified topic.</p>
 <fig id="fig_jjs_czc_t2b"><title>Link text with key definitions</title><p>See <xref
 href="keydef.dita"/> for an example of <xmlelement>linktext</xmlelement> used with key
 definitions.</p></fig>
-<fig id="fig_hq3_zxc_t2b"><title>Link text in a map</title><p>In the following code sample, link
-text is specified for a local topic in a relationship table. This table will typically result in
-links between the topic in the first cell and the topic in the second cell. The generated link from
-<filepath>maintenance.dita</filepath> to <filepath>installation.dita</filepath> should use the
-specified link text, while the link back from <filepath>installation.dita</filepath> to
-<filepath>maintenance.dita</filepath> will use whatever link text the processor is able to
-generate.</p><p>In this context, the link text should be used for any links that are generated to
-<filepath>installation.dita</filepath>, rather than generating link text based on the title of the
-topic.</p><codeblock>&lt;map>
+<fig id="fig_hq3_zxc_t2b"><title>Link text in a map</title><p>The following code sample shows a <xmlelement>linktext</xmlelement> element used in a
+          relationship table. The generated link from <filepath>maintenance.dita</filepath> to
+            <filepath>installation.dita</filepath> will use the specified link text, while the link
+          from <filepath>installation.dita</filepath> to <filepath>maintenance.dita</filepath> will
+          use link text based on the title of the topic.</p>
+        <!--<p>In this context, the link text should be used for any links that are generated to <filepath>installation.dita</filepath>, rather than generating link text based on the title of the topic.</p>--><codeblock>&lt;map>
   &lt;title>Relationship map&lt;/title>
   &lt;reltable>
     &lt;relrow>
@@ -57,11 +54,15 @@ topic.</p><codeblock>&lt;map>
     &lt;/relrow>
   &lt;/reltable>
 &lt;/map></codeblock></fig>
-<fig id="fig_nlj_fzc_t2b"><title>Link text within a topic</title><p>In the following code example, a
-topic contains a related link to local non-DITA content.</p></fig><codeblock>&lt;related-links>
+<fig>
+        <title>Link text within a topic</title>
+        <p>The following code sample shows a <xmlelement>linktext</xmlelement> element used within a
+          topic to provide text for a related link to a non-DITA resource:</p>
+        <codeblock>&lt;related-links>
   &lt;link href="SQLJ-example.html" format="html" scope="local"&gt;
     <b>&lt;linktext&gt;</b>Accessing relational data with SQLJ<b>&lt;/linktext&gt;</b>
   &lt;/link&gt;
-&lt;/related-links></codeblock></example>
+&lt;/related-links></codeblock>
+      </fig></example>
 </refbody>
 </reference>
