@@ -2,10 +2,8 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="media-controls">
   <title><xmlelement>media-controls</xmlelement></title>
-  <shortdesc>The <xmlelement>media-controls</xmlelement> element controls whether or not User
-    Interface controls should be presented for controlling the playback of the media referenced by
-    the enclosing <xmlelement>video</xmlelement> or <xmlelement>audio</xmlelement> element. It is
-    analogous to the <xmlatt>controls</xmlatt> attribute on HTML5 media elements.</shortdesc>
+  <shortdesc>The <xmlelement>media-controls</xmlelement> element specifies whether user-interface
+    elements are presented to control the playback of the media.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -17,19 +15,17 @@
   <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>The boolean <xmlatt>value</xmlatt> attribute specifies whether the controls should be
-        presented. The default value for this attribute is <codeph>true</codeph>, so the mere
-        presence of this element within <xmlelement>video</xmlelement> or
-          <xmlelement>audio</xmlelement> is sufficient to turn the setting on. The
-          <xmlatt>value</xmlatt> attribute must be explicitly set to <codeph>false</codeph> to
-        specify that controls should not be presented.</p>
+      <p>The <xmlelement>media-controls</xmlelement> element is analogous to the
+          <xmlatt>controls</xmlatt> attribute on HTML5 media elements.</p>
+      <!--<p>The boolean <xmlatt>value</xmlatt> attribute specifies whether the controls should be presented. The default value for this attribute is <codeph>true</codeph>, so the mere presence of this element within <xmlelement>video</xmlelement> or <xmlelement>audio</xmlelement> is sufficient to turn the setting on. The <xmlatt>value</xmlatt> attribute must be explicitly set to <codeph>false</codeph> to specify that controls should not be presented.</p>-->
       <p>If this element is not present, the default behavior is determined by the user agent being
         used to present the media.</p>
     </section>
     <!--<section id="formatting-expectations"><title>Formatting expectations</title></section><section id="processing-expectations"><title>Processing expectations</title></section>-->
     <section id="specialization-hierarchy">
       <title>Specialization hierarchy</title>
-      <p>+ topic/param media-d/media-controls </p>
+      <p>The <xmlelement>media-controls</xmlelement> element is specialized from
+          <xmlelement>param</xmlelement>. It is defined in the multimedia-domain module.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -38,15 +34,15 @@
       <dl>
         <dlentry>
           <dt><xmlatt>value</xmlatt></dt>
-          <dd>Specifies whether the media presentation should include user interface controls. The
+          <dd>Specifies whether the media presentation includes user interface controls. The
             following values are recognized:<dl>
               <dlentry>
                 <dt>true</dt>
-                <dd>Default. Controls should be presented.</dd>
+                <dd>Default. Controls are presented.</dd>
               </dlentry>
               <dlentry>
                 <dt>false</dt>
-                <dd>Controls should not be presented.</dd>
+                <dd>Controls are not presented.</dd>
               </dlentry>
               <dlentry id="ditauseconref">
                 <dt>-dita-use-conref-target </dt>
@@ -56,16 +52,13 @@
         </dlentry>
         <dlentry>
           <dt><xmlatt>name</xmlatt></dt>
-          <dd>This attribute is required due to this element's derivation from the
-              <xmlelement>param</xmlelement> element. The value is fixed to "controls" by the
-            grammar definition.</dd>
+          <dd>The value is fixed to "controls".</dd>
         </dlentry>
       </dl>
     </section>
     <example id="example" otherprops="examples">
       <title>Example</title>
-      <p>See <xref keyref="video"><xmlelement>video</xmlelement></xref> and <xref keyref="audio"
-            ><xmlelement>audio</xmlelement></xref> for examples of this element.</p>
+      <p>See <xref keyref="video"/> and <xref keyref="audio"/>.</p>
     </example>
   </refbody>
 </reference>
