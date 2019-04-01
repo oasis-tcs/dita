@@ -2,7 +2,8 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="audio">
   <title><xmlelement>audio</xmlelement></title>
-  <shortdesc conkeyref="library-short-descriptions/audio"/>
+  <shortdesc>The <xmlelement>audio</xmlelement> element is used to reference sound content in a DITA
+    topic. It is modeled roughly on the HTML5 element of the same name.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -14,33 +15,29 @@
   <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>The <xmlelement>audio</xmlelement> element is modeled on the HTML5 element of the same
-        name.</p>
-      <p>Audio objects can be referenced by the following mechanisms:</p>
-      <ul>
-        <li><xmlatt>data</xmlatt> attribute</li>
-        <li><xmlatt>datakeyref</xmlatt> attribute</li>
-        <li>Nested <xmlelement>media-source</xmlelement> elements, which enable extensive
-          configuration of how the audio object is presented</li>
-      </ul>
+      <p>Media can be referenced either using the <xmlatt>data</xmlatt> or
+          <xmlatt>datakeyref</xmlatt> attributes or using nested
+          <xmlelement>media-source</xmlelement> elements. Extensive configuration of the
+        presentation of the media can be configured using optional nested elements.</p>
     </section>
     <section id="formatting-expectations">
       <title>Formatting expectations</title>
-      <p>When the audio object cannot be rendered in a meaningful way, processors should present the
-        contents of the <xmlelement>fallback</xmlelement> element, if it is present.</p>
-      <draft-comment author="Kristen J Eberlein" time="17 October 2018">
-        <p>Should the above statement be normative?</p>
-      </draft-comment>
+      <p>Presentation of the <xmlelement>audio</xmlelement> element will vary depending on the
+        presentation format. When possible, HTML-based outputs should present the audio object using
+        the analogous HTML <xmlelement>audio</xmlelement> element. When the media cannot be
+        presented in a meaningful way, the contents of the <xmlelement>fallback</xmlelement>
+        element, if any, should be presented.</p>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>Behaviours such as auto-playing, looping, muting, etc. are determined by child elements.
-        When not specified, the behavior depends on the user agent.</p>
+      <p>When converting to HTML5 or HTML5-derived output formats, <xmlelement>audio</xmlelement>
+        should be mapped to its HTML5-equivalent markup. Processing for other output formats is
+        highly dependent on the capabilities of those formats. Implementers should implement support
+        for the presentation of multimedia on a best-effort basis.</p>
     </section>
     <section id="specialization-hierarchy">
       <title>Specialization hierarchy</title>
-      <p>The <xmlelement>audio</xmlelement> element is specialized from
-          <xmlelement>object</xmlelement>. It is defined in the multimedia-domain module.</p>
+      <p>+ topic/object media-d/audio </p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -49,26 +46,30 @@
       <dl>
         <dlentry>
           <dt><xmlatt>data</xmlatt></dt>
-          <dd>Specifies the absolute or relative URI of the audio object. If this attribute is
-            specified, <xmlatt>type</xmlatt> should also be
-            specified.<!-- If the audio is available in multiple formats, nested <xmlelement>media-source</xmlelement> elements should be used instead.--></dd>
+          <dd>Contains the absolute or relative URI of the audio media. If this attribute is
+            specified, <xmlatt>type</xmlatt> should also be specified. If the audio is available in
+            multiple formats, nested <xmlelement>media-source</xmlelement> elements should be used
+            instead.</dd>
         </dlentry>
         <dlentry>
           <dt><xmlatt>datakeyref</xmlatt></dt>
-          <dd>Key reference to the audio object. When specified and the key is resolvable, the
-            key-provided URI is used. A key that has no associated resource, only link text, is
-            considered to be unresolved. If <xmlatt>data</xmlatt> is specified, it is used as a
-            fallback when the key cannot be resolved to a resource.</dd>
+          <dd>Key reference to the location of the audio data, as for <xmlatt>data</xmlatt>. When
+            specified and the key is resolvable, the key-provided URI is used. A key that has no
+            associated resource, only link text, is considered to be unresolved for the purpose of
+            the <xmlatt>datakeyref</xmlatt> attribute. If <xmlatt>data</xmlatt> is specified, it is
+            used as a fallback when the key cannot be resolved to a resource.</dd>
         </dlentry>
         <dlentry>
           <dt><xmlatt>type</xmlatt></dt>
-          <dd>Indicates the MIME type for the audio object. This attribute should be set when the
-              <xmlatt>data</xmlatt> attribute is set to enable processors to avoid loading
-            unsuppported objects. Note that this differs from the <xmlatt>type</xmlatt> attribute on
-            many other DITA elements in that it specifies a MIME type rather than a content type.
-              <ph>If <xmlatt>type</xmlatt> is not specified, the effective type value for the key
-              named by the <xmlatt>datakeyref</xmlatt> attribute is used as the this attribute's
-              value.</ph></dd>
+          <dd>Indicates the content type (MIME type) for the data specified by the
+              <xmlatt>data</xmlatt>
+            <ph>or <xmlatt>datakeyref</xmlatt>
+            </ph> attribute. This attribute should be set when the <xmlatt>data</xmlatt> attribute
+            is set to avoid loading unsupported content types. Note that this differs from the
+              <xmlatt>type</xmlatt> attribute on many other DITA elements in that it specifies a
+            MIME type rather than a content type. <ph>If <xmlatt>type</xmlatt> is not specified, the
+              effective type value for the key named by the <xmlatt>datakeyref</xmlatt> attribute is
+              used as the this attribute's value.</ph></dd>
         </dlentry>
         <dlentry>
           <dt><xmlatt>tabindex</xmlatt></dt>
@@ -77,29 +78,24 @@
       </dl>
     </section>
     <example otherprops="examples">
-      <title>Examples</title>
-      <fig>
-        <title>A simple audio object</title>
-        <p>In the following code sample, an audio object is referenced using direct addressing. The
-            <xmlatt>type</xmlatt> attribute specifies the MIME type of the object.</p>
-        <codeblock>&lt;audio data="message.mp3" type="audio/mp3"/></codeblock>
-        <p>The audio object also could be addressed using a key reference:</p>
-        <codeblock>&lt;audio datakeyref="message" type="audio/mp3"/></codeblock>
-      </fig>
-      <fig>
-        <title>An audio object with multiple formats</title>
-        <p>In the following code sample, <xmlelement>media-source</xmlelement> elements are used to
-          specify the different audio formats that are available.</p>
-        <codeblock>&lt;audio>
+      <title>A very simple audio object reference</title>
+      <codeblock>&lt;audio data="message.mp3" type="audio/mp3"/></codeblock>
+      <p>A similar example using a key reference:</p>
+      <codeblock>&lt;audio datakeyref="message" type="audio/mp3"/></codeblock>
+    </example>
+    <example>
+      <title>Referencing an audio object in multiple formats</title>
+      <codeblock>&lt;audio>
   &lt;media-source keyref="message-mp3" value="message.mp3" type="audio/mp3"/>
   &lt;media-source keyref="message-wav" value="message.wav" type="audio/wav"/>
 &lt;/audio></codeblock>
-      </fig>
-      <fig>
-        <title>Complex example of an audio object</title>
-        <p>The following code sample specifies an audio object and defines multiple presentational
-          details.</p>
-        <codeblock>&lt;audio>
+    </example>
+    <example>
+      <title>Complete example configuring audio presentation, with multiple formats</title>
+      <p>The following video reference explicitly defines multiple presentational details for a
+        video available in multiple formats, referenced using key references, with URIs when the
+        keys are not resolvable.</p>
+      <codeblock>&lt;audio>
   &lt;desc>A sound file narrating the execution of this procedure.&lt;/desc>
   &lt;fallback>The audio track walking through this procedure is not available.&lt;/fallback>
   
@@ -116,7 +112,6 @@
   &lt;media-source keyref="walkthrough-mp3" value="walkthrough.mp3" type="audio/mp3"/>
   &lt;media-source keyref="walkthrough-wav" value="walkthrough.wav" type="audio/wav"/>
 &lt;/audio></codeblock>
-      </fig>
     </example>
   </refbody>
 </reference>
