@@ -19,12 +19,12 @@
                         </dlentry>
                         <dlentry>
                               <dt>ditamap</dt>
-                              <dd>The linked-to resource is a DITA map. It represents the referenced
-                                    hierarchy at the current point in the referencing map.
-                                    References to other maps can occur at any point in a map, but
-                                    because relationship tables are only valid as children of a map,
-                                    referenced relationship tables are treated as children of the
-                                    referencing map. <note
+                              <dd>The referenced resource is a DITA map. It represents the
+                                    referenced hierarchy at the current point in the referencing
+                                    map. References to other maps can occur at any point in a map,
+                                    but because relationship tables are only valid as children of a
+                                    map, referenced relationship tables are treated as children of
+                                    the referencing map. <note
                                           conref="../../common/conref-file.dita#reuse_file/mapref-with-child-elements"
                                     /></dd>
                         </dlentry>
@@ -52,26 +52,67 @@
                                                 >SHOULD</term> also issue a
                                           message.</p></dd>
                         </dlentry>
-                  </dl><sectiondiv id="sample-formats">
-                        <p>For other formats, using the file extension without the "." character
-                              typically represents the format. For example, the following values are
-                              all possible values for <xmlatt>format</xmlatt>:</p>
-                        <dl>
-                              <dlentry>
-                                    <dt>html</dt>
-                                    <dd>The format of the linked-to resource is HTML or XHTML.</dd>
-                              </dlentry>
-                              <dlentry>
-                                    <dt>pdf</dt>
-                                    <dd>The format of the linked-to resource is PDF.
-                                          <!--Processors should open a new window.--></dd>
-                              </dlentry>
-                              <dlentry>
-                                    <dt>txt</dt>
-                                    <dd>The format of the linked-to resource is a text file.</dd>
-                              </dlentry>
-                        </dl>
-                  </sectiondiv>
+                  </dl>
+            </section>
+            <section id="section_ntt_jyh_nhb">
+                  <p id="p_ckq_jxh_nhb">For DITA processors that support Lightweight DITA, the
+                        following values for <xmlatt>format</xmlatt> have special processing
+                        implications: </p>
+                  <dl>
+                        <dlentry>
+                              <dt>xdita</dt>
+                              <dd>The format of the referenced resource is XDITA.</dd>
+                        </dlentry>
+                        <dlentry>
+                              <dt>mdita</dt>
+                              <dd>The format of the referenced resource is MDITA.</dd>
+                        </dlentry>
+                        <dlentry>
+                              <dt>hdita</dt>
+                              <dd>The format of the referenced resource is HDITA. </dd>
+                        </dlentry>
+                        <dlentry>
+                              <dt>xditamap</dt>
+                              <dd>The format of the referenced resource is an XDITA map.</dd>
+                        </dlentry>
+                  </dl>
+                  <dl>
+                        <dlentry>
+                              <dt>hditamap</dt>
+                              <dd>The format of the referenced resource is an HDITA map.</dd>
+                        </dlentry>
+                  </dl>
+                  <dl>
+                        <dlentry>
+                              <dt>mditamap</dt>
+                              <dd>The format of the referenced resource is an MDITA map.</dd>
+                        </dlentry>
+                  </dl>
+                  <p id="p_ott_jyh_nhb"/>
+            </section>
+            <section id="section_jp2_kyh_nhb">
+                  <p id="p_pv3_lyh_nhb">DITA processors may recognize other values of
+                              <xmlatt>format</xmlatt> for special processing. For example, the
+                        following are all possible values for <xmlatt>format</xmlatt>:</p>
+                  <dl>
+                        <dlentry>
+                              <dt>html</dt>
+                              <dd>The format of the referenced resource is HTML or XHTML.</dd>
+                        </dlentry>
+                        <dlentry>
+                              <dt>markdown</dt>
+                              <dd>The format of the referenced resource is Markdown.</dd>
+                        </dlentry>
+                        <dlentry>
+                              <dt>pdf</dt>
+                              <dd>The format of the referenced resource is PDF.
+                                    <!--Processors should open a new window.--></dd>
+                        </dlentry>
+                        <dlentry>
+                              <dt>txt</dt>
+                              <dd>The format of the referenced resource is a text file.</dd>
+                        </dlentry>
+                  </dl>
             </section>
 </refbody>
 </reference>
