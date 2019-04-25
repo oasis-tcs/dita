@@ -15,27 +15,18 @@
     <section id="usage-information">
       <title>Usage information</title>
       <p>Video objects are modeled on the HTML5 <xmlelement>video</xmlelement> element.</p>
-      <p>Video objects can be referenced by <xmlatt>data</xmlatt>, <xmlatt>datakeyref</xmlatt>, and
-        nested <xmlelement>media-source</xmlelement> elements. Nested
-          <xmlelement>media-source</xmlelement> elements enable extensive configuration of how the
-        video object is presented</p>
+      <p>Video objects can be referenced by <xmlatt>data</xmlatt>, <xmlatt>datakeyref</xmlatt>, and nested
+          <xmlelement>media-source</xmlelement> elements. Nested <xmlelement>media-source</xmlelement> elements enable
+        extensive configuration of how the video object is presented.</p>
     </section>
     <section id="formatting-expectations">
       <title>Rendering expectations</title>
-      <p>When possible, the video should be displayed at the location of the
-          <xmlelement>video</xmlelement> reference. If <xmlatt>width</xmlatt> and/or
-          <xmlatt>height</xmlatt> are specified, those dimensions should be honored. </p>
+      <!--<p>When possible, the video should be displayed at the location of the <xmlelement>video</xmlelement> reference. If <xmlatt>width</xmlatt> and/or <xmlatt>height</xmlatt> are specified, those dimensions should be honored.</p>-->
       <p>When a video object cannot be rendered in a meaningful way, processors <keyword
           outputclass="rfc-2119">SHOULD</keyword> present the contents of the
           <xmlelement>fallback</xmlelement> element, if it is present.</p>
     </section>
-    <section id="processing-expectations">
-      <title>Processing expectations</title>
-      <p>When converting to HTML5 or HTML5-derived output formats, <xmlelement>video</xmlelement>
-        should be mapped to its HTML5-equivalent markup. Processing for other output formats is
-        highly dependent on the capabilities of those formats. Implementers should implement support
-        for presentation of multimedia on a best-effort basis.</p>
-    </section>
+    <!--<section id="processing-expectations"><title>Processing expectations</title><p>When converting to HTML5 or HTML5-derived output formats, <xmlelement>video</xmlelement> should be mapped to its HTML5-equivalent markup. Processing for other output formats is highly dependent on the capabilities of those formats. Implementers should implement support for presentation of multimedia on a best-effort basis.</p></section>-->
     <section id="specialization-hierarchy">
       <title>Specialization hierarchy</title>
       <p>The <xmlelement>video</xmlelement> element is specialized from
@@ -125,6 +116,9 @@
       <p>The following video reference explicitly defines multiple presentational details for a
         video available in multiple formats, referenced using key references, with URIs when the
         keys are not resolvable.</p>
+      <draft-comment author="robander" time="April 25 2019">The example below uses both @keyref and a URI on every
+        element where this is  possible. We may want to have examples of both but probably not together, unless we
+        highlight that the URI is just a fallback?</draft-comment>
       <codeblock>&lt;video width="400px" height="300px">
   &lt;desc>A video illustrating this procedure.&lt;/desc>
   &lt;fallback>
