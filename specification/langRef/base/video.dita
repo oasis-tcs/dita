@@ -38,31 +38,34 @@
         /> and the attributes defined below.</p>
       <dl>
         <dlentry>
+          <!-- Identical to definition in video topic -->
           <dt><xmlatt>data</xmlatt></dt>
-          <dd>Contains the absolute or relative URI of the video media. If this attribute is
-            specified, <xmlatt>type</xmlatt> should also be specified. If the video is available in
-            multiple formats, nested <xmlelement>media-source</xmlelement> elements should be used
-            instead.</dd>
+          <dd>Specifies the absolute or relative URI of the audio object. If this attribute is
+            specified, <xmlatt>type</xmlatt> also should be specified.</dd>
+          <dd>
+            <draft-comment author="Kristen J Eberlein" time="28 April 2019">
+              <p>Need to rewrite to remove the word "should</p>
+            </draft-comment>
+          </dd>
         </dlentry>
         <dlentry>
+          <!-- Identical to definition in video topic -->
           <dt><xmlatt>datakeyref</xmlatt></dt>
-          <dd>Key reference to the location of the video data, as for <xmlatt>data</xmlatt>. When
-            specified and the key is resolvable, the key-provided URI is used. A key that has no
-            associated resource, only link text, is considered to be unresolved for the purpose of
-            the <xmlatt>datakeyref</xmlatt> attribute. If <xmlatt>data</xmlatt> is specified, it is
+          <dd>Provides a key reference to the audio object. When specified and the key is
+            resolvable, the key-provided URI is used. A key that has no associated resource, only
+            link text, is considered to be unresolved. If <xmlatt>data</xmlatt> is specified, it is
             used as a fallback when the key cannot be resolved to a resource.</dd>
+          <dd/>
         </dlentry>
         <dlentry>
+          <!-- Identical to definition in video topic -->
           <dt><xmlatt>type</xmlatt></dt>
-          <dd>Indicates the content type (MIME type) for the data specified by the
-              <xmlatt>data</xmlatt>
-            <ph>or <xmlatt>datakeyref</xmlatt>
-            </ph> attribute. This attribute should be set when the <xmlatt>data</xmlatt> attribute
-            is set to avoid loading unsupported content types. Note that this differs from the
-              <xmlatt>type</xmlatt> attribute on many other DITA elements in that it specifies a
-            MIME type rather than a content type. <ph>If <xmlatt>type</xmlatt> is not specified, the
-              effective type value for the key named by the <xmlatt>datakeyref</xmlatt> attribute is
-              used as the this attribute's value.</ph></dd>
+          <dd>Indicates the MIME type for the audio object. Setting this attribute enables
+            processors to avoid loading unsuppported objects. Note that this differs from the
+              <xmlatt>type</xmlatt> attribute on many other DITA elements; it specifies a MIME type
+            rather than a content type. If <xmlatt>type</xmlatt> is not specified, the effective
+            type value for the key named by the <xmlatt>datakeyref</xmlatt> attribute is used as the
+            value for this attribute.</dd>
         </dlentry>
         <dlentry>
           <dt><xmlatt>height</xmlatt></dt>
