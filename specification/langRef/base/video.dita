@@ -100,61 +100,59 @@
       </dl>
     </section>
     <example otherprops="examples">
-      <title>A very simple video reference</title>
-      <codeblock>&lt;video data="video.mp4" type="video/mp4"/></codeblock>
-      <p>A similar example using a key reference:</p>
-      <codeblock>&lt;video datakeyref="video" type="video/mp4"/></codeblock>
-    </example>
-    <example>
-      <title>Referencing a video in multiple formats</title>
-      <codeblock>&lt;video>
-  &lt;media-source keyref="video-mp4" value="video.mp4" type="video/mp4"/>
-  &lt;media-source keyref="video-ogg" value="video.ogg" type="video/ogg"/>
-  &lt;media-source keyref="video-webm" value="video.webm" type="video/webm"/>
-&lt;/video></codeblock>
-    </example>
-    <example>
-      <title>Complete example configuring video presentation, with multiple formats and
-        multi-lingual subtitles</title>
-      <p>The following video reference explicitly defines multiple presentational details for a
-        video available in multiple formats, referenced using key references, with URIs when the
-        keys are not resolvable.</p>
-      <draft-comment author="robander" time="April 25 2019">The example below uses both @keyref and a URI on every
-        element where this is  possible. We may want to have examples of both but probably not together, unless we
-        highlight that the URI is just a fallback?</draft-comment>
-      <codeblock>&lt;video width="400px" height="300px">
+<title>Examples</title>
+<fig id="fig_amp_v4z_4hb"><title>A simple video object</title><p>In the following code sample, a
+video object is referenced using direct addressing. The <xmlatt>type</xmlatt> attribute specifies
+the MIME type of the object.
+</p><codeblock>&lt;video data="video.mp4" type="video/mp4"/></codeblock><p>The video object also
+could be addressed using a key reference; in this version, both the URI and the MIME type come from
+the key definition:</p><codeblock>&lt;video datakeyref="video"/></codeblock></fig>
+<fig id="fig_ql2_cpz_4hb"><title>A video object with multiple formats</title><p>In the following
+code sample, <xmlelement>media-source</xmlelement> elements are used to specify the different video
+formats that are
+available.</p><codeblock>&lt;video>
+  &lt;media-source value="video.mp4" type="video/mp4"/>
+  &lt;media-source value="video.ogg" type="video/ogg"/>
+  &lt;media-source value="video.webm" type="video/webm"/>
+&lt;/video></codeblock></fig>
+<fig id="fig_wsb_jpz_4hb"><title>Complex example of a video object, with multiple formats and
+multi-lingual subtitles</title><p>The following video reference explicitly defines multiple
+presentational details for a video available in multiple formats, referenced using key references.
+It also provides a fallback image for use when the video cannot be
+displayed.</p><codeblock>&lt;video width="400px" height="300px">
   &lt;desc>A video illustrating this procedure.&lt;/desc>
   &lt;fallback>
-    &lt;image keyref="video-not-available" href="video-not-available.png">
+    &lt;image href="video-not-available.png">
       &lt;alt>This video cannot be displayed.&lt;/alt>
     &lt;/image>
   &lt;/fallback>
   
-  &lt;!-- Reference the poster via both key and URI -->
-  &lt;video-poster keyref="video-poster" value="poster.png"/>
+  &lt;!-- Reference the poster via both key -->
+  &lt;video-poster keyref="video-poster"/>
 
   &lt;!--
-    The default value is 'true', so @value is optional on these controls
-    when enabling their features, but mandatory when disabling them.
+    When the following elements are used, they have a default value of "true";
+    setting value="true" and not specifying @value have the same effect.
+    To turn any of these settings off, specify value="false".
   -->
   &lt;media-controls value="true"/>
   &lt;media-autoplay/>
   &lt;media-loop value="false"/>
   &lt;media-muted value="false"/>
 
-  &lt;!-- Multiple formats, referenced via both key and URI -->
-  &lt;media-source keyref="video-mp4" value="video.mp4" type="video/mp4"/>
-  &lt;media-source keyref="video-ogg" value="video.ogg" type="video/ogg"/>
-  &lt;media-source keyref="video-webm" value="video.webm" type="video/webm"/>
+  &lt;!-- Multiple formats, referenced via key. The key definition 
+       specifies both the URI and the MIME type -->
+  &lt;media-source keyref="video-mp4"/>
+  &lt;media-source keyref="video-ogg"/>
+  &lt;media-source keyref="video-webm"/>
 
-  &lt;!-- Subtitle tracks in multiple languages -->
-  &lt;media-track xml:lang="en" keyref="video-subtitles-en"
-    value="video-subtitles-en.vtt" type="subitles"/>
-  &lt;media-track xml:lang="fr" keyref="video-subtitles-fr"
-    value="video-subtitles-fr.vtt" type="subitles"/>
-  &lt;media-track xml:lang="de" keyref="video-subtitles-de"
-    value="video-subtitles-de.vtt" type="subitles"/>
-&lt;/video></codeblock>
+  &lt;!-- Subtitle tracks in English, French and German.
+       Each key definition provides a URI and specifies the type value "subtitles". -->
+  &lt;media-track xml:lang="en" keyref="video-subtitles-en"/>
+  &lt;media-track xml:lang="fr" keyref="video-subtitles-fr"/>
+  &lt;media-track xml:lang="de" keyref="video-subtitles-de"/>
+&lt;/video></codeblock></fig>
     </example>
+    <example/>
   </refbody>
 </reference>
