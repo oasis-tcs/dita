@@ -28,8 +28,8 @@
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>Behaviors such as auto-playing, looping, and muting are determined by child elements. When not specified, the
-        behavior depends on the user agent.</p>
+      <p>Behaviours such as auto-playing, looping, and muting are determined by child elements. When
+        not specified, the behavior depends on the user agent.</p>
       <draft-comment author="Kristen J Eberlein" time="22 April 2019">
         <p>If we keep the above wording, we need to define the term <term>user agent</term>.</p>
       </draft-comment>
@@ -46,30 +46,35 @@
       <dl>
         <dlentry>
           <dt><xmlatt>data</xmlatt></dt>
+          <!--KJE: RDA and I discussed this on 29 April 2019. We could not come up with a phrasing that would not include "should". Adding this comment so that we don't have the discussion again.-->
           <dd>Specifies the absolute or relative URI of the audio object. If this attribute is
-            specified, <xmlatt>type</xmlatt> should also be
-            specified.<!-- If the audio is available in multiple formats, nested <xmlelement>media-source</xmlelement> elements should be used instead.--></dd>
+            specified, <xmlatt>type</xmlatt> also should be specified.</dd>
         </dlentry>
         <dlentry>
           <dt><xmlatt>datakeyref</xmlatt></dt>
-          <dd>Key reference to the audio object. When specified and the key is resolvable, the
-            key-provided URI is used. A key that has no associated resource, only link text, is
-            considered to be unresolved. If <xmlatt>data</xmlatt> is specified, it is used as a
-            fallback when the key cannot be resolved to a resource.</dd>
+          <dd>Provides a key reference to the audio object. When specified and the key is
+            resolvable, the key-provided URI is used. A key that has no associated resource, only
+            link text, is considered to be unresolved. If <xmlatt>data</xmlatt> is specified, it is
+            used as a fallback when the key cannot be resolved to a resource.</dd>
         </dlentry>
         <dlentry>
           <dt><xmlatt>type</xmlatt></dt>
-          <dd>Indicates the MIME type for the audio object. This attribute should be set when the
-              <xmlatt>data</xmlatt> attribute is set to enable processors to avoid loading
-            unsuppported objects. Note that this differs from the <xmlatt>type</xmlatt> attribute on
-            many other DITA elements in that it specifies a MIME type rather than a content type.
-              <ph>If <xmlatt>type</xmlatt> is not specified, the effective type value for the key
-              named by the <xmlatt>datakeyref</xmlatt> attribute is used as the this attribute's
-              value.</ph></dd>
+          <dd>Indicates the MIME type for the audio object. Setting this attribute enables
+            processors to avoid loading unsuppported objects. Note that this differs from the
+              <xmlatt>type</xmlatt> attribute on many other DITA elements; it specifies a MIME type
+            rather than a content type. If <xmlatt>type</xmlatt> is not specified, the effective
+            type value for the key named by the <xmlatt>datakeyref</xmlatt> attribute is used as the
+            value for this attribute.</dd>
         </dlentry>
         <dlentry>
           <dt><xmlatt>tabindex</xmlatt></dt>
-          <dd>Position the audio in tabbing order.</dd>
+          <dd>Positions the audio object in tabbing order.</dd>
+          <dd>
+            <draft-comment author="Kristen J Eberlein" time="28 April 2019">
+              <p>Would this be a better description? "Indicates whether the audio object can be
+                focused and where it participates in sequential keyboard navigation."</p>
+            </draft-comment>
+          </dd>
         </dlentry>
       </dl>
     </section>
@@ -77,16 +82,16 @@
       <title>Examples</title>
       <fig>
         <title>A simple audio object</title>
-        <p>In the following code sample, an audio object is referenced using direct addressing. The
-            <xmlatt>type</xmlatt> attribute specifies the MIME type of the object.</p>
+        <p>The following code sample shows an audio object that is referenced using direct
+          addressing. The <xmlatt>type</xmlatt> attribute specifies the MIME type of the object.</p>
         <codeblock>&lt;audio data="message.mp3" type="audio/mp3"/></codeblock>
         <p>The audio object also could be addressed using a key reference:</p>
         <codeblock>&lt;audio datakeyref="message" type="audio/mp3"/></codeblock>
       </fig>
       <fig>
         <title>An audio object with multiple formats</title>
-        <p>In the following code sample, <xmlelement>media-source</xmlelement> elements are used to
-          specify the different audio formats that are available.</p>
+        <p>The following code sample shows how <xmlelement>media-source</xmlelement> elements can be
+          used to specify the different audio formats that are available.</p>
         <codeblock>&lt;audio>
   &lt;media-source keyref="message-mp3" value="message.mp3" type="audio/mp3"/>
   &lt;media-source keyref="message-wav" value="message.wav" type="audio/wav"/>
@@ -94,22 +99,22 @@
       </fig>
       <fig>
         <title>Complex example of an audio object</title>
-        <p>The following code sample specifies an audio object and defines multiple presentational
-          details.</p>
+        <p>The following code sample defines multiple presentational details for an audio
+          object.</p>
         <codeblock>&lt;audio>
-  &lt;desc>A sound file narrating the execution of this procedure.&lt;/desc>
-  &lt;fallback>The audio track walking through this procedure is not available.&lt;/fallback>
+  &lt;desc>A sound file that narrates how to perform this procedure.&lt;/desc>
+  &lt;fallback>The audio track for this procedure is not available.&lt;/fallback>
   
   &lt;!--
     The default value is 'true', so @value is optional on these controls
-    when enabling their features, but mandatory when disabling them.
+    when enabling their features, but it is mandatory when disabling them.
   -->
   &lt;media-controls value="true"/>
   &lt;media-autoplay/>
   &lt;media-loop value="false"/>
   &lt;media-muted value="false"/>
 
-  &lt;!-- Multiple formats, referenced via both key and URI -->
+  &lt;!-- Multiple formats, referenced using both key and URI -->
   &lt;media-source keyref="walkthrough-mp3" value="walkthrough.mp3" type="audio/mp3"/>
   &lt;media-source keyref="walkthrough-wav" value="walkthrough.wav" type="audio/wav"/>
 &lt;/audio></codeblock>

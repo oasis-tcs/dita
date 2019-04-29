@@ -24,13 +24,11 @@
         </ul>
         <p>We need to pick our preferred terminology and stick with it.</p>
       </draft-comment>
-      <p>Referenced track resources use <xref href="https://www.w3.org/TR/webvtt1/" format="html" scope="external">Web
-          Video Text Track Format (WebVTT)</xref>. </p>
       <p>The media track settings are modeled on the <xmlelement>track</xmlelement> element used in
-        HTML5 media elements.</p>
-      <!--<p>The resource location is specified using <xmlatt>value</xmlatt> or <xmlatt>keyref</xmlatt> attribute. The kind of track is specified by the <xmlatt>type</xmlatt> attribute. The language of the track is specified using the <xmlatt>xml:lang</xmlatt> attribute.</p>-->
+        HTML5 media elements. They refer to track resources that use <xref
+          href="https://www.w3.org/TR/webvtt1/" format="html" scope="external">Web Video Text Track
+          Format (WebVTT)</xref>. </p>
     </section>
-    <!--<section id="formatting-expectations"><title>Rendering expectations</title><p>The display of the track information is determined by the user agent that is used to render the media.</p></section>-->
     <section id="specialization-hierarchy">
       <title>Specialization hierarchy</title>
       <p>The <xmlelement>media-track</xmlelement> element is specialized from
@@ -54,39 +52,44 @@
         </dlentry>
         <dlentry>
           <dt><xmlatt>type</xmlatt></dt>
-          <dd>Specifies the usage for the referenced track data. This attribute is analogous to the
-              <xmlatt>kind</xmlatt> attribute on the HTML5 <xmlelement>track</xmlelement> element as described by the
-              <xref href="https://www.w3.org/TR/2011/WD-html5-author-20110809/the-track-element.html#attr-track-kind"
-              format="html" scope="external"><cite>W3C HTML5 specification</cite></xref>. The values recognized for this
-            attribute are derived from the HTML5 standard:<dl>
-              <dlentry>
-                <dt>subtitles</dt>
-                <dd>Transcription or translation of the dialogue, suitable for when the sound is available but not
-                  understood (for example, because the user does not understand the language of the media resource's
-                  soundtrack). Displayed over the video.</dd>
-              </dlentry>
+          <dd>Specifies the usage for the track resource. This attribute is modeled on the
+              <xmlatt>kind</xmlatt> attribute on the HTML5 <xmlelement>track</xmlelement> element,
+            as described by the <xref
+              href="https://www.w3.org/TR/2011/WD-html5-author-20110809/the-track-element.html#attr-track-kind"
+              format="html" scope="external"><cite>W3C HTML5 specification</cite></xref>. The values
+            for this attribute are derived from the HTML5 standard:<dl>
               <dlentry>
                 <dt>captions</dt>
-                <dd>Transcription or translation of the dialogue, sound effects, relevant musical cues, and other
-                  relevant audio information, suitable for when the soundtrack is unavailable (for example, because it
-                  is muted or because the user is deaf). Displayed over the video; labeled as appropriate for the
-                  hard-of-hearing.</dd>
-              </dlentry>
-              <dlentry>
-                <dt>descriptions</dt>
-                <dd>Textual descriptions of the video component of the media resource, intended for audio synthesis when
-                  the visual component is unavailable (for example, because the user is interacting with the application
-                  without a screen while driving, or because the user is blind). Synthesized as separate audio
-                  track.</dd>
+                <dd>Transcription or translation of the dialogue, sound effects, relevant musical
+                  cues, and other relevant audio information. This is intended for use when the
+                  soundtrack is unavailable (for example, because it is muted or because the user is
+                  hard-of-hearing). This information is rendered over the video and labeled as
+                  appropriate for hard-of-hearing users.</dd>
               </dlentry>
               <dlentry>
                 <dt>chapters</dt>
-                <dd>Chapter titles, intended to be used for navigating the media resource. Displayed as an interactive
-                  list in the user agent's interface.</dd>
+                <dd>Chapter titles, which are intended to be used for navigating the media resource.
+                  The chapter titles are rendered as an interactive list in the interface for the
+                  user agent.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>descriptions</dt>
+                <dd>Textual descriptions of the video component of the media resource. This is
+                  intended for audio synthesis when the visual component is unavailable (for
+                  example, because the user is interacting with the application without a screen or
+                  because the user is blind). Descriptions are synthesized as separate audio
+                  tracks.</dd>
               </dlentry>
               <dlentry>
                 <dt>metadata</dt>
-                <dd>Tracks intended for use from script. Not displayed by the user agent.</dd>
+                <dd>Tracks intended for use from script. This metadata is not displayed by the user
+                  agent.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>subtitles</dt>
+                <dd>Transcription or translation of the dialogue, suitable for when the sound is
+                  available but not understood (for example, because the user does not understand
+                  the language of the soundtrack). Subtitles are rendered over the video.</dd>
               </dlentry>
               <dlentry>
                 <dt>-dita-use-conref-target</dt>
