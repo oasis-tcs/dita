@@ -76,44 +76,45 @@
     <example otherprops="examples">
       <title>Examples</title>
       <fig>
-        <title>A simple audio object</title>
-        <p>In the following code sample, an audio object is referenced using direct addressing. The
-            <xmlatt>type</xmlatt> attribute specifies the MIME type of the object.</p>
-        <codeblock>&lt;audio data="message.mp3" type="audio/mp3"/></codeblock>
-        <p>The audio object also could be addressed using a key reference:</p>
-        <codeblock>&lt;audio datakeyref="message" type="audio/mp3"/></codeblock>
-      </fig>
+<title>A simple audio object</title>
+<p>In the following code sample, an audio object is referenced using direct addressing. The
+<xmlatt>type</xmlatt> attribute specifies the MIME type of the object.
+</p><codeblock>&lt;audio data="message.mp3" type="audio/mp3"/> </codeblock><p>The audio object also
+could be addressed using a key reference; in this version, both the URI and the MIME type come from
+the key definition:</p><codeblock>&lt;audio datakeyref="message"/></codeblock>
+</fig>
       <fig>
-        <title>An audio object with multiple formats</title>
-        <p>In the following code sample, <xmlelement>media-source</xmlelement> elements are used to
-          specify the different audio formats that are available.</p>
-        <codeblock>&lt;audio>
-  &lt;media-source keyref="message-mp3" value="message.mp3" type="audio/mp3"/>
-  &lt;media-source keyref="message-wav" value="message.wav" type="audio/wav"/>
+<title>An audio object with multiple formats</title>
+<p>In the following code sample, <xmlelement>media-source</xmlelement> elements are used to specify
+the different audio formats that are
+available.</p><codeblock>&lt;audio>
+  &lt;media-source value="message.mp3" type="audio/mp3"/>
+  &lt;media-source value="message.wav" type="audio/wav"/>
 &lt;/audio></codeblock>
-      </fig>
+</fig>
       <fig>
-        <title>Complex example of an audio object</title>
-        <p>The following code sample specifies an audio object and defines multiple presentational
-          details.</p>
-        <codeblock>&lt;audio>
+<title>Complex example of an audio object</title>
+<p>The following code sample specifies an audio object and defines multiple presentational details;
+it also provides fallback behavior when the audio cannot be
+rendered.</p><codeblock>&lt;audio>
   &lt;desc>A sound file narrating the execution of this procedure.&lt;/desc>
   &lt;fallback>The audio track walking through this procedure is not available.&lt;/fallback>
   
   &lt;!--
-    The default value is 'true', so @value is optional on these controls
-    when enabling their features, but mandatory when disabling them.
+    When the following elements are used, they have a default value of "true";
+    setting value="true" and not specifying @value have the same effect.
+    To turn any of these settings off, specify value="false".
   -->
   &lt;media-controls value="true"/>
   &lt;media-autoplay/>
   &lt;media-loop value="false"/>
   &lt;media-muted value="false"/>
 
-  &lt;!-- Multiple formats, referenced via both key and URI -->
-  &lt;media-source keyref="walkthrough-mp3" value="walkthrough.mp3" type="audio/mp3"/>
-  &lt;media-source keyref="walkthrough-wav" value="walkthrough.wav" type="audio/wav"/>
+  &lt;!-- Multiple formats, with URI and MIME type referenced via key -->
+  &lt;media-source keyref="walkthrough-mp3"/>
+  &lt;media-source keyref="walkthrough-wav"/>
 &lt;/audio></codeblock>
-      </fig>
+</fig>
     </example>
   </refbody>
 </reference>
