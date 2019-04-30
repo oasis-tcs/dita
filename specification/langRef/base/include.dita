@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="include">
+    <title><xmlelement>include</xmlelement></title>
+    <shortdesc>The i<xmlelement>include</xmlelement> specifies that non-DITA content from a resource
+        outside the current document should be placed at that location. The resource is specified
+        using either a URI or a key reference. Processing expectations for the referenced data can
+        also be specified.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>elements<indexterm>body<indexterm>include</indexterm></indexterm></indexterm>
+                <indexterm>include</indexterm>
+                <indexterm>links<indexterm>inclusion</indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <refbody>
+        <section id="usage-information">
+            <title>Usage information</title>
+            <p>The <xmlelement>include</xmlelement> element is primarily intended for the following
+                use cases:</p>
+            <ul>
+                <li>The transclusion of non-DITA XML within <xmlelement>foreign</xmlelement> element
+                    using <codeph>parse="xml"</codeph>.</li>
+                <li>The transclusion of preformatted textual content within
+                        <xmlelement>pre</xmlelement> element using
+                    <codeph>parse="text"</codeph>.</li>
+                <li>The transclusion of plain-text prose within DITA elements using
+                        <codeph>parse="text"</codeph>.</li>
+            </ul>
+            <draft-comment author="Kristen J Eberlein" time="29 April 2019">
+                <p>Do we want to mention that <xmlelement>include</xmlelement> is the specialization
+                    base for <xmlelement>coderef</xmlelement>, <xmlelement>svgref</xmlelement>, and
+                        <xmlelement>mathmlref</xmlelement>?</p>
+            </draft-comment>
+            <p>It is an error when the <xmlelement>include</xmlelement> element is used to reference
+                DITA content. Authors should use <xmlatt>conref</xmlatt> or
+                    <xmlatt>conkeyref</xmlatt> to reuse DITA content.</p>
+            <draft-comment author="Kristen J Eberlein" time="29 April 2019">
+                <p>We no longer use the above sort of wording. What is the pattern that we replaced
+                    it with? We probably should locate information about any error warnings in the
+                    "Processing expectations" section.  Do we want to make the statement about
+                    attributes author should use?</p>
+            </draft-comment>
+        </section>
+        <!--<section id="formatting-expectations"><title>Formatting expectations</title><p>The <xmlelement>include</xmlelement> element should not normally be visible in processed output, though indications of its boundaries may be presented in authoring or debugging usage contexts. It should be replaced either by the content it references or by the contents of its <xmlelement>fallback</xmlelement> element.</p></section>-->
+        <section id="processing-expectations">
+            <title>Processing expectations</title>
+            <draft-comment author="Kristen J Eberlein" time="29 April 2019">
+                <p>What of the content in this section (not yet edited) should be normative
+                    statements?</p>
+            </draft-comment>
+            <p>The <xmlelement>include</xmlelement> element instructs processors to insert the
+                contents of the referenced resource at the location of the
+                    <xmlelement>include</xmlelement> element. If the content is unavailable to the
+                processor or cannot be processed using the specified <xmlatt>parse</xmlatt> value,
+                the contents of the <xmlelement>fallback</xmlelement> element, if any, are presented
+                instead. If the processor cannot process the referenced content using the rules
+                implied by the <xmlatt>parse</xmlatt> attribute, either because the referenced
+                scheme is not supported or because there was a processing error, processors should
+                issue a warning or error.</p>
+            <draft-comment author="Kristen J Eberlein" time="29 April 2019">
+                <p>Shouldn't the following content (not yet edited) be located in the "Attributes"
+                    section?</p>
+            </draft-comment>
+            <p>The <xmlatt>parse</xmlatt> attribute specifies the processing expectations for the
+                referenced resource. Processors must support the following values:</p>
+            <dl>
+                <dlentry>
+                    <dt>text</dt>
+                    <dd>
+                        <p>The contents should be treated as plain text. Reserved XML characters
+                            should be displayed, and not interpreted as XML markup.</p>
+                    </dd>
+                </dlentry>
+                <dlentry>
+                    <dt>xml</dt>
+                    <dd>
+                        <p>The contents of the referenced resource should be treated as an XML
+                            document, and the referenced element should be inserted at the location
+                            of the <xmlelement>include</xmlelement> element. If a fragment
+                            identifier is included in the address of the content, processors must
+                            select the element with the specified ID. If no fragment identifier is
+                            included, the root element of the referenced XML document is selected.
+                            Any grammar processing should be performed during resolution, such that
+                            default attribute values are explicitly populated. Prolog content must
+                            be discarded.</p>
+                        <p>It is an error to use <codeph>parse="xml"</codeph> anywhere other than
+                            within <xmlelement>foreign</xmlelement> or a specialization thereof.</p>
+                    </dd>
+                </dlentry>
+            </dl>
+            <p>Processors may support other values for the <xmlatt>parse</xmlatt> attribute with
+                proprietary processing semantics. Processors should issue warnings and use
+                    <xmlelement>fallback</xmlelement> when they encounter unsupported
+                    <xmlatt>parse</xmlatt> values. Non-standard <xmlatt>parse</xmlatt> instructions
+                should be expressed as URIs.</p>
+            <note>Proprietary <xmlatt>parse</xmlatt> values will likely limit the portability and
+                interoperability of DITA content, so should be used with care.</note>
+            <p>The <xmlatt>encoding</xmlatt> attribute specifies the character encoding to use when
+                translating the character data from the referenced content. If not specified,
+                processors may make attempts to automatically determine the correct encoding, for
+                example using HTTP headers, through analysis of the binary structure of the
+                referenced data, or the <xmlpi>xml</xmlpi> processing instruction when including XML
+                as text. The resource should be treated as UTF-8 if no other encoding information
+                can be determined.</p>
+            <p>When <codeph>parse="xml"</codeph>, standard XML parsing rules apply for the detection
+                of character encoding. The necessity and uses of <xmlatt>encoding</xmlatt> for
+                non-standard values of <xmlatt>parse</xmlatt> are implementation-dependent.</p>
+        </section>
+        <section id="attributes">
+            <title>Attributes</title>
+            <p>The following attributes are available on this element:  <xref
+                    keyref="attributes-universal"/>, <xref>Link relationship attribute group</xref>,
+                        <xref><xmlatt>keyref</xmlatt></xref> and the attributes defined below.</p>
+            <dl>
+                <dlentry>
+                    <dt><xmlatt>parse</xmlatt></dt>
+                    <dd>Indicates the processing expectations for the referenced non-DITA
+                        content.</dd>
+                </dlentry>
+                <dlentry>
+                    <dt><xmlatt>encoding</xmlatt></dt>
+                    <dd>
+                        <draft-comment author="Kristen J Eberlein" time="29 April 2019">
+                            <p>Can we replace "should" in the following definition?</p>
+                        </draft-comment>
+                    </dd>
+                    <dd>Indicates the encoding that processors use when interpreting textual data.
+                        The value should be a valid encoding name. </dd>
+                </dlentry>
+            </dl>
+        </section>
+        <example id="example" otherprops="examples">
+            <title>Examples</title>
+            <draft-comment author="Kristen J Eberlein" time="29 April 2019">
+                <p>Need to edit – also, I think we need an example that illustrates using
+                        <xmlelement>include</xmlelement> for specialization</p>
+            </draft-comment>
+            <p>For the most part, <xmlelement>include</xmlelement> should be used as a basis for
+                specialization. The following examples use it directly for purposes of
+                illustration.</p>
+            <fig>
+                <title>Inclusion of XML markup other than SVG or MathML</title>
+                <codeblock>
+&lt;fig>
+  &lt;title>JSP Tag Library Elements and Attributes&lt;/title>
+  &lt;foreign outputclass="tld">
+    &lt;include href="../src/main/webapp/WEB-INF/jsp-tag-library.tld"
+             parse="xml" format="tld"/>
+  &lt;/foreign>
+&lt;/fig></codeblock>
+            </fig>
+            <fig>
+                <title>Inclusion of README text into a DITA topic, with fallback</title>
+                <p>
+                    <draft-comment author="Kristen J Eberlein" time="29 April 2019">
+                        <p>I can't imagine including a readme file into a short description ...</p>
+                    </draft-comment>
+                </p>
+                <codeblock>
+&lt;shortdesc>
+  &lt;include href="../src/README.txt" parse="text" encoding="UTF-8">
+    &lt;fallback>This topic describes XYZ.&lt;/fallback>
+  &lt;/include>
+&lt;/shortdesc></codeblock>
+            </fig>
+            <fig>
+                <title>Inclusion of preformatted text</title>
+                <codeblock>
+&lt;pre>
+  &lt;include href="../src/config.json" format="json" parse="text" encoding="UTF-8"/>
+&lt;/pre></codeblock>
+            </fig>
+            <fig>
+                <title>Inclusion of README as Markdown converted to DITA using a proprietary
+                    @parse value, with fallback</title>
+                <codeblock>
+&lt;section>
+  &lt;include href="about.md" encoding="UTF-8"
+    parse="http://www.example.com/dita/includeParsers/markdown-to-dita">
+      &lt;fallback>This section not available.&lt;/fallback>
+  &lt;/include>
+&lt;/section></codeblock>
+            </fig>
+            <fig>
+                <title>Proprietary vendor handling for CSV tables</title>
+                <codeblock>
+&lt;fig>
+  &lt;title>Data Table&lt;/title>
+  &lt;include href="data.csv"  encoding="UTF-8"
+    parse="http://www.example.com/dita/includeParsers/csv-to-simpletable"/>
+&lt;/fig></codeblock>
+            </fig>
+        </example>
+    </refbody>
+</reference>
