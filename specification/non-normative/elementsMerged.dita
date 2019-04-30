@@ -11,11 +11,10 @@
   <refbody>
     <section id="section-1">Since the distinction between block and inline elements is ultimately
       controlled by the container of the element and the processing associated with it, the same
-      element <ph >might</ph> be a block in one context and an inline element
-      in another. Specializing document types <ph >might</ph> vary this
-      behavior according to the needs of the document type being created, and the distinctions given
-      below are provided only as a guide to known behavior with the base DITA document
-      types.</section>
+      element might be a block in one context and an inline element in another. Specializing
+      document types might vary this behavior according to the needs of the document type being
+      created, and the distinctions given below are provided only as a guide to known behavior with
+      the base DITA document types.</section>
     <section id="notes">
       <title>Notes on the tables below</title>
       <!--<draft-comment>JO 2007/01/22: I've always been confused by the translate
@@ -43,15 +42,16 @@ for this?</draft-comment>-->
         <li>The block/inline translation column indicates whether the element represents a complete
           translatable segment. For example, the element <xmlelement>cmd</xmlelement> is presented inline with other
           elements, but represents a complete translation segment.</li>
-        <li>Items marked as block*** are blocks on their own, but <ph >might</ph> appear in the middle of a segment. They should not break the flow of the
-          current segment. These are considered "subflow" elements for translation. We recommend
-          that, when possible, these elements should only be placed at sentence boundaries to aid in
-            translation.<fn id="subflow">This element is considered a "subflow" element for
-            translation. If it is located in the middle of a translation segment, it should not be
-            translated as part of that segment. For example, <xmlelement>indexterm</xmlelement>,
-              <xmlelement>fn</xmlelement>, and <xmlelement>draft-comment</xmlelement>
-            <ph >might</ph> divide a sentence in two, but should be treated as
-            blocks, and should not interrupt the sentence. </fn></li>
+        <li>Items marked as block*** are blocks on their own, but might appear in the middle of a
+          segment. They should not break the flow of the current segment. These are considered
+          "subflow" elements for translation. We recommend that, when possible, these elements
+          should only be placed at sentence boundaries to aid in translation.<fn id="subflow">This
+            element is considered a "subflow" element for translation. If it is located in the
+            middle of a translation segment, it should not be translated as part of that segment.
+            For example, <xmlelement>indexterm</xmlelement>, <xmlelement>fn</xmlelement>, and
+              <xmlelement>draft-comment</xmlelement>
+            <ph>might</ph> divide a sentence in two, but should be treated as blocks, and should not
+            interrupt the sentence. </fn></li>
         <li>For all elements, the <xmlatt>translate</xmlatt> attribute will override the suggested default
           translation setting. So, a translation setting of "yes" or "no" in the table below does
           not guarantee that an element will always, or never, be translated.</li>
@@ -404,6 +404,14 @@ for this?</draft-comment>-->
           <stentry>yes</stentry>
           <stentry/>
         </strow>
+        <strow>
+            <stentry><xmlelement>include</xmlelement></stentry>
+            <stentry>N/A</stentry>
+            <stentry>inline</stentry>
+            <stentry>inline</stentry>
+            <stentry>yes</stentry>
+            <stentry/>
+          </strow>
         <strow>
           <stentry><xmlelement>indexterm</xmlelement></stentry>
           <stentry>N/A</stentry>
