@@ -66,7 +66,7 @@ ORIGINAL CREATION DATE:
    2018.03.14 KJE: Removed boolean and indextermref; removed
                    alt and longdescref on image; removed
                    @refcols
-   2019.04.30 KJE: Added include
+   2019.04.30 KJE: Added include and fallback
 =============================================================     
  ]]></headerComment>
     <moduleMetadata>
@@ -127,6 +127,9 @@ ORIGINAL CREATION DATE:
     </define>
     <define name="dthd">
       <ref name="dthd.element"/>
+    </define>
+    <define name="fallback">
+      <ref name="fallback.element"/>
     </define>
     <define name="fig">
       <ref name="fig.element"/>
@@ -2355,6 +2358,9 @@ ORIGINAL CREATION DATE:
           <optional>
             <ref name="longdescref"/>
           </optional>
+          <optional>
+            <ref name="fallback"/>
+          </optional>
           <zeroOrMore>
             <ref name="param"/>
           </zeroOrMore>
@@ -2824,7 +2830,40 @@ ORIGINAL CREATION DATE:
     </div>
     <include href="tblDeclMod.rng"/>
   </div>
-  
+  <div>
+  <a:documentation xml:space="preserve">LONG NAME: Fallback
+        
+    Fallback is used in the context of object to provide content
+    when an object reference cannot be rendered.
+        </a:documentation>
+  <define name="fallback.content">
+    <zeroOrMore>
+      <choice>
+        <text/>
+        <ref name="basic.block.notbfgobj"/>
+        <ref name="basic.ph"/>
+        <ref name="data.elements.incl"/>
+        <ref name="draft-comment"/>
+        <ref name="foreign.unknown.incl"/>
+        <ref name="required-cleanup"/>
+      </choice>
+    </zeroOrMore>
+  </define>
+  <define name="fallback.attributes">
+    <ref name="univ-atts"/>
+  </define>
+  <define name="fallback.element">
+    <element name="fallback" dita:longName="Fallback">
+      <a:documentation>The &lt;fallback> element contains content to be rendered when a multimedia
+        object reference cannot be rendered.</a:documentation>
+      <ref name="fallback.attlist"/>
+      <ref name="fallback.content"/>
+    </element>
+  </define>
+  <define name="fallback.attlist" combine="interleave">
+    <ref name="fallback.attributes"/>
+  </define>
+  </div>
   <div>
   <a:documentation>LONG NAME: Inclusion</a:documentation>
   <define name="include.content">
@@ -2950,6 +2989,11 @@ ORIGINAL CREATION DATE:
     <define name="dthd.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="- topic/dthd "/>
+      </optional>
+    </define>
+        <define name="fallback.attlist" combine="interleave">
+      <optional>
+        <attribute name="class" a:defaultValue="- topic/fallback "/>
       </optional>
     </define>
     <define name="fig.attlist" combine="interleave">
