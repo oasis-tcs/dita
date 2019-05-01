@@ -21,12 +21,14 @@
     </section>
     <section id="rendering-expectations">
       <title>Rendering expectations</title>
-      <!--<p>When possible, the video should be displayed at the location of the <xmlelement>video</xmlelement> reference. If <xmlatt>width</xmlatt> and/or <xmlatt>height</xmlatt> are specified, those dimensions should be honored.</p>-->
+      <p>The object referenced by the <xmlelement>video</xmlelement> element typically is rendered
+        in the main flow of the content.</p>
+      <div
+        conref="../../common/conref-rendering-expectations.dita#conref-rendering-expectations/rendering-expectations-image-video"/>
       <p>When a video object cannot be rendered in a meaningful way, processors <keyword
           outputclass="rfc-2119">SHOULD</keyword> present the contents of the
           <xmlelement>fallback</xmlelement> element, if it is present.</p>
     </section>
-    <!--<section id="processing-expectations"><title>Processing expectations</title><p>When converting to HTML5 or HTML5-derived output formats, <xmlelement>video</xmlelement> should be mapped to its HTML5-equivalent markup. Processing for other output formats is highly dependent on the capabilities of those formats. Implementers should implement support for presentation of multimedia on a best-effort basis.</p></section>-->
     <section id="specialization-hierarchy">
       <title>Specialization hierarchy</title>
       <p>The <xmlelement>video</xmlelement> element is specialized from
@@ -38,15 +40,10 @@
         /> and the attributes defined below.</p>
       <dl>
         <dlentry>
-          <!-- Identical to definition in video topic -->
+          <!--KJE: RDA and I discussed this on 29 April 2019. We could not come up with a phrasing that would not include "should". Adding this comment so that we don't have the discussion again.-->
           <dt><xmlatt>data</xmlatt></dt>
           <dd>Specifies the absolute or relative URI of the audio object. If this attribute is
             specified, <xmlatt>type</xmlatt> also should be specified.</dd>
-          <dd>
-            <draft-comment author="Kristen J Eberlein" time="28 April 2019">
-              <p>Need to rewrite to remove the word "should</p>
-            </draft-comment>
-          </dd>
         </dlentry>
         <dlentry>
           <!-- Identical to definition in video topic -->
@@ -67,31 +64,13 @@
             type value for the key named by the <xmlatt>datakeyref</xmlatt> attribute is used as the
             value for this attribute.</dd>
         </dlentry>
-        <dlentry>
-          <dt><xmlatt>height</xmlatt></dt>
-          <dd>Indicates the vertical dimension for the resulting video display. If necessary, the
-            object is scaled to the specified size. <ph id="height-width-units">The value of this
-              attribute is a real number (expressed in decimal notation) optionally followed by a
-              unit of measure from the set of pc, pt, px, in, cm, mm, em (picas, points, pixels,
-              inches, centimeters, millimeters, and ems respectively). The default unit is px
-              (pixels). Possible values include: "5", "5in", and "10.5cm".</ph> If a height value is
-            specified and no width value is specified, the width will be scaled by the same factor
-            as the height. <ph id="height-width-warning">If both a height value and width value are
-              specified, implementations <term outputclass="RFC-2119">MAY</term> ignore one of the
-              two values when they are unable to scale to each direction using different
-              factors.</ph></dd>
+        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-height">
+          <dt/>
+          <dd/>
         </dlentry>
-        <dlentry>
-          <dt><xmlatt>width</xmlatt></dt>
-          <dd>Indicates the horizontal dimension for the resulting video display. If necessary, the
-            object is scaled to the specified size. <ph>If both a height value and width value are
-              specified, implementations <term outputclass="RFC-2119">MAY</term> ignore one of the
-              two values when they are unable to scale to each direction using different
-              factors.</ph> If a width value is specified and no height value is specified, the
-            height will be scaled by the same factor as the width. <ph>If both a height value and
-              width value are specified, implementations <term outputclass="RFC-2119">MAY</term>
-              ignore one of the two values when they are unable to scale to each direction using
-              different factors.</ph></dd>
+        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-width">
+          <dt/>
+          <dd/>
         </dlentry>
         <dlentry>
           <dt><xmlatt>tabindex</xmlatt></dt>
