@@ -18,7 +18,7 @@
       <p>Audio objects can be referenced by <xmlatt>data</xmlatt>, <xmlatt>datakeyref</xmlatt>, and
         nested <xmlelement>media-source</xmlelement> elements. Nested
           <xmlelement>media-source</xmlelement> elements enable extensive configuration of how the
-        audio object is presented</p>
+        audio object is presented.</p>
     </section>
     <section id="rendering-expectations">
       <title>Rendering expectations</title>
@@ -56,6 +56,26 @@
             resolvable, the key-provided URI is used. A key that has no associated resource, only
             link text, is considered to be unresolved. If <xmlatt>data</xmlatt> is specified, it is
             used as a fallback when the key cannot be resolved to a resource.</dd>
+          <dd>
+            <draft-comment author="Chris Nitchie" disposition="NEW"
+              time="Fri May 03 14:31:29 UTC 2019">
+              <p>I'm uncomfortable with saying that a key with no href equates to an "unresolved key
+                reference" for audio content. That's not the case for other key references. The key
+                resolved just fine, it just doesn't go anywhere.</p>
+              <p>Instead let's describe the behavior when a key resolves to a null resource. I see a
+                couple of options:</p>
+              <ol>
+                <li>Fall back to @data. I think this is wrong because the key resolved, and when the
+                  key resolves, you don't use the fallback.</li>
+                <li>"Turn off" the media element, removing it.</li>
+                <li>Replace the media element with any text associated with the key.</li>
+              </ol>
+              <p>I think 3 is probably the best solution, as it conforms to expected behavior for
+                other key referencing elements, but could also live with 2.</p>
+              <data name="portalName" value="DITA 2.0 Specification (DRAFT)"/>
+              <data name="contextName" value="dita-2.0-specification.ditamap"/>
+            </draft-comment>
+          </dd>
         </dlentry>
         <dlentry>
           <dt><xmlatt>type</xmlatt></dt>
@@ -65,6 +85,16 @@
             rather than a content type. If <xmlatt>type</xmlatt> is not specified, the effective
             type value for the key named by the <xmlatt>datakeyref</xmlatt> attribute is used as the
             value for this attribute.</dd>
+          <dd>
+            <draft-comment author="Chris Nitchie" disposition="NEW"
+              time="Fri May 03 14:33:55 UTC 2019">
+              <p>Processors or user agents have the option to (normative MAY?) use other means, such
+                as the URI's file extension, to determine the effective content type of the media
+                object absent an explicit @type on the media object or key definition.</p>
+              <data name="portalName" value="DITA 2.0 Specification (DRAFT)"/>
+              <data name="contextName" value="dita-2.0-specification.ditamap"/>
+            </draft-comment>
+          </dd>
         </dlentry>
         <dlentry>
           <dt><xmlatt>tabindex</xmlatt></dt>
@@ -102,15 +132,14 @@ available.</p><codeblock>&lt;audio>
 
 <title>Complex example of an audio object</title>
 <p>The following code sample specifies an audio object and defines multiple presentational details;
-it also provides fallback behavior when the audio cannot be
-rendered.</p><codeblock>&lt;audio>
+          it also provides fallback behavior for when the audio cannot be rendered.</p><codeblock>&lt;audio>
   &lt;desc>A sound file narrating the execution of this procedure.&lt;/desc>
   &lt;fallback>The audio track walking through this procedure is not available.&lt;/fallback>
   
   &lt;!--
     When the following elements are used, they have a default value of "true";
     setting value="true" and not specifying @value have the same effect.
-    To disable any of these settings, specify value="false".
+    To disable any of these settings, specify value="false". --&gt;
 
   &lt;media-controls value="true"/>
   &lt;media-autoplay/>
