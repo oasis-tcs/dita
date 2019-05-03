@@ -52,7 +52,14 @@
             resolvable, the key-provided URI is used. A key that has no associated resource, only
             link text, is considered to be unresolved. If <xmlatt>data</xmlatt> is specified, it is
             used as a fallback when the key cannot be resolved to a resource.</dd>
-          <dd/>
+          <dd>
+            <draft-comment author="Chris Nitchie" disposition="NEW"
+              time="Fri May 03 14:42:33 UTC 2019">
+              <p>See my comment on @datakeyref in &lt;audio&gt;</p>
+              <data name="portalName" value="DITA 2.0 Specification (DRAFT)"/>
+              <data name="contextName" value="dita-2.0-specification.ditamap"/>
+            </draft-comment>
+          </dd>
         </dlentry>
         <dlentry>
           <!-- Identical to definition in video topic -->
@@ -83,9 +90,8 @@
 <fig id="fig_amp_v4z_4hb"><title>A simple video object</title><p>In the following code sample, a
 video object is referenced using direct addressing. The <xmlatt>type</xmlatt> attribute specifies
 the MIME type of the object.
-</p><codeblock>&lt;video data="video.mp4" type="video/mp4"/></codeblock><p>The video object also
-could be addressed using a key reference; in this version, both the URI and the MIME type come from
-the key definition:</p><codeblock>&lt;video datakeyref="video"/></codeblock></fig>
+</p><codeblock>&lt;video data="video.mp4" type="video/mp4"/></codeblock><p>The video object also could be addressed using a key reference; in this version, both the URI and
+          the MIME type come from the key definition.</p><codeblock>&lt;video datakeyref="video"/></codeblock></fig>
 <fig id="fig_ql2_cpz_4hb"><title>A video object with multiple formats</title><p>In the following
 code sample, <xmlelement>media-source</xmlelement> elements are used to specify the different video
 formats that are
@@ -95,10 +101,9 @@ available.</p><codeblock>&lt;video>
   &lt;media-source value="video.webm" type="video/webm"/>
 &lt;/video></codeblock></fig>
 <fig id="fig_wsb_jpz_4hb"><title>Complex example of a video object, with multiple formats and
-multi-lingual subtitles</title><p>The following video reference explicitly defines multiple
-presentational details for a video available in multiple formats, referenced using key references.
-It also provides a fallback image for use when the video cannot be
-displayed.</p><codeblock>&lt;video width="400px" height="300px">
+multi-lingual subtitles</title><p>The following code sample defines multiple presentational details for a video that is available
+          in multiple formats. The video is referenced using key reference and a fallback image is
+          provided for use when the video cannot be displayed.</p><codeblock>&lt;video width="400px" height="300px">
   &lt;desc>A video illustrating this procedure.&lt;/desc>
   &lt;fallback>
     &lt;image href="video-not-available.png">
@@ -106,7 +111,7 @@ displayed.</p><codeblock>&lt;video width="400px" height="300px">
     &lt;/image>
   &lt;/fallback>
   
-  &lt;!-- Reference the poster via both key -->
+  &lt;!-- Reference the poster using a key -->
   &lt;video-poster keyref="video-poster"/>
 
   &lt;!--
