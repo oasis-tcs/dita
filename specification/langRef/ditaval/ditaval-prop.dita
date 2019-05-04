@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="ditaval-prop" xml:lang="en-us">
 <title><xmlelement>prop</xmlelement></title>
 <shortdesc>The <xmlelement>prop</xmlelement> element identifies an attribute, and usually values in
@@ -13,59 +12,50 @@
 </keywords>
 </metadata></prolog>
 <refbody>
-<section id="section-1">A <xmlelement>prop</xmlelement> element <ph >can</ph>
-      do one of the following:<ul>
+<section id="section-1">A <xmlelement>prop</xmlelement> element can do one of the following:<ul>
         <li>A <xmlelement>prop</xmlelement> element with no <xmlatt>att</xmlatt> attribute specified
           sets a default action for every <xmlelement>prop</xmlelement> element. It is an error to
           use more than one <xmlelement>prop</xmlelement> element with no attribute in a single
           document. Recovery from this error is implementation dependent; in such cases processors
             <term outputclass="RFC-2119">MAY</term> provide an error or warning message.</li>
         <li>A <xmlelement>prop</xmlelement> element with an <xmlatt>att</xmlatt> attribute but no
-            <xmlatt>val</xmlatt> attribute sets a default action for that specific attribute <ph
-            >or attribute group</ph>. For each specific attribute, it is an
-          error to use more than one <xmlelement>prop</xmlelement> element with that attribute and
-          no value in a single document. Recovery from this error is implementation dependent; in
-          such cases processors <term outputclass="RFC-2119">MAY</term> provide an error or warning
-          message.</li>
+            <xmlatt>val</xmlatt> attribute sets a default action for that specific attribute or
+          attribute group. For each specific attribute, it is an error to use more than one
+            <xmlelement>prop</xmlelement> element with that attribute and no value in a single
+          document. Recovery from this error is implementation dependent; in such cases processors
+            <term outputclass="RFC-2119">MAY</term> provide an error or warning message.</li>
         <li>A <xmlelement>prop</xmlelement> element with an <xmlatt>att</xmlatt> attribute and a
-            <xmlatt>val</xmlatt> attribute sets an action for that value within that attribute <ph
-            >or attribute group</ph>. It is an error to use more than one
-            <xmlelement>prop</xmlelement> element with the same attribute and value. Recovery from
-          this error is implementation dependent; in such cases processors <term
-            outputclass="RFC-2119">MAY</term> provide an error or warning message. </li>
+            <xmlatt>val</xmlatt> attribute sets an action for that value within that attribute or
+          attribute group. It is an error to use more than one <xmlelement>prop</xmlelement> element
+          with the same attribute and value. Recovery from this error is implementation dependent;
+          in such cases processors <term outputclass="RFC-2119">MAY</term> provide an error or
+          warning message. </li>
       </ul></section>
-<section id="contains" otherprops="contains"><title>Contains</title><p><xref
-href="ditaval-startflag.dita">startflag</xref> (<i>optional</i>) then <xref
-href="ditaval-endflag.dita">endflag</xref> (<i>optional</i>)</p></section>
-<section id="containedby" otherprops="containedby"><title>Contained by</title><p><xref
-href="ditaval-val.dita">val</xref></p></section>
-<example id="example" otherprops="examples"><title>Example</title><p>See the example
-in the <xref href="ditaval-val.dita">&lt;val></xref> description.</p></example>
-<section id="attributes">
+    <section id="attributes">
       <title>Attributes</title>
       <p>The following attributes are available on this element:<dl>
           <dlentry>
             <dt><xmlatt>att</xmlatt></dt>
-            <dd>The attribute to be acted upon. <ph >If using a literal
-                attribute name, it must be one of <xmlatt>props</xmlatt>, <xmlatt>audience</xmlatt>,
-                  <xmlatt>platform</xmlatt>, <xmlatt>product</xmlatt>, <xmlatt>otherprops</xmlatt>,
-                  <xmlatt >deliveryTarget</xmlatt>, or a specialization of
-                  <xmlatt>props</xmlatt>. Otherwise, the value should be the name of a group used
-                within the <xmlatt>audience</xmlatt>, <xmlatt>platform</xmlatt>,
-                  <xmlatt>product</xmlatt>, or <xmlatt>otherprops</xmlatt> attributes.</ph> If the
-                <xmlatt>att</xmlatt> attribute is absent, then the <xmlelement>prop</xmlelement>
-              element declares a default behavior for any conditional processing attribute.</dd>
+            <dd>Specifies the attribute to be acted upon. If using a literal attribute name, it must
+              be one of <xmlatt>props</xmlatt>, <xmlatt>audience</xmlatt>,
+              <xmlatt>platform</xmlatt>, <xmlatt>product</xmlatt>, <xmlatt>otherprops</xmlatt>,
+                <xmlatt>deliveryTarget</xmlatt>, or a specialization of <xmlatt>props</xmlatt>.
+              Otherwise, the value should be the name of a group used within the
+                <xmlatt>audience</xmlatt>, <xmlatt>platform</xmlatt>, <xmlatt>product</xmlatt>, or
+                <xmlatt>otherprops</xmlatt> attributes. If the <xmlatt>att</xmlatt> attribute is
+              absent, then the <xmlelement>prop</xmlelement> element declares a default behavior for
+              any conditional processing attribute.</dd>
           </dlentry>
           <dlentry>
             <dt><xmlatt>val</xmlatt></dt>
-            <dd>The value to be acted upon. If the <xmlatt>val</xmlatt> attribute is absent, then
-              the <xmlelement>prop</xmlelement> element declares a default behavior for any value in
-              the specified attribute.</dd>
+            <dd>Specified the value to be acted upon. If the <xmlatt>val</xmlatt> attribute is
+              absent, then the <xmlelement>prop</xmlelement> element declares a default behavior for
+              any value in the specified attribute.</dd>
           </dlentry>
           <dlentry>
             <dt><xmlatt>action</xmlatt>
               <ph conref="../../common/conref-attribute.dita#conref-attribute/required-attr"/></dt>
-            <dd>The action to be taken. Allowable values are:<dl>
+            <dd>Specifies the action to be taken. Allowable values are:<dl>
                 <dlentry>
                   <dt>include</dt>
                   <dd>Include the content in output. This is the default behavior unless otherwise
@@ -106,6 +96,8 @@ in the <xref href="ditaval-val.dita">&lt;val></xref> description.</p></example>
           </dlentry>
         </dl></p>
     </section>
+<example id="example" otherprops="examples"><title>Example</title><p>See the example
+in the <xref href="ditaval-val.dita">&lt;val></xref> description.</p></example>
 </refbody>
 </reference>
 
