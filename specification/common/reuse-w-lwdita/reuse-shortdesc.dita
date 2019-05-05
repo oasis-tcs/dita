@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="shortdesc" xml:lang="en-us">
+<title><xmlelement>shortdesc</xmlelement></title>
+  <shortdesc id="shortdesc">A short description describes the purpose or main point of a
+    topic.</shortdesc>
+<refbody>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <dl platform="lwdita">
+        <dlentry>
+          <dt>XDITA</dt>
+          <dd>&lt;shortdesc></dd>
+        </dlentry>
+        <dlentry>
+          <dt>HDITA</dt>
+          <dd>First element in article, if it is a paragraph, after title</dd>
+        </dlentry>
+        <dlentry>
+          <dt>MDITA (core and extended profiles)</dt>
+          <dd>First block, if it is a paragraph, after title </dd>
+        </dlentry>
+      </dl>
+      <p>When present in topics, the short description is the first paragraph of the topic. It also
+        is used for link previews and search results.</p>
+      <div platform="dita">
+        <p>When present in maps, the <xmlelement>shortdesc</xmlelement> element is associated with
+            <xmlelement>topicref</xmlelement> elements. This enables map authors to accomplish the
+          following goals:</p>
+        <ul>
+          <li>Associate a short description with a non-DITA object.</li>
+          <li>Provide a short description that is specific to the map context and used for link
+            previews.</li>
+          <li>Override the short description located in the associated DITA topic, when the
+              <xmlatt>copy-to</xmlatt> attribute is specified. Processors might not implement this
+              behavior.<p>When a <xmlelement>shortdesc</xmlelement> element applies to an entire
+              DITA map, it serves as description only.</p></li>
+        </ul>
+      </div>
+    </section>
+    <section id="rendering-expectations">
+      <title>Rendering expectations</title>
+      <p>Processors <term outputclass="RFC-2119">SHOULD</term> render the content of the <keyword
+          keyref="variable-shortdesc-element"/> as the initial paragraph of the topic.</p>
+      <p platform="dita">When processors generate link previews that are based on the map context,
+        they <term outputclass="RFC-2119">SHOULD</term> use the content of the
+          <xmlelement>shortdesc</xmlelement> that is located in the map rather than the
+          <xmlelement>shortdesc</xmlelement> that is located in the DITA topic. However, processors
+          <term outputclass="RFC-2119">SHOULD</term> use the content of the
+          <xmlelement>shortdesc</xmlelement> element in the DITA topic when they render the topic
+        itself, unless the <xmlatt>copy-to</xmlatt> attribute is specified on the topic reference to
+        the element.</p>
+    </section>
+  </refbody>
+</reference>
+
