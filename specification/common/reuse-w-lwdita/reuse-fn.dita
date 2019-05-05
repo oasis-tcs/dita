@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="fn" xml:lang="en-us">
+<title><xmlelement>fn</xmlelement></title>
+  <shortdesc id="shortdesc">A footnote is ancillary information that typically is rendered in the
+    footer of a page or at the end of an online article. Such content is usually inappropriate for
+    inline inclusion.</shortdesc>
+<prolog><metadata>
+<keywords>
+    <indexterm>processing expectations<indexterm><xmlelement>fn</xmlelement></indexterm></indexterm>
+</keywords>
+</metadata></prolog>
+<refbody>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>There are two types of footnotes: <term>single-use footnote</term> and
+          <term>use-by-reference footnote</term>.</p>
+      <dl>
+        <dlentry>
+          <dt>Single-use footnote</dt>
+          <dd>This is produced by a <xmlelement>fn</xmlelement> element that does not specify a
+            value for the <xmlatt>id</xmlatt> attribute.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>Use-by-reference footnote</dt>
+          <dd>This is produced by a <xmlelement>fn</xmlelement> element that specifies a value for
+            the <xmlatt>id</xmlatt> attribute. It must be used in conjunction with an
+              <xmlelement>xref</xmlelement> element with <xmlatt>type</xmlatt> set to "fn."</dd>
+        </dlentry>
+      </dl>
+      <p>To reference a footnote that is located in another topic, the conref mechanism is used.</p>
+    </section>
+    <section id="rendering-expectations">
+      <title>Rendering expectations</title>
+      <p>The two footnote types typically produce different types of output:</p>
+      <dl>
+        <dlentry>
+          <dt>Single-use footnote</dt>
+          <dd>When rendered, a superscript symbol (numeral or character) is produced at the location
+            of the <xmlelement>fn</xmlelement> element. The superscript symbol is hyperlinked to the
+            content of the footnote, which is placed at the bottom of a PDF page or the end of an
+            online article. The superscript symbol can be specified by the value of the
+              <xmlatt>callout</xmlatt> attribute. When no <xmlatt>callout</xmlatt> value is
+            specified, footnotes are typically numbered.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>Use-by-reference footnote</dt>
+          <dd>Nothing is rendered at the location of the <xmlelement>fn</xmlelement> element. The
+            content of a use-by-reference footnote is only rendered when it is referenced by an
+              <xmlelement>xref</xmlelement> with the <xmlatt>type</xmlatt> attribute set to "fn". If
+            an <xmlelement>xref</xmlelement> with the <xmlatt>type</xmlatt> attribute set to "fn" is
+            present, a superscript symbol is rendered at the location of the
+              <xmlelement>xref</xmlelement> element. Unless conref is used, the
+              <xmlelement>fn</xmlelement> and <xmlelement>xref</xmlelement> must be located in the
+            same topic.</dd>
+        </dlentry>
+      </dl>
+      <p>However, the details of footnote processing and formatting are implementation dependent.
+        For example, a tool that renders DITA as PDF might lack support for the
+          <xmlatt>callout</xmlatt> attribute, or footnotes might be collected as end notes for
+        certain types of publications.</p>
+    </section>
+</refbody>
+</reference>
+
