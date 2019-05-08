@@ -3,10 +3,10 @@
 <reference id="ditaval-prop" xml:lang="en-us">
 <title><xmlelement>prop</xmlelement></title>
 <shortdesc>The <xmlelement>prop</xmlelement> element identifies an attribute, and usually values in
-    the attribute, to take an action on. The attribute either must be a conditional-processing
-    attribute (<xmlatt>platform</xmlatt>, <xmlatt>product</xmlatt>, <xmlatt>audience</xmlatt>,
-      <xmlatt >deliveryTarget</xmlatt>, <xmlatt>props</xmlatt>, and
-      <xmlatt>otherprops</xmlatt>) or a specialization of the <xmlatt>props</xmlatt> attribute. </shortdesc>
+the attribute, to take an action on. The identified attribute is a conditional-processing attribute
+(either <xmlatt>props</xmlatt> or a specialization of <xmlatt>props</xmlatt>, such as
+<xmlatt>audience</xmlatt>, <xmlatt>deliveryTarget</xmlatt>, <xmlatt>platform</xmlatt>,
+<xmlatt>product</xmlatt>, or <xmlatt>otherprops</xmlatt>).</shortdesc>
 <prolog><metadata>
 <keywords><indexterm>DITAVAL elements<indexterm>prop</indexterm></indexterm>
 </keywords>
@@ -36,15 +36,13 @@
       <p>The following attributes are available on this element:<dl>
           <dlentry>
             <dt><xmlatt>att</xmlatt></dt>
-            <dd>Specifies the attribute to be acted upon. If using a literal attribute name, it must
-              be one of <xmlatt>props</xmlatt>, <xmlatt>audience</xmlatt>,
-              <xmlatt>platform</xmlatt>, <xmlatt>product</xmlatt>, <xmlatt>otherprops</xmlatt>,
-                <xmlatt>deliveryTarget</xmlatt>, or a specialization of <xmlatt>props</xmlatt>.
-              Otherwise, the value should be the name of a group used within the
-                <xmlatt>audience</xmlatt>, <xmlatt>platform</xmlatt>, <xmlatt>product</xmlatt>, or
-                <xmlatt>otherprops</xmlatt> attributes. If the <xmlatt>att</xmlatt> attribute is
-              absent, then the <xmlelement>prop</xmlelement> element declares a default behavior for
-              any conditional processing attribute.</dd>
+            <dd>The attribute to be acted upon. If using a literal attribute name, it is
+<xmlatt>props</xmlatt> or a specialization of <xmlatt>props</xmlatt> (such as
+<xmlatt>audience</xmlatt>, <xmlatt>deliveryTarget</xmlatt>, <xmlatt>platform</xmlatt>,
+<xmlatt>product</xmlatt>, or <xmlatt>otherprops</xmlatt>). Otherwise, the value is the name of a
+group within one of those attributes, with the group name specified using the generalized attribute
+syntax. If the <xmlatt>att</xmlatt> attribute is absent, then the <xmlelement>prop</xmlelement>
+element declares a default behavior for any conditional processing attribute.</dd>
           </dlentry>
           <dlentry>
             <dt><xmlatt>val</xmlatt></dt>
