@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+                         schematypens="http://relaxng.org/ns/structure/1.0"?>
+<grammar 
+  xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:dita="http://dita.oasis-open.org/architecture/2005/"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+<moduleDesc xmlns="http://dita.oasis-open.org/architecture/2005/">
+   <moduleTitle>DITA Platform Attribute Domain </moduleTitle>
+   <headerComment><![CDATA[
+=============================================================
+                   HEADER                                    
+=============================================================
+ MODULE:    DITA Platform Attribute Domain            
+ VERSION:   2.0                                              
+ DATE:      September 2018                                        
+                                                             
+=============================================================
+
+=============================================================
+                   PUBLIC DOCUMENT TYPE DEFINITION           
+                   TYPICAL INVOCATION                        
+                                                             
+ Refer to this file by the following public identifier or an 
+      appropriate system identifier 
+      
+PUBLIC "-//OASIS//ENTITIES DITA 2.0 Platform Attribute Domain//EN"
+      
+=============================================================
+SYSTEM:     Darwin Information Typing Architecture (DITA)    
+                                                             
+PURPOSE:    Declaring the substitution context and domain    
+            entity declarations for the Platform      
+            Attribute Domain                                 
+                                                             
+ORIGINAL CREATION DATE:                                      
+            September 2018                                        
+                                                             
+            (C) Copyright OASIS Open 2018.                   
+            All Rights Reserved.                             
+                                                             
+ UPDATES:                                                    
+=============================================================
+]]></headerComment>
+   <moduleMetadata>
+     <moduleType>attributedomain</moduleType>
+     <moduleShortName>platformAtt-d</moduleShortName>
+     <modulePublicIds>
+       <dtdEnt>-//OASIS//ENTITIES DITA<var presep=" " name="ditaver"/> Platform Attribute Domain//EN</dtdEnt>
+       <xsdMod>urn:oasis:names:tc:dita:xsd:platformAttDomain.xsd<var presep=":" name="ditaver"/></xsdMod>
+       <rncMod>urn:oasis:names:tc:dita:rnc:platformAttDomain.rnc<var presep=":" name="ditaver"/></rncMod>
+       <rngMod>urn:oasis:names:tc:dita:rng:platformAttDomain.rng<var presep=":" name="ditaver"/></rngMod>
+     </modulePublicIds>
+     <domainsContribution>a(props platform)</domainsContribution>
+   </moduleMetadata>
+ </moduleDesc>
+  <define name="platformAtt-d-attribute">
+    <optional>
+      <attribute name="platform" dita:since="2.0">
+        <a:documentation>Specifies the platform to which an element applies.</a:documentation>
+      </attribute>
+    </optional>    
+  </define>
+  
+  <define name="props-attribute-extensions" combine="interleave">
+    <ref name="platformAtt-d-attribute"/>
+  </define>
+  
+</grammar>

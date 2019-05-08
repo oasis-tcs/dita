@@ -42,60 +42,54 @@
         values will be more complex; see <xref href="../../archSpec/base/generalization-attributes.dita"/>
         for more details.</p>
     </section>
-    <section id="originalfilter">
-      <dl>
-        <dlentry id="platform">
-          <dt><xmlatt>platform</xmlatt></dt>
-          <dd><indexterm>platform
-                attribute</indexterm><indexterm>Attributes<indexterm>platform</indexterm></indexterm>Indicates
-            operating system and hardware. <ph
-              conref="../../common/conref-attribute.dita#conref-attribute/may-inherit"/>
-          </dd>
-        </dlentry>
-        <dlentry id="product">
-          <dt><xmlatt>product</xmlatt></dt>
-          <dd><indexterm>product
-                attribute</indexterm><indexterm>Attributes<indexterm>product</indexterm></indexterm>Contains
-            the name of the product to which the element applies. <ph
-              conref="../../common/conref-attribute.dita#conref-attribute/may-inherit"/>
-          </dd>
-        </dlentry>
-        <dlentry id="audience">
-          <dt><xmlatt>audience</xmlatt></dt>
-          <dd><indexterm>audience
-                attribute</indexterm><indexterm>Attributes<indexterm>audience</indexterm></indexterm>Indicates
-            the intended audience for the element. <ph
-              conref="../../common/conref-attribute.dita#conref-attribute/may-inherit"/>
-          </dd>
-        </dlentry>
-        <dlentry id="otherprops">
-          <dt><xmlatt>otherprops</xmlatt></dt>
-          <dd><indexterm>otherprops
-                attribute</indexterm><indexterm>Attributes<indexterm>otherprops</indexterm></indexterm>This
-            attribute can be used for any other properties that might be needed to describe an
-            audience, or to provide selection criteria for the element. Alternatively, the
-              <xmlatt>props</xmlatt> attribute <ph >can</ph> be specialized to
-            provide a new metadata attribute instead of using the general
-              <xmlatt>otherprops</xmlatt> attribute. <ph
-              conref="../../common/conref-attribute.dita#conref-attribute/may-inherit"/>
-          </dd>
-        </dlentry>
-      </dl>
-      <p >The <xmlatt>audience</xmlatt>, <xmlatt>platform</xmlatt>,
-          <xmlatt>product</xmlatt>, and <xmlatt>otherprops</xmlatt> attributes are property
-        attributes which support conditional processing for filtering or flagging. Each takes a
-        space-delimited set of values, with optional groups of space-delimited properties. Although
-        these attributes are not specialized and not specializeable, the group syntax matches that
-        for generalized attributes in <xref href="../../archSpec/base/generalization-attributes.dita"
-        />.</p>
-    </section>
     <section id="specialized">
+<p>The attributes <xmlatt>audience</xmlatt>, <xmlatt>deliveryTarget</xmlatt>,
+<xmlatt>platform</xmlatt>, <xmlatt>product</xmlatt>, and <xmlatt>otherprops</xmlatt> are specialized
+from the <xmlatt>props</xmlatt> attribute. They are defined in independent attribute extension
+domains, and integrated by default into all OASIS-provided document-type shells. If any of these
+domains is not integrated into a given document-type shell, the relevant attribute(s) will not be
+available.</p>
       <dl>
-        <dlentry conref="../../common/conref-file.dita#reuse_file/deliveryTarget"
-          id="deliveryTarget">
-          <dt/>
-          <dd/>
-        </dlentry>
+<dlentry id="audience">
+<dt><xmlatt>audience</xmlatt></dt>
+<dd><indexterm>audience
+attribute</indexterm><indexterm>Attributes<indexterm>audience</indexterm></indexterm>Indicates the
+intended audience for the element. <ph
+conref="../../common/conref-attribute.dita#conref-attribute/may-inherit"/>
+</dd>
+</dlentry>
+<dlentry id="platform">
+<dt><xmlatt>platform</xmlatt></dt>
+<dd><indexterm>platform
+attribute</indexterm><indexterm>Attributes<indexterm>platform</indexterm></indexterm>Indicates
+operating system and hardware. <ph
+conref="../../common/conref-attribute.dita#conref-attribute/may-inherit"/>
+</dd>
+</dlentry>
+<dlentry>
+<dt><xmlatt>deliveryTarget</xmlatt></dt>
+<dd><ph conref="../../common/conref-file.dita#reuse_file/deliveryTarget-simpleDefinition"/>
+<ph conref="../../common/conref-attribute.dita#conref-attribute/may-inherit"/></dd>
+</dlentry>
+<dlentry id="product">
+<dt><xmlatt>product</xmlatt></dt>
+<dd><indexterm>product
+attribute</indexterm><indexterm>Attributes<indexterm>product</indexterm></indexterm>Contains the
+name of the product to which the element applies. <ph
+conref="../../common/conref-attribute.dita#conref-attribute/may-inherit"/>
+</dd>
+</dlentry>
+<dlentry id="otherprops">
+<dt><xmlatt>otherprops</xmlatt></dt>
+<dd><indexterm>otherprops
+attribute</indexterm><indexterm>Attributes<indexterm>otherprops</indexterm></indexterm>This
+attribute can be used for any other properties that might be needed to describe an audience, or to
+provide selection criteria for the element. Alternatively, the <xmlatt>props</xmlatt> attribute
+<ph>can</ph> be specialized to provide a new metadata attribute instead of using the general
+<xmlatt>otherprops</xmlatt> attribute. <ph
+conref="../../common/conref-attribute.dita#conref-attribute/may-inherit"/>
+</dd>
+</dlentry>
       </dl>
     </section><section id="othermetaattributes">
       <dl>
