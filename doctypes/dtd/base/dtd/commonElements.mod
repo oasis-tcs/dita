@@ -453,18 +453,6 @@
               "props
                           CDATA
                                     #IMPLIED
-               platform
-                          CDATA
-                                    #IMPLIED
-               product
-                          CDATA
-                                    #IMPLIED
-               audience
-                          CDATA
-                                    #IMPLIED
-               otherprops
-                          CDATA
-                                    #IMPLIED
                %props-attribute-extensions;"
 >
 <!ENTITY % select-atts
