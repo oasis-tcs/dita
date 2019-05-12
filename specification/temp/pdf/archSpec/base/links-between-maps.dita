@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\archSpec\base?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/archSpec/base/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic concept/concept " ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="links-between-maps" xml:lang="en-us" xtrc="concept:1;3:52" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">
+ <title class="- topic/title " xtrc="title:1;4:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita"><ph class="- topic/ph " xtrc="ph:1;4:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">Cross-deliverable addressing and linking</ph></title>
+ <shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;5:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">A map can use scoped keys to reference keys that are defined in a different root map.
+        This cross-deliverable addressing can support the production of deliverables that contain
+        working links to other deliverables.</shortdesc><prolog class="- topic/prolog "><author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author></prolog>
+ <conbody class="- topic/body  concept/conbody " xtrc="conbody:1;8:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">
+        <p class="- topic/p " xtrc="p:1;9:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">When maps are referenced and the value of the
+                <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:1;10:25" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">scope</xmlatt> attribute is set to "peer", the implications are that the two
+            maps are managed in tandem, and that the author of the referencing map might have access
+            to the referenced map. Adding a key scope to the reference indicates that the peer map
+            should be treated as a separate deliverable for the purposes of linking.</p>
+  <p class="- topic/p " xtrc="p:2;14:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">The keys that are defined by the peer map belong to <ph class="- topic/ph " xtrc="ph:2;14:63" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">any key scopes
+                that are</ph> declared on the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:1;15:59" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">topicref</xmlelement> element that
+            references that map. Such keys can be referenced from content in the referencing map by
+            using scope-qualified key names. However, processors handle references to keys that are
+            defined in peer maps differently from how they handle references to keys that are
+            defined in submaps.</p>
+  <p class="- topic/p " xtrc="p:3;20:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">DITA processors are not required to resolve key references to peer maps. However, if all
+            resources are available in the same processing or management context, processors have
+            the potential to resolve key references to peer maps. There might be performance, scale,
+            and user interface challenges in implementing such systems, but the ability to resolve
+            any given reference is ensured when the source files are physically accessible.</p>
+  <p class="- topic/p " xtrc="p:4;25:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">Note the inverse implication; if the peer map is not available, then it is impossible to
+            resolve the key reference. Processors that resolve key references to peer maps should
+            provide appropriate messages when a reference to a peer map cannot be resolved.
+            Depending on how DITA resources are authored, managed, and processed, references to peer
+            maps might not be resolvable at certain points in the content life cycle.</p>
+  <p class="- topic/p " xtrc="p:5;30:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">The peer map might specify <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:2;30:41" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">keyscope</xmlatt> on its root element. In that case, the
+                <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:3;31:25" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">keyscope</xmlatt> on the peer map is ignored for the purpose of resolving
+            scoped key references from the referencing map. This avoids the need for processors to
+            have access to the peer map in order to determine whether a given key definition comes
+            from the peer map.</p>
+        <example class="- topic/example " id="example-root-declares-peer" otherprops="examples" xtrc="example:1;35:72" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">
+            <title class="- topic/title " xtrc="title:2;36:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">Example: A root map that declares a peer map</title>
+            <p class="- topic/p " xtrc="p:6;37:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">Consider the DITA maps <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:1;37:49" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">map-a.ditamap</filepath> and
+                    <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:2;38:31" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">map-b.ditamap</filepath>. Map A designates Map B as a peer map by
+                using the following markup:</p>
+            <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:1;40:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">&lt;map&gt;
+  &lt;title&gt;Map A&lt;/title&gt;
+  &lt;topicref 
+    scope="peer"
+    format="ditamap"
+    keyscope="map-b"
+    href="../map-b/map-b.ditamap"
+    processing-role="resource-only"
+  /&gt;
+  &lt;!-- ... --&gt;
+&lt;/map&gt;</codeblock>
+            <p class="- topic/p " xtrc="p:7;51:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">In this example, <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:3;51:43" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">map-b.ditamap</filepath> is not a submap of Map A; it is a
+                peer map.</p>
+        </example>
+        <example class="- topic/example " id="example-peer-keyscope" otherprops="examples" xtrc="example:2;54:67" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">
+            <title class="- topic/title " xtrc="title:3;55:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">Example: Key resolution in a peer map that contains a <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:4;55:82" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">keyscope</xmlatt>
+                attribute on the root element</title>
+            <p class="- topic/p " xtrc="p:8;57:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">Consider the map reference in map Map A:</p>
+            <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:2;58:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">&lt;mapref 
+  keyscope="scope-b"
+  scope="peer"  
+  href="map-b.ditamap"
+/&gt; </codeblock>
+            <p class="- topic/p " xtrc="p:9;63:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">where <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:4;63:32" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">map-b.ditamap</filepath> contains the following markup:</p>
+            <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:3;64:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">&lt;map keyscope="product-x"&gt;
+ &lt;!-- ... --&gt;
+&lt;/map&gt;</codeblock>
+            <p class="- topic/p " xtrc="p:10;67:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">From the context of Map A, key references of the form "scope-b.somekey" are resolved
+                to keys that are defined in the global scope of map B, but key references of the
+                form "product-x.somekey" are not. The presence of a <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:5;69:77" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">keyscope</xmlatt>
+                attribute on the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:2;70:46" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">map</xmlelement> element in Map B has no effect. A key
+                reference to the scope "scope-b.somekey" is equivalent to the unscoped reference
+                "somekey" when processed in the context of Map B as the root map. In both cases, the
+                presence of <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:6;73:37" xtrf="file:/C:/Git/dita/specification/archSpec/base/links-between-maps.dita">keyscope</xmlatt> on the root element of Map B has no effect; in
+                the first case it is explicitly ignored, and in the second case the key reference is
+                within the scope "product-x" and so does not need to be scope qualified.</p>
+        </example>
+ </conbody>
+</concept>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\archSpec\base?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/archSpec/base/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic concept/concept " ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="concept_zms_tw1_mp" xml:lang="en-us" xtrc="concept:1;3:51" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+ <title class="- topic/title " xtrc="title:1;4:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">Example: <ph class="- topic/ph " xtrc="ph:1;4:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">References to scoped keys</ph></title>
+ <shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;5:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">You can address scoped keys from outside the key scope <ph class="- topic/ph " xtrc="ph:2;5:73" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">in which the
+   keys are defined</ph>.</shortdesc><prolog class="- topic/prolog "><author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author></prolog>
+ <conbody class="- topic/body  concept/conbody " xtrc="conbody:1;7:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+  <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:1;8:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">&lt;map xml:lang="en"&gt;
+  &lt;title&gt;Examples of scoped key references&lt;/title&gt;
+
+  &lt;!-- Key scope #1 --&gt;
+  &lt;topicgroup keyscope="scope-1"&gt;
+    <b class="+ topic/ph hi-d/b " xtrc="b:1;13:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">&lt;keydef keys="key-1" href="topic-1.dita"/&gt;</b>
+    &lt;topicref keyref="key-1"/&gt;
+    &lt;topicref keyref="scope-1.key-1"/&gt;
+    &lt;topicref keyref="scope-2.key-1"/&gt;
+  &lt;/topicgroup&gt;
+
+  &lt;!-- Key scope #2 --&gt;
+  &lt;topicgroup keyscope="scope-2"&gt;
+    <b class="+ topic/ph hi-d/b " xtrc="b:2;21:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">&lt;keydef keys="key-1" href="topic-2.dita"/&gt;</b>
+    &lt;topicref keyref="key-1"/&gt;
+    &lt;topicref keyref="scope-1.key-1"/&gt;
+    &lt;topicref keyref="scope-2.key-1" /&gt;
+  &lt;/topicgroup&gt;
+
+  &lt;topicref keyref="key-1" /&gt;
+  &lt;topicref keyref="scope-1.key-1" /&gt;
+  &lt;topicref keyref="scope-2.key-1" /&gt;
+
+&lt;/map&gt;</codeblock>
+  <p class="- topic/p " xtrc="p:1;32:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">For this example, the effective key definitions are listed in the following tables.</p>
+  <table class="- topic/table " colsep="1" frame="all" rowsep="1" xtrc="table:1;33:44" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+   <title class="- topic/title " xtrc="title:2;34:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">Effective key definitions for <ph class="- topic/ph " xtrc="ph:3;34:46" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">scope-1</ph></title>
+   <tgroup class="- topic/tgroup " cols="2" xtrc="tgroup:1;35:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+    <colspec class="- topic/colspec " colname="col1" colnum="1" colwidth="1.0*" xtrc="colspec:1;36:55" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita"/>
+    <colspec class="- topic/colspec " colname="col2" colnum="2" colwidth="1.0*" xtrc="colspec:2;37:55" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita"/>
+    <thead class="- topic/thead " xtrc="thead:1;38:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+     <row class="- topic/row " xtrc="row:1;39:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+      <entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="1" xtrc="entry:1;40:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">Key reference</entry>
+      <entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="1" xtrc="entry:2;41:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">Resource</entry>
+     </row>
+    </thead>
+    <tbody class="- topic/tbody " xtrc="tbody:1;44:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+     <row class="- topic/row " xtrc="row:2;45:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+      <entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="2" xtrc="entry:3;46:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">key-1</entry>
+      <entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="2" xtrc="entry:4;47:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita"><filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:1;47:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">topic-1.dita</filepath></entry>
+     </row>
+     <row class="- topic/row " xtrc="row:3;49:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+      <entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="3" xtrc="entry:5;50:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">scope-1.key-1</entry>
+      <entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="3" xtrc="entry:6;51:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita"><filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:2;51:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">topic-1.dita</filepath></entry>
+     </row>
+     <row class="- topic/row " xtrc="row:4;53:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+      <entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="4" xtrc="entry:7;54:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">scope-2.key-1</entry>
+      <entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="4" xtrc="entry:8;55:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita"><filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:3;55:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">topic-2.dita</filepath></entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </table>
+  <table class="- topic/table " colsep="1" frame="all" rowsep="1" xtrc="table:2;60:44" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+   <title class="- topic/title " xtrc="title:3;61:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">Effective key definitions for <ph class="- topic/ph " xtrc="ph:4;61:46" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">scope-2</ph></title>
+   <tgroup class="- topic/tgroup " cols="2" xtrc="tgroup:2;62:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+    <colspec class="- topic/colspec " colname="col1" colnum="1" colwidth="1.0*" xtrc="colspec:3;63:55" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita"/>
+    <colspec class="- topic/colspec " colname="col2" colnum="2" colwidth="1.0*" xtrc="colspec:4;64:55" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita"/>
+    <thead class="- topic/thead " xtrc="thead:2;65:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+     <row class="- topic/row " xtrc="row:5;66:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+      <entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="1" xtrc="entry:9;67:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">Key reference</entry>
+      <entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="1" xtrc="entry:10;68:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">Resource</entry>
+     </row>
+    </thead>
+    <tbody class="- topic/tbody " xtrc="tbody:2;71:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+     <row class="- topic/row " xtrc="row:6;72:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+      <entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="2" xtrc="entry:11;73:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">key-1</entry>
+      <entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="2" xtrc="entry:12;74:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita"><filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:4;74:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">topic-2.dita</filepath></entry>
+     </row>
+     <row class="- topic/row " xtrc="row:7;76:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+      <entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="3" xtrc="entry:13;77:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">scope-1.key-1</entry>
+      <entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="3" xtrc="entry:14;78:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita"><filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:5;78:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">topic-1.dita</filepath></entry>
+     </row>
+     <row class="- topic/row " xtrc="row:8;80:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+      <entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="4" xtrc="entry:15;81:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">scope-2.key-1</entry>
+      <entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="4" xtrc="entry:16;82:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita"><filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:6;82:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">topic-2.dita</filepath></entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </table>
+  <table class="- topic/table " colsep="1" frame="all" rowsep="1" xtrc="table:3;87:44" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+   <title class="- topic/title " xtrc="title:4;88:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita"><ph class="- topic/ph " xtrc="ph:5;88:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">Effective key definitions for the key scope associated with the root
+     map</ph></title>
+   <tgroup class="- topic/tgroup " cols="2" xtrc="tgroup:3;90:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+    <colspec class="- topic/colspec " colname="col1" colnum="1" colwidth="1.0*" xtrc="colspec:5;91:55" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita"/>
+    <colspec class="- topic/colspec " colname="col2" colnum="2" colwidth="1.0*" xtrc="colspec:6;92:55" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita"/>
+    <thead class="- topic/thead " xtrc="thead:3;93:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+     <row class="- topic/row " xtrc="row:9;94:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+      <entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="1" xtrc="entry:17;95:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">Key reference</entry>
+      <entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="1" xtrc="entry:18;96:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">Resource</entry>
+     </row>
+    </thead>
+    <tbody class="- topic/tbody " xtrc="tbody:3;99:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+     <row class="- topic/row " xtrc="row:10;100:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+      <entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="2" xtrc="entry:19;101:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">key-1</entry>
+      <entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="2" xtrc="entry:20;102:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">Undefined</entry>
+     </row>
+     <row class="- topic/row " xtrc="row:11;104:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+      <entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="3" xtrc="entry:21;105:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">scope-1.key-1</entry>
+      <entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="3" xtrc="entry:22;106:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita"><filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:7;106:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">topic-1.dita</filepath></entry>
+     </row>
+     <row class="- topic/row " xtrc="row:12;108:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">
+      <entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="4" xtrc="entry:23;109:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">scope-2.key-1</entry>
+      <entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="4" xtrc="entry:24;110:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita"><filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:8;110:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-scoped-key-references.dita">topic-2.dita</filepath></entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </table>
+ </conbody>
+</concept>

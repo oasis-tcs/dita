@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\archSpec\base?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/archSpec/base/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic concept/concept " ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="using-relax-ng" xml:lang="en-us" xtrc="concept:1;3:48" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">
+ <title class="- topic/title " xtrc="title:1;4:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">Normative versions of DITA grammar files</title>
+ <shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;5:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">The OASIS DITA Technical Committee uses the RELAX NG XML syntax for the normative
+    versions of the XML grammar files that comprise the DITA release. </shortdesc><prolog class="- topic/prolog "><author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author></prolog>
+ <conbody class="- topic/body  concept/conbody " xtrc="conbody:1;7:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">
+    <p class="- topic/p " xtrc="p:1;8:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">The DITA Technical Committee chose the RELAX NG XML syntax for the following reasons:</p>
+    <dl class="- topic/dl " xtrc="dl:1;9:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">
+      <dlentry class="- topic/dlentry " xtrc="dlentry:1;10:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">
+        <dt class="- topic/dt " xtrc="dt:1;11:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">Easy use of foreign markup</dt>
+        <dd class="- topic/dd " xtrc="dd:1;12:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">The DITA grammar files maintained by OASIS depend on this feature of RELAX NG in order
+          to capture metadata about document-type shells and modules; such metadata is used to
+          generate the DTD- and XSD-based versions of the grammar files.<p class="- topic/p " xtrc="p:2;14:76" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">The foreign vocabulary
+            feature also can be used to include Schematron rules directly in RELAX NG grammars.
+            Schematron rules can check for patterns that either are not expressible with RELAX NG
+            directly or that would be difficult to express.</p></dd>
+      </dlentry>
+      <dlentry class="- topic/dlentry " xtrc="dlentry:2;19:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">
+        <dt class="- topic/dt " xtrc="dt:2;20:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">RELAX NG <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:1;20:34" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">div</xmlelement> element </dt>
+        <dd class="- topic/dd " xtrc="dd:2;21:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">This general grouping element allows for arbitrary organization and grouping of patterns
+          within grammar documents. Such grouping tends to make the grammar documents easier to work
+          with, especially in XML-aware editors. The use or non-use of the RELAX NG
+            <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:2;24:25" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">div</xmlelement> element does not affect the meaning of the patterns that
+          are defined in a RELAX NG schema.</dd>
+      </dlentry>
+      <dlentry class="- topic/dlentry " xtrc="dlentry:3;27:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">
+        <dt class="- topic/dt " xtrc="dt:3;28:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">Capability of expressing precise restrictions</dt>
+        <dd class="- topic/dd " xtrc="dd:3;29:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">RELAX NG is capable of expressing constraints that are more precise than is possible
+          with either DTDs or XSDs. For example, RELAX NG patterns can be context specific such that
+          the same element type can allow different content or attributes in different
+            contexts.<p class="- topic/p " xtrc="p:3;32:25" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">If you plan to generate DTD- or XSD-based modules from RELAX NG modules,
+            avoid RELAX NG features that cannot be translated into DTD or XSD constructs. When RELAX
+            NG is used directly for DITA document validation, the document-type shells for those
+            documents can integrate constraint modules that use the full power of RELAX NG to
+            enforce constraints that cannot be enforced by DTDs or XSDs. The grammar files provided
+            by the OASIS DITA Technical Committee do not use any features of RELAX NG that cannot be
+            translated into equivalent DTD or XSD constructs.</p></dd>
+      </dlentry>
+    </dl>
+    <p class="- topic/p " xtrc="p:4;41:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">The DITA use of RELAX NG depends on the <cite class="- topic/cite " xtrc="cite:1;41:54" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">RELAX NG DTD Compatibility</cite>
+      specification, which provides a mechanism for defining default attribute values and embedded
+      documentation. Processors that use RELAX NG for DITA documents in which required attributes
+      (for example, the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:1;44:33" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">domains</xmlatt> and <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:2;44:62" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-relax-ng.dita">class</xmlatt> attributes)  are not
+      explicitly present must implement the DTD compatibility specification in order to get default
+      attribute values.</p>
+ </conbody>
+<related-links class="- topic/related-links "><linkpool class="- topic/linkpool " xtrc="topicref:9;63:58" xtrf="file:/C:/Git/dita/specification/base-relationship-tables.ditamap"><link class="- topic/link " format="html" href="http://dita.xml.org/resource/relax-ng-to-dtd-or-xsd-tools" mapclass="- map/topicref " role="friend" scope="external" xtrc="topicref:10;68:23" xtrf="file:/C:/Git/dita/specification/base-relationship-tables.ditamap"><?ditaot usertext?><linktext class="- topic/linktext "><?ditaot usertext?>Tools for generating DTD or XSD from RELAX NG</linktext></link></linkpool></related-links></concept>

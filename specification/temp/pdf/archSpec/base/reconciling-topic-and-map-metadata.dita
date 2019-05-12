@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\archSpec\base?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/archSpec/base/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Reference//EN?><?doctype-system reference.dtd?><reference xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic       reference/reference " ditaarch:DITAArchVersion="1.3" domains="(topic reference) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="reconciling-topic-and-map-metadata" xml:lang="en-us" xtrc="reference:1;4:69" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<title class="- topic/title " xtrc="title:1;5:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><ph class="- topic/ph " xtrc="ph:1;5:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Reconciling topic and map metadata elements</ph></title>
+<shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;6:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">The <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:1;6:28" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">topicmeta</xmlelement> element in maps contains numerous elements that
+  can be used to declare metadata. These metadata elements have an effect on the parent
+   <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:2;8:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">topicref</xmlelement> element, any child <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:3;8:69" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">topicref</xmlelement> elements,
+  and – if a direct child of the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:4;9:46" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">map</xmlelement> element – on the map as a
+  whole.</shortdesc><prolog class="- topic/prolog "><author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author></prolog>
+<refbody class="- topic/body        reference/refbody " xtrc="refbody:1;11:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<section class="- topic/section " id="section" xtrc="section:1;12:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><p class="- topic/p " xtrc="p:1;12:26" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">For each element that can be contained in the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:5;12:84" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">topicmeta</xmlelement> element, the
+    following table addresses the following questions:<dl class="- topic/dl " xtrc="dl:1;13:59" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+     <dlentry class="- topic/dlentry " xtrc="dlentry:1;14:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+      <dt class="- topic/dt " xtrc="dt:1;15:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">How does it apply to the topic?</dt>
+      <dd class="- topic/dd " xtrc="dd:1;16:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">This column describes how the metadata specified within the
+        <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:6;17:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">topicmeta</xmlelement> element interacts with the metadata specified in the
+       topic. In most cases, the properties are additive. For example, when the
+        <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:7;19:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">audience</xmlelement> element is set to "user" at the map level, the value
+       "user" is added during processing to any audience metadata that is specified within the
+       topic.</dd>
+     </dlentry>
+     <dlentry class="- topic/dlentry " xtrc="dlentry:2;23:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+      <dt class="- topic/dt " xtrc="dt:2;24:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Does it cascade to other topics in the map?</dt>
+      <dd class="- topic/dd " xtrc="dd:2;25:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">This column indicates whether the specified metadata value cascades to nested
+                <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:8;26:29" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">topicref</xmlelement> elements. For example, when an
+                <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:9;27:29" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">audience</xmlelement> element is set to "user" at the map level, all
+              child <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:10;28:33" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">topicref</xmlelement> elements implicitly have an
+                <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:11;29:29" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">audience</xmlelement> element set to "user" also. Elements that can
+              apply only to the specific <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:12;30:54" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">topicref</xmlelement> element, such as
+                <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:13;31:29" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">linktext</xmlelement>, do not cascade.</dd>
+     </dlentry>
+     <dlentry class="- topic/dlentry " xtrc="dlentry:3;33:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+      <dt class="- topic/dt " xtrc="dt:3;34:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">What is the purpose when specified on the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:14;34:65" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">map</xmlelement> element?</dt>
+      <dd class="- topic/dd " xtrc="dd:3;35:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">The map element allows metadata to be specified for the entire map. This column describes
+       what effect, if any, an element has when specified at this level.</dd>
+     </dlentry>
+    </dl></p></section>
+<table class="- topic/table " xtrc="table:1;39:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><title class="- topic/title " xtrc="title:2;39:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Topicmeta elements and their properties</title>
+<tgroup class="- topic/tgroup " cols="4" xtrc="tgroup:1;40:18" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><colspec class="- topic/colspec " colname="col1" colnum="1" xtrc="colspec:1;40:43" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"/><colspec class="- topic/colspec " colname="col2" colnum="2" xtrc="colspec:2;40:68" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"/>
+<colspec class="- topic/colspec " colname="col3" colnum="3" xtrc="colspec:3;41:30" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"/><colspec class="- topic/colspec " colname="col4" colnum="4" xtrc="colspec:4;41:59" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"/>
+<thead class="- topic/thead " xtrc="thead:1;42:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<row class="- topic/row " valign="bottom" xtrc="row:1;43:22" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="1" xtrc="entry:1;44:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Element</entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="1" xtrc="entry:2;45:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">How does it apply to the topic?</entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="1" xtrc="entry:3;46:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><ph class="- topic/ph " xtrc="ph:24;271:27" xtrf="file:/C:/Git/dita/specification/common/conref-file.dita">Does it cascade to child <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:23;271:64" xtrf="file:/C:/Git/dita/specification/common/conref-file.dita">topicref</xmlelement> elements?</ph></entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="1" xtrc="entry:4;48:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">What is the purpose when set on the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:15;48:75" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">map</xmlelement>
+element?</entry>
+</row>
+</thead>
+<tbody class="- topic/tbody " xtrc="tbody:1;52:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<row class="- topic/row " xtrc="row:2;53:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="2" xtrc="entry:5;54:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:16;54:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">audience</xmlelement></entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="2" xtrc="entry:6;55:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Add to the topic</entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="2" xtrc="entry:7;56:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Yes</entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="2" xtrc="entry:8;57:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Specify an audience for the entire map</entry>
+</row>
+<row class="- topic/row " xtrc="row:3;59:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="3" xtrc="entry:9;60:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:17;60:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">author</xmlelement></entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="3" xtrc="entry:10;61:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Add to the topic</entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="3" xtrc="entry:11;62:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Yes</entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="3" xtrc="entry:12;63:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Specify an author for the entire map</entry>
+</row>
+<row class="- topic/row " xtrc="row:4;65:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="4" xtrc="entry:13;66:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:18;66:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">category</xmlelement></entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="4" xtrc="entry:14;67:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Add to the topic</entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="4" xtrc="entry:15;68:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Yes</entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="4" xtrc="entry:16;69:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Specify a category for the entire map</entry>
+</row>
+<row class="- topic/row " xtrc="row:5;71:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="5" xtrc="entry:17;72:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:19;72:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">copyright</xmlelement></entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="5" xtrc="entry:18;73:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Add to the topic</entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="5" xtrc="entry:19;74:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Yes</entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="5" xtrc="entry:20;75:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Specify a copyright for the entire map</entry>
+</row>
+<row class="- topic/row " xtrc="row:6;77:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="6" xtrc="entry:21;78:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:20;78:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">critdates</xmlelement></entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="6" xtrc="entry:22;79:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Add to the topic</entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="6" xtrc="entry:23;80:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Yes</entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="6" xtrc="entry:24;81:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Specify critical dates for the entire map</entry>
+</row>
+<row class="- topic/row " xtrc="row:7;83:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="7" xtrc="entry:25;84:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:21;84:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">data</xmlelement></entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="7" xtrc="entry:26;85:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Add to the topic</entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="7" xtrc="entry:27;86:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">No, unless specialized for a purpose that
+cascades</entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="7" xtrc="entry:28;88:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">No stated purpose, until the element is specialized</entry>
+</row>
+<row class="- topic/row " xtrc="row:8;90:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="8" xtrc="entry:29;91:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:22;91:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">data-about</xmlelement></entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="8" xtrc="entry:30;92:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Add the property to the specified target</entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="8" xtrc="entry:31;93:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">No, unless specialized for a purpose that
+cascades</entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="8" xtrc="entry:32;95:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">No stated purpose, until the element is
+specified</entry>
+</row>
+<row class="- topic/row " xtrc="row:9;98:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="9" xtrc="entry:33;99:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:23;99:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">foreign</xmlelement></entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="9" xtrc="entry:34;100:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Add to the topic</entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="9" xtrc="entry:35;101:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">No, unless specialized for a purpose that
+cascades</entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="9" xtrc="entry:36;103:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">No stated purpose, until the element is
+specified</entry>
+</row>
+<row class="- topic/row " xtrc="row:10;106:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="10" xtrc="entry:37;107:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:24;107:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">keywords</xmlelement></entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="10" xtrc="entry:38;108:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Add to the topic</entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="10" xtrc="entry:39;109:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">No</entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="10" xtrc="entry:40;110:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">No stated purpose</entry>
+</row>
+<row class="- topic/row " xtrc="row:11;112:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="11" xtrc="entry:41;113:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:25;113:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">linktext</xmlelement></entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="11" xtrc="entry:42;114:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Not added to the topic; applies only to links
+created based on this occurrence in the map</entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="11" xtrc="entry:43;116:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">No</entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="11" xtrc="entry:44;117:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">No stated purpose</entry>
+</row>
+<row class="- topic/row " xtrc="row:12;119:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="12" xtrc="entry:45;120:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:26;120:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">metadata</xmlelement></entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="12" xtrc="entry:46;121:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Add to the topic</entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="12" xtrc="entry:47;122:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Yes</entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="12" xtrc="entry:48;123:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Specify metadata for the entire map</entry>
+</row>
+<row class="- topic/row " xtrc="row:13;125:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="13" xtrc="entry:49;126:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:27;126:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">navtitle</xmlelement></entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="13" xtrc="entry:50;127:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Not added to the topic; applies only to navigation that is created based on
+              this occurrence in the map. The navigation title will be used whenever the
+                <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:1;129:25" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">locktitle</xmlatt> attribute on the containing
+                <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:28;130:29" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">topicref</xmlelement> element is set to "yes".</entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="13" xtrc="entry:51;131:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">No</entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="13" xtrc="entry:52;132:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">No stated purpose</entry>
+</row>
+<row class="- topic/row " xtrc="row:14;134:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="14" xtrc="entry:53;135:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:29;135:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">othermeta</xmlelement></entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="14" xtrc="entry:54;136:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Add to the topic</entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="14" xtrc="entry:55;137:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">No</entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="14" xtrc="entry:56;138:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Define metadata for the entire map</entry>
+</row>
+<row class="- topic/row " xtrc="row:15;140:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="15" xtrc="entry:57;141:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:30;141:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">permissions</xmlelement></entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="15" xtrc="entry:58;142:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Add to the topic</entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="15" xtrc="entry:59;143:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Yes</entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="15" xtrc="entry:60;144:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Specify permissions for the entire map</entry>
+</row>
+<row class="- topic/row " xtrc="row:16;146:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="16" xtrc="entry:61;147:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:31;147:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">prodinfo</xmlelement></entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="16" xtrc="entry:62;148:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Add to the topic</entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="16" xtrc="entry:63;149:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Yes</entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="16" xtrc="entry:64;150:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Specify product info for the entire map</entry>
+</row>
+<row class="- topic/row " xtrc="row:17;152:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="17" xtrc="entry:65;153:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:32;153:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">publisher</xmlelement></entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="17" xtrc="entry:66;154:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Add to the topic</entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="17" xtrc="entry:67;155:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Yes</entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="17" xtrc="entry:68;156:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Specify a publisher for the map</entry>
+</row>
+<row class="- topic/row " xtrc="row:18;158:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="18" xtrc="entry:69;159:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:33;159:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">resourceid</xmlelement></entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="18" xtrc="entry:70;160:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Add to the topic</entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="18" xtrc="entry:71;161:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">No</entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="18" xtrc="entry:72;162:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Specify a resource ID for the map</entry>
+</row>
+<row class="- topic/row " xtrc="row:19;164:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="19" xtrc="entry:73;165:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:34;165:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">searchtitle</xmlelement></entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="19" xtrc="entry:74;166:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Replace the one in the topic. If multiple <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:35;166:77" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">searchtitle</xmlelement>
+              elements are specified for a single target, processors <ph class="- topic/ph " xtrc="ph:3;168:18" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">can</ph> choose to issue a warning.</entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="19" xtrc="entry:75;169:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">No</entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="19" xtrc="entry:76;170:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">No stated purpose</entry>
+</row>
+<row class="- topic/row " xtrc="row:20;172:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="20" xtrc="entry:77;173:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:36;173:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">shortdesc</xmlelement></entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="20" xtrc="entry:78;174:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><ph class="- topic/ph " xtrc="ph:4;174:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Only added to the topic when the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:37;174:72" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">topicref</xmlelement> element
+        specifies a <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:2;175:29" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">copy-to</xmlatt> attribute. Otherwise, it applies only to links created
+        based on this occurrence in the map.</ph><note class="- topic/note " xtrc="note:1;176:56" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Processors <term class="- topic/term " outputclass="RFC-2119" xtrc="term:1;177:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">MAY</term> or <term class="- topic/term " outputclass="RFC-2119" xtrc="term:2;177:54" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">MAY NOT</term> implement this
+       behavior.</note></entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="20" xtrc="entry:79;179:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">No</entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="20" xtrc="entry:80;180:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Provide a description of the map</entry>
+</row>
+<row class="- topic/row " xtrc="row:21;182:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="21" xtrc="entry:81;183:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:38;183:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">source</xmlelement></entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="21" xtrc="entry:82;184:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Add to the topic</entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="21" xtrc="entry:83;185:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">No</entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="21" xtrc="entry:84;186:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Specify a source for the map</entry>
+</row>
+<row class="- topic/row " xtrc="row:22;188:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+<entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="22" xtrc="entry:85;189:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:39;189:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">unknown</xmlelement></entry>
+<entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="22" xtrc="entry:86;190:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Add to the topic</entry>
+<entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="22" xtrc="entry:87;191:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">No, unless specialized for a purpose that
+cascades</entry>
+<entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="22" xtrc="entry:88;193:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">No stated purpose, until the element is
+specified</entry>
+</row>
+<row class="- topic/row " xtrc="row:23;196:7" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+  <entry class="- topic/entry " colname="col1" dita-ot:x="1" dita-ot:y="23" xtrc="entry:89;197:25" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:40;197:37" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">ux-window</xmlelement></entry>
+  <entry class="- topic/entry " colname="col2" dita-ot:x="2" dita-ot:y="23" xtrc="entry:90;198:25" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Not added to the topic</entry>
+  <entry class="- topic/entry " colname="col3" dita-ot:x="3" dita-ot:y="23" xtrc="entry:91;199:29" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">No</entry>
+  <entry class="- topic/entry " colname="col4" dita-ot:x="4" dita-ot:y="23" xtrc="entry:92;200:29" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Definitions are global, so setting at map level is equivalent to setting
+              anywhere else.</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+    <example class="- topic/example " id="attr-cascade-example" otherprops="examples" xtrc="example:1;206:62" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">
+      <title class="- topic/title " xtrc="title:3;207:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">Example of metadata elements cascading in a DITA map</title>
+      <p class="- topic/p " xtrc="p:2;208:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">The following code sample illustrates how an information architect can apply certain
+        metadata to all the DITA topics in a
+        map:<codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:1;210:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">&lt;map title="DITA maps" xml:lang="en-us"&gt;
+	&lt;topicmeta&gt;
+		&lt;author&gt;Kristen James Eberlein&lt;/author&gt;
+		&lt;copyright&gt;
+			&lt;copyryear year="2009"/&gt;
+			&lt;copyrholder&gt;OASIS&lt;/copyrholder&gt;
+		&lt;/copyright&gt;
+	&lt;/topicmeta&gt;
+	&lt;topicref href="dita_maps.dita"&gt;
+		&lt;topicref href="definition_ditamaps.dita"/&gt;
+		&lt;topicref href="purpose_ditamaps.dita"/&gt;
+		&lt;!-- ... --&gt;
+       &lt;/topicref&gt;
+&lt;/map&gt;</codeblock></p>
+      <p class="- topic/p " xtrc="p:3;224:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/reconciling-topic-and-map-metadata.dita">The author and copyright information cascades to each of the DITA topics referenced in the
+        DITA map. When the DITA map is processed to XHTML, for example, each XHTML file contains the
+        metadata information.</p>
+    </example>
+</refbody>
+<related-links class="- topic/related-links "><linkpool class="- topic/linkpool " xtrc="topicref:58;285:77" xtrf="file:/C:/Git/dita/specification/base-relationship-tables.ditamap"><link class="- topic/link " format="dita" href="../../langRef/base/topicmeta.dita" mapclass="- map/topicref " role="friend" scope="local" type="reference" xtrc="topicref:56;281:44" xtrf="file:/C:/Git/dita/specification/base-relationship-tables.ditamap"><?ditaot usertext?><linktext class="- topic/linktext ">8.8.3.1.3 <?ditaot gentext?>topicmeta</linktext><?ditaot genshortdesc?><desc class="- topic/desc ">Topic metadata is metadata that applies to a topic based on its context     in a map.</desc></link></linkpool></related-links></reference>

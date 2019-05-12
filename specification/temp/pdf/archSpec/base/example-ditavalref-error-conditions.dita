@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\archSpec\base?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/archSpec/base/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic concept/concept " ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="example-ditavalref-error-conditions" xml:lang="en-us" xtrc="concept:1;3:68" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">
+  <title class="- topic/title " xtrc="title:1;4:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">Example: <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:1;4:31" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">ditavalref</xmlelement> error conditions</title>
+  <shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;5:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">It is an error condition when multiple, non-equivalent copies of the same file are
+    created with the same resource name.</shortdesc><prolog class="- topic/prolog "><author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author></prolog>
+  <conbody class="- topic/body  concept/conbody " xtrc="conbody:1;7:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">
+    <example class="- topic/example " id="ditavalref-error-conditions" otherprops="examples" xtrc="example:1;8:69" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">
+      <p class="- topic/p " xtrc="p:1;9:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">The following map fragment contains several error conditions that result in name
+        clashes:</p>
+      <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:1;11:18" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">&lt;topicref href="a.dita" keys="a"&gt;
+  &lt;ditavalref href="one.ditaval"/&gt;
+  &lt;ditavalref href="two.ditaval"/&gt;
+  &lt;topicref href="b.dita" keys="b"/&gt;
+&lt;/topicref&gt;
+&lt;topicref href="a.dita"/&gt;
+&lt;topicref href="c.dita" keys="c"&gt;
+  &lt;ditavalref href="one.ditaval"&gt;
+    &lt;ditavalmeta&gt;
+      &lt;dvrResourceSuffix&gt;-token&lt;/dvrResourceSuffix&gt;
+    &lt;/ditavalmeta&gt;
+  &lt;/ditavalref&gt;
+  &lt;ditavalref href="two.ditaval"&gt;
+    &lt;ditavalmeta&gt;
+      &lt;dvrResourceSuffix&gt;-token&lt;/dvrResourceSuffix&gt;
+    &lt;/ditavalmeta&gt;
+  &lt;/ditavalref&gt;
+&lt;/topicref&gt;
+</codeblock>
+      <p class="- topic/p " xtrc="p:2;30:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">In this sample, the effective map that results from evaluating the filter conditions has
+        several clashes. In some cases the same document must be processed with conflicting
+        conditions, using the same URI. In addition, because no key scope is added or modified, keys
+        in the branch are duplicated in such a way that only one version is available for use. When
+        the branches are evaluated to create distinct copies, the filtered branches result in the
+        following equivalent
+        map:<codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:2;36:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">&lt;topicref href="a.dita" keys="a"&gt; &lt;!-- a.dita to be filtered by one.ditaval --&gt;
+  &lt;topicref href="b.dita" keys="b"/&gt;  &lt;!-- b.dita to be filtered by one.ditaval --&gt;
+&lt;/topicref&gt;
+&lt;topicref href="a.dita" keys="a"&gt; &lt;!-- a.dita to be filtered by two.ditaval; key "a" ignored --&gt;
+  &lt;topicref href="b.dita" keys="b"/&gt;  &lt;!-- b.dita to be filtered by two.ditaval; key "b" ignored --&gt;
+&lt;/topicref&gt;
+&lt;topicref href="a.dita"/&gt;
+&lt;topicref href="c-token.dita" keys="c"&gt; 
+  &lt;!-- c-token.ditaval to be filtered by one.ditaval --&gt;
+&lt;/topicref&gt;
+&lt;topicref href="c-token.dita" keys="c"&gt; 
+  &lt;!-- c-token.ditaval to be filtered by two.ditaval, key "c" ignored --&gt;
+&lt;/topicref&gt;</codeblock>
+      </p>
+      <p class="- topic/p " xtrc="p:3;50:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">The equivalent map highlights several problems with the original source:<ul class="- topic/ul " xtrc="ul:1;50:86" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">
+          <li class="- topic/li " xtrc="li:1;51:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">The key names "a" and "b" are present in a branch that will be duplicated. No key
+            scope is introduced for either version of the branch, meaning that the keys will be
+            duplicated. Because there can only be one effective key definition for "a" or "b", it
+            only is possible to reference one version of the topic using keys.</li>
+          <li class="- topic/li " xtrc="li:2;55:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">The key name "c" is present on another branch that will be duplicated, resulting in
+            the same problem.</li>
+          <li class="- topic/li " xtrc="li:3;57:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">The file <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:1;57:34" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">c.dita</filepath> is filtered with two sets of conditions, each of
+            which explicitly maps the filtered resource to <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:2;58:70" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">c-token.dita</filepath>. This
+            is an error condition that should be reported by processors.</li>
+          <li class="- topic/li " xtrc="li:4;60:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">In situations where resource names map directly to output file names, such as an HTML5
+            rendering that creates files based on the original resource name, the following name
+            conflicts also occur. In this case a processor would need to report an error, use an
+            alternate naming scheme, or both:<ol class="- topic/ol " xtrc="ol:1;63:50" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">
+              <li class="- topic/li " xtrc="li:5;64:19" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita"><filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:3;64:29" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">a.dita</filepath> generates <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:4;64:67" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">a.html</filepath> using three
+                alternate set of conditions. One version uses <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:5;65:73" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">one.ditaval</filepath>, one
+                version uses <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:6;66:40" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">two.ditaval</filepath>, and the third version uses no
+                filtering.</li>
+              <li class="- topic/li " xtrc="li:6;68:19" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita"><filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:7;68:29" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">b.dita</filepath> generates <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:8;68:67" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">b.html</filepath> using two
+                alternate set of conditions. One version uses <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:9;69:73" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">one.ditaval</filepath>, and
+                the other version uses <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:10;70:50" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-ditavalref-error-conditions.dita">two.ditaval</filepath>.</li>
+            </ol></li>
+        </ul></p>
+    </example>
+  </conbody>
+</concept>

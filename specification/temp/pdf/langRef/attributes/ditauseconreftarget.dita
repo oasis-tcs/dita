@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\langRef\attributes?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/langRef/attributes/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Reference//EN?><?doctype-system reference.dtd?><reference xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic       reference/reference " ditaarch:DITAArchVersion="1.3" domains="(topic reference) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="usingthe-dita-use-conref-targetvalue" xml:lang="en-us" xtrc="reference:1;4:71" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">
+<title class="- topic/title " xtrc="title:1;5:8" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">Using the -dita-use-conref-target value</title>
+<shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;6:12" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">The value -dita-use-conref-target is available on enumerated attributes and <ph class="- topic/ph " xtrc="ph:1;7:8" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">can</ph> also be specified on other attributes. When an element uses
+      <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:1;8:15" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">conref</xmlatt> to pull in content, for any of its attributes assigned a value of
+    "-dita-use-conref-target", the resulting value for those attributes is also pulled in from the
+    referenced element.</shortdesc>
+<prolog class="- topic/prolog " xtrc="prolog:1;11:9" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita"><author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author><metadata class="- topic/metadata " xtrc="metadata:1;11:19" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">
+<keywords class="- topic/keywords " xtrc="keywords:1;12:11" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita"><indexterm class="- topic/indexterm " xtrc="indexterm:1;12:22" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">-dita-use-conref-target attribute value</indexterm>
+</keywords>
+</metadata></prolog>
+<refbody class="- topic/body        reference/refbody " xtrc="refbody:1;15:10" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">
+<section class="- topic/section " id="section-1" xtrc="section:1;16:25" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita"><p class="- topic/p " xtrc="p:1;16:28" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">Ordinarily, when an element uses <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:2;16:69" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">conref</xmlatt>, any other attributes specified locally
+        will be preserved when the reference is resolved. This causes problems when attributes are
+        required, because required attributes must be specified regardless of whether the
+          <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:3;19:19" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">conref</xmlatt> attribute is present. The purpose of the -dita-use-conref-target
+        value is to allow the author to specify a value for a required attribute while still
+        allowing the conref resolution process to use the matching attribute from the referenced
+        element. The value has the same result when the attribute is not required.</p>
+      <p class="- topic/p " xtrc="p:2;23:11" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">The -dita-use-conref-target token is allowed on any attribute where
+        it is not prohibited by the XML grammar files or by the specification. For example, while
+          <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:4;25:19" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">cols</xmlatt> on the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:1;25:52" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">tgroup</xmlelement> element is defined as being a
+        number, this token is implicitly allowed in order to support conref processing for
+          <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:2;27:23" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">tgroup</xmlelement>. However, the token is not allowed for the
+          <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:5;28:19" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">id</xmlatt> attribute on the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:3;28:60" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">topic</xmlelement> element, because
+        "-dita-use-conref-target" does not fit the syntax required by the XML grammar files.</p></section>
+<example class="- topic/example " id="example" otherprops="examples" xtrc="example:1;30:45" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">
+      <p class="- topic/p " xtrc="p:3;31:10" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">This example shows a map where the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:4;31:57" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">topichead</xmlelement> element uses
+          <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:6;32:19" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">conref</xmlatt>. It specifies the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:7;32:61" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">navtitle</xmlatt> attribute as well as
+        the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:8;33:21" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">toc</xmlatt> attribute. In the resolved element, <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:9;33:78" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">navtitle</xmlatt> from
+        the referencing element is not preserved because it uses -dita-use-conref-target. The
+          <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:10;35:19" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">toc</xmlatt> attribute from the referencing element overrides the
+          <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:11;36:19" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">toc</xmlatt> attribute on the referenced element using normal conref resolution
+        rules.</p>
+      <note class="- topic/note " xtrc="note:1;38:14" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">In earlier versions of DITA, <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:12;38:51" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">navtitle</xmlatt> was required on
+        the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:5;39:25" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">topichead</xmlelement> element. While it is no longer required, the example
+        still illustrates the expected processing for both required and non-required
+        attributes.</note>
+      <fig class="- topic/fig " id="example-fig1" xtrc="fig:1;42:30" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">
+        <title class="- topic/title " xtrc="title:2;43:16" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">Pre-resolution</title>
+        <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:1;44:20" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">&lt;map&gt;&lt;title&gt;Conref demonstration&lt;/title&gt;
+  &lt;topichead id="heading"
+             navtitle="This is a heading"
+             toc="yes"
+             linking="normal"&gt;
+    &lt;topicref href="topic.dita" navtitle="content"/&gt;
+  &lt;/topichead&gt;
+
+  &lt;topichead conref="#heading"
+             navtitle="-dita-use-conref-target"
+             toc="no"&gt;
+  &lt;/topichead&gt;
+&lt;/map&gt;</codeblock>
+      </fig>
+      <fig class="- topic/fig " id="example-fig2" xtrc="fig:2;58:30" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">
+        <title class="- topic/title " xtrc="title:3;59:16" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">Effective result post-resolution</title>
+        <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:2;60:21" xtrf="file:/C:/Git/dita/specification/langRef/attributes/ditauseconreftarget.dita">&lt;map&gt;&lt;title&gt;Conref demonstration&lt;/title&gt;
+  &lt;topichead id="heading"
+             navtitle="This is a heading"
+             toc="yes"
+             linking="normal"&gt;
+    &lt;topicref href="topic.dita" navtitle="content"/&gt;
+  &lt;/topichead&gt;
+
+  &lt;topichead navtitle="This is a heading"
+             toc="no"
+             linking="normal"&gt;
+    &lt;topicref href="topic.dita" navtitle="content"/&gt;
+  &lt;/topichead&gt;
+&lt;/map&gt;
+</codeblock>
+      </fig>
+    </example>
+</refbody>
+<related-links class="- topic/related-links "><linkpool class="- topic/linkpool " xtrc="topicref:35;199:58" xtrf="file:/C:/Git/dita/specification/base-relationship-tables.ditamap"><link class="- topic/link " format="dita" href="../../archSpec/base/conref.dita" mapclass="- map/topicref " role="friend" scope="local" type="concept" xtrc="topicref:36;202:87" xtrf="file:/C:/Git/dita/specification/base-relationship-tables.ditamap"><?ditaot usertext?><linktext class="- topic/linktext ">5.5.2 <?ditaot gentext?>Content reference (conref)</linktext><?ditaot genshortdesc?><desc class="- topic/desc ">The DITA conref attributes provide mechanisms for reusing content.   DITA content references support reuse scenarios that are difficult or impossible to implement   using other XML-based inclusion mechanisms like XInclude and entities. Additionally, DITA content   references have rules that help ensure that the results of content inclusion remain valid after   resolution</desc></link></linkpool></related-links></reference>

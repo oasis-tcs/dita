@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\archSpec\base?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/archSpec/base/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic concept/concept " ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="attdomain" xml:lang="en-us" xtrc="concept:1;4:42" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-attribute-domains.dita">
+  <title class="- topic/title " xtrc="title:1;5:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-attribute-domains.dita">DTD: Coding requirements for attribute domain modules</title>
+  
+  <shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;7:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-attribute-domains.dita">The vocabulary modules that define attribute domains have additional coding
+    requirements. The module must include a parameter entity for the new attribute, which can be
+    referenced in document-type shells, as well as a text entity that specifies the contribution to
+    the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:1;10:17" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-attribute-domains.dita">domains</xmlatt> attribute for the attribute domain.</shortdesc><prolog class="- topic/prolog "><author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author></prolog>
+  <conbody class="- topic/body  concept/conbody " xtrc="conbody:1;11:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-attribute-domains.dita">
+    <p class="- topic/p " xtrc="p:25;262:41" xtrf="file:/C:/Git/dita/specification/common/conref-file.dita">An attribute domain's name is the name of the attribute plus
+        "Att". For example, for the attribute named "deliveryTarget" the attribute domain name is
+        "deliveryTargetAtt". The attribute domain name is used to construct entity names for the
+        domain. </p>
+    <dl class="- topic/dl " xtrc="dl:1;13:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-attribute-domains.dita">
+      <dlentry class="- topic/dlentry " xtrc="dlentry:1;14:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-attribute-domains.dita">
+        <dt class="- topic/dt " xtrc="dt:1;15:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-attribute-domains.dita">Parameter entity name and value</dt>
+        <dd class="- topic/dd " xtrc="dd:1;16:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-attribute-domains.dita">The name of the parameter entity is the attribute domain name, followed by the literal
+          "-d-attribute". The value of the parameter entity is a DTD declaration for the
+          attribute.</dd>
+      </dlentry>
+      <dlentry class="- topic/dlentry " xtrc="dlentry:2;20:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-attribute-domains.dita">
+        <dt class="- topic/dt " xtrc="dt:2;21:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-attribute-domains.dita">Text entity name and value</dt>
+        <dd class="- topic/dd " xtrc="dd:2;22:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-attribute-domains.dita">The text entity name is the attribute domain name, followed by the literal
+            <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:1;23:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-attribute-domains.dita">-d-Att</codeph>. The value of the text entity is the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:2;23:82" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-attribute-domains.dita">domains</xmlatt>
+          attribute contribution for the module; see <xref class="- topic/xref " href="specialization-domains-attribute.dita" xtrc="xref:1;25:59" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-attribute-domains.dita" type="concept"><?ditaot gentext?>domains attribute rules and syntax<?ditaot genshortdesc?><desc class="- topic/desc ">The <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:2;6:25" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domains</xmlatt> attribute enables processors to     determine whether two elements or two documents use compatible domains. The attribute is     declared on the root element for each topic or map type. Each structural, domain, and constraint     module defines its ancestry as a parenthesized sequence of space-separated module names; the     effective value of the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:3;10:36" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domains</xmlatt> attribute is composed of these parenthesized     sequences.</desc></xref> for details on how to construct this
+          value. </dd>
+      </dlentry>
+    </dl>
+    <example class="- topic/example " id="example" otherprops="examples" xtrc="example:1;29:49" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-attribute-domains.dita">
+      <title class="- topic/title " xtrc="title:2;30:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-attribute-domains.dita">Example</title>
+      <p class="- topic/p " xtrc="p:2;31:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-attribute-domains.dita">The <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:3;31:22" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-attribute-domains.dita">deliveryTarget</xmlatt> attribute can be defined in a vocabulary module using
+        the following two entities.</p>
+      <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:1;33:18" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-attribute-domains.dita">&lt;!ENTITY % deliveryTargetAtt-d-attribute
+  "deliveryTarget  CDATA  #IMPLIED"
+&gt;
+
+&lt;!ENTITY deliveryTargetAtt-d-att "a(props deliveryTarget)" &gt;</codeblock>
+    </example>
+  </conbody>
+</concept>

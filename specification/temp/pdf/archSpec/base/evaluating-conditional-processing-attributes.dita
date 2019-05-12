@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\archSpec\base?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/archSpec/base/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic concept/concept " ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="evaluating-conditional-processing-attributes" xml:lang="en-us" xtrc="concept:1;3:77" xtrf="file:/C:/Git/dita/specification/archSpec/base/evaluating-conditional-processing-attributes.dita">
+ <title class="- topic/title " xtrc="title:1;4:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/evaluating-conditional-processing-attributes.dita">Example: Filtering and flagging topic content</title>
+ <shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;5:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/evaluating-conditional-processing-attributes.dita">A publisher might want to flag information that applies to administrators, and to
+    exclude information that applies to the extended product.</shortdesc><prolog class="- topic/prolog "><author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author></prolog>
+ <conbody class="- topic/body  concept/conbody " xtrc="conbody:1;7:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/evaluating-conditional-processing-attributes.dita">
+  <p class="- topic/p " xtrc="p:1;8:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/evaluating-conditional-processing-attributes.dita">Consider the following DITA source fragment and conditional processing profile:</p>
+    <fig class="- topic/fig " xtrc="fig:1;9:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/evaluating-conditional-processing-attributes.dita">
+      <title class="- topic/title " xtrc="title:2;10:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/evaluating-conditional-processing-attributes.dita">DITA source fragment</title>
+      <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:1;11:18" xtrf="file:/C:/Git/dita/specification/archSpec/base/evaluating-conditional-processing-attributes.dita">&lt;p audience="administrator"&gt;Set the configuration options:
+  &lt;ul&gt;
+    &lt;li product="extendedprod"&gt;Set foo to bar&lt;/li&gt;
+    &lt;li product="basicprod extendedprod"&gt;Set your blink rate&lt;/li&gt;
+    &lt;li&gt;Do some other stuff&lt;/li&gt;
+    &lt;li&gt;Do a special thing for Linux&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/p&gt;</codeblock>
+    </fig>
+    <fig class="- topic/fig " xtrc="fig:2;20:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/evaluating-conditional-processing-attributes.dita">
+      <title class="- topic/title " xtrc="title:3;21:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/evaluating-conditional-processing-attributes.dita">DITAVAL profile</title>
+      <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:2;22:18" xtrf="file:/C:/Git/dita/specification/archSpec/base/evaluating-conditional-processing-attributes.dita">&lt;val&gt;
+  &lt;prop att="audience" val="administrator" action="flag"&gt;
+    &lt;startflag&gt;&lt;alt-text&gt;ADMIN&lt;/alt-text&gt;&lt;/startflag&gt;
+  &lt;/prop&gt;
+  &lt;prop att="product" val="extendedprod" action="exclude"/&gt;
+&lt;/val&gt;</codeblock>
+    </fig>
+  <p class="- topic/p " xtrc="p:2;29:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/evaluating-conditional-processing-attributes.dita">When the content is rendered, the paragraph is flagged, and the first list item is excluded
+      (since it applies to extendedprod). The second list item is still included; even though it
+      does apply to extendedprod, it also applies to basicprod, which was not excluded.</p>
+  <p class="- topic/p " xtrc="p:3;32:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/evaluating-conditional-processing-attributes.dita">The result should look something like the following: <fig class="- topic/fig " xtrc="fig:3;32:64" xtrf="file:/C:/Git/dita/specification/archSpec/base/evaluating-conditional-processing-attributes.dita">
+    <p class="- topic/p " xtrc="p:4;33:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/evaluating-conditional-processing-attributes.dita"><b class="+ topic/ph hi-d/b " xtrc="b:1;33:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/evaluating-conditional-processing-attributes.dita">ADMIN</b> Set the configuration options: <ul class="- topic/ul " xtrc="ul:1;33:56" xtrf="file:/C:/Git/dita/specification/archSpec/base/evaluating-conditional-processing-attributes.dita">
+      <li class="- topic/li " xtrc="li:1;34:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/evaluating-conditional-processing-attributes.dita">Set your blink rate</li>
+      <li class="- topic/li " xtrc="li:2;35:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/evaluating-conditional-processing-attributes.dita">Do some other stuff </li>
+      <li class="- topic/li " xtrc="li:3;36:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/evaluating-conditional-processing-attributes.dita">Do a special thing for Linux</li>
+     </ul></p>
+   </fig></p>
+ </conbody>
+</concept>

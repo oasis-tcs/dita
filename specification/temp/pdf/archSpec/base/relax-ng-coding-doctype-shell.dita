@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\archSpec\base?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/archSpec/base/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic concept/concept " ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="concept_rrq_p45_dn" xml:lang="en-us" xtrc="concept:1;3:52" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">
+  <title class="- topic/title " xtrc="title:1;4:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">RELAX NG: Coding requirements for document-type shells</title>
+  <shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;5:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">A document-type shell integrates one or more topic type or map type modules, zero or
+    more domain modules, and zero or more constraint modules.</shortdesc><prolog class="- topic/prolog "><author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author></prolog>
+  <conbody class="- topic/body  concept/conbody " xtrc="conbody:1;7:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">
+    <p class="- topic/p " xtrc="p:1;8:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">Because RELAX NG modules are self-integrating, document-type shells only need to include
+      vocabulary modules. Unlike DTDs, there is no separate specification required in order to
+      integrate domain and nested topic elements into the base content models.
+      </p>
+    
+    <dl class="- topic/dl " xtrc="dl:1;13:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">
+      <dlentry class="- topic/dlentry " xtrc="dlentry:1;14:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">
+        <dt class="- topic/dt " xtrc="dt:1;15:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">Root element declaration</dt>
+        <dd class="- topic/dd " xtrc="dd:1;16:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">
+          <p class="- topic/p " xtrc="p:2;17:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">Document type shells use the RELAX NG start declaration to specify the root element of
+            the document type. The <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:1;18:48" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">start</xmlelement> element defines one root element,
+            using a reference to a <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:1;19:44" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita"><varname class="+ topic/keyword sw-d/varname " xtrc="varname:1;19:53" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">tagname</varname>.element</codeph> pattern.</p>
+          <p class="- topic/p " otherprops="examples" xtrc="p:3;20:36" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">For
+            example:<codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:1;21:32" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">&lt;div&gt;
+  &lt;a:documentation&gt;ROOT ELEMENT DECLARATION&lt;/a:documentation&gt;
+  &lt;start combine="choice"&gt;
+    &lt;ref name="topic.element"/&gt;
+  &lt;/start&gt;
+&lt;/div&gt;</codeblock></p>
+        </dd>
+      </dlentry>
+      <dlentry class="- topic/dlentry " xtrc="dlentry:2;29:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">
+        <dt class="- topic/dt " xtrc="dt:2;30:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">DITA domains attribute</dt>
+        <dd class="- topic/dd " xtrc="dd:2;31:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">
+          <p class="- topic/p " xtrc="p:4;32:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">The document-type shell must list the domain or structural modules that are named as
+            dependencies in the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:1;33:41" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">domains</xmlatt> attribute value. Unlike DTDs, a default
+            value for <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:2;34:31" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">domains</xmlatt> cannot automatically be constructed using RELAX NG
+            facilities. Instead, the values used to construct <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:3;35:71" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">domains</xmlatt> are taken
+            from each vocabulary and constraint module, in addition to any domains contributions
+            based on constraints implemented within the shell. </p>
+          <p class="- topic/p " otherprops="examples" xtrc="p:5;38:36" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">For
+            example:<codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:2;39:32" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">&lt;div&gt;
+  &lt;a:documentation&gt;DOMAINS ATTRIBUTE&lt;/a:documentation&gt;
+  &lt;define name="domains-att"&gt;
+    &lt;optional&gt;
+      &lt;attribute name="domains"
+                 a:defaultValue="(topic hazard-d)
+                                 (topic hi-d)
+                                 (topic indexing-d)
+                                 (topic ut-d)
+                                 a(props deliveryTarget)"
+      /&gt;
+    &lt;/optional&gt;
+  &lt;/define&gt;
+&lt;/div&gt;</codeblock></p>
+        </dd>
+      </dlentry>
+      <dlentry class="- topic/dlentry " id="content-constraint" xtrc="dlentry:3;55:40" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">
+        <dt class="- topic/dt " xtrc="dt:3;56:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">Content constraint integration</dt>
+        <dd class="- topic/dd " xtrc="dd:3;57:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">
+          <p class="- topic/p " xtrc="p:6;58:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">The document-type shell must include any constraint modules. Constraint modules include
+            the module they override and override the patterns that they constrain directly in the
+            constraint module itself. Any module that is constrained in this section (including the
+            base topic or map modules) will be left out of the following section.</p>
+          <p class="- topic/p " otherprops="examples" xtrc="p:7;62:36" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">For example, when the following constraint
+            is included for the task module, the task module itself will <i class="+ topic/ph hi-d/i " xtrc="i:1;63:77" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">not</i> be included in
+            the shell; the task module itself is included within
+              <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:1;65:25" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">strictTaskbodyConstraintMod.rng</filepath>:<codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:3;65:79" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">&lt;div&gt;
+&lt;a:documentation&gt;CONTENT CONSTRAINT INTEGRATION&lt;/a:documentation&gt;
+  &lt;include href="strictTaskbodyConstraintMod.rng"&gt;
+    &lt;define name="task-info-types"&gt;
+      &lt;ref name="task.element"/&gt;
+    &lt;/define&gt;            
+  &lt;/include&gt;
+&lt;/div&gt;</codeblock></p>
+        </dd>
+      </dlentry>
+      <dlentry class="- topic/dlentry " id="module-inclusion" xtrc="dlentry:4;75:38" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">
+        <dt class="- topic/dt " xtrc="dt:4;76:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">Module inclusions</dt>
+        <dd class="- topic/dd " xtrc="dd:4;77:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">
+          <p class="- topic/p " xtrc="p:8;78:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">The document-type shell must include any unconstrained domain or structural module. If
+            the top-level map or topic type is unconstrained, it is also included in this
+            section.</p>
+          <p class="- topic/p " otherprops="examples" xtrc="p:9;81:36" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">For
+            example:<codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:4;82:32" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">&lt;div&gt;
+  &lt;a:documentation&gt;MODULE INCLUSIONS&lt;/a:documentation&gt;
+  &lt;include href="topicMod.rng"/&gt;
+  &lt;include href="highlightDomainMod.rng"/&gt;
+  &lt;include href="utilitiesDomainMod.rng"/&gt;
+  &lt;include href="indexingDomainMod.rng"/&gt;
+  &lt;include href="hazardstatementDomainMod.rng"/&gt;
+&lt;/div&gt;</codeblock></p>
+        </dd>
+      </dlentry>
+      <dlentry class="- topic/dlentry " id="constrain-domains-in-shell" xtrc="dlentry:5;92:48" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">
+        <dt class="- topic/dt " xtrc="dt:5;93:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">Constraining domains in the shell</dt>
+        <dd class="- topic/dd " xtrc="dd:5;94:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">
+          <p class="- topic/p " xtrc="p:10;95:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">Domains can be constrained to disallow some extension elements without the use of a
+            separate module file. This is done by overriding the base type pattern within the
+            reference to the domain module. In this case, the constraint represented by the pattern
+            redefinition still must be declared in the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:4;98:64" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">domains</xmlatt> attribute; the
+              <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:5;99:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">domains</xmlatt> contribution should be documented in the document-type shell
+            with the constraint. There is not a designated section of the document-type shell for
+            this type of constraint; it can be placed either in <xref class="- topic/xref " format="dita" href="#concept_rrq_p45_dn/content-constraint" xtrc="xref:1;102:76" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita" type="dlentry"><?ditaot gentext?>Content constraint integration</xref> or <xref class="- topic/xref " format="dita" href="#concept_rrq_p45_dn/module-inclusion" xtrc="xref:2;103:74" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita" type="dlentry"><?ditaot gentext?>Module inclusions</xref>.</p>
+          <p class="- topic/p " otherprops="examples" xtrc="p:11;104:36" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">The following example demonstrates the portion of a document type
+            shell that includes the highlight domain module while directly constraining that module
+            to remove the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:2;106:39" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">u</xmlelement> element. The
+              <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:3;107:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">ditaarch:domainsContribution</xmlelement> element is used to document the
+              <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:6;108:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">domains</xmlatt> contribution for this constraint. </p>
+          <codeblock class="+ topic/pre pr-d/codeblock " otherprops="examples" xml:space="preserve" xtrc="codeblock:5;109:44" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">
+  &lt;div&gt;
+    &lt;a:documentation&gt;MODULE INCLUSIONS&lt;/a:documentation&gt;
+    &lt;include href="topicMod.rng"/&gt;
+    &lt;include href="hazardstatementDomainMod.rng"/&gt;
+    &lt;include href="highlightDomainMod.rng"&gt;
+      &lt;ditaarch:domainsContribution
+        &gt;(topic hi-d-noUnderline-c)&lt;/ditaarch:domainsContribution&gt;
+      &lt;define name="u"&gt;
+        &lt;notAllowed&gt;&lt;/notAllowed&gt;
+      &lt;/define&gt;
+    &lt;/include&gt;
+    &lt;include href="indexingDomainMod.rng"/&gt;
+    &lt;include href="utilitiesDomainMod.rng"/&gt;
+  &lt;/div&gt;
+</codeblock>
+        </dd>
+      </dlentry>
+      <dlentry class="- topic/dlentry " xtrc="dlentry:6;127:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">
+        <dt class="- topic/dt " xtrc="dt:6;128:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">ID-defining element overrides</dt>
+        <dd class="- topic/dd " xtrc="dd:6;129:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">
+          <p class="- topic/p " xtrc="p:12;130:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">This section must declare any element in the document type that uses an
+              <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:7;131:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">id</xmlatt> attribute with an XML data type of "ID". This declaration is
+            required in order to avoid errors from RELAX NG parsers that would otherwise complain
+            about different uses of the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:8;133:49" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">id</xmlatt> attribute. </p>
+          <p class="- topic/p " xtrc="p:13;134:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">Typically, this section lists only a few elements, such as topic types or the
+              <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:4;135:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">anchor</xmlelement> element, but it could include specializations that
+            constrain <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:9;136:31" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">id</xmlatt>. In addition, foreign vocabularies require you to include
+            exclusions for the namespaces used by those domains.</p>
+          <p class="- topic/p " otherprops="examples" xtrc="p:14;138:36" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">For example, this section declares that
+              <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:5;139:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">topic</xmlelement> and <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:6;139:62" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">task</xmlelement> use an
+              <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:10;140:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">id</xmlatt> attribute with an XML data type of ID, along with any elements in
+            the SVG or MathML namespaces. Each of these is excluded from the "any" pattern by
+            placing them within the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:7;142:49" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">except</xmlelement> rule as shown
+            below:<codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:6;143:30" xtrf="file:/C:/Git/dita/specification/archSpec/base/relax-ng-coding-doctype-shell.dita">  &lt;div&gt;
+      &lt;a:documentation&gt; ID-DEFINING-ELEMENT OVERRIDES &lt;/a:documentation&gt;
+      &lt;define name="any"&gt;
+         &lt;zeroOrMore&gt;
+            &lt;choice&gt;
+               &lt;ref name="idElements"/&gt;
+               &lt;element&gt;
+                  &lt;anyName&gt;
+                     &lt;except&gt;
+                        &lt;name&gt;topic&lt;/name&gt;
+                        &lt;name&gt;task&lt;/name&gt;
+                        &lt;nsName ns="http://www.w3.org/2000/svg"/&gt;
+                        &lt;nsName ns="http://www.w3.org/1998/Math/MathML"/&gt;
+                     &lt;/except&gt;
+                  &lt;/anyName&gt;
+                  &lt;zeroOrMore&gt;
+                     &lt;attribute&gt;
+                        &lt;anyName/&gt;
+                     &lt;/attribute&gt;
+                  &lt;/zeroOrMore&gt;
+                  &lt;ref name="any"/&gt;
+               &lt;/element&gt;
+               &lt;text/&gt;
+            &lt;/choice&gt;
+         &lt;/zeroOrMore&gt;
+      &lt;/define&gt;
+  &lt;/div&gt;
+</codeblock></p>
+        </dd>
+      </dlentry>
+    </dl>
+  </conbody>
+</concept>

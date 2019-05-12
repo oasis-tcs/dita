@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\archSpec\base?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/archSpec/base/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic concept/concept " ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="concept_qz4_35z_lp" xml:lang="en-us" xtrc="concept:1;3:51" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">
+ <title class="- topic/title " xtrc="title:1;4:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">Example: Link redirection</title>
+ <shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;5:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">This scenario outlines how different authors can redirect links to a common topic by
+    using key definitions. <ph class="- topic/ph " xtrc="ph:1;6:33" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">This could apply to
+        <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:1;7:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">xref</xmlelement>, <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:2;7:52" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">link</xmlelement>, or any elements (such as
+        <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:3;8:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">keyword</xmlelement> or <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:4;8:57" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">term</xmlelement>) that become navigation
+      links.</ph></shortdesc><prolog class="- topic/prolog "><author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author></prolog>
+ <conbody class="- topic/body  concept/conbody " xtrc="conbody:1;10:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">
+  <p class="- topic/p " xtrc="p:1;11:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">A company wants to use a common DITA topic for information about recycling:
+    <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:1;12:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">recycling.dita</filepath>. However, the topic contains a cross-reference to a topic
+   that needs to be unique for each product line; each such topic contains product-specific
+   URLs.</p>
+  <ol class="- topic/ol " xtrc="ol:1;15:7" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">
+   <li class="- topic/li " xtrc="li:1;16:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">
+    <p class="- topic/p " xtrc="p:2;17:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">The editing team creates a <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:2;17:45" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">recycling.dita</filepath> topic that includes a
+     cross-reference to the product-specific topic. The cross reference is implemented using a key
+     reference:</p>
+    <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:1;20:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">&lt;xref keyref="product-recycling-info" href="generic-recycling-info.dita"/&gt;</codeblock>
+    <p class="- topic/p " xtrc="p:3;21:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">The value of the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:1;21:33" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">href</xmlatt> attribute provides a fallback in the event that a
+     product team forgets to include a key definition for "product-recycling-info".</p>
+   </li>
+   <li class="- topic/li " xtrc="li:2;24:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">
+    <p class="- topic/p " xtrc="p:4;25:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">Each product documentation group creates a unique key definition for
+     "product-recycling-info". Each group authors the key definition in a DITA map, for example:</p>
+    <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:2;27:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">&lt;map&gt;
+  &lt;!-- ... --&gt;
+  &lt;keydef keys="product-recycling-info" href="acme-server-recycling.dita"/&gt;
+  &lt;!-- ... --&gt;
+&lt;/map&gt;</codeblock>
+    <p class="- topic/p " xtrc="p:5;32:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">Each team can use the <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:3;32:40" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">recycling.dita</filepath> topic, and the cross reference in
+     the topic resolves differently for each team.</p>
+   </li>
+   <li class="- topic/li " xtrc="li:3;35:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">
+    <p class="- topic/p " xtrc="p:6;36:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">A year later, there is an acquisition. The newly-acquired team wants to reuse Acme's common
+     material, but it needs to direct its users to an external Web site that lists the URLs, rather
+     than a topic in the product documentation. Their key definition looks like the following:</p>
+    <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:3;39:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">&lt;topicref  keys="product-recycling-info" 
+                  href="http://acme.example.com/server/recycling" 
+                  scope="external" format="html"/&gt;
+ </codeblock>
+    <p class="- topic/p " xtrc="p:7;43:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">When newly-acquired team uses the <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:4;43:52" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">recycling.dita</filepath> topic, it resolves to
+     the external Web site; however for all other teams, the cross reference in the topic continues
+     to resolves to their product-specific topic.</p>
+   </li>
+   <li class="- topic/li " xtrc="li:4;47:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">
+    <p class="- topic/p " xtrc="p:8;48:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">A new product team is formed, and the team forgets to include a key definition for
+     "product-recycling-info" in one of their root maps. Because the cross reference in the
+      <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:5;50:17" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">recycling.dita</filepath> topic contains a value for the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:2;50:82" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">href</xmlatt>
+     attribute, the link falls back to <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:6;51:50" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-key-use-for-link-redirection.dita">generic-recycling-info.dita</filepath>, thus
+     avoiding a broken cross reference in the output.</p>
+   </li>
+  </ol>
+ </conbody>
+</concept>

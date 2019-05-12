@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\archSpec\base?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/archSpec/base/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic concept/concept " ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="concept_nsb_nv4_3q" xml:lang="en-us" xtrc="concept:1;3:51" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">
+ <title class="- topic/title " xtrc="title:1;4:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">Key scopes</title>
+ <shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;5:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">Key scopes enable map authors to specify different sets of key definitions for different
+    map branches.</shortdesc><prolog class="- topic/prolog "><author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author></prolog>
+ <conbody class="- topic/body  concept/conbody " xtrc="conbody:1;7:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">
+    <p class="- topic/p " xtrc="p:1;8:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">A key scope is defined by a <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:1;8:48" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">map</xmlelement> or <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:2;8:80" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">topicref</xmlelement>
+      element that specifies the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:1;9:42" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">keyscope</xmlatt> attribute. The <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:2;9:83" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">keyscope</xmlatt>
+      attribute specifies the names of the scope, separated by spaces. The
+        legal characters for a key scope name are the same as those for keys.</p>
+    <p class="- topic/p " xtrc="p:2;12:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">A key scope includes the following components:</p>
+    <ul class="- topic/ul " xtrc="ul:1;13:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">
+      <li class="- topic/li " xtrc="li:1;14:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">The scope-defining element</li>
+      <li class="- topic/li " xtrc="li:2;15:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">The elements that are contained by the scope-defining element, minus the elements that are
+        contained by child key scopes</li>
+      <li class="- topic/li " xtrc="li:3;17:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">The elements that are referenced by the scope-defining element or its descendants, minus
+        the elements that are contained by child key scopes</li>
+    </ul>
+    <p class="- topic/p " xtrc="p:3;20:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">If the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:3;20:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">keyscope</xmlatt> attribute is specified on both a
+      reference to a DITA map and the root element of the referenced map, only one scope is created;
+      the submap does not create another level of scope hierarchy. The single key scope that results
+      from this scenario has multiple names; its names are the union of the values of the
+        <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:4;24:17" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">keyscope</xmlatt> attribute on the map reference and the root element of the submap.
+      This means that processors can resolve references to both the key scopes specified on the map
+      reference and the key scopes specified on the root element of the submap.</p>
+    <p class="- topic/p " xtrc="p:4;27:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">The root element of a root map always defines a key scope, regardless of whether a
+        <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:5;28:17" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">keyscope</xmlatt> attribute is present. All key definitions and key references exist
+      within a key scope, even if it is an unnamed, implicit key scope that is defined by the root
+      element in the root map.</p>
+    <p class="- topic/p " xtrc="p:5;31:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">Each key scope has its own key space that is used to resolve the key references that occur
+      within the scope. The key space that is associated with a key scope includes all of the key
+      definitions within the key scope. This means that different key scopes can have different
+      effective key definitions:</p>
+    <ul class="- topic/ul " xtrc="ul:2;35:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">
+      <li class="- topic/li " xtrc="li:4;36:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">A given key can be defined in one scope, but not another.</li>
+      <li class="- topic/li " xtrc="li:5;37:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita"> A given key also can be defined differently in different key scopes.</li>
+    </ul>
+    <p class="- topic/p " xtrc="p:6;39:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita"> Key references in each key scope are resolved using the effective key definition that is
+      specified within its own key scope.</p>
+    
+    <example class="- topic/example " id="example-1" otherprops="examples" xtrc="example:1;42:52" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">
+      <title class="- topic/title " xtrc="title:2;43:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">Example: Key scopes specified on both the map reference and the root element of the
+        submap</title>
+      <p class="- topic/p " xtrc="p:7;45:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">Consider the following scenario:</p>
+      <fig class="- topic/fig " xtrc="fig:1;46:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">
+        <title class="- topic/title " xtrc="title:3;47:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">Root map</title>
+        <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:1;48:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">&lt;map&gt;
+  &lt;mapref keyscope="A" href="installation.ditamap"/&gt;
+  &lt;!-- ... --&gt;
+&lt;/map&gt;</codeblock>
+      </fig>
+      <fig class="- topic/fig " xtrc="fig:2;53:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">
+        <title class="- topic/title " xtrc="title:4;54:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita"><filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:1;54:26" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">installation.ditamap</filepath></title>
+        <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:2;55:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">&lt;map keyscope="B"&gt;
+  &lt;!-- ... --&gt;
+&lt;/map&gt;</codeblock>
+      </fig>
+      <p class="- topic/p " xtrc="p:8;59:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/keyScopes.dita">Only one key scope is created; it has key scope names of "A" and "B".</p>
+    </example>
+  </conbody>
+</concept>

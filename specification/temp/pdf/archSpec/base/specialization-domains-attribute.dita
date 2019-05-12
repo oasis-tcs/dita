@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\archSpec\base?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/archSpec/base/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic concept/concept " ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="domainsatt" xml:lang="en-us" xtrc="concept:1;4:43" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+<title class="- topic/title " xtrc="title:1;5:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita"><xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:1;5:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domains</xmlatt> attribute rules and syntax</title>
+<shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;6:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">The <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:2;6:25" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domains</xmlatt> attribute enables processors to
+    determine whether two elements or two documents use compatible domains. The attribute is
+    declared on the root element for each topic or map type. Each structural, domain, and constraint
+    module defines its ancestry as a parenthesized sequence of space-separated module names; the
+    effective value of the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:3;10:36" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domains</xmlatt> attribute is composed of these parenthesized
+    sequences.</shortdesc><prolog class="- topic/prolog "><author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author></prolog>
+<conbody class="- topic/body  concept/conbody " xtrc="conbody:1;12:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+    <p class="- topic/p " xtrc="p:1;13:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">Document type shells collect the values that are provided by each module to construct the
+      effective value of the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:4;14:38" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domains</xmlatt> attribute. Processors can examine the
+      collected values when content from one document is used in another, in order to determine
+      whether the content is compatible.</p>
+    <p class="- topic/p " otherprops="examples" xtrc="p:2;17:30" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">For example, when an author pastes content from one topic into another
+      topic within an XML editor, the application can use the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:5;18:71" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domains</xmlatt> attribute to
+      determine if the two topics use compatible domains. If not, copied content from the first
+      topic might need to be generalized before it can be placed in the other topic. </p>
+    <p class="- topic/p " otherprops="examples" xtrc="p:3;21:30" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">The <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:6;21:42" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domains</xmlatt> attribute serves the same function when an
+      element uses the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:7;22:32" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">conref</xmlatt> attribute to reference a more specialized version of
+      the element. For example, a <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:1;23:47" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">note</xmlelement> element in a concept topic conrefs a
+        <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:2;24:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">hazardstatement</xmlelement> element in a reference document. If the hazard
+      statement domain is not available in the concept topic, the
+        <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:3;26:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">hazardstatement</xmlelement> element is generalized to a
+        <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:4;27:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">note</xmlelement> element when the content reference is resolved.</p>
+    <section class="- topic/section " id="syntax" xtrc="section:1;28:26" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+      <title class="- topic/title " xtrc="title:2;29:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">Syntax and rules</title>
+      
+      <p class="- topic/p " xtrc="p:4;31:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">Each domain and constraint module <term class="- topic/term " outputclass="RFC-2119" xtrc="term:1;32:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">MUST</term> provide a value for use by the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:8;32:63" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domains</xmlatt> attribute. Each
+        structural vocabulary module <term class="- topic/term " outputclass="RFC-2119" xtrc="term:2;33:67" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">SHOULD</term>
+        provide a value for use by the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:9;34:48" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domains</xmlatt> attribute, and it <term class="- topic/term " outputclass="RFC-2119" xtrc="term:3;35:34" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">MUST</term> do so when it has a dependency on
+        elements from any module that is not part of its specialization ancestry.</p>
+      <p class="- topic/p " xtrc="p:5;37:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">Values provided for the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:10;37:43" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domains</xmlatt> attribute values are
+        specified from root module (map or topic) to the provided module.</p>
+      <dl class="- topic/dl " xtrc="dl:1;39:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+        <dlentry class="- topic/dlentry " id="structural-modules" xtrc="dlentry:1;40:42" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+          <dt class="- topic/dt " xtrc="dt:1;41:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">structural modules</dt>
+          <dd class="- topic/dd " xtrc="dd:1;42:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+            <p class="- topic/p " xtrc="p:6;43:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">The value of the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:11;43:41" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domains</xmlatt> attribute includes each module in the
+              specialization ancestry:</p>
+            <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:1;45:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita"> '(', <varname class="+ topic/keyword sw-d/varname " xtrc="varname:1;45:39" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">topic-or-map</varname>, (' ', <varname class="+ topic/keyword sw-d/varname " xtrc="varname:2;45:78" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">module</varname>)+, ')'</codeblock>
+            <p class="- topic/p " otherprops="examples" xtrc="p:7;46:38" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">For example, consider the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:5;46:76" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">glossentry</xmlelement>
+              specialization, in which the topic type is specialized to the concept type, and the
+              concept type is specialized to glossentry. The structural module contribution to the
+              value of the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:12;49:36" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domains</xmlatt> attribute for the glossentry structural module
+              is <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:1;50:26" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">(topic concept glossentry)</codeph>.</p>
+          </dd>
+        </dlentry>
+        <dlentry class="- topic/dlentry " id="structural-modules-with-dependencies" xtrc="dlentry:2;53:61" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+          <dt class="- topic/dt " xtrc="dt:2;54:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">structural modules with dependencies</dt>
+          <dd class="- topic/dd " xtrc="dd:2;55:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+            <p class="- topic/p " xtrc="p:8;56:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">Structural modules can directly reference or specialize elements from modules that
+              are outside of their specialization ancestry. They also can define specialized
+              elements that reference specialized attributes. In these cases the structural module
+              has a dependency on the non-ancestor module, and the structural module contribution to
+              the value of the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:13;60:40" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domains</xmlatt> attribute <term class="- topic/term " outputclass="RFC-2119" xtrc="term:4;61:18" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">MUST</term> include the names of each dependent, non-ancestor
+              module.</p>
+            <p class="- topic/p " xtrc="p:9;63:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">Dependencies are included in the value of the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:14;63:70" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domains</xmlatt> attribute
+              following the name of the structural module with the dependency on the non-ancestor
+              module. Domain or attribute modules are appended to the name of the structural module
+              with the dependency on the non-ancestor module, or to previous dependencies, separated
+              by "+". Dependencies on structural specialization modules are appended to the name of
+              the structural module with the dependency on the non-ancestor module, or to previous
+              dependencies, separated by "++". The syntax is the same as for other structural
+              modules, except that added modules can include these
+              dependencies:<codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:2;71:39" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita"> '(', <varname class="+ topic/keyword sw-d/varname " xtrc="varname:3;71:54" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">topic-or-map</varname>, (' ', <varname class="+ topic/keyword sw-d/varname " xtrc="varname:4;71:93" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">module-plus-optional-dependency-list</varname>)+, ')'</codeblock></p>
+            <p class="- topic/p " xtrc="p:10;72:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">When the structural module is included in a document-type shell, all dependency
+              modules also are included along with their own <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:15;73:70" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domains</xmlatt> values.</p>
+            
+            <p class="- topic/p " otherprops="examples" xtrc="p:11;75:38" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita"> For example, the cppAPIRef structural module is specialized
+              from reference, which is specialized from topic. The cppAPIRef module has a dependency
+              on the cpp-d element domain and on the compilerTypeAtt-d attribute domain. The
+              dependencies are listed after the name of <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:2;78:65" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">cppApiref</codeph>:
+              <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:3;79:26" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">(topic reference cppApiRef+cpp-d+compilerTypeAtt-d)</codeblock></p>
+            <p class="- topic/p " otherprops="examples" xtrc="p:12;80:38" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">Similarly, a codeChecklist structural module is specialized
+              from reference, which is specialized from topic. The codeChecklist module has a
+              dependency on the pr-d domain and on the task structural specialization. Again, the
+              dependencies are listed after the name of <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:3;83:65" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">codeChecklist</codeph>. The pr-d
+              domain and the task module each contribute their own values, so taken together these
+              modules contribute the following values:
+              <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:4;86:26" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">(topic reference codeChecklist+pr-d++task) (topic pr-d) (topic task)</codeblock></p>
+          </dd>
+        </dlentry>
+        <dlentry class="- topic/dlentry " id="element-domains" xtrc="dlentry:3;89:39" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+          <dt class="- topic/dt " xtrc="dt:3;90:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">element domains</dt>
+          <dd class="- topic/dd " xtrc="dd:3;91:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+            <p class="- topic/p " xtrc="p:13;92:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">The value includes the structural type ancestry and, if applicable, the domain module
+              ancestry from which the domain is specialized:</p>
+            <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:5;94:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita"> '(', <varname class="+ topic/keyword sw-d/varname " xtrc="varname:5;94:39" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">topic-or-map</varname>, (' ', <varname class="+ topic/keyword sw-d/varname " xtrc="varname:6;94:78" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domain-module</varname>)+, ')'</codeblock>
+          </dd>
+          <dd class="- topic/dd " otherprops="examples" xtrc="dd:4;96:37" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">For example, the highlighting domain (specialized from topic)
+            supplies the following value: <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:4;97:51" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">(topic hi-d)</codeph>. A CPP domain that is
+            specialized from the programming domain, which in turn is specialized from topic,
+            supplies the following value: <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:5;99:51" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">(topic pr-d cpp-d)</codeph>.</dd>
+        </dlentry>
+        <dlentry class="- topic/dlentry " id="structural-constraint-modules" xtrc="dlentry:4;101:53" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+          <dt class="- topic/dt " xtrc="dt:4;102:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">structural constraint modules</dt>
+          <dd class="- topic/dd " xtrc="dd:5;103:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+            <p class="- topic/p " xtrc="p:14;104:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">The value includes the structural type ancestry followed by the name of the
+              constraint domain:</p>
+            <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:6;106:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita"> '(', <varname class="+ topic/keyword sw-d/varname " xtrc="varname:7;106:39" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">inheritance-hierarchy</varname> <varname class="+ topic/keyword sw-d/varname " xtrc="varname:8;106:80" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">qualifier</varname><varname class="+ topic/keyword sw-d/varname " xtrc="varname:9;106:108" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">Tagname</varname>-c, ')'</codeblock>
+            <p class="- topic/p " xtrc="p:15;107:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">where:</p>
+            <ul class="- topic/ul " xtrc="ul:1;108:17" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+              <li class="- topic/li " id="inheritance-hierarchy-li" xtrc="li:1;109:49" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita"><varname class="+ topic/keyword sw-d/varname " xtrc="varname:10;109:58" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">inheritance-hierarchy</varname> is the
+                specialization hierarchy, for example, <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:6;110:64" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">topic task</codeph>.</li>
+              <li class="- topic/li " id="qualifier-li" xtrc="li:2;111:37" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita"><varname class="+ topic/keyword sw-d/varname " xtrc="varname:11;111:46" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">qualifier</varname> is a string that is specific to the
+                constraints module and characterizes it, for example, "strict" or "requiredTitle" or
+                "myCompany-".</li>
+              <li class="- topic/li " id="Tagname-li" xtrc="li:3;114:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita"><varname class="+ topic/keyword sw-d/varname " xtrc="varname:12;114:44" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">Tagname</varname> is the element type name with an
+                initial capital, for example, "Taskbody"<ph class="- topic/ph " xtrc="ph:1;115:62" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita"> or
+                "Topic"</ph>.</li>
+              <li class="- topic/li " id="literal-c-li" xtrc="li:4;117:37" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">The literal "-c" indicates that the name is the name of a
+                constraint.</li>
+            </ul>
+            <p class="- topic/p " otherprops="examples" xtrc="p:16;120:38" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">For example, the strictTaskbody constraint applies to the task
+              module, which is specialized from topic, resulting in the following value:
+                <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:7;122:25" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">(topic task strictTaskbody-c)</codeph>. </p>
+            <p class="- topic/p " id="indicating-strong-constraint" xtrc="p:17;123:51" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">Optionally, a domains
+              contribution can indicate a strong constraint by preceding the domains contribution
+              with the letter "s". For example, <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:8;125:57" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">s(topic task strictTaskbody-c)</codeph>
+              indicates a strong constraint.</p>
+          </dd>
+        </dlentry>
+        <dlentry class="- topic/dlentry " id="domain-constraint-modules" xtrc="dlentry:5;129:49" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+          <dt class="- topic/dt " xtrc="dt:5;130:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domain constraint modules</dt>
+          <dd class="- topic/dd " xtrc="dd:6;131:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+            <p class="- topic/p " xtrc="p:18;132:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">The value includes the specialization ancestry followed by the name of the constraint
+              domain:</p>
+            <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:7;134:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita"> '(', <varname class="+ topic/keyword sw-d/varname " xtrc="varname:13;134:39" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">inheritance-hierachy</varname> <varname class="+ topic/keyword sw-d/varname " xtrc="varname:14;134:79" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">qualifier</varname><varname class="+ topic/keyword sw-d/varname " xtrc="varname:15;134:107" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domain</varname>Domain-c ')'</codeblock>
+            <p class="- topic/p " xtrc="p:19;135:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">where:</p>
+            <ul class="- topic/ul " xtrc="ul:2;136:17" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+              <li class="- topic/li " xtrc="li:5;137:19" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita"><varname class="+ topic/keyword sw-d/varname " xtrc="varname:16;137:28" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">inheritance-hierarchy</varname> is the specialization hierarchy, for
+                example, <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:9;138:34" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">topic hi-d</codeph>.</li>
+              <li class="- topic/li " xtrc="li:6;139:19" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita"><varname class="+ topic/keyword sw-d/varname " xtrc="varname:17;139:28" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">qualifier</varname> is a string that is specific to the constraints
+                module and characterizes it, for example, "noSyntaxDiagram" or "myCompany-".</li>
+              <li class="- topic/li " xtrc="li:7;141:19" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita"><varname class="+ topic/keyword sw-d/varname " xtrc="varname:18;141:28" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domain</varname> is the name of the domain to which the constraints
+                apply, for example, "Highlighting" or "Programming".</li>
+              <li class="- topic/li " xtrc="li:8;143:19" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">The literal "-c" indicates that the name is the name of a constraint.</li>
+            </ul>
+            <p class="- topic/p " otherprops="examples" xtrc="p:20;145:39" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">For example, a domain constraint module that
+              restricts the highlighting domain includes a value like the following: <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:10;146:94" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">(topic
+                hi-d basic-HighlightingDomain-c)</codeph></p>
+          </dd>
+        </dlentry>
+        <dlentry class="- topic/dlentry " id="attribute-domains" xtrc="dlentry:6;150:41" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+          <dt class="- topic/dt " xtrc="dt:6;151:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">attribute domains</dt>
+          <dd class="- topic/dd " xtrc="dd:7;152:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+            <p class="- topic/p " xtrc="p:21;153:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">The value uses an "a" before the initial parenthesis to indicate an attribute domain.
+              Within the parenthesis, the value includes the attribute specialization hierarchy,
+              starting with <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:16;155:37" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">props</xmlatt> or <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:17;155:63" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">base</xmlatt>:</p>
+            <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:8;156:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita"> 'a(', <varname class="+ topic/keyword sw-d/varname " xtrc="varname:19;156:40" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">props-or-base</varname>, (' ', <varname class="+ topic/keyword sw-d/varname " xtrc="varname:20;156:80" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">attname</varname>)+, ')'</codeblock>
+            <p class="- topic/p " otherprops="examples" xtrc="p:22;157:38" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">For example, the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:18;157:63" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">mySelectAttribute</xmlatt> specialized
+              from <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:19;158:28" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">props</xmlatt> results in the following value: <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:11;158:83" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">a(props
+                mySelectAttribute)</codeph></p>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+<example class="- topic/example " id="example" otherprops="examples" xtrc="example:1;164:45" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+      <title class="- topic/title " xtrc="title:3;165:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">Example: Task with multiple domains</title>
+      <p class="- topic/p " xtrc="p:23;166:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">In this example, a document-type shell integrates the task structural module and the
+        following domain modules:</p>
+      <simpletable class="- topic/simpletable " frame="all" relcolwidth="1.0* 1.0*" xtrc="simpletable:1;168:56" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+        <sthead class="- topic/sthead " xtrc="sthead:1;169:17" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+          <stentry class="- topic/stentry " xtrc="stentry:1;170:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">Domain</stentry>
+          <stentry class="- topic/stentry " xtrc="stentry:2;171:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">Domain short name</stentry>
+        </sthead>
+        <strow class="- topic/strow " xtrc="strow:1;173:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+          <stentry class="- topic/stentry " xtrc="stentry:3;174:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">User interface</stentry>
+          <stentry class="- topic/stentry " xtrc="stentry:4;175:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">ui-d</stentry>
+        </strow>
+        <strow class="- topic/strow " xtrc="strow:2;177:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+          <stentry class="- topic/stentry " xtrc="stentry:5;178:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">Software</stentry>
+          <stentry class="- topic/stentry " xtrc="stentry:6;179:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">sw-d</stentry>
+        </strow>
+        <strow class="- topic/strow " xtrc="strow:3;181:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">
+          <stentry class="- topic/stentry " xtrc="stentry:7;182:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">Programming</stentry>
+          <stentry class="- topic/stentry " xtrc="stentry:8;183:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">pr-d</stentry>
+        </strow>
+      </simpletable>
+      <p class="- topic/p " xtrc="p:24;186:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">The value of the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:20;186:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domains</xmlatt> attribute includes one value from each module;
+        the effective value is the following:</p>
+      <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:9;188:18" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domains="(topic task) (topic ui-d) (topic sw-d) (topic pr-d)"</codeblock>
+      <p class="- topic/p " xtrc="p:25;189:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">If the document-type shell also used a specialization of the programming domain that
+        describes C++ programming (with a short name of "cpp-d"), the new C++ programming domain
+        would add an additional value to the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:21;191:54" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domains</xmlatt> attribute:</p>
+      <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:10;192:18" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domains="(topic task) (topic ui-d) (topic sw-d) (topic pr-d) <b class="+ topic/ph hi-d/b " xtrc="b:1;192:82" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">(topic pr-d cpp-d)</b>"</codeblock>
+      <p class="- topic/p " xtrc="p:26;193:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">Note that the value for the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:22;193:46" xtrf="file:/C:/Git/dita/specification/archSpec/base/specialization-domains-attribute.dita">domains</xmlatt> attribute is not authored; Instead,
+        the value is defaulted based on the modules that are included in the document type
+        shell.</p>
+    </example>
+    
+    
+</conbody>
+<related-links class="- topic/related-links "><linkpool class="- topic/linkpool " xtrc="topicref:33;185:75" xtrf="file:/C:/Git/dita/specification/base-relationship-tables.ditamap"><link class="- topic/link " format="dita" href="../../archSpec/base/module-compatibility.dita" mapclass="- map/topicref " role="friend" scope="local" type="concept" xtrc="topicref:32;182:63" xtrf="file:/C:/Git/dita/specification/base-relationship-tables.ditamap"><?ditaot usertext?><linktext class="- topic/linktext ">5.5.7 <?ditaot gentext?>Processing documents with different values of the domains attribute</linktext><?ditaot genshortdesc?><desc class="- topic/desc ">When DITA elements are copied from one document to another, processors   need to determine the validity of the copied elements. This copying might occur as the result of a   content reference (conref) or key reference (keyref), or it might occur in the context of an   author editing a DITA document.</desc></link></linkpool></related-links></concept>
