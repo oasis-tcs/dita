@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\archSpec\base?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/archSpec/base/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic concept/concept " ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="processing-keyref-on-topicref" xml:lang="en-us" xtrc="concept:1;3:62" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">
+    <title class="- topic/title " xtrc="title:1;4:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">Processing key references on <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:1;4:53" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">topicref</xmlelement> elements</title>
+    <shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;5:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">While <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:2;5:34" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">topicref</xmlelement> elements are used to define keys, they also
+        can reference keys that are defined elsewhere. This topic explains how to evaluate key
+        references on <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:3;7:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">topicref</xmlelement> elements and its
+        specializations.</shortdesc><prolog class="- topic/prolog "><author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author></prolog>
+    <conbody class="- topic/body  concept/conbody " xtrc="conbody:1;9:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">
+        <p class="- topic/p " xtrc="p:1;10:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">For topic references that use the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:1;10:54" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">keyref</xmlatt> attribute, the effective value
+            of the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:4;11:32" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">topicref</xmlelement> element is determined in the following way:</p>
+        <dl class="- topic/dl " xtrc="dl:1;12:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">
+            <dlentry class="- topic/dlentry " xtrc="dlentry:1;13:22" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">
+                <dt class="- topic/dt " xtrc="dt:1;14:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">Determining the effective resource</dt>
+                <dd class="- topic/dd " xtrc="dd:1;15:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">
+                    <p class="- topic/p " xtrc="p:2;16:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">The effective resource bound to the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:5;16:72" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">topicref</xmlelement> element
+                        is determined by resolving all intermediate key references. Each key
+                        reference is resolved either to a resource addressed directly by URI
+                        reference in an <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:2;19:49" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">href</xmlatt> attribute, or to no resource.
+                        Processors <term class="- topic/term " outputclass="RFC-2119" xtrc="term:1;20:65" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">MAY</term> impose
+                        reasonable limits on the number of intermediate key references that they
+                        will resolve. Processors <term class="- topic/term " outputclass="RFC-2119" xtrc="term:2;23:30" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">SHOULD</term> support at least three levels of key references.</p>
+                    <note class="- topic/note " xtrc="note:1;24:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">This rule applies to all topic references, including those that define
+                        keys. The effective bound resource for a key definition that uses the
+                            <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:3;26:37" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">keyref</xmlatt> attribute cannot be determined until the key
+                        space has been constructed.</note>
+                </dd>
+                <dd class="- topic/dd " xtrc="dd:2;29:22" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita"/>
+            </dlentry>
+            <dlentry class="- topic/dlentry " xtrc="dlentry:2;31:22" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">
+                <dt class="- topic/dt " xtrc="dt:2;32:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">Combining metadata</dt>
+                <dd class="- topic/dd " xtrc="dd:3;33:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">
+                    <p class="- topic/p " xtrc="p:3;34:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">Content from a key-defining element cascades to the key-referencing element
+                        following the rules for combining metadata between maps and other maps and
+                        between maps and topics. The <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:4;36:62" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">lockmeta</xmlatt> attribute is honored
+                        when metadata content is combined.</p>
+                    <p class="- topic/p " xtrc="p:4;38:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">The combined attributes and content cascade from one map to another or from a
+                        map to a topic, but this is controlled by existing rules for cascading,
+                        which are not affected by the use of key references.</p>
+                </dd>
+            </dlentry>
+        </dl>
+        <p class="- topic/p " xtrc="p:5;44:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita"> If, in addition to the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:5;44:44" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">keys</xmlatt> attribute, a key definition specifies a
+                <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:6;45:25" xtrf="file:/C:/Git/dita/specification/archSpec/base/processing-keyref-on-topicref.dita">keyref</xmlatt> attribute that can be resolved after the key resolution
+            context for the key definition has been determined, the resources bound to the
+            referenced key definition take precedence.</p>
+        
+    </conbody>
+</concept>

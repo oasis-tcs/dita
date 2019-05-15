@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\archSpec\base?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/archSpec/base/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic concept/concept " ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="example-contraints-correct-machinery-task-constraint" xtrc="concept:1;3:68" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-contraints-correct-machinery-task-constraint.dita">
+ <title class="- topic/title " xtrc="title:1;4:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-contraints-correct-machinery-task-constraint.dita">Example: Correct the constraint for the machinery task</title>
+ <shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;5:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-contraints-correct-machinery-task-constraint.dita">For DITA 1.3, the OASIS DITA TC failed to update the constraint for the machinery task.
+  In this scenario, an information architect corrects that oversight; she makes the (new for DITA
+  1.3) <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:1;7:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-contraints-correct-machinery-task-constraint.dita">tasktroubleshooting</xmlelement> element available in the body of the machinery
+  task.</shortdesc><prolog class="- topic/prolog "><author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author></prolog>
+ <conbody class="- topic/body  concept/conbody " xtrc="conbody:1;9:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-contraints-correct-machinery-task-constraint.dita">
+  <example class="- topic/example " xtrc="example:1;10:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-contraints-correct-machinery-task-constraint.dita">
+   <note class="- topic/note " xtrc="note:1;11:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-contraints-correct-machinery-task-constraint.dita">This example assumes that the information architect has already implemented her own
+    document-type shell for the machinery task information type.</note>
+   <ol class="- topic/ol " xtrc="ol:1;13:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-contraints-correct-machinery-task-constraint.dita">
+    <li class="- topic/li " xtrc="li:1;14:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-contraints-correct-machinery-task-constraint.dita">She makes a copy of the <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:1;14:43" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-contraints-correct-machinery-task-constraint.dita">machineryTaskbodyConstraint.mod</filepath> file and
+     renames it <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:2;15:27" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-contraints-correct-machinery-task-constraint.dita">correctedMachineryTaskbodyConstraint.mod</filepath>.</li>
+    <li class="- topic/li " xtrc="li:2;16:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-contraints-correct-machinery-task-constraint.dita">She modifies the <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:3;16:36" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-contraints-correct-machinery-task-constraint.dita">correctedMachineryTaskbodyConstraint.mod</filepath> file to
+     declare the entity for the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:2;17:45" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-contraints-correct-machinery-task-constraint.dita">tasktroubleshooting</xmlelement> element and make it
+     available at the correct place within the task body. (Her modifications are highlighted in bold
+     below.)<codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:1;19:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-contraints-correct-machinery-task-constraint.dita">&lt;!ENTITY taskbody-constraints
+  "(topic task+taskreq-d machineryTaskbody-c)"
+&gt;
+&lt;!ENTITY % prelreqs                                        "prelreqs"&gt;
+&lt;!ENTITY % context                                         "context"&gt;
+&lt;!ENTITY % section                                         "section"&gt;
+&lt;!ENTITY % steps                                           "steps"&gt;
+&lt;!ENTITY % steps-unordered                                 "steps-unordered"&gt;
+&lt;!ENTITY % steps-informal                                  "steps-informal"&gt;
+&lt;!ENTITY % result                                          "result"&gt;
+<b class="+ topic/ph hi-d/b " xtrc="b:1;29:4" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-contraints-correct-machinery-task-constraint.dita">&lt;!ENTITY % tasktroubleshooting                             "tasktroubleshooting"&gt;</b>
+&lt;!ENTITY % example                                         "example"&gt;
+&lt;!ENTITY % closereqs                                       "closereqs"&gt;
+
+
+&lt;!ENTITY % taskbody.content
+              "((%prelreqs; |
+                 %context; |
+                 %section;)*,
+                (%steps; |
+                 %steps-unordered; |
+                 %steps-informal;)?,
+                (%result;)?,
+                <b class="+ topic/ph hi-d/b " xtrc="b:2;42:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-contraints-correct-machinery-task-constraint.dita">(%tasktroubleshooting;)?,</b>
+                (%example;)*,
+                (%closereqs;)?)"</codeblock></li>
+    <li class="- topic/li " xtrc="li:3;45:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-contraints-correct-machinery-task-constraint.dita">She updates her company-specific document-type shell to integrate the updated
+     constraint.</li>
+    <li class="- topic/li " xtrc="li:4;47:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-contraints-correct-machinery-task-constraint.dita">After updating the <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:4;47:38" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-contraints-correct-machinery-task-constraint.dita">catalog.xml</filepath> file to include the new constraints
+     file, her work is done.</li>
+   </ol>
+  </example>
+ </conbody>
+</concept>

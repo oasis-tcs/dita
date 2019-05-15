@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\archSpec\base?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/archSpec/base/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic concept/concept " ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="concept_yj5_d4f_mp" xml:lang="en-us" xtrc="concept:1;3:51" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-splitting-combining-targets.dita">
+ <title class="- topic/title " xtrc="title:1;4:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-splitting-combining-targets.dita">Example: Keys and collaboration</title>
+ <shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;5:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-splitting-combining-targets.dita">Keys enable authors to collaborate and work with evolving content with a minimum of time
+    spent reworking topic references.</shortdesc><prolog class="- topic/prolog "><author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author></prolog>
+ <conbody class="- topic/body  concept/conbody " xtrc="conbody:1;7:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-splitting-combining-targets.dita">
+  <p class="- topic/p " xtrc="p:1;8:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-splitting-combining-targets.dita">In this scenario, authors collaborate on a publication that includes content for a product that
+   is in the early stages of development. The company documentation is highly-structured and uses
+   the same organization for all publications: "Introduction," "Example," and "Reference."</p>
+  <ol class="- topic/ol " xtrc="ol:1;11:7" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-splitting-combining-targets.dita">
+   <li class="- topic/li " xtrc="li:1;12:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-splitting-combining-targets.dita">
+    <p class="- topic/p " xtrc="p:2;13:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-splitting-combining-targets.dita">Author one creates a submap for the new product information. She knows the structure that the
+     final content will have, but she does not want to create empty topics for information that is
+     not yet available. She decides to initially author what content is available in a single topic.
+     When more content is available, she'll create additional topics. Her DITA map looks like the
+     following:</p>
+    <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:1;18:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-splitting-combining-targets.dita">&lt;map&gt;
+  &lt;title&gt;New product content&lt;/title&gt;
+  &lt;topicref keys="1-overview 1-intro 1-example 1-reference" href="1-overview.dita"/&gt;
+&lt;/map&gt;</codeblock>
+   </li>
+   <li class="- topic/li " xtrc="li:2;23:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-splitting-combining-targets.dita">
+    <p class="- topic/p " xtrc="p:3;24:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-splitting-combining-targets.dita">Author two knows that he needs to add a <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:1;24:60" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-splitting-combining-targets.dita">topicref</xmlelement> to the "Example"
+          topic that will eventually be authored by author one. He references the not-yet-authored
+          topic by key reference:</p>
+    <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:2;27:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-splitting-combining-targets.dita">&lt;topicref keyref="1-example"/&gt;</codeblock>
+    <p class="- topic/p " xtrc="p:4;28:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-splitting-combining-targets.dita">His topic reference initially resolves to the <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:1;28:64" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-splitting-combining-targets.dita">1-overview.dita</filepath> topic.</p>
+   </li>
+   <li class="- topic/li " xtrc="li:3;30:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-splitting-combining-targets.dita">
+    <p class="- topic/p " xtrc="p:5;31:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-splitting-combining-targets.dita">Author one finally gets the information that she was waiting on. She creates additional
+     topics and modifies her DITA map as follows:</p>
+    <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:3;33:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-splitting-combining-targets.dita">&lt;map&gt;
+  &lt;title&gt;New product content&lt;/title&gt;
+  &lt;topicref keys="1-overview" href="1-overview.dita"&gt;
+    &lt;topicref keys="1-intro" href="1-intro.dita"/&gt;
+    &lt;topicref keys="1-example" href="1-example.dita"/&gt;
+    &lt;topicref keys="1-reference" href="1-reference.dita"/&gt;
+  &lt;/topicref&gt;
+&lt;/map&gt;</codeblock>
+    <p class="- topic/p " xtrc="p:6;41:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-splitting-combining-targets.dita">Without needing to make any changes to the content, author two's topic reference now resolves
+     to the <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:2;42:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-splitting-combining-targets.dita">1-example.dita</filepath> topic.</p>
+   </li>
+  </ol>
+ </conbody>
+</concept>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\archSpec\base?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/archSpec/base/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic concept/concept " ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="using-keys-for-addressing" xml:lang="en-us" xtrc="concept:1;3:58" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">
+    <title class="- topic/title " xtrc="title:1;4:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita"><ph class="- topic/ph " xtrc="ph:1;4:17" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">Using keys for addressing</ph></title>
+    <shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;5:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">For topic references, image references, and other link relationships, resources can
+        be indirectly addressed by using the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:1;6:54" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">keyref</xmlatt> attribute. For content
+        reference relationships, resources can be indirectly addressed by using the
+            <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:2;8:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">conkeyref</xmlatt> attribute.</shortdesc><prolog class="- topic/prolog "><author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author></prolog>
+    <conbody class="- topic/body  concept/conbody " xtrc="conbody:1;9:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">
+        <section class="- topic/section " id="syntax" xtrc="section:1;10:30" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">
+            <title class="- topic/title " xtrc="title:2;11:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">Syntax</title>
+            <p class="- topic/p " xtrc="p:1;12:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">For references to topics, maps, and non-DITA resources, the value of the
+                    <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:3;13:29" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">keyref</xmlatt> attribute is simply a key name (for example,
+                    <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:1;14:29" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">keyref="topic-key"</codeph>). </p>
+            <p class="- topic/p " xtrc="p:2;15:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita"><ph class="- topic/ph " xtrc="ph:2;15:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">For references to non-topic elements within topics,</ph>
+                the value of the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:4;16:42" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">keyref</xmlatt> attribute is a key name, a <ph class="- topic/ph " xtrc="ph:3;17:22" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">slash</ph> ("/"), and the ID of the target element (for
+                example, <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:2;18:34" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">keyref="topic-key/some-element-id"</codeph>.)</p>
+            
+        </section>
+        <example class="- topic/example " id="example" otherprops="examples" xtrc="example:1;21:53" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">
+            <title class="- topic/title " xtrc="title:3;22:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">Example</title>
+            <p class="- topic/p " xtrc="p:3;23:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">For example, consider this topic in the document <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:1;23:75" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">file.dita</filepath>:
+                <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:1;24:28" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">&lt;topic id="topicid"&gt;
+ &lt;title&gt;Example referenced topic&lt;/title&gt;
+ &lt;body&gt;
+  &lt;section id="section-01"&gt;Some content.&lt;/section&gt;
+ &lt;/body&gt;
+&lt;/topic&gt;</codeblock>and
+                this key
+                definition:<codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:2;31:39" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">&lt;map&gt;
+  &lt;topicref keys="myexample"
+    href="file.dita"
+  /&gt;
+&lt;/map&gt;</codeblock></p>
+            <p class="- topic/p " xtrc="p:4;36:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">A cross reference of the form <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:3;36:54" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">keyref="myexample/section-01"</codeph> resolves
+                to the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:1;37:36" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">section</xmlelement> element in the topic. The key reference is
+                equivalent to the URI reference
+                <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:4;39:25" xtrf="file:/C:/Git/dita/specification/archSpec/base/using-keys-for-addressing.dita">xref="file.dita#topicid/section-01"</codeph>.</p>
+        </example>
+    </conbody>
+</concept>

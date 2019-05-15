@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\archSpec\base?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/archSpec/base/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic concept/concept " ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="handling-xref-and-conref-within-topics" xml:lang="en-us" xtrc="concept:1;3:72" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">
+ <title class="- topic/title " xtrc="title:1;4:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita"><ph class="- topic/ph " xtrc="ph:1;4:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">Processing</ph> xrefs and conrefs within a conref</title>
+ <shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;5:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">When referenced content contains a content reference or cross reference, the effective
+    target of the reference depends on the form of address that is used in the referenced content.
+    It also might depend on the map context, especially when key scopes are present.</shortdesc>
+  <prolog class="- topic/prolog " xtrc="prolog:1;8:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">
+    <author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author><metadata class="- topic/metadata " xtrc="metadata:1;9:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">
+      <keywords class="- topic/keywords " xtrc="keywords:1;10:17" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">
+        <indexterm class="- topic/indexterm " xtrc="indexterm:1;11:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">addressing mechanisms<indexterm class="- topic/indexterm " xtrc="indexterm:2;11:52" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">effect on conref
+            resolution</indexterm><indexterm class="- topic/indexterm " xtrc="indexterm:3;12:46" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">same-topic fragment identifier<indexterm class="- topic/indexterm " xtrc="indexterm:4;12:87" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">authoring
+              responsibility</indexterm><indexterm class="- topic/indexterm " xtrc="indexterm:5;13:52" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">effect on conref
+            resolution</indexterm></indexterm></indexterm>
+        <indexterm class="- topic/indexterm " xtrc="indexterm:6;15:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">conref<indexterm class="- topic/indexterm " xtrc="indexterm:7;15:37" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">xrefs and conref within a conref</indexterm></indexterm>
+        <indexterm class="- topic/indexterm " xtrc="indexterm:8;16:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">cross references<indexterm class="- topic/indexterm " xtrc="indexterm:9;16:47" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">resolving within conrefs</indexterm></indexterm>
+        <indexterm class="- topic/indexterm " xtrc="indexterm:10;17:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">examples<indexterm class="- topic/indexterm " xtrc="indexterm:11;17:39" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">processing<indexterm class="- topic/indexterm " xtrc="indexterm:12;17:60" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">xrefs and conref within a
+              conref</indexterm></indexterm></indexterm>
+        <indexterm class="- topic/indexterm " xtrc="indexterm:13;19:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">key reference<indexterm class="- topic/indexterm " xtrc="indexterm:14;19:44" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">conref resolution, effect on</indexterm></indexterm>
+        <indexterm class="- topic/indexterm " xtrc="indexterm:15;20:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">key scopes<indexterm class="- topic/indexterm " xtrc="indexterm:16;20:41" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">conref resolution, effect on</indexterm></indexterm>
+        <indexterm class="- topic/indexterm " xtrc="indexterm:17;21:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">processing<indexterm class="- topic/indexterm " xtrc="indexterm:18;21:41" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">examples<indexterm class="- topic/indexterm " xtrc="indexterm:19;21:60" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">xrefs and conref within a
+              conref</indexterm></indexterm><indexterm class="- topic/indexterm " xtrc="indexterm:20;22:56" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">xrefs and conref within a
+          conref</indexterm></indexterm>
+        <indexterm class="- topic/indexterm " xtrc="indexterm:21;24:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">processing expectations<indexterm class="- topic/indexterm " xtrc="indexterm:22;24:54" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">xrefs and conref within a
+          conref</indexterm></indexterm>
+        <indexterm class="- topic/indexterm " xtrc="indexterm:23;26:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">same-topic fragment identifier<indexterm class="- topic/indexterm " xtrc="indexterm:24;26:61" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">authoring
+            responsibility</indexterm><indexterm class="- topic/indexterm " xtrc="indexterm:25;27:50" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">effect on conref resolution</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+ <conbody class="- topic/body  concept/conbody " xtrc="conbody:1;31:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">
+    <dl class="- topic/dl " xtrc="dl:1;32:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">
+      <dlentry class="- topic/dlentry " xtrc="dlentry:1;33:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">
+        <dt class="- topic/dt " xtrc="dt:1;34:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">Direct URI reference (but not a same-topic fragment identifier )</dt>
+        <dd class="- topic/dd " xtrc="dd:1;35:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">When the address is a direct URI reference of any form other than a same-topic fragment
+          identifier, processors <term class="- topic/term " outputclass="RFC-2119" xtrc="term:1;36:63" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">MUST</term> resolve
+          it relative to <ph class="- topic/ph " xtrc="ph:2;37:31" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">the source document that contains the original URI
+            reference</ph>.</dd>
+      </dlentry>
+      <dlentry class="- topic/dlentry " xtrc="dlentry:2;40:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">
+        <dt class="- topic/dt " xtrc="dt:2;41:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">Same-topic fragment identifier</dt>
+        <dd class="- topic/dd " xtrc="dd:2;42:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">When the address is a same-topic fragment identifier, processors <term class="- topic/term " outputclass="RFC-2119" xtrc="term:2;43:36" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">MUST</term> resolve it relative to the location
+          of the content reference (referencing context). </dd>
+      </dlentry>
+      <dlentry class="- topic/dlentry " xtrc="dlentry:3;46:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">
+        <dt class="- topic/dt " xtrc="dt:3;47:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">Key reference</dt>
+        <dd class="- topic/dd " xtrc="dd:3;48:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">When the address is a key reference, processors <term class="- topic/term " outputclass="RFC-2119" xtrc="term:3;49:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">MUST</term> resolve it relative to the location of the content
+          reference (referencing context). </dd>
+      </dlentry>
+    </dl>
+    <p class="- topic/p " xtrc="p:1;53:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">When resolving key references or same-topic fragment identifiers, the phrase
+        <term class="- topic/term " xtrc="term:4;54:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">location of the content reference</term> means the final resolved context. For
+      example, in a case where content references are chained (topic A pulls from topic B, which in
+      turn pulls a reference from topic C), the reference is resolved relative to the topic that is
+      rendered. When topic B is rendered, the reference is resolved relative to the content
+      reference in topic B; when topic A is rendered, the reference is resolved relative to topic A.
+        <ph class="- topic/ph " xtrc="ph:3;59:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">If content is pushed from topic A to topic B to topic C, then the
+        same-topic fragment identifier is resolved in the context of topic C.</ph></p>
+    <p class="- topic/p " xtrc="p:2;61:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">The implication is that a content reference or cross reference can resolve to
+      different targets in different use contexts. This is because a URI reference that contains a
+      same-topic fragment identifier is resolved in the context of the topic that contains the
+      content reference, and a key reference is resolved in the context of the key scope that is in
+      effect for each use of the topic that contains the content reference. </p>
+    <note class="- topic/note " xtrc="note:1;66:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">In the case of same-topic fragment identifiers, it is the responsibility of the author of
+      the content reference to ensure that any element IDs that are specified in same-topic fragment
+      identifiers in the referenced content will also <ph class="- topic/ph " xtrc="ph:4;68:60" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">be available</ph> in the
+      referencing topic <ph class="- topic/ph " xtrc="ph:5;69:30" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">at resolution time</ph>.</note>
+  <example class="- topic/example " id="example" otherprops="examples" xtrc="example:1;70:47" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">
+      <title class="- topic/title " xtrc="title:2;71:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">Example: Resolving conrefs to elements that contain cross references</title>
+      <p class="- topic/p " xtrc="p:3;72:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">Consider the following paragraphs in <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:1;72:57" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">paras-01.dita</filepath> that are intended
+        to be used by reference from other topics:</p>
+      <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:1;74:18" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">&lt;topic id="paras-01"&gt;&lt;title&gt;Reusable paragraphs&lt;/title&gt;
+    &lt;body&gt;
+        &lt;p id="p1"&gt;See &lt;xref href="#paras-01/p5"/&gt;.&lt;/p&gt;
+        &lt;p id="p2"&gt;See &lt;xref href="topic-02.dita#topic02/fig-01"/&gt;.&lt;/p&gt;
+        &lt;p id="p3"&gt;See &lt;xref href="#./p5"/&gt;.&lt;/p&gt;
+        &lt;p id="p4"&gt;See &lt;xref keyref="task-remove-cover"/&gt;.&lt;/p&gt;
+        &lt;p id="p5"&gt;Paragraph 5 in paras-01.&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/topic&gt;</codeblock>
+      <p class="- topic/p " xtrc="p:4;83:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">The paragraphs are used by content reference from other topics, including the
+          <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:2;84:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">using-topic-01.dita</filepath> topic:</p>
+      <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:2;85:18" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">&lt;topic id="using-topic-01"&gt;&lt;title&gt;Using topic one&lt;/title&gt;
+    &lt;body&gt;
+        &lt;p id="A" conref="paras-01.dita#paras-01/p1"/&gt; 
+        &lt;p id="B" conref="paras-01.dita#paras-01/p2"/&gt; 
+        &lt;p id="C" conref="paras-01.dita#paras-01/p3"/&gt;
+        &lt;p id="D" conref="paras-01.dita#paras-01/p4"/&gt;
+        &lt;p id="p5"&gt;Paragraph 5 in using-topic-01&lt;/p&gt;  
+    &lt;/body&gt;
+&lt;/topic&gt;</codeblock>
+      <p class="- topic/p " xtrc="p:5;94:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">Following resolution of the content references and processing of the
+          <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:1;95:23" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">xref</xmlelement> elements in the referenced paragraphs, the rendered cross
+        references in <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:3;96:33" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">using-topic-01.dita</filepath> are <ph class="- topic/ph " xtrc="ph:6;96:73" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">shown
+          in the following table</ph>.</p>
+      <simpletable class="- topic/simpletable " frame="all" relcolwidth="1.0* 1.0* 2.0* 3.0*" xtrc="simpletable:1;98:66" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">
+        <sthead class="- topic/sthead " xtrc="sthead:1;99:17" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">
+          <stentry class="- topic/stentry " xtrc="stentry:1;100:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">Paragraph</stentry>
+          <stentry class="- topic/stentry " xtrc="stentry:2;101:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">Value of <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:1;101:37" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">id</xmlatt> attribute on conrefed paragraph</stentry>
+          <stentry class="- topic/stentry " xtrc="stentry:3;102:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita"><xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:2;102:32" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">xref</xmlelement> within conrefed paragraph</stentry>
+          <stentry class="- topic/stentry " xtrc="stentry:4;103:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">Resolution</stentry>
+        </sthead>
+        <strow class="- topic/strow " xtrc="strow:1;105:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">
+          <stentry class="- topic/stentry " xtrc="stentry:5;106:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">A</stentry>
+          <stentry class="- topic/stentry " xtrc="stentry:6;107:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">p1</stentry>
+          <stentry class="- topic/stentry " xtrc="stentry:7;108:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita"><codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:1;108:28" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">&lt;xref href="#paras-01/p5"/&gt;</codeph></stentry>
+          <stentry class="- topic/stentry " xtrc="stentry:8;109:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">The cross reference in paragraph p1 is a direct URI reference that does not
+            contain a same-topic fragment identifier. It can be resolved only to paragraph p5 in
+              <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:4;111:25" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">paras-01.dita</filepath>, which contains the content "Paragraph 5 in
+            paras-01".</stentry>
+        </strow>
+        <strow class="- topic/strow " xtrc="strow:2;114:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">
+          <stentry class="- topic/stentry " xtrc="stentry:9;115:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">B</stentry>
+          <stentry class="- topic/stentry " xtrc="stentry:10;116:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">p2</stentry>
+          <stentry class="- topic/stentry " xtrc="stentry:11;117:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita"><codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:2;117:28" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">&lt;xref href="topic-02.dita#topic02/fig-01"/&gt;</codeph></stentry>
+          <stentry class="- topic/stentry " xtrc="stentry:12;118:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">The cross reference in paragraph p2 is a direct URI reference. It can be resolved
+            only to the element with <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:3;119:46" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">id="fig-01"</codeph> in
+              <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:5;120:25" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">topic-02.dita</filepath>.</stentry>
+        </strow>
+        <strow class="- topic/strow " xtrc="strow:3;122:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">
+          <stentry class="- topic/stentry " xtrc="stentry:13;123:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">C</stentry>
+          <stentry class="- topic/stentry " xtrc="stentry:14;124:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">p3</stentry>
+          <stentry class="- topic/stentry " xtrc="stentry:15;125:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita"><codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:4;125:28" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">&lt;xref href="#./p5"/&gt;</codeph></stentry>
+          <stentry class="- topic/stentry " xtrc="stentry:16;126:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">
+            <p class="- topic/p " xtrc="p:6;127:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">The cross reference in paragraph p3  is a direct URI reference that contains a
+              same-topic fragment identifier.  Because the URI reference contains a same-topic
+              fragment identifier, the reference is resolved in the context of the referencing topic
+                (<filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:6;130:28" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">using-topic-01.dita</filepath>). </p>
+            <p class="- topic/p " xtrc="p:7;131:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">If <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:7;131:29" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">using-topic-01.dita</filepath> did not contain an element with
+                <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:5;132:25" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">id="p5"</codeph>, then the conref to paragraph p3 would result in a link
+              resolution failure.</p>
+          </stentry>
+        </strow>
+        <strow class="- topic/strow " xtrc="strow:4;136:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">
+          <stentry class="- topic/stentry " xtrc="stentry:17;137:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">D</stentry>
+          <stentry class="- topic/stentry " xtrc="stentry:18;138:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">p4</stentry>
+          <stentry class="- topic/stentry " xtrc="stentry:19;139:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita"><codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:6;139:28" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">&lt;xref keyref="task-remove-cover"/&gt;</codeph></stentry>
+          <stentry class="- topic/stentry " xtrc="stentry:20;140:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">The cross reference in paragraph p4 is a key reference. It is resolved to
+            whatever resource is bound to the key name "task-remove-cover" in the applicable map
+            context.</stentry>
+        </strow>
+      </simpletable>
+    </example>
+    <example class="- topic/example " id="example-w-scoped-keys" otherprops="examples" xtrc="example:2;146:63" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">
+      <title class="- topic/title " xtrc="title:3;147:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">Example: Resolving conrefs to elements that contain key-based cross references </title>
+      <p class="- topic/p " xtrc="p:8;148:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">Consider the following map, which uses the topics from the previous
+        example:</p>
+      <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:3;150:18" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">&lt;map&gt;
+  &lt;topicgroup keyscope="product-1"&gt;
+    &lt;topicref keys="task-remove-cover" href="prod-1-task-remove-cover.dita"/&gt;
+    &lt;topicref href="using-topic-01.dita"/&gt;
+  &lt;/topicgroup&gt;
+  &lt;topicgroup keyscope="product-2"&gt;
+    &lt;topicref keys="task-remove-cover" href="prod-2-task-remove-cover.dita"/&gt;
+    &lt;topicref href="using-topic-01.dita"/&gt;
+  &lt;/topicgroup&gt;
+&lt;/map&gt;</codeblock>
+      <p class="- topic/p " xtrc="p:9;160:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">The map establishes two key scopes: "product-1" and "product-2". Within the map branches,
+        the key name "task-remove-cover" is bound to a different topic. The topic
+          <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:8;162:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">using-topic-01.dita</filepath>, which includes a conref to a paragraph that
+        includes a cross reference to the key name "task-remove-cover", is also referenced in each
+        branch. When each branch is rendered, the target of the cross reference is different.</p>
+      <p class="- topic/p " xtrc="p:10;165:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">In the first branch with the key scope set to "product-1", the cross reference from
+        paragraph p4 is resolved to <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:9;166:47" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">prod-1-task-remove-cover.dita</filepath>. In the
+        second branch with the key scope set to "product-2", the cross reference from paragraph p4
+        is resolved to <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:10;168:34" xtrf="file:/C:/Git/dita/specification/archSpec/base/handling-xref-and-conref-within-topics.dita">prod-2-task-remove-cover.dita</filepath>.</p>
+    </example>
+ </conbody>
+</concept>

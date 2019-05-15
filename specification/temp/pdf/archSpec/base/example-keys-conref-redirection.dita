@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\archSpec\base?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/archSpec/base/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic concept/concept " ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="concept_cw3_cl1_mp" xml:lang="en-us" xtrc="concept:1;3:51" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">
+ <title class="- topic/title " xtrc="title:1;4:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">Example: conref redirection</title>
+ <shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;5:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">The <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:1;5:25" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">conkeyref</xmlatt> attribute enables authors to share DITA topics that reuse
+    content. It also enables <ph class="- topic/ph " xtrc="ph:1;6:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">map authors</ph> to specify different key
+    definitions for common keys. </shortdesc><prolog class="- topic/prolog "><author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author></prolog>
+ <conbody class="- topic/body  concept/conbody " xtrc="conbody:1;8:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">
+  <p class="- topic/p " xtrc="p:1;9:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">In this scenario, Acme produces content for a product that is also resold through a business
+      partner. When the DITA content is published for the partner, several items must be different,
+      including the following:</p>
+  <ul class="- topic/ul " xtrc="ul:1;12:7" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">
+   <li class="- topic/li " xtrc="li:1;13:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">Product names</li>
+   <li class="- topic/li " xtrc="li:2;14:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">Standard notes that contain admonitions</li>
+  </ul>
+  <p class="- topic/p " xtrc="p:2;16:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">Simply using the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:2;16:31" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">conref</xmlatt> attribute would not be possible for teams that use a
+      component content management system where every DITA topic is addressed by a globally-unique
+      identifier (GUID).</p>
+  <ol class="- topic/ol " xtrc="ol:1;19:7" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">
+   <li class="- topic/li " xtrc="li:3;20:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">
+    <p class="- topic/p " xtrc="p:3;21:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">Authors reference the reusable content in their topics by using the
+      <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:3;22:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">conkeyref</xmlatt> attribute, for example:</p>
+    <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:1;23:16" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">&lt;task id="reusable-product-content"&gt;
+  &lt;title&gt;&lt;keyword conkeyref="reuse/product-name"/&gt; prerequisites&lt;/title&gt;
+  &lt;taskbody&gt;
+    &lt;prereq&gt;&lt;note conkeyref="reuse/warning-1"/&gt;&lt;/prereq&gt;
+    &lt;!-- ... --&gt;
+  &lt;/taskbody&gt;
+&lt;/task&gt;
+</codeblock>
+   </li>
+   <li class="- topic/li " xtrc="li:4;32:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">
+        <p class="- topic/p " xtrc="p:4;33:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">Authors create two different topics; one topic contains elements appropriate for Acme,
+          and the other topic contains elements appropriate for the partner. Note that each reuse
+          topic must use the <ph class="- topic/ph " xtrc="ph:2;35:35" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">same element types (or compatible
+            specializations)</ph> and values for the <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:4;36:62" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">id</xmlatt> attribute. For example, the
+          following reuse file is appropriate for use by Acme:</p>
+        <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:2;38:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">&lt;topic id="acme-reuse"&gt;
+  &lt;title&gt;Reuse topic for Acme&lt;/title&gt;
+  &lt;body&gt;
+    &lt;note <b class="+ topic/ph hi-d/b " xtrc="b:1;41:17" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">id="warning-1"</b>&gt;Admonitions for Acme&lt;/note&gt;
+    &lt;p&gt;&lt;keyword <b class="+ topic/ph hi-d/b " xtrc="b:2;42:26" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">id="product-name"</b>&gt;Acme product name&lt;/keyword&gt;&lt;/p&gt;
+    &lt;!-- ... --&gt;
+  &lt;/body&gt;
+&lt;/topic&gt;</codeblock>
+        <p class="- topic/p " xtrc="p:5;46:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">The following reuse file is appropriate for use by the OEM partner:</p>
+        <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:3;47:20" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">&lt;topic id="oem-reuse"&gt;
+  &lt;title&gt;Reuse topic for OEM partner&lt;/title&gt;
+  &lt;body&gt;
+    &lt;note <b class="+ topic/ph hi-d/b " xtrc="b:3;50:17" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">id="warning-1"</b>&gt;Admonitions for partner&lt;/note&gt;
+    &lt;p&gt;&lt;keyword <b class="+ topic/ph hi-d/b " xtrc="b:4;51:26" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">id="product-name"</b>&gt;OEM product name&lt;/keyword&gt;&lt;/p&gt;
+    &lt;!-- ... --&gt;
+  &lt;/body&gt;
+&lt;/topic&gt;</codeblock>
+      </li>
+   <li class="- topic/li " xtrc="li:5;56:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">
+    <p class="- topic/p " xtrc="p:6;57:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">The two versions of the DITA maps each contain different key definitions for the key name
+          "reuse". (This associates a key with the topic that contains the appropriate reusable
+          elements.) For example:</p>
+    <fig class="- topic/fig " xtrc="fig:1;60:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">
+     <title class="- topic/title " xtrc="title:2;61:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">DITA map for Acme</title>
+     <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:4;62:17" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">&lt;map&gt;
+  &lt;!-- ... --&gt;
+  &lt;keydef keys="reuse" href="acme-reuse.dita"/&gt;
+  &lt;!-- ... --&gt;
+&lt;/map&gt;</codeblock>
+    </fig>
+    <fig class="- topic/fig " xtrc="fig:2;68:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">
+     <title class="- topic/title " xtrc="title:3;69:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">DITA map for OEM partner</title>
+     <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:5;70:17" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">&lt;map&gt;
+  &lt;!-- ... --&gt;
+  &lt;keydef keys="reuse" href="oem-reuse.dita"/&gt;
+  &lt;!-- ... --&gt;
+&lt;/map&gt;</codeblock>
+    </fig>
+   </li>
+  </ol>
+  <p class="- topic/p " xtrc="p:7;78:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">When each of the DITA maps is published, the elements that are referenced by
+        <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:5;79:17" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">conkeyref</xmlatt> will use the reuse topic that is referenced by the
+        <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:1;80:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-conref-redirection.dita">keydef</xmlelement> element in the map. The product names and warnings will be
+      different in the output.</p>
+ </conbody>
+</concept>

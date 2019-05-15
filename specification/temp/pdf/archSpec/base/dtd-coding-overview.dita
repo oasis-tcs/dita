@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\archSpec\base?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/archSpec/base/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic concept/concept " ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="dtd-requirements-overview" xml:lang="en-us" xtrc="concept:1;3:58" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">
+ <title class="- topic/title " xtrc="title:1;4:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">DTD: Overview of coding requirements</title>
+ <shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;5:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">DITA coding practices for DTDs rely heavily on entities to implement specialization and
+   constraints. As such, an understanding of entities is critical when
+  working with DTD document-type shells, vocabulary modules, or constraint modules.</shortdesc><prolog class="- topic/prolog "><author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author></prolog>
+ <conbody class="- topic/body  concept/conbody " xtrc="conbody:1;8:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">
+  <p class="- topic/p " xtrc="p:1;9:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">Entities can be defined multiple times within a single document type, but only the first
+   definition is effective. How entities work shapes DTD coding practices. The following list
+   describes a few of the more important entities that are used in DITA DTDs:</p>
+  <dl class="- topic/dl " xtrc="dl:1;12:7" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">
+   <dlentry class="- topic/dlentry " xtrc="dlentry:1;13:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">
+    <dt class="- topic/dt " xtrc="dt:1;14:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">Elements defined as entities</dt>
+    <dd class="- topic/dd " xtrc="dd:1;15:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">In DITA DTDs, every element is defined as an entity. When elements are added to a content
+     model, they are added using the entity. This enables extension with domain specializations. For
+     example, the entity <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:1;17:34" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">%ph;</codeph> usually just means "the ph element", but can be
+     (pre)defined in a document-type shell to mean "ph plus several elements from the highlighting
+     domain". Because the document-type shell places that entity definition before the usual
+     definition, every element that included <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:2;20:54" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">%ph;</codeph> in its content model now includes
+      <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:1;21:19" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">ph</xmlelement> plus every phrase specialization in the highlighting domain.</dd>
+   </dlentry>
+   <dlentry class="- topic/dlentry " xtrc="dlentry:2;23:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">
+    <dt class="- topic/dt " xtrc="dt:2;24:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">Content models defined as entities</dt>
+    <dd class="- topic/dd " xtrc="dd:2;25:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">Every element in a DITA DTD defines its content model using an entity. For example, rather
+     than directly setting what is allowed in <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:2;26:59" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">ph</xmlelement>, that element sets its
+     content model to <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:3;27:31" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">%ph.content;</codeph>; that entity defines the actual content model.
+     This is done to enable constraints; a constraint module can (pre)define the
+      <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:4;29:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">%ph.content;</codeph> model to remove selected elements.</dd>
+   </dlentry>
+   <dlentry class="- topic/dlentry " xtrc="dlentry:3;31:13" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">
+    <dt class="- topic/dt " xtrc="dt:3;32:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">Attribute sets defined as entities</dt>
+    <dd class="- topic/dd " xtrc="dd:3;33:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">Every element in a DITA DTD defines its attribute using an entity. For example, rather than
+     directly defining attributes for <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:3;34:51" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">ph</xmlelement>, that element sets its attributes
+     using the <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:5;35:24" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">%ph.attributes;</codeph> entity; that entity defines the actual attributes.
+     As above, this is done to enable constraints; a constraint module can (pre)define the
+      <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:6;37:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">%ph.attributes;</codeph> model to remove selected attributes.</dd>
+   </dlentry>
+  </dl>
+  <note class="- topic/note " xtrc="note:1;40:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/dtd-coding-overview.dita">When constructing a constraint module or document-type shell, new entities are usually
+   viewed as "redefinitions" because they redefine entities that already exist. However, these new
+   definitions only work because they are added to a document-type shell before the existing
+   definitions, which is why they are described here as (pre)definitions. Most topics about DITA
+   DTDs, including others in this specification, will describe these overrides as redefinitions to
+   ease understanding.</note>
+ </conbody>
+</concept>

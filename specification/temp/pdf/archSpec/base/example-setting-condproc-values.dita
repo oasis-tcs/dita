@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\archSpec\base?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/archSpec/base/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic concept/concept " ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="example-condproc-values" xml:lang="en-us" xtrc="concept:1;3:56" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-setting-condproc-values.dita">
+  <title class="- topic/title " xtrc="title:1;4:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-setting-condproc-values.dita">Example: Setting conditional processing values and groups</title>
+  <shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;5:15" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-setting-condproc-values.dita">Conditional processing attributes can be used to classify content
+    using either individual values or using groups.</shortdesc><prolog class="- topic/prolog "><author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author></prolog>
+  <conbody class="- topic/body  concept/conbody " xtrc="conbody:1;7:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-setting-condproc-values.dita">
+    <example class="- topic/example " id="example" otherprops="examples" xtrc="example:1;8:49" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-setting-condproc-values.dita">
+      <title class="- topic/title " xtrc="title:2;9:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-setting-condproc-values.dita">Example: Simple product values</title>
+      <p class="- topic/p " xtrc="p:1;10:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-setting-condproc-values.dita">In the following example, the first configuration option applies only to the "extendedprod"
+        product, while the second option applies to both "extendedprod" and to "baseprod". The
+        entire <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:1;12:28" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-setting-condproc-values.dita">p</xmlelement> element containing the list applies to an audience of
+        "administrator".</p>
+      <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:1;14:18" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-setting-condproc-values.dita">&lt;p audience="administrator"&gt;Set the configuration options:
+  &lt;ul&gt;
+    &lt;li product="extendedprod"&gt;Set foo to bar&lt;/li&gt;
+    &lt;li product="basicprod extendedprod"&gt;Set your blink rate&lt;/li&gt;
+    &lt;li&gt;Do some other stuff&lt;/li&gt;
+    &lt;li&gt;Do a special thing for Linux&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/p&gt;
+</codeblock>
+    </example>
+    <example class="- topic/example " id="groupexample" otherprops="examples" xtrc="example:2;24:55" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-setting-condproc-values.dita">
+      <title class="- topic/title " xtrc="title:3;25:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-setting-condproc-values.dita">Example: Grouped values on an attribute</title>
+      <p class="- topic/p " xtrc="p:2;26:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-setting-condproc-values.dita">The following example indicates that a step applies to one application server and two
+        databases. Specifically, this step only applies when it is taken on the server "mySERVER";
+        likewise, it only applies when used with the databases "ABC" or "dbOtherName". </p>
+      <codeblock class="+ topic/pre pr-d/codeblock " id="groupcodesample" xml:space="preserve" xtrc="codeblock:2;29:39" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-setting-condproc-values.dita">&lt;steps&gt;
+  &lt;step&gt;&lt;cmd&gt;Common step&lt;/cmd&gt;&lt;/step&gt;
+  &lt;step product="appserver(mySERVER) database(ABC dbOtherName)"&gt;
+    &lt;cmd&gt;Do something special for databases ABC or OtherName when installing on mySERVER&lt;/cmd&gt;
+  &lt;/step&gt;
+  &lt;!-- additional steps --&gt;
+&lt;/steps&gt;</codeblock>
+    </example>
+  </conbody>
+</concept>

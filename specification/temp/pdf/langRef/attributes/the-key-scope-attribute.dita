@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\langRef\attributes?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/langRef/attributes/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Reference//EN?><?doctype-system reference.dtd?><reference xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic       reference/reference " ditaarch:DITAArchVersion="1.3" domains="(topic reference) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="keyscope-attribute" xml:lang="en-us" xtrc="reference:1;3:54" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">
+  <title class="- topic/title " xtrc="title:1;4:10" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">The <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:1;4:22" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">keyscope</xmlatt> attribute</title>
+  <shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;5:14" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">The <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:2;5:26" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">keyscope</xmlatt> attribute consists of one or more space-separated key
+    scope names. Map authors define the boundaries for key scopes by specifying the
+      <xmlatt class="+ topic/keyword markup-d/markupname xml-d/xmlatt " xtrc="xmlatt:3;7:15" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">keyscope</xmlatt> attribute on <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:1;7:58" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">map</xmlelement> elements,
+      <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:2;8:19" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">topicref</xmlelement> elements, or elements that are specializations of
+      <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:3;9:19" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">map</xmlelement> or <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:4;9:51" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">topicref</xmlelement>. Such elements, their
+    contents, and any locally-scoped content referenced from within the element, are considered to
+    be part of the scope. Keys defined within a scope are only directly referenceable from within
+    the same scope. They can be referenced from the parent scope using the scope's name, followed by
+    a period, followed by the key name.</shortdesc><prolog class="- topic/prolog "><author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author></prolog>
+  <refbody class="- topic/body        reference/refbody " xtrc="refbody:1;14:12" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">
+    <section class="- topic/section " id="duplicate-scope" xtrc="section:1;15:35" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">
+      <p class="- topic/p " xtrc="p:1;16:10" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">All key scopes are contiguous and non-intersecting. Within a root map, two distinct key
+        scopes with the same name have no relationship with each other aside from that implied by
+        their relative locations in the key scope hierarchy. They do not, for example, share key
+        definitions. The only processing impact of a key scope's names is in defining the prefixes
+        used when contributing qualified key names to the parent scope. For example, consider the
+        following map segment:</p>
+      <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:1;22:18" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">&lt;map&gt;
+  &lt;topicgroup keyscope="xyz" id="scope1"&gt;
+    &lt;keydef keys="a" id="def1"/&gt;
+    &lt;!-- other topic references --&gt;
+  &lt;/topicgroup&gt;
+  &lt;topicgroup keyscope="xyz" id="scope2"&gt;
+    &lt;keydef keys="a" id="def2"/&gt;
+    &lt;!-- other topic references --&gt;
+  &lt;/topicgroup&gt;
+  &lt;!-- lots of other content --&gt;
+&lt;/map&gt;</codeblock>
+      <p class="- topic/p " xtrc="p:2;33:10" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">This map creates two distinct scopes that happen to use the same name (xyz). This results
+        in the following:</p>
+      <ul class="- topic/ul " xtrc="ul:1;35:11" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">
+        <li class="- topic/li " xtrc="li:1;36:13" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">Each <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:5;36:30" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">topicgroup</xmlelement> sets a scope of "xyz" and includes a key "a".
+          From outside of those two scopes, references to <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:1;37:67" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">keyref="xyz.a"</codeph> (key "a"
+          within the scope "xyz") will always resolve to the first instance of that value, which is
+          in the first <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:6;39:36" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">topicgroup</xmlelement>.</li>
+        <li class="- topic/li " xtrc="li:2;40:13" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">Within the first <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:7;40:42" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">topicgroup</xmlelement>, content uses
+            <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:2;41:21" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">keyref="a"</codeph> will resolve to the key in that branch (defined on the
+          element with <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:3;42:32" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">id="def1"</codeph>).</li>
+        <li class="- topic/li " xtrc="li:3;43:13" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">Within the second <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:8;43:43" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">topicgroup</xmlelement>, content uses
+            <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:4;44:21" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">keyref="a"</codeph> will resolve to the key in that branch (defined on the
+          element with <codeph class="+ topic/ph pr-d/codeph " xtrc="codeph:5;45:32" xtrf="file:/C:/Git/dita/specification/langRef/attributes/the-key-scope-attribute.dita">id="def2"</codeph>).</li>
+      </ul>
+    </section>
+  </refbody>
+</reference>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /C:\Git\dita\specification\temp\pdf\archSpec\base?><?workdir-uri file:/C:/Git/dita/specification/temp/pdf/archSpec/base/?><?path2project ..\..\?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic concept/concept " ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="example-key-precedence-with-scopes" xml:lang="en-us" xtrc="concept:1;3:67" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">
+  <title class="- topic/title " xtrc="title:1;4:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">Example: How key scopes affect key precedence</title>
+  <shortdesc class="- topic/shortdesc " xtrc="shortdesc:1;5:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita"><ph class="- topic/ph " xtrc="ph:16;81:60" xtrf="file:/C:/Git/dita/specification/common/conref-file.dita">For purposes of key definition
+          precedence, the scope-qualified key definitions from a child scope are considered to occur
+          at the location of the scope-defining element within the parent scope.</ph></shortdesc><prolog class="- topic/prolog "><author class="- topic/author " xtrc="author:1;14:11" xtrf="file:/C:/Git/dita/specification/dita-2.0-specification.ditamap">OASIS DITA Technical Committee</author></prolog>
+  <conbody class="- topic/body  concept/conbody " xtrc="conbody:1;8:12" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">
+    <p class="- topic/p " xtrc="p:1;9:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">Within a single key scope, key precedence is determined by which key definition comes first
+      in the map, or by the depth of the submap that defines the key. This was true for all key
+      definitions prior to DITA 1.3, because all key definitions were implicitly in the same key
+      scope. Scope-qualified key names differ in that precedence is determined by the location where
+      the key scope is defined.</p>
+    <p class="- topic/p " xtrc="p:2;14:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">This distinction is particularly important when key names or key scope names contain periods.
+      While avoiding periods within these names will avoid this sort of issue, such names are legal
+      so processors will need to handle them properly.</p>
+    <p class="- topic/p " xtrc="p:3;17:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">The following root map contains one submap and one key definition. The submap defines a key
+      named "sample".</p>
+    <fig class="- topic/fig " id="fig_uqd_4rz_sr" xtrc="fig:1;19:30" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">
+      <title class="- topic/title " xtrc="title:2;20:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">Root map</title>
+      <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:1;21:18" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">&lt;map&gt;
+  &lt;!-- The following mapref defines the key scope "scopeName" --&gt;
+  &lt;mapref href="submap.ditamap" keyscope="scopeName"/&gt;
+
+  &lt;!-- The following keydef defines the key "scopeName.sample" --&gt;
+  &lt;keydef keys="scopeName.sample" href="losing-key.dita"/&gt;
+
+  &lt;!-- Other content, key definitions, etc. --&gt;
+&lt;/map&gt;</codeblock>
+    </fig>
+    <fig class="- topic/fig " xtrc="fig:2;31:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">
+      <title class="- topic/title " xtrc="title:3;32:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">Submap</title>
+      <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:2;33:18" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">&lt;map&gt;
+  &lt;keydef keys="sample" href="winning-key.dita"/&gt;
+  &lt;!-- Other content, key definitions, etc. --&gt;
+&lt;/map&gt;</codeblock>
+    </fig>
+    <p class="- topic/p " xtrc="p:4;38:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">When determining precedence, all keys from the key scope "scopeName" occur at the location of
+      the scope-defining element -- in this case, the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:1;39:67" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">mapref</xmlelement> element in the
+      root map. Because the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:2;40:41" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">mapref</xmlelement> comes first in the root map, the
+      scope-qualified key name "scopeName.sample" that is pulled from
+        <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:1;42:19" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">submap.ditamap</filepath> occurs before the definition of "scopeName.sample" in
+      the root map. This means that in the context of the root map, the effective definition of
+      "scopeName.sample" is the scope-qualified key definition that references
+        <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:2;45:19" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">winning-key.dita</filepath>.</p>
+    <p class="- topic/p " xtrc="p:5;46:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">The following illustration shows a root map and several submaps. Each submap defines a new
+      key scope, and each map defines a key. In order to aid understanding, this sample does not use
+      valid DITA markup; instead, it shows the content of submaps inline where they are
+      referenced.</p>
+    <fig class="- topic/fig " id="fig_qxt_3lz_sr" xtrc="fig:3;50:30" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">
+      <title class="- topic/title " xtrc="title:4;51:14" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">Complex map with multiple submaps and scopes</title>
+      <codeblock class="+ topic/pre pr-d/codeblock " xml:space="preserve" xtrc="codeblock:3;52:18" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">&lt;map&gt;   &lt;!-- Start of the root map --&gt;
+
+  &lt;mapref href="submapA.ditamap" keyscope="scopeA"&gt;  
+    &lt;!-- Contents of submapA.ditamap begin here --&gt;
+    &lt;mapref href="submapB.ditamap" keyscope="scopeB"&gt;
+      &lt;!-- Contents of submapB.ditamap: define key MYKEY --&gt;
+      <b class="+ topic/ph hi-d/b " xtrc="b:1;58:10" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">&lt;keydef keys="MYKEY" href="example-ONE.dita"/&gt;</b>
+    &lt;/mapref&gt;
+    <b class="+ topic/ph hi-d/b " xtrc="b:2;60:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">&lt;keydef keys="scopeB.MYKEY" href="example-TWO.dita"/&gt;</b>
+    &lt;!-- END contents of submapA.ditamap --&gt;
+  &lt;/mapref&gt;
+
+  &lt;mapref href="submapC.ditamap" keyscope="scopeA.scopeB"&gt;
+    &lt;!-- Contents of submapC.ditamap begin here --&gt;
+    <b class="+ topic/ph hi-d/b " xtrc="b:3;66:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">&lt;keydef keys="MYKEY" href="example-THREE.dita"/&gt;</b>
+  &lt;/mapref&gt;
+
+  <b class="+ topic/ph hi-d/b " xtrc="b:4;69:6" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">&lt;keydef keys="scopeA.scopeB.MYKEY" href="example-FOUR.dita"/&gt;</b>
+&lt;/map&gt;</codeblock>
+      
+    </fig>
+    <p class="- topic/p " xtrc="p:6;73:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">The sample map shows four key definitions. <ph class="- topic/ph " xtrc="ph:2;73:56" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">From the context of the
+        root scope, all have key names of "scopeA.scopeB.MYKEY".</ph></p>
+    <ol class="- topic/ol " xtrc="ol:1;75:9" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">
+      <li class="- topic/li " xtrc="li:1;76:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita"><filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:3;76:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">submapB.ditamap</filepath> defines the key "MYKEY". The key scope "scopeB" is
+        defined on the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:3;77:36" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">mapref</xmlelement> to <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:4;77:69" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">submapB.ditamap</filepath>, so
+        from the context of <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:5;78:39" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">submapA.ditamap</filepath>, the scope-qualified key name is
+        "scopeB.MYKEY". The key scope "scopeA" is defined on the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:4;79:78" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">mapref</xmlelement> to
+          <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:6;80:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">submapA.ditamap</filepath>, so from the context of the root map, the
+        scope-qualified key name is "scopeA.scopeB.MYKEY".</li>
+      <li class="- topic/li " xtrc="li:2;82:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita"><filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:7;82:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">submapA.ditamap</filepath> defines the key "scopeB.MYKEY". The key scope
+        "scopeA" is defined on the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:5;83:48" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">mapref</xmlelement> to
+          <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:8;84:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">submapA.ditamap</filepath>, so from the context of the root map, the
+        scope-qualified key name is "scopeA.scopeB.MYKEY".</li>
+      <li class="- topic/li " xtrc="li:3;86:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita"><filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:9;86:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">submapC.ditamap</filepath> defines the key "MYKEY". The key scope
+        "scopeA.scopeB" is defined on the <xmlelement class="+ topic/keyword markup-d/markupname xml-d/xmlelement " xtrc="xmlelement:6;87:55" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">mapref</xmlelement> to
+          <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:10;88:21" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">submapC.ditamap</filepath>, so from the context of the root map, the
+        scope-qualified key name is "scopeA.scopeB.MYKEY".</li>
+      <li class="- topic/li " xtrc="li:4;90:11" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">Finally, the root map defines the key "scopeA.scopeB.MYKEY".</li>
+    </ol>
+    <p class="- topic/p " xtrc="p:7;92:8" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">Because scope-qualified key definitions are considered to occur at the location of the
+      scope-defining element, the effective key definition is the one from
+        <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:11;94:19" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">submapB.ditamap</filepath> (the definition that references
+        <filepath class="+ topic/ph sw-d/filepath " xtrc="filepath:12;95:19" xtrf="file:/C:/Git/dita/specification/archSpec/base/example-keys-scope-defining-precedence.dita">example-ONE.dita</filepath>).</p>
+  </conbody>
+</concept>
