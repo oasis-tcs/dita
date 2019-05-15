@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="chunkedge" xml:lang="en">
+<title>Example: Combining topics within a split context</title>
+<shortdesc>While <xmlatt>chunk</xmlatt> attributes are ignored when a "combine" action is already in
+effect, it is possible to use <codeph>chunk="combine"</codeph> when <codeph>split</codeph> is
+otherwise in effect.</shortdesc>
+<conbody>
+<p>Assume the following map, where <codeph>chunk="split"</codeph> on the root element means that all
+topic documents within this map structure are split by default, but a branch within the map sets
+<codeph>chunk="combine"</codeph>.</p>
+<fig id="fig_htr_jyd_1gb">
+<title>Map with default "split" action, that also uses "combine"</title>
+<codeblock>&lt;map chunk="split">
+  &lt;title>Split most, but not one branch&lt;/title>
+  &lt;topicref href="splitme.dita">...&lt;/topicref>
+  &lt;topicref href="exception.dita" chunk="combine">...&lt;/topicref>
+  &lt;topicref href="splitmetoo.dita">...&lt;/topicref>
+&lt;/topicref></codeblock>
+</fig>
+<p>Assume as well that no other <xmlatt>chunk</xmlatt> attributes are specified in this map. The
+following points are true when <xmlatt>chunk</xmlatt> is evaluated:<ol id="ol_p3y_wng_thb">
+<li>The document <filepath>splitme.dita</filepath> is treated as multiple split documents when it
+contains more than one topic. The same is true for any other document within that branch.</li>
+<li>The second branch (beginning with <filepath>exception.dita</filepath>) is treated as a single
+DITA document, combining all topic documents within that branch.</li>
+<li>The document <filepath>splitmetoo.dita</filepath> is treated as multiple split documents when it
+contains more than one topic. The same is true for any other document within that branch.</li>
+</ol></p>
+</conbody>
+</concept>
