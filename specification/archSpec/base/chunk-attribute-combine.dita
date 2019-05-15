@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="chunkcombine" xml:lang="en">
-<title>Using the <xmlatt>chunk</xmlatt> attribute to combine documents</title>
-<shortdesc>The <xmlatt>chunk</xmlatt> attribute can be set to <codeph>chunk="combine"</codeph> to
-produce a single result document out of topic documents that are best managed
-independently.</shortdesc>
-<conbody>
-<p><ph conref="../../common/conref-file.dita#reuse_file/definitionChunkCombine"/></p>
-<section id="processcombine">
 <title>Processing <codeph>chunk="combine"</codeph></title>
-<ul id="ul_h3y_wng_thb">
-<li>When specified on a map, all source DITA documents referenced by the map are treated as one DITA
-document.</li>
-<li>When specified on a branch of a map, all source DITA documents referenced within that branch are
-treated as one DITA document. <note>This is true regardless of whether the element that specifies
-<xmlatt>chunk</xmlatt> refers to a topic or specifies a heading. In cases such as
-<xmlelement>topicgroup</xmlelement> where a grouping element specifies
-<codeph>chunk="combine"</codeph>, the equivalent DITA document would be a single DITA document with
-a <xmlelement>dita</xmlelement> root element grouping peer topics.</note></li>
-<li>When specified on a reference to a map, all source DITA documents within the scope of the
-referenced map are treated as one DITA document.</li>
-<li>Once <codeph>chunk="combine"</codeph> is specified on a map, branch, or map reference, all
-source DITA documents grouped by that reference are treated as a single resource. Any additional
-<xmlatt>chunk</xmlatt> attributes on elements within the hierarchy are ignored.</li>
-</ul>
-</section>
+    <abstract>
+        <shortdesc>Setting <codeph>chunk="combine"</codeph> instructs a processor to combine the
+            reference source documents for rendering purposes. A single result document is
+            generated.</shortdesc>
+        <!--<shortdesc>The <xmlatt>chunk</xmlatt> attribute can be set to <codeph>chunk="combine"</codeph> to produce a single result document out of topic documents that are best managed independently.</shortdesc>-->
+    </abstract>
+<conbody>
+        <!--<p><ph conref="../../common/conref-file.dita#reuse_file/definitionChunkCombine"/></p>-->
+        <p>The following rules apply:</p>
+        <ul>
+            <li>When specified on the root element of a map, all source DITA documents referenced by
+                the map are treated as one DITA document.</li>
+            <li>When specified on a branch of a map, all source DITA documents referenced within
+                that branch are treated as one DITA document. <note>This is true regardless of
+                    whether the element that specifies <xmlatt>chunk</xmlatt> refers to a topic or
+                    specifies a heading. In cases such as <xmlelement>topicgroup</xmlelement> where
+                    a grouping element specifies <codeph>chunk="combine"</codeph>, the equivalent
+                    DITA document would be a single DITA document with a root element grouping peer
+                    topics.</note></li>
+            <li>When specified on a reference to a map, all source DITA documents within the scope
+                of the referenced map are treated as one DITA document.</li>
+            <li>Once <codeph>chunk="combine"</codeph> is specified on a map, branch, or map
+                reference, all source DITA documents grouped by that reference are treated as a
+                single resource. Any additional <xmlatt>chunk</xmlatt> attributes on elements within
+                the hierarchy are ignored.</li>
+        </ul>
 </conbody>
 </concept>
