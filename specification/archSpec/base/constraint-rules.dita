@@ -17,25 +17,25 @@
     <dt >Contribution to the <xmlatt>domains</xmlatt> attribute</dt>
     <dd>
      <p>Each constraint that is integrated into a DITA document type <term outputclass="RFC-2119"
-       >MUST</term> be declared in the <xmlatt>domains</xmlatt> attribute for each
-      structural type that is integrated into the document type. <!--[Eberlein: 16 April 2014]: The reason for this normative statement is that if the constraint is not part of the domains contribution, processors cannot recognize the constraint during conref processing.-->
-      <ph >For DTDs, the contribution for the <xmlatt>domains</xmlatt>
-       attribute is specified in the constraint module file; for XSD and RELAX NG, the contribution
-       to the <xmlatt>domains</xmlatt> attribute is specified directly in the document type
-       shell.</ph></p>
+       >MUST</term> be declared in the <xmlatt>domains</xmlatt> attribute for each structural type
+      that is integrated into the document type.
+      <!--[Eberlein: 16 April 2014]: The reason for this normative statement is that if the constraint is not part of the domains contribution, processors cannot recognize the constraint during conref processing.-->
+     </p>
+     <p>For DTDs, the contribution for the <xmlatt>domains</xmlatt> attribute is specified in the
+      constraint module file; for XSD and RELAX NG, the contribution to the <xmlatt>domains</xmlatt>
+      attribute is specified directly in the document type shell.</p>
     </dd>
    </dlentry>
    <dlentry>
     <dt>Content model</dt>
     <dd>
-     <p >The content model for a constrained element must be <ph 
-       >at least as restrictive</ph> as the unconstrained content model for the element.
+     <p>The content model for a constrained element must be at least as restrictive as the
+      unconstrained content model for the element.
       <!--[Eberlein: 12 January 2015]: For example, a constraint for <xmlelement>note</xmlelement> might restrict the values for <xmlatt>type</xmlatt> but leave the content model unchanged.--></p>
      <p>The content model and attributes of an element can be constrained by only one constraint
       module. If two constraint modules exist that constrain the content model or attributes for a
-      specific element, <ph >those two modules must be replaced with a new
-       constraint module that reflects the aggregation of the two original constraint
-      modules.</ph></p>
+      specific element, those two modules must be replaced with a new constraint module that
+      reflects the aggregation of the two original constraint modules.</p>
     </dd>
    </dlentry>
    <dlentry>
@@ -53,19 +53,16 @@
    <dlentry>
     <dt>Structural constraints</dt>
     <dd>
-     <p>Each constraint module <ph >can</ph> constrain elements from only one
-      vocabulary module. <ph>For example, a single constraint module that constrains
-        <xmlelement>refsyn</xmlelement> from <filepath>reference.mod</filepath> and constrains
-        <xmlelement>context</xmlelement> from <filepath>task.mod</filepath> is not allowed.</ph>
-      This rule maintains granularity of reuse at the module level.</p>
+     <p>Each constraint module can constrain elements from only one vocabulary module. For example,
+      a single constraint module that constrains <xmlelement>refsyn</xmlelement> from
+       <filepath>reference.mod</filepath> and constrains <xmlelement>context</xmlelement> from
+       <filepath>task.mod</filepath> is not allowed. This rule maintains granularity of reuse at the
+      module level.</p>
      <p>Constraint modules that restrict different elements from within the same vocabulary module
-      can be combined with one
-      another<!-- or with a constraint module that selects a subset of the extension element types for the vocabulary-->.
-      Such combinations of constraints on a single vocabulary module have no meaningful order or
-      precedence.</p>
+      can be combined with one another. Such combinations of constraints on a single vocabulary
+      module have no meaningful order or precedence.</p>
     </dd>
    </dlentry>
-   <!--<li><p>Designers have the option to declare a constraint module or combination of constraint modules to be more restrictive than another constraint module or combination of constraint modules on the same vocabulary module or a base vocabulary module. This option is particularly useful when a designer wants to constrain base and specialized element types in a consistent way. The advantage of declaring the consistency is that processors can take advantage of the consistency when converting document instances.<draft-comment author="Kristen Eberlein" time="8 April 2014" disposition="open"><p>From review #1:</p><p>Kimber: "Where are the details of this constraint relationship declaration defined?"</p><p>Eberlein: "I have no earthly clue. This content is exactly as it was for 1.2 :("</p></draft-comment></p><p>For example, a constraint module for <xmlelement>topic</xmlelement> that requires both <xmlelement>shortdesc</xmlelement> and <xmlelement>body</xmlelement> is more restrictive than a constraint module that only requires <xmlelement>body</xmlelement>. By declaring this relationship, a designer can indicate that documents that use the first constraint also comply with the looser constraint.</p></li>-->
   </dl>
  </conbody>
 </concept>

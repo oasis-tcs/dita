@@ -24,12 +24,11 @@
       <ul conref="../../common/conref-file.dita#reuse_file/cascading-attributes" id="ul_f2j_pwn_yl">
         <li/>
       </ul>
-      <p><ph >Cascading is additive for attributes that accept multiple
-          values, except when the <xmlatt>cascade</xmlatt> attribute is set to avoid adding values
-          to attributes.</ph> For attributes that take a single value, the closest value defined on
-        a containing element takes effect. In a relationship table, row-level metadata is considered
-        more specific than column-level metadata, as shown in the following containment
-          hierarchy:<ul id="containment">
+      <p>Cascading is additive for attributes that accept multiple values, except when the
+          <xmlatt>cascade</xmlatt> attribute is set to avoid adding values to attributes. For
+        attributes that take a single value, the closest value defined on a containing element takes
+        effect. In a relationship table, row-level metadata is considered more specific than
+        column-level metadata, as shown in the following containment hierarchy:<ul id="containment">
           <li><xmlelement>map</xmlelement> (most general)<ul>
               <li><xmlelement>topicref</xmlelement> container (more specific)<ul>
                   <li><xmlelement>topicref</xmlelement> (most specific)</li>
@@ -57,21 +56,17 @@
       </dl>
       <p conref="../../common/conref-file.dita#reuse_file/attribute-implementation-tokens"/>
       <p>For example, a processor might define the token "appToken:audience" in order to specify
-        cascading and merging behaviors for <b>only</b> the <xmlatt>audience</xmlatt> attribute. The
-        following rules apply:<ul>
-          <li>The predefined values for the <xmlatt>cascade</xmlatt> attribute <term
-              outputclass="RFC-2119">MUST</term> precede any
-            implementation-specific tokens, for example, <codeph>cascade="merge
-              appToken:audience"</codeph>.</li>
-          <li>Tokens can apply to a set of attributes, specified as part of the
-              <xmlatt>cascade</xmlatt> value. In that case, the syntax for specifying those values
-            consists of the implementation-specific token, followed by a parenthetical group that
-            uses the same syntax as groups within the <xmlatt>audience</xmlatt>,
-              <xmlatt>platform</xmlatt>, <xmlatt>product</xmlatt>, and <xmlatt>otherprops</xmlatt>
-            attributes. For example, a token that applies to only <xmlatt>platform</xmlatt> and
-              <xmlatt>product</xmlatt> could be specified as <codeph>cascade="appname:token(platform
-              product)"</codeph>.</li>
-        </ul></p>
+        cascading and merging behaviors for <b>only</b> the <xmlatt>audience</xmlatt> attribute.</p>
+      <p>Tokens can apply to a set of attributes, specified as part of the <xmlatt>cascade</xmlatt>
+        value. In that case, the syntax for specifying those values consists of the
+        implementation-specific token, followed by a parenthetical group that uses the same syntax
+        as groups within the <xmlatt>audience</xmlatt>, <xmlatt>platform</xmlatt>,
+          <xmlatt>product</xmlatt>, and <xmlatt>otherprops</xmlatt> attributes. For example, a token
+        that applies to only <xmlatt>platform</xmlatt> and <xmlatt>product</xmlatt> could be
+        specified as <codeph>cascade="appname:token(platform product)"</codeph>.</p>
+      <p>The predefined values for the <xmlatt>cascade</xmlatt> attribute <term
+          outputclass="RFC-2119">MUST</term> precede any implementation-specific tokens, for
+        example, <codeph>cascade="merge appToken:audience"</codeph>.</p>
     </section>
     <example id="cascade-att-examples" otherprops="examples">
       <title>Examples of the <xmlatt>cascade</xmlatt> attribute in use</title>
@@ -120,15 +115,6 @@
         value is established or until the end of the list is reached (at which point no value is
         established for the attribute). In essence, the list provides instructions on how processors
         can construct a map where all attribute values are set and all cascading is complete.</p>
-      <p>For example, in the case of <codeph >&lt;topicref toc="yes"></codeph>,
-        applications <term outputclass="RFC-2119">MUST</term> stop at item <xref
-          href="#cascading-in-a-ditamap/explicit-values" format="dita"/> in the list; a value is
-        specified for <xmlatt>toc</xmlatt> in the document instance, so <xmlatt>toc</xmlatt> values
-        from containing elements will not cascade to that specific <xmlelement>topicref</xmlelement>
-        element. The <codeph>toc="yes"</codeph> setting on that <xmlelement>topicref</xmlelement>
-        element will cascade to contained elements, provided those elements reach item <xref
-          href="#cascading-in-a-ditamap/attributes-cascade" format="dita"/> below when evaluating
-        the <xmlatt>toc</xmlatt> attribute.</p>
       <p>For attributes within a map, the following processing order <term outputclass="RFC-2119"
           >MUST</term> occur:<ol id="ol_6eb4fb9c-b56f-4471-bb2d-b183fef5980c">
           <li id="common-start">The <xmlatt>conref</xmlatt> and <xmlatt>keyref</xmlatt> attributes
@@ -144,16 +130,19 @@
           <li id="attributes-cascade">The attributes cascade.</li>
           <li>The processing-supplied default values are applied.</li>
           <li>After the attributes are resolved within the map, they cascade to referenced maps.
-              <note>The processing-supplied default values do not cascade to other maps. For
-              example, most processors will supply a default value of <codeph>toc="yes"</codeph>
-              when no <xmlatt>toc</xmlatt> attribute is specified. However, a processor-supplied
-              default of <codeph>toc="yes"</codeph>
+              <draft-comment author="Kristen J Eberlein" time="15 May 2019">
+              <p>The following note is problematic. It contains a normative statement, but we
+                explicitly state that notes are non-normative.</p>
+            </draft-comment><note>The processing-supplied default values do not cascade to other
+              maps. For example, most processors will supply a default value of
+                <codeph>toc="yes"</codeph> when no <xmlatt>toc</xmlatt> attribute is specified.
+              However, a processor-supplied default of <codeph>toc="yes"</codeph>
               <term outputclass="RFC-2119">MUST</term> not override a value of
                 <codeph>toc="no"</codeph> that is set on a referenced map. If the
                 <codeph>toc="yes"</codeph> value is explicitly specified, is given as a default
               through a DTD, XSD, RNG, or controlled values file, or cascades from a containing
-              element in the map, it <term outputclass="RFC-2119">MUST</term>
-              override a <codeph>toc="no"</codeph> setting on the referenced map. See <xref
+              element in the map, it <term outputclass="RFC-2119">MUST</term> override a
+                <codeph>toc="no"</codeph> setting on the referenced map. See <xref
                 href="map-to-map-cascading-of-metadata.dita"/> for more details.</note></li>
           <li>Repeat steps <xref href="#cascading-in-a-ditamap/common-start" type="li"/> to <xref
               href="#cascading-in-a-ditamap/common-end" type="li"/> for each referenced map.</li>
@@ -161,6 +150,14 @@
           <li>The processing-supplied default values are applied within each referenced map.</li>
           <li>Repeat the process for maps referenced within the referenced maps.</li>
         </ol></p>
+      <p>For example, in the case of <codeph>&lt;topicref toc="yes"></codeph>, applications must
+        stop at item <xref href="#cascading-in-a-ditamap/explicit-values" format="dita"/> in the
+        list; a value is specified for <xmlatt>toc</xmlatt> in the document instance, so
+          <xmlatt>toc</xmlatt> values from containing elements will not cascade to that specific
+          <xmlelement>topicref</xmlelement> element. The <codeph>toc="yes"</codeph> setting on that
+          <xmlelement>topicref</xmlelement> element will cascade to contained elements, provided
+        those elements reach item <xref href="#cascading-in-a-ditamap/attributes-cascade"
+          format="dita"/> below when evaluating the <xmlatt>toc</xmlatt> attribute.</p>
     </section>
   </conbody>
 </concept>

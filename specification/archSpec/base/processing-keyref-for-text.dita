@@ -14,7 +14,7 @@
             content from the key definition. Empty elements are defined as elements that meet the
             following criteria:</p>
         <ul>
-            <li>Have no text content<ph >, including white space</ph></li>
+            <li>Have no text content, including white space</li>
             <li>Have no
                 sub-elements<!--<draft-comment author="robander" time="September 16 2014" disposition="historic">There is a recognized edge case that could confuse processors. What if my specialization has a required kid. For validity, I must include that kid. (Same issue tends to come up with conref on something like &lt;step> or &lt;table>). For example, if I have an image with required &lt;alt> child, to be valid it must be: &lt;myImage keyref="a">&lt;alt/>&lt;/myImage>. This can never be empty, thus can never pull the alt-text along with @href. <p>Not sure what the alternative is though. Originally considered text: "Have no sub-elements that contain text or result in text". But as Chris pointed out this is troublesome - how can a processor know if a child element will result in text? Will &lt;myData/> result in text? What if it results in text for PDF but not HTML - then does my effective content get pulled from the key for one and not the other? What if you have &lt;keyword> child with @conref, but @conref doesn't resolve or pulls nothing? In that case again we have something that may be empty now but resolve later. So, for now using the much simpler "no sub-elements" rule, while recognizing that the edge case exists.</p></draft-comment>--></li>
             <li>Have no attributes that would be used as text content</li>
@@ -95,18 +95,18 @@
                 example, using the <xmlelement>navtitle</xmlelement> or falling back to the URI of
                 the link target).</li>
         </ol>
-        <p>When the effective content for a key reference element results in <ph>invalid elements,
-                those elements <term outputclass="RFC-2119">SHOULD</term> be generalized to produce
-                a valid result.</ph> For example, <xmlelement>linktext</xmlelement> in the key
-            definition <ph >might</ph> use a domain specialization of
-                <xmlelement>keyword</xmlelement> that is not valid in the key reference context, in
-            which case the specialized element should be generalized to
+        <p>When the effective content for a key reference element results in invalid elements, those
+            elements <term outputclass="RFC-2119">SHOULD</term> be generalized to produce a valid
+            result. </p>
+        <p>For example, <xmlelement>linktext</xmlelement> in the key definition might use a domain
+            specialization of <xmlelement>keyword</xmlelement> that is not valid in the key
+            reference context, in which case the specialized element should be generalized to
                 <xmlelement>keyword</xmlelement>. If the generalized content is also not valid, a
             text equivalent should be used instead. For example, <xmlelement>linktext</xmlelement>
-            <ph >might</ph> include <xmlelement>ph</xmlelement> or a
-            specialized <xmlelement>ph</xmlelement> in the key definition, but neither of those are
-            valid as the effective content for a <xmlelement>keyword</xmlelement>. In that case, the
-            text content of the <xmlelement>ph</xmlelement> should be used.</p>
+            might include <xmlelement>ph</xmlelement> or a specialized <xmlelement>ph</xmlelement>
+            in the key definition, but neither of those are valid as the effective content for a
+                <xmlelement>keyword</xmlelement>. In that case, the text content of the
+                <xmlelement>ph</xmlelement> should be used.</p>
         <!--For posterity / easy reference, the text from DITA 1.2 that was expanded to most of the above: <p>When a key definition has a <xmlelement>topicmeta</xmlelement> subelement, elements that refer to that key and that are empty may get their effective content from the first matching subelement of the <xmlelement>topicmeta</xmlelement> subelement of the key-defining <xmlelement>topicref</xmlelement>. If no matching element is found, the contents of the <xmlelement>linktext</xmlelement> tag, if present, should be used. Elements within <xmlelement>linktext</xmlelement> that do not match the content model of the key reference directly or after generalization should be skipped. For <xmlelement>link</xmlelement> tags with a <xmlatt>keyref</xmlatt> attribute, the contents of the <xmlelement>shortdesc</xmlelement> tag in the key-defining element should provide the <xmlelement>desc</xmlelement> contents.</p>-->
     </conbody>
 </concept>

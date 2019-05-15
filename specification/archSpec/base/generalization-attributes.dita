@@ -3,23 +3,26 @@
 <concept id="attributegeneralize" xml:lang="en-us">
   <title>Attribute generalization</title>
   <shortdesc>DITA provides a syntax to generalize attributes that have been specialized from the
-      <xmlatt>props</xmlatt> or <xmlatt>base</xmlatt> attribute. Specialization-aware processors
-      <term outputclass="RFC-2119">SHOULD</term> process both the specialized and
-    generalized forms of an attribute as equivalent in their values.</shortdesc>
+      <xmlatt>props</xmlatt> or <xmlatt>base</xmlatt> attribute.</shortdesc>
   <conbody>
-    <!--<draft-comment author="Kristen Eberlein" time="5 April 2014" disposition="informational">Both Eliot and I think that the above normative statement should be <term outputclass="RFC-2119" rev="terminology">MUST</term>, as it is a fundamental part of interoperability. However, the 1.2 spec shipped with a <term>should</term>.</draft-comment>-->
+    <p>Specialization-aware processors <term outputclass="RFC-2119">SHOULD</term> process both the
+      specialized and generalized forms of an attribute as equivalent in their values.</p>
+    <draft-comment author="Kristen Eberlein" time="5 April 2014" disposition="informational">Both
+      Eliot and I think that the above normative statement should be <term outputclass="RFC-2119"
+        rev="terminology">MUST</term>, as it is a fundamental part of interoperability. However, the
+      1.2 spec shipped with a <term>should</term>.</draft-comment>
     <p>When a specialized attribute is generalized to an ancestor attribute, the value of the
       ancestor attribute consists of the name of the specialized attribute followed by its
       specialized value in parentheses. For example, if <xmlatt>jobrole</xmlatt> is an attribute
       specialized from <xmlatt>person</xmlatt>, which in turn is specialized from
         <xmlatt>props</xmlatt>:</p>
-    <ul id="ul_6BCECC8F518A421E94E4319755C102D5">
-      <li id="li_A44359339EE446539903A0B26FE898BE"><codeph>jobrole="programmer"</codeph> can be
-        generalized to <codeph>person="jobrole(programmer)"</codeph> or to
+    <ul>
+      <li><codeph>jobrole="programmer"</codeph> can be generalized to
+          <codeph>person="jobrole(programmer)"</codeph> or to
           <codeph>props="jobrole(programmer)"</codeph></li>
-      <li id="li_D5E2DA845D944AE9975D7AF4A96B39BC"><codeph>props="jobrole(programmer)"</codeph> can
-        be respecialized to <codeph>person="jobrole(programmer)"</codeph> or to
-          <codeph>jobrole="programmer"</codeph></li>
+      <li><codeph>props="jobrole(programmer)"</codeph> can be respecialized to
+          <codeph>person="jobrole(programmer)"</codeph> or to
+        <codeph>jobrole="programmer"</codeph></li>
     </ul>
     <p>In this example, processors performing generalization and respecialization can use the
         <xmlatt>domains</xmlatt> attribute to determine the ancestry of the specialized
@@ -30,10 +33,11 @@
     <p>Generalized attributes are typically not expected to be authored or edited directly. They are
       used by processors to preserve the values of the specialized attributes during the time or in
       the circumstances in which the document is in a generalized form.</p>
-    <p>A single element <term outputclass="RFC-2119">MUST NOT</term> contain both
-      generalized and specialized values for the same attribute. For example, the following
-        <xmlelement>p</xmlelement> element provides two values for the <xmlatt>jobrole</xmlatt>
-      attribute, one in a generalized syntax and the other in a specialized
+    <p>A single element <term outputclass="RFC-2119">MUST NOT</term> contain both generalized and
+      specialized values for the same attribute.</p>
+    <p>For example, the following <xmlelement>p</xmlelement> element provides two values for the
+        <xmlatt>jobrole</xmlatt> attribute, one in a generalized syntax and the other in a
+      specialized
       syntax:<codeblock>&lt;p person="jobrole(programmer)" jobrole="admin">
     &lt;!-- ... -->
 &lt;/p></codeblock>This
