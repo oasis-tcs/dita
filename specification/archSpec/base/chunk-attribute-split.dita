@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="chunksplit" xml:lang="en">
+<title>Using the <xmlatt>chunk</xmlatt> attribute to split documents</title>
+<shortdesc>The <xmlatt>chunk</xmlatt> attribute can be set to <codeph>chunk="split"</codeph> to
+produce multiple result documents out of topics that are best managed within a single source
+document.</shortdesc>
+<conbody>
+<p><ph conref="../../common/conref-file.dita#reuse_file/definitionChunkSplit"/></p>
+<section id="section_i3y_wng_thb">
+<title>Processing <codeph>chunk="split"</codeph></title>
+<ul id="ul_j3y_wng_thb">
+<li>When specified on a <xmlelement>topicref</xmlelement> element that refers to a source DITA
+document, it indicates that all topics within the referenced document should be rendered as
+individual documents.</li>
+<li>When specified on an element such as <xmlelement>topicgroup</xmlelement> that does not refer to
+a topic or result in a published topic, the attribute has no meaning.</li>
+<li>When specified on a map, <codeph>chunk="split"</codeph> sets a default operation for all source
+DITA documents in the map (outside the context of relationship tables). The default
+<codeph>split</codeph> value is used except where a <codeph>combine</codeph> value is encountered,
+in which case <codeph>combine</codeph> takes over for that entire branch. </li>
+</ul>
+</section>
+</conbody>
+</concept>

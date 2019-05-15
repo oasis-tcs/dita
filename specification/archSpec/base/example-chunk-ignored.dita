@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="exampleignorechunk" xml:lang="en">
+<title>Example: When <xmlatt>chunk</xmlatt> is ignored</title>
+<shortdesc>The <xmlatt>chunk</xmlatt> attribute is ignored in some cases, such as when
+<codeph>chunk="combine"</codeph> is already in effect or when <codeph>chunk="split"</codeph> is
+specified on a grouping element.</shortdesc>
+<conbody>
+<example>
+<title>Ignoring <xmlatt>chunk</xmlatt> when already combining topics</title>
+<p>In the following example, evaluating <xmlatt>chunk</xmlatt> results in one rendered document for
+each branche of the map. Any additional <xmlatt>chunk</xmlatt> values within that branch are ignored
+(including <xmlatt>chunk</xmlatt> values within any referenced maps).</p>
+<fig id="fig_o2w_1vd_1gb">
+<title>Chunk within a combined branch</title>
+<codeblock>&lt;map>
+  &lt;title>Ignoring chunking when already combined&lt;/title>
+
+  &lt;topicref href="branchOne.dita" <b>chunk="combine"</b>>
+    &lt;!-- @chunk ignored for branchOneChild.dita -->
+    &lt;topicref href="branchOneChild.dita" <b>chunk="split"</b>/>
+  &lt;/topicref>
+
+  &lt;topicref href="branchTwo.dita" <b>chunk="combine"</b>>
+    &lt;!-- Any @chunk within submap.ditamap is ignored -->
+    &lt;topicref href="submap.ditamap" format="ditamap"/>
+  &lt;/topicref>
+</codeblock>
+</fig>
+</example>
+<example>
+<title>Ignoring <xmlatt>chunk</xmlatt> on a grouping element</title>
+<p>In the following example, <codeph>chunk="split"</codeph> is specified on two grouping
+elements.</p>
+<fig id="fig_ixs_tvd_1gb">
+<title>Chunk within a combined branch</title>
+<codeblock>&lt;map>
+  &lt;title>Trying to "split" groups&lt;/title>
+  &lt;topicgroup chunk="split">
+    &lt;topicref href="ingroup1.dita">...&lt;/topicref>
+    &lt;topicref href="ingroup2.dita">...&lt;/topicref>
+  &lt;/topicgroup>
+  &lt;topichead chunk="split">
+    &lt;topicmeta>&lt;navtitle>Heading for a branch&lt;/navtitle>&lt;/topicmeta>
+    &lt;topicref href="inhead1.dita">...&lt;/topicref>
+    &lt;topicref href="inhead2.dita">...&lt;/topicref>
+  &lt;/topichead>
+&lt;/map></codeblock>
+</fig>
+<ul id="ul_o3y_wng_thb">
+<li>The <xmlatt>chunk</xmlatt> attribute on the <xmlelement>topicgroup</xmlelement> is ignored; it
+does not cascade, and there is no referenced topic, so it has no effect.</li>
+<li>In some cases, an implementation might treat the <xmlelement>topichead</xmlelement> element as
+equivalent to a single title-only topic, while in other cases it might be ignored. In either case
+the <xmlatt>chunk</xmlatt> value has no effect. If the <xmlelement>topichead</xmlelement> is treated
+as a title-only topic, it cannot be split further; if it is ignored for the current processing
+context, it is no different than the <xmlelement>topicgroup</xmlelement>.</li>
+</ul>
+</example>
+</conbody>
+</concept>

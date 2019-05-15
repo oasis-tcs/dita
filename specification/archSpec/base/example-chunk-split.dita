@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="chunksplitexample" xml:lang="en">
+<title>Example: Using <xmlatt>chunk</xmlatt> to split documents</title>
+<shortdesc>When topics are most easily created or generated in a single DITA document,
+<codeph>chunk="split"</codeph> will instruct processors to render them individually when
+possible.</shortdesc>
+<conbody>
+<example>
+<title>Splitting a single document in the map</title>
+<p>Consider the following example, where a map includes generated topics used to document message
+numbers from an application:</p>
+<fig id="fig_gqp_nqd_1gb">
+<title>Source map and topics</title>
+<codeblock>&lt;map>
+  &lt;title>Message guide for WidgetAnalyzer&lt;/title>
+  &lt;topicref href="about.dita">
+    &lt;topicref href="messages-install.dita"/>
+    &lt;topicref href="messages-run.dita"/>
+    &lt;topicref href="messages-other.dita"/>
+  &lt;/topicref>
+&lt;/map>
+
+about.dita:
+&lt;topic id="about">
+  &lt;title>About this guide&lt;/title>
+  &lt;shortdesc>Warnings or errors will appear if...&lt;shortdesc>
+&lt;/topic>
+
+messages-install.dita:
+&lt;dita>
+  &lt;topic id="INS001">
+    &lt;title>INS001: Installation failure&lt;/title>
+    &lt;!-- explanation and recovery... -->
+  &lt;/topic>
+  &lt;!-- more install messages... -->
+&lt;/dita>
+
+messages-run.dita:
+&lt;dita>
+  &lt;topic id="RUN001">
+    &lt;title>RUN001: Failed to initialize&lt;/title>
+    &lt;!-- explanation and recovery... -->
+  &lt;/topic>
+  &lt;!-- hundreds of messages... -->
+  &lt;topic id="RUN999">
+    &lt;title>RUN999: Out of memory&lt;/title>
+    &lt;!-- explanation and recovery... -->
+  &lt;/topic>
+&lt;/dita>
+
+messages-other.dita:
+&lt;topic id="othermsg">
+  &lt;title>Other messages&lt;/title>
+  &lt;shortdesc>You could also encounter ...&lt;/shortdesc>
+  &lt;topic id="OTHER001">
+    &lt;title>OTHER001: Analyzer is tired&lt;/title>
+    &lt;!-- explanation and recovery... -->
+  &lt;/topic>
+  &lt;topic id="OTHER002">
+    &lt;title>OTHER002: Analyzer needs to be updated&lt;/title>
+    &lt;!-- explanation and recovery... -->
+  &lt;/topic>
+&lt;/topic></codeblock>
+</fig>
+<p>In a normal build to HTML5, this map might result in four result documents
+<filepath>about.html</filepath>, <filepath>messages-install.html</filepath>,
+<filepath>messages-run.html</filepath>, and <filepath>messages-other.html</filepath>. With hundreds
+of messages in <filepath>messages-run.dita</filepath>, it will be better in some situations to
+render one result document for each message topic in the document. This is done by setting
+<codeph>chunk="split"</codeph> on the topic reference.</p>
+<fig id="fig_ltd_yrd_1gb">
+<title>Splitting all topics in one document</title>
+<codeblock>&lt;map>
+  &lt;title>Message guide for WidgetAnalyzer&lt;/title>
+  &lt;topicref href="about.dita">
+    &lt;topicref href="messages-install.dita"/>
+    &lt;topicref href="messages-run.dita" <b>chunk="split"</b>/>
+    &lt;topicref href="messages-other.dita"/>
+  &lt;/topicref>
+&lt;/map></codeblock>
+</fig>
+<p>The result of evaluating <xmlatt>chunk</xmlatt> in this case is equivalent to the following map
+and topics. While <filepath>messages-run.dita</filepath> is now split into hundreds of topics, other
+topics in the map are unaffected.</p>
+<fig id="fig_htc_2sd_1gb">
+<title>Equivalent source content</title>
+<codeblock>&lt;map>
+  &lt;title>Message guide for WidgetAnalyzer&lt;/title>
+  &lt;topicref href="about.dita">
+    &lt;topicref href="messages-install.dita"/>
+    &lt;topicref href="RUN001.dita"/>
+    &lt;!-- hundreds of messages... -->
+    &lt;topicref href="RUN999.dita"/>
+    &lt;topicref href="messages-other.dita"/>
+  &lt;/topicref>
+&lt;/map>
+
+RUN001.dita:
+&lt;topic id="RUN001">
+  &lt;title>RUN001: Failed to initialize&lt;/title>
+  &lt;!-- explanation and recovery... -->
+&lt;/topic>
+
+RUN999.dita:
+&lt;topic id="RUN999">
+  &lt;title>RUN999: Out of memory&lt;/title>
+  &lt;!-- explanation and recovery... -->
+&lt;/topic></codeblock>
+</fig>
+<note>Because the <xmlatt>chunk</xmlatt> attribute does not cascade, even if the reference to
+<filepath>messages-install.dita</filepath> had child topic references, they would be unaffected by
+the <codeph>chunk="split"</codeph> value in this example.</note>
+</example>
+<example>
+<title>Splitting every document in the map</title>
+<p>Similarly, because setting <codeph>chunk="split"</codeph> on the map element sets a default for
+the entire map, the following change to the original map would result in <i>every</i> referenced
+DITA document being split into one document per topic. The only source document not affected by this
+split is <filepath>about.dita</filepath>, because it only contained a single topic to begin
+with.</p>
+<fig id="fig_qns_tsd_1gb">
+<title>Splitting every topic in the map</title>
+<codeblock>&lt;map chunk="split">
+  &lt;title>Message guide for WidgetAnalyzer&lt;/title>
+  &lt;topicref href="about.dita">
+    &lt;topicref href="messages-install.dita"/>
+    &lt;topicref href="messages-run.dita"/>
+    &lt;topicref href="messages-other.dita"/>
+  &lt;/topicref>
+&lt;/map></codeblock>
+</fig>
+<p>Using <codeph>chunk="split"</codeph> on the map is equivalent to the following structure:</p>
+<ul id="ul_m3y_wng_thb">
+<li><filepath>about.dita</filepath> is unchanged.</li>
+<li><filepath>messages-install.dita</filepath> is split into one document per message (as in the
+previous example that split <filepath>messages-run.dita</filepath>).</li>
+<li><filepath>messages-run.dita</filepath> is split exactly as in the previous example.</li>
+<li><filepath>messages-other.dita</filepath> contains a root topic and two child topics, so it
+results in three documents. The hierarchy of those documents is preserved in the map.</li>
+</ul>
+<fig id="fig_pbm_dtd_1gb">
+<title>Equivalent source content</title>
+<codeblock>&lt;map>
+  &lt;title>Message guide for WidgetAnalyzer&lt;/title>
+  &lt;topicref href="about.dita">
+    &lt;topicref href="INS001.dita"/>
+    &lt;!-- more install messages... -->
+    &lt;topicref href="RUN001.dita"/>
+    &lt;!-- hundreds of messages... -->
+    &lt;topicref href="RUN999.dita"/>
+    &lt;topicref href="othermsg.dita">
+      &lt;topicref href="OTHER001.dita"/>
+      &lt;topicref href="OTHER002.dita"/>
+    &lt;/topicref>
+  &lt;/topicref>
+&lt;/map>
+
+INS001.dita:
+&lt;topic id="INS001">
+  &lt;title>INS001: Installation failure&lt;/title>
+  &lt;!-- explanation and recovery... -->
+&lt;/topic>
+
+RUN001.dita:
+&lt;topic id="RUN001">
+  &lt;title>RUN001: Failed to initialize&lt;/title>
+  &lt;!-- explanation and recovery... -->
+&lt;/topic>
+
+RUN999.dita:
+&lt;topic id="RUN999">
+  &lt;title>RUN999: Out of memory&lt;/title>
+  &lt;!-- explanation and recovery... -->
+&lt;/topic>
+
+othermsg.dita:
+&lt;topic id="othermsg">
+  &lt;title>Other messages&lt;/title>
+  &lt;shortdesc>You could also encounter ...&lt;/shortdesc>
+&lt;/topic>
+
+OTHER001.dita:
+&lt;topic id="OTHER001">
+  &lt;title>OTHER001: Analyzer is tired&lt;/title>
+  &lt;!-- explanation and recovery... -->
+&lt;/topic>
+
+OTHER002.dita:
+&lt;topic id="OTHER002">
+  &lt;title>OTHER002: Analyzer needs to be updated&lt;/title>
+  &lt;!-- explanation and recovery... -->
+&lt;/topic>
+</codeblock>
+</fig>
+</example>
+</conbody>
+</concept>
