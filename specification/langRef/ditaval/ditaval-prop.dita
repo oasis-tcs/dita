@@ -23,6 +23,9 @@ the attribute, to take an action on. The identified attribute is a conditional-p
             <xmlatt>val</xmlatt> attribute sets an action for that value within that attribute or
           attribute group.</li>
       </ul></section>
+    <section
+      conref="../../common/conref-rendering-expectations.dita#conref-rendering-expectations/rendering-expectations-prop-and-revprop"
+      ><title/><p/></section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
       <p>Recovery from the following errors are implementation dependent;  processors <term
@@ -37,66 +40,68 @@ the attribute, to take an action on. The identified attribute is a conditional-p
     </section>
     <section id="attributes">
       <title>Attributes</title>
-      <p>The following attributes are available on this element:<dl>
-          <dlentry>
-            <dt><xmlatt>att</xmlatt></dt>
-            <dd>The attribute to be acted upon. If using a literal attribute name, it is
-<xmlatt>props</xmlatt> or a specialization of <xmlatt>props</xmlatt> (such as
-<xmlatt>audience</xmlatt>, <xmlatt>deliveryTarget</xmlatt>, <xmlatt>platform</xmlatt>,
-<xmlatt>product</xmlatt>, or <xmlatt>otherprops</xmlatt>). Otherwise, the value is the name of a
-group within one of those attributes, with the group name specified using the generalized attribute
-syntax. If the <xmlatt>att</xmlatt> attribute is absent, then the <xmlelement>prop</xmlelement>
-element declares a default behavior for any conditional processing attribute.</dd>
-          </dlentry>
-          <dlentry>
-            <dt><xmlatt>val</xmlatt></dt>
-            <dd>Specified the value to be acted upon. If the <xmlatt>val</xmlatt> attribute is
-              absent, then the <xmlelement>prop</xmlelement> element declares a default behavior for
-              any value in the specified attribute.</dd>
-          </dlentry>
-          <dlentry>
-            <dt><xmlatt>action</xmlatt>
-              <ph conref="../../common/conref-attribute.dita#conref-attribute/required-attr"/></dt>
-            <dd>Specifies the action to be taken. Allowable values are:<dl>
-                <dlentry>
-                  <dt>include</dt>
-                  <dd>Include the content in output. This is the default behavior unless otherwise
-                    set.</dd>
-                </dlentry>
-                <dlentry>
-                  <dt>exclude</dt>
-                  <dd>Exclude the content from output (if all values in the particular attribute are
-                    excluded).</dd>
-                </dlentry>
-                <dlentry>
-                  <dt>passthrough</dt>
-                  <dd>Include the content in output, and preserve the attribute value as part of the
-                    output stream for further processing by a runtime engine, for example runtime
-                    filtering based on individual user settings. The value should be preserved in
-                    whatever syntax is required by the target runtime. Values that are not
-                    explicitly passed through should be removed from the output stream, even though
-                    the content is still included.</dd>
-                </dlentry>
-                <dlentry>
-                  <dt>flag</dt>
-                  <dd>Include and flag the content on output (if the content has not been
-                    excluded).</dd>
-                </dlentry>
-              </dl></dd>
-          </dlentry>
-          <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditaval-color">
-            <dt/>
-            <dd/>
-          </dlentry>
-          <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditaval-backcolor">
-            <dt/>
-            <dd/>
-          </dlentry>
-          <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditaval-style">
-            <dt/>
-            <dd/>
-          </dlentry>
-        </dl></p>
+      <p>The following attributes are available on this element:</p>
+      <dl>
+        <dlentry>
+          <dt><xmlatt>att</xmlatt></dt>
+          <dd>The attribute to be acted upon. If using a literal attribute name, it is
+              <xmlatt>props</xmlatt> or a specialization of <xmlatt>props</xmlatt> (such as
+              <xmlatt>audience</xmlatt>, <xmlatt>deliveryTarget</xmlatt>, <xmlatt>platform</xmlatt>,
+              <xmlatt>product</xmlatt>, or <xmlatt>otherprops</xmlatt>). Otherwise, the value is the
+            name of a group within one of those attributes, with the group name specified using the
+            generalized attribute syntax. If the <xmlatt>att</xmlatt> attribute is absent, then the
+              <xmlelement>prop</xmlelement> element declares a default behavior for any conditional
+            processing attribute.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>val</xmlatt></dt>
+          <dd>Specified the value to be acted upon. If the <xmlatt>val</xmlatt> attribute is absent,
+            then the <xmlelement>prop</xmlelement> element declares a default behavior for any value
+            in the specified attribute.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>action</xmlatt>
+            <ph conref="../../common/conref-attribute.dita#conref-attribute/required-attr"/></dt>
+          <dd>Specifies the action to be taken. Allowable values are:<dl>
+              <dlentry>
+                <dt>include</dt>
+                <dd>Include the content in output. This is the default behavior unless otherwise
+                  set.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>exclude</dt>
+                <dd>Exclude the content from output (if all values in the particular attribute are
+                  excluded).</dd>
+              </dlentry>
+              <dlentry>
+                <dt>passthrough</dt>
+                <dd>Include the content in output, and preserve the attribute value as part of the
+                  output stream for further processing by a runtime engine, for example runtime
+                  filtering based on individual user settings. The value should be preserved in
+                  whatever syntax is required by the target runtime. Values that are not explicitly
+                  passed through should be removed from the output stream, even though the content
+                  is still included.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>flag</dt>
+                <dd>Include and flag the content on output (if the content has not been
+                  excluded).</dd>
+              </dlentry>
+            </dl></dd>
+        </dlentry>
+        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditaval-color">
+          <dt/>
+          <dd/>
+        </dlentry>
+        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditaval-backcolor">
+          <dt/>
+          <dd/>
+        </dlentry>
+        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditaval-style">
+          <dt/>
+          <dd/>
+        </dlentry>
+      </dl>
     </section>
 <example id="example" otherprops="examples"><title>Example</title><p>See the example
 in the <xref href="ditaval-val.dita">&lt;val></xref> description.</p></example>
