@@ -10,21 +10,30 @@
  <prolog>
   <metadata>
    <keywords>
-    <indexterm>Complex-table attribute group</indexterm>
-    <indexterm>Commonly referenced attribute descriptions<indexterm>Complex-table
+    <indexterm>align attribute</indexterm>
+    <indexterm>attributes<indexterm>align</indexterm></indexterm>
+    <indexterm>attributes<indexterm>char</indexterm></indexterm>
+    <indexterm>attributes<indexterm>charoff</indexterm></indexterm>
+    <indexterm>attributes<indexterm>colsep</indexterm></indexterm>
+    <indexterm>attributes<indexterm>rowsep</indexterm></indexterm>
+    <indexterm>attributes<indexterm>valign</indexterm></indexterm>
+    <indexterm>char attribute</indexterm>
+    <indexterm>charoff attribute</indexterm>
+    <indexterm>colsep attribute</indexterm>
+    <indexterm>complex-table attribute group</indexterm>
+    <indexterm>commonly-referenced attribute descriptions<indexterm>Complex-table
       attributes</indexterm></indexterm>
+    <indexterm>rowsep attribute</indexterm>
+    <indexterm>valign attribute</indexterm>
    </keywords>
   </metadata>
  </prolog>
  <refbody>
   <section id="section-1">
    <dl>
-    <!--<dlhead conref="../../common/conref-file.dita#reuse_file/attributeDlhead"><dthd/><ddhd/></dlhead>-->
     <dlentry id="align">
      <dt><xmlatt>align</xmlatt></dt>
-     <dd><indexterm>align
-       attribute</indexterm><indexterm>Attributes<indexterm>align</indexterm></indexterm>Describes
-      the alignment of text in a table column. Allowable values are: <dl>
+     <dd>Describes the alignment of text in a table column. Allowable values are: <dl>
        <dlentry>
         <dt>left </dt>
         <dd>Indicates left alignment of the text. </dd>
@@ -55,52 +64,40 @@
     </dlentry>
     <dlentry id="char">
      <dt><xmlatt>char</xmlatt></dt>
-     <dd><indexterm>char
-       attribute</indexterm><indexterm>Attributes<indexterm>char</indexterm></indexterm>Specifies
-      the character for aligning the table entry data. <p>Default source for
+     <dd>Specifies the character for aligning the table entry data. <p>Default source for
         <xmlelement>entry</xmlelement> elements starting in this column. If character alignment is
        specified, the value is the single alignment character source for any implied
         <xmlatt>char</xmlatt> values for entry immediately in this column. A value of &quot;&quot;
-       (the null string) means there is no aligning character.
-       <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></p><p>For
-       example, if <codeph>align="char"</codeph> and <codeph>char="r"</codeph> are specified, then
-       text in the entry should align with the first occurrence of the letter "r" within the entry.
-       </p><p>The <xmlatt>char</xmlatt> attribute is available on the following table elements:
+       (the null string) means there is no aligning character. </p><p>For example, if
+        <codeph>align="char"</codeph> and <codeph>char="r"</codeph> are specified, then text in the
+       entry should align with the first occurrence of the letter "r" within the entry. </p><p>The
+        <xmlatt>char</xmlatt> attribute is available on the following table elements:
         <xmlelement>colspec</xmlelement> and
       <xmlelement>entry</xmlelement>.</p><!--Comment in DITA 1.3 Phase 1 review asked what it means if the "r" isn't actually specified. The language here could be cleaned up, but is essentially the same as the language in the OASIS Exchange Model, so leaving it alone now; don't want to force processors to add an error for this condition in DITA, when not required in other languages that use this model.--></dd>
     </dlentry>
     <dlentry id="charoff">
      <dt><xmlatt>charoff</xmlatt></dt>
-     <dd><indexterm>charoff
-       attribute</indexterm><indexterm>Attributes<indexterm>charoff</indexterm></indexterm>Specifies
-      the horizontal offset of alignment character when <codeph>align="char"</codeph>.
-       <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-NMTOKEN"/>--><p>Default
-       source for <xmlelement>entry</xmlelement> elements starting in this column. For character
-       alignment on an entry in the column, horizontal character offset is the percent of the
-       current column width to the left of the (left edge of the) alignment character. </p><p>This
-       value should be number, greater than 0 and less than or equal to 100. </p><p>For example, if
-        <codeph>align="char"</codeph>, <codeph>char="r"</codeph>, and <codeph>charoff="50"</codeph>
-       are all specified, then text in the entry should align 50% of the distance to the left of the
-       first occurrence of the character "r" within the entry. </p><p>The <xmlatt>charoff</xmlatt>
-       attribute is available on the following table elements: <xmlelement>colspec</xmlelement> and
-        <xmlelement>entry</xmlelement>.</p></dd>
+     <dd>Specifies the horizontal offset of alignment character when <codeph>align="char"</codeph>.
+       <p>Default source for <xmlelement>entry</xmlelement> elements starting in this column. For
+       character alignment on an entry in the column, horizontal character offset is the percent of
+       the current column width to the left of the (left edge of the) alignment character.
+       </p><p>This value should be number, greater than 0 and less than or equal to 100. </p><p>For
+       example, if <codeph>align="char"</codeph>, <codeph>char="r"</codeph>, and
+        <codeph>charoff="50"</codeph> are all specified, then text in the entry should align 50% of
+       the distance to the left of the first occurrence of the character "r" within the entry.
+       </p><p>The <xmlatt>charoff</xmlatt> attribute is available on the following table elements:
+        <xmlelement>colspec</xmlelement> and <xmlelement>entry</xmlelement>.</p></dd>
     </dlentry>
     <dlentry id="colsep">
      <dt><xmlatt>colsep</xmlatt></dt>
-     <dd><indexterm>colsep
-       attribute</indexterm><indexterm>Attributes<indexterm>colsep</indexterm></indexterm>Column
-      separator. A value of 0 indicates no separators; 1 indicates separators.<?datatype NMTOKEN?><?default #IMPLIED?>
-      <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-NMTOKEN"/>--><p>The
+     <dd>Column separator. A value of 0 indicates no separators; 1 indicates separators. <p>The
         <xmlatt>colsep</xmlatt> attribute is available on the following table elements:
         <xmlelement>table</xmlelement>, <xmlelement>tgroup</xmlelement>,
         <xmlelement>colspec</xmlelement>, and <xmlelement>entry</xmlelement>.</p></dd>
     </dlentry>
     <dlentry id="rowsep">
      <dt><xmlatt>rowsep</xmlatt></dt>
-     <dd><indexterm>rowsep
-       attribute</indexterm><indexterm>Attributes<indexterm>rowsep</indexterm></indexterm>Row
-      separator. A value of 0 indicates no separators; 1 indicates separators.<?datatype NMTOKEN?><?default #IMPLIED?>
-      <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-NMTOKEN"/>--><p>The
+     <dd>Row separator. A value of 0 indicates no separators; 1 indicates separators. <p>The
         <xmlatt>rowsep</xmlatt> attribute is available on the following table elements:
         <xmlelement>table</xmlelement>, <xmlelement>tgroup</xmlelement>,
         <xmlelement>row</xmlelement>, <xmlelement>colspec</xmlelement>, and
@@ -142,9 +139,7 @@
     </dlentry>
     <dlentry id="valign">
      <dt><xmlatt>valign</xmlatt></dt>
-     <dd><indexterm>valign
-       attribute</indexterm><indexterm>Attributes<indexterm>valign</indexterm></indexterm>Indicates
-      the vertical alignment of text in a table entry (cell). Allowable values are: <dl>
+     <dd>Indicates the vertical alignment of text in a table entry (cell). Allowable values are: <dl>
        <dlentry>
         <dt>top </dt>
         <dd>Align the text to the top of the table entry (cell). </dd>
@@ -161,9 +156,7 @@
         <dt>-dita-use-conref-target </dt>
         <dd> </dd>
        </dlentry>
-      </dl><?datatype (top | bottom | middle |
-				-dita-use-conref-target)?><?default #IMPLIED?><p>The
-        <xmlatt>valign</xmlatt> attribute is available on the following table elements:
+      </dl><p>The <xmlatt>valign</xmlatt> attribute is available on the following table elements:
         <xmlelement>thead</xmlelement>, <xmlelement>tbody</xmlelement>,
        <xmlelement>row</xmlelement>, and <xmlelement>entry</xmlelement>.</p></dd>
     </dlentry>

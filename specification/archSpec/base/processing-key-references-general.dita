@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept xml:lang="en-us" id="processing_key_references">
+<concept xml:lang="en-us" id="processing-key-references">
     <title>Processing key references</title>
     <shortdesc>Key references can resolve as links, as text, or as both. Within a map, they also can
         be used to create or supplement information on a topic reference. This topic covers
         information that is common to all key processing, regardless of how the key is
         used.</shortdesc>
     <conbody>
-        <section id="processing-undefined-keys" >
+        <section id="processing-undefined-keys">
             <title>Processing of undefined keys</title>
             <p>If both <xmlatt>keyref</xmlatt> and <xmlatt>href</xmlatt> attributes are specified on
-                an element, the <xmlatt>href</xmlatt> value <term outputclass="RFC-2119"
-                    >MUST</term> be used as a fallback address when the key name is
-                undefined. If both <xmlatt>conkeyref</xmlatt> and <xmlatt>conref</xmlatt> attributes
-                are specified on an element, the <xmlatt>conref</xmlatt> value <term
-                    outputclass="RFC-2119">MUST</term> be used as a fallback
-                address when the key name is undefined.</p>
+                an element, the <xmlatt>href</xmlatt> value <term outputclass="RFC-2119">MUST</term>
+                be used as a fallback address when the key name is undefined. If both
+                    <xmlatt>conkeyref</xmlatt> and <xmlatt>conref</xmlatt> attributes are specified
+                on an element, the <xmlatt>conref</xmlatt> value <term outputclass="RFC-2119"
+                    >MUST</term> be used as a fallback address when the key name is undefined.</p>
         </section>
         <section id="combining-attributes">
             <title>Determining effective attributes on the key-referencing element</title>
@@ -30,16 +29,16 @@
         </section>
         <section id="keys-and-condproc">
             <title>Keys and conditional processing</title>
-            <p >The effective key definitions for a key space might be affected by
-                conditional processing (filtering). Processors <term outputclass="RFC-2119"
-                    >SHOULD</term> perform conditional processing before
-                determining the effective key definitions. However, processors might determine
-                effective key definitions before filtering. Consequently, different processors might
-                produce different effective bindings for the same map when there are key definitions
-                that might be filtered out based on their filtering attributes.</p>
-            <note >In order to retain backwards compatibility with DITA 1.0 and 1.1,
-                the specification does not mandate a processing order for different DITA features.
-                This makes it technically possible to determine an effective key definition, resolve
+            <p>The effective key definitions for a key space might be affected by conditional
+                processing (filtering). Processors <term outputclass="RFC-2119">SHOULD</term>
+                perform conditional processing before determining the effective key definitions.
+                However, processors might determine effective key definitions before filtering.
+                Consequently, different processors might produce different effective bindings for
+                the same map when there are key definitions that might be filtered out based on
+                their filtering attributes.</p>
+            <note>In order to retain backwards compatibility with DITA 1.0 and 1.1, the
+                specification does not mandate a processing order for different DITA features. This
+                makes it technically possible to determine an effective key definition, resolve
                 references to that key definition, and then filter out the definition. However, the
                 preferred approach is to take conditional processing into account when resolving
                 keys, so that key definitions which are excluded by processing are not used in
@@ -48,24 +47,23 @@
         <section id="reusing-topic-across-scopes">
             <title>Reusing a topic in multiple key scopes</title>
             <p>If a topic that contains key references is reused in multiple key scopes within a
-                given root map such that its references resolve differently <ph 
-                    >in</ph> each use context, processors <term outputclass="RFC-2119"
-                    >MUST</term> produce multiple copies of the source topic in
-                resolved output for each distinct set of effective key definitions that are
-                referenced by the topic. In such cases, authors can use the <xmlatt>copy-to</xmlatt>
-                attribute <ph >to specify different source URIs for each reference to
-                    a topic.</ph></p>
+                given root map such that its references resolve differently in each use context,
+                processors <term outputclass="RFC-2119">MUST</term> produce multiple copies of the
+                source topic in resolved output for each distinct set of effective key definitions
+                that are referenced by the topic. </p>
+            <p>In such cases, authors can use the <xmlatt>copy-to</xmlatt> attribute to specify
+                different source URIs for each reference to a topic.</p>
         </section>
         <section id="error-conditions">
             <title>Error conditions</title>
-            <p >If a referencing element contains a key reference with an undefined
-                key, it is processed as if there were no key reference, and the value of the
+            <p>If a referencing element contains a key reference with an undefined key, it is
+                processed as if there were no key reference, and the value of the
                     <xmlatt>href</xmlatt> attribute is used as the reference. If the
                     <xmlatt>href</xmlatt> attribute is not specified, the element is not treated as
                 a navigation link. If it is an error for the element to be empty, an implementation
-                    <term outputclass="RFC-2119">MAY</term> give an error message;
-                it also <term outputclass="RFC-2119">MAY</term> recover from this
-                error condition by leaving the key reference element empty.</p>
+                    <term outputclass="RFC-2119">MAY</term> give an error message; it also <term
+                    outputclass="RFC-2119">MAY</term> recover from this error condition by leaving
+                the key reference element empty.</p>
         </section>
     </conbody>
 </concept>

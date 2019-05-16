@@ -18,12 +18,9 @@
         <xmlatt>conrefend</xmlatt>.</p><ul>
 <li>Processors will resolve the range by pulling in the start target and following sibling XML nodes
           across to and including the end target.</li>
-<li>The start and end elements of a range <term outputclass="RFC-2119" 
-            >MUST</term> be of the same type as the referencing element or generalizable to the
-          referencing element. For example, <xmlatt>conref</xmlatt> and <xmlatt>conrefend</xmlatt>
-          attributes on an <xmlelement>li</xmlelement> element might reference other
-            <xmlelement>li</xmlelement> elements, or they might reference specializations of
-            <xmlelement>li</xmlelement> such as <xmlelement>step</xmlelement>.</li>
+<li>The start and end elements of a range <term outputclass="RFC-2119">MUST</term> be of the same
+          type as the referencing element or generalizable to the referencing
+          element.<!-- For example, <xmlatt>conref</xmlatt> and <xmlatt>conrefend</xmlatt> attributes on an <xmlelement>li</xmlelement> element might reference other <xmlelement>li</xmlelement> elements, or they might reference specializations of <xmlelement>li</xmlelement> such as <xmlelement>step</xmlelement>.--></li>
 <li>As with <xmlatt>conref</xmlatt>, if the <xmlatt>conrefend</xmlatt> references a more specialized
           version of the referencing element, applications should generalize the target when
           resolving. </li>
@@ -37,12 +34,8 @@ of a range do not have to match the referencing element.</li>
             >MUST</term> precede the end element in document order.</li>
 <li>The parent of the referencing element <term outputclass="RFC-2119">MUST</term> be the same as
           the parent of the referenced range or generalizable to the parent of the referencing
-          element. For example, it is possible to pull a range from <xmlelement>conbody</xmlelement>
-          into <xmlelement>body</xmlelement>, because <xmlelement>conbody</xmlelement> is
-          generalizable to <xmlelement>body</xmlelement>. It is not possible to pull a range from
-            <xmlelement>body</xmlelement> into <xmlelement>conbody</xmlelement>, because the result
-            <ph >might</ph> not be valid in
-          <xmlelement>conbody</xmlelement>.</li>
+          element.
+          <!--For example, it is possible to pull a range from <xmlelement>conbody</xmlelement> into <xmlelement>body</xmlelement>, because <xmlelement>conbody</xmlelement> is generalizable to <xmlelement>body</xmlelement>. It is not possible to pull a range from <xmlelement>body</xmlelement> into <xmlelement>conbody</xmlelement>, because the result <ph>might</ph> not be valid in <xmlelement>conbody</xmlelement>.--></li>
 <li>With single conref, an <xmlatt>id</xmlatt> attribute from the referenced element will not be
           preserved on the resolved content. With a range, an <xmlatt>id</xmlatt> on both the start
           and the end elements will not be preserved. <xmlatt>id</xmlatt> attributes on intermediate

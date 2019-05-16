@@ -12,25 +12,29 @@ the attribute, to take an action on. The identified attribute is a conditional-p
 </keywords>
 </metadata></prolog>
 <refbody>
-<section id="section-1">A <xmlelement>prop</xmlelement> element can do one of the following:<ul>
+<section id="usage-information"><title>Usage information</title>A <xmlelement>prop</xmlelement>
+      element perform the following functions:<ul>
         <li>A <xmlelement>prop</xmlelement> element with no <xmlatt>att</xmlatt> attribute specified
-          sets a default action for every <xmlelement>prop</xmlelement> element. It is an error to
-          use more than one <xmlelement>prop</xmlelement> element with no attribute in a single
-          document. Recovery from this error is implementation dependent; in such cases processors
-            <term outputclass="RFC-2119">MAY</term> provide an error or warning message.</li>
+          sets a default action for every <xmlelement>prop</xmlelement> element. </li>
         <li>A <xmlelement>prop</xmlelement> element with an <xmlatt>att</xmlatt> attribute but no
             <xmlatt>val</xmlatt> attribute sets a default action for that specific attribute or
-          attribute group. For each specific attribute, it is an error to use more than one
-            <xmlelement>prop</xmlelement> element with that attribute and no value in a single
-          document. Recovery from this error is implementation dependent; in such cases processors
-            <term outputclass="RFC-2119">MAY</term> provide an error or warning message.</li>
+          attribute group.</li>
         <li>A <xmlelement>prop</xmlelement> element with an <xmlatt>att</xmlatt> attribute and a
             <xmlatt>val</xmlatt> attribute sets an action for that value within that attribute or
-          attribute group. It is an error to use more than one <xmlelement>prop</xmlelement> element
-          with the same attribute and value. Recovery from this error is implementation dependent;
-          in such cases processors <term outputclass="RFC-2119">MAY</term> provide an error or
-          warning message. </li>
+          attribute group.</li>
       </ul></section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>Recovery from the following errors are implementation dependent;  processors <term
+          outputclass="RFC-2119">MAY</term> provide an error or warning message:<ul>
+          <li>More than one <xmlelement>prop</xmlelement> element with no <xmlatt>att</xmlatt>
+            attribute</li>
+          <li>More than one <xmlelement>prop</xmlelement> element with a specific attribute and no
+            value </li>
+          <li>More than one <xmlelement>prop</xmlelement> element with the same attribute and
+            value</li>
+        </ul></p>
+    </section>
     <section id="attributes">
       <title>Attributes</title>
       <p>The following attributes are available on this element:<dl>

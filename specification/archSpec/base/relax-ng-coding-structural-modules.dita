@@ -73,11 +73,13 @@
         </dlentry>
         <dlentry>
           <dt>Content model of the root element</dt>
-          <dd>In the declaration of the root element of a topic type, the last position in the
-            content model <term outputclass="RFC-2119">SHOULD</term> be the
-                <codeph><varname>topictype</varname>-info-types</codeph> pattern. For example, the
-              <xmlelement>concept</xmlelement> element places the pattern after
-              <xmlelement>related-links</xmlelement>:<codeblock>&lt;div>
+          <dd>
+            <p>In the declaration of the root element of a topic type, the last position in the
+              content model <term outputclass="RFC-2119">SHOULD</term> be the
+                  <codeph><varname>topictype</varname>-info-types</codeph> pattern.</p>
+            <p>For example, the <xmlelement>concept</xmlelement> element places the pattern after
+                <xmlelement>related-links</xmlelement>:</p>
+            <codeblock>&lt;div>
   &lt;a:documentation>LONG NAME: Concept&lt;/a:documentation>
   &lt;define name="concept.content">
     &lt;!-- ... -->
@@ -88,11 +90,12 @@
       &lt;ref name="concept-info-types"/>
     &lt;/zeroOrMore>
   &lt;/define>
-&lt;/div></codeblock></dd>
+&lt;/div></codeblock>
+          </dd>
         </dlentry>
       </dl>
-      <p>In rare cases, it <ph >might</ph> not be desirable to control topic
-        nesting with the <codeph>info-types</codeph> pattern. For example:</p>
+      <p>In rare cases, it might not be desirable to control topic nesting with the
+          <codeph>info-types</codeph> pattern. For example:</p>
       <ul>
         <li>If a specialized topic type should never allow any nested topics, regardless of context,
           it can be defined without any pattern or any nested topics.</li>

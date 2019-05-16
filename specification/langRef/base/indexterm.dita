@@ -68,13 +68,13 @@
       <title>Processing expectations</title>
       <p>It is an error if an <xmlelement>indexterm</xmlelement> containing no
           <xmlelement>indexterm</xmlelement> children contains both an
-          <xmlelement>index-see</xmlelement> and an <xmlelement>index-see-also</xmlelement>. (Note:
-          <xmlelement>index-see</xmlelement> and <xmlelement>index-see-also</xmlelement> elements
+          <xmlelement>index-see</xmlelement> and an <xmlelement>index-see-also</xmlelement>. In the
+        case of this error condition, an implementation <term outputclass="RFC-2119">MAY</term> give
+        an error message, and might recover by treating all such <xmlelement>index-see</xmlelement>
+        elements as <xmlelement>index-see-also</xmlelement> elements.</p>
+      <note><xmlelement>index-see</xmlelement> and <xmlelement>index-see-also</xmlelement> elements
         within <xmlelement>indexterm</xmlelement> elements that do contain
-          <xmlelement>indexterm</xmlelement> children are ignored.) In the case of this error
-        condition, an implementation <term outputclass="RFC-2119">MAY</term> give an error message,
-        and <ph>might</ph> recover by treating all such <xmlelement>index-see</xmlelement> elements
-        as <xmlelement>index-see-also</xmlelement> elements.</p>
+          <xmlelement>indexterm</xmlelement> children are ignored.)</note>
       <p>The <xmlatt>start</xmlatt> and <xmlatt>end</xmlatt> attributes are defined as CDATA,
           <ph>although it is a best practice</ph> that the values should not contain any whitespace
         characters (such as a space or tab) or control characters. Matching of

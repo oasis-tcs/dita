@@ -3,8 +3,8 @@
 <concept xml:lang="en-us" id="controlled-values-for-attributes">
     <title><ph >Defining</ph> controlled values for attributes</title>
     <shortdesc>Subject scheme maps can define controlled values for DITA attributes without having
-            <ph >to define specializations or constraints</ph>. The list of
-        available values can be modified quickly to adapt to new situations.</shortdesc>
+        to define specializations or constraints. The list of available values can be modified
+        quickly to adapt to new situations.</shortdesc>
     <prolog>
         <metadata>
             <keywords>
@@ -24,36 +24,33 @@
     <conbody>
         <p>Each controlled value is defined using a <xmlelement>subjectdef</xmlelement> element,
             which is a specialization of the <xmlelement>topicref</xmlelement> element. The
-                <xmlelement>subjectdef</xmlelement> element is used to define both a <ph
-                >subject</ph> category and a list of controlled values. The
-            parent  <xmlelement>subjectdef</xmlelement> element defines the category, and the
-            children <xmlelement>subjectdef</xmlelement> elements define the controlled values.</p>
+                <xmlelement>subjectdef</xmlelement> element is used to define both a subject
+            category and a list of controlled values. The parent <xmlelement>subjectdef</xmlelement>
+            element defines the category, and the children <xmlelement>subjectdef</xmlelement>
+            elements define the controlled values.</p>
         <p>The subject definitions can include additional information within a
                 <xmlelement>topicmeta</xmlelement> element to clarify the meaning of a value:<ul>
                 <li>The <xmlelement>navtitle</xmlelement> element can provide a more readable value
                     name.</li>
-                <li>The <xmlelement>shortdesc</xmlelement>
-                    <ph >element</ph> can provide a definition.</li>
+                <li>The <xmlelement>shortdesc</xmlelement> element can provide a definition.</li>
             </ul></p>
         <p>In addition, the <xmlelement>subjectdef</xmlelement> element can reference a more
             detailed definition of the subject, for example, another DITA topic or an external
             resource..</p>
-        <p >The following behavior is expected of processors:</p>
-        <ul>
-            <li>Authoring tools <term outputclass="RFC-2119">SHOULD</term> use
-                these lists of controlled values to provide lists from which authors can select
-                values when they specify attribute values.</li>
-            <li>Authoring tools <term outputclass="RFC-2119">MAY</term> give an
-                organization a list of readable labels, a hierarchy of values to simplify selection,
-                and a shared definition of the value.</li>
-            <li>An editor <term outputclass="RFC-2119">MAY</term>
-                <ph >support accessing and displaying the content of the
-                    subject definition resource in order to provide users with</ph> a detailed
-                explanation of the subject.</li>
-            <li>Tools <term outputclass="RFC-2119">MAY</term> produce a help file,
-                PDF, or other readable catalog to help authors better understand the controlled
-                values.</li>
-        </ul>
+        <p>The following behavior is expected of processors:<ul>
+                <li>Authoring tools <term outputclass="RFC-2119">SHOULD</term> use these lists of
+                    controlled values to provide lists from which authors can select values when
+                    they specify attribute values.</li>
+                <li>Authoring tools <term outputclass="RFC-2119">MAY</term> give an organization a
+                    list of readable labels, a hierarchy of values to simplify selection, and a
+                    shared definition of the value.</li>
+                <li>An editor <term outputclass="RFC-2119">MAY</term>
+                    <ph>support accessing and displaying the content of the subject definition
+                        resource in order to provide users with</ph> a detailed explanation of the
+                    subject.</li>
+                <li>Tools <term outputclass="RFC-2119">MAY</term> produce a help file, PDF, or other
+                    readable catalog to help authors better understand the controlled values.</li>
+            </ul></p>
         <example  id="example" otherprops="examples">
             <title>Example: Controlled values that provide additional information about the
                 subject</title>
