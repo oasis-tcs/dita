@@ -56,6 +56,31 @@
               <data name="portalName" value="DITA 2.0 Specification (DRAFT)"/>
               <data name="contextName" value="dita-2.0-specification.ditamap"/>
             </draft-comment>
+            <draft-comment author="Kristen J Eberlein" time="17 May 2019">
+              <p>This makes sense to me. Robert?</p>
+              <p>So, as far as the wordsmithing goes … I see a couple of options, if we are keeping
+                only of this content here in the description of the attribute.</p>
+              <ol>
+                <li>Replace the current description of <xmlatt>datakeyref</xmlatt> with the
+                  following text: <q>Provides a key reference to the audio object. When specified
+                    and the key is resolvable, the key-provided URI is used. <i>If a key that has no
+                      associated resource, only link text, the audio object is replaced with the
+                      link text.</i> If <xmlatt>data</xmlatt> is specified, it is used as a fallback
+                    when the key cannot be resolved to a resource.</q> (Changes in italic.)</li>
+                <li>Replace the current description of <xmlatt>datakeyref</xmlatt> with the
+                  following text: <q>Provides a key reference to the audio object. When specified
+                    and the key is resolvable, the key-provided URI is used.  <i>If the key
+                      referenced by <xmlatt>datakeyref</xmlatt> cannot be resolved, and
+                        <xmlatt>data</xmlatt> is specified, that value provided by
+                        <xmlatt>data</xmlatt> is used as a fallback. If the key referenced by
+                        <xmlatt>datakeyref</xmlatt> has no associated ressource, only link text, the
+                      audio object is replaced with the link text.</i>
+                  </q> (Changes in italic.)</li>
+              </ol>
+              <p>But … Should some of this be in the "Rendering expectations" section? And should
+                any of this use normative statements? The "Rendering expectations" section DOES
+                include a statement currently.</p>
+            </draft-comment>
           </dd>
         </dlentry>
         <dlentry>
@@ -74,6 +99,38 @@
                 object absent an explicit @type on the media object or key definition.</p>
               <data name="portalName" value="DITA 2.0 Specification (DRAFT)"/>
               <data name="contextName" value="dita-2.0-specification.ditamap"/>
+            </draft-comment>
+            <draft-comment author="Kristen J Eberlein" time="17 May 2019">
+              <p>I want to suggest the following, if we are not going to make a normative
+                statement.</p>
+              <p>Indicates the MIME type for the audio object. This attribute enables processors to
+                avoid loading unsuppported objects. <line-through>Note that this differs from the
+                    <xmlatt>type</xmlatt> attribute on many other DITA elements; it specifies a MIME
+                  type rather than a content type. </line-through>If <xmlatt>type</xmlatt> is not
+                specified, the effective type for the key named by the <xmlatt>datakeyref</xmlatt>
+                attribute is used as the value<line-through> as the value for this
+                  attribute</line-through>. If an explicit <xmlatt>type</xmlatt> is not specified on
+                either the audio object or key definition, processors can use other means, such the
+                URI file extension, to determine the effective MIME type of the media object.</p>
+              <p>If we want to make a normative statement, maybe add the following to the
+                "Processing expectations" section? <q>If an explicit <xmlatt>type</xmlatt> is not
+                  specified on either the audio object or key definition, processors <term
+                    outputclass="RFC-2119">MAY</term> use other means, such the URI file extension,
+                  to determine the effective type of the media object.</q></p>
+              <p>Or would perhaps a fuller statement about how processors should determine the MIME
+                type be useful in the "Processing expectations" section? If so … (This would appear
+                in both the <xmlelement>audio</xmlelement> and <xmlelement>video</xmlelement>
+                topic.)</p>
+              <p>Processors <term outputclass="RFC-2119">SHOULD</term> determine the effective MIME
+                type of the media object as follows:<ol>
+                  <li>Use the explicit value provided by the <xmlatt>type</xmlatt> attribute on the
+                    media object.</li>
+                  <li>Use the implicit value provided by resource associated with the key named by
+                    the <xmlatt>datakeyref</xmlatt> attribute.</li>
+                </ol></p>
+              <p>If a MIME type is not specified on either the media object or key definition,
+                processors <term outputclass="RFC-2119">MAY</term> use other means, such the URI
+                file extension, to determine the effective MIME type of the media object.</p>
             </draft-comment>
           </dd>
         </dlentry>
