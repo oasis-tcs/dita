@@ -27,34 +27,30 @@
         <dlentry>
           <!--KJE: RDA and I discussed this on 29 April 2019. We could not come up with a phrasing that would not include "should". Adding this comment so that we don't have the discussion again.-->
           <dt><xmlatt>data</xmlatt></dt>
-          <dd>Specifies the absolute or relative URI of the audio object. If this attribute is
+          <dd>Specifies the absolute or relative URI of the video object. If this attribute is
             specified, <xmlatt>type</xmlatt> also should be specified.</dd>
         </dlentry>
         <dlentry>
           <!-- Identical to definition in video topic -->
           <dt><xmlatt>datakeyref</xmlatt></dt>
-          <dd>Provides a key reference to the audio object. When specified and the key is
-            resolvable, the key-provided URI is used. A key that has no associated resource, only
-            link text, is considered to be unresolved. If <xmlatt>data</xmlatt> is specified, it is
-            used as a fallback when the key cannot be resolved to a resource.</dd>
-          <dd>
-            <draft-comment author="Chris Nitchie" disposition="NEW"
-              time="Fri May 03 14:42:33 UTC 2019">
-              <p>See my comment on @datakeyref in &lt;audio&gt;</p>
-              <data name="portalName" value="DITA 2.0 Specification (DRAFT)"/>
-              <data name="contextName" value="dita-2.0-specification.ditamap"/>
-            </draft-comment>
-          </dd>
+          <dd>Provides a key reference to the video object. When specified and the key is
+            resolvable, the key-provided URI is used. If the key referenced by
+              <xmlatt>datakeyref</xmlatt> cannot be resolved, and <xmlatt>data</xmlatt> is
+            specified, that value provided by <xmlatt>data</xmlatt> is used as a fallback. If the
+            key referenced by <xmlatt>datakeyref</xmlatt> has no associated ressource, only link
+            text, and the video object does not contain a <xmlelement>fallback</xmlelement> element,
+            the link text becomes fallback content for the video object.</dd>
+          <dd/>
         </dlentry>
         <dlentry>
           <!-- Identical to definition in video topic -->
           <dt><xmlatt>type</xmlatt></dt>
-          <dd>Indicates the MIME type for the audio object. Setting this attribute enables
-            processors to avoid loading unsuppported objects. Note that this differs from the
-              <xmlatt>type</xmlatt> attribute on many other DITA elements; it specifies a MIME type
-            rather than a content type. If <xmlatt>type</xmlatt> is not specified, the effective
-            type value for the key named by the <xmlatt>datakeyref</xmlatt> attribute is used as the
-            value for this attribute.</dd>
+          <dd>Indicates the MIME type for the video object. This attribute enables processors to
+            avoid loading unsuppported objects. If <xmlatt>type</xmlatt> is not specified, the
+            effective type for the key named by the <xmlatt>datakeyref</xmlatt> attribute is used as
+            the value. If an explicit <xmlatt>type</xmlatt> is not specified on either the audio
+            object or key definition, processors can use other means, such the URI file extension,
+            to determine the effective MIME type of the media object.</dd>
         </dlentry>
         <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-height">
           <dt/>
@@ -122,6 +118,5 @@ multi-lingual subtitles</title><p>The following code sample defines multiple pre
   &lt;media-track xml:lang="de" keyref="video-subtitles-de"/>
 &lt;/video></codeblock></fig>
     </example>
-    <example/>
   </refbody>
 </reference>
