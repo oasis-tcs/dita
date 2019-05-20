@@ -1287,6 +1287,7 @@
 <!ENTITY % object.content
                        "((%desc;)?,
                          (%longdescref;)?,
+                         (%fallback;)?,
                          (%param;)*,
                          (%foreign.unknown.incl;)*)"
 >
@@ -1351,6 +1352,21 @@
 <!ELEMENT  object %object.content;>
 <!ATTLIST  object %object.attributes;>
 
+<!--                    LONG NAME: Fallback                       -->
+<!ENTITY % fallback.content
+                       "(#PCDATA |
+                         %basic.block.notbfgobj; |
+                         %basic.ph; |
+                         %data.elements.incl; |
+                         %draft-comment; |
+                         %foreign.unknown.incl; |
+                         %required-cleanup;)*"
+>
+<!ENTITY % fallback.attributes
+              "%univ-atts;"
+>
+<!ELEMENT  fallback %fallback.content;>
+<!ATTLIST  fallback %fallback.attributes;>
 
 <!--                    LONG NAME: Parameter                       -->
 <!ENTITY % param.content
@@ -1379,7 +1395,6 @@
 >
 <!ELEMENT  param %param.content;>
 <!ATTLIST  param %param.attributes;>
-
 
 <!--                    LONG NAME: Simple Table                    -->
 <!ENTITY % simpletable.content
@@ -1592,9 +1607,10 @@
 <!ATTLIST  dl             class CDATA "- topic/dl "         >
 <!ATTLIST  dlentry        class CDATA "- topic/dlentry "    >
 <!ATTLIST  dlhead         class CDATA "- topic/dlhead "     >
-<!ATTLIST  draft-comment   class CDATA "- topic/draft-comment ">
+<!ATTLIST  draft-comment  class CDATA "- topic/draft-comment ">
 <!ATTLIST  dt             class CDATA "- topic/dt "         >
 <!ATTLIST  dthd           class CDATA "- topic/dthd "       >
+<!ATTLIST  fallback       class CDATA "- topic/fallback "   >
 <!ATTLIST  fig            class CDATA "- topic/fig "        >
 <!ATTLIST  figgroup       class CDATA "- topic/figgroup "   >
 <!ATTLIST  fn             class CDATA "- topic/fn "         >
