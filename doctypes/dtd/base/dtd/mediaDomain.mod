@@ -76,8 +76,8 @@
                                     #IMPLIED
                %univ-atts;"
 >
-<!ELEMENT  video %audio.content;>
-<!ATTLIST  video %audio.attributes;>
+<!ELEMENT  audio %audio.content;>
+<!ATTLIST  audio %audio.attributes;>
 
 <!--                    LONG NAME: Video object reference          -->
 <!ENTITY % video.content
@@ -155,10 +155,10 @@
 <!ATTLIST  media-autoplay %media-autoplay.attributes;>
 
 <!--                    LONG NAME: Media autoplay configuration                -->
-<!ENTITY % media-autoplay.content
+<!ENTITY % media-loop.content
                        "EMPTY"
 >
-<!ENTITY % media-autoplay.attributes
+<!ENTITY % media-loop.attributes
               "%univ-atts;
                name
                           CDATA
@@ -203,7 +203,8 @@
                           CDATA
                                     #IMPLIED
                valuetype
-                          #FIXED
+                          (ref)
+                                    #FIXED
                                     'ref'
                type
                           CDATA
@@ -228,7 +229,8 @@
                           CDATA
                                     #IMPLIED
                valuetype
-                          #FIXED
+                          (ref)   
+                                    #FIXED
                                     'ref'
                type
                           (subtitles |
@@ -258,7 +260,8 @@
                           CDATA
                                     #IMPLIED
                valuetype
-                          #FIXED
+                          CDATA
+                                    #FIXED
                                     'ref'
                type
                           CDATA
