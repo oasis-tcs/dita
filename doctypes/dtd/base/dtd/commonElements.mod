@@ -74,6 +74,7 @@
 
 <!ENTITY % basic.ph
               "%cite; |
+               %include; |
                %keyword; |
                %ph; |
                %q; |
@@ -119,6 +120,7 @@
 >
 <!ENTITY % basic.ph.notm
               "%cite; |
+               %include; |
                %keyword; |
                %ph; |
                %q; |
@@ -371,6 +373,7 @@
                %data.elements.incl; |
                %fn; |
                %foreign.unknown.incl; |
+               %include; |
                %simpletable; |
                %xref;"
 >
@@ -1239,6 +1242,38 @@
 <!ELEMENT  image %image.content;>
 <!ATTLIST  image %image.attributes;>
 
+<!--                    LONG NAME: Inclusion                  -->
+<!ENTITY % include.content
+                       "((%data.elements.incl;)*,
+                         (%fallback;)?,
+                         (%foreign.unknown.incl;)*)"
+>
+<!ENTITY % include.attributes
+              "href
+                          CDATA
+                                    #IMPLIED
+               scope
+                          (external |
+                           local |
+                           peer |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               keyref
+                          CDATA
+                                    #IMPLIED
+               format
+                          CDATA
+                                    #IMPLIED
+               parse
+                          CDATA
+                                    #IMPLIED
+               encoding
+                          CDATA
+                                    #IMPLIED
+               %univ-atts;"
+>
+<!ELEMENT  include %include.content;>
+<!ATTLIST  include %include.attributes;>
 
 <!--                    LONG NAME: Alternate text                  -->
 <!ENTITY % alt.content
@@ -1616,6 +1651,7 @@
 <!ATTLIST  fn             class CDATA "- topic/fn "         >
 <!ATTLIST  foreign        class CDATA "- topic/foreign "    >
 <!ATTLIST  image          class CDATA "- topic/image "      >
+<!ATTLIST  include        class CDATA "- topic/include "  >
 <!ATTLIST  indexterm      class CDATA "- topic/indexterm "  >
 <!ATTLIST  index-base     class CDATA "- topic/index-base " >
 <!ATTLIST  itemgroup      class CDATA "- topic/itemgroup "  >
