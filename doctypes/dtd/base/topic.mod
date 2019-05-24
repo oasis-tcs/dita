@@ -331,10 +331,7 @@
                          %ph;)*"
 >
 <!ENTITY % searchtitle.attributes
-              "outputclass
-                          CDATA
-                                    #IMPLIED
-               %univ-atts;"
+              "%univ-atts;"
 >
 <!ELEMENT  searchtitle %searchtitle.content;>
 <!ATTLIST  searchtitle %searchtitle.attributes;>

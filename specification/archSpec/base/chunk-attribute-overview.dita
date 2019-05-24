@@ -6,10 +6,11 @@
         organization for authoring DITA topics is not equivalent to the best organization for
         publishing those topics.</shortdesc>
 <conbody>
-<p>The <xmlatt>chunk</xmlatt> attribute is composed of a single token without any white space. DITA
-                        defines two tokens for the <xmlatt>chunk</xmlatt> attribute:
+<p>The <xmlatt>chunk</xmlatt> attribute is composed of a single token without any 
+    white space. DITA defines two tokens for the <xmlatt>chunk</xmlatt> attribute:
                                 <codeph>combine</codeph> and <codeph>split</codeph>. Other tokens
                         can be defined by applications, but support for those tokens will vary.</p>
+
 <dl>
 <dlentry>
 <dt><codeph>chunk="combine"</codeph></dt>
@@ -43,5 +44,30 @@ documents.</li>
 Processors <term outputclass="RFC-2119">MAY</term> apply equivalent processing to non-DITA
 documents.</li>
 </ul>
+
+        <p>The <xmlatt>chunk</xmlatt> attribute describes how a processor can split or combine source
+            DITA documents into alternate organizational schemes for rendering purposes. This means
+            that the <xmlatt>chunk</xmlatt> attribute is only relevant when the organization of
+            source DITA documents has an effect on organization of published documents.</p>
+        <p>The <xmlatt>chunk</xmlatt> attribute does not cascade to nested
+                <xmlelement>topicref</xmlelement> elements or to nested map references.</p>
+<p>The following rules apply to all values of the <xmlatt>chunk</xmlatt> attribute:<ul>
+                <li>When the source document organization has no effect on published output, such as
+                    when producing a single PDF or EPUB, implementations <term
+                        outputclass="RFC-2119">MAY</term> ignore the <xmlatt>chunk</xmlatt>
+                    attribute.</li>
+                <li>When the <xmlatt>chunk</xmlatt> attribute results in more or fewer documents
+                    based on the <codeph>combine</codeph> or <codeph>split</codeph> tokens, the
+                    hierarchy of topics within the resulting map and topic organization <term
+                        outputclass="RFC-2119">SHOULD</term> match the hierarchy in the original
+                    topics and maps.</li>
+                <li>When the <xmlatt>chunk</xmlatt> attribute results in more or fewer documents,
+                    implementations <term outputclass="RFC-2119">MAY</term> create their own naming
+                    schemes for those reorganized documents.</li>
+                <li><xmlatt>chunk</xmlatt> attribute values apply to DITA topic documents referenced
+                    from a map. Processors <term outputclass="RFC-2119">MAY</term> apply equivalent
+                    processing to non-DITA documents.</li>
+            </ul></p>
+
 </conbody>
 </concept>

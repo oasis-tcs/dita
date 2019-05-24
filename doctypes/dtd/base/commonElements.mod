@@ -74,6 +74,7 @@
 
 <!ENTITY % basic.ph
               "%cite; |
+               %include; |
                %keyword; |
                %ph; |
                %q; |
@@ -119,6 +120,7 @@
 >
 <!ENTITY % basic.ph.notm
               "%cite; |
+               %include; |
                %keyword; |
                %ph; |
                %q; |
@@ -371,6 +373,7 @@
                %data.elements.incl; |
                %fn; |
                %foreign.unknown.incl; |
+               %include; |
                %simpletable; |
                %xref;"
 >
@@ -1239,6 +1242,38 @@
 <!ELEMENT  image %image.content;>
 <!ATTLIST  image %image.attributes;>
 
+<!--                    LONG NAME: Inclusion                  -->
+<!ENTITY % include.content
+                       "((%data.elements.incl;)*,
+                         (%fallback;)?,
+                         (%foreign.unknown.incl;)*)"
+>
+<!ENTITY % include.attributes
+              "href
+                          CDATA
+                                    #IMPLIED
+               scope
+                          (external |
+                           local |
+                           peer |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               keyref
+                          CDATA
+                                    #IMPLIED
+               format
+                          CDATA
+                                    #IMPLIED
+               parse
+                          CDATA
+                                    #IMPLIED
+               encoding
+                          CDATA
+                                    #IMPLIED
+               %univ-atts;"
+>
+<!ELEMENT  include %include.content;>
+<!ATTLIST  include %include.attributes;>
 
 <!--                    LONG NAME: Alternate text                  -->
 <!ENTITY % alt.content
@@ -1287,6 +1322,7 @@
 <!ENTITY % object.content
                        "((%desc;)?,
                          (%longdescref;)?,
+                         (%fallback;)?,
                          (%param;)*,
                          (%foreign.unknown.incl;)*)"
 >
@@ -1351,6 +1387,21 @@
 <!ELEMENT  object %object.content;>
 <!ATTLIST  object %object.attributes;>
 
+<!--                    LONG NAME: Fallback                       -->
+<!ENTITY % fallback.content
+                       "(#PCDATA |
+                         %basic.block.notbfgobj; |
+                         %basic.ph; |
+                         %data.elements.incl; |
+                         %draft-comment; |
+                         %foreign.unknown.incl; |
+                         %required-cleanup;)*"
+>
+<!ENTITY % fallback.attributes
+              "%univ-atts;"
+>
+<!ELEMENT  fallback %fallback.content;>
+<!ATTLIST  fallback %fallback.attributes;>
 
 <!--                    LONG NAME: Parameter                       -->
 <!ENTITY % param.content
@@ -1379,7 +1430,6 @@
 >
 <!ELEMENT  param %param.content;>
 <!ATTLIST  param %param.attributes;>
-
 
 <!--                    LONG NAME: Simple Table                    -->
 <!ENTITY % simpletable.content
@@ -1592,14 +1642,16 @@
 <!ATTLIST  dl             class CDATA "- topic/dl "         >
 <!ATTLIST  dlentry        class CDATA "- topic/dlentry "    >
 <!ATTLIST  dlhead         class CDATA "- topic/dlhead "     >
-<!ATTLIST  draft-comment   class CDATA "- topic/draft-comment ">
+<!ATTLIST  draft-comment  class CDATA "- topic/draft-comment ">
 <!ATTLIST  dt             class CDATA "- topic/dt "         >
 <!ATTLIST  dthd           class CDATA "- topic/dthd "       >
+<!ATTLIST  fallback       class CDATA "- topic/fallback "   >
 <!ATTLIST  fig            class CDATA "- topic/fig "        >
 <!ATTLIST  figgroup       class CDATA "- topic/figgroup "   >
 <!ATTLIST  fn             class CDATA "- topic/fn "         >
 <!ATTLIST  foreign        class CDATA "- topic/foreign "    >
 <!ATTLIST  image          class CDATA "- topic/image "      >
+<!ATTLIST  include        class CDATA "- topic/include "  >
 <!ATTLIST  indexterm      class CDATA "- topic/indexterm "  >
 <!ATTLIST  index-base     class CDATA "- topic/index-base " >
 <!ATTLIST  itemgroup      class CDATA "- topic/itemgroup "  >

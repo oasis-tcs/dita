@@ -10,5 +10,5 @@ export DITA_HOME=$PWD/dita-ot-$DITA_OT_VERSION
 # Build beta 2.0 doctype
 #$DITA_HOME/bin/dita -i $PWD/metadita-sampledocs-master/doctypes/dita20/dtd/base/basetopic.dita -f html5
 #$DITA_HOME/bin/dita -i $PWD/metadita-sampledocs-master/doctypes/dita20/dtd/base/basemap.ditamap -f html5
-$DITA_HOME/bin/dita -i $PWD/metadita-sampledocs-master/doctypes/dita20/2.0grammars.ditamap -f html5
+$DITA_HOME/bin/dita -i $PWD/metadita-sampledocs-master/doctypes/dita20/2.0grammars.ditamap -f html5 --processing-mode=strict
 $DITA_HOME/bin/dita -i $PWD/specification/dita-2.0-specification.ditamap -f html5 --processing-mode=strict
