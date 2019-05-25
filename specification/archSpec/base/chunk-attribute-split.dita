@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="chunksplit" xml:lang="en">
-<title>Using the <xmlatt>chunk</xmlatt> attribute to split documents</title>
-<shortdesc>The <xmlatt>chunk</xmlatt> attribute can be set to <codeph>chunk="split"</codeph> to
-produce multiple result documents out of topics that are best managed within a single source
-document.</shortdesc>
+    <title>Processing <codeph>chunk="split"</codeph></title>
+    <shortdesc>Setting <codeph>chunk="split"</codeph> instructs a processor to split each topic from
+        the referenced source document into its own document for rendering purposes. Multiple result
+        documents are generated.</shortdesc>
 <conbody>
-<p><ph conref="../../common/conref-file.dita#reuse_file/definitionChunkSplit"/></p>
-<section id="section_i3y_wng_thb">
-<title>Processing <codeph>chunk="split"</codeph></title>
-<ul id="ul_j3y_wng_thb">
-<li>When specified on a <xmlelement>topicref</xmlelement> element that refers to a source DITA
-document, it indicates that all topics within the referenced document should be rendered as
-individual documents.</li>
-<li>When specified on an element such as <xmlelement>topicgroup</xmlelement> that does not refer to
-a topic or result in a published topic, the attribute has no meaning.</li>
-<li>When specified on a map, <codeph>chunk="split"</codeph> sets a default operation for all source
-DITA documents in the map (outside the context of relationship tables). The default
-<codeph>split</codeph> value is used except where a <codeph>combine</codeph> value is encountered,
-in which case <codeph>combine</codeph> takes over for that entire branch. </li>
-</ul>
-</section>
+        <draft-comment author="Kristen J Eberlein" time="25 May 2019" audience="tc-reviewers">
+            <p>Don't these need to be normative statements?</p>
+        </draft-comment>
+        <p>The following rules apply:</p>
+        <ul>
+            <li>When specified on a <xmlelement>topicref</xmlelement> element that refers to a
+                source DITA document, it indicates that all topics within the referenced document
+                should be rendered as individual documents.</li>
+            <li>When specified on an element such as <xmlelement>topicgroup</xmlelement> that does
+                not refer to a topic or result in a published topic, the attribute has no
+                meaning.</li>
+            <li>When specified on the root element of a map, <codeph>chunk="split"</codeph> sets a
+                default operation for all source DITA documents in the map (outside the context of
+                relationship tables). The default <codeph>split</codeph> value is used except where
+                a <codeph>combine</codeph> value is encountered, in which case
+                    <codeph>combine</codeph> takes over for that entire branch. </li>
+        </ul>
 </conbody>
 </concept>
