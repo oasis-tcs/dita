@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="linking-and-addressing-terms">
+    <title>Linking and addressing terms</title>
+    <shortdesc>Certain terminology is used for discussing linking and addressing.</shortdesc>
+    <conbody>
+        <dl>
+            <dlentry id="referenced-element">
+                <dt>referenced element</dt>
+                <dd>An element that is referenced by another DITA element. See also
+                        <term>referencing element</term>.</dd>
+                <dd><b>Example</b><p>Consider the following code sample from a
+                            <filepath>installation-reuse.dita</filepath> topic. The
+                            <xmlelement>step</xmlelement> element that it contains is a referenced
+                        element; other DITA topics reference the <xmlelement>step</xmlelement>
+                        element by using the <xmlatt>conref</xmlatt>
+                        attribute.<codeblock>&lt;step id="run-startcmd-script">
+	&lt;cmd>Run the startcmd script that is applicable to your operating-system environment.&lt;/cmd>
+&lt;/step></codeblock></p></dd>
+            </dlentry>
+            <dlentry id="referencing-element">
+                <dt>referencing element</dt>
+                <dd>An element that references another DITA element by specifying an addressing
+                    attribute. See also <term>referenced element</term> and <term>addressing
+                        attribute</term></dd>
+                <dd><b>Example</b><p>The following <xmlelement>step</xmlelement> element is a
+                        referencing element. It uses the <xmlatt>conref</xmlatt> attribute to
+                        reference a <xmlelement>step</xmlelement> element in the
+                            <filepath>installation-reuse.dita</filepath>
+                        topic.<codeblock>&lt;step conref="installation-reuse.dita#reuse/run-startcmd-script">
+	&lt;cmd/>
+&lt;/step></codeblock></p></dd>
+            </dlentry>
+            <dlentry>
+                <dt>addressing attribute</dt>
+                <dd>An attribute, such as <xmlatt>conref</xmlatt>, <xmlatt>conkeyref</xmlatt>,
+                        <xmlatt>keyref</xmlatt>, and <xmlatt>href</xmlatt>, that specifies an
+                    address.</dd>
+            </dlentry>
+        </dl>
+    </conbody>
+</concept>
