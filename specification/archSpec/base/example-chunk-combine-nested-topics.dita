@@ -6,9 +6,9 @@
 documents with their own nested topics.</shortdesc>
 <conbody>
 <p>Consider the following source map <filepath>input.ditamap</filepath>:</p>
-<fig id="fig_aw2_3md_1gb">
-<title>Input map without chunking</title>
-<codeblock>input.ditamap:
+<fig>
+      <title>Input map without chunking</title>
+      <codeblock>input.ditamap:
 &lt;map chunk="combine">
   &lt;title>Generation example&lt;/title>
   &lt;topicref href="ancestor.dita">
@@ -18,13 +18,13 @@ documents with their own nested topics.</shortdesc>
   &lt;/topicref>
 &lt;/map>
 </codeblock>
-</fig>
+    </fig>
 <p>In this case, the <xmlatt>chunk</xmlatt> attribute instructs a processor to treat the three
 topics as a single combined DITA document, while preserving the original map hierarchy. Now consider
 the following three topic documents, each of which includes nested or peer topics:</p>
-<fig id="fig_pwc_xmd_1gb">
-<title>Source documents with nested structures</title>
-<codeblock>ancestor.dita:
+<fig>
+      <title>Source documents with nested structures</title>
+      <codeblock>ancestor.dita:
 &lt;dita>
   &lt;topic id="ancestor-first">
     &lt;title>First major topic in ancestor composite doc&lt;/title>
@@ -56,9 +56,10 @@ child.dita:
   &lt;title>Small child topic&lt;/title>
   &lt;!-- small child topic content -->
 &lt;/topic></codeblock>
-</fig>
+    </fig>
 <p>When <codeph>chunk="combine"</codeph> is evaluated, the three source documents are combined into
-one. Both the ancestor and middle documents have child topics that must be taken into account.</p>
+      one. Both the ancestor and middle documents have child topics that need to be taken into
+      account.</p>
 <ul id="ul_l3y_wng_thb">
 <li><filepath>ancestor.dita</filepath> has a root <xmlelement>dita</xmlelement> element, so content
 from each nested topic reference is located after any nested topics within the final child of the
@@ -66,9 +67,9 @@ from each nested topic reference is located after any nested topics within the f
 <li><filepath>middle.dita</filepath> does not have <xmlelement>dita</xmlelement> but does have a
 nested topic, so content from any nested topic references is located after that nested topic.</li>
 </ul>
-<fig id="fig_bw2_3md_1gb">
-<title>Equivalent source content </title>
-<codeblock>input.ditamap:
+<fig>
+      <title>Equivalent source content </title>
+      <codeblock>input.ditamap:
 &lt;map>
   &lt;title>Generation example&lt;/title>
   &lt;topicref href="input.dita"/>
@@ -104,6 +105,6 @@ input.dita:
     &lt;/topic>
   &lt;/topic>
 &lt;/dita></codeblock>
-</fig>
+    </fig>
 </conbody>
 </concept>
