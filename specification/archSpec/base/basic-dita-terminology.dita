@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="basic-dita-terminology">
+    <title>Basic DITA terminology</title>
+    <shortdesc>Certain terminology is used for basic DITA components.</shortdesc>
+    <conbody>
+        <dl>
+            <dlentry>
+                <dt>DITA document</dt>
+                <dd>
+                    <p>An XML document that conforms to the requirements of this specification.</p>
+                    <p>A DITA document <term outputclass="RFC-2119">MUST</term> have as its root
+                        element one of the following elements:<ul>
+                            <li><xmlelement>map</xmlelement> or a specialization of the
+                                    <xmlelement>map</xmlelement> element</li>
+                            <li><xmlelement>topic</xmlelement> or a specialization of the
+                                    <xmlelement>topic</xmlelement> element</li>
+                            <li><xmlelement>dita</xmlelement>, which cannot be specialized, but
+                                which allows documents with multiple sibling topics</li>
+                        </ul></p>
+                </dd>
+            </dlentry>
+            <dlentry>
+                <dt>DITA document type</dt>
+                <dd>A unique set of structural modules, domain modules, and constraint modules that
+                    taken together provide the XML element and attribute declarations that define
+                    the structure of DITA documents. </dd>
+            </dlentry>
+            <dlentry>
+                <dt>DITA document-type shell</dt>
+                <dd>A set of DTD or RELAX NG declarations that implement a DITA document type by
+                    using the rules and design patterns that are included in the DITA specification.
+                    A DITA document-type shell includes and configures one or more structural
+                    modules, zero or more domain modules, and zero or more constraint modules. With
+                    the exception of the optional declarations for the <xmlelement>dita</xmlelement>
+                    element and its attributes, DITA document-type shells do not declare any element
+                    or attribute types directly.</dd>
+            </dlentry>
+            <dlentry>
+                <dt>DITA element</dt>
+                <dd>An XML element instance whose type is a DITA element type. DITA elements must
+                    exhibit a <xmlatt>class</xmlatt> attribute that has a value that conforms to the
+                    rules for specialization hierarchy specifications.</dd>
+            </dlentry>
+            <dlentry>
+                <dt>DITA element type</dt>
+                <dd>An element type that is either one of the base element types that are defined by
+                    the DITA specification, or a specialization of one of the base element
+                    types.</dd>
+            </dlentry>
+            <dlentry>
+                <dt>map instance</dt>
+                <dd>An occurrence of a map type in a DITA document.</dd>
+            </dlentry>
+            <dlentry>
+                <dt>map type</dt>
+                <dd>A map or a specialization of map that defines a set of relationships among topic
+                    instances.</dd>
+                <!--<dd>An element type that defines a set of relationships among topic instances. The map type provides the root element and, through the contained element types, the substructure for the map instances. The map substructure provides hierarchy, group, and matrix organization of references to topic instances.</dd>-->
+            </dlentry>
+            <dlentry>
+                <dt>structural type instance</dt>
+                <dd>An occurrence of a topic type or a map type in a DITA document.</dd>
+            </dlentry>
+            <dlentry>
+                <dt>topic instance </dt>
+                <dd>An occurrence of a topic type in a DITA document.</dd>
+            </dlentry>
+            <dlentry>
+                <dt>topic type</dt>
+                <dd>A topic or a specialization of topic that defines a complete unit of
+                    content.</dd>
+                <!--<dd>An element type that defines a complete unit of content. The topic type provides the root element for the topic and, through the contained element types, the substructure for the topic instances. The root element of the topic type is not necessarily the same as the root element of a document type; document types can nest multiple topic types and might also declare non-DITA wrapper elements as the root element for compatibility with other processes.</dd>-->
+            </dlentry>
+        </dl>
+    </conbody>
+</concept>

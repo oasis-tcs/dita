@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="map-terminology">
+    <title>Map terminology</title>
+    <shortdesc>Certain terminology is used for DITA maps.</shortdesc>
+    <conbody>
+        <dl>
+            <dlentry>
+                <dt>root map</dt>
+                <dd>The DITA map that is provided as input for a processor.</dd>
+            </dlentry>
+            <dlentry>
+                <dt>submap</dt>
+                <dd>A DITA map that is referenced with a <xmlatt>scope</xmlatt> attribute that
+                    evaluates as "local". The value of the scope attribute might be explicitly set,
+                    be defaulted, or cascade from another element.</dd>
+            </dlentry>
+            <dlentry>
+                <dt>peer map</dt>
+                <dd>A DITA map that is referenced with a <xmlatt>scope</xmlatt> attribute that
+                    evaluates as "peer". The value of the scope attribute might be explicitly set,
+                    be defaulted, or cascade from another element.</dd>
+            </dlentry>
+            <dlentry>
+                <dt>map branch</dt>
+                <dd>A <xmlelement>topicref</xmlelement> element or a specialization of
+                        <xmlelement>topicref</xmlelement>, along with any child elements and all
+                    resources that are referenced by the original element or its children.</dd>
+            </dlentry>
+            <!--<dlentry><dt>map tree</dt><dd><draft-comment author="Kristen Eberlein" time="15 April 2015" disposition="open"><p>Comment by Eliot Kimber in the targeted review of linking:</p><p>The "map tree" is the tree of *maps* only, that is, maps and submaps. It is distinct from the topicrefs contained by those maps.</p><p>Part of the definitional challenge here is that the map tree is important for the purposes of key space construction: the map tree determines key definition precedence, while the topicref tree reflects the *union* of the topicref trees from all the maps (and the existence of the submaps is not maintained in the final resolved topicref tree).</p><p>Certainly the term "branch" is accurate in reference to the map tree, but the term "branch" is, I think, more closely associated with subparts of the *topicref* tree. So unqualified "branch" could be confusing. As far as I'm concerned, "root map tree" and "map tree" are equivalent: the "map tree" *is* the tree of maps rooted at the root map, so "root map tree" is redundant. In addition, subtrees (branches) of the map tree have no particular processing implications: key space construction only considers the full map tree. While key spaces can now be defined by individual submaps, they still participate (and are influenced by) the ancestor key spaces ultimately anchored to the root map, so there's no useful sense in which branches of the map tree can be usefully processed or considered in isolation. </p></draft-comment></dd></dlentry>-->
+        </dl>
+    </conbody>
+</concept>

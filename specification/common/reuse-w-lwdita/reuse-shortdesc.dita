@@ -45,11 +45,13 @@
       <p platform="dita">When processors generate link previews that are based on the map context,
         they <term outputclass="RFC-2119">SHOULD</term> use the content of the
           <xmlelement>shortdesc</xmlelement> that is located in the map rather than the
-          <xmlelement>shortdesc</xmlelement> that is located in the DITA topic. However, processors
-          <term outputclass="RFC-2119">SHOULD</term> use the content of the
-          <xmlelement>shortdesc</xmlelement> element in the DITA topic when they render the topic
-        itself, unless the <xmlatt>copy-to</xmlatt> attribute is specified on the topic reference to
-        the element.</p>
+          <xmlelement>shortdesc</xmlelement> that is located in the DITA topic. However, when
+        processors render the topic itself, they <term outputclass="RFC-2119">SHOULD</term> use the
+        content of the <xmlelement>shortdesc</xmlelement> element located in the DITA topic , unless
+        the <xmlatt>copy-to</xmlatt> attribute is specified on the topic reference in the map.</p>
+      <p platform="dita">The short description in the map <term outputclass="RFC-2119">MAY</term>
+        override the short description in the topic if the <xmlelement>topicref</xmlelement> element
+        specifies a <xmlatt>copy-to</xmlatt> attribute.</p>
     </section>
   </refbody>
 </reference>
