@@ -4,7 +4,8 @@
 <title><xmlelement>enumerationdef</xmlelement></title>
     <shortdesc>The <xmlelement>enumerationdef</xmlelement> contains an enumeration definition. An
         enumeration definition specifies an attribute, a set of controlled values (optional), and
-        the element to which the attribute and controlled values pair are bound.</shortdesc>
+        the element to which the attribute and controlled values pair are bound
+        (optional).</shortdesc>
 <prolog><metadata>
 <keywords><indexterm><xmlelement>enumerationdef</xmlelement></indexterm>
                 <indexterm>subjectScheme<indexterm>elements<indexterm><xmlelement>enumerationdef</xmlelement></indexterm></indexterm></indexterm></keywords>
@@ -12,9 +13,10 @@
 <refbody>
         <section id="usage-information">
             <title>Usage information</title>
+            <p>An enumeration definition can accomplish the following goals:</p>
             <dl>
                 <dlentry>
-                    <dt>Binding a set of controlled values to an attribute</dt>
+                    <dt>Bind a set of controlled values to an attribute</dt>
                     <dd>When the <xmlelement>enumerationdef</xmlelement> element contains an
                             <xmlelement>attributedef</xmlelement> and an
                             <xmlelement>subjectdef</xmlelement> element, the set of controlled
@@ -25,7 +27,7 @@
                         for all elements.</dd>
                 </dlentry>
                 <dlentry>
-                    <dt>Limiting a set of controlled values to a specific element and attribute
+                    <dt>Limit a set of controlled values to a specific element and attribute
                         pair</dt>
                     <dd>When the <xmlelement>enumerationdef</xmlelement> element contains an
                             <xmlelement>attributedef</xmlelement>, a
@@ -42,7 +44,7 @@
                         attribute on other elements are not affected.</dd>
                 </dlentry>
                 <dlentry>
-                    <dt>Specifying that an attribute is not valid.</dt>
+                    <dt>Specify that an attribute is not valid.</dt>
                     <dd>
                         <p>When the <xmlelement>enumerationdef</xmlelement> element is empty, no
                             value is valid for the attribute.</p>
@@ -60,8 +62,9 @@
         </section>
         <section id="specialization-hierachy">
             <title>Specialization hierarchy</title>
-            <p>The <xmlelement>enumerationdef</xmlelement> element is specialized from <xref
-                    keyref="elements-topicref"/>. It is defined in the map module.</p>
+            <p>The <xmlelement>enumerationdef</xmlelement> element is specialized from
+                    <xmlelement>topicref</xmlelement>. It is defined in the subject scheme
+                module.</p>
         </section>
         <section id="attributes">
             <title>Attributes</title>
@@ -80,7 +83,7 @@
                     "values-audience-draft-comment". This means that the only allowed values are
                     "spec-editors" and "tc-reviewers".</li>
                 <li>The permissable values for <xmlatt>otherprops</xmlatt> are restricted to the
-                    subject "values-otherprops". The only valid value for
+                    subject "values-otherprops". This means that the only valid value for
                         <xmlatt>otherprops</xmlatt> is "examples".</li>
                 <li>The enumeration for the <xmlatt>props</xmlatt> element is empty. No values are
                     valid.</li>
