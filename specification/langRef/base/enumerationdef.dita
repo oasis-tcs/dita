@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="enumerationdef" xml:lang="en-us">
 <title><xmlelement>enumerationdef</xmlelement></title>
-<shortdesc>The <xmlelement>enumerationdef</xmlelement> element identifies one attribute and one or
-        more categories that contain the controlled values for the enumeration. The
-            <xmlatt>type</xmlatt> attribute has a default value of "keys". </shortdesc>
+    <abstract>
+        <shortdesc>The <xmlelement>enumerationdef</xmlelement> contains an enumeration definition.
+            An enumeration definition specifies an attribute, a set of controlled values (optional),
+            and the element to which the attribute and controlled values pair are bound.</shortdesc>
+        <shortdesc>The <xmlelement>enumerationdef</xmlelement> element identifies one attribute and
+            one or more categories that contain the controlled values for the enumeration. The
+                <xmlatt>type</xmlatt> attribute has a default value of "keys". </shortdesc>
+    </abstract>
 <prolog><metadata>
 <keywords><indexterm><xmlelement>enumerationdef</xmlelement></indexterm>
                 <indexterm>subjectScheme<indexterm>elements<indexterm><xmlelement>enumerationdef</xmlelement></indexterm></indexterm></indexterm></keywords>
@@ -14,29 +17,51 @@
 <refbody>
         <section id="usage-information">
             <title>Usage information</title>
-            <p>When the <xmlelement>enumerationdef</xmlelement> element contains both an
-                    <xmlelement>attributedef</xmlelement> and an <xmlelement>elementdef</xmlelement>
-                element, the enumeration applies to the specified attribute <b>only</b> on the
-                specified element. The enumeration does not apply to the attribute on other
-                elements. For example, when the <xmlelement>enumerationdef</xmlelement> element
-                contains both <codeph>&lt;attributedef name="value"/></codeph> and
-                    <codeph>&lt;elementdef name="lomDifficulty"/></codeph>, only the
-                    <xmlatt>value</xmlatt> attribute on the <xmlelement>lomDifficulty</xmlelement>
-                element is limited to the specified enumeration. The possible values for the
-                    <xmlatt>value</xmlatt> attribute on other elements are not affected.</p>
-            <p>When the <xmlelement>enumerationdef</xmlelement> element contain an
-                    <xmlelement>attributedef</xmlelement> element but no
-                    <xmlelement>elementdef</xmlelement> element, the controlled set of values bound
-                to the attribute apply to all elements. For example, when
-                    <xmlelement>enumerationdef</xmlelement> contains only <codeph>&lt;attributedef
-                    name="value"/></codeph>, the <xmlatt>value</xmlatt> attribute is limited to the
-                specified enumeration for all elements.</p>
-            <p>When the <xmlelement>enumerationdef</xmlelement> element is empty, no value is valid
-                for the attribute.</p>
+            <dl>
+                <dlentry>
+                    <dt>Binding a set of controlled values to an attribute</dt>
+                    <dd>When the <xmlelement>enumerationdef</xmlelement> element contains an
+                            <xmlelement>attributedef</xmlelement> and an
+                            <xmlelement>subjectdef</xmlelement> element, the set of controlled
+                        values bound to the attribute apply to all elements.</dd>
+                    <dd>For example, when <xmlelement>enumerationdef</xmlelement> contains only
+                            <codeph>&lt;attributedef name="value"/></codeph>, the
+                            <xmlatt>value</xmlatt> attribute is limited to the specified enumeration
+                        for all elements.</dd>
+                </dlentry>
+                <dlentry>
+                    <dt>Limiting a set of controlled values to a specific element and attribute
+                        pair</dt>
+                    <dd>When the <xmlelement>enumerationdef</xmlelement> element contains an
+                            <xmlelement>attributedef</xmlelement>, a
+                            <xmlelement>subjectdef</xmlelement>, <b>and</b> an
+                            <xmlelement>elementdef</xmlelement> element, the enumeration applies to
+                        the specified attribute <b>only</b> on the specified element. The
+                        enumeration does not apply to the attribute on other elements.</dd>
+                    <dd>For example, when the <xmlelement>enumerationdef</xmlelement> element
+                        contains both <codeph>&lt;attributedef name="value"/></codeph> and
+                            <codeph>&lt;elementdef name="lomDifficulty"/></codeph>, only the
+                            <xmlatt>value</xmlatt> attribute on the
+                            <xmlelement>lomDifficulty</xmlelement> element is limited to the
+                        specified enumeration. The possible values for the <xmlatt>value</xmlatt>
+                        attribute on other elements are not affected.</dd>
+                </dlentry>
+                <dlentry>
+                    <dt>Specifying that an attribute is not valid.</dt>
+                    <dd>
+                        <p>When the <xmlelement>enumerationdef</xmlelement> element is empty, no
+                            value is valid for the attribute.</p>
+                    </dd>
+                </dlentry>
+            </dl>
             <p>Whether an attribute takes a single value or multiple values from the enumeration is
                 part of the structural definition of the element. An attribute that is defined as
                 CDATA can take multiple values, while an attribute defined as NMTOKEN can take only
-                one.</p>
+                    one.<draft-comment author="Kristen J Eberlein" time="26 May 2019"
+                    audience="spec-editors">
+                    <p>This is very general info; is it needed? If so, find the best place to do a
+                        general explanation of "set of controlled values".</p>
+                </draft-comment></p>
         </section>
         <section id="specialization-hierachy">
             <title>Specialization hierarchy</title>
@@ -51,7 +76,17 @@
                     <xref keyref="attributes-universal/outputclass"/>, and <xref
                     keyref="attributes-universal/class"/>.</p>
         </section>
-<example id="example" otherprops="examples"><title>Example</title><p id="enumeration-xpl">In this example, enumerations are specified for the
+<example id="example" otherprops="examples"><title>Example</title>
+            <draft-comment author="Kristen J Eberlein" time="26 May 2019" audience="spec-editors">
+                <p>Needs a new example that is more narrowly focused on <xmlelement>enumeration
+                        def</xmlelement>, perhaps illustrating all three common use cases:</p>
+                <ul>
+                    <li>Binding a set of controlled values to an element/attribute pair</li>
+                    <li>Binding a set of controlled values to an attribute</li>
+                    <li>Binding an empty set of controlled values to an attribute – which will
+                        generate an error if that attribute is ever present.</li>
+                </ul>
+            </draft-comment><p id="enumeration-xpl">In this example, enumerations are specified for the
                     <xmlatt>platform</xmlatt> and <xmlatt>otherprops</xmlatt> attributes. Note that
                 the enumeration identifies a category of values; the values within the category are
                 valid, while the category itself is not a valid value. For example, in the code
