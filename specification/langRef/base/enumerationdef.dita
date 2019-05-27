@@ -2,14 +2,9 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="enumerationdef" xml:lang="en-us">
 <title><xmlelement>enumerationdef</xmlelement></title>
-    <abstract>
-        <shortdesc>The <xmlelement>enumerationdef</xmlelement> contains an enumeration definition.
-            An enumeration definition specifies an attribute, a set of controlled values (optional),
-            and the element to which the attribute and controlled values pair are bound.</shortdesc>
-        <shortdesc>The <xmlelement>enumerationdef</xmlelement> element identifies one attribute and
-            one or more categories that contain the controlled values for the enumeration. The
-                <xmlatt>type</xmlatt> attribute has a default value of "keys". </shortdesc>
-    </abstract>
+    <shortdesc>The <xmlelement>enumerationdef</xmlelement> contains an enumeration definition. An
+        enumeration definition specifies an attribute, a set of controlled values (optional), and
+        the element to which the attribute and controlled values pair are bound.</shortdesc>
 <prolog><metadata>
 <keywords><indexterm><xmlelement>enumerationdef</xmlelement></indexterm>
                 <indexterm>subjectScheme<indexterm>elements<indexterm><xmlelement>enumerationdef</xmlelement></indexterm></indexterm></indexterm></keywords>
@@ -76,25 +71,57 @@
                     <xref keyref="attributes-universal/outputclass"/>, and <xref
                     keyref="attributes-universal/class"/>.</p>
         </section>
-<example id="example" otherprops="examples"><title>Example</title>
-            <draft-comment author="Kristen J Eberlein" time="26 May 2019" audience="spec-editors">
-                <p>Needs a new example that is more narrowly focused on <xmlelement>enumeration
-                        def</xmlelement>, perhaps illustrating all three common use cases:</p>
-                <ul>
-                    <li>Binding a set of controlled values to an element/attribute pair</li>
-                    <li>Binding a set of controlled values to an attribute</li>
-                    <li>Binding an empty set of controlled values to an attribute – which will
-                        generate an error if that attribute is ever present.</li>
-                </ul>
-            </draft-comment><p id="enumeration-xpl">In this example, enumerations are specified for the
-                    <xmlatt>platform</xmlatt> and <xmlatt>otherprops</xmlatt> attributes. Note that
-                the enumeration identifies a category of values; the values within the category are
-                valid, while the category itself is not a valid value. For example, in the code
-                sample here, the <xmlatt>platform</xmlatt> attribute is associated with the
-                enumeration for the category "os"; all values within the "os" category are thus
-                valid on the <xmlatt>platform</xmlatt> attribute, while the value "os" itself is
-                not.</p>
-            <codeblock conref="../../common/conref-examples.dita#conref-examples/codesample"/></example>
+        <example>
+            <title>Example</title>
+            <p>The following subject scheme map contains three enumeration definitions:</p>
+            <ol>
+                <li>The permissable values for the <xmlatt>audience</xmlatt> attribute on the
+                        <xmlelement>draft-comment</xmlelement> element are restricted to the subject
+                    "values-audience-draft-comment". This means that the only allowed values are
+                    "spec-editors" and "tc-reviewers".</li>
+                <li>The permissable values for <xmlatt>otherprops</xmlatt> are restricted to the
+                    subject "values-otherprops". The only valid value for
+                        <xmlatt>otherprops</xmlatt> is "examples".</li>
+                <li>The enumeration for the <xmlatt>props</xmlatt> element is empty. No values are
+                    valid.</li>
+            </ol>
+            <codeblock>&lt;subjectScheme>
+    
+    &lt;!-- DEFINE SETS OF CONTROLLED VALUES -->
+
+    &lt;!-- 1. Values for @audience on &lt;draft-comment> -->
+    &lt;subjectdef keys="values-audience-draft-comment">
+        &lt;subjectdef keys="spec-editors"/>
+        &lt;subjectdef keys="tc-reviewers"/>
+    &lt;/subjectdef>
+    
+    &lt;!-- 2. Values for @otherprops -->
+    &lt;subjectdef keys="values-otherprops">
+        &lt;subjectdef keys="examples"/>
+    &lt;/subjectdef>
+    
+    &lt;!-- BINDS SETS OF CONTROLLED VALUES -->
+
+    &lt;!-- 1. Binding for @audience on &lt;draft-comment> -->
+    &lt;enumerationdef>
+        &lt;elementdef name="draft-comment"/>
+        &lt;attributedef name="audience"/>
+        &lt;subjectdef keyref="values-audience-draft-comment"/>
+    &lt;/enumerationdef>
+    
+    &lt;!-- 2. Binding for @otherprops -->
+    &lt;enumerationdef>
+        &lt;attributedef name="otherprops"/>
+        &lt;subjectdef keyref="values-otherprops"/>
+    &lt;/enumerationdef>
+
+    &lt;!-- 3. Binding for @props -->
+    &lt;enumerationdef>
+        &lt;attributedef name="props"/>
+    &lt;/enumerationdef>
+
+&lt;/subjectScheme></codeblock>
+        </example>
 </refbody>
 </reference>
 

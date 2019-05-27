@@ -1,22 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="attributedef" xml:lang="en-us">
 <title><xmlelement>attributedef</xmlelement></title>
-    <abstract>
-        <shortdesc>The <xmlelement>attributedef</xmlelement> element specifies the attribute that is
-            bound to a set of controlled values. This binding restricts the permissible values for
-            the attribute to those that are contained in the set of controlled values.</shortdesc>
-        <shortdesc>An attribute definition is ...</shortdesc>
-        <shortdesc>An attribute</shortdesc>
-        <shortdesc>This element binds an attribute to a set of controlled values. The binding
-            restricts the permissible values for the attribute to those that are contained in the
-            set of controlled values.</shortdesc>
-    </abstract>
+    <shortdesc>The <xmlelement>attributedef</xmlelement> element specifies an attribute that is
+        bound to a set of controlled values. This binding restricts the permissible values for the
+        attribute to the set of controlled values.</shortdesc>
 <prolog><metadata>
 <keywords>
                 <indexterm><xmlelement>attributedef</xmlelement></indexterm>
+                <indexterm>controlled values<indexterm>binding</indexterm></indexterm>
                 <indexterm>subjectScheme<indexterm>elements<indexterm><xmlelement>attributedef</xmlelement></indexterm></indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
@@ -40,7 +32,7 @@
                         <ph
                             conref="../../common/conref-attribute.dita#conref-attribute/required-attr"
                         /></dt>
-                    <dd>Defines an attribute that will take a set of enumerated values.</dd>
+                    <dd>Specifies the attribute that is bound to a set of enumerated values</dd>
                 </dlentry>
                 <dlentry conref="../../common/conref-attribute.dita#conref-attribute/translate-NO">
                     <dt/>
@@ -48,9 +40,29 @@
                 </dlentry>
             </dl>
         </section>
-<example id="example" otherprops="examples"><title>Example</title><p
-conref="enumerationdef.dita#enumerationdef/enumeration-xpl"></p>
-            <codeblock conref="../../common/conref-examples.dita#conref-examples/codesample"/></example>
+<example id="example" otherprops="examples"><title>Example</title>
+            <p>In the following code sample, the enumeration definition for for the
+                    <xmlatt>otherprops</xmlatt> attribute sets the set of controlled values to the
+                subject "values-otherprops". This means that the only valid value for the
+                    <xmlatt>otherprops</xmlatt> attribute is "examples".</p>
+            <codeblock>&lt;subjectScheme>
+    
+    &lt;!-- DEFINE SETS OF CONTROLLED VALUES -->
+    
+    &lt;!-- Values for @otherprops -->
+    &lt;subjectdef keys="values-otherprops">
+        &lt;subjectdef keys="examples"/>
+    &lt;/subjectdef>
+    
+    &lt;!-- BINDS SETS OF CONTROLLED VALUES -->
+    
+    &lt;!-- Binding for @otherprops -->
+    &lt;enumerationdef>
+        <b>&lt;attributedef name="otherprops"/></b>
+        &lt;subjectdef keyref="values-otherprops"/>
+    &lt;/enumerationdef>
+
+&lt;/subjectScheme></codeblock></example>
 </refbody>
 </reference>
 
