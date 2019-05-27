@@ -3,8 +3,8 @@
 <reference id="defaultSubject" xml:lang="en-us">
 <title><xmlelement>defaultSubject</xmlelement></title>
 <shortdesc>The <xmlelement>defaultSubject</xmlelement> element specifies the default value for the
-    attribute in cases where no value is specified for the attribute. The default value must be one
-    of the controlled values that are bound to the attribute.</shortdesc>
+    attribute in cases where no value is specified. The default value must be one of the controlled
+    values that are bound to the attribute.</shortdesc>
 <prolog><metadata>
 <keywords>
         <indexterm><xmlelement>defaultSubject</xmlelement></indexterm>
@@ -13,8 +13,8 @@
 <refbody>
     <section id="specialization-hierachy">
       <title>Specialization hierarchy</title>
-      <p>This he <xmlelement>defaultSubject</xmlelement> element is specialized from <xref
-          keyref="elements-topicref"/>. It is defined in the map module.</p>
+      <p>The <xmlelement>defaultSubject</xmlelement> element is specialized from
+          <xmlelement>topicref</xmlelement>. It is defined in the subject scheme module.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -36,9 +36,17 @@
     </section>
     <example id="example" otherprops="examples">
       <title>Example</title>
-      <p>The following code sample declares that each of the four defined "os" values is valid for
-        the <xmlatt>platform</xmlatt> attribute. If no value is specified for the
-          <xmlatt>platform</xmlatt> attribute in the DITA source, the default is "linux".</p>
+      <p>The following code sample limits the values for <xmlatt>platform</xmlatt> to the "os"
+        subject. The result is that the following values are permitted for
+        <xmlatt>platform</xmlatt>:</p>
+      <ul>
+        <li><codeph>linux</codeph></li>
+        <li><codeph>mswin</codeph></li>
+        <li><codeph>zos</codeph></li>
+        <li><codeph>macos</codeph></li>
+      </ul>
+      <p>If no value is specified for the <xmlatt>platform</xmlatt> attribute in the DITA source,
+        the default is "linux".</p>
       <codeblock>&lt;subjectScheme>
   &lt;subjectdef keys="os">
     &lt;subjectdef keys="linux"/>
