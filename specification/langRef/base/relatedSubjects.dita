@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="relatedSubjects" xml:lang="en-us">
 <title><xmlelement>relatedSubjects</xmlelement></title>
-<shortdesc>The <xmlelement>relatedSubjects</xmlelement> element establishes associative
-relationships between each child subject and every other child subject (unless the association is
-restricted by the <xmlatt>linking</xmlatt> attribute of the subjects).</shortdesc>
+<shortdesc>The <xmlelement>relatedSubjects</xmlelement> element specifies that associative
+    relationships exist between all contained subjects. The utility of this relationship is
+    primarily for content delivery platforms with advanced capabilities.</shortdesc>
 <prolog><metadata>
 <keywords>
         <indexterm><xmlelement>relatedSubjects</xmlelement></indexterm>
@@ -15,15 +14,18 @@ restricted by the <xmlatt>linking</xmlatt> attribute of the subjects).</shortdes
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>The content provider can identify the relationship by specifying a <xmlatt>keys</xmlatt>
-        attribute, label the relationship by specifying a <xmlelement>navtitle</xmlelement> element,
-        and provide a consensus definition of the relationship including by referencing a topic. If
-        the relationship has an identifying key, the content provider can use the
-          <xmlatt>keyref</xmlatt> attribute to specify the same relationship for different
-        subjects.</p>
+      <p>The information architect can identify the relationship by specifying a
+          <xmlatt>keys</xmlatt> attribute, label the relationship by specifying a
+          <xmlelement>navtitle</xmlelement> element, and provide a consensus definition of the
+        associative relationship by referencing a topic. If the relationship has an identifying key,
+        the content provider can use the <xmlatt>keyref</xmlatt> attribute to specify the same
+        relationship for different subjects.</p>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
+      <draft-comment author="Kristen J Eberlein" time="27 May 2019" audience="spec-editors">
+        <p>This material needs to be rewritten and moved elsewhere.</p>
+      </draft-comment>
       <p>For filtering and flagging, processors need only inspect the subordinate hierarchies under
         category subjects that are bound to attributes. Filtering and flagging processors do not
         have to understand specific types of relationships. Explicit relationships are useful
@@ -31,8 +33,8 @@ restricted by the <xmlatt>linking</xmlatt> attribute of the subjects).</shortdes
     </section>
     <section id="specialization-hierachy">
       <title>Specialization hierarchy</title>
-      <p>The <xmlelement>relatedSubjects</xmlelement> element is specialized from <xref
-          keyref="elements-topicref"/>. It is defined in the map module.</p>
+      <p>The <xmlelement>relatedSubjects</xmlelement> element is specialized from <xmlelement/>. It
+        is defined in the subject scheme module.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -58,9 +60,13 @@ restricted by the <xmlatt>linking</xmlatt> attribute of the subjects).</shortdes
         </dlentry>
       </dl>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><p>The following scheme establishes that the Linux, the Apache Web Server, and the MySQL Database
-        are
-        related:<codeblock>&lt;subjectScheme>
+<example id="example" otherprops="examples"><title>Example</title>
+      <draft-comment author="Kristen J Eberlein" time="27 May 2019" audience="spec-editors">
+        <p>Need to rework example to include instances of what it mentioned in the "Usage
+          information" section.</p>
+      </draft-comment><p>The following code sample specifies that the Linux, the Apache Web Server, and the MySQL Database
+        subjects are
+        related.<codeblock>&lt;subjectScheme>
   &lt;!-- ... -->
   &lt;relatedSubjects>
     &lt;subjectdef keys="linux">
