@@ -47,7 +47,7 @@
         </sch:rule>
     </sch:pattern>
     
-    <sch:pattern id="may-must-should">
+    <!--<sch:pattern id="may-must-should">
         <sch:rule context="text()">
             <sch:report test="contains(., 'may')">
                This topic contains the word 'should'.
@@ -62,15 +62,15 @@
                If possible, recast the wording to avoid the word.
             </sch:report>
         </sch:rule>
-    </sch:pattern>
+    </sch:pattern>-->
     
-    <!--<sch:pattern id="should">
-        <sch:rule context="text()">
-            <sch:report test="contains(., 'should')">
+    <sch:pattern id="should">
+        <sch:rule context="text()[contains(., 'should')]">
+            <sch:assert test="comment()[contains(., 'IGNORE')]">
                This topic contains the word 'should'.
                If possible, recast the wording to avoid the word.
-            </sch:report>
+            </sch:assert>
         </sch:rule>
-    </sch:pattern>-->
+    </sch:pattern>
     
 </sch:schema>
