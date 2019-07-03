@@ -61,7 +61,6 @@
         </sch:rule>
     </sch:pattern>
     
-    <!-- KJE: The following rule does not work yet. -->
     <sch:pattern id="empty-paragraphs">
         <!-- Identify empty paragraphs -->
         <sch:rule context="*[contains(@class, ' topic/p ')]
