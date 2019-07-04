@@ -22,7 +22,7 @@
     </sch:pattern>-->
     
     <sch:pattern id="may">
-        <sch:rule context="text()[contains(., 'may')]">
+        <sch:rule context="text()[contains(., ' may ')]">
             <sch:assert test="preceding::comment()[contains(., 'IGNORE may-must-should word')]">
                This topic contains the word 'may'.
                If possible, recast the wording to avoid the word.               
@@ -31,7 +31,7 @@
     </sch:pattern>
     
     <sch:pattern id="should">
-        <sch:rule context="text()[contains(., 'should')]">
+        <sch:rule context="text()[contains(., ' should ')]">
             <sch:assert test="preceding::comment()[contains(., 'IGNORE may-must-should word')]">
                This topic contains the word 'should'.
                If possible, recast the wording to avoid the word.               
