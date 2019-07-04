@@ -55,13 +55,12 @@ attribute is treated as "include", because an omitted attribute cannot evaluate 
   &lt;/step>
   &lt;!-- additional steps -->
 &lt;/steps></codeblock></p>
-  <p >If a publisher decides to exclude the application server mySERVER,
-   then the appserver() group evaluates to exclude. This can be done by setting
-    <codeph>product="mySERVER"</codeph> to exclude <i>or</i> by setting
-    <codeph>appserver="mySERVER"</codeph> to exclude. This means the step should be excluded,
-   regardless of how the values "ABC" or "dbOtherName" evaluate. If a rule is specified for both
-    <codeph>product="mySERVER"</codeph> and <codeph>appserver="mySERVER"</codeph>, the rule for the
-   more specific group name "appserver" takes precedence.</p>
+  <p>If a publisher decides to exclude the application server mySERVER, then the appserver() group
+   evaluates to exclude. This can be done by setting <codeph>product="mySERVER"</codeph> to exclude
+    <i>or</i> by setting <codeph>appserver="mySERVER"</codeph> to exclude. This means the step is
+   excluded, regardless of how the values "ABC" or "dbOtherName" evaluate. If a rule is specified
+   for both <codeph>product="mySERVER"</codeph> and <codeph>appserver="mySERVER"</codeph>, the rule
+   for the more specific group name "appserver" takes precedence.</p>
   <p>Similarly, if both "ABC" and "dbOtherName" evaluate to exclude, then the database() group
    evaluates to exclude and the element is excluded regardless of how the "mySERVER" value is
    set.</p>
