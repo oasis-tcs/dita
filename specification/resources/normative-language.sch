@@ -3,23 +3,6 @@
     xmlns:sch="http://purl.oclc.org/dsdl/schematron" 
     queryBinding="xslt2"
     xmlns:sqf="http://www.schematron-quickfix.com/validator/process">
-      
-<!--    <sch:pattern id="may-must-should">
-        <sch:rule context="text()">
-            <sch:report test="contains(., 'may')">
-               This topic contains the word 'should'.
-               If possible, recast the wording to avoid the word.
-            </sch:report>
-            <sch:report test="contains(., 'must')">
-               This topic contains the word 'must'.
-               If possible, recast the wording to avoid the word.
-            </sch:report>
-            <sch:report test="contains(., 'should')">
-               This topic contains the word 'should'.
-               If possible, recast the wording to avoid the word.
-            </sch:report>
-        </sch:rule>
-    </sch:pattern>-->
     
     <sch:pattern id="may">
         <sch:rule context="text()[contains(., ' may ')]">
@@ -37,6 +20,5 @@
                If possible, recast the wording to avoid the word.               
             </sch:assert>
         </sch:rule>
-    </sch:pattern>
     
 </sch:schema>
