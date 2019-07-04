@@ -3,11 +3,7 @@
 <reference id="topicgroup" xml:lang="en-us">
 <title><xmlelement>topicgroup</xmlelement></title>
 <shortdesc>A topic group is a set of topic references that share common attributes and linking
-      relationships.<draft-comment author="Kristen J Eberlein" time="06 August 2018"
-      audience="tc-reviewers">
-      <p>Are there other things that are set by topic groups?</p>
-      <p>Discussed at DITA TC call on 02 July 2019. Waiting on minutes to add content here.</p>
-    </draft-comment></shortdesc>
+    relationships.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -16,24 +12,26 @@
           elements<indexterm><xmlelement>topicgroup</xmlelement></indexterm></indexterm>
         <indexterm>messages issued by processors<indexterm><xmlelement>navtitle</xmlelement> within
               <xmlelement>topicgroup</xmlelement></indexterm></indexterm>
-        <indexterm>processing expectations<indexterm><xmlelement>navtitle</xmlelement> within
+        <indexterm>rendering expectations<indexterm><xmlelement>navtitle</xmlelement> within
               <xmlelement>topicgroup</xmlelement></indexterm></indexterm>
         <indexterm>topics<indexterm>groups</indexterm></indexterm>
       </keywords>
     </metadata>
   </prolog>
 <refbody>
-    <section id="usage-information">
+    <section id="usage-information" rev="tc-review">
       <title>Usage information</title>
-      <p>The <xmlelement>topicgroup</xmlelement> element is a non-titled element. A
-          <xmlelement>navtitle</xmlelement> element within the <xmlelement>topicmeta</xmlelement>
-        element inside of a <xmlelement>topicgroup</xmlelement> has no defined purpose.</p>
+      <p>A <xmlelement>navtitle</xmlelement> element within the <xmlelement>topicmeta</xmlelement>
+        element inside of a <xmlelement>topicgroup</xmlelement> does not affect the structural
+        hierarchy of the map, although it might be used to hold descriptive information about the
+        grouped <xmlelement>topicref</xmlelement> elements.</p>
     </section>
-    <section id="processing-expectations">
-      <title>Processing expectations</title>
-      <p>When a <xmlelement>topicgroup</xmlelement> element has a navigation title, processors <term
-          outputclass="RFC-2119">MUST</term> ignore the title and <term outputclass="RFC-2119"
-          >MAY</term> issue an error message.</p>
+    <section id="rendering-expectations" rev="tc-review">
+      <title>Rendering expectations</title>
+      <p>When a map that contains a <xmlelement>topicgroup</xmlelement> element with a navigation
+        title is used to generate publication output, processors <term outputclass="RFC-2119"
+          >MUST</term> ignore the title and <term outputclass="RFC-2119">MAY</term> issue an error
+        message.</p>
     </section>
     <section id="specialization-hierarchy">
       <title>Specialization hierarchy</title>
