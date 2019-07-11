@@ -18,7 +18,7 @@
       <title>Usage information</title>
       <p>Navigation titles can be used in both topics and maps. When used in maps, a navigation
         title can serve as an alternate title or simply as an aid to understanding the DITA map.</p>
-      <p>Because the <xmlelement>navtitle</xmlelement> element is available within
+      <p platform="dita">Because the <xmlelement>navtitle</xmlelement> element is available within
           <xmlelement>topicmeta</xmlelement>,
         <!--and <xmlelement>topicmeta</xmlelement> is used in many different contexts, --> a
           <xmlelement>navtitle</xmlelement> element might occur in contexts where a navigation title
@@ -27,18 +27,25 @@
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>When the <xmlelement>navtitle</xmlelement> element is used in a topic, processors <term
-          outputclass="RFC-2119">SHOULD</term> use the contents of the element to generate the
-        navigation title.</p>
-      <p>When the <xmlelement>navtitle</xmlelement> element is used in a map, processors <term
-          outputclass="RFC-2119">SHOULD</term> retrieve the navigation title in the following order:<ol>
-          <li>From the content of a <xmlelement>navtitle</xmlelement> element in the map, if the
-            containing <xmlelement>topicref</xmlelement> element sets the value of the
-              <xmlatt>locktitle</xmlatt> attribute to "yes"</li>
-          <li>From the contents of a <xmlelement>navtitle</xmlelement> element in the referenced
-            topic</li>
-          <li>From the title of the referenced topic</li>
-        </ol></p>
+      <div platform="dita">
+        <p>When the <xmlelement>navtitle</xmlelement> element is used in a topic, processors <term
+            outputclass="RFC-2119">SHOULD</term> use the contents of the element to generate the
+          navigation title.</p>
+        <p>When the <xmlelement>navtitle</xmlelement> element is used in a map, processors <term
+            outputclass="RFC-2119">SHOULD</term> retrieve the navigation title in the following order:<ol>
+            <li>From the content of a <xmlelement>navtitle</xmlelement> element in the map, if the
+              containing <xmlelement>topicref</xmlelement> element sets the value of the
+                <xmlatt>locktitle</xmlatt> attribute to "yes"</li>
+            <li>From the contents of a <xmlelement>navtitle</xmlelement> element in the referenced
+              topic</li>
+            <li>From the title of the referenced topic</li>
+          </ol></p>
+      </div>
+      <div platform="lwdita">
+        <p>When the navigation title component is used in a map, processors <term
+            outputclass="RFC-2119">SHOULD</term> use the contents of the component to generate the
+          navigation title.</p>
+      </div>
     </section>
 </refbody>
 </reference>
