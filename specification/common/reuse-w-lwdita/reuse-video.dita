@@ -18,11 +18,79 @@
     <section id="rendering-expectations">
       <title>Rendering expectations</title>
       <p>The video object typically is rendered in the main flow of the content.</p>
-      <p
-        conref="../../common/conref-rendering-expectations.dita#conref-rendering-expectations/rendering-expectations-image-video"/>
+      <p>Processors <term outputclass="RFC-2119">SHOULD</term> scale the object when values are
+        provided for the <xmlatt>height</xmlatt> and <xmlatt>width</xmlatt> attributes. The
+        following expectations apply:<ul>
+          <li>If a height value is specified and no width value is specified, processors <term
+              outputclass="RFC-2119">SHOULD</term> scale the width by the same factor as the
+            height.</li>
+          <li>If a width value is specified and no height value is specified, processors <term
+              outputclass="RFC-2119">SHOULD</term> scale the height by the same factor as the
+            width.</li>
+          <li>If both a height value and width value are specified, implementations <term
+              outputclass="RFC-2119">MAY</term> ignore one of the two values when they are unable to
+            scale to each direction using different factors.</li>
+        </ul></p>
       <p platform="dita">When a video object cannot be rendered in a meaningful way, processors
           <term outputclass="RFC-2119">SHOULD</term> present the contents of the
           <xmlelement>fallback</xmlelement> element, if it is present.</p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref keyref="attributes-universal"
+        /> and the attributes defined below.</p>
+      <dl>
+        <dlentry>
+          <!--KJE: RDA and I discussed this on 29 April 2019. We could not come up with a phrasing that would not include "should". Adding this comment so that we don't have the discussion again.-->
+          <dt><xmlatt>data</xmlatt></dt>
+          <dd>Specifies the absolute or relative URI of the video object. If this attribute is
+            specified, <xmlatt>type</xmlatt> also should be specified.</dd>
+        </dlentry>
+        <dlentry>
+          <!-- Identical to definition in video topic -->
+          <dt><xmlatt>datakeyref</xmlatt></dt>
+          <dd>Provides a key reference to the video object. When specified and the key is
+            resolvable, the key-provided URI is used. If the key referenced by
+              <xmlatt>datakeyref</xmlatt> cannot be resolved, and <xmlatt>data</xmlatt> is
+            specified, that value provided by <xmlatt>data</xmlatt> is used as a fallback. If the
+            key referenced by <xmlatt>datakeyref</xmlatt> has no associated resource, only link
+            text, and the video object does not contain a <xmlelement>fallback</xmlelement> element,
+            the link text becomes fallback content for the video object.</dd>
+          <dd/>
+        </dlentry>
+        <dlentry>
+          <!-- Identical to definition in video topic -->
+          <dt><xmlatt>type</xmlatt></dt>
+          <dd>Indicates the MIME type for the video object. This attribute enables processors to
+            avoid loading unsuppported objects. If <xmlatt>type</xmlatt> is not specified, the
+            effective type for the key named by the <xmlatt>datakeyref</xmlatt> attribute is used as
+            the value. If an explicit <xmlatt>type</xmlatt> is not specified on either the audio
+            object or key definition, processors can use other means, such the URI file extension,
+            to determine the effective MIME type of the media object.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>height</xmlatt></dt>
+          <dd>Indicates the vertical dimension for the resulting display. <ph>The value of this
+              attribute is a real number (expressed in decimal notation) optionally followed by a
+              unit of measure from the set of pc, pt, px, in, cm, mm, em (picas, points, pixels,
+              inches, centimeters, millimeters, and ems respectively). The default unit is px
+              (pixels). Possible values include: "5", "5in", and "10.5cm".</ph>
+          </dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>width</xmlatt></dt>
+          <dd>Indicates the horizontal dimension for the resulting display. <ph>The value of this
+              attribute is a real number (expressed in decimal notation) optionally followed by a
+              unit of measure from the set of pc, pt, px, in, cm, mm, em (picas, points, pixels,
+              inches, centimeters, millimeters, and ems respectively). The default unit is px
+              (pixels). Possible values include: "5", "5in", and "10.5cm".</ph>
+          </dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>tabindex</xmlatt></dt>
+          <dd>Position the video in tabbing order.</dd>
+        </dlentry>
+      </dl>
     </section>
   </refbody>
 </reference>

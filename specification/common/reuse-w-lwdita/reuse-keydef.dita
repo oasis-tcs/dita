@@ -4,18 +4,6 @@
 <title><xmlelement>keydef</xmlelement></title>
   <shortdesc id="shortdesc">A key definition provides a simple way to define a key without making
     the definition itself a part of rendered content.</shortdesc>
-  <prolog>
-    <metadata>
-      <keywords>
-        <indexterm>convenience
-          elements<indexterm><xmlelement>keydef</xmlelement></indexterm></indexterm>
-        <indexterm>elements<indexterm>mapgroup<indexterm><xmlelement>keydef</xmlelement></indexterm></indexterm></indexterm>
-        <indexterm>keys<indexterm>definition<indexterm>examples</indexterm></indexterm></indexterm>
-        <indexterm>maps<indexterm>examples<indexterm>key
-          definition</indexterm></indexterm></indexterm>
-      </keywords>
-    </metadata>
-  </prolog>
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
@@ -28,6 +16,41 @@
         the key definition component does can also be accomplished with a topic reference component.
         Attributes defaulted on the key definition component ensure that key definitions do not
         appear in the TOC, do not add extra links, and are not rendered as topics .</p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <sectiondiv id="keydef-attributes">
+        <p>The following attributes are available on this element: <xref
+            keyref="attributes-universal"/>, <xref keyref="attributes-linkRelationship"/> (with a
+          narrowed definition of <xmlatt>href</xmlatt>, given below), <xref
+            keyref="attributes-commonMap"/> (with a narrowed definition of
+            <xmlatt>processing-role</xmlatt>, given below), <xref
+            keyref="attributes-topicrefElement"/>, <xref keyref="attributes-keyref"
+              ><xmlatt>keyref</xmlatt></xref>, and the attributes defined below.</p>
+        <dl>
+          <dlentry>
+            <dt><xmlatt>keys</xmlatt>
+              <ph>(REQUIRED)</ph></dt>
+            <dd>Defines a key and is required. Otherwise, the attribute is the same as that
+              described in <xref keyref="attributes-keys"/>.</dd>
+          </dlentry>
+          <dlentry>
+            <dt><xmlatt>href</xmlatt></dt>
+            <dd>Points to the resource that is represented by the <xmlelement>topicref</xmlelement>
+              element. See <xref keyref="attributes-href"/> for detailed information on supported
+              values and processing implications. References to DITA content cannot be below the
+              topic level: that is, you cannot reference individual elements inside a topic.
+              References to content other than DITA topics should use the <xmlatt>format</xmlatt>
+              attribute to identify the kind of resource being referenced.</dd>
+          </dlentry>
+          <dlentry>
+            <dt><xmlatt>processing-role</xmlatt></dt>
+            <dd>The default value for <xmlatt>processing-role</xmlatt> is set to
+                <keyword>resource-only</keyword>. Otherwise, the definition matches the one in <xref
+                keyref="attributes-commonMap"/>.</dd>
+          </dlentry>
+        </dl>
+      </sectiondiv>
     </section>
 </refbody>
 </reference>

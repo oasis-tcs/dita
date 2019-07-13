@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="map" xml:lang="en-us">
 <title><xmlelement>map</xmlelement></title>
   <shortdesc id="shortdesc">A DITA map is the mechanism for aggregating topic references and
     defining a context for those references. It contains references to topics, maps, and other
     resources; these references are organized into hierarchies, groups, and tables.</shortdesc>
-<prolog><metadata>
-<keywords><indexterm>elements<indexterm>basic map<indexterm><xmlelement>map</xmlelement></indexterm></indexterm></indexterm>
-        <indexterm>maps<indexterm>examples</indexterm><indexterm>overview</indexterm></indexterm>
-</keywords>
-</metadata></prolog>
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
@@ -55,6 +48,34 @@
         other scenarios, the title might be useful or even required. In a map referenced by another
         map, the title might be discarded as topics from the submap are aggregated into a larger
         publication.</p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <sectiondiv>
+        <p>The following attributes are available on this element: <xref
+            keyref="attributes-universal"/> (with a narrowed definition of <xmlatt>id</xmlatt>,
+          given below), <xref keyref="attributes-commonMap"/>, <xref
+            keyref="attributes-architectural"/>, and the attributes defined below. This element also
+          uses <xmlatt>type</xmlatt>, <xmlatt>scope</xmlatt>, and <xmlatt>format</xmlatt> from <xref
+            keyref="attributes-linkRelationship"/>.</p>
+        <dl>
+          <dlentry id="map-attribute-id">
+            <dt><xmlatt>id</xmlatt></dt>
+            <dd>Allows an ID to be specified for the map. Note that maps do not require IDs (unlike
+              topics), and the map ID is not included in references to elements within a map.
+                <ph>This attribute is defined with the XML Data Type ID.</ph></dd>
+          </dlentry>
+          <dlentry id="map-attribute-anchorref" platform="dita">
+            <dt><xmlatt>anchorref</xmlatt></dt>
+            <dd>Identifies a location within another map document where this map will be anchored.
+              Resolution of the map is deferred until the final step in the delivery of any rendered
+              content. For example, <codeph>anchorref=&quot;map1.ditamap#a1&quot;</codeph> allows
+              the map with <xmlatt>anchorref</xmlatt> to be pulled into the location of the anchor
+              point "a1" inside <filepath>map1.ditamap</filepath> when
+                <filepath>map1.ditamap</filepath> is rendered for delivery.</dd>
+          </dlentry>
+        </dl>
+      </sectiondiv>
     </section>
 </refbody>
 </reference>
