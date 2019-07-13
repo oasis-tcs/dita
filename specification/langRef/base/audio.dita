@@ -20,58 +20,7 @@
       <p>The <xmlelement>audio</xmlelement> element is specialized from
           <xmlelement>object</xmlelement>. It is defined in the multimedia-domain module.</p>
     </section>
-    <section id="attributes">
-      <title>Attributes</title>
-      <p>The following attributes are available on this element: <xref keyref="attributes-universal"
-        /> and the attributes defined below.</p>
-      <dl>
-        <dlentry>
-          <dt><xmlatt>data</xmlatt></dt>
-          <!--KJE: RDA and I discussed this on 29 April 2019. We could not come up with a phrasing that would not include "should". Adding this comment so that we don't have the discussion again.-->
-          <dd>Specifies the absolute or relative URI of the audio object. If this attribute is
-            specified, <xmlatt>type</xmlatt> also should be specified.</dd>
-        </dlentry>
-        <dlentry>
-          <dt><xmlatt>datakeyref</xmlatt></dt>
-          <dd>Provides a key reference to the audio object. When specified and the key is
-            resolvable, the key-provided URI is used. If the key referenced by
-              <xmlatt>datakeyref</xmlatt> cannot be resolved, and <xmlatt>data</xmlatt> is
-            specified, that value provided by <xmlatt>data</xmlatt> is used as a fallback. If the
-            key referenced by <xmlatt>datakeyref</xmlatt> has no associated resource, only link
-            text, and the audio object does not contain a <xmlelement>fallback</xmlelement> element,
-            the link text becomes fallback content for the audio object.</dd>
-          <dd>
-            <draft-comment author="Kristen J Eberlein" time="17 May 2019" audience="spec-editors">
-              <p>Robert and I discussed and reworked the above description today, in response to
-                feedback from Chris Nitchie. </p>
-              <p>However, this content is really about key resolution; we need to ensure that this
-                is covered clearly (and probably with normative language) in the primary topics
-                about key resolution.</p>
-            </draft-comment>
-          </dd>
-        </dlentry>
-        <dlentry>
-          <dt><xmlatt>type</xmlatt></dt>
-          <dd>Indicates the MIME type for the audio object. This attribute enables processors to
-            avoid loading unsuppported objects. If <xmlatt>type</xmlatt> is not specified, the
-            effective type for the key named by the <xmlatt>datakeyref</xmlatt> attribute is used as
-            the value. If an explicit <xmlatt>type</xmlatt> is not specified on either the audio
-            object or key definition, processors can use other means, such the URI file extension,
-            to determine the effective MIME type of the media object.</dd>
-          <dd/>
-        </dlentry>
-        <dlentry>
-          <dt><xmlatt>tabindex</xmlatt></dt>
-          <dd>Positions the audio object in tabbing order.</dd>
-          <dd>
-            <draft-comment author="Kristen J Eberlein" time="28 April 2019" audience="spec-editors">
-              <p>Would this be a better description? "Indicates whether the audio object can be
-                focused and where it participates in sequential keyboard navigation."</p>
-            </draft-comment>
-          </dd>
-        </dlentry>
-      </dl>
-    </section>
+    <section conkeyref="reuse-audio/attributes"/>
     <example otherprops="examples">
       <title>Examples</title>
       <fig>

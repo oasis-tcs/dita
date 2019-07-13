@@ -19,53 +19,7 @@
       <p>The <xmlelement>video</xmlelement> element is specialized from
           <xmlelement>object</xmlelement>. It is defined in the multimedia-domain module.</p>
     </section>
-    <section id="attributes">
-      <title>Attributes</title>
-      <p>The following attributes are available on this element: <xref keyref="attributes-universal"
-        /> and the attributes defined below.</p>
-      <dl>
-        <dlentry>
-          <!--KJE: RDA and I discussed this on 29 April 2019. We could not come up with a phrasing that would not include "should". Adding this comment so that we don't have the discussion again.-->
-          <dt><xmlatt>data</xmlatt></dt>
-          <dd>Specifies the absolute or relative URI of the video object. If this attribute is
-            specified, <xmlatt>type</xmlatt> also should be specified.</dd>
-        </dlentry>
-        <dlentry>
-          <!-- Identical to definition in video topic -->
-          <dt><xmlatt>datakeyref</xmlatt></dt>
-          <dd>Provides a key reference to the video object. When specified and the key is
-            resolvable, the key-provided URI is used. If the key referenced by
-              <xmlatt>datakeyref</xmlatt> cannot be resolved, and <xmlatt>data</xmlatt> is
-            specified, that value provided by <xmlatt>data</xmlatt> is used as a fallback. If the
-            key referenced by <xmlatt>datakeyref</xmlatt> has no associated resource, only link
-            text, and the video object does not contain a <xmlelement>fallback</xmlelement> element,
-            the link text becomes fallback content for the video object.</dd>
-          <dd/>
-        </dlentry>
-        <dlentry>
-          <!-- Identical to definition in video topic -->
-          <dt><xmlatt>type</xmlatt></dt>
-          <dd>Indicates the MIME type for the video object. This attribute enables processors to
-            avoid loading unsuppported objects. If <xmlatt>type</xmlatt> is not specified, the
-            effective type for the key named by the <xmlatt>datakeyref</xmlatt> attribute is used as
-            the value. If an explicit <xmlatt>type</xmlatt> is not specified on either the audio
-            object or key definition, processors can use other means, such the URI file extension,
-            to determine the effective MIME type of the media object.</dd>
-        </dlentry>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-height">
-          <dt/>
-          <dd/>
-        </dlentry>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-width">
-          <dt/>
-          <dd/>
-        </dlentry>
-        <dlentry>
-          <dt><xmlatt>tabindex</xmlatt></dt>
-          <dd>Position the video in tabbing order.</dd>
-        </dlentry>
-      </dl>
-    </section>
+    <section conkeyref="reuse-video/attributes"/>
     <example otherprops="examples">
 <title>Examples</title>
 <fig id="fig_amp_v4z_4hb"><title>A simple video object</title><p>In the following code sample, a
