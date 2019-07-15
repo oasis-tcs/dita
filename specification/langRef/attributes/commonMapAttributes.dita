@@ -31,6 +31,15 @@
        about how this attribute interacts with metadata attributes.</p>
      </dd>
     </dlentry>
+    <dlentry id="chunk" platform="dita">
+     <dt><xmlatt>chunk</xmlatt></dt>
+     <dd><indexterm>chunk
+       attribute</indexterm><indexterm>Attributes<indexterm>chunk</indexterm></indexterm>When a set
+      of topics is transformed using a map, the <xmlatt>chunk</xmlatt> attribute allows multi-topic
+      documents to be broken into smaller files and multiple individual topics to be combined into
+      larger combined documents.<p>For a detailed description of the <xmlatt>chunk</xmlatt>
+       attribute and its usage, see <xref href="../../archSpec/base/chunking.dita"/>.</p></dd>
+    </dlentry>
     <dlentry id="collection-type" platform="dita">
      <dt><xmlatt>collection-type</xmlatt></dt>
      <dd><indexterm>collection-type
@@ -55,59 +64,13 @@
         <dd>Represents a tight grouping in which each of the referenced topics not only relates to
          the current topic but also relate to each other. </dd>
        </dlentry>
-       <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditauseconref">
-        <dt> </dt>
-        <dd> </dd>
-       </dlentry>
       </dl></dd>
     </dlentry>
-    <dlentry id="processing-role">
-     <dt><xmlatt>processing-role</xmlatt></dt>
-     <dd>Describes the processing role of the referenced topic. The processing default is "normal".
-       <ph conref="../../common/conref-attribute.dita#conref-attribute/may-inherit"/> Allowable
-      values are:<dl>
-       <dlentry>
-        <dt>normal </dt>
-        <dd>Normal topic that is a readable part of the information. </dd>
-       </dlentry>
-       <dlentry>
-        <dt>resource-only </dt>
-        <dd>The topic is used as a resource for processing purposes. This topic should not be
-         included in a rendered table of contents, and the topic should not be rendered on its own.
-        </dd>
-       </dlentry>
-       <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditauseconref"
-        platform="dita">
-        <dt> </dt>
-        <dd> </dd>
-       </dlentry>
-      </dl></dd>
-    </dlentry>
-    <dlentry id="locktitle">
-     <dt><xmlatt>locktitle</xmlatt></dt>
-     <dd><indexterm>locktitle
-        attribute</indexterm><indexterm>Attributes<indexterm>locktitle</indexterm></indexterm>If the
-       <xmlatt>locktitle</xmlatt> attribute is set to "yes", the content of the
-       <xmlelement>navtitle</xmlelement> element is used for a navigation title, if it is present.
-      If the <xmlatt>locktitle</xmlatt> attribute is not present or set to "no", the content of the
-       <xmlelement>navtitle</xmlelement> element is ignored, and the title of the referenced topic
-      is used as a navigation title. <p>Allowable values for <xmlatt>locktitle</xmlatt> are:<dl>
-        <dlentry>
-         <dt>yes </dt>
-         <dd>The content of the <xmlelement>navtitle</xmlelement> element is used for a navigation
-          title.</dd>
-        </dlentry>
-        <dlentry>
-         <dt>no </dt>
-         <dd>The content of the <xmlelement>navtitle</xmlelement> element is ignored. This is the
-          processing default. </dd>
-        </dlentry>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditauseconref"
-         platform="dita">
-         <dt> </dt>
-         <dd> </dd>
-        </dlentry>
-       </dl></p></dd>
+    <dlentry id="keyscope" platform="dita">
+     <dt><xmlatt>keyscope</xmlatt></dt>
+     <dd>Specifies that the element marks the boundaries of a key scope. See <xref
+       keyref="attributes-keyscope"/> for details on how to use the <xmlatt>keyscope</xmlatt>
+      attribute.</dd>
     </dlentry>
     <dlentry id="linking" platform="dita">
      <dt><xmlatt>linking</xmlatt></dt>
@@ -137,24 +100,51 @@
        </dlentry>
       </dl></dd>
     </dlentry>
-    <dlentry id="toc" platform="dita">
-     <dt><xmlatt>toc</xmlatt></dt>
-     <dd><indexterm>toc
-       attribute</indexterm><indexterm>Attributes<indexterm>toc</indexterm></indexterm>Specifies
-      whether a topic appears in the table of contents (TOC). <ph
-       conref="../../common/conref-attribute.dita#conref-attribute/inherit-in-map"/> Allowable
+    <dlentry>
+     <dt><xmlatt>locktitle</xmlatt></dt>
+     <dd><indexterm>locktitle
+        attribute</indexterm><indexterm>Attributes<indexterm>locktitle</indexterm></indexterm>If the
+       <xmlatt>locktitle</xmlatt> attribute is set to "yes", the content of the
+       <xmlelement>navtitle</xmlelement> element is used for a navigation title, if it is present.
+      If the <xmlatt>locktitle</xmlatt> attribute is not present or set to "no", the content of the
+       <xmlelement>navtitle</xmlelement> element is ignored, and the title of the referenced topic
+      is used as a navigation title. <p>Allowable values for <xmlatt>locktitle</xmlatt> are:<dl>
+        <dlentry>
+         <dt>yes </dt>
+         <dd>The content of the <xmlelement>navtitle</xmlelement> element is used for a navigation
+          title.</dd>
+        </dlentry>
+        <dlentry>
+         <dt>no </dt>
+         <dd>The content of the <xmlelement>navtitle</xmlelement> element is ignored. This is the
+          processing default. </dd>
+        </dlentry>
+        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditauseconref"
+         platform="dita">
+         <dt> </dt>
+         <dd> </dd>
+        </dlentry>
+       </dl></p></dd>
+    </dlentry>
+    <dlentry id="processing-role">
+     <dt><xmlatt>processing-role</xmlatt></dt>
+     <dd>Describes the processing role of the referenced topic. The processing default is "normal".
+       <ph conref="../../common/conref-attribute.dita#conref-attribute/may-inherit"/> Allowable
       values are:<dl>
        <dlentry>
-        <dt>yes </dt>
-        <dd>The topic appears in a generated TOC.</dd>
+        <dt>normal </dt>
+        <dd>Normal topic that is a readable part of the information. </dd>
        </dlentry>
        <dlentry>
-        <dt>no </dt>
-        <dd>The topic does not appear in a generated TOC.</dd>
+        <dt>resource-only </dt>
+        <dd>The topic is used as a resource for processing purposes. This topic should not be
+         included in a rendered table of contents, and the topic should not be rendered on its own.
+        </dd>
        </dlentry>
-       <dlentry>
-        <dt>-dita-use-conref-target </dt>
-        <dd>See <xref keyref="attributes-useconreftarget"/> for more information. </dd>
+       <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditauseconref"
+        platform="dita">
+        <dt> </dt>
+        <dd> </dd>
        </dlentry>
       </dl></dd>
     </dlentry>
@@ -180,20 +170,30 @@
        </dlentry>
       </dl></dd>
     </dlentry>
-    <dlentry id="chunk" platform="dita">
-     <dt><xmlatt>chunk</xmlatt></dt>
-     <dd><indexterm>chunk
-       attribute</indexterm><indexterm>Attributes<indexterm>chunk</indexterm></indexterm>When a set
-      of topics is transformed using a map, the <xmlatt>chunk</xmlatt> attribute allows multi-topic
-      documents to be broken into smaller files and multiple individual topics to be combined into
-      larger combined documents.<p>For a detailed description of the <xmlatt>chunk</xmlatt>
-       attribute and its usage, see <xref href="../../archSpec/base/chunking.dita"/>.</p></dd>
+    <dlentry id="toc" platform="dita">
+     <dt><xmlatt>toc</xmlatt></dt>
+     <dd><indexterm>toc
+       attribute</indexterm><indexterm>Attributes<indexterm>toc</indexterm></indexterm>Specifies
+      whether a topic appears in the table of contents (TOC). <ph
+       conref="../../common/conref-attribute.dita#conref-attribute/inherit-in-map"/> Allowable
+      values are:<dl>
+       <dlentry>
+        <dt>yes </dt>
+        <dd>The topic appears in a generated TOC.</dd>
+       </dlentry>
+       <dlentry>
+        <dt>no </dt>
+        <dd>The topic does not appear in a generated TOC.</dd>
+       </dlentry>
+       <dlentry>
+        <dt>-dita-use-conref-target </dt>
+        <dd>See <xref keyref="attributes-useconreftarget"/> for more information. </dd>
+       </dlentry>
+      </dl></dd>
     </dlentry>
-    <dlentry id="keyscope" platform="dita">
-     <dt><xmlatt>keyscope</xmlatt></dt>
-     <dd>Specifies that the element marks the boundaries of a key scope. See <xref
-       keyref="attributes-keyscope"/> for details on how to use the <xmlatt>keyscope</xmlatt>
-      attribute.</dd>
+    <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditauseconref">
+     <dt> </dt>
+     <dd> </dd>
     </dlentry>
    </dl>
   </section>
