@@ -239,11 +239,11 @@
                         this section declares a parameter entity and references the external module
                         file where the structural module is defined. The parameter entity is named
                                 <codeph><varname>structuralType</varname>-type</codeph>. The modules
-                        must be included in ancestry order, so that the parameter entities that are
-                        used in an ancestor module are available for use in specializations. When a
-                        structural module depends on elements from a vocabulary module that is not
-                        part of its ancestry, the module upon which the structural module has a
-                        dependency (and any ancestor modules not already included) should be
+                        need to be included in ancestry order, so that the parameter entities that
+                        are used in an ancestor module are available for use in specializations.
+                        When a structural module depends on elements from a vocabulary module that
+                        is not part of its ancestry, the module upon which the structural module has
+                        a dependency (and any ancestor modules not already included) need to be
                         included before the module with a dependency.</p>
                     <!--<p rev="DITA1.3 proposal-13121">Likewise, when a structural module depends on elements from another module that is not part of its ancestry, then the module it depends on should be included before the module that depends on it, along with any ancestor modules not already included. For example, If a specialization called cppProgrammingTask specialized from task and needed to include some elements from cppAPIRef, then it would include the modules for topic, task, cppAPIRef, and cppProgrammingTask in that order.</p>-->
                     <p otherprops="examples">The following example declares and references the
@@ -277,7 +277,7 @@
     "-//OASIS//ELEMENTS DITA Highlight Domain//EN" 
     "highlightDomain.mod"
 >%hi-d-def;]]></codeblock></p>
-                    <note>If a structural module depends on a domain, the domain module should be
+                    <note>If a structural module depends on a domain, the domain module needs to be
                         included before the structural module. This erases the boundary between the
                         final two sections, but it is necessary to ensure that modules are embedded
                         after their dependencies. Technically, the only solid requirement is that
