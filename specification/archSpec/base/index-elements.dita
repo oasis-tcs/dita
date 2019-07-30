@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="index-elements">
+    <title>Index elements</title>
+    <shortdesc>The content of the <xmlelement>indexterm</xmlelement> elements provides the text for
+        the entries in the generated index. <xmlelement>indexterm</xmlelement> elements can be
+        nested to create secondary and tertiary index entries. </shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>indexes<indexterm>elements</indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <p>The following elements contain information that processors use to generate indexes.</p>
+        <dl>
+            <dlentry>
+                <dt><xmlelement>indexterm</xmlelement></dt>
+                <dd>(Unless combined with <xmlelement>index-see</xmlelement>) Instructs a processor
+                    to generate an index entry with a page reference. The <xmlatt>start</xmlatt> and
+                        <xmlatt>end</xmlatt> attributes on <xmlelement>indexterm</xmlelement> can
+                    specifiy index ranges. </dd>
+            </dlentry>
+            <dlentry>
+                <dt><xmlelement>index-see</xmlelement></dt>
+                <dd>Instructs a processor to generate a redirection to another index entry. The
+                    redirection typically has a page reference while the index entry does not.</dd>
+            </dlentry>
+            <dlentry>
+                <dt><xmlelement>index-see-also</xmlelement></dt>
+                <dd>Instructs a processor to generate a redirection to another index entry. Both the
+                    index entry and the redirection typically have page references.</dd>
+            </dlentry>
+        </dl>
+        <draft-comment author="Kristen J Eberlein" time="21 July 2019">
+            <p>Can we remove the word "typically" from the above statements?</p>
+            <p>27 July 2019: I'm adding additional information here, to clarify the issues:</p>
+            <ul>
+                <li>Not all DITA processors support indexing</li>
+                <li>Indexing is often relevant only to print-based delivery formats.</li>
+                <li>AFAIK, page references are ONLY relevant to print-based delivery formats. </li>
+            </ul>
+            <p>I think my preference would be to have a statement clarifying the above matters at
+                the start of this content, and then avoid wiggle words such as "typically."</p>
+        </draft-comment>
+        <p>How the index elements are combined, the location of <xmlelement>indexterm</xmlelement>
+            elements, and the hierarchy of the DITA maps all effect how the index elements are
+            processed and the resulting generated index entries.</p>
+    </conbody>
+</concept>

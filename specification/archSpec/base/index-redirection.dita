@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="index-redirection">
+    <title>Index redirection</title>
+    <shortdesc>The <xmlelement>index-see</xmlelement> and <xmlelement>index-see-also</xmlelement>
+        elements enable redirection to other index entries within the generated index.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>indexes<indexterm>redirection</indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <p> The <xmlelement>index-see</xmlelement> element refers to an index entry that the reader
+            should use <i>instead of</i> the current one, whereas the
+                <xmlelement>index-see-also</xmlelement> element refers to an index entry that the
+            reader should use <i>in addition to</i> the current one.</p>
+        <p>In order to prevent index entries that are both page references and redirections, it is
+            an error if the following conditions occur:</p>
+        <ul>
+            <li>
+                <p>An <xmlelement>indexterm</xmlelement> element contains an
+                        <xmlelement>index-see</xmlelement> element, and the publication contains one
+                    or more <xmlelement>indexterm</xmlelement> elements with identical textual
+                    content.</p>
+                <p>For example, topics referenced by the master map include the following
+                    markup:</p>
+                <codeblock>&lt;!-- Topic A -->
+&lt;indexterm>memory stick
+  &lt;index-see>USB drive&lt;/index-see>
+&lt;/indexterm>
+
+&lt;!-- Topic B -->
+&lt;indexterm>memory stick&lt;/indexterm></codeblock>
+            </li>
+            <li>
+                <p>An <xmlelement>indexterm</xmlelement> element contains an
+                        <xmlelement>index-see</xmlelement> element and an
+                        <xmlelement>index-see-also</xmlelement> element.</p>
+                <p>For example, a topic contains the following <xmlelement>indexterm</xmlelement>
+                    element:</p>
+                <codeblock>&lt;indexterm>
+  memory stick
+    &lt;index-see>USB drive&lt;/index-see>
+    &lt;index-see-also>flash stick&lt;/index-see-also>
+&lt;/indexterm></codeblock>
+            </li>
+        </ul>
+        <draft-comment author="Kristen J Eberlein" time="07 July 2019">
+            <p>Do we want to state what processors should do for the first error condition listed
+                above? Issue an error messsage?</p>
+            <p>Do we want to use RFC-2119 terminology?</p>
+        </draft-comment>
+        <p>A processor <term outputclass="RFC-2119">MAY</term> give an error message when it
+            encounters both <xmlelement>index-see</xmlelement> and
+                <xmlelement>index-see-also</xmlelement> elements within the same
+                <xmlelement>indexterm</xmlelement> element. Processors <term outputclass="RFC-2119"
+                >MAY</term> recover from this error condition by treating the
+                <xmlelement>index-see</xmlelement> element as an
+                <xmlelement>index-see-also</xmlelement> element.</p>
+    </conbody>
+</concept>

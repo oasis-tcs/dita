@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="example-of-an-index-range">
+    <title>Example: Index ranges</title>
+    <shortdesc>There are three locations that can declare a index range: the body of a topic, the
+    prolog of a topic, and a map.</shortdesc>
+    <conbody>
+    <section>
+      <title>Index range within a single topic</title>
+      <p>In the following example, the index range begins at the start of the second paragraph and
+        continues to the beginning of the last paragraph. If the matching end range markup was not
+        included, the index range would end at the end of the body element.</p>
+      <codeblock>&lt;topic id="accounting">
+  &lt;title>Accounting regulations&lt;/title>
+  &lt;body>
+    &lt;p>Be ethical in your accounting.&lt;/p>
+    &lt;p>&lt;indexterm start="acctrules">rules&lt;/indexterm>Remember to do all of the following: ...&lt;/p>
+    &lt;!-- ...pages worth of rules... -->
+    &lt;p>&lt;indexterm end="acctrules"/>Failure to comply will get you audited.&lt;/p>
+  &lt;/body>
+  &lt;!-- Potential sub-topics -->
+&lt;/topic></codeblock>
+    </section>
+    <section>
+      <title>Index range that starts within a topic prolog</title>
+      <p>In the following example, the range begins with the start of the topic title; it includes
+        the entire topic and any subtopics. The range ends within the same prolog, regardless of
+        whether <codeph>&lt;indexterm end="acct"/></codeph> is specified in the prolog.</p>
+      <codeblock>&lt;topic id="accounting">
+  &lt;title>Accounting regulations&lt;/title>
+  &lt;prolog>
+    &lt;metadata>
+      &lt;keywords>
+        &lt;indexterm start="acct">accounting&lt;/indexterm>
+      &lt;/keywords>
+    &lt;/metadata>
+  &lt;/prolog>
+  &lt;!-- ... -->
+&lt;/topic></codeblock>
+      <p>Now assume that the topic in the previous sample is named <filepath>acct.dita</filepath>.
+        Ranges defined in a prolog cover sub-topics, including those nested based on a map; in the
+        following example, this means that the range covers all of <filepath>acct.dita</filepath>,
+        as well as the child topics <filepath>procedures.dita</filepath> and
+          <filepath>forms.dita</filepath>:</p>
+      <codeblock>&lt;topicref href="acct.dita">
+  &lt;topicref href="procedures.dita"/>
+  &lt;topicref href="forms.dita"/>
+&lt;/topicref></codeblock>
+    </section>
+    <section>
+      <title>Index range specified within a map</title>
+      <p>In the final example, the index range is specified in a map.</p>
+      <codeblock>&lt;topicref href="acct.dita">
+  &lt;topicmeta>
+    &lt;keywords>
+      &lt;indexterm start="acct">accounting&lt;/indexterm>
+      &lt;indexterm end="acct"/>
+      &lt;indexterm start="govt">government forms&lt;/indexterm>
+    &lt;/keywords>
+  &lt;/topicmeta>
+  &lt;!-- Nested topicref elements -->
+&lt;/topicref>
+&lt;topicref href="taxfiling.dita">
+  &lt;topicmeta>
+    &lt;keywords>
+      &lt;indexterm end="govt"/>
+    &lt;/keywords>
+  &lt;/topicmeta>
+&lt;/topicref><indexterm end="examples-indexing"/><indexterm end="indexing-examples"/></codeblock>
+      <p>The index range for "accounting" begins with the start of the first topic title in
+          <filepath>acct.dita</filepath>; it includes that topic as well as any subtopics. </p>
+      <p>The index range for "government forms" begins with the start of the first topic title in
+          <filepath>acct.dita</filepath>, and continues until the end of the last element in the
+        file <filepath>taxfiling.dita</filepath>. If the end range for "govt" was not specified, the
+        range would continue to the end of the map.</p>
+    </section>
+    </conbody>
+</concept>
