@@ -15,25 +15,22 @@
   </prolog>
   <refbody>
     <section conkeyref="reuse-topicmeta/usage-information"><title/><p/></section>
-    <section id="attributes">
-      <title>Attributes</title>
-      <sectiondiv
-        conref="../../common/conref-attribute.dita#conref-attribute/standard-topicmeta-attributes"/>
-    </section>
+    <section conkeyref="reuse-topicmeta/attributes"/>
     <example id="example" otherprops="examples">
       <title>Example</title>
       <p>The following example shows how the <xmlelement>topicmeta</xmlelement> element can contain
-        a navigation title:</p>
+        a metadata element:</p>
       <codeblock>&lt;map>
-  &lt;title>Highlighting domain elements&lt;/title>        
-  &lt;topicref href=sub.dita">
+  &lt;title>Indexing elements&lt;/title>        
+  &lt;topicref href=indexing.dita">
     &lt;topicmeta>
-      &lt;navtitle>Subscript&lt;/navtitle>
+      &lt;audience>Indexing specialists&lt;/audience>
     &lt;/topicmeta>
+    &lt;!-- Adding topic references -->
   &lt;/topicref>
 &lt;/map></codeblock>
-      <p>Because the <xmlatt>lockmeta</xmlatt> is not specified, if the <filepath>sub.dita</filepath>
-        topic also contains a navigation title, the navigation title from the topic is used.</p>
+      <p>The <xmlelement>audience</xmlelement> element indicates that the topic (and its child
+        topics) are of interest to the indexing specialists within the company.</p>
     </example>
   </refbody>
 </reference>

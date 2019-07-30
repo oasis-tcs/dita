@@ -35,8 +35,8 @@
                 a key definition can be used to provide a short description in addition to the
                 normal effective content. If the key definition includes
                     <xmlelement>shortdesc</xmlelement> inside of <xmlelement>topicmeta</xmlelement>,
-                that <xmlelement>shortdesc</xmlelement> should be used to provide effective content
-                for a <xmlelement>desc</xmlelement>
+                that <xmlelement>shortdesc</xmlelement> is used to provide effective content for a
+                    <xmlelement>desc</xmlelement>
                 sub-element.<!--<draft-comment author="robander" time="29 July 2014" disposition="open">Original DITA 1.2 text for this was: "For <xmlelement>link</xmlelement> tags with a <xmlatt>keyref</xmlatt> attribute, the contents of the <xmlelement>shortdesc</xmlelement> tag in the key-defining element should provide the <xmlelement>desc</xmlelement> contents." This restatement expands that to &lt;xref> which I believe is the intent. It also tries to stay consistent by using the term "effective content". Hopefully it is as clear / clearer.</draft-comment>--></li>
             <li>The <xmlelement>longdescref</xmlelement> and <xmlelement>longquoteref</xmlelement>
                 elements are empty elements with no effective content. Key definitions are not used
@@ -83,12 +83,11 @@
                 to:<codeblock>&lt;xref keyref="test">&lt;keyword>first&lt;/keyword>&lt;keyword>second&lt;/keyword>&lt;keyword>third&lt;/keyword>&lt;/xref></codeblock></li>
             <li>Otherwise, if <xmlelement>linktext</xmlelement> is specified inside of
                     <xmlelement>topicmeta</xmlelement>, the contents of
-                    <xmlelement>linktext</xmlelement> are used as the effective content. <note
-                    >Because all elements that <ph >get effective
-                        content</ph> will eventually look for content in the
-                        <xmlelement>linktext</xmlelement> element, using
+                    <xmlelement>linktext</xmlelement> are used as the effective content.
+                    <note>Because all elements that get effective content will eventually look for
+                    content in the <xmlelement>linktext</xmlelement> element, using
                         <xmlelement>linktext</xmlelement> for effective content is a best practice
-                    for cases where all elements getting text from a key definition should result in
+                    to ensure that all elements getting text from a key definition will result in
                     the same value.</note></li>
             <li>Otherwise, if the element with the key reference results in a link, normal link text
                 determination rules apply as they would for <xmlelement>xref</xmlelement> (for
@@ -100,13 +99,13 @@
             result. </p>
         <p>For example, <xmlelement>linktext</xmlelement> in the key definition might use a domain
             specialization of <xmlelement>keyword</xmlelement> that is not valid in the key
-            reference context, in which case the specialized element should be generalized to
+            reference context, in which case the specialized element is generalized to
                 <xmlelement>keyword</xmlelement>. If the generalized content is also not valid, a
-            text equivalent should be used instead. For example, <xmlelement>linktext</xmlelement>
-            might include <xmlelement>ph</xmlelement> or a specialized <xmlelement>ph</xmlelement>
-            in the key definition, but neither of those are valid as the effective content for a
+            text equivalent is used instead. For example, <xmlelement>linktext</xmlelement> might
+            include <xmlelement>ph</xmlelement> or a specialized <xmlelement>ph</xmlelement> in the
+            key definition, but neither of those are valid as the effective content for a
                 <xmlelement>keyword</xmlelement>. In that case, the text content of the
-                <xmlelement>ph</xmlelement> should be used.</p>
+                <xmlelement>ph</xmlelement> is used.</p>
         <!--For posterity / easy reference, the text from DITA 1.2 that was expanded to most of the above: <p>When a key definition has a <xmlelement>topicmeta</xmlelement> subelement, elements that refer to that key and that are empty may get their effective content from the first matching subelement of the <xmlelement>topicmeta</xmlelement> subelement of the key-defining <xmlelement>topicref</xmlelement>. If no matching element is found, the contents of the <xmlelement>linktext</xmlelement> tag, if present, should be used. Elements within <xmlelement>linktext</xmlelement> that do not match the content model of the key reference directly or after generalization should be skipped. For <xmlelement>link</xmlelement> tags with a <xmlatt>keyref</xmlatt> attribute, the contents of the <xmlelement>shortdesc</xmlelement> tag in the key-defining element should provide the <xmlelement>desc</xmlelement> contents.</p>-->
     </conbody>
 </concept>
