@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="index-ranges">
+    <title>Index ranges</title>
+    <shortdesc>Authors can use the <xmlatt>start</xmlatt> and <xmlatt>end</xmlatt> attributes on
+            <xmlelement>indexterm</xmlelement> elements to index extended discussions. Processors
+        generate index entries that range over several pages. </shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>indexes<indexterm>ranges</indexterm></indexterm>
+                <indexterm>processing expectations<indexterm>index ranges</indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <p>The start of an index range is indicated by an <xmlelement>indexterm</xmlelement> with a
+                <xmlatt>start</xmlatt> attribute.</p>
+        <p>The end of a range is indicated by whichever of the following occurs first:</p>
+        <ul>
+            <li>An <xmlelement>indexterm</xmlelement> element with an <xmlatt>end</xmlatt> attribute
+                with a value that matches the <xmlatt>start</xmlatt> attribute on the
+                    <xmlelement>indexterm</xmlelement> element that begins the range</li>
+            <li>The applicable scope boundary</li>
+        </ul>
+        <p>The applicable scope boundary depends on the location of the start element:</p>
+        <dl>
+            <dlentry>
+                <dt>Topic body</dt>
+                <dd>End of the topic body.</dd>
+            </dlentry>
+            <dlentry>
+                <dt>Topic prolog</dt>
+                <dd>End of the topic cluster. This includes the topic that contains the start
+                    element and any child topics.</dd>
+            </dlentry>
+            <dlentry>
+                <dt>DITA map</dt>
+                <dd>Either the end of the topic cluster (the topic that contains the
+                        <xmlelement>indexterm</xmlelement> element with the <xmlatt>start</xmlatt>
+                    attribute and any child topics) or the end of the DITA map, whichever occurs
+                    first.</dd>
+            </dlentry>
+        </dl>
+        <!--<ul id="ul_cyg_1pf_bbb"><li>In a map, the start range points to the start of the topic title of the topic being referenced by its containing <xmlelement>topicref</xmlelement>. The end range points to the end of the final child contained by the topic being referenced by its containing <xmlelement>topicref</xmlelement>, or to the end of the final topic referenced by the current map (whichever comes first). When a start and end range occur in the same <xmlelement>topicmeta</xmlelement>, the range applies to the containing <xmlelement>topicref</xmlelement> and its children.</li><li>In the prolog of a topic, the start range points to the start of the containing topic's title. The range ends with a matching index range end in the same prolog, regardless of whether the end range is specified. The range applies to the containing topic and all its children including child relationships defined in a map.</li><li>In the body of a topic, the range starts where the start <xmlelement>indexterm</xmlelement> occurs and ends at the matching index range end indication within the same body, or at the end of the body, whichever comes first. Such an index range does not span sub-topics of the topic.</li></ul>-->
+        <p>Processors that support index ranges <term outputclass="RFC-2119">SHOULD</term> do the following:<ul>
+                <li>Match <xmlatt>start</xmlatt> and <xmlatt>end</xmlatt> attributes by a
+                    character-by-character comparison with all characters significant and no case
+                    folding occurring<draft-comment author="Kristen J Eberlein" time="09 July 2019">
+                        <p>What does <q>all character significant and no case folding occurring</q>
+                            mean?</p>
+                    </draft-comment></li>
+                <li>Ignore <xmlatt>start</xmlatt> and <xmlatt>end</xmlatt> attributes if they occur
+                    on an <xmlelement>indexterm</xmlelement> element that has child
+                        <xmlelement>indexterm</xmlelement> elements</li>
+                <li>When index ranges with the same identifier overlap, the widest range applies,
+                    and end ranges are matched with start ranges by last-in-first-out. In other
+                    words, the ranges are interpreted as nested rather than overlapping with the
+                    highest-level container taking precedence over narrower contained
+                        ranges.<draft-comment author="Kristen J Eberlein" time="09 July 2019">
+                        <p>I'm not sure I understand this. Can we make it clearer?</p>
+                    </draft-comment></li>
+                <li>Handle an end-of-range <xmlelement>indexterm</xmlelement> that is nested within
+                    one or more <xmlelement>indexterm</xmlelement> elements. The end-of-range
+                        <xmlelement>indexterm</xmlelement> element should have no content of its
+                    own; if it contains content, that content is ignored.</li>
+                <li>Ignore unmatched index range end indications.</li>
+            </ul></p>
+        <!--<p>As defined above, there is no such thing as an index range start that isn't terminated by either a matching end or some maximum scope. There can, however, be unmatched index range end indications; these are ignored.</p>-->
+    </conbody>
+</concept>

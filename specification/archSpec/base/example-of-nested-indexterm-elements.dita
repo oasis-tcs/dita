@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="example-of-nested-indexterm-elements">
+    <title>Example: Nested <xmlelement>indexterm</xmlelement> elements</title>
+    <shortdesc>This example contains a multilevel <xmlelement>indexterm</xmlelement>
+    element.</shortdesc>
+    <conbody>
+    <codeblock>&lt;indexterm>cheese
+  &lt;indexterm>sheeps milk
+    &lt;indexterm>pecorino&lt;/indexterm>
+  &lt;/indexterm>
+  &lt;indexterm>goats milk
+    &lt;indexterm>chevre&lt;/indexterm>
+  &lt;/indexterm>
+&lt;/indexterm></codeblock>
+        <p>The previous code is equivalent to the following:</p>
+    <codeblock>&lt;indexterm>cheese
+  &lt;indexterm>sheeps milk
+    &lt;indexterm>pecorino&lt;/indexterm>
+  &lt;/indexterm>
+&lt;/indexterm>
+&lt;indexterm>cheese
+  &lt;indexterm>goats milk
+    &lt;indexterm>chevre&lt;/indexterm>
+  &lt;/indexterm>
+&lt;/indexterm></codeblock>
+        <p>A processor will generate the following index entries:</p>
+        <ul>
+            <li>A primary entry for "cheese"</li>
+            <li>Secondary entries for  "goats milk" and "sheeps milk"</li>
+            <li>Tertiary entries for "chevre" and "pecorino"</li>
+        </ul>
+    </conbody>
+</concept>

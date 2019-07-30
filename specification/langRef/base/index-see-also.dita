@@ -2,28 +2,33 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="index-see-also" xml:lang="en-us">
 <title><xmlelement>index-see-also</xmlelement></title>
-<shortdesc>An <xmlelement>index-see-also</xmlelement> element directs the reader to another index
-    entry that the reader should reference in addition to the current one.</shortdesc>
+<shortdesc>An <xmlelement>index-see-also</xmlelement> element directs the reader to an index entry
+    that the reader should reference in addition to the current one.</shortdesc>
 <prolog><metadata>
-<keywords><indexterm>index-see-also</indexterm>
-            <indexterm>indexing domain<indexterm>index-see-also</indexterm></indexterm>
+<keywords><indexterm><xmlelement>index-see-also</xmlelement></indexterm>
+        <indexterm>elements<indexterm>indexing
+                group<indexterm><xmlelement>index-see-also</xmlelement></indexterm></indexterm></indexterm>
 </keywords>
 </metadata></prolog>
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p conref="index-see.dita#index-see/index-redirection"/>
-      <p>In addition to its "see also" redirection, an <xmlelement>index-see-also</xmlelement>
-        functions as a pointwise index term, thereby typically generating a page reference as well
-        as the "see also" indication.</p>
-      <p>It is not an error for there to be multiple <xmlelement>index-see-also</xmlelement>
-        elements for a single index entry.</p>
+      <p>There can be multiple <xmlelement>index-see-also</xmlelement> elements within a single
+          <xmlelement>indexterm</xmlelement> element.</p>
+      <draft-comment author="Kristen J Eberlein" time="07 July 2019">
+        <p>Do we need to state the following?</p>
+        <p>It is an error if the target of the <xmlelement>index-see-also</xmlelement> element does
+          not exist in the publication.</p>
+      </draft-comment>
     </section>
-    <section id="specialization-hierarchy">
-      <title>Specialization hierarchy</title>
-      <p>The <xmlelement>index-see-also</xmlelement> element is specialized from
-          <xmlelement>index-base</xmlelement>. It is defined in the indexing domain module.</p>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <!--Verified in following paragraph: using lower case "should" rather than RFC SHOULD.-->
+      <p>Processors should ignore an <xmlelement>index-see-also</xmlelement> element if its parent
+          <xmlelement>indexterm</xmlelement> element contains any <xmlelement>indexterm</xmlelement>
+        children.</p>
     </section>
+    <!--<section id="specialization-hierarchy"><title>Specialization hierarchy</title><p>The <xmlelement>index-see-also</xmlelement> element is specialized from <xmlelement>index-base</xmlelement>. It is defined in the indexing domain module.</p></section>-->
     <section id="attributes">
       <title>Attributes</title>
       <p>The following attributes are available on this element: <xref
@@ -33,22 +38,26 @@
 <example id="example" otherprops="examples">
 <title>Examples</title>
       <fig>
-        <title>Simple use of <xmlelement>index-see-also</xmlelement></title>
+        <title>Use of an <xmlelement>index-see-also</xmlelement> element</title>
         <p>The following code sample shows the use of an <xmlelement>index-see-also</xmlelement>
-          element to generate a "see also" reference to the term "goldfish". </p>
+          element to generate a "see also" reference to the index entry for "goldfish". </p>
         <codeblock>&lt;indexterm&gt;carp
    &lt;index-see-also&gt;goldfish&lt;/index-see-also&gt;
 &lt;/indexterm&gt;</codeblock>
-        <!--<p>This markup generates a primary index entry for "carp" as well as a secondary index entry that instructs the reader to "see also goldfish".</p>-->
-        <p>This markup generates a page reference to "carp" and also a redirection: </p>
-        <lines>carp 56
-    <i>see also</i> goldfish</lines>
+        <p>This markup generates a primary index entry for "carp" and secondary index entry that
+          instructs the reader to "see also goldfish".</p>
+        <p>
+          <draft-comment author="Kristen J Eberlein" time="21 July 2019">
+            <p>Is it accurate to refer to the generated see-also entry as a secondary index
+              entry?</p>
+          </draft-comment>
+        </p>
       </fig>
       <fig>
-        <title>More complex use of <xmlelement>index-see-also</xmlelement></title>
-        <p>The following code sample illustrates the use of an
-            <xmlelement>index-see-also</xmlelement> element to redirect to a more complex
-          (multilevel) <xmlelement>indexterm</xmlelement>:</p>
+        <title>Use of an <xmlelement>index-see-also</xmlelement> element to redirect to a multilevel
+          index entry</title>
+        <p>The following code sample shows the use of an <xmlelement>index-see-also</xmlelement>
+          element to redirect to a multilevel <xmlelement>indexterm</xmlelement> element:</p>
         <codeblock>&lt;indexterm&gt;feeding
    &lt;index-see-also&gt;goldfish &lt;indexterm&gt;feeding&lt;/indexterm&gt;&lt;/index-see-also&gt;
 &lt;/indexterm&gt;</codeblock>
@@ -59,7 +68,7 @@
 &lt;/indexterm&gt;</codeblock>
         <p>This markup generates index entries such as the following:</p>
         <lines>feeding 348
-    <i>see also</i> goldfish feeding
+    <i>see also</i> goldfish, feeding
 ...
 goldfish
     feeding 370</lines>

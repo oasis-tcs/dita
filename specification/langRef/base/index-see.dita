@@ -1,77 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="index-see" xml:lang="en-us">
-<title><xmlelement>index-see</xmlelement></title>
-<shortdesc>An <xmlelement>index-see</xmlelement> element directs the reader to another index entry
-    that the reader should reference instead of the current one.</shortdesc>
-<prolog><metadata>
-<keywords><indexterm>index-see</indexterm>
-            <indexterm>indexing domain<indexterm>index-see</indexterm></indexterm></keywords>
-</metadata></prolog>
-<refbody>
+  <title><xmlelement>index-see</xmlelement></title>
+  <shortdesc>An <xmlelement>index-see</xmlelement> element directs the reader to an index entry that
+    the reader should reference instead of the current one.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm><xmlelement>index-see</xmlelement></indexterm>
+        <indexterm>elements<indexterm>indexing
+              group<indexterm><xmlelement>index-see</xmlelement></indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p id="index-redirection">The <xmlelement>index-see</xmlelement> and
-          <xmlelement>index-see-also</xmlelement> elements allow a form of redirection to another
-        index entry within the generated index. The <xmlelement>index-see</xmlelement> element
-        refers to an index entry that the reader should use <i>instead of</i> the current one,
-        whereas the <xmlelement>index-see-also</xmlelement> element refers to an index entry that
-        the reader should use <i>in addition to</i> the current one. </p>
-      <p>There can be multiple <xmlelement>index-see</xmlelement> elements for a single index
-        entry.</p>
+      <p>There can be multiple <xmlelement>index-see</xmlelement> elements within an
+          <xmlelement>indexterm</xmlelement> element.</p>
+      <draft-comment author="Kristen J Eberlein" time="07 July 2019">
+        <p>Do we need to state the following?</p>
+        <p>It is an error if the target of the <xmlelement>index-see</xmlelement> element does not
+          exist in the publication.</p>
+      </draft-comment>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <!--Verifed in following paragraph: using lower case "should" rather than RFC SHOULD.-->
-      <p>Processors should ignore <xmlelement>index-see</xmlelement> and
-          <xmlelement>index-see-also</xmlelement> elements if their parent
+      <!--Verified in following paragraph: using lower case "should" rather than RFC SHOULD.-->
+      <p>Processors should ignore an <xmlelement>index-see</xmlelement> element if its parent
           <xmlelement>indexterm</xmlelement> element contains any <xmlelement>indexterm</xmlelement>
         children.</p>
-      <p>Because an <xmlelement>index-see</xmlelement> indicates a redirection to use instead of the
-        current entry, it is an error if, for any <xmlelement>index-see</xmlelement>, there is also
-        an <xmlelement>index-see-also</xmlelement> or an <xmlelement>indexterm</xmlelement> for the
-        same index entry (that is, another entry with an identical sort key). For example, if an
-          <xmlelement>indexterm</xmlelement> element with the content "Memory stick" also includes
-          <codeph>&lt;index-see>USB drive&lt;/index-see></codeph>, it is an error if there is also
-        an <xmlelement>indexterm</xmlelement> with the contents "Memory stick". This is to prevent
-        index entries that are both a redirect and a page reference, such as:</p>
-      <lines>* Memory stick     42, 106
-     * See USB drive</lines>
-      <p>An implementation <term outputclass="RFC-2119">MAY</term> give an error message when it
-        encounters this condition, and <term outputclass="RFC-2119">MAY</term> recover from this
-        error condition by treating the <xmlelement>index-see</xmlelement> as an
-          <xmlelement>index-see-also</xmlelement>.</p>
     </section>
-    <section>
-      <draft-comment author="Kristen J Eberlein" time="15 May 2019" audience="spec-editors">
-        <p>What is <q>this condition</q>?</p>
-      </draft-comment>
-    </section>
-    <section id="specialization-hierarchy">
-      <title>Specialization hierarchy</title>
-      <p>The <xmlelement>index-see</xmlelement> element is specialized from
-          <xmlelement>index-base</xmlelement>. It is defined in the indexing domain module.</p>
-    </section>
+    <!--<section id="specialization-hierarchy"><title>Specialization hierarchy</title><p>The <xmlelement>index-see</xmlelement> element is specialized from <xmlelement>index-base</xmlelement>. It is defined in the indexing domain module.</p></section>-->
     <section id="attributes">
       <title>Attributes</title>
-      <p>The following attributes are available on this element: <xref
-          keyref="attributes-universal"/> and <xref
-          keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
+      <p>The following attributes are available on this element: <xref keyref="attributes-universal"
+        /> and <xref keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
     </section>
-<example id="example" otherprops="examples">
+    <example id="example" otherprops="examples">
       <title>Examples</title>
       <fig>
-        <title>Simple use of an <xmlelement>index-see</xmlelement> element</title>
-        <p>The following code sample shows how a<xmlelement>index-see</xmlelement> is used to refer
-          readers to this preferred term:</p>
+        <title>Use of an <xmlelement>index-see</xmlelement> element</title>
+        <p>The following code sample shows how an <xmlelement>index-see</xmlelement> element is used
+          to refer readers to the preferred term:</p>
         <codeblock>&lt;indexterm&gt;Carassius auratus
   &lt;index-see&gt;goldfish&lt;/index-see&gt;
 &lt;/indexterm&gt;</codeblock>
-        <p>This markup typically will generate an index entry without a page reference:</p>
+        <p>This markup typically will generate an index entry without a page reference. It might
+          look like the following:</p>
         <lines>carassius auratus, <i>see</i> goldfish</lines>
       </fig>
       <fig>
-        <title>Complex use of an <xmlelement>index-see</xmlelement> element</title>
+        <title>Use of an <xmlelement>index-see</xmlelement> element to redirect to a multi-level
+          index entry</title>
         <p>The following code sample shows how an <xmlelement>index-see</xmlelement> is used to
           redirect to a more complex index entry:</p>
         <codeblock>&lt;indexterm&gt;feeding goldfish
@@ -83,5 +64,5 @@
   &lt;index-see>E=mc&lt;sup>2&lt;/sup>&lt;/index-see>
 &lt;/indexterm></codeblock></p>-->
     </example>
-</refbody>
+  </refbody>
 </reference>

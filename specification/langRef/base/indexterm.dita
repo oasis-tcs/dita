@@ -3,50 +3,22 @@
 <reference id="indexterm" xml:lang="en-us">
 <title><xmlelement>indexterm</xmlelement></title>
 <shortdesc>The content of an <xmlelement>indexterm</xmlelement> element is used to produce an index
-    entry in a generated index. You can nest <xmlelement>indexterm</xmlelement> elements to create
+    entry in a generated index. Nested <xmlelement>indexterm</xmlelement> elements create
     multi-level indexes.</shortdesc>
 <prolog><metadata>
-<keywords><indexterm>indexterm</indexterm>
-        <indexterm>indexing domain<indexterm>indexterm</indexterm></indexterm></keywords>
-</metadata></prolog>
+      <keywords>
+        <indexterm><xmlelement>indexterm</xmlelement></indexterm>
+        <indexterm>elements<indexterm>indexing
+              group<indexterm><xmlelement>indexterm</xmlelement></indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata></prolog>
 <refbody>
-    <section id="usage-information">
-      <title>Usage information</title>
-    </section>
     <section id="rendering-expectations">
       <title>Rendering expectations</title>
       <p>The content of <xmlatt>indexterm</xmlatt> entries is not rendered in the flow of body text;
         it is rendered only as part of a generated index.</p>
     </section>
-    <section id="processing-expectations">
-      <title>Processing expectations</title>
-      <p>It is an error if an <xmlelement>indexterm</xmlelement> that does not contain
-          <xmlelement>indexterm</xmlelement> children contains both an
-          <xmlelement>index-see</xmlelement> and an <xmlelement>index-see-also</xmlelement> element.
-        In the case of this error condition, an implementation <term outputclass="RFC-2119"
-          >MAY</term> give an error message; it <term outputclass="RFC-2119">MAY</term> recover by
-        treating all such <xmlelement>index-see</xmlelement> elements as
-          <xmlelement>index-see-also</xmlelement> elements.</p>
-      <p>Processors that support index ranges <term outputclass="RFC-2119">SHOULD</term> do the following:<ul>
-          <li>Match <xmlatt>start</xmlatt> and <xmlatt>end</xmlatt> attributes by a
-            character-by-character comparison with all characters significant and no case folding
-            occurring</li>
-          <li>Ignore <xmlatt>start</xmlatt> and <xmlatt>end</xmlatt> attributes if they occur on an
-              <xmlelement>indexterm</xmlelement> element that has child
-              <xmlelement>indexterm</xmlelement> elements</li>
-          <li>When index ranges with the same identifier overlap, the widest range applies, and end
-            ranges are matched with start ranges by last-in-first-out. In other words, the ranges
-            are interpreted as nested rather than overlapping with the highest-level container
-            taking precedence over narrower contained ranges.</li>
-          <li>Handle an end-of-range <xmlelement>indexterm</xmlelement> that is nested within one or
-            more <xmlelement>indexterm</xmlelement> elements. The end-of-range
-              <xmlelement>indexterm</xmlelement> should have no content of its own; if it contains
-            content, that content is ignored.</li>
-        </ul></p>
-      <p>As defined above, there is no such thing as an index range start that isn't terminated by
-        either a matching end or some maximum scope. There can, however, be unmatched index range
-        end indications; these are ignored.</p>
-    </section>
+    <!--<section id="processing-expectations"><title>Processing expectations</title><p>It is an error if an <xmlelement>indexterm</xmlelement> that contains <xmlelement>indexterm</xmlelement> children contains both an <xmlelement>index-see</xmlelement> and an <xmlelement>index-see-also</xmlelement> element. In the case of this error condition, an implementation <term outputclass="RFC-2119">MAY</term> give an error message; it <term outputclass="RFC-2119">MAY</term> recover by treating all such <xmlelement>index-see</xmlelement> elements as <xmlelement>index-see-also</xmlelement> elements.</p></section>-->
     <section id="attributes">
       <title>Attributes</title>
       <p>The following attributes are available on this element: <xref
@@ -56,39 +28,26 @@
       <dl>
         <dlentry id="start">
           <dt><xmlatt>start</xmlatt></dt>
-          <dd>Specifies the start of an index range. The value matches the <xmlatt>end</xmlatt>
-            attribute on another <xmlelement>indexterm</xmlelement>.</dd>
+          <dd>Specifies the start of an index range </dd>
         </dlentry>
         <dlentry id="end">
           <dt><xmlatt>end</xmlatt></dt>
-          <dd>Specifies the end of an index range. The value matches the <xmlatt>start</xmlatt>
-            attribute on another <xmlelement>indexterm</xmlelement>. </dd>
+          <dd>Specifies the end of an index range. The end of an index range is indicated by
+            whichever comes first of the following:<ul>
+              <li>Applicable scope boundary</li>
+              <li>An <xmlelement>indexterm</xmlelement> element with an <xmlatt>end</xmlatt>
+                attribute with a value that matches that <xmlatt>start</xmlatt> attribute that began
+                the index range</li>
+            </ul></dd>
         </dlentry>
       </dl>
     </section>
-<example id="example" otherprops="examples"><title>Examples</title><fig><title>Index reference to an element in a topic</title>
+<example id="example" otherprops="examples"><title>Examples</title><fig><title>Index reference to a point within in a topic</title>
         <p>When index entries are placed in the body of a topic, they serve as point references to
-          the closest containing element.</p>
+          their location in the topic.</p>
         <p>In the following code sample, the <xmlelement>indexterm</xmlelement> element provides a
-          point reference to the paragraph.</p>
+          point reference to the beginning of the paragraph.</p>
         <codeblock>&lt;p>&lt;indexterm>databases&lt;/indexterm>Databases are used to ...&lt;/p></codeblock>
-<ul>
-<li>The following <xmlelement>indexterm</xmlelement> is a point reference to a specific paragraph
-            within a topic: </li>
-<li>The following <xmlelement>indexterm</xmlelement> is a point reference to the start of the title
-            of the
-            concept:<codeblock>&lt;concept id="db">
-  &lt;title>About databases&lt;/title>
-  &lt;prolog>
-    &lt;metadata>
-      &lt;keywords>&lt;indexterm>databases&lt;/indexterm>&lt;/keywords>
-    &lt;/metadata>
-  &lt;/prolog>
-  &lt;body>&lt;!-- content... -->&lt;/body>
-&lt;/concept></codeblock></li>
-<li>The following <xmlelement>indexterm</xmlelement> is a point reference to the start of the title
-            of <filepath>aboutdatabases.dita</filepath>:</li>
-</ul>
 </fig>
       <fig>
         <title>Index entries within topic prologues or DITA maps</title>
@@ -112,10 +71,8 @@
   &lt;/body>
 &lt;/topic></codeblock>
       </fig>
-      <p>In the following code sample, the <xmlelement>indexterm</xmlelement> element provides a
-        reference to the topic as a whole; the generated index entry is associated with the start of
-        the <xmlelement>title</xmlelement> element of the<filepath>
-        aboutdatabases.dita</filepath>.</p>
+      <p>The effect is the same as if the <xmlelement>indexterm</xmlelement> element had been
+        located in the map:</p>
       <codeblock>&lt;map>
   &lt;topicref href="aboutdatabases.dita">
     &lt;topicmeta>
@@ -125,130 +82,36 @@
     &lt;/topicmeta>
   &lt;/topicref>
   &lt;!-- ... -->
-&lt;/map></codeblock><fig><title>Nested index terms</title>
-<p>The following sample represents three levels of index markup:<codeblock>&lt;indexterm>cheese
-  &lt;indexterm>sheeps milk
-    &lt;indexterm>pecorino&lt;/indexterm>
-  &lt;/indexterm>
-  &lt;indexterm>goats milk
-    &lt;indexterm>chevre&lt;/indexterm>
-  &lt;/indexterm>
-&lt;/indexterm></codeblock></p>
-<p>The previous sample is equivalent to the following sample:<codeblock
-xml:space="preserve">&lt;indexterm>cheese
-  &lt;indexterm>sheeps milk
-    &lt;indexterm>pecorino&lt;/indexterm>
-  &lt;/indexterm>
-&lt;/indexterm>
-&lt;indexterm>cheese
-  &lt;indexterm>goats milk
-    &lt;indexterm>chevre&lt;/indexterm>
-  &lt;/indexterm>
-&lt;/indexterm></codeblock></p>
-<p>In each case, a generated index would include something like the
-this:<ul>
-<li>cheese<ul>
-<li>goats milk<ul>
-<li>chevre 14</li>
-</ul></li>
-</ul><ul>
-<li>sheeps milk<ul>
-<li>pecorino 14</li>
-</ul></li>
-</ul></li>
-</ul></p>
-</fig><fig id="ranges"><title>Index ranges</title>
-<p>A simple index range will look something like this:<codeblock>&lt;indexterm start="cheese">Cheese&lt;/indexterm>
+&lt;/map></codeblock><fig id="ranges"><title>A simple index range</title>
+<p>A simple index range will look something like this:</p>
+        <codeblock>&lt;indexterm start="cheese">cheese&lt;/indexterm>
 &lt;!-- ... additional content -->
-&lt;indexterm end="cheese"/></codeblock></p>
-<p>The previous combination of terms will generate a top-level index
-term for "Cheese" that covers a series of pages, such as:<ul>
-<li>Cheese 18-24</li>
-</ul></p>
-<p>Specifying a range for nested terms is similar. In this sample,
-the range is specified for the tertiary index entry "pecorino":<codeblock>&lt;indexterm>cheese
+&lt;indexterm end="cheese"/></codeblock>
+<p>The previous combination of terms will generate a top-level index term for "cheese" that covers a
+          series of pages, such as:</p>
+        <ul>
+          <li>Cheese 18-24</li>
+        </ul>
+</fig>
+      <fig>
+        <title>A more complex index range</title>
+        <p>Specifying a range for nested terms is similar. In this sample, the range is specified
+          for the tertiary index entry "pecorino":</p>
+        <codeblock>&lt;indexterm>cheese
   &lt;indexterm>sheeps milk
     &lt;indexterm start="level-3-pecorino">pecorino&lt;/indexterm>
   &lt;/indexterm>
 &lt;/indexterm>
  &lt;!-- ... additional content ... -->
-&lt;indexterm end="level-3-pecorino"/></codeblock></p>
-<p>The generated index for that range would look something like this: <ul>
-<li>cheese<ul>
-<li>sheeps milk<ul>
-<li>pecorino 18-24</li>
-</ul></li>
-</ul></li>
-</ul></p>
-<p>There are three locations that <ph >can</ph> declare a range - the body of a
-          topic, the prolog of a topic, and a map.</p>
-<ul>
-<li>In the following example, the range begins at the start of the
-second paragraph, and continues to the last paragraph. If the matching
-end range was not included, the range would end at the end of the
-body element.<codeblock>&lt;topic id="accounting">
-  &lt;title>Accounting regulations&lt;/title>
-  &lt;body>
-    &lt;p>Be ethical in your accounting.&lt;/p>
-    &lt;p>&lt;indexterm start="acctrules">Rules&lt;/indexterm>Remember to do all of the following: ...&lt;/p>
-    &lt;!-- ...pages worth of rules... -->
-    &lt;p>&lt;indexterm end="acctrules"/>Failure to comply will get you audited.&lt;/p>
-  &lt;/body>
-  &lt;!-- Potential sub-topics -->
-&lt;/topic></codeblock></li>
-<li>In the following example, the range begins with the start of the topic&apos;s title, and covers
-the entire topic and any sub-topics. The range ends within the same prolog, regardless of whether
-<codeph>&lt;indexterm end="acct"/></codeph> is specified in the
-prolog.<codeblock>&lt;topic id="accounting">
-  &lt;title>Accounting regulations&lt;/title>
-  &lt;prolog>
-    &lt;metadata>
-      &lt;keywords>&lt;indexterm start="acct">Accounting&lt;/indexterm>&lt;/keywords>
-    &lt;/metadata>
-  &lt;/prolog>
-  &lt;!-- Body and sub-topics -->
-&lt;/topic></codeblock></li>
-<li>Now assume that the topic in the previous sample is named <filepath>acct.dita</filepath>. Ranges
-            defined in a prolog cover sub-topics, including those nested based on a map; in the
-            following example, this means that the range covers all of
-              <filepath>acct.dita</filepath>, as well as <filepath>procedures.dita</filepath> and
-              <filepath>forms.dita</filepath>:<codeblock>&lt;topicref href="acct.dita">
-  &lt;topicref href="procedures.dita"/>
-  &lt;topicref href="forms.dita"/>
-&lt;/topicref></codeblock></li>
-<li>In the final example, the range is specified in a map. The index range for "Accounting" begins
-            with the start of the first topic title in <filepath>acct.dita</filepath>, and covers
-            that file as well as any sub-topics. The index range for "Government forms" begins with
-            the start of the first topic title in <filepath>acct.dita</filepath>, and continues
-            until the end of the last element in the file <filepath>taxfiling.dita</filepath>. If
-            the end range for "govt" was not specified, the range would continue to the end of the
-            map.<codeblock>&lt;topicref href="acct.dita">
-  &lt;topicmeta>
-    &lt;keywords>
-      &lt;indexterm start="acct">Accounting&lt;/indexterm>
-      &lt;indexterm end="acct"/>
-      &lt;indexterm start="govt">Government forms&lt;/indexterm>
-    &lt;/keywords>
-  &lt;/topicmeta>
-  &lt;!-- Nested topicref elements -->
-&lt;/topicref>
-&lt;topicref href="taxfiling.dita">
-  &lt;topicmeta>
-    &lt;keywords>
-      &lt;indexterm end="govt"/>
-    &lt;/keywords>
-  &lt;/topicmeta>
-&lt;/topicref></codeblock></li>
-</ul>
-</fig>
-      <fig >
-        <title>Index term with <xmlelement>ph</xmlelement> or <xmlelement>ph</xmlelement>
-          specializations</title>
-        <codeblock>&lt;p>Einstein's most famous equation
-E=mc&lt;sup>2&lt;/sup>&lt;indexterm>E=mc&lt;sup>2&lt;/sup>&lt;/indexterm> 
-expresses the relationship between mass and energy.&lt;/p></codeblock>
-        <p>All the elements in the highlighting domain are specializations of
-            <xmlelement>ph</xmlelement>.</p>
+&lt;indexterm end="level-3-pecorino"/></codeblock>
+        <p>The generated index for that range would look something like this: </p>
+        <ul>
+          <li>cheese<ul>
+              <li>sheeps milk<ul>
+                  <li>pecorino 18-24</li>
+                </ul></li>
+            </ul></li>
+        </ul>
       </fig></example>
 </refbody>
 </reference>
