@@ -6,7 +6,7 @@
   <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>A video object is modeled on the HTML5 <xmlelement>video</xmlelement> element.</p>
+      <p>The video object is modeled on the HTML5 <xmlelement>video</xmlelement> element.</p>
       <p platform="dita">A video object can be referenced by <xmlatt>data</xmlatt>,
           <xmlatt>datakeyref</xmlatt>, and nested <xmlelement>media-source</xmlelement> elements.
         Nested <xmlelement>media-source</xmlelement> elements enable extensive configuration of how
@@ -32,7 +32,7 @@
             scale to each direction using different factors.</li>
         </ul></p>
       <p platform="dita">When a video object cannot be rendered in a meaningful way, processors
-          <term outputclass="RFC-2119">SHOULD</term> present the contents of the
+          <term outputclass="RFC-2119">SHOULD</term> render the contents of the
           <xmlelement>fallback</xmlelement> element, if it is present.</p>
     </section>
     <section id="attributes">
@@ -87,7 +87,10 @@
         </dlentry>
         <dlentry platform="dita">
           <dt><xmlatt>tabindex</xmlatt></dt>
-          <dd>Positions the video object in tabbing order.</dd>
+          <dd>Indicates whether the video object can be focused and where it participates in
+            sequential keyboard navigation. See <xref
+              href="https://html.spec.whatwg.org/#the-tabindex-attribute" format="html"
+              scope="external">HTML specification (WHATWG version)</xref>.</dd>
         </dlentry>
       </dl>
     </section>
