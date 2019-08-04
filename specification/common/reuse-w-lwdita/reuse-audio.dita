@@ -7,29 +7,32 @@
     <section id="usage-information">
       <title>Usage information</title>
       <p>The audio object is modeled on the HTML5 <xmlelement>audio</xmlelement> element.</p>
-      <p platform="dita">An audio object can be referenced by <xmlatt>data</xmlatt>,
-          <xmlatt>datakeyref</xmlatt>, and nested <xmlelement>media-source</xmlelement> elements.
-        Nested <xmlelement>media-source</xmlelement> elements enable extensive configuration of how
-        the audio object is presented.</p>
-      <p platform="lwdita">An audio object can be referenced by <xmlatt>data</xmlatt>,
-          <xmlatt>datakeyref</xmlatt>, and nested media-source components. Nested media-source
-        components enable extensive configuration of how the audio object is presented.</p>
+      <div platform="dita">
+        <p>An audio object can be referenced by <xmlatt>data</xmlatt>, <xmlatt>datakeyref</xmlatt>,
+          and nested <xmlelement>media-source</xmlelement> elements. Nested
+            <xmlelement>media-source</xmlelement> elements enable extensive configuration of how the
+          audio object is presented.</p>
+        <p>Behaviors such as auto-playing, looping, and muting are determined by child elements.
+          When not specified, the default behavior is determined by the user agent that is used to
+          present the media.</p>
+      </div>
+      <div platform="lwdita">
+        <p>An audio object can be referenced by <xmlatt>data</xmlatt>, <xmlatt>datakeyref</xmlatt>,
+          and nested media-source components. Nested media-source components enable extensive
+          configuration of how the audio object is presented.</p>
+        <p>Behaviors such as auto-playing, looping, and muting are determined by child components.
+          When not specified, the default behavior is determined by the user agent that is used to
+          present the media.</p>
+      </div>
+      <draft-comment author="Kristen J Eberlein" time="22 April 2019" audience="tc-reviewers">
+        <p>If we keep the above wording, we need to define the term <term>user agent</term>.</p>
+      </draft-comment>
     </section>
     <section id="rendering-expectations" platform="dita">
       <title>Rendering expectations</title>
       <p>When an audio object cannot be rendered in a meaningful way, processors <term
           outputclass="RFC-2119">SHOULD</term> present the contents of the
           <xmlelement>fallback</xmlelement> element, if it is present.</p>
-    </section>
-    <section id="processing-expectations">
-      <title>Processing expectations</title>
-      <p platform="dita">Behaviors such as auto-playing, looping, and muting are determined by child
-        elements. When not specified, the behavior depends on the user agent.</p>
-      <p platform="lwdita">Behaviors such as auto-playing, looping, and muting are determined by
-        child components. When not specified, the behavior depends on the user agent.</p>
-      <draft-comment author="Kristen J Eberlein" time="22 April 2019" audience="spec-editors">
-        <p>If we keep the above wording, we need to define the term <term>user agent</term>.</p>
-      </draft-comment>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -67,7 +70,8 @@
             <dd>Indicates whether the audio object can be focused and where it participates in
               sequential keyboard navigation. See <xref
                 href="https://html.spec.whatwg.org/#the-tabindex-attribute" format="html"
-                scope="external">HTML specification (WHATWG version)</xref>.</dd>
+                scope="external"><xmlatt>tabindex</xmlatt></xref> in the HTML specification (WHATWG
+              version).</dd>
             <dd><!--<draft-comment author="Kristen J Eberlein" time="28 April 2019" audience="tc-reviewers"><p>Would this be a better description? "Indicates whether the audio object can be focused and where it participates in sequential keyboard navigation."</p><p>Note that changes that we make in this topic should be mirrored in the description of <xmlatt>tabindex</xmlatt> in the <xmlelement>video</xmlelement> topic.</p></draft-comment>--></dd>
           </dlentry>
           <dlentry>
