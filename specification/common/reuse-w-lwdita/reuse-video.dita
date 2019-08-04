@@ -7,13 +7,23 @@
     <section id="usage-information">
       <title>Usage information</title>
       <p>The video object is modeled on the HTML5 <xmlelement>video</xmlelement> element.</p>
-      <p platform="dita">A video object can be referenced by <xmlatt>data</xmlatt>,
-          <xmlatt>datakeyref</xmlatt>, and nested <xmlelement>media-source</xmlelement> elements.
-        Nested <xmlelement>media-source</xmlelement> elements enable extensive configuration of how
-        the video object is presented.</p>
-      <p platform="lwdita">A video object can be referenced by <xmlatt>data</xmlatt>,
-          <xmlatt>datakeyref</xmlatt>, and nested media-source components. Nested media-source
-        components enable extensive configuration of how the video object is presented.</p>
+      <div platform="dita">
+        <p>A video object can be referenced by <xmlatt>data</xmlatt>, <xmlatt>datakeyref</xmlatt>,
+          and nested <xmlelement>media-source</xmlelement> elements. Nested
+            <xmlelement>media-source</xmlelement> elements enable extensive configuration of how the
+          video object is presented.</p>
+        <p>Behaviors such as auto-playing, looping, and muting are determined by child elements.
+          When not specified, the default behavior is determined by the user agent that is used to
+          present the media.</p>
+      </div>
+      <div platform="lwdita">
+        <p>A video object can be referenced by <xmlatt>data</xmlatt>, <xmlatt>datakeyref</xmlatt>,
+          and nested media-source components. Nested media-source components enable extensive
+          configuration of how the video object is presented.</p>
+        <p>Behaviors such as auto-playing, looping, and muting are determined by child components.
+          When not specified, the default behavior is determined by the user agent that is used to
+          present the media.</p>
+      </div>
     </section>
     <section id="rendering-expectations">
       <title>Rendering expectations</title>
@@ -78,19 +88,19 @@
         </dlentry>
         <dlentry>
           <dt><xmlatt>width</xmlatt></dt>
-          <dd>Indicates the horizontal dimension for the resulting display. <ph>The value of this
-              attribute is a real number (expressed in decimal notation) optionally followed by a
-              unit of measure from the set of pc, pt, px, in, cm, mm, em (picas, points, pixels,
-              inches, centimeters, millimeters, and ems respectively). The default unit is px
-              (pixels). Possible values include: "5", "5in", and "10.5cm".</ph>
-          </dd>
+          <dd>Indicates the horizontal dimension for the resulting display. The value of this
+            attribute is a real number (expressed in decimal notation) optionally followed by a unit
+            of measure from the set of pc, pt, px, in, cm, mm, em (picas, points, pixels, inches,
+            centimeters, millimeters, and ems respectively). The default unit is px (pixels).
+            Possible values include: "5", "5in", and "10.5cm". </dd>
         </dlentry>
         <dlentry platform="dita">
           <dt><xmlatt>tabindex</xmlatt></dt>
-          <dd>Indicates whether the video object can be focused and where it participates in
+          <dd>Indicates whether the audio object can be focused and where it participates in
             sequential keyboard navigation. See <xref
               href="https://html.spec.whatwg.org/#the-tabindex-attribute" format="html"
-              scope="external">HTML specification (WHATWG version)</xref>.</dd>
+              scope="external"><xmlatt>tabindex</xmlatt></xref> in the HTML specification (WHATWG
+            version).</dd>
         </dlentry>
       </dl>
     </section>
