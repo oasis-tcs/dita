@@ -24,13 +24,19 @@
       <title>Examples</title>
       <fig>
 
-<title>A simple audio object</title>
+<title>An <xmlelement>audio</xmlelement> element that uses direct addressing</title>
 <p>In the following code sample, an audio resource is referenced using direct addressing. The
-            <xmlatt>type</xmlatt> attribute specifies the MIME type of the object. </p><codeblock>&lt;audio data="message.mp3" type="audio/mp3"/> </codeblock><p>The audio resource also could be addressed using a key reference; in this version, both the URI
-          and the MIME type come from the key definition:</p><codeblock>&lt;audio datakeyref="message"/></codeblock>
+            <xmlatt>type</xmlatt> attribute specifies the MIME type of the audio resource. </p><codeblock>&lt;audio data="message.mp3" type="audio/mp3"/> </codeblock>
 </fig>
       <fig>
-<title>An audio object with multiple formats</title>
+        <title>An <xmlelement>audio</xmlelement> element that uses indirect addressing</title>
+        <p>In the following code sample, the audio resource is addressed using a key reference:</p>
+        <codeblock>&lt;audio datakeyref="message"/></codeblock>
+        <p>Both the URI and the MIME type are specified on the key definition:</p>
+        <codeblock>&lt;keydef keys="message" href="message.mp3" type="audio/mp3"/></codeblock>
+      </fig>
+      <fig>
+<title>An <xmlelement>audio</xmlelement> element with multiple formats</title>
 <p>In the following code sample, <xmlelement>media-source</xmlelement> elements are used to specify
 the different audio formats that are
 available.</p><codeblock>&lt;audio>
@@ -40,7 +46,7 @@ available.</p><codeblock>&lt;audio>
 </fig>
       <fig>
 
-<title>Complex example of an audio object</title>
+<title>Example of a complex <xmlelement>audio</xmlelement> element</title>
 <p>The following code sample specifies an audio resource and defines multiple presentational
           details; it also provides fallback behavior for when the audio resource cannot be
           rendered.</p><codeblock>&lt;audio>
