@@ -8,18 +8,18 @@
       <title>Usage information</title>
       <p>The audio object is modeled on the HTML5 <xmlelement>audio</xmlelement> element.</p>
       <div platform="dita">
-        <p>An audio object can be referenced by <xmlatt>data</xmlatt>, <xmlatt>datakeyref</xmlatt>,
-          and nested <xmlelement>media-source</xmlelement> elements. Nested
-            <xmlelement>media-source</xmlelement> elements enable extensive configuration of how the
-          audio object is presented.</p>
+        <p>An audio resource can be referenced by <xmlatt>data</xmlatt>,
+          <xmlatt>datakeyref</xmlatt>, and nested <xmlelement>media-source</xmlelement> elements.
+          Nested <xmlelement>media-source</xmlelement> elements enable extensive configuration of
+          how the audio resource is presented.</p>
         <p>Behaviors such as auto-playing, looping, and muting are determined by child elements.
           When not specified, the default behavior is determined by the user agent that is used to
           present the media.</p>
       </div>
       <div platform="lwdita">
-        <p>An audio object can be referenced by <xmlatt>data</xmlatt>, <xmlatt>datakeyref</xmlatt>,
-          and nested media-source components. Nested media-source components enable extensive
-          configuration of how the audio object is presented.</p>
+        <p>An audio resource can be referenced by <xmlatt>data</xmlatt>,
+          <xmlatt>datakeyref</xmlatt>, and nested media-source components. Nested media-source
+          components enable extensive configuration of how the audio resource is presented.</p>
         <p>Behaviors such as auto-playing, looping, and muting are determined by child components.
           When not specified, the default behavior is determined by the user agent that is used to
           present the media.</p>
@@ -43,18 +43,18 @@
           <dlentry>
             <dt><xmlatt>data</xmlatt></dt>
             <!--KJE: RDA and I discussed this on 29 April 2019. We could not come up with a phrasing that would not include "should". Adding this comment so that we don't have the discussion again.-->
-            <dd>Specifies the absolute or relative URI of the audio object. If this attribute is
+            <dd>Specifies the absolute or relative URI of the audio resource. If this attribute is
               specified, <xmlatt>type</xmlatt> also should be specified.</dd>
           </dlentry>
           <dlentry>
             <dt><xmlatt>datakeyref</xmlatt></dt>
-            <dd>Provides a key reference to the audio object. When specified and the key is
+            <dd>Provides a key reference to the audio resource. When specified and the key is
               resolvable, the key-provided URI is used. If the key referenced by
                 <xmlatt>datakeyref</xmlatt> cannot be resolved, and <xmlatt>data</xmlatt> is
               specified, that value provided by <xmlatt>data</xmlatt> is used as a fallback. If the
               key referenced by <xmlatt>datakeyref</xmlatt> has no associated resource, only link
               text, and the audio object does not contain a <xmlelement>fallback</xmlelement>
-              element, the link text becomes fallback content for the audio object.</dd>
+              element, the link text becomes fallback content for the audio resource.</dd>
             <dd>
               <draft-comment author="Kristen J Eberlein" time="17 May 2019" audience="tc-reviewers">
                 <p>Robert and I discussed and reworked the above description today, in response to
@@ -76,12 +76,12 @@
           </dlentry>
           <dlentry>
             <dt><xmlatt>type</xmlatt></dt>
-            <dd>Indicates the MIME type for the audio object. This attribute enables processors to
-              avoid loading unsuppported objects. If <xmlatt>type</xmlatt> is not specified, the
+            <dd>Indicates the MIME type for the audio resource. This attribute enables processors to
+              avoid loading unsuppported resources. If <xmlatt>type</xmlatt> is not specified, the
               effective type for the key named by the <xmlatt>datakeyref</xmlatt> attribute is used
               as the value. If an explicit <xmlatt>type</xmlatt> is not specified on either the
               audio object or key definition, processors can use other means, such the URI file
-              extension, to determine the effective MIME type of the media object.</dd>
+              extension, to determine the effective MIME type of the audio resource.</dd>
           </dlentry>
         </dl>
       </div>
