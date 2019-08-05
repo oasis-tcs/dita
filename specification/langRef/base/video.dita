@@ -22,12 +22,16 @@
     <section conkeyref="reuse-video/attributes"/>
     <example otherprops="examples">
 <title>Examples</title>
-<fig id="fig_amp_v4z_4hb"><title>A simple video object</title><p>In the following code sample, a
-video object is referenced using direct addressing. The <xmlatt>type</xmlatt> attribute specifies
-the MIME type of the object.
-</p><codeblock>&lt;video data="video.mp4" type="video/mp4"/></codeblock><p>The video object also could be addressed using a key reference; in this version, both the URI and
-          the MIME type come from the key definition.</p><codeblock>&lt;video datakeyref="video"/></codeblock></fig>
-<fig id="fig_ql2_cpz_4hb"><title>A video object with multiple formats</title><p>In the following
+<fig id="fig_amp_v4z_4hb"><title>A <xmlelement>video</xmlelement> element that uses direct addressing</title><p>In the following code sample, a video resource is referenced using direct addressing. The
+            <xmlatt>type</xmlatt> attribute specifies the MIME type of the video. </p><codeblock>&lt;video data="video.mp4" type="video/mp4"/></codeblock></fig>
+      <fig>
+        <title>A <xmlelement>video</xmlelement> element that uses indirect addressing</title>
+        <p>In the following code sample, the video resource is addressed using a key reference:</p>
+        <codeblock>&lt;video datakeyref="video"/></codeblock>
+        <p>Both the URI and the MIME type are specified on the key definition:</p>
+        <codeblock>&lt;keydef keys="video" href="video.mp4" type="video/mp4"/></codeblock>
+      </fig>
+<fig id="fig_ql2_cpz_4hb"><title>A <xmlelement>video</xmlelement> element with multiple formats</title><p>In the following
 code sample, <xmlelement>media-source</xmlelement> elements are used to specify the different video
 formats that are
 available.</p><codeblock>&lt;video>
@@ -35,8 +39,8 @@ available.</p><codeblock>&lt;video>
   &lt;media-source value="video.ogg" type="video/ogg"/>
   &lt;media-source value="video.webm" type="video/webm"/>
 &lt;/video></codeblock></fig>
-<fig id="fig_wsb_jpz_4hb"><title>Complex example of a video object, with multiple formats and
-multi-lingual subtitles</title><p>The following code sample defines multiple presentational details for a video that is available
+<fig id="fig_wsb_jpz_4hb"><title>Example of a <xmlelement>video</xmlelement> element with multiple formats and multilingual
+          subtitles</title><p>The following code sample defines multiple presentational details for a video that is available
           in multiple formats. The video is referenced using key reference and a fallback image is
           provided for use when the video cannot be displayed.</p><codeblock>&lt;video width="400px" height="300px">
   &lt;desc>A video illustrating this procedure.&lt;/desc>

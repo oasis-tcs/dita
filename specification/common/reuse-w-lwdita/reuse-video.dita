@@ -2,24 +2,27 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="video">
   <title><xmlelement>video</xmlelement></title>
-  <shortdesc id="shortdesc">A video object references moving visual media.</shortdesc>
+  <shortdesc id="shortdesc">A video is a recording of moving visual
+    images.<!--A video object references moving visual media.--></shortdesc>
   <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>The video object is modeled on the HTML5 <xmlelement>video</xmlelement> element.</p>
       <div platform="dita">
-        <p>A video object can be referenced by <xmlatt>data</xmlatt>, <xmlatt>datakeyref</xmlatt>,
+        <p>The <xmlelement>video</xmlelement> element is modeled on the HTML5
+            <xmlelement>video</xmlelement> element.</p>
+        <p>A video resource can be referenced by <xmlatt>data</xmlatt>, <xmlatt>datakeyref</xmlatt>,
           and nested <xmlelement>media-source</xmlelement> elements. Nested
             <xmlelement>media-source</xmlelement> elements enable extensive configuration of how the
-          video object is presented.</p>
+          video resource is presented.</p>
         <p>Behaviors such as auto-playing, looping, and muting are determined by child elements.
           When not specified, the default behavior is determined by the user agent that is used to
           present the media.</p>
       </div>
       <div platform="lwdita">
-        <p>A video object can be referenced by <xmlatt>data</xmlatt>, <xmlatt>datakeyref</xmlatt>,
+        <p>The video component is modeled on the HTML5 <xmlelement>video</xmlelement> element.</p>
+        <p>A video resource can be referenced by <xmlatt>data</xmlatt>, <xmlatt>datakeyref</xmlatt>,
           and nested media-source components. Nested media-source components enable extensive
-          configuration of how the video object is presented.</p>
+          configuration of how the video resource is presented.</p>
         <p>Behaviors such as auto-playing, looping, and muting are determined by child components.
           When not specified, the default behavior is determined by the user agent that is used to
           present the media.</p>
@@ -27,9 +30,9 @@
     </section>
     <section id="rendering-expectations">
       <title>Rendering expectations</title>
-      <p>The video object typically is rendered in the main flow of the content.</p>
-      <p>Processors <term outputclass="RFC-2119">SHOULD</term> scale the object when values are
-        provided for the <xmlatt>height</xmlatt> and <xmlatt>width</xmlatt> attributes. The
+      <p>The video resource typically is rendered in the main flow of the content.</p>
+      <p>Processors <term outputclass="RFC-2119">SHOULD</term> scale the video resource when values
+        are provided for the <xmlatt>height</xmlatt> and <xmlatt>width</xmlatt> attributes. The
         following expectations apply:<ul>
           <li>If a height value is specified and no width value is specified, processors <term
               outputclass="RFC-2119">SHOULD</term> scale the width by the same factor as the
@@ -41,7 +44,7 @@
               outputclass="RFC-2119">MAY</term> ignore one of the two values when they are unable to
             scale to each direction using different factors.</li>
         </ul></p>
-      <p platform="dita">When a video object cannot be rendered in a meaningful way, processors
+      <p platform="dita">When a video resource cannot be rendered in a meaningful way, processors
           <term outputclass="RFC-2119">SHOULD</term> render the contents of the
           <xmlelement>fallback</xmlelement> element, if it is present.</p>
     </section>
@@ -53,50 +56,51 @@
         <dlentry platform="dita">
           <!--KJE: RDA and I discussed this on 29 April 2019. We could not come up with a phrasing that would not include "should". Adding this comment so that we don't have the discussion again.-->
           <dt><xmlatt>data</xmlatt></dt>
-          <dd>Specifies the absolute or relative URI of the video object. If this attribute is
-            specified, <xmlatt>type</xmlatt> also should be specified.</dd>
+          <dd>Specifies the absolute or relative URI of the video resource. If <xmlatt>data</xmlatt>
+            is specified, <xmlatt>type</xmlatt> should be specified also.</dd>
         </dlentry>
         <dlentry platform="dita">
           <!-- Identical to definition in video topic -->
           <dt><xmlatt>datakeyref</xmlatt></dt>
-          <dd>Provides a key reference to the video object. When specified and the key is
+          <dd>Provides a key reference to the video resource. When specified and the key is
             resolvable, the key-provided URI is used. If the key referenced by
               <xmlatt>datakeyref</xmlatt> cannot be resolved, and <xmlatt>data</xmlatt> is
             specified, that value provided by <xmlatt>data</xmlatt> is used as a fallback. If the
             key referenced by <xmlatt>datakeyref</xmlatt> has no associated resource, only link
-            text, and the video object does not contain a <xmlelement>fallback</xmlelement> element,
-            the link text becomes fallback content for the video object.</dd>
+            text, and the video<xmlelement/> element does not contain a
+              <xmlelement>fallback</xmlelement> element, the link text becomes fallback
+            content.</dd>
         </dlentry>
         <dlentry>
           <dt><xmlatt>height</xmlatt></dt>
-          <dd>Indicates the vertical dimension for the resulting display. <ph>The value of this
-              attribute is a real number (expressed in decimal notation) optionally followed by a
-              unit of measure from the set of pc, pt, px, in, cm, mm, em (picas, points, pixels,
-              inches, centimeters, millimeters, and ems respectively). The default unit is px
-              (pixels). Possible values include: "5", "5in", and "10.5cm".</ph>
-          </dd>
+          <dd>Indicates the vertical dimension for the resulting display. The value of this
+            attribute is a real number (expressed in decimal notation) optionally followed by a unit
+            of measure from the set of cm, em, in, mm, pc, pt, px, and Q (centimeters, ems, inches,
+            picas, points, pixels, millimeters, and quarter-millimeters, respectively). The default
+            unit is px (pixels). Possible values include: "5", "5in", and "10.5cm". </dd>
         </dlentry>
         <dlentry platform="dita">
           <!-- Identical to definition in video topic -->
           <dt><xmlatt>type</xmlatt></dt>
-          <dd>Indicates the MIME type for the video object. This attribute enables processors to
-            avoid loading unsuppported objects. If <xmlatt>type</xmlatt> is not specified, the
-            effective type for the key named by the <xmlatt>datakeyref</xmlatt> attribute is used as
-            the value. If an explicit <xmlatt>type</xmlatt> is not specified on either the audio
-            object or key definition, processors can use other means, such the URI file extension,
-            to determine the effective MIME type of the media object.</dd>
+          <dd>Indicates the MIME type for the video resource. This attribute enables processors to
+            avoid loading unsuppported resources. If <xmlatt>type</xmlatt> is not specified and
+              <xmlatt>datakeyref</xmlatt> is specified, the effective type for the key named by the
+              <xmlatt>datakeyref</xmlatt> attribute is used as the value. If an explicit
+              <xmlatt>type</xmlatt> is not specified on either the <xmlelement>video</xmlelement>
+            element or key definition, processors can use other means, such the URI file extension,
+            to determine the effective MIME type of the video.</dd>
         </dlentry>
         <dlentry>
           <dt><xmlatt>width</xmlatt></dt>
           <dd>Indicates the horizontal dimension for the resulting display. The value of this
             attribute is a real number (expressed in decimal notation) optionally followed by a unit
-            of measure from the set of pc, pt, px, in, cm, mm, em (picas, points, pixels, inches,
-            centimeters, millimeters, and ems respectively). The default unit is px (pixels).
-            Possible values include: "5", "5in", and "10.5cm". </dd>
+            of measure from the set of cm, em, in, mm, pc, pt, px, and Q (centimeters, ems, inches,
+            picas, points, pixels, millimeters, and quarter-millimeters, respectively). The default
+            unit is px (pixels). Possible values include: "5", "5in", and "10.5cm". </dd>
         </dlentry>
         <dlentry platform="dita">
           <dt><xmlatt>tabindex</xmlatt></dt>
-          <dd>Indicates whether the audio object can be focused and where it participates in
+          <dd>Indicates whether the video resource can be focused and where it participates in
             sequential keyboard navigation. See <xref
               href="https://html.spec.whatwg.org/#the-tabindex-attribute" format="html"
               scope="external"><xmlatt>tabindex</xmlatt></xref> in the HTML specification (WHATWG
