@@ -3,34 +3,46 @@
 <concept id="index-elements">
     <title>Index elements</title>
     <shortdesc>The content of the <xmlelement>indexterm</xmlelement> elements provides the text for
-        the entries in the generated index. <xmlelement>indexterm</xmlelement> elements can be
-        nested to create secondary and tertiary index entries. </shortdesc>
+        the entries in a generated index. <xmlelement>indexterm</xmlelement> elements can be nested
+        to create secondary and tertiary index entries. </shortdesc>
     <prolog>
         <metadata>
             <keywords>
                 <indexterm>indexes<indexterm>elements</indexterm></indexterm>
+                <indexterm>indexes<indexterm>terminology</indexterm><indexterm>see
+                        reference</indexterm></indexterm>
+                <indexterm>indexes<indexterm>terminology</indexterm><indexterm>see also
+                        reference</indexterm></indexterm>
+                <indexterm>terminology<indexterm>indexing<indexterm>see
+                        reference</indexterm></indexterm></indexterm>
+                <indexterm>terminology<indexterm>indexing<indexterm>see also
+                        reference</indexterm></indexterm></indexterm>
             </keywords>
         </metadata>
     </prolog>
     <conbody>
         <p>The following elements contain information that processors use to generate indexes.</p>
+        <!--<draft-comment author="Joyce Lam" time="08 August 2019"><p>I am having difficulty understanding the difference between &lt;index-see> and &lt;index-see-also> based on these descriptions. Perhaps we can provide descriptions with adequate differences?</p></draft-comment>-->
         <dl>
             <dlentry>
                 <dt><xmlelement>indexterm</xmlelement></dt>
-                <dd>(Unless combined with <xmlelement>index-see</xmlelement>) Instructs a processor
-                    to generate an index entry with a page reference. The <xmlatt>start</xmlatt> and
-                        <xmlatt>end</xmlatt> attributes on <xmlelement>indexterm</xmlelement> can
-                    specifiy index ranges. </dd>
+                <dd>Instructs a processor to generate an index entry. The <xmlatt>start</xmlatt> and
+                        <xmlatt>end</xmlatt> attributes on the <xmlelement>indexterm</xmlelement>
+                    element can specify index ranges. If an <xmlelement>indexterm</xmlelement>
+                    element does not contain an <xmlelement>index-see</xmlelement> or
+                        <xmlelement>index-see-also</xmlelement> element, a locator is
+                    generated.</dd>
             </dlentry>
             <dlentry>
                 <dt><xmlelement>index-see</xmlelement></dt>
-                <dd>Instructs a processor to generate a redirection to another index entry. The
-                    redirection typically has a page reference while the index entry does not.</dd>
+                <dd>Instructs a processor to generate a <term>see reference</term>. See references
+                    direct a reader to the preferred term.</dd>
             </dlentry>
             <dlentry>
                 <dt><xmlelement>index-see-also</xmlelement></dt>
-                <dd>Instructs a processor to generate a redirection to another index entry. Both the
-                    index entry and the redirection typically have page references.</dd>
+                <dd>Instructs a processor to generate a <term>see also reference</term>. See also
+                    references direct a reader to an alternate index entry for additional
+                    information.</dd>
             </dlentry>
         </dl>
         <draft-comment author="Kristen J Eberlein" time="21 July 2019">
@@ -44,8 +56,24 @@
             <p>I think my preference would be to have a statement clarifying the above matters at
                 the start of this content, and then avoid wiggle words such as "typically."</p>
         </draft-comment>
+        <draft-comment author="Eliot Kimber" time="08 August 2019">
+            <p>The statements have to be qualified since the standard can't require index entries to
+                use page numbers. "normally" might be better than typically.</p>
+            <p>In the municipal code work I've been doing, the indexes point to section and
+                paragraph numbers, not to page numbers.</p>
+        </draft-comment>
         <p>How the index elements are combined, the location of <xmlelement>indexterm</xmlelement>
             elements, and the hierarchy of the DITA maps all effect how the index elements are
             processed and the resulting generated index entries.</p>
+        <draft-comment author="Joyce Lam" time="09 August 2019">
+            <p>For clarity, I recommend writing this using an unordered list.</p>
+            <p>How the index elements are processed and the resulting generated index entries are
+                effected by</p>
+            <ul>
+                <li>how the index elements are combined</li>
+                <li>the location of &lt;indexterm> elements, and</li>
+                <li>the hierarchy of the DITA maps.</li>
+            </ul>
+        </draft-comment>
     </conbody>
 </concept>

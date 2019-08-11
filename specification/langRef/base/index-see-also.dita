@@ -3,7 +3,7 @@
 <reference id="index-see-also" xml:lang="en-us">
 <title><xmlelement>index-see-also</xmlelement></title>
 <shortdesc>An <xmlelement>index-see-also</xmlelement> element directs the reader to an index entry
-    that the reader should reference in addition to the current one.</shortdesc>
+    that the reader should use in addition to the current one.</shortdesc>
 <prolog><metadata>
 <keywords><indexterm><xmlelement>index-see-also</xmlelement></indexterm>
         <indexterm>elements<indexterm>indexing
@@ -15,11 +15,7 @@
       <title>Usage information</title>
       <p>There can be multiple <xmlelement>index-see-also</xmlelement> elements within a single
           <xmlelement>indexterm</xmlelement> element.</p>
-      <draft-comment author="Kristen J Eberlein" time="07 July 2019">
-        <p>Do we need to state the following?</p>
-        <p>It is an error if the target of the <xmlelement>index-see-also</xmlelement> element does
-          not exist in the publication.</p>
-      </draft-comment>
+      <!--<draft-comment author="Kristen J Eberlein" time="07 July 2019"><p>Do we need to state the following?</p><p>It is an error if the target of the <xmlelement>index-see-also</xmlelement> element does not exist in the publication.</p></draft-comment>-->
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
@@ -42,7 +38,7 @@
         <p>The following code sample shows the use of an <xmlelement>index-see-also</xmlelement>
           element to generate a "see also" reference to the index entry for "goldfish". </p>
         <codeblock>&lt;indexterm&gt;carp
-   &lt;index-see-also&gt;goldfish&lt;/index-see-also&gt;
+  &lt;index-see-also&gt;goldfish&lt;/index-see-also&gt;
 &lt;/indexterm&gt;</codeblock>
         <p>This markup generates a primary index entry for "carp" and secondary index entry that
           instructs the reader to "see also goldfish".</p>
@@ -59,7 +55,9 @@
         <p>The following code sample shows the use of an <xmlelement>index-see-also</xmlelement>
           element to redirect to a multilevel <xmlelement>indexterm</xmlelement> element:</p>
         <codeblock>&lt;indexterm&gt;feeding
-   &lt;index-see-also&gt;goldfish &lt;indexterm&gt;feeding&lt;/indexterm&gt;&lt;/index-see-also&gt;
+  &lt;index-see-also&gt;goldfish
+    &lt;indexterm&gt;feeding&lt;/indexterm&gt;
+  &lt;/index-see-also&gt;
 &lt;/indexterm&gt;</codeblock>
         <p>This code sample assumes that the following index entry exists within the DITA
           source:</p>
@@ -72,6 +70,11 @@
 ...
 goldfish
     feeding 370</lines>
-      </fig></example>
+      </fig>
+      <draft-comment author="Kristen J Eberlein" time="09 August 2019">
+        <p>We need to figure out how to tag representations of generated index entries. The above
+          content is in a <xmlelement>lines</xmlelement> element, and the white space is
+          removed.</p>
+      </draft-comment></example>
 </refbody>
 </reference>

@@ -28,16 +28,22 @@
       <dl>
         <dlentry id="start">
           <dt><xmlatt>start</xmlatt></dt>
-          <dd>Specifies the start of an index range </dd>
+          <dd>Specifies the start of an index range.<draft-comment author="Eliot Kimber">Specifies a
+              string that serves as the identifier for the start of an index range.
+            </draft-comment></dd>
         </dlentry>
         <dlentry id="end">
           <dt><xmlatt>end</xmlatt></dt>
           <dd>Specifies the end of an index range. The end of an index range is indicated by
-            whichever comes first of the following:<ul>
+            whichever comes first of the following:<draft-comment author="Eliot Kimber">Specifies a
+              value to be matched against an earlier @start value to indicate that this index term
+              is the end of the index range.</draft-comment><ul>
               <li>Applicable scope boundary</li>
               <li>An <xmlelement>indexterm</xmlelement> element with an <xmlatt>end</xmlatt>
                 attribute with a value that matches that <xmlatt>start</xmlatt> attribute that began
-                the index range</li>
+                the index range<draft-comment author="Eliot Kimber">This is giving the general rule
+                  for determining the end of a range. That rule is already stated elsewhere and
+                  shouldn't be repeated here.</draft-comment></li>
             </ul></dd>
         </dlentry>
       </dl>
@@ -90,7 +96,7 @@
 <p>The previous combination of terms will generate a top-level index term for "cheese" that covers a
           series of pages, such as:</p>
         <ul>
-          <li>Cheese 18-24</li>
+          <li>cheese 18-24</li>
         </ul>
 </fig>
       <fig>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="merging-index-elements">
+    <title>Merging index elements</title>
+    <shortdesc>Processors merge indexing elements in order to construct the effective index for a
+        publication.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>processing expectations<indexterm>indexing<indexterm>matching
+                            content</indexterm></indexterm></indexterm>
+                <indexterm>processing
+                        expectations<indexterm>indexing<indexterm>merging</indexterm></indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <draft-comment author="Kristen J Eberlein" time="11 August 2019">
+            <p>This is a new topic. It needs to lay out the rules and expectations for how a
+                processor merges indexing elements and constructs the effective index,
+                including:</p>
+            <ul>
+                <li>Matching the content of indexing elements</li>
+                <li>Constructing multilevel index entries</li>
+            </ul>
+            <p>What are other critical aspects?</p>
+        </draft-comment>
+        <draft-comment author="Kristen J Eberlein" time="08 July 2019">
+            <p>The following RFC-2119 statement is new for DITA 2.0. Thoughts?</p>
+        </draft-comment>
+        <p>(For processors that support indexing) If multiple <xmlelement>indexterm</xmlelement>
+            elements exist that would result in identical index entries, a processor <term
+                outputclass="RFC-2119">SHOULD</term> generate only a single index entry, although
+            all locations associated with the <xmlelement>indexterm</xmlelement> element contribute
+            locators.</p>
+        <draft-comment author="Eliot Kimber" time="09 August 2019">
+            <p>This is the correct behavior. By "identical content" is a little too strict. Probably
+                need to say something like "content that the processor considers to be the same. For
+                example, by normalizing white space."</p>
+        </draft-comment>
+    </conbody>
+</concept>
