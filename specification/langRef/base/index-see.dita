@@ -3,7 +3,7 @@
 <reference id="index-see" xml:lang="en-us">
   <title><xmlelement>index-see</xmlelement></title>
   <shortdesc>An <xmlelement>index-see</xmlelement> element directs the reader to an index entry that
-    the reader should reference instead of the current one.</shortdesc>
+    the reader should use instead of the current one.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -18,11 +18,7 @@
       <title>Usage information</title>
       <p>There can be multiple <xmlelement>index-see</xmlelement> elements within an
           <xmlelement>indexterm</xmlelement> element.</p>
-      <draft-comment author="Kristen J Eberlein" time="07 July 2019">
-        <p>Do we need to state the following?</p>
-        <p>It is an error if the target of the <xmlelement>index-see</xmlelement> element does not
-          exist in the publication.</p>
-      </draft-comment>
+      <!--<draft-comment author="Kristen J Eberlein" time="07 July 2019"><p>Do we need to state the following?</p><p>It is an error if the target of the <xmlelement>index-see</xmlelement> element does not exist in the publication.</p></draft-comment>-->
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
@@ -56,7 +52,9 @@
         <p>The following code sample shows how an <xmlelement>index-see</xmlelement> is used to
           redirect to a more complex index entry:</p>
         <codeblock>&lt;indexterm&gt;feeding goldfish
-   &lt;index-see&gt;goldfish&lt;indexterm&gt;feeding&lt;/indexterm&gt;&lt;/index-see&gt;
+  &lt;index-see&gt;goldfish
+    &lt;indexterm&gt;feeding&lt;/indexterm&gt;
+  &lt;/index-see&gt;
 &lt;/indexterm&gt;</codeblock>
       </fig>
       <!--<p>This is part of the indexing markup that might generate index entries such as:</p><ul><li id="WS31ee95e0b0c9e7e91643e4b10c8d987a95-7ffe">Feeding goldfish<ul><li id="WS31ee95e0b0c9e7e91643e4b10c8d987a95-7ffd"><i>see</i> Goldfish feeding</li></ul></li><li id="WS31ee95e0b0c9e7e91643e4b10c8d987a95-7ffc">Goldfish<ul><li id="WS31ee95e0b0c9e7e91643e4b10c8d987a95-7ffb">feeding, 56</li><li id="WS31ee95e0b0c9e7e91643e4b10c8d987a95-7ffa">flushing, 128, 345</li></ul></li></ul>-->

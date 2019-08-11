@@ -7,9 +7,12 @@
     <conbody>
     <section>
       <title>Index range within a single topic</title>
-      <p>In the following example, the index range begins at the start of the second paragraph and
-        continues to the beginning of the last paragraph. If the matching end range markup was not
-        included, the index range would end at the end of the body element.</p>
+      <p>In the following code sample, the index range begins at the start of the second paragraph
+        and continues to the beginning of the last paragraph. If the matching end range markup was
+        not included, the index range would end at the end of the body element.</p>
+      <draft-comment author="Eliot Kimber" time="09 August 2019">
+        <p>Again, I don't think the boundary rule is necessary or appropriate.</p>
+      </draft-comment>
       <codeblock>&lt;topic id="accounting">
   &lt;title>Accounting regulations&lt;/title>
   &lt;body>
@@ -23,10 +26,23 @@
     </section>
     <section>
       <title>Index range that starts within a topic prolog</title>
-      <p>In the following example, the range begins with the start of the topic title; it includes
-        the entire topic and any subtopics. The range ends within the same prolog, regardless of
-        whether <codeph>&lt;indexterm end="acct"/></codeph> is specified in the prolog.</p>
-      <codeblock>&lt;topic id="accounting">
+      <p>In the following code sample (<filepath>acct.dita)</filepath>, the range begins with the
+        start of the topic title; it includes the entire topic and any subtopics. The range ends
+        within the same prolog, regardless of whether <codeph>&lt;indexterm end="acct"/></codeph> is
+        specified in the prolog.</p>
+      <draft-comment author="Eliot Kimber" time="09 August 2019">
+        <p>I think this rule has the same problem as for ending the range at topic body boundaries:
+          it means you couldn't start a range in one topic's prolog and end it in the prolog of
+          another sibling topic.</p>
+        <p>That would be a hard thing to manage so probably not a realistic use case, so I can see
+          an argument that prolog-defined ranges span the effective topic tree rooted at the topic
+          with the prolog. But there's no particular reason to impose the constraint.</p>
+        <p>That is, a processor that can handle index ranges can also detect when a range is started
+          in a topic prolog but not ended in one and report the case.</p>
+      </draft-comment>
+      <codeblock>
+&lt;!-- acct.dita -->
+&lt;topic id="accounting">
   &lt;title>Accounting regulations&lt;/title>
   &lt;prolog>
     &lt;metadata>
@@ -37,11 +53,10 @@
   &lt;/prolog>
   &lt;!-- ... -->
 &lt;/topic></codeblock>
-      <p>Now assume that the topic in the previous sample is named <filepath>acct.dita</filepath>.
-        Ranges defined in a prolog cover sub-topics, including those nested based on a map; in the
-        following example, this means that the range covers all of <filepath>acct.dita</filepath>,
-        as well as the child topics <filepath>procedures.dita</filepath> and
-          <filepath>forms.dita</filepath>:</p>
+      <p>Ranges defined in a prolog cover subtopics, including those nested based on a map; in the
+        following code sample, this means that the range covers all of
+          <filepath>acct.dita</filepath>, as well as the child topics
+          <filepath>procedures.dita</filepath> and <filepath>forms.dita</filepath>:</p>
       <codeblock>&lt;topicref href="acct.dita">
   &lt;topicref href="procedures.dita"/>
   &lt;topicref href="forms.dita"/>
@@ -49,7 +64,7 @@
     </section>
     <section>
       <title>Index range specified within a map</title>
-      <p>In the final example, the index range is specified in a map.</p>
+      <p>In the final code sample, the index range is specified in a map.</p>
       <codeblock>&lt;topicref href="acct.dita">
   &lt;topicmeta>
     &lt;keywords>
@@ -73,6 +88,9 @@
           <filepath>acct.dita</filepath>, and continues until the end of the last element in the
         file <filepath>taxfiling.dita</filepath>. If the end range for "govt" was not specified, the
         range would continue to the end of the map.</p>
+      <draft-comment author="Eliot Kimber" time="09 August 2019">I think this should be a reportable
+        error or warning since it's almost certainly not the author's intent for a range to span to
+        the end of the publication.</draft-comment>
     </section>
     </conbody>
 </concept>
