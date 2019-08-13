@@ -7,6 +7,9 @@
     <prolog>
         <metadata>
             <keywords>
+                <indexterm end="test">test</indexterm>
+            </keywords>
+            <keywords>
                 <indexterm>processing expectations<indexterm>indexing<indexterm>matching
                             content</indexterm></indexterm></indexterm>
                 <indexterm>processing
@@ -21,12 +24,17 @@
                 including:</p>
             <ul>
                 <li>Matching the content of indexing elements</li>
-                <li>Constructing multilevel index entries</li>
+                <li>Constructing multilevel index entries (as suggested in <xref
+                        href="example-of-nested-indexterm-elements.dita"/>)</li>
             </ul>
             <p>What are other critical aspects?</p>
         </draft-comment>
         <draft-comment author="Kristen J Eberlein" time="08 July 2019">
-            <p>The following RFC-2119 statement is new for DITA 2.0. Thoughts?</p>
+            <p>Do we make the following RFC-2119 statement for DITA 2.0. Thoughts?</p>
+            <p>FYI, the following text appeared in the DITA 1.1 - 1.3 specs: <q>All indexterms with
+                    the same content are ″merged″ to form a single index entry in the resulting
+                    index, and all contributed page numbers are included in that index
+                entry.</q></p>
         </draft-comment>
         <p>(For processors that support indexing) If multiple <xmlelement>indexterm</xmlelement>
             elements exist that would result in identical index entries, a processor <term
@@ -38,5 +46,44 @@
                 need to say something like "content that the processor considers to be the same. For
                 example, by normalizing white space."</p>
         </draft-comment>
+        <draft-comment author="Kristen J Eberlein" time="13 August 2019">
+            <p>Eliot raised the following scenario in his review of the indexing content:</p>
+            <p>Consider a publication that contains the following index markup in different
+                topics:</p>
+            <codeblock>&lt;!-- Topic A -->
+&lt;indexterm>apple&lt;/indexterm>
+
+&lt;!-- Topic B -->
+&lt;indexterm>apple
+  &lt;indexterm>computer&lt;/indexterm>
+&lt;/indexterm></codeblock>
+            <p>What would the author of topic A expect to see in the index? What would the author of
+                topic B expect to see? How might this combine with indexing markup added at the map
+                level by the map owner?</p>
+            <p>Eliot suggested that a processor might produce any of the following (arrow character
+                used to indicate  indentation):</p>
+            <lines><b>Option #1</b>
+apple 12
+&#x362;computer 14
+
+<b>Option #2</b>
+apple 12
+apple
+&#x362;computer 14
+
+<b>
+Option #3</b>
+apple
+&#x362;computer 14
+</lines>
+            <p>My personal expectation would be to expect to see option #1, which matches the
+                statement made in the DITA 1.1-1.3 specs: <q>All indexterms with the same content
+                    are ″merged″ to form a single index entry in the resulting index, and all
+                    contributed page numbers are included in that index entry.</q></p>
+            <p>If a company's styleguide does not want locators on parents of leaf nodes, I'd expect
+                authors to spend time "massaging" index markup in order to generate an index that
+                followed the styleguide requirements.</p>
+        </draft-comment>
+        <!--<draft-comment author="Eliot Kimber" time="09 August 2019"><p>I know we recently discussed with Robert cases where both 1st and 2nd-level entries get page numbers in some IBM documents and in other places.</p><p>I think the issue was when you determine that there are or are not nested entries.</p><p>For example, if in one topic you have &lt;indexterm>apple&lt;/indexterm> and in another topic you have &lt;indexterm>apple&lt;indexterm>computer&lt;/indexterm>&lt;/indexter>, the author of the first topic would probably be surprised if the index as rendered was not:</p><p>apple 12</p><p> computer 14</p><p>or </p><p>apple 12</p><p>apple</p><p> computer 14</p><p>That is, there's the individual index terms as authored and then there's the effective index markup you would get by literally combining all the indexterm elements, merging matching entries.</p><p>I can imagine that some groups would want the above behavior and others would not, for example because they more carefully control their indexes and want to ensure that only leaf entries get page numbers.</p><p>So the spec definitely has to allow both behaviors.</p></draft-comment>-->
     </conbody>
 </concept>

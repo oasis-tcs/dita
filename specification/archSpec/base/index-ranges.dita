@@ -4,7 +4,7 @@
     <title>Index ranges</title>
     <shortdesc>Authors can use the <xmlatt>start</xmlatt> and <xmlatt>end</xmlatt> attributes on
             <xmlelement>indexterm</xmlelement> elements to index extended discussions. Processors
-        generate index entries that range over several pages. </shortdesc>
+        generate index entries that range over several locators. </shortdesc>
     <prolog>
         <metadata>
             <keywords>
@@ -21,14 +21,15 @@
         <ul>
             <li>An <xmlelement>indexterm</xmlelement> element with an <xmlatt>end</xmlatt> attribute
                 with a value that matches the <xmlatt>start</xmlatt> attribute on the
-                    <xmlelement>indexterm</xmlelement> element that begins the range</li>
-            <li>The applicable scope boundary</li>
+                    <xmlelement>indexterm</xmlelement> element that begins the range. This is called
+                an <term>end element</term>.</li>
+            <li>The applicable scope boundary.</li>
         </ul>
         <p>The applicable scope boundary depends on the location of the start element:</p>
         <dl>
             <dlentry>
                 <dt>Topic body</dt>
-                <dd>End of the topic body.<draft-comment author="Eliot Kimber">
+                <dd>End of the topic body.<draft-comment author="Eliot Kimber" time="09 August 2019">
                         <p>I'm not sure I agree with this rule. If I start a range in one topic body
                             and end it in another topic body and the two topics are presented in a
                             sequence such that the second topic follows the first I would expect the
@@ -44,6 +45,49 @@
                             page numbers are captured in an element-to-page-number mapping and the
                             HTML rendering of the same content, where the page numbers are included
                             as literal or meta data in the HTML pages). </p>
+                    </draft-comment><draft-comment author="Kristen J Eberlein" time="12 August 2019">
+                        <p>FYI, these rules have been in the DITA spec since DITA 1.1, when the
+                                <xmlatt>start</xmlatt> and <xmlatt>end</xmlatt> attributes were
+                            added to <xmlelement>indexterm</xmlelement>.</p>
+                        <p>Eliot, I think that for your use case, the appropriate markup would be to
+                            index in the map. However, this approach does make me scratch my head a
+                            bit ...</p>
+                        <p>If an <xmlelement>indexterm</xmlelement> element in a map is a point
+                            reference to the start of the <xmlelement>title</xmlelement> element,
+                            what does an <xmlelement>indexterm</xmlelement> with an
+                                <xmlatt>end</xmlatt> attribute point to? Also the start of the
+                                <xmlelement>title</xmlelement> element in the topic?</p>
+                        <p>Consider the following markup; what index entry would you expect for
+                            "test"?</p>
+                        <codeblock>&lt;map>
+    &lt;title>Indexes&lt;/title>
+    &lt;topicref href="indexes.dita">
+        &lt;topicref href="index-elements.dita"/>
+        &lt;topicref href="location-of-indexterm-elements.dita"/>
+        &lt;topicref href="index-page-references.dita">
+            &lt;topicmeta>
+                &lt;keywords>
+                    &lt;indexterm start="test">test&lt;/indexterm>
+                &lt;/keywords>
+            &lt;/topicmeta>
+        &lt;/topicref>
+        &lt;topicref href="index-redirection.dita"/>
+        &lt;topicref href="index-ranges.dita"/>
+        &lt;topicref href="merging-index-elements.dita">
+            &lt;topicmeta>
+                &lt;keywords>
+                    &lt;indexterm end="test">test&lt;/indexterm>
+                &lt;/keywords>
+            &lt;/topicmeta>
+        &lt;/topicref>
+        &lt;topicref href="examples-indexing.dita">
+            &lt;topicref href="example-of-nested-indexterm-elements.dita"/>
+            &lt;topicref href="example-of-an-index-range.dita"/>
+        &lt;/topicref>
+    &lt;/topicref>
+&lt;/map></codeblock>
+                        <p>FYI, this is the markup for the map for the indexing content, with the
+                            start and end elements added.</p>
                     </draft-comment></dd>
             </dlentry>
             <dlentry>
@@ -61,6 +105,15 @@
                             topics</li>
                         <li>End of the DITA map</li>
                     </ul>
+                    <draft-comment author="Kristen J Eberlein" time="13 August 2019">
+                        <p>Is there even a way that an end element can be used in a map? The current
+                            language in these topics does not suggest so.</p>
+                        <p>I think the discussion of index ranges when markup is in the map needs to
+                            be modified to include the assumptions made in the non-normative topic
+                            "Example: Index ranges" that contains this particular example:  <xref
+                                href="example-of-an-index-range.dita#example-of-an-index-range/index-range-in-map"
+                            /></p>
+                    </draft-comment>
                 </dd>
             </dlentry>
         </dl>
@@ -68,40 +121,37 @@
         <p>Processors that support index ranges <term outputclass="RFC-2119">SHOULD</term> do the following:<ul>
                 <li>Match <xmlatt>start</xmlatt> and <xmlatt>end</xmlatt> attributes by a
                     character-by-character comparison with all characters significant and no case
-                    folding occurring<draft-comment author="Kristen J Eberlein" time="09 July 2019">
-                        <p>What does <q>all character significant and no case folding occurring</q>
-                            mean?</p>
-                    </draft-comment><draft-comment author="Eliot Kimber" time="09 August 2019">Since
-                        the start and end values are essentially IDs I think "exact string match" is
-                        sufficient.</draft-comment></li>
+                    folding
+                    occurring<!--<draft-comment author="Kristen J Eberlein" time="09 July 2019"><p>What does <q>all character significant and no case folding occurring</q> mean?</p></draft-comment>--><!--<draft-comment author="Eliot Kimber" time="09 August 2019">Since the start and end values are essentially IDs I think "exact string match" is sufficient.</draft-comment>--></li>
                 <li>Ignore <xmlatt>start</xmlatt> and <xmlatt>end</xmlatt> attributes if they occur
                     on an <xmlelement>indexterm</xmlelement> element that has child
                         <xmlelement>indexterm</xmlelement> elements.</li>
-                <li>When index ranges with the same identifier overlap, the widest range applies,
-                    and end ranges are matched with start ranges by last-in-first-out. In other
-                    words, the ranges are interpreted as nested rather than overlapping with the
-                    highest-level container taking precedence over narrower contained
-                        ranges.<draft-comment author="Kristen J Eberlein" time="09 July 2019">
-                        <p>I'm not sure I understand this. Can we make it clearer?</p>
-                    </draft-comment><draft-comment author="Eliot Kimber" time="09 August 2019">
-                        <p>It seems clear to me: A range encompasses the longest range when there
-                            are multiple starts and ends with the same value. The second sentence
-                            doesn't really add.</p>
-                        <p>Might be clearer to say something like: "When index ranges with the same
-                            identifier overlap, the effective range is determined by matching the
-                            earliest starting entry with the latest ending entry."</p>
-                    </draft-comment><draft-comment author="Robert Anderson">
-                        <p>When index ranges with the same identifier overlap, the effective range
-                            is determined by matching the earliest starting entry from the set of
-                            overlapping ranges with the latest ending entry from the set of
-                            overlapping ranges.</p>
-                    </draft-comment></li>
+                <li>When index ranges with the same identifier overlap, the effective range is
+                    determined by matching the earliest start element from the set of overlapping
+                    ranges with the latest end element from the set of overlapping
+                    ranges.<!--When index ranges with the same identifier overlap, the widest range applies, and end ranges are matched with start ranges by last-in-first-out. In other words, the ranges are interpreted as nested rather than overlapping with the highest-level container taking precedence over narrower contained ranges.--><!--<draft-comment author="Kristen J Eberlein" time="09 July 2019"><p>I'm not sure I understand this. Can we make it clearer?</p></draft-comment>--><!--<draft-comment author="Eliot Kimber" time="09 August 2019"><p>It seems clear to me: A range encompasses the longest range when there are multiple starts and ends with the same value. The second sentence doesn't really add.</p><p>Might be clearer to say something like: "When index ranges with the same identifier overlap, the effective range is determined by matching the earliest starting entry with the latest ending entry."</p></draft-comment>--><!--<draft-comment author="Robert Anderson"><p>When index ranges with the same identifier overlap, the effective range is determined by matching the earliest start element from the set of overlapping ranges with the latest end element from the set of overlapping ranges.</p></draft-comment>--></li>
                 <li>Handle an end-of-range <xmlelement>indexterm</xmlelement> element that is nested
                     within one or more <xmlelement>indexterm</xmlelement> elements. The end-of-range
                         <xmlelement>indexterm</xmlelement> element should have no content of its
                     own; if it contains content, that content is ignored.</li>
-                <li>Ignore unmatched index range end indications.</li>
+                <li>Ignore unmatched end-of-range <xmlelement>indexterm</xmlelement> elements.</li>
             </ul></p>
-        <!--<p>As defined above, there is no such thing as an index range start that isn't terminated by either a matching end or some maximum scope. There can, however, be unmatched index range end indications; these are ignored.</p>-->
+        <draft-comment author="Kristen J Eberlein" time="13 August 2019">
+            <p>Stan Doherty raised the following question in his review of the indexing content:</p>
+            <p><q>Can I overload @start or @end with multiple values? &lt;indexterm start="range1
+                    range2">term&lt;/indexterm>. Multiple ranges may have the same begin or end
+                    points</q></p>
+            <p>I responded <q>… it seems insane to specify multiple values for @start and @end
+                    attributes. Do you see use cases for this?</q></p>
+            <p>Eliot chimed in: <q>The spec seems clear that the @start and @end attributes are just
+                    strings that are matched, not sequences of tokens.</q></p>
+            <p>From the <xmlelement>indexterm</xmlelement> topic in the DITA 1.1-1.3 specs: <q>The
+                    start and end attributes are defined as CDATA, though it is recommended that the
+                    values should not contain any whitespace characters (e.g., space or tab) or
+                    control characters. Matching of start and end attributes is done as a
+                    character-by-character comparison with all characters significant and no case
+                    folding occurring. The start and end attributes are ignored if they occur on an
+                    indexterm element that has child indexterm elements.</q></p>
+        </draft-comment>
     </conbody>
 </concept>
