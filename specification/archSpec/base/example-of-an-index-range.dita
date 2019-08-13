@@ -62,7 +62,7 @@
   &lt;topicref href="forms.dita"/>
 &lt;/topicref></codeblock>
     </section>
-    <section>
+    <section id="index-range-in-map">
       <title>Index range specified within a map</title>
       <p>In the final code sample, the index range is specified in a map.</p>
       <codeblock>&lt;topicref href="acct.dita">
@@ -81,7 +81,7 @@
       &lt;indexterm end="govt"/>
     &lt;/keywords>
   &lt;/topicmeta>
-&lt;/topicref><indexterm end="examples-indexing"/><indexterm end="indexing-examples"/></codeblock>
+&lt;/topicref></codeblock>
       <p>The index range for "accounting" begins with the start of the first topic title in
           <filepath>acct.dita</filepath>; it includes that topic as well as any subtopics. </p>
       <p>The index range for "government forms" begins with the start of the first topic title in
@@ -91,6 +91,17 @@
       <draft-comment author="Eliot Kimber" time="09 August 2019">I think this should be a reportable
         error or warning since it's almost certainly not the author's intent for a range to span to
         the end of the publication.</draft-comment>
+      <draft-comment author="Kristen J Eberlein" time="13 August 2019">
+        <p>Eliot, I disagree. If the map is a submap that is consumed by a larger publication (for
+          example, a map of examples of using keys), I think the default range boundary of "end of
+          the map" might be entirely appropriate.</p>
+        <p>Also, this is example is stating behavior about ranges defined in maps that we do not lay
+          out in <xref href="index-ranges.dita"/> – in particular, that the presence of an end
+          element in a map signifies that the end-of-the-range is the <b>end</b> of the topic that
+          contains the end element. This makes good sense to me, but it conflicts with the usual
+          expectation that an <xmlelement>indexterm</xmlelement> element in a map (or prolog) is a
+          point reference to the start of the topic title.</p>
+      </draft-comment>
     </section>
     </conbody>
 </concept>

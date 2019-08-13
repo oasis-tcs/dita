@@ -54,37 +54,23 @@
     &lt;index-see>USB drive&lt;/index-see>
     &lt;index-see-also>flash stick&lt;/index-see-also>
 &lt;/indexterm></codeblock>
-                    <p>A processor <term outputclass="RFC-2119">MAY</term> give an error message
-                        when it encounters both <xmlelement>index-see</xmlelement> and
-                            <xmlelement>index-see-also</xmlelement> elements within the same
-                            <xmlelement>indexterm</xmlelement> element. Processors <term
-                            outputclass="RFC-2119">MAY</term> recover from this error condition by
-                        treating the <xmlelement>index-see</xmlelement> element as an
-                            <xmlelement>index-see-also</xmlelement> element.</p>
                 </dd>
             </dlentry>
         </dl>
-        <draft-comment author="Kristen J Eberlein" time="07 July 2019">
-            <p>Do we want to state what processors should do for the first error condition listed
-                above? Issue an error messsage?</p>
-            <p>Do we want to use RFC-2119 terminology?</p>
-        </draft-comment>
-        <draft-comment author="Eliot Kimber">
-            <p>I'm not sure [if the first error condition above] is an error given the above
-                analysis.</p>
-            <p>For example, it could make just as much sense to treat the index-see as an
-                index-see-also in this case.</p>
-            <p>Alternatively the two entries could be combined to create one effective entry that
-                matches topic A's version.</p>
-            <p>That is, whether or not this is considered an error is really user option based on
-                their editorial rules for indexes. Processors should probably provide runtime
-                options for how to handle these situations:</p>
-            <ul>
-                <li>Report as error</li>
-                <li>Recover by treating index-see as index-see-also</li>
-                <li>Merge entries to a single effective structure</li>
-            </ul>
-        </draft-comment>
+        <p>A processor <term outputclass="RFC-2119">MAY</term> give an error message when it
+            encounters the following error conditions:<ul>
+                <li>An <xmlelement>indexterm</xmlelement> element contains an
+                        <xmlelement>index-see</xmlelement> element, and the publication contains one
+                    or more <xmlelement>indexterm</xmlelement> elements with matching textual
+                    content.</li>
+                <li>Both <xmlelement>index-see</xmlelement> and
+                        <xmlelement>index-see-also</xmlelement> elements within the same
+                        <xmlelement>indexterm</xmlelement> element.</li>
+            </ul> Processors <term outputclass="RFC-2119">MAY</term> recover from these error
+            conditions by treating the <xmlelement>index-see</xmlelement> element as an
+                <xmlelement>index-see-also</xmlelement> element.</p>
+        <!--<draft-comment author="Kristen J Eberlein" time="07 July 2019"><p>Do we want to state what processors should do for the first error condition listed above? Issue an error messsage?</p><p>Do we want to use RFC-2119 terminology?</p></draft-comment>-->
+        <!--<draft-comment author="Eliot Kimber"><p>I'm not sure [if the first error condition above] is an error given the above analysis.</p><p>For example, it could make just as much sense to treat the index-see as an index-see-also in this case.</p><p>Alternatively the two entries could be combined to create one effective entry that matches topic A's version.</p><p>That is, whether or not this is considered an error is really user option based on their editorial rules for indexes. Processors should probably provide runtime options for how to handle these situations:</p><ul><li>Report as error</li><li>Recover by treating index-see as index-see-also</li><li>Merge entries to a single effective structure</li></ul></draft-comment>-->
         <draft-comment author="Joyce Lam" time="08 August 2019">
             <p>Context = Normative statement about "An <xmlelement>indexterm</xmlelement> contains
                     <xmlelement>index-see</xmlelement> and <xmlelement>index-see-also</xmlelement>" </p>
@@ -94,6 +80,24 @@
         </draft-comment>
         <draft-comment author="Eliot Kimber" time="09 August 2019">
             <p>I think SHOULD is better too</p>
+        </draft-comment>
+        <draft-comment author="Kristen J Eberlein" time="12 August 2019">
+            <p>I think we cannot make this a stronger statement here than <term
+                    outputclass="RFC-2119">MAY</term>:</p>
+            <ul>
+                <li>There are no interoperability issues involved.</li>
+                <li>Processors might choose to handle this error condition different. Basically, we
+                    (the TC) are suggesting one possible approach that seems well considered.</li>
+            </ul>
+            <p>Reminder for people to review the following material when considering any spec
+                statement that contains RFC-2119 terminology:</p>
+            <ul>
+                <li><xref href="../../introduction/terminology.dita"/></li>
+                <li><xref
+                        href="http://docs.oasis-open.org/templates/TCHandbook/ConformanceGuidelines.html"
+                        format="html" scope="external">Guidelines to Writing Conformance Clauses for
+                        OASIS Specifications</xref></li>
+            </ul>
         </draft-comment>
     </conbody>
 </concept>
