@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="example-of-nested-indexterm-elements">
-    <title>Example: Nested <xmlelement>indexterm</xmlelement> elements</title>
-    <shortdesc>This example contains a multilevel <xmlelement>indexterm</xmlelement>
+  <title>Example: Merging <xmlelement>indexterm</xmlelement> elements</title>
+  <shortdesc>This example contains a multilevel <xmlelement>indexterm</xmlelement>
     element.</shortdesc>
-    <conbody>
-    <codeblock>&lt;indexterm>cheese
-  &lt;indexterm>sheeps milk
-    &lt;indexterm>pecorino&lt;/indexterm>
-  &lt;/indexterm>
-  &lt;indexterm>goats milk
-    &lt;indexterm>chevre&lt;/indexterm>
-  &lt;/indexterm>
-&lt;/indexterm></codeblock>
-        <p>The previous code is equivalent to the following:</p>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>cheese <indexterm>sheeps milk <indexterm>pecorino</indexterm>
+          </indexterm>
+          <indexterm>goats milk <indexterm>chevre</indexterm>
+          </indexterm>
+        </indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>Given the following <xmlelement>indexterm</xmlelement> elements:</p>
     <codeblock>&lt;indexterm>cheese
   &lt;indexterm>sheeps milk
     &lt;indexterm>pecorino&lt;/indexterm>
@@ -24,18 +27,24 @@
     &lt;indexterm>chevre&lt;/indexterm>
   &lt;/indexterm>
 &lt;/indexterm></codeblock>
-    <draft-comment author="Eliot Kimber" time="09 August 2019">
-      <p>This example reflects a rule about how entries are merged to create effective index
-        structures but per the discussion above, I don't think those rules have been stated with
-        sufficient completeness.</p>
-      <p>The example is logical but it's not justified by reference to a previously-defined
-        rule.</p>
-    </draft-comment>
-        <p>A processor will generate the following index entries:</p>
-        <ul>
-            <li>A primary entry for "cheese"</li>
-            <li>Secondary entries for  "goats milk" and "sheeps milk"</li>
-            <li>Tertiary entries for "chevre" and "pecorino" that include page numbers</li>
-        </ul>
-    </conbody>
+    <p>A processor treats the <xmlelement>indexterm</xmlelement> elements as equivalent to the
+      following multilevel <xmlelement>indexterm</xmlelement> element:</p>
+    <codeblock>&lt;indexterm>cheese
+  &lt;indexterm>sheeps milk
+    &lt;indexterm>pecorino&lt;/indexterm>
+  &lt;/indexterm>
+  &lt;indexterm>goats milk
+    &lt;indexterm>chevre&lt;/indexterm>
+  &lt;/indexterm>
+&lt;/indexterm></codeblock>
+    <!--<draft-comment author="Eliot Kimber" time="09 August 2019"><p>This example reflects a rule about how entries are merged to create effective index structures but per the discussion above, I don't think those rules have been stated with sufficient completeness.</p><p>The example is logical but it's not justified by reference to a previously-defined rule.</p></draft-comment>-->
+    <p>A processor generates the following index entries:</p>
+    <ul>
+      <li>A primary entry for "cheese"</li>
+      <li>Secondary entries for "goats milk" and "sheeps milk"</li>
+      <li>Tertiary entries for "chevre" and "pecorino" that include page numbers</li>
+    </ul>
+    <p>The rendered index entry might look like the following:<image placement="break"
+        href="../../resources/index-entry-multilevel.png"/></p>
+  </conbody>
 </concept>

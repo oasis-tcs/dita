@@ -2,8 +2,8 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="location-of-indexterm-elements">
     <title>Location of <xmlelement>indexterm</xmlelement> elements</title>
-    <shortdesc><xmlelement>indexterm</xmlelement> elements can occur in topic prologs, anywhere else
-        in DITA topics, and in DITA maps.</shortdesc>
+    <shortdesc><xmlelement>indexterm</xmlelement> elements can occur in topic prologs, <ph
+            rev="review-1">anywhere else in DITA topics</ph>, and in DITA maps.</shortdesc>
     <prolog>
         <metadata>
             <keywords>
@@ -29,9 +29,11 @@
             <dlentry>
                 <dt>Topic prologs</dt>
                 <dd>An <xmlelement>indexterm</xmlelement> element that is located in a topic prolog
-                    is a point reference to the title of the topic.</dd>
+                    is a point reference to the title of the topic. <ph rev="review-1">If an
+                            <xmlelement>indexterm</xmlelement> element has an <xmlatt>end</xmlatt>
+                        attribute, it is a point reference to the end of the topic.</ph></dd>
             </dlentry>
-            <dlentry>
+            <dlentry rev="review-1">
                 <dt>Anywhere else in a DITA topic</dt>
                 <dd>An <xmlelement>indexterm</xmlelement> element that is located in a topic (and
                     not the topic prolog) is a point reference to the location where the
@@ -39,10 +41,13 @@
             </dlentry>
             <dlentry>
                 <dt>DITA maps</dt>
-                <dd>An <xmlelement>indexterm</xmlelement> element that is a child of a
+                <dd>An <xmlelement>indexterm</xmlelement> element that is contained by a
                         <xmlelement>topicref</xmlelement> element is a point reference to the title
-                    of the topic. If the topic reference is not bound to a resource, the
-                        <xmlelement>indexterm</xmlelement> element has no stated purpose.</dd>
+                    of the topic. <ph rev="review-1">If an <xmlelement>indexterm</xmlelement>
+                        element has an <xmlatt>end</xmlatt> attribute, it is a point reference to
+                        the end of the topic. If the topic reference is not bound to a resource, the
+                            <xmlelement>indexterm</xmlelement> element has no stated
+                    purpose.</ph></dd>
             </dlentry>
         </dl>
     </conbody>

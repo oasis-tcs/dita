@@ -8,6 +8,9 @@
 <prolog><metadata>
       <keywords>
         <indexterm>elements<indexterm>indexing<indexterm><xmlelement>indexterm</xmlelement></indexterm></indexterm></indexterm>
+      <indexterm>carp
+  <index-see-also>goldfish</index-see-also>
+</indexterm>
       </keywords>
     </metadata></prolog>
 <refbody>
@@ -26,23 +29,13 @@
       <dl>
         <dlentry id="start">
           <dt><xmlatt>start</xmlatt></dt>
-          <dd>Specifies the start of an index range.<draft-comment author="Eliot Kimber">Specifies a
-              string that serves as the identifier for the start of an index range.
-            </draft-comment></dd>
+          <dd>Specifies an indentifier that indicates the start of an index
+            range.<!--<draft-comment author="Eliot Kimber">Specifies a string that serves as the identifier for the start of an index range. </draft-comment>--></dd>
         </dlentry>
         <dlentry id="end">
           <dt><xmlatt>end</xmlatt></dt>
-          <dd>Specifies the end of an index range. The end of an index range is indicated by
-            whichever comes first of the following:<draft-comment author="Eliot Kimber">Specifies a
-              value to be matched against an earlier @start value to indicate that this index term
-              is the end of the index range.</draft-comment><ul>
-              <li>Applicable scope boundary</li>
-              <li>An <xmlelement>indexterm</xmlelement> element with an <xmlatt>end</xmlatt>
-                attribute with a value that matches that <xmlatt>start</xmlatt> attribute that began
-                the index range<draft-comment author="Eliot Kimber">This is giving the general rule
-                  for determining the end of a range. That rule is already stated elsewhere and
-                  shouldn't be repeated here.</draft-comment></li>
-            </ul></dd>
+          <dd>Specifies an identifier that indicates the end of an index
+            range.<!-- is indicated by whichever comes first of the following:<draft-comment author="Eliot Kimber">Specifies a value to be matched against an earlier @start value to indicate that this index term is the end of the index range.</draft-comment><ul><li>Applicable scope boundary</li><li>An <xmlelement>indexterm</xmlelement> element with an <xmlatt>end</xmlatt> attribute with a value that matches that <xmlatt>start</xmlatt> attribute that began the index range<draft-comment author="Eliot Kimber">This is giving the general rule for determining the end of a range. That rule is already stated elsewhere and shouldn't be repeated here.</draft-comment></li></ul>--></dd>
         </dlentry>
       </dl>
     </section>
@@ -91,11 +84,9 @@
         <codeblock>&lt;indexterm start="cheese">cheese&lt;/indexterm>
 &lt;!-- ... additional content -->
 &lt;indexterm end="cheese"/></codeblock>
-<p>The previous combination of terms will generate a top-level index term for "cheese" that covers a
-          series of pages, such as:</p>
-        <ul>
-          <li>cheese 18-24</li>
-        </ul>
+<p>This markup will generate a top-level index term for "cheese" that covers a series of pages, such
+          as:</p>
+        <lines>cheese 18-24</lines>
 </fig>
       <fig>
         <title>A more complex index range</title>
@@ -108,14 +99,7 @@
 &lt;/indexterm>
  &lt;!-- ... additional content ... -->
 &lt;indexterm end="level-3-pecorino"/></codeblock>
-        <p>The generated index for that range would look something like this: </p>
-        <ul>
-          <li>cheese<ul>
-              <li>sheeps milk<ul>
-                  <li>pecorino 18-24</li>
-                </ul></li>
-            </ul></li>
-        </ul>
+        <!--<p>The generated index for that range would look something like this: </p><ul><li>cheese<ul><li>sheeps milk<ul><li>pecorino 18-24</li></ul></li></ul></li></ul>-->
       </fig></example>
 </refbody>
 </reference>

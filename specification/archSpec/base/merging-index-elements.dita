@@ -7,9 +7,6 @@
     <prolog>
         <metadata>
             <keywords>
-                <indexterm end="test">test</indexterm>
-            </keywords>
-            <keywords>
                 <indexterm>processing expectations<indexterm>indexing<indexterm>matching
                             content</indexterm></indexterm></indexterm>
                 <indexterm>processing
@@ -18,6 +15,15 @@
         </metadata>
     </prolog>
     <conbody>
+        <p>Processors <term outputclass="RFC-2119">SHOULD</term> use the following criteria to match
+            the content of <xmlelement>indexterm</xmlelement> elements:<ul>
+                <li>Ignore leading and trailing whitespace, as well as newline characters</li>
+                <li>Be case sensitive</li>
+                <li/>
+            </ul></p>
+        <p>It is implementation-dependent as to whether processors consider the presence of
+            phrase-level markup within <xmlelement>indexterm</xmlelement> elements when performing a
+            matching operation.</p>
         <draft-comment author="Kristen J Eberlein" time="11 August 2019">
             <p>This is a new topic. It needs to lay out the rules and expectations for how a
                 processor merges indexing elements and constructs the effective index,
@@ -37,7 +43,7 @@
                 entry.</q></p>
         </draft-comment>
         <p>(For processors that support indexing) If multiple <xmlelement>indexterm</xmlelement>
-            elements exist that would result in identical index entries, a processor <term
+            elements exist that would result in matchingl index entries, a processor <term
                 outputclass="RFC-2119">SHOULD</term> generate only a single index entry, although
             all locations associated with the <xmlelement>indexterm</xmlelement> element contribute
             locators.</p>
@@ -84,6 +90,5 @@ apple
                 authors to spend time "massaging" index markup in order to generate an index that
                 followed the styleguide requirements.</p>
         </draft-comment>
-        <!--<draft-comment author="Eliot Kimber" time="09 August 2019"><p>I know we recently discussed with Robert cases where both 1st and 2nd-level entries get page numbers in some IBM documents and in other places.</p><p>I think the issue was when you determine that there are or are not nested entries.</p><p>For example, if in one topic you have &lt;indexterm>apple&lt;/indexterm> and in another topic you have &lt;indexterm>apple&lt;indexterm>computer&lt;/indexterm>&lt;/indexter>, the author of the first topic would probably be surprised if the index as rendered was not:</p><p>apple 12</p><p> computer 14</p><p>or </p><p>apple 12</p><p>apple</p><p> computer 14</p><p>That is, there's the individual index terms as authored and then there's the effective index markup you would get by literally combining all the indexterm elements, merging matching entries.</p><p>I can imagine that some groups would want the above behavior and others would not, for example because they more carefully control their indexes and want to ensure that only leaf entries get page numbers.</p><p>So the spec definitely has to allow both behaviors.</p></draft-comment>-->
     </conbody>
 </concept>

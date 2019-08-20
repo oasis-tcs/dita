@@ -7,14 +7,17 @@
 <prolog><metadata>
 <keywords>
         <indexterm>elements<indexterm>indexing<indexterm><xmlelement>index-see-also</xmlelement></indexterm></indexterm></indexterm>
-</keywords>
+<indexterm>feeding
+  <index-see-also>goldfish
+    <indexterm>feeding</indexterm>
+  </index-see-also>
+</indexterm></keywords>
 </metadata></prolog>
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
       <p>There can be multiple <xmlelement>index-see-also</xmlelement> elements within a single
           <xmlelement>indexterm</xmlelement> element.</p>
-      <!--<draft-comment author="Kristen J Eberlein" time="07 July 2019"><p>Do we need to state the following?</p><p>It is an error if the target of the <xmlelement>index-see-also</xmlelement> element does not exist in the publication.</p></draft-comment>-->
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
@@ -23,7 +26,6 @@
           <xmlelement>indexterm</xmlelement> element contains any <xmlelement>indexterm</xmlelement>
         children.</p>
     </section>
-    <!--<section id="specialization-hierarchy"><title>Specialization hierarchy</title><p>The <xmlelement>index-see-also</xmlelement> element is specialized from <xmlelement>index-base</xmlelement>. It is defined in the indexing domain module.</p></section>-->
     <section id="attributes">
       <title>Attributes</title>
       <p>The following attributes are available on this element: <xref
@@ -39,14 +41,8 @@
         <codeblock>&lt;indexterm&gt;carp
   &lt;index-see-also&gt;goldfish&lt;/index-see-also&gt;
 &lt;/indexterm&gt;</codeblock>
-        <p>This markup generates a primary index entry for "carp" and secondary index entry that
-          instructs the reader to "see also goldfish".</p>
-        <p>
-          <draft-comment author="Kristen J Eberlein" time="21 July 2019">
-            <p>Is it accurate to refer to the generated see-also entry as a secondary index
-              entry?</p>
-          </draft-comment>
-        </p>
+        <p>This markup generates a primary index entry for "carp" and a redirection that instructs
+          the reader to "see also goldfish".</p>
       </fig>
       <fig>
         <title>Use of an <xmlelement>index-see-also</xmlelement> element to redirect to a multilevel
@@ -58,22 +54,16 @@
     &lt;indexterm&gt;feeding&lt;/indexterm&gt;
   &lt;/index-see-also&gt;
 &lt;/indexterm&gt;</codeblock>
-        <p>This code sample assumes that the following index entry exists within the DITA
-          source:</p>
-        <codeblock>&lt;indexterm&gt;goldfish
+        <!--<p>This code sample assumes that the following index entry exists within the DITA source:</p><codeblock>&lt;indexterm&gt;goldfish
   &lt;indexterm&gt;feeding&lt;/indexterm&gt;
-&lt;/indexterm&gt;</codeblock>
-        <p>This markup generates index entries such as the following:</p>
-        <lines>feeding 348
+&lt;/indexterm&gt;</codeblock>-->
+        <!--<p>This markup might generate an index entry such as the following:<image placement="break" href="../../resources/index-see-also.png"/></p>-->
+        <!--<lines>feeding 348
     <i>see also</i> goldfish, feeding
 ...
 goldfish
-    feeding 370</lines>
+    feeding 370</lines>-->
       </fig>
-      <draft-comment author="Kristen J Eberlein" time="09 August 2019">
-        <p>We need to figure out how to tag representations of generated index entries. The above
-          content is in a <xmlelement>lines</xmlelement> element, and the white space is
-          removed.</p>
-      </draft-comment></example>
+      <!--<draft-comment author="Kristen J Eberlein" time="09 August 2019"><p>We need to figure out how to tag representations of generated index entries. The above content is in a <xmlelement>lines</xmlelement> element, and the white space is removed.</p></draft-comment>--></example>
 </refbody>
 </reference>
