@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="example-index-range-in-a-single-topic">
+    <title>Example: Index range defined in a single topic</title>
+    <shortdesc>In this scenario, an index range is defined directly in the body of a topic. This
+        strategy is useful for lengthy topics.</shortdesc>
+    <conbody>
+        <p>In the following code sample, the index range begins at the start of the second paragraph
+            and continues to the beginning of the last paragraph. If the end element was not
+            present, the index range would end at the end of the topic.</p>
+        <!--<draft-comment author="Eliot Kimber" time="09 August 2019"><p>Again, I don't think the boundary rule is necessary or appropriate.</p></draft-comment>-->
+        <codeblock>&lt;topic id="accounting">
+  &lt;title>Accounting regulations&lt;/title>
+  &lt;body>
+    &lt;p>Be ethical in your accounting.&lt;/p>
+    &lt;p>&lt;indexterm start="acctrules">rules&lt;/indexterm>Remember to do all of the following: ...&lt;/p>
+    &lt;!-- ...pages worth of rules... -->
+    &lt;p>&lt;indexterm end="acctrules"/>Failure to comply will get you audited.&lt;/p>
+  &lt;/body>
+  &lt;!-- Potential sub-topics -->
+&lt;/topic></codeblock>
+    </conbody>
+</concept>
