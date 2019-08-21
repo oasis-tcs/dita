@@ -151,10 +151,7 @@
                           %topicref;)*)"
 >
 <!ENTITY % topicgroup.attributes
-              "outputclass
-                          CDATA
-                                    #IMPLIED
-               %topicref-atts-no-locktitle;
+              "%topicref-atts-no-locktitle;
                %univ-atts;"
 >
 <!ELEMENT  topicgroup %topicgroup.content;>
