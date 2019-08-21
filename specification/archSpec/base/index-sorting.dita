@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="index-sorting">
+    <title>Index sorting</title>
+    <shortdesc> The combination of an <xmlelement>indexterm</xmlelement> and
+            <xmlelement>sort-as</xmlelement> element specifies a sort phrase under which an index
+        entry  is sorted.</shortdesc>
+    <conbody>
+        <p>This  gives an author the flexibility to sort an index entry in an index differently from
+            how its text normally would be sorted. The common use for this is to disregard
+            insignificant leading text, such as punctuation or words like "the" or "a". For example,
+            the author might want <codeph>&lt;data&gt;</codeph> to be sorted under the letter D
+            rather than the left angle bracket (&lt;). An author might want to include such an entry
+            under both the punctuation heading and the letter D, in which case there can be two
+            index entry directives differentiated only by the sort order. </p>
+        <draft-comment author="Kristen J Eberlein" time="18 July 2019"><p>Comment from Dawn Stevens
+                during the stage three review of proposal #253, "Indexing changes":</p><q>So .. an
+                author might want to sort &lt;data> under both D and &lt;. If that was the case,
+                they would need two separate indexterm elements, each with its own
+                &lt;sort-as>?</q><p>I think we need to clarify the above paragraph, but I think it
+                will be better done as part of a targeted review of all spec content about indexing,
+                rather than as part of the review for this proposal.</p></draft-comment>
+        <p>Certain languages have special sort order needs. For example, Japanese index entries
+            might be written partially or wholly in kanji, but need to be sorted in phonetic order
+            according to its hiragana/katakana rendition. There is no reliable automated way to map
+            written to phonetic text: for kanji text, there can be multiple phonetic possibilities
+            depending on the context. The only way to correctly sort Japanese index entries is to
+            keep the phonetic counterparts with the written forms. The phonetic text would be
+            presented as the sort order text for indexing purposes.</p>
+    </conbody>
+</concept>
