@@ -56,6 +56,9 @@
 <!--    2008.11.10 RDA: Make href optional on image                -->
 <!--    2018.03.14 KJE: Removed boolean and indextermref; @alt and -->
 <!--                    @longdescref on image; @refcols            -->
+<!--    2019.08.21 KJE: Modified content model of indexterm;       -->  
+<!--                    removed index-base and added index-see     -->
+<!--                    and index-see-also                         -->
 <!-- =============================================================      -->
 <!--                                                               -->
 
@@ -1545,7 +1548,8 @@
                        "(%words.cnt; |
                          %ph; |
                          %indexterm; |
-                         %index-base;)*"
+                         %index-see; |
+                         %index-see-also;)*"
 >
 <!ENTITY % indexterm.attributes
               "keyref
@@ -1562,20 +1566,36 @@
 <!ELEMENT  indexterm %indexterm.content;>
 <!ATTLIST  indexterm %indexterm.attributes;>
 
-
-<!--                    LONG NAME: Index Base                      -->
-<!ENTITY % index-base.content
+<!--                    LONG NAME: Index See                       -->
+<!ENTITY % index-see.content
                        "(%words.cnt; |
+                         %ph; |
                          %indexterm;)*"
 >
-<!ENTITY % index-base.attributes
+<!ENTITY % index-see.attributes
               "keyref
                           CDATA
                                     #IMPLIED
                %univ-atts;"
 >
-<!ELEMENT  index-base %index-base.content;>
-<!ATTLIST  index-base %index-base.attributes;>
+<!ELEMENT  index-see %index-see.content;>
+<!ATTLIST  index-see %index-see.attributes;>
+
+
+<!--                    LONG NAME: Index See Also                  -->
+<!ENTITY % index-see-also.content
+                       "(%words.cnt; |
+                         %ph; |
+                         %indexterm;)*"
+>
+<!ENTITY % index-see-also.attributes
+              "keyref
+                          CDATA
+                                    #IMPLIED
+               %univ-atts;"
+>
+<!ELEMENT  index-see-also %index-see-also.content;>
+<!ATTLIST  index-see-also %index-see-also.attributes;>
 
 <!--                    LONG NAME: Citation (bibliographic source) -->
 <!ENTITY % cite.content
@@ -1651,7 +1671,9 @@
 <!ATTLIST  fn             class CDATA "- topic/fn "         >
 <!ATTLIST  foreign        class CDATA "- topic/foreign "    >
 <!ATTLIST  image          class CDATA "- topic/image "      >
-<!ATTLIST  include        class CDATA "- topic/include "  >
+<!ATTLIST  include        class CDATA "- topic/include "    >
+<!ATTLIST  index-see      class CDATA "- topic/index-see "  >
+<!ATTLIST  index-see-also class CDATA "- topic/index-see-also ">
 <!ATTLIST  indexterm      class CDATA "- topic/indexterm "  >
 <!ATTLIST  index-base     class CDATA "- topic/index-base " >
 <!ATTLIST  itemgroup      class CDATA "- topic/itemgroup "  >
