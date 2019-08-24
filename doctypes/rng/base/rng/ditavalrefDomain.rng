@@ -7,8 +7,42 @@
   xmlns="http://relaxng.org/ns/structure/1.0">
   <moduleDesc xmlns="http://dita.oasis-open.org/architecture/2005/">
     <moduleTitle>DITAVAL Reference Domain</moduleTitle>
-    <headerComment> ============================================================= DITAVAL Reference
-      Domain ============================================================= </headerComment>
+    <headerComment xml:space="preserve">
+=============================================================
+                   HEADER                                    
+=============================================================
+ MODULE:    DITAVALref Domain                            
+ VERSION:   2.0                                              
+ DATE:      X                                    
+                                                             
+=============================================================
+
+=============================================================
+                   PUBLIC DOCUMENT TYPE DEFINITION           
+                   TYPICAL INVOCATION                        
+                                                             
+ Refer to this file by the following public identifier or an 
+      appropriate system identifier 
+PUBLIC "-//OASIS//ELEMENTS DITA Map Group Domain//EN"
+      Delivered as file "mapGroupDomain.rng"                            
+
+=============================================================
+SYSTEM:     Darwin Information Typing Architecture (DITA)    
+                                                             
+PURPOSE:    Define elements and specialization attributes    
+            for DITAVALref domain                             
+                                                             
+ORIGINAL CREATION DATE:                                      
+            X                                       
+                                                             
+            (C) Copyright OASIS Open 2005, 2009.                   
+            All Rights Reserved.                             
+                                                             
+ UPDATES:                                                    
+
+   2018.04.09 KJE: Removed @navtitle, added header  
+=============================================================
+    </headerComment>
     <moduleMetadata>
       <moduleType>elementdomain</moduleType>
       <moduleShortName>ditavalref-d</moduleShortName>
@@ -91,7 +125,10 @@
         </attribute>
       </optional>
       <ref name="select-atts"/>
-      <ref name="localization-atts"/>              
+      <ref name="localization-atts"/>
+      <optional>
+          <attribute name="outputclass"/>
+      </optional>
     </define>
   </div>
   <div>
@@ -99,21 +136,13 @@
     <div>
       <a:documentation>LONG NAME: DITAVAL Reference</a:documentation>
       <define name="ditavalref.content">
-        <zeroOrMore>
-          <choice>
-            <ref name="ditavalmeta"/>
-          </choice>
-        </zeroOrMore>
+        <optional>
+          <ref name="ditavalmeta"/>
+        </optional>
       </define>
       <define name="ditavalref.attributes">
         <optional>
-          <attribute name="navtitle"/>
-        </optional>
-        <optional>
           <attribute name="href"/>
-        </optional>
-        <optional>
-          <attribute name="outputclass"/>
         </optional>
         <optional>
           <attribute name="scope">
@@ -318,37 +347,31 @@
   <div>
     <a:documentation>SPECIALIZATION ATTRIBUTE DECLARATIONS</a:documentation>
     <define name="ditavalref.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ map/topicref ditavalref-d/ditavalref "/>
       </optional>
     </define>
     <define name="ditavalmeta.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ map/topicmeta ditavalref-d/ditavalmeta "/>
       </optional>
     </define>
     <define name="dvrResourcePrefix.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ topic/data ditavalref-d/dvrResourcePrefix "/>
       </optional>
     </define>
     <define name="dvrResourceSuffix.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ topic/data ditavalref-d/dvrResourceSuffix "/>
       </optional>
     </define>
     <define name="dvrKeyscopePrefix.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ topic/data ditavalref-d/dvrKeyscopePrefix "/>
       </optional>
     </define>
     <define name="dvrKeyscopeSuffix.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="+ topic/data ditavalref-d/dvrKeyscopeSuffix "/>
       </optional>

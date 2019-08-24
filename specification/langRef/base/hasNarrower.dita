@@ -13,21 +13,24 @@
         <indexterm>subjectScheme<indexterm>elements<indexterm><xmlelement>hasNarrower</xmlelement></indexterm></indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-hasNarrower/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-map/topicref subjectScheme/hasNarrower </p></section>
+<section id="inheritance" otherprops="inheritance">
+      <title>Specialization hierarchy</title>
+      <p>This element is specialized from <xref keyref="topicref"/> in the map module.</p>
+      <!--<p>f subjectScheme/hasNarrower </p>--></section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <sectiondiv conref="../../common/conref-attribute.dita#conref-attribute/scheme-HAS-elements"/>
+    </section>
 <example id="example" otherprops="examples"><title>Example</title><p>This example specifies
 that Planting Roses is a narrower subject category than Horticulture,
-although it is part of the Horticulture subject area.</p><codeblock>&lt;subjectScheme>
+although it is part of the Horticulture subject area.</p>
+      <codeblock>&lt;subjectScheme>
   &lt;hasNarrower>
-    &lt;subjectdef keys="horticulture" navtitle="Horticulture">
-      &lt;subjectdef keys="plantrose"  navtitle="Planting Roses"/>
+    &lt;subjectdef keys="horticulture">
+      &lt;subjectdef keys="planting-roses"/>
     &lt;/subjectdef>
   &lt;/hasNarrower>
 &lt;/subjectScheme></codeblock></example>
-<section id="attributes"><title>Attributes</title><sectiondiv
-        conref="../../common/conref-attribute.dita#conref-attribute/scheme-HAS-elements"
-      /></section>
 </refbody>
 </reference>
 

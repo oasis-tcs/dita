@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="IssueNumber00" xml:lang="en-us">
+<title>DITA 2.0 proposed feature #16</title>
+<shortdesc>This feature makes the alternate-title mechanism more extensible, and allows its use in
+    maps as well as topics.</shortdesc>
+<refbody>
+<section><title>Date and version information</title><p>Include the following information:<dl>
+<dlentry>
+<dt>Date that this feature proposal was completed</dt>
+<dd>10/8/2018</dd>
+</dlentry>
+<dlentry>
+<dt>Champion of the proposal</dt>
+<dd>Chris Nitchie</dd>
+</dlentry>
+<dlentry>
+<dt>Links to any previous versions of the proposal</dt>
+<dd>N/A</dd>
+</dlentry>
+<dlentry>
+<dt>Links to minutes where this proposal was discussed at stage 1 and moved to stage 2</dt>
+<dd><xref href="https://lists.oasis-open.org/archives/dita/201705/msg00015.html" format="html"
+                scope="external"/></dd>
+</dlentry>
+<dlentry>
+<dt>Reviewers for Stage 2 proposal</dt>
+<dd>Bill Burns; Bob Thomas</dd>
+</dlentry>
+<dlentry>
+<dt>Links to e-mail discussion that resulted in new versions of the proposal</dt>
+<dd>N/A</dd>
+</dlentry>
+<dlentry>
+<dt>Link to the GitHub issue</dt>
+<dd><xref href="https://github.com/oasis-tcs/dita/issues/16" format="html" scope="external"/></dd>
+</dlentry>
+</dl></p></section>
+<section>
+      <title>Original requirement or use case</title>
+      <p>We should allow <xmlelement>titlealts</xmlelement> inside <xmlelement>map</xmlelement> as
+        well as <xmlelement>topic</xmlelement>. We should also add a zero-or-more
+          <xmlelement>titlealt</xmlelement> element that can be specialized for specific purposes,
+        and consider making <xmlelement>navtitle</xmlelement> and
+          <xmlelement>searchtitle</xmlelement> specializations of
+        <xmlelement>titlealt</xmlelement>.</p>
+      <p>In developing applications that leverage DITA, you very frequently need to ask the
+        question, “what’s this document’s title?” It should be as simple as looking for the
+          <xmlelement>title</xmlelement> element, or its specialization, at the top level of the
+        file. However, this doesn’t work for bookmap, because its title element -
+          <xmlelement>booktitle</xmlelement> - is actually a collection of pseudo-title elements
+        specialized from <xmlelement>ph</xmlelement> - <xmlelement>mainbooktitle</xmlelement> and
+          <xmlelement>booktitlealt</xmlelement>. So you have to write special-case code to handle
+        BookMap, which is irksome. Even then, it won’t work for other <xmlelement>map</xmlelement>
+        types that use a similar trick (like D4P PubMap). Adding <xmlelement>titlealts</xmlelement>
+        to <xmlelement>map</xmlelement> solves it for new map types.</p>
+    </section>
+<section><title>Use cases</title>
+      <ul id="ul_kcs_f4s_3fb">
+        <li>A developer of a DITA map specialization wants to allow map authors to specify subtitles
+          without specializing from <xmlelement>ph</xmlelement> inside of
+            <xmlelement>title</xmlelement>, as Bookmap currently does.</li>
+        <li>A content architect at a software company wants to add the ability for help topic
+          authors to specify the window title for their topics using new
+            <xmlelement>windowtitle</xmlelement> and <xmlelement>breadcrumbtitle</xmlelement>
+          alternative title types.</li>
+        <li>That same content architect wants to be able to put those titles inside
+            <xmlelement>topicmeta</xmlelement> on <xmlelement>topicref</xmlelement> elements, as
+          well as or instead of in the topics.</li>
+      </ul></section>
+<section rev="2.0">
+<title>New terminology</title>
+<p>None.</p>
+</section>
+  <section>
+   <title>Proposed solution</title>
+      <ul id="ul_hkm_t4s_3fb">
+        <li>A new base element, called <xmlelement>titlealt</xmlelement>, will be added to the base
+          vocabulary. This element is allowed within <xmlelement>titlealts</xmlelement> in topics
+          and <xmlelement>topicmeta</xmlelement> in maps.</li>
+        <li>The <xmlelement>navtitle</xmlelement> and <xmlelement>searchtitle</xmlelement> elements
+          will be extracted to a new Alternative Titles domain, and made specializations of
+            <xmlelement>titlealt</xmlelement>.</li>
+      </ul>
+  </section>
+<section><title>Benefits</title>
+      <dl>
+        <dlentry>
+          <dt>Who will benefit from this feature?</dt>
+          <dd>Content architects who want to allow custom alternative title types.</dd>
+          <dd>Authors whose content needs such alternative titles.</dd>
+          <dd>DITA map content architects.</dd>
+          <dd>Vendors that need to determine the primary titles in documents using future map
+            specializations that allow for alternate/sub titles.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>What is the expected benefit?</dt>
+          <dd>Standard mechanism for customized alternate titles.</dd>
+          <dd>Formalized alternate titles for maps and map specializations.</dd>
+          <dd>Applicability of custom alternate title specializations for topics, maps, and
+            topicrefs.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>How many people probably will make use of this feature?</dt>
+          <dd>Lots. Everyone using the new BookMap. Any group requiring their own special
+            alternative title types.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>How much of a positive impact is expected for the users who will make use of the
+            feature?</dt>
+          <dd>Very much. Current solutions are hacks (<xmlelement>pubtitlealt</xmlelement>, use of
+              <xmlelement>data</xmlelement> specializations in <xmlelement>prolog</xmlelement> for
+            alternate topic titles) or simply not possible.</dd>
+        </dlentry>
+      </dl></section>
+<section><title>Technical requirements</title>
+      <ul id="ul_zpw_ngt_3fb">
+        <li>New base element type, <xmlelement>titlealt</xmlelement>, for use in
+            <xmlelement>titlealts</xmlelement> and <xmlelement>topicmeta</xmlelement>. Within
+            <xmlelement>topicmeta</xmlelement>, it appears in place of the current
+            <xmlelement>navtitle</xmlelement> element.</li>
+        <li><xmlelement>titlealt</xmlelement> carries the global and universal attribute groups. It
+          also carries a required CDATA <xmlatt>role</xmlatt> attribute describing the intended
+          purpose or purposes of the alternate title. Specializations should provide a default or
+          fixed value for this attribute. For example, the <xmlatt>role</xmlatt> for
+            <xmlelement>navtitle</xmlelement> would default to <codeph>"navtitle"</codeph>. A single
+            <xmlelement>titlealt</xmlelement> element can have multiple <xmlatt>role</xmlatt>
+          values, separated by white space, when it fulfills multiple roles.</li>
+        <li>New "Alternate Titles" domain, containing <xmlelement>navtitle</xmlelement> and
+            <xmlelement>searchtitle</xmlelement>, both as specializations of
+            <xmlelement>titlealt</xmlelement>, to be included in all distributed topic and map
+          types.</li>
+        <li>When merging <xmlelement>titlealt</xmlelement> elements between topics and maps<ol
+            id="ol_jrj_1nt_3fb">
+            <li>The resolved list of <xmlelement>titlealt</xmlelement> elements is the union of
+              distinct entries, as identified by <xmlatt>role</xmlatt> attribute token, between
+              those in <xmlelement>topicmeta</xmlelement> and those in the topic.</li>
+            <li>When a given alternate title, as identified by a <xmlatt>role</xmlatt> attribute
+              token, appears in both the <xmlelement>topicmeta</xmlelement> and the referenced
+              topic, the map's value takes precedence. </li>
+          </ol></li>
+        <li>Remove <xmlatt>locktitle</xmlatt> from the base map vocabulary.<draft-comment
+            author="chris.nitchie@oberontech.com">
+            <p>REVIEWERS CORNER: Or... not?</p>
+            <p>There are a few alternatives to removing <xmlatt>locktitle</xmlatt>.</p>
+            <ul id="ul_kbh_wtg_kfb">
+              <li>Keep <xmlatt>locktitle</xmlatt> and use it to determine all
+                  <xmlelement>titlealt</xmlelement> precedence. If both the topic and the map
+                specify a <xmlelement>titlealt</xmlelement> with the same <xmlatt>role</xmlatt>, use
+                  <xmlatt>locktitle</xmlatt> to disambiguate. If <codeph>locktitle="yes"</codeph>,
+                the map's <xmlelement>titlealt</xmlelement> elements overrides, otherwise, the
+                topic's matching <xmlelement>titlealt</xmlelement> remains in force. This is both
+                the most backwards-compatible option and the least elegant.</li>
+              <li>Remove <xmlatt>locktitle</xmlatt> and replace it with <xmlatt>lock</xmlatt> on
+                  <xmlelement>titlealt</xmlelement>. This allows map authors to specify precedence
+                on a per-<xmlelement>titlealt</xmlelement> basis. However, since topics and maps
+                will both use the same grammar definition, authors will have the option to specify
+                  <codeph>lock="yes"</codeph> in topics as well. Ironing out all the combinations,
+                while relatively easy (for a given <xmlatt>role</xmlatt> token, the map wins unless
+                the topic says <codeph>lock="yes"</codeph> and the map doesn't), will probably
+                  <i>look</i> pretty complicated and not have all that much utility.</li>
+            </ul>
+            <p>I don't love either of those. I'm open to other suggestions. But I think it'll be
+              easiest for everybody to just get rid of <xmlatt>locktitle</xmlatt> entirely. This may
+              cause problems for existing <xmlelement>navtitle</xmlelement> elements but I think I
+              have a viable solution; see below.</p>
+          </draft-comment></li>
+        <li>Unlike previous versions of DITA, the navigation title is defined as the
+            <xmlelement>titlealt</xmlelement> with <codeph>role="navtitle"</codeph>, rather than the
+            <xmlelement>navititle</xmlelement> element specifically. The
+            <xmlelement>navtitle</xmlelement> element will specify <codeph>role="navtitle"</codeph>
+          by default, but authors may choose to specify the navigation title in combination with
+          other alternative titles via a compound <xmlatt>role</xmlatt> attribute, or via a
+          different specialization of <xmlelement>titlealt</xmlelement>, so long as it specifies
+            <codeph>role="navtitle"</codeph>.</li>
+        <li>Similarly, Search Title will be redefined as the <xmlelement>titlealt</xmlelement> with
+            <codeph>role="searchtitle"</codeph>, rather than the
+            <xmlelement>searchtitle</xmlelement> element specifically. Again,
+            <xmlelement>searchtitle</xmlelement> will specify <codeph>role="searchtitle"</codeph> by
+          default. Processor expectations for search titles are unchanged.</li>
+        <li>The processing of navigation titles will be slightly different, largely owing to the
+          lack of <xmlatt>locktitle</xmlatt>.<ol id="ol_ivx_21h_kfb">
+            <li>When neither the topic nor the map specifies a navigation title, the topic's title
+              is used.</li>
+            <li>Otherwise, the effective navigation title follows normal
+                <xmlelement>titlealt</xmlelement> precedence rules - topicref first, then
+              topic.</li>
+          </ol><note>Applications and authors wishing to include the topic's title in the map for
+            reasons other than output navigation can continue to do so, but they should use a
+            different <xmlatt>role</xmlatt> token. For example, in cases where a system inserts the
+            target topic's title into the map for the benefit of map authors, <codeph>&lt;titlealt
+              role="mapAuthorHint"></codeph> could be used.</note></li>
+        <li>Within a given <xmlelement>titlealts</xmlelement> or <xmlelement>topicmeta</xmlelement>
+          element, <xmlatt>role</xmlatt> values must be distinct. It is an error for multiple
+            <xmlelement>titlealt</xmlelement> elements within the same container to have the same
+            <xmlatt>role</xmlatt> token, though processors may choose to issue a log message and
+          ignore all but the first entry for a given token.</li>
+        <li>With the exception of <codeph>"navtitle"</codeph> and <codeph>"searchtitle"</codeph>, no
+          special processing or output presentation is prescribed for
+            <xmlelement>titlealt</xmlelement> roles. Processors should ignore them by default.</li>
+      </ul></section>
+<section rev="2.0">
+<title>Backwards compatibility</title>
+      <p>Most maps - any that use <xmlelement>navtitle</xmlelement> - will likely require migration
+        to accommodate this change. The new default behavior is compatible with
+          <codeph>locktitle="yes"</codeph>, meaning the DITA 1.x handling of
+          <xmlelement>navtitle</xmlelement>
+        <i>absent</i>
+        <xmlatt>locktitle</xmlatt> will change to prefer the map's value in all cases. This will
+        likely be problematic for many groups without map modification.</p>
+      <p>The specialization hierarchy of <xmlelement>navtitle</xmlelement> and
+          <xmlelement>searchtitle</xmlelement> will be changed, to <codeph>"- topic/titlealt
+          altTitles-d/navtitle "</codeph> and <codeph>"- topic/titlealt altTitles-d/searchtitle
+          "</codeph>, respectively.</p>
+</section>
+<section rev="2.0">
+<title>Migration plan</title>
+      <p>For <xmlelement>navtitle</xmlelement> elements in maps:</p>
+      <ul id="ul_qcf_mzg_kfb">
+        <li>Existing maps containing <xmlelement>navititle</xmlelement> with
+            <codeph>locktitle="yes"</codeph> remain unchanged except for the removal of
+            <xmlatt>locktitle</xmlatt>.</li>
+        <li>Other occurrences of <xmlelement>navititle</xmlelement> in maps should be replaced by
+            <xmlelement>titlealt</xmlelement> with a <xmlatt>role</xmlatt> appropriate to the
+          particular case.</li>
+      </ul>
+      <p>Although the specialization hierarchy of <xmlelement>navtitle</xmlelement> and
+          <xmlelement>searchtitle</xmlelement> will change, the as-authored markup won't, so no
+        migration should be required in most cases.</p>
+      <p>Processors will need to tweak <xmlelement>navtitle</xmlelement> handling as well as
+        implementing generic <xmlelement>titlealt</xmlelement> handling and merging.</p>
+      <p>Existing map specializations may choose to modify their content model for alternate titles
+        to take advantage of this feature, but existing approaches will also continue to work (and
+        be a burden on processors).</p>
+</section>
+  <section>
+   <title>Costs</title>
+<dl>
+<dlentry>
+<dt>Maintainers of the grammar files</dt>
+<dd>The alternative titles domain will be a new grammar module that needs to be maintained.</dd>
+</dlentry>
+<dlentry>
+<dt>Editors of the DITA specification</dt>
+<dd>
+<ul>
+<li>New topics:<ul id="ul_t1k_hzt_3fb">
+                  <li>Container topic for alternative titles domain.</li>
+                  <li>New language reference topic for <xmlelement>titlealt</xmlelement>.</li>
+                  <li>Architectural specification topic describing <xmlelement>titlealt</xmlelement>
+                    processing, specifically merging of alternative titles between topicrefs and
+                    topics, with examples.</li>
+                </ul></li>
+<li>Updates to existing topics:<ul id="ul_l1v_lzt_3fb">
+                  <li>The language reference topic for <xmlelement>titlealts</xmlelement> will
+                    likely need to be updated.</li>
+                  <li>The language reference topics for <xmlelement>navtitle</xmlelement>, and
+                      <xmlelement>searchtitle</xmlelement> will need to be moved to the alternative
+                    titles domain and updated.</li>
+                  <li>The topic <b>Metadata in maps and topics</b> will need to be updated to
+                    discuss <xmlelement>titlealt</xmlelement>.</li>
+                  <li>Likewise <b>Reconciling topic and map metadata elements</b> will need to be
+                    updated to discuss <xmlelement>titlealt</xmlelement>.</li>
+                </ul></li>
+</ul>
+</dd>
+</dlentry>
+<dlentry>
+<dt>Vendors of tools</dt>
+<dd>Processors will need to implement <xmlelement>titlealt</xmlelement> reconciliation between
+            topics and maps, as well as updating <xmlelement>navtitle</xmlelement> handling.</dd>
+</dlentry>
+<dlentry>
+<dt>DITA community-at-large</dt>
+<dd>
+<ul>
+              <li>
+                <dl>
+                  <dlentry>
+                    <dt>Will this feature add to the perception that DITA is becoming too
+                      complex?</dt>
+                    <dd>Not by much. The reconciliation of topicref and topic alternate titles is
+                      somewhat complex, but not unnecessarily so. On the other hand, it will vastly
+                      simplify, and make explicit, the mechanism for alternative titles in
+                      maps.</dd>
+                  </dlentry>
+                  <dlentry>
+                    <dt>Will it be simple for end users to understand?</dt>
+                    <dd>Yes.</dd>
+                  </dlentry>
+                </dl>
+              </li>
+            </ul>
+</dd>
+</dlentry>
+<dlentry>
+<dt>Producing migration instructions or tools</dt>
+<dd>No migration necessary in the vast majority of cases. Only where <xmlatt>class</xmlatt>
+            attributes have been made explicit will any migration be required.</dd>
+</dlentry>
+</dl>
+  </section>
+    <section id="section_kb3_jb5_3fb">
+      <title>Example: Custom Alternative Title Types</title>
+      <p>The content architect described under 'Use Cases' could create a Topic specialization with
+        custom title elements.</p>
+      <codeblock>&lt;helpTopic id="topic167">
+  &lt;title>Doing the Thing in the Place where the Stuff Is&lt;/title>
+  &lt;titlealts>
+    &lt;windowtitle>Doing Things&lt;/windowtitle>
+    &lt;breadcrumbtitle>Doing the Thing&lt;/breadcrumbtitle>
+  &lt;/titlealts></codeblock>
+      <p>They could also allow their map authors to overrule these alternative titles.</p>
+      <codeblock>&lt;topicref href="topic167.dita">
+  &lt;topicmeta locktitle="yes">
+    &lt;breadcrumbtitle>Thing Doing&lt;/breadcrumbtitle>
+  &lt;/topicmeta>
+&lt;/topicref></codeblock>
+    </section>
+<section><title>Example: Map Alternative Titles</title>
+<p rev="2.0">A certain unnamed standards committee produces their specification document as a DITA
+        map with a large number of alternative titles. Currently, in DITA 1.3, they use the Bookmap
+          <xmlelement>pubtitlealt</xmlelement> element with <xmlatt>outputclass</xmlatt>. For
+        example:</p>
+      <codeblock>&lt;booktitle outputclass="specificationTitles">
+ &lt;mainbooktitle outputclass="specificationTitle">Darwin Information Typing Architecture (DITA)
+  Version 1.3 Part 0: Overview&lt;/mainbooktitle>
+ &lt;booktitlealt outputclass="specificationSubtitle1">&lt;keyword keyref="specification-level"/>&lt;/booktitlealt>
+ &lt;booktitlealt outputclass="specificationLevel">0&lt;/booktitlealt>
+ &lt;booktitlealt outputclass="specificationApproved">&lt;keyword keyref="approval-date"/>&lt;/booktitlealt>
+ &lt;booktitlealt outputclass="specificationShorttitle">DITA Version 1.3 Specification&lt;/booktitlealt>
+ &lt;booktitlealt outputclass="specificationScope">part0-overview&lt;/booktitlealt>  
+&lt;/booktitle>
+</codeblock>
+      <p>This is problematic for all sorts of reasons, but with this change they could rewrite this
+        as follows:</p>
+      <codeblock>&lt;title>Darwin Information Typing Architecture (DITA) Version 1.3 Part 0: Overview&lt;/title>
+  &lt;bookmeta>
+   &lt;titlealt role="specificationSubtitle1">&lt;keyword keyref="specification-level"/>&lt;/titlealt>
+   &lt;titlealt role="specificationLevel">0&lt;/titlealt>
+   &lt;titlealt role="specificationApproved">&lt;keyword keyref="approval-date"/>&lt;/titlealt>
+   &lt;titlealt role="specificationShorttitle">DITA Version 1.3 Specification&lt;/titlealt>
+   &lt;titlealt role="specificationScope">part0-overview&lt;/titlealt>  
+   &lt;!-- other metadata -->
+  &lt;/bookmeta></codeblock></section>
+    <section id="section_gmw_wch_kfb">
+      <title>Example: Reconciling Map and Topic Alternate Titles</title>
+      <p>A <xmlelement>topicref</xmlelement> says:</p>
+      <codeblock>&lt;topicref href="topic.dita">
+  &lt;topicmeta>
+    &lt;titlealt role="breadcrumbTitle">Doin' Stuff&lt;/titlealt>
+    &lt;titlealt role="longTitle">That thing you do when there's stuff that needs doing.&lt;/titlealt>
+  &lt;/topicmeta.
+&lt;/topicref></codeblock>
+      <p>The referenced topic says:</p>
+      <codeblock>&lt;prolog>
+  &lt;titlealt role="subtitle">Doing Stuff&lt;/titlealt>
+  &lt;titlealt role="bredcrumbTitle flipbookTitle">Stuff&lt;/titlealt>
+&lt;/prolog></codeblock>
+      <p>Note that <codeph>breadcrumbTitle</codeph> is specified in both the map and the topic, and
+        the map's value takes precedence. However, that same alternate title in the topic specifies
+        an additional role of <codeph>flipbookTitle</codeph>, which is not overridden by the map,
+        and so should be preserved.</p>
+      <p>The equivalent merged alternative titles look like this:</p>
+      <codeblock>&lt;titlealt role="subtitle">Doing Stuff&lt;/titlealt>
+&lt;titlealt role="flipbookTitle">Stuff&lt;/titlealt>
+&lt;titlealt role="breadcrumbTitle">Don' Stuff&lt;/titlealt>
+&lt;titlealt role="longTitle">That thing you do when there's stuff that needs doing.&lt;/titlealt></codeblock>
+    </section>
+</refbody>
+</reference><?Pub Caret -3?>
+<?Pub *0000003625?>

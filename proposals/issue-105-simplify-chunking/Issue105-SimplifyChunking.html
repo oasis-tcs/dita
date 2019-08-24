@@ -1,0 +1,406 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2018"><meta name="DC.rights.owner" content="(C) Copyright 2018"><meta name="DC.Type" content="reference"><meta name="description" content="Simplify how the chunk attribute is defined to 1) make it easier to use, and 2) make implementation easier and more reliable."><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="IssueNumber00"><meta name="DC.Language" content="en-us"><link rel="stylesheet" type="text/css" href="commonltr.css"><title>DITA 2.0 proposed feature #105: Redesign chunking</title></head><body id="IssueNumber00"><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+<h1 class="title topictitle1" id="ariaid-title1">DITA 2.0 proposed feature #105: Redesign chunking</h1>
+
+<div class="body refbody"><p class="shortdesc">Simplify how the <code class="keyword markupname xmlatt">@chunk</code> attribute is defined to 1) make it easier to use,
+and 2) make implementation easier and more reliable.</p>
+<section class="section"><h2 class="title sectiontitle">Date and version information</h2><div class="p">Include the following information:<dl class="dl">
+
+<dt class="dt dlterm">Date that this feature proposal was completed</dt>
+<dd class="dd">14 March 2018</dd>
+
+
+<dt class="dt dlterm">Champion of the proposal</dt>
+<dd class="dd">Robert D Anderson</dd>
+
+
+<dt class="dt dlterm">Links to any previous versions of the proposal</dt>
+<dd class="dd">Stage 1 proposal 28 Feb 2018: <a class="xref" href="https://lists.oasis-open.org/archives/dita/201802/msg00106.html" target="_blank">https://lists.oasis-open.org/archives/dita/201802/msg00106.html</a></dd>
+
+
+<dt class="dt dlterm">Links to minutes where this proposal was discussed at stage 1 and moved to stage 2</dt>
+<dd class="dd">xxx</dd>
+
+
+<dt class="dt dlterm">Links to e-mail discussion that resulted in new versions of the proposal</dt>
+<dd class="dd">xxx</dd>
+
+
+<dt class="dt dlterm">Link to the GitHub issue</dt>
+<dd class="dd"><a class="xref" href="https://github.com/oasis-tcs/dita/issues/105" target="_blank">https://github.com/oasis-tcs/dita/issues/105</a></dd>
+
+</dl></div></section>
+<section class="section"><h2 class="title sectiontitle">Original requirement or use case</h2><div class="p">Redesign the chunk attribute for the following reasons / benefits:<ul class="ul">
+<li class="li">Make it easier to use (rename useful tokens to intuitive values)</li>
+<li class="li">Make it easier to implement (discard operations that are not useful or are edge cases)</li>
+</ul></div></section>
+<section class="section"><h2 class="title sectiontitle">Use cases</h2>
+<ul class="ul">
+<li class="li">Make it easier to use: the current tokens are not obvious. To someone who is not already very
+familiar with the values, the most common values (<code class="ph codeph">chunk="to-content"</code> to merge
+content and <code class="ph codeph">chunk="by-topic"</code> to split content) are not intuitive and require
+frequent use of DITA reference documentation. It's also not clear from the value-names whether those
+values would apply to the referenced document, child documents in a map hierarchy, or both.
+Replacing these two tokens</li>
+<li class="li">Make it easier to use and implement: the current attribute tries to do too many things at one
+time, resulting in complex and difficult-to-implement attribute values. The attribute values in DITA
+1.3 attempt to do three things at once (select how much of a single document should be published,
+decide how to combine multiple documents, and decide how to render those combinations). To use these
+effectively an author must use multiple tokens in the single attribute. All 7 original tokens for
+these functions are non-obvious, making it very difficult to know which and what combination of
+these tokens are necessary. Most of the additional behaviors are rarely (if ever used), resulting in
+little or no benefit from the additional values.</li>
+<li class="li">Make the spec (and implementations) easier to maintain: the original 7 values were defined in a
+topic on <a class="xref" href="http://docs.oasis-open.org/dita/v1.1/OS/archspec/chunking.html" target="_blank">chunking in DITA 1.1</a>. The values were not rigorously explained, and there
+was no explanation of how they interacted. Later versions of the specification attempted to clarify
+some of the missing information, but this topic has been very difficult to work with given the need
+to support all interpretations of what came in with the first version. In addition, implementations
+have often been unclear about how to handle combinations; using DITA-OT as an example, the need to
+handle many (often non-sensical) possible combinations has resulted in very complex, error-prone,
+and hard to maintain code.</li>
+</ul></section>
+<section class="section"><h2 class="title sectiontitle">New terminology</h2>
+
+<p class="p">N/A</p>
+</section>
+  <section class="section"><h2 class="title sectiontitle">Proposed solution</h2>
+   
+<ol class="ol">
+<li class="li">
+<p class="p">Remove all of the current values (one value, <code class="ph codeph">to-navigation</code>, is already
+deprecated).</p>
+</li>
+<li class="li">
+<p class="p">Define one new value <code class="ph codeph">merge</code> to handle the most common scenario, merging multiple
+DITA documents into one. When specified on a map, it means that all documents referenced by the map
+should be merged into one. When specified on a branch of a map, it means that all documents
+referenced within that branch should be merged into one. We also need to clearly define what happens
+with submaps; I suggest that chunk on the root of a submap should be respected, but can be
+overridden by the referencing element.</p>
+<p class="p">There is no other way to undo this token, per discussion on the list after my initial stage 1
+proposal: once you are within a map or branch operating under the <code class="ph codeph">merge</code> value, all
+documents in that context will be merged.</p>
+</li>
+<li class="li">
+<p class="p">Define one new value <code class="ph codeph">split</code> to handle the second most common scenario of
+splitting one DITA document into many. When specified on a <code class="keyword markupname xmlelement">&lt;topicref&gt;</code>, it
+indicates that in a context like HTML5, all topics within the referenced document should be
+published individually rather than as one document. File names for documents that are split are up
+to the implementation; we could optionally suggest that names be taken from topic IDs within the
+split document, but implementations must be free to choose alternate schemes that make sense in
+their context.</p>
+<p class="p">This token applies only to the referenced document. However, if specified on the map element, it
+should be treated as if it applies to all references in that document, unless a token value of
+<code class="ph codeph">merge</code> is encountered, in which case <code class="ph codeph">merge</code> is used for that entire
+branch of the map.</p>
+<p class="p">When a document referenced by <code class="keyword markupname xmlelement">&lt;topicref&gt;</code> is split into multiple documents,
+the result can be interpreted as multiple <code class="keyword markupname xmlelement">&lt;topicref&gt;</code> references to those
+documents (with the same nesting hierarchy). Any nested <code class="keyword markupname xmlelement">&lt;topicref&gt;</code> elements
+within the original <code class="keyword markupname xmlelement">&lt;topicref&gt;</code>
+<dfn class="term">SHOULD</dfn> be treated as if they are nested within the final
+<code class="keyword markupname xmlelement">&lt;topicref&gt;</code> from the chunk result.
+</p>
+</li>
+<li class="li">
+<p class="p">This attribute should continue to be defined as CDATA, which would allow applications to define
+additional tokens, although I expect those will be rare. One potential advantage to this approach is
+that DITA 1.x values in the token would still remain valid (but ignored). It's worth considering
+whether we should avoid some of the DITA 1.x confusion by stating that the attribute can only
+contain one token (although this might limit extension support somewhat and would also mean some
+valid DITA 1.x values are no longer legal).</p>
+</li>
+<li class="li">
+<p class="p">All remaining behaviors associated with DITA 1.x chunking are no longer supported by this
+attribute. I have not encountered any use of them outside of test scenarios, so we should keep this
+simple with only the two defined behaviors.</p>
+<p class="p">Because the original values were trying to accomplish several things at once, I suggest that
+<em class="ph i">if any of those other behaviors are still required</em>, alternate attributes be defined to handle
+them. I do not intend to define those attributes as part of this proposal. That work should only be
+done if somebody has a strong need for the attributes.</p>
+</li>
+</ol>
+<div class="note note note_note"><span class="note__title">Note:</span> One major aspect of chunking remains unchanged here: many aspects are entirely dependent on
+the final rendered format of the content. For example, if a map is being published as PDF where
+there is only one output document, the merge/split process is irrelevant. I've also defined HTML5
+styles where the only valid result is one merged document. So when written up, this needs to be
+described in a way that allows for such implementation or format-based outcomes.</div>
+  </section>
+<section class="section"><h2 class="title sectiontitle">Benefits</h2><dl class="dl">
+
+<dt class="dt dlterm">Who will benefit from this feature?</dt>
+<dd class="dd">
+<ol class="ol">
+<li class="li">Authors wishing to chunk or split documents</li>
+<li class="li">Those trying to implement chunking in a processor</li>
+<li class="li">Maintainers of the DITA specification and of DITA tools who can now provide a clear explanation
+of the function</li>
+</ol>
+</dd>
+
+
+<dt class="dt dlterm">What is the expected benefit?</dt>
+<dd class="dd">
+<ol class="ol">
+<li class="li">Chunking is easier to use</li>
+<li class="li">Chunking is easier to implement</li>
+<li class="li">Improved documentation (in the spec and elsewhere)</li>
+<li class="li">DITA is simplified by making the feature more intuitive and by removing features that are not
+used + make the simple case difficult</li>
+</ol>
+</dd>
+
+
+<dt class="dt dlterm">How many people probably will make use of this feature?</dt>
+<dd class="dd">Many, based on my own experience and based on the number of open defect reports against DITA-OT
+chunking</dd>
+
+
+<dt class="dt dlterm">How much of a positive impact is expected for the users who will make use of the feature?</dt>
+<dd class="dd">Significant improvement over the current feature</dd>
+
+</dl>h</section>
+<section class="section"><h2 class="title sectiontitle">Technical requirements</h2>
+<dl class="dl">
+
+<dt class="dt dlterm">Renaming or refactoring elements and attributes</dt>
+<dd class="dd">
+<dl class="dl">
+
+<dt class="dt dlterm">Renaming or refactoring an attribute</dt>
+<dd class="dd">
+<p class="p">The current attribute values are not defined in the grammar file, so the grammar definition does
+not change.</p>
+<p class="p">In the specification, the current definition for all 6 valid values and 1 deprecated value will
+be removed. The will be replaced with the two values given above.</p>
+<p class="p">This applies to all uses of the <code class="keyword markupname xmlatt">@chunk</code> attribute; no elements will get the
+attribute that did not have it before, and no elements that had the attribute will have it
+removed.</p>
+</dd>
+
+</dl>
+</dd>
+
+
+<dt class="dt dlterm">Processing impact</dt>
+<dd class="dd">
+<ul class="ul">
+<li class="li">The <code class="ph codeph">chunk="merge"</code> attribute value will be equivalent to the current
+<code class="ph codeph">chunk="to-content"</code> value when no other chunk tokens are present, so implementations
+will need to adjust for the new value.</li>
+<li class="li">The <code class="ph codeph">chunk="split"</code> attribute value will be equivalent to the current
+<code class="ph codeph">chunk="by-topic"</code> value when no other chunk tokens are present, so implementations
+will need to adjust for the new value.</li>
+<li class="li">Removing other tokens, removing the ability to combine unrelated tokens, and defining these new
+values in a way that is clear &amp; simple will all allow applications to remove the many conditions
+required to support old values.</li>
+<li class="li">The feature may have an impact on how result documents are named, but that should generally be
+left up to processors.</li>
+</ul>
+</dd>
+
+</dl>
+<dl class="dl">
+
+<dt class="dt dlterm">Overall usability</dt>
+<dd class="dd">The chunking feature today is hard to use and hard to implement. This should address both
+concerns, resulting in a much more usable experience in all aspects of DITA chunking.</dd>
+
+</dl></section>
+<section class="section"><h2 class="title sectiontitle">Backwards compatibility</h2>
+
+<dl class="dl">
+
+<dt class="dt dlterm">Was this change previously announced in an earlier version of DITA?</dt>
+<dd class="dd">No, although I have personally described this in public venues as one feature sure to be
+redesigned in DITA 2.0.</dd>
+
+
+<dt class="dt dlterm">Changing the meaning of an element or attribute in a way that would disallow existing
+usage?</dt>
+<dd class="dd">Yes; for the most common uses (possibly for the only real-world uses), the migration path is
+clear.</dd>
+
+</dl>
+</section>
+<section class="section"><h2 class="title sectiontitle">Migration plan</h2>
+
+<dl class="dl">
+
+<dt class="dt dlterm">Documents</dt>
+<dd class="dd">The easiest path is likely to use search/replace across DITA maps, and update chunking tokens to
+use the new value.</dd>
+
+
+<dt class="dt dlterm">Processors</dt>
+<dd class="dd">Processors will need to be updated to handle the new tokens. As a first approach they could
+simply treat the new values the same way as older equivalent values, but I would expect that over
+time many tools will want to replace older chunking processes with new ones.</dd>
+
+
+<dt class="dt dlterm">Might any existing specialization or constraint modules need to be migrated?</dt>
+<dd class="dd">Unlikely, although possible in theory. The only case where this could happen is if a module was
+designed to explicitly enumerate values for <code class="keyword markupname xmlatt">@chunk</code>. In that case, the same modules
+would need to allow for the new tokens.</dd>
+
+</dl>
+</section>
+  <section class="section"><h2 class="title sectiontitle">Costs</h2>
+   
+<dl class="dl">
+
+<dt class="dt dlterm">Maintainers of the grammar files</dt>
+<dd class="dd">N/A</dd>
+
+
+<dt class="dt dlterm">Editors of the DITA specification</dt>
+<dd class="dd">
+<ul class="ul">
+<li class="li">How many new topics will be required? 0</li>
+<li class="li">How many existing topics will need to be edited? Two topics will need significant editing (<a class="xref" href="http://docs.oasis-open.org/dita/dita/v1.3/errata01/os/complete/part1-base/archSpec/base/chunkingdetails.html#chunkingdetails" target="_blank">Using the <code class="keyword markupname xmlatt">@chunk</code> attribute</a> and <a class="xref" href="http://docs.oasis-open.org/dita/dita/v1.3/errata01/os/complete/part1-base/archSpec/base/chunkingexamples.html" target="_blank">chunking examples</a>. We may wish to revise the current
+definition of <code class="keyword markupname xmlatt">@chunk</code> in the <a class="xref" href="http://docs.oasis-open.org/dita/dita/v1.3/errata01/os/complete/part1-base/langRef/attributes/commonMapAttributes.html#topicref-atts" target="_blank">attribute details</a> topic, although the current definition
+actually works better for the new design than for the old.</li>
+<li class="li">Will the feature require substantial changes to the information architecture of the DITA
+specification? No.</li>
+<li class="li">If there is new terminology, is it likely to conflict with any usage of those terms in
+the existing specification? N/A</li>
+</ul>
+</dd>
+
+
+<dt class="dt dlterm">Vendors of tools</dt>
+<dd class="dd">Tools that implement chunking can take a quick approach (interpret the new values exactly the
+same as old ones), which should have minimal cost. Alternatively, they may wish to rewrite the
+chunking process, which will have a larger cost (hard to specify exactly due to widely different
+tool scenarios).</dd>
+
+
+<dt class="dt dlterm">DITA community-at-large</dt>
+<dd class="dd">
+<ul class="ul">
+<li class="li">This should not add to the perception that DITA is too complex (it should do the opposite).</li>
+<li class="li">It should be simple for end users to understand - that is the primary goal. This should be much
+simpler than the current design.</li>
+<li class="li">Backwards compatibility: any documents that use chunking today will require migration,
+but with low cost (search-and-replace which can be done before or after the switch to a fully DITA
+2.0 environment).</li>
+</ul>
+</dd>
+
+
+<dt class="dt dlterm">Producing migration instructions or tools</dt>
+<dd class="dd">
+<ul class="ul">
+<li class="li">Migration instructions (as part of a larger migration document) will be minimal, likely only a
+few paragraphs with small code examples.</li>
+<li class="li">No independent publication for this feature migration will be needed.</li>
+<li class="li">If other tools exist to migrate DITA documents, this would be an easy addition to those tools,
+but absent that tool this would be more easily done with search-and-replace routines.</li>
+</ul>
+</dd>
+
+</dl>
+  </section>
+<section class="section"><h2 class="title sectiontitle">Examples</h2>
+<figure class="fig fignone" id="IssueNumber00__fig_rz5_vfv_bdb"><figcaption><span class="fig--title-label">Figure 1. </span>Creating a single monolithic result document from a root map</figcaption>
+
+<pre class="pre codeblock"><code>&lt;map chunk="merge"&gt;
+   &lt;title&gt;Previously this would have been chunk="to-content"&lt;/title&gt;
+   &lt;topicref href="hello.dita"&gt;...&lt;/topicref&gt;
+   &lt;topicref href="world.dita"&gt;...&lt;/topicref&gt;
+   ...
+&lt;/map&gt;
+   </code></pre>
+</figure>
+<figure class="fig fignone" id="IssueNumber00__fig_cmk_bgv_bdb"><figcaption><span class="fig--title-label">Figure 2. </span>Creating multiple result documents from a single document</figcaption>
+
+<p class="p">In the case where <span class="ph filepath">hello.dita</span> contains 5 topics (either nested or peers
+within a <code class="keyword markupname xmlelement">&lt;dita&gt;</code> element), the following markup would result in
+<span class="ph filepath">hello.dita</span> being split into 5 individual documents. How the documents are
+handled at that point is up to the processor (in HTML5 output where one input file generally = one
+output file, this would turn <span class="ph filepath">hello.dita</span> into five output files, presumably
+named after topic IDs within the original document).</p>
+<pre class="pre codeblock"><code>&lt;map&gt;
+   &lt;title&gt;Previously this would have used chunk="by-topic"&lt;/title&gt;
+   &lt;topicref href="hello.dita" chunk="split"&gt;...&lt;/topicref&gt;
+   &lt;topicref href="world.dita"&gt;...&lt;/topicref&gt;
+   ...
+&lt;/map&gt;
+   </code></pre>
+</figure>
+<figure class="fig fignone" id="IssueNumber00__fig_zk4_jgv_bdb"><figcaption><span class="fig--title-label">Figure 3. </span>Creating multiple result documents from every source DITA document</figcaption>
+
+<p class="p">In the case where <span class="ph filepath">hello.dita</span> and <span class="ph filepath">world.dita</span>
+<em class="ph i">each</em> contain 5 topics each (either nested or peers within a <code class="keyword markupname xmlelement">&lt;dita&gt;</code>
+element), the following markup would result in the two original documents being split into 10
+individual documents, with the same handling caveats as above.</p>
+<pre class="pre codeblock"><code>&lt;map chunk="split"&gt;
+   &lt;title&gt;Previously this would have used chunk="by-topic"&lt;/title&gt;
+   &lt;topicref href="hello.dita"&gt;
+     &lt;topicref href="world.dita"&gt;&lt;/topicref&gt;
+    &lt;/topicref&gt;
+&lt;/map&gt;
+   </code></pre>
+</figure>
+<figure class="fig fignone" id="IssueNumber00__fig_a5r_qpw_bdb"><figcaption><span class="fig--title-label">Figure 4. </span>Explicit example of split topic with resulting hierarchy</figcaption>
+
+<p class="p">Assume the very simple map below with a single topic <span class="ph filepath">simple.dita</span>, and the
+contents of <span class="ph filepath">simple.dita</span> are also shown.</p>
+<pre class="pre codeblock"><code>&lt;map&gt;
+   &lt;title&gt;Very simple "split" example&lt;/title&gt;
+   &lt;topicref href="simple.dita"/&gt;
+&lt;/map&gt;
+
+simple.dita:
+&lt;topic id="a"&gt;
+  &lt;title&gt;Root topic&lt;/title&gt;
+  &lt;body&gt;...&lt;/body&gt;
+  &lt;topic id="b"&gt;
+    &lt;title&gt;Sub-topic&lt;/title&gt;
+    &lt;body&gt;...&lt;/body&gt;
+    &lt;topic id="c"&gt;
+      &lt;title&gt;sub-sub-topic&lt;/title&gt;
+      &lt;body&gt;...&lt;/body&gt;
+    &lt;/topic&gt;
+  &lt;/topic&gt;
+  &lt;topic id="jumpup"&gt;
+    &lt;title&gt;another sub-topic&lt;/title&gt;
+    &lt;body&gt;...&lt;/body&gt;
+  &lt;/topic&gt;
+&lt;/topic&gt;</code></pre>
+<div class="p">The document <span class="ph filepath">simple.dita</span> contains four topics; the chunking operation
+<code class="ph codeph">split</code> effectively results in the following map, with each document containing only
+one topic. For this sample the file names are taken from the topic IDs for clarity but this is not
+required.<pre class="pre codeblock"><code>&lt;map&gt;
+  &lt;title&gt;Very simple "split" example&lt;/title&gt;
+  &lt;topicref href="a.dita"&gt;
+    &lt;topicref href="b.dita"&gt;
+      &lt;topicref href="c.dita"/&gt;
+    &lt;/topicref&gt;
+    &lt;topicref href="jumpup.dita"/&gt;
+  &lt;/topicref&gt;
+&lt;/map&gt;</code></pre></div>
+</figure>
+<figure class="fig fignone" id="IssueNumber00__fig_tnk_hqw_bdb"><figcaption><span class="fig--title-label">Figure 5. </span>Edge case: "split" becomes "merge"</figcaption>
+
+<p class="p">Assume the following map, where <code class="ph codeph">chunk="split"</code> on the root element means that all
+topics within this map structure are split by default, but a branch within the map sets
+<code class="ph codeph">chunk="merge"</code>:</p>
+<pre class="pre codeblock"><code>&lt;map chunk="split"&gt;
+  &lt;title&gt;Split most, but not one branch&lt;/title&gt;
+  &lt;topicref href="splitme.dita"&gt;...&lt;/topicref&gt;
+  &lt;topicref href="exception.dita" chunk="merge"&gt;...&lt;/topicref&gt;
+  &lt;topicref href="splitmetoo.dita"&gt;...&lt;/topicref&gt;
+&lt;/topicref&gt;</code></pre>
+<div class="p">Assume as well that no other <code class="keyword markupname xmlatt">@chunk</code> attributes are specified in this map. The
+following is true:<ol class="ol">
+<li class="li">The document <span class="ph filepath">splitme.dita</span> and all documents within that branch will be
+split apart if they contain more than one topic</li>
+<li class="li">Because of the <code class="ph codeph">chunk="merge"</code> setting, the second branch with
+<span class="ph filepath">exception.dita</span> at the root will result in a single result document</li>
+<li class="li">The document <span class="ph filepath">splitmetoo.dita</span> and all documents within that branch will be
+split apart if they contain more than one topic</li>
+</ol></div>
+</figure></section>
+</div>
+</article></main></body></html>

@@ -37,6 +37,9 @@
 <!--    2008.02.12 RDA: Navtitle no longer required on topichead   -->
 <!--    2008.02.13 RDA: Create .content and .attributes entities   -->
 <!--    2010.09.20 RDA: Add copy-to to topichead                   -->
+<!--    2018.03.14 KJE: Added new attribute group for use on       -->
+<!--                    topichead and topicgroup (removes          -->
+<!--                    @collection-type); removed @query          -->
 <!-- ============================================================= -->
 <!--                                                               -->
 <!--                                                               -->
@@ -50,6 +53,63 @@
 <!ENTITY % anchorref   "anchorref"                                   >
 <!ENTITY % mapref      "mapref"                                      >
 <!ENTITY % keydef      "keydef"                                      >
+
+<!-- ============================================================= -->
+<!--                    COMMON ATTLIST SETS                        -->
+<!-- ============================================================= -->  
+
+<!ENTITY % topicref-atts-no-locktitle
+              "collection-type
+                          (choice |
+                           family |
+                           sequence |
+                           unordered |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               type
+                          CDATA
+                                    #IMPLIED
+               cascade
+                          CDATA
+                                    #IMPLIED
+               processing-role
+                          (normal |
+                           resource-only |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               scope
+                          (external |
+                           local |
+                           peer |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               format
+                          CDATA
+                                    #IMPLIED
+               linking
+                          (none |
+                           normal |
+                           sourceonly |
+                           targetonly |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               toc
+                          (no |
+                           yes |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               search
+                          (no |
+                           yes |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               chunk
+                          CDATA
+                                    #IMPLIED
+               keyscope
+                          CDATA
+                                    #IMPLIED"
+>
 
 <!-- ============================================================= -->
 <!--                    ELEMENT DECLARATIONS                       -->
@@ -67,16 +127,13 @@
               "navtitle
                           CDATA
                                     #IMPLIED
-               outputclass
-                          CDATA
-                                    #IMPLIED
                keys
                           CDATA
                                     #IMPLIED
                copy-to
                           CDATA
                                     #IMPLIED
-               %topicref-atts;
+               %topicref-atts-no-locktitle;
                %univ-atts;"
 >
 <!ELEMENT  topichead %topichead.content;>
@@ -95,7 +152,7 @@
               "outputclass
                           CDATA
                                     #IMPLIED
-               %topicref-atts;
+               %topicref-atts-no-locktitle;
                %univ-atts;"
 >
 <!ELEMENT  topicgroup %topicgroup.content;>
@@ -124,13 +181,7 @@
                keyscope
                           CDATA
                                     #IMPLIED
-               query
-                          CDATA
-                                    #IMPLIED
                copy-to
-                          CDATA
-                                    #IMPLIED
-               outputclass
                           CDATA
                                     #IMPLIED
                collection-type
@@ -215,13 +266,7 @@
                keys
                           CDATA
                                     #IMPLIED
-               query
-                          CDATA
-                                    #IMPLIED
                copy-to
-                          CDATA
-                                    #IMPLIED
-               outputclass
                           CDATA
                                     #IMPLIED
                format
@@ -234,6 +279,197 @@
 <!ATTLIST  mapref %mapref.attributes;>
 
 
+<<<<<<< HEAD
+=======
+<!--                    LONG NAME: Topicset                        -->
+<!ENTITY % topicset.content
+                       "((%topicmeta;)?,
+                         (%anchor; |
+                          %data.elements.incl; |
+                          %navref; |
+                          %topicref;)*)"
+>
+<!ENTITY % topicset.attributes
+              "navtitle
+                          CDATA
+                                    #IMPLIED
+               href
+                          CDATA
+                                    #IMPLIED
+               keyref
+                          CDATA
+                                    #IMPLIED
+               keys
+                          CDATA
+                                    #IMPLIED
+               keyscope
+                          CDATA
+                                    #IMPLIED
+               copy-to
+                          CDATA
+                                    #IMPLIED
+               outputclass
+                          CDATA
+                                    #IMPLIED
+               collection-type
+                          (choice |
+                           family |
+                           sequence |
+                           unordered |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               processing-role
+                          (normal |
+                           resource-only |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               type
+                          CDATA
+                                    #IMPLIED
+               cascade
+                          CDATA
+                                    #IMPLIED
+               scope
+                          (external |
+                           local |
+                           peer |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               locktitle
+                          (no |
+                           yes |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               format
+                          CDATA
+                                    #IMPLIED
+               linking
+                          (none |
+                           normal |
+                           sourceonly |
+                           targetonly |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               toc
+                          (no |
+                           yes |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               print
+                          (no |
+                           printonly |
+                           yes |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               search
+                          (no |
+                           yes |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               chunk
+                          CDATA
+                                    #IMPLIED
+               id
+                          NMTOKEN
+                                    #REQUIRED
+               %conref-atts;
+               %select-atts;
+               %localization-atts;"
+>
+<!ELEMENT  topicset %topicset.content;>
+<!ATTLIST  topicset %topicset.attributes;>
+
+
+<!--                    LONG NAME: Topicsetref                     -->
+<!ENTITY % topicsetref.content
+                       "((%topicmeta;)?,
+                         (%data.elements.incl; |
+                          %topicref;)*)"
+>
+<!ENTITY % topicsetref.attributes
+              "navtitle
+                          CDATA
+                                    #IMPLIED
+               href
+                          CDATA
+                                    #IMPLIED
+               keyref
+                          CDATA
+                                    #IMPLIED
+               keys
+                          CDATA
+                                    #IMPLIED
+               keyscope
+                          CDATA
+                                    #IMPLIED
+               copy-to
+                          CDATA
+                                    #IMPLIED
+               collection-type
+                          (choice |
+                           family |
+                           sequence |
+                           unordered |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               processing-role
+                          (normal |
+                           resource-only |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               type
+                          CDATA
+                                    'topicset'
+               cascade
+                          CDATA
+                                    #IMPLIED
+               scope
+                          (external |
+                           local |
+                           peer |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               locktitle
+                          (no |
+                           yes |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               format
+                          CDATA
+                                    'ditamap'
+               linking
+                          (none |
+                           normal |
+                           sourceonly |
+                           targetonly |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               toc
+                          (no |
+                           yes |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               print
+                          (no |
+                           printonly |
+                           yes |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               search
+                          (no |
+                           yes |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               chunk
+                          CDATA
+                                    #IMPLIED
+               %univ-atts;"
+>
+<!ELEMENT  topicsetref %topicsetref.content;>
+<!ATTLIST  topicsetref %topicsetref.attributes;>
+
+
+>>>>>>> 7de2579902689baff52407b939e6d53555800d41
 <!--                    LONG NAME: Keydef                          -->
 <!ENTITY % keydef.content
                        "((%topicmeta;)?,
@@ -258,13 +494,7 @@
                keyscope
                           CDATA
                                     #IMPLIED
-               query
-                          CDATA
-                                    #IMPLIED
                copy-to
-                          CDATA
-                                    #IMPLIED
-               outputclass
                           CDATA
                                     #IMPLIED
                collection-type
@@ -336,11 +566,21 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
+<<<<<<< HEAD
 <!ATTLIST  anchorref    %global-atts;  class CDATA "+ map/topicref mapgroup-d/anchorref ">
 <!ATTLIST  keydef       %global-atts;  class CDATA "+ map/topicref mapgroup-d/keydef ">
 <!ATTLIST  mapref       %global-atts;  class CDATA "+ map/topicref mapgroup-d/mapref ">
 <!ATTLIST  topicgroup   %global-atts;  class CDATA "+ map/topicref mapgroup-d/topicgroup ">
 <!ATTLIST  topichead    %global-atts;  class CDATA "+ map/topicref mapgroup-d/topichead ">
+=======
+<!ATTLIST  anchorref      class CDATA "+ map/topicref mapgroup-d/anchorref ">
+<!ATTLIST  keydef         class CDATA "+ map/topicref mapgroup-d/keydef ">
+<!ATTLIST  mapref         class CDATA "+ map/topicref mapgroup-d/mapref ">
+<!ATTLIST  topicgroup     class CDATA "+ map/topicref mapgroup-d/topicgroup ">
+<!ATTLIST  topichead      class CDATA "+ map/topicref mapgroup-d/topichead ">
+<!ATTLIST  topicset       class CDATA "+ map/topicref mapgroup-d/topicset ">
+<!ATTLIST  topicsetref    class CDATA "+ map/topicref mapgroup-d/topicsetref ">
+>>>>>>> 7de2579902689baff52407b939e6d53555800d41
 
 <!-- ================== End of DITA Map Group Domain ==================== -->
  

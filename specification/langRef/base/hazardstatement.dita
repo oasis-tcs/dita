@@ -14,9 +14,40 @@ it, and add one or more safety symbols.</shortdesc>
         <indexterm>hazard statement domain<indexterm>hazardstatement</indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-hazardstatement/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>+
+<section id="inheritance" otherprops="inheritance">
+      <title>Specialization hierarchy</title><p>+
 topic/note hazard-d/hazardstatement </p></section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <sectiondiv>
+        <p>The following attributes are available on this element: <xref
+            keyref="attributes-universal"/> and <xref
+            keyref="attributes-specialization/spectitle"/>, and
+          the attributes defined below.</p>
+        <dl>
+          <dlentry>
+            <dt><xmlatt>type</xmlatt></dt>
+            <dd>Describes the level of hazard. Safety hazard level definitions correspond to the
+              same values in the ANSI Z535 and the ISO 3864 standards. <ph
+                conref="../../common/conref-attribute.dita#conref-attribute/nonstandard-type"/> See
+            <xref keyref="attributes-type"/> for detailed information on
+              supported values and processing implications. Available values are note, tip,
+              fastpath, restriction, important, remember, attention, caution, notice, danger,
+              warning, other, and <xref
+                keyref="attributes-useconreftarget"
+                >-dita-use-​conref-​target</xref>.
+              <!--Asked TC for input: should @type=trouble be added here as it was on <note>. Local definition with the reference to ANSI still differs from the base <xmlelement>note</xmlelement> element. UPDATE 12 February 2014: TC agreed not ot add trouble, most of these values should not hvae been added but are left now for backwards compatibility--></dd>
+          </dlentry>
+          <dlentry>
+            <dt><xmlatt>othertype</xmlatt></dt>
+            <dd>Indicates an alternate note type, when the type is not available in the
+                <xmlatt>type</xmlatt> attribute value list. This value is used as the user-provided
+              note title when the <xmlatt>type</xmlatt> attribute value is set to
+              &quot;other.&quot;</dd>
+          </dlentry>
+        </dl>
+      </sectiondiv>
+    </section>
 <example id="example" otherprops="examples"><title>Example</title><p> <keyword>Danger:</keyword> Indicates
 an imminently hazardous situation which, if not avoided, <b>will</b> result
 in death or serious injury. <codeblock
@@ -59,35 +90,6 @@ id="codeblock_E20D4F1784044B9986E2C0977F219A49" xml:space="preserve">&lt;hazards
   &lt;/messagepanel&gt;
   &lt;hazardsymbol href="general.png"/&gt;
 &lt;/hazardstatement&gt;</codeblock></p></example>
-<section id="attributes"><title>Attributes</title><sectiondiv>
-        <p>The following attributes are available on this element: <xref
-            href="../attributes/universalAttributes.dita"/>, <xref
-            href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, <xref
-            href="../attributes/specializationAttributes.dita#specialization-atts/spectitle"/>, and
-          the attributes defined below.</p>
-        <dl>
-          <dlentry>
-            <dt><xmlatt>type</xmlatt></dt>
-            <dd>Describes the level of hazard. Safety hazard level definitions correspond to the
-              same values in the ANSI Z535 and the ISO 3864 standards. <ph
-                conref="../../common/conref-attribute.dita#conref-attribute/nonstandard-type"/> See
-                <xref href="../attributes/thetypeattribute.dita"/> for detailed information on
-              supported values and processing implications. Available values are note, tip,
-              fastpath, restriction, important, remember, attention, caution, notice, danger,
-              warning, other, and <xref
-                href="../attributes/ditauseconreftarget.dita#usingthe-dita-use-conref-targetvalue"
-                >-dita-use-​conref-​target</xref>.
-              <!--Asked TC for input: should @type=trouble be added here as it was on <note>. Local definition with the reference to ANSI still differs from the base <xmlelement>note</xmlelement> element. UPDATE 12 February 2014: TC agreed not ot add trouble, most of these values should not hvae been added but are left now for backwards compatibility--></dd>
-          </dlentry>
-          <dlentry>
-            <dt><xmlatt>othertype</xmlatt></dt>
-            <dd>Indicates an alternate note type, when the type is not available in the
-                <xmlatt>type</xmlatt> attribute value list. This value is used as the user-provided
-              note title when the <xmlatt>type</xmlatt> attribute value is set to
-              &quot;other.&quot;.</dd>
-          </dlentry>
-        </dl>
-      </sectiondiv></section>
 </refbody>
 </reference>
 

@@ -23,29 +23,7 @@
       <p>The <xmlelement>foreign</xmlelement> or <xmlelement>unknown</xmlelement> elements should
         not be used to include textual content or metadata in DITA documents, except where such
         content acts as an example or display, rather than as the primary content of a topic.</p>
-      <note  product="technicalContent">Beginning with DITA 1.3, both
-        MathML and SVG are domains shipped with the OASIS grammars; they serve as working examples
-        of <xmlelement>foreign</xmlelement> specializations.</note>
     </section>
-    <example id="example-svgcontainer"  product="technicalContent" otherprops="examples">
-      <title>Example: Including SVG markup within a specialization of
-          <xmlelement>foreign</xmlelement></title>
-      <p>The following code sample shows how SVG markup can be included within the
-          <xmlelement>svgcontainer</xmlelement> element, which is part of the SVG domain and a
-        specialization of the <xmlelement>foreign</xmlelement> element.</p>
-      <codeblock>&lt;p&gt;This is an ellipse:
-  &lt;svg-container&gt;
-    &lt;svg:svg width="100%" height="100%" version="1.1"
-xmlns="http://www.w3.org/2000/svg"&gt;
-
-&lt;ellipse cx="300" cy="150" rx="200" ry="80"
-style="fill:rgb(200,100,50);
-stroke:rgb(0,0,100);stroke-width:2"/&gt;
-
-    &lt;/svg:svg&gt;    
-  &lt;/svg-container&gt;.
-&lt;/p&gt; </codeblock>
-    </example>
     <example id="example-svgDomain"  otherprops="examples">
       <title>Example: Creating an element domain specialization for SVG</title>
       <p>The following code sample, which is from the <filepath>svgDomain.ent</filepath> file, shows
@@ -163,7 +141,6 @@ Define the Relax NG XML syntax as a DITA foreign vocabulary
  &lt;div>
    &lt;a:documentation>SPECIALIZATION ATTRIBUTE DECLARATIONS&lt;/a:documentation>
   &lt;define name="rng_grammar.attlist" combine="interleave">
-    &lt;ref name="global-atts"/>
     &lt;optional>
       &lt;attribute name="class" a:defaultValue="+ topic/foreign rnggrammar-d/rng_grammar "/>
     &lt;/optional>
@@ -250,7 +227,6 @@ Define the Relax NG XML syntax as a DITA foreign vocabulary
   
   &lt;xs:attributeGroup name="mathml_container.attributes">
     &lt;xs:attribute name="outputclass" type="xs:string"/>
-    &lt;xs:attributeGroup ref="global-atts"/>
     &lt;xs:attributeGroup ref="univ-atts"/>
   &lt;/xs:attributeGroup>
   

@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="IssueNumber00" xml:lang="en-us">
+<title>DITA 2.0 proposed feature #33</title>
+<shortdesc>Deprecate or remove copy-to.</shortdesc>
+<refbody>
+<section><title>Date and version information</title><p>
+        <dl>
+          <dlentry>
+            <dt>Date that this feature proposal was completed</dt>
+            <dd>xx March 2019</dd>
+          </dlentry>
+          <dlentry>
+            <dt>Champion of the proposal</dt>
+            <dd>Eliot Kimber</dd>
+          </dlentry>
+          <dlentry>
+            <dt>Links to any previous versions of the proposal</dt>
+            <dd>N/A</dd>
+          </dlentry>
+          <dlentry>
+            <dt>Links to minutes where this proposal was discussed at stage 1 and moved to stage
+              2</dt>
+            <dd><xref href="https://lists.oasis-open.org/archives/dita/201706/msg00013.html"
+                format="html" scope="external"
+                >https://lists.oasis-open.org/archives/dita/201706/msg00013.htmlhttps://lists.oasis-open.org/archives/dita/201706/msg00013.html</xref></dd>
+          </dlentry>
+          <dlentry>
+            <dt>Reviewers for Stage 2 proposal</dt>
+            <dd>Chris Nitchie</dd>
+            <dd>Robert Anderson</dd>
+          </dlentry>
+          <dlentry>
+            <dt>Links to e-mail discussion that resulted in new versions of the proposal</dt>
+            <dd>N/A</dd>
+          </dlentry>
+          <dlentry>
+            <dt>Link to the GitHub issue</dt>
+            <dd><xref href="https://github.com/oasis-tcs/dita/issues/33" format="html"
+                scope="external"
+                >https://github.com/oasis-tcs/dita/issues/33https://github.com/oasis-tcs/dita/issues/33</xref></dd>
+          </dlentry>
+        </dl>
+      </p></section>
+<section><title>Original requirement or use case</title><p>From the minutes linked to above, Chris Nitchie is recorded as saying:<lq>
+          <p>The copy-to @ assumes certain things about the way processing is done, specifically the
+            dita-ot way, and with key-scopes that's the wrong way. We should find some other way to
+            address those needs and remove copy-to.</p>
+        </lq></p></section>
+<section id="section_dp4_dw4_xgb">
+      <title>Use cases</title>
+      <p><b>General Requirements</b></p>
+      <p>The requirements to which <xmlatt>copy-to</xmlatt> is a response include:<ul
+          id="ul_hrm_vx2_5fb">
+          <li>The ability to unambiguously and reliably link from within DITA source to a specific
+            use of a topic when the topic is used more than once within the same publication. Before
+            DITA 1.2 this requirement was met, weakly, by the <xmlatt>copy-to</xmlatt> attribute.
+            With DITA 1.2 it is met completely by the use of keys and references to keys in place of
+            direct URI references to source topics.</li>
+          <li>The ability to say, as the author of a map, that a given topic used more than once
+            should produce a single result artifact or should produce multiple result artifacts for
+            different uses of the topic. For example, a topic may be used in multiple chapters but
+            the desire is for a single HTML result to which all links to the topic resolve.
+            Conversely, there may be a desire to have each chapter-specific use of a topic result in
+            a separate result HTML file. While keys enable unambiguous references to specific uses
+            of topics they do not, by themselves, provide a way to indicate the deliverable intent
+            for re-used topics. The use of key scopes and branch filtering effectively require the
+            generation of unique results in some circumstances and may be sufficient to signal
+            author intent. For example, a reference to a use of a topic within a specific scope
+            where the topic is used in a different scope, seems to demand, or least strongly
+            suggest, the need for a unique result artifact in a mult-artifact deliverable (however,
+            just having two uses, even in different scopes is not sufficient to <b>require</b> two
+            result artifacts).</li>
+          <li>The ability to strongly determine the anchors used in a deliverable independent from
+            the filenames used for the source topics. For example, having published a set of HTML
+            files for a publication and knowing that readers have created links (e.g., bookmarks) to
+            specific HTML files in that publication, when the publication is updated and republished
+            the filenames of the HTML files must be preserved as much as possible, even if the
+            source files have changed, for example because the source was moved into a CCMS that
+            imposes its own filenaming scheme or because the source files were renamed and
+            reorganized to reflect some new general source organization practice.</li>
+          <li>The ability to indicate that topicheads should be treated as though they were
+            references to title-only topics.</li>
+          <li>Replace the shortdesc of the referenced topic with a short description provided by the
+            referencing topicref.</li>
+        </ul></p>
+      <p>The general requirement is for processors to produce the <i>appropriate</i>
+        deliverable-specific anchor or artifact for a given use of a topic used as a normal-role
+        resource within a single publication (see <xref href="#IssueNumber00/new-terminology"
+          format="dita"/>).</p>
+    </section>
+    <section id="section_ep4_dw4_xgb">
+      <title>Technical Background</title>
+      <p>Artifacts are "storage objects", i.e., files, and have some kind of "filename" (file system
+        filename, URI, object ID, etc.). For the purposes of this proposal, the term "filename" is
+        used to mean any form of storage object identifier. Likewise, the term "file" is used to
+        mean any form of storage object. Thus, for an HTML-based deliverable served from a normal
+        file system, the artifacts are HTML files that have unique filenames within some directory
+        structure.</p>
+      <p>Deliverables can be one of two basic types: <term>monolithic</term> or
+          <term>multi-artifact</term>.</p>
+      <p><term>Monolithic deliverables</term> are deliverables for which there is exactly one file
+        that is the deliverable, e.g., PDF and EPUB. </p>
+      <p>For monolithic deliverables the filenames of the source files are usually not reflected in
+        the result anchors (although they could be, of course, but their use is not essential or
+        necessarily expected, as it is for mult-artifact deliverables). (Note that internally an
+        EPUB may be composed of multiple HTML or other files, but the details of the file
+        organization within the EPUB package is not exposed to consumers of the EPUB and is not used
+        for addressing into the EPUB using EPUB-defined addressing mechanisms.)</p>
+      <p>One implication of monolithic delivery is that a topic used multiple times will be
+        reflected anew at each point of use in the deliverable (that is, it will be literally
+        presented in the larger publication flow every time it is referenced). Thus, while a direct
+        URI link to a topic used multiple times is still ambiguous as to which use of the topic the
+        link should resolve to, there is no ambiguity about whether the re-used topic results in a
+        single delivered result or multiple delivered results: it will always result in multiple
+        delivered results. Thus the use of <xmlatt>copy-to</xmlatt> is usually not relevant or
+        interesting in the context of monolithic deliverables and their component artifacts.</p>
+      <p><term>Multi-artifact deliverables</term> are deliverables for which there can be two or
+        more artifacts, e.g., HTML, online help, etc. </p>
+      <p>In multi-artifact deliverables the filename of each artifact is an essential part of the
+        addressing scheme by which deliverable components are accessed. In a multi-artifact
+        deliverable a topic used multiple times may result in a single result artifact or multiple
+        result artifacts and which result is desired can vary depending on the editorial policies of
+        the producer of the deliverable or the requirements of the deliverable users or limitations
+        of the deliverable production system. </p>
+      <p>DITA-aware tools that produce multi-artifact deliverables should provide facilities by
+        which deliverable producers can control how topics used multiple times are mapped to result
+        artifacts. For example, the DITA Open Toolkit provides an "ensure unique" runtime option
+        that ensures that each normal-role use of a given topic results in a uniquely-named HTML
+        result file. The Open Toolkit also provides a default mapping from source topic filenames to
+        result HTML file filenames, which results in multiply-used topics resulting in single result
+        HTML files if the "ensure unique" option is not set. This behavior also takes
+          <xmlatt>copy-to</xmlatt> into account as <xmlatt>copy-to</xmlatt> sets the effective
+        filename for the reference to a topic.</p>
+      <p>Through DITA 1.1, <xmlatt>copy-to</xmlatt> was the only DITA-defined way for authors to
+        explicitly distinguish two uses of the same topic. With DITA 1.2's key feature, authors
+        could also distinguish uses of the same topic by assigning different keys to different
+        uses.</p>
+      <p>For the purpose of authoring inline cross references to specific uses of a topic, authors
+        can use direct URI references to the effective source filenames defined by
+          <xmlatt>copy-to</xmlatt>. However, resolving such a reference during authoring requires
+        examining the appropriate maps and determining that the referenced resource, which does not
+        exist as a literal source file, does exist as a "virtual" source file as defined by
+          <xmlatt>copy-to</xmlatt>. This makes authoring-time resolution of direct URI references as
+        challenging as authoring-time resolution of key references. Viewed in that way,
+          <xmlatt>copy-to</xmlatt> is not doing anything that keys do not also do, other than
+        providing direct author control over the effective filenames of referenced topics.</p>
+      <p><b>History</b></p>
+      <p>In the Open Toolkit as originally implemented there was a one-to-one correspondence between
+        source topic files and result HTML files such that for each source topic file there would be
+        a single result HTML file where the base HTML filename was the same as the base topic
+        filename, e.g., "topic01.dita" resulted in "topic01.html". There was no built-in mechanism
+        by which this behavior could be easily changed as a matter of configuration or processing
+        override.</p>
+      <p>The <xmlatt>copy-to</xmlatt> attribute was introduced on the
+          <xmlelement>topicref</xmlelement> element as a way to set the effective <i>source</i>
+        filename of the topic referenced by the topicref. Because the Open Toolkit mapped source
+        filenames to result HTML filenames, this had the effect of setting the result anchor (the
+        HTML filename) to something specific for that use of the topic.</p>
+      <p>Before DITA 1.2 and keys, there was no way, except for the use of <xmlatt>copy-to</xmlatt>,
+        to create links to specific uses of the same topic. For example, if the same topic was used
+        in two chapters and you wanted to author a cross reference to the use in a specific chapter,
+        the only option was to use <xmlatt>copy-to</xmlatt> on one or both of the uses and then
+        create a cross reference to the <i>effective filename</i> of the topic as used in one
+        chapter or the other, as though the author had made a literal copy of the re-used topic.
+        This works, in that the intent of the cross reference is unambiguous and the processing
+        result, after application of <xmlatt>copy-to</xmlatt> is consistent. However, it does not
+        provide a complete solution to the requirement because the link is still not to the specific
+        use but just to the effective source file. If two uses of the same topic specified the same
+          <xmlatt>copy-to</xmlatt> value, the same ambiguity about which use of the topic to link to
+        would still hold.</p>
+      <p>With the advent of keys in DITA 1.2 it became possible to unambiguously link to a specific
+        use of a topic by referring to a key defined on the topicref that uses the topic. Because
+        the key space is global within the scope of a given map tree rooted at the root map, any
+        keys defined on a given topicref that are effective after applying key declaration
+        precedence rules are necessarily globally unique. This is true for DITA 1.3 and key scopes
+        as well in that the fully-qualified keys for a given topicref are unique within the map tree
+        defined by a given root map.</p>
+      <p>Finally, the introduction of key scopes and branch filtering in DITA 1.3 complicates the
+        processing of re-used topics in that the <i>effective content</i> of a given topic may be
+        different in every scope or filtered branch within which it is used because a key reference
+        or conditional element may be resolved to different values or filtered differently in each
+        use. This means that each use of a topic may require a separate result artifact in a
+        multi-artifact deliverable simply in order to correctly reflect the effective content
+        differences.</p>
+      <p><b>Specific Use Cases</b></p>
+      <ol id="ol_lj1_pcf_5fb">
+        <li>Determine, directly or indirectly, a specific deliverable anchor for a topic as used by
+          a specific topicref.</li>
+        <li>As a map author, indicate whether or not a given use of a topic should result in a
+          separate deliverable artifact when it is not the only use of the topic within the
+          publication.</li>
+        <li>As a map author, indicate whether or not a topichead should be treated as though it were
+          a reference to a title-only topic.</li>
+        <li>As a map author, impose a new short description onto the effective copy of a topic in
+          the context of a specific use of the topic.</li>
+      </ol>
+      <p>Note that the requirement to be able to link to a specific use of a topic is fully
+        satisfied by the use of keys. Thus that is not a requirement of this
+          <xmlatt>copy-to</xmlatt> replacement proposal.</p>
+    </section>
+<section rev="2.0" id="new-terminology">
+      <title>New terminology</title>
+      <dl>
+        <dlentry>
+          <dt><term>publication</term></dt>
+          <dd>The data set represented by the local-scope, normal-role resources used by topicrefs
+            in the map tree rooted at a single root map. This root map represents the publication as
+            a whole. A publication represents a single coordinated set of key spaces and, when
+            considering only fully-resolved key names collected from all key scopes, a single global
+            key space. Because resource-only references to topics never directly result in any
+            deliverable artifact, this discussion is only concerned with normal-role resources.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><term>deliverable anchor</term></dt>
+          <dd>A uniquely-identified location in a deliverable to which links can be made, e.g., an
+            element with an ID in HTML, a named anchor in PDF, a specific HTML file, or a specific
+            directory from which a specific file will be loaded by convention.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><term>deliverable artifact</term></dt>
+          <dd>A specific component file (or equivalent storage object) of a deliverable, e.g., a
+            separate HTML file in an HTML-based deliverable. In most, if not all cases, artifacts
+            also serve as anchors but an artifact may have separate anchors associated with it (for
+            example, in an HTML-based online help system that maps "help IDs" to the appropriate
+            HTML files or anchors within HTML files).</dd>
+        </dlentry>
+      </dl>
+    </section>
+  <section>
+   <title>Proposed solution</title>
+      <ul id="ul_wkm_1x4_xgb">
+        <li>
+          <p>Remove the <xmlatt>copy-to</xmlatt> attribute.</p>
+        </li>
+        <li>Add new attribute <xmlatt>impose-shortdesc</xmlatt> to topicref, with the possible
+          values "<keyword>impose</keyword>", "no-impose", and "-use-conref-target", with the
+          default being "no-impose". (See related proposal to rename <xmlatt>locktitle</xmlatt>.)
+          When <xmlatt>impose-shortedesc</xmlatt> has a value of "<keyword>impose</keyword>" the
+          delivered result SHOULD reflect an effective copy of the referenced topic with any short
+          description replaced by the short description in the topicref. If the topicref does not
+          have a short description, any short description in the topic is removed.<note>The behavior
+            of <xmlatt>copy-to</xmlatt> also imposing a short description on the copied topic has
+            been in DITA since 1.0 but is not implemented in the Open Toolkit. Testing with 1.8.5
+            and 3.3 the imposed short description is reflected in generated navigation (as required
+            for shortdesc in topicrefs generally) but is not reflected in the copied topic
+              itself.<p>So there is an open question for DITA 2.0 as to whether this is a behavior
+              we need to actually maintain or if we should just drop it. Given that the Open Toolkit
+              does not implement an argument can be made that few, if any, users are actually using
+              this feature. There are other ways to get variable values for short descriptions in a
+              specific use context, including key references and content references that are
+              effected by key scopes and branch filtering. </p></note></li>
+        <li>The processing requirements for <xmlatt>chunk</xmlatt> related to the presence of
+            <xmlatt>copy-to</xmlatt> must be removed or redefined to reflect the appropriate
+          mechanism, if any. This should be addressed in the separate chunking rework proposal. It
+          is likely that the language added in DITA 1.2 around the implications of
+            <xmlatt>copy-to</xmlatt> on topic heads and the implication for the generation of
+          title-only topics was a Bad Idea and should simply be removed from DITA 2.0.</li>
+        <li>Define a new processing expectation for keys such that processors should, by default,
+          use key names on normal-role topicrefs to topics as the primary basis for constructing
+          anchors in deliverables. This processing expectation should emphasize the need to provide
+          clear and predictable mapping from keys to anchors such that authors can have reasonable
+          control over anchor generation based on how they define their keys. In particular, the
+          same map processed with the same filtering and runtime conditions by a given processor
+          should result in the same result anchors for a given deliverable and those anchors should
+          reflect keys as much as possible. </li>
+        <li>Define a new processing expectation for multi-artifact deliverable production to the
+          effect that tools should provide configuration options to control whether multiple
+          references to the same topic should or should not result in distinct result artifacts,
+          possibly, but not necessarily, influenced by whether or not such uses also have distinct
+          keys. That is, some authors may want to always have distinct result artifacts (i.e., the
+          Open Toolkit's "prefer unique" option) while other authors may want to avoid multiple
+          artifacts as much as possible, even when a given topic is used multiple times with unique
+          keys for each use. This could be through the use of processor-defined
+            <xmlatt>outputclass</xmlatt> values on topic references where a global setting is not
+          sufficient to express author intent.</li>
+        <li>Add a new non-normative appendix that describes the general issues around anchor
+          generation and management for the benefit of tool implementors, outlining the various
+          practical challenges and different ways that tools can approach them. This appendix could
+          reflect much of the history and technical background provided in this proposal.</li>
+      </ul>
+  </section>
+<section><title>Benefits</title><p>
+        <dl>
+          <dlentry>
+            <dt>Who will benefit from this feature?</dt>
+            <dd>
+              <ul id="ul_vwf_mgp_xgb">
+                <li>Tool vendors who no longer need to account for the effect of
+                    <xmlatt>copy-to</xmlatt>.</li>
+                <li>Authors who no longer need to use <xmlatt>copy-to</xmlatt> simply to achieve a
+                  processor-specific, deliverable-specific result.</li>
+              </ul>
+            </dd>
+          </dlentry>
+          <dlentry>
+            <dt>What is the expected benefit?</dt>
+            <dd>
+              <ul id="ul_ubc_pgp_xgb">
+                <li>Simplification of the DITA specification by removing a problematic and redundant
+                  feature.</li>
+                <li>Providing, through guidance to implementors, richer and more consistent
+                  facilities for managing the anchors in deliverables generated from DITA
+                  source.</li>
+              </ul>
+            </dd>
+          </dlentry>
+          <dlentry>
+            <dt>How many people probably will make use of this feature?</dt>
+            <dd>Many, if not, most users of DITA need to manage anchors. Thus, clarifying the
+              potential for and expectations around anchor generation based on the use of keys
+              should be of benefit to almost all DITA users.</dd>
+          </dlentry>
+          <dlentry>
+            <dt>How much of a positive impact is expected for the users who will make use of the
+              feature?</dt>
+            <dd>This should be a significant positive impact for DITA users who currently depend on
+              the use of <xmlatt>copy-to</xmlatt> or otherwise struggle to manage the anchors in
+              their generated deliverables.</dd>
+          </dlentry>
+        </dl>
+      </p></section>
+<section><title>Technical requirements</title>
+   <note type="important">This section must be complete in order for the proposal to be
+    approved.</note>
+      <p>Remove the declaration of the <xmlatt>copy-to</xmlatt> attribute from the following
+          groups:<ul id="ul_onr_hhp_xgb">
+          <li>topichead.attributes (<filepath>mapGroupDomain.rng)</filepath></li>
+          <li>anchorref.attributes (<filepath>mapGroupDomain.rng)</filepath></li>
+          <li>mapref.attributes (<filepath>mapGroupDomain.rng)</filepath></li>
+          <li>keydef.attributes (<filepath>mapGroupDomain.rng)</filepath></li>
+          <li>topicref.attributes (<filepath>mapMod.rng)</filepath></li>
+        </ul></p><p>
+        <dl>
+          <dlentry>
+            <dt>Processing impact</dt>
+            <dd>
+              <p>The removal of <xmlatt>copy-to</xmlatt> should not require a change to any
+                processor.</p>
+              <p>Processors that currently handle <xmlatt>copy-to</xmlatt> can remove or disable
+                that code if desired.</p>
+              <p>Processors may need to add new features to enable appropriate anchor generation
+                based on the use of keys or other author-provided hints
+                  (<xmlatt>outputclass</xmlatt> values, new runtime parameters, etc.).</p>
+            </dd>
+          </dlentry>
+        </dl>
+        <dl>
+          <dlentry>
+            <dt>Overall usability</dt>
+            <dd>Documents that currently use <xmlatt>copy-to</xmlatt> will need to be migrated to
+              replace <xmlatt>copy-to</xmlatt> with the appropriate replacement, usually the use of
+              unique keys for each use of a topic where <xmlatt>copy-to</xmlatt> was previously used
+              to distinguish different uses of the topic and for which there are direct URI
+              references to the effective source file defined by <xmlatt>copy-to</xmlatt>.</dd>
+          </dlentry>
+        </dl>
+      </p></section>
+<section rev="2.0">
+<title>Backwards compatibility</title>
+<p>DITA 2.0 is the first DITA release that is open to changes affecting backwards compatibility. To
+help highlight any impact, does this proposal involve any of the following?</p>
+<dl>
+<dlentry>
+<dt>Was this change previously announced in an earlier version of DITA?</dt>
+<dd>No. The <xmlatt>copy-to</xmlatt> attribute was not marked as "deprecated" in DITA 1.x.</dd>
+</dlentry>
+<dlentry>
+<dt>Removing a document type that was shipped in DITA 1.3?</dt>
+<dd>No.</dd>
+</dlentry>
+<dlentry>
+<dt>Removing a domain that was shipped in DITA 1.3?</dt>
+<dd>No.</dd>
+</dlentry>
+<dlentry>
+<dt>Removing a domain from a document type shell was shipped in DITA 1.3?</dt>
+<dd>No.</dd>
+</dlentry>
+<dlentry>
+<dt>Removing or renaming an element that was shipped in DITA 1.3?</dt>
+<dd>No.</dd>
+</dlentry>
+<dlentry>
+<dt>Removing or renaming an attribute that was shipped in DITA 1.3?</dt>
+<dd>Yes: <xmlatt>copy-to</xmlatt>.</dd>
+</dlentry>
+<dlentry>
+<dt>Changing the meaning of an element or attribute in a way that would disallow existing
+usage?</dt>
+<dd>No.</dd>
+</dlentry>
+<dlentry>
+<dt>Changing a content model by removing something that was previously allowed, or by requiring
+something that was not?</dt>
+<dd>No.</dd>
+</dlentry>
+<dlentry>
+<dt>Changing specialization ancestry?</dt>
+<dd>No.</dd>
+</dlentry>
+<dlentry>
+<dt>Removing or replacing a processing feature that was defined in DITA 1.3?</dt>
+<dd>This change removes the ability to <i>directly</i> define the effective filename of a referenced
+            topic. However, processors are encouraged to use <xmlatt>keys</xmlatt> values for that
+            where appropriate or necessary (for example, to determine the filename of HTML files
+            resulting from referenced topics).<p>May remove the current (likely unused) ability to
+              impose short descriptions onto effective copies of topics.</p></dd>
+</dlentry>
+<dlentry>
+<dt>Are element or attribute groups being renamed or shuffled?</dt>
+<dd>No.</dd>
+</dlentry>
+</dl>
+</section>
+<section rev="2.0">
+<title>Migration plan</title>
+<p>If the answer to any question in the previous section is "yes":</p>
+<dl>
+<dlentry>
+<dt>Might any existing documents need to be migrated?</dt>
+<dd>Maps that use <xmlatt>copy-to</xmlatt> will need to be migrated. Migration actions may
+              include:<ul id="ul_vj5_s3p_xgb">
+              <li>The <xmlatt>copy-to</xmlatt> attributes must be removed.</li>
+              <li>If a topicref that used <xmlatt>copy-to</xmlatt> does not already have a unique
+                key associated with it, it will likely be necessary to assign a unique key to the
+                topicref, especially if the topic is a target of a direct URI reference to the
+                effective filename defined by the <xmlatt>copy-to</xmlatt> attribute. For example, a
+                migration tool can use the <xmlatt>@copy-to</xmlatt> value as a new or additional
+                value for <xmlatt>keys</xmlatt>, possibly removing any extension in the
+                  <xmlatt>copy-to</xmlatt> value (i.e., removing ".dita" and then using the result
+                as a new <xmlatt>keys</xmlatt> value).</li>
+              <li>Cross references or content references that make direct URI references
+                  (<xmlatt>@href</xmlatt>, <xmlatt>conref</xmlatt>) to the effective filenames
+                defined by <xmlatt>copy-to</xmlatt> attributes must be updated to address the
+                appropriate resource, normally the unique key of the topicref. For example, a
+                migration tool could simply use the target filename as the <xmlatt>keyref</xmlatt>
+                or <xmlatt>conkeyref</xmlatt> value, assuming that the migration tool also uses the
+                  <xmlatt>copy-to</xmlatt> value as a new value for <xmlatt>keys</xmlatt>.</li>
+            </ul></dd>
+</dlentry>
+<dlentry>
+<dt>Might any existing processors or implementations need to change their expectations?</dt>
+<dd>
+            <p>Processors that depend on or expect the use of <xmlatt>copy-to</xmlatt>, for example
+              to signal the generation of distinct artifacts from that use of a topic, will need to
+              provide other ways to provide that signal, such as rules associated with the use of
+              keys or <xmlatt>outputclass</xmlatt> values.</p>
+          </dd>
+</dlentry>
+<dlentry>
+<dt>Might any existing specialization or constraint modules need to be migrated?</dt>
+<dd>
+            <p>Existing specialization or constrain modules that declare the
+                <xmlatt>copy-to</xmlatt> attribute will need to remove the attribute
+              declaration.</p>
+          </dd>
+</dlentry>
+</dl>
+</section>
+  <section>
+   <title>Costs</title>
+   <p>Outline the impact (time and effort) of the feature on the following groups.</p>
+<dl>
+<dlentry>
+<dt>Maintainers of the grammar files</dt>
+<dd>Trivial.</dd>
+</dlentry>
+<dlentry>
+<dt>Editors of the DITA specification</dt>
+<dd>
+<ul>
+<li>How many new topics will be required? At least one topic to document the new processing
+                expectations. Possibly more for an explanatory appendix.</li>
+<li>Which existing topics will need to be edited?<p>Eight topics in the architecture spec:</p><ul
+                  id="ul_h4w_jwp_xgb">
+                  <li><filepath>chunkingdetails.dita</filepath> has rules involving
+                      <xmlatt>copy-to</xmlatt> in the discussion of rules for chunking. To the
+                    degree that these rules survive the separate chunking rework, this topic will
+                    need to be updated to remove references to <xmlatt>copy-to</xmlatt>.</li>
+                  <li><filepath>chunkingexamples.dita</filepath> examples include those with
+                      <xmlatt>copy-to</xmlatt>. They will need to be reworked as appropriate.</li>
+                  <li><filepath>ditamap-attributes.dita</filepath> has a definition of the
+                      <xmlatt>copy-to</xmlatt> attribute. It will need to be removed.</li>
+                  <li><filepath>dtd-coding-element-types.dita</filepath> and
+                      <filepath>reconciling-topic-and-map-metadata.dita</filepath> show example
+                    attribute list declarations that includes <xmlatt>copy-to</xmlatt>.</li>
+                  <li><filepath>metadata-in-maps-and-topics.dita</filepath> has a statement about
+                    maps being allowed to (MAY) override topic short descriptions if
+                      <xmlatt>copy-to</xmlatt> is specified. Replace the <xmlatt>copy-to</xmlatt>
+                    language with reference to the new <xmlatt>impose-shortdesc</xmlatt> attribute. </li>
+                  <li><filepath>processing-key-references-general.dita</filepath> mentions
+                      <xmlatt>copy-to</xmlatt> under the section title "Reusing a topic in multiple
+                    key scopes". This statement needs to be revised to reflect the general
+                    processing expectation of using keys to determine deliverable anchors.</li>
+                  <li><filepath>reconciling-topic-and-map-metadata.dita</filepath> has an entry for
+                      <xmlelement>shortdesc</xmlelement> that refers to the same implication for
+                    shortdesc replacement when <xmlatt>copy-to</xmlatt> is specified similar to the
+                    statement in <filepath>metadata-in-maps-and-topics.dita</filepath>. Will need to
+                    be revised to reflect the new <xmlatt>impose-shortdesc</xmlatt> attribute.</li>
+                </ul><p>Five topics in the language reference (not counting topics that reflect
+                  generated attribute lists):</p><ul id="ul_kqy_nzp_xgb">
+                  <li><filepath>dvrResourcePrefix.dita</filepath> and
+                      <filepath>dvrResourceSuffix.dita</filepath> use the reusable phrase
+                    "ditavalref-copyto" from <filepath>conref-file.dita</filepath>. The statement is
+                    not relevant to these elements with the removal of <xmlatt>copy-to</xmlatt>.
+                    However, it is probably appropriate to say something about how prefix and suffix
+                    can affect anchor generation (namely, that the prefix and suffix should be used
+                    as appropriate when constructing deliverable anchors). These topics also refer
+                    to the renaming rules for <xmlatt>copy-to</xmlatt>.</li>
+                  <li><filepath>topicrefElementAttributes.dita</filepath> defines the
+                      <xmlatt>copy-to</xmlatt> attribute.</li>
+                  <li><filepath>abstract.dita</filepath> refers to the potential for
+                      <xmlatt>copy-to</xmlatt> to impose a short description.</li>
+                  <li><filepath>shortdesc.dita</filepath> refers to the implication for
+                      <xmlatt>copy-to</xmlatt> on the imposition of short descriptions.</li>
+                </ul><p>The non-normative appendix
+                    <filepath>interoperability-considerations.dita</filepath> has a section on the
+                  implications for <xmlatt>copy-to</xmlatt>. That section can be removed.</p></li>
+<li>Will the feature require substantial changes to the information architecture of the DITA
+                specification? If so, what?<p>No substantial change.</p></li>
+<li rev="2.0">If there is new terminology, is it likely to conflict with any usage of those terms in
+                the existing specification?<p>New terminology should not conflict with existing
+                  terminology.</p></li>
+</ul>
+</dd>
+</dlentry>
+<dlentry>
+<dt>Vendors of tools</dt>
+<dd>Tool vendors will need to adjust their processors to not depend on the use of
+              <xmlatt>copy-to</xmlatt> and, if necessary, provide additional features that give
+            users the appropriate control over deliverable anchors.</dd>
+</dlentry>
+<dlentry>
+<dt>DITA community-at-large</dt>
+<dd>
+<ul>
+<li>Will this feature add to the perception that DITA is becoming too complex?<p>Since we are
+                  removing a confusing attribute, it should reduce the perceived
+                complexity.</p></li>
+<li>Will it be simple for end users to understand?<p>Hard to say as the implications of reuse are
+                  always challenging and this change exposes some inherent challenges around
+                  managing references to and anchors for reused content. The challenges have always
+                  been present (they are inherent in any system that provides DITA's level of reuse)
+                  but have not always been obvious.</p></li>
+<li rev="2.0">If the feature breaks backwards compatibility, how many documents are likely to be
+                affected, and what is the cost of migration?<p>There are probably a fairly large
+                  number of documents that use <xmlatt>copy-to</xmlatt>. They will all need to be
+                  migrated. In the simple case the migration is a simple use of the
+                    <xmlatt>copy-to</xmlatt> value as a <xmlatt>keys</xmlatt> value with a
+                  corresponding change to any references to the topic. Some migration scenarios will
+                  be more involved, but in those cases it is likely that a deeper consideration of
+                  the information architecture was required in any case.</p></li>
+</ul>
+</dd>
+</dlentry>
+<dlentry>
+<dt>Producing migration instructions or tools</dt>
+<dd>
+<ul>
+<li>How extensive will migration instructions be, if it is integrated into an overall 1.3 → 2.0
+                migration publication or white paper?<p>Migration instructions should be fairly
+                  short, as evidenced above. They can be included in a migration
+                whitepaper.</p></li>
+<li>Will this require an independent white paper or other publication to provide migration
+                  details?<p>No.</p></li>
+<li>Do migration tools need to be created before this change can be made? If so, how complex will
+                those tools be to create and to use?<p>No.</p></li>
+</ul>
+</dd>
+</dlentry>
+</dl>
+  </section>
+<section><title>Examples</title>
+      <p rev="2.0"
+        >Before:<codeblock>Root map:
+
+&lt;map>
+ &lt;title>Reused Topics Test 01&lt;/title>
+  &lt;topicref href="reuse_with_copy_to_01.dita">
+    &lt;topicref href="topic_a.dita"/>
+    &lt;topicref href="topic_b.dita"/>
+    &lt;topicref href="topic_c.dita"/>
+    &lt;topicref href="topic_a.dita" copy-to="topic_a-use-02.dita" >
+      &lt;topicmeta>
+        &lt;navtitle>Topic A Second Use&lt;/navtitle>
+      &lt;/topicmeta>
+    &lt;/topicref>
+    &lt;topicref href="topic_a.dita" copy-to="topic_a-use-03.dita" >
+      &lt;topicmeta>
+        &lt;navtitle>Topic A Third Use locktitle not specified&lt;/navtitle>
+      &lt;/topicmeta>
+    &lt;/topicref>
+    &lt;topicref href="topic_a.dita" copy-to="topic_a-use-04.dita" >
+      &lt;topicmeta>
+        &lt;navtitle>Topic A Fourth Use Imposed Shortdesc&lt;/navtitle>
+        &lt;shortdesc>Topic A fourth use shortdesc imposed by topicref.&lt;/shortdesc>
+      &lt;/topicmeta>
+    &lt;/topicref>
+  &lt;/topicref>
+&lt;/map>
+
+Topic that links to copy-to versions of topics:
+
+&lt;topic id="topic_b"> 
+  &lt;title>Topic B&lt;/title> 
+  &lt;body> 
+    &lt;p>Link to URI "topic_a.dita": 
+      &lt;xref href="topic_a.dita"/>
+    &lt;/p> 
+    &lt;p>Link to URI "topic_a-use-02.dita": 
+      &lt;xref href="topic_a-use-02.dita"/>
+    &lt;/p> 
+    &lt;p>Link to URI "topic_a-use-02.dita (no fragment ID)": 
+      &lt;xref href="topic_a-use-02.dita"/>
+    &lt;/p> 
+    &lt;p>Link to URI "topic_a-use-03.dita": 
+      &lt;xref href="topic_a-use-03.dita#topic_a"/>
+    &lt;/p> 
+    &lt;p>Link to URI "topic_a-use-04.dita": 
+      &lt;xref href="topic_a-use-04.dita#topic_a"/>
+    &lt;/p> 
+  &lt;/body>
+&lt;/topic></codeblock></p>
+<p rev="2.0">After (<xmlatt>copy-to</xmlatt> replaced with keys, <xmlatt>href</xmlatt> on
+          <xmlelement>xref</xmlelement> replaced by
+        <xmlatt>keyref</xmlatt>):<codeblock>Root map:
+
+&lt;map>
+ &lt;title>Reused Topics Test 01&lt;/title>
+  &lt;topicref href="reuse_with_copy_to_01.dita">
+    &lt;topicref href="topic_a.dita" keys="topic_a"/>
+    &lt;topicref href="topic_b.dita" keys="topic_b"/>
+    &lt;topicref href="topic_c.dita" keys="topic_c"/>
+    &lt;topicref href="topic_a.dita" keys="topic_a-use-02" >
+      &lt;topicmeta>
+        &lt;navtitle>Topic A Second Use&lt;/navtitle>
+      &lt;/topicmeta>
+    &lt;/topicref>
+    &lt;topicref href="topic_a.dita" keys="topic_a-use-03" >
+      &lt;topicmeta>
+        &lt;navtitle>Topic A Third Use locktitle not specified&lt;/navtitle>
+      &lt;/topicmeta>
+    &lt;/topicref>
+    &lt;topicref href="topic_a.dita" keys="topic_a-use-04" >
+      &lt;topicmeta>
+        &lt;navtitle>Topic A Fourth Use Imposed Shortdesc&lt;/navtitle>
+        &lt;shortdesc>Topic A fourth use shortdesc imposed by topicref.&lt;/shortdesc>
+      &lt;/topicmeta>
+    &lt;/topicref>
+  &lt;/topicref>
+&lt;/map>
+
+Topic that links to specific uses of topic_a:
+
+&lt;topic id="topic_b"> 
+  &lt;title>Topic B&lt;/title> 
+  &lt;body> 
+    &lt;p>Link to key "topic_a": 
+      &lt;xref keyref="topic_a"/>
+    &lt;/p> 
+    &lt;p>Link to key "topic_a-use-02": 
+      &lt;xref keyref="topic_a-use-02"/>
+    &lt;/p> 
+    &lt;p>Link to key "topic_a-use-03": 
+      &lt;xref keyref="topic_a-use-03"/>
+    &lt;/p> 
+    &lt;p>Link to key "topic_a-use-04": 
+      &lt;xref keyref="topic_a-use-04"/>
+    &lt;/p> 
+  &lt;/body>
+&lt;/topic></codeblock></p></section>
+</refbody>
+</reference><?Pub Caret -3?>
+<?Pub *0000003625?>

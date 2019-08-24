@@ -17,8 +17,7 @@
             <li>Have no text content<ph >, including white space</ph></li>
             <li>Have no
                 sub-elements<!--<draft-comment author="robander" time="September 16 2014" disposition="historic">There is a recognized edge case that could confuse processors. What if my specialization has a required kid. For validity, I must include that kid. (Same issue tends to come up with conref on something like &lt;step> or &lt;table>). For example, if I have an image with required &lt;alt> child, to be valid it must be: &lt;myImage keyref="a">&lt;alt/>&lt;/myImage>. This can never be empty, thus can never pull the alt-text along with @href. <p>Not sure what the alternative is though. Originally considered text: "Have no sub-elements that contain text or result in text". But as Chris pointed out this is troublesome - how can a processor know if a child element will result in text? Will &lt;myData/> result in text? What if it results in text for PDF but not HTML - then does my effective content get pulled from the key for one and not the other? What if you have &lt;keyword> child with @conref, but @conref doesn't resolve or pulls nothing? In that case again we have something that may be empty now but resolve later. So, for now using the much simpler "no sub-elements" rule, while recognizing that the edge case exists.</p></draft-comment>--></li>
-            <li>Have no attributes that would be used as text content (such as <xmlatt>alt</xmlatt>
-                on the <xmlelement>image</xmlelement> element)</li>
+            <li>Have no attributes that would be used as text content</li>
         </ul>
         <p >When an empty element as defined above references a key definition that
             has a child <xmlelement>topicmeta</xmlelement> element, content from that
@@ -47,15 +46,9 @@
                     for <xmlelement>param</xmlelement> elements.</ph></li>
             <li>The <xmlelement>indextermref</xmlelement> element is not completely defined, so
                 determining effective content for this element is also left undefined.</li>
-            <li product="technicalContent">The <xmlelement>abbreviated-form</xmlelement>
-                <ph >element is an empty element with special rules that
-                    determine its effective content.</ph></li>
         </ul>
         <p>Effective text content is determined using the following set of rules:</p>
         <ol>
-            <li product="technicalContent">For the <xmlelement>abbreviated-form</xmlelement>
-                element, see the rules described in <xref
-                    href="../../langRef/technicalContent/abbreviated-form.dita"/></li>
             <li >For elements that also exist as a child of
                     <xmlelement>topicmeta</xmlelement> in the key definition, effective content is
                 taken from the first matching direct child of <xmlelement>topicmeta</xmlelement>.

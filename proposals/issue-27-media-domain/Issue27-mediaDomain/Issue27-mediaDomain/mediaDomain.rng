@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+                         schematypens="http://relaxng.org/ns/structure/1.0"?>
+<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:dita="http://dita.oasis-open.org/architecture/2005/"
+  xmlns="http://relaxng.org/ns/structure/1.0">
+  <moduleDesc xmlns="http://dita.oasis-open.org/architecture/2005/">
+    <moduleTitle>DITA Media Domain</moduleTitle>
+    <headerComment xml:space="preserve"><![CDATA[
+ ============================================================= 
+                    HEADER                                     
+ ============================================================= 
+  MODULE:    DITA Media Domain                             
+  VERSION:   2.0                                                
+  DATE:      April 2018                                      
+                                                               
+ ============================================================= 
+
+ =============================================================      
+ ]]></headerComment>
+    <moduleMetadata>
+      <moduleType>elementdomain</moduleType>
+      <moduleShortName>media-d</moduleShortName>
+      <modulePublicIds>
+        <dtdMod>-//OASIS//ELEMENTS DITA<var presep=" " name="ditaver"/> Media Domain//EN</dtdMod>
+        <dtdEnt>-//OASIS//ENTITIES DITA<var presep=" " name="ditaver"/> Media Domain//EN</dtdEnt>
+        <xsdMod>urn:oasis:names:tc:dita:xsd:mediaDomain.xsd<var presep=":" name="ditaver"/></xsdMod>
+        <rncMod>urn:oasis:names:tc:dita:rnc:mediaDomain.rnc<var presep=":" name="ditaver"/></rncMod>
+        <rngMod>urn:oasis:names:tc:dita:rng:mediaDomain.rng<var presep=":" name="ditaver"/></rngMod>
+      </modulePublicIds>
+      <domainsContribution>(topic media-d)</domainsContribution>
+    </moduleMetadata>
+  </moduleDesc>
+  <div>
+    <a:documentation>DOMAIN EXTENSION PATTERNS</a:documentation>
+    <define name="media-d-object">
+      <choice>
+        <ref name="video.element"/>
+        <ref name="audio.element"/>
+      </choice>
+    </define>
+    <define name="object" combine="choice">
+      <ref name="media-d-object"/>
+    </define>
+  </div>
+  
+  <div>
+    <a:documentation xml:space="preserve"> LONG NAME: Video object reference </a:documentation>
+    <define name="video.content">
+      <optional>
+        <ref name="desc"/>
+      </optional>
+      <optional>
+        <ref name="longdescref"/>
+      </optional>
+      <optional>
+        <ref name="fallback"/>
+      </optional>
+      <optional>
+        <ref name="video-poster"/>
+      </optional>
+      <optional>
+        <ref name="media-controls"/>
+      </optional>
+      <optional>
+        <ref name="media-autoplay"/>
+      </optional>
+      <optional>
+        <ref name="media-loop"/>
+      </optional>
+      <optional>
+        <ref name="media-muted"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="media-source"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="media-track"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="param"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="foreign.unknown.incl"/>
+      </zeroOrMore>
+    </define>
+    <define name="video.attributes">
+      <optional>
+        <attribute name="data"/>
+      </optional>
+      <optional>
+        <attribute name="datakeyref"/>
+      </optional>
+      <optional>
+        <attribute name="type"/>
+      </optional>
+      <optional>
+        <attribute name="height">
+          <data type="NMTOKEN"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="width">
+          <data type="NMTOKEN"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="tabindex">
+          <data type="NMTOKEN"/>
+        </attribute>
+      </optional>
+      <ref name="univ-atts"/>
+      <optional>
+        <attribute name="outputclass"/>
+      </optional>
+    </define>
+    <define name="video.element">
+      <element name="video" dita:longName="Video object reference">
+        <a:documentation>DITA's &lt;video> element corresponds to the HTML &lt;video> element.
+          Category: Body elements</a:documentation>
+        <ref name="video.attlist"/>
+        <ref name="video.content"/>
+      </element>
+    </define>
+    <define name="video.attlist" combine="interleave">
+      <ref name="video.attributes"/>
+    </define>
+  </div>
+
+  <div>
+    <a:documentation xml:space="preserve"> LONG NAME: Audo object reference </a:documentation>
+    <define name="audio.content">
+      <optional>
+        <ref name="desc"/>
+      </optional>
+      <optional>
+        <ref name="longdescref"/>
+      </optional>
+      <optional>
+        <ref name="fallback"/>
+      </optional>
+      <optional>
+        <ref name="media-controls"/>
+      </optional>
+      <optional>
+        <ref name="media-autoplay"/>
+      </optional>
+      <optional>
+        <ref name="media-loop"/>
+      </optional>
+      <optional>
+        <ref name="media-muted"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="media-source"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="media-track"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="param"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="foreign.unknown.incl"/>
+      </zeroOrMore>
+    </define>
+    <define name="audio.attributes">
+      <optional>
+        <attribute name="data"/>
+      </optional>
+      <optional>
+        <attribute name="datakeyref"/>
+      </optional>
+      <optional>
+        <attribute name="type"/>
+      </optional>
+      <optional>
+        <attribute name="tabindex">
+          <data type="NMTOKEN"/>
+        </attribute>
+      </optional>
+      <ref name="univ-atts"/>
+      <optional>
+        <attribute name="outputclass"/>
+      </optional>
+    </define>
+    <define name="audio.element">
+      <element name="audio" dita:longName="Audio object reference">
+        <a:documentation>DITA's &lt;audio> element corresponds to the HTML &lt;audio> element.
+          Category: Body elements</a:documentation>
+        <ref name="audio.attlist"/>
+        <ref name="audio.content"/>
+      </element>
+    </define>
+    <define name="audio.attlist" combine="interleave">
+      <ref name="audio.attributes"/>
+    </define>
+  </div>
+  
+  <div>
+    <a:documentation xml:space="preserve"> LONG NAME: Media control configuration </a:documentation>
+    <define name="media-controls.content">
+      <empty/>
+    </define>
+    <define name="media-controls.attributes">
+      <optional>
+        <attribute name="name" a:defaultValue="controls">
+          <value>controls</value>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="value" a:defaultValue="true">
+          <choice>
+            <value>true</value>
+            <value>false</value>
+            <value>-dita-use-conref-target</value>
+          </choice>
+        </attribute>
+      </optional>
+      <ref name="univ-atts"/>
+    </define>
+    <define name="media-controls.element">
+      <element name="media-controls" dita:longName="Audio object reference">
+        <a:documentation>DITA's &lt;media-controls> element corresponds to the HTML @media attribute on &lt;video> and &lt;audio> elements.</a:documentation>
+        <ref name="media-controls.attlist"/>
+        <ref name="media-controls.content"/>
+      </element>
+    </define>
+    <define name="media-controls.attlist" combine="interleave">
+      <ref name="media-controls.attributes"/>
+    </define>
+  </div>
+  
+  <div>
+    <a:documentation xml:space="preserve"> LONG NAME: Media autoplay configuration </a:documentation>
+    <define name="media-autoplay.content">
+      <empty/>
+    </define>
+    <define name="media-autoplay.attributes">
+      <optional>
+        <attribute name="name" a:defaultValue="autoplay">
+          <value>autoplay</value>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="value" a:defaultValue="true">
+          <choice>
+            <value>true</value>
+            <value>false</value>
+            <value>-dita-use-conref-target</value>
+          </choice>
+        </attribute>
+      </optional>
+      <ref name="univ-atts"/>
+    </define>
+    <define name="media-autoplay.element">
+      <element name="media-autoplay" dita:longName="Audio object reference">
+        <a:documentation>DITA's &lt;media-autoplay> element corresponds to the HTML @autoplay attribute on &lt;video> and &lt;audio> elements.</a:documentation>
+        <ref name="media-autoplay.attlist"/>
+        <ref name="media-autoplay.content"/>
+      </element>
+    </define>
+    <define name="media-autoplay.attlist" combine="interleave">
+      <ref name="media-autoplay.attributes"/>
+    </define>
+  </div>
+  
+  <div>
+    <a:documentation xml:space="preserve"> LONG NAME: Media loop configuration </a:documentation>
+    <define name="media-loop.content">
+      <empty/>
+    </define>
+    <define name="media-loop.attributes">
+      <optional>
+        <attribute name="name" a:defaultValue="loop">
+          <value>loop</value>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="value" a:defaultValue="true">
+          <choice>
+            <value>true</value>
+            <value>false</value>
+            <value>-dita-use-conref-target</value>
+          </choice>
+        </attribute>
+      </optional>
+      <ref name="univ-atts"/>
+    </define>
+    <define name="media-loop.element">
+      <element name="media-loop" dita:longName="Audio object reference">
+        <a:documentation>DITA's &lt;media-loop> element corresponds to the HTML @loop attribute on &lt;video> and &lt;audio> elements.</a:documentation>
+        <ref name="media-loop.attlist"/>
+        <ref name="media-loop.content"/>
+      </element>
+    </define>
+    <define name="media-loop.attlist" combine="interleave">
+      <ref name="media-loop.attributes"/>
+    </define>
+  </div>
+  
+  <div>
+    <a:documentation xml:space="preserve"> LONG NAME: Media mute configuration </a:documentation>
+    <define name="media-muted.content">
+      <empty/>
+    </define>
+    <define name="media-muted.attributes">
+      <optional>
+        <attribute name="name" a:defaultValue="muted">
+          <value>muted</value>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="value" a:defaultValue="true">
+          <choice>
+            <value>true</value>
+            <value>false</value>
+            <value>-dita-use-conref-target</value>
+          </choice>
+        </attribute>
+      </optional>
+      <ref name="univ-atts"/>
+    </define>
+    <define name="media-muted.element">
+      <element name="media-muted" dita:longName="Audio object reference">
+        <a:documentation>DITA's &lt;media-muted> element corresponds to the HTML @muted attribute on &lt;video> and &lt;audio> elements.</a:documentation>
+        <ref name="media-muted.attlist"/>
+        <ref name="media-muted.content"/>
+      </element>
+    </define>
+    <define name="media-muted.attlist" combine="interleave">
+      <ref name="media-muted.attributes"/>
+    </define>
+  </div>
+  
+  <div>
+    <a:documentation xml:space="preserve"> LONG NAME: Media source </a:documentation>
+    <define name="media-source.content">
+      <empty/>
+    </define>
+    <define name="media-source.attributes">
+      <optional>
+        <attribute name="name" a:defaultValue="source">
+          <value>source</value>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="value"/>
+      </optional>
+      <optional>
+        <attribute name="valuetype" a:defaultValue="ref">
+          <value>ref</value>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="type"/>
+      </optional>
+      <optional>
+        <attribute name="keyref"/>
+      </optional>
+      <ref name="univ-atts"/>
+    </define>
+    <define name="media-source.element">
+      <element name="media-source" dita:longName="Audio object reference">
+        <a:documentation>DITA's &lt;media-source> element corresponds to the HTML &lt;source> element within &lt;video> and &lt;audio> elements.</a:documentation>
+        <ref name="media-source.attlist"/>
+        <ref name="media-source.content"/>
+      </element>
+    </define>
+    <define name="media-source.attlist" combine="interleave">
+      <ref name="media-source.attributes"/>
+    </define>
+  </div>
+  
+  <div>
+    <a:documentation xml:space="preserve"> LONG NAME: Media track </a:documentation>
+    <define name="media-track.content">
+      <empty/>
+    </define>
+    <define name="media-track.attributes">
+      <optional>
+        <attribute name="name" a:defaultValue="track">
+          <value>track</value>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="value"/>
+      </optional>
+      <optional>
+        <attribute name="valuetype" a:defaultValue="ref">
+          <value>ref</value>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="type">
+          <choice>
+            <value>subtitles</value>
+            <value>captions</value>
+            <value>descriptions</value>
+            <value>chapters</value>
+            <value>metadata</value>
+            <value>-dita-use-conref-target</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="keyref"/>
+      </optional>
+      <ref name="univ-atts"/>
+    </define>
+    <define name="media-track.element">
+      <element name="media-track" dita:longName="Audio object reference">
+        <a:documentation>DITA's &lt;media-track> element corresponds to the HTML &lt;track> element within &lt;video> and &lt;audio> elements.</a:documentation>
+        <ref name="media-track.attlist"/>
+        <ref name="media-track.content"/>
+      </element>
+    </define>
+    <define name="media-track.attlist" combine="interleave">
+      <ref name="media-track.attributes"/>
+    </define>
+  </div>
+  
+  <div>
+    <a:documentation xml:space="preserve"> LONG NAME: Video poster </a:documentation>
+    <define name="video-poster.content">
+      <empty/>
+    </define>
+    <define name="video-poster.attributes">
+      <optional>
+        <attribute name="name" a:defaultValue="poster">
+          <value>poster</value>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="value"/>
+      </optional>
+      <optional>
+        <attribute name="valuetype" a:defaultValue="ref">
+          <value>ref</value>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="type"/>
+      </optional>
+      <optional>
+        <attribute name="keyref"/>
+      </optional>
+      <ref name="univ-atts"/>
+    </define>
+    <define name="video-poster.element">
+      <element name="video-poster" dita:longName="Audio object reference">
+        <a:documentation>DITA's &lt;video-poster> element corresponds to the HTML &lt;track> element within &lt;video> and &lt;audio> elements.</a:documentation>
+        <ref name="video-poster.attlist"/>
+        <ref name="video-poster.content"/>
+      </element>
+    </define>
+    <define name="video-poster.attlist" combine="interleave">
+      <ref name="video-poster.attributes"/>
+    </define>
+  </div>
+  
+  <div>
+    <a:documentation> Specialization attributes. Global attributes and class defaults </a:documentation>
+    <define name="video.attlist" combine="interleave">
+      <ref name="global-atts"/>
+      <optional>
+        <attribute name="class"
+          a:defaultValue="+ topic/object media-d/video "/>
+      </optional>
+    </define>
+    <define name="audio.attlist" combine="interleave">
+      <ref name="global-atts"/>
+      <optional>
+        <attribute name="class"
+          a:defaultValue="+ topic/object media-d/audio "/>
+      </optional>
+    </define>
+    <define name="media-controls.attlist" combine="interleave">
+      <ref name="global-atts"/>
+      <optional>
+        <attribute name="class"
+          a:defaultValue="+ topic/param media-d/media-controls "/>
+      </optional>
+    </define>
+    <define name="media-autoplay.attlist" combine="interleave">
+      <ref name="global-atts"/>
+      <optional>
+        <attribute name="class"
+          a:defaultValue="+ topic/param media-d/media-autoplay "/>
+      </optional>
+    </define>
+    <define name="media-loop.attlist" combine="interleave">
+      <ref name="global-atts"/>
+      <optional>
+        <attribute name="class"
+          a:defaultValue="+ topic/param media-d/media-loop "/>
+      </optional>
+    </define>
+    <define name="media-muted.attlist" combine="interleave">
+      <ref name="global-atts"/>
+      <optional>
+        <attribute name="class"
+          a:defaultValue="+ topic/param media-d/media-muted "/>
+      </optional>
+    </define>
+    <define name="video-poster.attlist" combine="interleave">
+      <ref name="global-atts"/>
+      <optional>
+        <attribute name="class"
+          a:defaultValue="+ topic/param media-d/video-poster "/>
+      </optional>
+    </define>
+    <define name="media-source.attlist" combine="interleave">
+      <ref name="global-atts"/>
+      <optional>
+        <attribute name="class"
+          a:defaultValue="+ topic/param media-d/media-source "/>
+      </optional>
+    </define>
+    <define name="media-track.attlist" combine="interleave">
+      <ref name="global-atts"/>
+      <optional>
+        <attribute name="class"
+          a:defaultValue="+ topic/param media-d/media-track "/>
+      </optional>
+    </define>
+  </div>
+</grammar>

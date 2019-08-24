@@ -20,19 +20,32 @@
     </metadata>
   </prolog>
 <refbody>
-<section id="section-1">Beginning with DITA 1.2, the navtitle can be specified by using a
-        <xmlelement>navtitle</xmlelement> element within the <xmlelement>topicmeta</xmlelement>
-      element, so the <xmlelement>topichead</xmlelement> element no longer requires the
-        <xmlatt>navtitle</xmlatt> attribute. In order to ensure backward compatibility with earlier
-      versions of DITA, the new <xmlelement>navtitle</xmlelement> element is not required. However,
-      a <xmlelement>topichead</xmlelement> element must contain either a <xmlatt>navtitle</xmlatt>
-      attribute or a <xmlelement>topicmeta</xmlelement> element that contains a
-        <xmlelement>navtitle</xmlelement> element. DITA processors <term outputclass="RFC-2119"
-        >SHOULD</term> generate a warning if a navigation title is not
-      specified.</section>
-<section conref="../../common/commonNavLibraryTable.dita#contentmodel-topichead/contains" id="contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>+
-map/topicref mapgroup-d/topichead </p></section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>Beginning with DITA 1.2, the navtitle can be specified by using a
+          <xmlelement>navtitle</xmlelement> element within the <xmlelement>topicmeta</xmlelement>
+        element, so the <xmlelement>topichead</xmlelement> element no longer requires the
+          <xmlatt>navtitle</xmlatt> attribute. In order to ensure backward compatibility with
+        earlier versions of DITA, the new <xmlelement>navtitle</xmlelement> element is not required.
+        However, a <xmlelement>topichead</xmlelement> element must contain either a
+          <xmlatt>navtitle</xmlatt> attribute or a <xmlelement>topicmeta</xmlelement> element that
+        contains a <xmlelement>navtitle</xmlelement> element. DITA processors <term
+          outputclass="RFC-2119">SHOULD</term> generate a warning if a navigation title is not
+        specified.</p>
+    </section>
+    <section id="specialization-hierarchy">
+      <title>Specialization hierarchy</title>
+      <p>+ map/topicref mapgroup-d/topichead </p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref
+keyref="attributes-universal"/>, <xref keyref="attributes-commonMap"
+/> (except for <xmlatt>locktitle</xmlatt>), and <xmlatt>copy-to</xmlatt> from <xref
+keyref="attributes-topicrefElement"/>. This element also uses
+the <xmlatt>scope</xmlatt>, <xmlatt>format</xmlatt>, and <xmlatt>type</xmlatt> attributes from <xref
+keyref="attributes-linkRelationship"/>.</p>
+    </section>
 <example id="example" otherprops="examples"><title>Example</title><p>Note that in the following example, the first <xmlelement>topichead</xmlelement> element uses a
           <xmlelement>navtitle</xmlelement> element to provide the title, while the second
           <xmlelement>topichead</xmlelement> element uses a <xmlatt>navtitle</xmlatt> attribute.
@@ -49,17 +62,6 @@ map/topicref mapgroup-d/topichead </p></section>
     &lt;topicref href="paperback.dita"/>
   <b>&lt;/topichead></b>
 &lt;/map></codeblock></example>
-<section id="attributes"><title>Attributes</title>
-      <p>The following attributes are available on this element: <xref
-          href="../attributes/universalAttributes.dita"/>, <xref
-          href="../attributes/commonMapAttributes.dita"/>, <xmlatt>navtitle</xmlatt> and
-          <xmlatt>copy-to</xmlatt> from <xref
-          href="../attributes/topicrefElementAttributes.dita#topicref-element-atts"/>, and <xref
-          href="../attributes/commonAttributes.dita#common-atts/outputclass"/>. <ph
-          conref="../../common/conref-attribute.dita#conref-attribute/locktitle-no-purpose"/></p>
-      <p>The <xmlatt>scope</xmlatt>, <xmlatt>format</xmlatt>, and <xmlatt>type</xmlatt> attributes
-        from <xref href="../attributes/linkRelationshipAttributes.dita"/> are also available.</p>
-      </section>
 </refbody>
 </reference>
 

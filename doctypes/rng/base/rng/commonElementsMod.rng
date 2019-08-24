@@ -62,7 +62,10 @@ ORIGINAL CREATION DATE:
    2008.02.12 RDA: Modify imbeds to use specific 1.2 version 
    2008.02.12 RDA: Move navtitle decl. here from topic.mod   
    2008.02.13 RDA: Create .content and .attributes entities  
-   2008.11.10 RDA: Make href optional on image               
+   2008.11.10 RDA: Make href optional on image   
+   2018.03.14 KJE: Removed boolean and indextermref; removed
+                   alt and longdescref on image; removed
+                   @refcols
 =============================================================     
  ]]></headerComment>
     <moduleMetadata>
@@ -84,9 +87,6 @@ ORIGINAL CREATION DATE:
     <a:documentation>ELEMENT TYPE NAME PATTERNS</a:documentation>
     <define name="alt">
       <ref name="alt.element"/>
-    </define>
-    <define name="boolean">
-      <ref name="boolean.element"/>
     </define>
     <define name="cite">
       <ref name="cite.element"/>
@@ -127,6 +127,9 @@ ORIGINAL CREATION DATE:
     <define name="dthd">
       <ref name="dthd.element"/>
     </define>
+    <define name="fallback">
+      <ref name="fallback.element"/>
+    </define>
     <define name="fig">
       <ref name="fig.element"/>
     </define>
@@ -147,9 +150,6 @@ ORIGINAL CREATION DATE:
     </define>
     <define name="index-base">
       <ref name="index-base.element"/>
-    </define>
-    <define name="indextermref">
-      <ref name="indextermref.element"/>
     </define>
     <define name="itemgroup">
       <ref name="itemgroup.element"/>
@@ -356,7 +356,6 @@ ORIGINAL CREATION DATE:
       <a:documentation>General-purpose content model fragments</a:documentation>
       <define name="basic.ph">
         <choice>
-          <ref name="boolean"/>
           <ref name="cite"/>
           <ref name="keyword"/>
           <ref name="ph"/>
@@ -398,7 +397,6 @@ ORIGINAL CREATION DATE:
       <a:documentation>Exclusions: models modified by removing excluded content</a:documentation>
       <define name="basic.ph.noxref.nocite" dita:since="1.3">
         <choice>
-          <ref name="boolean"/>
           <ref name="keyword"/>
           <ref name="ph"/>
           <ref name="q"/>
@@ -416,7 +414,6 @@ ORIGINAL CREATION DATE:
       </define>
       <define name="basic.ph.notm">
         <choice>
-          <ref name="boolean"/>
           <ref name="cite"/>
           <ref name="keyword"/>
           <ref name="ph"/>
@@ -534,7 +531,6 @@ ORIGINAL CREATION DATE:
         <choice>
           <ref name="draft-comment"/>
           <ref name="fn"/>
-          <ref name="indextermref"/>
           <ref name="indexterm"/>
           <ref name="required-cleanup"/>
         </choice>
@@ -1000,18 +996,16 @@ ORIGINAL CREATION DATE:
       <ref name="id-atts"/>
       <ref name="select-atts"/>
       <ref name="localization-atts"/>
+      <optional>
+        <attribute name="outputclass"/>
+      </optional>
     </define>
     <define name="univ-atts-translate-no">
       <ref name="id-atts"/>
       <ref name="select-atts"/>
       <ref name="localization-atts-translate-no"/>
-    </define>
-    <define name="global-atts">
       <optional>
-        <attribute name="xtrc"/>
-      </optional>
-      <optional>
-        <attribute name="xtrf"/>
+        <attribute name="outputclass"/>
       </optional>
     </define>
   </div>
@@ -1054,9 +1048,6 @@ ORIGINAL CREATION DATE:
                 <value>-dita-use-conref-target</value>
               </choice>
             </attribute>
-          </optional>
-          <optional>
-            <attribute name="outputclass"/>
           </optional>
         </define>
         <define name="data-about.element">
@@ -1104,9 +1095,6 @@ ORIGINAL CREATION DATE:
               </choice>
             </attribute>
           </optional>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
 
       </div>
@@ -1141,9 +1129,6 @@ ORIGINAL CREATION DATE:
         </define>
         <define name="unknown.attributes">
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="unknown.element">
           <element name="unknown" dita:longName="Unknown">
@@ -1165,9 +1150,6 @@ ORIGINAL CREATION DATE:
         </define>
         <define name="foreign.attributes">
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="foreign.element">
           <element name="foreign" dita:longName="Foreign">
@@ -1262,9 +1244,6 @@ ORIGINAL CREATION DATE:
         </define>
         <define name="desc.attributes">
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="desc.element">
           <element name="desc" dita:longName="Description">
@@ -1293,9 +1272,6 @@ ORIGINAL CREATION DATE:
         </define>
         <define name="p.attributes">
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="p.element">
           <element name="p" dita:longName="Paragraph">
@@ -1344,9 +1320,6 @@ ORIGINAL CREATION DATE:
             <attribute name="othertype"/>
           </optional>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="note.element">
           <element name="note" dita:longName="Note">
@@ -1390,9 +1363,6 @@ ORIGINAL CREATION DATE:
             </attribute>
           </optional>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="longquoteref.element">
           <element name="longquoteref" dita:longName="Long Quote Reference">
@@ -1442,9 +1412,6 @@ ORIGINAL CREATION DATE:
             <attribute name="reftitle"/>
           </optional>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="lq.element">
           <element name="lq" dita:longName="Long Quote">
@@ -1469,9 +1436,6 @@ ORIGINAL CREATION DATE:
         </define>
         <define name="q.attributes">
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="q.element">
           <element name="q" dita:longName="Quote">
@@ -1513,9 +1477,6 @@ ORIGINAL CREATION DATE:
             <attribute name="spectitle"/>
           </optional>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="sl.element">
           <element name="sl" dita:longName="Simple List">
@@ -1539,9 +1500,6 @@ ORIGINAL CREATION DATE:
         </define>
         <define name="sli.attributes">
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="sli.element">
           <element name="sli" dita:longName="Simple List Item">
@@ -1584,9 +1542,6 @@ ORIGINAL CREATION DATE:
             <attribute name="spectitle"/>
           </optional>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="ul.element">
           <element name="ul" dita:longName="Unordered List">
@@ -1633,9 +1588,6 @@ ORIGINAL CREATION DATE:
             <attribute name="spectitle"/>
           </optional>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="ol.element">
           <element name="ol" dita:longName="Ordered List">
@@ -1658,9 +1610,6 @@ ORIGINAL CREATION DATE:
         </define>
         <define name="li.attributes">
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="li.element">
           <element name="li" dita:longName="List Item">
@@ -1684,9 +1633,6 @@ ORIGINAL CREATION DATE:
         </define>
         <define name="itemgroup.attributes">
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="itemgroup.element">
           <element name="itemgroup" dita:longName="Item Group">
@@ -1731,9 +1677,6 @@ ORIGINAL CREATION DATE:
             <attribute name="spectitle"/>
           </optional>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="dl.element">
           <element name="dl" dita:longName="Definition List">
@@ -1760,9 +1703,6 @@ ORIGINAL CREATION DATE:
         </define>
         <define name="dlhead.attributes">
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="dlhead.element">
           <element name="dlhead" dita:longName="Definition List Head">
@@ -1786,9 +1726,6 @@ ORIGINAL CREATION DATE:
         </define>
         <define name="dthd.attributes">
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="dthd.element">
           <element name="dthd" dita:longName="Term Header">
@@ -1812,9 +1749,6 @@ ORIGINAL CREATION DATE:
         </define>
         <define name="ddhd.attributes">
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="ddhd.element">
           <element name="ddhd" dita:longName="Definition Header">
@@ -1841,9 +1775,6 @@ ORIGINAL CREATION DATE:
         </define>
         <define name="dlentry.attributes">
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="dlentry.element">
           <element name="dlentry" dita:longName="Definition List Entry">
@@ -1870,9 +1801,6 @@ ORIGINAL CREATION DATE:
             <attribute name="keyref"/>
           </optional>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="dt.element">
           <element name="dt" dita:longName="Definition Term">
@@ -1895,9 +1823,6 @@ ORIGINAL CREATION DATE:
         </define>
         <define name="dd.attributes">
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="dd.element">
           <element name="dd" dita:longName="Definition Description">
@@ -1933,9 +1858,6 @@ ORIGINAL CREATION DATE:
             <attribute name="spectitle"/>
           </optional>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="fig.element">
           <element name="fig" dita:longName="Figure">
@@ -1966,9 +1888,6 @@ ORIGINAL CREATION DATE:
         </define>
         <define name="figgroup.attributes">
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="figgroup.element">
           <element name="figgroup" dita:longName="Figure Group">
@@ -2001,9 +1920,6 @@ ORIGINAL CREATION DATE:
             </attribute>
           </optional>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="pre.element">
           <element name="pre" dita:longName="Preformatted Text">
@@ -2037,9 +1953,6 @@ ORIGINAL CREATION DATE:
             </attribute>
           </optional>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="lines.element">
           <element name="lines" dita:longName="Line Respecting Text">
@@ -2062,9 +1975,6 @@ ORIGINAL CREATION DATE:
         </define>
         <define name="div.attributes">
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="div.element">
           <element name="div" dita:longName="Division" dita:since="1.3">
@@ -2125,9 +2035,6 @@ ORIGINAL CREATION DATE:
             <attribute name="keyref"/>
           </optional>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="keyword.element">
           <element name="keyword" dita:longName="Keyword">
@@ -2160,9 +2067,6 @@ ORIGINAL CREATION DATE:
             <attribute name="keyref"/>
           </optional>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="term.element">
           <element name="term" dita:longName="Term">
@@ -2191,9 +2095,6 @@ ORIGINAL CREATION DATE:
             <attribute name="keyref"/>
           </optional>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="ph.element">
           <element name="ph" dita:longName="Phrase">
@@ -2254,38 +2155,6 @@ ORIGINAL CREATION DATE:
 
       </div>
       <div>
-        <a:documentation>LONG NAME: Boolean (deprecated)</a:documentation>
-        <define name="boolean.content">
-          <empty/>
-        </define>
-        <define name="boolean.attributes">
-          <attribute name="state">
-            <choice>
-              <value>no</value>
-              <value>yes</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-          <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
-        </define>
-        <define name="boolean.element">
-          <element name="boolean" dita:longName="Boolean  (deprecated)">
-            <a:documentation>The &lt;boolean> element is used to express one of two opposite values, such as yes or no, on or off, true or false, high or low, and so forth. The element itself is
-              empty; the value of the element is stored in its state attribute, and the semantic associated with the value is typically in a specialized name derived from this element. Category:
-              Specialization elements</a:documentation>
-            <ref name="boolean.attlist"/>
-            <ref name="boolean.content"/>
-          </element>
-        </define>
-        <define name="boolean.attlist" combine="interleave">
-          <ref name="boolean.attributes"/>
-        </define>
-
-      </div>
-      <div>
         <a:documentation xml:space="preserve">LONG NAME: State
         
     A state can have a name and a string value, 
@@ -2298,9 +2167,6 @@ ORIGINAL CREATION DATE:
           <attribute name="name"/>
           <attribute name="value"/>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="state.element">
           <element name="state" dita:longName="State">
@@ -2344,12 +2210,6 @@ ORIGINAL CREATION DATE:
             <attribute name="keyref"/>
           </optional>
           <optional>
-            <attribute name="alt"/>
-          </optional>
-          <optional>
-            <attribute name="longdescref"/>
-          </optional>
-          <optional>
             <attribute name="height">
               <data type="NMTOKEN"/>
             </attribute>
@@ -2385,10 +2245,10 @@ ORIGINAL CREATION DATE:
               </choice>
             </attribute>
           </optional>
-          <ref name="univ-atts"/>
           <optional>
-            <attribute name="outputclass"/>
+            <attribute name="format" dita:since="1.3 errata 02"/>
           </optional>
+          <ref name="univ-atts"/>
         </define>
         <define name="image.element">
           <element name="image" dita:longName="Image Data">
@@ -2420,9 +2280,6 @@ ORIGINAL CREATION DATE:
         </define>
         <define name="alt.attributes">
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="alt.element">
           <element name="alt" dita:longName="Alternate text">
@@ -2466,9 +2323,6 @@ ORIGINAL CREATION DATE:
             </attribute>
           </optional>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="longdescref.element">
           <element name="longdescref" dita:longName="Long description reference">
@@ -2570,9 +2424,6 @@ ORIGINAL CREATION DATE:
             <attribute name="longdescref"/>
           </optional>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="object.element">
           <element name="object" dita:longName="Object (Streaming/Executable Data)">
@@ -2647,19 +2498,11 @@ ORIGINAL CREATION DATE:
               <data type="NMTOKEN"/>
             </attribute>
           </optional>
-          <optional>
-            <attribute name="refcols">
-              <data type="NMTOKENS"/>
-            </attribute>
-          </optional>
           <ref name="display-atts"/>
           <optional>
             <attribute name="spectitle"/>
           </optional>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="simpletable.element">
           <element name="simpletable" dita:longName="Simple Table">
@@ -2685,9 +2528,6 @@ ORIGINAL CREATION DATE:
         </define>
         <define name="sthead.attributes">
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="sthead.element">
           <element name="sthead" dita:longName="Simple Table Head">
@@ -2710,9 +2550,6 @@ ORIGINAL CREATION DATE:
         </define>
         <define name="strow.attributes">
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="strow.element">
           <element name="strow" dita:longName="Simple Table Row">
@@ -2738,9 +2575,6 @@ ORIGINAL CREATION DATE:
             <attribute name="specentry"/>
           </optional>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="stentry.element">
           <element name="stentry" dita:longName="Simple Table Cell (entry)">
@@ -2778,9 +2612,6 @@ ORIGINAL CREATION DATE:
             <attribute name="disposition"/>
           </optional>
           <ref name="univ-atts-translate-no"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="draft-comment.element">
           <element name="draft-comment" dita:longName="Review Comments Block">
@@ -2806,9 +2637,6 @@ ORIGINAL CREATION DATE:
             <attribute name="remap"/>
           </optional>
           <ref name="univ-atts-translate-no"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="required-cleanup.element">
           <element name="required-cleanup" dita:longName="Required Cleanup Block">
@@ -2836,9 +2664,6 @@ ORIGINAL CREATION DATE:
             <attribute name="callout"/>
           </optional>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="fn.element">
           <element name="fn" dita:longName="Footnote">
@@ -2920,27 +2745,6 @@ ORIGINAL CREATION DATE:
 
       </div>
       <div>
-        <a:documentation>LONG NAME: Index term reference</a:documentation>
-        <define name="indextermref.content">
-          <empty/>
-        </define>
-        <define name="indextermref.attributes">
-          <attribute name="keyref"/>
-          <ref name="univ-atts"/>
-        </define>
-        <define name="indextermref.element">
-          <element name="indextermref" dita:longName="Index term reference">
-            <a:documentation>This element is not completely defined, and is reserved for future use. Category: Miscellaneous elements</a:documentation>
-            <ref name="indextermref.attlist"/>
-            <ref name="indextermref.content"/>
-          </element>
-        </define>
-        <define name="indextermref.attlist" combine="interleave">
-          <ref name="indextermref.attributes"/>
-        </define>
-
-      </div>
-      <div>
         <a:documentation>LONG NAME: Citation (bibliographic source)</a:documentation>
         <define name="cite.content">
           <zeroOrMore>
@@ -2952,9 +2756,6 @@ ORIGINAL CREATION DATE:
             <attribute name="keyref"/>
           </optional>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="cite.element">
           <element name="cite" dita:longName="Citation (bibliographic source)">
@@ -3003,9 +2804,6 @@ ORIGINAL CREATION DATE:
             </attribute>
           </optional>
           <ref name="univ-atts"/>
-          <optional>
-            <attribute name="outputclass"/>
-          </optional>
         </define>
         <define name="xref.element">
           <element name="xref" dita:longName="Cross Reference/Link">
@@ -3025,325 +2823,261 @@ ORIGINAL CREATION DATE:
   <div>
     <a:documentation>SPECIALIZATION ATTRIBUTE DECLARATIONS</a:documentation>
     <define name="alt.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/alt "/>
       </optional>
     </define>
-    <define name="boolean.attlist" combine="interleave">
-      <ref name="global-atts"/>
-      <optional>
-        <attribute name="class" a:defaultValue="- topic/boolean "/>
-      </optional>
-    </define>
     <define name="cite.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/cite "/>
       </optional>
     </define>
     <define name="dd.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/dd "/>
       </optional>
     </define>
     <define name="data.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/data "/>
       </optional>
     </define>
     <define name="data-about.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/data-about "/>
       </optional>
     </define>
     <define name="ddhd.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/ddhd "/>
       </optional>
     </define>
     <define name="desc.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/desc "/>
       </optional>
     </define>
     <define name="div.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/div "/>
       </optional>
     </define>
     <define name="dl.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/dl "/>
       </optional>
     </define>
     <define name="dlentry.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/dlentry "/>
       </optional>
     </define>
     <define name="dlhead.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/dlhead "/>
       </optional>
     </define>
     <define name="draft-comment.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/draft-comment "/>
       </optional>
     </define>
     <define name="dt.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/dt "/>
       </optional>
     </define>
     <define name="dthd.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/dthd "/>
       </optional>
     </define>
     <define name="fig.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/fig "/>
       </optional>
     </define>
     <define name="figgroup.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/figgroup "/>
       </optional>
     </define>
     <define name="fn.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/fn "/>
       </optional>
     </define>
     <define name="foreign.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/foreign "/>
       </optional>
     </define>
     <define name="image.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/image "/>
       </optional>
     </define>
     <define name="indexterm.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/indexterm "/>
       </optional>
     </define>
     <define name="index-base.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/index-base "/>
       </optional>
     </define>
-    <define name="indextermref.attlist" combine="interleave">
-      <ref name="global-atts"/>
-      <optional>
-        <attribute name="class" a:defaultValue="- topic/indextermref "/>
-      </optional>
-    </define>
     <define name="itemgroup.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/itemgroup "/>
       </optional>
     </define>
     <define name="keyword.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/keyword "/>
       </optional>
     </define>
     <define name="li.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/li "/>
       </optional>
     </define>
     <define name="lines.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/lines "/>
       </optional>
     </define>
     <define name="longdescref.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/longdescref "/>
       </optional>
     </define>
     <define name="longquoteref.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/longquoteref "/>
       </optional>
     </define>
     <define name="lq.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/lq "/>
       </optional>
     </define>
     <define name="navtitle.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/navtitle "/>
       </optional>
     </define>
     <define name="note.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/note "/>
       </optional>
     </define>
     <define name="object.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/object "/>
       </optional>
     </define>
     <define name="ol.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/ol "/>
       </optional>
     </define>
     <define name="p.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/p "/>
       </optional>
     </define>
     <define name="param.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/param "/>
       </optional>
     </define>
     <define name="ph.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/ph "/>
       </optional>
     </define>
     <define name="pre.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/pre "/>
       </optional>
     </define>
     <define name="q.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/q "/>
       </optional>
     </define>
     <define name="required-cleanup.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/required-cleanup "/>
       </optional>
     </define>
     <define name="simpletable.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/simpletable "/>
       </optional>
     </define>
     <define name="sl.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/sl "/>
       </optional>
     </define>
     <define name="sli.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/sli "/>
       </optional>
     </define>
     <define name="state.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/state "/>
       </optional>
     </define>
     <define name="stentry.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/stentry "/>
       </optional>
     </define>
     <define name="sthead.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/sthead "/>
       </optional>
     </define>
     <define name="strow.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/strow "/>
       </optional>
     </define>
     <define name="term.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/term "/>
       </optional>
     </define>
     <define name="text.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/text "/>
       </optional>
     </define>
     <define name="title.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/title "/>
       </optional>
     </define>
     <define name="tm.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/tm "/>
       </optional>
     </define>
     <define name="ul.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/ul "/>
       </optional>
     </define>
     <define name="unknown.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/unknown "/>
       </optional>
     </define>
     <define name="xref.attlist" combine="interleave">
-      <ref name="global-atts"/>
       <optional>
         <attribute name="class" a:defaultValue="- topic/xref "/>
       </optional>

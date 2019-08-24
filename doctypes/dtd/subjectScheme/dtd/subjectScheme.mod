@@ -31,6 +31,7 @@
 <!--  UPDATES:                                                     -->
 <!--    2008.02.13 RDA: Created file based upon prototype from IBM -->
 <!--    2014.04.16 WEK: Redefined as RNG                           -->
+<!--    2018.04.09 KJE: Removed @navtitle                          -->
 <!-- ============================================================= -->
 
 <!-- ============================================================= -->
@@ -180,10 +181,7 @@
                          (%data.elements.incl;)*)"
 >
 <!ENTITY % schemeref.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -215,9 +213,6 @@
                            peer |
                            -dita-use-conref-target)
                                     #IMPLIED
-               outputclass
-                          CDATA
-                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  schemeref %schemeref.content;>
@@ -233,10 +228,7 @@
                           %topicref;)*)"
 >
 <!ENTITY % hasNarrower.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -263,9 +255,6 @@
                           CDATA
                                     #IMPLIED
                cascade
-                          CDATA
-                                    #IMPLIED
-               outputclass
                           CDATA
                                     #IMPLIED
                %univ-atts;"
@@ -283,10 +272,7 @@
                           %topicref;)*)"
 >
 <!ENTITY % hasKind.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -313,9 +299,6 @@
                           CDATA
                                     #IMPLIED
                cascade
-                          CDATA
-                                    #IMPLIED
-               outputclass
                           CDATA
                                     #IMPLIED
                %univ-atts;"
@@ -333,10 +316,7 @@
                           %topicref;)*)"
 >
 <!ENTITY % hasPart.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -363,9 +343,6 @@
                           CDATA
                                     #IMPLIED
                cascade
-                          CDATA
-                                    #IMPLIED
-               outputclass
                           CDATA
                                     #IMPLIED
                %univ-atts;"
@@ -383,10 +360,7 @@
                           %topicref;)*)"
 >
 <!ENTITY % hasInstance.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -415,9 +389,6 @@
                cascade
                           CDATA
                                     #IMPLIED
-               outputclass
-                          CDATA
-                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  hasInstance %hasInstance.content;>
@@ -433,10 +404,7 @@
                           %topicref;)*)"
 >
 <!ENTITY % hasRelated.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -472,9 +440,6 @@
                cascade
                           CDATA
                                     #IMPLIED
-               outputclass
-                          CDATA
-                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  hasRelated %hasRelated.content;>
@@ -495,10 +460,7 @@
                           %topicref;)*)"
 >
 <!ENTITY % subjectdef.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -511,9 +473,6 @@
                           CDATA
                                     #IMPLIED
                copy-to
-                          CDATA
-                                    #IMPLIED
-               outputclass
                           CDATA
                                     #IMPLIED
                collection-type
@@ -575,10 +534,7 @@
                           %topicref;)*)"
 >
 <!ENTITY % subjectHead.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               collection-type
+              "collection-type
                           (sequence |
                            unordered |
                            -dita-use-conref-target)
@@ -595,9 +551,6 @@
                           (no |
                            yes |
                            -dita-use-conref-target)
-                                    #IMPLIED
-               outputclass
-                          CDATA
                                     #IMPLIED
                %univ-atts;"
 >
@@ -722,10 +675,7 @@
                        "(%data.elements.incl;)*"
 >
 <!ENTITY % defaultSubject.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -738,9 +688,6 @@
                           CDATA
                                     #IMPLIED
                copy-to
-                          CDATA
-                                    #IMPLIED
-               outputclass
                           CDATA
                                     #IMPLIED
                type
@@ -793,10 +740,7 @@
                          %topicref;)*"
 >
 <!ENTITY % relatedSubjects.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -842,9 +786,6 @@
                            targetonly |
                            -dita-use-conref-target)
                                     'normal'
-               outputclass
-                          CDATA
-                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  relatedSubjects %relatedSubjects.content;>
@@ -860,9 +801,6 @@
 >
 <!ENTITY % subjectRelTable.attributes
               "%topicref-atts-no-toc;
-               outputclass
-                          CDATA
-                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  subjectRelTable %subjectRelTable.content;>
@@ -910,25 +848,25 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  subjectScheme %global-atts;  class CDATA "- map/map subjectScheme/subjectScheme ">
-<!ATTLIST  schemeref    %global-atts;  class CDATA "- map/topicref subjectScheme/schemeref ">
-<!ATTLIST  hasNarrower  %global-atts;  class CDATA "- map/topicref subjectScheme/hasNarrower ">
-<!ATTLIST  hasKind      %global-atts;  class CDATA "- map/topicref subjectScheme/hasKind ">
-<!ATTLIST  hasPart      %global-atts;  class CDATA "- map/topicref subjectScheme/hasPart ">
-<!ATTLIST  hasInstance  %global-atts;  class CDATA "- map/topicref subjectScheme/hasInstance ">
-<!ATTLIST  hasRelated   %global-atts;  class CDATA "- map/topicref subjectScheme/hasRelated ">
-<!ATTLIST  enumerationdef %global-atts;  class CDATA "- map/topicref subjectScheme/enumerationdef ">
-<!ATTLIST  elementdef   %global-atts;  class CDATA "- topic/data subjectScheme/elementdef ">
-<!ATTLIST  attributedef %global-atts;  class CDATA "- topic/data subjectScheme/attributedef ">
-<!ATTLIST  defaultSubject %global-atts;  class CDATA "- map/topicref subjectScheme/defaultSubject ">
-<!ATTLIST  subjectHead  %global-atts;  class CDATA "- map/topicref subjectScheme/subjectHead ">
-<!ATTLIST  subjectHeadMeta %global-atts;  class CDATA "- map/topicmeta subjectScheme/subjectHeadMeta ">
-<!ATTLIST  subjectdef   %global-atts;  class CDATA "- map/topicref subjectScheme/subjectdef ">
-<!ATTLIST  relatedSubjects %global-atts;  class CDATA "- map/topicref subjectScheme/relatedSubjects ">
-<!ATTLIST  subjectRelTable %global-atts;  class CDATA "- map/reltable subjectScheme/subjectRelTable ">
-<!ATTLIST  subjectRelHeader %global-atts;  class CDATA "- map/relrow subjectScheme/subjectRelHeader ">
-<!ATTLIST  subjectRel   %global-atts;  class CDATA "- map/relrow subjectScheme/subjectRel ">
-<!ATTLIST  subjectRole  %global-atts;  class CDATA "- map/relcell subjectScheme/subjectRole ">
+<!ATTLIST  subjectScheme   class CDATA "- map/map subjectScheme/subjectScheme ">
+<!ATTLIST  schemeref      class CDATA "- map/topicref subjectScheme/schemeref ">
+<!ATTLIST  hasNarrower    class CDATA "- map/topicref subjectScheme/hasNarrower ">
+<!ATTLIST  hasKind        class CDATA "- map/topicref subjectScheme/hasKind ">
+<!ATTLIST  hasPart        class CDATA "- map/topicref subjectScheme/hasPart ">
+<!ATTLIST  hasInstance    class CDATA "- map/topicref subjectScheme/hasInstance ">
+<!ATTLIST  hasRelated     class CDATA "- map/topicref subjectScheme/hasRelated ">
+<!ATTLIST  enumerationdef   class CDATA "- map/topicref subjectScheme/enumerationdef ">
+<!ATTLIST  elementdef     class CDATA "- topic/data subjectScheme/elementdef ">
+<!ATTLIST  attributedef   class CDATA "- topic/data subjectScheme/attributedef ">
+<!ATTLIST  defaultSubject   class CDATA "- map/topicref subjectScheme/defaultSubject ">
+<!ATTLIST  subjectHead    class CDATA "- map/topicref subjectScheme/subjectHead ">
+<!ATTLIST  subjectHeadMeta   class CDATA "- map/topicmeta subjectScheme/subjectHeadMeta ">
+<!ATTLIST  subjectdef     class CDATA "- map/topicref subjectScheme/subjectdef ">
+<!ATTLIST  relatedSubjects   class CDATA "- map/topicref subjectScheme/relatedSubjects ">
+<!ATTLIST  subjectRelTable   class CDATA "- map/reltable subjectScheme/subjectRelTable ">
+<!ATTLIST  subjectRelHeader   class CDATA "- map/relrow subjectScheme/subjectRelHeader ">
+<!ATTLIST  subjectRel     class CDATA "- map/relrow subjectScheme/subjectRel ">
+<!ATTLIST  subjectRole    class CDATA "- map/relcell subjectScheme/subjectRole ">
 
 <!-- ================== End of DITA Subject Scheme Map Type ==================== -->
  

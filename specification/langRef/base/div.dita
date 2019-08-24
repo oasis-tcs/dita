@@ -2,29 +2,32 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference xml:lang="en-us" id="div" >
   <title><xmlelement>div</xmlelement></title>
-  <shortdesc>The <xmlelement>div</xmlelement> element is used to organize subsets of content into
-    logical groups that are not intended to be or should not be contained as a topic.</shortdesc>
+  <abstract>
+    <shortdesc>A division is a logical grouping of content within a topic. There is no additional
+      semantic meaning. It is useful primarily as a specialization base and for reuse.</shortdesc>
+    <!--<shortdesc>The <xmlelement>div</xmlelement> element is used to organize subsets of content into logical groups that are not intended to be or should not be contained as a topic.</shortdesc>-->
+  </abstract>
   <prolog>
     <metadata>
       <keywords>
+        <indexterm>divisions</indexterm>
         <indexterm>elements<indexterm>body<indexterm><xmlelement>div</xmlelement></indexterm></indexterm></indexterm>
         <indexterm>grouping elements<indexterm><xmlelement>div</xmlelement></indexterm></indexterm>
       </keywords>
     </metadata>
   </prolog>
   <refbody>
-    <section id="section-1">
-      <p> The <xmlelement>div</xmlelement> element is designed to be a grouping element; it does not
-        imply any explicit semantics or contain an explicit title. This avoids enabling the creation
-        of deeply-nested content that would otherwise be written as separate topics. <ph
-          >If the content requires a title, use a
-          </ph><xmlelement>section</xmlelement> element, a nested <xmlelement>topic</xmlelement>, or
-        possibly a <xmlelement>fig</xmlelement> element.</p>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p> The <xmlelement>div</xmlelement> element cannot contain a title. This avoids enabling the
+        creation of deeply-nested content that would otherwise be written as separate topics. <ph>If
+          the content requires a title, use a </ph><xmlelement>section</xmlelement> element, a
+        nested <xmlelement>topic</xmlelement>, or possibly a <xmlelement>fig</xmlelement>
+        element.</p>
     </section>
-    <section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-div/contains" otherprops="contains"></section>
-    <section id="inheritance" otherprops="inheritance">
-      <title>Inheritance</title>
-      <p>- topic/div </p>
+    <section id="attributes">
+      <title>Attributes</title>
+    <p conref="../../common/conref-attribute.dita#conref-attribute/only-universal"/>
     </section>
     <example id="example" otherprops="examples">
       <title>Example</title>
@@ -51,15 +54,12 @@
   "(%div.cnt;)*"
 >
 &lt;!ENTITY % pullquote.attributes
-             "%univ-atts;
-              outputclass 
-                        CDATA 
-                                  #IMPLIED"
+             "%univ-atts;"
 >
 &lt;!ELEMENT pullquote    %pullquote.content;>
 &lt;!ATTLIST pullquote    %pullquote.attributes;>
 
-&lt;!ATTLIST pullquote      %global-atts;  class CDATA "+ topic/div pubcontent-d/pullquote "></codeblock>
+&lt;!ATTLIST pullquote      class CDATA "+ topic/div pubcontent-d/pullquote "></codeblock>
         <p>Instances of <xmlelement>pullquote</xmlelement> could then be used in both
             <xmlelement>body</xmlelement> and <xmlelement>section</xmlelement> contexts:</p>
         <codeblock>&lt;topic id="article-01">
@@ -77,12 +77,6 @@
 &lt;/topic></codeblock>
       </fig>
     </example>
-    <section id="attributes">
-      <title>Attributes</title>
-      <p >The following attributes are available on this element: <xref
-          href="../attributes/universalAttributes.dita"/> and <xref
-          href="../attributes/commonAttributes.dita#common-atts/outputclass"/>.</p>
-    </section>
     
   </refbody>
 </reference>

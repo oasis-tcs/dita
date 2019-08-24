@@ -3,11 +3,9 @@
  "reference.dtd">
 <reference id="lines" xml:lang="en-us">
 <title><xmlelement>lines</xmlelement></title>
-<shortdesc>The <xmlelement>lines</xmlelement> element contains text where line breaks are
-    significant but white space is not. It can be used to represent dialogs, poetry, or other text
-    fragments where line breaks are significant. The <xmlelement>lines</xmlelement> element is
-    similar to <xmlelement>pre</xmlelement> in that line breaks are preserved, but the font style is
-    not typically set to monospace, and extra spaces inside the lines are not preserved. </shortdesc>
+<shortdesc>Lines are lines of text where line breaks are significant but white space is not. It can
+    be used to represent dialogs, poetry, or other text fragments where line breaks are
+    significant.</shortdesc>
 <prolog><metadata>
 <keywords><indexterm>elements<indexterm>body<indexterm><xmlelement>lines</xmlelement></indexterm></indexterm></indexterm>
         <indexterm>formatting
@@ -15,10 +13,26 @@
 </keywords>
 </metadata></prolog>
 <refbody>
-<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-lines/contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-topic/lines </p></section>
-<example id="example" otherprops="examples"><title>Example</title><codeblock>This is a sample of my favorite sonnet.
+    <section id="formatting-expectations">
+      <title>Formatting expectations</title>
+      <p>Although rendering is left up to the implementation, processors typically use the following
+        conventions:</p>
+      <ul>
+        <li>Line breaks are preserved.</li>
+        <li>Extra white space within the <xmlelement>lines</xmlelement> element is not
+          preserved.</li>
+        <li>The font style is not monospaced.</li>
+      </ul>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref
+          keyref="attributes-universal"/>, <xref
+          keyref="attributes-display"/>, <xref
+          keyref="attributes-common/xmlspace"/>, and <xref
+          keyref="attributes-specialization/spectitle"/>.</p>
+    </section>
+<example id="example" otherprops="examples"><title>Example</title><codeblock>&lt;p>This is a sample of my favorite sonnet:&lt;/p>
 &lt;lines&gt;
 Shall I compare thee to a summer's day?
 Thou art more lovely and more temperate:
@@ -32,13 +46,5 @@ Thou art more lovely and more temperate:
 Rough winds do shake the darling buds of May,
 and summer's lease hath all too short a date:
 ...</lines></p></example>
-<section id="attributes"><title>Attributes</title>
-   <p >The following attributes are available on this element: <xref
-     href="../attributes/universalAttributes.dita"/>, <xref
-     href="../attributes/displayAttributes.dita"/>, <xref
-     href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, <xref
-     href="../attributes/commonAttributes.dita#common-atts/xmlspace"/>, and <xref
-     href="../attributes/specializationAttributes.dita#specialization-atts/spectitle"/>.</p>
-   </section>
 </refbody>
 </reference>

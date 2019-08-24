@@ -1,0 +1,1824 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2018"><meta name="DC.rights.owner" content="(C) Copyright 2018"><meta name="DC.Type" content="topic"><meta name="description" content="A new domain for referencing multimedia content, specifically video and audio, modeled loosly on the HTML5 markup for the same purpose."><meta name="DC.subject" content="domains, media domain, elements, body, fallback, objects, video, audio, media-controls, media-autoplay, media-loop, media-muted, video-poster, media-source, media-track"><meta name="keywords" content="domains, media domain, elements, body, fallback, objects, video, audio, media-controls, media-autoplay, media-loop, media-muted, video-poster, media-source, media-track"><meta name="DC.Format" content="HTML5"><meta name="DC.Identifier" content="topic_aqh_5zt_3h"><link rel="stylesheet" type="text/css" href="commonltr.css"><title>Stage 3 proposal: Feature #27</title></head><body><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+  <article class="nested0" aria-labelledby="ariaid-title1" id="topic_aqh_5zt_3h">
+    <h1 class="title topictitle1" id="ariaid-title1">Stage 3 proposal: Feature #27</h1>
+    
+    <div class="body"><p class="shortdesc">A new domain for referencing multimedia content, specifically video and audio,
+      modeled loosly on the HTML5 markup for the same purpose.</p>
+      <section class="section"><h2 class="title sectiontitle">Champion</h2>
+        
+        <p class="p">Chris Nitchie</p>
+      </section>
+      <section class="section"><h2 class="title sectiontitle">Tracking information</h2>
+        
+        <table class="simpletable frame-all"><colgroup><col style="width:33.33333333333333%"><col style="width:33.33333333333333%"><col style="width:33.33333333333333%"></colgroup><thead><tr class="sthead">
+            <th class="stentry" scope="col">Event</th>
+            <th class="stentry" scope="col">Date</th>
+            <th class="stentry" scope="col">Links</th>
+          </tr></thead><tbody><tr class="strow">
+            <td class="stentry">Stage 1 proposal accepted</td>
+            <td class="stentry">May 16, 2017</td>
+            <td class="stentry"><a class="xref" href="https://lists.oasis-open.org/archives/dita/201705/msg00048.html" target="_blank">Minutes</a></td>
+          </tr><tr class="strow">
+            <td class="stentry">Stage 2 proposal submitted</td>
+            <td class="stentry">August 17, 2017</td>
+            <td class="stentry"><a class="xref" href="https://www.oasis-open.org/committees/download.php/61092/Issue27-multimedia.html" target="_blank">HTML</a>, <a class="xref" href="https://tools.oasis-open.org/version-control/svn/dita/trunk/DITA-2.0/stage-2/Issue27-multimedia.dita" target="_blank">DITA</a></td>
+          </tr><tr class="strow">
+            <td class="stentry">Stage 2 proposal discussed</td>
+            <td class="stentry">August 22, 2017</td>
+            <td class="stentry"><a class="xref" href="https://lists.oasis-open.org/archives/dita/201708/msg00050.html" target="_blank">Minutes</a></td>
+          </tr><tr class="strow">
+            <td class="stentry">Stage 2 proposal approved</td>
+            <td class="stentry">August 29, 2017</td>
+            <td class="stentry"><a class="xref" href="https://www.oasis-open.org/apps/org/workgroup/dita/download.php/61505/minutes20170829.txt" target="_blank">Minutes</a></td>
+          </tr><tr class="strow">
+            <td class="stentry">Stage 3 proposal submitted to reviewers</td>
+            <td class="stentry">April 7, 2018</td>
+            <td class="stentry">Include names of reviewers</td>
+          </tr><tr class="strow">
+            <td class="stentry">Stage 3 proposal (this document) submitted to TC</td>
+            <td class="stentry"></td>
+            <td class="stentry"></td>
+          </tr></tbody></table>
+      </section>
+      <section class="section"><h2 class="title sectiontitle">Approved technical requirements</h2>
+        
+        <p class="p">DITA should have an HTML5-compatible multimedia domain to simplify authoring references
+          to audio and video information. Also, since Lightweight DITA will contain multimedia
+          elements, it's important that they be accounted for in full DITA.</p>
+      </section>
+      <section class="section"><h2 class="title sectiontitle">Dependencies or interrelated proposals</h2>
+        
+        <p class="p">None.</p>
+      </section>
+      <section class="section"><h2 class="title sectiontitle">Modified grammar files</h2>
+        
+        <p class="p">This proposal requires the addition of a new <code class="keyword markupname xmlelement">&lt;fallback&gt;</code> element in
+          the base vocabulary, used within <code class="keyword markupname xmlelement">&lt;object&gt;</code> to specify content to be
+          rendered if the referenced object cannot be rendered or resolved. The definition for that
+          element is as follows:</p>
+        <pre class="pre codeblock"><code>&lt;div&gt;
+  &lt;a:documentation xml:space="preserve"&gt;LONG NAME: Fallback
+        
+    Fallback is used in the context of object to provide content
+    when an object reference cannot be rendered.
+        &lt;/a:documentation&gt;
+  &lt;define name="fallback.content"&gt;
+    &lt;zeroOrMore&gt;
+      &lt;choice&gt;
+        &lt;text/&gt;
+        &lt;ref name="basic.block.notbfgobj"/&gt;
+        &lt;ref name="basic.ph"/&gt;
+        &lt;ref name="data.elements.incl"/&gt;
+        &lt;ref name="draft-comment"/&gt;
+        &lt;ref name="foreign.unknown.incl"/&gt;
+        &lt;ref name="required-cleanup"/&gt;
+      &lt;/choice&gt;
+    &lt;/zeroOrMore&gt;
+  &lt;/define&gt;
+  &lt;define name="fallback.attributes"&gt;
+    &lt;ref name="univ-atts"/&gt;
+  &lt;/define&gt;
+  &lt;define name="fallback.element"&gt;
+    &lt;element name="fallback" dita:longName="Fallback"&gt;
+      &lt;a:documentation&gt;The &amp;lt;fallback&gt; element contains content to be rendered when a multimedia
+        object reference cannot be rendered.&lt;/a:documentation&gt;
+      &lt;ref name="fallback.attlist"/&gt;
+      &lt;ref name="fallback.content"/&gt;
+    &lt;/element&gt;
+  &lt;/define&gt;
+  &lt;define name="fallback.attlist" combine="interleave"&gt;
+    &lt;ref name="fallback.attributes"/&gt;
+  &lt;/define&gt;
+&lt;/div&gt;</code></pre>
+        <p class="p">This will require modifying the <code class="ph codeph">object.content</code> definition as
+          follows:</p>
+        <pre class="pre codeblock"><code>&lt;define name="object.content"&gt;
+  &lt;optional&gt;
+    &lt;ref name="desc"/&gt;
+  &lt;/optional&gt;
+  &lt;optional&gt;
+    &lt;ref name="longdescref"/&gt;
+  &lt;/optional&gt;
+<strong class="ph b">  &lt;optional&gt;
+    &lt;ref name="fallback"/&gt;
+  &lt;/optional&gt;
+</strong>  &lt;zeroOrMore&gt;
+    &lt;ref name="param"/&gt;
+  &lt;/zeroOrMore&gt;
+  &lt;zeroOrMore&gt;
+    &lt;ref name="foreign.unknown.incl"/&gt;
+  &lt;/zeroOrMore&gt;
+&lt;/define&gt;</code></pre>
+        <p class="p">The lion's share of the changes for this proposal will be contained in a new domain file,
+            <span class="ph filepath">mediaDomain.rng</span>, defined as follows.</p>
+        <pre class="pre codeblock"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+                         schematypens="http://relaxng.org/ns/structure/1.0"?&gt;
+&lt;grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:dita="http://dita.oasis-open.org/architecture/2005/"
+  xmlns="http://relaxng.org/ns/structure/1.0"&gt;
+  &lt;moduleDesc xmlns="http://dita.oasis-open.org/architecture/2005/"&gt;
+    &lt;moduleTitle&gt;DITA Media Domain&lt;/moduleTitle&gt;
+    &lt;headerComment xml:space="preserve"&gt;&lt;![CDATA[
+ ============================================================= 
+                    HEADER                                     
+ ============================================================= 
+  MODULE:    DITA Media Domain                             
+  VERSION:   2.0                                                
+  DATE:      April 2018                                      
+                                                               
+ ============================================================= 
+
+ =============================================================      
+ ]]&gt;&lt;/headerComment&gt;
+    &lt;moduleMetadata&gt;
+      &lt;moduleType&gt;elementdomain&lt;/moduleType&gt;
+      &lt;moduleShortName&gt;media-d&lt;/moduleShortName&gt;
+      &lt;modulePublicIds&gt;
+        &lt;dtdMod&gt;-//OASIS//ELEMENTS DITA&lt;var presep=" " name="ditaver"/&gt; Media Domain//EN&lt;/dtdMod&gt;
+        &lt;dtdEnt&gt;-//OASIS//ENTITIES DITA&lt;var presep=" " name="ditaver"/&gt; Media Domain//EN&lt;/dtdEnt&gt;
+        &lt;xsdMod&gt;urn:oasis:names:tc:dita:xsd:mediaDomain.xsd&lt;var presep=":" name="ditaver"/&gt;&lt;/xsdMod&gt;
+        &lt;rncMod&gt;urn:oasis:names:tc:dita:rnc:mediaDomain.rnc&lt;var presep=":" name="ditaver"/&gt;&lt;/rncMod&gt;
+        &lt;rngMod&gt;urn:oasis:names:tc:dita:rng:mediaDomain.rng&lt;var presep=":" name="ditaver"/&gt;&lt;/rngMod&gt;
+      &lt;/modulePublicIds&gt;
+      &lt;domainsContribution&gt;(topic media-d)&lt;/domainsContribution&gt;
+    &lt;/moduleMetadata&gt;
+  &lt;/moduleDesc&gt;
+  &lt;div&gt;
+    &lt;a:documentation&gt;DOMAIN EXTENSION PATTERNS&lt;/a:documentation&gt;
+    &lt;define name="media-d-object"&gt;
+      &lt;choice&gt;
+        &lt;ref name="video.element"/&gt;
+        &lt;ref name="audio.element"/&gt;
+      &lt;/choice&gt;
+    &lt;/define&gt;
+    &lt;define name="object" combine="choice"&gt;
+      &lt;ref name="media-d-object"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;a:documentation xml:space="preserve"&gt; LONG NAME: Video object reference &lt;/a:documentation&gt;
+    &lt;define name="video.content"&gt;
+      &lt;optional&gt;
+        &lt;ref name="desc"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="longdescref"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="fallback"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="video-poster"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="media-controls"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="media-autoplay"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="media-loop"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="media-muted"/&gt;
+      &lt;/optional&gt;
+      &lt;zeroOrMore&gt;
+        &lt;ref name="media-source"/&gt;
+      &lt;/zeroOrMore&gt;
+      &lt;zeroOrMore&gt;
+        &lt;ref name="media-track"/&gt;
+      &lt;/zeroOrMore&gt;
+      &lt;zeroOrMore&gt;
+        &lt;ref name="param"/&gt;
+      &lt;/zeroOrMore&gt;
+      &lt;zeroOrMore&gt;
+        &lt;ref name="foreign.unknown.incl"/&gt;
+      &lt;/zeroOrMore&gt;
+    &lt;/define&gt;
+    &lt;define name="video.attributes"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="data"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="datakeyref"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="type"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="height"&gt;
+          &lt;data type="NMTOKEN"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="width"&gt;
+          &lt;data type="NMTOKEN"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="tabindex"&gt;
+          &lt;data type="NMTOKEN"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;ref name="univ-atts"/&gt;
+      &lt;optional&gt;
+        &lt;attribute name="outputclass"/&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="video.element"&gt;
+      &lt;element name="video" dita:longName="Video object reference"&gt;
+        &lt;a:documentation&gt;DITA's &amp;lt;video&gt; element corresponds to the HTML &amp;lt;video&gt; element.
+          Category: Body elements&lt;/a:documentation&gt;
+        &lt;ref name="video.attlist"/&gt;
+        &lt;ref name="video.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="video.attlist" combine="interleave"&gt;
+      &lt;ref name="video.attributes"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+
+  &lt;div&gt;
+    &lt;a:documentation xml:space="preserve"&gt; LONG NAME: Audo object reference &lt;/a:documentation&gt;
+    &lt;define name="audio.content"&gt;
+      &lt;optional&gt;
+        &lt;ref name="desc"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="longdescref"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="fallback"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="media-controls"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="media-autoplay"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="media-loop"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;ref name="media-muted"/&gt;
+      &lt;/optional&gt;
+      &lt;zeroOrMore&gt;
+        &lt;ref name="media-source"/&gt;
+      &lt;/zeroOrMore&gt;
+      &lt;zeroOrMore&gt;
+        &lt;ref name="media-track"/&gt;
+      &lt;/zeroOrMore&gt;
+      &lt;zeroOrMore&gt;
+        &lt;ref name="param"/&gt;
+      &lt;/zeroOrMore&gt;
+      &lt;zeroOrMore&gt;
+        &lt;ref name="foreign.unknown.incl"/&gt;
+      &lt;/zeroOrMore&gt;
+    &lt;/define&gt;
+    &lt;define name="audio.attributes"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="data"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="datakeyref"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="type"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="tabindex"&gt;
+          &lt;data type="NMTOKEN"/&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;ref name="univ-atts"/&gt;
+      &lt;optional&gt;
+        &lt;attribute name="outputclass"/&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="audio.element"&gt;
+      &lt;element name="audio" dita:longName="Audio object reference"&gt;
+        &lt;a:documentation&gt;DITA's &amp;lt;audio&gt; element corresponds to the HTML &amp;lt;audio&gt; element.
+          Category: Body elements&lt;/a:documentation&gt;
+        &lt;ref name="audio.attlist"/&gt;
+        &lt;ref name="audio.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="audio.attlist" combine="interleave"&gt;
+      &lt;ref name="audio.attributes"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;a:documentation xml:space="preserve"&gt; LONG NAME: Media control configuration &lt;/a:documentation&gt;
+    &lt;define name="media-controls.content"&gt;
+      &lt;empty/&gt;
+    &lt;/define&gt;
+    &lt;define name="media-controls.attributes"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="name" a:defaultValue="controls"&gt;
+          &lt;value&gt;controls&lt;/value&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="value" a:defaultValue="true"&gt;
+          &lt;choice&gt;
+            &lt;value&gt;true&lt;/value&gt;
+            &lt;value&gt;false&lt;/value&gt;
+            &lt;value&gt;-dita-use-conref-target&lt;/value&gt;
+          &lt;/choice&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;ref name="univ-atts"/&gt;
+    &lt;/define&gt;
+    &lt;define name="media-controls.element"&gt;
+      &lt;element name="media-controls" dita:longName="Audio object reference"&gt;
+        &lt;a:documentation&gt;DITA's &amp;lt;media-controls&gt; element corresponds to the HTML @media attribute on &amp;lt;video&gt; and &amp;lt;audio&gt; elements.&lt;/a:documentation&gt;
+        &lt;ref name="media-controls.attlist"/&gt;
+        &lt;ref name="media-controls.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="media-controls.attlist" combine="interleave"&gt;
+      &lt;ref name="media-controls.attributes"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;a:documentation xml:space="preserve"&gt; LONG NAME: Media autoplay configuration &lt;/a:documentation&gt;
+    &lt;define name="media-autoplay.content"&gt;
+      &lt;empty/&gt;
+    &lt;/define&gt;
+    &lt;define name="media-autoplay.attributes"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="name" a:defaultValue="autoplay"&gt;
+          &lt;value&gt;autoplay&lt;/value&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="value" a:defaultValue="true"&gt;
+          &lt;choice&gt;
+            &lt;value&gt;true&lt;/value&gt;
+            &lt;value&gt;false&lt;/value&gt;
+            &lt;value&gt;-dita-use-conref-target&lt;/value&gt;
+          &lt;/choice&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;ref name="univ-atts"/&gt;
+    &lt;/define&gt;
+    &lt;define name="media-autoplay.element"&gt;
+      &lt;element name="media-autoplay" dita:longName="Audio object reference"&gt;
+        &lt;a:documentation&gt;DITA's &amp;lt;media-autoplay&gt; element corresponds to the HTML @autoplay attribute on &amp;lt;video&gt; and &amp;lt;audio&gt; elements.&lt;/a:documentation&gt;
+        &lt;ref name="media-autoplay.attlist"/&gt;
+        &lt;ref name="media-autoplay.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="media-autoplay.attlist" combine="interleave"&gt;
+      &lt;ref name="media-autoplay.attributes"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;a:documentation xml:space="preserve"&gt; LONG NAME: Media loop configuration &lt;/a:documentation&gt;
+    &lt;define name="media-loop.content"&gt;
+      &lt;empty/&gt;
+    &lt;/define&gt;
+    &lt;define name="media-loop.attributes"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="name" a:defaultValue="loop"&gt;
+          &lt;value&gt;loop&lt;/value&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="value" a:defaultValue="true"&gt;
+          &lt;choice&gt;
+            &lt;value&gt;true&lt;/value&gt;
+            &lt;value&gt;false&lt;/value&gt;
+            &lt;value&gt;-dita-use-conref-target&lt;/value&gt;
+          &lt;/choice&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;ref name="univ-atts"/&gt;
+    &lt;/define&gt;
+    &lt;define name="media-loop.element"&gt;
+      &lt;element name="media-loop" dita:longName="Audio object reference"&gt;
+        &lt;a:documentation&gt;DITA's &amp;lt;media-loop&gt; element corresponds to the HTML @loop attribute on &amp;lt;video&gt; and &amp;lt;audio&gt; elements.&lt;/a:documentation&gt;
+        &lt;ref name="media-loop.attlist"/&gt;
+        &lt;ref name="media-loop.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="media-loop.attlist" combine="interleave"&gt;
+      &lt;ref name="media-loop.attributes"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;a:documentation xml:space="preserve"&gt; LONG NAME: Media mute configuration &lt;/a:documentation&gt;
+    &lt;define name="media-muted.content"&gt;
+      &lt;empty/&gt;
+    &lt;/define&gt;
+    &lt;define name="media-muted.attributes"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="name" a:defaultValue="muted"&gt;
+          &lt;value&gt;muted&lt;/value&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="value" a:defaultValue="true"&gt;
+          &lt;choice&gt;
+            &lt;value&gt;true&lt;/value&gt;
+            &lt;value&gt;false&lt;/value&gt;
+            &lt;value&gt;-dita-use-conref-target&lt;/value&gt;
+          &lt;/choice&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;ref name="univ-atts"/&gt;
+    &lt;/define&gt;
+    &lt;define name="media-muted.element"&gt;
+      &lt;element name="media-muted" dita:longName="Audio object reference"&gt;
+        &lt;a:documentation&gt;DITA's &amp;lt;media-muted&gt; element corresponds to the HTML @muted attribute on &amp;lt;video&gt; and &amp;lt;audio&gt; elements.&lt;/a:documentation&gt;
+        &lt;ref name="media-muted.attlist"/&gt;
+        &lt;ref name="media-muted.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="media-muted.attlist" combine="interleave"&gt;
+      &lt;ref name="media-muted.attributes"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;a:documentation xml:space="preserve"&gt; LONG NAME: Media source &lt;/a:documentation&gt;
+    &lt;define name="media-source.content"&gt;
+      &lt;empty/&gt;
+    &lt;/define&gt;
+    &lt;define name="media-source.attributes"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="name" a:defaultValue="source"&gt;
+          &lt;value&gt;source&lt;/value&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="value"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="valuetype" a:defaultValue="ref"&gt;
+          &lt;value&gt;ref&lt;/value&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="type"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="keyref"/&gt;
+      &lt;/optional&gt;
+      &lt;ref name="univ-atts"/&gt;
+    &lt;/define&gt;
+    &lt;define name="media-source.element"&gt;
+      &lt;element name="media-source" dita:longName="Audio object reference"&gt;
+        &lt;a:documentation&gt;DITA's &amp;lt;media-source&gt; element corresponds to the HTML &amp;lt;source&gt; element within &amp;lt;video&gt; and &amp;lt;audio&gt; elements.&lt;/a:documentation&gt;
+        &lt;ref name="media-source.attlist"/&gt;
+        &lt;ref name="media-source.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="media-source.attlist" combine="interleave"&gt;
+      &lt;ref name="media-source.attributes"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;a:documentation xml:space="preserve"&gt; LONG NAME: Media track &lt;/a:documentation&gt;
+    &lt;define name="media-track.content"&gt;
+      &lt;empty/&gt;
+    &lt;/define&gt;
+    &lt;define name="media-track.attributes"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="name" a:defaultValue="track"&gt;
+          &lt;value&gt;track&lt;/value&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="value"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="valuetype" a:defaultValue="ref"&gt;
+          &lt;value&gt;ref&lt;/value&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="type"&gt;
+          &lt;choice&gt;
+            &lt;value&gt;subtitles&lt;/value&gt;
+            &lt;value&gt;captions&lt;/value&gt;
+            &lt;value&gt;descriptions&lt;/value&gt;
+            &lt;value&gt;chapters&lt;/value&gt;
+            &lt;value&gt;metadata&lt;/value&gt;
+            &lt;value&gt;-dita-use-conref-target&lt;/value&gt;
+          &lt;/choice&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="keyref"/&gt;
+      &lt;/optional&gt;
+      &lt;ref name="univ-atts"/&gt;
+    &lt;/define&gt;
+    &lt;define name="media-track.element"&gt;
+      &lt;element name="media-track" dita:longName="Audio object reference"&gt;
+        &lt;a:documentation&gt;DITA's &amp;lt;media-track&gt; element corresponds to the HTML &amp;lt;track&gt; element within &amp;lt;video&gt; and &amp;lt;audio&gt; elements.&lt;/a:documentation&gt;
+        &lt;ref name="media-track.attlist"/&gt;
+        &lt;ref name="media-track.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="media-track.attlist" combine="interleave"&gt;
+      &lt;ref name="media-track.attributes"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;a:documentation xml:space="preserve"&gt; LONG NAME: Video poster &lt;/a:documentation&gt;
+    &lt;define name="video-poster.content"&gt;
+      &lt;empty/&gt;
+    &lt;/define&gt;
+    &lt;define name="video-poster.attributes"&gt;
+      &lt;optional&gt;
+        &lt;attribute name="name" a:defaultValue="poster"&gt;
+          &lt;value&gt;poster&lt;/value&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="value"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="valuetype" a:defaultValue="ref"&gt;
+          &lt;value&gt;ref&lt;/value&gt;
+        &lt;/attribute&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="type"/&gt;
+      &lt;/optional&gt;
+      &lt;optional&gt;
+        &lt;attribute name="keyref"/&gt;
+      &lt;/optional&gt;
+      &lt;ref name="univ-atts"/&gt;
+    &lt;/define&gt;
+    &lt;define name="video-poster.element"&gt;
+      &lt;element name="video-poster" dita:longName="Audio object reference"&gt;
+        &lt;a:documentation&gt;DITA's &amp;lt;video-poster&gt; element corresponds to the HTML &amp;lt;track&gt; element within &amp;lt;video&gt; and &amp;lt;audio&gt; elements.&lt;/a:documentation&gt;
+        &lt;ref name="video-poster.attlist"/&gt;
+        &lt;ref name="video-poster.content"/&gt;
+      &lt;/element&gt;
+    &lt;/define&gt;
+    &lt;define name="video-poster.attlist" combine="interleave"&gt;
+      &lt;ref name="video-poster.attributes"/&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;a:documentation&gt; Specialization attributes. Global attributes and class defaults &lt;/a:documentation&gt;
+    &lt;define name="video.attlist" combine="interleave"&gt;
+      &lt;ref name="global-atts"/&gt;
+      &lt;optional&gt;
+        &lt;attribute name="class"
+          a:defaultValue="+ topic/object media-d/video "/&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="audio.attlist" combine="interleave"&gt;
+      &lt;ref name="global-atts"/&gt;
+      &lt;optional&gt;
+        &lt;attribute name="class"
+          a:defaultValue="+ topic/object media-d/audio "/&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="media-controls.attlist" combine="interleave"&gt;
+      &lt;ref name="global-atts"/&gt;
+      &lt;optional&gt;
+        &lt;attribute name="class"
+          a:defaultValue="+ topic/param media-d/media-controls "/&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="media-autoplay.attlist" combine="interleave"&gt;
+      &lt;ref name="global-atts"/&gt;
+      &lt;optional&gt;
+        &lt;attribute name="class"
+          a:defaultValue="+ topic/param media-d/media-autoplay "/&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="media-loop.attlist" combine="interleave"&gt;
+      &lt;ref name="global-atts"/&gt;
+      &lt;optional&gt;
+        &lt;attribute name="class"
+          a:defaultValue="+ topic/param media-d/media-loop "/&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="media-muted.attlist" combine="interleave"&gt;
+      &lt;ref name="global-atts"/&gt;
+      &lt;optional&gt;
+        &lt;attribute name="class"
+          a:defaultValue="+ topic/param media-d/media-muted "/&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="video-poster.attlist" combine="interleave"&gt;
+      &lt;ref name="global-atts"/&gt;
+      &lt;optional&gt;
+        &lt;attribute name="class"
+          a:defaultValue="+ topic/param media-d/video-poster "/&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="media-source.attlist" combine="interleave"&gt;
+      &lt;ref name="global-atts"/&gt;
+      &lt;optional&gt;
+        &lt;attribute name="class"
+          a:defaultValue="+ topic/param media-d/media-source "/&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+    &lt;define name="media-track.attlist" combine="interleave"&gt;
+      &lt;ref name="global-atts"/&gt;
+      &lt;optional&gt;
+        &lt;attribute name="class"
+          a:defaultValue="+ topic/param media-d/media-track "/&gt;
+      &lt;/optional&gt;
+    &lt;/define&gt;
+  &lt;/div&gt;
+&lt;/grammar&gt;</code></pre>
+        <p class="p">Finally, references to this new module will need to be added to all of the base document
+          type shells.</p>
+        <ul class="ul" id="topic_aqh_5zt_3h__ul_chb_5wx_jdb">
+          <li class="li"><span class="ph filepath">base/rng/basemap.rng</span></li>
+          <li class="li"><span class="ph filepath">base/rng/basetopic.rng</span></li>
+        </ul>
+        <p class="p">For instance:</p>
+        <pre class="pre codeblock"><code>&lt;include href="mediaDomain.rng"/&gt;</code></pre>
+      </section>
+<section class="section"><h2 class="title sectiontitle">Modified terminology</h2>
+
+<p class="p">None.</p>
+</section>
+      <section class="section"><h2 class="title sectiontitle">Modified specification documentation</h2>
+        
+        <p class="p">Changes to the architectural specification will be limited to the element-by-element
+          recommendations to translators topic,
+            <span class="ph filepath">non-normative/elementsMerged.dita</span>. A subset of this topic is
+          reproduced below with the new content.</p>
+        <p class="p">The changes to the language reference are as follows:</p>
+        <ul class="ul" id="topic_aqh_5zt_3h__ul_nsy_t5c_kdb">
+          <li class="li">Additions to <span class="ph filepath">langRef/quick-reference/base-elements-a-to-z.dita</span>
+            for each new element; not presented here.</li>
+          <li class="li">Updates to the generated content model topics, not presented here.</li>
+          <li class="li">The <code class="keyword markupname xmlelement">&lt;object&gt;</code> topic
+              (<span class="ph filepath">langRef/base/object.dita</span>) will be modified such that examples
+            will include the use of <code class="keyword markupname xmlelement">&lt;fallback&gt;</code>. See the table below.</li>
+          <li class="li">A new topic will appear in the <a class="xref" href="http://docs.oasis-open.org/dita/dita/v1.3/errata01/os/complete/part3-all-inclusive/langRef/containers/body-elements.html#body2" target="_blank">Body elements</a> section (3.2.2) describing the
+              <code class="keyword markupname xmlelement">&lt;fallback&gt;</code> element; see below.</li>
+          <li class="li">A new topic describing the media domain will be added under the <a class="xref" href="http://docs.oasis-open.org/dita/dita/v1.3/errata01/os/complete/part3-all-inclusive/langRef/containers/domain-elements.html#domain_elements" target="_blank">Domain Elements</a> section (3.5); see below.</li>
+          <li class="li">Beneath the new domain topic will be a new topic for each element in the domain; see
+            below.</li>
+        </ul>
+        <table class="table" id="topic_aqh_5zt_3h__table_hld_xyc_kdb"><caption><span class="table--title-label">Table 1. </span><span class="title">Updates to Existing Topics</span></caption><colgroup><col><col><col></colgroup><thead class="thead">
+              <tr class="row">
+                <th class="entry" id="topic_aqh_5zt_3h__table_hld_xyc_kdb__entry__1">File</th>
+                <th class="entry" id="topic_aqh_5zt_3h__table_hld_xyc_kdb__entry__2">DITA 1.3 Language</th>
+                <th class="entry" id="topic_aqh_5zt_3h__table_hld_xyc_kdb__entry__3">DITA 2.0 Language</th>
+              </tr>
+            </thead><tbody class="tbody">
+              <tr class="row">
+                <td class="entry" headers="topic_aqh_5zt_3h__table_hld_xyc_kdb__entry__1 "><span class="ph filepath">langRef/base/object.dita</span></td>
+                <td class="entry" headers="topic_aqh_5zt_3h__table_hld_xyc_kdb__entry__2 ">
+                  <pre class="pre codeblock"><code>&lt;p&gt;Cutting the keys from the system unit:&lt;/p&gt;
+&lt;object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+ codebase="http://download.macromedia.com/pub/shockwave/cabs/
+flash/swflash.cab#version=6,0,0,0"
+ data="cutkey370.swf"
+ type="application/x-shockwave-flash"
+ height="280"
+ width="370"
+ id="cutkey370"&gt;
+ &lt;desc&gt;A description of the task&lt;/desc&gt;
+ &lt;param name="movie" value="cutkey370.swf"/&gt;
+ &lt;param name="quality" value="high"/&gt;
+ &lt;param name="bgcolor" value="#FFFFFF"/&gt;
+&lt;/object&gt;
+</code></pre>
+                  <pre class="pre codeblock"><code>&lt;p&gt;What's EIM?&lt;/p&gt;
+&lt;object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+ codebase="http://download.macromedia.com/pub/shockwave/cabs/
+flash/swflash.cab#version=6,0,0,0"
+ data="eim.swf"
+ height="400"
+ width="500"
+ id="eim"&gt;
+ &lt;desc&gt;Some great, glorious info&lt;/desc&gt;
+ &lt;param name="movie" value="eim.swf"/&gt;
+ &lt;param name="quality" value="high"/&gt;
+ &lt;param name="bgcolor" value="#FFFFFF"/&gt;
+ &lt;param name="pluginspace"
+ value="http://www.macromedia.com/go/getflashplayer"/&gt;
+&lt;/object&gt;</code></pre>
+                </td>
+                <td class="entry" headers="topic_aqh_5zt_3h__table_hld_xyc_kdb__entry__3 ">
+                  <pre class="pre codeblock"><code>&lt;p&gt;Cutting the keys from the system unit:&lt;/p&gt;
+&lt;object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+ codebase="http://download.macromedia.com/pub/shockwave/cabs/
+flash/swflash.cab#version=6,0,0,0"
+ data="cutkey370.swf"
+ type="application/x-shockwave-flash"
+ height="280"
+ width="370"
+ id="cutkey370"&gt;
+ &lt;desc&gt;A description of the task&lt;/desc&gt;
+ <span class="ph">&lt;fallback&gt;Media not available.&lt;/fallback&gt;</span>
+ &lt;param name="movie" value="cutkey370.swf"/&gt;
+ &lt;param name="quality" value="high"/&gt;
+ &lt;param name="bgcolor" value="#FFFFFF"/&gt;
+&lt;/object&gt;
+</code></pre>
+                  <pre class="pre codeblock"><code>&lt;p&gt;What's EIM?&lt;/p&gt;
+&lt;object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+ codebase="http://download.macromedia.com/pub/shockwave/cabs/
+flash/swflash.cab#version=6,0,0,0"
+ data="eim.swf"
+ height="400"
+ width="500"
+ id="eim"&gt;
+ &lt;desc&gt;Some great, glorious info&lt;/desc&gt;
+ <span class="ph">&lt;fallback&gt;&lt;image href="media-not-available.png"/&gt;&lt;/fallback&gt;</span>
+ &lt;param name="movie" value="eim.swf"/&gt;
+ &lt;param name="quality" value="high"/&gt;
+ &lt;param name="bgcolor" value="#FFFFFF"/&gt;
+ &lt;param name="pluginspace"
+ value="http://www.macromedia.com/go/getflashplayer"/&gt;
+&lt;/object&gt;</code></pre>
+                </td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="topic_aqh_5zt_3h__table_hld_xyc_kdb__entry__1 "><span class="ph filepath">langRef/base/object.dita</span></td>
+                <td class="entry" headers="topic_aqh_5zt_3h__table_hld_xyc_kdb__entry__2 ">
+                  <pre class="pre codeblock"><code>&lt;object
+  id="E5123_026.mp4"
+  width="300"
+  height="300"&gt;
+  &lt;param name="poster"
+     <strong class="ph b">keyref="E5123_026_poster"</strong>
+  /&gt;
+  &lt;param name="source"
+     <strong class="ph b">keyref="E5123_026_video"</strong>
+  /&gt;
+&lt;/object&gt;</code></pre>
+                </td>
+                <td class="entry" headers="topic_aqh_5zt_3h__table_hld_xyc_kdb__entry__3 ">
+                  <pre class="pre codeblock"><code>&lt;object
+  id="E5123_026.mp4"
+  width="300"
+  height="300"&gt;
+  <span class="ph">&lt;fallback&gt;Media not available.&lt;/fallback&gt;</span>
+  &lt;param name="poster"
+     <strong class="ph b">keyref="E5123_026_poster"</strong>
+  /&gt;
+  &lt;param name="source"
+     <strong class="ph b">keyref="E5123_026_video"</strong>
+  /&gt;
+&lt;/object&gt;</code></pre>
+                </td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="topic_aqh_5zt_3h__table_hld_xyc_kdb__entry__1 "><span class="ph filepath">langRef/base/object.dita</span></td>
+                <td class="entry" headers="topic_aqh_5zt_3h__table_hld_xyc_kdb__entry__2 ">
+                  <pre class="pre codeblock"><code>&lt;object 
+ <strong class="ph b">classidkeyref="video_classid"</strong>
+ <strong class="ph b">codebasekeyref="video_codebase"</strong>
+ <strong class="ph b">datakeyref="cutkey370"</strong>
+ height="280"
+ width="370"
+ id="cutkey370"&gt;
+ &lt;desc&gt;A description of the task&lt;/desc&gt;
+ &lt;param name="movie" <strong class="ph b">keyref="cutkey370"</strong>/&gt;
+ &lt;param name="quality" value="high"/&gt;
+ &lt;param name="bgcolor" value="#FFFFFF"/&gt;
+&lt;/object&gt;</code></pre>
+                </td>
+                <td class="entry" headers="topic_aqh_5zt_3h__table_hld_xyc_kdb__entry__3 ">
+                  <pre class="pre codeblock"><code>&lt;object 
+ <strong class="ph b">classidkeyref="video_classid"</strong>
+ <strong class="ph b">codebasekeyref="video_codebase"</strong>
+ <strong class="ph b">datakeyref="cutkey370"</strong>
+ height="280"
+ width="370"
+ id="cutkey370"&gt;
+ &lt;desc&gt;A description of the task&lt;/desc&gt;
+ <span class="ph">&lt;fallback&gt;Media not available.&lt;/fallback&gt;</span>
+ &lt;param name="movie" <strong class="ph b">keyref="cutkey370"</strong>/&gt;
+ &lt;param name="quality" value="high"/&gt;
+ &lt;param name="bgcolor" value="#FFFFFF"/&gt;
+&lt;/object&gt;</code></pre>
+                </td>
+              </tr>
+            </tbody></table>
+      </section>
+<section class="section"><h2 class="title sectiontitle">Migration plans for backwards incompatibilities</h2>
+
+<p class="p">N/A</p>
+</section>
+    </div>
+    <article class="topic reference nested1" aria-labelledby="ariaid-title2" lang="en-us" id="elements">
+      <h2 class="title topictitle2" id="ariaid-title2">Element-by-element recommendations for translators: <span class="ph">Base edition</span></h2>
+      <div class="body refbody">
+        <section class="section" id="elements__section_topic"><h3 class="title sectiontitle">topic elements</h3>
+          <div class="note note note_note"><span class="note__title">Note:</span> The vast majority of this topic is omitted; only the new row in the <strong class="ph b">topic
+              elements</strong> table and the new section for <strong class="ph b">media-d elements</strong> are
+            presented.</div>
+          
+          <table class="simpletable" id="elements__simpletable_body"><colgroup><col style="width:16.666666666666664%"><col style="width:16.666666666666664%"><col style="width:16.666666666666664%"><col style="width:16.666666666666664%"><col style="width:16.666666666666664%"><col style="width:16.666666666666664%"></colgroup><thead><tr class="sthead">
+              <th class="stentry" scope="col">Element name</th>
+              <th class="stentry" scope="col">Specialized from</th>
+              <th class="stentry" scope="col">Block/Inline (presentation)</th>
+              <th class="stentry" scope="col">Block/Inline (translation)</th>
+              <th class="stentry" scope="col">Translatable content?</th>
+              <th class="stentry" scope="col">Translatable attributes?</th>
+            </tr></thead><tbody><tr class="strow">
+              <td class="stentry"><code class="keyword markupname xmlelement">&lt;fallback&gt;</code></td>
+              <td class="stentry">N/A</td>
+              <td class="stentry">block</td>
+              <td class="stentry">block</td>
+              <td class="stentry">yes</td>
+              <td class="stentry"></td>
+            </tr></tbody></table>
+        </section>
+        <section class="section" id="elements__section_BA888B8F9FFD4526AD402A2181A5D349"><h3 class="title sectiontitle">media-d elements (media domain) <em class="ph i">(new in DITA 2.0)</em></h3>
+          
+          <table class="simpletable" id="elements__simpletable_8993AC6E82504B59A5BCC7FBEBFC7A12"><colgroup><col style="width:14.285714285714285%"><col style="width:14.285714285714285%"><col style="width:14.285714285714285%"><col style="width:14.285714285714285%"><col style="width:14.285714285714285%"><col style="width:14.285714285714285%"><col style="width:14.285714285714285%"></colgroup><thead><tr class="sthead">
+              <th class="stentry" scope="col">Element name</th>
+              <th class="stentry" scope="col">Specialized from</th>
+              <th class="stentry" scope="col">Inherits everything from ancestor?</th>
+              <th class="stentry" scope="col">Block/Inline (presentation)</th>
+              <th class="stentry" scope="col">Block/Inline (translation)</th>
+              <th class="stentry" scope="col">Translatable content?</th>
+              <th class="stentry" scope="col">Translatable attributes?</th>
+            </tr></thead><tbody><tr class="strow">
+              <td class="stentry"><code class="keyword markupname xmlelement">&lt;video&gt;</code></td>
+              <td class="stentry"><code class="keyword markupname xmlelement">&lt;object&gt;</code></td>
+              <td class="stentry">no</td>
+              <td class="stentry">block</td>
+              <td class="stentry">block</td>
+              <td class="stentry">yes</td>
+              <td class="stentry"></td>
+            </tr><tr class="strow">
+              <td class="stentry"><code class="keyword markupname xmlelement">&lt;audio&gt;</code></td>
+              <td class="stentry"><code class="keyword markupname xmlelement">&lt;object&gt;</code></td>
+              <td class="stentry">no</td>
+              <td class="stentry">block</td>
+              <td class="stentry">block</td>
+              <td class="stentry">yes</td>
+              <td class="stentry"></td>
+            </tr><tr class="strow">
+              <td class="stentry"><code class="keyword markupname xmlelement">&lt;media-controls&gt;</code></td>
+              <td class="stentry"><code class="keyword markupname xmlelement">&lt;param&gt;</code></td>
+              <td class="stentry">no</td>
+              <td class="stentry">block</td>
+              <td class="stentry">block</td>
+              <td class="stentry">n/a</td>
+              <td class="stentry"></td>
+            </tr><tr class="strow">
+              <td class="stentry"><code class="keyword markupname xmlelement">&lt;media-autoplay&gt;</code></td>
+              <td class="stentry"><code class="keyword markupname xmlelement">&lt;param&gt;</code></td>
+              <td class="stentry">no</td>
+              <td class="stentry">block</td>
+              <td class="stentry">block</td>
+              <td class="stentry">n/a</td>
+              <td class="stentry"></td>
+            </tr><tr class="strow">
+              <td class="stentry"><code class="keyword markupname xmlelement">&lt;media-loop&gt;</code></td>
+              <td class="stentry"><code class="keyword markupname xmlelement">&lt;param&gt;</code></td>
+              <td class="stentry">no</td>
+              <td class="stentry">block</td>
+              <td class="stentry">block</td>
+              <td class="stentry">n/a</td>
+              <td class="stentry"></td>
+            </tr><tr class="strow">
+              <td class="stentry"><code class="keyword markupname xmlelement">&lt;media-muted&gt;</code></td>
+              <td class="stentry"><code class="keyword markupname xmlelement">&lt;param&gt;</code></td>
+              <td class="stentry">no</td>
+              <td class="stentry">block</td>
+              <td class="stentry">block</td>
+              <td class="stentry">n/a</td>
+              <td class="stentry"></td>
+            </tr><tr class="strow">
+              <td class="stentry"><code class="keyword markupname xmlelement">&lt;video-poster&gt;</code></td>
+              <td class="stentry"><code class="keyword markupname xmlelement">&lt;param&gt;</code></td>
+              <td class="stentry">no</td>
+              <td class="stentry">block</td>
+              <td class="stentry">block</td>
+              <td class="stentry">n/a</td>
+              <td class="stentry"></td>
+            </tr><tr class="strow">
+              <td class="stentry"><code class="keyword markupname xmlelement">&lt;media-source&gt;</code></td>
+              <td class="stentry"><code class="keyword markupname xmlelement">&lt;param&gt;</code></td>
+              <td class="stentry">no</td>
+              <td class="stentry">block</td>
+              <td class="stentry">block</td>
+              <td class="stentry">n/a</td>
+              <td class="stentry"></td>
+            </tr><tr class="strow">
+              <td class="stentry"><code class="keyword markupname xmlelement">&lt;media-track&gt;</code></td>
+              <td class="stentry"><code class="keyword markupname xmlelement">&lt;param&gt;</code></td>
+              <td class="stentry">no</td>
+              <td class="stentry">block</td>
+              <td class="stentry">block</td>
+              <td class="stentry">n/a</td>
+              <td class="stentry"></td>
+            </tr></tbody></table>
+        </section>
+      </div>
+    </article>
+    <article class="topic reference nested1" aria-labelledby="ariaid-title3" lang="en-us" id="media-d">
+      <h2 class="title topictitle2" id="ariaid-title3"><span class="ph">Media</span> elements</h2>
+      
+      
+      <div class="body refbody"><p class="shortdesc">The <span class="ph">media</span> elements are used to reference audio or video content. The
+        elements in this domain are modeled lossely on the HTML5 <code class="keyword markupname xmlelement">&lt;audio&gt;</code> and
+          <code class="keyword markupname xmlelement">&lt;video&gt;</code> elements, allowing for extensive configuration of media in
+        multiple formats with supplemental external resources.</p>
+        <section class="section">
+          <figure class="fig fignone" id="media-d__fig_gxt_ytl_kdb"><figcaption><span class="fig--title-label">Figure 1. </span>Relationship between HTML5 and DITA markup</figcaption>
+            
+            <p class="p">The elements in the media domain can be mapped to HTML5 multimedia elements as
+              follows.</p>
+            <table class="simpletable" id="media-d__simpletable_wnr_15l_kdb"><colgroup><col style="width:50%"><col style="width:50%"></colgroup><thead><tr class="sthead">
+                <th class="stentry" scope="col">DITA Markup</th>
+                <th class="stentry" scope="col">Analoguous HTML5 Markup</th>
+              </tr></thead><tbody><tr class="strow">
+                <td class="stentry"><code class="keyword markupname xmlelement">&lt;video&gt;</code></td>
+                <td class="stentry"><code class="keyword markupname xmlelement">&lt;video&gt;</code></td>
+              </tr><tr class="strow">
+                <td class="stentry"><code class="keyword markupname xmlelement">&lt;audio&gt;</code></td>
+                <td class="stentry"><code class="keyword markupname xmlelement">&lt;audio&gt;</code></td>
+              </tr><tr class="strow">
+                <td class="stentry"><code class="keyword markupname xmlelement">&lt;desc&gt;</code></td>
+                <td class="stentry"><code class="keyword markupname xmlatt">@title</code></td>
+              </tr><tr class="strow">
+                <td class="stentry"><code class="keyword markupname xmlatt">@data</code> or <code class="keyword markupname xmlatt">@datakeyref</code></td>
+                <td class="stentry"><code class="keyword markupname xmlatt">@src</code></td>
+              </tr><tr class="strow">
+                <td class="stentry"><code class="keyword markupname xmlelement">&lt;media-autoplay&gt;</code></td>
+                <td class="stentry"><code class="keyword markupname xmlatt">@autoplay</code></td>
+              </tr><tr class="strow">
+                <td class="stentry"><code class="keyword markupname xmlelement">&lt;media-controls&gt;</code></td>
+                <td class="stentry"><code class="keyword markupname xmlatt">@controls</code></td>
+              </tr><tr class="strow">
+                <td class="stentry"><code class="keyword markupname xmlelement">&lt;media-loop&gt;</code></td>
+                <td class="stentry"><code class="keyword markupname xmlatt">@loop</code></td>
+              </tr><tr class="strow">
+                <td class="stentry"><code class="keyword markupname xmlelement">&lt;media-muted&gt;</code></td>
+                <td class="stentry"><code class="keyword markupname xmlatt">@muted</code></td>
+              </tr><tr class="strow">
+                <td class="stentry"><code class="keyword markupname xmlelement">&lt;video-poster&gt;</code></td>
+                <td class="stentry"><code class="keyword markupname xmlatt">@poster</code></td>
+              </tr><tr class="strow">
+                <td class="stentry"><code class="keyword markupname xmlelement">&lt;media-source&gt;</code></td>
+                <td class="stentry"><code class="keyword markupname xmlelement">&lt;source&gt;</code></td>
+              </tr><tr class="strow">
+                <td class="stentry"><code class="keyword markupname xmlelement">&lt;media-track&gt;</code></td>
+                <td class="stentry"><code class="keyword markupname xmlelement">&lt;track&gt;</code></td>
+              </tr><tr class="strow">
+                <td class="stentry"><code class="keyword markupname xmlatt">@value</code> or <code class="keyword markupname xmlatt">@keyref</code> on
+                  <code class="keyword markupname xmlelement">&lt;media-source&gt;</code> and <code class="keyword markupname xmlelement">&lt;media-track&gt;</code></td>
+                <td class="stentry"><code class="keyword markupname xmlatt">@src</code> on <code class="keyword markupname xmlelement">&lt;source&gt;</code> and
+                    <code class="keyword markupname xmlelement">&lt;track&gt;</code></td>
+              </tr><tr class="strow">
+                <td class="stentry"><code class="keyword markupname xmlatt">@type</code> on <code class="keyword markupname xmlelement">&lt;media-track&gt;</code></td>
+                <td class="stentry"><code class="keyword markupname xmlatt">@kind</code> on <code class="keyword markupname xmlelement">&lt;track&gt;</code></td>
+              </tr><tr class="strow">
+                <td class="stentry"><code class="keyword markupname xmlatt">@xml:lang</code> on <code class="keyword markupname xmlatt">@media-track</code></td>
+                <td class="stentry"><code class="keyword markupname xmlatt">@srclang</code> on <code class="keyword markupname xmlelement">&lt;track&gt;</code></td>
+              </tr><tr class="strow">
+                <td class="stentry"><code class="keyword markupname xmlelement">&lt;fallback&gt;</code></td>
+                <td class="stentry">Other markup directly within <code class="keyword markupname xmlelement">&lt;audo&gt;</code> or
+                    <code class="keyword markupname xmlelement">&lt;video&gt;</code></td>
+              </tr></tbody></table>
+          </figure>
+        </section>
+      </div>
+    </article>
+    <article class="topic reference nested1" aria-labelledby="ariaid-title4" lang="en-us" id="reference_mwz_k2r_kdb">
+      <h2 class="title topictitle2" id="ariaid-title4">Element reference topic: <code class="keyword markupname xmlelement">&lt;fallback&gt;</code></h2>
+      
+      
+      <div class="body refbody"><p class="shortdesc">The <code class="keyword markupname xmlelement">&lt;fallback&gt;</code> element provides content to be presented when
+        multimedia objects cannot be rendered.</p>
+        <section class="section" id="reference_mwz_k2r_kdb__section_nwz_k2r_kdb"><h3 class="title sectiontitle">Usage information</h3>
+          
+          
+        </section>
+        <section class="section" id="reference_mwz_k2r_kdb__section_owz_k2r_kdb"><h3 class="title sectiontitle">Formatting expectations</h3>
+          
+          <p class="p">The contents of this element should be displayed only when the media referenced by the
+            containing <code class="keyword markupname xmlelement">&lt;object&gt;</code> element cannot be displayed.</p>
+        </section>
+        <section class="section" id="reference_mwz_k2r_kdb__section_pwz_k2r_kdb"><h3 class="title sectiontitle">Processing expectations</h3>
+          
+          <p class="p">None.</p>
+        </section>
+        <section class="section" id="reference_mwz_k2r_kdb__section_qwz_k2r_kdb"><h3 class="title sectiontitle">Specialization hierarchy</h3>
+          
+          <p class="p">- topic/fallback </p>
+        </section>
+        <section class="section" id="reference_mwz_k2r_kdb__section_rwz_k2r_kdb"><h3 class="title sectiontitle">Attributes</h3>
+          
+          <p class="p">The following attributes are available on this element: <span class="xref">Universal attributes
+              group</span>.</p>
+        </section>
+        <div class="example"><h3 class="title sectiontitle">Example</h3>
+          
+          <p class="p">See <span class="xref"><code class="keyword markupname xmlelement">&lt;object&gt;</code></span> for examples of this
+            element.</p>
+        </div>
+      </div>
+    </article>
+    <article class="topic reference nested1" aria-labelledby="ariaid-title5" lang="en-us" id="video">
+      <h2 class="title topictitle2" id="ariaid-title5">Element reference topic: <code class="keyword markupname xmlelement">&lt;video&gt;</code></h2>
+      
+      
+      <div class="body refbody"><p class="shortdesc">The <code class="keyword markupname xmlelement">&lt;video&gt;</code> element is used to reference video content in a
+        DITA topic. It is modeled roughly on the HTML5 element of the same name.</p>
+        <section class="section" id="video__section_rpt_xh2_kdb"><h3 class="title sectiontitle">Usage information</h3>
+          
+          <p class="p">Media can be referenced either using the <code class="keyword markupname xmlatt">@data</code> or
+              <code class="keyword markupname xmlatt">@datakeyref</code> attributes or using nested
+              <code class="keyword markupname xmlelement">&lt;media-source&gt;</code> elements. Extensive configuration of the
+            presentation of the media can be configured using optional nested elements.</p>
+        </section>
+        <section class="section" id="video__section_spt_xh2_kdb"><h3 class="title sectiontitle">Formatting expectations</h3>
+          
+          <p class="p">When possible, the video should be displayed at the location of the
+              <code class="keyword markupname xmlelement">&lt;video&gt;</code> reference. If <code class="keyword markupname xmlatt">@width</code> and/or
+              <code class="keyword markupname xmlatt">@height</code> are specified, those dimensions should be honored. When the
+            media cannot be presented in a meaningful way, the contents of the
+              <code class="keyword markupname xmlelement">&lt;fallback&gt;</code> element, if any, should be presented.</p>
+        </section>
+        <section class="section" id="video__section_tpt_xh2_kdb"><h3 class="title sectiontitle">Processing expectations</h3>
+          
+          <p class="p">When converting to HTML5 or HTML5-derived output formats,
+              <code class="keyword markupname xmlelement">&lt;video&gt;</code> should be mapped to its HTML5-equivalent markup.
+            Processing for other output formats is highly dependent on the capabilities of those
+            formats. Implementors should implement support for presentation of multimedia on a
+            best-effort basis.</p>
+        </section>
+        <section class="section" id="video__section_upt_xh2_kdb"><h3 class="title sectiontitle">Specialization hierarchy</h3>
+          
+          <p class="p">+ topic/object media-d/video </p>
+        </section>
+        <section class="section" id="video__section_vpt_xh2_kdb"><h3 class="title sectiontitle">Attributes</h3>
+          
+          <p class="p">The following attributes are available on this element: <span class="xref">Universal attributes
+              group</span> and the attributes defined below.</p>
+          <dl class="dl">
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@data</code></dt>
+              <dd class="dd">Contains the absolute or relative URI of the video media. If this attribute is
+                specified, <code class="keyword markupname xmlatt">@type</code> should also be specified. If the video is available
+                in multiple formats, nested <code class="keyword markupname xmlelement">&lt;media-source&gt;</code> elements should be
+                used instead.</dd>
+            
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@datakeyref</code></dt>
+              <dd class="dd">Key reference to the location of the video data, as for <code class="keyword markupname xmlatt">@data</code>.
+                When specified and the key is resolvable, the key-provided URI is used. A key that
+                has no associated resource, only link text, is considered to be unresolved for the
+                purpose of the <code class="keyword markupname xmlatt">@datakeyref</code> attribute. If <code class="keyword markupname xmlatt">@data</code> is
+                specified, it is used as a fallback when the key cannot be resolved to a
+                resource.</dd>
+            
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@type</code></dt>
+              <dd class="dd">Indicates the content type (MIME type) for the data specified by the
+                  <code class="keyword markupname xmlatt">@data</code>
+                <span class="ph">or <code class="keyword markupname xmlatt">@datakeyref</code>
+                </span> attribute. This attribute should be set when the <code class="keyword markupname xmlatt">@data</code>
+                attribute is set to avoid loading unsupported content types. Note that this differs
+                from the <code class="keyword markupname xmlatt">@type</code> attribute on many other DITA elements (it specifies a
+                MIME type rather than a content type). <span class="ph">If <code class="keyword markupname xmlatt">@type</code> is not
+                  specified, the effective type value for the key named by the
+                    <code class="keyword markupname xmlatt">@datakeyref</code> attribute is used as the this attribute's
+                  value.</span></dd>
+            
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@height</code></dt>
+              <dd class="dd">Indicates the vertical dimension for the resulting video display. If necessary,
+                the object is scaled to the specified size. <span class="ph" id="video__height-width-units">The value of
+                  this attribute is a real number (expressed in decimal notation) optionally
+                  followed by a unit of measure from the set of pc, pt, px, in, cm, mm, em (picas,
+                  points, pixels, inches, centimeters, millimeters, and ems respectively). The
+                  default unit is px (pixels). Possible values include: "5", "5in", and
+                  "10.5cm".</span> If a height value is specified and no width value is specified, the
+                width will be scaled by the same factor as the height. <span class="ph" id="video__height-width-warning">If both a height value and width value are specified, implementations <dfn class="term RFC-2119">MAY</dfn> ignore one of the two values when they are
+                  unable to scale to each direction using different factors.</span></dd>
+            
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@width</code></dt>
+              <dd class="dd">Indicates the horizontal dimension for the resulting video display. If necessary,
+                the object is scaled to the specified size. <span class="ph">If both a height value and width
+                  value are specified, implementations <dfn class="term RFC-2119">MAY</dfn>
+                  ignore one of the two values when they are unable to scale to each direction using
+                  different factors.</span> If a width value is specified and no height value is
+                specified, the height will be scaled by the same factor as the width. <span class="ph">If both a
+                  height value and width value are specified, implementations <dfn class="term RFC-2119">MAY</dfn> ignore one of the two values when they are
+                  unable to scale to each direction using different factors.</span></dd>
+            
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@tabindex</code></dt>
+              <dd class="dd">Position the video in tabbing order.</dd>
+            
+          </dl>
+        </section>
+        <div class="example"><h3 class="title sectiontitle">A very simple video reference</h3>
+          
+          <pre class="pre codeblock"><code>&lt;video data="video.mp4" type="video/mp4"/&gt;</code></pre>
+          <p class="p">A similar example using a key reference:</p>
+          <pre class="pre codeblock"><code>&lt;video datakeyref="video" type="video/mp4"/&gt;</code></pre>
+        </div>
+        <div class="example"><h3 class="title sectiontitle">Referencing a video in multiple formats</h3>
+          
+          <pre class="pre codeblock"><code>&lt;video&gt;
+  &lt;media-source keyref="video-mp4" value="video.mp4" type="video/mp4"/&gt;
+  &lt;media-source keyref="video-ogg" value="video.ogg" type="video/ogg"/&gt;
+  &lt;media-source keyref="video-webm" value="video.webm" type="video/webm"/&gt;
+&lt;/video&gt;</code></pre>
+        </div>
+        <div class="example"><h3 class="title sectiontitle">Complete example configuring video presentation, with multiple formats and multi-lingual subtitles</h3>
+          
+          <p class="p">The following video reference explicitly defines multiple presentational details for a
+            video available in multiple formats, referenced using key references, with URIs when the
+            keys are not resolvable.</p>
+          <pre class="pre codeblock"><code>&lt;video width="400px" height="300px"&gt;
+  &lt;desc&gt;A video illustrating this procedure.&lt;/desc&gt;
+  &lt;fallback&gt;
+    &lt;image keyref="video-not-available" href="video-not-available.png"&gt;
+      &lt;alt&gt;This video cannot be displayed.&lt;/alt&gt;
+    &lt;/image&gt;
+  &lt;/fallback&gt;
+  
+  &lt;!-- Reference the poster via both key and URI --&gt;
+  &lt;video-poster keyref="video-poster" value="poster.png"/&gt;
+
+  &lt;!--
+    The default value is 'true', so @value is optional on these controls
+    when enabling their features, but mandatory when disabling them.
+  --&gt;
+  &lt;media-controls value="true"/&gt;
+  &lt;media-autoplay/&gt;
+  &lt;media-loop value="false"/&gt;
+  &lt;media-muted value="false"/&gt;
+
+  &lt;!-- Multiple formats, referenced via both key and URI --&gt;
+  &lt;media-source keyref="video-mp4" value="video.mp4" type="video/mp4"/&gt;
+  &lt;media-source keyref="video-ogg" value="video.ogg" type="video/ogg"/&gt;
+  &lt;media-source keyref="video-webm" value="video.webm" type="video/webm"/&gt;
+
+  &lt;!-- Subtitle tracks in multiple languages --&gt;
+  &lt;media-track xml:lang="en" keyref=video-subtitles-en"
+    value="video-subtitles-en.vtt" type="subitles"/&gt;
+  &lt;media-track xml:lang="fr" keyref=video-subtitles-fr"
+    value="video-subtitles-fr.vtt" type="subitles"/&gt;
+  &lt;media-track xml:lang="de" keyref=video-subtitles-de"
+    value="video-subtitles-de.vtt" type="subitles"/&gt;
+&lt;/video&gt;</code></pre>
+        </div>
+      </div>
+      <article class="topic reference nested2" aria-labelledby="ariaid-title6" lang="en-us" id="audio">
+        <h3 class="title topictitle3" id="ariaid-title6">Element reference topic: <code class="keyword markupname xmlelement">&lt;audio&gt;</code></h3>
+        
+        
+        <div class="body refbody"><p class="shortdesc">The <code class="keyword markupname xmlelement">&lt;audio&gt;</code> element is used to reference sound content in
+          a DITA topic. It is modeled roughly on the HTML5 element of the same name.</p>
+          <section class="section" id="audio__section_jfk_kdm_kdb"><h4 class="title sectiontitle">Usage information</h4>
+            
+            <p class="p">Media can be referenced either using the <code class="keyword markupname xmlatt">@data</code> or
+                <code class="keyword markupname xmlatt">@datakeyref</code> attributes or using nested
+                <code class="keyword markupname xmlelement">&lt;media-source&gt;</code> elements. Extensive configuration of the
+              presentation of the media can be configured using optional nested elements.</p>
+          </section>
+          <section class="section" id="audio__section_kfk_kdm_kdb"><h4 class="title sectiontitle">Formatting expectations</h4>
+            
+            <p class="p">Presentation of the <code class="keyword markupname xmlelement">&lt;audio&gt;</code> element will vary depending on the
+              presentation format. When possible, HTML-based outputs should present the audio object
+              using the analogous HTML <code class="keyword markupname xmlelement">&lt;audio&gt;</code> element. When the media cannot
+              be presented in a meaningful way, the contents of the
+                <code class="keyword markupname xmlelement">&lt;fallback&gt;</code> element, if any, should be presented.</p>
+          </section>
+          <section class="section" id="audio__section_lfk_kdm_kdb"><h4 class="title sectiontitle">Processing expectations</h4>
+            
+            <p class="p">When converting to HTML5 or HTML5-derived output formats,
+                <code class="keyword markupname xmlelement">&lt;audio&gt;</code> should be mapped to its HTML5-equivalent markup.
+              Processing for other output formats is highly dependent on the capabilities of those
+              formats. Implementors should implement support for the presentation of multimedia on a
+              best-effort basis.</p>
+          </section>
+          <section class="section" id="audio__section_mfk_kdm_kdb"><h4 class="title sectiontitle">Specialization hierarchy</h4>
+            
+            <p class="p">+ topic/object media-d/audio </p>
+          </section>
+          <section class="section" id="audio__section_nfk_kdm_kdb"><h4 class="title sectiontitle">Attributes</h4>
+            
+            <p class="p">The following attributes are available on this element: <span class="xref">Universal attributes
+                group</span> and the attributes defined below.</p>
+            <dl class="dl">
+              
+                <dt class="dt dlterm"><code class="keyword markupname xmlatt">@data</code></dt>
+                <dd class="dd">Contains the absolute or relative URI of the audio media. If this attribute is
+                  specified, <code class="keyword markupname xmlatt">@type</code> should also be specified. If the audio is
+                  available in multiple formats, nested <code class="keyword markupname xmlelement">&lt;media-source&gt;</code>
+                  elements should be used instead.</dd>
+              
+              
+                <dt class="dt dlterm"><code class="keyword markupname xmlatt">@datakeyref</code></dt>
+                <dd class="dd">Key reference to the location of the audio data, as for <code class="keyword markupname xmlatt">@data</code>.
+                  When specified and the key is resolvable, the key-provided URI is used. A key that
+                  has no associated resource, only link text, is considered to be unresolved for the
+                  purpose of the <code class="keyword markupname xmlatt">@datakeyref</code> attribute. If <code class="keyword markupname xmlatt">@data</code> is
+                  specified, it is used as a fallback when the key cannot be resolved to a
+                  resource.</dd>
+              
+              
+                <dt class="dt dlterm"><code class="keyword markupname xmlatt">@type</code></dt>
+                <dd class="dd">Indicates the content type (MIME type) for the data specified by the
+                    <code class="keyword markupname xmlatt">@data</code>
+                  <span class="ph">or <code class="keyword markupname xmlatt">@datakeyref</code>
+                  </span> attribute. This attribute should be set when the <code class="keyword markupname xmlatt">@data</code>
+                  attribute is set to avoid loading unsupported content types. Note that this
+                  differs from the <code class="keyword markupname xmlatt">@type</code> attribute on many other DITA elements (it
+                  specifies a MIME type rather than a content type). <span class="ph">If <code class="keyword markupname xmlatt">@type</code> is
+                    not specified, the effective type value for the key named by the
+                      <code class="keyword markupname xmlatt">@datakeyref</code> attribute is used as the this attribute's
+                    value.</span></dd>
+              
+              
+                <dt class="dt dlterm"><code class="keyword markupname xmlatt">@tabindex</code></dt>
+                <dd class="dd">Position the audio in tabbing order.</dd>
+              
+            </dl>
+          </section>
+          <div class="example"><h4 class="title sectiontitle">A very simple audio object reference</h4>
+            
+            <pre class="pre codeblock"><code>&lt;audio data="message.mp3" type="audio/mp3"/&gt;</code></pre>
+            <p class="p">A similar example using a key reference:</p>
+            <pre class="pre codeblock"><code>&lt;audio datakeyref="message" type="audio/mp3"/&gt;</code></pre>
+          </div>
+          <div class="example"><h4 class="title sectiontitle">Referencing an audio object in multiple formats</h4>
+            
+            <pre class="pre codeblock"><code>&lt;audio&gt;
+  &lt;media-source keyref="message-mp3" value="message.mp3" type="audio/mp3"/&gt;
+  &lt;media-source keyref="message-wav" value="message.wav" type="audio/wav"/&gt;
+&lt;/audio&gt;</code></pre>
+          </div>
+          <div class="example"><h4 class="title sectiontitle">Complete example configuring audio presentation, with multiple formats</h4>
+            
+            <p class="p">The following video reference explicitly defines multiple presentational details for
+              a video available in multiple formats, referenced using key references, with URIs when
+              the keys are not resolvable.</p>
+            <pre class="pre codeblock"><code>&lt;audio&gt;
+  &lt;desc&gt;A sound file narrating the execution of this procedure.&lt;/desc&gt;
+  &lt;fallback&gt;The audio track walking through this procedure is not available.&lt;/fallback&gt;
+  
+  &lt;!--
+    The default value is 'true', so @value is optional on these controls
+    when enabling their features, but mandatory when disabling them.
+  --&gt;
+  &lt;media-controls value="true"/&gt;
+  &lt;media-autoplay/&gt;
+  &lt;media-loop value="false"/&gt;
+  &lt;media-muted value="false"/&gt;
+
+  &lt;!-- Multiple formats, referenced via both key and URI --&gt;
+  &lt;media-source keyref="walkthrough-mp3" value="walkthrough.mp3" type="audio/mp3"/&gt;
+  &lt;media-source keyref="walkthrough-wav" value="walkthrough.wav" type="audio/wav"/&gt;
+&lt;/audio&gt;</code></pre>
+          </div>
+        </div>
+      </article>
+    </article>
+    <article class="topic reference nested1" aria-labelledby="ariaid-title7" lang="en-us" id="media-controls">
+      <h2 class="title topictitle2" id="ariaid-title7">Element reference topic: <code class="keyword markupname xmlelement">&lt;media-controls&gt;</code></h2>
+      
+      
+      <div class="body refbody"><p class="shortdesc">The <code class="keyword markupname xmlelement">&lt;media-controls&gt;</code> element controls whether or not User
+        Interface controls should be presented for controling the playback of the media referenced
+        by the enclosing <code class="keyword markupname xmlelement">&lt;video&gt;</code> or <code class="keyword markupname xmlelement">&lt;audio&gt;</code> element.
+        It is alalogous to the <code class="keyword markupname xmlatt">@controls</code> attribute on HTML5 media
+        elements.</p>
+        <section class="section" id="media-controls__section_hcl_d3r_kdb"><h3 class="title sectiontitle">Usage information</h3>
+          
+          <p class="p">The boolean <code class="keyword markupname xmlatt">@value</code> attribute specifies whether the controls should be
+            presented. The default value for this attribute is <code class="ph codeph">true</code>, so the mere
+            presence of this element within <code class="keyword markupname xmlelement">&lt;video&gt;</code> or
+              <code class="keyword markupname xmlelement">&lt;audio&gt;</code> is sufficient to turn the setting on. The
+              <code class="keyword markupname xmlatt">@value</code> attribute must be explicitly set to <code class="ph codeph">false</code> to
+            specify that controls should not be presented.</p>
+          <p class="p">If this element is not present, the default behavior is determined by the User Agent
+            being used to present the media.</p>
+        </section>
+        <section class="section" id="media-controls__section_icl_d3r_kdb"><h3 class="title sectiontitle">Formatting expectations</h3>
+          
+          <p class="p">None. This element configures the behavior when the media is displayed.</p>
+        </section>
+        <section class="section" id="media-controls__section_jcl_d3r_kdb"><h3 class="title sectiontitle">Processing expectations</h3>
+          
+          <p class="p">None.</p>
+        </section>
+        <section class="section" id="media-controls__section_kcl_d3r_kdb"><h3 class="title sectiontitle">Specialization hierarchy</h3>
+          
+          <p class="p">+ topic/param media-d/media-controls </p>
+        </section>
+        <section class="section" id="media-controls__section_lcl_d3r_kdb"><h3 class="title sectiontitle">Attributes</h3>
+          
+          <p class="p">The following attributes are available on this element: <span class="xref">Universal attributes
+              group</span> and the attributes defined below.</p>
+          <dl class="dl">
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@value</code></dt>
+              <dd class="dd">Specifies whether the media presentation should include user interface controls.
+                The following values are recognized:<dl class="dl">
+                  
+                    <dt class="dt dlterm">true</dt>
+                    <dd class="dd">Default. Controls should be presented.</dd>
+                  
+                  
+                    <dt class="dt dlterm">false</dt>
+                    <dd class="dd">Controls should not be presented.</dd>
+                  
+                  
+                    <dt class="dt dlterm" id="media-controls__ditauseconref">-dita-use-conref-target </dt>
+                    <dd class="dd">See <span class="xref">Using the -dita-use-conref-target value</span> for more
+                      information. </dd>
+                  
+                </dl></dd>
+            
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@name</code></dt>
+              <dd class="dd">This attribute is required due to this element's deriviation from the
+                  <code class="keyword markupname xmlelement">&lt;param&gt;</code> element. The value is fixed to "controls" by the
+                grammar definition.</dd>
+            
+          </dl>
+        </section>
+        <div class="example"><h3 class="title sectiontitle">Example</h3>
+          
+          <p class="p">See <span class="xref"><code class="keyword markupname xmlelement">&lt;video&gt;</code></span> and <span class="xref"><code class="keyword markupname xmlelement">&lt;audio&gt;</code></span> for examples of this element.</p>
+        </div>
+      </div>
+    </article>
+    <article class="topic reference nested1" aria-labelledby="ariaid-title8" lang="en-us" id="media-autoplay">
+      <h2 class="title topictitle2" id="ariaid-title8">Element reference topic: <code class="keyword markupname xmlelement">&lt;media-autoplay&gt;</code></h2>
+      
+      
+      <div class="body refbody"><p class="shortdesc">The <code class="keyword markupname xmlelement">&lt;media-autoplay&gt;</code> element controls whether or not the
+        media referenced by the surrounding <code class="keyword markupname xmlelement">&lt;video&gt;</code> or
+          <code class="keyword markupname xmlelement">&lt;audio&gt;</code> element should begin playing immediately when the topic is
+        displayed. It is alalogous to the <code class="keyword markupname xmlatt">@autoplay</code> attribute on HTML5 media
+        elements.</p>
+        <section class="section" id="media-autoplay__section_dyp_lkr_kdb"><h3 class="title sectiontitle">Usage information</h3>
+          
+          <p class="p">The boolean <code class="keyword markupname xmlatt">@value</code> attribute specifies whether the media should
+            automatically begin playing. The default value for this attribute is
+              <code class="ph codeph">true</code>, so the mere presence of this element within
+              <code class="keyword markupname xmlelement">&lt;video&gt;</code> or <code class="keyword markupname xmlelement">&lt;audio&gt;</code> is sufficient to turn
+            the setting on. The <code class="keyword markupname xmlatt">@value</code> attribute must be explicitly set to
+              <code class="ph codeph">false</code> to disable automatic starting.</p>
+          <p class="p">If this element is not present, the default behavior is determined by the User Agent
+            being used to present the media.</p>
+        </section>
+        <section class="section" id="media-autoplay__section_eyp_lkr_kdb"><h3 class="title sectiontitle">Formatting expectations</h3>
+          
+          <p class="p">None. This element configures the behavior when the media is displayed.</p>
+        </section>
+        <section class="section" id="media-autoplay__section_fyp_lkr_kdb"><h3 class="title sectiontitle">Processing expectations</h3>
+          
+          <p class="p">None.</p>
+        </section>
+        <section class="section" id="media-autoplay__section_gyp_lkr_kdb"><h3 class="title sectiontitle">Specialization hierarchy</h3>
+          
+          <p class="p">+ topic/param media-d/media-autoplay </p>
+        </section>
+        <section class="section" id="media-autoplay__section_hyp_lkr_kdb"><h3 class="title sectiontitle">Attributes</h3>
+          
+          <p class="p">The following attributes are available on this element: <span class="xref">Universal attributes
+              group</span> and the attributes defined below.</p>
+          <dl class="dl">
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@value</code></dt>
+              <dd class="dd">Specifies whether the media should automatically begin playing when the topic is
+                displayed. The following values are recognized:<dl class="dl">
+                  
+                    <dt class="dt dlterm">true</dt>
+                    <dd class="dd">Default. Autoplaying is enabled.</dd>
+                  
+                  
+                    <dt class="dt dlterm">false</dt>
+                    <dd class="dd">Autoplay is disabled.</dd>
+                  
+                  
+                    <dt class="dt dlterm">-dita-use-conref-target </dt>
+                    <dd class="dd">See <span class="xref">Using the -dita-use-conref-target value</span> for more
+                      information. </dd>
+                  
+                </dl></dd>
+            
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@name</code></dt>
+              <dd class="dd">This attribute is required due to this element's deriviation from the
+                  <code class="keyword markupname xmlelement">&lt;param&gt;</code> element. The value is fixed to "autoplay" by the
+                grammar definition.</dd>
+            
+          </dl>
+        </section>
+        <div class="example"><h3 class="title sectiontitle">Example</h3>
+          
+          <p class="p">See <span class="xref"><code class="keyword markupname xmlelement">&lt;video&gt;</code></span> and <span class="xref"><code class="keyword markupname xmlelement">&lt;audio&gt;</code></span> for examples of this element.</p>
+        </div>
+      </div>
+    </article>
+    <article class="topic reference nested1" aria-labelledby="ariaid-title9" lang="en-us" id="media-loop">
+      <h2 class="title topictitle2" id="ariaid-title9">Element reference topic: <code class="keyword markupname xmlelement">&lt;media-loop&gt;</code></h2>
+      
+      
+      <div class="body refbody"><p class="shortdesc">The <code class="keyword markupname xmlelement">&lt;media-loop&gt;</code> element controls whether or not the media
+        referenced by the surrounding <code class="keyword markupname xmlelement">&lt;video&gt;</code> or
+          <code class="keyword markupname xmlelement">&lt;audio&gt;</code> element should restart automatically when it completes
+        playing. It is alalogous to the <code class="keyword markupname xmlatt">@loop</code> attribute on HTML5 media
+        elements.</p>
+        <section class="section" id="media-loop__section_ct1_cmr_kdb"><h3 class="title sectiontitle">Usage information</h3>
+          
+          <p class="p">The boolean <code class="keyword markupname xmlatt">@value</code> attribute specifies whether the media should loop.
+            The default value for this attribute is <code class="ph codeph">true</code>, so the mere presence of
+            this element within <code class="keyword markupname xmlelement">&lt;video&gt;</code> or <code class="keyword markupname xmlelement">&lt;audio&gt;</code> is
+            sufficient to turn the setting on. The <code class="keyword markupname xmlatt">@value</code> attribute must be
+            explicitly set to <code class="ph codeph">false</code> to disable looped playback.</p>
+          <p class="p">If this element is not present, the default behavior is determined by the User Agent
+            being used to present the media.</p>
+        </section>
+        <section class="section" id="media-loop__section_dt1_cmr_kdb"><h3 class="title sectiontitle">Formatting expectations</h3>
+          
+          <p class="p">None. This element configures the behavior when the media is displayed.</p>
+        </section>
+        <section class="section" id="media-loop__section_et1_cmr_kdb"><h3 class="title sectiontitle">Processing expectations</h3>
+          
+          <p class="p">None.</p>
+        </section>
+        <section class="section" id="media-loop__section_ft1_cmr_kdb"><h3 class="title sectiontitle">Specialization hierarchy</h3>
+          
+          <p class="p">+ topic/param media-d/media-loop </p>
+        </section>
+        <section class="section" id="media-loop__section_gt1_cmr_kdb"><h3 class="title sectiontitle">Attributes</h3>
+          
+          <p class="p">The following attributes are available on this element: <span class="xref">Universal attributes
+              group</span> and the attributes defined below.</p>
+          <dl class="dl">
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@value</code></dt>
+              <dd class="dd">Specifies whether the media should loop when played. The following values are recognized:<dl class="dl">
+                  
+                    <dt class="dt dlterm">true</dt>
+                    <dd class="dd">Default. Looped playback is enabled.</dd>
+                  
+                  
+                    <dt class="dt dlterm">false</dt>
+                    <dd class="dd">Playback will not be looped.</dd>
+                  
+                  
+                    <dt class="dt dlterm">-dita-use-conref-target </dt>
+                    <dd class="dd">See <span class="xref">Using the -dita-use-conref-target value</span> for more
+                      information. </dd>
+                  
+                </dl></dd>
+            
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@name</code></dt>
+              <dd class="dd">This attribute is required due to this element's deriviation from the
+                  <code class="keyword markupname xmlelement">&lt;param&gt;</code> element. The value is fixed to "loop" by the
+                grammar definition.</dd>
+            
+          </dl>
+        </section>
+        <div class="example"><h3 class="title sectiontitle">Example</h3>
+          
+          <p class="p">See <span class="xref"><code class="keyword markupname xmlelement">&lt;video&gt;</code></span> and <span class="xref"><code class="keyword markupname xmlelement">&lt;audio&gt;</code></span> for examples of this element.</p>
+        </div>
+      </div>
+    </article>
+    <article class="topic reference nested1" aria-labelledby="ariaid-title10" lang="en-us" id="media-muted">
+      <h2 class="title topictitle2" id="ariaid-title10">Element reference topic: <code class="keyword markupname xmlelement">&lt;media-muted&gt;</code></h2>
+      
+      
+      <div class="body refbody"><p class="shortdesc">The <code class="keyword markupname xmlelement">&lt;media-muted&gt;</code> element controls whether or not the media
+        referenced by the surrounding <code class="keyword markupname xmlelement">&lt;video&gt;</code> or
+          <code class="keyword markupname xmlelement">&lt;audio&gt;</code> element should play without sound. It is alalogous to the
+          <code class="keyword markupname xmlatt">@muted</code> attribute on HTML5 media elements.</p>
+        <section class="section" id="media-muted__section_vfw_zmr_kdb"><h3 class="title sectiontitle">Usage information</h3>
+          
+          <p class="p">The boolean <code class="keyword markupname xmlatt">@value</code> attribute specifies whether the media should be
+            muted. The default value for this attribute is <code class="ph codeph">true</code>, so the mere
+            presence of this element within <code class="keyword markupname xmlelement">&lt;video&gt;</code> or
+              <code class="keyword markupname xmlelement">&lt;audio&gt;</code> is sufficient to mute playback. The
+              <code class="keyword markupname xmlatt">@value</code> attribute must be explicitly set to <code class="ph codeph">false</code> to
+            unmute playback by default.</p>
+          <p class="p">If this element is not present, the default behavior is determined by the User Agent
+            being used to present the media.</p>
+        </section>
+        <section class="section" id="media-muted__section_wfw_zmr_kdb"><h3 class="title sectiontitle">Formatting expectations</h3>
+          
+          <p class="p">None. This element configures the behavior when the media is displayed.</p>
+        </section>
+        <section class="section" id="media-muted__section_xfw_zmr_kdb"><h3 class="title sectiontitle">Processing expectations</h3>
+          
+          <p class="p">None.</p>
+        </section>
+        <section class="section" id="media-muted__section_yfw_zmr_kdb"><h3 class="title sectiontitle">Specialization hierarchy</h3>
+          
+          <p class="p">+ topic/param media-d/media-muted </p>
+        </section>
+        <section class="section" id="media-muted__section_zfw_zmr_kdb"><h3 class="title sectiontitle">Attributes</h3>
+          
+          <p class="p">The following attributes are available on this element: <span class="xref">Universal attributes
+              group</span> and the attributes defined below.</p>
+          <dl class="dl">
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@value</code></dt>
+              <dd class="dd">Specifies whether the media should be muted. The following values are recognized:<dl class="dl">
+                  
+                    <dt class="dt dlterm">true</dt>
+                    <dd class="dd">Default. Playback will be muted by default.</dd>
+                  
+                  
+                    <dt class="dt dlterm">false</dt>
+                    <dd class="dd">Playback will not be muted.</dd>
+                  
+                  
+                    <dt class="dt dlterm">-dita-use-conref-target </dt>
+                    <dd class="dd">See <span class="xref">Using the -dita-use-conref-target value</span> for more
+                      information. </dd>
+                  
+                </dl></dd>
+            
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@name</code></dt>
+              <dd class="dd">This attribute is required due to this element's deriviation from the
+                  <code class="keyword markupname xmlelement">&lt;param&gt;</code> element. The value is fixed to "muted" by the
+                grammar definition.</dd>
+            
+          </dl>
+        </section>
+        <div class="example"><h3 class="title sectiontitle">Example</h3>
+          
+          <p class="p">See <span class="xref"><code class="keyword markupname xmlelement">&lt;video&gt;</code></span> and <span class="xref"><code class="keyword markupname xmlelement">&lt;audio&gt;</code></span> for examples of this element.</p>
+        </div>
+      </div>
+    </article>
+    <article class="topic reference nested1" aria-labelledby="ariaid-title11" lang="en-us" id="video-poster">
+      <h2 class="title topictitle2" id="ariaid-title11">Element reference topic: <code class="keyword markupname xmlelement">&lt;video-poster&gt;</code></h2>
+      
+      
+      <div class="body refbody"><p class="shortdesc">The <code class="keyword markupname xmlelement">&lt;video-poster&gt;</code> element specifies an image to display in
+        place of the video referenced by the enclosing <code class="keyword markupname xmlelement">&lt;video&gt;</code> element before
+        playback begins. It is alalogous to the <code class="keyword markupname xmlatt">@poster</code> attribute on the HTML5
+          <code class="keyword markupname xmlelement">&lt;video&gt;</code> element.</p>
+        <section class="section" id="video-poster__section_jrq_lnr_kdb"><h3 class="title sectiontitle">Usage information</h3>
+          
+          <p class="p">The image to use is specified using the <code class="keyword markupname xmlatt">@value</code> or
+              <code class="keyword markupname xmlatt">@keyref</code> attribute.</p>
+          <p class="p">If this element is not present, the default behavior is determined by the User Agent
+            being used to present the video.</p>
+        </section>
+        <section class="section" id="video-poster__section_wd5_lpr_kdb"><h3 class="title sectiontitle">Formatting expectations</h3>
+          
+          <p class="p">None. This element configures the behavior when the media is displayed.</p>
+        </section>
+        <section class="section" id="video-poster__section_xd5_lpr_kdb"><h3 class="title sectiontitle">Processing expectations</h3>
+          
+          <p class="p">None.</p>
+        </section>
+        <section class="section" id="video-poster__section_yd5_lpr_kdb"><h3 class="title sectiontitle">Specialization hierarchy</h3>
+          
+          <p class="p">+ topic/param media-d/video-poster </p>
+        </section>
+        <section class="section" id="video-poster__section_nrq_lnr_kdb"><h3 class="title sectiontitle">Attributes</h3>
+          
+          <p class="p">The following attributes are available on this element: <span class="xref">Universal attributes
+              group</span> and the attributes defined below.</p>
+          <dl class="dl">
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@value</code></dt>
+              <dd class="dd">Specifies the URL of the image.</dd>
+            
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@keyref</code></dt>
+              <dd class="dd">A key reference to the image. If both <code class="keyword markupname xmlatt">@keyref</code> and
+                  <code class="keyword markupname xmlatt">@value</code> are specified, the image referenced by
+                  <code class="keyword markupname xmlatt">@keyref</code> takes precedence unless the key cannot be resolved, in
+                which case the resource specified by <code class="keyword markupname xmlatt">@value</code> is used as a
+                fallback.</dd>
+            
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@type</code></dt>
+              <dd class="dd">Specifies the content type (MIME type) of the image specified by
+                  <code class="keyword markupname xmlatt">@value</code>.</dd>
+            
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@name</code></dt>
+              <dd class="dd">This attribute is required due to this element's deriviation from the
+                  <code class="keyword markupname xmlelement">&lt;param&gt;</code> element. The value is fixed to "poster" by the
+                grammar definition.</dd>
+            
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@valuetype</code></dt>
+              <dd class="dd">This attribute is is present due to this element's deriviation from the
+                  <code class="keyword markupname xmlelement">&lt;param&gt;</code> element. The value is fixed to "ref" by the grammar
+                definition.</dd>
+            
+          </dl>
+        </section>
+        <div class="example"><h3 class="title sectiontitle">Example</h3>
+          
+          <p class="p">See <span class="xref"><code class="keyword markupname xmlelement">&lt;video&gt;</code></span> for examples of this
+            element.</p>
+        </div>
+      </div>
+    </article>
+    <article class="topic reference nested1" aria-labelledby="ariaid-title12" lang="en-us" id="media-source">
+      <h2 class="title topictitle2" id="ariaid-title12">Element reference topic: <code class="keyword markupname xmlelement">&lt;media-source&gt;</code></h2>
+      
+      
+      <div class="body refbody"><p class="shortdesc">The <code class="keyword markupname xmlelement">&lt;media-source&gt;</code> element specifies the location of a
+        resource containing a representation of the media being referenced by the enclosing
+          <code class="keyword markupname xmlelement">&lt;video&gt;</code> or <code class="keyword markupname xmlelement">&lt;audio&gt;</code> element in a particular
+        format. It is alalogous to the <code class="keyword markupname xmlelement">&lt;source&gt;</code> element used in HTML5
+        multimedia elements.</p>
+        <section class="section" id="media-source__section_l3q_fqr_kdb"><h3 class="title sectiontitle">Usage information</h3>
+          
+          <p class="p">The resource location is specified using <code class="keyword markupname xmlatt">@value</code> or
+              <code class="keyword markupname xmlatt">@keyref</code> attribute. The content type (MIME type) of the content is
+            specified using the <code class="keyword markupname xmlatt">@type</code> attribute.</p>
+        </section>
+        <section class="section" id="media-source__section_m3q_fqr_kdb"><h3 class="title sectiontitle">Formatting expectations</h3>
+          
+          <p class="p">Not applicable.</p>
+        </section>
+        <section class="section" id="media-source__section_n3q_fqr_kdb"><h3 class="title sectiontitle">Processing expectations</h3>
+          
+          <p class="p">None.</p>
+        </section>
+        <section class="section" id="media-source__section_o3q_fqr_kdb"><h3 class="title sectiontitle">Specialization hierarchy</h3>
+          
+          <p class="p">+ topic/param media-d/media-source </p>
+        </section>
+        <section class="section" id="media-source__section_p3q_fqr_kdb"><h3 class="title sectiontitle">Attributes</h3>
+          
+          <p class="p">The following attributes are available on this element: <span class="xref">Universal attributes
+              group</span> and the attributes defined below.</p>
+          <dl class="dl">
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@value</code></dt>
+              <dd class="dd">Specifies the URL of the media resource.</dd>
+            
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@keyref</code></dt>
+              <dd class="dd">A key reference to the media resource. If both <code class="keyword markupname xmlatt">@keyref</code> and
+                  <code class="keyword markupname xmlatt">@value</code> are specified, the resource referenced by
+                  <code class="keyword markupname xmlatt">@keyref</code> takes precedence unless the key cannot be resolved, in
+                which case the resource specified by <code class="keyword markupname xmlatt">@value</code> is used as a
+                fallback.</dd>
+            
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@type</code></dt>
+              <dd class="dd">Specifies the content type (MIME type) of the resource specified by
+                  <code class="keyword markupname xmlatt">@value</code>.</dd>
+            
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@name</code></dt>
+              <dd class="dd">This attribute is required due to this element's deriviation from the
+                  <code class="keyword markupname xmlelement">&lt;param&gt;</code> element. The value is fixed to "source" by the
+                grammar definition.</dd>
+            
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@valuetype</code></dt>
+              <dd class="dd">This attribute is is present due to this element's deriviation from the
+                  <code class="keyword markupname xmlelement">&lt;param&gt;</code> element. The value is fixed to "ref" by the grammar
+                definition.</dd>
+            
+          </dl>
+        </section>
+        <div class="example"><h3 class="title sectiontitle">Example</h3>
+          
+          <p class="p">See <span class="xref"><code class="keyword markupname xmlelement">&lt;video&gt;</code></span> and <span class="xref"><code class="keyword markupname xmlelement">&lt;audio&gt;</code></span> for examples of this element.</p>
+        </div>
+      </div>
+    </article>
+    <article class="topic reference nested1" aria-labelledby="ariaid-title13" lang="en-us" id="media-track">
+      <h2 class="title topictitle2" id="ariaid-title13">Element reference topic: <code class="keyword markupname xmlelement">&lt;media-track&gt;</code></h2>
+      
+      
+      <div class="body refbody"><p class="shortdesc">The <code class="keyword markupname xmlelement">&lt;media-track&gt;</code> element specifies the location of a
+        resource containing a supplemental timed text track or other time-based data for the media
+        referenced by the enclosing <code class="keyword markupname xmlelement">&lt;video&gt;</code> or <code class="keyword markupname xmlelement">&lt;audio&gt;</code>
+        element. It is alalogous to the <code class="keyword markupname xmlelement">&lt;track&gt;</code> element used in HTML5
+        multimedia elements.</p>
+        <section class="section" id="media-track__section_vz4_hrr_kdb"><h3 class="title sectiontitle">Usage information</h3>
+          
+          <p class="p">Track resources should be in <a class="xref" href="https://www.w3.org/TR/webvtt1/" target="_blank">Web Video Text Track Format (WebVTT)</a>. The resource location is
+            specified using <code class="keyword markupname xmlatt">@value</code> or <code class="keyword markupname xmlatt">@keyref</code> attribute. The kind of
+            track is specified by the <code class="keyword markupname xmlatt">@type</code> attribute. The language of the track is
+            specified using the  <code class="keyword markupname xmlatt">@xml:lang</code> attribute.</p>
+        </section>
+        <section class="section" id="media-track__section_wz4_hrr_kdb"><h3 class="title sectiontitle">Formatting expectations</h3>
+          
+          <p class="p">The display of the track information is determined by the User Agent being used to
+            present the media.</p>
+        </section>
+        <section class="section" id="media-track__section_xz4_hrr_kdb"><h3 class="title sectiontitle">Processing expectations</h3>
+          
+          <p class="p">None.</p>
+        </section>
+        <section class="section" id="media-track__section_yz4_hrr_kdb"><h3 class="title sectiontitle">Specialization hierarchy</h3>
+          
+          <p class="p">+ topic/param media-d/media-source </p>
+        </section>
+        <section class="section" id="media-track__section_zz4_hrr_kdb"><h3 class="title sectiontitle">Attributes</h3>
+          
+          <p class="p">The following attributes are available on this element: <span class="xref">Universal attributes
+              group</span> and the attributes defined below.</p>
+          <dl class="dl">
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@value</code></dt>
+              <dd class="dd">Specifies the URL of the track resource.</dd>
+            
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@keyref</code></dt>
+              <dd class="dd">A key reference to the track resource. If both <code class="keyword markupname xmlatt">@keyref</code> and
+                  <code class="keyword markupname xmlatt">@value</code> are specified, the resource referenced by
+                  <code class="keyword markupname xmlatt">@keyref</code> takes precedence unless the key cannot be resolved, in
+                which case the resource specified by <code class="keyword markupname xmlatt">@value</code> is used as a
+                fallback.</dd>
+            
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@type</code></dt>
+              <dd class="dd">Specifies the usage for the referenced track data. This attribute is analogous to
+                the <code class="keyword markupname xmlatt">@kind</code> attribute on the HTML5 <code class="keyword markupname xmlelement">&lt;track&gt;</code>
+                element as described by the <a class="xref" href="https://www.w3.org/TR/2011/WD-html5-author-20110809/the-track-element.html#attr-track-kind" target="_blank"><cite class="cite">W3C HTML5 specification</cite></a>. The
+                values recognized for this attribute are derived from the HTML5 standard, from which
+                the below descriptions are copied:<dl class="dl">
+                  
+                    <dt class="dt dlterm">subtitles</dt>
+                    <dd class="dd">Transcription or translation of the dialogue, suitable for when the sound is
+                      available but not understood (e.g. because the user does not understand the
+                      language of the media resource's soundtrack). Displayed over the video.</dd>
+                  
+                  
+                    <dt class="dt dlterm">captions</dt>
+                    <dd class="dd">Transcription or translation of the dialogue, sound effects, relevant
+                      musical cues, and other relevant audio information, suitable for when the
+                      soundtrack is unavailable (e.g. because it is muted or because the user is
+                      deaf). Displayed over the video; labeled as appropriate for the
+                      hard-of-hearing.</dd>
+                  
+                  
+                    <dt class="dt dlterm">descriptions</dt>
+                    <dd class="dd">Textual descriptions of the video component of the media resource, intended
+                      for audio synthesis when the visual component is unavailable (e.g. because the
+                      user is interacting with the application without a screen while driving, or
+                      because the user is blind). Synthesized as separate audio track.</dd>
+                  
+                  
+                    <dt class="dt dlterm">chapters</dt>
+                    <dd class="dd">Chapter titles, intended to be used for navigating the media resource.
+                      Displayed as an interactive list in the user agent's interface.</dd>
+                  
+                  
+                    <dt class="dt dlterm">metadata</dt>
+                    <dd class="dd">Tracks intended for use from script. Not displayed by the user agent.</dd>
+                  
+                  
+                    <dt class="dt dlterm">-dita-use-conref-target</dt>
+                    <dd class="dd">See <span class="xref">Using the -dita-use-conref-target value</span> for more
+                      information. </dd>
+                  
+                </dl></dd>
+            
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@name</code></dt>
+              <dd class="dd">This attribute is required due to this element's deriviation from the
+                  <code class="keyword markupname xmlelement">&lt;param&gt;</code> element. The value is fixed to "track" by the
+                grammar definition.</dd>
+            
+            
+              <dt class="dt dlterm"><code class="keyword markupname xmlatt">@valuetype</code></dt>
+              <dd class="dd">This attribute is is present due to this element's deriviation from the
+                  <code class="keyword markupname xmlelement">&lt;param&gt;</code> element. The value is fixed to "ref" by the grammar
+                definition.</dd>
+            
+          </dl>
+        </section>
+        <div class="example"><h3 class="title sectiontitle">Example</h3>
+          
+          <p class="p">See <span class="xref"><code class="keyword markupname xmlelement">&lt;video&gt;</code></span> and <span class="xref"><code class="keyword markupname xmlelement">&lt;audio&gt;</code></span> for examples of this element.</p>
+        </div>
+      </div>
+    </article>
+  </article>
+</article></main></body></html>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
+ "reference.dtd">
+<reference id="IssueNumber00" xml:lang="en-us">
+<title>DITA 2.0 proposed feature #34</title>
+<shortdesc>Remove topicset and topicsetref.</shortdesc>
+<refbody>
+<section><title>Date and version information</title><p>
+        <dl>
+          <dlentry>
+            <dt>Date that this feature proposal was completed</dt>
+            <dd>11 March 2018</dd>
+          </dlentry>
+          <dlentry>
+            <dt>Champion of the proposal</dt>
+            <dd>Eliot Kimber</dd>
+          </dlentry>
+          <dlentry>
+            <dt>Links to any previous versions of the proposal</dt>
+            <dd>N/A</dd>
+          </dlentry>
+          <dlentry>
+            <dt>Links to minutes where this proposal was discussed at stage 1 and moved to stage
+              2</dt>
+            <dd><xref href="https://lists.oasis-open.org/archives/dita/201706/msg00013.html"
+                format="html" scope="external"
+                >https://lists.oasis-open.org/archives/dita/201706/msg00013.htmlhttps://lists.oasis-open.org/archives/dita/201706/msg00013.html</xref></dd>
+          </dlentry>
+          <dlentry>
+            <dt>Links to e-mail discussion that resulted in new versions of the proposal</dt>
+            <dd>N/A</dd>
+          </dlentry>
+          <dlentry>
+            <dt>Link to the GitHub issue</dt>
+            <dd><xref href="https://github.com/oasis-tcs/dita/issues/34" format="html"
+                scope="external"
+                >https://github.com/oasis-tcs/dita/issues/34https://github.com/oasis-tcs/dita/issues/34</xref></dd>
+          </dlentry>
+        </dl>
+      </p></section>
+<section><title>Original requirement or use case</title><p>The <xmlelement>topicset</xmlelement> and <xmlelement>topicsetref</xmlelement> elements seem to
+        provide very little value over ordinary <xmlelement>topicref</xmlelement> elements. In
+        addition, they regularly suggest to authors that they should result in some sort of standard
+        special processing (which they do not). The semantic of <xmlelement>topicset</xmlelement>
+        was never clearly distinguished from any other use of topic reference elements to group
+        topicrefs (e.g., <xmlelement>topicgroup</xmlelement>). </p>
+      <p>The semantics of the <xmlelement>topicsetref</xmlelement> element were never clearly
+        defined in a way that was not tied directly to specific delivery tools (i.e., Eclipse help).
+        Map references and the DITA 1.3 cross-deliverable linking facility appear to satisfy all the
+        requirements implied for <xmlelement>topicsetref</xmlelement>.</p>
+      <p>As far as can be determined, there are no DITA processors in general use that provide any
+        special processing for <xmlelement>topicset</xmlelement> or
+          <xmlelement>topicsetref</xmlelement>.</p></section>
+<section><title>Use cases</title><p>This removes elements. No usage use case. </p></section>
+<section rev="2.0">
+<title>New terminology</title>
+<p>No new terminology.</p>
+</section>
+  <section>
+   <title>Proposed solution</title>
+   <p>Remove the <xmlelement>topicset</xmlelement> and <xmlelement>topicsetref</xmlelement> elements
+        from the grammars and all specification topics that reference them.</p>
+  </section>
+<section><title>Benefits</title>
+      <dl>
+        <dlentry>
+          <dt>Who will benefit from this feature?</dt>
+          <dd>All DITA users currently confused by the presence of these elements.</dd>
+          <dd>DITA tool implementors who have no idea how to implement these elements correctly or
+            worry about having ignored a DITA feature by not implementing them.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>What is the expected benefit?</dt>
+          <dd>Reduced complexity.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>How many people probably will make use of this feature?</dt>
+          <dd>N/A</dd>
+        </dlentry>
+        <dlentry>
+          <dt>How much of a positive impact is expected for the users who will make use of the
+            feature?</dt>
+          <dd>Hard to quantify impact of removing an element that few if any DITA users are using.
+            Will reduce the set of <xmlelement>topicref</xmlelement> specializations one has to
+            consider when learning about or authoring DITA maps.</dd>
+        </dlentry>
+      </dl></section>
+<section><title>Technical requirements</title><p>
+        <dl>
+          <dlentry>
+            <dt>Grammar and specification changes</dt>
+            <dd>
+              <p>Remove <xmlelement>topicset</xmlelement> and <xmlelement>topicsetref</xmlelement>
+                from the <term>Map Group</term> domain:<ul id="ul_wht_bkd_ddb">
+                  <li>Remove from <filepath>mapGroupDomain.rng</filepath></li>
+                  <li>Remove from <filepath>mapGroup.ent</filepath></li>
+                  <li>Remove from <filepath>mapGroup.mod</filepath>
+                  </li>
+                  <li>Remove from <filepath>mapGroupMode.xsd</filepath></li>
+                </ul></p>
+              <p>Update the following topics to remove references to
+                  <xmlelement>topicset</xmlelement> and <xmlelement>topicsetref</xmlelement>:<ul
+                  id="ul_gvb_bld_ddb">
+                  <li><filepath>ditamap-elements.dita</filepath></li>
+                  <li><filepath>commonNavLibraryTable.dita</filepath></li>
+                  <li><filepath>base-elements-a-to-z.dita</filepath></li>
+                  <li><filepath>all-elements-a-to-z.dita</filepath></li>
+                  <li><filepath>map-group-elements.ditamap</filepath></li>
+                  <li>Regenerate content model files to reflect removal from grammar files.</li>
+                </ul></p>
+              <p>Remove the following topics entirely:<ul id="ul_idf_wld_ddb">
+                  <li><filepath>langRef/base/topicssetref.dita</filepath></li>
+                  <li><filepath>langRef/base/topicset.dita</filepath></li>
+                </ul></p>
+            </dd>
+          </dlentry>
+          <dlentry>
+            <dt>Processing impact</dt>
+            <dd>Any processor that actually provides special processing for
+                <xmlelement>topicset</xmlelement> or <xmlelement>topicsetref</xmlelement> can remove
+              it.</dd>
+            <dd>If a processor provides unique processing for <xmlelement>topicset</xmlelement> or
+                <xmlelement>topicsetref</xmlelement> for which support needs to be retained, the
+              processor will need to either provide its own specializations to which the processing
+              can then be applied or provide some other way to signal the desired behavior, for
+              example, processor-specific values for <xmlatt>outputclass</xmlatt>.</dd>
+          </dlentry>
+        </dl>
+        <dl>
+          <dlentry>
+            <dt>Overall usability</dt>
+            <dd>There should be no negative usability impact.</dd>
+          </dlentry>
+        </dl>
+      </p></section>
+<section rev="2.0">
+<title>Backwards compatibility</title>
+<dl>
+<dlentry>
+<dt>Was this change previously announced in an earlier version of DITA?</dt>
+<dd>No.</dd>
+</dlentry>
+<dlentry>
+<dt>Removing or renaming an element that was shipped in DITA 1.3?</dt>
+<dd>The <xmlelement>topicset</xmlelement> and <xmlelement>topicsetref</xmlelement> elements will be
+            removed, so any documents currently using them cannot be valid against the DITA 2.0
+            grammars as provided by OASIS.</dd>
+</dlentry>
+</dl>
+</section>
+<section rev="2.0">
+<title>Migration plan</title>
+<dl>
+<dlentry>
+<dt>Might any existing documents need to be migrated?</dt>
+<dd>
+            <p>Anyone currently using these elements will need to either replace them with normal
+              topicrefs or define their own specializations to replace
+                <xmlelement>topicset</xmlelement> or <xmlelement>topicsetref</xmlelement>.</p>
+          </dd>
+</dlentry>
+<dlentry>
+<dt>Might any existing processors or implementations need to change their expectations?</dt>
+<dd>
+            <p>If a processor provides unique processing for <xmlelement>topicset</xmlelement> or
+                <xmlelement>topicsetref</xmlelement> for which support needs to be retained, the
+              processor will need to either provide its own specializations to which the processing
+              can then be applied or provide some other way to signal the desired behavior, for
+              example, processor-specific values for <xmlatt>outputclass</xmlatt>.</p>
+            <p>As far as the TC can determine, there are no implementations of
+                <xmlelement>topicset</xmlelement> or <xmlelement>topicsetref</xmlelement> in general
+              use.</p>
+          </dd>
+</dlentry>
+<dlentry>
+<dt>Might any existing specialization or constraint modules need to be migrated?</dt>
+<dd>In the unlikely event that there are specializations of <xmlelement>topicset</xmlelement> or
+              <xmlelement>topicsetref</xmlelement>, those specializations will need to be redefined
+            to either specialize directly from <xmlelement>topicref</xmlelement> or another suitable
+              <xmlelement>topicref</xmlelement> specialization, such as
+              <xmlelement>mapref</xmlelement>, or define a new domain module that provides the
+            equivalent of <xmlelement>topicset</xmlelement> and <xmlelement>topicsetref</xmlelement>
+            to then serve as the specialization base of the specializations of
+              <xmlelement>topicset</xmlelement> and <xmlelement>topicsetref</xmlelement>.</dd>
+</dlentry>
+</dl>
+</section>
+  <section>
+   <title>Costs</title>
+<dl>
+<dlentry>
+<dt>Maintainers of the grammar files</dt>
+<dd>Remove all declarations and comments that mention or use <xmlelement>topicset</xmlelement> or
+              <xmlelement>topicsetref</xmlelement> (already done as part of this Stage 2
+            proposal).</dd>
+          <dd>Regenerate content model topics and any generated navigation lists to reflect the
+            removal (inherent in work that will have to be done for DITA 2.0 in any case).</dd>
+</dlentry>
+<dlentry>
+<dt>Editors of the DITA specification</dt>
+<dd>
+<ul>
+<li>How many new topics will be required? <p>None</p></li>
+<li>How many existing topics will need to be edited? <p>Five authored topics (see above) plus
+                  removal of topicrefs from one map. (Work already done as part of this Stage 2
+                  proposal)</p></li>
+<li>Will the feature require substantial changes to the information architecture of the DITA
+                specification? If so, what? <p>No architectural change required.</p></li>
+<li rev="2.0">If there is new terminology, is it likely to conflict with any usage of those terms in
+                the existing specification?<p>No new terminology.</p></li>
+</ul>
+</dd>
+</dlentry>
+<dlentry>
+<dt>Vendors of tools</dt>
+<dd>Tool vendors will need to remove any hard-coded references to the
+              <xmlelement>topicset</xmlelement> and <xmlelement>topicsetref</xmlelement> elements.
+            Any processing specific to those elements will need to either be removed or rebound to
+            different elements or ways of signaling the need for the special processing, whatever it
+            might be.</dd>
+</dlentry>
+<dlentry>
+<dt>DITA community-at-large</dt>
+<dd>
+<ul>
+<li>Will this feature add to the perception that DITA is becoming too complex?<p>It should not as we
+                  are removing a confusing and largely unused element.</p></li>
+<li>Will it be simple for end users to understand?<p>Yes.</p></li>
+<li rev="2.0">If the feature breaks backwards compatibility, how many documents are likely to be
+                affected, and what is the cost of migration?<p>There should be few documents using
+                    <xmlelement>topicset</xmlelement> or <xmlelement>topicsetref</xmlelement>. Those
+                  that are can very likely simply replace their use with normal
+                    <xmlelement>topicref</xmlelement> elements.</p></li>
+</ul>
+</dd>
+</dlentry>
+<dlentry>
+<dt>Producing migration instructions or tools</dt>
+<dd>
+<ul>
+              <li>How extensive will migration instructions be, if it is integrated into an overall
+                1.3 → 2.0 migration publication or white paper?<p>Migration instructions should not
+                  require more than a paragraph or two at most.</p></li>
+              <li>Will this require an independent white paper or other publication to provide
+                migration details?<p>No.</p></li>
+              <li>Do migration tools need to be created before this change can be made? If so, how
+                complex will those tools be to create and to use?<p>It might be useful to include a
+                  general <xmlelement>topicset</xmlelement> and <xmlelement>topicsetref</xmlelement>
+                  to <xmlelement>topicref</xmlelement> transform as part of a general migration
+                  tool.</p></li>
+            </ul>
+</dd>
+</dlentry>
+</dl>
+  </section>
+<section><title>Examples</title>
+      <p>N/A</p></section>
+</refbody>
+</reference><?Pub Caret -3?>
+<?Pub *0000003625?>

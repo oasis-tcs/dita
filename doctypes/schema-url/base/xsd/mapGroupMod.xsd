@@ -129,7 +129,6 @@
       <xs:attribute name="copy-to" type="xs:string"/>
       <xs:attributeGroup ref="topicref-atts"/>
       <xs:attributeGroup ref="univ-atts"/>
-      <xs:attributeGroup ref="global-atts"/>
    </xs:attributeGroup>
    <xs:element name="topicgroup">
       <xs:annotation>
@@ -166,7 +165,6 @@
       <xs:attribute name="outputclass" type="xs:string"/>
       <xs:attributeGroup ref="topicref-atts"/>
       <xs:attributeGroup ref="univ-atts"/>
-      <xs:attributeGroup ref="global-atts"/>
    </xs:attributeGroup>
    <xs:element name="anchorref">
       <xs:annotation>
@@ -288,7 +286,6 @@
       </xs:attribute>
       <xs:attribute name="chunk" type="xs:string" default="to-navigation"/>
       <xs:attributeGroup ref="univ-atts"/>
-      <xs:attributeGroup ref="global-atts"/>
    </xs:attributeGroup>
    <xs:element name="mapref">
       <xs:annotation>
@@ -327,8 +324,257 @@
       <xs:attribute name="format" type="xs:string" default="ditamap"/>
       <xs:attributeGroup ref="topicref-atts-without-format"/>
       <xs:attributeGroup ref="univ-atts"/>
-      <xs:attributeGroup ref="global-atts"/>
    </xs:attributeGroup>
+<<<<<<< HEAD
+=======
+   <xs:element name="topicset">
+      <xs:annotation>
+         <xs:documentation>The &lt;topicset&gt; element defines a complete unit of content that can be reused in other DITA maps or other &lt;topicset&gt; elements. The &lt;topicset&gt; element can be
+            especially useful for task composition in which larger tasks that are composed indefinitely of smaller tasks. The id attribute on a &lt;topicset&gt; is required, which ensures that the
+            complete unit is available for reuse in other contexts.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:complexContent>
+            <xs:extension base="topicset.class">
+               <xs:attribute ref="class" default="+ map/topicref mapgroup-d/topicset "/>
+            </xs:extension>
+         </xs:complexContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:complexType name="topicset.class">
+      <xs:sequence>
+         <xs:group ref="topicset.content"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="topicset.attributes"/>
+   </xs:complexType>
+   <xs:group name="topicset.content">
+      <xs:sequence>
+         <xs:group ref="topicmeta" minOccurs="0"/>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="anchor"/>
+            <xs:group ref="data.elements.incl"/>
+            <xs:group ref="navref"/>
+            <xs:group ref="topicref"/>
+         </xs:choice>
+      </xs:sequence>
+   </xs:group>
+   <xs:attributeGroup name="topicset.attributes">
+      <xs:attribute name="navtitle" type="xs:string"/>
+      <xs:attribute name="href" type="xs:string"/>
+      <xs:attribute name="keyref" type="xs:string"/>
+      <xs:attribute name="keys" type="xs:string"/>
+      <xs:attribute name="keyscope" type="xs:string"/>
+      <xs:attribute name="query" type="xs:string"/>
+      <xs:attribute name="copy-to" type="xs:string"/>
+      <xs:attribute name="outputclass" type="xs:string"/>
+      <xs:attribute name="collection-type">
+         <xs:simpleType>
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="choice"/>
+               <xs:enumeration value="family"/>
+               <xs:enumeration value="sequence"/>
+               <xs:enumeration value="unordered"/>
+               <xs:enumeration value="-dita-use-conref-target"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="processing-role">
+         <xs:simpleType>
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="normal"/>
+               <xs:enumeration value="resource-only"/>
+               <xs:enumeration value="-dita-use-conref-target"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="type" type="xs:string"/>
+      <xs:attribute name="cascade" type="xs:string"/>
+      <xs:attribute name="scope">
+         <xs:simpleType>
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="external"/>
+               <xs:enumeration value="local"/>
+               <xs:enumeration value="peer"/>
+               <xs:enumeration value="-dita-use-conref-target"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="locktitle">
+         <xs:simpleType>
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="no"/>
+               <xs:enumeration value="yes"/>
+               <xs:enumeration value="-dita-use-conref-target"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="format" type="xs:string"/>
+      <xs:attribute name="linking">
+         <xs:simpleType>
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="none"/>
+               <xs:enumeration value="normal"/>
+               <xs:enumeration value="sourceonly"/>
+               <xs:enumeration value="targetonly"/>
+               <xs:enumeration value="-dita-use-conref-target"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="toc">
+         <xs:simpleType>
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="no"/>
+               <xs:enumeration value="yes"/>
+               <xs:enumeration value="-dita-use-conref-target"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="print">
+         <xs:simpleType>
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="no"/>
+               <xs:enumeration value="printonly"/>
+               <xs:enumeration value="yes"/>
+               <xs:enumeration value="-dita-use-conref-target"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="search">
+         <xs:simpleType>
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="no"/>
+               <xs:enumeration value="yes"/>
+               <xs:enumeration value="-dita-use-conref-target"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="chunk" type="xs:string" default="to-navigation"/>
+      <xs:attribute name="id" use="required" type="xs:NMTOKEN"/>
+      <xs:attributeGroup ref="conref-atts"/>
+      <xs:attributeGroup ref="select-atts"/>
+      <xs:attributeGroup ref="localization-atts"/>
+   </xs:attributeGroup>
+   <xs:element name="topicsetref">
+      <xs:annotation>
+         <xs:documentation>The &lt;topicsetref&gt; element references a &lt;topicset&gt; element. The referenced &lt;topicset&gt; element can be defined in the current map or in another map.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:complexContent>
+            <xs:extension base="topicsetref.class">
+               <xs:attribute ref="class" default="+ map/topicref mapgroup-d/topicsetref "/>
+            </xs:extension>
+         </xs:complexContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:complexType name="topicsetref.class">
+      <xs:sequence>
+         <xs:group ref="topicsetref.content"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="topicsetref.attributes"/>
+   </xs:complexType>
+   <xs:group name="topicsetref.content">
+      <xs:sequence>
+         <xs:group ref="topicmeta" minOccurs="0"/>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="data.elements.incl"/>
+            <xs:group ref="topicref"/>
+         </xs:choice>
+      </xs:sequence>
+   </xs:group>
+   <xs:attributeGroup name="topicsetref.attributes">
+      <xs:attribute name="navtitle" type="xs:string"/>
+      <xs:attribute name="href" type="xs:string"/>
+      <xs:attribute name="keyref" type="xs:string"/>
+      <xs:attribute name="keys" type="xs:string"/>
+      <xs:attribute name="keyscope" type="xs:string"/>
+      <xs:attribute name="query" type="xs:string"/>
+      <xs:attribute name="copy-to" type="xs:string"/>
+      <xs:attribute name="outputclass" type="xs:string"/>
+      <xs:attribute name="collection-type">
+         <xs:simpleType>
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="choice"/>
+               <xs:enumeration value="family"/>
+               <xs:enumeration value="sequence"/>
+               <xs:enumeration value="unordered"/>
+               <xs:enumeration value="-dita-use-conref-target"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="processing-role">
+         <xs:simpleType>
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="normal"/>
+               <xs:enumeration value="resource-only"/>
+               <xs:enumeration value="-dita-use-conref-target"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="type" type="xs:string" default="topicset"/>
+      <xs:attribute name="cascade" type="xs:string"/>
+      <xs:attribute name="scope">
+         <xs:simpleType>
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="external"/>
+               <xs:enumeration value="local"/>
+               <xs:enumeration value="peer"/>
+               <xs:enumeration value="-dita-use-conref-target"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="locktitle">
+         <xs:simpleType>
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="no"/>
+               <xs:enumeration value="yes"/>
+               <xs:enumeration value="-dita-use-conref-target"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="format" type="xs:string" default="ditamap"/>
+      <xs:attribute name="linking">
+         <xs:simpleType>
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="none"/>
+               <xs:enumeration value="normal"/>
+               <xs:enumeration value="sourceonly"/>
+               <xs:enumeration value="targetonly"/>
+               <xs:enumeration value="-dita-use-conref-target"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="toc">
+         <xs:simpleType>
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="no"/>
+               <xs:enumeration value="yes"/>
+               <xs:enumeration value="-dita-use-conref-target"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="print">
+         <xs:simpleType>
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="no"/>
+               <xs:enumeration value="printonly"/>
+               <xs:enumeration value="yes"/>
+               <xs:enumeration value="-dita-use-conref-target"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="search">
+         <xs:simpleType>
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="no"/>
+               <xs:enumeration value="yes"/>
+               <xs:enumeration value="-dita-use-conref-target"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="chunk" type="xs:string"/>
+      <xs:attributeGroup ref="univ-atts"/>
+   </xs:attributeGroup>
+>>>>>>> 7de2579902689baff52407b939e6d53555800d41
    <xs:element name="keydef">
       <xs:annotation>
          <xs:documentation>The &lt;keydef&gt; element is a convenience element that is used to define keys without any of the other effects that occur when using a &lt;topicref&gt; element: no content is
@@ -452,6 +698,5 @@
       </xs:attribute>
       <xs:attribute name="chunk" type="xs:string"/>
       <xs:attributeGroup ref="univ-atts"/>
-      <xs:attributeGroup ref="global-atts"/>
    </xs:attributeGroup>
 </xs:schema>

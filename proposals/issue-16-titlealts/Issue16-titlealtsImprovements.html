@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2018" />
+<meta name="DC.rights.owner" content="(C) Copyright 2018" />
+<meta name="DC.Type" content="reference" />
+<meta name="DC.Title" content="DITA 2.0 proposed feature #16" />
+<meta name="abstract" content="This feature makes the alternate-title mechanism more extensible, and allows its use in maps as well as topics." />
+<meta name="description" content="This feature makes the alternate-title mechanism more extensible, and allows its use in maps as well as topics." />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="IssueNumber00" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="commonltr.css" />
+<title>DITA 2.0 proposed feature #16</title>
+</head>
+<body id="IssueNumber00">
+
+<h1 class="title topictitle1" id="ariaid-title1">DITA 2.0 proposed feature #16</h1>
+
+
+<div class="body refbody"><p class="shortdesc">This feature makes the alternate-title mechanism more extensible, and allows its use in
+    maps as well as topics.</p>
+
+<div class="section"><h2 class="title sectiontitle">Date and version information</h2><div class="p">Include the following information:<dl class="dl">
+
+<dt class="dt dlterm">Date that this feature proposal was completed</dt>
+
+<dd class="dd">10/8/2018</dd>
+
+
+
+<dt class="dt dlterm">Champion of the proposal</dt>
+
+<dd class="dd">Chris Nitchie</dd>
+
+
+
+<dt class="dt dlterm">Links to any previous versions of the proposal</dt>
+
+<dd class="dd">N/A</dd>
+
+
+
+<dt class="dt dlterm">Links to minutes where this proposal was discussed at stage 1 and moved to stage 2</dt>
+
+<dd class="dd"><a class="xref" href="https://lists.oasis-open.org/archives/dita/201705/msg00015.html" target="_blank">https://lists.oasis-open.org/archives/dita/201705/msg00015.html</a></dd>
+
+
+
+<dt class="dt dlterm">Reviewers for Stage 2 proposal</dt>
+
+<dd class="dd">Bill Burns; Bob Thomas</dd>
+
+
+
+<dt class="dt dlterm">Links to e-mail discussion that resulted in new versions of the proposal</dt>
+
+<dd class="dd">N/A</dd>
+
+
+
+<dt class="dt dlterm">Link to the GitHub issue</dt>
+
+<dd class="dd"><a class="xref" href="https://github.com/oasis-tcs/dita/issues/16" target="_blank">https://github.com/oasis-tcs/dita/issues/16</a></dd>
+
+
+</dl>
+</div>
+</div>
+
+<div class="section"><h2 class="title sectiontitle">Original requirement or use case</h2>
+      
+      <p class="p">We should allow <code class="keyword markupname xmlelement">&lt;titlealts&gt;</code> inside <code class="keyword markupname xmlelement">&lt;map&gt;</code> as
+        well as <code class="keyword markupname xmlelement">&lt;topic&gt;</code>. We should also add a zero-or-more
+          <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code> element that can be specialized for specific purposes,
+        and consider making <code class="keyword markupname xmlelement">&lt;navtitle&gt;</code> and
+          <code class="keyword markupname xmlelement">&lt;searchtitle&gt;</code> specializations of
+        <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code>.</p>
+
+      <p class="p">In developing applications that leverage DITA, you very frequently need to ask the
+        question, “what’s this document’s title?” It should be as simple as looking for the
+          <code class="keyword markupname xmlelement">&lt;title&gt;</code> element, or its specialization, at the top level of the
+        file. However, this doesn’t work for bookmap, because its title element -
+          <code class="keyword markupname xmlelement">&lt;booktitle&gt;</code> - is actually a collection of pseudo-title elements
+        specialized from <code class="keyword markupname xmlelement">&lt;ph&gt;</code> - <code class="keyword markupname xmlelement">&lt;mainbooktitle&gt;</code> and
+          <code class="keyword markupname xmlelement">&lt;booktitlealt&gt;</code>. So you have to write special-case code to handle
+        BookMap, which is irksome. Even then, it won’t work for other <code class="keyword markupname xmlelement">&lt;map&gt;</code>
+        types that use a similar trick (like D4P PubMap). Adding <code class="keyword markupname xmlelement">&lt;titlealts&gt;</code>
+        to <code class="keyword markupname xmlelement">&lt;map&gt;</code> solves it for new map types.</p>
+
+    </div>
+
+<div class="section"><h2 class="title sectiontitle">Use cases</h2>
+      <ul class="ul" id="IssueNumber00__ul_kcs_f4s_3fb">
+        <li class="li">A developer of a DITA map specialization wants to allow map authors to specify subtitles
+          without specializing from <code class="keyword markupname xmlelement">&lt;ph&gt;</code> inside of
+            <code class="keyword markupname xmlelement">&lt;title&gt;</code>, as Bookmap currently does.</li>
+
+        <li class="li">A content architect at a software company wants to add the ability for help topic
+          authors to specify the window title for their topics using new
+            <code class="keyword markupname xmlelement">&lt;windowtitle&gt;</code> and <code class="keyword markupname xmlelement">&lt;breadcrumbtitle&gt;</code>
+          alternative title types.</li>
+
+        <li class="li">That same content architect wants to be able to put those titles inside
+            <code class="keyword markupname xmlelement">&lt;topicmeta&gt;</code> on <code class="keyword markupname xmlelement">&lt;topicref&gt;</code> elements, as
+          well as or instead of in the topics.</li>
+
+      </ul>
+</div>
+
+<div class="section"><h2 class="title sectiontitle">New terminology</h2>
+
+<p class="p">None.</p>
+
+</div>
+
+  <div class="section"><h2 class="title sectiontitle">Proposed solution</h2>
+   
+      <ul class="ul" id="IssueNumber00__ul_hkm_t4s_3fb">
+        <li class="li">A new base element, called <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code>, will be added to the base
+          vocabulary. This element is allowed within <code class="keyword markupname xmlelement">&lt;titlealts&gt;</code> in topics
+          and <code class="keyword markupname xmlelement">&lt;topicmeta&gt;</code> in maps.</li>
+
+        <li class="li">The <code class="keyword markupname xmlelement">&lt;navtitle&gt;</code> and <code class="keyword markupname xmlelement">&lt;searchtitle&gt;</code> elements
+          will be extracted to a new Alternative Titles domain, and made specializations of
+            <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code>.</li>
+
+      </ul>
+
+  </div>
+
+<div class="section"><h2 class="title sectiontitle">Benefits</h2>
+      <dl class="dl">
+        
+          <dt class="dt dlterm">Who will benefit from this feature?</dt>
+
+          <dd class="dd">Content architects who want to allow custom alternative title types.</dd>
+
+          <dd class="dd ddexpand">Authors whose content needs such alternative titles.</dd>
+
+          <dd class="dd ddexpand">DITA map content architects.</dd>
+
+          <dd class="dd ddexpand">Vendors that need to determine the primary titles in documents using future map
+            specializations that allow for alternate/sub titles.</dd>
+
+        
+        
+          <dt class="dt dlterm">What is the expected benefit?</dt>
+
+          <dd class="dd">Standard mechanism for customized alternate titles.</dd>
+
+          <dd class="dd ddexpand">Formalized alternate titles for maps and map specializations.</dd>
+
+          <dd class="dd ddexpand">Applicability of custom alternate title specializations for topics, maps, and
+            topicrefs.</dd>
+
+        
+        
+          <dt class="dt dlterm">How many people probably will make use of this feature?</dt>
+
+          <dd class="dd">Lots. Everyone using the new BookMap. Any group requiring their own special
+            alternative title types.</dd>
+
+        
+        
+          <dt class="dt dlterm">How much of a positive impact is expected for the users who will make use of the
+            feature?</dt>
+
+          <dd class="dd">Very much. Current solutions are hacks (<code class="keyword markupname xmlelement">&lt;pubtitlealt&gt;</code>, use of
+              <code class="keyword markupname xmlelement">&lt;data&gt;</code> specializations in <code class="keyword markupname xmlelement">&lt;prolog&gt;</code> for
+            alternate topic titles) or simply not possible.</dd>
+
+        
+      </dl>
+</div>
+
+<div class="section"><h2 class="title sectiontitle">Technical requirements</h2>
+      <ul class="ul" id="IssueNumber00__ul_zpw_ngt_3fb">
+        <li class="li">New base element type, <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code>, for use in
+            <code class="keyword markupname xmlelement">&lt;titlealts&gt;</code> and <code class="keyword markupname xmlelement">&lt;topicmeta&gt;</code>. Within
+            <code class="keyword markupname xmlelement">&lt;topicmeta&gt;</code>, it appears in place of the current
+            <code class="keyword markupname xmlelement">&lt;navtitle&gt;</code> element.</li>
+
+        <li class="li"><code class="keyword markupname xmlelement">&lt;titlealt&gt;</code> carries the global and universal attribute groups. It
+          also carries a required CDATA <code class="keyword markupname xmlatt">@role</code> attribute describing the intended
+          purpose or purposes of the alternate title. Specializations should provide a default or
+          fixed value for this attribute. For example, the <code class="keyword markupname xmlatt">@role</code> for
+            <code class="keyword markupname xmlelement">&lt;navtitle&gt;</code> would default to <code class="ph codeph">"navtitle"</code>. A single
+            <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code> element can have multiple <code class="keyword markupname xmlatt">@role</code>
+          values, separated by white space, when it fulfills multiple roles.</li>
+
+        <li class="li">New "Alternate Titles" domain, containing <code class="keyword markupname xmlelement">&lt;navtitle&gt;</code> and
+            <code class="keyword markupname xmlelement">&lt;searchtitle&gt;</code>, both as specializations of
+            <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code>, to be included in all distributed topic and map
+          types.</li>
+
+        <li class="li">When merging <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code> elements between topics and maps<ol class="ol" id="IssueNumber00__ol_jrj_1nt_3fb">
+            <li class="li">The resolved list of <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code> elements is the union of
+              distinct entries, as identified by <code class="keyword markupname xmlatt">@role</code> attribute token, between
+              those in <code class="keyword markupname xmlelement">&lt;topicmeta&gt;</code> and those in the topic.</li>
+
+            <li class="li">When a given alternate title, as identified by a <code class="keyword markupname xmlatt">@role</code> attribute
+              token, appears in both the <code class="keyword markupname xmlelement">&lt;topicmeta&gt;</code> and the referenced
+              topic, the map's value takes precedence. </li>
+
+          </ol>
+</li>
+
+        <li class="li">Remove <code class="keyword markupname xmlatt">@locktitle</code> from the base map vocabulary.</li>
+
+        <li class="li">Unlike previous versions of DITA, the navigation title is defined as the
+            <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code> with <code class="ph codeph">role="navtitle"</code>, rather than the
+            <code class="keyword markupname xmlelement">&lt;navititle&gt;</code> element specifically. The
+            <code class="keyword markupname xmlelement">&lt;navtitle&gt;</code> element will specify <code class="ph codeph">role="navtitle"</code>
+          by default, but authors may choose to specify the navigation title in combination with
+          other alternative titles via a compound <code class="keyword markupname xmlatt">@role</code> attribute, or via a
+          different specialization of <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code>, so long as it specifies
+            <code class="ph codeph">role="navtitle"</code>.</li>
+
+        <li class="li">Similarly, Search Title will be redefined as the <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code> with
+            <code class="ph codeph">role="searchtitle"</code>, rather than the
+            <code class="keyword markupname xmlelement">&lt;searchtitle&gt;</code> element specifically. Again,
+            <code class="keyword markupname xmlelement">&lt;searchtitle&gt;</code> will specify <code class="ph codeph">role="searchtitle"</code> by
+          default. Processor expectations for search titles are unchanged.</li>
+
+        <li class="li">The processing of navigation titles will be slightly different, largely owing to the
+          lack of <code class="keyword markupname xmlatt">@locktitle</code>.<ol class="ol" id="IssueNumber00__ol_ivx_21h_kfb">
+            <li class="li">When neither the topic nor the map specifies a navigation title, the topic's title
+              is used.</li>
+
+            <li class="li">Otherwise, the effective navigation title follows normal
+                <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code> precedence rules - topicref first, then
+              topic.</li>
+
+          </ol>
+<div class="note note"><span class="notetitle">Note:</span> Applications and authors wishing to include the topic's title in the map for
+            reasons other than output navigation can continue to do so, but they should use a
+            different <code class="keyword markupname xmlatt">@role</code> token. For example, in cases where a system inserts the
+            target topic's title into the map for the benefit of map authors, <code class="ph codeph">&lt;titlealt
+              role="mapAuthorHint"&gt;</code> could be used.</div>
+</li>
+
+        <li class="li">Within a given <code class="keyword markupname xmlelement">&lt;titlealts&gt;</code> or <code class="keyword markupname xmlelement">&lt;topicmeta&gt;</code>
+          element, <code class="keyword markupname xmlatt">@role</code> values must be distinct. It is an error for multiple
+            <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code> elements within the same container to have the same
+            <code class="keyword markupname xmlatt">@role</code> token, though processors may choose to issue a log message and
+          ignore all but the first entry for a given token.</li>
+
+        <li class="li">With the exception of <code class="ph codeph">"navtitle"</code> and <code class="ph codeph">"searchtitle"</code>, no
+          special processing or output presentation is prescribed for
+            <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code> roles. Processors should ignore them by default.</li>
+
+      </ul>
+</div>
+
+<div class="section"><h2 class="title sectiontitle">Backwards compatibility</h2>
+
+      <p class="p">Most maps - any that use <code class="keyword markupname xmlelement">&lt;navtitle&gt;</code> - will likely require migration
+        to accommodate this change. The new default behavior is compatible with
+          <code class="ph codeph">locktitle="yes"</code>, meaning the DITA 1.x handling of
+          <code class="keyword markupname xmlelement">&lt;navtitle&gt;</code>
+        <em class="ph i">absent</em>
+        <code class="keyword markupname xmlatt">@locktitle</code> will change to prefer the map's value in all cases. This will
+        likely be problematic for many groups without map modification.</p>
+
+      <p class="p">The specialization hierarchy of <code class="keyword markupname xmlelement">&lt;navtitle&gt;</code> and
+          <code class="keyword markupname xmlelement">&lt;searchtitle&gt;</code> will be changed, to <code class="ph codeph">"- topic/titlealt
+          altTitles-d/navtitle "</code> and <code class="ph codeph">"- topic/titlealt altTitles-d/searchtitle
+          "</code>, respectively.</p>
+
+</div>
+
+<div class="section"><h2 class="title sectiontitle">Migration plan</h2>
+
+      <p class="p">For <code class="keyword markupname xmlelement">&lt;navtitle&gt;</code> elements in maps:</p>
+
+      <ul class="ul" id="IssueNumber00__ul_qcf_mzg_kfb">
+        <li class="li">Existing maps containing <code class="keyword markupname xmlelement">&lt;navititle&gt;</code> with
+            <code class="ph codeph">locktitle="yes"</code> remain unchanged except for the removal of
+            <code class="keyword markupname xmlatt">@locktitle</code>.</li>
+
+        <li class="li">Other occurrences of <code class="keyword markupname xmlelement">&lt;navititle&gt;</code> in maps should be replaced by
+            <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code> with a <code class="keyword markupname xmlatt">@role</code> appropriate to the
+          particular case.</li>
+
+      </ul>
+
+      <p class="p">Although the specialization hierarchy of <code class="keyword markupname xmlelement">&lt;navtitle&gt;</code> and
+          <code class="keyword markupname xmlelement">&lt;searchtitle&gt;</code> will change, the as-authored markup won't, so no
+        migration should be required in most cases.</p>
+
+      <p class="p">Processors will need to tweak <code class="keyword markupname xmlelement">&lt;navtitle&gt;</code> handling as well as
+        implementing generic <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code> handling and merging.</p>
+
+      <p class="p">Existing map specializations may choose to modify their content model for alternate titles
+        to take advantage of this feature, but existing approaches will also continue to work (and
+        be a burden on processors).</p>
+
+</div>
+
+  <div class="section"><h2 class="title sectiontitle">Costs</h2>
+   
+<dl class="dl">
+
+<dt class="dt dlterm">Maintainers of the grammar files</dt>
+
+<dd class="dd">The alternative titles domain will be a new grammar module that needs to be maintained.</dd>
+
+
+
+<dt class="dt dlterm">Editors of the DITA specification</dt>
+
+<dd class="dd">
+<ul class="ul">
+<li class="li">New topics:<ul class="ul" id="IssueNumber00__ul_t1k_hzt_3fb">
+                  <li class="li">Container topic for alternative titles domain.</li>
+
+                  <li class="li">New language reference topic for <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code>.</li>
+
+                  <li class="li">Architectural specification topic describing <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code>
+                    processing, specifically merging of alternative titles between topicrefs and
+                    topics, with examples.</li>
+
+                </ul>
+</li>
+
+<li class="li">Updates to existing topics:<ul class="ul" id="IssueNumber00__ul_l1v_lzt_3fb">
+                  <li class="li">The language reference topic for <code class="keyword markupname xmlelement">&lt;titlealts&gt;</code> will
+                    likely need to be updated.</li>
+
+                  <li class="li">The language reference topics for <code class="keyword markupname xmlelement">&lt;navtitle&gt;</code>, and
+                      <code class="keyword markupname xmlelement">&lt;searchtitle&gt;</code> will need to be moved to the alternative
+                    titles domain and updated.</li>
+
+                  <li class="li">The topic <strong class="ph b">Metadata in maps and topics</strong> will need to be updated to
+                    discuss <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code>.</li>
+
+                  <li class="li">Likewise <strong class="ph b">Reconciling topic and map metadata elements</strong> will need to be
+                    updated to discuss <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code>.</li>
+
+                </ul>
+</li>
+
+</ul>
+
+</dd>
+
+
+
+<dt class="dt dlterm">Vendors of tools</dt>
+
+<dd class="dd">Processors will need to implement <code class="keyword markupname xmlelement">&lt;titlealt&gt;</code> reconciliation between
+            topics and maps, as well as updating <code class="keyword markupname xmlelement">&lt;navtitle&gt;</code> handling.</dd>
+
+
+
+<dt class="dt dlterm">DITA community-at-large</dt>
+
+<dd class="dd">
+<ul class="ul">
+              <li class="li">
+                <dl class="dl">
+                  
+                    <dt class="dt dlterm">Will this feature add to the perception that DITA is becoming too
+                      complex?</dt>
+
+                    <dd class="dd">Not by much. The reconciliation of topicref and topic alternate titles is
+                      somewhat complex, but not unnecessarily so. On the other hand, it will vastly
+                      simplify, and make explicit, the mechanism for alternative titles in
+                      maps.</dd>
+
+                  
+                  
+                    <dt class="dt dlterm">Will it be simple for end users to understand?</dt>
+
+                    <dd class="dd">Yes.</dd>
+
+                  
+                </dl>
+
+              </li>
+
+            </ul>
+
+</dd>
+
+
+
+<dt class="dt dlterm">Producing migration instructions or tools</dt>
+
+<dd class="dd">No migration necessary in the vast majority of cases. Only where <code class="keyword markupname xmlatt">@class</code>
+            attributes have been made explicit will any migration be required.</dd>
+
+
+</dl>
+
+  </div>
+
+    <div class="section" id="IssueNumber00__section_kb3_jb5_3fb"><h2 class="title sectiontitle">Example: Custom Alternative Title Types</h2>
+      
+      <p class="p">The content architect described under 'Use Cases' could create a Topic specialization with
+        custom title elements.</p>
+
+      <pre class="pre codeblock"><code>&lt;helpTopic id="topic167"&gt;
+  &lt;title&gt;Doing the Thing in the Place where the Stuff Is&lt;/title&gt;
+  &lt;titlealts&gt;
+    &lt;windowtitle&gt;Doing Things&lt;/windowtitle&gt;
+    &lt;breadcrumbtitle&gt;Doing the Thing&lt;/breadcrumbtitle&gt;
+  &lt;/titlealts&gt;</code></pre>
+      <p class="p">They could also allow their map authors to overrule these alternative titles.</p>
+
+      <pre class="pre codeblock"><code>&lt;topicref href="topic167.dita"&gt;
+  &lt;topicmeta locktitle="yes"&gt;
+    &lt;breadcrumbtitle&gt;Thing Doing&lt;/breadcrumbtitle&gt;
+  &lt;/topicmeta&gt;
+&lt;/topicref&gt;</code></pre>
+    </div>
+
+<div class="section"><h2 class="title sectiontitle">Example: Map Alternative Titles</h2>
+<p class="p">A certain unnamed standards committee produces their specification document as a DITA
+        map with a large number of alternative titles. Currently, in DITA 1.3, they use the Bookmap
+          <code class="keyword markupname xmlelement">&lt;pubtitlealt&gt;</code> element with <code class="keyword markupname xmlatt">@outputclass</code>. For
+        example:</p>
+
+      <pre class="pre codeblock"><code>&lt;booktitle outputclass="specificationTitles"&gt;
+ &lt;mainbooktitle outputclass="specificationTitle"&gt;Darwin Information Typing Architecture (DITA)
+  Version 1.3 Part 0: Overview&lt;/mainbooktitle&gt;
+ &lt;booktitlealt outputclass="specificationSubtitle1"&gt;&lt;keyword keyref="specification-level"/&gt;&lt;/booktitlealt&gt;
+ &lt;booktitlealt outputclass="specificationLevel"&gt;0&lt;/booktitlealt&gt;
+ &lt;booktitlealt outputclass="specificationApproved"&gt;&lt;keyword keyref="approval-date"/&gt;&lt;/booktitlealt&gt;
+ &lt;booktitlealt outputclass="specificationShorttitle"&gt;DITA Version 1.3 Specification&lt;/booktitlealt&gt;
+ &lt;booktitlealt outputclass="specificationScope"&gt;part0-overview&lt;/booktitlealt&gt;  
+&lt;/booktitle&gt;
+</code></pre>
+      <p class="p">This is problematic for all sorts of reasons, but with this change they could rewrite this
+        as follows:</p>
+
+      <pre class="pre codeblock"><code>&lt;title&gt;Darwin Information Typing Architecture (DITA) Version 1.3 Part 0: Overview&lt;/title&gt;
+  &lt;bookmeta&gt;
+   &lt;titlealt role="specificationSubtitle1"&gt;&lt;keyword keyref="specification-level"/&gt;&lt;/titlealt&gt;
+   &lt;titlealt role="specificationLevel"&gt;0&lt;/titlealt&gt;
+   &lt;titlealt role="specificationApproved"&gt;&lt;keyword keyref="approval-date"/&gt;&lt;/titlealt&gt;
+   &lt;titlealt role="specificationShorttitle"&gt;DITA Version 1.3 Specification&lt;/titlealt&gt;
+   &lt;titlealt role="specificationScope"&gt;part0-overview&lt;/titlealt&gt;  
+   &lt;!-- other metadata --&gt;
+  &lt;/bookmeta&gt;</code></pre></div>
+
+    <div class="section" id="IssueNumber00__section_gmw_wch_kfb"><h2 class="title sectiontitle">Example: Reconciling Map and Topic Alternate Titles</h2>
+      
+      <p class="p">A <code class="keyword markupname xmlelement">&lt;topicref&gt;</code> says:</p>
+
+      <pre class="pre codeblock"><code>&lt;topicref href="topic.dita"&gt;
+  &lt;topicmeta&gt;
+    &lt;titlealt role="breadcrumbTitle"&gt;Doin' Stuff&lt;/titlealt&gt;
+    &lt;titlealt role="longTitle"&gt;That thing you do when there's stuff that needs doing.&lt;/titlealt&gt;
+  &lt;/topicmeta.
+&lt;/topicref&gt;</code></pre>
+      <p class="p">The referenced topic says:</p>
+
+      <pre class="pre codeblock"><code>&lt;prolog&gt;
+  &lt;titlealt role="subtitle"&gt;Doing Stuff&lt;/titlealt&gt;
+  &lt;titlealt role="bredcrumbTitle flipbookTitle"&gt;Stuff&lt;/titlealt&gt;
+&lt;/prolog&gt;</code></pre>
+      <p class="p">Note that <code class="ph codeph">breadcrumbTitle</code> is specified in both the map and the topic, and
+        the map's value takes precedence. However, that same alternate title in the topic specifies
+        an additional role of <code class="ph codeph">flipbookTitle</code>, which is not overridden by the map,
+        and so should be preserved.</p>
+
+      <p class="p">The equivalent merged alternative titles look like this:</p>
+
+      <pre class="pre codeblock"><code>&lt;titlealt role="subtitle"&gt;Doing Stuff&lt;/titlealt&gt;
+&lt;titlealt role="flipbookTitle"&gt;Stuff&lt;/titlealt&gt;
+&lt;titlealt role="breadcrumbTitle"&gt;Don' Stuff&lt;/titlealt&gt;
+&lt;titlealt role="longTitle"&gt;That thing you do when there's stuff that needs doing.&lt;/titlealt&gt;</code></pre>
+    </div>
+
+</div>
+
+</body>
+</html>

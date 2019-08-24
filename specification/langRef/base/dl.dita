@@ -3,30 +3,36 @@
  "reference.dtd">
 <reference id="dl" xml:lang="en-us">
 <title><xmlelement>dl</xmlelement></title>
-<shortdesc>A <xmlelement>dl</xmlelement> element is a list of terms and corresponding definitions.
-The term (<xmlelement>dt</xmlelement>) is usually flush left. The description or definition
-(<xmlelement>dd</xmlelement>) is usually either indented and on the next line, or on the same line
-to the right of the term. <ph>However, actual rendering is up to the rendering
-engine.</ph></shortdesc>
+<shortdesc>A definition list is a list of terms and corresponding definitions.</shortdesc>
  <prolog>
   <metadata>
    <keywords>
     <indexterm>definition lists<indexterm>overview</indexterm></indexterm>
     <indexterm>elements<indexterm>body<indexterm><xmlelement>dl</xmlelement></indexterm></indexterm></indexterm>
     <indexterm>formatting
-       expectations<indexterm><xmlelement>dl</xmlelement></indexterm><indexterm><xmlelement>dlhead</xmlelement></indexterm></indexterm>
+       expectations<indexterm><xmlelement>dl</xmlelement></indexterm><indexterm><xmlelement>dlhead</xmlelement></indexterm><indexterm><xmlelement>dd</xmlelement></indexterm><indexterm><xmlelement>dt</xmlelement></indexterm></indexterm>
     <indexterm>lists<indexterm>definition<indexterm>overview</indexterm></indexterm></indexterm>
    </keywords>
   </metadata>
  </prolog>
 <refbody>
-<section id="section-1">       <p>An optional heading for the terms and definitions <ph >can</ph> be
-    provided using the <xmlelement>dlhead</xmlelement> element, which contains header elements for
-    those columns. The default formatting for the <xmlelement>dlhead</xmlelement> generally looks
-    like a table with a heading row, but this is also up to the rendering engine.</p>     </section>
-<section id="contains" conref="../../common/commonNavLibraryTable.dita#contentmodel-dl/contains" otherprops="contains"></section>
-<section id="inheritance" otherprops="inheritance"><title>Inheritance</title><p>-
-topic/dl </p></section>
+<section id="usage-information">
+   <title>Usage information</title>
+   <p>An optional heading for the terms and definitions <ph>can</ph> be provided using the
+     <xmlelement>dlhead</xmlelement> element, which contains header elements for those columns. The
+    default formatting for the <xmlelement>dlhead</xmlelement> generally looks like a table with a
+    heading row, but this is also up to the rendering engine.</p>
+  </section>
+  <section id="formatting-expectations">
+   <title>Formatting expectations</title>
+   <p>Although rendering is left up to implementations, processors typically use the following
+    conventions:</p>
+   <ul>
+    <li>The term (<xmlelement>dt</xmlelement>) is usually flush left.</li>
+    <li>The description or definition (<xmlelement>dd</xmlelement>) is either indented and on the
+     next line or on the same line to the right of the term. </li>
+   </ul>
+  </section>
 <example id="example" otherprops="examples"><title>Examples</title><fig id="simpleexample">
 <title>Simple definition list example</title>
 <codeblock>&lt;dl>
@@ -85,9 +91,8 @@ topic/dl </p></section>
 </dlentry></dl></example>
 <section id="attributes">       <title>Attributes</title>
    <p >The following attributes are available on this element: <xref
-     href="../attributes/universalAttributes.dita"/>, <xref
-     href="../attributes/commonAttributes.dita#common-atts/outputclass"/>, <xref
-     href="../attributes/commonAttributes.dita#common-atts/compact"/>, and <xref
-     href="../attributes/specializationAttributes.dita#specialization-atts/spectitle"/>.</p>     </section>
+     keyref="attributes-universal"/>, <xref
+     keyref="attributes-common/compact"/>, and <xref
+     keyref="attributes-specialization/spectitle"/>.</p>     </section>
 </refbody>
 </reference>
