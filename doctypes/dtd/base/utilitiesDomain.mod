@@ -3,8 +3,8 @@
 <!--                    HEADER                                     -->
 <!-- ============================================================= -->
 <!--  MODULE:    DITA Utilities Domain                             -->
-<!--  VERSION:   1.2                                               -->
-<!--  DATE:      November 2009                                     -->
+<!--  VERSION:   2.0                                               -->
+<!--  DATE:      August 2019                                       -->
 <!--                                                               -->
 <!-- ============================================================= -->
 <!-- ============================================================= -->
@@ -14,7 +14,7 @@
 <!--  Refer to this file by the following public identifier or an  -->
 <!--       appropriate system identifier                           -->
 <!-- PUBLIC "-//OASIS//ELEMENTS DITA Utilities Domain//EN"         -->
-<!--       Delivered as file "utilitiesDomain.mod"                      -->
+<!--       Delivered as file "utilitiesDomain.mod"                 -->
 <!-- ============================================================= -->
 <!-- SYSTEM:     Darwin Information Typing Architecture (DITA)     -->
 <!--                                                               -->
@@ -24,7 +24,7 @@
 <!-- ORIGINAL CREATION DATE:                                       -->
 <!--             March 2001                                        -->
 <!--                                                               -->
-<!--             (C) Copyright OASIS Open 2005, 2009.              -->
+<!--             (C) Copyright OASIS Open 2005, 2019.              -->
 <!--             (C) Copyright IBM Corporation 2001, 2004.         -->
 <!--             All Rights Reserved.                              -->
 <!--                                                               -->
@@ -37,6 +37,8 @@
 <!--    2007.12.01 EK:  Reformatted DTD modules for DITA 1.2       -->
 <!--    2008.02.12 RDA: Add text to shape                          -->
 <!--    2008.02.13 RDA: Create .content and .attributes entities   -->
+<!--    2019.08.28 KJE: Changed specialization base of imagemap    -->
+<!--                    and area                                   -->
 <!-- ============================================================= -->
 <!--                                                               -->
 
@@ -136,8 +138,8 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  imagemap       class CDATA "+ topic/fig ut-d/imagemap ">
-<!ATTLIST  area           class CDATA "+ topic/figgroup ut-d/area ">
+<!ATTLIST  imagemap       class CDATA "+ topic/div ut-d/imagemap ">
+<!ATTLIST  area           class CDATA "+ topic/div ut-d/area ">
 <!ATTLIST  shape          class CDATA "+ topic/keyword ut-d/shape ">
 <!ATTLIST  coords         class CDATA "+ topic/ph ut-d/coords ">
 <!ATTLIST  sort-as        class CDATA "+ topic/data ut-d/sort-as ">
