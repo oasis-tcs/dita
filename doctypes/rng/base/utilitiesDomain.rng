@@ -9,8 +9,8 @@
                    HEADER                                    
 =============================================================
  MODULE:    DITA Utilities Domain                            
- VERSION:   1.2                                              
- DATE:      November 2009                                    
+ VERSION:   2.0                                              
+ DATE:      August 2019                                    
                                                              
 =============================================================
 
@@ -32,7 +32,7 @@ PURPOSE:    Declaring the elements and specialization
 ORIGINAL CREATION DATE:                                      
             March 2001                                       
                                                              
-            (C) Copyright OASIS Open 2005, 2009.             
+            (C) Copyright OASIS Open 2005, 2019.             
             (C) Copyright IBM Corporation 2001, 2004.        
             All Rights Reserved.                             
                                                              
@@ -45,6 +45,8 @@ ORIGINAL CREATION DATE:
    2007.12.01 EK:  Reformatted DTD modules for DITA 1.2      
    2008.02.12 RDA: Add text to shape                         
    2008.02.13 RDA: Create .content and .attributes entities  
+   2019.08.28 KJE: Change specialization base for imagemap
+                   and area
 =============================================================
     </headerComment>
     <moduleMetadata>
@@ -62,11 +64,11 @@ ORIGINAL CREATION DATE:
   </moduleDesc>
   <div>
     <a:documentation>Define domain extension patterns</a:documentation>
-    <define name="ut-d-fig">
+    <define name="ut-d-div">
       <ref name="imagemap.element"/>
     </define>
-    <define name="fig" combine="choice">
-      <ref name="ut-d-fig"/>
+    <define name="div" combine="choice">
+      <ref name="ut-d-div"/>
     </define>
     <define name="ut-d-data">
       <ref name="sort-as.element"/>
@@ -243,12 +245,12 @@ ORIGINAL CREATION DATE:
 
     <define combine="interleave" name="imagemap.attlist">
       <optional>
-        <attribute a:defaultValue="+ topic/fig ut-d/imagemap " name="class"/>
+        <attribute a:defaultValue="+ topic/div ut-d/imagemap " name="class"/>
       </optional>
     </define>
     <define combine="interleave" name="area.attlist">
       <optional>
-        <attribute a:defaultValue="+ topic/figgroup ut-d/area " name="class"/>
+        <attribute a:defaultValue="+ topic/div ut-d/area " name="class"/>
       </optional>
     </define>
     <define combine="interleave" name="shape.attlist">
