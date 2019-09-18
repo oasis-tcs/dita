@@ -16,24 +16,29 @@ not use solvents to clean the drum surface."</shortdesc>
     <section id="specialization-hierarchy">
       <title>Specialization hierarchy</title>
       <p>The <xmlelement>howtoavoid</xmlelement> element is specialized from
-          <xmlelement>li</xmlelement>. It is defined in the hazard-statement domain module.</p>
+          <xmlelement>div</xmlelement>. It is defined in the hazard-statement domain module.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
       <p conref="../../common/conref-attribute.dita#conref-attribute/only-universal"/>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><codeblock>&lt;hazardstatement type="notice">
+<example id="example" otherprops="examples"><title>Example</title>
+      <p>The following code sample illustrates a hazard statement with the signal word of "notice",
+        which is reserved for situations that only involve possible property damage. The
+          <xmlelement>howtoavoid</xmlelement> element provides instructions about how to avoid
+        possible damage.</p><codeblock>&lt;hazardstatement type="notice">
   &lt;messagepanel>
-    &lt;typeofhazard>Machinery Damage&lt;/typeofhazard>
+    &lt;typeofhazard>
+      &lt;hazardsymbol href="agressivesolvent.png"/>
+      Machinery Damage&lt;/typeofhazard>
     <b>&lt;howtoavoid></b>
-	     &lt;sl>
-	       &lt;sli>Do NOT use solvents to clean the drum surface&lt;/sli>
-	       &lt;sli>Read manual for proper drum cleaning procedure&lt;/sli>
-     	&lt;/sl>
+      &lt;hazardsymbol href="readmanual.png"/>
+      &lt;ul>
+        &lt;li>Do NOT use solvents to clean the drum surface&lt;/sli>
+	 &lt;li>Read manual for proper drum cleaning procedure&lt;/sli>
+      &lt;/ul>
     <b>&lt;/howtoavoid></b>
   &lt;/messagepanel>
-  &lt;hazardsymbol href="readmanual.png"/>
-  &lt;hazardsymbol href="agressivesolvent.png"/>
 &lt;/hazardstatement></codeblock></example>
 </refbody>
 </reference>

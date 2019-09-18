@@ -1,104 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="hazardstatement" xml:lang="en-us">
-<title><xmlelement>hazardstatement</xmlelement></title>
-<shortdesc> The <xmlelement>hazardstatement</xmlelement> element
-contains hazard warning information. It is based on the regulations
-of ANSI Z535 and ISO 3864. It enables the author to select the type
-of hazard, add information about the specific hazard and how to avoid
-it, and add one or more safety symbols.</shortdesc>
-<prolog><metadata>
-<keywords>
+  <title><xmlelement>hazardstatement</xmlelement></title>
+  <shortdesc> The <xmlelement>hazardstatement</xmlelement> element contains hazard warning
+    information. It is based on the regulations of ANSI Z535 and ISO 3864. It enables the author to
+    select the signal word, describe the hazard and its consequences, explain how to avoid it, and
+    add one or more safety images.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
         <indexterm>hazard statement
-            domain<indexterm><xmlelement>hazardstatement</xmlelement></indexterm></indexterm></keywords>
-</metadata></prolog>
-<refbody>
+            domain<indexterm><xmlelement>hazardstatement</xmlelement></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody>
     <section id="specialization-hierarchy">
       <title>Specialization hierarchy</title>
-      <p>The <xmlelement>consequence</xmlelement> element is specialized from
-          <xmlelement>li</xmlelement>. It is defined in the hazard-statement domain module.</p>
+      <p>The <xmlelement>hazardstatement</xmlelement> element is specialized from
+          <xmlelement>note</xmlelement>. It is defined in the hazard-statement domain module.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
       <sectiondiv>
         <p>The following attributes are available on this element: <xref
-            keyref="attributes-universal"/> and <xref
-            keyref="attributes-specialization/spectitle"/>, and
-          the attributes defined below.</p>
+            keyref="attributes-universal"/> and <xref keyref="attributes-specialization/spectitle"
+          />, and the attributes defined below.</p>
         <dl>
           <dlentry>
             <dt><xmlatt>type</xmlatt></dt>
-            <dd>Describes the level of hazard. Safety hazard level definitions correspond to the
-              same values in the ANSI Z535 and the ISO 3864 standards. <ph
-                conref="../../common/conref-attribute.dita#conref-attribute/nonstandard-type"/> See
-            <xref keyref="attributes-type"/> for detailed information on
-              supported values and processing implications. Available values are note, tip,
-              fastpath, restriction, important, remember, attention, caution, notice, danger,
-              warning, other, and <xref
-                keyref="attributes-useconreftarget"
-                >-dita-use-​conref-​target</xref>.
-              <!--Asked TC for input: should @type=trouble be added here as it was on <note>. Local definition with the reference to ANSI still differs from the base <xmlelement>note</xmlelement> element. UPDATE 12 February 2014: TC agreed not ot add trouble, most of these values should not hvae been added but are left now for backwards compatibility--></dd>
-          </dlentry>
-          <dlentry>
-            <dt><xmlatt>othertype</xmlatt></dt>
-            <dd>Indicates an alternate note type, when the type is not available in the
-                <xmlatt>type</xmlatt> attribute value list. This value is used as the user-provided
-              note title when the <xmlatt>type</xmlatt> attribute value is set to
-              &quot;other.&quot;</dd>
+            <dd>Indicates the level of hazard. The values correspond to the signal words defined by
+              the ANSI Z535.6 standard:<dl>
+                <dlentry>
+                  <dt><xmlatt>caution</xmlatt></dt>
+                  <dd>Indicates a hazardous situation that, if not avoided, could result in minor or
+                    moderate injury.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt><xmlatt>danger</xmlatt></dt>
+                  <dd>Indicates a hazardous situation that, if not avoided, will result in death or
+                    serious injury. This signal word is to be limited to the most extreme
+                    situations.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt><xmlatt>notice</xmlatt></dt>
+                  <dd>Indicates information considered important but not hazard-related, for
+                    example, messages relating to property damage.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt><xmlatt>warning</xmlatt></dt>
+                  <dd>Indicates a hazardous situation that, if not avoided, could result in death or
+                    serious injury.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt>-dita-use-conref-target </dt>
+                  <dd>See <xref keyref="attributes-useconreftarget"/> for more information. </dd>
+                </dlentry>
+              </dl></dd>
           </dlentry>
         </dl>
       </sectiondiv>
     </section>
-<example id="example" otherprops="examples"><title>Example: Danger statement</title><p> The following code sample indicates an imminently hazardous situation which, if not avoided,
-        will result in death or serious injury.</p>
-      <codeblock id="codeblock_E20D4F1784044B9986E2C0977F219A49">&lt;hazardstatement <b>type="danger"</b>&gt;
-  &lt;messagepanel&gt;
-    &lt;typeofhazard&gt;Rotating blade.&lt;/typeofhazard&gt;
-    &lt;consequence&gt;Moving parts can crush and cut.&lt;/consequence&gt;
-    &lt;howtoavoid&gt;Follow lockout procedure before servicing.&lt;/howtoavoid&gt;
-  &lt;/messagepanel&gt;
-  &lt;hazardsymbol href="rotatingblade.png"/&gt;
-&lt;/hazardstatement&gt;</codeblock></example>
-    <example otherprops="examples">
-      <title>Example: Warning statement</title>
-      <p> The following code sample indicates a potentially hazardous situation which, if not
-        avoided, could result in death or serious injury.  </p>
-      <codeblock id="codeblock_D7ED9BCFB8AF4CCC876EA9A9BB9E2979">&lt;hazardstatement <b>type="warning"</b>&gt;
-  &lt;messagepanel&gt;
-    &lt;typeofhazard&gt;Hot surfaces inside.&lt;/typeofhazard&gt;
-    &lt;consequence&gt;Contact might cause burn.&lt;/consequence&gt;
-    &lt;howtoavoid&gt;Wear protective gear before servicing internal parts.&lt;/howtoavoid&gt;
-  &lt;/messagepanel&gt;
-  &lt;hazardsymbol href="hotsurface.png"/&gt;
-&lt;/hazardstatement&gt;</codeblock>
-    </example>
-    <example otherprops="examples">
-      <title>Example: Caution statement</title>
-      <p> The following code sample indicates a potentially hazardous situation which, if not
-        avoided, might result in minor or moderate injury.  </p>
-      <codeblock id="codeblock_093F3B51F6A44C6187B89E16DE82435B">&lt;hazardstatement <b>type="caution"</b>&gt;
-  &lt;messagepanel&gt;
-    &lt;typeofhazard&gt;Lifting Hazard.&lt;/typeofhazard&gt;
-    &lt;consequence&gt;Might result in injury.&lt;/consequence&gt;
-    &lt;howtoavoid&gt;See safety manual for lifting instructions.&lt;/howtoavoid&gt;
-  &lt;/messagepanel&gt;
-  &lt;hazardsymbol href="heavy.png"/&gt;
-&lt;/hazardstatement&gt;</codeblock>
-    </example>
-    <example otherprops="examples">
-      <title>Notice statement</title>
-      <p>The following code sample indicates a potential situation which, if not avoided, might
-        result in property damage or in an undesirable result or state. </p>
-      <codeblock id="codeblock_A15CC9A2F2A74F3583A357D11E904E30">&lt;hazardstatement <b>type="notice"</b>&gt;
-  &lt;messagepanel&gt;
-    &lt;typeofhazard&gt;Battery low&lt;/typeofhazard&gt;
-    &lt;howtoavoid&gt;Push and hold for charge state test.&lt;/howtoavoid&gt;
-  &lt;/messagepanel&gt;
-  &lt;hazardsymbol href="general.png"/&gt;
-&lt;/hazardstatement&gt;</codeblock>
-    </example>
-</refbody>
+    <example id="example" otherprops="examples">
+      <title>Example</title>
+      <p>The following code sample defines a hazard statement with a signal word of "DANGER."</p>
+      <codeblock>&lt;hazardstatement type="danger">
+  &lt;messagepanel>
+    &lt;typeofhazard>
+    &lt;hazardsymbol href="rotatingblade.png"/>
+    Rotating blade&lt;/typeofhazard>
+    &lt;consequence>Moving parts can crush and cut.&lt;/consequence>
+    &lt;howtoavoid>Follow lockout procedure before servicing.&lt;/howtoavoid>
+  &lt;/messagepanel>
+&lt;/hazardstatement></codeblock></example>
+  </refbody>
 </reference>
-
