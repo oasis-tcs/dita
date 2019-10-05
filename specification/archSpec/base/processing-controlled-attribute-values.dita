@@ -3,8 +3,7 @@
 <concept xml:lang="en-us" id="concept_afh_lx1_wp">
  <title>Processing controlled attribute values</title>
  <shortdesc>An enumeration of controlled values can be defined with hierarchical levels by nesting
-    subject definitions. This <ph >affects</ph> how processors perform
-    filtering and flagging.</shortdesc>
+    subject definitions. This affects how processors perform filtering and flagging.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -29,36 +28,31 @@
   </prolog>
  <conbody>
     <!--<p> Processors <term outputclass="RFC-2119" rev="terminology">SHOULD</term> be aware of hierarchies of attribute values that are defined in subject scheme maps; processors <term outputclass="RFC-2119" rev="terminology">SHOULD</term> process them differently than they might if the attribute values were not defined in a hierarchy.</p>-->
-    <p >The following algorithm applies when processors apply filtering and
-      flagging rules to attribute values that are defined as a hierarchy of controlled values and
-      bound to an enumeration:</p>
-    <ol >
-      <li>If an attribute specifies a value in the taxonomy, and a DITAVAL or other categorization
-        tool is configured with that value, the rule matches.</li>
-      <li>Otherwise, if the parent value in the taxonomy has a rule, that matches.</li>
-      <li>Otherwise, continue up the chain in the taxonomy until a matching rule is found.</li>
-    </ol>
-    <p >The following behavior is expected of processors:</p>
-    <ul>
-      <li>Processors <term outputclass="RFC-2119">SHOULD</term> be aware of the
-        hierarchies of attribute values that are defined in subject scheme maps<ph
-          > for purposes of filtering, flagging, or other metadata-based
-          categorization.</ph></li>
-      <li>Processors <term outputclass="RFC-2119">SHOULD</term> validate that the
-        values of attributes that are bound to controlled values contain only valid values from
-        those sets. (The list of controlled values <ph >is</ph> not validated
-        by basic XML parsers.) <ph >If the controlled values are part of a named key
-          scope, the scope name is ignored for the purpose of validating the controlled
-        values.</ph></li>
-      <li>Processors <term outputclass="RFC-2119">SHOULD</term> check that all
-        values listed for an attribute in a DITAVAL file are bound to the attribute by the subject
-        scheme before filtering or flagging. If a processor encounters values that are not included
-        in the subject scheme, it <term outputclass="RFC-2119">SHOULD</term> issue
-        a warning.</li>
-    </ul>
+    <p>The following behavior is expected of processors in regard to subject scheme maps:<ul>
+        <li>Processors <term outputclass="RFC-2119">SHOULD</term> be aware of the hierarchies of
+          attribute values that are defined in subject scheme maps for purposes of filtering,
+          flagging, or other metadata-based categorization.</li>
+        <li>Processors <term outputclass="RFC-2119">SHOULD</term> validate that the values of
+          attributes that are bound to controlled values contain only valid values from those sets.
+          (The list of controlled values is not validated by basic XML parsers.) If the controlled
+          values are part of a named key scope, the scope name is ignored for the purpose of
+          validating the controlled values.</li>
+        <li>Processors <term outputclass="RFC-2119">SHOULD</term> check that all values listed for
+          an attribute in a DITAVAL file are bound to the attribute by the subject scheme before
+          filtering or flagging. If a processor encounters values that are not included in the
+          subject scheme, it <term outputclass="RFC-2119">SHOULD</term> issue a warning.</li>
+      </ul></p>
+    <p>Processors <term outputclass="RFC-2119">SHOULD</term> apply the following algorithm when they
+      apply filtering and flagging rules to attribute values that are defined as a hierarchy of
+      controlled values and bound to an enumeration:<ol>
+        <li>If an attribute specifies a value in the taxonomy, and a DITAVAL or other categorization
+          tool is configured with that value, the rule matches.</li>
+        <li>Otherwise, if the parent value in the taxonomy has a rule, that matches.</li>
+        <li>Otherwise, continue up the chain in the taxonomy until a matching rule is found.</li>
+      </ol></p>
     <example id="example-hierarchy" otherprops="examples">
       <title>Example: A hierarchy of controlled values and conditional processing</title>
-      <p>The following example illustrates a set of controlled values that contains a hierarchy. </p>
+      <p>The following code sample shows a set of controlled values that contains a hierarchy. </p>
       <codeblock>&lt;subjectScheme>
   &lt;subjectdef keys="users">
     &lt;subjectdef keys="therapist">
@@ -77,12 +71,11 @@
       <p>Processors that are aware of the hierarchy that is defined in the subject scheme map will
         handle filtering and flagging in the following ways:</p>
       <ul>
-        <li >If "therapist" is excluded, both "novice-therapist" and
-          "expert-therapist" are by default excluded (unless they are explicitly set to be
-          included).</li>
+        <li>If "therapist" is excluded, both "novice-therapist" and "expert-therapist" are by
+          default excluded (unless they are explicitly set to be included).</li>
         <li>If "therapist" is flagged and "novice-therapist" is not explicitly flagged, processors
-          automatically should flag "novice-therapist" since it is a type of therapist.</li>
-      </ul>ul>
+          automatically flag "novice-therapist" since it is a type of therapist.</li>
+      </ul>
     </example>
   </conbody>
 </concept>

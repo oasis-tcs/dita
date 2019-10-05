@@ -27,13 +27,18 @@
 	</prolog> 
   <conbody> 
 	 <section id="mostly-map">
-			<p>DITA maps often encode structures that are specific to a particular medium or output,
-				for example, Web pages or a PDF document. Attributes, such as
+			<p>DITA maps often encode structures that are specific to a particular medium or output, for
+				example, Web pages or a PDF document. Attributes, such as
 					<xmlatt>deliveryTarget</xmlatt> and <xmlatt>toc</xmlatt>, are designed to help
-				processors interpret the DITA map for each kind of output. Many of these attributes
-				are not available in DITA topics; individual topics, once separated from the
-				high-level structures and dependencies associated with a particular kind of output,
-				should be entirely reusable regardless of the intended output format.</p>
+				processors interpret the DITA map for each kind of output.</p>
+			<draft-comment author="Kristen J Eberlein" time="04 July 2019" audience="spec-editors">
+				<p>The following paragraph seems off ...</p>
+			</draft-comment>
+			<!--IGNORE may-must-should word-->
+			<p>Many of the following attributes are not available in DITA topics; individual topics,
+				once separated from the high-level structures and dependencies associated with a
+				particular kind of output, should be entirely reusable regardless of the intended
+				output format.</p>
 			<dl>
 				<dlentry>
 					<dt><xmlatt>collection-type</xmlatt>
@@ -67,10 +72,9 @@
 								table cell does not (by default) link to other topics referenced in
 								the same table cell. </li>
 						</ul>
-						<p>This behavior can be modified by using the <xmlatt>linking</xmlatt>
-							attribute, which enables an author or information architect to specify
-							how a topic should participate in a relationship. The following values
-							are valid:</p>
+						<p>This behavior can be modified by using the <xmlatt>linking</xmlatt> attribute, which
+							enables an author or information architect to specify how a topic
+							participates in a relationship. The following values are valid:</p>
 						<dl>
 							<dlentry>
 								<dt>linking="none" </dt>
@@ -125,7 +129,7 @@
 				<dlentry>
 					<dt><xmlatt>search</xmlatt>
 					</dt>
-					<dd> Specifies whether the topic should be included in search indexes. </dd>
+					<dd> Specifies whether the topic is included in search indexes. </dd>
 				</dlentry>
 				<dlentry>
 					<dt><xmlatt>chunk</xmlatt>
@@ -198,9 +202,9 @@ or replace."</p></draft-comment></p></draft-comment></p>-->
 				<dlentry>
 					<dt><xmlatt>processing-role</xmlatt>
 					</dt>
-					<dd>Specifies whether the topic or map referenced should be processed normally
-						or treated as a resource that is only included in order to resolve key or
-						content references. <dl>
+					<dd>Specifies whether the topic or map referenced is processed normally or treated as a
+						resource that is only included in order to resolve key or content
+						references. <dl>
 							<dlentry>
 								<dt>processing-role="normal" </dt>
 								<dd>The topic is a readable part of the information set. It is
@@ -209,9 +213,9 @@ or replace."</p></draft-comment></p></draft-comment></p>-->
 							</dlentry>
 							<dlentry>
 								<dt>processing-role="resource-only" </dt>
-								<dd>The topic should be used only as a resource for processing. It
-									is not included in navigation or search results, nor is it
-									rendered as a topic. This is the default value for the
+								<dd>The topic is used only as a resource for processing. It is not
+									included in navigation or search results, nor is it rendered as
+									a topic. This is the default value for the
 										<xmlelement>keydef</xmlelement> element. </dd>
 							</dlentry>
 						</dl><p>If the <xmlatt>processing-role</xmlatt> attribute is not specified
@@ -220,18 +224,20 @@ or replace."</p></draft-comment></p></draft-comment></p>-->
 				</dlentry>
 				<dlentry >
 					<dt><xmlatt>cascade</xmlatt></dt>
-					<dd>Specifies whether the default rules for the cascading of metadata attributes in a DITA map
-						apply. In addition to the following specified values, processors also <term
-							outputclass="RFC-2119">MAY</term> define additional
-							values.<dl
-							conref="../../common/conref-file.dita#reuse_file/cascade-values">
+					<dd>
+						<p>Specifies whether the default rules for the cascading of metadata
+							attributes in a DITA map apply. The following values are specified:</p>
+						<dl conref="../../common/conref-file.dita#reuse_file/cascade-values">
 							<dlentry>
 								<dt/>
 								<dd/>
 							</dlentry>
-						</dl><p>For more information, see <xref
-								href="example-how-cascade-att-functions.dita" format="dita"
-						/>.</p></dd>
+						</dl>
+						<p>Processors also <term outputclass="RFC-2119">MAY</term> define additional values for the
+								<xmlatt>cascade</xmlatt> attribute.</p>
+						<p>For more information, see <xref
+								href="example-how-cascade-att-functions.dita" format="dita"/>.</p>
+					</dd>
 				</dlentry>
 				<dlentry >
 					<dt><xmlatt>keys</xmlatt></dt>
@@ -263,17 +269,13 @@ or replace."</p></draft-comment></p></draft-comment></p>-->
 				</ul></p>
 			<p>The following metadata and reuse attributes are used by both DITA maps and DITA
 				topics: <ul>
-					<li><xmlatt>product</xmlatt>, <xmlatt>platform</xmlatt>,
-							<xmlatt>audience</xmlatt>, <xmlatt>otherprops</xmlatt>,
-							<xmlatt>rev</xmlatt>, <xmlatt>status</xmlatt>,
-							<xmlatt>importance</xmlatt></li>
+					<li><xmlatt>rev</xmlatt>, <xmlatt>status</xmlatt>, <xmlatt>importance</xmlatt></li>
 					<li><xmlatt>dir</xmlatt>, <xmlatt>xml:lang</xmlatt>, <xmlatt>translate</xmlatt>
 					</li>
 					<li><xmlatt>id</xmlatt>, <xmlatt>conref</xmlatt>, <xmlatt>conrefend</xmlatt>,
 							<xmlatt>conkeyref</xmlatt>, <xmlatt>conaction</xmlatt>
 					</li>
-					<li><xmlatt>props</xmlatt> and any attribute specialized from
-							<xmlatt>props</xmlatt> (such as <xmlatt>deliveryTarget</xmlatt>)</li>
+					<li><ph conref="../../common/conref-file.dita#reuse_file/propsAndSpecializations"/></li>
 					<li><xmlatt>search</xmlatt>
 					</li>
 				</ul></p> 

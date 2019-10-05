@@ -10,8 +10,8 @@
   <prolog>
     <metadata>
       <keywords>
-        <indexterm>dvrKeyscopePrefix</indexterm>
-        <indexterm>DITAVAL reference domain<indexterm>dvrKeyscopePrefix</indexterm></indexterm>
+        <indexterm>DITAVAL reference
+            domain<indexterm><xmlelement>dvrKeyscopePrefix</xmlelement></indexterm></indexterm>
       </keywords>
     </metadata>
   </prolog>
@@ -29,9 +29,23 @@
           <xmlelement>dvrKeyscopeSuffix</xmlelement> element if one is specified, regardless of
         whether the branch as authored specifies a <xmlatt>keyscope</xmlatt> value.</p>
     </section>
-    <section id="inheritance" otherprops="inheritance">
-      <title>Inheritance</title>
-      <p>+ topic/data ditavalref-d/dvrKeyscopePrefix </p>
+    <section id="specialization-hierachy">
+      <title>Specialization hierarchy</title>
+      <p>The <xmlelement>dvrKeyscopePrefix</xmlelement> element is specialized from <xref
+          keyref="elements-data"/>. It is defined in the DITAVALref domain module.</p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref keyref="attributes-universal"
+        /> (except for <xmlatt>conkeyref</xmlatt>, which is removed for all elements in this domain)
+        and the attribute defined below.</p>
+      <dl>
+        <dlentry>
+          <dt><xmlatt>name</xmlatt></dt>
+          <dd>The name of the metadata item. For this element the default value is
+            "dvrKeyscopePrefix".</dd>
+        </dlentry>
+      </dl>
     </section>
     <example id="example" otherprops="examples">
       <title>Example</title>
@@ -49,18 +63,5 @@
 &lt;/topicref></codeblock></p>
       <p>Then the effective key scope name for the branch "branch-01" is "cond01-branch-01".</p>
     </example>
-    <section id="attributes">
-      <title>Attributes</title>
-      <p>The following attributes are available on this element: <xref
-          keyref="attributes-universal"/> (except for <xmlatt>conkeyref</xmlatt>,
-        which is removed for all elements in this domain) and the attribute defined below.</p>
-      <dl>
-        <dlentry>
-          <dt><xmlatt>name</xmlatt></dt>
-          <dd>The name of the metadata item. For this element the default value is
-            "dvrKeyscopePrefix".</dd>
-        </dlentry>
-      </dl>
-    </section>
   </refbody>
 </reference>

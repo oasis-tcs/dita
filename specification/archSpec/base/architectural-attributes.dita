@@ -6,6 +6,12 @@
                         also identify the DITA domains, structural types, and specializations that
                         are in use by the content.</shortdesc>
 <conbody>
+                <draft-comment author="Kristen J Eberlein" time="02 July 2019"
+                        audience="spec-editors">
+                        <p>The following paragraph is a candidate for a normative "SHOULD"
+                                statement.</p>
+                </draft-comment>
+                <!--IGNORE may-must-should word-->
 <p>The architectural attributes should not be marked up in the source DITA map and topics. Instead,
                                     the values of the architectural attributes are handled by the
                                     processor when the content is processed, preferably through
@@ -15,29 +21,20 @@
 <p>The architectural attributes are as follows:</p>
 <dl><dlentry>
 <dt><xmlatt>class</xmlatt></dt>
-<dd>This attribute identifies the specialization hierarchy for the element type. Every DITA element
-                                                  (except the <xmlelement>dita</xmlelement> element
-                                                  that is used as the root of a ditabase document)
-                                                  <term outputclass="RFC-2119">MUST</term>
-                                                  declare a <xmlatt>class</xmlatt> attribute.</dd>
+<dd>This attribute identifies the specialization hierarchy for the element type.</dd>
+        <!--<dd>Every DITA element (except the <xmlelement>dita</xmlelement> element that is used as the root of a ditabase document) <term outputclass="RFC-2119">MUST</term> declare a <xmlatt>class</xmlatt> attribute.</dd>-->
 </dlentry><dlentry>
 <dt><xmlatt>domains</xmlatt></dt>
                                                 <dd>This attribute identifies the domain modules
-                                                  (and optionally the structural modules) that are
-                                                  used in a map or topic. Each module also declares
-                                                  its module dependencies. The root element of every
-                                                  topic and map <term outputclass="RFC-2119" 
-                                                  >MUST</term> declare a <xmlatt>domains</xmlatt>
-                                                  attribute.</dd>
+          (and optionally the structural modules) that are used in a map or topic. Each module also
+          declares its module dependencies.</dd>
+        <!--<dd>The root element of every topic and map <term outputclass="RFC-2119">MUST</term> declare a <xmlatt>domains</xmlatt> attribute.</dd>-->
 </dlentry><dlentry>
 <dt><xmlatt>DITAArchVersion</xmlatt></dt>
 <dd>This attribute identifies the version of the DITA architecture that is used by the XML grammar.
-                                                  The root element of every topic and map <term
-                                                    outputclass="RFC-2119">MUST</term> declare a
-                                                  <xmlatt>DITAArchVersion</xmlatt> attribute. The
-                                                  attribute is declared in a DITA namespace to allow
-                                                  namespace-sensitive tools to detect DITA
-                                                  markup.</dd>
+          The attribute is declared in a DITA namespace to allow namespace-sensitive tools to detect
+          DITA markup.</dd>
+        <!--<dd>The root element of every topic and map <term outputclass="RFC-2119">MUST</term> declare a <xmlatt>DITAArchVersion</xmlatt> attribute.</dd>-->
 </dlentry></dl>
 <p>To make the document instance usable in the absence of an XML grammar, a normalization process
             can set the architectural attributes in the document instance.</p>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="examplegrouping">
+<title>Example: Using <xmlatt>chunk</xmlatt> to combine a group of topics</title>
+<shortdesc>The <xmlatt>chunk</xmlatt> attribute can be used on grouping elements to combine multiple
+source documents into one result document.</shortdesc>
+<conbody>
+<p>Assume the following map <filepath>input.ditamap</filepath>, where <xmlatt>chunk</xmlatt> is used
+on both <xmlelement>topicgroup</xmlelement> and <xmlelement>topichead</xmlelement>.</p>
+    <fig>
+      <title>Input map</title>
+      <codeblock>&lt;map>
+  &lt;title>Groups are combined&lt;/title>
+  &lt;topicgroup chunk="combine">
+    &lt;topicref href="ingroup1.dita"/>
+    &lt;topicref href="ingroup2.dita"/>
+  &lt;/topicgroup>
+  &lt;topichead chunk="combine">
+    &lt;topicmeta>
+      &lt;navtitle>Heading for a branch&lt;/navtitle>
+    &lt;/topicmeta>
+    &lt;topicref href="inhead1.dita"/>
+    &lt;topicref href="inhead2.dita"/>
+  &lt;/topichead>
+&lt;/map></codeblock>
+    </fig>
+    <p>The result of evaluating the <xmlatt>chunk</xmlatt> attribute on
+        <xmlelement>topicgroup</xmlelement> is equivalent to a single DITA document with the content
+      of both <filepath>ingroup1.dita</filepath> and <filepath>ingroup2.dita</filepath>.</p>
+    <p>The <xmlatt>chunk</xmlatt> attribute on <xmlelement>topichead</xmlelement> also results in a
+      single DITA document. In many applications, a <xmlelement>topichead</xmlelement> is equivalent
+      to a single title-only topic; in that case, the chunked result is equivalent to a root topic
+      with the title "Heading for a branch", containing as child topics the content of both
+        <filepath>inhead1.dita</filepath> and <filepath>inhead2.dita</filepath>. If
+        <xmlelement>topichead</xmlelement> is ignorable in the current processing context, the
+      chunked result would be equivalent to processing <xmlelement>topicgroup</xmlelement> (a single
+      DITA document with the content of both <filepath>inhead1.dita</filepath> and
+        <filepath>inhead2.dita</filepath>).<draft-comment author="Kristen J Eberlein"
+        time="25 May 2019" audience="spec-editors">
+        <p>This reads as-if we are making an assumption that processors MAY treat
+            <xmlelement>topichead</xmlelement>elements in implementation-specific ways … Was that
+          the authoring intent?</p>
+      </draft-comment></p>
+<fig>
+      <title>Equivalent source content</title>
+      <codeblock>&lt;map>
+  &lt;title>Groups are combined&lt;/title>
+  &lt;topicref href="chunkgroup-1.dita"/>
+  &lt;topicref href="chunkgroup-2.dita"/>
+&lt;/map>
+
+chunkgroup-1.dita
+&lt;dita>
+  &lt;!-- content of ingroup1.dita -->
+  &lt;!-- content of ingroup2.dita -->
+&lt;/dita>
+
+chunkgroup-2.dita
+&lt;dita>
+  &lt;topic id="head">
+    &lt;title>Heading for a branch&lt;/title>
+    &lt;!-- content of inhead1.dita -->
+    &lt;!-- content of inhead2.dita -->
+  &lt;/topic>
+&lt;/dita>
+</codeblock>
+    </fig>
+</conbody>
+</concept>

@@ -1,45 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="topicgroup" xml:lang="en-us">
 <title><xmlelement>topicgroup</xmlelement></title>
-<shortdesc>The <xmlelement>topicgroup</xmlelement> element groups <xmlelement>topicref</xmlelement>
-    elements for common treatment without affecting the structural hierarchy of the map, as opposed
-    to nesting <xmlelement>topicref</xmlelement> elements, which does imply a structural
-    hierarchy.</shortdesc>
+<shortdesc>A topic group is a set of topic references that share common attributes and linking
+    relationships.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
-        <indexterm>elements<indexterm>mapgroup<indexterm><xmlelement>topicgroup</xmlelement></indexterm></indexterm></indexterm>
+        <indexterm>mapgroup
+          domain<indexterm><xmlelement>topicgroup</xmlelement></indexterm></indexterm>
         <indexterm>grouping
           elements<indexterm><xmlelement>topicgroup</xmlelement></indexterm></indexterm>
         <indexterm>messages issued by processors<indexterm><xmlelement>navtitle</xmlelement> within
               <xmlelement>topicgroup</xmlelement></indexterm></indexterm>
-        <indexterm>processing expectations<indexterm><xmlelement>navtitle</xmlelement> within
+        <indexterm>rendering expectations<indexterm><xmlelement>navtitle</xmlelement> within
               <xmlelement>topicgroup</xmlelement></indexterm></indexterm>
         <indexterm>topics<indexterm>groups</indexterm></indexterm>
       </keywords>
     </metadata>
   </prolog>
 <refbody>
-    <section id="usage-information"><title>Usage information</title>The
-        <xmlelement>topicgroup</xmlelement> element can provide linking relationships and shared,
-      inherited attributes to the set of elements that it contains without affecting the resulting
-      table of contents or navigation.</section>
-    <section id="processing-expectations">
-      <title>Processing expectations</title>
-      <p>You can specify a <xmlelement>navtitle</xmlelement> element within the
-          <xmlelement>topicmeta</xmlelement> element inside of a
-        <xmlelement>topicgroup</xmlelement>. The <xmlelement>topicgroup</xmlelement> element is
-        meant as a non-titled grouping element, so adding a <xmlelement>navtitle</xmlelement>
-        element to the <xmlelement>topicgroup</xmlelement> element has no defined purpose, and
-        processors <term outputclass="RFC-2119">MUST</term> ignore the title. Processors <term
-          outputclass="RFC-2119">MAY</term> issue a message when ignoring the title.</p>
+    <section id="usage-information" rev="tc-review">
+      <title>Usage information</title>
+      <p>A <xmlelement>navtitle</xmlelement> element within the <xmlelement>topicmeta</xmlelement>
+        element inside of a <xmlelement>topicgroup</xmlelement> does not affect the structural
+        hierarchy of the map, although it might be used to hold descriptive information about the
+        grouped <xmlelement>topicref</xmlelement> elements.</p>
+    </section>
+    <section id="rendering-expectations" rev="tc-review">
+      <title>Rendering expectations</title>
+      <p>When a map that contains a <xmlelement>topicgroup</xmlelement> element with a navigation
+        title is used to generate publication output, processors <term outputclass="RFC-2119"
+          >MUST</term> ignore the title and <term outputclass="RFC-2119">MAY</term> issue an error
+        message.</p>
     </section>
     <section id="specialization-hierarchy">
       <title>Specialization hierarchy</title>
-      <p>+ map/topicref mapgroup-d/topicgroup</p>
+      <p>The <xmlelement>topicgroup</xmlelement> element is specialized from
+          <xmlelement>topicref</xmlelement>. It is defined in the map-group domain.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -49,14 +47,12 @@
       <p>The <xmlatt>scope</xmlatt>, <xmlatt>format</xmlatt>, and <xmlatt>type</xmlatt> attributes
         from <xref keyref="attributes-linkRelationship"/> are also available.</p>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><p>Each <xmlelement>topicref</xmlelement> element in the following example inherits the
-          <xmlatt>audience</xmlatt> and <xmlatt>linking</xmlatt> attributes. In this way the common
-        attributes are set for the entire group of <xmlelement>topicref</xmlelement> elements
-        without affecting the navigation hierarchy.</p><codeblock
-xml:space="preserve">&lt;topicgroup audience="novice" linking="none"&gt;
-  &lt;topicref href="this.dita"/&gt;
-  &lt;topicref href="that.dita"/&gt;
-  &lt;topicref href="theother.dita"/&gt;
+<example id="example" otherprops="examples"><title>Example</title><p>In the following code sample, the <xmlelement>topicgroup</xmlelement> element specifies common
+        attributes (<xmlatt>audience</xmlatt> and <xmlatt>linking</xmlatt>) that are inherited by
+        the topic references. The navigation hierachy is not affected.</p><codeblock>&lt;topicgroup audience="novice" linking="none"&gt;
+  &lt;topicref href="getting-started.dita"/&gt;
+  &lt;topicref href="basic-concepts.dita"/&gt;
+  &lt;topicref href="cheat-sheet-reference.dita"/&gt;
 &lt;/topicgroup&gt;</codeblock></example>
 </refbody>
 </reference>

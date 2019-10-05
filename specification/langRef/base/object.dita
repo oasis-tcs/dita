@@ -20,6 +20,13 @@
                 images, applets, plug-ins, ActiveX controls, video clips, and other multimedia
                 objects in a topic.</p>
         </section>
+        <section id="rendering-expectations">
+            <title>Rendering expectations</title>
+            <p conkeyref="rendering/image-video"/>
+            <p>When an object cannot be rendered in a meaningful way, processors <term
+                    outputclass="RFC-2119">SHOULD</term> present the contents of the
+                    <xmlelement>fallback</xmlelement> element, if it is present.</p>
+        </section>
         <section id="attributes">
             <title>Attributes</title>
             <p>The following attributes are available on this element: <xref
@@ -92,15 +99,13 @@
                         <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
                 </dlentry>
                 <dlentry>
+                    <!-- KJE: Modified to be parallel to the desciption of  @datakeyref in the audio and video topics-->
                     <dt><xmlatt>datakeyref</xmlatt></dt>
-                    <dd>Key reference to the location of an object's data, as for
-                            <xmlatt>data</xmlatt>. When specified and the key is resolvable, the
-                        key-provided URI is used. A key that has no associated resource, only link
-                        text, is considered to be unresolved for the purpose of the
-                            <xmlatt>datakeyref</xmlatt> attribute. If <xmlatt>data</xmlatt> is
-                        specified, it is used as a fallback when the key cannot be resolved to a
-                        resource.
-                        <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
+                    <dd>Provides a key reference to the object. When specified and the key is
+                        resolvable, the key-provided URI is used. A key that has no associated
+                        resource, only link text, is considered to be unresolved. If
+                            <xmlatt>data</xmlatt> is specified, it is used as a fallback when the
+                        key cannot be resolved to a resource.</dd>
                 </dlentry>
                 <dlentry>
                     <dt><xmlatt>declare</xmlatt></dt>
@@ -127,25 +132,13 @@
                     <dd>Contains a message to be displayed while an object is loading.
                         <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
                 </dlentry>
-                <dlentry>
-                    <dt><xmlatt>height</xmlatt></dt>
-                    <dd>Indicates the vertical dimension for the resulting object display. If
-                        necessary, the object is scaled to the specified size. <ph
-                            conref="../../common/conref-attribute.dita#conref-attribute/height-width-units"
-                        /> If a height value is specified and no width value is specified, the width
-                        will be scaled by the same factor as the height. <ph
-                            conref="../../common/conref-attribute.dita#conref-attribute/height-width-warning"/>
-                        <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-NMTOKEN"/>--></dd>
+                <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-height">
+                    <dt/>
+                    <dd/>
                 </dlentry>
-                <dlentry>
-                    <dt><xmlatt>width</xmlatt></dt>
-                    <dd>Indicates the horizontal dimension for the resulting object display. If
-                        necessary, the object is scaled to the specified size. <ph
-                            conref="../../common/conref-attribute.dita#conref-attribute/height-width-units"
-                        /> If a width value is specified and no height value is specified, the
-                        height will be scaled by the same factor as the width. <ph
-                            conref="../../common/conref-attribute.dita#conref-attribute/height-width-warning"/>
-                        <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-NMTOKEN"/>--></dd>
+                <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-width">
+                    <dt/>
+                    <dd/>
                 </dlentry>
                 <dlentry>
                     <dt><xmlatt>usemap</xmlatt></dt>
@@ -183,6 +176,7 @@ flash/swflash.cab#version=6,0,0,0"
  width="370"
  id="cutkey370"&gt;
  &lt;desc&gt;A description of the task&lt;/desc&gt;
+ <ph rev="2.0">&lt;fallback>Media not available.&lt;/fallback></ph>
  &lt;param name="movie" value="cutkey370.swf"/&gt;
  &lt;param name="quality" value="high"/&gt;
  &lt;param name="bgcolor" value="#FFFFFF"/&gt;
@@ -197,6 +191,7 @@ flash/swflash.cab#version=6,0,0,0"
  width="500"
  id="eim"&gt;
  &lt;desc&gt;Some great, glorious info&lt;/desc&gt;
+ <ph rev="2.0">&lt;fallback>&lt;image href="media-not-available.png"/>&lt;/fallback></ph>
  &lt;param name="movie" value="eim.swf"/&gt;
  &lt;param name="quality" value="high"/&gt;
  &lt;param name="bgcolor" value="#FFFFFF"/&gt;
@@ -210,6 +205,7 @@ flash/swflash.cab#version=6,0,0,0"
   id="E5123_026.mp4"
   width="300"
   height="300">
+  &lt;fallback>Media not available.&lt;/fallback>
   &lt;param name="poster"
      <b>keyref="E5123_026_poster"</b>
   />
@@ -242,6 +238,7 @@ flash/swflash.cab#version=6,0,0,0"
  width="370"
  id="cutkey370">
  &lt;desc>A description of the task&lt;/desc>
+ <ph rev="2.0">&lt;fallback>Media not available.&lt;/fallback></ph>
  &lt;param name="movie" <b>keyref="cutkey370"</b>/>
  &lt;param name="quality" value="high"/>
  &lt;param name="bgcolor" value="#FFFFFF"/>

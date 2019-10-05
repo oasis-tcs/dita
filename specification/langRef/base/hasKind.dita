@@ -1,31 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="hasKind" xml:lang="en-us">
 <title><xmlelement>hasKind</xmlelement></title>
 <shortdesc>The <xmlelement>hasKind</xmlelement> element specifies that the contained hierarchy
-    expresses KIND-OF relationships between subjects.</shortdesc>
+    expresses KIND-OF relationships between subjects. In a KIND-OF hierarchy, the child subject is a
+    particular variety of the parent subject. A KIND-OF hierarchy is sometimes known as an IS-A,
+    generic, or subsumption hierarchy.</shortdesc>
 <prolog><metadata>
-<keywords><indexterm><xmlelement>hasKind</xmlelement></indexterm>
+<keywords>
         <indexterm>subjectScheme<indexterm>elements<indexterm><xmlelement>hasKind</xmlelement></indexterm></indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
-<section id="section-1">In a KIND-OF hierarchy, the child subject is a particular
-variety of the parent subject. A KIND-OF hierarchy is sometimes known
-as an IS-A, generic, or subsumption hierarchy. </section>
-<section id="inheritance" otherprops="inheritance">
+    <section id="specialization-hierachy">
       <title>Specialization hierarchy</title>
-      <p>This element is specialized from <xref keyref="topicref"/> in the map module.</p>
-      <!--<p>- map/topicref subjectScheme/hasKind </p>--></section>
+      <p>The <xmlelement>hasKind</xmlelement> element is specialized from
+          <xmlelement>topicref</xmlelement>. It is defined in the subject scheme module.</p>
+    </section>
     <section id="attributes">
       <title>Attributes</title>
       <sectiondiv conref="../../common/conref-attribute.dita#conref-attribute/scheme-HAS-elements"/>
     </section>
 <example id="example"  otherprops="examples">
       <title>Example</title>
-      <p>This example specifies that cities, towns, and villages are each a kind of settlement.
-        Additionally, big-city, medium-city, and small-city are each a kind of city.</p>
+      <p>The following code sample specifies that cities, towns, and villages are each a kind of
+        settlement. Additionally, big-city, medium-city, and small-city are each a kind of city.</p>
       <codeblock>&lt;subjectScheme>
   &lt;hasKind>
     &lt;subjectdef keys="settlement">
@@ -35,7 +33,7 @@ as an IS-A, generic, or subsumption hierarchy. </section>
         &lt;subjectdef keys="small-city"/>
       &lt;/subjectdef>
       &lt;subjectdef keys="town"/>
-      &lt;subjectdef keys="village" navtitle="Village"/>
+      &lt;subjectdef keys="village"/>
     &lt;/subjectdef>
   &lt;/hasKind>
 &lt;/subjectScheme></codeblock>

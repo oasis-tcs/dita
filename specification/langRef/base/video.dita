@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="video">
+  <title><xmlelement>video</xmlelement></title>
+  <shortdesc conkeyref="reuse-video/shortdesc"/>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>multimedia
+          domain<indexterm><xmlelement>video</xmlelement></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody>
+    <section conkeyref="reuse-video/usage-information"><title/><p/></section>
+    <section conkeyref="reuse-video/rendering-expectations"><title/><p/></section>
+    <section id="specialization-hierarchy">
+      <title>Specialization hierarchy</title>
+      <p>The <xmlelement>video</xmlelement> element is specialized from
+          <xmlelement>object</xmlelement>. It is defined in the multimedia-domain module.</p>
+    </section>
+    <section conkeyref="reuse-video/attributes"/>
+    <example otherprops="examples">
+<title>Examples</title>
+<fig id="fig_amp_v4z_4hb"><title>A <xmlelement>video</xmlelement> element that uses direct addressing</title><p>In the following code sample, a video resource is referenced using direct addressing. The
+            <xmlatt>type</xmlatt> attribute specifies the MIME type of the video. </p><codeblock>&lt;video data="video.mp4" type="video/mp4"/></codeblock></fig>
+      <fig>
+        <title>A <xmlelement>video</xmlelement> element that uses indirect addressing</title>
+        <p>In the following code sample, the video resource is addressed using a key reference:</p>
+        <codeblock>&lt;video datakeyref="video"/></codeblock>
+        <p>Both the URI and the MIME type are specified on the key definition:</p>
+        <codeblock>&lt;keydef keys="video" href="video.mp4" type="video/mp4"/></codeblock>
+      </fig>
+<fig id="fig_ql2_cpz_4hb"><title>A <xmlelement>video</xmlelement> element with multiple formats</title><p>In the following
+code sample, <xmlelement>media-source</xmlelement> elements are used to specify the different video
+formats that are
+available.</p><codeblock>&lt;video>
+  &lt;media-source value="video.mp4" type="video/mp4"/>
+  &lt;media-source value="video.ogg" type="video/ogg"/>
+  &lt;media-source value="video.webm" type="video/webm"/>
+&lt;/video></codeblock></fig>
+<fig id="fig_wsb_jpz_4hb"><title>Example of a <xmlelement>video</xmlelement> element with multiple formats and multilingual
+          subtitles</title><p>The following code sample defines multiple presentational details for a video that is available
+          in multiple formats. The video is referenced using key reference and a fallback image is
+          provided for use when the video cannot be displayed.</p><codeblock>&lt;video width="400px" height="300px">
+  &lt;desc>A video illustrating this procedure.&lt;/desc>
+  &lt;fallback>
+    &lt;image href="video-not-available.png">
+      &lt;alt>This video cannot be displayed.&lt;/alt>
+    &lt;/image>
+  &lt;/fallback>
+  
+  &lt;!-- Reference the poster using a key -->
+  &lt;video-poster keyref="demo1-video-poster"/>
+
+  &lt;!--
+    When the following elements are used, they have a default value of "true";
+    setting value="true" and not specifying @value has the same effect.
+    To turn any of these settings off, specify value="false".
+  -->
+  &lt;media-controls value="true"/>
+  &lt;media-autoplay/>
+  &lt;media-loop value="false"/>
+  &lt;media-muted value="false"/>
+
+  &lt;!-- Multiple formats, referenced via key. The key definition 
+       specifies both the URI and the MIME type -->
+  &lt;media-source keyref="demo1-video-mp4"/>
+  &lt;media-source keyref="demo1-video-ogg"/>
+  &lt;media-source keyref="demo1-video-webm"/>
+
+  &lt;!-- Subtitle tracks in English, French and German.
+       Each key definition provides a URI and sets type="subtitles". -->
+  &lt;media-track xml:lang="en" keyref="demo1-video-subtitles-en"/>
+  &lt;media-track xml:lang="fr" keyref="demo1-video-subtitles-fr"/>
+  &lt;media-track xml:lang="de" keyref="demo1-video-subtitles-de"/>
+&lt;/video></codeblock></fig>
+    </example>
+  </refbody>
+</reference>

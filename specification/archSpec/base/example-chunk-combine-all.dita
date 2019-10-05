@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="chunkcombineexample">
+<title>Example: Using <xmlatt>chunk</xmlatt> to combine all documents into one</title>
+<shortdesc>Where a publishing system typically would render each topic document as an independent
+    result document, the <xmlatt>chunk</xmlatt> attribute can be used to render all content as a
+    single document.</shortdesc>
+<conbody>
+<p>Consider the following source documents, with root map <filepath>input.ditamap</filepath>:</p>
+<fig>
+      <title>Input map without chunking</title>
+      <codeblock>input.ditamap:
+&lt;map>
+  &lt;title>Lesson plan&lt;/title>
+  &lt;topicref href="background.dita">
+    &lt;!-- more background topics -->
+  &lt;/topicref>
+  &lt;topicref href="goals.dita">
+    &lt;!-- more goal topics -->
+  &lt;/topicref>
+  &lt;!-- more topics -->
+&lt;/map>
+
+background.dita:
+&lt;topic id="background">
+  &lt;title>Prerequisite concepts&lt;/title>
+  &lt;shortdesc>This information is necessary before starting&lt;/shortdesc>
+  &lt;body>&lt;!-- ...background content... -->&lt;/body>
+&lt;/topic>
+
+goals.dita:
+&lt;topic id="goals">
+  &lt;title>Lesson gals&lt;/title>
+  &lt;shortdesc>After you complete the lesson, ...&lt;/shortdesc>
+  &lt;body>&lt;!-- ...goal content... -->&lt;/body>
+&lt;/topic></codeblock>
+    </fig>
+<p>For many systems or output formats, each document in the map is rendered as an independent
+      document. For example, rendering this map as HTML5 might result in
+        <filepath>background.html</filepath> and <filepath>goals.html</filepath> (along with other
+      HTML5 files). In such cases, if output requirements demand only a single result document,
+      adding <codeph>chunk="combine"</codeph> to the root map element instructs a processor to
+      render one document that combines all topics.</p>
+<fig>
+      <title>Root map with chunking specified</title>
+      <codeblock>input.ditamap:
+&lt;map <b>chunk="combine"</b>>
+  &lt;title>Lesson plan&lt;/title>
+  &lt;topicref href="background.dita">
+    &lt;!-- more background topics -->
+  &lt;/topicref>
+  &lt;topicref href="goals.dita">
+    &lt;!-- more goal topics -->
+  &lt;/topicref>
+  &lt;!-- more topics -->
+&lt;/map></codeblock>
+    </fig>
+<p>The result of evaluating this <xmlatt>chunk</xmlatt> attribute is equivalent to the following map
+      and topic document; content from all topics within the map is combined into a single result,
+      with a topic order and topic nesting structure that match the original map hierarchy.</p>
+<fig id="fig_fkg_dhd_1gb">
+<title>Equivalent source content</title>
+<codeblock>input.ditamap:
+&lt;map>
+  &lt;title>Lesson plan&lt;/title>
+  &lt;topicref href="input.dita"/>
+&lt;/map>
+
+input.dita:
+&lt;dita>
+  <b>&lt;!-- original content of background.dita --></b>
+  &lt;topic id="background">
+    &lt;title>Prerequisite concepts&lt;/title>
+    &lt;shortdesc>This information is necessary before starting&lt;/shortdesc>
+    &lt;body>&lt;!-- ...background content... -->&lt;/body>
+    &lt;!-- more background topics -->
+  &lt;/topic>
+  <b>&lt;!-- original content of goals.dita --></b>
+  &lt;topic id="goals">
+    &lt;title>Lesson gals&lt;/title>
+    &lt;shortdesc>After you complete the lesson, ...&lt;/shortdesc>
+    &lt;body>&lt;!-- ...goal content... -->&lt;/body>
+    &lt;!-- more goal topics -->
+  &lt;/topic>
+  &lt;!-- more topics -->
+&lt;/dita></codeblock>
+</fig>
+</conbody>
+</concept>

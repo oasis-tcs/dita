@@ -1,53 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="desc" xml:lang="en-us">
 <title><xmlelement>desc</xmlelement></title>
-<shortdesc>A description is a statement that describes or contains additional information about an
-    object. It can be applied to a table, figure, cross reference, link, and multimedia
-    object.</shortdesc>
+  <shortdesc conkeyref="reuse-desc/shortdesc"/>
 <prolog><metadata>
 <keywords>
-        <indexterm>description</indexterm>
+        <indexterm>descriptions</indexterm>
         <indexterm>elements<indexterm>body<indexterm><xmlelement>desc</xmlelement></indexterm></indexterm></indexterm>
         <indexterm>normative
           statements<indexterm><xmlelement>desc</xmlelement></indexterm></indexterm>
 </keywords>
 </metadata></prolog>
 <refbody>
-    <section id="usage-information">
-      <title>Usage information</title>
-      <p>The following list outlines some usages of the <xmlelement>desc</xmlelement> element:</p>
-      <dl>
-        <dlentry>
-          <dt><xmlelement>table</xmlelement> and <xmlelement>fig</xmlelement></dt>
-          <dd>Provides more information than can be contained in the title.</dd>
-        </dlentry>
-        <dlentry>
-          <dt><xmlelement>xref</xmlelement> and <xmlelement>link</xmlelement></dt>
-          <dd>
-            <p>Provides a description of the target.</p>
-            <p>Processors <term outputclass="RFC-2119">MAY</term> choose to display the content of a
-                <xmlelement>desc</xmlelement> as hover help for a link.</p>
-          </dd>
-        </dlentry>
-        <dlentry>
-          <dt><xmlelement>object</xmlelement></dt>
-          <dd>Provides alternate content to use when the context does not permit displaying the
-            object.</dd>
-        </dlentry>
-      </dl>
-    </section>
-    <section id="attributes">
-      <title>Attributes</title>
-    <p conref="../../common/conref-attribute.dita#conref-attribute/only-universal"/>
-    </section>
-<example id="example" otherprops="examples">       <title>Example</title>       <codeblock>&lt;fig&gt;&lt;title&gt;The Handshake&lt;/title&gt;
-<b>&lt;desc&gt;</b>This image shows two hands clasped in a formal, 
-business-like handshake.<b>&lt;/desc&gt;</b>
-&lt;image href="handshake.jpg"&gt;
- &lt;alt&gt;The handshake&lt;/alt&gt;
+    <section conkeyref="reuse-desc/usage-information"><title/><p/></section>
+    <section conkeyref="reuse-desc/rendering-expectations"><title/><p/></section>
+    <section conkeyref="reuse-desc/attributes"/>
+<example id="example" otherprops="examples">
+      <title>Examples</title>
+      <fig>
+        <title>Description of a figure</title>
+        <p>In the following code sample, the <xmlelement>figure</xmlelement> element contains a
+          reference to an image of a famous painting by Leonardo Da Vinci. The title
+            <xmlelement>element</xmlelement> provides the name of the painting, while the
+            <xmlelement>desc</xmlelement> element contains information about when the portrait is
+          thought to have been painted.</p>
+        <codeblock>&lt;fig>
+&lt;title&gt;Mona Lisa&lt;/title&gt;
+<b>&lt;desc&gt;</b>Circa 1503–06, perhaps continuing until 1517<b>&lt;/desc&gt;</b>
+&lt;image href="mona-lisa.jpg"&gt;
+ &lt;alt&gt;Photograph of Mona Lisa painting&lt;/alt&gt;
 &lt;/image&gt;
-&lt;/fig&gt;</codeblock>     </example>
+&lt;/fig&gt;</codeblock>
+      </fig>
+      <fig>
+        <title>Description of a cross reference</title>
+        <p>In the following code sample, the <xmlelement>link</xmlelement> element contains a
+            <xmlelement>desc</xmlelement> element. Some processors might render the content of the
+            <xmlelement>desc</xmlelement> element as hover help. </p>
+        <codeblock>&lt;link keyref="dita-13-02">
+  &lt;linktext>DITA 1.3 Errata 02&lt;/linktext>
+  <b>&lt;desc></b>Final errata version of DITA 1.3, published 19 June 2018<b>&lt;/desc></b>
+&lt;/link></codeblock>
+      </fig>
+    </example>
 </refbody>
 </reference>

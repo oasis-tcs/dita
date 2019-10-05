@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="data" xml:lang="en-us">
+<title><xmlelement>data</xmlelement></title>
+  <shortdesc id="shortdesc">Data is a generic component that represents metadata within a topic or
+    map. Complex metadata is represented by nested data structures.</shortdesc>
+<refbody>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <div platform="dita">
+        <p>The primary purpose of the <xmlelement>data</xmlelement> element is as a specialization
+          base. Because it can nest, it can be used to create complex metadata structures. Since it
+          is available in both block and inline contexts, the <xmlelement>data</xmlelement> element
+          can specify properties for most element types.</p>
+        <p>A metadata property specified using a <xmlelement>data</xmlelement> element usually
+          applies to the structure that contains the <xmlelement>data</xmlelement> element. </p>
+        <p>When located in <xmlelement>prolog</xmlelement> and <xmlelement>metadata</xmlelement>
+          elements, the property applies to the topic as a whole. When located in the
+            <xmlelement>topicmeta</xmlelement> element, the property applies to the referenced
+          topic. The <xmlelement>data-about</xmlelement> element can be used to identify the subject
+          of the property with an explicit reference.</p>
+        <note type="caution">By default, processors do not render the content of the
+            <xmlelement>data</xmlelement> element. Use the <xmlelement>data</xmlelement> element
+          only for properties; do not use it to embed text as part of the content flow. </note>
+      </div>
+      <div platform="lwdita">
+        <p>A metadata property specified using a <xmlelement>data</xmlelement>component usually
+          applies to the structure that contains the <xmlelement>data</xmlelement> component. </p>
+        <note type="caution">By default, processors do not render the content of the
+            <xmlelement>data</xmlelement> component. Use the <xmlelement>data</xmlelement> component
+          only for properties; do not use it to embed text as part of the content flow. </note>
+      </div>
+    </section>
+    <section id="rendering-expectations">
+      <title>Rendering expectations</title>
+      <div platform="dita">
+        <p>By default, processors <term outputclass="RFC-2119">SHOULD</term> treat a
+            <xmlelement>data</xmlelement> element as unknown metadata; the contents of the
+            <xmlelement>data</xmlelement> element <term outputclass="RFC-2119">SHOULD NOT</term> be
+          rendered.</p>
+        <p>Processors that recognize a particular <xmlelement>data</xmlelement> element <term
+            outputclass="RFC-2119">MAY</term> make use of it to trigger specialized rendering.</p>
+      </div>
+      <div platform="lwdita">
+        <p>By default, processors <term outputclass="RFC-2119">SHOULD</term> treat a data component
+          as unknown metadata; the contents of the data component <term outputclass="RFC-2119"
+            >SHOULD NOT</term> be rendered.</p>
+        <p>Processors that recognize a particular data component <term outputclass="RFC-2119"
+            >MAY</term> make use of it to trigger specialized rendering.</p>
+      </div>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p platform="dita">The following attributes are available on this element: <xref
+          keyref="attributes-dataElement"/>, <xref keyref="attributes-linkRelationship"/>, <xref
+          keyref="attributes-universal"/>, and <xref keyref="attributes-keyref"
+            ><xmlatt>keyref</xmlatt></xref>.</p>
+      <p platform="lwdita">The following attributes are available on this element: <xref
+          keyref="attributes-dataElement"/>, <xref keyref="attributes-linkRelationship"/>, <xref
+          keyref="attributes-localization"/>, <xref keyref="attributes-universal/class"
+            ><xmlatt>class</xmlatt></xref>, <xref keyref="attributes-keyref"
+          ><xmlatt>keyref</xmlatt></xref>, and <xref keyref="attributes-universal/outputclass"
+            ><xmlatt>outputclass</xmlatt></xref>.</p>
+    </section>
+  </refbody>
+</reference>
+

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="location-of-indexterm-elements">
+    <title>Location of <xmlelement>indexterm</xmlelement> elements</title>
+    <shortdesc><xmlelement>indexterm</xmlelement> elements can occur in topic prologs, <ph
+            rev="review-1">anywhere else in DITA topics</ph>, and in DITA maps.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>indexes<indexterm>location of index elements</indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <!--<draft-comment author="Kristen J Eberlein" time="09 August 2019"><p>Comment by Eliot Kimber:</p><p>Doesn't cover the case of index entries in map metadata where the index terms are not bound to any resource, i.e.: </p><codeblock>&lt;map> 
+  &lt;title>Reuse With Relationship Tables&lt;/title> 
+  &lt;topicmeta> 
+    &lt;keywords> 
+      &lt;indexterm>a term&lt;/indexterm>
+    &lt;/keywords> 
+  &lt;/topicmeta> 
+... 
+&lt;/map></codeblock></draft-comment>-->
+        <p>The location of an <xmlelement>indexterm</xmlelement> element determines where the
+                <xmlelement>indexterm</xmlelement> element points to, and where an
+                <xmlelement>indexterm</xmlelement> element points to determines the locators that
+            are rendered in a generated index.</p>
+        <dl>
+            <dlentry>
+                <dt>Topic prologs</dt>
+                <dd>An <xmlelement>indexterm</xmlelement> element that is located in a topic prolog
+                    is a point reference to the title of the topic. <ph rev="review-1">If an
+                            <xmlelement>indexterm</xmlelement> element has an <xmlatt>end</xmlatt>
+                        attribute, it is a point reference to the end of the topic.</ph></dd>
+            </dlentry>
+            <dlentry rev="review-1">
+                <dt>Anywhere else in a DITA topic</dt>
+                <dd>An <xmlelement>indexterm</xmlelement> element that is located in a topic (and
+                    not the topic prolog) is a point reference to the location where the
+                        <xmlelement>indexterm</xmlelement> element occurs.</dd>
+            </dlentry>
+            <dlentry>
+                <dt>DITA maps</dt>
+                <dd>An <xmlelement>indexterm</xmlelement> element that is contained by a
+                        <xmlelement>topicref</xmlelement> element is a point reference to the title
+                    of the topic. <ph rev="review-1">If an <xmlelement>indexterm</xmlelement>
+                        element has an <xmlatt>end</xmlatt> attribute, it is a point reference to
+                        the end of the topic. If the topic reference is not bound to a resource, the
+                            <xmlelement>indexterm</xmlelement> element has no stated
+                    purpose.</ph></dd>
+            </dlentry>
+        </dl>
+    </conbody>
+</concept>

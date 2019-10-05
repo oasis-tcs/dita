@@ -2,11 +2,33 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept xml:lang="en-us" id="indexes">
  <title>Indexes</title>
- <shortdesc>An index can be generated from index entries that occur in topic bodies, topic prologs,
-  or DITA maps. </shortdesc>
+ <shortdesc>Processors can generate an index from the content of indexing elements.</shortdesc>
  <conbody>
-  <p>The specialized indexing domain also provides elements to enable additional indexing function,
-   such as "See" and "See also". </p>
-  <p>For more information, see <xref href="../../langRef/containers/indexing-d.dita"/>.</p>
+  <draft-comment author="Kristen J Eberlein" time="09 August 2019">
+   <p>Comment by Eliot Kimber:</p>
+   <p>I think we need a general discussion of index processing and rendering that covers:</p>
+   <ul>
+    <li>Generation of page numbers or other locators (addresses "typical" question)</li>
+    <li>General rules or expectations for merging entries to produce the "effective index
+     markup"</li>
+    <li>General guidance for reporting conditions such as see-also references to non-existent
+     entries and missing @end for @start specified in maps.</li>
+   </ul>
+   <p>The current writeup reflects a lot of unstated assumptions about how index processing does or
+    should work, obviously reflecting how IBM's tools worked (and work today). These assumptions
+    need to be surfaced.</p>
+  </draft-comment>
+  <draft-comment author="Kristen J Eberlein" time="12 August 2019">
+   <p>We need to clearly state our assumptions, but I think we need to be careful about specifying
+    expected processing too precisely:</p>
+   <ul>
+    <li>We have no idea what output format people are transforming their DITA to; we cannot assume
+     that it is print-based. And we have no idea what sort of output formats might emerge after DITA
+     2.0 is released!</li>
+    <li>Not all DITA processors support indexing.</li>
+   </ul>
+   <p>It would be good to be upfront about the fact that many details about index generation will be
+    implementation specific.</p>
+  </draft-comment>
  </conbody>
 </concept>

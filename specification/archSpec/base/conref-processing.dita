@@ -18,30 +18,28 @@
   </metadata>
  </prolog>
  <conbody>
-  <p><ph >Except where allowed by weak constraints,</ph> a conref processor
-    <term outputclass="RFC-2119">MUST NOT</term> permit resolution of a reuse
-   relationship that could be rendered invalid under the rules of either the reused or reusing
-   content.</p>
-  <!--<draft-comment author="Kristen Eberlein" time="19 January 2015"><p>We need to ensure that the above statement, modified as a result of the targeted review, fits with new content (still being added, as a result of the targeted review of the constraints material) about weak and strong constraints.</p><p>Also, Michael Priestley should review the statement; we (spec editors) know that he cares passionately about this area :)</p></draft-comment>-->
-  <note>The DITA <xmlatt>conref</xmlatt> attribute <ph >is</ph> a transclusion
-   mechanism similar to XInclude and to HyTime value references. DITA differs from these mechanisms,
-   however, in that conref validity does not apply simply to the current content at the time of
-   replacement, but to the possible content given the restrictions of both the referencing document
-   type and the referenced document type.</note>
+  <note>The DITA <xmlatt>conref</xmlatt> attribute is a transclusion mechanism similar to XInclude
+   and to HyTime value references. DITA differs from these mechanisms, however, in that conref
+   validity does not apply simply to the current content at the time of replacement, but to the
+   possible content given the restrictions of both the referencing document type and the referenced
+   document type.</note>
   <p>When pulling content with the conref mechanism, if the referenced element is the same type as
-   the referencing element, and the <ph >set</ph> of domains declared on the
-    <xmlatt>domains</xmlatt> attribute in the referenced topic or map instance is the same as or a
-   subset of the domains declared in the referencing document, the element set allowed in the
-   referenced element is guaranteed to be the same as, or a subset of, the element set allowed in
-   the referencing element.</p>
+   the referencing element, and the set of domains declared on the <xmlatt>domains</xmlatt>
+   attribute in the referenced topic or map instance is the same as or a subset of the domains
+   declared in the referencing document, the element set allowed in the referenced element is
+   guaranteed to be the same as, or a subset of, the element set allowed in the referencing
+   element.</p>
   <p>When pushing content with the conref mechanism, the domain checking algorithm is reversed. In
    this case, if the set of domains declared on the <xmlatt>domains</xmlatt> attribute in the
    referencing topic or map instance is the same as or a subset of the domains declared in the
    referenced document, the element set allowed in the pushed content is guaranteed to be the same
    as, or a subset of, the element set allowed in the new location.</p>
-  <p >In both cases, processors resolving conrefs <term outputclass="RFC-2119"
-    >SHOULD</term> tolerate specializations of valid elements and generalize
-   elements in the pushed or pulled content fragment as needed for the resolving context.</p>
-  <!--<p>All replacement of content based on <xmlatt>conref</xmlatt> occurs after parsing of the document but prior to any styling or other transformational or presentational operations on the full topic.</p>-->
+  <p>When both pulling or pushing content with the conref mechanism, processors resolving conrefs
+    <term outputclass="RFC-2119">SHOULD</term> tolerate specializations of valid elements and
+   generalize elements in the pushed or pulled content fragment as needed for the resolving
+   context.</p>
+  <p>Except where allowed by weak constraints, a conref processor <term outputclass="RFC-2119">MUST
+    NOT</term> permit resolution of a reuse relationship that could be rendered invalid under the
+   rules of either the reused or reusing content.</p>
  </conbody>
 </concept>

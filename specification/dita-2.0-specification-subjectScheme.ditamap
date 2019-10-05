@@ -1,68 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE subjectScheme PUBLIC "-//OASIS//DTD DITA Subject Scheme Map//EN" "subjectScheme.dtd">
 <subjectScheme>
-    <subjectdef keys="revisions">
-        <subjectdef keys="errata-01"/>
-        <subjectdef keys="errata-01-review"/>
-        <subjectdef keys="errata-01-public-review"/>
-        <subjectdef keys="errata-02"/>
+    
+    <!-- DEFINITIONS: CONTROLLED VALUES -->
+    <subjectdef keys="values-audience-draft-comment">
+        <subjectdef keys="spec-editors"/>
+        <subjectdef keys="tc-reviewers"/>
     </subjectdef>
-    <subjectdef keys="outputclass-values">
+    <subjectdef keys="values-otherprops">
+        <subjectdef keys="examples"/>
+    </subjectdef>
+    <subjectdef keys="values-outputclass">
         <subjectdef keys="cover"/>
-        <subjectdef keys="models"/>
-        <subjectdef keys="no-indent"/>
-        <subjectdef keys="no-space-before"/>
-        <subjectdef keys="frontmatternotices"/>
+        <subjectdef keys="notices"/>
         <subjectdef keys="RFC-2119"/>
-        <subjectdef keys="specification"/>
-        <subjectdef keys="specificationApproved"/>
-        <subjectdef keys="specificationLevel"/>
-        <subjectdef keys="specificationScope"/>
-        <subjectdef keys="specificationShorttitle"/>
-        <subjectdef keys="specificationSubtitle1"/>
-        <subjectdef keys="specificationSubtitle2"/>
-        <subjectdef keys="specificationTitle"/>
-        <subjectdef keys="specificationTitles"/>
+        <subjectdef keys="documentStage"/>
+        <subjectdef keys="stageDate"/>
     </subjectdef>
-    <subjectdef keys="packages">
-        <subjectdef keys="base"/>
-        <subjectdef keys="learningTraining"/>
-        <subjectdef keys="technicalContent"/>
-        <subjectdef keys="part-0"/>
-        <subjectdef keys="part-1"/>
-        <subjectdef keys="part-2"/>
-        <subjectdef keys="part-3"/>
-        <subjectdef keys="csd01"/>
-        <subjectdef keys="csprd01"/>
-    </subjectdef>
-    <subjectdef keys="platform-values">
+       <subjectdef keys="values-platform">
+        <subjectdef keys="dita"/>
+        <subjectdef keys="lwdita"/>
         <subjectdef keys="dita-tc-publishing"/>
         <subjectdef keys="external-publishing-engine"/>
     </subjectdef>
-    <subjectdef keys="otherprops-values">
-        <subjectdef keys="contains"/>
-        <subjectdef keys="containedby"/>
-        <subjectdef keys="examples"/>
-        <subjectdef keys="inheritance"/>
+    <subjectdef keys="values-revisions">
+        <subjectdef keys="review-1"/>
+        <subjectdef keys="2.0"/>
+        <subjectdef keys="tc-review"/>
     </subjectdef>
+    
+    <!-- BINDINGS: ELEMENT AND ATTRIBUTE PAIRS -->
     <enumerationdef>
-        <attributedef name="rev"/>
-        <subjectdef keyref="revisions"/>
+        <elementdef name="draft-comment"/>
+        <attributedef name="audience"/>
+        <subjectdef keyref="values-audience-draft-comment"/>
+        <defaultSubject keyref="spec-editors"/>
+    </enumerationdef>
+    
+    <!-- BINDINGS: ATTRIBUTES -->
+    <enumerationdef>
+        <attributedef name="otherprops"/>
+        <subjectdef keyref="values-otherprops"/>
     </enumerationdef>
     <enumerationdef>
         <attributedef name="outputclass"/>
-        <subjectdef keyref="outputclass-values"/>
-    </enumerationdef>
-    <enumerationdef>
-        <attributedef name="product"/>
-        <subjectdef keyref="packages"/>
+        <subjectdef keyref="values-outputclass"/>
     </enumerationdef>
     <enumerationdef>
         <attributedef name="platform"/>
-        <subjectdef keyref="platform-values"/>
+        <subjectdef keyref="values-platform"/>
     </enumerationdef>
     <enumerationdef>
-        <attributedef name="otherprops"/>
-        <subjectdef keyref="otherprops-values"/>
+        <attributedef name="rev"/>
+        <subjectdef keyref="values-revisions"/>
     </enumerationdef>
 </subjectScheme>

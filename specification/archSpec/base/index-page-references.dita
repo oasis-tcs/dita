@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="index-page-references">
+    <title>Index locators</title>
+    <shortdesc>Typically, an <xmlelement>indexterm</xmlelement> element instructs a processor to
+        generate an index entry with a locator.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm start="test">test</indexterm>
+            </keywords>
+            <keywords>
+                <indexterm>indexes<indexterm>locators</indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <p>The nesting of <xmlelement>indexterm</xmlelement> elements and the presence of
+                <xmlelement>index-see</xmlelement> elements determines whether locators are rendered
+            in the generated index entries:</p>
+        <ul>
+            <li>An <xmlelement>indexterm</xmlelement> element that does not contain child
+                    <xmlelement>indexterm</xmlelement> elements (or an
+                    <xmlelement>index-see</xmlelement> element) contributes a locator to the
+                generated index entry.</li>
+            <li>An <xmlelement>indexterm</xmlelement> element that contains child
+                    <xmlelement>indexterm</xmlelement> elements contributes to the hierarchy of the
+                multilevel index entry that is generated. Only the final nested
+                    <xmlelement>indexterm</xmlelement> element contributes a locator to the
+                generated index entry.</li>
+            <li>If an <xmlelement>indexterm</xmlelement> element also contains one or more
+                    <xmlelement>index-see</xmlelement> elements, <ph rev="review-1">no locator is
+                    included in the generated index entry.</ph></li>
+            <li>If an <xmlelement>indexterm</xmlelement> element also contains one or more
+                    <xmlelement>index-see-also</xmlelement> elements, <ph rev="review-1">the
+                        <xmlelement>indexterm</xmlelement> element contributes a locator to the
+                    generated index entry, and <xmlelement>index-see-also</xmlelement> element
+                    provides only a redirection.</ph></li>
+        </ul>
+        <!--<draft-comment author="Eliot Kimber" time="09 August 2019"><p>I know we recently discussed with Robert cases where both 1st and 2nd-level entries get page numbers in some IBM documents and in other places.</p><p>I think the issue was when you determine that there are or are not nested entries.</p><p>For example, if in one topic you have &lt;indexterm>apple&lt;/indexterm> and in another topic you have &lt;indexterm>apple&lt;indexterm>computer&lt;/indexterm>&lt;/indexter>, the author of the first topic would probably be surprised if the index as rendered was not:</p><p>apple 12</p><p> computer 14</p><p>or </p><p>apple 12</p><p>apple</p><p> computer 14</p><p>That is, there's the individual index terms as authored and then there's the effective index markup you would get by literally combining all the indexterm elements, merging matching entries.</p><p>I can imagine that some groups would want the above behavior and others would not, for example because they more carefully control their indexes and want to ensure that only leaf entries get page numbers.</p><p>So the spec definitely has to allow both behaviors.</p></draft-comment>-->
+    </conbody>
+</concept>

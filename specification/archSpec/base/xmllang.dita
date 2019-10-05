@@ -10,8 +10,6 @@
 		<metadata>
 			<keywords>
 				<indexterm>examples<indexterm><xmlatt>xml:lang</xmlatt></indexterm></indexterm>
-				<indexterm>formatting
-					expectations<indexterm><xmlatt>xml:lang</xmlatt></indexterm></indexterm>
 				<indexterm>processing
 					expectations<indexterm><xmlatt>xml:lang</xmlatt></indexterm></indexterm>
 				<indexterm>maps<indexterm>use of <xmlatt>xml:lang</xmlatt></indexterm></indexterm>
@@ -27,16 +25,15 @@
 	</prolog> 
   <refbody> 
 	 <section id="section">
-			<p>The <xmlatt>xml:lang</xmlatt> attribute <term outputclass="RFC-2119"
-					>SHOULD</term> be explicitly set on the root element of each
-				map and topic.</p>
-			<p>Setting the <xmlatt>xml:lang</xmlatt> attribute in the DITA source ensures that
-				processors handle content in a language- and locale-appropriate way. If the
+			<p>The <xmlatt>xml:lang</xmlatt> attribute <term outputclass="RFC-2119">SHOULD</term> be
+				explicitly set on the root element of each map and topic.</p>
+			<p>Setting the <xmlatt>xml:lang</xmlatt> attribute in the DITA source ensures that processors
+				handle content in a language- and locale-appropriate way. If the
 					<xmlatt>xml:lang</xmlatt> attribute is not set, processors assume a default
-				value which might not be appropriate for the DITA content. When the
-					<xmlatt>xml:lang</xmlatt> attribute is specified for a document, DITA processors
-					<term outputclass="RFC-2119">MUST</term> use the specified
-				value to determine the language of the document. </p>
+				value which might not be appropriate for the DITA content.</p>
+			<p>When the <xmlatt>xml:lang</xmlatt> attribute is specified for a document, DITA
+				processors <term outputclass="RFC-2119">MUST</term> use the specified value to
+				determine the language of the document. </p>
 			<p>Setting the <xmlatt>xml:lang</xmlatt> attribute in the source language document
 				facilitates the translation process; it enables translation tools (or translators)
 				to simply change the value of the existing <xmlatt>xml:lang</xmlatt> attribute to
@@ -46,33 +43,38 @@
 				content does not set the <xmlatt>xml:lang</xmlatt> attribute, it might be difficult
 				or impossible for the translator to add the <xmlatt>xml:lang</xmlatt> attribute to
 				the translated document.</p>
-			<p> If the root element of a map or a top-level topic has no value <ph >for
-						the<xmlatt>xml:lang</xmlatt> attribute</ph> , a processor <term
-					outputclass="RFC-2119">SHOULD</term> assume a default value.
-				The default value of the processor can be either fixed, configurable, or derived
-				from the content itself, such as the <xmlatt>xml:lang</xmlatt> attribute on the root
-				map.</p>
+			<p> If the root element of a map or a top-level topic has no value for
+					the<xmlatt>xml:lang</xmlatt> attribute , a processor <term
+					outputclass="RFC-2119">SHOULD</term> assume a default value. The default value
+				of the processor can be either fixed, configurable, or derived from the content
+				itself, such as the <xmlatt>xml:lang</xmlatt> attribute on the root map.</p>
 			<p>The <xmlatt>xml:lang</xmlatt> attribute is described in the <xref
 					href="http://www.w3.org/TR/REC-xml/#sec-lang-tag" scope="external" format="html"
 					>XML Recommendation</xref>. Note that the recommended style for the
 					<xmlatt>xml:lang</xmlatt> attribute is lowercase language and (optional)
-				uppercase, separated by a hyphen, for example, "en-US" or "sp-SP" or "fr". <ph
-					>According to RFC 5646, <cite>Tags for Identifying
-						Languages,</cite> language codes are case insensitive.</ph></p>
+				uppercase, separated by a hyphen, for example, "en-US" or "sp-SP" or "fr". According
+				to RFC 5646, <cite>Tags for Identifying Languages,</cite> language codes are case
+				insensitive.</p>
 		</section> 
 	 <section id="recommended-use-topics">
 			<title>Recommended use in topics</title>
 			<p>For a DITA topic that contains a single language, set the <xmlatt>xml:lang</xmlatt>
 				attribute on the highest-level element that contains content.</p>
-			<p>When a DITA topic contains more than one language, set the <xmlatt>xml:lang</xmlatt>
-				attribute on the highest-level element to specify the <term>primary language and
-					locale</term> that applies to the topic. If part of a topic is written in a
-				different language, authors should ensure that the part is enclosed in an element
-				with the <xmlatt>xml:lang</xmlatt> attribute set appropriately. This method of
-				overriding the default document language applies to both block and inline elements
-				that use the alternate language. Processors <term outputclass="RFC-2119"
-					>SHOULD</term> style each element in a way that is appropriate
-				for its language as identified by the <xmlatt>xml:lang</xmlatt> attribute.</p>
+			<draft-comment author="Kristen J Eberlein" time="04 July 2019" audience="tc-reviewers">
+				<p>Should the following paragraph contain a <term outputclass="RFC-2119"
+						>SHOULD</term> statement?</p>
+			</draft-comment>
+			<!--IGNORE may-must-should word-->
+			<p>When a DITA topic contains more than one language, set the <xmlatt>xml:lang</xmlatt> attribute
+				on the highest-level element to specify the <term>primary language and locale</term>
+				that applies to the topic. If part of a topic is written in a different language,
+				authors should ensure that the part is enclosed in an element with the
+					<xmlatt>xml:lang</xmlatt> attribute set appropriately. This method of overriding
+				the default document language applies to both block and inline elements that use the
+				alternate language.</p>
+			<p>Processors <term outputclass="RFC-2119">SHOULD</term> style each element in a way
+				that is appropriate for its language as identified by the <xmlatt>xml:lang</xmlatt>
+				attribute.</p>
 		</section> 
 	 <section id="recommended-use-maps">
 			<title>Recommended use in maps</title>

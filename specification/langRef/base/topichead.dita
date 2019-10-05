@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="topichead" xml:lang="en-us">
 <title><xmlelement>topichead</xmlelement></title>
-<shortdesc>The <xmlelement>topichead</xmlelement> element provides a title-only entry in a
-    navigation map, which should appear as a heading when the map is rendered as a table of
-    contents. In print contexts it should also appear as a heading in the rendered
-    content.</shortdesc>
+<shortdesc>A topic head is a title-only entry in a DITA
+    map.<!--The <xmlelement>topichead</xmlelement> element provides a title-only entry in a navigation map, which should appear as a heading when the map is rendered as a table of contents. In print contexts it should also appear as a heading in the rendered content.--></shortdesc>
   <prolog>
     <metadata>
       <keywords>
-        <indexterm>elements<indexterm>mapgroup<indexterm><xmlelement>topichead</xmlelement></indexterm></indexterm></indexterm>
-        <indexterm>formatting
+        <indexterm>mapgroup
+          domain<indexterm><xmlelement>topichead</xmlelement></indexterm></indexterm>
+        <indexterm>rendering
           expectations<indexterm><xmlelement>topicgroup</xmlelement></indexterm></indexterm>
         <indexterm>messages issued by processors<indexterm><xmlelement>topichead</xmlelement> with
             no navigation title</indexterm></indexterm>
@@ -20,22 +18,29 @@
     </metadata>
   </prolog>
 <refbody>
+    <section id="rendering-expectations">
+      <title>Rendering expectations</title>
+      <p>The content of the <xmlelement>navtitle</xmlelement> element appears as a heading when the
+        map is rendered as a table of content. In print contexts, it also appears as a heading in
+        the rendered content.<draft-comment author="Kristen J Eberlein" time="06 August 2018"
+          audience="tc-reviewers">
+          <p>The above content was in the DITA 1.3 short description. Should it be a normative
+            statement?</p>
+          <p>Discussed at DITA TC call on 02 July 2019.  Agreement that this should NOT be an
+            RFC-2119 statement, as this is standard <xmlelement>topicref</xmlelement> behaviour.
+            Recast the above content to remove the word "should."</p>
+          <p>It's possible that this section is not needed here.</p>
+        </draft-comment></p>
+    </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>Beginning with DITA 1.2, the navtitle can be specified by using a
-          <xmlelement>navtitle</xmlelement> element within the <xmlelement>topicmeta</xmlelement>
-        element, so the <xmlelement>topichead</xmlelement> element no longer requires the
-          <xmlatt>navtitle</xmlatt> attribute. In order to ensure backward compatibility with
-        earlier versions of DITA, the new <xmlelement>navtitle</xmlelement> element is not required.
-        However, a <xmlelement>topichead</xmlelement> element must contain either a
-          <xmlatt>navtitle</xmlatt> attribute or a <xmlelement>topicmeta</xmlelement> element that
-        contains a <xmlelement>navtitle</xmlelement> element. DITA processors <term
-          outputclass="RFC-2119">SHOULD</term> generate a warning if a navigation title is not
-        specified.</p>
+      <p>Processors <term outputclass="RFC-2119">SHOULD</term> generate a warning if a navigation
+        title is not specified on a <xmlelement>topichead</xmlelement> element.</p>
     </section>
     <section id="specialization-hierarchy">
       <title>Specialization hierarchy</title>
-      <p>+ map/topicref mapgroup-d/topichead </p>
+      <p>The <xmlelement>topichead</xmlelement> element is specialized from
+          <xmlelement>topicref</xmlelement>. It is defined in the map-group module. </p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -46,21 +51,23 @@ keyref="attributes-topicrefElement"/>. This element also uses
 the <xmlatt>scope</xmlatt>, <xmlatt>format</xmlatt>, and <xmlatt>type</xmlatt> attributes from <xref
 keyref="attributes-linkRelationship"/>.</p>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><p>Note that in the following example, the first <xmlelement>topichead</xmlelement> element uses a
-          <xmlelement>navtitle</xmlelement> element to provide the title, while the second
-          <xmlelement>topichead</xmlelement> element uses a <xmlatt>navtitle</xmlatt> attribute.
-        This is only to illustrate that both uses are valid; in general, the element is preferred
-        over the attribute.</p><codeblock>&lt;map>
+<example id="example" otherprops="examples"><title>Example</title><p>In the following example, the <xmlelement>topichead</xmlelement> elements provide titles
+        ("Computers" and "Books") for two groups of topics.</p><codeblock>&lt;map>
   <b>&lt;topichead></b>
-    <b>&lt;topicmeta>&lt;navtitle>Computers&lt;/navtitle>&lt;/topicmeta></b>
+    &lt;topicmeta>
+      <b>&lt;navtitle>Computers&lt;/navtitle></b>
+    &lt;/topicmeta>
     &lt;topicref href="eniac.dita"/>
     &lt;topicref href="system360.dita"/>
     &lt;topicref href="pdp8.dita"/>
   <b>&lt;/topichead></b>
-  <b>&lt;topichead navtitle="Books"></b>
+  <b>&lt;topichead></b>
+    &lt;topicmeta>
+      <b>&lt;navtitle>Computers&lt;/navtitle></b>
+    &lt;/topicmeta>
     &lt;topicref href="hardback.dita"/>
     &lt;topicref href="paperback.dita"/>
-  <b>&lt;/topichead></b>
+ <b> &lt;/topichead></b>
 &lt;/map></codeblock></example>
 </refbody>
 </reference>

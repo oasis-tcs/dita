@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="topicmeta" xml:lang="en-us">
   <title><xmlelement>topicmeta</xmlelement></title>
-  <shortdesc>Topic metadata is metadata that applies to a topic; this metadata is defined in a map.
-    This metadata also applies to other topics in the map that are part of the same containment
-    hierarchy</shortdesc>
+  <shortdesc conkeyref="reuse-topicmeta/shortdesc"/>
   <prolog>
     <metadata>
       <keywords><indexterm>elements<indexterm>basic map<indexterm><xmlelement>topicmeta</xmlelement></indexterm></indexterm></indexterm>
@@ -18,50 +14,23 @@
     </metadata>
   </prolog>
   <refbody>
-    <section id="usage-information">
-      <title>Usage information</title>
-      <p>When creating links, <xmlelement>topicmeta</xmlelement> content can also be used to
-        override the title and short description that are used for the link. In addition, it can be
-        used to add index entries to referenced content using the <xmlelement>keywords</xmlelement>
-        element.</p>
-      <p>The metadata given in a <xmlelement>topicmeta</xmlelement> element is specific to a given
-        context within a map. If a reference to a single resource appears more than once in a map or
-        set of maps, unique metadata can be specified in each instance. For example, the two
-        references to a single resource might specify different navigation titles or search titles,
-        each of which is specific to a single context.</p>
-    </section>
-    <section id="processing-expectations">
-      <title>Processing expectations</title>
-      <p>The topic <xref href="../../archSpec/base/cascading-in-a-ditamap.dita" format="dita"/> in
-        the DITA Architectural Specification provides more information about which metadata elements
-        inside <xmlelement>topicmeta</xmlelement> cascade to other <xmlelement>topicref</xmlelement>
-        elements. In addition, the topic <xref
-          href="../../archSpec/base/reconciling-topic-and-map-metadata.dita"/> provides more
-        information about how metadata specified in the map interacts with metadata specified in
-        each topic.</p>
-    </section>
-    <section id="attributes">
-      <title>Attributes</title>
-      <sectiondiv
-        conref="../../common/conref-attribute.dita#conref-attribute/standard-topicmeta-attributes"/>
-    </section>
+    <section conkeyref="reuse-topicmeta/usage-information"><title/><p/></section>
+    <section conkeyref="reuse-topicmeta/attributes"/>
     <example id="example" otherprops="examples">
       <title>Example</title>
-      <p>In this example, the metadata defined by the <xmlelement>topicmeta</xmlelement> element
-        applies to the associated <xmlelement>topicref</xmlelement> (<filepath>bats.dita</filepath>)
-        and all of its children. The <xmlelement>topicmeta</xmlelement> element contains an audience
-        definition that indicates that <filepath>bats.dita</filepath> and its children are of
-        interest to experienced programmers who are troubleshooting. </p>
-      <codeblock>&lt;map&gt;
-  &lt;topicref href="bats.dita"&gt;
-    <b>&lt;topicmeta&gt;</b>
-      &lt;audience type="programmer" job="troubleshooting" experiencelevel="expert"/&gt;
-    <b>&lt;/topicmeta&gt;</b>
-    &lt;topicref href="batcaring.dita"&gt;&lt;/topicref&gt;
-    &lt;topicref href="batfeeding.dita"&gt;&lt;/topicref&gt;
-  &lt;/topicref&gt;
-&lt;/map&gt;</codeblock>
+      <p>The following example shows how the <xmlelement>topicmeta</xmlelement> element can contain
+        a metadata element:</p>
+      <codeblock>&lt;map>
+  &lt;title>Indexing elements&lt;/title>        
+  &lt;topicref href=indexing.dita">
+    &lt;topicmeta>
+      &lt;audience>Indexing specialists&lt;/audience>
+    &lt;/topicmeta>
+    &lt;!-- Adding topic references -->
+  &lt;/topicref>
+&lt;/map></codeblock>
+      <p>The <xmlelement>audience</xmlelement> element indicates that the topic (and its child
+        topics) are of interest to the indexing specialists within the company.</p>
     </example>
   </refbody>
 </reference>
-

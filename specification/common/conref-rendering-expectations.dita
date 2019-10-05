@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="conref-rendering-expectations">
+    <title>Rendering expectations for element-reference topics</title>
+    <shortdesc>This topic contains material that is used in several element reference topics. </shortdesc>
+    <refbody>
+        <section>
+            <title>Rendering expectations</title>
+            <p id="image-video">Processors <term outputclass="RFC-2119">SHOULD</term> scale the
+                object when values are provided for the <xmlatt>height</xmlatt> and
+                    <xmlatt>width</xmlatt> attributes. The following expectations apply:<ul>
+                    <li>If a height value is specified and no width value is specified, processors
+                            <term outputclass="RFC-2119">SHOULD</term> scale the width by the same
+                        factor as the height.</li>
+                    <li>If a width value is specified and no height value is specified, processors
+                            <term outputclass="RFC-2119">SHOULD</term> scale the height by the same
+                        factor as the width.</li>
+                    <li>If both a height value and width value are specified, implementations <term
+                            outputclass="RFC-2119">MAY</term> ignore one of the two values when they
+                        are unable to scale to each direction using different factors.</li>
+                </ul></p>
+        </section>
+        <section id="rendering-expectations-prop-and-revprop">
+            <title>Rendering expectations</title>
+            <div>
+                <p id="color-backcolor-style">For the <xmlatt>color</xmlatt> and
+                        <xmlatt>backcolor</xmlatt> attributes on <xmlelement>rev</xmlelement> and
+                        <xmlelement>revprop</xmlelement>, processors <term outputclass="RFC-2119"
+                        >SHOULD</term> support the following:<ul>
+                        <li>The color names listed under the heading "&lt;color>" in <xref
+                                format="html"
+                                href="http://www.w3.org/TR/2006/REC-xsl11-20061205/#datatype"
+                                scope="external"/></li>
+                        <li>The associated 6 digit hex code form (#rrggbb, case insensitive).</li>
+                    </ul></p>
+                <p id="style-attr">For the <xmlatt>style</xmlatt> attribute on
+                        <xmlelement>rev</xmlelement> and <xmlelement>revprop</xmlelement>, the
+                    following tokens <term outputclass="RFC-2119">SHOULD</term> be processed by all
+                    DITAVAL processors:<ul>
+                        <li>underline</li>
+                        <li>double-underline</li>
+                        <li>italics</li>
+                        <li>overline</li>
+                        <li>bold</li>
+                    </ul></p>
+                <p id="other-tokens-style">In addition, processors <term outputclass="RFC-2119"
+                        >MAY</term> support other proprietary tokens for the <xmlatt>style</xmlatt>
+                    attribute . Such tokens <term outputclass="RFC-2119">SHOULD</term> have a
+                    processor-specific prefix to identify them as proprietary. If a processor
+                    encounters an unsupported style token, it <term outputclass="RFC-2119"
+                        >MAY</term> issue a warning, and <term outputclass="RFC-2119">MAY</term>
+                    render content flagged with such a style token using some default
+                    formatting.</p>
+            </div>
+        </section>
+    </refbody>
+</reference>

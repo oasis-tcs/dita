@@ -3,9 +3,8 @@
 <concept xml:lang="en-us" id="generalization-processor-expectations">
  <title>Processor expectations when generalizing elements</title>
  <shortdesc>Generalization processors convert elements from one or more modules into their less
-  specialized form. The list of modules <ph >can be supplied to a
-   generalization processor</ph>, or it can be inferred based on knowledge of a target document-type
-  shell.</shortdesc>
+  specialized form. The list of modules can be supplied to a generalization processor, or it can be
+  inferred based on knowledge of a target document-type shell.</shortdesc>
  <conbody>
   <p>The person or application initiating a generalization process can supply the source and target
    modules for each generalization, for example, "generalize from reference to topic". Multiple
@@ -17,16 +16,15 @@
    document-type shell. When the target document-type shell is not supplied, the generalized
    document will not contain a reference to a document-type shell.</p>
   <!--<draft-comment author="robander" time="16 February 2015">Note: all of this content has changed little since DITA 1.0, but seems to contain a lot of rules-by-example, with examples showing how a user (generalizer) interacts with the process. I'm a little uncomfortable that we define rules based on user interaction with the processor. That is: a really smart generalization tool could know every module and every doctype in the user's environment, and just let the user pick from valid doctype targets; this gives all necessary function, but does not comply with the SHOULD rule that follows this draft comment. Then again, SHOULD isn't MUST.<p>I've reorganized the content slightly to split it into multiple topics: generalization overview (what is it), how to generalize an element, and processor expectations. Most of the older content ended up in "processor expectations".</p><p>For reference, the topic in DITA 1.0: <xref href="http://docs.oasis-open.org/dita/v1.0/archspec/generalize.html" format="html" scope="external"/></p></draft-comment>-->
-  <p>A generalization processor <term outputclass="RFC-2119">SHOULD</term> be able
-   to handle cases where it is given:</p>
-  <ul>
-   <li>Only source modules for generalization (in which case the designated source types are
-    generalized to topic or map)</li>
-   <li>Only target modules for generalization (in which case all descendants of each target are
-    generalized to that target)</li>
-   <li>Both (in which case only the specified descendants of each target are generalized to that
-    target)</li>
-  </ul>
+  <p>A generalization processor <term outputclass="RFC-2119">SHOULD</term> be able to handle cases
+   where it is given:<ul>
+    <li>Only source modules for generalization (in which case the designated source types are
+     generalized to topic or map)</li>
+    <li>Only target modules for generalization (in which case all descendants of each target are
+     generalized to that target)</li>
+    <li>Both (in which case only the specified descendants of each target are generalized to that
+     target)</li>
+   </ul></p>
   <p>For each structural type instance, the generalization processor checks whether the structural
    type instance is a candidate for generalization, or whether it has domains that are candidates
    for generalization. It is important to be selective about which structural type instances to
@@ -116,10 +114,9 @@
    </strow>
   </simpletable>
   <p>When renaming elements during round-trip generalization, the generalization processor <term
-    outputclass="RFC-2119">SHOULD</term> preserve the values of all attributes.
-   When renaming elements during one-way or migration generalization, the process <term
-    outputclass="RFC-2119">SHOULD</term> preserve the values of all attributes
-   except the <xmlatt>class</xmlatt> and <xmlatt>domains</xmlatt> attribute, both of which should be
-   supplied by the target document type.</p>
+    outputclass="RFC-2119">SHOULD</term> preserve the values of all attributes. When renaming
+   elements during one-way or migration generalization, the process <term outputclass="RFC-2119"
+    >SHOULD</term> preserve the values of all attributes except the <xmlatt>class</xmlatt> and
+    <xmlatt>domains</xmlatt> attribute, both of which are supplied by the target document type.</p>
  </conbody>
 </concept>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="audio">
+  <title><xmlelement>audio</xmlelement></title>
+  <shortdesc conkeyref="reuse-audio/shortdesc"/>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>multimedia
+          domain<indexterm><xmlelement>audio</xmlelement></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody>
+    <section conkeyref="reuse-audio/usage-information"><title/><p/></section>
+    <section conkeyref="reuse-audio/rendering-expectations"><title/><p/></section>
+    <section id="specialization-hierarchy">
+      <title>Specialization hierarchy</title>
+      <p>The <xmlelement>audio</xmlelement> element is specialized from
+          <xmlelement>object</xmlelement>. It is defined in the multimedia-domain module.</p>
+    </section>
+    <section conkeyref="reuse-audio/attributes"/>
+    <example otherprops="examples">
+      <title>Examples</title>
+      <fig>
+
+<title>An <xmlelement>audio</xmlelement> element that uses direct addressing</title>
+<p>In the following code sample, an audio resource is referenced using direct addressing. The
+            <xmlatt>type</xmlatt> attribute specifies the MIME type of the audio resource. </p><codeblock>&lt;audio data="message.mp3" type="audio/mp3"/> </codeblock>
+</fig>
+      <fig>
+        <title>An <xmlelement>audio</xmlelement> element that uses indirect addressing</title>
+        <p>In the following code sample, the audio resource is addressed using a key reference:</p>
+        <codeblock>&lt;audio datakeyref="message"/></codeblock>
+        <p>Both the URI and the MIME type are specified on the key definition:</p>
+        <codeblock>&lt;keydef keys="message" href="message.mp3" type="audio/mp3"/></codeblock>
+      </fig>
+      <fig>
+<title>An <xmlelement>audio</xmlelement> element with multiple formats</title>
+<p>In the following code sample, <xmlelement>media-source</xmlelement> elements are used to specify
+the different audio formats that are
+available.</p><codeblock>&lt;audio>
+  &lt;media-source value="message.mp3" type="audio/mp3"/>
+  &lt;media-source value="message.wav" type="audio/wav"/>
+&lt;/audio></codeblock>
+</fig>
+      <fig>
+
+<title>Example of a complex <xmlelement>audio</xmlelement> element</title>
+<p>The following code sample specifies an audio resource and defines multiple presentational
+          details; it also provides fallback behavior for when the audio resource cannot be
+          rendered.</p><codeblock>&lt;audio>
+  &lt;desc>A sound file narrating the performance of this procedure.&lt;/desc>
+  &lt;fallback>The audio track walking through this procedure is not available.&lt;/fallback>
+  
+  &lt;!--
+    When the following elements are used, they have a default value of "true";
+    setting value="true" and not specifying @value have the same effect.
+    To disable any of these settings, specify value="false". --&gt;
+
+  &lt;media-controls value="true"/>
+  &lt;media-autoplay/>
+  &lt;media-loop value="false"/>
+  &lt;media-muted value="false"/>
+
+
+  &lt;!-- Multiple formats, with URI and MIME type referenced using a key -->
+  &lt;media-source keyref="walkthrough-mp3"/>
+  &lt;media-source keyref="walkthrough-wav"/>
+
+&lt;/audio></codeblock>
+</fig>
+    </example>
+  </refbody>
+</reference>

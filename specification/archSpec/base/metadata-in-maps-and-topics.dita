@@ -1,64 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="metadata-in-maps-and-topics" xml:lang="en-us"><title>Metadata in maps and topics</title>
-  <shortdesc>Topic metadata can be specified in a DITA map as well as in the topics that the map
-    references. By default, metadata in the map supplements or overrides metadata that is specified
-    at the topic level, unless the <xmlatt>lockmeta</xmlatt> attribute of the <xmlelement
-      >topicmeta</xmlelement> element is set to "no".</shortdesc><conbody>
-    <section id="where-specified">
-      <title><ph id="1.2">Where metadata about topics can be specified</ph></title>
-      <p>Information about topics can be specified as metadata on the map, as attributes on the
-          <xmlelement>topicref</xmlelement> element, or as metadata attributes or elements in the
-        topic itself:<dl>
-          <dlentry>
-            <dt>DITA map: Metadata elements</dt>
-            <dd>
-              <p>At the map level, properties can be set by using metadata elements. They can be set
-                for an individual topic, for a set of topics, or globally for the entire document.
-                The metadata elements are authored within a <xmlelement>topicmeta</xmlelement>
-                element, which associates metadata with the parent element and its children. Because
-                the topics in a branch of the hierarchy typically have some common subjects or
-                properties, this is a convenient mechanism to define properties for a set of topics.
-                For example, the <xmlelement>topicmeta</xmlelement> element in a
-                  <xmlelement>relcolspec</xmlelement> can associate metadata with all the topics
-                that are referenced in the <xmlelement>reltable</xmlelement> column.</p>
-              <p>A map can override or supplement everything about a topic except its primary title
-                and body content. All the metadata elements that are available in a topic also are
-                available in a map. In addition, a map <ph >can</ph> provide
-                alternate titles and a short description. The alternate titles can override their
-                  <ph >equivalent titles</ph> in the topic. The short
-                description in the map <term outputclass="RFC-2119">MAY</term> override the short
-                description in the topic if the <xmlelement>topicref</xmlelement> element specifies
-                a <xmlatt>copy-to</xmlatt> attribute.</p>
-            </dd>
-          </dlentry>
-          <dlentry>
-            <dt>DITA map: Attributes of the <xmlelement>topicref</xmlelement> element</dt>
-            <dd>At the map level, properties can be set as attributes of the
-                <xmlelement>topicref</xmlelement> element. </dd>
-          </dlentry>
-          <dlentry>
-            <dt>DITA topic</dt>
-            <dd>Within a topic, authors can either set metadata attributes on the root element or
-              add metadata elements in the <xmlelement>prolog</xmlelement> element.</dd>
-          </dlentry>
-        </dl></p>
-    </section>
-    <section id="topic-map-intersection">
-      <title>How metadata set at both the map and topic level intersects</title>
-      <p>In a topic, the metadata elements apply to the entire topic. In a map, they supplement or
-        override any metadata that is provided in the referenced topics. When the same metadata
-        element or attribute is specified in both a map and a topic, by default the value in the map
-        takes precedence; the assumption here is that the author of the map has more knowledge of
-        the reusing context than the author of the topic. The <xmlatt>lockmeta</xmlatt> attribute on
-        the <xmlelement>topicmeta</xmlelement> element controls whether map-specified values
-        override values in the referenced topic.</p>
-      <p>The <xmlelement>navtitle</xmlelement> element is an exception to the rule of how metadata
-        specified by the <xmlelement>topicmeta</xmlelement> element cascades. The content of the
-          <xmlelement>navtitle</xmlelement> element is used as a navigation title only if the
-          <xmlatt>locktitle</xmlatt> attribute of the parent <xmlelement>topicref</xmlelement>
-        element is set to "yes".</p>
-    </section>
+  <shortdesc>Information about topics can be specified as metadata on the map, as attributes on the
+      <xmlelement>topicref</xmlelement> element, or as metadata attributes or elements in the topic
+    itself. By default, metadata in the map supplements or overrides metadata that is specified at
+    the topic level, unless the <xmlatt>lockmeta</xmlatt> attribute of the
+      <xmlelement>topicmeta</xmlelement> element is set to "no".</shortdesc><conbody>
+    <dl>
+      <dlentry>
+        <dt>DITA map: Metadata elements</dt>
+        <dd>
+          <p>At the map level, properties can be set by using metadata elements. They can be set for
+            an individual topic, for a set of topics, or globally for the entire document. The
+            metadata elements are authored within a <xmlelement>topicmeta</xmlelement> element,
+            which associates metadata with the parent element and its children. Because the topics
+            in a branch of the hierarchy typically have some common subjects or properties, this is
+            a convenient mechanism to define properties for a set of topics. For example, the
+              <xmlelement>topicmeta</xmlelement> element in a <xmlelement>relcolspec</xmlelement>
+            can associate metadata with all the topics that are referenced in the
+              <xmlelement>reltable</xmlelement> column.</p>
+          <p>A map can override or supplement everything about a topic except its primary title and
+            body content. All the metadata elements that are available in a topic also are available
+            in a map. In addition, a map can use <xmlatt>copy-to</xmlatt> provide alternate titles
+            and a short description. The alternate titles can override their equivalent titles in
+            the topic. </p>
+        </dd>
+      </dlentry>
+      <dlentry>
+        <dt>DITA map: Attributes of the <xmlelement>topicref</xmlelement> element</dt>
+        <dd>At the map level, properties can be set as attributes of the
+            <xmlelement>topicref</xmlelement> element. </dd>
+      </dlentry>
+      <dlentry>
+        <dt>DITA topic</dt>
+        <dd>Within a topic, authors can either set metadata attributes on the root element or add
+          metadata elements in the <xmlelement>prolog</xmlelement> element.</dd>
+      </dlentry>
+    </dl>
+    <p> When the same metadata element or attribute is specified in both a map and a topic, by
+      default the value in the map takes precedence; the assumption here is that the author of the
+      map has more knowledge of the reusing context than the author of the topic. The
+        <xmlatt>lockmeta</xmlatt> attribute on the <xmlelement>topicmeta</xmlelement> element
+      controls whether map-specified values override values in the referenced topic.</p>
+    <p>The <xmlelement>navtitle</xmlelement> element is an exception to the rule of how metadata
+      specified by the <xmlelement>topicmeta</xmlelement> element cascades. The content of the
+        <xmlelement>navtitle</xmlelement> element is used as a navigation title only if the
+        <xmlatt>locktitle</xmlatt> attribute of the parent <xmlelement>topicref</xmlelement> element
+      is set to "yes".</p>
   </conbody>
 </concept>
 

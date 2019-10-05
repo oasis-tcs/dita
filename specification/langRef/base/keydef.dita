@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="keydef" xml:lang="en-us">
 <title><xmlelement>keydef</xmlelement></title>
-<shortdesc>The <xmlelement>keydef</xmlelement> element is a convenience element that is used to
-    define keys without any of the other effects that occur when using a
-      <xmlelement>topicref</xmlelement> element: no content is included in output, no title is
-    included in the table of contents, and no linking or other relationships are defined. The
-      <xmlelement>keydef</xmlelement> element is not the only way to define keys; its purpose is to
-    simplify the process by defaulting several attributes to achieve the described
-    behaviors.</shortdesc>
+  <shortdesc conkeyref="reuse-keydef/shortdesc"/>
   <prolog>
     <metadata>
       <keywords>
         <indexterm>convenience
           elements<indexterm><xmlelement>keydef</xmlelement></indexterm></indexterm>
-        <indexterm>elements<indexterm>mapgroup<indexterm><xmlelement>keydef</xmlelement></indexterm></indexterm></indexterm>
+        <indexterm>mapgroup domain<indexterm><xmlelement>keydef</xmlelement></indexterm></indexterm>
         <indexterm>keys<indexterm>definition<indexterm>examples</indexterm></indexterm></indexterm>
         <indexterm>maps<indexterm>examples<indexterm>key
           definition</indexterm></indexterm></indexterm>
@@ -23,54 +16,39 @@
     </metadata>
   </prolog>
 <refbody>
-    <section id="specialization-hierarchy">
-      <title>Specialization hierarchy</title>
-      <p>+ map/topicref mapgroup-d/keydef</p>
-    </section>
-    <section id="attributes">
-      <title>Attributes</title>
-      <sectiondiv id="keydef-attributes">
-        <p>The following attributes are available on this element: <xref
-            keyref="attributes-universal"/>, <xref
-            keyref="attributes-linkRelationship"/> (with a narrowed definition of
-            <xmlatt>href</xmlatt>, given below), <xref keyref="attributes-commonMap"
-          /> (with a narrowed definition of <xmlatt>processing-role</xmlatt>, given below), <xref
-            keyref="attributes-topicrefElement"/>, <xref
-            keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>, and the
-          attributes defined below.</p>
-        <dl>
-          <dlentry>
-            <dt><xmlatt>keys</xmlatt>
-              <ph conref="../../common/conref-attribute.dita#conref-attribute/required-attr"/></dt>
-            <dd>On this element the <xmlatt>keys</xmlatt> attribute is required, because the purpose
-              of the element is to define a key. Otherwise, the attribute is the same as described
-              in <xref keyref="attributes-keys"/>.</dd>
-          </dlentry>
-          <dlentry conref="../../common/conref-attribute.dita#conref-attribute/href-on-topicref">
-            <dt/>
-            <dd/>
-          </dlentry>
-          <dlentry
-            conref="../../common/conref-attribute.dita#conref-attribute/processing-role-default-resource-only">
-            <dt/>
-            <dd/>
-          </dlentry>
-        </dl>
-      </sectiondiv>
-    </section>
-<example id="example" otherprops="examples"><title>Example</title><p>The following example defines keys that can be used to refer to the indicated topics. These keys
-          <ph >can</ph> be used within the map, from any topic in this map, or
-        in any context where this map is imported. Note that the <xmlatt>processing-role</xmlatt>
-        attribute defaults to "resource-only", which ensures that specified topics will not be
-        rendered in a print document or in a navigation TOC based on this definition in the map. In
-        addition, it means that links will not be generated to or from the
-          <xmlelement>keydef</xmlelement> elements.</p><codeblock>&lt;map>
-  &lt;title>Defining bird keys&lt;/title>
-  &lt;keydef keys="darwinfinch galapagosfinch"  href="galapagosfinch.dita"/>
-  &lt;keydef keys="goldfinch"  href="about-goldfinches.dita"/>
-  &lt;keydef keys="puffin"     href="about-puffins.dita"/>
-  &lt;keydef keys="loon diver" href="common-loon.dita"/>
-&lt;/map></codeblock></example>
+    <section conkeyref="reuse-keydef/usage-information"><title/><p/></section>
+<section id="specialization-hierarchy">
+<title>Specialization hierarchy</title>
+<p>The <xmlelement>keydef</xmlelement> element is specialized from
+<xmlelement>topicref</xmlelement>. It is defined in the mapgroup-domain module.</p>
+</section>
+<section conkeyref="reuse-keydef/attributes"/>
+<example id="example" otherprops="examples"><title>Example</title>
+<p>The following code sample shows several different types of key definitions:</p><codeblock>&lt;map>
+  &lt;title>Possible keys for use in the DITA specification&lt;/title>
+
+  &lt;keydef keys="dita-tc" scope="external" format="html"
+          href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=dita">
+    &lt;topicmeta>&lt;linktext>DITA Technical Committee&lt;/linktext>&lt;/topicmeta>
+  &lt;/keydef>
+
+  &lt;keydef keys="addressing" href="dita-addressing.dita"/>
+
+  &lt;keydef keys="dita-version">
+    &lt;topicmeta>&lt;linktext>2.0&lt;/linktext>&lt;/topicmeta>
+  &lt;/keydef>
+
+&lt;/map></codeblock>
+      <ol>
+        <li>The first <xmlelement>keydef</xmlelement> defines a key that links to a Web page. It
+          contains link text; it also specifies the necessary <xmlatt>scope</xmlatt> and
+            <xmlatt>format</xmlatt> attributes, so that authors do not need to include them when
+          they reference this key.</li>
+        <li>The second <xmlelement>keydef</xmlelement> defines a key for a local DITA topic about
+          addressing in DITA; that topic is available to resolve link text.</li>
+        <li>The third <xmlelement>keydef</xmlelement> defines a text-only key that specifies the
+          current DITA version number.</li>
+      </ol></example>
 </refbody>
 </reference>
 

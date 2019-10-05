@@ -1,57 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="theconrefendattribute" xml:lang="en-us">
-<title>The <xmlatt>conrefend</xmlatt> attribute</title>
+  <title>The <xmlatt>conrefend</xmlatt> attribute</title>
   <shortdesc>The <xmlatt>conrefend</xmlatt> attribute is used when referencing a range of elements
     with the conref mechanism. The <xmlatt>conref</xmlatt> or <xmlatt>conkeyref</xmlatt> attribute
     references the first element in the range, while <xmlatt>conrefend</xmlatt> references the last
     element in the range. </shortdesc>
   <prolog>
     <metadata>
-      <keywords><indexterm
-          id="att-conref-topicref">conrefend attribute</indexterm>
-</keywords>
-</metadata></prolog>
-<refbody>
-<section id="section-1"><title>Using <xmlatt>conref</xmlatt> together with <xmlatt>conrefend</xmlatt></title><p>Several items must be taken into account when using or implementing
-        <xmlatt>conrefend</xmlatt>.</p><ul>
-<li>Processors will resolve the range by pulling in the start target and following sibling XML nodes
-          across to and including the end target.</li>
-<li>The start and end elements of a range <term outputclass="RFC-2119" 
-            >MUST</term> be of the same type as the referencing element or generalizable to the
-          referencing element. For example, <xmlatt>conref</xmlatt> and <xmlatt>conrefend</xmlatt>
-          attributes on an <xmlelement>li</xmlelement> element might reference other
-            <xmlelement>li</xmlelement> elements, or they might reference specializations of
-            <xmlelement>li</xmlelement> such as <xmlelement>step</xmlelement>.</li>
-<li>As with <xmlatt>conref</xmlatt>, if the <xmlatt>conrefend</xmlatt> references a more specialized
-          version of the referencing element, applications should generalize the target when
-          resolving. </li>
-<li>It is not valid to use <xmlatt>conrefend</xmlatt> to reference a more general version of an
-          element (such as using <xmlelement>step</xmlelement> to reference an
+      <keywords>
+        <indexterm>attributes, complex<indexterm><xmlatt>conrefend</xmlatt></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody>
+    <section id="section-1"><title>Using <xmlatt>conref</xmlatt> together with
+          <xmlatt>conrefend</xmlatt></title>
+      <p>The following markup rules apply when using or implementing <xmlatt>conrefend</xmlatt>:<ul>
+          <li>The start and end elements of a range <term outputclass="RFC-2119">MUST</term> be of
+            the same type as the referencing element or generalizable to the referencing
+            element.<!-- For example, <xmlatt>conref</xmlatt> and <xmlatt>conrefend</xmlatt> attributes on an <xmlelement>li</xmlelement> element might reference other <xmlelement>li</xmlelement> elements, or they might reference specializations of <xmlelement>li</xmlelement> such as <xmlelement>step</xmlelement>.--></li>
+          <li>The start and end elements in a range <term outputclass="RFC-2119">MUST</term> share
+            the same parent, and the start element <term outputclass="RFC-2119">MUST</term> precede
+            the end element in document order.</li>
+          <li>The parent of the referencing element <term outputclass="RFC-2119">MUST</term> be the
+            same as the parent of the referenced range or generalizable to the parent of the
+            referencing element.
+            <!--For example, it is possible to pull a range from <xmlelement>conbody</xmlelement> into <xmlelement>body</xmlelement>, because <xmlelement>conbody</xmlelement> is generalizable to <xmlelement>body</xmlelement>. It is not possible to pull a range from <xmlelement>body</xmlelement> into <xmlelement>conbody</xmlelement>, because the result <ph>might</ph> not be valid in <xmlelement>conbody</xmlelement>.--></li>
+        </ul></p><p>In addition, several other items must be taken into account:</p><ul>
+        <li>Processors will resolve the range by pulling in the start target and following sibling
+          XML nodes across to and including the end target.</li>
+        <li>As with <xmlatt>conref</xmlatt>, if the <xmlatt>conrefend</xmlatt> references a more
+          specialized version of the referencing element, applications should generalize the target
+          when resolving. </li>
+        <li>It is not valid to use <xmlatt>conrefend</xmlatt> to reference a more general version of
+          an element (such as using <xmlelement>step</xmlelement> to reference an
             <xmlelement>li</xmlelement> element).</li>
-<li>Other nodes (such as elements or text) between the start and end
-of a range do not have to match the referencing element.</li>
-<li>The start and end elements in a range <term outputclass="RFC-2119">MUST</term>
-          share the same parent, and the start element <term outputclass="RFC-2119"
-            >MUST</term> precede the end element in document order.</li>
-<li>The parent of the referencing element <term outputclass="RFC-2119">MUST</term> be the same as
-          the parent of the referenced range or generalizable to the parent of the referencing
-          element. For example, it is possible to pull a range from <xmlelement>conbody</xmlelement>
-          into <xmlelement>body</xmlelement>, because <xmlelement>conbody</xmlelement> is
-          generalizable to <xmlelement>body</xmlelement>. It is not possible to pull a range from
-            <xmlelement>body</xmlelement> into <xmlelement>conbody</xmlelement>, because the result
-            <ph >might</ph> not be valid in
-          <xmlelement>conbody</xmlelement>.</li>
-<li>With single conref, an <xmlatt>id</xmlatt> attribute from the referenced element will not be
-          preserved on the resolved content. With a range, an <xmlatt>id</xmlatt> on both the start
-          and the end elements will not be preserved. <xmlatt>id</xmlatt> attributes on intermediate
-          or child nodes should be preserved; if this results in duplicate <xmlatt>id</xmlatt>
-          values, an application <ph >can recover by changing the <xmlatt>id</xmlatt>,
-            warning the user, or implementing another strategy.</ph></li>
-<li>With a single conref, attributes specified on the referencing element<ph 
-            >can</ph> be used to override attributes on the referenced element. With a conref range,
-          the same is true, with the following clarifications: <ul>
+        <li>Other nodes (such as elements or text) between the start and end of a range do not have
+          to match the referencing element.</li>
+        <li>With single conref, an <xmlatt>id</xmlatt> attribute from the referenced element will
+          not be preserved on the resolved content. With a range, an <xmlatt>id</xmlatt> on both the
+          start and the end elements will not be preserved. <xmlatt>id</xmlatt> attributes on
+          intermediate or child nodes should be preserved; if this results in duplicate
+            <xmlatt>id</xmlatt> values, an application <ph>can recover by changing the
+              <xmlatt>id</xmlatt>, warning the user, or implementing another strategy.</ph></li>
+        <li>With a single conref, attributes specified on the referencing element<ph>can</ph> be
+          used to override attributes on the referenced element. With a conref range, the same is
+          true, with the following clarifications: <ul>
             <li>When an <xmlatt>id</xmlatt> attribute is specified on the referencing element, it
               will only be preserved on the first element of the resolved range.</li>
             <li>When other attributes are specified, they will only apply to referenced elements of
@@ -62,8 +57,8 @@ of a range do not have to match the referencing element.</li>
                 <xmlelement>ol</xmlelement>), locally specified attributes apply only to the
                 <xmlelement>ol</xmlelement> elements in that range.</li>
           </ul></li>
-</ul></section>
-<example id="example-reuse-li" otherprops="examples">
+      </ul></section>
+    <example id="example-reuse-li" otherprops="examples">
       <title>Example: reusing a set of list items</title>
       <fig>
         <title>List example: Source <filepath>topic.dita</filepath> with ids</title>
@@ -112,7 +107,7 @@ of a range do not have to match the referencing element.</li>
 </codeblock>
       </fig>
     </example>
-<example id="example-reuse-blocks" otherprops="examples">
+    <example id="example-reuse-blocks" otherprops="examples">
       <title>Example: Reusing a set of blocks</title>
       <fig id="fig_7BB281DFE28F474BB9197BAE691B927C">
         <title>Block level example: Source <filepath>topic.dita</filepath> with ids</title>
@@ -164,10 +159,10 @@ of a range do not have to match the referencing element.</li>
       <title>Using <xmlatt>conrefend</xmlatt> together with <xmlatt>conkeyref</xmlatt></title>
       <p>When the <xmlatt>conkeyref</xmlatt> attribute is used in place of <xmlatt>conref</xmlatt>,
         a key is used to address the target of the reference. The <xmlatt>conrefend</xmlatt>
-        attribute, which indicates the end of a <xmlatt>conref</xmlatt> range, <ph
-          >cannot</ph> use a key. Instead the the map or topic element
-        addressed by the key name component of the <xmlatt>conkeyref</xmlatt> is used in place of
-        whatever map or topic element is addressed by the <xmlatt>conrefend</xmlatt> attribute.</p>
+        attribute, which indicates the end of a <xmlatt>conref</xmlatt> range, <ph>cannot</ph> use a
+        key. Instead the the map or topic element addressed by the key name component of the
+          <xmlatt>conkeyref</xmlatt> is used in place of whatever map or topic element is addressed
+        by the <xmlatt>conrefend</xmlatt> attribute.</p>
       <p>For example, if the value of the <xmlatt>conkeyref</xmlatt> attribute is "config/step1" and
         the value of the <xmlatt>conrefend</xmlatt> is
           <codeph>defaultconfig.dita#config/laststep</codeph>, the conref range will end with the
@@ -235,7 +230,7 @@ examples.dita:
         </ul>
       </fig>
     </example>
-<section id="error-conditions">
+    <section id="error-conditions">
       <title>Error conditions</title>
       <p>When encountering an error condition, an implementation can issue an error message.</p>
       <table>
@@ -251,14 +246,14 @@ examples.dita:
           <tbody>
             <row>
               <entry colname="col1">The <xmlatt>conref</xmlatt> attribute cannot be resolved in the
-                target document (the target element <ph >might</ph> have been
-                removed or its id has changed). </entry>
+                target document (the target element <ph>might</ph> have been removed or its id has
+                changed). </entry>
               <entry colname="col2">The <xmlatt>conref</xmlatt> is ignored.</entry>
             </row>
             <row>
               <entry colname="col1">The <xmlatt>conrefend</xmlatt> attribute cannot be resolved in
-                the target document (the target element <ph >might</ph> have
-                been removed or its id has changed).</entry>
+                the target document (the target element <ph>might</ph> have been removed or its id
+                has changed).</entry>
               <entry colname="col2">Range cannot be resolved, optional recovery processes the result
                 as a simple conref.</entry>
             </row>
@@ -283,5 +278,5 @@ examples.dita:
         </tgroup>
       </table>
     </section>
-</refbody>
+  </refbody>
 </reference>

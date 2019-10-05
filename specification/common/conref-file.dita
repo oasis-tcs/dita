@@ -16,14 +16,9 @@
               <xmlelement>concept</xmlelement>, <xmlelement>task</xmlelement>, or
               <xmlelement>reference</xmlelement></ph></ph></p>
                         <p><ph id="maps-shortdesc">DITA maps are documents that organize topics and
-                                        other resources into structured collections of information.
-                                        DITA maps specify hierarchy and the relationships among the
-                                        topics; they also provide the <ph
-                                                >contexts</ph> in which
-                                        keys are defined and resolved. DITA maps <term
-                                                outputclass="RFC-2119" 
-                                                >SHOULD</term> have <filepath>.ditamap</filepath> as
-                                        the file extension.</ph></p>
+          other resources into structured collections of information. DITA maps specify hierarchy
+          and the relationships among the topics; they also provide the <ph>contexts</ph> in which
+          keys are defined and resolved.</ph></p>
                         <p><ph id="information-typing-shortdesc">Information typing is the practice
                                         of identifying types of topics, such as concept, reference,
                                         and task, to clearly distinguish between different types of
@@ -96,29 +91,28 @@
                 </section>
                 <section id="section-3">
                         <title>Code blocks</title>
-                        <codeblock id="concept-codeblock">&lt;concept id="concept"&gt;
- &lt;title&gt;Introduction to Bird Calling&lt;/title&gt;
- &lt;shortdesc&gt;If you wish to attract more birds to your Acme Bird Feeder,
+                        <codeblock id="concept-codeblock">&lt;topic id="concept"&gt;
+ &lt;title&gt;Introduction to bird calling&lt;/title&gt;
+ &lt;shortdesc&gt;If you want to attract more birds to your Acme Bird Feeder,
 learn the art of bird calling. Bird calling is an efficient way
 to alert more birds to the presence of your bird feeder.&lt;/shortdesc&gt;
- &lt;conbody&gt;
+ &lt;body&gt;
    &lt;p&gt;Bird calling requires learning:&lt;/p&gt;
    &lt;ul&gt;
     &lt;li&gt;Popular and classical bird songs&lt;/li&gt;
     &lt;li&gt;How to whistle like a bird&lt;/li&gt;
    &lt;/ul&gt;
- &lt;/conbody&gt;
-&lt;/concept&gt;</codeblock>
+ &lt;/body&gt;
+&lt;/topic&gt;</codeblock>
                 </section>
                 <section id="section-4">
                         <title>Lists</title>
                         <ul id="cascading-attributes">
-                                <li><xmlatt>audience</xmlatt>, <xmlatt>platform</xmlatt>,
-                                                <xmlatt>product</xmlatt>,
-                                                <xmlatt>otherprops</xmlatt>,
-                                        <xmlatt>rev</xmlatt></li>
-                                <li><xmlatt>props</xmlatt> and any attribute specialized from
-                                                <xmlatt>props</xmlatt></li>
+<li><xmlatt>rev</xmlatt></li>
+<li><ph id="propsAndSpecializations"><xmlatt>props</xmlatt> and any attribute specialized from
+<xmlatt>props</xmlatt> (including those integrated by default in OASIS shells:
+<xmlatt>audience</xmlatt>, <xmlatt>deliveryTarget</xmlatt>, <xmlatt>platform</xmlatt>,
+<xmlatt>product</xmlatt>, <xmlatt>otherprops</xmlatt>)</ph></li>
                                 <li><xmlatt>linking</xmlatt>, <xmlatt>toc</xmlatt>,
             <xmlatt>search</xmlatt></li>
                                 <li><xmlatt>format</xmlatt>, <xmlatt>scope</xmlatt>,
@@ -131,12 +125,14 @@ to alert more birds to the presence of your bird feeder.&lt;/shortdesc&gt;
                         <dl>
                                 <dlentry  id="deliveryTarget">
                                         <dt><xmlatt>deliveryTarget</xmlatt></dt>
-                                        <dd>The intended delivery target of the content, for example
-            "html", "pdf", or "epub".<p>The <xmlatt>deliveryTarget</xmlatt> attribute is specialized
-              from the <xmlatt>props</xmlatt> attribute. It is defined in the
-              deliveryTargetAttDomain, which is integrated into all OASIS-provided document-type
-              shells. If this domain is not integrated into a given document-type shell, the
-                <xmlatt>deliveryTarget</xmlatt> attribute will not be available.</p></dd>
+                                        <dd><ph id="deliveryTarget-simpleDefinition">The intended
+              delivery target of the content, for example, <keyword>html</keyword>,
+                <keyword>pdf</keyword>, or <keyword>epub</keyword>.</ph><p>The
+                <xmlatt>deliveryTarget</xmlatt> attribute is specialized from the
+                <xmlatt>props</xmlatt> attribute. It is defined in the deliveryTargetAttDomain,
+              which is integrated into all OASIS-provided document-type shells. If this domain is
+              not integrated into a given document-type shell, the <xmlatt>deliveryTarget</xmlatt>
+              attribute will not be available.</p></dd>
                                 </dlentry>
                         </dl>
                         <dl id="cascade-values">
@@ -159,47 +155,48 @@ to alert more birds to the presence of your bird feeder.&lt;/shortdesc&gt;
                                 </dlentry>
                         </dl>
                 </section>
+<section id="definitions">
+<title>Reused definitions</title>
+<ul id="ul_mtt_k4g_thb">
+<li><ph id="definitionChunkCombine">The <keyword>combine</keyword> token in <xmlatt>chunk</xmlatt>
+            is intended for cases where a publishing process normally results in a single output
+            artifact for each source XML document. When some or all of those source XML documents
+            are better presented as a single output artifact, setting
+              <codeph>chunk="combine"</codeph> instructs a processor to combine the referenced
+            source documents for rendering purposes.</ph></li>
+<li><ph id="definitionChunkSplit">The <keyword>split</keyword> token in <xmlatt>chunk</xmlatt> is
+            intended for cases where a publishing process normally results in a single output
+            artifact for each single source XML document, regardless of how many DITA topics exist
+            within each source document. When a source XML document containing many topics is better
+            rendered as multiple output artifacts, setting <codeph>chunk="split"</codeph> instructs
+            a processor to split each topic from the referenced source document into its own
+            document for rendering purposes.</ph></li>
+</ul>
+</section>
 
                 <section id="section-5">
                         <title>Notes</title>
-                        <note id="deprecated_navtitle_attribute">The <xmlatt>navtitle</xmlatt>
-                                attribute is deprecated in favor of the
-                                        <xmlelement>navtitle</xmlelement> element. When both a
-                                        <xmlelement>navtitle</xmlelement> element and a
-                                        <xmlatt>navtitle</xmlatt> attribute are specified, the
-                                        <xmlelement>navtitle</xmlelement> element should be used. </note>
-                        <note  id="deprecated-print-attribute"
-                                >Beginning with DITA 1.3, the <xmlatt>print</xmlatt> attribute is
-                                deprecated. It is replaced with a conditional processing attribute:
-                                        <xmlatt>deliveryTarget</xmlatt>. See <xref
-                                        keyref="attributes-metadata/deliveryTarget"
-                                                ><xmlatt>deliveryTarget</xmlatt></xref> for more
-                                details.</note>
+      <note id="deprecated-print-attribute">Beginning with DITA 1.3, the <xmlatt>print</xmlatt>
+        attribute is deprecated. It is replaced with a conditional processing attribute:
+          <xmlatt>deliveryTarget</xmlatt>. See <xref keyref="attributes-metadata/deliveryTarget"
+            ><xmlatt>deliveryTarget</xmlatt></xref> for more details.</note>
                         <note id="mapref-with-child-elements">If a <xmlelement>topicref</xmlelement>
                                 element that references a map contains child
                                         <xmlelement>topicref</xmlelement> elements, the processing
                                 behavior regarding the child <xmlelement>topicref</xmlelement>
                                 elements is undefined.</note>
-      <note id="learning1learning2" >DITA 1.3 defines two new domains for describing
-        learning and training interactions: learningInteractionBase2Domain and learning2Domain.
-        These two new domains mirror the DITA 1.2 learningInteractionBase and general learning
-        domains, but the new versions provide support for multi-paragraph questions, answers, and
-        feedback. The new domains are otherwise semantically identical to the original domains. For
-        backwards compatibility, both interactions domains are supported in DITA 1.3. For new
-        content, use the DITA 1.3 learning2Domain elements.</note>
+      <!--<note id="learning1learning2">DITA 1.3 defines two new domains for describing learning and training interactions: learningInteractionBase2Domain and learning2Domain. These two new domains mirror the DITA 1.2 learningInteractionBase and general learning domains, but the new versions provide support for multi-paragraph questions, answers, and feedback. The new domains are otherwise semantically identical to the original domains. For backwards compatibility, both interactions domains are supported in DITA 1.3. For new content, use the DITA 1.3 learning2Domain elements.</note>-->
                 </section>
 
                 <section id="section-6">
                         <title>Paragraphs</title>
                         <p id="attribute-implementation-tokens">Implementers <term
-                                        outputclass="RFC-2119">MAY</term> define
-                                their own custom, implementation-specific tokens. To avoid name
-                                conflicts between implementations or with future additions to the
-                                standard, implementation-specific tokens <term
-                                        outputclass="RFC-2119">SHOULD</term>
-                                consist of a prefix that gives the name or an abbreviation for the
-                                implementation followed by a colon followed by the token or method
-                                name.</p>
+          outputclass="RFC-2119">MAY</term> define their own custom, implementation-specific tokens
+        for the <xmlatt>merge</xmlatt> attribute. To avoid name conflicts between implementations or
+        with future additions to the standard, implementation-specific tokens <term
+          outputclass="RFC-2119">SHOULD</term> consist of a prefix that gives the name or an
+        abbreviation for the implementation followed by a colon followed by the token or method
+        name.</p>
                         <p id="export-anchors-disclaimer">Many publishing systems for which DITA is
         used as a source format do not have a way to dynamically resolve content references; those
         systems will not see any benefit from this element. When DITA is used for those systems,
@@ -228,11 +225,10 @@ to alert more birds to the presence of your bird feeder.&lt;/shortdesc&gt;
         example, <codeph>2007-04-05T12:30-02:00</codeph>) or just a date (for example,
           <codeph>2014-03-04</codeph>).</p>
                         <p id="pgwide-explain">In DITA tables, in place of the
-                                        <xmlatt>expanse</xmlatt> attribute used by other DITA
-                                elements, the <xmlatt>pgwide</xmlatt> attribute is used in order to
-                                conform to the OASIS Exchange Table Model. The
-                                        <xmlatt>pgwide</xmlatt> attribute has a similar semantic
-                                (1=page width; 0=resize to galley or column). </p>
+          <xmlatt>expanse</xmlatt> attribute used by other DITA elements, the
+          <xmlatt>pgwide</xmlatt> attribute is used in order to conform to the OASIS Exchange Table
+        Model. The <xmlatt>pgwide</xmlatt> attribute has a similar semantic
+        (<keyword>1</keyword>=page width; <keyword>0</keyword>=resize to galley or column). </p>
       <p id="sort-as-1">When a <xmlelement>sort-as</xmlelement> element is specified, processors
         that sort the containing element <term outputclass="RFC-2119">MUST</term>
         construct the effective sort phrase by prepending the content of the
@@ -323,7 +319,7 @@ to alert more birds to the presence of your bird feeder.&lt;/shortdesc&gt;
           constraints module and characterizes it, for example, "strict" or "requiredTitle" or
           "myCompany-".</li>
         <li id="Tagname-li"><varname>Tagname</varname> is the element type name with an initial
-          capital, for example, "Taskbody"<ph > or "Topic"</ph>.</li>
+          capital, for example, "Taskbody" or "Topic".</li>
         <li id="literal-c-li">The literal "-c" indicates that the name is the name of a
           constraint.</li>
       </ul>

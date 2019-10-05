@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="examplecombinenest" xml:lang="en">
+<title>Example: Using <xmlatt>chunk</xmlatt> to combine nested documents</title>
+<shortdesc>Special attention is necessary when combining a nested map hierarchy that includes
+documents with their own nested topics.</shortdesc>
+<conbody>
+<p>Consider the following source map <filepath>input.ditamap</filepath>:</p>
+<fig>
+      <title>Input map without chunking</title>
+      <codeblock>input.ditamap:
+&lt;map chunk="combine">
+  &lt;title>Generation example&lt;/title>
+  &lt;topicref href="ancestor.dita">
+    &lt;topicref href="middle.dita">
+      &lt;topicref href="child.dita"/>
+    &lt;/topicref>
+  &lt;/topicref>
+&lt;/map>
+</codeblock>
+    </fig>
+<p>In this case, the <xmlatt>chunk</xmlatt> attribute instructs a processor to treat the three
+topics as a single combined DITA document, while preserving the original map hierarchy. Now consider
+the following three topic documents, each of which includes nested or peer topics:</p>
+<fig>
+      <title>Source documents with nested structures</title>
+      <codeblock>ancestor.dita:
+&lt;dita>
+  &lt;topic id="ancestor-first">
+    &lt;title>First major topic in ancestor composite doc&lt;/title>
+    &lt;!-- ...topic content... -->
+  &lt;/topic>
+  &lt;!-- more topics in ancestor composite doc -->
+  &lt;topic id="ancestor-last">
+    &lt;title>Last major topic in ancestor composite doc&lt;/title>
+    &lt;!-- ...topic content... -->
+    &lt;topic id="ancestor-last-child">
+      &lt;title>Child of last major topic in ancestor composite doc&lt;/title>
+      &lt;!-- ...topic content... -->
+    &lt;/topic>
+  &lt;/topic>
+&lt;/dita>
+
+middle.dita:
+&lt;topic id="middle-root">
+  &lt;title>Root topic in middle doc&lt;/title>
+  &lt;body>&lt;!-- ... -->&lt;/body>
+  &lt;topic id="middle-child">
+    &lt;title>Child of root topic in middle doc&lt;/title>
+    &lt;!-- body content, maybe more children of middle topic's root -->
+  &lt;/topic>
+&lt;/topic>
+
+child.dita:
+&lt;topic id="child">
+  &lt;title>Small child topic&lt;/title>
+  &lt;!-- small child topic content -->
+&lt;/topic></codeblock>
+    </fig>
+<p>When <codeph>chunk="combine"</codeph> is evaluated, the three source documents are combined into
+      one. Both the ancestor and middle documents have child topics that need to be taken into
+      account.</p>
+<ul id="ul_l3y_wng_thb">
+<li><filepath>ancestor.dita</filepath> has a root <xmlelement>dita</xmlelement> element, so content
+from each nested topic reference is located after any nested topics within the final child of the
+<xmlelement>dita</xmlelement> element.</li>
+<li><filepath>middle.dita</filepath> does not have <xmlelement>dita</xmlelement> but does have a
+nested topic, so content from any nested topic references is located after that nested topic.</li>
+</ul>
+<fig>
+      <title>Equivalent source content </title>
+      <codeblock>input.ditamap:
+&lt;map>
+  &lt;title>Generation example&lt;/title>
+  &lt;topicref href="input.dita"/>
+&lt;/map>
+
+input.dita:
+&lt;dita>
+  &lt;topic id="ancestor-first">
+    &lt;title>First major topic in ancestor composite doc&lt;/title>
+    &lt;!-- ...topic content... -->
+  &lt;/topic>
+  &lt;!-- more topics in ancestor composite doc -->
+  &lt;topic id="ancestor-last">
+    &lt;title>Last major topic in ancestor composite doc&lt;/title>
+    &lt;!-- ...topic content... -->
+    &lt;topic id="ancestor-last-child">
+      &lt;title>Child of last major topic in ancestor composite doc&lt;/title>
+      &lt;!-- ...topic content... -->
+    &lt;/topic>
+    <b>&lt;!-- content of middle.dita combined here --></b>
+    &lt;topic id="middle-root">
+      &lt;title>Root topic in middle doc&lt;/title>
+      &lt;body>&lt;!-- ... -->&lt;/body>
+      &lt;topic id="middle-child">
+        &lt;title>Child of root topic in middle doc&lt;/title>
+        &lt;!-- body content, maybe more children of middle topic's root -->
+      &lt;/topic>
+      <b>&lt;!-- content of child.dita combined here --></b>
+      &lt;topic id="child">
+        &lt;title>Small child topic&lt;/title>
+        &lt;!-- small child topic content -->
+      &lt;/topic>
+    &lt;/topic>
+  &lt;/topic>
+&lt;/dita></codeblock>
+    </fig>
+</conbody>
+</concept>

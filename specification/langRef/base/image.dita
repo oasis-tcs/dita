@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="image" xml:lang="en-us">
 <title><xmlelement>image</xmlelement></title>
-<shortdesc>Use the <xmlelement>image</xmlelement> element to include artwork or images in a DITA
-    topic.</shortdesc>
+  <shortdesc conkeyref="reuse-image/shortdesc"/>
   <prolog>
     <metadata>
       <keywords>
@@ -14,72 +12,11 @@
 </keywords>
 </metadata></prolog>
 <refbody>
-    <section id="usage-information">
-      <title>Usage information</title>
-      <p>The <xmlelement>image</xmlelement> element has an optional <xmlatt>placement</xmlatt>
-        attribute that indicates whether the included graphic or artwork is rendered inline (a
-        button or icon) or on a separate line for a larger image. There also are attributes that
-        indicate the size to which the included graphic or artwork is scaled.</p>
-      <p>To make the intent of the image more accessible for users using screen readers or text-only
-        readers, authors should include a description of the image content in the
-          <xmlelement>alt</xmlelement> element.</p>
-    </section>
-    <section id="processing-expectations">
-      <title>Processing expectations</title>
-      <p>An image element specifies an <xmlatt>href</xmlatt> attribute, a <xmlatt>keyref</xmlatt>
-        attribute, or both. When both <xmlatt>keyref</xmlatt> and <xmlatt>href</xmlatt> are
-        specified, the <xmlatt>href</xmlatt> is used as a fallback when the key reference cannot be
-        resolved. The image addressed by the <xmlatt>keyref</xmlatt> or <xmlatt>href</xmlatt> is
-        brought into the main flow of the content as rendered. </p>
-    </section>
-    <section id="attributes">
-      <title>Attributes</title>
-      <p>The following attributes are available on this element: <xref
-          keyref="attributes-universal"/>, <xref
-          keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>, and the
-        attributes defined below.</p>
-      <dl>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-href">
-          <dt/>
-          <dd/>
-        </dlentry>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-scope">
-          <dt/>
-          <dd/>
-        </dlentry>
-<dlentry id="format" rev="errata-02">
-<dt><xmlatt>format</xmlatt></dt>
-<dd><!--TODO: In 2.0 make this common with version in link attribute group.-->The
-<xmlatt>format</xmlatt> attribute identifies the format of the resource being referenced. See <xref
-keyref="attributes-format"/> for details on supported values.</dd>
-</dlentry>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-height">
-          <dt/>
-          <dd/>
-        </dlentry>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-width">
-          <dt/>
-          <dd/>
-        </dlentry>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-align">
-          <dt/>
-          <dd/>
-        </dlentry>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-scale">
-          <dt/>
-          <dd/>
-        </dlentry>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-scalefit">
-          <dt/>
-          <dd/>
-        </dlentry>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-placement">
-          <dt/>
-          <dd/>
-        </dlentry>
-      </dl>
-    </section>
-<example id="example" otherprops="examples"><title>Example</title><codeblock>&lt;image href="bike.gif" placement="break"&gt;
+    <section conkeyref="reuse-image/rendering-expectations"><title/><p/></section>
+    <section conkeyref="reuse-image/attributes"/>
+<example id="example" otherprops="examples"><title>Example</title>
+      <p>The following code sample shows how an image is referenced.  The <xmlatt>placement</xmlatt>
+        attribute is set to "break"; this ensures that the image is not rendered inline.</p><codeblock>&lt;image href="bike.gif" placement="break"&gt;
   &lt;alt&gt;Two-wheeled bicycle&lt;/alt&gt;
 &lt;/image&gt;</codeblock></example>
 </refbody>

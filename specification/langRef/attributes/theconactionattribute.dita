@@ -8,6 +8,13 @@
     is pushed from the current topic into another, rather than pulled from another topic into the
     current one. Allowable values for <xmlatt>conaction</xmlatt> are: pushafter, pushbefore,
     pushreplace, mark, and -dita-use-conref-target.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>attributes, complex<indexterm><xmlatt>conaction</xmlatt></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
 <refbody>
 <section id="section-1"><note>In the descriptions below, the word <i>target</i> always refers to the element referenced by a
           <xmlatt>conref</xmlatt> attribute.</note><p>There are three possible functions using the <xmlatt>conaction</xmlatt> attribute: replacing an
@@ -19,13 +26,13 @@
         target, then it should be generalized when the <xmlatt>conref</xmlatt> is resolved. This
         ensures that the content will be valid in the target topic.</p><ul>
 <li>It is valid to push using <xmlatt>conref</xmlatt> when the two elements involved are of the same
-          type. For example, a <xmlelement>step</xmlelement> element <ph 
-            >can</ph> use the conref push feature with another <xmlelement>step</xmlelement> as the
-          target of the <xmlatt>conref</xmlatt>.</li>
-<li>The target element <ph >can</ph> be more general than the source. For
-          example, it is legal to push a <xmlelement>step</xmlelement> element to replace a general
-          list item (<xmlelement>li</xmlelement>); the <xmlelement>step</xmlelement> element should
-          be generalized back to a list item during the process.</li>
+          type. For example, a <xmlelement>step</xmlelement> element can use the conref push feature
+          with another <xmlelement>step</xmlelement> as the target of the
+          <xmlatt>conref</xmlatt>.</li>
+<li>The target element can be more general than the source. For example, it is legal to push a
+            <xmlelement>step</xmlelement> element to replace a general list item
+            (<xmlelement>li</xmlelement>); the <xmlelement>step</xmlelement> element should be
+          generalized back to a list item during the process.</li>
 <li>It is not possible to push a more general element into a specialized context. For example, it is
           not legal to push a list item (<xmlelement>li</xmlelement>) in order to replace a
             <xmlelement>step</xmlelement>, because the list item allows many items that are not
@@ -179,12 +186,11 @@
       <!--The following were added in response to spec comment
 asking how conkeyref and conrefend interact with conaction; the situation
 was not addressed in the original proposal.-->
-      <p>The <xmlatt>conkeyref</xmlatt> attribute <ph >can</ph> be used as an
-        indirect way to specify a <xmlatt>conref</xmlatt> target. If the <xmlatt>conkeyref</xmlatt>
-        attribute is specified on an element that also uses the <xmlatt>conaction</xmlatt>
-        attribute, the <xmlatt>conkeyref</xmlatt> attribute is used to determine the target of the
-        conref push (as it would normally be used to determine the target of
-        <xmlatt>conref</xmlatt>).</p>
+      <p>The <xmlatt>conkeyref</xmlatt> attribute can be used as an indirect way to specify a
+          <xmlatt>conref</xmlatt> target. If the <xmlatt>conkeyref</xmlatt> attribute is specified
+        on an element that also uses the <xmlatt>conaction</xmlatt> attribute, the
+          <xmlatt>conkeyref</xmlatt> attribute is used to determine the target of the conref push
+        (as it would normally be used to determine the target of <xmlatt>conref</xmlatt>).</p>
       <p>The conref push function does not provide the ability to push a range of elements, so it is
         an error to specify the <xmlatt>conrefend</xmlatt> attribute together with the
           <xmlatt>conaction</xmlatt> attribute. If the two are specified together an application can

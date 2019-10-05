@@ -4,16 +4,16 @@
   <title><xmlelement>sort-as</xmlelement></title>
   <shortdesc>For elements that are sorted, the <xmlelement>sort-as</xmlelement> element provides
     text that is combined with the base sort phrase to construct the effective sort phrase. The text
-    can be specified in the content of the <xmlelement>sort-as</xmlelement> element or in the
-      <xmlatt>value</xmlatt> attribute on the <xmlelement>sort-as</xmlelement> element. The
-      <xmlelement>sort-as</xmlelement> element is useful for elements where the base sort phrase is
-    inadequate or non-existent, for example, a glossary entry for a Japanese Kanji
+    can be specified in the content of the <xmlelement>sort-as</xmlelement> element or in the value
+    attribute on the <xmlelement>sort-as</xmlelement> element. The <xmlelement>sort-as
+      element</xmlelement> element also is useful for elements where the base sort phrase is
+    inadequate or non-existent, for example, a glossary or index entry for a Japanese Kanji
     phrase.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
-        <indexterm>sort-as</indexterm>
-        <indexterm>utilities domain<indexterm>sort-as</indexterm></indexterm>
+        <indexterm>utilities
+          domain<indexterm><xmlelement>sort-as</xmlelement></indexterm></indexterm>
       </keywords>
     </metadata>
   </prolog>
@@ -28,27 +28,32 @@
         as a navigation link, the link aspect of the <xmlatt>keyref</xmlatt> attribute is
         ignored.</p>
       <p>Some elements in the base DITA vocabulary are natural candidates for sorting, including
-        topics, definition list entries, and rows in tables and simple tables. Authors are likely to
-        include <xmlelement>sort-as</xmlelement> elements in the following locations:</p>
-      <ul id="ul_ush_jnn_zj">
+        topics, definition list entries, index entries, and rows in tables and simple tables.
+        Authors are likely to include <xmlelement>sort-as</xmlelement> elements in the following
+        locations:</p>
+      <ul>
         <li>For topics, the <xmlelement>sort-as</xmlelement> element can be included directly in
             <xmlelement>title</xmlelement>, <xmlelement>searchtitle</xmlelement>, or
             <xmlelement>navtitle</xmlelement> when the different forms of title need different
           effective sort phrases. If the effective sort phrase is common to all the titles for a
           topic, the <xmlelement>sort-as</xmlelement> element can be included as a direct child of
-          the topic prolog anywhere <xmlelement>data</xmlelement> is allowed. </li>
+          the <xmlelement>prolog</xmlelement> element in the topic. </li>
         <li>For glossary entry topics, the <xmlelement>sort-as</xmlelement> element can be included
-          directly in <xmlelement>glossterm</xmlelement> or as a direct child of
-            <xmlelement>prolog</xmlelement>.</li>
+          directly in <xmlelement>glossterm</xmlelement> or as a direct child of the
+            <xmlelement>prolog</xmlelement> element.</li>
         <li>For topic references, the <xmlelement>sort-as</xmlelement> element can be included
           directly in the <xmlelement>navtitle</xmlelement> or <xmlelement>title</xmlelement>
           element within <xmlelement>topicmeta</xmlelement> or as a child of
             <xmlelement>topicmeta</xmlelement>.</li>
-        <li>For definition list items, include the <xmlelement>sort-as</xmlelement> element in the
-            <xmlelement>dt</xmlelement> element.</li>
+        <li>For definition list items, the <xmlelement>sort-as</xmlelement> element can be included
+          in the <xmlelement>dt</xmlelement> element.</li>
+        <li>For index entries, the <xmlelement>sort-as</xmlelement> can be included as a child of
+            <xmlelement>indexterm</xmlelement>. In a multilevel <indexterm>indexterm</indexterm>
+          element, the <xmlelement>sort-as</xmlelement> element only affects the level in which it
+          occurs.</li>
       </ul>
     </section>
-    <section id="section_rfp_2ty_1bb">
+    <section id="processing-expectations">
       <title>Processing expectations</title>
       <p>As a specialization of <xmlelement>data</xmlelement>, the <xmlelement>sort-as</xmlelement>
         element is allowed in any context where <xmlelement>data</xmlelement> is allowed. However,
@@ -59,29 +64,31 @@
         sorting.</p>
       <p>Processors <term outputclass="RFC-2119">SHOULD</term> expect to encounter
           <xmlelement>sort-as</xmlelement> elements in the above locations. Processors that sort
-          <term outputclass="RFC-2119">SHOULD</term> use the following precedence rules:</p>
-      <ul id="ul_zxs_mty_1bb">
-        <li>A <xmlelement>sort-as</xmlelement> element that is specified in a title takes precedence
-          over a <xmlelement>sort-as</xmlelement> element that is specified as a child of the topic
-          prolog.</li>
-        <li>Except for instances in the topic prolog, processors only apply
-            <xmlelement>sort-as</xmlelement> elements that are either a direct child of the element
-          to be sorted or a direct child of the title- or label-defining element of the element to
-          be sorted.</li>
-        <li>When an element contains multiple, direct-child, <xmlelement>sort-as</xmlelement>
-          elements, the first direct-child <xmlelement>sort-as</xmlelement> element in document
-          order takes precedence.
-          <!--Within topic prologs, the first direct-child <xmlelement>sort-as</xmlelement> element in document order takes precedence.--></li>
-        <li><ph conref="../../common/conref-file.dita#reuse_file/index-sort-as"
-            id="index-sort-as-error"/></li>
-        <li>Sort phrases are determined after filtering and content reference resolution occur.</li>
-      </ul>
+          <term outputclass="RFC-2119">SHOULD</term> use the following precedence rules:<ul>
+          <li>A <xmlelement>sort-as</xmlelement> element that is specified in a title takes
+            precedence over a <xmlelement>sort-as</xmlelement> element that is specified as a child
+            of the topic prolog.</li>
+          <li>Except for instances in the topic prolog, processors only apply
+              <xmlelement>sort-as</xmlelement> elements that are either a direct child of the
+            element to be sorted or a direct child of the title- or label-defining element of the
+            element to be sorted.</li>
+          <li>When an element contains multiple, direct-child, <xmlelement>sort-as</xmlelement>
+            elements, the first direct-child <xmlelement>sort-as</xmlelement> element in document
+            order takes precedence.
+            <!--Within topic prologs, the first direct-child <xmlelement>sort-as</xmlelement> element in document order takes precedence.--></li>
+          <li>It is an error if there is more than one <xmlelement>sort-as</xmlelement> child for a
+            given <xmlelement>indexterm</xmlelement>. An implementation might give an error
+            message.</li>
+          <li>Sort phrases are determined after filtering and content reference resolution
+            occur.</li>
+        </ul></p>
       <p conref="../../common/conref-file.dita#reuse_file/sort-as-1"/>
       <p conref="../../common/conref-file.dita#reuse_file/sort-as-2"/>
     </section>
-    <section id="inheritance" otherprops="inheritance">
+    <section id="specialization-hierachy">
       <title>Specialization hierarchy</title>
-      <p>+ topic/data ut-d/sort-as </p>
+      <p>The <xmlelement>sort-as</xmlelement> element is specialized from
+          <xmlelement>data</xmlelement>. It in defined in the utilities-domain module.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>

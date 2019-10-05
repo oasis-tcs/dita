@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!--                    HEADER                                     -->
+<!-- ============================================================= -->
+<!-- Darwin Information Typing Architecture (DITA) Version 1.3 Plus Errata 02     -->
+<!-- OASIS Standard                                           -->
+<!-- 16 January 2018                                           -->
+<!-- Copyright (c) OASIS Open 2018. All rights reserved.           -->
+<!-- Source: http://docs.oasis-open.org/dita/dita/v1.3/errata02/csprd01/complete/part0-overview/dita-v1.3-errata02-csprd01-part0-overview-complete.html                                -->
+<!--                                                               -->
+<!-- ============================================================= -->
+<!--  MODULE:    DITA Subject Scheme Map                           -->
+<!--  VERSION:   2.0                                               -->
+<!--  DATE:      August 2019                                       -->
+<!--                                                               -->
+<!-- ============================================================= -->
+<!-- ============================================================= -->
+<!--                    PUBLIC DOCUMENT TYPE DEFINITION            -->
+<!--                        TYPICAL INVOCATION                     -->
+<!--                                                               -->
+<!-- Refer to this file by the following public identifier or an   -->
+<!--      appropriate system identifier:                           -->
+<!--                                                               -->
+<!-- PUBLIC "-//OASIS//DTD DITA Subject Scheme Map//EN"            -->
+<!-- The public ID above refers to the latest version of this DTD. -->
+<!--      To refer to this specific version, you may use this value: -->
+<!--                                                               -->
+<!-- PUBLIC "-//OASIS//DTD DITA 2.0 Subject Scheme Map//EN"             -->
+<!-- ============================================================= -->
+<!-- SYSTEM:     Darwin Information Typing Architecture (DITA)     -->
+<!--                                                               -->
+<!-- PURPOSE:    DTD to describe DITA Subject Scheme maps          -->
+<!--                                                               -->
+<!-- ORIGINAL CREATION DATE:                                       -->
+<!--             February 2008                                     -->
+<!--                                                               -->
+<!--             (C) Copyright OASIS Open 2008, 2019.              -->
+<!--             (C) Copyright IBM Corporation 2005, 2007.         -->
+<!--             All Rights Reserved.                              -->
+<!--                                                               -->
+<!--  UPDATES:                                                     -->
+<!--    2008.02.13 RDA: Created file based upon prototype from IBM -->
+<!--    2010.09.21 RDA: Added base topic domains                   -->
+<!--    2014.03.13 WEK: Updated for DITA 1.3, reimplemented as RNG -->
+<!--    2019.08.28 KJE: Changed specialization base of imagemap    -->
+<!--                                                               -->
+<!-- ============================================================= -->
+<!--                                                               -->
+
+<!-- ============================================================= -->
+<!--                MAP ENTITY DECLARATIONS                        -->
+<!-- ============================================================= -->
+
+<!ENTITY % subjectScheme-dec
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Subject Scheme Map//EN"
+         "subjectScheme.ent"
+>%subjectScheme-dec;
+
+<!-- ============================================================= -->
+<!--             DOMAIN ENTITY DECLARATIONS                        -->
+<!-- ============================================================= -->
+
+<!ENTITY % mapgroup-d-dec
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Map Group Domain//EN"
+         "../base/mapGroup.ent"
+>%mapgroup-d-dec;
+
+<!ENTITY % hazard-d-dec
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Hazard Statement Domain//EN"
+         "../base/hazardstatementDomain.ent"
+>%hazard-d-dec;
+
+<!ENTITY % hi-d-dec
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Highlight Domain//EN"
+         "../base/highlightDomain.ent"
+>%hi-d-dec;
+
+<!ENTITY % ut-d-dec
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Utilities Domain//EN"
+         "../base/utilitiesDomain.ent"
+>%ut-d-dec;
+
+<!-- ============================================================= -->
+<!--             DOMAIN ATTRIBUTES DECLARATIONS                    -->
+<!-- ============================================================= -->
+
+<!ENTITY % audienceAtt-d-dec
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Audience Attribute Domain//EN"
+         "../base/audienceAttDomain.ent"
+>%audienceAtt-d-dec;
+
+<!ENTITY % deliveryTargetAtt-d-dec
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Delivery Target Attribute Domain//EN"
+         "../base/deliveryTargetAttDomain.ent"
+>%deliveryTargetAtt-d-dec;
+
+<!ENTITY % platformAtt-d-dec
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Platform Attribute Domain//EN"
+         "../base/platformAttDomain.ent"
+>%platformAtt-d-dec;
+
+<!ENTITY % productAtt-d-dec
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Product Attribute Domain//EN"
+         "../base/productAttDomain.ent"
+>%productAtt-d-dec;
+
+<!ENTITY % otherpropsAtt-d-dec
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Otherprops Attribute Domain//EN"
+         "../base/otherpropsAttDomain.ent"
+>%otherpropsAtt-d-dec;
+
+<!-- ============================================================= -->
+<!--                    DOMAIN EXTENSIONS                          -->
+<!-- ============================================================= -->
+<!--                    One for each extended base element, with
+                        the name of the domain(s) in which the
+                        extension was declared                     -->
+
+<!ENTITY % topicref     "topicref |
+                         %mapgroup-d-topicref;
+                        ">
+<!ENTITY % note         "note |
+                         %hazard-d-note;
+                        ">
+<!ENTITY % ph           "ph |
+                         %hi-d-ph;
+                        ">
+<!ENTITY % div          "div |
+                         %ut-d-div;
+                        ">
+<!ENTITY % data         "data |
+                         %ut-d-data;
+                        ">
+
+<!-- ============================================================= -->
+<!--                    DOMAIN ATTRIBUTE EXTENSIONS                -->
+<!-- ============================================================= -->
+
+<!ENTITY % props-attribute-extensions
+  "%audienceAtt-d-attribute;
+  %deliveryTargetAtt-d-attribute;
+  %platformAtt-d-attribute;
+  %productAtt-d-attribute;
+  %otherpropsAtt-d-attribute;"
+>
+<!ENTITY % base-attribute-extensions
+  ""
+>
+
+<!-- ============================================================= -->
+<!--                    DOMAINS ATTRIBUTE OVERRIDE                 -->
+<!-- ============================================================= -->
+
+<!ENTITY included-domains
+                          "&mapgroup-d-att;
+                           &subjectScheme-att;
+                           &deliveryTargetAtt-d-att;
+                           &hazard-d-att;
+                           &hi-d-att;
+                           &ut-d-att;
+  "
+>
+
+<!-- ============================================================= -->
+<!--                    CONTENT CONSTRAINT INTEGRATION             -->
+<!-- ============================================================= -->
+
+<!-- ============================================================= -->
+<!--                      MAP ELEMENT INTEGRATION                  -->
+<!-- ============================================================= -->
+
+<!ENTITY % map-type
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
+         "../base/map.mod"
+>%map-type;
+
+<!ENTITY % subjectScheme-type
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"
+         "subjectScheme.mod"
+>%subjectScheme-type;
+
+<!-- ============================================================= -->
+<!--                    DOMAIN ELEMENT INTEGRATION                 -->
+<!-- ============================================================= -->
+
+<!ENTITY % mapgroup-d-def
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map Group Domain//EN"
+         "../base/mapGroup.mod"
+>%mapgroup-d-def;
+
+<!ENTITY % hazard-d-def
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Hazard Statement Domain//EN"
+         "../base/hazardstatementDomain.mod"
+>%hazard-d-def;
+
+<!ENTITY % hi-d-def
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Highlight Domain//EN"
+         "../base/highlightDomain.mod"
+>%hi-d-def;
+
+<!ENTITY % ut-d-def
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Utilities Domain//EN"
+         "../base/utilitiesDomain.mod"
+>%ut-d-def;
+
+<!-- ================= End of DITA Subject Scheme Map Shell ================= -->

@@ -5,6 +5,13 @@
 <title>The <xmlatt>conref</xmlatt> attribute</title>
 <shortdesc>The <xmlatt>conref</xmlatt> attribute is used to reference content that can be reused. It
     allows reuse of DITA elements, including topic or map level elements.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>attributes, complex<indexterm><xmlatt>conref</xmlatt></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
 <refbody>
 <section id="section-1"><p>The value of the <xmlatt>conref</xmlatt> attribute must be a URI reference to a DITA element. See
           <xref href="../../archSpec/base/uri-based-addressing.dita"/> for details on specifying URI
@@ -15,63 +22,6 @@
         this:<codeblock>&lt;ph conref="#topic/ph">Something&lt;/ph></codeblock> the
         word "Something" will be replaced by the content of the referenced
           <xmlelement>ph</xmlelement> element.</note></section>
-<!--RDA 20091211: Removed the following sections that explain syntax.
-The information is already explained in the architectural spec
-topic on URI based addressing.
-
-<section><title>Using conref to refer to a topic</title><indexterm
-id="att-conref-topic">conref attribute<indexterm>Reference to a topic</indexterm></indexterm><p>The
-conref attribute may be specified on a topic element to pull in another
-topic. For example, you could create a series of topics in a composite
-(ditabase) document or nested context for authoring convenience and
-then reference each topic individually into a new location. During
-output processing, the referenced topics will be used at the point
-of reference.</p><p>The conref value is a URI reference.</p><pre>Target
-elsewhere in the same DITA document: 
-  conref=&quot;#topicid&quot;
-First topic in different DITA document: 
-  conref=&quot;filename.dita&quot;
-Specific topic in different DITA document: 
-  conref=&quot;filename.dita#topicid&quot;</pre></section><section><title>Using
-conref to refer to an element within a topic</title><indexterm
-id="att-conref-element">conref attribute<indexterm>Reference to a
-topic fragment</indexterm></indexterm><p>The conref attribute also
-allows you to reuse content within a topic. For example, you could
-create a &lt;note&gt; in a topic and then reference its ID (using
-conref) from a &lt;note&gt; in another topic. This allows the content
-of the note to be used in both locations.</p><p>The value
-of conref is a URI reference that includes (or consists entirely of)
-a fragment identifier consisting a number sign (&apos;#&apos;) followed
-by the ID of the topic that contains the element that is referenced,
-a slash (″/″), and the ID of the referenced element. If the URI reference
-consists of only a fragment identifier, the referenced element must
-be in the same XML document as the reference.</p><pre>Locally referenced
-element: 
-  conref=&quot;#topicid/elementid&quot;
-In different document: 
-  conref=&quot;filename.dita#topicid/elementid&quot;</pre></section><section> 
-     <title>Using conref to refer to an element within a map</title><p><indexterm id="att-conref-topicref">conref attribute<indexterm>Reference
-to a map             fragment</indexterm></indexterm>Within a map,
-the conref attribute references an equivalent element in the same
-map or another DITA document. The value of conref is a URI reference
-that includes (or consists entirely of) a fragment identifier consisting
-of the number sign (&apos;#&apos;) followed by the ID of the referenced
-element. If the URI-reference consists of only a fragment identifier,
-the referenced element must be in the same XML document as the reference.</p><p>Note
-that if the conref attribute is used on the map element itself, the
-attribute may only reference a complete map in another DITA document.</p> 
-     <pre>Locally referenced element:
-  conref=&quot;#elementID&quot;
-In different document:
-  conref=&quot;othermap.ditamap#elementID&quot;</pre></section>-->
-<!--<section><title>Combining conref with conrefend to reuse
-a sequence of elements</title><p><indexterm id="att-conref-topicref">conrefend
-attribute</indexterm>Both the conref and conrefend attributes are
-needed to reuse a sequence of elements. The conref attribute must
-point to the first element in the sequence, while the conrefend attribute
-points to the last element in the sequence. The first and last elements
-must be peers and must be the same, although other elements may exist
-between the start and end.</p></section>-->
 </refbody>
 </reference>
 

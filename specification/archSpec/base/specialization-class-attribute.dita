@@ -12,12 +12,11 @@
     <p>The <xmlatt>class</xmlatt> attribute tells a processor what general classes of elements the
       current element belongs to. DITA scopes elements by module type (for example topic type,
       domain type, or map type) instead of document type, which lets document type developers
-      combine multiple <ph>module</ph> types in a single document without complicating
-      transformation logic.</p>
+      combine multiple module types in a single document without complicating transformation
+      logic.</p>
     <p>The sequence of values in the <xmlatt>class</xmlatt> attribute is important because it tells
-      processors which value is the most general and which is most specific.
-        <!--This is especially important for "specializing" transformations, where you can apply a general rule that says: if the element doesn't have a mapping to the target topic type, simply use the last value of the <xmlatt>class</xmlatt> attribute (and assume that the specialized topic type is reusing some general element declarations, which only have mappings for the level at which they were declared).--><ph>This
-        sequence is what enables both specialization aware processing and generalization.</ph></p>
+      processors which value is the most general and which is most specific. This sequence is what
+      enables both specialization aware processing and generalization.</p>
     <section id="syntax">
       <title>Syntax</title>
       <p>Values for the <xmlatt>class</xmlatt> attribute have the following syntax requirements:<ul>
@@ -26,7 +25,7 @@
             that are defined in domain modules.</li>
           <li>A sequence of one or more tokens of the form
                 <codeph>"<varname>modulename</varname>/<varname>typename</varname>",</codeph> with
-            each <ph rev="errata-01-public-review">token</ph> separated by one or more spaces, where
+            each token separated by one or more spaces, where
               <varname>modulename</varname> is the short name of the vocabulary module and
               <varname>typename</varname> is the element type name. Tokens are ordered left to right
             from most general to most specialized.<p>These tokens provide a mapping for every
@@ -41,7 +40,15 @@
     </section>
     <section id="rules">
       <title>Rules</title>
-      <p>When the <xmlatt>class</xmlatt> attribute is declared in an <ph>XML grammar</ph>, it <term
+      <p>The root element of every topic and map <term outputclass="RFC-2119">MUST</term> declare
+        the following attributes:<ul>
+          <li><xmlatt>class</xmlatt></li>
+          <li><xmlatt>domains</xmlatt></li>
+        </ul></p>
+      <p>Every DITA element (except the <xmlelement>dita</xmlelement> element that is used as the
+        root of a ditabase document) <term outputclass="RFC-2119">MUST</term> declare a
+          <xmlatt>class</xmlatt> attribute.</p>
+      <p>When the <xmlatt>class</xmlatt> attribute is declared in an XML grammar, it <term
           outputclass="RFC-2119">MUST</term> be declared with a default value. In order to support
         generalization round-tripping (generalizing specialized content into a generic form and then
         returning it to the specialized form) the default value <term outputclass="RFC-2119">MUST
@@ -50,10 +57,8 @@
         being generalized.</p>
       <p>A vocabulary module <term outputclass="RFC-2119">MUST NOT</term> change the
           <xmlatt>class</xmlatt> attribute for elements that it does not specialize, but simply
-        reuses by reference from more generic levels. For example, if <xmlelement>task</xmlelement>,
-          <xmlelement>bctask</xmlelement>, and <xmlelement>guitask</xmlelement> use the
-          <xmlelement>p</xmlelement> element without specializing it, they <term
-          outputclass="RFC-2119">MUST NOT</term> declare mappings for it. </p>
+        reuses by reference from more generic
+        levels.<!-- For example, if <xmlelement>task</xmlelement>, <xmlelement>bctask</xmlelement>, and <xmlelement>guitask</xmlelement> use the <xmlelement>p</xmlelement> element without specializing it, they <term outputclass="RFC-2119">MUST NOT</term> declare mappings for it. --></p>
       <p>Authors <term outputclass="RFC-2119">SHOULD NOT</term> modify the <xmlatt>class</xmlatt>
         attribute.</p>
     </section>
@@ -95,7 +100,7 @@
         list is appropriate. For example, when generalizing <xmlelement>guitask</xmlelement> to
           <xmlelement>task</xmlelement>, if a <xmlelement>p</xmlelement> element has no target value
         for <xmlelement>task</xmlelement>, we can safely assume that <xmlelement>p</xmlelement> does
-        not specialize from <xmlelement>task</xmlelement> and should not be generalized.</p>
+        not specialize from <xmlelement>task</xmlelement> and does not need to be generalized.</p>
     </example>
   </conbody>
 </concept>

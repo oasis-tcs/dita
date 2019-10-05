@@ -3,16 +3,11 @@
 <!-- For non-OASIS publishing: Ensure that you include platform="external-publishing-engine"
      and exclude platform="dita-tc-publishing". This will ensure that specification URIs and
      OASIS notices are rendered. -->
-<bookmap outputclass="specification" xml:lang="en-us">
-	<booktitle outputclass="specificationTitles">
-		<mainbooktitle outputclass="specificationTitle">Darwin Information Typing Architecture (DITA)
-			Version 2.0</mainbooktitle>
-		<booktitlealt outputclass="specificationSubtitle1"><keyword keyref="oasis-specification-level"
-			/></booktitlealt>
-		<booktitlealt outputclass="specificationApproved"><keyword keyref="oasis-approval-date"
-			/></booktitlealt>
-		<booktitlealt outputclass="specificationShorttitle">DITA Version 2.0
-			Specification</booktitlealt>
+<bookmap xml:lang="en-us">
+	<booktitle>
+		<mainbooktitle>Darwin Information Typing Architecture (DITA) Version 2.0</mainbooktitle>
+		<booktitlealt outputclass="documentStage"><keyword keyref="stage"/></booktitlealt>
+		<booktitlealt outputclass="stageDate"><keyword keyref="stage-date"/></booktitlealt>
 	</booktitle>
 	<bookmeta>
 		<shortdesc>DITA 2.0 specification</shortdesc>
@@ -27,7 +22,7 @@
 				<year>2005</year>
 			</copyrfirst>
 			<copyrlast>
-				<year>2018</year>
+				<year>2019</year>
 			</copyrlast>
 			<bookowner>
 				<organization>OASIS</organization>
@@ -35,9 +30,9 @@
 		</bookrights>
 	</bookmeta>
 	<frontmatter>
-		
 		<mapref href="dita-2.0-specification-subjectScheme.ditamap" type="subjectScheme"/>
 		<mapref href="dita-2.0-key-definitions-cover-pages.ditamap" processing-role="resource-only"/>
+		<mapref href="common/key-definitions-library-topics.ditamap" format="ditamap"/>
 		<mapref href="base-relationship-tables.ditamap"/>
 		<notices platform="dita-tc-publishing">
 			<topicref href="resources/oasis-cover.dita" linking="none" toc="no"/>
@@ -52,19 +47,28 @@
 		</booklists>
 	</frontmatter>
 	<chapter format="ditamap" href="introduction/introduction.ditamap"/>
-	<chapter href="archSpec/archSpec-base.dita">
-		<mapref href="archSpec/archSpec-base.ditamap" format="ditamap"/>
-	</chapter>
+	<chapter format="ditamap" href="terminology/dita-terminology.ditamap"/>
+	<chapter format="ditamap" href="archSpec/base/introduction-to-dita.ditamap"/>
+    <chapter href="archSpec/base/determining-effective-attribute-values.dita"/>
+	<chapter format="ditamap" href="archSpec/base/ditamap-processing.ditamap"/>
+	<chapter format="ditamap" href="archSpec/base/addressing.ditamap"/>
+	<chapter format="ditamap" href="archSpec/base/processing.ditamap"/>
+	<chapter format="ditamap" href="archSpec/base/specialization-and-custom-doctypes.ditamap"/>
+	<chapter format="ditamap" href="archSpec/base/coding-requirements.ditamap"/>
 	<chapter href="langRef/langRef-base.dita">
 		<topicref href="langRef/quick-reference/base-elements-a-to-z.dita"/>
+		<topicref href="langRef/quick-reference/base-attributes-a-to-z.dita"/>
 		<mapref href="langRef/base-elements.ditamap"/>
-		<!--<mapref href="langRef/attributes/ditaref-commonatts.ditamap"/>-->
 		<mapref href="langRef/attributes/ditaref-attributes.ditamap"/>
 	</chapter>
 	<chapter href="conformance/conformance.dita"/>
 	<appendix href="acknowledgments/acknowledgments.dita"/>
+	<appendix href="non-normative/aggregated-RFC-2119-statements.dita"/>
 	<appendix format="ditamap" href="non-normative/non-normative-information.ditamap"/>
+	<appendix href="non-normative/revision-history.dita"/>
 	<backmatter>
-		<booklists><!--<indexlist/>--></booklists>
+		<booklists>
+			<indexlist/>
+		</booklists>
 	</backmatter>
 </bookmap>

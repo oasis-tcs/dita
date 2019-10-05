@@ -27,123 +27,124 @@
             <codeblock conref="../../common/conref-code-samples.dita#reuse-code-samples/basic-subjectScheme"/>
    <p>The enumeration limits valid values for the <xmlatt>platform</xmlatt> attribute to the
     following: "linux", "redhat", "suse", "windows", and "zos". If any other values are encountered,
-    processors validating against the scheme should issue a warning.</p>
+    processors validating against the scheme will issue a warning.</p>
    <!--<p>As a result, the values could be used in this way:<codeblock>&lt;p platform="linux">You must set up a cron job to ...&lt;/p>
 &lt;p platform="redhat">To set up the cron job, ...&lt;/p></codeblock></p>-->
    <p>The following table illustrates how filtering and flagging operate when the above map is
     processed by a processor. The first two columns provide the values specified in the DITAVAL
     file; the third and fourth columns indicate the results of the filtering or flagging
-     operation<table colsep="1" rowsep="1">
-     <tgroup cols="4">
-      <colspec colname="col1" colwidth="1*"/>
-      <colspec colname="col2" colwidth="1.02*"/>
-      <colspec colname="col3" colwidth="1.02*"/>
-      <colspec colname="COLSPEC0" colwidth="1*"/>
-      <thead>
-       <row valign="bottom">
-        <entry colname="col1">att="platform" val="linux"</entry>
-        <entry colname="col2">att="platform" val="redhat"</entry>
-        <entry colname="col3">How platform="redhat" is evaluated</entry>
-        <entry colname="COLSPEC0">How platform="linux" is evaluated</entry>
-       </row>
-      </thead>
-      <tbody>
-       <row>
-        <entry colname="col1" morerows="2">action="exclude"</entry>
-        <entry colname="col2">action="exclude"</entry>
-        <entry colname="col3">Excluded.</entry>
-        <entry colname="COLSPEC0">Excluded.</entry>
-       </row>
-       <row>
-        <entry colname="col2">action="include" or action="flag"</entry>
-        <entry colname="col3">Excluded. This is an error condition, because if all "linux" content
-         is excluded, "redhat" also is excluded. Applications <ph >can</ph>
-         recover by generating an error message.</entry>
-        <entry colname="COLSPEC0">Excluded.</entry>
-       </row>
-       <row>
-        <entry colname="col2">Unspecified</entry>
-        <entry colname="col3">Excluded, because "redhat" is a kind of "linux", and "linux" is
-         excluded.</entry>
-        <entry colname="COLSPEC0">Excluded.</entry>
-       </row>
-       <row>
-        <entry colname="col1" morerows="3">action="include"</entry>
-        <entry colname="col2">action="exclude"</entry>
-        <entry colname="col3">Excluded, because all "redhat" content is excluded.</entry>
-        <entry colname="COLSPEC0">Included.</entry>
-       </row>
-       <row>
-        <entry colname="col2">action="include"</entry>
-        <entry colname="col3">Included.</entry>
-        <entry colname="COLSPEC0">Included.</entry>
-       </row>
-       <row>
-        <entry colname="col2">action="flag"</entry>
-        <entry colname="col3">Included and flagged with the "redhat" flag.</entry>
-        <entry colname="COLSPEC0">Included.</entry>
-       </row>
-       <row>
-        <entry colname="col2">Unspecified</entry>
-        <entry colname="col3">Included, because all "linux" content is included.</entry>
-        <entry colname="COLSPEC0">Included.</entry>
-       </row>
-       <row>
-        <entry colname="col1" morerows="3">action="flag"</entry>
-        <entry colname="col2">action="exclude"</entry>
-        <entry colname="col3">Excluded, because all "redhat" content is excluded.</entry>
-        <entry colname="COLSPEC0">Included and flagged with the "linux" flag.</entry>
-       </row>
-       <row>
-        <entry colname="col2">action="include"</entry>
-        <entry colname="col3">Included and flagged with the "linux" flag, because "linux" is flagged
-         and "redhat" is a type of "linux".</entry>
-        <entry colname="COLSPEC0">Included and flagged with the "linux" flag.</entry>
-       </row>
-       <row>
-        <entry colname="col2">action="flag"</entry>
-        <entry colname="col3">Included and flagged with the "redhat" flag, because a flag is
-         available that is specifically for "redhat".</entry>
-        <entry colname="COLSPEC0">Included and flagged with the "linux" flag.</entry>
-       </row>
-       <row>
-        <entry colname="col2">Unspecified</entry>
-        <entry colname="col3">Included and flagged with the "linux" flag, because "linux" is flagged
-         and "redhat" is a type of linux</entry>
-        <entry colname="COLSPEC0">Included and flagged with the "linux" flag.</entry>
-       </row>
-       <row>
-        <entry colname="col1" morerows="3">Unspecified</entry>
-        <entry colname="col2">action="exclude"</entry>
-        <entry colname="col3">Excluded, because all "redhat" content is excluded</entry>
-        <entry colname="COLSPEC0">If the default for <xmlatt>platform</xmlatt> values is "include",
-         this is included. If the default for <xmlatt>platform</xmlatt> values is "exclude", this is
-         excluded.</entry>
-       </row>
-       <row>
-        <entry colname="col2">action="include"</entry>
-        <entry colname="col3">Included.</entry>
-        <entry colname="COLSPEC0">Included, because all "redhat" content is included, and general
-         Linux content also applies to RedHat</entry>
-       </row>
-       <row>
-        <entry colname="col2">action="flag"</entry>
-        <entry colname="col3">Included and flagged with the "redhat" flag.</entry>
-        <entry colname="COLSPEC0">Included, because all "redhat" content is included, and general
-         Linux content also applies to RedHat</entry>
-       </row>
-       <row>
-        <entry colname="col2">Unspecified</entry>
-        <entry colname="col3">If the default for <xmlatt>platform</xmlatt> values is "include", this
-         is included. If the default for <xmlatt>platform</xmlatt> values is "exclude", this is
-         excluded.</entry>
-        <entry colname="COLSPEC0">If the default for <xmlatt>platform</xmlatt> values is "include",
-         this is included. If the default for <xmlatt>platform</xmlatt> values is "exclude", this is
-         excluded.</entry>
-       </row>
-      </tbody>
-     </tgroup>
-    </table></p>
+    operation.</p>
+   <table colsep="1" rowsep="1">
+    <tgroup cols="4">
+     <colspec colname="col1" colwidth="1*"/>
+     <colspec colname="col2" colwidth="1.02*"/>
+     <colspec colname="col3" colwidth="1.02*"/>
+     <colspec colname="COLSPEC0" colwidth="1*"/>
+     <thead>
+      <row valign="bottom">
+       <entry colname="col1">att="platform" val="linux"</entry>
+       <entry colname="col2">att="platform" val="redhat"</entry>
+       <entry colname="col3">How platform="redhat" is evaluated</entry>
+       <entry colname="COLSPEC0">How platform="linux" is evaluated</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry colname="col1" morerows="2">action="exclude"</entry>
+       <entry colname="col2">action="exclude"</entry>
+       <entry colname="col3">Excluded.</entry>
+       <entry colname="COLSPEC0">Excluded.</entry>
+      </row>
+      <row>
+       <entry colname="col2">action="include" or action="flag"</entry>
+       <entry colname="col3">Excluded. This is an error condition, because if all "linux" content is
+        excluded, "redhat" also is excluded. Applications <ph>can</ph> recover by generating an
+        error message.</entry>
+       <entry colname="COLSPEC0">Excluded.</entry>
+      </row>
+      <row>
+       <entry colname="col2">Unspecified</entry>
+       <entry colname="col3">Excluded, because "redhat" is a kind of "linux", and "linux" is
+        excluded.</entry>
+       <entry colname="COLSPEC0">Excluded.</entry>
+      </row>
+      <row>
+       <entry colname="col1" morerows="3">action="include"</entry>
+       <entry colname="col2">action="exclude"</entry>
+       <entry colname="col3">Excluded, because all "redhat" content is excluded.</entry>
+       <entry colname="COLSPEC0">Included.</entry>
+      </row>
+      <row>
+       <entry colname="col2">action="include"</entry>
+       <entry colname="col3">Included.</entry>
+       <entry colname="COLSPEC0">Included.</entry>
+      </row>
+      <row>
+       <entry colname="col2">action="flag"</entry>
+       <entry colname="col3">Included and flagged with the "redhat" flag.</entry>
+       <entry colname="COLSPEC0">Included.</entry>
+      </row>
+      <row>
+       <entry colname="col2">Unspecified</entry>
+       <entry colname="col3">Included, because all "linux" content is included.</entry>
+       <entry colname="COLSPEC0">Included.</entry>
+      </row>
+      <row>
+       <entry colname="col1" morerows="3">action="flag"</entry>
+       <entry colname="col2">action="exclude"</entry>
+       <entry colname="col3">Excluded, because all "redhat" content is excluded.</entry>
+       <entry colname="COLSPEC0">Included and flagged with the "linux" flag.</entry>
+      </row>
+      <row>
+       <entry colname="col2">action="include"</entry>
+       <entry colname="col3">Included and flagged with the "linux" flag, because "linux" is flagged
+        and "redhat" is a type of "linux".</entry>
+       <entry colname="COLSPEC0">Included and flagged with the "linux" flag.</entry>
+      </row>
+      <row>
+       <entry colname="col2">action="flag"</entry>
+       <entry colname="col3">Included and flagged with the "redhat" flag, because a flag is
+        available that is specifically for "redhat".</entry>
+       <entry colname="COLSPEC0">Included and flagged with the "linux" flag.</entry>
+      </row>
+      <row>
+       <entry colname="col2">Unspecified</entry>
+       <entry colname="col3">Included and flagged with the "linux" flag, because "linux" is flagged
+        and "redhat" is a type of linux</entry>
+       <entry colname="COLSPEC0">Included and flagged with the "linux" flag.</entry>
+      </row>
+      <row>
+       <entry colname="col1" morerows="3">Unspecified</entry>
+       <entry colname="col2">action="exclude"</entry>
+       <entry colname="col3">Excluded, because all "redhat" content is excluded</entry>
+       <entry colname="COLSPEC0">If the default for <xmlatt>platform</xmlatt> values is "include",
+        this is included. If the default for <xmlatt>platform</xmlatt> values is "exclude", this is
+        excluded.</entry>
+      </row>
+      <row>
+       <entry colname="col2">action="include"</entry>
+       <entry colname="col3">Included.</entry>
+       <entry colname="COLSPEC0">Included, because all "redhat" content is included, and general
+        Linux content also applies to RedHat</entry>
+      </row>
+      <row>
+       <entry colname="col2">action="flag"</entry>
+       <entry colname="col3">Included and flagged with the "redhat" flag.</entry>
+       <entry colname="COLSPEC0">Included, because all "redhat" content is included, and general
+        Linux content also applies to RedHat</entry>
+      </row>
+      <row>
+       <entry colname="col2">Unspecified</entry>
+       <entry colname="col3">If the default for <xmlatt>platform</xmlatt> values is "include", this
+        is included. If the default for <xmlatt>platform</xmlatt> values is "exclude", this is
+        excluded.</entry>
+       <entry colname="COLSPEC0">If the default for <xmlatt>platform</xmlatt> values is "include",
+        this is included. If the default for <xmlatt>platform</xmlatt> values is "exclude", this is
+        excluded.</entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </table>
   </example>
   <!--<p>This hierarchical enumeration affects filtering and flagging as
 follows:<ul>

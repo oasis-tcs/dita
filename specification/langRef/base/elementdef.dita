@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="elementdef" xml:lang="en-us">
 <title><xmlelement>elementdef</xmlelement></title>
-<shortdesc >The <xmlelement>elementdef</xmlelement> element identifies an element to
-    which an attribute is bound. If the <xmlelement>enumerationdef</xmlelement> element does not
-    contain an <xmlelement>elementdef</xmlelement> element, the enumeration is bound to the
-    attribute in all elements.</shortdesc>
+<shortdesc>The <xmlelement>elementdef</xmlelement> element specifies an element to which an
+    attribute and set of controlled values are bound.</shortdesc>
 <prolog><metadata>
 <keywords>
-        <indexterm><xmlelement>elementdef</xmlelement></indexterm>
         <indexterm>subjectScheme<indexterm>elements<indexterm><xmlelement>elementdef</xmlelement></indexterm></indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
-<section id="inheritance" otherprops="inheritance">
+    <section id="specialization-hierachy">
       <title>Specialization hierarchy</title>
-      <p>This element is specialized from <xref keyref="data"/> in the topic module.</p>
-      <!--<p>- topic/data subjectScheme/elementdef </p>--></section>
+      <p>The <xmlelement>elementdef</xmlelement> element is specialized from
+          <xmlelement>data</xmlelement>. It is defined in the subject scheme module.</p>
+    </section>
     <section id="attributes">
       <title>Attributes</title>
       <p>The following attributes are available on this element: <xref
@@ -30,8 +26,7 @@
         <dlentry>
           <dt><xmlatt>name</xmlatt>
             <ph conref="../../common/conref-attribute.dita#conref-attribute/required-attr"/></dt>
-          <dd>Defines the element for which an attribute enumeration is defined.
-            <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
+          <dd>Specifies the element to which the set of controlled values are bound </dd>
         </dlentry>
         <dlentry conref="../../common/conref-attribute.dita#conref-attribute/translate-NO">
           <dt/>
@@ -40,7 +35,7 @@
       </dl>
     </section>
 <example id="example" otherprops="examples"><title>Example</title><p>In this example, the <xmlatt>value</xmlatt> attribute for the
-          <xmlelement>lomDifficulty</xmlelement> element is bound to a specified set of values.
+          <xmlelement>lomDifficulty</xmlelement> element is bound to the specified set of values.
         Processors should limit the values for the <xmlatt>value</xmlatt> attribute on the
           <xmlelement>lomDifficulty</xmlelement> element to the following set of values: easy,
         medium, or difficult. Other elements that have a <xmlatt>value</xmlatt> attribute are not
