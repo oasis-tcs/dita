@@ -82,12 +82,7 @@
                           (%dvrKeyscopeSuffix;)?))"
 >
 <!ENTITY % ditavalmeta.attributes
-              "lockmeta
-                          (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               %ditavalref-univ-atts;"
+              "%ditavalref-univ-atts;"
 >
 <!ELEMENT  ditavalmeta %ditavalmeta.content;>
 <!ATTLIST  ditavalmeta %ditavalmeta.attributes;>

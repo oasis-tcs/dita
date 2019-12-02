@@ -564,12 +564,7 @@
                          (%shortdesc;)?)"
 >
 <!ENTITY % subjectHeadMeta.attributes
-              "lockmeta
-                          (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               %univ-atts;"
+              "%univ-atts;"
 >
 <!ELEMENT  subjectHeadMeta %subjectHeadMeta.content;>
 <!ATTLIST  subjectHeadMeta %subjectHeadMeta.attributes;>
