@@ -50,86 +50,23 @@
                     statements?</p>
             </draft-comment>
             <p>The <xmlelement>include</xmlelement> element instructs processors to insert the
-                contents of the referenced resource at the location of the
-                    <xmlelement>include</xmlelement> element. If the content is unavailable to the
-                processor or cannot be processed using the specified <xmlatt>parse</xmlatt> value,
-                the contents of the <xmlelement>fallback</xmlelement> element, if any, are presented
-                instead. If the processor cannot process the referenced content using the rules
-                implied by the <xmlatt>parse</xmlatt> attribute, either because the referenced
-                scheme is not supported or because there was a processing error, processors should
-                issue a warning or error.</p>
-            <draft-comment author="Kristen J Eberlein" time="29 April 2019" audience="spec-editors">
-                <p>Shouldn't the following content (not yet edited) be located in the "Attributes"
-                    section?</p>
-            </draft-comment>
-            <p>The <xmlatt>parse</xmlatt> attribute specifies the processing expectations for the
-                referenced resource. Processors must support the following values:</p>
-            <dl>
-                <dlentry>
-                    <dt>text</dt>
-                    <dd>
-                        <p>The contents should be treated as plain text. Reserved XML characters
-                            should be displayed, and not interpreted as XML markup.</p>
-                    </dd>
-                </dlentry>
-                <dlentry>
-                    <dt>xml</dt>
-                    <dd>
-                        <p>The contents of the referenced resource should be treated as an XML
-                            document, and the referenced element should be inserted at the location
-                            of the <xmlelement>include</xmlelement> element. If a fragment
-                            identifier is included in the address of the content, processors must
-                            select the element with the specified ID. If no fragment identifier is
-                            included, the root element of the referenced XML document is selected.
-                            Any grammar processing should be performed during resolution, such that
-                            default attribute values are explicitly populated. Prolog content must
-                            be discarded.</p>
-                        <p>It is an error to use <codeph>parse="xml"</codeph> anywhere other than
-                            within <xmlelement>foreign</xmlelement> or a specialization thereof.</p>
-                    </dd>
-                </dlentry>
-            </dl>
-            <p>Processors may support other values for the <xmlatt>parse</xmlatt> attribute with
-                proprietary processing semantics. Processors should issue warnings and use
-                    <xmlelement>fallback</xmlelement> when they encounter unsupported
-                    <xmlatt>parse</xmlatt> values. Non-standard <xmlatt>parse</xmlatt> instructions
-                should be expressed as URIs.</p>
-            <note>Proprietary <xmlatt>parse</xmlatt> values will likely limit the portability and
-                interoperability of DITA content, so should be used with care.</note>
-            <p>The <xmlatt>encoding</xmlatt> attribute specifies the character encoding to use when
-                translating the character data from the referenced content. If not specified,
-                processors may make attempts to automatically determine the correct encoding, for
-                example using HTTP headers, through analysis of the binary structure of the
-                referenced data, or the <xmlpi>xml</xmlpi> processing instruction when including XML
-                as text. The resource should be treated as UTF-8 if no other encoding information
-                can be determined.</p>
-            <p>When <codeph>parse="xml"</codeph>, standard XML parsing rules apply for the detection
-                of character encoding. The necessity and uses of <xmlatt>encoding</xmlatt> for
-                non-standard values of <xmlatt>parse</xmlatt> are implementation-dependent.</p>
+contents of the referenced resource at the location of the <xmlelement>include</xmlelement> element.
+If the content is unavailable to the processor or cannot be processed using the specified
+<xmlatt>parse</xmlatt> value, the contents of the <xmlelement>fallback</xmlelement> element, if any,
+are presented instead.</p>
+<p>If the processor cannot process the referenced content using the rules implied by the
+<xmlatt>parse</xmlatt> attribute, either because the referenced scheme is not supported or because
+there was a processing error, processors should issue a warning or error. All processors are
+expected to support the <xmlatt>parse</xmlatt> values "text" and "xml".</p>
+<p>Processors are expected to detect the encoding of the referenced document based on the rules
+described for the <xref keyref="attributes-includeElement/encoding"><xmlatt>encoding</xmlatt></xref>
+attribute.</p>
         </section>
         <section id="attributes">
             <title>Attributes</title>
             <p>The following attributes are available on this element: <xref
-                    keyref="attributes-universal"/>, <xref keyref="attributes-linkRelationship"/>,
-                    <xref keyref="attributes-keyref"/> and the attributes defined below.</p>
-            <dl>
-                <dlentry>
-                    <dt><xmlatt>parse</xmlatt></dt>
-                    <dd>Indicates the processing expectations for the referenced non-DITA
-                        content.</dd>
-                </dlentry>
-                <dlentry>
-                    <dt><xmlatt>encoding</xmlatt></dt>
-                    <dd>
-                        <draft-comment author="Kristen J Eberlein" time="29 April 2019"
-                            audience="spec-editors">
-                            <p>Can we replace "should" in the following definition?</p>
-                        </draft-comment>
-                    </dd>
-                    <dd>Indicates the encoding that processors use when interpreting textual data.
-                        The value should be a valid encoding name. </dd>
-                </dlentry>
-            </dl>
+keyref="attributes-universal"/>, <xref keyref="attributes-includeElement"/>, <xref
+keyref="attributes-linkRelationship"/>, and <xref keyref="attributes-keyref"/>.</p>
         </section>
         <example id="example" otherprops="examples">
             <title>Examples</title>
