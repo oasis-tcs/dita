@@ -2,16 +2,16 @@
 <!-- ============================================================= -->
 <!--                    HEADER                                     -->
 <!-- ============================================================= -->
-<!-- Darwin Information Typing Architecture (DITA) Version 1.3 Plus Errata 02     -->
-<!-- OASIS Standard                                           -->
-<!-- 16 January 2018                                           -->
-<!-- Copyright (c) OASIS Open 2018. All rights reserved.           -->
-<!-- Source: http://docs.oasis-open.org/dita/dita/v1.3/errata02/csprd01/complete/part0-overview/dita-v1.3-errata02-csprd01-part0-overview-complete.html                                -->
+<!-- Darwin Information Typing Architecture (DITA) Version 2.0     -->
+<!-- [[[Draft level]]]                                           -->
+<!-- [[[Release date]]]                                           -->
+<!-- Copyright (c) OASIS Open 2019. All rights reserved.           -->
+<!-- Source: [[[Source link]]]                                -->
 <!--                                                               -->
 <!-- ============================================================= -->
 <!--  MODULE:    DITA Map                                          -->
-<!--  VERSION:   1.3                                               -->
-<!--  DATE:      March 2014                                        -->
+<!--  VERSION:   2.0                                               -->
+<!--  DATE:      [[[Release date]]]                                        -->
 <!--                                                               -->
 <!-- ============================================================= -->
 
