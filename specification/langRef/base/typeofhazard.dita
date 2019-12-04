@@ -20,13 +20,14 @@ a description of the type of hazard, for example, "Hot surfaces inside."</shortd
       <p conref="../../common/conref-attribute.dita#conref-attribute/only-universal"/>
     </section>
 <example id="example" otherprops="examples"><title>Example</title>
-      <p>The following code sample generate a "Caution" hazard statement, which warns users against
-        lifting heavy objects without referring to the product safety manual.</p><codeblock>&lt;hazardstatement type="caution">
+      <p>The following code sample generate a "CAUTION" hazard statement, which warns users against
+        lifting heavy objects without referring to the product safety manual.</p>
+      <codeblock>&lt;hazardstatement type="caution">
   &lt;messagepanel>
-    &lt;typeofhazard>
-      &lt;hazardsymbol href="heavy-object.png"/>
-      Lifting Hazard
-    &lt;/typeofhazard>
+    <b>&lt;typeofhazard></b>
+      &lt;hazardsymbol keyref="hazard-heavyobject"/>
+      Lifting hazard
+    <b>&lt;/typeofhazard></b>
     &lt;consequence>May result in injury.&lt;/consequence>
     &lt;howtoavoid>See safety manual for lifting instructions.&lt;/howtoavoid>
   &lt;/messagepanel>
