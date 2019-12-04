@@ -384,22 +384,7 @@ of map.-->
                                 </dl>
                         </sectiondiv><sectiondiv id="standard-topicmeta-attributes">
                                 <p>The following attributes are available on this element: <xref
-                                                keyref="attributes-universal"
-                                        /> and the attribute defined below.</p>
-                                <dl>
-                                        <dlentry>
-                                                <dt><xmlatt>lockmeta</xmlatt></dt>
-                                                <dd >
-                                                  <p>Determines whether the metadata that is
-                                                  specified in the map supplements or overrides the
-                                                  metadata that is specified in the topic. When the
-                                                  <xmlatt>lockmeta</xmlatt> attribute is set to
-                                                  "yes", the topic metadata is overriden. Allowable
-                                                  values are "yes", "no", and <xref
-                                                  keyref="attributes-useconreftarget"/>.</p>
-                                                </dd>
-                                        </dlentry>
-                                </dl>
+                                                keyref="attributes-universal"/>.</p>
                         </sectiondiv><sectiondiv id="univ-outputclass-keyref-translate-NO">
                                 <!--Used for <shape> and <coords>, also <coords> equivalents in L&T domain-->
                                 <p>The following attributes are available on this element: <xref
@@ -769,6 +754,16 @@ keyref="attributes-universal"/> (with a narrowed definition of
                         <section id="section-8">
                                 <title>DITAVAL related common attributes</title>
                                 <dl>
+<dlentry id="ditaval-outputclass">
+<dt><xmlatt>outputclass</xmlatt></dt>
+<dd>If flag has been set, treat the flagged element as if the full <xmlatt>outputclass</xmlatt>
+value in the DITAVAL was specified on that element's <xmlatt>outputclass</xmlatt> attribute. If two
+or more DITAVAL properties apply <xmlatt>outputclass</xmlatt> flags to the same element, treat the
+flagged element as if each value was specified on that element's <xmlatt>outputclass</xmlatt>
+attribute; in that case, the order of those DITAVAL-based tokens is undefined. If the flagged
+element already specifies <xmlatt>outputclass</xmlatt>, treat the flagged element as if all
+DITAVAL-based <xmlatt>outputclass</xmlatt> values come first in the attribute.</dd>
+</dlentry>
                                         <dlentry id="ditaval-color">
                                                 <dt><xmlatt>color</xmlatt></dt>
                                                 <dd>If flag has been set, the color to use to flag

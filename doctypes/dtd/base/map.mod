@@ -605,12 +605,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                           %foreign.unknown.incl;)*)"
 >
 <!ENTITY % topicmeta.attributes
-              "lockmeta
-                          (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               %univ-atts;"
+              "%univ-atts;"
 >
 <!ELEMENT  topicmeta %topicmeta.content;>
 <!ATTLIST  topicmeta %topicmeta.attributes;>
