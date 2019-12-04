@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="consequence" xml:lang="en-us">
 <title><xmlelement>consequence</xmlelement></title>
-<shortdesc>The <xmlelement>consequence</xmlelement> element specifies
-the consequence of failing to avoid a hazard, for example, "Contact
-may cause burn."</shortdesc>
+<shortdesc>The <xmlelement>consequence</xmlelement> element specifies the consequence of failing to
+    avoid a hazard, for example, "Contact may cause a burn."</shortdesc>
 <prolog><metadata>
 <keywords>
         <indexterm>hazard statement
@@ -16,19 +13,24 @@ may cause burn."</shortdesc>
     <section id="specialization-hierarchy">
       <title>Specialization hierarchy</title>
       <p>The <xmlelement>consequence</xmlelement> element is specialized from
-          <xmlelement>li</xmlelement>. It is defined in the hazard-statement domain module.</p>
+          <xmlelement>div</xmlelement>. It is defined in the hazard-statement domain module.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
       <p conref="../../common/conref-attribute.dita#conref-attribute/only-universal"/>
     </section>
-<example id="example" otherprops="examples"> 			<title>Example</title><codeblock>&lt;hazardstatement type="warning"&gt;
+<example id="example" otherprops="examples"> 			<title>Example</title>
+      <p>In the following code sample, a hazard statement is assigned a "CAUTION" signal word. The
+        hazard image is explicitly associated with the type of hazard.</p>
+      <codeblock>&lt;hazardstatement type="caution"&gt;
   &lt;messagepanel&gt;
-    &lt;typeofhazard&gt;Hot surfaces inside.&lt;/typeofhazard&gt;
-    <b>&lt;consequence&gt;</b>Contact may cause burn.<b>&lt;/consequence&gt;</b>
-    &lt;howtoavoid&gt;Wear protective gear before servicing internal parts.&lt;/howtoavoid&gt;
-  &lt;/messagepanel&gt;
-  &lt;hazardsymbol href="hotsurface.png"/&gt;
+    &lt;typeofhazard&gt;
+      &lt;hazardsymbol keyref="hazard-hotsurface"/&gt;
+      HOT SURFACES
+    &lt;/typeofhazard&gt;
+    <b>&lt;consequence&gt;</b>Contact may cause a burn.<b>&lt;/consequence&gt;</b>
+    &lt;howtoavoid&gt;Wear gloves before servicing internal parts.&lt;/howtoavoid&gt;
+  &lt;/messagepanel&gt; 
 &lt;/hazardstatement&gt;</codeblock></example>
 </refbody>
 </reference>
