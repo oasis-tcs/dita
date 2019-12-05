@@ -28,9 +28,12 @@
 
 <p>Early commits for this repository begin with the source for all parts of DITA Version 1.3: 
 http://docs.oasis-open.org/dita/dita/v1.3/os/part0-overview/dita-v1.3-os-part0-overview.html</p>
-<p>Version 1.3 source is updated with 1.3 Errata 01; both of these versions were orginally maintained in SVN:
-http://docs.oasis-open.org/dita/dita/v1.3/errata01/os/complete/part0-overview/dita-v1.3-errata01-os-part0-overview-complete.html</p>
 <p>From this point, GitHub is used for work on both DITA 2.0 and any other DITA 1.3 Errata.</p>
+<p>This branch reflects the official DITA Version 1.3 plus Errata 02 
+(http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part0-overview/dita-v1.3-errata02-os-part0-overview-complete.html),
+along with fixes to the grammar files identified since release of Errata 02.</p>
+<p>The committee does not expect to release a third errata to DITA 1.3; these fixes are
+made available so that implementations of DITA 1.3 can identify any known issues.</p>
 </div>
 
 <div>
