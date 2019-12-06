@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- MODULE: DITA Highlight Domain                                 -->
-<!-- VERSION: 2.0                                                  -->
-<!-- DATE:   [[[Release date]]]                                         -->
-<!-- PURPOSE: Define elements and specialization attributes for Highlight Domain  -->
-<!-- (C) Copyright OASIS Open 2005, 2009.                          -->
-<!-- (C) Copyright IBM Corporation 2001, 2004. All Rights Reserved. -->
-<!-- UPDATES:                                                      -->
+<!-- ============================================================= -->
+<!--                    HEADER                                     -->
+<!-- ============================================================= -->
+<!--  MODULE:    DITA Highlight Domain                             -->
+<!--  VERSION:   2.0                                               -->
+<!--  DATE:      [[[Release date]]]                                       -->
+<!--  PURPOSE:   Declaring the elements and specialization         -->
+<!--             attributes for the DITA Highlight Domain          -->
 <!--                                                               -->
-
+<!-- ============================================================= -->
+<!-- ============================================================= -->
+<!--                    PUBLIC DOCUMENT TYPE DEFINITION            -->
+<!--                    TYPICAL INVOCATION                         -->
+<!--                                                               -->
+<!--  Refer to this file by the following public identifier or an  -->
+<!--       appropriate system identifier                           -->
+<!-- PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Highlight Domain//EN"     -->
+<!--       Delivered as file "highlightDomain.mod"                 -->
+<!-- ============================================================= -->
+<!--                                                               -->
+<!--             (C) Copyright OASIS Open 2005, 2019.              -->
+<!--             (C) Copyright IBM Corporation 2001, 2004.         -->
+<!--             All Rights Reserved.                              -->
+<!--                                                               -->
+<!--  UPDATES:                                                     -->
+<!-- ============================================================= -->
+<!--                                                               -->
 <!-- ============================================================= -->
 <!--                   ELEMENT NAME ENTITIES                       -->
 <!-- ============================================================= -->
