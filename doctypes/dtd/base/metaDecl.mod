@@ -5,6 +5,8 @@
 <!--  MODULE:    DITA Metadata                                     -->
 <!--  VERSION:   2.0                                               -->
 <!--  DATE:      [[[Release date]]]                                     -->
+<!--  PURPOSE:   Declaring the elements and specialization         -->
+<!--             attributes for the DITA XML Metadata              -->
 <!--                                                               -->
 <!-- ============================================================= -->
 <!-- ============================================================= -->
@@ -15,10 +17,7 @@
 <!--       appropriate system identifier                           -->
 <!-- PUBLIC "-//OASIS//ELEMENTS DITA Metadata//EN"                 -->
 <!--       Delivered as file "metaDecl.mod"                             -->
-<!-- ============================================================= -->
-<!--                                                               -->
-<!-- PURPOSE:    Declaring the elements and specialization         -->
-<!--             attributes for the DITA XML Metadata              -->
+<!-- ============================================================= -->
 <!--                                                               -->
 <!--             (C) Copyright OASIS Open 2005, 2009.              -->
 <!--             (C) Copyright IBM Corporation 2001, 2004.         -->

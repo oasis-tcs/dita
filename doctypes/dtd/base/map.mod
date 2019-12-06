@@ -12,6 +12,8 @@
 <!--  MODULE:    DITA Map                                          -->
 <!--  VERSION:   2.0                                               -->
 <!--  DATE:      [[[Release date]]]                                        -->
+<!--  PURPOSE:   Declaring the elements and specialization         -->
+<!--             attributes for the DITA Maps                      -->
 <!--                                                               -->
 <!-- ============================================================= -->
 
@@ -24,10 +26,7 @@
 PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
       Delivered as file "map.mod"                                  -->
 
-<!-- ============================================================= -->
-<!--                                                               -->
-<!-- PURPOSE:    Declaring the elements and specialization         -->
-<!--             attributes for the DITA Maps                      -->
+<!-- ============================================================= -->
 <!--                                                               -->
 <!--             (C) Copyright OASIS Open 2005, 2009.              -->
 <!--             (C) Copyright IBM Corporation 2001, 2004.         -->

@@ -5,6 +5,8 @@
 <!--  MODULE:    DITA Subject Scheme Map                           -->
 <!--  VERSION:   2.0                                               -->
 <!--  DATE:      [[[Release date]]]                                        -->
+<!--  PURPOSE:   Declaring the elements and specialization         -->
+<!--             attributes for DITA Subject Scheme Maps           -->
 <!--                                                               -->
 <!-- ============================================================= -->
 <!-- ============================================================= -->
@@ -15,10 +17,7 @@
 <!--       appropriate system identifier                           -->
 <!-- PUBLIC "-//OASIS//ELEMENTS DITA Subject Scheme Map//EN"       -->
 <!--       Delivered as file "subjectScheme.mod"                        -->
-<!-- ============================================================= -->
-<!--                                                               -->
-<!-- PURPOSE:    Declaring the elements and specialization         -->
-<!--             attributes for DITA Subject Scheme Maps           -->
+<!-- ============================================================= -->
 <!--                                                               -->
 <!--             (C) Copyright OASIS Open 2008, 2009.              -->
 <!--             (C) Copyright IBM Corporation 2005, 2007.         -->

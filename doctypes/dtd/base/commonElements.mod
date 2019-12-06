@@ -5,6 +5,9 @@
 <!--  MODULE:    DITA Common Elements                              -->
 <!--  VERSION:   2.0                                               -->
 <!--  DATE:      [[[Release date]]]                                     -->
+<!--  PURPOSE:   Declaring the elements and specialization         -->
+<!--             attributes for content elements used in both      -->
+<!--             topics and maps.                                  -->
 <!--                                                               -->
 <!-- ============================================================= -->
 <!-- ============================================================= -->
@@ -15,11 +18,7 @@
 <!--       appropriate system identifier                           -->
 <!-- PUBLIC "-//OASIS//ELEMENTS DITA Common Elements//EN"          -->
 <!--       Delivered as file "commonElements.mod"                       -->
-<!-- ============================================================= -->
-<!--                                                               -->
-<!-- PURPOSE:    Declaring the elements and specialization         -->
-<!--             attributes for content elements used in both      -->
-<!--             topics and maps.                                  -->
+<!-- ============================================================= -->
 <!--                                                               -->
 <!--             (C) Copyright OASIS Open 2005, 2009.              -->
 <!--             (C) Copyright IBM Corporation 2001, 2004.         -->

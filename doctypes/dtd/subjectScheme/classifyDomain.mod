@@ -5,6 +5,8 @@
 <!--  MODULE:    DITA Subject Classification Domain                -->
 <!--  VERSION:   2.0                                               -->
 <!--  DATE:      [[[Release date]]]                                     -->
+<!--  PURPOSE:   Define elements and specialization attributes     -->
+<!--             for Map Subject Classification Domain             -->
 <!--                                                               -->
 <!-- ============================================================= -->
 <!-- ============================================================= -->
@@ -15,10 +17,7 @@
 <!--       appropriate system identifier                           -->
 <!-- PUBLIC "-//OASIS//ELEMENTS DITA Map Subject Classification Domain//EN" -->
 <!--       Delivered as file "classifyDomain.mod"                       -->
-<!-- ============================================================= -->
-<!--                                                               -->
-<!-- PURPOSE:    Define elements and specialization attributes     -->
-<!--             for Map Subject Classification Domain             -->
+<!-- ============================================================= -->
 <!--                                                               -->
 <!--             (C) Copyright OASIS Open 2008, 2009.              -->
 <!--             (C) Copyright IBM Corporation 2005, 2007.         -->

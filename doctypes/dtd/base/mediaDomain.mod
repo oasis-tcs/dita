@@ -5,6 +5,8 @@
 <!--  MODULE:    DITA Media Domain                                 -->
 <!--  VERSION:   2.0                                               -->  
 <!--  DATE:      [[[Release date]]]                                        -->
+<!--  PURPOSE:   Declaring the elements and specialization         -->
+<!--             attributes for the DITA Media Domain              -->
 <!--                                                               -->
 <!-- ============================================================= -->
 <!--                    PUBLIC DOCUMENT TYPE DEFINITION            -->
@@ -16,10 +18,7 @@
 <!--       Delivered as file "mediaDomain.mod"                     -->
 <!--                                                               -->
 <!-- ============================================================= -->    
-<!--                                                               -->
 <!--                                                               -->
-<!-- PURPOSE:    Declaring the elements and specialization         -->
-<!--             attributes for the DITA Media Domain              -->
 <!--                                                               -->
 <!-- ============================================================= -->    
 <!--                                                               --> 

@@ -5,6 +5,8 @@
 <!--  MODULE:    DITA Hazard Statement Domain                      -->
 <!--  VERSION:   2.0                                               -->
 <!--  DATE:      [[[Release date]]]                                    -->
+<!--  PURPOSE:   Declaring the elements and specialization         -->
+<!--             attributes for the Hazard Statement Domain        -->
 <!--                                                               -->
 <!-- ============================================================= -->
 <!-- ============================================================= -->
@@ -15,10 +17,7 @@
 <!--       appropriate system identifier                           -->
 <!-- PUBLIC "-//OASIS//ELEMENTS DITA Hazard Statement Domain//EN"  -->
 <!--       Delivered as file "hazardstatementDomain.mod"                -->
-<!-- ============================================================= -->
-<!--                                                               -->
-<!-- PURPOSE:    Declaring the elements and specialization         -->
-<!--             attributes for the Hazard Statement Domain        -->
+<!-- ============================================================= -->
 <!--                                                               -->
 <!--             (C) Copyright OASIS Open 2008, 2019.              -->
 <!--             All Rights Reserved.                              -->

@@ -5,6 +5,8 @@
 <!--  MODULE:    DITA Utilities Domain                             -->
 <!--  VERSION:   2.0                                               -->
 <!--  DATE:      [[[Release date]]]                                       -->
+<!--  PURPOSE:   Declaring the elements and specialization         -->
+<!--             attributes for the DITA Utilities Domain          -->
 <!--                                                               -->
 <!-- ============================================================= -->
 <!-- ============================================================= -->
@@ -15,10 +17,7 @@
 <!--       appropriate system identifier                           -->
 <!-- PUBLIC "-//OASIS//ELEMENTS DITA Utilities Domain//EN"         -->
 <!--       Delivered as file "utilitiesDomain.mod"                 -->
-<!-- ============================================================= -->
-<!--                                                               -->
-<!-- PURPOSE:    Declaring the elements and specialization         -->
-<!--             attributes for the DITA Utilities Domain          -->
+<!-- ============================================================= -->
 <!--                                                               -->
 <!--             (C) Copyright OASIS Open 2005, 2019.              -->
 <!--             (C) Copyright IBM Corporation 2001, 2004.         -->
