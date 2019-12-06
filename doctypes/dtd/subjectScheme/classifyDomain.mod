@@ -15,7 +15,7 @@
 <!--                                                               -->
 <!--  Refer to this file by the following public identifier or an  -->
 <!--       appropriate system identifier                           -->
-<!-- PUBLIC "-//OASIS//ELEMENTS DITA Map Subject Classification Domain//EN" -->
+<!-- PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Classification Domain//EN" -->
 <!--       Delivered as file "classifyDomain.mod"                       -->
 <!-- ============================================================= -->
 <!--                                                               -->

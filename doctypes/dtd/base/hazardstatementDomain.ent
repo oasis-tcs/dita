@@ -15,8 +15,8 @@
 <!--                                                               -->
 <!--  Refer to this file by the following public identifier or an  -->
 <!--       appropriate system identifier                           -->
-<!-- PUBLIC "-//OASIS//ELEMENTS DITA Hazard Statement Domain//EN"  -->
-<!--       Delivered as file "hazardstatementDomain.mod"                -->
+<!-- PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Hazard Statement Domain//EN" -->
+<!--       Delivered as file "hazardstatementDomain.mod"           -->
 <!-- ============================================================= -->
 <!--                                                               -->
 <!--             (C) Copyright OASIS Open 2008, 2019.              -->

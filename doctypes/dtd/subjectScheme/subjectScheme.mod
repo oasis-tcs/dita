@@ -15,8 +15,8 @@
 <!--                                                               -->
 <!--  Refer to this file by the following public identifier or an  -->
 <!--       appropriate system identifier                           -->
-<!-- PUBLIC "-//OASIS//ELEMENTS DITA Subject Scheme Map//EN"       -->
-<!--       Delivered as file "subjectScheme.mod"                        -->
+<!-- PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"   -->
+<!--       Delivered as file "subjectScheme.mod"                   -->
 <!-- ============================================================= -->
 <!--                                                               -->
 <!--             (C) Copyright OASIS Open 2008, 2009.              -->

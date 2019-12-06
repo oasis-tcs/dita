@@ -15,8 +15,8 @@
 <!--                                                               -->
 <!--  Refer to this file by the following public identifier or an  -->
 <!--       appropriate system identifier                           -->
-<!-- PUBLIC "-//OASIS//ELEMENTS DITA Metadata//EN"                 -->
-<!--       Delivered as file "metaDecl.mod"                             -->
+<!-- PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Metadata//EN"             -->
+<!--       Delivered as file "metaDecl.mod"                        -->
 <!-- ============================================================= -->
 <!--                                                               -->
 <!--             (C) Copyright OASIS Open 2005, 2009.              -->

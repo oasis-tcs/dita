@@ -22,8 +22,8 @@
 <!--                                                               -->
 <!--  Refer to this file by the following public identifier or an  -->
 <!--       appropriate system identifier                           -->
-<!-- PUBLIC "-//OASIS//ELEMENTS DITA Topic//EN"                    -->
-<!--       Delivered as file "topic.mod"                                -->
+<!-- PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"                -->
+<!--       Delivered as file "topic.mod"                           -->
 <!-- ============================================================= -->
 <!--                                                               -->
 <!--             (C) Copyright OASIS Open 2005, 2009.              -->
