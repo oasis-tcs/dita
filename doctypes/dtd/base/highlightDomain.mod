@@ -6,10 +6,6 @@
 <!-- (C) Copyright OASIS Open 2005, 2009.                          -->
 <!-- (C) Copyright IBM Corporation 2001, 2004. All Rights Reserved. -->
 <!-- UPDATES:                                                      -->
-<!-- 2005.11.15 RDA: Corrected descriptive names for all elements except bold  -->
-<!-- 2005.11.15 RDA: Corrected the "Delivered as" system ID        -->
-<!-- 2007.12.01 WEK: Reformatted DTD modulesfor DITA 1.2           -->
-<!-- 2008.02.13 RDA: Create .content and .attributes entities      -->
 <!--                                                               -->
 
 <!-- ============================================================= -->

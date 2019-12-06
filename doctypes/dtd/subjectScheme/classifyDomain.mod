@@ -24,9 +24,6 @@
 <!--             All Rights Reserved.                              -->
 <!--                                                               -->
 <!--  UPDATES:                                                     -->
-<!--    2008.02.13 RDA: Created file based upon prototype from IBM -->
-<!--    2010.01.21 RDA: Update subjectCell content to remove       -->
-<!--                    duplicate element inclusion                -->
 <!-- ============================================================= -->
 <!--                                                               -->
 
