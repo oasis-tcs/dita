@@ -21,9 +21,6 @@
 <!-- PURPOSE:    Declaring the elements and specialization         -->
 <!--             attributes for DITA Subject Scheme Maps           -->
 <!--                                                               -->
-<!-- ORIGINAL CREATION DATE:                                       -->
-<!--             February 2008                                     -->
-<!--                                                               -->
 <!--             (C) Copyright OASIS Open 2008, 2009.              -->
 <!--             (C) Copyright IBM Corporation 2005, 2007.         -->
 <!--             All Rights Reserved.                              -->

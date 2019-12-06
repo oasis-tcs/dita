@@ -22,9 +22,6 @@
 <!--             attributes for content elements used in both      -->
 <!--             topics and maps.                                  -->
 <!--                                                               -->
-<!-- ORIGINAL CREATION DATE:                                       -->
-<!--             June 2006                                         -->
-<!--                                                               -->
 <!--             (C) Copyright OASIS Open 2005, 2009.              -->
 <!--             (C) Copyright IBM Corporation 2001, 2004.         -->
 <!--             All Rights Reserved.                              -->

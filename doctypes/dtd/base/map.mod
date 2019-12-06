@@ -30,9 +30,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
 <!-- PURPOSE:    Declaring the elements and specialization         -->
 <!--             attributes for the DITA Maps                      -->
 <!--                                                               -->
-<!-- ORIGINAL CREATION DATE:                                       -->
-<!--             March 2001                                        -->
-<!--                                                               -->
 <!--             (C) Copyright OASIS Open 2005, 2009.              -->
 <!--             (C) Copyright IBM Corporation 2001, 2004.         -->
 <!--             All Rights Reserved.                              -->

@@ -21,9 +21,6 @@
 <!-- PURPOSE:    Declaring the elements and specialization         -->
 <!--             attributes for the Hazard Statement Domain        -->
 <!--                                                               -->
-<!-- ORIGINAL CREATION DATE:                                       -->
-<!--             February 2008                                     -->
-<!--                                                               -->
 <!--             (C) Copyright OASIS Open 2008, 2019.              -->
 <!--             All Rights Reserved.                              -->
 <!--                                                               -->
