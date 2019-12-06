@@ -4,7 +4,7 @@
 <!-- ============================================================= -->
 <!--  MODULE:    XML EXCHANGE TABLE MODEL DECLARATION MODULE       -->
 <!--  VERSION:   2.0                                               -->
-<!--  DATE:      November 2009                                     -->
+<!--  DATE:      [[[Release date]]]                                     -->
 <!--                                                               -->
 <!-- ============================================================= -->
 <!--             (C) Copyright OASIS Open 2005, 2009.              -->

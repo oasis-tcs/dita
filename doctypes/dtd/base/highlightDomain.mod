@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- MODULE: DITA Highlight Domain                                 -->
 <!-- VERSION: 2.0                                                  -->
-<!-- DATE:   November 2009                                         -->
+<!-- DATE:   [[[Release date]]]                                         -->
 <!-- SYSTEM: Darwin Information Typing Architecture (DITA)         -->
 <!-- PURPOSE: Define elements and specialization attributes for Highlight Domain  -->
 <!-- (C) Copyright OASIS Open 2005, 2009.                          -->
