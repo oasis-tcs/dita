@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- MODULE: DITA Highlight Domain VERSION: 1.2 DATE:              -->
+<!-- MODULE: DITA Highlight Domain VERSION: 2.0 DATE:              -->
 <!-- November 2009                                                 -->
 <!-- SYSTEM: Darwin Information Typing Architecture (DITA)         -->
 <!-- PURPOSE: Define elements and specialization attributes for Highlight Domain  -->
