@@ -4,7 +4,9 @@
 <!-- ============================================================= --> 
 <!--  MODULE:    DITA Media Domain                                 -->
 <!--  VERSION:   2.0                                               -->  
-<!--  DATE:      May 2018                                        -->
+<!--  DATE:      [[[Release date]]]                                        -->
+<!--  PURPOSE:   Declaring the elements and specialization         -->
+<!--             attributes for the DITA Media Domain              -->
 <!--                                                               -->
 <!-- ============================================================= -->
 <!--                    PUBLIC DOCUMENT TYPE DEFINITION            -->
@@ -17,15 +19,12 @@
 <!--                                                               -->
 <!-- ============================================================= -->    
 <!--                                                               -->
-<!-- SYSTEM:     Darwin Information Typing Architecture (DITA)     -->
-<!--                                                               -->
-<!-- PURPOSE:    Declaring the elements and specialization         -->
-<!--             attributes for the DITA Media Domain              -->
 <!--                                                               -->
 <!-- ============================================================= -->    
 <!--                                                               --> 
 <!--   (C) Copyright OASIS Open 2019                               -->
 <!--                                                               -->
+<!--  UPDATES:                                                     -->
 <!-- ============================================================= -->      
 
 
