@@ -15,8 +15,7 @@
 <!--       appropriate system identifier                           -->
 <!-- PUBLIC "-//OASIS//ELEMENTS DITA Hazard Statement Domain//EN"  -->
 <!--       Delivered as file "hazardstatementDomain.mod"                -->
-<!-- ============================================================= -->
-<!-- SYSTEM:     Darwin Information Typing Architecture (DITA)     -->
+<!-- ============================================================= -->
 <!--                                                               -->
 <!-- PURPOSE:    Declaring the elements and specialization         -->
 <!--             attributes for the Hazard Statement Domain        -->

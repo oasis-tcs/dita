@@ -15,8 +15,7 @@
 <!--       appropriate system identifier                           -->
 <!-- PUBLIC "-//OASIS//ELEMENTS DITA Common Elements//EN"          -->
 <!--       Delivered as file "commonElements.mod"                       -->
-<!-- ============================================================= -->
-<!-- SYSTEM:     Darwin Information Typing Architecture (DITA)     -->
+<!-- ============================================================= -->
 <!--                                                               -->
 <!-- PURPOSE:    Declaring the elements and specialization         -->
 <!--             attributes for content elements used in both      -->

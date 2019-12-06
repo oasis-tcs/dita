@@ -15,8 +15,7 @@
 <!--       appropriate system identifier                           -->
 <!-- PUBLIC "-//OASIS//ELEMENTS DITA Map Subject Classification Domain//EN" -->
 <!--       Delivered as file "classifyDomain.mod"                       -->
-<!-- ============================================================= -->
-<!-- SYSTEM:     Darwin Information Typing Architecture (DITA)     -->
+<!-- ============================================================= -->
 <!--                                                               -->
 <!-- PURPOSE:    Define elements and specialization attributes     -->
 <!--             for Map Subject Classification Domain             -->

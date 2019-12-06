@@ -2,7 +2,6 @@
 <!-- MODULE: DITA Highlight Domain                                 -->
 <!-- VERSION: 2.0                                                  -->
 <!-- DATE:   [[[Release date]]]                                         -->
-<!-- SYSTEM: Darwin Information Typing Architecture (DITA)         -->
 <!-- PURPOSE: Define elements and specialization attributes for Highlight Domain  -->
 <!-- (C) Copyright OASIS Open 2005, 2009.                          -->
 <!-- (C) Copyright IBM Corporation 2001, 2004. All Rights Reserved. -->

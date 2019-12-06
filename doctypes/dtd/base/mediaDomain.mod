@@ -16,8 +16,7 @@
 <!--       Delivered as file "mediaDomain.mod"                     -->
 <!--                                                               -->
 <!-- ============================================================= -->    
-<!--                                                               -->
-<!-- SYSTEM:     Darwin Information Typing Architecture (DITA)     -->
+<!--                                                               -->
 <!--                                                               -->
 <!-- PURPOSE:    Declaring the elements and specialization         -->
 <!--             attributes for the DITA Media Domain              -->

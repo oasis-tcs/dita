@@ -15,8 +15,7 @@
 <!--       appropriate system identifier                           -->
 <!-- PUBLIC "-//OASIS//ELEMENTS DITA Metadata//EN"                 -->
 <!--       Delivered as file "metaDecl.mod"                             -->
-<!-- ============================================================= -->
-<!-- SYSTEM:     Darwin Information Typing Architecture (DITA)     -->
+<!-- ============================================================= -->
 <!--                                                               -->
 <!-- PURPOSE:    Declaring the elements and specialization         -->
 <!--             attributes for the DITA XML Metadata              -->

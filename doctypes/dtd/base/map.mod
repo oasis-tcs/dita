@@ -24,8 +24,7 @@
 PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
       Delivered as file "map.mod"                                  -->
 
-<!-- ============================================================= -->
-<!-- SYSTEM:     Darwin Information Typing Architecture (DITA)     -->
+<!-- ============================================================= -->
 <!--                                                               -->
 <!-- PURPOSE:    Declaring the elements and specialization         -->
 <!--             attributes for the DITA Maps                      -->

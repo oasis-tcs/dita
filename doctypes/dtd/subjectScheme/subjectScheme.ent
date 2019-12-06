@@ -15,8 +15,7 @@
 <!--       appropriate system identifier                           -->
 <!-- PUBLIC "-//OASIS//ELEMENTS DITA Subject Scheme Map//EN"       -->
 <!--       Delivered as file "subjectScheme.mod"                        -->
-<!-- ============================================================= -->
-<!-- SYSTEM:     Darwin Information Typing Architecture (DITA)     -->
+<!-- ============================================================= -->
 <!--                                                               -->
 <!-- PURPOSE:    Declaring the elements and specialization         -->
 <!--             attributes for DITA Subject Scheme Maps           -->
