@@ -27,6 +27,8 @@
 <!--    2018.03.14 KJE: Added new attribute group for use on       -->
 <!--                    topichead and topicgroup (removes          -->
 <!--                    @collection-type); removed @query          -->
+<!--    2019.12.04 KJE: Add <mapresources>                         -->
+<!--                                                               -->
 <!-- ============================================================= -->
 <!--                                                               -->
 <!--                                                               -->
@@ -35,11 +37,12 @@
 <!--                   ELEMENT NAME ENTITIES                       -->
 <!-- ============================================================= -->
 
-<!ENTITY % topichead   "topichead"                                   >
-<!ENTITY % topicgroup  "topicgroup"                                  >
-<!ENTITY % anchorref   "anchorref"                                   >
-<!ENTITY % mapref      "mapref"                                      >
-<!ENTITY % keydef      "keydef"                                      >
+<!ENTITY % topichead      "topichead"                                   >
+<!ENTITY % topicgroup     "topicgroup"                                  >
+<!ENTITY % anchorref      "anchorref"                                   >
+<!ENTITY % mapref         "mapref"                                      >
+<!ENTITY % keydef         "keydef"                                      >
+<!ENTITY % mapresources   "mapresources"                          >
 
 <!-- ============================================================= -->
 <!--                    COMMON ATTLIST SETS                        -->
@@ -352,7 +355,67 @@
 <!ELEMENT  keydef %keydef.content;>
 <!ATTLIST  keydef %keydef.attributes;>
 
-
+<!--                    LONG NAME: Map resources                          -->
+<!ENTITY % mapresources.content
+                       "(
+                         (%topicmeta;)?,
+                         (%data.elements.incl; | %topicref;)*
+                         )"
+>
+<!ENTITY % mapresources.attributes
+              "href
+                          CDATA
+                                    #IMPLIED
+               keyref
+                          CDATA
+                                    #IMPLIED
+               keys
+                          CDATA
+                                    #IMPLIED
+               keyscope
+                          CDATA
+                                    #IMPLIED
+               processing-role
+                          (normal |
+                           resource-only |
+                           -dita-use-conref-target)
+                                    'resource-only'
+               type
+                          CDATA
+                                    #IMPLIED
+               cascade
+                          CDATA
+                                    #IMPLIED
+               scope
+                          (external |
+                           local |
+                           peer |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               format
+                          CDATA
+                                    #IMPLIED
+               linking
+                          (none |
+                           normal |
+                           sourceonly |
+                           targetonly |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               toc
+                          (no |
+                           yes |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               search
+                          (no |
+                           yes |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               %univ-atts;"
+>
+<!ELEMENT  mapresources %mapresources.content;> 
+<!ATTLIST  mapresources %mapresources.attributes;>
 
 <!-- ============================================================= -->
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
@@ -361,6 +424,7 @@
 <!ATTLIST  anchorref      class CDATA "+ map/topicref mapgroup-d/anchorref ">
 <!ATTLIST  keydef         class CDATA "+ map/topicref mapgroup-d/keydef ">
 <!ATTLIST  mapref         class CDATA "+ map/topicref mapgroup-d/mapref ">
+<!ATTLIST  mapresources   class CDATA "+ map/topicref mapgroup-d/mapresources ">
 <!ATTLIST  topicgroup     class CDATA "+ map/topicref mapgroup-d/topicgroup ">
 <!ATTLIST  topichead      class CDATA "+ map/topicref mapgroup-d/topichead ">
 
