@@ -35,8 +35,9 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map Group Domain//EN"
  UPDATES:                                                    
    2018.03.14 KJE: Removed @query; added attribute group for
                    use on topichead and topicgroup (to remove
-                   @collection-type)
-   2018.04.09 KJE: Removed @navtitle  
+                   @collection-type)		   
+   2018.04.09 KJE: Remove @navtitle  
+   2019.12.04 KJE: Add mapresources
 =============================================================
       
     </headerComment>
@@ -143,6 +144,9 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map Group Domain//EN"
     <define name="mapref">
       <ref name="mapref.element"/>
     </define>
+    <define name="mapresources">
+      <ref name="mapresources.element"/>
+    </define>
     <define name="topicgroup">
       <ref name="topicgroup.element"/>
     </define>
@@ -238,7 +242,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map Group Domain//EN"
       <define name="topicgroup.attlist" combine="interleave">
         <ref name="topicgroup.attributes"/>
       </define>
-
     </div>
     <div>
       <a:documentation>Anchor Reference</a:documentation>
@@ -552,6 +555,102 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map Group Domain//EN"
       </define>
     </div>
   </div>
+      <div>
+      <a:documentation>Map resource</a:documentation>
+      <define name="mapresources.content">
+        <optional>
+          <ref name="topicmeta"/>
+        </optional>
+        <zeroOrMore>
+          <choice>
+            <ref name="data.elements.incl"/>
+            <ref name="topicref"/>
+          </choice>
+        </zeroOrMore>
+      </define>
+      <define name="mapresources.attributes">
+        <optional>
+          <attribute name="href"/>
+        </optional>
+        <optional>
+          <attribute name="keyref"/>
+        </optional>
+        <optional>
+          <attribute name="keys"/>
+        </optional>
+        <optional>
+          <attribute name="keyscope" dita:since="1.3"/>
+        </optional>
+        <optional>
+          <attribute name="processing-role" a:defaultValue="resource-only">
+            <choice>
+              <value>normal</value>
+              <value>resource-only</value>
+              <value>-dita-use-conref-target</value>
+            </choice>
+          </attribute>
+        </optional>
+        <optional>
+          <attribute name="type"/>
+        </optional>
+        <optional>
+          <attribute name="cascade" dita:since="1.3"/>
+        </optional>
+        <optional>
+          <attribute name="scope">
+            <choice>
+              <value>external</value>
+              <value>local</value>
+              <value>peer</value>
+              <value>-dita-use-conref-target</value>
+            </choice>
+          </attribute>
+        </optional>
+        <optional>
+          <attribute name="format"/>
+        </optional>
+        <optional>
+          <attribute name="linking">
+            <choice>
+              <value>none</value>
+              <value>normal</value>
+              <value>sourceonly</value>
+              <value>targetonly</value>
+              <value>-dita-use-conref-target</value>
+            </choice>
+          </attribute>
+        </optional>
+        <optional>
+          <attribute name="toc">
+            <choice>
+              <value>no</value>
+              <value>yes</value>
+              <value>-dita-use-conref-target</value>
+            </choice>
+          </attribute>
+        </optional>
+        <optional>
+          <attribute name="search">
+            <choice>
+              <value>no</value>
+              <value>yes</value>
+              <value>-dita-use-conref-target</value>
+            </choice>
+          </attribute>
+        </optional>
+        <ref name="univ-atts"/>
+      </define>
+      <define name="mapresources.element">
+        <element name="mapresources">
+          <a:documentation>The &lt;mapresources> element is a convenience element that is used to ... .</a:documentation>
+          <ref name="mapresources.attlist"/>
+          <ref name="mapresources.content"/>
+        </element>
+      </define>
+      <define name="mapresources.attlist" combine="interleave">
+        <ref name="mapresources.attributes"/>
+      </define>
+    </div>
   <div>
     <a:documentation>Specialization attributes. Global attributes and class defaults</a:documentation>
     <define name="anchorref.attlist" combine="interleave">
@@ -567,6 +666,11 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map Group Domain//EN"
     <define name="mapref.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="+ map/topicref mapgroup-d/mapref "/>
+      </optional>
+    </define>
+    <define name="mapresources.attlist" combine="interleave">
+      <optional>
+        <attribute name="class" a:defaultValue="+ map/topicref mapgroup-d/mapresources "/>
       </optional>
     </define>
     <define name="topicgroup.attlist" combine="interleave">
