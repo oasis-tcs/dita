@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+    <reference id="mapresources" xml:lang="en-us">
+      <title><xmlelement>mapresources</xmlelement></title>
+      <shortdesc>The <xmlelement>mapresources</xmlelement> element serves as an intuitive location
+        for map authors to place objects with <xmlatt>processing-role</xmlatt> set to
+          <keyword>resource-only</keyword>, for example, key definitions and subject scheme
+        maps</shortdesc>
+      <prolog>
+        <metadata>
+          <keywords>
+            <indexterm>convenience
+                elements<indexterm><xmlelement>mapresources</xmlelement></indexterm></indexterm>
+            <indexterm>mapgroup
+              domain<indexterm><xmlelement>mapresources</xmlelement></indexterm></indexterm>
+          </keywords>
+        </metadata>
+      </prolog>
+      <refbody>
+        <section id="specialization-hierarchy">
+          <title>Specialization hierarchy</title>
+          <p>The <xmlelement>mapresources</xmlelement> element is specialized from
+              <xmlelement>topicref</xmlelement>. It is defined in the map group module.</p>
+        </section>
+        <section id="attributes">
+          <title>Attributes</title>
+          <p>The following attributes are available on this element: <xref
+                    keyref="attributes-universal"/>, <xref keyref="attributes-linkRelationship"/>
+                (with the exclusion of <xmlatt>chunk</xmlatt>, <xmlatt>collection-type</xmlatt>,
+                    <xmlatt>locktitle</xmlatt>, and a narrowed definition of <xmlatt>href</xmlatt>,
+                given below), <xref keyref="attributes-commonMap"/> (with a narrowed definition of
+                    <xmlatt>processing-role</xmlatt>, given below), <xref keyref="attributes-keys"
+                        ><xmlatt>keys</xmlatt></xref>, <xref keyref="attributes-keyref"
+                        ><xmlatt>keyref</xmlatt></xref>, and the attributes defined below.</p>
+          <dl>
+            <dlentry>
+              <dt><xmlatt>href</xmlatt></dt>
+              <dd>Points to the resource that is represented by the
+                  <xmlelement>topicref</xmlelement> element. See <xref keyref="attributes-href"/>
+                for detailed information on supported values and processing implications. References
+                to DITA content cannot be below the topic level: that is, you cannot reference
+                individual elements inside a topic. References to content other than DITA topics
+                should use the <xmlatt>format</xmlatt> attribute to identify the kind of resource
+                being referenced.</dd>
+            </dlentry>
+            <dlentry>
+              <dt><xmlatt>processing-role</xmlatt></dt>
+              <dd>The default value for <xmlatt>processing-role</xmlatt> is set to
+                  <keyword>resource-only</keyword>. Otherwise, the definition matches the one in
+                  <xref keyref="attributes-commonMap"/>.</dd>
+            </dlentry>
+          </dl>
+        </section>
+        <example id="example" otherprops="examples">
+          <title>Examples</title>
+          <p>This section provides examples of how the <xmlelement>mapresources</xmlelement> element
+            can be used.</p>
+          <fig>
+            <title>Specifying resource-only objects in an intuitive location in a book map</title>
+            <p>The following code sample illustrate how the <xmlelement>mapresources</xmlelement>
+              element can group references to key definitions, subject schemes, and other resources
+              in a bookmap:</p>
+            <codeblock>&lt;bookmap>
+  &lt;booktitle>
+    &lt;mainbooktitle>Test bookmap&lt;/mainbooktitle>
+  &lt;/booktitle><b>
+  &lt;mapresources>
+    &lt;mapref href="key-definitions.ditamap"/>
+    &lt;mapref href="subject-scheme.ditamap" type="subjectscheme"/>
+    &lt;topicref href="cover-page.dita outputclass="cover-page"/>
+  &lt;/mapresources></b>
+  ...
+&lt;/bookmap></codeblock>
+            <p>Note that this example illustrates that <xmlelement>mapresources</xmlelement> can be
+              used to make topics available for resource-only processing. In this scenario, the
+              company uses a processor that uses content contained in the
+                <filepath>cover-page.dita</filepath> file to generate a PDF cover page.</p>
+          </fig>
+          <fig>
+            <title>Specifying resource-only objects in a map</title>
+            <p>The following code sample shows a map that contains information for a specific model
+              of a controller. This map is referenced in an omnibus publication that contains
+              information for an entire family of controllers.</p>
+            <codeblock>&lt;map keyscope="model-XNP09">
+  &lt;title>Model XNP09&lt;/title>
+  &lt;mapresources>
+    &lt;keydef keys="model-illustration" href="model-XNP09.png" format="png"/>
+    &lt;keydef keys="remove-cover" href="remove-cover-XNP09.png" format="png"/>
+  &lt;/mapresources>
+  &lt;topicref href="model-overview.dita/>
+  &lt;topicref href="installing.dita"/>
+  &lt;topicref href="uninstalling.dita/>
+  ...
+&lt;/map></codeblock>
+          </fig>
+        </example>
+      </refbody>
+    </reference>
