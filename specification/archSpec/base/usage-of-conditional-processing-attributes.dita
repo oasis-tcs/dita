@@ -45,16 +45,15 @@ product="product(a b c) database(dbA dbB) appserver(mySERVER)"</codeblock></li>
       attribute. For example, <codeph>&lt;ph product="database() A"></codeph> is equivalent to
         <codeph>&lt;ph product="A"></codeph>. Combining both rules into one example, <codeph>&lt;ph
         product="operatingSystem()"></codeph> is equivalent to <codeph>&lt;ph></codeph>.</p>
-    <p >If two groups with the same name exist on different attributes,
-      a rule specified for that group will evaluate the same way on each attribute. For example, if
-      the group "sampleGroup" is specified within both <xmlatt>platform</xmlatt> and
-        <xmlatt>otherprops</xmlatt>, a DITAVAL rule for <codeph>sampleGroup="value"</codeph> will
-      evaluate the same in each attribute.
+    <p>If two groups with the same name exist on different attributes, a rule specified for that
+      group will evaluate the same way on each attribute. For example, if the group "sample" is
+      specified within both <xmlatt>platform</xmlatt> and <xmlatt>otherprops</xmlatt>, a DITAVAL
+      rule for <codeph>sample="value"</codeph> will evaluate the same in each attribute.
       <!--Subject schemes can be used to define a group differently for two different attributes, but for the purposes of DITAVAL filtering or flagging, there is no way to distinguish.-->
       If there is a need to distinguish between similarly named groups on different attributes, the
-      best practice is to use more specific group names such as platformGroupname and
-      productGroupname. Alternatively, DITAVAL rules can be specified based on the attribute name
-      rather than the group name.</p>
+      best practice is to use more specific group names such as <varname>platformGroupname</varname>
+      and <varname>productGroupname</varname>. Alternatively, DITAVAL rules can be specified based
+      on the attribute name rather than the group name.</p>
     <p>If the same group name is used in different attributes, a complex scenario could be created
 where different defaults are specified for different attributes, with no rule set for a group or
 individual value. In this case a value might end up evaluating differently in the different

@@ -79,18 +79,18 @@
         </dlentry>
         <dlentry>
           <dt id="uxatt-features"><xmlatt>features</xmlatt></dt>
-          <dd>A list of other features (size, position, scrollbars, etc.) of the window. Each
-            feature name and value <ph>can not</ph> contain any blank space, and each feature name
-            and value <ph>is</ph> separated by a comma or other delimiter character.</dd>
+          <dd>A list of other features (size, position, scroll bars, etc.) of the window. Each
+            feature name and value can not contain any blank space, and each feature name and value
+            is separated by a comma or other delimiter character.</dd>
         </dlentry>
         <dlentry>
           <dt id="uxatt-relative"><xmlatt>relative</xmlatt></dt>
           <dd>Indicates whether the window dimensions are relative to the calling window or the
-            entire target display. The default value is "no". Allowable values are: <dl>
+            entire target display. The default value is <keyword>no</keyword>. Allowable values are: <dl>
               <dlentry>
                 <dt>no</dt>
-                <dd>The window dimensions specified on this element are absolute positions (not
-                  relative to the calling window).</dd>
+                <dd>The window dimensions specified on this element are absolute positions; they are
+                  not relative to the calling window.</dd>
               </dlentry>
               <dlentry>
                 <dt>yes</dt>
@@ -107,18 +107,18 @@
           <dt id="uxatt-full-screen"><xmlatt>full-screen</xmlatt></dt>
           <dd>Indicates whether the window is initially displayed in a maximized state. Allowable
             values are: "yes", "no", and <xref keyref="attributes-useconreftarget"
-              >-dita-use-conref-target</xref>. The default value is "no".</dd>
+              >-dita-use-conref-target</xref>. The default value is <keyword>no</keyword>.</dd>
         </dlentry>
       </dl>
     </section>
     <example id="example" otherprops="examples">
       <title>Example</title>
-      <p>In this example, a window with a name of "csh" is defined in the map. The window name is
+      <p>In this example, a window with a name of "help" is defined in the map. The window name is
         later referenced by the <xmlatt>ux-windowref</xmlatt> attribute on the
           <xmlelement>resourceid</xmlelement> element.</p>
       <codeblock>&lt;map title="Widget Help">
  &lt;topicmeta>
-  <b>&lt;ux-window id="fg23" name="csh" top="10" left="20" height="400" width="500" 
+  <b>&lt;ux-window id="fg23" name="help" top="10" left="20" height="400" width="500" 
      features="status=yes,toolbar=no,menubar=no,location=no" relative="yes"
      full-screen="no" /></b>
  &lt;/topicmeta>
@@ -128,7 +128,7 @@
    &lt;topicref href="editing.dita" type="task">
      &lt;topicmeta>  
        <b>&lt;resourceid id="ab43" appname="ua" 
-          appid="5432" ux-context-string="idh_fileedit" ux-windowref="csh" /></b>
+          appid="5432" ux-context-string="idh_fileedit" ux-windowref="help" /></b>
      &lt;/topicmeta>
    &lt;/topicref>
 &lt;/topicref>
