@@ -38,7 +38,7 @@
         specified from root module (map or topic) to the provided module.</p>
       <dl>
         <dlentry id="structural-modules">
-          <dt>structural modules</dt>
+          <dt>Structural modules</dt>
           <dd>
             <p>The value of the <xmlatt>domains</xmlatt> attribute includes each module in the
               specialization ancestry:</p>
@@ -51,7 +51,7 @@
           </dd>
         </dlentry>
         <dlentry  id="structural-modules-with-dependencies">
-          <dt>structural modules with dependencies</dt>
+          <dt>Structural modules with dependencies</dt>
           <dd>
             <p>Structural modules can directly reference or specialize elements from modules that
               are outside of their specialization ancestry. They also can define specialized
@@ -88,7 +88,7 @@
           </dd>
         </dlentry>
         <dlentry id="element-domains">
-          <dt>element domains</dt>
+          <dt>Element domains</dt>
           <dd>
             <p>The value includes the structural type ancestry and, if applicable, the domain module
               ancestry from which the domain is specialized:</p>
@@ -100,7 +100,7 @@
             supplies the following value: <codeph>(topic pr-d cpp-d)</codeph>.</dd>
         </dlentry>
         <dlentry id="structural-constraint-modules">
-          <dt>structural constraint modules</dt>
+          <dt>Structural constraint modules</dt>
           <dd>
             <p>The value includes the structural type ancestry followed by the name of the
               constraint domain:</p>
@@ -113,7 +113,7 @@
                 constraints module and characterizes it, for example, "strict" or "requiredTitle" or
                 "myCompany-".</li>
               <li id="Tagname-li"><varname>Tagname</varname> is the element type name with an
-                initial capital, for example, "Taskbody" or "Topic".</li>
+                initial capital, for example, "Topic".</li>
               <li id="literal-c-li">The literal "-c" indicates that the name is the name of a
                 constraint.</li>
             </ul>
@@ -127,7 +127,7 @@
           </dd>
         </dlentry>
         <dlentry id="domain-constraint-modules">
-          <dt>domain constraint modules</dt>
+          <dt>Domain constraint modules</dt>
           <dd>
             <p>The value includes the specialization ancestry followed by the name of the constraint
               domain:</p>
@@ -187,8 +187,9 @@
         the effective value is the following:</p>
       <codeblock>domains="(topic task) (topic ui-d) (topic sw-d) (topic pr-d)"</codeblock>
       <p>If the document-type shell also used a specialization of the programming domain that
-        describes C++ programming (with a short name of "cpp-d"), the new C++ programming domain
-        would add an additional value to the <xmlatt>domains</xmlatt> attribute:</p>
+        describes C++ programming (with a short name of <keyword>cpp-d</keyword>), the new C++
+        programming domain would add an additional value to the <xmlatt>domains</xmlatt>
+        attribute:</p>
       <codeblock>domains="(topic task) (topic ui-d) (topic sw-d) (topic pr-d) <b>(topic pr-d cpp-d)</b>"</codeblock>
       <p>Note that the value for the <xmlatt>domains</xmlatt> attribute is not authored; Instead,
         the value is defaulted based on the modules that are included in the document type
