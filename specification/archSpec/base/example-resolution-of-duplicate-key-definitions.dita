@@ -28,16 +28,16 @@
   &lt;!--... -->
 &lt;/map&gt;</codeblock>
   <p>In this case, the effective key definition is determined not only by the order in which the
-      definitions occur, but also by whether the active value of the platform <ph
-        >condition</ph> is "osx" or "windows7". Both key definitions are
+      definitions occur, but also by whether the active value of the platform condition is
+        <keyword>osx</keyword> or <keyword>windows7</keyword>. Both key definitions are
         <i>potentially</i> effective because they have distinct values for the conditional
       attribute. Note that if no active value is specified for the <xmlatt>platform</xmlatt>
       attribute at processing time, then both of the key definitions are present and so the first
       one in document order is the effective definition. </p>
-  <p>If the DITAVAL settings are defined so that both "osx" and "windows" values for the
-        <xmlatt>platform</xmlatt> attribute are excluded, then neither definition is effective and
-      the key is undefined. That case can be avoided by specifying an unconditional key definition
-      after any conditional key definitions, for
+  <p>If the DITAVAL settings are defined so that both <keyword>osx</keyword> and
+        <keyword>windows7</keyword> values for the <xmlatt>platform</xmlatt> attribute are excluded,
+      then neither definition is effective and the key is undefined. That case can be avoided by
+      specifying an unconditional key definition after any conditional key definitions, for
       example:<codeblock>&lt;map&gt;
   &lt;!--... -->
   &lt;keydef keys="file-chooser-dialog" href="file-chooser-osx.dita" platform="osx"/&gt;
@@ -45,8 +45,8 @@
   <b>&lt;keydef keys="file-chooser-dialog" href="file-chooser-generic.dita"/&gt;</b>
   &lt;!--... -->
 &lt;/map&gt;</codeblock></p>
-  <p>If the above map is processed with both "osx" and "windows" values for the
-        <xmlatt>platform</xmlatt> attribute excluded, then the effective key definition for
-      "file-chooser-dialog" is the <filepath>file-chooser-generic.dita</filepath> resource.</p>
+  <p>If the above map is processed with both <keyword>osx</keyword> and <keyword>windows7</keyword>
+      values for the <xmlatt>platform</xmlatt> attribute excluded, then the effective key definition
+      for "file-chooser-dialog" is the <filepath>file-chooser-generic.dita</filepath> resource.</p>
  </conbody>
 </concept>

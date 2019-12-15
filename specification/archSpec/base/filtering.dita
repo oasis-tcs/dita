@@ -46,31 +46,30 @@ attribute is treated as "include", because an omitted attribute cannot evaluate 
    to an audience or platform that is not excluded. But if the paragraph applies to an additional
    product that has not been excluded, then its content is still relevant for the intended output
    and is preserved.</p>
-  <p >Similarly, with groups, a step might apply to one application
-   server and two database applications:
-   <codeblock id="groupcodesample">&lt;steps>
+  <p>Similarly, with groups, a step might apply to one application server and two database
+   applications:<codeblock id="groupcodesample">&lt;steps>
   &lt;step>&lt;cmd>Common step&lt;/cmd>&lt;/step>
-  &lt;step product="appserver(mySERVER) database(ABC dbOtherName)">
+  &lt;step product="appServer(mySERVER) database(ABC dbOtherName)">
     &lt;cmd>Do something special for databases ABC or OtherName when installing on mySERVER&lt;/cmd>
   &lt;/step>
   &lt;!-- additional steps -->
 &lt;/steps></codeblock></p>
-  <p>If a publisher decides to exclude the application server mySERVER, then the appserver() group
+  <p>If a publisher decides to exclude the application server mySERVER, then the appServer() group
    evaluates to exclude. This can be done by setting <codeph>product="mySERVER"</codeph> to exclude
-    <i>or</i> by setting <codeph>appserver="mySERVER"</codeph> to exclude. This means the step is
+    <i>or</i> by setting <codeph>appServer="mySERVER"</codeph> to exclude. This means the step is
    excluded, regardless of how the values "ABC" or "dbOtherName" evaluate. If a rule is specified
-   for both <codeph>product="mySERVER"</codeph> and <codeph>appserver="mySERVER"</codeph>, the rule
-   for the more specific group name "appserver" takes precedence.</p>
+   for both <codeph>product="mySERVER"</codeph> and <codeph>appServer="mySERVER"</codeph>, the rule
+   for the more specific group name "appServer" takes precedence.</p>
   <p>Similarly, if both "ABC" and "dbOtherName" evaluate to exclude, then the database() group
    evaluates to exclude and the element is excluded regardless of how the "mySERVER" value is
    set.</p>
-  <p >In more advanced usage, a DITAVAL can be used to specify a rule
-   for a group name. For example, an author could create a DITAVAL rule that sets
-    <codeph>product="database"</codeph> to "exclude". This is equivalent to setting a default of
-   "exclude" for any individual value in a database() group; it also excludes the more common usage
-   of "database" as a single value within the <xmlatt>product</xmlatt> attribute. Thus when "myDB"
-   appears in a database() group within the <xmlatt>product</xmlatt> attribute, the full precedence
-   for determining whether to include or exclude the value is as follows: <ol>
+  <p>In more advanced usage, a DITAVAL can be used to specify a rule for a group name. For example,
+   an author could create a DITAVAL rule that sets <codeph>product="database"</codeph> to "exclude".
+   This is equivalent to setting a default of "exclude" for any individual value in a database()
+   group; it also excludes the more common usage of "database" as a single value within the
+    <xmlatt>product</xmlatt> attribute. Thus when "myDB" appears in a database() group within the
+    <xmlatt>product</xmlatt> attribute, the full precedence for determining whether to include or
+   exclude the value is as follows:<ol>
     <li>Check for a DITAVAL rule for <codeph>database="myDB"</codeph></li>
     <li>Check for a DITAVAL rule for <codeph>product="myDB"</codeph></li>
     <li>Check for a DITAVAL rule for <codeph>product="database"</codeph> (default for the database

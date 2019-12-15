@@ -85,15 +85,15 @@
     <example id="example3" otherprops="examples">
       <title>Example: <xmlatt>class</xmlatt> attribute with intermediate value</title>
       <p>The following code sample shows the value of a <xmlatt>class</xmlatt> attribute for an
-        element in the guitask module, which is specialized from <xmlelement>task</xmlelement>. The
+        element in the guiTask module, which is specialized from <xmlelement>task</xmlelement>. The
         element is specialized from <xmlelement>keyword</xmlelement> in the base topic vocabulary,
         rather than from an element in the task module:</p>
-      <codeblock>&lt;windowname class="- topic/keyword task/keyword guitask/windowname ">...&lt;/windowname></codeblock>
+      <codeblock>&lt;windowName class="- topic/keyword task/keyword guiTask/windowname ">...&lt;/windowName></codeblock>
       <p>The intermediate values are necessary so that generalizing and specializing transformations
         can map the values simply and accurately. For example, if <codeph>task/keyword</codeph> was
-        missing as a value, and a user decided to generalize this guitask up to a task topic, then
+        missing as a value, and a user decided to generalize this guiTask up to a task topic, then
         the transformation would have to guess whether to map to keyword (appropriate if task is
-        more general than guitask, which it is) or leave it as windowname (appropriate if task were
+        more general than guiTask, which it is) or leave it as windowName (appropriate if task were
         more specialized, which it isn't). By always providing mappings for more general values,
         processors can then apply the simple rule that missing mappings must by default be to more
         specialized values than the one we are generalizing to, which means the last value in the
