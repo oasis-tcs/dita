@@ -6,8 +6,9 @@
 <shortdesc>The <xmlatt>conaction</xmlatt> attribute allows users to push content from one topic into
     another. It causes the <xmlatt>conref</xmlatt> attribute to work in reverse, so that the content
     is pushed from the current topic into another, rather than pulled from another topic into the
-    current one. Allowable values for <xmlatt>conaction</xmlatt> are: pushafter, pushbefore,
-    pushreplace, mark, and -dita-use-conref-target.</shortdesc>
+    current one. Allowable values for <xmlatt>conaction</xmlatt> are: <keyword>pushafter</keyword>,
+      <keyword>pushbefore</keyword>, <keyword>pushreplace</keyword>, mark<keyword/>, and
+      <keyword>-dita-use-conref-target</keyword>.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -40,11 +41,14 @@
 </ul></section>
 <section id="replacing-content">
       <title>Replacing content in another topic</title>
-      <p>When the <xmlatt>conaction</xmlatt> attribute is set to "pushreplace", the source element
-        will replace the target specified on the <xmlatt>conref</xmlatt> attribute. The pushed
-        content remains in the source topic where it was originally authored.</p>
-      <p>For example, assume that a task in <filepath>example.dita</filepath> has the id "example",
-        and contains a <xmlelement>step</xmlelement> with the id "b":
+      <p>When the <xmlatt>conaction</xmlatt> attribute is set to pushreplace<keyword/>, the source
+        element will replace the target specified on the <xmlatt>conref</xmlatt> attribute. The
+        pushed content remains in the source topic where it was originally authored.</p>
+      <p>For example, assume that a task in <filepath>example.dita</filepath> has the
+          <xmlatt>id</xmlatt> set to example<keyword/>, and it contains a
+          <xmlelement>step</xmlelement> element with the <xmlatt>id</xmlatt> set to
+          <keyword>b</keyword>:</p>
+      <p>
         <codeblock>&lt;task id="example" xml:lang="en">
   &lt;title>Example topic&lt;/title>
   &lt;taskbody>
@@ -54,10 +58,11 @@
       &lt;step id="c">&lt;cmd>C&lt;/cmd>&lt;/step>
     &lt;/steps>
   &lt;/taskbody>
-&lt;/task></codeblock></p>
-      <p>In order to replace the step with id="b", another topic must combine a
-          <xmlatt>conaction</xmlatt> value of "pushreplace" with a <xmlatt>conref</xmlatt> attribute
-        that references this
+&lt;/task></codeblock>
+      </p>
+      <p>In order to replace the step with <codeph>id="b"</codeph>, another topic must combine a
+          <xmlatt>conaction</xmlatt> value of <keyword>pushreplace</keyword> with a
+          <xmlatt>conref</xmlatt> attribute that references this
         <xmlelement>step</xmlelement>:<codeblock>&lt;task id="other" xml:lang="en">
   ...
    &lt;step conaction="pushreplace" 
@@ -90,22 +95,22 @@
     </section>
 <section id="pushing-content">
       <title>Pushing content before or after another element</title>
-      <p>Setting the <xmlatt>conaction</xmlatt> attribute to "pushbefore" allows an element to be
-        pushed before the element referenced by the <xmlatt>conref</xmlatt> attribute. Likewise,
-        setting the <xmlatt>conaction</xmlatt> attribute to "pushafter" allows an element to be
-        pushed after the element referenced by the <xmlatt>conref</xmlatt> attribute. Multiple
-        sources <ph >can</ph> push content before or after the same target; the
-        order in which that content is pushed is undefined. </p>
+      <p>Setting the <xmlatt>conaction</xmlatt> attribute to <keyword>pushbefore</keyword> allows an
+        element to be pushed before the element referenced by the <xmlatt>conref</xmlatt> attribute.
+        Likewise, setting the <xmlatt>conaction</xmlatt> attribute to <keyword>pushafter</keyword>
+        allows an element to be pushed after the element referenced by the <xmlatt>conref</xmlatt>
+        attribute. Multiple sources can push content before or after the same target; the order in
+        which that content is pushed is undefined.</p>
       <p>When an element is pushed before or after a target, the resulting document will have at
         least two of that element. Because this is not always valid, a document attempting to push
         content before or after a target must take an extra step to ensure that the result will be
         valid. The extra step makes use of the <codeph>conaction="mark"</codeph> value.</p>
       <p>When pushing before, the <xmlatt>conref</xmlatt> attribute itself looks just as it did when
-        replacing, but the <xmlatt>conaction</xmlatt> attribute is set to "mark" because it is
-        marking the target element. This element remains empty; its purpose is to ensure that it is
-        legal to have more than one of the current element. Immediately before the element which
+        replacing, but the <xmlatt>conaction</xmlatt> attribute is set to mark<keyword/> because it
+        is marking the target element. This element remains empty; its purpose is to ensure that it
+        is legal to have more than one of the current element. Immediately before the element which
         marks the target, you will place the content that you actually want to push. This element
-        will set the <xmlatt>conaction</xmlatt> attribute to "pushbefore".</p>
+        will set the <xmlatt>conaction</xmlatt> attribute to <keyword>pushbefore</keyword>.</p>
       <p>When pushing after, the procedure is the same, except that the order of the elements is
         reversed. The element with <codeph>conaction="pushafter"</codeph> comes immediately after
         the element which marks the target.</p>
@@ -116,19 +121,19 @@
         ensure uniqueness, or warning the user.</p>
       <p>The following restrictions apply when pushing content before or after an element: <ul>
           <li>The elements that use <codeph>conaction="mark"</codeph> and
-              <codeph>conaction="pushbefore"</codeph>
-            <ph >are</ph> the same type as each other and appear in sequence.
-            This restriction prevents a topic from trying to push a <xmlelement>body</xmlelement>
-            element before or after another <xmlelement>body</xmlelement> element, because it is not
-            valid to have two body elements in sequence.</li>
-          <li><ph >Either</ph> the container elements of the source and target
-            match, or the container of the source element <ph >is</ph> be a
-            specialization of the target's container. This is also to ensure validity of the target;
-            for example, while it is possible to include multiple titles in a
-              <xmlelement>section</xmlelement>, it is not possible to do so in a figure. Comparing
+              <codeph>conaction="pushbefore"</codeph> are the same type as each other and appear in
+            sequence. This restriction prevents a topic from trying to push a
+              <xmlelement>body</xmlelement> element before or after another
+              <xmlelement>body</xmlelement> element, because it is not valid to have two body
+            elements in sequence.</li>
+          <li>Either the container elements of the source and target match, or the container of the
+            source element is be a specialization of the target's container. This is also to ensure
+            validity of the target; for example, while it is possible to include multiple titles in
+            a <xmlelement>section</xmlelement>, it is not possible to do so in a figure. Comparing
             the parents prevents a second <xmlelement>section</xmlelement> title from being pushed
             before a figure title (the resulting figure would not be valid DITA). This restriction
-            only applies to the pushbefore or pushafter actions, not to the pushreplace action.</li>
+            only applies to the <keyword>pushbefore</keyword> or<keyword> pushafter</keyword>
+            actions, not to the <keyword>pushreplace</keyword> action.</li>
         </ul></p>
       <p>When content is pushed from one topic to another, it is still rendered in the original
         context. Processors might delete the empty element that has the
