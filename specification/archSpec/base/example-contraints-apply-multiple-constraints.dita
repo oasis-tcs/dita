@@ -18,12 +18,11 @@
   <conbody>
     <example id="example" otherprops="examples">
       <p>Here is a list of constraint modules and what they do:</p>
-      <simpletable frame="all" relcolwidth="1.0* 1.0* 1.0* 1.0*">
+      <simpletable frame="all" relcolwidth="1.0* 1.0* 1.0*">
         <sthead>
           <stentry>File name</stentry>
           <stentry>What it constrains</stentry>
           <stentry>Details</stentry>
-          <stentry>Contribution to the <xmlatt>domains</xmlatt> attribute</stentry>
         </sthead>
         <strow>
           <stentry><filepath>example-TopicConstraint.mod</filepath></stentry>
@@ -36,7 +35,6 @@
               <li>Disallows topic nesting</li>
             </ul>
           </stentry>
-          <stentry><codeph>(topic basic-Topic-c)</codeph></stentry>
         </strow>
         <strow>
           <stentry><filepath>example-SectionConstraint.mod</filepath></stentry>
@@ -47,31 +45,24 @@
               <li>Removes <xmlatt>spectitle</xmlatt> attribute</li>
             </ul>
           </stentry>
-          <stentry><codeph>(topic idRequired-section-c)</codeph></stentry>
         </strow>
         <strow>
           <stentry><filepath>example-HighlightingDomainConstraint.mod</filepath></stentry>
           <stentry>Highlighting domain</stentry>
           <stentry>Reduces the highlighting domain elements to <xmlelement>b</xmlelement> and
               <xmlelement>i</xmlelement></stentry>
-          <stentry><codeph>(topic hi-d basic-HighlightingDomain-c)</codeph></stentry>
         </strow>
         <strow>
-          <stentry><filepath>example-PhConstraint.ent</filepath></stentry>
+          <stentry>N/A</stentry>
           <stentry><xmlelement>ph</xmlelement></stentry>
-          <stentry>Removes the <xmlelement>ph</xmlelement> element</stentry>
-          <stentry>(topic noPh-ph-c)</stentry>
+          <stentry>Remove the <xmlelement>ph</xmlelement> element, allowing only domain extensions
+            (does not require a <filepath>.mod</filepath> file)</stentry>
         </strow>
       </simpletable>
       <p>All of these constraints can be integrated into a single document-type shell for
           <xmlelement>topic</xmlelement>, since they constrain distinct element types and domains.
         The constraint for the highlighting domain must be integrated before the "DOMAIN ENTITIES"
-        section, but the order in which the other three constraints are listed does not matter.</p>
-      <p>Each constraint module provides a unique contribution to the <xmlatt>domains</xmlatt>
-        attribute. When integrated into the document-type shell for <xmlelement>topic</xmlelement>,
-        the effective value of the domains attribute will include the following values, as well as
-        values for any other modules that are integrated into the document-type shell:</p>
-      <codeblock>(topic basic-Topic-c) (topic idRequired-section-c) (topic hi-d basic-HighlightingDomain-c) (topic noPh-ph-c)</codeblock>
+        section, but the order in which the other constraints are listed does not matter.</p>
     </example>
   </conbody>
   
