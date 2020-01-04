@@ -22,21 +22,6 @@
         token or an intermediate token in the <xmlatt>class</xmlatt> attribute. A second
         generalization process could end up renaming the element again or could leave it alone,
         depending on the target module or document type.</ph></p>
-<section id="generalization-and-conref">
-<title>Generalization and conref</title>
-<p>To determine compatibility between a document instance and a target document type when resolving
-a conref reference, a generalization processor can use the <xmlatt>domains</xmlatt> and
-<xmlatt>class</xmlatt> attributes for the document instance and the <xmlatt>domains</xmlatt>
-attribute for the target document type to determine how to rename elements in the resolved instance.
-For each element type, a generalization processor:</p>
-<ul>
-<li>Iterates over the <xmlatt>class</xmlatt> attribute from specific to general, inspecting the
-vocabulary modules.</li>
-<li>Identifies the first vocabulary module that is both present in each document type, with a
-compatible set of constraints for that vocabulary module. If such a module is not found, the
-instance can only be generalized to a less constrained document type.</li>
-</ul>
-</section>
   </conbody>
 </concept>
 
