@@ -28,20 +28,6 @@
       <title>Structural constraint modules</title>
       <p>Structural constraint modules have the following requirements:</p>
       <dl>
-        <dlentry>
-          <dt><xmlatt>domains</xmlatt> contribution entity name and value</dt>
-          <dd>The constraint module needs to contain a declaration for a text entity with the name
-                <codeph><varname>tagname</varname>-constraints</codeph>, where
-              <varname>tagname</varname> is the name of the element type to which the constraints
-            apply. The value of the text entity is the <xmlatt>domains</xmlatt> attribute
-            contribution for the module; see <xref href="specialization-domains-attribute.dita"/>
-            for details on how to construct this value. <p otherprops="examples">For example, the
-              following text entity provides the declaration for the strict task constraint that is
-              shipped with the DITA
-              standard.<codeblock>&lt;!ENTITY taskbody-constraints     
-  "(topic task strictTaskbody-c)"
-></codeblock></p></dd>
-        </dlentry>
         <dlentry >
           <dt>The <codeph><varname>tagname</varname>.attributes</codeph> parameter entity</dt>
           <dd>
@@ -86,22 +72,6 @@
       <p>Domain constraint modules have the following requirements:</p>
       <dl>
         <dlentry>
-          <dt><xmlatt>domains</xmlatt> contribution entity name and value</dt>
-          <dd>
-            <p>The constraint module needs to contain a declaration for a text entity with the name
-                  <codeph><varname>domain</varname>Domain-constraints</codeph>, where <ph
-                conkeyref="reuse-general/domain-variable-ph"/> The value of
-              the text entity is the <xmlatt>domains</xmlatt> attribute contribution for the module;
-              see <xref href="specialization-domains-attribute.dita"/> for details on how to
-              construct this value. </p>
-            <p otherprops="examples" >For example, the following text entity provides
-              the declaration for a constraint module that restricts the highlighting domain:</p>
-            <codeblock >&lt;!ENTITY HighlightingDomain-constraints     
-  "(topic hi-d basic-HighlightingDomain-c)"
-></codeblock>
-          </dd>
-        </dlentry>
-        <dlentry>
           <dt>Parameter entity</dt>
           <dd>
             <p><ph >When the set of extension elements are restricted, there
@@ -124,16 +94,10 @@
           href="dtd-coding-doctype-shell.dita#shell-dtd-coding-reqs/domain-extensions">domain
           extensions</xref> are implemented by declaring an entity for a base element. The value of
         the entity can omit any base element types from which the other element types that are
-        listed are specialized. Omitting a base type constitutes a form of constraint; as with any
-        other constraint, this form of constraint must contribute a token to the
-          <xmlatt>domains</xmlatt> attribute. That token can be defined in a module file (which does
-        not define any other entities or values), or the token can be placed directly into the
-        document-type shell definition for the <codeph>included-domains</codeph> entity.</p>
+        listed are specialized.</p>
       <p otherprops="examples">In the following example, the <xmlelement>pre</xmlelement> base type
         is removed from the entity declaration, effectively allowing only specializations of
-          <xmlelement>pre</xmlelement> but not <xmlelement>pre</xmlelement> itself. This omission
-        would require the use of a <xmlatt>domains</xmlatt> contribution token within the
-          <codeph>included-domains</codeph> entity.<codeblock otherprops="examples"><![CDATA[<!ENTITY % pre
+          <xmlelement>pre</xmlelement> but not <xmlelement>pre</xmlelement> itself.<codeblock otherprops="examples"><![CDATA[<!ENTITY % pre
     "%pr-d-pre; | 
      %sw-d-pre; | 
      %ui-d-pre;">]]></codeblock></p>

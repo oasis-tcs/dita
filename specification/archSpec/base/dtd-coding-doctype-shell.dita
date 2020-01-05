@@ -65,9 +65,8 @@
                         <li>Any additional structural modules that are used by the document type
                             shell</li>
                     </ul>
-                    <p>Each parameter entity (<filepath>.ent</filepath>) file contributes a domain
-                        token for structural topics or maps. The parameter entity is named
-                                <codeph><varname>type-name</varname>-dec</codeph>. </p>
+                    <p>The parameter entity is named
+                            <codeph><varname>type-name</varname>-dec</codeph>. </p>
                     <p otherprops="examples">For example, a document-type shell that integrates the
                             <xmlelement>concept</xmlelement> specialization would
                         include:<codeblock>&lt;!ENTITY % concept-dec     
@@ -185,35 +184,20 @@
                 </dd>
             </dlentry>
             <dlentry id="domains-attribute-override">
-                <dt> Domains attribute override </dt>
+                <dt> Specializations attribute override </dt>
                 <dd>
-                    <p>This section sets the effective value of the <xmlatt>domains</xmlatt>
+                    <p>This section sets the effective value of the <xmlatt>specializations</xmlatt>
                         attribute for the top-level document type that is configured by the document
                         type shell. It redefines the <codeph>included-domains</codeph> entity to
-                        include the text entity for each domain, constraint, and structural
-                        specialization that is either included or reused in the document type
-                        shell.</p>
-                    <p  otherprops="examples">In the following example,
-                        entities are included for both the troubleshooting specialization and the
-                        task specialization on which the troubleshooting specialization depends; for
-                        the highlighting and utilities element domains; for the
-                            <codeph>newAtt-d</codeph> attribute domain, and for the
-                            <codeph>noBasePre-c</codeph> constraint module:<codeblock ><![CDATA[<!ENTITY included-domains
-    "&troubleshooting-att;
-     &task-att;
-     &hi-d-att; 
-     &ut-d-att; 
+                        include the text entity for each attribute domain that is either included or
+                        reused in the document type shell.</p>
+                    <p otherprops="examples">In the following example, entities are included for
+                        both the <codeph>newAtt-d</codeph> and <codeph>deliveryTarget-d</codeph>
+                        attribute domains:<codeblock><![CDATA[<!ENTITY included-domains
+    "&deliveryTarget-d-att;
      &newAtt-d-att;
-     &noBasePre-c-ph;
    "
 >]]></codeblock></p>
-                    <note>Although parameter entities (entities that begin with "%") must be defined
-                        before they are referenced, text entities (entities that begin with "&amp;")
-                        can be referenced before they are defined. This allows the
-                            <codeph>included-domains</codeph>
-                        <!--parameter -->entity to include the constraint entity, which is not
-                        defined until the constraint module is referenced later in the document type
-                        shell.</note>
                 </dd>
             </dlentry>
             <dlentry id="content-constraint-integration">
