@@ -273,7 +273,7 @@
 <!ELEMENT  topic %topic.content;>
 <!ATTLIST  topic %topic.attributes;
                  %arch-atts;
-                 domains 
+                 specializations 
                         CDATA
                                   "&included-domains;"
 >

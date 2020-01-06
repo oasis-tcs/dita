@@ -416,7 +416,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
 <!ELEMENT  map %map.content;>
 <!ATTLIST  map %map.attributes;
                  %arch-atts;
-                 domains 
+                 specializations 
                         CDATA
                                   "&included-domains;"
 >

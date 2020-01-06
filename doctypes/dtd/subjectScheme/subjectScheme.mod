@@ -162,7 +162,7 @@
 <!ELEMENT  subjectScheme %subjectScheme.content;>
 <!ATTLIST  subjectScheme %subjectScheme.attributes;
                  %arch-atts;
-                 domains 
+                 specializations 
                         CDATA
                                   "&included-domains;"
 >
