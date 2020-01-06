@@ -10,16 +10,16 @@
       <title>Required topic and map element attributes</title>
       <p>The topic or map element type must set the <xmlatt>DITAArchVersion</xmlatt> attribute to
         the version of DITA in use, typically by referencing the <codeph>arch-atts</codeph>
-        parameter entity. It must also set the <xmlatt>domains</xmlatt> attribute to the
+        parameter entity. It must also set the <xmlatt>specializations</xmlatt> attribute to the
           <codeph>included-domains</codeph> entity. These attributes give processors a reliable way
-        to check the architecture version and look up the list of domains available in the document
-        type.</p>
+        to check the architecture version and look up the list of attribute domains available in the
+        document type.</p>
       <p>The following example shows how these attributes are defined for the
-          <xmlelement>concept</xmlelement> element in DITA 1.3:</p>
+          <xmlelement>concept</xmlelement> element in DITA 2.0:</p>
       <codeblock>&lt;!ATTLIST concept    
   %concept.attributes;
   %arch-atts;
-  domains  CDATA  "&amp;included-domains;"></codeblock>
+  specializations  CDATA  "&amp;included-domains;"></codeblock>
     </section>
     <section id="topic-nesting" >
       <title>Controlling nesting in topic types</title>

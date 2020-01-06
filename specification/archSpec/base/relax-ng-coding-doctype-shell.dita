@@ -27,25 +27,24 @@
         </dd>
       </dlentry>
       <dlentry>
-        <dt>DITA domains attribute</dt>
+        <dt>DITA <xmlatt>specializations</xmlatt> attribute</dt>
         <dd>
-          <p>The document-type shell must list the domain or structural modules that are named as
-            dependencies in the <xmlatt>domains</xmlatt> attribute value. Unlike DTDs, a default
-            value for <xmlatt>domains</xmlatt> cannot automatically be constructed using RELAX NG
-            facilities. Instead, the values used to construct <xmlatt>domains</xmlatt> are taken
-            from each vocabulary and constraint module, in addition to any domains contributions
-            based on constraints implemented within the shell. </p>
+          <p>The document-type shell must list the attribute domain modules that are named as
+            dependencies in the <xmlatt>specializations</xmlatt> attribute value. Unlike DTDs, a
+            default value for <xmlatt>specializations</xmlatt> cannot automatically be constructed
+            using RELAX NG facilities. Instead, the values used to construct
+              <xmlatt>specializations</xmlatt> are taken from each attribute module.</p>
           <p otherprops="examples">For
             example:<codeblock>&lt;div>
   &lt;a:documentation>DOMAINS ATTRIBUTE&lt;/a:documentation>
   &lt;define name="domains-att">
     &lt;optional>
       &lt;attribute name="domains"
-                 a:defaultValue="(topic hazard-d)
-                                 (topic hi-d)
-                                 (topic indexing-d)
-                                 (topic ut-d)
-                                 a(props deliveryTarget)"
+                 a:defaultValue="@props/audience
+                                 @props/deliveryTarget
+                                 @props/platform
+                                 @props/product
+                                 @props/otherprops"
       />
     &lt;/optional>
   &lt;/define>
@@ -94,26 +93,19 @@
         <dd>
           <p>Domains can be constrained to disallow some extension elements without the use of a
             separate module file. This is done by overriding the base type pattern within the
-            reference to the domain module. In this case, the constraint represented by the pattern
-            redefinition still is declared in the <xmlatt>domains</xmlatt> attribute; the
-              <xmlatt>domains</xmlatt> contribution is documented in the document-type shell with
-            the constraint. There is not a designated section of the document-type shell for this
-            type of constraint; it can be placed either in <xref
+            reference to the domain module. There is not a designated section of the document-type
+            shell for this type of constraint; it can be placed either in <xref
               href="#concept_rrq_p45_dn/content-constraint" format="dita"/> or <xref
               href="#concept_rrq_p45_dn/module-inclusion" format="dita"/>.</p>
           <p otherprops="examples">The following example demonstrates the portion of a document type
             shell that includes the highlight domain module while directly constraining that module
-            to remove the <xmlelement>u</xmlelement> element. The
-              <xmlelement>ditaarch:domainsContribution</xmlelement> element is used to document the
-              <xmlatt>domains</xmlatt> contribution for this constraint. </p>
+            to remove the <xmlelement>u</xmlelement> element.</p>
           <codeblock otherprops="examples">
   &lt;div>
     &lt;a:documentation>MODULE INCLUSIONS&lt;/a:documentation>
     &lt;include href="topicMod.rng"/>
     &lt;include href="hazardstatementDomainMod.rng"/>
     &lt;include href="highlightDomainMod.rng">
-      &lt;ditaarch:domainsContribution
-        >(topic hi-d-noUnderline-c)&lt;/ditaarch:domainsContribution>
       &lt;define name="u">
         &lt;notAllowed>&lt;/notAllowed>
       &lt;/define>

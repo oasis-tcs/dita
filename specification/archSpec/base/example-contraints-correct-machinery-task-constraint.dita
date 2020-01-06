@@ -3,11 +3,15 @@
 <concept id="example-contraints-correct-machinery-task-constraint">
  <title>Example: Correct the constraint for the machinery task</title>
  <shortdesc>For DITA 1.3, the OASIS DITA TC failed to update the constraint for the machinery task.
-  In this scenario, an information architect corrects that oversight; she makes the (new for DITA
-  1.3) <xmlelement>tasktroubleshooting</xmlelement> element available in the body of the machinery
+  In this scenario, an information architect corrects that oversight; she makes the
+   <xmlelement>tasktroubleshooting</xmlelement> element available in the body of the machinery
   task.</shortdesc>
  <conbody>
   <example>
+   <draft-comment author="robander">Is this example still relevant in DITA 2.0? It can still be
+    valid as an example, but I think earlier examples cover the same type of update, and we no
+    longer need to "fix" the machinery task in 2.0. If it is still necessary, it probably needs to
+    be moved out of the base.</draft-comment>
    <note>This example assumes that the information architect has already implemented her own
     document-type shell for the machinery task information type.</note>
    <ol>
@@ -16,10 +20,7 @@
     <li>She modifies the <filepath>correctedMachineryTaskbodyConstraint.mod</filepath> file to
      declare the entity for the <xmlelement>tasktroubleshooting</xmlelement> element and make it
      available at the correct place within the task body. (Her modifications are highlighted in bold
-     below.)<codeblock>&lt;!ENTITY taskbody-constraints
-  "(topic task+taskreq-d machineryTaskbody-c)"
->
-&lt;!ENTITY % prelreqs                                        "prelreqs">
+     below.)<codeblock>&lt;!ENTITY % prelreqs                                        "prelreqs">
 &lt;!ENTITY % context                                         "context">
 &lt;!ENTITY % section                                         "section">
 &lt;!ENTITY % steps                                           "steps">
