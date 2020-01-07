@@ -580,41 +580,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
 <!ATTLIST  topicmeta %topicmeta.attributes;>
 
 
-<!--                    LONG NAME: Short Description               -->
-<!ENTITY % shortdesc.content
-                       "(%title.cnt; |
-                         %xref;)*"
->
-<!ENTITY % shortdesc.attributes
-              "%univ-atts;"
->
-<!ELEMENT  shortdesc %shortdesc.content;>
-<!ATTLIST  shortdesc %shortdesc.attributes;>
-
-
-<!--                    LONG NAME: Link Text                       -->
-<!ENTITY % linktext.content
-                       "(%words.cnt; |
-                         %ph;)*"
->
-<!ENTITY % linktext.attributes
-              "%univ-atts;"
->
-<!ELEMENT  linktext %linktext.content;>
-<!ATTLIST  linktext %linktext.attributes;>
-
-
-<!--                    LONG NAME: Search Title                    -->
-<!ENTITY % searchtitle.content
-                       "(%words.cnt;)*"
->
-<!ENTITY % searchtitle.attributes
-              "%univ-atts;"
->
-<!ELEMENT  searchtitle %searchtitle.content;>
-<!ATTLIST  searchtitle %searchtitle.attributes;>
-
-
 <!--                    LONG NAME: User Experience Window          -->
 <!ENTITY % ux-window.content
                        "EMPTY"
@@ -678,9 +643,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
 <!ATTLIST  relrow         class CDATA "- map/relrow "       >
 <!ATTLIST  relcell        class CDATA "- map/relcell "      >
 <!ATTLIST  topicmeta      class CDATA "- map/topicmeta "    >
-<!ATTLIST  linktext       class CDATA "- map/linktext "     >
-<!ATTLIST  searchtitle    class CDATA "- map/searchtitle "  >
-<!ATTLIST  shortdesc      class CDATA "- map/shortdesc "    >
 <!ATTLIST  ux-window      class CDATA "- map/ux-window "    >
 
 <!-- ================== End of DITA Map Module ==================== -->

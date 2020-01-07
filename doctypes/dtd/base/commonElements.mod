@@ -665,6 +665,41 @@
 <!ELEMENT  navtitle %navtitle.content;>
 <!ATTLIST  navtitle %navtitle.attributes;>
 
+<!--                    LONG NAME: Search Title                    -->
+<!ENTITY % searchtitle.content
+                       "(%words.cnt; |
+                         %ph;)*"
+>
+<!ENTITY % searchtitle.attributes
+              "%univ-atts;"
+>
+<!ELEMENT  searchtitle %searchtitle.content;>
+<!ATTLIST  searchtitle %searchtitle.attributes;>
+
+
+<!--                    LONG NAME: linktext                        -->
+<!ENTITY % linktext.content
+                       "(%words.cnt; |
+                         %ph;)*"
+>
+<!ENTITY % linktext.attributes
+              "%univ-atts;"
+>
+<!ELEMENT  linktext %linktext.content;>
+<!ATTLIST  linktext %linktext.attributes;>
+
+
+<!--                    LONG NAME: Short Description               -->
+<!ENTITY % shortdesc.content
+                       "(%title.cnt; |
+                         %xref;)*"
+>
+<!ENTITY % shortdesc.attributes
+              "%univ-atts;"
+>
+<!ELEMENT  shortdesc %shortdesc.content;>
+<!ATTLIST  shortdesc %shortdesc.attributes;>
+
 
 <!--                    LONG NAME: Description                     -->
 <!ENTITY % desc.content
@@ -1651,6 +1686,7 @@
 <!ATTLIST  keyword        class CDATA "- topic/keyword "    >
 <!ATTLIST  li             class CDATA "- topic/li "         >
 <!ATTLIST  lines          class CDATA "- topic/lines "      >
+<!ATTLIST  linktext       class CDATA "- topic/linktext "   >
 <!ATTLIST  longdescref    class CDATA "- topic/longdescref ">
 <!ATTLIST  longquoteref   class CDATA "- topic/longquoteref ">
 <!ATTLIST  lq             class CDATA "- topic/lq "         >
@@ -1664,6 +1700,8 @@
 <!ATTLIST  pre            class CDATA "- topic/pre "        >
 <!ATTLIST  q              class CDATA "- topic/q "          >
 <!ATTLIST  required-cleanup   class CDATA "- topic/required-cleanup ">
+<!ATTLIST  searchtitle    class CDATA "- topic/searchtitle ">
+<!ATTLIST  shortdesc      class CDATA "- topic/shortdesc "  >
 <!ATTLIST  simpletable    class CDATA "- topic/simpletable ">
 <!ATTLIST  sl             class CDATA "- topic/sl "         >
 <!ATTLIST  sli            class CDATA "- topic/sli "        >
