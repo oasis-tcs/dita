@@ -291,30 +291,6 @@
 <!ATTLIST  titlealts %titlealts.attributes;>
 
 
-<!--                    LONG NAME: Search Title                    -->
-<!ENTITY % searchtitle.content
-                       "(%words.cnt; |
-                         %ph;)*"
->
-<!ENTITY % searchtitle.attributes
-              "%univ-atts;"
->
-<!ELEMENT  searchtitle %searchtitle.content;>
-<!ATTLIST  searchtitle %searchtitle.attributes;>
-
-
-<!--                    LONG NAME: Short Description               -->
-<!ENTITY % shortdesc.content
-                       "(%title.cnt; |
-                         %xref;)*"
->
-<!ENTITY % shortdesc.attributes
-              "%univ-atts;"
->
-<!ELEMENT  shortdesc %shortdesc.content;>
-<!ATTLIST  shortdesc %shortdesc.attributes;>
-
-
 <!--                    LONG NAME: Abstract                        -->
 <!ENTITY % abstract.content
                        "(%abstract.cnt;)*"
@@ -453,18 +429,6 @@
 <!ATTLIST  link %link.attributes;>
 
 
-<!--                    LONG NAME: linktext                        -->
-<!ENTITY % linktext.content
-                       "(%words.cnt; |
-                         %ph;)*"
->
-<!ENTITY % linktext.attributes
-              "%univ-atts;"
->
-<!ELEMENT  linktext %linktext.content;>
-<!ATTLIST  linktext %linktext.attributes;>
-
-
 <!--                    LONG NAME: linklist                        -->
 <!ENTITY % linklist.content
                        "((%title;)?,
@@ -551,16 +515,13 @@
 <!ATTLIST  linkinfo       class CDATA "- topic/linkinfo "   >
 <!ATTLIST  linklist       class CDATA "- topic/linklist "   >
 <!ATTLIST  linkpool       class CDATA "- topic/linkpool "   >
-<!ATTLIST  linktext       class CDATA "- topic/linktext "   >
 <!ATTLIST  no-topic-nesting   class CDATA "- topic/no-topic-nesting ">
 <!ATTLIST  prolog         class CDATA "- topic/prolog "     >
 <!ATTLIST  related-links   class CDATA "- topic/related-links ">
-<!ATTLIST  searchtitle    class CDATA "- topic/searchtitle ">
 <!ATTLIST  section        class CDATA "- topic/section "    >
 <!ATTLIST  sectiondiv     class CDATA "- topic/sectiondiv " >
 <!ATTLIST  titlealts      class CDATA "- topic/titlealts "  >
 <!ATTLIST  topic          class CDATA "- topic/topic "      >
-<!ATTLIST  shortdesc      class CDATA "- topic/shortdesc "  >
 
 <!-- ================== End of DITA Topic Module ==================== -->
  

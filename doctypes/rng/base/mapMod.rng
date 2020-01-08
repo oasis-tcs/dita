@@ -89,9 +89,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
     <define name="anchor">
       <ref name="anchor.element"/>
     </define>
-    <define name="linktext">
-      <ref name="linktext.element"/>
-    </define>
     <define name="navref">
       <ref name="navref.element"/>
     </define>
@@ -109,12 +106,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
     </define>
     <define name="reltable">
       <ref name="reltable.element"/>
-    </define>
-    <define name="searchtitle">
-      <ref name="searchtitle.element"/>
-    </define>
-    <define name="shortdesc">
-      <ref name="shortdesc.element"/>
     </define>
     <define name="topicmeta">
       <ref name="topicmeta.element"/>
@@ -916,86 +907,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
       <define name="topicmeta.attlist" combine="interleave">
         <ref name="topicmeta.attributes"/>
       </define>
-
     </div>
-      <div>
-        <a:documentation>LONG NAME: Short Description</a:documentation>
-        <define name="shortdesc.content">
-          <zeroOrMore>
-            <choice>
-              <ref name="title.cnt"/>
-              <ref name="xref" dita:since="1.3"/>
-            </choice>
-          </zeroOrMore>
-        </define>
-        <define name="shortdesc.attributes">
-          <ref name="univ-atts"/>
-        </define>
-        <define name="shortdesc.element">
-          <element name="shortdesc" dita:longName="Short Description">
-            <a:documentation>The short description (&lt;shortdesc>) element occurs between the topic title and the topic body, as the initial paragraph-like content of a topic, or it can be embedded
-              in an abstract element. The short description, which represents the purpose or theme of the topic, is also intended to be used as a link preview and for searching. When used within a
-              DITA map, the short description of the &lt;topicref> can be used to override the short description in the topic. Category: Topic elements</a:documentation>
-            <ref name="shortdesc.attlist"/>
-            <ref name="shortdesc.content"/>
-          </element>
-        </define>
-        <define name="shortdesc.attlist" combine="interleave">
-          <ref name="shortdesc.attributes"/>
-        </define>
-
-      </div>
-    <div>
-      <a:documentation>LONG NAME: Link Text</a:documentation>
-      <define name="linktext.content">
-        <zeroOrMore>
-          <choice>
-            <ref name="words.cnt"/>
-            <ref name="ph"/>
-          </choice>
-        </zeroOrMore>
-      </define>
-      <define name="linktext.attributes">
-        <ref name="univ-atts"/>
-      </define>
-      <define name="linktext.element">
-        <a:documentation>The &lt;linktext> element provides the literal label or line of text for a link. In most cases, the text of a link can be resolved during processing by cross reference with
-          the target resource. Use the &lt;linktext> element only when the target cannot be reached, such as when it is a peer or external link, or the target is local but not in DITA format. When
-          used inside a topic, it will be used as the text for the specified link; when used within a map, it will be used as the text for generated links that point to the specified topic. Category:
-          Related Links elements</a:documentation>
-        <element name="linktext" dita:longName="Link Text">
-          <ref name="linktext.attlist"/>
-          <ref name="linktext.content"/>
-        </element>
-      </define>
-      <define name="linktext.attlist" combine="interleave">
-        <ref name="linktext.attributes"/>
-      </define>
-
-    </div>
-    <div>
-      <a:documentation>LONG NAME: Search Title</a:documentation>
-      <define name="searchtitle.content">
-        <zeroOrMore>
-          <ref name="words.cnt"/>
-        </zeroOrMore>
-      </define>
-      <define name="searchtitle.attributes">
-        <ref name="univ-atts"/>
-      </define>
-      <define name="searchtitle.element">
-        <a:documentation>When your DITA topic is transformed to XHTML, the &lt;searchtitle> element is used to create a title element at the top of the resulting HTML file. This title is normally used
-          in search result summaries by some search engines, such as that in Eclipse (http://eclipse.org); if not set, the XHTML's title element defaults to the source topic's title content (which may
-          not be as well optimized for search summaries). Category: Topic elements</a:documentation>
-        <element name="searchtitle" dita:longName="Search Title">
-          <ref name="searchtitle.attlist"/>
-          <ref name="searchtitle.content"/>
-        </element>
-      </define>
-      <define name="searchtitle.attlist" combine="interleave">
-        <ref name="searchtitle.attributes"/>
-      </define>
-    </div>    
     <div>
       <a:documentation>LONG NAME: User Experience Window</a:documentation>
       <define name="ux-window.content">
@@ -1114,21 +1026,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
     <define name="topicmeta.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="- map/topicmeta "/>
-      </optional>
-    </define>
-    <define name="linktext.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- map/linktext "/>
-      </optional>
-    </define>
-    <define name="searchtitle.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- map/searchtitle "/>
-      </optional>
-    </define>
-    <define name="shortdesc.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- map/shortdesc "/>
       </optional>
     </define>
     <define name="ux-window.attlist" combine="interleave">
