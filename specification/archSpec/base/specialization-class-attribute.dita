@@ -40,10 +40,15 @@
     </section>
     <section id="rules">
       <title>Rules</title>
+      <draft-comment author="robander">Question about the following statement.
+      If a topic has no integrated attribute domains in 2.0, the value of @specializations
+      will be empty. Is this really a MUST? Should we clarify to indicate that this must
+      be declared in the grammar, but does not necessarily need to have a value - I know
+      that has caused confusion in the past for a tool that reported errors for empty @domains</draft-comment>
       <p>The root element of every topic and map <term outputclass="RFC-2119">MUST</term> declare
         the following attributes:<ul>
           <li><xmlatt>class</xmlatt></li>
-          <li><xmlatt>domains</xmlatt></li>
+          <li><xmlatt>specializations</xmlatt></li>
         </ul></p>
       <p>Every DITA element (except the <xmlelement>dita</xmlelement> element that is used as the
         root of a ditabase document) <term outputclass="RFC-2119">MUST</term> declare a
@@ -85,15 +90,15 @@
     <example id="example3" otherprops="examples">
       <title>Example: <xmlatt>class</xmlatt> attribute with intermediate value</title>
       <p>The following code sample shows the value of a <xmlatt>class</xmlatt> attribute for an
-        element in the guitask module, which is specialized from <xmlelement>task</xmlelement>. The
+        element in the guiTask module, which is specialized from <xmlelement>task</xmlelement>. The
         element is specialized from <xmlelement>keyword</xmlelement> in the base topic vocabulary,
         rather than from an element in the task module:</p>
-      <codeblock>&lt;windowname class="- topic/keyword task/keyword guitask/windowname ">...&lt;/windowname></codeblock>
+      <codeblock>&lt;windowName class="- topic/keyword task/keyword guiTask/windowname ">...&lt;/windowName></codeblock>
       <p>The intermediate values are necessary so that generalizing and specializing transformations
         can map the values simply and accurately. For example, if <codeph>task/keyword</codeph> was
-        missing as a value, and a user decided to generalize this guitask up to a task topic, then
+        missing as a value, and a user decided to generalize this guiTask up to a task topic, then
         the transformation would have to guess whether to map to keyword (appropriate if task is
-        more general than guitask, which it is) or leave it as windowname (appropriate if task were
+        more general than guiTask, which it is) or leave it as windowName (appropriate if task were
         more specialized, which it isn't). By always providing mappings for more general values,
         processors can then apply the simple rule that missing mappings must by default be to more
         specialized values than the one we are generalizing to, which means the last value in the

@@ -11,16 +11,18 @@
 =============================================================
                    HEADER                                    
 ============================================================
-Darwin Information Typing Architecture (DITA) Version 1.3 Plus Errata 02
-OASIS Standard
-16 January 2018 
-Copyright (c) OASIS Open 2018. All rights reserved. 
-Source: http://docs.oasis-open.org/dita/dita/v1.3/errata02/csprd01/complete/part0-overview/dita-v1.3-errata02-csprd01-part0-overview-complete.html
+Darwin Information Typing Architecture (DITA) Version 2.0
+[[[Draft level]]]
+[[[Release date]]] 
+Copyright (c) OASIS Open 2019. All rights reserved. 
+Source: [[[Source link]]]
 =============================================================
  MODULE:    DITA Map                                         
  VERSION:   2.0                                              
- DATE:      March 2014                                    
-                                                             
+ DATE:      [[[Release date]]]                                    
+ PURPOSE:   Declaring the elements and specialization        
+            attributes for the DITA Maps                     
+                                                            
 =============================================================
 
 =============================================================
@@ -29,49 +31,16 @@ Source: http://docs.oasis-open.org/dita/dita/v1.3/errata02/csprd01/complete/part
                                                              
  Refer to this file by the following public identifier or an 
       appropriate system identifier 
-PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
+PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
       Delivered as file "map.mod"                                 
 
 =============================================================
-SYSTEM:     Darwin Information Typing Architecture (DITA)    
-                                                             
-PURPOSE:    Declaring the elements and specialization        
-            attributes for the DITA Maps                     
-                                                             
-ORIGINAL CREATION DATE:                                      
-            March 2001                                       
                                                              
             (C) Copyright OASIS Open 2005, 2009.             
             (C) Copyright IBM Corporation 2001, 2004.        
             All Rights Reserved.                             
                                                              
  UPDATES:                                                    
-   2005.11.15 RDA: Corrected public ID in the comment above  
-   2005.11.15 RDA: Removed old declaration for topicreftypes 
-                     entity                                  
-   2006.06.06 RDA: Removed default locktitle="yes" from      
-                     %topicref-atts-no-toc;                  
-                   Remove keyword declaration                
-                   Add reference to commonElements           
-                   Add title element to map                  
-                   Add data element to topicmeta             
-                   Remove shortdesc declaration              
-   2006.06.07 RDA: Make universal attributes universal       
-                     (DITA 1.1 proposal #12)                 
-   2006.06.14 RDA: Add dir attribute to localization-atts    
-   2006.06.14 RDA: Add outputclass attribute to most elemetns
-   2006.11.30 RDA: Add -dita-use-conref-target to enumerated 
-                     attributes                              
-   2006.11.30 RDA: Remove #FIXED from DITAArchVersion        
-   2007.12.01 EK:  Reformatted DTD modules for DITA 1.2      
-   2008.01.28 RDA: Added <metadata> to <topicmeta>           
-   2008.01.30 RDA: Replace @conref defn. with %conref-atts;  
-   2008.02.01 RDA: Added keys attributes, more keyref attrs  
-   2008.02.12 RDA: Expand relcolspec content model           
-   2008.02.12 RDA: Modify imbeds to use specific 1.2 version 
-   2008.02.12 RDA: Add navtitle to topicmeta                 
-   2008.02.13 RDA: Create .content and .attributes entities  
-   2010.09.20 RDA: Bring linktext content in sync with topic 
    2018.03.14 KJE: Removed keyref on navref; @navtitle,
                    @print, and @query; @title on map; added
                    new attr group for use on reltable and
@@ -120,9 +89,6 @@ ORIGINAL CREATION DATE:
     <define name="anchor">
       <ref name="anchor.element"/>
     </define>
-    <define name="linktext">
-      <ref name="linktext.element"/>
-    </define>
     <define name="navref">
       <ref name="navref.element"/>
     </define>
@@ -140,12 +106,6 @@ ORIGINAL CREATION DATE:
     </define>
     <define name="reltable">
       <ref name="reltable.element"/>
-    </define>
-    <define name="searchtitle">
-      <ref name="searchtitle.element"/>
-    </define>
-    <define name="shortdesc">
-      <ref name="shortdesc.element"/>
     </define>
     <define name="topicmeta">
       <ref name="topicmeta.element"/>
@@ -616,7 +576,7 @@ ORIGINAL CREATION DATE:
       <define name="map.attlist" combine="interleave">
         <ref name="map.attributes"/>
         <ref name="arch-atts"/>
-        <ref name="domains-att"/>
+        <ref name="specializations-att"/>
       </define>
       <define name="idElements" combine="choice">
         <ref name="map.element"/>
@@ -933,15 +893,6 @@ ORIGINAL CREATION DATE:
         </zeroOrMore>
       </define>
       <define name="topicmeta.attributes">
-        <optional>
-          <attribute name="lockmeta">
-            <choice>
-              <value>no</value>
-              <value>yes</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
         <ref name="univ-atts"/>
       </define>
       <define name="topicmeta.element">
@@ -956,86 +907,7 @@ ORIGINAL CREATION DATE:
       <define name="topicmeta.attlist" combine="interleave">
         <ref name="topicmeta.attributes"/>
       </define>
-
     </div>
-      <div>
-        <a:documentation>LONG NAME: Short Description</a:documentation>
-        <define name="shortdesc.content">
-          <zeroOrMore>
-            <choice>
-              <ref name="title.cnt"/>
-              <ref name="xref" dita:since="1.3"/>
-            </choice>
-          </zeroOrMore>
-        </define>
-        <define name="shortdesc.attributes">
-          <ref name="univ-atts"/>
-        </define>
-        <define name="shortdesc.element">
-          <element name="shortdesc" dita:longName="Short Description">
-            <a:documentation>The short description (&lt;shortdesc>) element occurs between the topic title and the topic body, as the initial paragraph-like content of a topic, or it can be embedded
-              in an abstract element. The short description, which represents the purpose or theme of the topic, is also intended to be used as a link preview and for searching. When used within a
-              DITA map, the short description of the &lt;topicref> can be used to override the short description in the topic. Category: Topic elements</a:documentation>
-            <ref name="shortdesc.attlist"/>
-            <ref name="shortdesc.content"/>
-          </element>
-        </define>
-        <define name="shortdesc.attlist" combine="interleave">
-          <ref name="shortdesc.attributes"/>
-        </define>
-
-      </div>
-    <div>
-      <a:documentation>LONG NAME: Link Text</a:documentation>
-      <define name="linktext.content">
-        <zeroOrMore>
-          <choice>
-            <ref name="words.cnt"/>
-            <ref name="ph"/>
-          </choice>
-        </zeroOrMore>
-      </define>
-      <define name="linktext.attributes">
-        <ref name="univ-atts"/>
-      </define>
-      <define name="linktext.element">
-        <a:documentation>The &lt;linktext> element provides the literal label or line of text for a link. In most cases, the text of a link can be resolved during processing by cross reference with
-          the target resource. Use the &lt;linktext> element only when the target cannot be reached, such as when it is a peer or external link, or the target is local but not in DITA format. When
-          used inside a topic, it will be used as the text for the specified link; when used within a map, it will be used as the text for generated links that point to the specified topic. Category:
-          Related Links elements</a:documentation>
-        <element name="linktext" dita:longName="Link Text">
-          <ref name="linktext.attlist"/>
-          <ref name="linktext.content"/>
-        </element>
-      </define>
-      <define name="linktext.attlist" combine="interleave">
-        <ref name="linktext.attributes"/>
-      </define>
-
-    </div>
-    <div>
-      <a:documentation>LONG NAME: Search Title</a:documentation>
-      <define name="searchtitle.content">
-        <zeroOrMore>
-          <ref name="words.cnt"/>
-        </zeroOrMore>
-      </define>
-      <define name="searchtitle.attributes">
-        <ref name="univ-atts"/>
-      </define>
-      <define name="searchtitle.element">
-        <a:documentation>When your DITA topic is transformed to XHTML, the &lt;searchtitle> element is used to create a title element at the top of the resulting HTML file. This title is normally used
-          in search result summaries by some search engines, such as that in Eclipse (http://eclipse.org); if not set, the XHTML's title element defaults to the source topic's title content (which may
-          not be as well optimized for search summaries). Category: Topic elements</a:documentation>
-        <element name="searchtitle" dita:longName="Search Title">
-          <ref name="searchtitle.attlist"/>
-          <ref name="searchtitle.content"/>
-        </element>
-      </define>
-      <define name="searchtitle.attlist" combine="interleave">
-        <ref name="searchtitle.attributes"/>
-      </define>
-    </div>    
     <div>
       <a:documentation>LONG NAME: User Experience Window</a:documentation>
       <define name="ux-window.content">
@@ -1154,21 +1026,6 @@ ORIGINAL CREATION DATE:
     <define name="topicmeta.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="- map/topicmeta "/>
-      </optional>
-    </define>
-    <define name="linktext.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- map/linktext "/>
-      </optional>
-    </define>
-    <define name="searchtitle.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- map/searchtitle "/>
-      </optional>
-    </define>
-    <define name="shortdesc.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- map/shortdesc "/>
       </optional>
     </define>
     <define name="ux-window.attlist" combine="interleave">

@@ -2,16 +2,18 @@
 <!-- ============================================================= -->
 <!--                    HEADER                                     -->
 <!-- ============================================================= -->
-<!-- Darwin Information Typing Architecture (DITA) Version 1.3 Plus Errata 02     -->
-<!-- OASIS Standard                                           -->
-<!-- 16 January 2018                                           -->
-<!-- Copyright (c) OASIS Open 2018. All rights reserved.           -->
-<!-- Source: http://docs.oasis-open.org/dita/dita/v1.3/errata02/csprd01/complete/part0-overview/dita-v1.3-errata02-csprd01-part0-overview-complete.html                                -->
+<!-- Darwin Information Typing Architecture (DITA) Version 2.0     -->
+<!-- [[[Draft level]]]                                           -->
+<!-- [[[Release date]]]                                           -->
+<!-- Copyright (c) OASIS Open 2019. All rights reserved.           -->
+<!-- Source: [[[Source link]]]                                -->
 <!--                                                               -->
 <!-- ============================================================= -->
 <!--  MODULE:    DITA Map                                          -->
-<!--  VERSION:   1.3                                               -->
-<!--  DATE:      March 2014                                        -->
+<!--  VERSION:   2.0                                               -->
+<!--  DATE:      [[[Release date]]]                                        -->
+<!--  PURPOSE:   Declaring the elements and specialization         -->
+<!--             attributes for the DITA Maps                      -->
 <!--                                                               -->
 <!-- ============================================================= -->
 
@@ -21,49 +23,16 @@
 <!--                                                               -->
 <!--  Refer to this file by the following public identifier or an 
       appropriate system identifier 
-PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
+PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
       Delivered as file "map.mod"                                  -->
 
 <!-- ============================================================= -->
-<!-- SYSTEM:     Darwin Information Typing Architecture (DITA)     -->
-<!--                                                               -->
-<!-- PURPOSE:    Declaring the elements and specialization         -->
-<!--             attributes for the DITA Maps                      -->
-<!--                                                               -->
-<!-- ORIGINAL CREATION DATE:                                       -->
-<!--             March 2001                                        -->
 <!--                                                               -->
 <!--             (C) Copyright OASIS Open 2005, 2009.              -->
 <!--             (C) Copyright IBM Corporation 2001, 2004.         -->
 <!--             All Rights Reserved.                              -->
 <!--                                                               -->
 <!--  UPDATES:                                                     -->
-<!--    2005.11.15 RDA: Corrected public ID in the comment above   -->
-<!--    2005.11.15 RDA: Removed old declaration for topicreftypes  -->
-<!--                      entity                                   -->
-<!--    2006.06.06 RDA: Removed default locktitle="yes" from       -->
-<!--                      %topicref-atts-no-toc;                   -->
-<!--                    Remove keyword declaration                 -->
-<!--                    Add reference to commonElements            -->
-<!--                    Add title element to map                   -->
-<!--                    Add data element to topicmeta              -->
-<!--                    Remove shortdesc declaration               -->
-<!--    2006.06.07 RDA: Make universal attributes universal        -->
-<!--                      (DITA 1.1 proposal #12)                  -->
-<!--    2006.06.14 RDA: Add dir attribute to localization-atts     -->
-<!--    2006.06.14 RDA: Add outputclass attribute to most elements -->
-<!--    2006.11.30 RDA: Add -dita-use-conref-target to enumerated  -->
-<!--                      attributes                               -->
-<!--    2006.11.30 RDA: Remove #FIXED from DITAArchVersion         -->
-<!--    2007.12.01 EK:  Reformatted DTD modules for DITA 1.2       -->
-<!--    2008.01.28 RDA: Added <metadata> to <topicmeta>            -->
-<!--    2008.01.30 RDA: Replace @conref defn. with %conref-atts;   -->
-<!--    2008.02.01 RDA: Added keys attributes, more keyref attrs   -->
-<!--    2008.02.12 RDA: Expand relcolspec content model            -->
-<!--    2008.02.12 RDA: Modify imbeds to use specific 1.2 version  -->
-<!--    2008.02.12 RDA: Add navtitle to topicmeta                  -->
-<!--    2008.02.13 RDA: Create .content and .attributes entities   -->
-<!--    2010.09.20 RDA: Bring linktext content in sync with topic  -->
 <!--    2018.03.14 KJE: Added new attribute group for use on       -->
 <!--                    reltable and relcolspec; removed @keyref   -->
 <!--                    from navref; removed @navtitle@print, and  -->
@@ -447,7 +416,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
 <!ELEMENT  map %map.content;>
 <!ATTLIST  map %map.attributes;
                  %arch-atts;
-                 domains 
+                 specializations 
                         CDATA
                                   "&included-domains;"
 >
@@ -605,50 +574,10 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
                           %foreign.unknown.incl;)*)"
 >
 <!ENTITY % topicmeta.attributes
-              "lockmeta
-                          (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               %univ-atts;"
+              "%univ-atts;"
 >
 <!ELEMENT  topicmeta %topicmeta.content;>
 <!ATTLIST  topicmeta %topicmeta.attributes;>
-
-
-<!--                    LONG NAME: Short Description               -->
-<!ENTITY % shortdesc.content
-                       "(%title.cnt; |
-                         %xref;)*"
->
-<!ENTITY % shortdesc.attributes
-              "%univ-atts;"
->
-<!ELEMENT  shortdesc %shortdesc.content;>
-<!ATTLIST  shortdesc %shortdesc.attributes;>
-
-
-<!--                    LONG NAME: Link Text                       -->
-<!ENTITY % linktext.content
-                       "(%words.cnt; |
-                         %ph;)*"
->
-<!ENTITY % linktext.attributes
-              "%univ-atts;"
->
-<!ELEMENT  linktext %linktext.content;>
-<!ATTLIST  linktext %linktext.attributes;>
-
-
-<!--                    LONG NAME: Search Title                    -->
-<!ENTITY % searchtitle.content
-                       "(%words.cnt;)*"
->
-<!ENTITY % searchtitle.attributes
-              "%univ-atts;"
->
-<!ELEMENT  searchtitle %searchtitle.content;>
-<!ATTLIST  searchtitle %searchtitle.attributes;>
 
 
 <!--                    LONG NAME: User Experience Window          -->
@@ -714,9 +643,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA Map//EN"
 <!ATTLIST  relrow         class CDATA "- map/relrow "       >
 <!ATTLIST  relcell        class CDATA "- map/relcell "      >
 <!ATTLIST  topicmeta      class CDATA "- map/topicmeta "    >
-<!ATTLIST  linktext       class CDATA "- map/linktext "     >
-<!ATTLIST  searchtitle    class CDATA "- map/searchtitle "  >
-<!ATTLIST  shortdesc      class CDATA "- map/shortdesc "    >
 <!ATTLIST  ux-window      class CDATA "- map/ux-window "    >
 
 <!-- ================== End of DITA Map Module ==================== -->

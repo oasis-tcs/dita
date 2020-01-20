@@ -20,15 +20,13 @@
           and the relationships among the topics; they also provide the <ph>contexts</ph> in which
           keys are defined and resolved.</ph></p>
                         <p><ph id="information-typing-shortdesc">Information typing is the practice
-                                        of identifying types of topics, such as concept, reference,
-                                        and task, to clearly distinguish between different types of
-                                        information. Topics that answer different reader questions
-                                        (How ...? What is ...?) can be categorized with different
-                                        information types. The base information types provided by
-                                        DITA specializations (for example, technical content,
-                                        machine industry, and learning and training) provide starter
-                                        sets of information types that can be adopted immediately by
-                                        many technical and business-related organizations.</ph></p>
+          of identifying types of topics, such as concept, reference, and task, to clearly
+          distinguish between different types of information. Topics that answer different reader
+          questions (How do I? What is?) can be categorized with different information types. The
+          base information types provided by DITA specializations (for example, technical content,
+          machine industry, and learning and training) provide starter sets of information types
+          that can be adopted immediately by many technical and business-related
+        organizations.</ph></p>
                         <p><ph id="linking-shortdesc">DITA depends heavily on links. The purposes
                                         for which it provides links include defining the content and
                                         organization of publication structures (DITA maps),
@@ -86,8 +84,7 @@
                           <!--Short description for <anchor>: Used in anchor.dita and dita_spec_23_mapstruct.dita-->
 <ph id="anchor_shortdesc">The <xmlelement>anchor</xmlelement> element provides an integration point that another map can reference in order to insert its navigation into the referenced map's navigation tree. For those familiar with Eclipse help systems, this serves the same purpose as the <xmlelement>anchor</xmlelement> element in that system. It might not be supported for all output formats.</ph>
 <!--Short description for <navref>: Used in navref.dita and dita_spec_23_mapstruct.dita-->
-<ph id="navtitle_shortdesc">The <xmlelement>navref</xmlelement>  element represents a pointer to another map which <ph >is</ph> preserved
-    as a transcluding link in the result deliverable rather than resolved when the deliverable is produced. Output formats that support such linking can integrate the referenced resource when displaying the referencing map to an end user. </ph></lines>
+<ph id="navtitle_shortdesc">The <xmlelement>navref</xmlelement>  element represents a pointer to another map which is preserved as a transcluding link in the result deliverable rather than resolved when the deliverable is produced. Output formats that support such linking can integrate the referenced resource when displaying the referencing map to an end user. </ph></lines>
                 </section>
                 <section id="section-3">
                         <title>Code blocks</title>
@@ -137,7 +134,7 @@ to alert more birds to the presence of your bird feeder.&lt;/shortdesc&gt;
                         </dl>
                         <dl id="cascade-values">
                                 <dlentry>
-                                        <dt>cascade="merge"</dt>
+                                        <dt><codeph>cascade="merge"</codeph></dt>
                                         <dd>The metadata attributes cascade; the values of the
                                                 metadata attributes are additive. This is the
                                                 processing default for the <xmlatt>cascade</xmlatt>
@@ -145,7 +142,7 @@ to alert more birds to the presence of your bird feeder.&lt;/shortdesc&gt;
                                                 1.2 and earlier.</dd>
                                 </dlentry>
                                 <dlentry>
-                                        <dt>cascade="nomerge"</dt>
+                                        <dt><codeph>cascade="nomerge"</codeph></dt>
                                         <dd>The metadata attributes cascade; however, they are not
             additive for <xmlelement>topicref</xmlelement> elements that specify a different value
             for a specific metadata attribute. If the cascading value for an attribute is already
@@ -221,7 +218,7 @@ to alert more birds to the presence of your bird feeder.&lt;/shortdesc&gt;
                                 </ul></p>
                         <p id="release-domain-best-practices">The recommended best practice is to
         use date strings that conform to the ISO 8601 standard, unless a <ph 
-          >unix-style</ph> machine timestamp is used. The string might contain a date and time (for
+          >UNIX-style</ph> machine time stamp is used. The string might contain a date and time (for
         example, <codeph>2007-04-05T12:30-02:00</codeph>) or just a date (for example,
           <codeph>2014-03-04</codeph>).</p>
                         <p id="pgwide-explain">In DITA tables, in place of the
@@ -240,26 +237,14 @@ to alert more birds to the presence of your bird feeder.&lt;/shortdesc&gt;
         is "24 Hour Support Hotline" and the value of the <xmlelement>sort-as</xmlelement> element
         is "twenty-four hour", then the effective sort phrase would be "twenty-four hour24 Hour
         Support Hotline".</p>
-      <p id="rng-domains-documentation">All vocabulary and constraint modules must document their
-          <xmlatt>domains</xmlatt> attribute contribution. The value of the contribution is
-        constructed according to the rules found in <xref
-          href="../archSpec/base/specialization-domains-attribute.dita"/>. The OASIS grammar files
-        use a <xmlelement>domainsContribution</xmlelement> element to document the contribution;
-        this element is used to help enable generation of DTD and XSD grammar files. An XML comment
-        or <xmlelement>a:documentation</xmlelement> element can also be used.</p>
-      <p id="xsd-domains-documentation">All vocabulary and constraint modules must document their
-          <xmlatt>domains</xmlatt> attribute contribution. The OASIS grammar files use a
-          <xmlelement>dita:domainsModule</xmlelement> element to document the contribution; this
-        element is used consistently to make it easy to find values when creating a document type
-        shell. An XML comment or <xmlelement>xs:appinfo</xmlelement> element can also be used.</p>
       <p id="rng-attribute-domain-name">An attribute domain's name is the name of the attribute plus
-        "Att". For example, for the attribute named "deliveryTarget" the attribute domain name is
-        "deliveryTargetAtt". The attribute domain name is used to construct pattern names for the
-        domain. </p>
+          <keyword>Att</keyword>. For example, for the attribute named
+          <xmlatt>deliveryTarget</xmlatt>, the attribute domain name is "deliveryTargetAtt". The
+        attribute domain name is used to construct pattern names for the domain. </p>
       <p id="dtd-attribute-domain-name">An attribute domain's name is the name of the attribute plus
-        "Att". For example, for the attribute named "deliveryTarget" the attribute domain name is
-        "deliveryTargetAtt". The attribute domain name is used to construct entity names for the
-        domain. </p>
+          <keyword>Att</keyword>. For example, for the attribute named
+          <xmlatt>deliveryTarget</xmlatt>, the attribute domain name is "deliveryTargetAtt". The
+        attribute domain name is used to construct entity names for the domain. </p>
                 </section>
 
                 <section id="section-7">
@@ -319,7 +304,7 @@ to alert more birds to the presence of your bird feeder.&lt;/shortdesc&gt;
           constraints module and characterizes it, for example, "strict" or "requiredTitle" or
           "myCompany-".</li>
         <li id="Tagname-li"><varname>Tagname</varname> is the element type name with an initial
-          capital, for example, "Taskbody" or "Topic".</li>
+          capital, for example, "Topic".</li>
         <li id="literal-c-li">The literal "-c" indicates that the name is the name of a
           constraint.</li>
       </ul>

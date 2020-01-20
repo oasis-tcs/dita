@@ -8,10 +8,10 @@
  <conbody>
   <p>The person or application initiating a generalization process can supply the source and target
    modules for each generalization, for example, "generalize from reference to topic". Multiple
-   target modules can be specified, for example, "generalize from reference to topic and from ui-d
-   to topic". When the source and target modules are not supplied, the generalization process is
-   assumed to be from all structural types to the base (topic or map), and no generalization is
-   performed for domains. </p>
+   target modules can be specified, for example, "generalize from reference to topic and from
+   user-interface domain to topic". When the source and target modules are not supplied, the
+   generalization process is assumed to be from all structural types to the base (topic or map), and
+   no generalization is performed for domains. </p>
   <p>The person or application initiating a generalization process also can supply the target
    document-type shell. When the target document-type shell is not supplied, the generalized
    document will not contain a reference to a document-type shell.</p>
@@ -59,33 +59,6 @@
      it has domains to generalize.</stentry>
    </strow>
   </simpletable>
-  <p>The <xmlatt>domains</xmlatt> attribute for the root element of the structural type is checked
-   before generalizing domains:</p>
-  <simpletable keycol="1">
-   <sthead>
-    <stentry/>
-    <stentry>Source module unspecified</stentry>
-    <stentry>Source module specified</stentry>
-   </sthead>
-   <strow>
-    <stentry>Target module unspecified</stentry>
-    <stentry>Do not generalize domain specializations in this structural type.</stentry>
-    <stentry>Check whether the <xmlatt>domains</xmlatt> attribute lists the specified domain;
-     proceed with generalization if it does, otherwise ignore the structural type instance unless it
-     is itself a candidate for generalization.</stentry>
-   </strow>
-   <strow>
-    <stentry>Target module specified</stentry>
-    <stentry>Check whether the <xmlatt>domains</xmlatt> attribute contains the target module. If it
-     does, generalize to the target module. Otherwise, skip the structural type instance unless it
-     is itself a candidate for generalization.</stentry>
-    <stentry>It is an error if the <xmlatt>domains</xmlatt> attribute matches a specified source but
-     the domain value string does not contain the target. If the <xmlatt>domains</xmlatt> attribute
-     matches a specified source module and the domain value string does contain the target module,
-     generalize to the target module. Otherwise, ignore the structural type instance unless it is
-     itself a candidate for generalization.</stentry>
-   </strow>
-  </simpletable>
   <p>For each element in a candidate structural type instance:</p>
   <simpletable keycol="1">
    <sthead>
@@ -116,7 +89,7 @@
   <p>When renaming elements during round-trip generalization, the generalization processor <term
     outputclass="RFC-2119">SHOULD</term> preserve the values of all attributes. When renaming
    elements during one-way or migration generalization, the process <term outputclass="RFC-2119"
-    >SHOULD</term> preserve the values of all attributes except the <xmlatt>class</xmlatt> and
-    <xmlatt>domains</xmlatt> attribute, both of which are supplied by the target document type.</p>
+    >SHOULD</term> preserve the values of all attributes except the <xmlatt>class</xmlatt>
+   attribute, which is supplied by the target document type.</p>
  </conbody>
 </concept>

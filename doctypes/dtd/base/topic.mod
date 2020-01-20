@@ -2,16 +2,18 @@
 <!-- ============================================================= -->
 <!--                    HEADER                                     -->
 <!-- ============================================================= -->
-<!-- Darwin Information Typing Architecture (DITA) Version 1.3 Plus Errata 02     -->
-<!-- OASIS Standard                                           -->
-<!-- 16 January 2018                                           -->
-<!-- Copyright (c) OASIS Open 2018. All rights reserved.           -->
-<!-- Source: http://docs.oasis-open.org/dita/dita/v1.3/errata02/csprd01/complete/part0-overview/dita-v1.3-errata02-csprd01-part0-overview-complete.html                                -->
+<!-- Darwin Information Typing Architecture (DITA) Version 2.0     -->
+<!-- [[[Draft level]]]                                           -->
+<!-- [[[Release date]]]                                           -->
+<!-- Copyright (c) OASIS Open 2019. All rights reserved.           -->
+<!-- Source: [[[Source link]]]                                -->
 <!--                                                               -->
 <!-- ============================================================= -->
 <!--  MODULE:    DITA DITA Topic                                   -->
-<!--  VERSION:   1.3                                               -->
-<!--  DATE:      March 2014                                        -->
+<!--  VERSION:   2.0                                               -->
+<!--  DATE:      [[[Release date]]]                                        -->
+<!--  PURPOSE:   Declaring the elements and specialization         -->
+<!--             attributes for the base Topic type                -->
 <!--                                                               -->
 <!-- ============================================================= -->
 <!-- ============================================================= -->
@@ -20,51 +22,15 @@
 <!--                                                               -->
 <!--  Refer to this file by the following public identifier or an  -->
 <!--       appropriate system identifier                           -->
-<!-- PUBLIC "-//OASIS//ELEMENTS DITA Topic//EN"                    -->
-<!--       Delivered as file "topic.mod"                                -->
+<!-- PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"                -->
+<!--       Delivered as file "topic.mod"                           -->
 <!-- ============================================================= -->
-<!-- SYSTEM:     Darwin Information Typing Architecture (DITA)     -->
-<!--                                                               -->
-<!-- PURPOSE:    Declaring the elements and specialization         -->
-<!--             attributes for the base Topic type                -->
-<!--                                                               -->
-<!-- ORIGINAL CREATION DATE:                                       -->
-<!--             March 2001                                        -->
 <!--                                                               -->
 <!--             (C) Copyright OASIS Open 2005, 2009.              -->
 <!--             (C) Copyright IBM Corporation 2001, 2004.         -->
 <!--             All Rights Reserved.                              -->
 <!--                                                               -->
 <!--  UPDATES:                                                     -->
-<!--    2005.11.15 RDA: Corrected the public ID for tblDecl.mod    -->
-<!--    2005.11.15 RDA: Removed old declaration for topicreftypes  -->
-<!--                    entity                                     -->
-<!--    2005.11.15 RDA: Corrected the PURPOSE in this comment      -->
-<!--    2005.11.15 RDA: Corrected Long Names for alt, indextermref -->
-<!--    2006.06.06 RDA: Bug fixes:                                 -->
-<!--                    Added xref and fn to fig.cnt               -->
-<!--                    Remove xmlns="" from global-atts           -->
-<!--    2006.06.06 RDA: Moved shared items to commonElements file  -->
-<!--    2006.06.07 RDA: Added abstract> element                    -->
-<!--    2006.06.07 RDA: Make universal attributes universal        -->
-<!--                      (DITA 1.1 proposal #12)                  -->
-<!--    2006.06.14 RDA: Add dir attribute to localization-atts     -->
-<!--    2006.06.20 RDA: defn.cnt now explicitly sets its content   -->
-<!--    2006.07.06 RDA: Moved class attributes in from topicAttr   -->
-<!--    2006.11.30 RDA: Add -dita-use-conref-target to enumerated  -->
-<!--                      attributes                               -->
-<!--    2006.11.30 RDA: Remove #FIXED from DITAArchVersion         -->
-<!--    2007.12.01 EK:  Reformatted DTD modules for DITA 1.2        -->
-<!--    2008.01.28 RDA: Add draft-comment to body.cnt              -->
-<!--    2008.01.28 RDA: Moved <metadata> defn. to metaDecl.mod     -->
-<!--    2008.01.30 RDA: Replace @conref defn. with %conref-atts;   -->
-<!--    2008.02.12 RDA: Add ph to linktext, navtitle, searchtitle  -->
-<!--    2008.02.12 RDA: Modify imbeds to use specific 1.2 version  -->
-<!--    2008.02.12 RDA: Move navtitle to commonElements.mod        -->
-<!--    2008.02.13 RDA: Add bodydiv and sectiondiv                 -->
-<!--    2008.02.13 RDA: Create .content and .attributes entities   -->
-<!--    2008.05.06 RDA: Moved sectiondiv to section.cnt; created   -->
-<!--                    example.cnt for use by example element     -->
 <!--    2018.03.14 KJE: Removed @collection-type="tree"; removed   -->
 <!--                    @role="external" and "sample"              -->
 <!-- ============================================================= -->
@@ -307,7 +273,7 @@
 <!ELEMENT  topic %topic.content;>
 <!ATTLIST  topic %topic.attributes;
                  %arch-atts;
-                 domains 
+                 specializations 
                         CDATA
                                   "&included-domains;"
 >
@@ -323,30 +289,6 @@
 >
 <!ELEMENT  titlealts %titlealts.content;>
 <!ATTLIST  titlealts %titlealts.attributes;>
-
-
-<!--                    LONG NAME: Search Title                    -->
-<!ENTITY % searchtitle.content
-                       "(%words.cnt; |
-                         %ph;)*"
->
-<!ENTITY % searchtitle.attributes
-              "%univ-atts;"
->
-<!ELEMENT  searchtitle %searchtitle.content;>
-<!ATTLIST  searchtitle %searchtitle.attributes;>
-
-
-<!--                    LONG NAME: Short Description               -->
-<!ENTITY % shortdesc.content
-                       "(%title.cnt; |
-                         %xref;)*"
->
-<!ENTITY % shortdesc.attributes
-              "%univ-atts;"
->
-<!ELEMENT  shortdesc %shortdesc.content;>
-<!ATTLIST  shortdesc %shortdesc.attributes;>
 
 
 <!--                    LONG NAME: Abstract                        -->
@@ -487,18 +429,6 @@
 <!ATTLIST  link %link.attributes;>
 
 
-<!--                    LONG NAME: linktext                        -->
-<!ENTITY % linktext.content
-                       "(%words.cnt; |
-                         %ph;)*"
->
-<!ENTITY % linktext.attributes
-              "%univ-atts;"
->
-<!ELEMENT  linktext %linktext.content;>
-<!ATTLIST  linktext %linktext.attributes;>
-
-
 <!--                    LONG NAME: linklist                        -->
 <!ENTITY % linklist.content
                        "((%title;)?,
@@ -585,16 +515,13 @@
 <!ATTLIST  linkinfo       class CDATA "- topic/linkinfo "   >
 <!ATTLIST  linklist       class CDATA "- topic/linklist "   >
 <!ATTLIST  linkpool       class CDATA "- topic/linkpool "   >
-<!ATTLIST  linktext       class CDATA "- topic/linktext "   >
 <!ATTLIST  no-topic-nesting   class CDATA "- topic/no-topic-nesting ">
 <!ATTLIST  prolog         class CDATA "- topic/prolog "     >
 <!ATTLIST  related-links   class CDATA "- topic/related-links ">
-<!ATTLIST  searchtitle    class CDATA "- topic/searchtitle ">
 <!ATTLIST  section        class CDATA "- topic/section "    >
 <!ATTLIST  sectiondiv     class CDATA "- topic/sectiondiv " >
 <!ATTLIST  titlealts      class CDATA "- topic/titlealts "  >
 <!ATTLIST  topic          class CDATA "- topic/topic "      >
-<!ATTLIST  shortdesc      class CDATA "- topic/shortdesc "  >
 
 <!-- ================== End of DITA Topic Module ==================== -->
  

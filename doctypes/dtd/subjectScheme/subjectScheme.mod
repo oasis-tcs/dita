@@ -3,8 +3,10 @@
 <!--                    HEADER                                     -->
 <!-- ============================================================= -->
 <!--  MODULE:    DITA Subject Scheme Map                           -->
-<!--  VERSION:   1.3                                               -->
-<!--  DATE:      March 2014                                        -->
+<!--  VERSION:   2.0                                               -->
+<!--  DATE:      [[[Release date]]]                                        -->
+<!--  PURPOSE:   Declaring the elements and specialization         -->
+<!--             attributes for DITA Subject Scheme Maps           -->
 <!--                                                               -->
 <!-- ============================================================= -->
 <!-- ============================================================= -->
@@ -13,24 +15,15 @@
 <!--                                                               -->
 <!--  Refer to this file by the following public identifier or an  -->
 <!--       appropriate system identifier                           -->
-<!-- PUBLIC "-//OASIS//ELEMENTS DITA Subject Scheme Map//EN"       -->
-<!--       Delivered as file "subjectScheme.mod"                        -->
+<!-- PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"   -->
+<!--       Delivered as file "subjectScheme.mod"                   -->
 <!-- ============================================================= -->
-<!-- SYSTEM:     Darwin Information Typing Architecture (DITA)     -->
-<!--                                                               -->
-<!-- PURPOSE:    Declaring the elements and specialization         -->
-<!--             attributes for DITA Subject Scheme Maps           -->
-<!--                                                               -->
-<!-- ORIGINAL CREATION DATE:                                       -->
-<!--             February 2008                                     -->
 <!--                                                               -->
 <!--             (C) Copyright OASIS Open 2008, 2009.              -->
 <!--             (C) Copyright IBM Corporation 2005, 2007.         -->
 <!--             All Rights Reserved.                              -->
 <!--                                                               -->
 <!--  UPDATES:                                                     -->
-<!--    2008.02.13 RDA: Created file based upon prototype from IBM -->
-<!--    2014.04.16 WEK: Redefined as RNG                           -->
 <!--    2018.04.09 KJE: Removed @navtitle                          -->
 <!-- ============================================================= -->
 
@@ -169,7 +162,7 @@
 <!ELEMENT  subjectScheme %subjectScheme.content;>
 <!ATTLIST  subjectScheme %subjectScheme.attributes;
                  %arch-atts;
-                 domains 
+                 specializations 
                         CDATA
                                   "&included-domains;"
 >
@@ -564,12 +557,7 @@
                          (%shortdesc;)?)"
 >
 <!ENTITY % subjectHeadMeta.attributes
-              "lockmeta
-                          (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               %univ-atts;"
+              "%univ-atts;"
 >
 <!ELEMENT  subjectHeadMeta %subjectHeadMeta.content;>
 <!ATTLIST  subjectHeadMeta %subjectHeadMeta.attributes;>

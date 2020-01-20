@@ -29,8 +29,9 @@
           </dlentry>
           <dlentry>
             <dt><xmlatt>dir</xmlatt></dt>
-            <dd>Identifies or overrides the text directionality. It can be set to "ltr", "rtl",
-              "lro", or "rlo"</dd>
+            <dd>Identifies or overrides the text directionality. It can be set to
+                <keyword>ltr</keyword>, <keyword>rtl</keyword>,<keyword> lro</keyword>, or
+                <keyword>rlo</keyword>.</dd>
           </dlentry>
         </dl></p>
       <p>In general, properly-written mixed text does not need any special markers; the Unicode
@@ -44,10 +45,11 @@
           format="html"> Specifying the direction of text and tables: the <codeph>dir</codeph>
           attribute (http://www.w3.org/TR/html4/struct/dirlang.html#h-8.2) </xref>. This article
         contains several examples of how to use the <xmlatt>dir</xmlatt> attribute set to either
-        "ltr" or "rtl". There is no example of setting the <xmlatt>dir</xmlatt> attribute to either
-        "lro" or "rlo", although it can be inferred from the example that uses the
-          <xmlelement>bdo</xmlelement> element, a now-deprecated W3C mechanism for overriding the
-        entire Unicode bidirectional algorithm.</p>
+          <keyword>ltr</keyword> or <keyword>rtl</keyword>. There is no example of setting the
+          <xmlatt>dir</xmlatt> attribute to either <keyword>lro</keyword> or <keyword>rlo</keyword>,
+        although it can be inferred from the example that uses the <xmlelement>bdo</xmlelement>
+        element, a now-deprecated W3C mechanism for overriding the entire Unicode bidirectional
+        algorithm.</p>
     </section>
     <section id="recommended-usage">
       <title>Recommended usage</title>
@@ -58,7 +60,7 @@
         provides for various levels of bidirectionality:<ul>
           <li>Directionality is either explicitly specified via the <xmlatt>xml:lang</xmlatt>
             attribute in combination with the <xmlatt>dir</xmlatt> attribute on the highest level
-            element (topic or derived peer for topics, map for ditamaps) or assumed by the
+            element (topic or derived peer for topics, map for DITA maps) or assumed by the
             processing application.
             <!--If used, it is recommended to specify the <xmlatt>dir</xmlatt> attribute <term outputclass="RFC-2119">SHOULD</term> be specified on the highest level element in the topic or document element of the map. --></li>
           <li>When embedding a right-to-left text run inside a left-to-right text run (or
@@ -72,23 +74,24 @@
             characters incorrectly (for example, a question mark at the end of a Hebrew question
             might appear at the beginning of the question instead of at the end or a parenthesis
             might render incorrectly). To control this behavior, the <xmlatt>dir</xmlatt> attribute
-            is set to "ltr" or "rtl" as needed, to ensure that the desired direction is applied to
-            the characters that have neutral bidirectionality. The "ltr" and "rtl" values override
-            only the neutral characters (for example, spaces and punctuation), not all Unicode
-            characters. <note>Problems with Unicode rendering can be caused by the rendering
-              mechanism. The problems are not due to the XML markup itself. </note></li>
+            is set to <keyword>ltr</keyword> or <keyword>rtl</keyword> as needed, to ensure that the
+            desired direction is applied to the characters that have neutral bidirectionality. The
+              <keyword>ltr</keyword> and <keyword>rtl</keyword> values override only the neutral
+            characters (for example, spaces and punctuation), not all Unicode characters.
+              <note>Problems with Unicode rendering can be caused by the rendering mechanism. The
+              problems are not due to the XML markup itself. </note></li>
           <li>Sometimes you might want to override the default directionality for strongly
-            bidirectional characters. Overrides are done using the "lro" and "rlo" values, which
-            overrides the Unicode Bidirectional algorithm. This override forces a direction on the
-            contents of the element. These override attributes give the author a brute force way of
-            setting the directionality independent of the Unicode Bidirectional algorithm. The
-            gentler "ltr" and "rtl" values have a less radical effect, only affecting punctuation
+            bidirectional characters. Overrides are done using the <keyword>lro</keyword> and
+              <keyword>rlo</keyword> values, which overrides the Unicode Bidirectional algorithm.
+            This override forces a direction on the contents of the element. These override
+            attributes give the author a brute force way of setting the directionality independent
+            of the Unicode Bidirectional algorithm. The gentler <keyword>ltr</keyword> and
+              <keyword>rtl</keyword> values have a less radical effect, only affecting punctuation
             and other so-called neutral characters. </li>
         </ul></p>
-      <p>For most authoring needs, the "ltr" and "rtl" values are sufficient.
-        <!--Only when the desired effect cannot be achieved using these values, should the override values be used. -->Use
-        the override values only when you cannot achieve the desired effect using the the "ltr" and
-        "rtl" values.</p>
+      <p>For most authoring needs, the <keyword>ltr</keyword> and <keyword>rtl</keyword> values are
+        sufficient. Use the override values only when you cannot achieve the desired effect using
+        the <keyword>ltr</keyword> and <keyword>rtl</keyword> values.</p>
       <!-- [JTH: 21 Sept 2009] This comment appears to be seriously out of date.
                 <p>While the Unicode standard includes hidden markers for directionality without the
                 need for markup, these markers should not be used. It is strongly recommended to
@@ -145,4 +148,3 @@
     <!--<section><title>Content removed</title><ph>For example, to correctly render in a Web browser a text in Arabic with embedded English content, the root element should contain <codeph>xml:lang="ar"</codeph> and <codeph>dir="rtl"</codeph>. All text, including punctuation marks, will be set correctly. </ph></section>-->
   </refbody>
 </reference>
-

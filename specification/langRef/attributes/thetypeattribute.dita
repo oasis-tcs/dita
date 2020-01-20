@@ -35,39 +35,39 @@
           outputclass="RFC-2119">MAY</term> give an error message, and <term outputclass="RFC-2119"
           >MAY</term> recover from this error condition by using the <xmlatt>type</xmlatt> attribute
         value. </p>
-      <p>During output processing for references to non-DITA objects (that is, either <ph>scope is
-          “external"</ph> or format is neither <q>dita</q> nor <q>ditamap</q>) or other cases where
-        the type of the referenced item cannot be determined from the item itself, the explicit,
-        inherited, or default value for the <xmlatt>type</xmlatt> attribute is used without any
-        validation. </p>
+      <p>During output processing for references to non-DITA objects (that is, either scope is
+        “external" or format is neither <keyword>dita</keyword> nor <keyword>ditamap</keyword>) or
+        other cases where the type of the referenced item cannot be determined from the item itself,
+        the explicit, inherited, or default value for the <xmlatt>type</xmlatt> attribute is used
+        without any validation. </p>
       <p>When a referencing element is first added to or updated in a document, DITA-aware editors
           <term outputclass="RFC-2119">MAY</term> set the <xmlatt>type</xmlatt> attribute value
         based on the actual type of a referenced DITA topic.</p><p>If the <xmlatt>type</xmlatt> attribute is specified when referencing DITA content, it should
         match one of the values in the referenced element&apos;s <xmlatt>class</xmlatt> attribute.
-          <ph>The <xmlatt>type</xmlatt> value can be an unqualified local name (for example, "fig")
-          or a qualified name exactly as specified in the <xmlatt>class</xmlatt> attribute (for
-          example, "mymodule/mytype"). Processors might ignore qualified names or consider only the
-          local name.</ph></p><p>For example, if the value is set to <codeph>type="topic"</codeph>, the link could be to a generic
+        The <xmlatt>type</xmlatt> value can be an unqualified local name (for example,
+          <keyword>fig</keyword>) or a qualified name exactly as specified in the
+          <xmlatt>class</xmlatt> attribute (for example, <keyword>mymodule/mytype</keyword>).
+        Processors might ignore qualified names or consider only the local name.</p><p>For example, if the value is set to <codeph>type="topic"</codeph>, the link could be to a generic
         topic, or any specialization of topic, including concept, task, and reference. Applications
           <term outputclass="RFC-2119">MAY</term> issue a warning when the
         specified or inherited <xmlatt>type</xmlatt> attribute value does not match the target (or a
         specialization ancestor of the target).</p><p>Some possible values for use on the <xmlelement>xref</xmlelement> element and its specializations
 include:</p><dl><dlentry>
-<dt>fig</dt>
+<dt><keyword>fig</keyword></dt>
 <dd>Indicates a link to a figure.</dd>
 </dlentry><dlentry>
-<dt>table</dt>
+<dt><keyword>table</keyword></dt>
 <dd>Indicates a link to a table.</dd>
 </dlentry><dlentry>
-<dt>li</dt>
+<dt><keyword>li</keyword></dt>
 <dd>Indicates a link to an ordered list item.</dd>
 </dlentry><dlentry>
-<dt>fn</dt>
+<dt><keyword>fn</keyword></dt>
 <dd>Indicates a link to a footnote.</dd>
 </dlentry><dlentry>
-<dt>section</dt>
+<dt><keyword>section</keyword></dt>
 <dd>Indicates a link to a section.</dd>
-</dlentry></dl><p>Other values that<ph >can</ph> be used on any linking element include:</p><dl><dlentry>
+</dlentry></dl><p>Other values that can be used on any linking element include:</p><dl><dlentry>
 <dt>concept, task, reference, topic</dt>
 <dd>Cross-reference to a topic type.</dd>
 </dlentry><dlentry>
@@ -76,67 +76,66 @@ include:</p><dl><dlentry>
 if available. If the type cannot be determined, the default should
 be treated as "topic".</dd>
 </dlentry>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditauseconref">
+        <dlentry conkeyref="reuse-attributes/ditauseconref">
           <dt> </dt>
           <dd> </dd>
         </dlentry></dl><p>Other values can be used to indicate other types of topics or elements as targets. Processing is
         only required to support the above list or specializations of types in that list. Supporting
-        additional types as targets <ph >might </ph>require the creation of
-        processing overrides.</p></section>
+        additional types as targets might require the creation of processing overrides.</p></section>
 <section id="type-note"><title>Using <xmlatt>type</xmlatt> in a <xmlelement>note</xmlelement> element</title><p>In a <xmlelement>note</xmlelement> element, this defines the type of note. For example, if the
         note is a tip, the word <b>Tip</b> might be used to draw the reader's attention to it. The
         values danger, warning, and notice have meanings that are based on ANSI Z535 and ISO 3864
-        regulations.</p><p>If <xmlatt>type</xmlatt> is set to "other", the value of the <xmlatt>othertype</xmlatt> attribute
-          <ph >can</ph> be used. If you use <xmlatt>othertype</xmlatt>, many
-        processors will require additional information on how to process the value. Allowable values
-        for the <xmlatt>type</xmlatt> attribute are:</p><dl><dlentry>
-<dt>note</dt>
+        regulations.</p><p>If <xmlatt>type</xmlatt> is set to <keyword>other</keyword>, the value of the
+          <xmlatt>othertype</xmlatt> attribute can be used. If you use <xmlatt>othertype</xmlatt>,
+        many processors will require additional information on how to process the value. Allowable
+        values for the <xmlatt>type</xmlatt> attribute are:</p><dl><dlentry>
+<dt><keyword>note</keyword></dt>
 <dd>This is just a note.</dd>
 </dlentry><dlentry>
-<dt>attention</dt>
+<dt><keyword>attention</keyword></dt>
 <dd>Please pay extra attention to this note.</dd>
 </dlentry><dlentry>
-<dt>caution</dt>
+<dt><keyword>caution</keyword></dt>
 <dd>Care is required when proceeding.</dd>
 </dlentry><dlentry>
-<dt>danger</dt>
+<dt><keyword>danger</keyword></dt>
 <dd>Important! Be aware of this before doing anything else. <ph>When used with the
                 <xmlelement>hazardstatement</xmlelement> element, this indicates an imminently
               hazardous situation which, if not avoided, <b>will</b> result in death or serious
               injury.</ph></dd>
 </dlentry><dlentry>
-<dt>fastpath</dt>
+<dt><keyword>fastpath</keyword></dt>
 <dd>This note will speed you on your way.</dd>
 </dlentry><dlentry>
-<dt>important</dt>
+<dt><keyword>important</keyword></dt>
 <dd>This note is important.</dd>
 </dlentry><dlentry>
-<dt>notice</dt>
+<dt><keyword>notice</keyword></dt>
 <dd> Indicates a potential situation which, if not avoided, might result in an <b>undesirable result
               or state</b>.</dd>
 </dlentry><dlentry>
-<dt>remember</dt>
+<dt><keyword>remember</keyword></dt>
 <dd>Don&apos;t forget to do what this note says.</dd>
 </dlentry><dlentry>
-<dt>restriction</dt>
+<dt><keyword>restriction</keyword></dt>
 <dd>You can&apos;t do what this note says.</dd>
 </dlentry><dlentry>
-<dt>tip</dt>
+<dt><keyword>tip</keyword></dt>
 <dd>This is a fine little tip.</dd>
 </dlentry><dlentry>
-<dt>warning</dt>
+<dt><keyword>warning</keyword></dt>
 <dd>Indicates a potentially hazardous situation. When used with the
               <xmlelement>hazardstatement</xmlelement> element, this indicates a situation which, if
-            not avoided, <b>could</b> result in death or serious injury.</dd>
+            not avoided, could result in death or serious injury.</dd>
 </dlentry>
     <dlentry >
-     <dt>trouble</dt>
+     <dt><keyword>trouble</keyword></dt>
      <dd>Provides information about how to remedy a trouble situation.</dd>
     </dlentry><dlentry>
-<dt>other</dt>
+<dt><keyword>other</keyword></dt>
 <dd>This is something other than a normal note.</dd>
 </dlentry>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/ditauseconref">
+        <dlentry conkeyref="reuse-attributes/ditauseconref">
           <dt> </dt>
           <dd> </dd>
         </dlentry></dl></section>

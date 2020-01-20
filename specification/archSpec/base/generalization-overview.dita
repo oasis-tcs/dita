@@ -18,20 +18,19 @@
    <li>It can be used for temporary round-tripping. For example, if content is shared with a process
     that is not specialization aware, it can be temporarily generalized for that process and then
     returned to specialized form.</li>
-   <li>It can allow reuse of specialized content in an enviroment that does not support the
+   <li>It can allow reuse of specialized content in an environment that does not support the
     specialization. Similar to round-tripping, content can be generalized for sharing, without the
     need to re-specialize.</li>
   </ul>
   <p>When generalizing for migration, the <xmlatt>class</xmlatt> attribute and
-    <xmlatt>domains</xmlatt> attribute need to be absent from the generalized instance document, so
-   that the default values in the document-type shell are used.</p>
+    <xmlatt>specializations</xmlatt> attribute need to be absent from the generalized instance
+   document, so that the default values in the document-type shell are used.</p>
   <p>When generalizing for round-tripping, the <xmlatt>class</xmlatt> attribute and
-    <xmlatt>domains</xmlatt> attribute <term outputclass="RFC-2119">SHOULD</term> retain the
+    <xmlatt>specializations</xmlatt> attribute <term outputclass="RFC-2119">SHOULD</term> retain the
    original specialized values in the generalized instance document.</p>
 <p>Note that when using constraints, a document instance can always be converted from a constrained
-document type to an unconstrained document type merely by switching the binding of the document
-instance to the less restricted document type shell (which would also have a different
-<xmlatt>domains</xmlatt> attribute declaration). No renaming of elements is needed to remove
-constraints.</p>
+   document type to an unconstrained document type merely by switching the binding of the document
+   instance to the less restricted document type shell. No renaming of elements is needed to remove
+   constraints.</p>
  </conbody>
 </concept>

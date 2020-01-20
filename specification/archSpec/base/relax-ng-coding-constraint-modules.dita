@@ -23,7 +23,6 @@
   </metadata>
  </prolog>
  <conbody>
-  <p conref="../../common/conref-file.dita#reuse_file/rng-domains-documentation"/>
   <p>Constraint modules are implemented by importing the constraint module into a document type
    shell in place of the module that the constraint modifies. The constraint module itself imports
    the base module to be constrained; within the import, the module redefines patterns as needed to
@@ -38,6 +37,8 @@
   &lt;/define>
 &lt;/include>
 </codeblock></p>
+    <draft-comment author="robander">Need to update the following example statement for 2.0 to refer
+      to the correct name of the tech comm 2.0 spec.</draft-comment>
   <p otherprops="examples">For a more complete example, see
     <filepath>strictTaskbodyConstraintMod.rng</filepath>, delivered with the DITA 1.3 grammar
    files.</p>
@@ -58,41 +59,15 @@
   &lt;/define>
 &lt;/include>
 </codeblock></li>
-    <li>Constraints <ph >can</ph> be chained so that each constraint imports
-          another, until the final constraint imports the base vocabulary module. For example, when
-          combining separate constraints for <xmlelement>section</xmlelement>,
-            <xmlelement>shortdesc</xmlelement>, and <xmlelement>li</xmlelement> from the base
-          vocabulary, the <xmlelement>section</xmlelement> constraint can import the
+    <li>Constraints can be chained so that each constraint imports another, until the final
+          constraint imports the base vocabulary module. For example, when combining separate
+          constraints for <xmlelement>section</xmlelement>, <xmlelement>shortdesc</xmlelement>, and
+            <xmlelement>li</xmlelement> from the base vocabulary, the
+            <xmlelement>section</xmlelement> constraint can import the
             <xmlelement>shortdesc</xmlelement> constraint, which in turn imports the
             <xmlelement>li</xmlelement> constraint, which finally imports
             <filepath>topicMod.rng</filepath>.</li>
    </ul>
   </p>
-  <example id="structural-constraint-contribution" otherprops="examples">
-      <title>Example: contribution to the <xmlatt>domains</xmlatt> attribute for structural
-        constraint module</title>
-      <p otherprops="examples">The following code fragment specifies the contribution to the
-          <xmlatt>domains</xmlatt> attribute as <codeph>(topic task
-        strictTaskbody-c)</codeph>:<codeblock>&lt;moduleDesc>
-  &lt;!-- ... -->
-  &lt;moduleMetadata>
-    &lt;!-- ... -->  
-    &lt;domainsContribution>(topic task strictTaskbody-c)&lt;/domainsContribution>
-  &lt;/moduleMetadata>
-&lt;/moduleDesc></codeblock></p>
-    </example>
-  <example id="domain-constraint-contribution" otherprops="examples">
-      <title>Example: contribution to the <xmlatt>domains</xmlatt> attribute for domain constraint
-        module</title>
-      <p otherprops="examples">The following code fragment illustrates the domains contribution for
-        a constraint module <ph >that restricts the task requirements
-          domain:</ph><codeblock>&lt;moduleDesc>
-  &lt;!-- ... -->
-  &lt;moduleMetadata>
-    &lt;!-- ... -->   
-    &lt;domainsContribution>(topic task taskreq-d requiredReqcondsTaskreq-c)&lt;/domainsContribution>
-  &lt;/moduleMetadata>
-&lt;/moduleDesc></codeblock></p>
-    </example>
  </conbody>
 </concept>

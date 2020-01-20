@@ -5,25 +5,25 @@
  <shortdesc>A structural vocabulary module defines a new topic or map type as a specialization of a
     topic or map type.</shortdesc>
  <conbody>
-    <p conref="../../common/conref-file.dita#reuse_file/rng-domains-documentation"/>
   <section id="architectural-attributes">
       <title>Required topic and map element attributes</title>
       <p>The topic or map element type must reference the <codeph>arch-atts</codeph> pattern, which
         defines the <xmlatt>DITAArchVersion</xmlatt> attribute in the DITA architecture namespace
         and sets the attribute to the version of DITA in use. In addition, the topic or map element
-        type must reference the <codeph>domains-att</codeph> pattern, which will pull in a
-        definition for the <xmlatt>domains</xmlatt> attribute. These attributes give processors a
-        reliable way to check the architecture version and list of available domains.</p>
-      <p otherprops="examples">For example, the following definition
-        references the <codeph>arch-atts</codeph> and <codeph>domains-att</codeph> patterns as part
-        of the definition for the <xmlelement>concept</xmlelement>
+        type must reference the <codeph>specializations-att</codeph> pattern, which will pull in a
+        definition for the <xmlatt>specializations</xmlatt> attribute. These attributes give
+        processors a reliable way to check the architecture version and list of available attribute
+        domains.</p>
+      <p otherprops="examples">For example, the following definition references the
+          <codeph>arch-atts</codeph> and <codeph>specializations-att</codeph> patterns as part of
+        the definition for the <xmlelement>concept</xmlelement>
         element.<codeblock>&lt;div&gt;
   &lt;a:documentation&gt; LONG NAME: Concept &lt;/a:documentation&gt;
   &lt;!-- ... -->
   &lt;define name="concept.attlist" combine="interleave"&gt;
     &lt;ref name="concept.attributes"/&gt;
     &lt;ref name="arch-atts"/&gt;
-    &lt;ref name="domains-att"/&gt;
+    &lt;ref name="specializations-att"/&gt;
   &lt;/define&gt;
   &lt;!-- ... -->
 &lt;/div>

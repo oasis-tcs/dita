@@ -3,8 +3,8 @@
 <!--                    HEADER                                     -->
 <!-- ============================================================= -->
 <!--  MODULE:    XML EXCHANGE TABLE MODEL DECLARATION MODULE       -->
-<!--  VERSION:   1.2                                               -->
-<!--  DATE:      November 2009                                     -->
+<!--  VERSION:   2.0                                               -->
+<!--  DATE:      [[[Release date]]]                                     -->
 <!--                                                               -->
 <!-- ============================================================= -->
 <!--             (C) Copyright OASIS Open 2005, 2009.              -->
@@ -12,14 +12,6 @@
 <!--             All Rights Reserved.                              -->
 <!--                                                               -->
 <!--  UPDATES:                                                     -->
-<!--    2005.11.15 RDA: Corrected the "Delivered as" system ID     -->
-<!--    2006.06.07 RDA: Make universal attributes universal        -->
-<!--                      (DITA 1.1 proposal #12)                  -->
-<!--    2006.11.30 RDA: Add -dita-use-conref-target to enumerated  -->
-<!--                      attributes                               -->
-<!--    2008.02.13 RDA: Create .content and .attributes entities;  -->
-<!--                    requires reorganization of some existing   -->
-<!--                    entities provided with the Exchange Model  -->
 <!-- ============================================================= -->
 <!--  Delivered as file "tblDecl.mod"                              -->
 <!-- ============================================================= -->

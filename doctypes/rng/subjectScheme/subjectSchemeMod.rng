@@ -11,7 +11,9 @@
 =============================================================
  MODULE:    DITA Subject Scheme Map                          
  VERSION:   2.0                                              
- DATE:      March 2014                                    
+ DATE:      [[[Release date]]]                                    
+ PURPOSE:   Declaring the elements and specialization        
+            attributes for DITA Subject Scheme Maps          
                                                              
 =============================================================
 
@@ -21,17 +23,10 @@
                                                              
  Refer to this file by the following public identifier or an 
       appropriate system identifier 
-PUBLIC "-//OASIS//ELEMENTS DITA Subject Scheme Map//EN"
+PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"
       Delivered as file "subjectScheme.mod"                       
 
 =============================================================
-SYSTEM:     Darwin Information Typing Architecture (DITA)    
-                                                             
-PURPOSE:    Declaring the elements and specialization        
-            attributes for DITA Subject Scheme Maps          
-                                                             
-ORIGINAL CREATION DATE:                                      
-            February 2008                                    
                                                              
             (C) Copyright OASIS Open 2008, 2009.             
             (C) Copyright IBM Corporation 2005, 2007.        
@@ -54,7 +49,6 @@ ORIGINAL CREATION DATE:
         <xsdGrp>urn:oasis:names:tc:dita:spec:classification:xsd:subjectSchemeGrp.xsd<var presep=":" name="ditaver"/></xsdGrp>
         <xsdMod>urn:oasis:names:tc:dita:spec:classification:xsd:subjectSchemeMod.xsd<var presep=":" name="ditaver"/></xsdMod>
       </modulePublicIds>
-      <domainsContribution>(map subjectScheme)</domainsContribution>
     </moduleMetadata>
   </moduleDesc>
 
@@ -270,7 +264,7 @@ ORIGINAL CREATION DATE:
       <define name="subjectScheme.attlist" combine="interleave">
         <ref name="subjectScheme.attributes"/>
         <ref name="arch-atts"/>
-        <ref name="domains-att"/>
+        <ref name="specializations-att"/>
       </define>
 
     </div>
@@ -882,15 +876,6 @@ ORIGINAL CREATION DATE:
         </optional>
       </define>
       <define name="subjectHeadMeta.attributes">
-        <optional>
-          <attribute name="lockmeta">
-            <choice>
-              <value>no</value>
-              <value>yes</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
         <ref name="univ-atts"/>
       </define>
       <define name="subjectHeadMeta.element">

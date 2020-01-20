@@ -10,8 +10,10 @@
                    HEADER                                    
 =============================================================
  MODULE:    DITA Map Group Domain                            
- VERSION:   1.2                                              
- DATE:      November 2009                                    
+ VERSION:   2.0                                              
+ DATE:      [[[Release date]]]                                    
+ PURPOSE:   Define elements and specialization attributes    
+            for Map Group Domain                             
                                                              
 =============================================================
 
@@ -21,35 +23,21 @@
                                                              
  Refer to this file by the following public identifier or an 
       appropriate system identifier 
-PUBLIC "-//OASIS//ELEMENTS DITA Map Group Domain//EN"
+PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map Group Domain//EN"
       Delivered as file "mapGroup.mod"                            
 
 =============================================================
-SYSTEM:     Darwin Information Typing Architecture (DITA)    
                                                              
-PURPOSE:    Define elements and specialization attributes    
-            for Map Group Domain                             
-                                                             
-ORIGINAL CREATION DATE:                                      
-            March 2001                                       
-                                                             
-            (C) Copyright OASIS Open 2005, 2009.             
+            (C) Copyright OASIS Open 2005, 2019.             
             (C) Copyright IBM Corporation 2001, 2004.        
             All Rights Reserved.                             
                                                              
  UPDATES:                                                    
-   2005.11.15 RDA: Corrected the "Delivered as" system ID    
-   2006.06.07 RDA: Make universal attributes universal       
-                     (DITA 1.1 proposal #12)                 
-   2007.12.01 EK:  Reformatted DTD modules for DITA 1.2       
-   2008.02.01 RDA: Added keydef element, keys attributes     
-   2008.02.12 RDA: Navtitle no longer required on topichead  
-   2008.02.13 RDA: Create .content and .attributes entities  
-   2010.09.20 RDA: Add copy-to to topichead      
    2018.03.14 KJE: Removed @query; added attribute group for
                    use on topichead and topicgroup (to remove
-                   @collection-type)
-   2018.04.09 KJE: Removed @navtitle  
+                   @collection-type)		   
+   2018.04.09 KJE: Remove @navtitle  
+   2019.12.04 KJE: Add mapresources
 =============================================================
       
     </headerComment>
@@ -63,7 +51,6 @@ ORIGINAL CREATION DATE:
         <rncMod>urn:oasis:names:tc:dita:rnc:mapGroupMod.rnc<var presep=":" name="ditaver"/></rncMod>
         <rngMod>urn:oasis:names:tc:dita:rng:mapGroupMod.rng<var presep=":" name="ditaver"/></rngMod>
       </modulePublicIds>
-      <domainsContribution>(map mapgroup-d)</domainsContribution>
     </moduleMetadata>
   </moduleDesc>
 <div>
@@ -156,6 +143,9 @@ ORIGINAL CREATION DATE:
     <define name="mapref">
       <ref name="mapref.element"/>
     </define>
+    <define name="mapresources">
+      <ref name="mapresources.element"/>
+    </define>
     <define name="topicgroup">
       <ref name="topicgroup.element"/>
     </define>
@@ -171,6 +161,7 @@ ORIGINAL CREATION DATE:
         <ref name="anchorref.element"/>
         <ref name="keydef.element"/>
         <ref name="mapref.element"/>
+        <ref name="mapresources"/>
         <ref name="topicgroup.element"/>
         <ref name="topichead.element"/>
       </choice>
@@ -251,7 +242,6 @@ ORIGINAL CREATION DATE:
       <define name="topicgroup.attlist" combine="interleave">
         <ref name="topicgroup.attributes"/>
       </define>
-
     </div>
     <div>
       <a:documentation>Anchor Reference</a:documentation>
@@ -564,7 +554,104 @@ ORIGINAL CREATION DATE:
         <ref name="keydef.attributes"/>
       </define>
     </div>
+    <div>
+      <a:documentation>Map resource</a:documentation>
+      <define name="mapresources.content">
+        <optional>
+          <ref name="topicmeta"/>
+        </optional>
+        <zeroOrMore>
+          <choice>
+            <ref name="data.elements.incl"/>
+            <ref name="topicref"/>
+          </choice>
+        </zeroOrMore>
+      </define>
+      <define name="mapresources.attributes">
+        <optional>
+          <attribute name="href"/>
+        </optional>
+        <optional>
+          <attribute name="keyref"/>
+        </optional>
+        <optional>
+          <attribute name="keys"/>
+        </optional>
+        <optional>
+          <attribute name="keyscope"/>
+        </optional>
+        <optional>
+          <attribute name="processing-role" a:defaultValue="resource-only">
+            <choice>
+              <value>normal</value>
+              <value>resource-only</value>
+              <value>-dita-use-conref-target</value>
+            </choice>
+          </attribute>
+        </optional>
+        <optional>
+          <attribute name="type"/>
+        </optional>
+        <optional>
+          <attribute name="cascade"/>
+        </optional>
+        <optional>
+          <attribute name="scope">
+            <choice>
+              <value>external</value>
+              <value>local</value>
+              <value>peer</value>
+              <value>-dita-use-conref-target</value>
+            </choice>
+          </attribute>
+        </optional>
+        <optional>
+          <attribute name="format"/>
+        </optional>
+        <optional>
+          <attribute name="linking">
+            <choice>
+              <value>none</value>
+              <value>normal</value>
+              <value>sourceonly</value>
+              <value>targetonly</value>
+              <value>-dita-use-conref-target</value>
+            </choice>
+          </attribute>
+        </optional>
+        <optional>
+          <attribute name="toc">
+            <choice>
+              <value>no</value>
+              <value>yes</value>
+              <value>-dita-use-conref-target</value>
+            </choice>
+          </attribute>
+        </optional>
+        <optional>
+          <attribute name="search">
+            <choice>
+              <value>no</value>
+              <value>yes</value>
+              <value>-dita-use-conref-target</value>
+            </choice>
+          </attribute>
+        </optional>
+        <ref name="univ-atts"/>
+      </define>
+      <define name="mapresources.element">
+        <element name="mapresources">
+          <a:documentation/>
+          <ref name="mapresources.attlist"/>
+          <ref name="mapresources.content"/>
+        </element>
+      </define>
+      <define name="mapresources.attlist" combine="interleave">
+        <ref name="mapresources.attributes"/>
+      </define>
+    </div>
   </div>
+      
   <div>
     <a:documentation>Specialization attributes. Global attributes and class defaults</a:documentation>
     <define name="anchorref.attlist" combine="interleave">
@@ -580,6 +667,11 @@ ORIGINAL CREATION DATE:
     <define name="mapref.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="+ map/topicref mapgroup-d/mapref "/>
+      </optional>
+    </define>
+    <define name="mapresources.attlist" combine="interleave">
+      <optional>
+        <attribute name="class" a:defaultValue="+ map/topicref mapgroup-d/mapresources "/>
       </optional>
     </define>
     <define name="topicgroup.attlist" combine="interleave">

@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--  ============================================================= DITAVAL Reference -->
-<!--       Domain =============================================================  -->
+<!-- ============================================================= -->
+<!--                    HEADER                                     -->
+<!-- ============================================================= -->
+<!--  MODULE:    DITA DITAVAL Reference Domain                     -->
+<!--  VERSION:   2.0                                               -->
+<!--  DATE:      [[[Release date]]]                                       -->
+<!--  PURPOSE:   Declaring the elements and specialization         -->
+<!--             attributes for the DITAVAL Reference Domain       -->
+<!--                                                               -->
+<!-- ============================================================= -->
+<!-- ============================================================= -->
+<!--                    PUBLIC DOCUMENT TYPE DEFINITION            -->
+<!--                    TYPICAL INVOCATION                         -->
+<!--                                                               -->
+<!--  Refer to this file by the following public identifier or an  -->
+<!--       appropriate system identifier                           -->
+<!-- PUBLIC "-//OASIS//ELEMENTS DITA 2.0 DITAVAL Ref Domain//EN"   -->
+<!--       Delivered as file "ditavalrefDomain.mod"                -->
+<!-- ============================================================= -->
+<!--                                                               -->
+<!--             (C) Copyright OASIS Open 2015, 2019.              -->
+<!--             All Rights Reserved.                              -->
+<!--                                                               -->
+<!--  UPDATES:                                                     -->
+<!-- ============================================================= -->
+<!--                                                               -->
 
 <!-- ============================================================= -->
 <!--                   ELEMENT NAME ENTITIES                       -->
@@ -82,12 +106,7 @@
                           (%dvrKeyscopeSuffix;)?))"
 >
 <!ENTITY % ditavalmeta.attributes
-              "lockmeta
-                          (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               %ditavalref-univ-atts;"
+              "%ditavalref-univ-atts;"
 >
 <!ELEMENT  ditavalmeta %ditavalmeta.content;>
 <!ATTLIST  ditavalmeta %ditavalmeta.attributes;>

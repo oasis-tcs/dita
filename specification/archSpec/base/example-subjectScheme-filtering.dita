@@ -20,13 +20,15 @@
  </prolog>
  <conbody>
   <example id="example" otherprops="examples">
-   <p>A company defines a subject category for "Operating system", with a key set to "os". There are
-    sub-categories for Linux, Windows, and z/OS, as well as specific Linux variants: Red Hat Linux
-    and SuSE Linux. The company then binds the values that are enumerated in the "Operating system"
-    category to the <xmlatt>platform</xmlatt> attribute.</p>
-            <codeblock conref="../../common/conref-code-samples.dita#reuse-code-samples/basic-subjectScheme"/>
+   <p>A company defines a subject category for "Operating system", with a key set to
+     <keyword>os</keyword>. There are sub-categories for Linux, Windows, and z/OS, as well as
+    specific Linux variants: Red Hat Linux and SuSE Linux. The company then binds the values that
+    are enumerated in the "Operating system" category to the <xmlatt>platform</xmlatt>
+    attribute.</p>
+   <codeblock conkeyref="reuse-code-samples/basic-subjectScheme"/>
    <p>The enumeration limits valid values for the <xmlatt>platform</xmlatt> attribute to the
-    following: "linux", "redhat", "suse", "windows", and "zos". If any other values are encountered,
+    following: <keyword>linux</keyword>, <keyword>redhat</keyword>, <keyword>suse</keyword>,
+     <keyword>windows</keyword>, and <keyword>zos</keyword>. If any other values are encountered,
     processors validating against the scheme will issue a warning.</p>
    <!--<p>As a result, the values could be used in this way:<codeblock>&lt;p platform="linux">You must set up a cron job to ...&lt;/p>
 &lt;p platform="redhat">To set up the cron job, ...&lt;/p></codeblock></p>-->
@@ -42,10 +44,12 @@
      <colspec colname="COLSPEC0" colwidth="1*"/>
      <thead>
       <row valign="bottom">
-       <entry colname="col1">att="platform" val="linux"</entry>
-       <entry colname="col2">att="platform" val="redhat"</entry>
-       <entry colname="col3">How platform="redhat" is evaluated</entry>
-       <entry colname="COLSPEC0">How platform="linux" is evaluated</entry>
+       <entry colname="col1"><codeph>att="platform"</codeph>
+        <codeph>val="linux"</codeph></entry>
+       <entry colname="col2"><codeph>att="platform"</codeph>
+        <codeph>val="redhat"</codeph></entry>
+       <entry colname="col3">How <codeph>platform="redhat"</codeph> is evaluated</entry>
+       <entry colname="COLSPEC0">How <codeph>platform="linux"</codeph> is evaluated</entry>
       </row>
      </thead>
      <tbody>
@@ -57,21 +61,22 @@
       </row>
       <row>
        <entry colname="col2">action="include" or action="flag"</entry>
-       <entry colname="col3">Excluded. This is an error condition, because if all "linux" content is
-        excluded, "redhat" also is excluded. Applications <ph>can</ph> recover by generating an
-        error message.</entry>
+       <entry colname="col3">Excluded. This is an error condition, because if all
+         <keyword>linux</keyword> content is excluded, <keyword>redhat</keyword> also is excluded.
+        Applications can recover by generating an error message.</entry>
        <entry colname="COLSPEC0">Excluded.</entry>
       </row>
       <row>
        <entry colname="col2">Unspecified</entry>
-       <entry colname="col3">Excluded, because "redhat" is a kind of "linux", and "linux" is
-        excluded.</entry>
+       <entry colname="col3">Excluded, because <keyword>redhat</keyword> is a kind of
+         <keyword>linux</keyword>, and <keyword>linux</keyword> is excluded.</entry>
        <entry colname="COLSPEC0">Excluded.</entry>
       </row>
       <row>
        <entry colname="col1" morerows="3">action="include"</entry>
        <entry colname="col2">action="exclude"</entry>
-       <entry colname="col3">Excluded, because all "redhat" content is excluded.</entry>
+       <entry colname="col3">Excluded, because all <keyword>redhat</keyword> content is
+        excluded.</entry>
        <entry colname="COLSPEC0">Included.</entry>
       </row>
       <row>
@@ -81,42 +86,51 @@
       </row>
       <row>
        <entry colname="col2">action="flag"</entry>
-       <entry colname="col3">Included and flagged with the "redhat" flag.</entry>
+       <entry colname="col3">Included and flagged with the <keyword>redhat</keyword> flag.</entry>
        <entry colname="COLSPEC0">Included.</entry>
       </row>
       <row>
        <entry colname="col2">Unspecified</entry>
-       <entry colname="col3">Included, because all "linux" content is included.</entry>
+       <entry colname="col3">Included, because all <keyword>linux</keyword> content is
+        included.</entry>
        <entry colname="COLSPEC0">Included.</entry>
       </row>
       <row>
        <entry colname="col1" morerows="3">action="flag"</entry>
        <entry colname="col2">action="exclude"</entry>
-       <entry colname="col3">Excluded, because all "redhat" content is excluded.</entry>
-       <entry colname="COLSPEC0">Included and flagged with the "linux" flag.</entry>
+       <entry colname="col3">Excluded, because all<keyword>redhat</keyword> content is
+        excluded.</entry>
+       <entry colname="COLSPEC0">Included and flagged with the <keyword>linux</keyword>
+        flag.</entry>
       </row>
       <row>
        <entry colname="col2">action="include"</entry>
-       <entry colname="col3">Included and flagged with the "linux" flag, because "linux" is flagged
-        and "redhat" is a type of "linux".</entry>
-       <entry colname="COLSPEC0">Included and flagged with the "linux" flag.</entry>
+       <entry colname="col3">Included and flagged with the <keyword>linux</keyword> flag, because
+         <keyword>linux</keyword> is flagged and <keyword>redhat</keyword> is a type of
+         <keyword>linux</keyword>.</entry>
+       <entry colname="COLSPEC0">Included and flagged with the <keyword>linux</keyword>
+        flag.</entry>
       </row>
       <row>
        <entry colname="col2">action="flag"</entry>
-       <entry colname="col3">Included and flagged with the "redhat" flag, because a flag is
-        available that is specifically for "redhat".</entry>
-       <entry colname="COLSPEC0">Included and flagged with the "linux" flag.</entry>
+       <entry colname="col3">Included and flagged with the <keyword>redhat</keyword> flag, because a
+        flag is available that is specifically for <keyword>redhat</keyword>.</entry>
+       <entry colname="COLSPEC0">Included and flagged with the <keyword>linux</keyword>
+        flag.</entry>
       </row>
       <row>
        <entry colname="col2">Unspecified</entry>
-       <entry colname="col3">Included and flagged with the "linux" flag, because "linux" is flagged
-        and "redhat" is a type of linux</entry>
-       <entry colname="COLSPEC0">Included and flagged with the "linux" flag.</entry>
+       <entry colname="col3">Included and flagged with the <keyword>linux</keyword> flag, because
+         <keyword>linux</keyword> is flagged and <keyword>redhat</keyword> is a type of
+         <keyword>linux</keyword></entry>
+       <entry colname="COLSPEC0">Included and flagged with the <keyword>linux</keyword>
+        flag.</entry>
       </row>
       <row>
        <entry colname="col1" morerows="3">Unspecified</entry>
        <entry colname="col2">action="exclude"</entry>
-       <entry colname="col3">Excluded, because all "redhat" content is excluded</entry>
+       <entry colname="col3">Excluded, because all <keyword>redhat</keyword> content is
+        excluded</entry>
        <entry colname="COLSPEC0">If the default for <xmlatt>platform</xmlatt> values is "include",
         this is included. If the default for <xmlatt>platform</xmlatt> values is "exclude", this is
         excluded.</entry>
@@ -124,14 +138,14 @@
       <row>
        <entry colname="col2">action="include"</entry>
        <entry colname="col3">Included.</entry>
-       <entry colname="COLSPEC0">Included, because all "redhat" content is included, and general
-        Linux content also applies to RedHat</entry>
+       <entry colname="COLSPEC0">Included, because all <keyword>redhat</keyword> content is
+        included, and general Linux content also applies to RedHat</entry>
       </row>
       <row>
        <entry colname="col2">action="flag"</entry>
-       <entry colname="col3">Included and flagged with the "redhat" flag.</entry>
-       <entry colname="COLSPEC0">Included, because all "redhat" content is included, and general
-        Linux content also applies to RedHat</entry>
+       <entry colname="col3">Included and flagged with the <keyword>redhat</keyword> flag.</entry>
+       <entry colname="COLSPEC0">Included, because all <keyword>redhat</keyword> content is
+        included, and general Linux content also applies to RedHat</entry>
       </row>
       <row>
        <entry colname="col2">Unspecified</entry>

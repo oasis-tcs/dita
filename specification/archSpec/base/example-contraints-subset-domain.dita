@@ -24,14 +24,10 @@
         <li >She creates
             <filepath>reducedHighlightingDomainConstraint.mod</filepath>, where "reduced" is a
           string that characterizes the constraint.</li>
-        <li>She adds the following content to <filepath 
-            >reducedHighlightingDomainConstraint.mod</filepath>:<codeblock>&lt;!-- ============================================================= -->
+        <li>She adds the following content to
+            <filepath>reducedHighlightingDomainConstraint.mod</filepath>:<codeblock>&lt;!-- ============================================================= -->
 &lt;!--      CONSTRAINED HIGHLIGHTING DOMAIN ENTITIES                 -->
 &lt;!-- ============================================================= -->
-
-&lt;!ENTITY HighlightingDomain-constraints     
-  "(topic hi-d basic-HighlightingDomain-c)"
->
 
 &lt;!ENTITY % HighlightingDomain-c-ph     "b | i"                 >  </codeblock></li>
         <li>She then integrates the constraint module into her company-specific, document-type shell
@@ -52,23 +48,6 @@
                          %sw-d-ph; | 
                          %ui-d-ph;
                         "></codeblock></li>
-        <li>She then adds the constraint to the list of domains and constraints that need to be
-          included in the value of the <xmlatt>domains</xmlatt> attribute for
-            <xmlelement>task</xmlelement>:<codeblock>&lt;!-- ============================================================= -->
-&lt;!--                    DOMAINS ATTRIBUTE OVERRIDE                 -->
-&lt;!-- ============================================================= -->
-
-&lt;!ENTITY included-domains 
-                          "&amp;task-att;
-                           &amp;hi-d-att; 
-                           &amp;indexing-d-att;
-                           &amp;pr-d-att; 
-                           &amp;sw-d-att;
-                           &amp;ui-d-att;
-                           &amp;taskbody-constraints;
-                           <b>&amp;HighlightingDomain-constraints;</b>
-  "
-></codeblock></li>
         <li>After updating the <filepath>catalog.xml</filepath> file to include the new constraints
           file, her work is done.</li>
       </ol>

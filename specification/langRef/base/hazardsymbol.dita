@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="hazardsymbol" xml:lang="en-us">
 <title><xmlelement>hazardsymbol</xmlelement></title>
 <shortdesc>The <xmlelement>hazardsymbol</xmlelement> element specifies
@@ -19,6 +17,12 @@ a result of not avoiding a hazard, or any combination of these messages.</shortd
       <title>Rendering expectations</title>
       <p conkeyref="rendering/image-video"/>
     </section>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>When a <xmlelement>hazardsymbol</xmlelement> element is directly contained by
+          <xmlelement>messagepanel</xmlelement>, the <xmlelement>hazardsymbol</xmlelement> is
+        assumed to be associated with the <xmlelement>typeofhazard</xmlelement> element.</p>
+    </section>
     <section id="specialization-hierarchy">
       <title>Specialization hierarchy</title>
       <p>The <xmlelement>hazardsymbol</xmlelement> element is specialized from
@@ -32,48 +36,65 @@ a result of not avoiding a hazard, or any combination of these messages.</shortd
           keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>, and the
         attributes defined below.</p>
       <dl>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-href">
+        <dlentry conkeyref="reuse-attributes/image-href">
           <dt/>
           <dd/>
         </dlentry>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-scope">
+        <dlentry conkeyref="reuse-attributes/image-scope">
           <dt/>
           <dd/>
         </dlentry>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-height">
+        <dlentry conkeyref="reuse-attributes/image-height">
           <dt/>
           <dd/>
         </dlentry>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-width">
+        <dlentry conkeyref="reuse-attributes/image-width">
           <dt/>
           <dd/>
         </dlentry>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-align">
+        <dlentry conkeyref="reuse-attributes/image-align">
           <dt/>
           <dd/>
         </dlentry>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-scale">
+        <dlentry conkeyref="reuse-attributes/image-scale">
           <dt/>
           <dd/>
         </dlentry>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-scalefit">
+        <dlentry conkeyref="reuse-attributes/image-scalefit">
           <dt/>
           <dd/>
         </dlentry>
-        <dlentry conref="../../common/conref-attribute.dita#conref-attribute/image-placement">
+        <dlentry conkeyref="reuse-attributes/image-placement">
           <dt/>
           <dd/>
         </dlentry>
       </dl>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><codeblock
-xml:space="preserve">&lt;hazardstatement type="danger">
+<example id="example" otherprops="examples"><title>Example</title>
+      <p>The following code sample defines a hazard statement with a signal word of "DANGER." The
+          <xmlelement>hazardsymbol</xmlelement> element is explicitly associated with the
+          <xmlelement>typeofhazard</xmlelement> element.</p>
+      <codeblock>&lt;hazardstatement type="danger">
   &lt;messagepanel>
-    &lt;typeofhazard>Rotating blade.&lt;/typeofhazard>
+    &lt;typeofhazard>
+    <b>&lt;hazardsymbol keyref="hazard-rotatingblade"/></b>
+    Rotating blade&lt;/typeofhazard>
     &lt;consequence>Moving parts can crush and cut.&lt;/consequence>
     &lt;howtoavoid>Follow lockout procedure before servicing.&lt;/howtoavoid>
   &lt;/messagepanel>
-  <b>&lt;hazardsymbol href="rotatingblade.png"/></b>
+&lt;/hazardstatement></codeblock>
+      <p>In the following code sample, the <xmlelement>hazardsymbol</xmlelement> is contained by the
+          <xmlelement>messagepanel</xmlelement> element. By default, this markup also associates the
+          <xmlelement>hazardsymbol</xmlelement> element with the
+          <xmlelement>typeofhazard</xmlelement> element. This markup can be useful when migrating
+        hazard statements from earlier versions to DITA 2.0.</p>
+      <codeblock>&lt;hazardstatement type="danger">
+  &lt;messagepanel>
+    &lt;typeofhazard>Rotating blade&lt;/typeofhazard>
+    &lt;consequence>Moving parts can crush and cut.&lt;/consequence>
+    &lt;howtoavoid>Follow lockout procedure before servicing.&lt;/howtoavoid>
+    <b>&lt;hazardsymbol keyref="hazard-rotatingblade"/></b>
+  &lt;/messagepanel>
 &lt;/hazardstatement></codeblock></example>
 </refbody>
 </reference>

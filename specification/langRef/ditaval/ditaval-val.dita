@@ -19,12 +19,12 @@
       </section>
       <section id="attributes">
          <title>Attributes</title>
-         <p conref="../../common/conref-attribute.dita#conref-attribute/no-atts"/>
+         <p conkeyref="reuse-attributes/no-atts"/>
       </section>
 <example id="example" otherprops="examples"><title>Example</title><fig><title>Sample
 DITAVAL file</title>
 <codeblock>&lt;val>
-   &lt;style-conflict <ph >background-conflict-color</ph>="red"/>
+   &lt;style-conflict background-conflict-color="red"/>
    &lt;prop action="include" att="audience" val="everybody"/>
    &lt;prop action="flag" att="product" val="YourProd" backcolor="purple"/>
    &lt;prop action="flag" att="product" backcolor="blue"
@@ -72,9 +72,8 @@ action</title>
                      by default, any property value not otherwise defined in this file evaluates to
                      "exclude". Note that this same behavior can be limited to a single attribute;
                      the following <xmlelement>prop</xmlelement> element sets a default action of
-                     "exclude" for all properties specified on the <xmlatt>platform</xmlatt> attribute:
-                        <codeph>&lt;prop action="exclude" <ph 
-                           >att="platform"</ph>/></codeph></li>
+                     "exclude" for all properties specified on the <xmlatt>platform</xmlatt>
+                     attribute: <codeph>&lt;prop action="exclude" att="platform"/></codeph></li>
                   <li>The second and third <xmlelement>prop</xmlelement> elements set an action of
                      "include" for two values on the <xmlatt>audience</xmlatt> attribute. All other
                      values on the <xmlatt>audience</xmlatt> attribute still evaluate to
@@ -94,17 +93,17 @@ action</title>
    &lt;prop action="include" att="database" val="dbSECOND"/>
    &lt;prop action="exclude" att="database" val="newDB"/>
 &lt;/val></codeblock>
-            <p>Assume that "database" and "appserver" are used as group names within the
+            <p>Assume that "database" and "appServer" are used as group names within the
                   <xmlatt>product</xmlatt> attribute. In that case, the sample DITAVAL above
                performs the following actions:<ul>
-                  <li>The first <xmlelement>prop</xmlelement> element excludes the value "appserver"
+                  <li>The first <xmlelement>prop</xmlelement> element excludes the value "appServer"
                      when used within the <xmlatt>product</xmlatt> attribute. It also sets a default
-                     of "exclude" for values within any appserver() group inside of the
+                     of "exclude" for values within any appServer() group inside of the
                         <xmlatt>product</xmlatt> attribute.</li>
                   <li>The second <xmlelement>prop</xmlelement> element sets "mySERVER" to include;
                      this applies whether "mySERVER" appears alone in the <xmlatt>product</xmlatt>
                      attribute (<codeph>product="mySERVER"</codeph>) or inside of any group
-                        (<codeph>product="appserver(mySERVER)"</codeph> or
+                        (<codeph>product="appServer(mySERVER)"</codeph> or
                         <codeph>product="otherGroup(mySERVER)"</codeph>).</li>
                   <li>The third and fourth <xmlelement>prop</xmlelement> elements set the database
                      values "dbFIRST" and "dbSECOND" to include. If those values appear inside of a
@@ -120,12 +119,12 @@ action</title>
             <p>Remember that with groups, if all values inside of a single group evaluate to
                "exclude", that is equivalent to an entire attribute evaluating to "exclude", which
                results in the removal of the content. Using the above sample DITAVAL:<ul>
-                  <li><codeph>&lt;p product="appserver"></codeph> is filtered out, because this
+                  <li><codeph>&lt;p product="appServer"></codeph> is filtered out, because this
                      value is excluded.</li>
-                  <li><codeph>&lt;p product="appserver(A B)"></codeph> is filtered out, because
-                     there is no explicit rule for A or B, and values in the "appserver" group
+                  <li><codeph>&lt;p product="appServer(A B)"></codeph> is filtered out, because
+                     there is no explicit rule for A or B, and values in the "appServer" group
                      inside of <xmlatt>product</xmlatt> default to exclude.</li>
-                  <li><codeph>&lt;p product="appserver(A B mySERVER)"></codeph> is included, because
+                  <li><codeph>&lt;p product="appServer(A B mySERVER)"></codeph> is included, because
                         <codeph>product="mySERVER"</codeph> evaluates to "include", which means the
                      entire group evaluates to "include".</li>
                   <li><codeph>&lt;p product="newDB"></codeph> is included, because no rule in the
@@ -138,7 +137,7 @@ action</title>
                   <li><codeph>&lt;p product="database(newDB) appserver(mySERVER)"></codeph> is
                      filtered out, because the token "newDB" is excluded when found in the database
                      group. The entire "database" group on this paragraph evaluates to "exclude", so
-                     the element is excluded, regardless of how the "appserver" group
+                     the element is excluded, regardless of how the "appServer" group
                      evaluates.</li>
                </ul></p>
             <note>If two groups with the same name exist on different attributes, each group will

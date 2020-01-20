@@ -159,22 +159,23 @@
       <title>Using <xmlatt>conrefend</xmlatt> together with <xmlatt>conkeyref</xmlatt></title>
       <p>When the <xmlatt>conkeyref</xmlatt> attribute is used in place of <xmlatt>conref</xmlatt>,
         a key is used to address the target of the reference. The <xmlatt>conrefend</xmlatt>
-        attribute, which indicates the end of a <xmlatt>conref</xmlatt> range, <ph>cannot</ph> use a
-        key. Instead the the map or topic element addressed by the key name component of the
+        attribute, which indicates the end of a <xmlatt>conref</xmlatt> range, cannot use a key.
+        Instead the map or topic element addressed by the key name component of the
           <xmlatt>conkeyref</xmlatt> is used in place of whatever map or topic element is addressed
         by the <xmlatt>conrefend</xmlatt> attribute.</p>
-      <p>For example, if the value of the <xmlatt>conkeyref</xmlatt> attribute is "config/step1" and
-        the value of the <xmlatt>conrefend</xmlatt> is
-          <codeph>defaultconfig.dita#config/laststep</codeph>, the conref range will end with the
-        step that has id="laststep" in whatever topic is addressed by the key name "config". If the
-        key name "config" is not defined, and the <xmlatt>conref</xmlatt> attribute itself is not
-        present for fallback, the <xmlatt>conrefend</xmlatt> attribute is ignored.</p>
+      <p>For example, if the value of the <xmlatt>conkeyref</xmlatt> attribute is
+          <keyword>config/step1</keyword> and the value of the <xmlatt>conrefend</xmlatt> is
+          <keyword>defaultconfig.dita#config/laststep</keyword>, the conref range will end with the
+        step that has <codeph>id="laststep"</codeph> in whatever topic is addressed by the key name
+          <keyword>config</keyword>. If the key name <keyword>config</keyword> is not defined, and
+        the <xmlatt>conref</xmlatt> attribute itself is not present for fallback, the
+          <xmlatt>conrefend</xmlatt> attribute is ignored.</p>
     </section>
     <example id="conrefend-with-conkeyref" otherprops="examples">
       <title>Example: Combining <xmlatt>conrefend</xmlatt> with <xmlatt>conkeyref</xmlatt></title>
       <fig>
         <title>Defining and referencing a key with <xmlatt>conkeyref</xmlatt></title>
-        <p>In this example the key "xmp" is defined as the first topic in the file
+        <p>In this example the key <keyword>xmp</keyword> is defined as the first topic in the file
             <filepath>examples.dita.</filepath></p>
         <codeblock>&lt;map>
   &lt;!-- ... -->
@@ -217,15 +218,18 @@ examples.dita:
       conref="standardconfig.dita#config/start"
       conrefend="standardconfig.dita#config/end"/></codeblock>
         <ul>
-          <li>If the key "thisconfig" is defined as <codeph>mySpecialConfig.dita#myconfig</codeph>,
-            then the range will go from the list item with id="start" to the list item with id="end"
-            in the topic <codeph>mySpecialConfig.dita#myconfig</codeph>.</li>
-          <li>If the key "thisconfig" is defined as <codeph>myConfig.dita</codeph>, then the range
-            will go from the list item with id="start" to the list item with id="end" within the
-            first topic in <codeph>myConfig.dita</codeph>.</li>
-          <li>If the key "thisconfig" is not defined, then the unchanged <xmlatt>conref</xmlatt> and
-              <xmlatt>conrefend</xmlatt> attributes are used as fallback. In that case, the range
-            will go from the list item with id="start" to the list item with id="end" within the
+          <li>If the key <keyword>thisconfig</keyword> is defined as
+              <codeph>mySpecialConfig.dita#myconfig</codeph>, then the range will go from the list
+            item with <codeph>id="start"</codeph> to the list item with<codeph>id="end"</codeph> in
+            the topic <codeph>mySpecialConfig.dita#myconfig</codeph>.</li>
+          <li>If the key <keyword>thisconfig</keyword> is defined as <codeph>myConfig.dita</codeph>,
+            then the range will go from the list item with <codeph>id="start"</codeph> to the list
+            item with <codeph>id="end"</codeph> within the first topic in
+              <codeph>myConfig.dita</codeph>.</li>
+          <li>If the key <keyword>thisconfig</keyword> is not defined, then the unchanged
+              <xmlatt>conref</xmlatt> and <xmlatt>conrefend</xmlatt> attributes are used as
+            fallback. In that case, the range will go from the list item with
+              <codeph>id="start"</codeph> to the list item with <codeph>id="end"</codeph> within the
             topic <codeph>standardconfig.dita#config</codeph>.</li>
         </ul>
       </fig>

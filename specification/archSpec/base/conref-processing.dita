@@ -23,23 +23,19 @@
    validity does not apply simply to the current content at the time of replacement, but to the
    possible content given the restrictions of both the referencing document type and the referenced
    document type.</note>
-  <p>When pulling content with the conref mechanism, if the referenced element is the same type as
-   the referencing element, and the set of domains declared on the <xmlatt>domains</xmlatt>
-   attribute in the referenced topic or map instance is the same as or a subset of the domains
-   declared in the referencing document, the element set allowed in the referenced element is
-   guaranteed to be the same as, or a subset of, the element set allowed in the referencing
-   element.</p>
-  <p>When pushing content with the conref mechanism, the domain checking algorithm is reversed. In
-   this case, if the set of domains declared on the <xmlatt>domains</xmlatt> attribute in the
-   referencing topic or map instance is the same as or a subset of the domains declared in the
-   referenced document, the element set allowed in the pushed content is guaranteed to be the same
-   as, or a subset of, the element set allowed in the new location.</p>
-  <p>When both pulling or pushing content with the conref mechanism, processors resolving conrefs
-    <term outputclass="RFC-2119">SHOULD</term> tolerate specializations of valid elements and
-   generalize elements in the pushed or pulled content fragment as needed for the resolving
-   context.</p>
-  <p>Except where allowed by weak constraints, a conref processor <term outputclass="RFC-2119">MUST
-    NOT</term> permit resolution of a reuse relationship that could be rendered invalid under the
-   rules of either the reused or reusing content.</p>
+   <p>When content is reused between two documents with different domains or constraints, it is
+      possible for the reused content to include domain extensions that are not defined for the new
+      context, or to include elements that would be constrained out of the new context. When pulling
+      or pushing content with the conref mechanism, processors resolving conrefs <term
+        outputclass="RFC-2119">SHOULD</term> tolerate specializations of valid elements. Processors
+        <term outputclass="RFC-2119">MAY</term> generalize elements in the pushed or pulled content
+      fragment as needed for the resolving context.</p>
+    <draft-comment author="robander">Without @domains, without constraints, and without a built-in
+      knowledge of every document type, it is not be possible to determine every case that could be
+      rendered invalid. As such, should we change the following MUST NOT to SHOULD
+      NOT?</draft-comment>
+  <p>A conref processor <term outputclass="RFC-2119">MUST NOT</term> permit resolution of a reuse
+      relationship that could be rendered invalid under the rules of either the reused or reusing
+      content.</p>
  </conbody>
 </concept>

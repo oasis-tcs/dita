@@ -3,8 +3,10 @@
 <!--                    HEADER                                     -->
 <!-- ============================================================= -->
 <!--  MODULE:    DITA Hazard Statement Domain                      -->
-<!--  VERSION:   1.2                                               -->
-<!--  DATE:      November 2009                                     -->
+<!--  VERSION:   2.0                                               -->
+<!--  DATE:      [[[Release date]]]                                    -->
+<!--  PURPOSE:   Declaring the elements and specialization         -->
+<!--             attributes for the Hazard Statement Domain        -->
 <!--                                                               -->
 <!-- ============================================================= -->
 <!-- ============================================================= -->
@@ -13,34 +15,16 @@
 <!--                                                               -->
 <!--  Refer to this file by the following public identifier or an  -->
 <!--       appropriate system identifier                           -->
-<!-- PUBLIC "-//OASIS//ELEMENTS DITA Hazard Statement Domain//EN"  -->
-<!--       Delivered as file "hazardstatementDomain.mod"                -->
+<!-- PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Hazard Statement Domain//EN" -->
+<!--       Delivered as file "hazardstatementDomain.mod"           -->
 <!-- ============================================================= -->
-<!-- SYSTEM:     Darwin Information Typing Architecture (DITA)     -->
 <!--                                                               -->
-<!-- PURPOSE:    Declaring the elements and specialization         -->
-<!--             attributes for the Hazard Statement Domain        -->
-<!--                                                               -->
-<!-- ORIGINAL CREATION DATE:                                       -->
-<!--             February 2008                                     -->
-<!--                                                               -->
-<!--             (C) Copyright OASIS Open 2008, 2009.              -->
+<!--             (C) Copyright OASIS Open 2008, 2019.              -->
 <!--             All Rights Reserved.                              -->
 <!--                                                               -->
 <!--  UPDATES:                                                     -->
-<!--    2007.02.20 Chris Kravogel, SeicoDyne GmbH: Created domain  -->
-<!--    2007.03.06 Chris Kravogel, SeicoDyne GmbH: Add howtoavoid  -->
-<!--                    entity                                     -->
-<!--    2007.11.20 Chris Kravogel, SeicoDyne GmbH: Reduced ATTLIST -->
-<!--                    of hazardstatement to ATTLIST of note      -->
-<!--    2008.02.05 Chris Kravogel, SeicoDyne GmbH: Renamed symbol  -->
-<!--                    to hazardsymbol, added %words.cnt; and     -->
-<!--                    %trademark; to consequences, typeofhazard  -->
-<!--    2008.02.05 RDA: Reformatted for DITA 1.2 ; removed @alt     -->
-<!--                    and added @scalefit on hazardsymbol        -->
-<!--    2008.02.13 RDA: Create .content and .attributes entities   -->
-<!--    2009.12.03 RDA: Removed caution1 and caution2 values to    -->
-<!--                    match the revised note/@type values        -->
+<!--    2019.11.09 KJE: Updated for DITA 2.0                       -->
+<!--                                                               -->
 <!-- ============================================================= -->
 <!--                                                               -->
 
@@ -63,37 +47,19 @@
 <!--                    ELEMENT DECLARATIONS                       -->
 <!-- ============================================================= -->
 
-<!ENTITY % hazard.cnt
-              "#PCDATA |
-               %basic.ph; |
-               %sl; |
-               %simpletable;"
->
 <!--                    LONG NAME: Hazard Statement                -->
 <!ENTITY % hazardstatement.content
-                       "((%messagepanel;)+,
-                         (%hazardsymbol;)*)"
+                         "(%messagepanel;)+"
 >
 <!ENTITY % hazardstatement.attributes
               "type
-                          (attention |
-                           caution |
+                          (caution |
                            danger |
-                           fastpath |
-                           important |
-                           note |
                            notice |
-                           other |
-                           remember |
-                           restriction |
-                           tip |
                            warning |
                            -dita-use-conref-target)
-                                    #IMPLIED
+                                    #REQUIRED
                spectitle
-                          CDATA
-                                    #IMPLIED
-               othertype
                           CDATA
                                     #IMPLIED
                %univ-atts;"
@@ -153,11 +119,15 @@
 
 <!--                    LONG NAME: Hazard Message panel            -->
 <!ENTITY % messagepanel.content
-                       "((%data; |
-                          %data-about;)*,
+                       "(
+                         (%data; | %data-about;)*,
                          (%typeofhazard;),
-                         (%consequence;)*,
-                         (%howtoavoid;)+)"
+                         (
+                          ((%consequence;)*, (%howtoavoid;)+) |
+                          ((%howtoavoid;)+, (%consequence;)*)
+                          ),(%hazardsymbol;)*
+                         )"
+                         
 >
 <!ENTITY % messagepanel.attributes
               "spectitle
@@ -168,13 +138,14 @@
 <!ELEMENT  messagepanel %messagepanel.content;>
 <!ATTLIST  messagepanel %messagepanel.attributes;>
 
-
 <!--                    LONG NAME: The Type of Hazard              -->
 <!ENTITY % typeofhazard.content
                        "(%words.cnt; |
                          %ph; |
-                         %tm;)*"
->
+                         %tm; |
+                         %hazardsymbol;)*"
+>                          
+
 <!ENTITY % typeofhazard.attributes
               "%univ-atts;"
 >
@@ -186,7 +157,8 @@
 <!ENTITY % consequence.content
                        "(%words.cnt; |
                          %ph; |
-                         %tm;)*"
+                         %tm; |
+                         %hazardsymbol;)*"
 >
 <!ENTITY % consequence.attributes
               "%univ-atts;"
@@ -197,7 +169,13 @@
 
 <!--                    LONG NAME: How to Avoid the Hazard         -->
 <!ENTITY % howtoavoid.content
-                       "(%hazard.cnt;)*"
+              "(#PCDATA |
+                %basic.ph; |
+                %sl; |
+                %ul; |
+                %ol; |
+                %simpletable; |
+                %hazardsymbol;)*"
 >
 <!ENTITY % howtoavoid.attributes
               "%univ-atts;"
@@ -212,11 +190,11 @@
 <!-- ============================================================= -->
   
 <!ATTLIST  hazardstatement   class CDATA "+ topic/note hazard-d/hazardstatement ">
-<!ATTLIST  messagepanel   class CDATA "+ topic/ul hazard-d/messagepanel ">
-<!ATTLIST  hazardsymbol   class CDATA "+ topic/image hazard-d/hazardsymbol ">
-<!ATTLIST  typeofhazard   class CDATA "+ topic/li hazard-d/typeofhazard ">
-<!ATTLIST  consequence    class CDATA "+ topic/li hazard-d/consequence ">
-<!ATTLIST  howtoavoid     class CDATA "+ topic/li hazard-d/howtoavoid ">
+<!ATTLIST  messagepanel      class CDATA "+ topic/div hazard-d/messagepanel ">
+<!ATTLIST  hazardsymbol      class CDATA "+ topic/image hazard-d/hazardsymbol ">
+<!ATTLIST  typeofhazard      class CDATA "+ topic/div hazard-d/typeofhazard ">
+<!ATTLIST  consequence       class CDATA "+ topic/div hazard-d/consequence ">
+<!ATTLIST  howtoavoid        class CDATA "+ topic/div hazard-d/howtoavoid ">
 
 <!-- ================== End of DITA Hazard Statement Domain ==================== -->
  

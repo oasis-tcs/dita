@@ -7,23 +7,23 @@
   <shortdesc>The vocabulary modules that define attribute domains have additional coding
     requirements. The module must include a parameter entity for the new attribute, which can be
     referenced in document-type shells, as well as a text entity that specifies the contribution to
-    the <xmlatt>domains</xmlatt> attribute for the attribute domain.</shortdesc>
+    the <xmlatt>specializations</xmlatt> attribute for the attribute domain.</shortdesc>
   <conbody>
-    <p conref="../../common/conref-file.dita#reuse_file/dtd-attribute-domain-name"/>
+    <p conkeyref="reuse-general/dtd-attribute-domain-name"/>
     <dl>
       <dlentry>
         <dt>Parameter entity name and value</dt>
         <dd>The name of the parameter entity is the attribute domain name, followed by the literal
-          "-d-attribute". The value of the parameter entity is a DTD declaration for the
-          attribute.</dd>
+            <codeph>-d-attribute</codeph>. The value of the parameter entity is a DTD declaration
+          for the attribute.</dd>
       </dlentry>
       <dlentry>
         <dt>Text entity name and value</dt>
         <dd>The text entity name is the attribute domain name, followed by the literal
-            <codeph>-d-Att</codeph>. The value of the text entity is the <xmlatt>domains</xmlatt>
-          attribute contribution for the module; see <xref
-            href="specialization-domains-attribute.dita"/> for details on how to construct this
-          value. </dd>
+            <codeph>-d-Att</codeph>. The value of the text entity is the
+            <xmlatt>specializations</xmlatt> attribute contribution for the module; see <xref
+            href="specialization-specializations-attribute.dita"/> for details on how to construct
+          this value. </dd>
       </dlentry>
     </dl>
     <example id="example" otherprops="examples">
@@ -34,7 +34,7 @@
   "deliveryTarget  CDATA  #IMPLIED"
 &gt;
 
-&lt;!ENTITY deliveryTargetAtt-d-att "a(props deliveryTarget)" ></codeblock>
+&lt;!ENTITY deliveryTargetAtt-d-att "@props/deliveryTarget" ></codeblock>
     </example>
   </conbody>
 </concept>

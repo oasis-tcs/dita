@@ -3,49 +3,17 @@
 <concept id="general-coding-requirements" xml:lang="en-us">
   <title>DTD: Coding requirements for element type declarations</title>
   <shortdesc>This topic covers general coding requirements for defining element types in both
-    structural and element-domain vocabulary modules. In addition, it covers how to create the
-      <xmlatt>domains</xmlatt> attribute contribution for these modules.</shortdesc>
+    structural and element-domain vocabulary modules.</shortdesc>
   <conbody>
     <p>A vocabulary module that defines a structural or element domain specialization is composed of
       two files:</p>
     <ul>
       <li>An entity declaration (<filepath>.ent</filepath>) file, which declares the text entities
         that are used to integrate the vocabulary module into a document-type shell</li>
-      <li>A definition module (<filepath>.mod</filepath>) file, which declares the <ph>element
-          names, content models, and attribute lists</ph> for the element types that are defined in
-        the vocabulary module</li>
+      <li>A definition module (<filepath>.mod</filepath>) file, which declares the element names,
+        content models, and attribute lists for the element types that are defined in the vocabulary
+        module</li>
     </ul>
-    <section id="domains-contribution">
-      <title><xmlatt>domains</xmlatt> attribute contribution</title>
-      <p>A domain declaration entity is used to construct the effective value of the
-          <xmlatt>domains</xmlatt> attribute for a map or topic type.</p>
-      <dl>
-        <dlentry>
-          <dt>Text entity name</dt>
-          <dd>
-            <p>The name of the text entity is the structural type name or the domain abbreviation,
-              followed by a hyphen ("-") and the literal <codeph>att</codeph>.</p>
-          </dd>
-        </dlentry>
-        <dlentry>
-          <dt>Text entity values</dt>
-          <dd>
-            <p>The value of the text entity is the <xmlatt>domains</xmlatt> attribute contribution
-              for the current module. See <xref
-                href="specialization-domains-attribute.dita#domainsatt"/> for details on how to
-              construct this value.</p>
-          </dd>
-        </dlentry>
-      </dl>
-      <p otherprops="examples">For example, the <xmlatt>domains</xmlatt> attribute contributions for
-        the concept structural module and the highlighting domain module are are constructed as
-        follows.</p>
-      <ul otherprops="examples">
-        <li>
-          <codeph>&lt;!ENTITY concept-att "(topic concept)"></codeph></li>
-        <li><codeph>&lt;!ENTITY hi-d-att "(topic hi-d)"></codeph>.</li>
-      </ul>
-    </section>
     <section id="element-definitions">
       <title>Element definitions</title>
       <p>A structural or domain vocabulary module must contain a declaration for each element type
