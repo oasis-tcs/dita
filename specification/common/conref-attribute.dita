@@ -712,6 +712,51 @@ below. This element also uses <xmlatt>type</xmlatt>, <xmlatt>scope</xmlatt>, and
                                         keyref="attributes-simpletableElement"/>, and <xref
                                         keyref="attributes-specialization/spectitle"/>.</p>
                 </section>
+                <section id="section_tbf_vhy_jlb">
+                        <title>Common for <xmlelement>stentry</xmlelement> and
+                                        <xmlelement>entry</xmlelement></title>
+                        <dl>
+                                <dlentry id="headers-att">
+                                        <dt><xmlatt>headers</xmlatt></dt>
+                                        <dd>Identifies one or more entry element headers that apply
+                                                to its entry. The <xmlatt>headers</xmlatt> attribute
+                                                contains an unordered set of unique space-separated
+                                                tokens, each of which is an ID reference of an entry
+                                                from the same table. </dd>
+                                </dlentry>
+                                <dlentry id="tablescope">
+                                        <dt><xmlatt>scope</xmlatt></dt>
+                                        <dd>The presence of the <xmlatt>scope</xmlatt> attribute
+                                                indicates that the current entry is a header for the
+                                                specified scope. Allowable values are:<dl>
+                                                  <dlentry>
+                                                  <dt><keyword>row</keyword></dt>
+                                                  <dd>The current entry is a header for all cells in
+                                                  the row.</dd>
+                                                  </dlentry>
+                                                  <dlentry>
+                                                  <dt><keyword>col</keyword></dt>
+                                                  <dd>The current entry is a header for all cells in
+                                                  the column.</dd>
+                                                  </dlentry>
+                                                  <dlentry>
+                                                  <dt><keyword>rowgroup</keyword></dt>
+                                                  <dd>The current entry is a header for all cells in
+                                                  the rows spanned by this entry.</dd>
+                                                  </dlentry>
+                                                  <dlentry>
+                                                  <dt><keyword>colgroup</keyword></dt>
+                                                  <dd>The current entry is a header for all cells in
+                                                  the columns spanned by this entry.</dd>
+                                                  </dlentry>
+                                                  <dlentry conref="#conref-attribute/ditauseconref">
+                                                  <dt/>
+                                                  <dd/>
+                                                  </dlentry>
+                                                </dl></dd>
+                                </dlentry>
+                        </dl>
+                </section>
                 <section id="section-6"><title>Attributes for specialized relationship tables (drop <xmlatt>title</xmlatt> from base
                                         <xmlelement>reltable</xmlelement>)</title><sectiondiv id="reltable-minus-title">
                                 <p>The following attributes are available on this element: <xref
