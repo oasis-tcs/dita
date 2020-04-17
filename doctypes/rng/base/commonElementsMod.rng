@@ -2551,6 +2551,9 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         <a:documentation>LONG NAME: Simple Table</a:documentation>
         <define name="simpletable.content">
           <optional>
+            <ref name="title"/>
+          </optional>
+          <optional>
             <ref name="sthead"/>
           </optional>
           <oneOrMore>
@@ -2641,6 +2644,28 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         <define name="stentry.attributes">
           <optional>
             <attribute name="specentry"/>
+          </optional>
+          <optional>
+            <attribute name="colspan"/>
+            <data type="NMTOKEN"/>
+          </optional>
+          <optional>
+            <attribute name="rowspan"/>
+            <data type="NMTOKEN"/>
+          </optional>
+          <optional>
+            <attribute name="scope"/>
+            <choice>
+              <value>row</value>
+              <value>col</value>              
+              <value>rowgroup</value>              
+              <value>colgroup</value>              
+              <value>-dita-use-conref-target</value>
+            </choice>
+          </optional>
+          <optional>
+            <attribute name="headers"/>
+            <data type="NMTOKENS"/>
           </optional>
           <ref name="univ-atts"/>
         </define>
