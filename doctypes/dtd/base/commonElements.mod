@@ -1442,7 +1442,8 @@
 
 <!--                    LONG NAME: Simple Table                    -->
 <!ENTITY % simpletable.content
-                       "((%sthead;)?,
+                       "((%title;)?,
+                         (%sthead;)?,
                          (%strow;)+)"
 >
 <!ENTITY % simpletable.attributes
@@ -1491,6 +1492,22 @@
 <!ENTITY % stentry.attributes
               "specentry
                           CDATA
+                                    #IMPLIED
+               colspan
+                          NMTOKEN
+                                    #IMPLIED
+               rowspan
+                          NMTOKEN
+                                    #IMPLIED                     
+               scope
+                          (row |
+                           col |
+                           rowgroup |
+                           colgroup |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               headers
+                          NMTOKENS
                                     #IMPLIED
                %univ-atts;"
 >
