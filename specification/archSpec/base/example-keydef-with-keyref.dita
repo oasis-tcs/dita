@@ -2,8 +2,9 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept xml:lang="en-us" id="concept_zpw_51z_lp">
  <title>Example: Key definition with key reference</title>
- <shortdesc>When a key definition also specifies a key reference, the key reference must also be
-    resolved in order to determine the effective resources bound to that key definition.</shortdesc>
+ <shortdesc>When a key definition also specifies a key reference, the key reference also must be
+    resolved in order to determine the effective resources that are bound to that key
+    definition.</shortdesc>
  <conbody>
     <p>In the following example, a <xmlelement>topicref</xmlelement> element references the key
       "widget". The definition for "widget" in turn references the key "mainProduct".</p>
@@ -20,15 +21,22 @@
 &lt;/map>
   </codeblock>
     <p>For this example, the key reference to "widget" pulls resources from that key definition,
-      which in turn pulls resources from "mainProduct". The metadata resources from "mainProduct"
-      are combined with the resources already specified on the "widget" key definition, resulting in
-      the addition of <xmlatt>product</xmlatt> and <xmlatt>audience</xmlatt> values. Along with the
-      navigation title, the <xmlatt>href</xmlatt>, <xmlatt>scope</xmlatt>, and
-        <xmlatt>format</xmlatt> attributes on the "widget" key definition override those on
-      "mainProduct". Thus after key references are resolved, the original reference from
-        <xmlelement>topicref</xmlelement> is equivalent to:</p>
+      which in turn pulls resources from "mainProduct".</p>
+    <p>The resources from the key definitions are combined as follows:</p>
+    <ul>
+      <li>The metadata resources from "mainProduct" are combined with the resources already
+        specified on the "widget" key definition, resulting in the addition of
+          <xmlatt>product</xmlatt> and <xmlatt>audience</xmlatt> values.</li>
+      <li>The navigation title on the "widget" key definition overrides those on the "mainProduct"
+        key definition.</li>
+      <li>The <xmlatt>href</xmlatt>, <xmlatt>scope</xmlatt>, and <xmlatt>format</xmlatt> attributes
+        on the "mainProduct" key definition override those on "widget".</li>
+    </ul>
+    <p> Thus after key references are resolved, the original <xmlelement>topicref</xmlelement>
+      element is equivalent to the following:</p>
     <codeblock>&lt;topicref id="example"
-          href="widgetInfo.dita" scope="local" format="dita" rev="v1r2"
+          href="http://example.com/productPage" scope="external" format="html" 
+          rev="v1r2"
           product="prodCode" audience="sysadmin">
    &lt;topicmeta>&lt;navtitle>Information about Widget&lt;/navtitle>&lt;/topicmeta>
 &lt;/topicref></codeblock>
