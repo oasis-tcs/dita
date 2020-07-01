@@ -297,7 +297,6 @@
 <!ENTITY % body.content
                        "(%body.cnt; |
                          %bodydiv; |
-                         %example; |
                          %section;)*"
 >
 <!ENTITY % body.attributes
