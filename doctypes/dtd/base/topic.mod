@@ -158,15 +158,6 @@
                %foreign.unknown.incl; |
                %txt.incl;"
 >
-<!ENTITY % example.cnt
-              "#PCDATA |
-               %basic.block; |
-               %basic.ph; |
-               %data.elements.incl; |
-               %foreign.unknown.incl; |
-               %title; |
-               %txt.incl;"
->
 <!ENTITY % section.cnt
               "#PCDATA |
                %basic.block; |
@@ -359,20 +350,6 @@
 <!ATTLIST  sectiondiv %sectiondiv.attributes;>
 
 
-<!--                    LONG NAME: Example                         -->
-<!ENTITY % example.content
-                       "(%example.cnt;)*"
->
-<!ENTITY % example.attributes
-              "spectitle
-                          CDATA
-                                    #IMPLIED
-               %univ-atts;"
->
-<!ELEMENT  example %example.content;>
-<!ATTLIST  example %example.attributes;>
-
-
 <!--                    LONG NAME: prolog                          -->
 <!ENTITY % prolog.content
                        "((%author;)*,
@@ -510,7 +487,6 @@
 <!ATTLIST  abstract       class CDATA "- topic/abstract "   >
 <!ATTLIST  body           class CDATA "- topic/body "       >
 <!ATTLIST  bodydiv        class CDATA "- topic/bodydiv "    >
-<!ATTLIST  example        class CDATA "- topic/example "    >
 <!ATTLIST  link           class CDATA "- topic/link "       >
 <!ATTLIST  linkinfo       class CDATA "- topic/linkinfo "   >
 <!ATTLIST  linklist       class CDATA "- topic/linklist "   >
