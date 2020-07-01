@@ -87,9 +87,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
     <define name="bodydiv">
       <ref name="bodydiv.element"/>
     </define>
-    <define name="example">
-      <ref name="example.element"/>
-    </define>
     <define name="link">
       <ref name="link.element"/>
     </define>
@@ -158,17 +155,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
         <ref name="basic.ph"/>
         <ref name="data.elements.incl"/>
         <ref name="foreign.unknown.incl"/>
-        <ref name="txt.incl"/>
-      </choice>
-    </define>
-    <define name="example.cnt">
-      <choice>
-        <text/>
-        <ref name="basic.block"/>
-        <ref name="basic.ph"/>
-        <ref name="data.elements.incl"/>
-        <ref name="foreign.unknown.incl"/>
-        <ref name="title"/>
         <ref name="txt.incl"/>
       </choice>
     </define>
@@ -391,7 +377,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
           <choice>
             <ref name="body.cnt"/>
             <ref name="bodydiv"/>
-            <ref name="example"/>
             <ref name="section"/>
           </choice>
         </zeroOrMore>
@@ -518,34 +503,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
       <define name="sectiondiv.attlist" combine="interleave">
         <ref name="sectiondiv.attributes"/>
       </define>
-
-    </div>
-    <div>
-      <a:documentation>LONG NAME: Example</a:documentation>
-
-      <define name="example.content">
-        <zeroOrMore>
-          <ref name="example.cnt"/>
-        </zeroOrMore>
-      </define>
-      <define name="example.attributes">
-        <optional>
-          <attribute name="spectitle"/>
-        </optional>
-        <ref name="univ-atts"/>
-      </define>
-      <define name="example.element">
-        <element name="example" dita:longName="Example">
-          <a:documentation>The &lt;example> element is a section with the specific role of containing examples that illustrate or support the current topic. The &lt;example> element has the same
-            content model as &lt;section>. Category: Topic elements</a:documentation>
-          <ref name="example.attlist"/>
-          <ref name="example.content"/>
-        </element>
-      </define>
-      <define name="example.attlist" combine="interleave">
-        <ref name="example.attributes"/>
-      </define>
-
 
     </div>
     <div>
@@ -835,11 +792,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
     <define name="bodydiv.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="- topic/bodydiv "/>
-      </optional>
-    </define>
-    <define name="example.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- topic/example "/>
       </optional>
     </define>
     <define name="link.attlist" combine="interleave">
