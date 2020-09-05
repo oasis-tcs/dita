@@ -22,10 +22,11 @@
 <refbody>
     <section id="usage-information" rev="tc-review">
       <title>Usage information</title>
+      <p>The <xmlelement>topicgroup</xmlelement> element does not affect the navigation hierarchy of
+        the map.</p>
       <p>A <xmlelement>navtitle</xmlelement> element within the <xmlelement>topicmeta</xmlelement>
-        element inside of a <xmlelement>topicgroup</xmlelement> does not affect the structural
-        hierarchy of the map, although it might be used to hold descriptive information about the
-        grouped <xmlelement>topicref</xmlelement> elements.</p>
+        element inside of a <xmlelement>topicgroup</xmlelement> can be used to hold descriptive
+        information about the grouped <xmlelement>topicref</xmlelement> elements.</p>
     </section>
     <section id="rendering-expectations" rev="tc-review">
       <title>Rendering expectations</title>
@@ -50,6 +51,9 @@
 <example id="example" otherprops="examples"><title>Example</title><p>In the following code sample, the <xmlelement>topicgroup</xmlelement> element specifies common
         attributes (<xmlatt>audience</xmlatt> and <xmlatt>linking</xmlatt>) that are inherited by
         the topic references. The navigation hierarchy is not affected.</p><codeblock>&lt;topicgroup audience="novice" linking="none"&gt;
+  &lt;topicmeta>
+    &lt;navtitle>Topics used only in "Getting started" material.&lt;/navtitle>
+  &lt;/topicmeta>
   &lt;topicref href="getting-started.dita"/&gt;
   &lt;topicref href="basic-concepts.dita"/&gt;
   &lt;topicref href="cheat-sheet-reference.dita"/&gt;
