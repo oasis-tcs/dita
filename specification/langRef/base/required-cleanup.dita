@@ -3,8 +3,9 @@
  "reference.dtd">
 <reference id="required-cleanup" xml:lang="en-us">
 <title><xmlelement>required-cleanup</xmlelement></title>
-<shortdesc>A <xmlelement>required-cleanup</xmlelement> element is used as a placeholder for migrated
-    elements that cannot be appropriately tagged without manual intervention.</shortdesc>
+<shortdesc>Required cleanup sections are placeholders for migrated elements that cannot be
+    appropriately tagged without manual intervention, or for content that must be cleaned up before
+    publishing.</shortdesc>
 <prolog><metadata>
 <keywords>
         <indexterm>elements<indexterm>legacy
@@ -15,13 +16,18 @@
     <section id="usage-information">
       <title>Usage information</title>
       <p>As the element name implies, the intent for authors is to clean up the contained material
-        and eventually remove the <xmlelement>required-cleanup</xmlelement> element. Authors should
-        not insert this element into documents.</p>
+        and eventually remove the <xmlelement>required-cleanup</xmlelement> element.</p>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>Processors must strip this element from output by default. The content of
-          <xmlelement>required-cleanup</xmlelement> is not considered to be verified data.</p>
+      <draft-comment author="Robert" time="20200831">The following statement was written as if
+        RFC-level "must" was used, but was not marked with RFC. I've added the RFC notation; if this
+        is not meant to be "MUST" then we need to find alternate wording.<p>We should probably also
+          use a clearer definition of "Processors" in this context, as an editor is a processor that
+          should not be forced to strip the content from displaying.</p></draft-comment>
+      <p>Processors <term outputclass="RFC-2119">MUST</term> strip this element from output by
+        default. The content of <xmlelement>required-cleanup</xmlelement> is not considered to be
+        publishable data.</p>
       <p>Processor options might be provided to allow a draft view of migrated content in
         context.</p>
     </section>
@@ -34,8 +40,8 @@
 <dlentry>
 <dt><xmlatt>remap</xmlatt></dt>
 <dd>Provides information about the origins of the content of the
-                <xmlelement>required-cleanup</xmlelement> element. This provides authors context for
-              determining how the migrated content should be tagged.</dd>
+                <xmlelement>required-cleanup</xmlelement> element. This provides authors with
+              context for determining how migrated content was originally encoded.</dd>
 </dlentry>
           <dlentry>
             <dt><xmlatt>translate</xmlatt></dt>
@@ -49,13 +55,15 @@
           </dlentry>
         </dl></p>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><p>Presuming an original HTML document had contained some content within a
-          <xmlelement>center</xmlelement> tag (for which there is no clear equivalent in DITA), the
-        following might be the result that is valid within an XML editor, but which requires an
-        author to decide how to better tag or revise this original content:</p><codeblock>&lt;section&gt;
-  &lt;title&gt;Some section title&lt;/title&gt;
-  &lt;required-cleanup remap="center"&gt;Some original content migrated
-  from a &amp;lt;center&gt; tag.&lt;/required-cleanup&gt;
+<example id="example" otherprops="examples"><title>Example</title>
+      <p>In the following example, an HTML document that used the <xmlelement>center</xmlelement>
+        element was migrated to DITA. Because DITA has no clear equivalent element, the content is
+        stored in <xmlelement>required-cleanup</xmlelement> until it can be marked up
+        appropriately.</p><codeblock>&lt;section&gt;
+  &lt;title&gt;Using the display&lt;/title&gt;
+  &lt;required-cleanup remap="center"&gt;If you cannot read
+your display, see "Adjusting the language setting"
+before you continue.&lt;/required-cleanup&gt;
 &lt;/section&gt;
 </codeblock></example>
 </refbody>
