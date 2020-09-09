@@ -1,32 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="bodydiv" xml:lang="en-us">
 <title><xmlelement>bodydiv</xmlelement></title>
-<shortdesc>The <xmlelement>bodydiv</xmlelement> element is used to contain informal blocks of
-    information within the body of a topic.</shortdesc>
+<shortdesc>The <xmlelement>bodydiv</xmlelement> element contain blocks of sequential elements within
+    the body of a topic.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
         <indexterm>grouping
-              elements<indexterm><xmlelement>bodydiv</xmlelement></indexterm><indexterm><xmlelement>div</xmlelement></indexterm></indexterm>
+              elements<indexterm><xmlelement>bodydiv</xmlelement></indexterm><indexterm><xmlelement>div</xmlelement></indexterm><indexterm><xmlelement>sectiondiv</xmlelement></indexterm></indexterm>
       </keywords>
     </metadata>
   </prolog>
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>The <xmlelement>bodydiv</xmlelement> element is specifically designed to be a grouping
-        element, without any explicit semantics, other than to organize subsets of content into
-        logical groups that are not intended or should not be contained as a topic. As such, it does
-        not contain an explicit title to avoid enabling the creation of deeply nested content that
-        would otherwise be written as separate topics. For content that requires a title, use a
-          <xmlelement>section</xmlelement> element or a nested topic.</p>
-      <p>The <xmlelement>bodydiv</xmlelement> element can nest itself, which means that it can be
-        used as a specialization base to create structured information within a body. Another common
-        use case for the <xmlelement>bodydiv</xmlelement> element is to group a sequence of related
-        elements for reuse, so that another topic can reference the entire set with a single
-          <xmlatt>conref</xmlatt> attribute.</p>
+      <p>The <xmlelement>bodydiv</xmlelement> element is a grouping element. The purpose of the
+        element is to organize subsets of content into logical groups that do not contain a title.
+        For content that requires a title, use a <xmlelement>section</xmlelement> element or a
+        nested topic.</p>
+      <p>The <xmlelement>bodydiv</xmlelement> element can nest itself, thus it can be used as a
+        specialization base. Another common use case for the <xmlelement>bodydiv</xmlelement>
+        element is to group a sequence of related elements for reuse.</p>
       <p>Because the <xmlelement>bodydiv</xmlelement> element allows
           <xmlelement>section</xmlelement>, it cannot be used within
           <xmlelement>section</xmlelement> elements. Use the <xmlelement>div</xmlelement> element to
@@ -36,7 +31,9 @@
       <title>Attributes</title>
     <p conkeyref="reuse-attributes/only-universal"/>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><codeblock>&lt;topic id="sample" xml:lang="en">
+<example id="example" otherprops="examples"><title>Example</title>
+      <p>The following code sample shows how the <xmlelement>bodydiv</xmlelement> element can be
+        used to group a sequence of elements for reuse:</p><codeblock>&lt;topic id="sample" xml:lang="en">
  &lt;title>Sample for bodydiv&lt;/title>
  &lt;body>
   &lt;bodydiv id="div">
