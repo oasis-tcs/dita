@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="object" xml:lang="en-us">
 <title><xmlelement>object</xmlelement></title>
 <shortdesc>The DITA <xmlelement>object</xmlelement> element corresponds to the
@@ -11,6 +9,10 @@
 <prolog><metadata>
 <keywords><indexterm>objects<indexterm>overview</indexterm></indexterm>
                 <indexterm>elements<indexterm>body<indexterm><xmlelement>object</xmlelement></indexterm></indexterm></indexterm>
+                <indexterm>normative
+                        statements<indexterm><xmlelement>object</xmlelement></indexterm></indexterm>
+                <indexterm>rendering
+                        expectations<indexterm><xmlelement>object</xmlelement></indexterm></indexterm>
 </keywords>
 </metadata></prolog>
 <refbody>
@@ -33,7 +35,7 @@
                     keyref="attributes-universal"/> and the
                 attributes defined below.</p>
             <dl>
-                <dlentry>
+                <dlentry id="archive">
                     <dt><xmlatt>archive</xmlatt></dt>
                     <dd>Specifies a space-separated list of URIs indicating resources needed by the
                         object. These resources might include those URIs specified by the
@@ -42,7 +44,7 @@
                         The URIs in the list should be relative to the URI specified in the
                             <xmlatt>codebase</xmlatt> attribute.</dd>
                 </dlentry>
-                <dlentry>
+                <dlentry id="archivekeyrefs">
                     <dt><xmlatt>archivekeyrefs</xmlatt></dt>
                     <dd>Key references to one or more archives, as for <xmlatt>archive</xmlatt>. The
                         value is a space-separated list of key names. Each resolvable key reference
@@ -53,7 +55,7 @@
                         key names can be resolved to a URI.
                         <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
                 </dlentry>
-                <dlentry>
+                <dlentry id="classid">
                     <dt><xmlatt>classid</xmlatt></dt>
                     <dd>Contains a URI that specifies the location of an object&apos;s
                         implementation. It can be used together with the <xmlatt>data</xmlatt>
@@ -61,7 +63,7 @@
                             <xmlatt>codebase</xmlatt> attribute.
                         <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
                 </dlentry>
-                <dlentry>
+                <dlentry id="classidkeyref">
                     <dt><xmlatt>classidkeyref</xmlatt></dt>
                     <dd>Key reference to the URI that specifies the location of an object's
                         implementation, as for <xmlatt>classid</xmlatt>. When specified, and the key
@@ -70,7 +72,7 @@
                         key cannot be resolved to a URI.
                         <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
                 </dlentry>
-                <dlentry>
+                <dlentry id="codebase">
                     <dt><xmlatt>codebase</xmlatt></dt>
                     <dd>Specifies the base URI used for resolving the relative URI values given for
                             <xmlatt>classid</xmlatt>, <xmlatt>data</xmlatt>, and
@@ -78,7 +80,7 @@
                         set, the default is the base URI of the current element.
                         <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
                 </dlentry>
-                <dlentry>
+                <dlentry id="codebasekeyref">
                     <dt><xmlatt>codebasekeyref</xmlatt></dt>
                     <dd>Key reference to the base URI used for resolving other attributes, as for
                             <xmlatt>codebase</xmlatt>. When specified, and the key is resolvable,
@@ -89,7 +91,7 @@
                         of the current element.
                         <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
                 </dlentry>
-                <dlentry>
+                <dlentry id="data">
                     <dt><xmlatt>data</xmlatt></dt>
                     <dd>Contains a reference to the location of an object&apos;s data. If this
                         attribute is a relative URL, it is specified relative to the value of the
@@ -97,7 +99,7 @@
                             <xmlatt>type</xmlatt> attribute should also be set.
                         <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
                 </dlentry>
-                <dlentry>
+                <dlentry id="datakeyref">
                     <!-- KJE: Modified to be parallel to the desciption of  @datakeyref in the audio and video topics-->
                     <dt><xmlatt>datakeyref</xmlatt></dt>
                     <dd>Provides a key reference to the object. When specified and the key is
@@ -106,14 +108,14 @@
                             <xmlatt>data</xmlatt> is specified, it is used as a fallback when the
                         key cannot be resolved to a resource.</dd>
                 </dlentry>
-                <dlentry>
+                <dlentry id="declare">
                     <dt><xmlatt>declare</xmlatt></dt>
                     <dd>When this attribute is set to "declare", the current object definition is a
                         declaration only. The object must be instantiated by a later nested object
                         definition referring to this declaration. The only allowable value is
                         "declare".</dd>
                 </dlentry>
-                <dlentry>
+                <dlentry id="type">
                     <dt><xmlatt>type</xmlatt></dt>
                     <dd>Indicates the content type (MIME type) for the data specified by the
                             <xmlatt>data</xmlatt>
@@ -126,7 +128,7 @@
                             the key named by the <xmlatt>datakeyref</xmlatt> attribute is used as
                             the this attribute's value.</ph></dd>
                 </dlentry>
-                <dlentry>
+                <dlentry id="standby">
                     <dt><xmlatt>standby</xmlatt></dt>
                     <dd>Contains a message to be displayed while an object is loading.
                         <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
@@ -139,7 +141,7 @@
                     <dt/>
                     <dd/>
                 </dlentry>
-                <dlentry>
+                <dlentry id="usemap">
                     <dt><xmlatt>usemap</xmlatt></dt>
                     <dd>Indicates that a client-side image map is to be used. An image map specifies
                         active geometric regions of an included object and assigns a link to each
@@ -147,14 +149,12 @@
                         program <ph>might</ph> run on the server.
                         <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
                 </dlentry>
-                <dlentry>
+                <dlentry id="name">
                     <dt><xmlatt>name</xmlatt></dt>
                     <dd>Defines a unique name for the object.
                         <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
                 </dlentry>
-            </dl>
-            <dl>
-                <dlentry>
+                <dlentry id="tabindex">
                     <dt><xmlatt>tabindex</xmlatt></dt>
                     <dd>Position the object in tabbing order.
                         <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-NMTOKEN"/>--></dd>
