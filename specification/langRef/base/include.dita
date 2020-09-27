@@ -24,16 +24,16 @@
     <refbody>
         <section id="usage-information">
             <title>Usage information</title>
-            <p>The <xmlelement>include</xmlelement> element is primarily intended for the following
-                use cases:</p>
+            <p>The <xmlelement>include</xmlelement> element is intended as a specialization base and
+                for the following use cases:</p>
             <ul>
                 <li>The transclusion of non-DITA XML within <xmlelement>foreign</xmlelement> element
-                    using <codeph>parse="xml"</codeph>.</li>
+                    using <codeph>parse="xml"</codeph></li>
                 <li>The transclusion of preformatted textual content within
                         <xmlelement>pre</xmlelement> element using
-                    <codeph>parse="text"</codeph>.</li>
+                    <codeph>parse="text"</codeph></li>
                 <li>The transclusion of plain-text prose within DITA elements using
-                        <codeph>parse="text"</codeph>.</li>
+                        <codeph>parse="text"</codeph></li>
             </ul>
             <draft-comment author="Kristen J Eberlein" time="29 April 2019" audience="spec-editors">
                 <p>Do we want to mention that <xmlelement>include</xmlelement> is the specialization
@@ -86,8 +86,12 @@ keyref="attributes-linkRelationship"/>, and <xref keyref="attributes-keyref"/>.<
             <p>For the most part, <xmlelement>include</xmlelement> should be used as a basis for
                 specialization. The following examples use it directly for purposes of
                 illustration.</p>
+            <p>This section contains examples of how the <xmlelement>include</xmlelement> element
+                can be used.</p>
             <fig>
                 <title>Inclusion of XML markup other than SVG or MathML</title>
+                <p>In the following code sample, the <xmlelement>include</xmlelement> element
+                    references a tag library descriptor file:</p>
                 <codeblock>
 &lt;fig>
   &lt;title>JSP Tag Library Elements and Attributes&lt;/title>
@@ -114,6 +118,8 @@ keyref="attributes-linkRelationship"/>, and <xref keyref="attributes-keyref"/>.<
             </fig>
             <fig>
                 <title>Inclusion of preformatted text</title>
+                <p>In the following code sample, the <xmlelement>include</xmlelement> element
+                    references a JSON file:</p>
                 <codeblock>
 &lt;pre>
   &lt;include href="../src/config.json" format="json" parse="text" encoding="UTF-8"/>

@@ -434,28 +434,29 @@ keyref="attributes-universal"/> (with a narrowed definition of
                         </sectiondiv><dl id="linklist-and-linkpool">
                                 <dlentry>
                                         <dt><xmlatt>duplicates</xmlatt></dt>
-                                        <dd>Specifies whether duplicate links are filtered out of a
-                                                group of links. Allowable values are: <dl>
+                                        <dd>Specifies whether duplicate links are removed from a
+                                                group of links. Duplicate links are links that
+                                                address the same resource using the same properties,
+                                                such as link text and link role. How duplicate links
+                                                are determined is processor-specific. The following
+                                                values are permitted:<dl>
                                                   <dlentry>
                                                   <dt>yes</dt>
-                                                  <dd>Allow duplicate links</dd>
+                                                  <dd>Specifies that duplicate links are
+                                                  retained.</dd>
                                                   </dlentry>
                                                   <dlentry>
                                                   <dt>no</dt>
-                                                  <dd>Filter out duplicate links</dd>
+                                                  <dd>Specifies that duplicate links are
+                                                  removed.</dd>
                                                   </dlentry>
                                                   <dlentry conref="#conref-attribute/ditauseconref">
                                                   <dt/>
                                                   <dd/>
                                                   </dlentry>
-                                                </dl><p>Conceptually, two links are duplicates if
-                                                  they address the same resource using the same
-                                                  properties, such as link text and link role. The
-                                                  details of determining duplicate links is
-                                                  processor specific.</p><p>The suggested processing
-                                                  default is "yes" within
-                                                  <xmlelement>linklist</xmlelement> elements and
-                                                  "no" for other links.</p></dd>
+                                                </dl><p>The suggested processing default is "yes"
+                                                  within <xmlelement>linklist</xmlelement> elements
+                                                  and "no" for other links.</p></dd>
                                 </dlentry>
                                 <dlentry>
                                         <dt><xmlatt>collection-type</xmlatt></dt>
