@@ -237,8 +237,7 @@
                %required-cleanup;"
 >
 <!ENTITY % data.elements.incl
-              "%data; |
-               %data-about;"
+              "%data;"
 >
 <!ENTITY % foreign.unknown.incl
               "%foreign; |
@@ -574,36 +573,6 @@
                           CDATA
                                     #IMPLIED"
 >
-<!--                    LONG NAME: Data About                      -->
-<!ENTITY % data-about.content
-                       "((%data;),
-                         (%data; |
-                          %data-about;)*)"
->
-<!ENTITY % data-about.attributes
-              "%univ-atts;
-               href
-                          CDATA
-                                    #IMPLIED
-               keyref
-                          CDATA
-                                    #IMPLIED
-               format
-                          CDATA
-                                    #IMPLIED
-               type
-                          CDATA
-                                    #IMPLIED
-               scope
-                          (external |
-                           local |
-                           peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED"
->
-<!ELEMENT  data-about %data-about.content;>
-<!ATTLIST  data-about %data-about.attributes;>
-
 
 <!ENTITY % data-element-atts
               "%univ-atts;
@@ -868,8 +837,7 @@
 
 <!--                    LONG NAME: Simple List                     -->
 <!ENTITY % sl.content
-                       "((%data; |
-                          %data-about;)*,
+                       "((%data;)*,
                          (%sli;)+)"
 >
 <!ENTITY % sl.attributes
@@ -900,8 +868,7 @@
 
 <!--                    LONG NAME: Unordered List                  -->
 <!ENTITY % ul.content
-                       "((%data; |
-                          %data-about;)*,
+                       "((%data;)*,
                          (%li;)+)"
 >
 <!ENTITY % ul.attributes
@@ -921,8 +888,7 @@
 
 <!--                    LONG NAME: Ordered List                    -->
 <!ENTITY % ol.content
-                       "((%data; |
-                          %data-about;)*,
+                       "((%data;)*,
                          (%li;)+)"
 >
 <!ENTITY % ol.attributes
@@ -953,8 +919,7 @@
 
 <!--                    LONG NAME: Definition List                 -->
 <!ENTITY % dl.content
-                       "((%data; |
-                          %data-about;)*,
+                       "((%data;)*,
                          (%dlhead;)?,
                          (%dlentry;)+)"
 >
@@ -1868,7 +1833,6 @@
 <!ATTLIST  cite           class CDATA "- topic/cite "       >
 <!ATTLIST  dd             class CDATA "- topic/dd "         >
 <!ATTLIST  data           class CDATA "- topic/data "       >
-<!ATTLIST  data-about     class CDATA "- topic/data-about " >
 <!ATTLIST  ddhd           class CDATA "- topic/ddhd "       >
 <!ATTLIST  desc           class CDATA "- topic/desc "       >
 <!ATTLIST  div            class CDATA "- topic/div "        >
