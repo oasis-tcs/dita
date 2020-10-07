@@ -3,10 +3,9 @@
  "reference.dtd">
 <reference id="table" xml:lang="en-us">
 <title><xmlelement>table</xmlelement></title>
-<shortdesc>The <xmlelement>table</xmlelement> element organizes arbitrarily complex relationships of
-    tabular information. This standard table markup allows column or row spanning and table captions
-    or descriptions. An optional title allowed inside the <xmlelement>table</xmlelement> element
-    provides a caption to describe the table.</shortdesc>
+<shortdesc>A table based on the OASIS Exchange Table Model organizes arbitrarily complex
+    relationships of tabular information. This standard table markup allows column or row spanning
+    and table captions or descriptions.</shortdesc>
 <prolog><metadata>
 <keywords>
         <indexterm>table elements<indexterm><xmlelement>table</xmlelement></indexterm></indexterm>
@@ -16,11 +15,14 @@
     <section id="usage-information">
       <title>Usage information</title>
       <p>The DITA table is based on the OASIS Exchange Table Model, augmented with DITA attributes
-        that enable it for accessibility, specialization, conref, and other DITA processing. In
-        addition, the table includes a <xmlelement>desc</xmlelement> element, which enables table
-        description that is parallel with figure description. See <xref keyref="elements-simpletable"/>
-        for a simplified table model that is closer to the HTML5 table model, and can be specialized
-        to represent more regular relationships of data.</p>
+        that enable it for accessibility, specialization, conref, and other DITA processing. An
+        optional <xmlelement>title</xmlelement> inside the <xmlelement>table</xmlelement> element
+        provides a caption to describe the table. In addition, the optional
+          <xmlelement>desc</xmlelement> element enables table description that is parallel with
+        figure description.</p>
+      <p>See <xref keyref="elements-simpletable"/> for a simplified table model that is closer to
+        the HTML5 table model, and can be specialized to represent more regular relationships of
+        data.</p>
       <p conkeyref="reuse-general/pgwide-explain"/>
       <note>The <xmlatt>scale</xmlatt> attribute represents a stylistic markup property that is
         currently maintained in tables for legacy purposes. External stylesheets should enable less
@@ -33,11 +35,15 @@
           keyref="attributes-display"/>, and the attributes defined below. This
         element also uses <xmlatt>colsep</xmlatt>, <xmlatt>rowsep</xmlatt>, and
           <xmlatt>rowheader</xmlatt> from <xref keyref="attributes-calsTable"/>.</p>
+      <draft-comment author="Robert">Looking for consistency on orient, pgwide, and entry/@rotate.
+        Should they mention "not enforced by dtd / rng"? Should they say "Supported values" (seems
+        to imply "processors MUST support at least these") or "Allowed values" (implies no other
+        values are legal)?</draft-comment>
       <dl>
         <dlentry id="orient">
           <dt><xmlatt>orient</xmlatt></dt>
-          <dd>Specifies the orientation of the table in page-based outputs. <ph>This attribute is
-              primarily useful for print-oriented display.</ph> Allowable values are:<dl>
+          <dd>Specifies the orientation of the table in page-based outputs. This attribute is
+            primarily useful for print-oriented display. Allowable values are:<dl>
               <dlentry>
                 <dt>port</dt>
                 <dd>The same orientation as the text flow.</dd>
@@ -56,8 +62,8 @@
         </dlentry>
         <dlentry>
           <dt><xmlatt>pgwide</xmlatt></dt>
-          <dd>Determines the horizontal placement of the element. Supported values are 1 and 0,
-            although these are not mandated by the DTD, Schema, or RNG.<p>For print-oriented
+          <dd>Specifies the horizontal placement of the element. Supported values are 1 and 0,
+            although these are not mandated by the DTD or RNG grammar files.<p>For print-oriented
               display, the value &quot;1&quot; places the element on the left page margin;
               &quot;0&quot; aligns the element with the left margin of the current text line and
               takes indention into account. </p></dd>
@@ -67,10 +73,12 @@
 <example id="example" otherprops="examples"><title>Example</title>
       <fig>
         <title>DITA source</title>
+        <p>The following code sample shows a table that is used to provide reference information
+          about animals and gestation:</p>
         <codeblock xml:space="preserve">&lt;table&gt;
 &lt;tgroup cols="2"&gt;
-&lt;colspec colname="COLSPEC0" colwidth="121*"/&gt;
-&lt;colspec colname="COLSPEC1" colwidth="76*"/&gt;
+&lt;colspec colwidth="121*"/&gt;
+&lt;colspec colwidth="76*"/&gt;
 &lt;thead&gt;
 &lt;row&gt;
 &lt;entry colname="COLSPEC0" valign="top"&gt;Animal&lt;/entry&gt;
@@ -101,12 +109,12 @@
       <p>The formatted output might be displayed as follows:</p>
       <table>
         <tgroup cols="2">
-          <colspec colname="COLSPEC0" colwidth="121*"/>
-          <colspec colname="COLSPEC1" colwidth="76*"/>
+          <colspec colwidth="121*"/>
+          <colspec colwidth="76*"/>
           <thead>
             <row>
-              <entry colname="COLSPEC0" valign="top">Animal</entry>
-              <entry colname="COLSPEC1" valign="top">Gestation</entry>
+              <entry valign="top">Animal</entry>
+              <entry valign="top">Gestation</entry>
             </row>
           </thead>
           <tbody>
@@ -134,6 +142,9 @@
         the table body and the matching header cell above that column.</p></example>
     <example id="implied-accessibility" otherprops="examples">
       <title>Example: Complex table with implied accessibility markup</title>
+      <draft-comment author="Robert">Discussed with Kris October 5 2020: would be good to have a
+        section on accessibility in the architectural spec; if that is created, some of these
+        examples might be better placed there.</draft-comment>
       <p>In the following example, the table uses <xmlelement>thead</xmlelement> to identify header
         rows and <xmlatt>rowheader</xmlatt> to identify a header column. This header relationship
         can be used to automatically create renderings of the table in other formats, such as HTML,
@@ -235,9 +246,9 @@ expected points in column c2 and actual points in column c3.&lt;/desc>
   <example  id="accessibility-manual" otherprops="examples">
       <title>Complex table with some manually specified accessibility markup</title>
       <p>In some complex tables, the <xmlelement>thead</xmlelement> element and
-          <xmlatt>rowheader</xmlatt> attribute <ph >might</ph> not be enough to
-        support all accessibility needs. Assume that the table above is flipped so that the names
-        are listed across the top row, instead of in the first column, as follows:</p>
+          <xmlatt>rowheader</xmlatt> attribute might not be enough to support all accessibility
+        needs. Assume that the table above is flipped so that the names are listed across the top
+        row, instead of in the first column, as follows:</p>
       <table frame="all" id="table_nzp_zzl_4n">
         <title>Sample with two header columns</title>
         <tgroup cols="5">
