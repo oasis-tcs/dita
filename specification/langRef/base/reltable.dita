@@ -4,10 +4,8 @@
  "reference.dtd">
 <reference id="reltable" xml:lang="en-us">
 <title><xmlelement>reltable</xmlelement></title>
-<shortdesc>The <xmlelement>reltable</xmlelement> element is a relationship table that specifies
-    relationships among topics, based on the familiar table model of rows
-      (<xmlelement>relrow</xmlelement>), columns (<xmlelement>relheader</xmlelement>), and cells
-      (<xmlelement>relcell</xmlelement>).</shortdesc>
+<shortdesc>A relationship table is a mechanism that creates among topics, based on the familiar
+    table model of rows, columns, and cells.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -24,11 +22,10 @@
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>A frequently-used type of relationship table establishes relationships between task,
-        concept, and reference topics. Each column in a relationship table typically represents a
-        specific role in a set of relationships; for example, the first column often contains
-        references to tasks, while the second and third columns often reference concept and
-        reference topics. The relationship table rows define relationships between the resources
+      <p>Each column in a relationship table typically represents a specific role in a set of
+        relationships. For example, a frequently-used type of relationship table uses the first
+        column to contain references to tasks, while the second and third columns reference concept
+        and reference topics. The relationship table rows define relationships between the resources
         referenced in different cells of the same row; in this example, each row establishes
         relationships between tasks and the concept and reference topics that support the tasks.
         When used in this manner, relationship tables make it easy to determine where related
@@ -72,10 +69,11 @@
     </section>
 <example id="example" otherprops="examples"><title>Example</title><p>In this example, a relationship table is defined with three columns; one for "concept", one for
         "task", and one for "reference". Three cells are defined within one row. The first cell
-        contains one concept topic: <filepath>batsonar.dita</filepath>. The second cell contains two
-        task topics: <filepath>batcaring.dita</filepath> and <filepath>batfeeding.dita</filepath>.
-        The third cell contains two reference topics: <filepath>batguano.dita</filepath> and
-          <filepath>bathistory.dita</filepath>.</p><codeblock>&lt;map&gt;
+        contains one concept topic: <filepath>about-MyDevice.dita</filepath>. The second cell
+        contains two task topics: <filepath>setting-up-MyDevice.dita</filepath> and
+          <filepath>operating-MyDevice.dita</filepath>. The third cell contains two reference
+        topics: <filepath>MyDevice-settings.dita</filepath> and
+          <filepath>MyDevice-version-info.dita</filepath>.</p><codeblock>&lt;map&gt;
   &lt;reltable&gt;
     &lt;relheader&gt;
       &lt;relcolspec type="concept"/&gt;
@@ -84,71 +82,71 @@
     &lt;/relheader&gt;
     &lt;relrow&gt;
       &lt;relcell&gt;
-        &lt;topicref href="batsonar.dita"/&gt;
+        &lt;topicref href="about-MyDevice.dita"/&gt;
       &lt;/relcell&gt;
       &lt;relcell&gt;
-        &lt;topicref href="batcaring.dita"/&gt;
-        &lt;topicref href="batfeeding.dita"/&gt;
+        &lt;topicref href="setting-up-MyDevice.dita"/&gt;
+        &lt;topicref href="operating-MyDevice.dita"/&gt;
       &lt;/relcell&gt;
       &lt;relcell&gt;
-        &lt;topicref href="batguano.dita"/&gt;
-        &lt;topicref href="bathistory.dita"/&gt;
+        &lt;topicref href="MyDevice-settings.dita"/&gt;
+        &lt;topicref href="MyDevice-version-info.dita"/&gt;
       &lt;/relcell&gt;
     &lt;/relrow&gt;
   &lt;/reltable&gt;
-&lt;/map&gt;</codeblock><p>A DITA-aware tool <ph >might</ph> represent the
-          <xmlelement>reltable</xmlelement> element graphically:</p><simpletable>
+&lt;/map&gt;</codeblock><p>A graphical version of the relationship table in an editor might look like this:</p><simpletable>
 <sthead>
 <stentry>type="concept"</stentry>
 <stentry>type="task"</stentry>
 <stentry>type="reference"</stentry>
 </sthead>
 <strow>
-<stentry><filepath>batsonar.dita</filepath></stentry>
-<stentry><lines><filepath>batcaring.dita</filepath>
-<filepath>batfeeding.dita</filepath></lines></stentry>
-<stentry><lines><filepath>batguano.dita</filepath>
-<filepath>bathistory.dita</filepath></lines></stentry>
+<stentry><filepath>about-MyDevice.dita</filepath></stentry>
+<stentry><lines><filepath>setting-up-MyDevice.dita</filepath>
+<filepath>operating-MyDevice.dita</filepath></lines></stentry>
+<stentry><lines><filepath>MyDevice-settings.dita</filepath>
+<filepath>MyDevice-version-info.dita</filepath></lines></stentry>
 </strow>
 </simpletable><p>On output, links should be added to topics that are in the same row, but not in the same cell.
         This allows simple maintenance of parallel relationships: for example, in this case,
-          <filepath>batcaring.dita</filepath> and <filepath>batfeeding.dita</filepath> are two tasks
-        that require the same supporting information (concept and reference topics) but might
-        otherwise be unrelated. When topics in the same cell are in fact related, the cell's
-          <xmlatt>collection-type</xmlatt> attribute can be set to family. If some cells or columns
-        are intended solely as supporting information and should not link back to topics in other
-        cells, you can set the <xmlatt>linking</xmlatt> attribute on the
-          <xmlelement>relcell</xmlelement> or <xmlelement>relcolspec</xmlelement> to
-          <keyword>targetonly</keyword>.</p><p>In this example, the related
+          <filepath>setting-up-MyDevice.dita</filepath> and
+          <filepath>operating-MyDevice.dita</filepath> are two tasks that require the same
+        supporting information (concept and reference topics) but might otherwise be unrelated. When
+        topics in the same cell are in fact related, the cell's <xmlatt>collection-type</xmlatt>
+        attribute can be set to family. If some cells or columns are intended solely as supporting
+        information and should not link back to topics in other cells, you can set the
+          <xmlatt>linking</xmlatt> attribute on the <xmlelement>relcell</xmlelement> or
+          <xmlelement>relcolspec</xmlelement> to <keyword>targetonly</keyword>.</p><p>In this example, the related
 links would be as follows:<dl><dlentry>
-<dt><filepath>batsonar.dita</filepath></dt>
-<dd><filepath>batcaring.dita</filepath>, <filepath>batfeeding.dita</filepath>,
-                <filepath>batguano.dita</filepath>, <filepath>bathistory.dita</filepath></dd>
+<dt><filepath>about-MyDevice.dita</filepath></dt>
+<dd><filepath>setting-up-MyDevice.dita</filepath>, <filepath>operating-MyDevice.dita</filepath>,
+                <filepath>MyDevice-settings.dita</filepath>,
+                <filepath>MyDevice-version-info.dita</filepath></dd>
 </dlentry><dlentry>
-<dt><filepath>batcaring.dita</filepath></dt>
-<dd><filepath>batsonar.dita</filepath>, <filepath>batguano.dita</filepath>,
-                <filepath>bathistory.dita</filepath></dd>
+<dt><filepath>setting-up-MyDevice.dita</filepath></dt>
+<dd><filepath>about-MyDevice.dita</filepath>, <filepath>MyDevice-settings.dita</filepath>,
+                <filepath>MyDevice-version-info.dita</filepath></dd>
 </dlentry><dlentry>
-<dt><filepath>batfeeding.dita</filepath></dt>
-<dd><filepath>batsonar.dita</filepath>, <filepath>batguano.dita</filepath>,
-                <filepath>bathistory.dita</filepath></dd>
+<dt><filepath>operating-MyDevice.dita</filepath></dt>
+<dd><filepath>about-MyDevice.dita</filepath>, <filepath>MyDevice-settings.dita</filepath>,
+                <filepath>MyDevice-version-info.dita</filepath></dd>
 </dlentry><dlentry>
-<dt><filepath>batguano.dita</filepath></dt>
-<dd><filepath>batsonar.dita</filepath>, <filepath>batcaring.dita</filepath>,
-                <filepath>batfeeding.dita</filepath></dd>
+<dt><filepath>MyDevice-settings.dita</filepath></dt>
+<dd><filepath>about-MyDevice.dita</filepath>, <filepath>setting-up-MyDevice.dita</filepath>,
+                <filepath>operating-MyDevice.dita</filepath></dd>
 </dlentry><dlentry>
 <dt>
-              <filepath>bathistory.dita</filepath></dt>
-<dd><filepath>batsonar.dita</filepath>, <filepath>batcaring.dita</filepath>,
-                <filepath>batfeeding.dita</filepath></dd>
-</dlentry></dl></p><p>Although such tables <ph >can</ph> initially take some time to learn and
-        manipulate, they are inherently an efficient way to manage these links. In particular, they
-        increase the prospect for reuse among topics, because those topics do not contain
-        context-specific links. A relationship table also makes it easy to see and manage patterns;
-        for example, the fact that <filepath>batfeeding.dita</filepath> and
-          <filepath>batcaring.dita</filepath> have the same relationships to supporting information
-        is clear from the table, but would require some comparison and counting to determine from
-        the list summary just before this paragraph.</p></example>
+              <filepath>MyDevice-version-info.dita</filepath></dt>
+<dd><filepath>about-MyDevice.dita</filepath>, <filepath>setting-up-MyDevice.dita</filepath>,
+                <filepath>operating-MyDevice.dita</filepath></dd>
+</dlentry></dl></p><p>Although such tables can initially take some time to learn and manipulate, they are inherently an
+        efficient way to manage these links. In particular, they increase the prospect for reuse
+        among topics, because those topics do not contain context-specific links. A relationship
+        table also makes it easy to see and manage patterns; for example, the fact that
+          <filepath>operating-MyDevice.dita</filepath> and
+          <filepath>setting-up-MyDevice.dita</filepath> have the same relationships to supporting
+        information is clear from the table, but would require some comparison and counting to
+        determine from the list summary just before this paragraph.</p></example>
 </refbody>
 </reference>
 
