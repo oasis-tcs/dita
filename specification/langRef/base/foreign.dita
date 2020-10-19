@@ -3,7 +3,7 @@
 <reference id="foreign" xml:lang="en-us">
 <title><xmlelement>foreign</xmlelement></title>
 <shortdesc>The <xmlelement>foreign</xmlelement> element allows the introduction of non-DITA content,
-    for example, MathML, SVG, or Rich Text Format (RTF).</shortdesc>
+    such as MathML, SVG, or Rich Text Format (RTF).</shortdesc>
 <prolog><metadata>
 <keywords>
         <indexterm>specialization
@@ -15,13 +15,14 @@
       <title>Usage information</title>
       <p>The <xmlelement>foreign</xmlelement> element or a specialization can contain more than one
         type of non-DITA content or a mix of DITA and non-DITA content. Specialization of the
-          <xmlelement>foreign</xmlelement> element generally is implemented as a domain, but
-        architects looking for more control over the content can implement foreign vocabularies as
-        structural specializations.</p>
-      <p>If alternate content is desired, specialize the <xmlelement>desc</xmlelement> element to
-        contain it. This specialization of <xmlelement>desc</xmlelement> should be used within the
-        element specialized from <xmlelement>foreign</xmlelement>. Such alternate content must of
-        course be valid wherever the <xmlelement>foreign</xmlelement> specialization is valid.</p>
+          <xmlelement>foreign</xmlelement> element is typically implemented as a domain, but it is
+        also possible to implement foreign vocabularies as structural specializations.</p>
+      <p>If alternate content is desired, use or specialize the <xmlelement>desc</xmlelement>
+        element inside of the <xmlelement>foreign</xmlelement> specialization. Such alternate
+        content needs to be valid wherever the <xmlelement>foreign</xmlelement> specialization is
+        valid. This way, if a processor is not able to recognize or render the
+          <xmlelement>foreign</xmlelement> content itself, it can use the alternate content from
+          <xmlelement>desc</xmlelement>.</p>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
@@ -49,7 +50,14 @@
           them.</li>
       </ul>
     </section>
-<example id="example" otherprops="examples">       <title>SVG Example within a <xmlelement>p</xmlelement> element</title><codeblock>&lt;p&gt;... as in the formula 
+    <section id="attributes">
+      <title>Attributes</title>
+      <p conkeyref="reuse-attributes/only-universal"/>
+    </section>
+<example id="example" otherprops="examples">       <title>Example</title>
+      <p>The following code sample shows a specialization of <xmlelement>foreign</xmlelement> used
+        to hold SVG elements. For this to work, the specialization module that defines
+          <xmlelement>svg</xmlelement> also needs to include definitions for the SVG elements.</p><codeblock>&lt;p&gt;... as in the formula 
   &lt;svg&gt;
     &lt;svg:svg width="100%" height="100%" version="1.1"
 xmlns="http://www.w3.org/2000/svg"&gt;
@@ -61,26 +69,5 @@ stroke:rgb(0,0,100);stroke-width:2"/&gt;
     &lt;/svg:svg&gt;    
   &lt;/svg&gt;.
 &lt;/p&gt; </codeblock>     </example>
-<example id="example-math" otherprops="examples">
-      <title>MathML Example within an <xmlelement>object</xmlelement> element</title>
-      <codeblock>&lt;p&gt;... as in the formula 
-&lt;object&gt;
-  &lt;desc&gt;4 + x&lt;/desc&gt;
-  &lt;mathml&gt;
-    &lt;m:math display="block"&gt;
-      &lt;m:mrow&gt;
-        &lt;m:mo&gt;sum&lt;/m:mo&gt;
-        &lt;m:mn&gt;4&lt;/m:mn&gt;
-        &lt;m:mo&gt;+&lt;/m:mo&gt;
-        &lt;m:mi&gt;x&lt;/m:mi&gt;
-      &lt;/m:mrow&gt;
-    &lt;/m:math&gt;    
-  &lt;/mathml&gt;
- &lt;/object&gt;.
-&lt;/p&gt; </codeblock>
-    </example>
-<section id="attributes"><title>Attributes</title>
-      <p conkeyref="reuse-attributes/only-universal"/>
-</section>
 </refbody>
 </reference>
