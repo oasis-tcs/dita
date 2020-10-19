@@ -34,22 +34,21 @@
         </dlentry>
       </dl>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><p>In this example, the <xmlatt>value</xmlatt> attribute for the
-          <xmlelement>lomDifficulty</xmlelement> element is bound to the specified set of values.
-        Processors should limit the values for the <xmlatt>value</xmlatt> attribute on the
-          <xmlelement>lomDifficulty</xmlelement> element to the following set of values: easy,
-        medium, or difficult. Other elements that have a <xmlatt>value</xmlatt> attribute are not
-        affected.</p><codeblock>&lt;subjectScheme>
-  &lt;subjectdef keys="difficulty">
-    &lt;subjectdef keys="easy"/>
-    &lt;subjectdef keys="medium"/>
-    &lt;subjectdef keys="difficult"/>
+<example id="example" otherprops="examples"><title>Example</title><p>In this example, the <xmlatt>type</xmlatt> attribute for the <xmlelement>note</xmlelement>
+        element is bound to the specified set of values. Processors should limit the values for the
+          <xmlatt>type</xmlatt> attribute on the <xmlelement>note</xmlelement> element to the
+        following set of values: attention, caution, and danger. Other elements that have a
+          <xmlatt>type</xmlatt> attribute are not affected.</p><codeblock>&lt;subjectScheme>
+  &lt;subjectdef keys="note-values">
+    &lt;subjectdef keys="attention"/>
+    &lt;subjectdef keys="caution"/>
+    &lt;subjectdef keys="danger"/>
   &lt;/subjectdef>
   &lt;!-- ... -->
   &lt;enumerationdef>
-    <b>&lt;elementdef name="lomDifficulty"/></b>
-    &lt;attributedef name="value"/>
-    &lt;subjectdef keyref="difficulty"/>
+    <b>&lt;elementdef name="note"/></b>
+    &lt;attributedef name="type"/>
+    &lt;subjectdef keyref="note-values"/>
   &lt;/enumerationdef>
 &lt;/subjectScheme></codeblock></example>
 </refbody>
