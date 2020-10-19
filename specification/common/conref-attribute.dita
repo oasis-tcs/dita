@@ -776,7 +776,7 @@ keyref="attributes-universal"/> (with a narrowed definition of
                                 <dl>
 <dlentry id="ditaval-outputclass">
 <dt><xmlatt>outputclass</xmlatt></dt>
-<dd>If flag has been set, treat the flagged element as if the full <xmlatt>outputclass</xmlatt>
+<dd>If the <xmlatt>action</xmlatt> attribute is set to "flag", treat the flagged element as if the full <xmlatt>outputclass</xmlatt>
 value in the DITAVAL was specified on that element's <xmlatt>outputclass</xmlatt> attribute. If two
 or more DITAVAL properties apply <xmlatt>outputclass</xmlatt> flags to the same element, treat the
 flagged element as if each value was specified on that element's <xmlatt>outputclass</xmlatt>
@@ -786,29 +786,31 @@ DITAVAL-based <xmlatt>outputclass</xmlatt> values come first in the attribute.</
 </dlentry>
                                         <dlentry id="ditaval-color">
                                                 <dt><xmlatt>color</xmlatt></dt>
-                                                <dd>If flag has been set, the color to use to flag
-                                                text. Colors can be entered by name or
+                                                <dd>If the <xmlatt>action</xmlatt> attribute is set
+                                                to "flag", specifies the color to use to flag text.
+                                                Colors can be entered by name or
                                                 code.<!-- Processors <term outputclass="RFC-2119">SHOULD</term> support the color names listed under the heading "&lt;color>" in <xref format="html" href="http://www.w3.org/TR/2006/REC-xsl11-20061205/#datatype" scope="external"/> and for the 6 digit hex code form (#rrggbb, case insensitive). -->
-                                                If flag has not been set, this attribute is
-                                                ignored.</dd>
+                                                If the <xmlatt>action</xmlatt> attribute is not set
+                                                to "flag", this attribute is ignored.</dd>
                                         </dlentry>
                                         <dlentry id="ditaval-backcolor">
                                                 <dt><xmlatt>backcolor</xmlatt></dt>
-                                                <dd>If flag has been set, the color to use as
-                                                background for flagged text. Colors can be entered
-                                                by name or code.
-                                                <!--Processor support is recommended for the color names listed under the heading "&lt;color>" in <xref href="http://www.w3.org/TR/2006/REC-xsl11-20061205/#datatype" format="html" scope="external"/> and for the 6 digit hex code form (#rrggbb, case insensitive). -->If
-                                                flag has not been set, this attribute is
-                                                ignored.</dd>
+                                                <dd>If the <xmlatt>action</xmlatt> attribute is set
+                                                to "flag", specifies the color to use as background
+                                                for flagged text. Colors can be entered by name or
+                                                code.
+                                                <!--Processor support is recommended for the color names listed under the heading "&lt;color>" in <xref href="http://www.w3.org/TR/2006/REC-xsl11-20061205/#datatype" format="html" scope="external"/> and for the 6 digit hex code form (#rrggbb, case insensitive). -->
+                                                If the <xmlatt>action</xmlatt> attribute is not set
+                                                to "flag", this attribute is ignored.</dd>
                                         </dlentry>
                                         <dlentry id="ditaval-style">
                                                 <dt><xmlatt>style</xmlatt></dt>
-                                                <dd>
-                                                  <p>If flag has been set, the text styles to use
-                                                  for flagged text. This attribute can contain
-                                                  multiple space-delimited tokens. If a flag has not
-                                                  been set, this attribute is ignored.</p>
-                                                </dd>
+                                                <dd>If the <xmlatt>action</xmlatt> attribute is set
+                                                to "flag", specifies the text styles to use for
+                                                flagged text. This attribute can contain multiple
+                                                space-delimited tokens. If the
+                                                  <xmlatt>action</xmlatt> attribute is not set to
+                                                "flag", this attribute is ignored.</dd>
                                         </dlentry>
                                         <dlentry id="ditaval-imageref">
                                                 <dt><xmlatt>imageref</xmlatt></dt>
