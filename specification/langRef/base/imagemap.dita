@@ -21,21 +21,22 @@
 				as the first required element in the markup, followed by a sequence of
 					<xmlelement>area</xmlelement> elements that represent the links associated with
 				the contained image. </p>
-			<p>The <xmlelement>xref</xmlelement> content within <xmlelement>area</xmlelement>
-				contains the intended alternative text or hover text for that image map area. </p>
+			<p>The <xmlelement>xref</xmlelement> content within <xmlelement>area</xmlelement> contains the
+				intended alternative text or hover text for that image map area. Normal text
+				retrieval for <xmlelement>xref</xmlelement> elements can be used to populate that
+				alternative text.</p>
 		</section>
 		<section id="rendering-expectations">
 			<title>Rendering expectations</title>
-			<p>An <xmlelement>imagemap</xmlelement> structure can be output either to a standard
-				HTML image map or to alternative forms of navigation (such as table-based image
-				maps). When output as PDF, the minimal form would be to represent at least the
-				image; advanced PDF output processors should provide equivalent region-oriented
-				hyperlinks. </p>
+			<p>An <xmlelement>imagemap</xmlelement> structure can be rendered as a standard HTML image map or
+				as an alternative form of navigation (such as table-based image maps). When rendered
+				in PDF, the minimal form would be to represent the image; advanced PDF output
+				processors could provide equivalent region-oriented hyperlinks. </p>
 		</section>
 		<section id="specialization-hierachy">
 			<title>Specialization hierarchy</title>
 			<p>The <xmlelement>imagemap</xmlelement> element is specialized from
-				<xmlelement>div</xmlelement>. It in defined in the utilities-domain module.</p>
+				<xmlelement>div</xmlelement>. It is defined in the utilities-domain module.</p>
 		</section>
 		<section id="attributes">
 			<title>Attributes</title>
@@ -43,8 +44,8 @@
 		</section>
 		<example id="example" otherprops="examples">
 			<title>Example</title>
-			<p>A simple <xmlelement>imagemap</xmlelement> looks like this (note that the rendering
-				will depend on how this markup is supported for particular output formats):
+			<p>The following code sample shows a simple <xmlelement>imagemap</xmlelement> with five areas,
+				using three different shapes:
 				<codeblock xml:space="preserve">&lt;imagemap&gt;
  &lt;image href="imagemapworld.jpg"&gt;
    &lt;alt&gt;Map of the world showing 5 areas&lt;/alt&gt;
@@ -76,6 +77,14 @@
 						targets of their respective links. </alt>
 				</image>
 			</p>
+			<draft-comment author="Robert">I think we should update this to use the HTML5 model,
+				rather than HTML4.1: <xref
+					href="https://www.w3.org/TR/2011/WD-html5-20110525/the-map-element.html#the-area-element"
+					format="html" scope="external"/><p>The "latest" version is much newer, but is
+					also a living standard, and creating a dependency would seem to turn this one
+					element from DITA into its own living standard: <xref
+						href="https://html.spec.whatwg.org/multipage/image-maps.html#image-map-processing-model:the-area-element-10"
+						format="html" scope="external"/></p></draft-comment>
 			<p>The values for use in the <xmlelement>shape</xmlelement> and
 					<xmlelement>coords</xmlelement> elements follow the guidelines defined for image
 				maps in HTML 4.1, <xref format="html"
