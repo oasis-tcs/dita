@@ -18,16 +18,21 @@
       <p>As the element name implies, the intent for authors is to clean up the contained material
         and eventually remove the <xmlelement>required-cleanup</xmlelement> element.</p>
     </section>
-    <section id="processing-expectations">
-      <title>Processing expectations</title>
+    <section id="rendering-expectations">
+      <title>Rendering expectations</title>
       <draft-comment author="Robert" time="20200831">The following statement was written as if
         RFC-level "must" was used, but was not marked with RFC. I've added the RFC notation; if this
         is not meant to be "MUST" then we need to find alternate wording.<p>We should probably also
           use a clearer definition of "Processors" in this context, as an editor is a processor that
-          should not be forced to strip the content from displaying.</p></draft-comment>
+          should not be forced to strip the content from displaying.</p><p>Update 2020-10-19: moving
+          the "must strip" language into a rendering section. This is about not *rendering* the
+          element.</p></draft-comment>
       <p>Processors <term outputclass="RFC-2119">MUST</term> strip this element from output by
         default. The content of <xmlelement>required-cleanup</xmlelement> is not considered to be
         publishable data.</p>
+    </section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
       <p>Processor options might be provided to allow a draft view of migrated content in
         context.</p>
     </section>
@@ -39,18 +44,18 @@
         defined below.<dl>
 <dlentry>
 <dt><xmlatt>remap</xmlatt></dt>
-<dd>Provides information about the origins of the content of the
+<dd>Specifies information about the origins of the content of the
                 <xmlelement>required-cleanup</xmlelement> element. This provides authors with
               context for determining how migrated content was originally encoded.</dd>
 </dlentry>
           <dlentry>
             <dt><xmlatt>translate</xmlatt></dt>
-            <dd>Indicates whether the content of the element should be translated or not. The
+            <dd>Specifies whether the content of the element should be translated or not. The
               default value for this element is "no"; setting to "yes" will override the default.
-              The <xref keyref="attributes-useconreftarget">-dita-use-conref-target</xref>
-              value is also available. The DITA architectural specification contains a list of each
-              OASIS DITA element and its common processing default for the translate value; because
-              this element uses an actual default, it will always be treated as
+              The <xref keyref="attributes-useconreftarget">-dita-use-conref-target</xref> value is
+              also available. The DITA architectural specification contains a list of each OASIS
+              DITA element and its common processing default for the translate value; because this
+              element uses an actual default, it will always be treated as
                 <codeph>translate="no"</codeph> unless overridden as described.</dd>
           </dlentry>
         </dl></p>
