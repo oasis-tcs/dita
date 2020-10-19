@@ -12,9 +12,13 @@
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>It is not actually used by the default DITA document types; it is for use only when
-        creating a validly customized document type where the information designer wants to
-        eliminate the ability to nest topics. It is not intended for use by authors.</p>
+      <p>The <xmlelement>no-topic-nesting</xmlelement> element  is not intended for use in DITA
+                source files.</p>
+            <p>The <xmlelement>no-topic-nesting</xmlelement> element is designed for use only when
+                configuring a document-type shell where the information designer wants to eliminate
+                the ability to nest topics. When a specialized topic is set up to allow topic
+                nesting, the <xmlelement>no-topic-nesting</xmlelement> element can be used in a
+                shell as a way to disallow that nesting.</p>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
@@ -26,6 +30,18 @@
       <p>The following attribute is available on this element: <xref
           keyref="attributes-universal/class"/>.</p>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><p><i>This element is not intended to be used in source files.</i></p></example>
+<example id="example" otherprops="examples"><title>Example</title><p><i>This element is not intended to be used in source files.</i></p>
+            <p>In the "base topic" DTD document-type shell distributed by OASIS, the
+                    <parameterentity>topic-info-types</parameterentity> entity is set to
+                    <codeph>topic</codeph>, meaning that <xmlelement>topic</xmlelement> elements can
+                nest other <xmlelement>topic</xmlelement> elements. The following code sample shows
+                how <xmlelement>no-topic-nesting</xmlelement> is used instead to disallow nesting.
+                <codeblock>&lt;!ENTITY % topic-info-types
+              "no-topic-nesting"
+></codeblock></p>
+            <p>In that shell, topics can no longer nest other topics. DTD grammar rules require that
+                some element be specified in this entity, so
+                    <xmlelement>no-topic-nesting</xmlelement> is used as a placeholder to replace
+                any nested topics.</p></example>
 </refbody>
 </reference>
