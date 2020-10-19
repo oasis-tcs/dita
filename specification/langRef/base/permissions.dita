@@ -4,8 +4,8 @@
  "reference.dtd">
 <reference id="permissions" xml:lang="en-us">
 <title><xmlelement>permissions</xmlelement></title>
-<shortdesc>The <xmlelement>permissions</xmlelement> element in a topic's metadata specifies the level
-    of entitlement needed to access the content.</shortdesc>
+<shortdesc>A <xmlelement>permissions</xmlelement> element specifies the level of entitlement needed
+    to access content.</shortdesc>
 <prolog><metadata>
 <keywords>
         <indexterm>elements<indexterm>prolog<indexterm><xmlelement>permissions</xmlelement></indexterm></indexterm></indexterm><indexterm>prolog elements<indexterm><xmlelement>permissions</xmlelement></indexterm></indexterm>
@@ -24,37 +24,16 @@
       <dl>
         <dlentry id="view">
           <dt><xmlatt>view</xmlatt></dt>
-          <dd>Defines the classifications of viewers allowed to view the document. Beginning with
-            DITA 1.2, values in this attribute are not limited to a small number of choices; the
-            following values were used in DITA 1.0 and DITA 1.1, and are still provided as sample
-            values: <dl>
-              <dlentry>
-                <dt>internal </dt>
-                <dd>For internal use only. </dd>
-              </dlentry>
-              <dlentry>
-                <dt>classified </dt>
-                <dd>For a certain group, only. </dd>
-              </dlentry>
-              <dlentry>
-                <dt>all </dt>
-                <dd>The world. </dd>
-              </dlentry>
-              <dlentry>
-                <dt>entitled </dt>
-                <dd>Special folks, only. </dd>
-              </dlentry>
-              <dlentry conkeyref="reuse-attributes/ditauseconref">
-                <dt> </dt>
-                <dd> </dd>
-              </dlentry>
-            </dl><?datatype (internal | classified | all | entitled |
-				-dita-use-conref-target)?><?default #IMPLIED?></dd>
+          <dd>Specifies the classifications of viewers allowed to view the document. <ph
+              otherprops="examples">For example, possible values enumerated in earlier versions of
+              DITA included <keyword>internal</keyword>, <keyword>classified</keyword>,
+                <keyword>all</keyword>, and <keyword>entitled</keyword>.</ph></dd>
         </dlentry>
       </dl>
     </section>
 <example id="example" otherprops="examples">
       <title>Example</title>
+      <p>The following code sample shows that the topic is only intended for entitled readers.</p>
       <codeblock xml:space="preserve">&lt;prolog&gt;
   <b>&lt;permissions view="entitled"/&gt;</b>
 &lt;/prolog></codeblock>

@@ -4,10 +4,9 @@
  "reference.dtd">
 <reference id="metadata" xml:lang="en-us">
 <title><xmlelement>metadata</xmlelement></title>
-  <shortdesc>The <xmlelement>metadata</xmlelement> section of the <xmlelement>prolog</xmlelement>
-    contains information about a topic such as audience and product information. Metadata can be
-    used by computational processes to select particular topics or to prepare search indexes or to
-    customize navigation.</shortdesc>
+  <shortdesc>A <xmlelement>metadata</xmlelement> section is a contaner that groups metadata such as
+    a topic's audience and key
+    words.<!-- Metadata can be used by computational processes to select particular topics or to prepare search indexes or to customize navigation.--></shortdesc>
 <prolog><metadata>
 <keywords>
         <indexterm>elements<indexterm>prolog<indexterm><xmlelement>metadata</xmlelement></indexterm></indexterm></indexterm><indexterm>prolog elements<indexterm><xmlelement>metadata</xmlelement></indexterm></indexterm>
@@ -17,17 +16,12 @@
     <section id="usage-information">
       <title>Usage information</title>
       <p>Elements inside of <xmlelement>metadata</xmlelement> provide information about the content
-        and subject of a topic; <xmlelement>prolog</xmlelement> elements outside of
-          <xmlelement>metadata</xmlelement> provide lifecycle information for the content unit (such
-        as the author or copyright), which are unrelated to the subject.</p>
-      <p>Beginning with DITA 1.2, the <xmlelement>metadata</xmlelement> element is available inside
-          <xmlelement>topicmeta</xmlelement> in maps, although the contents of
-          <xmlelement>metadata</xmlelement> are still available directly inside
-          <xmlelement>topicmeta</xmlelement>. As with the <xmlelement>prolog</xmlelement>, the
-          <xmlelement>metadata</xmlelement> element within <xmlelement>topicmeta</xmlelement> allows
-        you to group elements that describe the content or subject of the target. The primary
-        purpose for enabling the <xmlelement>metadata</xmlelement> element within maps is to allow
-        easier reuse between topics and maps.</p>
+        and subject of a topic. When used in topics, other metadata elements outside of the
+          <xmlelement>metadata</xmlelement> container generally provide lifecycle information for
+        the content unit (such as the author or copyright), which are unrelated to the subject.</p>
+      <p>When used in maps, several metadata elements are allowed both inside and outside of the
+          <xmlelement>metadata</xmlelement> container, with the container made available to provide
+        parity with topic prologs.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -35,20 +29,18 @@
           keyref="attributes-universal"/> and <xref
           keyref="attributes-common/mapkeyref"/>.</p>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><p>Metadata within a topic:</p><codeblock>&lt;prolog&gt;
+<example id="example" otherprops="examples"><title>Example</title>
+      <p>The following code sample shows that a topic about jet packs is only intended for advanced
+        users.</p><codeblock>&lt;prolog&gt;
   <b>&lt;metadata&gt;</b>
-    &lt;audience type="user" job="using" experiencelevel="novice"/&gt;
+    &lt;audience type="user" job="flying" experiencelevel="advanced"/&gt;
+    &lt;keywords>
+      &lt;keyword>jet pack&lt;/keyword>
+      &lt;keyword>danger&lt;/keyword>
+      &lt;keyword>don't try this&lt;/keyword>
+    &lt;/keywords>
   <b>&lt;/metadata&gt;</b>
-&lt;/prolog&gt;</codeblock><p>Metadata within a map:</p>
-      <codeblock>&lt;topicref href="metadata.dita">
-  &lt;topicmeta>
-    <b>&lt;metadata></b>
-      &lt;keywords>
-        &lt;indexterm>metadata element&lt;/indexterm>
-      &lt;/keywords>
-    <b>&lt;/metadata></b>
-  &lt;/topicmeta>
-&lt;/topicref></codeblock></example>
+&lt;/prolog&gt;</codeblock></example>
 </refbody>
 </reference>
 
