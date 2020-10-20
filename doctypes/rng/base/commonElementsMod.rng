@@ -135,9 +135,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
     <define name="index-see-also">
       <ref name="index-see-also.element"/>
     </define>
-    <define name="itemgroup">
-      <ref name="itemgroup.element"/>
-    </define>
     <define name="keyword">
       <ref name="keyword.element"/>
     </define>
@@ -580,17 +577,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
           <ref name="basic.ph"/>
           <ref name="data.elements.incl"/>
           <ref name="foreign.unknown.incl"/>
-          <ref name="itemgroup"/>
-          <ref name="txt.incl"/>
-        </choice>
-      </define>
-      <define name="itemgroup.cnt">
-        <choice>
-          <text/>
-          <ref name="basic.block"/>
-          <ref name="basic.ph"/>
-          <ref name="data.elements.incl"/>
-          <ref name="foreign.unknown.incl"/>
           <ref name="txt.incl"/>
         </choice>
       </define>
@@ -727,7 +713,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
           <ref name="basic.ph"/>
           <ref name="data.elements.incl"/>
           <ref name="foreign.unknown.incl"/>
-          <ref name="itemgroup"/>
           <ref name="txt.incl"/>
         </choice>
       </define>
@@ -1726,29 +1711,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="li.attlist" combine="interleave">
           <ref name="li.attributes"/>
-        </define>
-
-      </div>
-      <div>
-        <a:documentation>LONG NAME: Item Group</a:documentation>
-        <define name="itemgroup.content">
-          <zeroOrMore>
-            <ref name="itemgroup.cnt"/>
-          </zeroOrMore>
-        </define>
-        <define name="itemgroup.attributes">
-          <ref name="univ-atts"/>
-        </define>
-        <define name="itemgroup.element">
-          <element name="itemgroup" dita:longName="Item Group">
-            <a:documentation>The &lt;itemgroup> element is reserved for use in specializations of DITA. As a container element, it can be used to sub-divide or organize elements that occur inside a
-              list item, definition, or parameter definition. Category: Specialization elements</a:documentation>
-            <ref name="itemgroup.attlist"/>
-            <ref name="itemgroup.content"/>
-          </element>
-        </define>
-        <define name="itemgroup.attlist" combine="interleave">
-          <ref name="itemgroup.attributes"/>
         </define>
 
       </div>
@@ -3225,11 +3187,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
     <define name="index-see-also.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="- topic/index-see-also "/>
-      </optional>
-    </define>
-    <define name="itemgroup.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- topic/itemgroup "/>
       </optional>
     </define>
     <define name="keyword.attlist" combine="interleave">

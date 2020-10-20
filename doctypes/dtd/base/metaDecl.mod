@@ -268,13 +268,7 @@
               "type
                           CDATA
                                     #IMPLIED
-               othertype
-                          CDATA
-                                    #IMPLIED
                job
-                          CDATA
-                                    #IMPLIED
-               otherjob
                           CDATA
                                     #IMPLIED
                experiencelevel

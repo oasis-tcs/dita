@@ -236,15 +236,6 @@
                %basic.ph; |
                %data.elements.incl; |
                %foreign.unknown.incl; |
-               %itemgroup; |
-               %txt.incl;"
->
-<!ENTITY % itemgroup.cnt
-              "#PCDATA |
-               %basic.block; |
-               %basic.ph; |
-               %data.elements.incl; |
-               %foreign.unknown.incl; |
                %txt.incl;"
 >
 <!ENTITY % title.cnt
@@ -355,7 +346,6 @@
                %basic.ph; |
                %data.elements.incl; |
                %foreign.unknown.incl; |
-               %itemgroup; |
                %txt.incl;"
 >
 <!ENTITY % pre.cnt
@@ -943,17 +933,6 @@
 >
 <!ELEMENT  li %li.content;>
 <!ATTLIST  li %li.attributes;>
-
-
-<!--                    LONG NAME: Item Group                      -->
-<!ENTITY % itemgroup.content
-                       "(%itemgroup.cnt;)*"
->
-<!ENTITY % itemgroup.attributes
-              "%univ-atts;"
->
-<!ELEMENT  itemgroup %itemgroup.content;>
-<!ATTLIST  itemgroup %itemgroup.attributes;>
 
 
 <!--                    LONG NAME: Definition List                 -->
@@ -1744,7 +1723,6 @@
 <!ATTLIST  index-see-also class CDATA "- topic/index-see-also ">
 <!ATTLIST  indexterm      class CDATA "- topic/indexterm "  >
 <!ATTLIST  index-base     class CDATA "- topic/index-base " >
-<!ATTLIST  itemgroup      class CDATA "- topic/itemgroup "  >
 <!ATTLIST  keyword        class CDATA "- topic/keyword "    >
 <!ATTLIST  li             class CDATA "- topic/li "         >
 <!ATTLIST  lines          class CDATA "- topic/lines "      >
