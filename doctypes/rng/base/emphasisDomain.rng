@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+                         schematypens="http://relaxng.org/ns/structure/1.0"?>
+<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:dita="http://dita.oasis-open.org/architecture/2005/" 
+  xmlns="http://relaxng.org/ns/structure/1.0">
+  <moduleDesc xmlns="http://dita.oasis-open.org/architecture/2005/">
+    <moduleTitle>DITA Highlight Domain</moduleTitle>
+    <headerComment>
+=============================================================
+ HEADER                                    
+=============================================================
+ MODULE:    DITA Emphasis Domain                            
+ VERSION:   2.0                                              
+ DATE:      [[[Release date]]]                                    
+ PURPOSE:   Declaring the elements and specialization        
+            attributes for the DITA Emphasis Domain         
+
+=============================================================
+
+=============================================================
+                   PUBLIC DOCUMENT TYPE DEFINITION           
+                   TYPICAL INVOCATION                        
+      
+ Refer to this file by the following public identifier or an
+      appropriate system identifier 
+ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Emphasis Domain//EN"
+      Delivered as file "emphasisDomain.mod"                     
+      
+=============================================================
+      
+            (C) Copyright OASIS Open 2005, 2020.             
+            (C) Copyright IBM Corporation 2001, 2004.        
+            All Rights Reserved.                             
+      
+ UPDATES:                                                    
+=============================================================
+    </headerComment>
+    <moduleMetadata>
+      <moduleType>elementdomain</moduleType>
+      <moduleShortName>emphasis-d</moduleShortName>
+      <modulePublicIds>
+        <dtdMod>-//OASIS//ELEMENTS DITA<var presep=" " name="ditaver"/> Emphasis Domain//EN</dtdMod>
+        <dtdEnt>-//OASIS//ENTITIES DITA<var presep=" " name="ditaver"/> Emphasis Domain//EN</dtdEnt>
+        <rncMod>urn:oasis:names:tc:dita:rnc:emphasisDomain.rnc<var presep=":" name="ditaver"/></rncMod>
+        <rngMod>urn:oasis:names:tc:dita:rng:emphasisDomain.rng<var presep=":" name="ditaver"/></rngMod>
+      </modulePublicIds>
+    </moduleMetadata>
+  </moduleDesc>
+
+  <div>
+    <a:documentation>DOMAIN EXTENSION PATTERNS</a:documentation>
+
+    <define name="emphasis-d-ph">
+      <choice>
+        <ref name="strong.element"/>
+        <ref name="em.element"/>
+      </choice>
+    </define>
+
+    <define name="ph" combine="choice">
+      <ref name="emphasis-d-ph"/>
+    </define>
+  </div>
+  <div>
+    <a:documentation>ELEMENT TYPE NAME PATTERNS</a:documentation>
+    <define name="strong">
+      <ref name="strong.element"/>
+    </define>
+    <define name="em">
+      <ref name="em.element"/>
+    </define>
+  </div>
+  <div>
+    <a:documentation>ELEMENT TYPE DECLARATIONS</a:documentation>
+    <div>
+      <a:documentation>LONG NAME: Strong</a:documentation>
+      <define name="strong.content">
+        <zeroOrMore>
+          <choice>
+            <text/>
+            <ref name="basic.ph"/>
+            <ref name="data.elements.incl"/>
+            <ref name="draft-comment"/>
+            <ref name="foreign.unknown.incl"/>
+            <ref name="required-cleanup"/>
+          </choice>
+        </zeroOrMore>
+      </define>
+      <define name="strong.attributes">
+        <ref name="univ-atts"/>
+      </define>
+      <define name="strong.element"> 
+        <element name="strong" dita:longName="Strong">
+          <a:documentation>Strong text can be used to indicate content that is considered to be important 
+            or serious, or that has some form of urgency. Category: Emphasis elements
+          </a:documentation>
+          <ref name="strong.attlist"/>
+          <ref name="strong.content"/>
+        </element>
+      </define>
+      <define name="strong.attlist" combine="interleave">
+        <ref name="strong.attributes"/>
+      </define>
+    </div>
+    <div>
+      <a:documentation>LONG NAME: Emphasis</a:documentation>
+      <define name="em.content">
+        <zeroOrMore>
+          <choice>
+            <text/>
+            <ref name="basic.ph"/>
+            <ref name="data.elements.incl"/>
+            <ref name="draft-comment"/>
+            <ref name="foreign.unknown.incl"/>
+            <ref name="required-cleanup"/>
+          </choice>
+        </zeroOrMore>
+      </define>
+      <define name="em.attributes">
+        <ref name="univ-atts"/>
+      </define>
+      <define name="em.element">
+        <element name="em" dita:longName="Emphasis">
+          <a:documentation>Emphasized text is used to indicate stress or to otherwise 
+            highlight content. Category: Emphasis elements
+          </a:documentation>
+          <ref name="em.attlist"/>
+          <ref name="em.content"/>
+        </element>
+      </define>
+      <define name="em.attlist" combine="interleave">
+        <ref name="em.attributes"/>
+      </define>
+    </div>
+  </div>
+  <div>
+    <a:documentation>SPECIALIZATION ATTRIBUTE DECLARATIONS</a:documentation>
+    <define name="strong.attlist" combine="interleave">
+      <optional>
+        <attribute name="class" a:defaultValue="+ topic/ph emphasis-d/strong "/>
+      </optional>
+    </define>
+    <define name="em.attlist" combine="interleave">
+      <optional>
+        <attribute name="class" a:defaultValue="+ topic/ph emphasis-d/em "/>
+      </optional>
+    </define>
+  </div>
+</grammar>
