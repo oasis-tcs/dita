@@ -69,9 +69,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
     <define name="data">
       <ref name="data.element"/>
     </define>
-    <define name="data-about">
-      <ref name="data-about.element"/>
-    </define>
     <define name="dd">
       <ref name="dd.element"/>
     </define>
@@ -578,10 +575,9 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
       </define>
       <define name="data.elements.incl">
         <a:documentation>Metadata elements intended for specialization</a:documentation>
-        <choice>
+        <zeroOrMore>
           <ref name="data"/>
-          <ref name="data-about"/>
-        </choice>
+        </zeroOrMore>
       </define>
       <define name="foreign.unknown.incl">
         <choice>
@@ -1045,54 +1041,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
     <div>
       <a:documentation>GENERAL ELEMENT TYPES OR SPECIALIZATION BASES</a:documentation>
       <div>
-        <a:documentation>LONG NAME: Data About</a:documentation>
-        <define name="data-about.content">
-          <a:documentation/>
-          <ref name="data"/>
-          <zeroOrMore>
-            <choice>
-              <ref name="data"/>
-              <ref name="data-about"/>
-            </choice>
-          </zeroOrMore>
-        </define>
-        <define name="data-about.attributes">
-          <ref name="univ-atts"/>
-          <optional>
-            <attribute name="href"/>
-          </optional>
-          <optional>
-            <attribute name="keyref"/>
-          </optional>
-          <optional>
-            <attribute name="format"/>
-          </optional>
-          <optional>
-            <attribute name="type"/>
-          </optional>
-          <optional>
-            <attribute name="scope">
-              <choice>
-                <value>external</value>
-                <value>local</value>
-                <value>peer</value>
-                <value>-dita-use-conref-target</value>
-              </choice>
-            </attribute>
-          </optional>
-        </define>
-        <define name="data-about.element">
-          <element name="data-about" dita:longName="Data About">
-            <a:documentation>The &lt;data-about> element identifies the subject of a property when the subject isn't associated with the context in which the property is specified. The property itself
-              is expressed by the &lt;data> element. The &lt;data-about> element handles exception cases where a property must be expressed somewhere other than inside the actual subject of the
-              property. The &lt;data-about> element is particularly useful as a basis for specialization in combination with the &lt;data> element. Category: Miscellaneous elements</a:documentation>
-            <ref name="data-about.attlist"/>
-            <ref name="data-about.content"/>
-          </element>
-        </define>
-        <define name="data-about.attlist" combine="interleave">
-          <ref name="data-about.attributes"/>
-        </define>
         <define name="data-element-atts">
           <ref name="univ-atts"/>
           <optional>
@@ -1569,10 +1517,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         <a:documentation>LONG NAME: Simple List</a:documentation>
         <define name="sl.content">
           <zeroOrMore>
-            <choice>
-              <ref name="data"/>
-              <ref name="data-about"/>
-            </choice>
+            <ref name="data"/>
           </zeroOrMore>
           <oneOrMore>
             <ref name="sli"/>
@@ -1634,10 +1579,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         <a:documentation>LONG NAME: Unordered List</a:documentation>
         <define name="ul.content">
           <zeroOrMore>
-            <choice>
-              <ref name="data"/>
-              <ref name="data-about"/>
-            </choice>
+            <ref name="data"/>
           </zeroOrMore>
           <oneOrMore>
             <ref name="li"/>
@@ -1680,10 +1622,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         <a:documentation>LONG NAME: Ordered List</a:documentation>
         <define name="ol.content">
           <zeroOrMore>
-            <choice>
-              <ref name="data"/>
-              <ref name="data-about"/>
-            </choice>
+            <ref name="data"/>
           </zeroOrMore>
           <oneOrMore>
             <ref name="li"/>
@@ -1743,10 +1682,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         <a:documentation>LONG NAME: Definition List</a:documentation>
         <define name="dl.content">
           <zeroOrMore>
-            <choice>
-              <ref name="data"/>
-              <ref name="data-about"/>
-            </choice>
+            <ref name="data"/>
           </zeroOrMore>
           <optional>
             <ref name="dlhead"/>
@@ -3372,11 +3308,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
     <define name="data.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="- topic/data "/>
-      </optional>
-    </define>
-    <define name="data-about.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- topic/data-about "/>
       </optional>
     </define>
     <define name="ddhd.attlist" combine="interleave">

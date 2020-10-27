@@ -120,7 +120,7 @@
 <!--                    LONG NAME: Hazard Message panel            -->
 <!ENTITY % messagepanel.content
                        "(
-                         (%data; | %data-about;)*,
+                         (%data;)*,
                          (%typeofhazard;),
                          (
                           ((%consequence;)*, (%howtoavoid;)+) |
