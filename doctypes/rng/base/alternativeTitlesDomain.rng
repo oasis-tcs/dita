@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+                         schematypens="http://relaxng.org/ns/structure/1.0"?>
+<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    xmlns:dita="http://dita.oasis-open.org/architecture/2005/" 
+    xmlns="http://relaxng.org/ns/structure/1.0">
+    <moduleDesc xmlns="http://dita.oasis-open.org/architecture/2005/">
+        <moduleTitle>DITA Alternative Titles Domain</moduleTitle>
+        <headerComment>
+            =============================================================
+            HEADER                                    
+            =============================================================
+            MODULE:    DITA Alternative Titles Domain                            
+            VERSION:   2.0                                              
+            DATE:      [[[Release date]]]                                    
+            PURPOSE:   Declaring the elements and specialization        
+            attributes for the DITA Alternative Titles Domain         
+            
+            =============================================================
+            
+            =============================================================
+            PUBLIC DOCUMENT TYPE DEFINITION           
+            TYPICAL INVOCATION                        
+            
+            Refer to this file by the following public identifier or an
+            appropriate system identifier 
+            PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Alternative Titles Domain//EN"
+            Delivered as file "alternativeTitlesDomain.mod"                     
+            
+            =============================================================
+            
+            (C) Copyright OASIS Open 2005, 2020.             
+            (C) Copyright IBM Corporation 2001, 2004.        
+            All Rights Reserved.                             
+            
+            UPDATES:                                                    
+            =============================================================
+        </headerComment>
+        <moduleMetadata>
+            <moduleType>elementdomain</moduleType>
+            <moduleShortName>alternativeTitles-d</moduleShortName>
+            <modulePublicIds>
+                <dtdMod>-//OASIS//ELEMENTS DITA<var presep=" " name="ditaver"/> Alternative Titles Domain//EN</dtdMod>
+                <dtdEnt>-//OASIS//ENTITIES DITA<var presep=" " name="ditaver"/> Alternative Titles Domain//EN</dtdEnt>
+                <rngMod>urn:oasis:names:tc:dita:rng:alternativeTitlesDomain.rng<var presep=":" name="ditaver"/></rngMod>
+            </modulePublicIds>
+        </moduleMetadata>
+    </moduleDesc>
+    
+    <div>
+        <a:documentation>DOMAIN EXTENSION PATTERNS</a:documentation>
+        
+        <define name="alternativeTitles-d-titlealt">
+            <choice>
+                <ref name="navtitle.element"/>
+                <ref name="searchtitle.element"/>
+                <ref name="linktitle.element"/>
+                <ref name="subtitle.element"/>
+                <ref name="titlehint.element"/>
+            </choice>
+        </define>
+        
+        <define name="titlealt" combine="choice">
+            <ref name="alternativeTitles-d-titlealt"/>
+        </define>
+    </div>
+    <div>
+        <a:documentation>ELEMENT TYPE NAME PATTERNS</a:documentation>
+        <define name="navtitle">
+            <ref name="navtitle.element"/>
+        </define>
+        <define name="searchtitle">
+            <ref name="searchtitle.element"/>
+        </define>
+        <define name="linktitle">
+            <ref name="linktitle.element"/>
+        </define>
+        <define name="subtitle">
+            <ref name="subtitle.element"/>
+        </define>
+        <define name="titlehint">
+            <ref name="titlehint.element"/>
+        </define>
+    </div>
+    <div>
+        <a:documentation>ELEMENT TYPE DECLARATIONS</a:documentation>
+        <div>
+            <a:documentation>LONG NAME: Navigation Title</a:documentation>
+            <define name="navtitle.content">
+                <zeroOrMore>
+                    <choice>
+                        <ref name="words.cnt"/>
+                        <ref name="ph"/>
+                        <ref name="draft-comment"/>
+                        <ref name="required-cleanup"/>
+                    </choice>
+                </zeroOrMore>
+            </define>
+            <define name="navtitle.attributes">
+                <optional>
+                    <attribute name="title-role" a:defaultValue="navigation"/>
+                </optional>
+                <ref name="univ-atts"/>
+            </define>
+            <define name="navtitle.element"> 
+                <element name="navtitle" dita:longName="Navigation Title">
+                    <a:documentation>Specifies the title to use when displaying the resource in the context of a
+                        navigational aid, such as a table of contents. Category: Topic elements</a:documentation>
+                    <ref name="navtitle.attlist"/>
+                    <ref name="navtitle.content"/>
+                </element>
+            </define>
+            <define name="navtitle.attlist" combine="interleave">
+                <ref name="navtitle.attributes"/>
+            </define>
+        </div>
+        <div>
+            <a:documentation>LONG NAME: Search Title</a:documentation>
+            
+            <define name="searchtitle.content">
+                <zeroOrMore>
+                    <choice>
+                        <ref name="words.cnt"/>
+                        <ref name="ph"/>
+                        <ref name="draft-comment"/>
+                        <ref name="required-cleanup"/>
+                    </choice>
+                </zeroOrMore>
+            </define>
+            <define name="searchtitle.attributes">
+                <optional>
+                    <attribute name="title-role" a:defaultValue="search"/>
+                </optional>
+                <ref name="univ-atts"/>
+            </define>
+            <define name="searchtitle.element">
+                <element name="searchtitle" dita:longName="Search Title">
+                    <a:documentation>Specifies the title to display for this resource in search results for output
+                        systems that support topic-based searching. Category: Topic elements</a:documentation>
+                    <ref name="searchtitle.attlist"/>
+                    <ref name="searchtitle.content"/>
+                </element>
+            </define>
+            <define name="searchtitle.attlist" combine="interleave">
+                <ref name="searchtitle.attributes"/>
+            </define>
+            
+        </div>
+        <div>
+            <a:documentation>LONG NAME: Link Title</a:documentation>
+            
+            <define name="linktitle.content">
+                <zeroOrMore>
+                    <choice>
+                        <ref name="words.cnt"/>
+                        <ref name="ph"/>
+                        <ref name="draft-comment"/>
+                        <ref name="required-cleanup"/>
+                    </choice>
+                </zeroOrMore>
+            </define>
+            <define name="linktitle.attributes">
+                <optional>
+                    <attribute name="title-role" a:defaultValue="linking"/>
+                </optional>
+                <ref name="univ-atts"/>
+            </define>
+            <define name="linktitle.element">
+                <element name="linktitle" dita:longName="Link Title">
+                    <a:documentation>Spedifies the title to use when populating empty links or
+                        cross-references to this topic. May also be used as a fallback for certain
+                        other alternative titles. Category: Topic elements</a:documentation>
+                    <ref name="linktitle.attlist"/>
+                    <ref name="linktitle.content"/>
+                </element>
+            </define>
+            <define name="linktitle.attlist" combine="interleave">
+                <ref name="linktitle.attributes"/>
+            </define>
+            
+        </div>
+        <div>
+            <a:documentation>LONG NAME: Subtitle</a:documentation>
+            
+            <define name="subtitle.content">
+                <zeroOrMore>
+                    <choice>
+                        <ref name="words.cnt"/>
+                        <ref name="ph"/>
+                        <ref name="draft-comment"/>
+                        <ref name="required-cleanup"/>
+                    </choice>
+                </zeroOrMore>
+            </define>
+            <define name="subtitle.attributes">
+                <optional>
+                    <attribute name="title-role" a:defaultValue="subtitle"/>
+                </optional>
+                <ref name="univ-atts"/>
+            </define>
+            <define name="subtitle.element">
+                <element name="subtitle" dita:longName="Subtitle">
+                    <a:documentation>Specifies a secondary or subordinate title. Category: Topic elements</a:documentation>
+                    <ref name="subtitle.attlist"/>
+                    <ref name="subtitle.content"/>
+                </element>
+            </define>
+            <define name="subtitle.attlist" combine="interleave">
+                <ref name="subtitle.attributes"/>
+            </define>
+            
+        </div>
+        <div>
+            <a:documentation>LONG NAME: titlehint</a:documentation>
+            
+            <define name="titlehint.content">
+                <zeroOrMore>
+                    <choice>
+                        <ref name="words.cnt"/>
+                        <ref name="ph"/>
+                        <ref name="draft-comment"/>
+                        <ref name="required-cleanup"/>
+                    </choice>
+                </zeroOrMore>
+            </define>
+            <define name="titlehint.attributes">
+                <optional>
+                    <attribute name="title-role" a:defaultValue="hint"/>
+                </optional>
+                <ref name="univ-atts"/>
+            </define>
+            <define name="titlehint.element">
+                <element name="titlehint" dita:longName="titlehint">
+                    <a:documentation>For use in DITA maps to indicate the title of the referenced
+                        resource for the convenience of map authors; not used in output.
+                        Category: Topic elements</a:documentation>
+                    <ref name="titlehint.attlist"/>
+                    <ref name="titlehint.content"/>
+                </element>
+            </define>
+            <define name="titlehint.attlist" combine="interleave">
+                <ref name="titlehint.attributes"/>
+            </define>
+            
+        </div>
+    </div>
+    <div>
+        <a:documentation>SPECIALIZATION ATTRIBUTE DECLARATIONS</a:documentation>
+        <define name="navtitle.attlist" combine="interleave">
+            <optional>
+                <attribute name="class" a:defaultValue="+ topic/titlealt alternativeTitles-d/navtitle "/>
+            </optional>
+        </define>
+        <define name="searchtitle.attlist" combine="interleave">
+            <optional>
+                <attribute name="class" a:defaultValue="+ topic/titlealt alternativeTitles-d/searchtitle "/>
+            </optional>
+        </define>
+        <define name="linktitle.attlist" combine="interleave">
+            <optional>
+                <attribute name="class" a:defaultValue="+ topic/titlealt alternativeTitles-d/linktitle "/>
+            </optional>
+        </define>
+        <define name="subtitle.attlist" combine="interleave">
+            <optional>
+                <attribute name="class" a:defaultValue="+ topic/titlealt alternativeTitles-d/subtitle "/>
+            </optional>
+        </define>
+        <define name="titlehint.attlist" combine="interleave">
+            <optional>
+                <attribute name="class" a:defaultValue="+ topic/titlealt alternativeTitles-d/titlehint "/>
+            </optional>
+        </define>
+    </div>
+</grammar>

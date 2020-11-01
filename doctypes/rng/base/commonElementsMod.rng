@@ -141,9 +141,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
     <define name="lines">
       <ref name="lines.element"/>
     </define>
-    <define name="linktext">
-      <ref name="linktext.element"/>
-    </define>
     <define name="longdescref">
       <ref name="longdescref.element"/>
     </define>
@@ -158,9 +155,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
     </define>
     <define name="media-track">
       <ref name="media-track.element"/>
-    </define>
-    <define name="navtitle">
-      <ref name="navtitle.element"/>
     </define>
     <define name="note">
       <ref name="note.element"/>
@@ -188,9 +182,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
     </define>
     <define name="required-cleanup">
       <ref name="required-cleanup.element"/>
-    </define>
-    <define name="searchtitle">
-      <ref name="searchtitle.element"/>
     </define>
     <define name="shortdesc">
       <ref name="shortdesc.element"/>
@@ -224,6 +215,9 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
     </define>
     <define name="title">
       <ref name="title.element"/>
+    </define>
+    <define name="titlealt">
+      <ref name="titlealt.element"/>
     </define>
     <define name="tm">
       <ref name="tm.element"/>
@@ -1180,8 +1174,8 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
 
       </div>
       <div>
-        <a:documentation>LONG NAME: Navigation Title</a:documentation>
-        <define name="navtitle.content">
+        <a:documentation>LONG NAME: Alternate Title</a:documentation>
+        <define name="titlealt.content">
           <zeroOrMore>
             <choice>
               <ref name="words.cnt"/>
@@ -1191,20 +1185,19 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
             </choice>
           </zeroOrMore>
         </define>
-        <define name="navtitle.attributes">
+        <define name="titlealt.attributes">
+          <attribute name="title-role"/>
           <ref name="univ-atts"/>
         </define>
-        <define name="navtitle.element">
-          <element name="navtitle" dita:longName="Navigation Title">
-            <a:documentation>The navigation title (&lt;navtitle>) element is one of a set of alternate titles that can be included inside the &lt;titlealts> element. This navigation title may differ
-              from the first level heading that shows in the main browser window. Use &lt;navtitle> when the actual title of the topic isn't appropriate for use in navigation panes or online contents
-              (for example, because the actual title is too long). Category: Topic elements</a:documentation>
-            <ref name="navtitle.attlist"/>
-            <ref name="navtitle.content"/>
+        <define name="titlealt.element">
+          <element name="titlealt" dita:longName="Alternate Title">
+            <a:documentation>Specifies an alternative title fulfilling a particular role. Category: Topic elements</a:documentation>
+            <ref name="titlealt.attlist"/>
+            <ref name="titlealt.content"/>
           </element>
         </define>
-        <define name="navtitle.attlist" combine="interleave">
-          <ref name="navtitle.attributes"/>
+        <define name="titlealt.attlist" combine="interleave">
+          <ref name="titlealt.attributes"/>
         </define>
 
       </div>
@@ -1240,34 +1233,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
 
       </div>
       <div>
-        <a:documentation>LONG NAME: Search Title</a:documentation>
-        
-        <define name="searchtitle.content">
-          <zeroOrMore>
-            <choice>
-              <ref name="words.cnt"/>
-              <ref name="ph"/>
-            </choice>
-          </zeroOrMore>
-        </define>
-        <define name="searchtitle.attributes">
-          <ref name="univ-atts"/>
-        </define>
-        <define name="searchtitle.element">
-          <element name="searchtitle" dita:longName="Search Title">
-            <a:documentation>When your DITA topic is transformed to XHTML, the &lt;searchtitle> element is used to create a title element at the top of the resulting HTML file. This title is normally
-              used in search result summaries by some search engines, such as that in Eclipse (http://eclipse.org); if not set, the XHTML's title element defaults to the source topic's title content
-              (which may not be as well optimized for search summaries) Category: Topic elements</a:documentation>
-            <ref name="searchtitle.attlist"/>
-            <ref name="searchtitle.content"/>
-          </element>
-        </define>
-        <define name="searchtitle.attlist" combine="interleave">
-          <ref name="searchtitle.attributes"/>
-        </define>
-        
-      </div>
-      <div>
         <a:documentation>LONG NAME: Short Description</a:documentation>
         <define name="shortdesc.content">
           <zeroOrMore>
@@ -1291,35 +1256,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="shortdesc.attlist" combine="interleave">
           <ref name="shortdesc.attributes"/>
-        </define>
-        
-      </div>
-      <div>
-        <a:documentation>LONG NAME: Link Text</a:documentation>
-        
-        <define name="linktext.content">
-          <zeroOrMore>
-            <choice>
-              <ref name="words.cnt"/>
-              <ref name="ph"/>
-            </choice>
-          </zeroOrMore>
-        </define>
-        <define name="linktext.attributes">
-          <ref name="univ-atts"/>
-        </define>
-        <define name="linktext.element">
-          <element name="linktext" dita:longName="linktext">
-            <a:documentation>The &lt;linktext> element provides the literal label or line of text for a link. In most cases, the text of a link can be resolved during processing by cross reference
-              with the target resource. Use the &lt;linktext> element only when the target cannot be reached, such as when it is a peer or external link, or the target is local but not in DITA format.
-              When used inside a topic, it will be used as the text for the specified link; when used within a map, it will be used as the text for generated links that point to the specified topic.
-              Category: Related Links elements</a:documentation>
-            <ref name="linktext.attlist"/>
-            <ref name="linktext.content"/>
-          </element>
-        </define>
-        <define name="linktext.attlist" combine="interleave">
-          <ref name="linktext.attributes"/>
         </define>
         
       </div>
@@ -3425,11 +3361,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         <attribute name="class" a:defaultValue="- topic/lines "/>
       </optional>
     </define>
-    <define name="linktext.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- topic/linktext "/>
-      </optional>
-    </define>
     <define name="longdescref.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="- topic/longdescref "/>
@@ -3455,9 +3386,9 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         <attribute name="class" a:defaultValue="- topic/media-track "/>
       </optional>
     </define>
-    <define name="navtitle.attlist" combine="interleave">
+    <define name="titlealt.attlist" combine="interleave">
       <optional>
-        <attribute name="class" a:defaultValue="- topic/navtitle "/>
+        <attribute name="class" a:defaultValue="- topic/titlealt "/>
       </optional>
     </define>
     <define name="note.attlist" combine="interleave">
@@ -3503,11 +3434,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
     <define name="required-cleanup.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="- topic/required-cleanup "/>
-      </optional>
-    </define>
-    <define name="searchtitle.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- topic/searchtitle "/>
       </optional>
     </define>
     <define name="shortdesc.attlist" combine="interleave">
