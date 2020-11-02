@@ -28,7 +28,7 @@
               child <xmlelement>topicref</xmlelement> elements implicitly have an
                 <xmlelement>audience</xmlelement> element set to "user" also. Elements that can
               apply only to the specific <xmlelement>topicref</xmlelement> element, such as
-                <xmlelement>linktext</xmlelement>, do not cascade.</dd>
+                <xmlelement>titlealt</xmlelement>, do not cascade.</dd>
      </dlentry>
      <dlentry>
       <dt>What is the purpose when specified on the <xmlelement>map</xmlelement> element?</dt>
@@ -102,26 +102,10 @@ specified</entry>
 <entry colname="COLSPEC1">No stated purpose</entry>
 </row>
 <row>
-<entry colname="col1"><xmlelement>linktext</xmlelement></entry>
-<entry colname="col2">Not added to the topic; applies only to links
-created based on this occurrence in the map</entry>
-<entry colname="COLSPEC0">No</entry>
-<entry colname="COLSPEC1">No stated purpose</entry>
-</row>
-<row>
 <entry colname="col1"><xmlelement>metadata</xmlelement></entry>
 <entry colname="col2">Add to the topic</entry>
 <entry colname="COLSPEC0">Yes</entry>
 <entry colname="COLSPEC1">Specify metadata for the entire map</entry>
-</row>
-<row>
-<entry colname="col1"><xmlelement>navtitle</xmlelement></entry>
-<entry colname="col2">Not added to the topic; applies only to navigation that is created based on
-              this occurrence in the map. The navigation title will be used whenever the
-                <xmlatt>locktitle</xmlatt> attribute on the containing
-                <xmlelement>topicref</xmlelement> element is set to "yes".</entry>
-<entry colname="COLSPEC0">No</entry>
-<entry colname="COLSPEC1">No stated purpose</entry>
 </row>
 <row>
 <entry colname="col1"><xmlelement>othermeta</xmlelement></entry>
@@ -154,14 +138,6 @@ created based on this occurrence in the map</entry>
 <entry colname="COLSPEC1">Specify a resource ID for the map</entry>
 </row>
 <row>
-<entry colname="col1"><xmlelement>searchtitle</xmlelement></entry>
-<entry colname="col2">Replace the one in the topic. If multiple <xmlelement>searchtitle</xmlelement>
-              elements are specified for a single target, processors <ph 
-                >can</ph> choose to issue a warning.</entry>
-<entry colname="COLSPEC0">No</entry>
-<entry colname="COLSPEC1">No stated purpose</entry>
-</row>
-<row>
 <entry colname="col1"><xmlelement>shortdesc</xmlelement></entry>
 <entry colname="col2"><ph>Only added to the topic when the <xmlelement>topicref</xmlelement> element
                 specifies a <xmlatt>copy-to</xmlatt> attribute. Otherwise, it applies only to links
@@ -176,6 +152,13 @@ created based on this occurrence in the map</entry>
 <entry colname="COLSPEC0">No</entry>
 <entry colname="COLSPEC1">Specify a source for the map</entry>
 </row>
+          <row>
+            <entry colname="col1"><xmlelement>titlealt</xmlelement></entry>
+            <entry colname="col2">Add to the topic before its <xmlelement>titlealt</xmlelement>
+              elements</entry>
+            <entry colname="COLSPEC0">No</entry>
+            <entry colname="COLSPEC1">Specify an alternative title for the map</entry>
+          </row>
 <row>
 <entry colname="col1"><xmlelement>unknown</xmlelement></entry>
 <entry colname="col2">Add to the topic</entry>

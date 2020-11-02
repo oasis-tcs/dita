@@ -2,8 +2,7 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="searchtitle" xml:lang="en-us">
 <title><xmlelement>searchtitle</xmlelement></title>
-<shortdesc>A search title is a title that is displayed by search
-    tools.<!--The <xmlelement>searchtitle</xmlelement> element specifies a title that is displayed by search tools.--></shortdesc>
+<shortdesc>A search title is a title that is displayed by search tools.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -23,15 +22,23 @@
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>When a topic is rendered as HTML, the contents of the <xmlelement>searchtitle</xmlelement>
-        typically appear in the HTML title element, which used in the result summary for many
-        search engines. </p>
-      <p>The <xmlelement>searchtitle</xmlelement> element might not be supported for output formats
-        that do not support distinct search titles for topics.</p>
+      <p>The <xmlelement>searchtitle</xmlelement> element is a specialization of
+          <xmlelement>titlealt</xmlelement> with the <xmlatt>title-role</xmlatt> set to
+          <codeph>search</codeph>. Processing is dictated by the rules for
+          <xmlelement>titlealt</xmlelement>.</p>
+    </section>
+    <section id="specialization-hierachy">
+      <title>Specialization hierarchy</title>
+      <p>The <xmlelement>searchtitle</xmlelement> element is specialized from
+          <xmlelement>titlealt</xmlelement>. It is defined in the alternativeTitle-domain
+        module.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
-    <p conkeyref="reuse-attributes/only-universal"/>
+      <p>The following attributes are available on this element: <xref keyref="attributes-universal"
+        />, <xref keyref="attributes-universal/class"><xmlatt>class</xmlatt></xref>, <xref
+          keyref="attributes-universal/outputclass"><xmlatt>outputclass</xmlatt></xref>, and the
+          <xmlatt>title-role</xmlatt> attribute set to <codeph>navigation</codeph>.</p>
     </section>
 <example id="example" otherprops="examples"><title>Examples</title>
       <p>This section contains examples of how the <xmlelement>searchtitle</xmlelement> element can
@@ -44,9 +51,9 @@
           programming in XSLT" will be more useful:</p>
         <codeblock>&lt;topic id="programming-example"&gt;
   &lt;title&gt;Programming example&lt;/title&gt;
-  &lt;titlealts&gt;
+  &lt;prolog&gt;
     &lt;searchtitle&gt;Example of basic programming in XSLT&lt;/searchtitle&gt;
-  &lt;/titlealts&gt;
+  &lt;/prolog&gt;
   &lt;body&gt; 
     &lt;!-- ... -->  
   &lt;/body&gt;

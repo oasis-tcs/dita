@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="linktext" xml:lang="en-us">
+<title><xmlelement>linktitle</xmlelement></title>
+  <shortdesc>A link title is an alternative title for a resource to be used with references to the
+    resource that do not otherwise specify text for display.</shortdesc>
+<prolog><metadata>
+      <keywords>
+        <indexterm>processing
+          expectations<indexterm><xmlelement>linktitle</xmlelement></indexterm></indexterm>
+      </keywords>
+    </metadata></prolog>
+<refbody>
+    <section id="section_fpd_43h_rnb">
+      <title>Usage information</title>
+      <p>Link titles are alternative titles for use in cases where a hyperlink or cross-reference to
+        a resource has no text explicitly authored. This includes, but is not limited to, the
+        following cases.</p>
+      <ul id="ul_j53_z3h_rnb">
+        <li>Empty <xmlelement>xref</xmlelement> elements.</li>
+        <li>Manually-authored <xmlelement>link</xmlelement> elements that do not specify a
+            <xmlelement>linktext</xmlelement> element.</li>
+        <li>Generated <xmlelement>link</xmlelement> elements based on a map structure or
+          relationship table.</li>
+        <li>Navigation link when no <xmlelement>titlealt</xmlelement> with a
+            <xmlatt>title-role</xmlatt> of <codeph>navigation</codeph> is present, such as
+            <xmlelement>navtitle</xmlelement>.</li>
+        <li>Search result links when no <xmlelement>titlealt</xmlelement> with a
+            <xmlatt>title-role</xmlatt> of <codeph>search</codeph> is present, such as
+            <xmlelement>searchtitle</xmlelement>.</li>
+      </ul>
+    </section>
+    <section id="section_jhh_njh_rnb">
+      <title>Processing expectations</title>
+      <p>The <xmlelement>linktitle</xmlelement> element is a specialization of
+          <xmlelement>titlealt</xmlelement> with the <xmlatt>title-role</xmlatt> set to
+          <codeph>linking</codeph>. Processing is dictated by the rules for
+          <xmlelement>titlealt</xmlelement>.</p>
+    </section>
+    <section id="specialization-hierachy">
+      <title>Specialization hierarchy</title>
+      <p>The <xmlelement>linktitle</xmlelement> element is specialized from
+          <xmlelement>titlealt</xmlelement>. It is defined in the alternativeTitle-domain
+        module.</p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref keyref="attributes-universal"
+        />, <xref keyref="attributes-universal/class"><xmlatt>class</xmlatt></xref>, <xref
+          keyref="attributes-universal/outputclass"><xmlatt>outputclass</xmlatt></xref>, and the
+          <xmlatt>title-role</xmlatt> attribute set to <codeph>linking</codeph>.</p>
+    </section>
+<example id="example" otherprops="examples"><title>Examples</title>
+      <p>This section contains examples of how the <xmlelement>linktitle</xmlelement> element can be
+        used.</p>
+<fig id="figure-3">
+        <title>Link title within a map</title>
+        <p>The following code sample shows how a <xmlelement>linktitle</xmlelement> element can be
+          used within a <xmlelement>topicref</xmlelement> to provide text for a related link to a
+          non-DITA resource:</p>
+        <codeblock>&lt;topicref href="SQLJ-example.html" format="html" scope="local"&gt;
+  &lt;topicmeta>
+    <b>&lt;linktitle&gt;</b>Accessing relational data with SQLJ<b>&lt;/linktitle&gt;</b>
+  &lt;/topicmeta>
+&lt;/topicref></codeblock>
+      </fig>
+      <fig id="fig_ofj_dkh_rnb">
+        <title>Link title within a topic</title>
+        <p>The following code sample shows how a <xmlelement>linktitle</xmlelement> element can be
+          used within a topic's prolog to provide default text for use in cross-references, rather
+          than using the topic's title.</p>
+        <codeblock>&lt;topic id="topic">
+  &lt;title>Circuitry in the C-283 Drive Train&lt;/title>
+  &lt;prolog>
+    <b>&lt;linktitle>Drive Train Circuitry&lt;/linktitle></b>
+  &lt;/prolog>
+</codeblock>
+      </fig></example>
+</refbody>
+</reference>
