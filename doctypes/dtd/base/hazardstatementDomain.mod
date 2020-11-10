@@ -77,6 +77,9 @@
               "href
                           CDATA
                                     #IMPLIED
+               format
+                          CDATA
+                                    #IMPLIED
                scope
                           (external |
                            local |

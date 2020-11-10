@@ -10,21 +10,18 @@
       <div platform="dita">
         <p>The <xmlelement>video</xmlelement> element is modeled on the HTML5
             <xmlelement>video</xmlelement> element.</p>
-        <p>A video resource can be referenced by <xmlatt>data</xmlatt>, <xmlatt>datakeyref</xmlatt>,
-          and nested <xmlelement>media-source</xmlelement> elements. Nested
-            <xmlelement>media-source</xmlelement> elements enable extensive configuration of how the
-          video resource is presented.</p>
-        <p>Behaviors such as auto-playing, looping, and muting are determined by child elements.
-          When not specified, the default behavior is determined by the user agent that is used to
+        <p>A video resource can be referenced by <xmlatt>href</xmlatt>, <xmlatt>keyref</xmlatt>, and
+          nested <xmlelement>media-source</xmlelement> elements.</p>
+        <p>Behaviors such as auto-playing, looping, and muting are determined by attributes. When
+          not specified, the default behavior is determined by the user agent that is used to
           present the media.</p>
       </div>
       <div platform="lwdita">
         <p>The video component is modeled on the HTML5 <xmlelement>video</xmlelement> element.</p>
-        <p>A video resource can be referenced by <xmlatt>data</xmlatt>, <xmlatt>datakeyref</xmlatt>,
-          and nested media-source components. Nested media-source components enable extensive
-          configuration of how the video resource is presented.</p>
-        <p>Behaviors such as auto-playing, looping, and muting are determined by child components.
-          When not specified, the default behavior is determined by the user agent that is used to
+        <p>A video resource can be referenced by <xmlatt>href</xmlatt>, <xmlatt>keyref</xmlatt>, and
+          nested media-source components.</p>
+        <p>Behaviors such as auto-playing, looping, and muting are determined by attributes. When
+          not specified, the default behavior is determined by the user agent that is used to
           present the media.</p>
       </div>
     </section>
@@ -52,24 +49,33 @@
       <title>Attributes</title>
       <p>The following attributes are available on this element: <xref keyref="attributes-universal"
         /> and the attributes defined below.</p>
+      <draft-comment author="rodaande">This list was significantly reworked when the element moved
+        into the base vocabulary; need to validate that the list is still correct for
+        LwDITA.</draft-comment>
       <dl>
-        <dlentry platform="dita">
-          <!--KJE: RDA and I discussed this on 29 April 2019. We could not come up with a phrasing that would not include "should". Adding this comment so that we don't have the discussion again.-->
-          <dt><xmlatt>data</xmlatt></dt>
-          <dd>Specifies the absolute or relative URI of the video resource. If <xmlatt>data</xmlatt>
-            is specified, <xmlatt>type</xmlatt> should be specified also.</dd>
+        <dlentry>
+          <dt><xmlatt>autoplay</xmlatt></dt>
+          <dd>Specifies whether the resource automatically plays when it is presented. The following
+            values are recognized: <keyword>true</keyword>, <keyword>false</keyword>, and
+              <keyword>-dita-use-conref-target </keyword>. The default value is
+              <keyword>true</keyword>.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>controls</xmlatt></dt>
+          <dd>Specifies whether the presentation of the resource includes user interface controls.
+            The following values are recognized: <keyword>true</keyword>, <keyword>false</keyword>,
+            and <keyword>-dita-use-conref-target </keyword>. The default value is
+              <keyword>true</keyword>.</dd>
         </dlentry>
         <dlentry platform="dita">
-          <!-- Identical to definition in video topic -->
-          <dt><xmlatt>datakeyref</xmlatt></dt>
-          <dd>Provides a key reference to the video resource. When specified and the key is
-            resolvable, the key-provided URI is used. If the key referenced by
-              <xmlatt>datakeyref</xmlatt> cannot be resolved, and <xmlatt>data</xmlatt> is
-            specified, that value provided by <xmlatt>data</xmlatt> is used as a fallback. If the
-            key referenced by <xmlatt>datakeyref</xmlatt> has no associated resource, only link
-            text, and the video<xmlelement/> element does not contain a
-              <xmlelement>fallback</xmlelement> element, the link text becomes fallback
-            content.</dd>
+          <dt><xmlatt>format</xmlatt></dt>
+          <dd>Specifies the MIME type for the resource. This attribute enables processors to avoid
+            loading unsupported resources. If <xmlatt>format</xmlatt> is not specified and
+              <xmlatt>keyref</xmlatt> is specified, the effective type for the key named by the
+              <xmlatt>keyref</xmlatt> attribute is used as the value. If an explicit
+              <xmlatt>format</xmlatt> is not specified on either the <xmlelement>video</xmlelement>
+            element or key definition, processors can use other means, such the URI file extension,
+            to determine the effective MIME type of the resource.</dd>
         </dlentry>
         <dlentry>
           <dt><xmlatt>height</xmlatt></dt>
@@ -80,15 +86,55 @@
             unit is px (pixels). Possible values include: "5", "5in", and "10.5cm". </dd>
         </dlentry>
         <dlentry platform="dita">
-          <!-- Identical to definition in video topic -->
-          <dt><xmlatt>type</xmlatt></dt>
-          <dd>Indicates the MIME type for the video resource. This attribute enables processors to
-            avoid loading unsupported resources. If <xmlatt>type</xmlatt> is not specified and
-              <xmlatt>datakeyref</xmlatt> is specified, the effective type for the key named by the
-              <xmlatt>datakeyref</xmlatt> attribute is used as the value. If an explicit
-              <xmlatt>type</xmlatt> is not specified on either the <xmlelement>video</xmlelement>
-            element or key definition, processors can use other means, such the URI file extension,
-            to determine the effective MIME type of the video.</dd>
+          <!--KJE: RDA and I discussed this on 29 April 2019. We could not come up with a phrasing that would not include "should". Adding this comment so that we don't have the discussion again.-->
+          <dt><xmlatt>href</xmlatt></dt>
+          <dd>Specifies the absolute or relative URI of the video resource. If <xmlatt>href</xmlatt>
+            is specified, specify <xmlatt>format</xmlatt> also.</dd>
+        </dlentry>
+        <dlentry platform="dita">
+          <dt><xmlatt>keyref</xmlatt></dt>
+          <dd>Specifies a key reference to the video resource.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>loop</xmlatt></dt>
+          <dd>Specifies whether the resource loops when played. The following values are recognized:
+              <keyword>true</keyword>, <keyword>false</keyword>, and
+              <keyword>-dita-use-conref-target </keyword>. The default value is
+              <keyword>true</keyword>.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>muted</xmlatt></dt>
+          <dd>Specifies whether the resource is muted. The following values are recognized:
+              <keyword>true</keyword>, <keyword>false</keyword>, and
+              <keyword>-dita-use-conref-target </keyword>. The default value is
+              <keyword>true</keyword>.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>poster</xmlatt></dt>
+          <dd>Specifies the absolute or relative URI of the image that is rendered before video
+            playback begins.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>posterkeyref</xmlatt></dt>
+          <dd>Specifies a key reference for the poster image.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt>scope</xmlatt></dt>
+          <dd>The <xmlatt>scope</xmlatt> attribute describes the closeness of the relationship
+            between the current document and the target resource. Resources in the same information
+            unit are considered <codeph>"local"</codeph>; resources in the same system as the
+            referencing content but not part of the same information unit are considered
+              <codeph>"peer"</codeph>; and resources outside the system, such as Web pages, are
+            considered <codeph>"external"</codeph>.</dd>
+        </dlentry>
+        <dlentry platform="dita">
+          <dt><xmlatt>tabindex</xmlatt></dt>
+          <dd><draft-comment author="rodaande">Need to add the linked version of the HTML spec into
+              our resources.</draft-comment>Specifies whether the video resource can be focused and
+            where it participates in sequential keyboard navigation. See <xref
+              href="https://html.spec.whatwg.org/#the-tabindex-attribute" format="html"
+              scope="external"><xmlatt>tabindex</xmlatt></xref> in the HTML specification (WHATWG
+            version).</dd>
         </dlentry>
         <dlentry>
           <dt><xmlatt>width</xmlatt></dt>
@@ -97,14 +143,6 @@
             of measure from the set of cm, em, in, mm, pc, pt, px, and Q (centimeters, ems, inches,
             picas, points, pixels, millimeters, and quarter-millimeters, respectively). The default
             unit is px (pixels). Possible values include: "5", "5in", and "10.5cm". </dd>
-        </dlentry>
-        <dlentry platform="dita">
-          <dt><xmlatt>tabindex</xmlatt></dt>
-          <dd>Indicates whether the video resource can be focused and where it participates in
-            sequential keyboard navigation. See <xref
-              href="https://html.spec.whatwg.org/#the-tabindex-attribute" format="html"
-              scope="external"><xmlatt>tabindex</xmlatt></xref> in the HTML specification (WHATWG
-            version).</dd>
         </dlentry>
       </dl>
     </section>

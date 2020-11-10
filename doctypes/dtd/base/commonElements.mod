@@ -1704,9 +1704,14 @@
                keyref
                           CDATA
                                     #IMPLIED
-               
                format
                           CDATA
+                                    #IMPLIED
+               scope
+                          (external |
+                           local |
+                           peer |
+                           -dita-use-conref-target)
                                     #IMPLIED
                tabindex
                           NMTOKEN
@@ -1759,9 +1764,14 @@
                keyref
                           CDATA
                                     #IMPLIED
-               
                format
                           CDATA
+                                    #IMPLIED
+               scope
+                          (external |
+                           local |
+                           peer |
+                           -dita-use-conref-target)
                                     #IMPLIED
                tabindex
                           NMTOKEN
@@ -1786,6 +1796,12 @@
                format
                           CDATA
                                     #IMPLIED
+               scope
+                          (external |
+                           local |
+                           peer |
+                           -dita-use-conref-target)
+                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  media-source %media-source.content;>
@@ -1802,6 +1818,15 @@
                                     #IMPLIED
                keyref
                           CDATA
+                                    #IMPLIED
+               format
+                          CDATA
+                                    #IMPLIED
+               scope
+                          (external |
+                           local |
+                           peer |
+                           -dita-use-conref-target)
                                     #IMPLIED
                kind       (subtitles |
                            captions |
