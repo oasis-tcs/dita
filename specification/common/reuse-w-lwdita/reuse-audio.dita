@@ -10,21 +10,18 @@
       <div platform="dita">
         <p>The <xmlelement>audio</xmlelement> element is modeled on the HTML5
             <xmlelement>audio</xmlelement> element.</p>
-        <p>An audio resource can be referenced by <xmlatt>data</xmlatt>,
-          <xmlatt>datakeyref</xmlatt>, and nested <xmlelement>media-source</xmlelement> elements.
-          Nested <xmlelement>media-source</xmlelement> elements enable extensive configuration of
-          how the audio resource is presented.</p>
-        <p>Behaviors such as auto-playing, looping, and muting are determined by child elements.
-          When not specified, the default behavior is determined by the user agent that is used to
+        <p>An audio resource can be referenced by <xmlatt>href</xmlatt>, <xmlatt>keyref</xmlatt>,
+          and nested <xmlelement>media-source</xmlelement> elements.</p>
+        <p>Behaviors such as auto-playing, looping, and muting are determined by attributes. When
+          not specified, the default behavior is determined by the user agent that is used to
           present the media.</p>
       </div>
       <div platform="lwdita">
         <p>The audio component is modeled on the HTML5 <xmlelement>audio</xmlelement> element.</p>
-        <p>An audio resource can be referenced by <xmlatt>data</xmlatt>,
-          <xmlatt>datakeyref</xmlatt>, and nested media-source components. Nested media-source
-          components enable extensive configuration of how the audio resource is presented.</p>
-        <p>Behaviors such as auto-playing, looping, and muting are determined by child components.
-          When not specified, the default behavior is determined by the user agent that is used to
+        <p>An audio resource can be referenced by <xmlatt>href</xmlatt>, <xmlatt>keyref</xmlatt>,
+          and nested media-source components.</p>
+        <p>Behaviors such as auto-playing, looping, and muting are determined by attributes. When
+          not specified, the default behavior is determined by the user agent that is used to
           present the media.</p>
       </div>
       <draft-comment author="Kristen J Eberlein" time="22 April 2019" audience="tc-reviewers">
@@ -44,55 +41,78 @@
             keyref="attributes-universal"/> and the attributes defined below.</p>
         <dl>
           <dlentry>
-            <dt><xmlatt>data</xmlatt></dt>
+            <dt><xmlatt>autoplay</xmlatt></dt>
+            <dd>Specifies whether the resource automatically plays when it is presented. The
+              following values are recognized: <keyword>true</keyword>, <keyword>false</keyword>,
+              and <keyword>-dita-use-conref-target </keyword>. The default value is
+                <keyword>true</keyword>.</dd>
+          </dlentry>
+          <dlentry>
+            <dt><xmlatt>controls</xmlatt></dt>
+            <dd>Specifies whether the presentation of the resource includes user interface controls.
+              The following values are recognized: <keyword>true</keyword>,
+              <keyword>false</keyword>, and <keyword>-dita-use-conref-target </keyword>. The default
+              value is <keyword>true</keyword>.</dd>
+          </dlentry>
+          <dlentry platform="dita">
+            <dt><xmlatt>format</xmlatt></dt>
+            <dd>Specifies the MIME type for the resource. This attribute enables processors to avoid
+              loading unsupported resources. If <xmlatt>format</xmlatt> is not specified
+              and <xmlatt>keyref</xmlatt> is specified, the effective type for the key named by the
+                <xmlatt>keyref</xmlatt> attribute is used as the value. If an explicit <xmlatt
+               >format</xmlatt> is not specified on either the
+                <xmlelement>audio</xmlelement> element or key definition, processors can use other
+              means, such the URI file extension, to determine the effective MIME type of the
+              resource.</dd>
+          </dlentry>
+          <dlentry>
+            <dt><xmlatt>href</xmlatt></dt>
             <!--KJE: RDA and I discussed this on 29 April 2019. We could not come up with a phrasing that would not include "should". Adding this comment so that we don't have the discussion again.-->
             <dd>Specifies the absolute or relative URI of the audio resource. If
-                <xmlatt>data</xmlatt> is specified, <xmlatt>type</xmlatt> should be specified
+                <xmlatt>href</xmlatt> is specified, specify <xmlatt>format</xmlatt>
               also.</dd>
           </dlentry>
           <dlentry>
-            <dt><xmlatt>datakeyref</xmlatt></dt>
-            <dd>Provides a key reference to the audio resource. When specified and the key is
-              resolvable, the key-provided URI is used. If the key referenced by
-                <xmlatt>datakeyref</xmlatt> cannot be resolved, and <xmlatt>data</xmlatt> is
-              specified, that value provided by <xmlatt>data</xmlatt> is used as a fallback. If the
-              key referenced by <xmlatt>datakeyref</xmlatt> has no associated resource, only link
-              text, and the<xmlelement> audio</xmlelement> element does not contain a
-                <xmlelement>fallback</xmlelement> element, the link text becomes fallback
-              content.</dd>
-            <dd>
-              <draft-comment author="Kristen J Eberlein" time="17 May 2019" audience="tc-reviewers">
-                <p>Robert and I discussed and reworked the above description today, in response to
-                  feedback from Chris Nitchie. </p>
-                <p>However, this content is really about key resolution; we need to ensure that this
-                  is covered clearly (and probably with normative language) in the primary topics
-                  about key resolution.</p>
-              </draft-comment>
-            </dd>
+            <dt><xmlatt>keyref</xmlatt></dt>
+            <dd>Specifies a key reference to the audio resource.</dd>
+          </dlentry>
+          <dlentry>
+            <dt><xmlatt>loop</xmlatt></dt>
+            <dd>Specifies whether the resource loops when played. The following values are
+              recognized: <keyword>true</keyword>, <keyword>false</keyword>, and
+                <keyword>-dita-use-conref-target </keyword>. The default value is
+                <keyword>true</keyword>.</dd>
+          </dlentry>
+          <dlentry>
+            <dt><xmlatt>muted</xmlatt></dt>
+            <dd>Specifies whether the resource is muted. The following values are recognized:
+                <keyword>true</keyword>, <keyword>false</keyword>, and
+                <keyword>-dita-use-conref-target </keyword>. The default value is
+                <keyword>true</keyword>.</dd>
+          </dlentry>
+          <dlentry>
+            <dt><xmlatt>scope</xmlatt></dt>
+            <dd>The <xmlatt>scope</xmlatt> attribute describes the closeness of the relationship
+              between the current document and the target resource. Resources in the same
+              information unit are considered <codeph>"local"</codeph>; resources in the same system
+              as the referencing content but not part of the same information unit are considered
+                <codeph>"peer"</codeph>; and resources outside the system, such as Web pages, are
+              considered <codeph>"external"</codeph>.</dd>
           </dlentry>
           <dlentry>
             <dt><xmlatt>tabindex</xmlatt></dt>
-            <dd>Indicates whether the audio resource can be focused and where it participates in
+            <dd>Specifies whether the audio resource can be focused and where it participates in
               sequential keyboard navigation. See <xref
-                href="https://html.spec.whatwg.org/#the-tabindex-attribute" format="html"
-                scope="external"><xmlatt>tabindex</xmlatt></xref> in the HTML specification (WHATWG
-              version).</dd>
-            <dd><!--<draft-comment author="Kristen J Eberlein" time="28 April 2019" audience="tc-reviewers"><p>Would this be a better description? "Indicates whether the audio object can be focused and where it participates in sequential keyboard navigation."</p><p>Note that changes that we make in this topic should be mirrored in the description of <xmlatt>tabindex</xmlatt> in the <xmlelement>video</xmlelement> topic.</p></draft-comment>--></dd>
-          </dlentry>
-          <dlentry>
-            <dt><xmlatt>type</xmlatt></dt>
-            <dd>Indicates the MIME type for the audio resource. This attribute enables processors to
-              avoid loading unsupported resources. If <xmlatt>type</xmlatt> is not specified and
-                <xmlatt>datakeyref</xmlatt> is specified, the effective type for the key named by
-              the <xmlatt>datakeyref</xmlatt> attribute is used as the value. If an explicit
-                <xmlatt>type</xmlatt> is not specified on either the <xmlelement>audio</xmlelement>
-              element or key definition, processors can use other means, such the URI file
-              extension, to determine the effective MIME type of the audio resource.</dd>
+                href="https://html.spec.whatwg.org/dev/interaction.html#the-tabindex-attribute"
+                format="html" scope="external"><xmlatt>tabindex</xmlatt></xref> in the HTML
+              specification (WHATWG version).</dd>
           </dlentry>
         </dl>
       </div>
       <p platform="lwdita">The following attributes are available on this element: <xref
-          keyref="attributes-universal"/>.</p>
+          keyref="attributes-universal"/>.<draft-comment author="rodaande">This needs to be examined
+          in line of the element moving into the base vocabulary; likely, some additional attributes
+          are now present.</draft-comment></p>
     </section>
   </refbody>
 </reference>
