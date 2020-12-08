@@ -405,9 +405,6 @@
                            yes |
                            -dita-use-conref-target)
                                     #IMPLIED
-               mapkeyref
-                          CDATA
-                                    #IMPLIED
                %relational-atts;
                %univ-atts;
                spectitle
@@ -446,9 +443,6 @@
                           (no |
                            yes |
                            -dita-use-conref-target)
-                                    #IMPLIED
-               mapkeyref
-                          CDATA
                                     #IMPLIED
                %relational-atts;
                %univ-atts;"
