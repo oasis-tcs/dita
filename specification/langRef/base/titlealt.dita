@@ -30,8 +30,7 @@
                 alternate title is not meaningful in the context of a
                     <xmlelement>topicgroup</xmlelement> element's
                 <xmlelement>topicmeta</xmlelement>, since the element is not part of a publication's
-                navigational structure. Such alternate titles <term outputclass="RFC-2119"
-                    >SHOULD</term> be ignored by processors.</p>
+                navigational structure. Such alternate titles should be ignored by processors.</p>
         </section>
         <section id="section_awx_mvk_nnb">
             <title>Processing expectations</title>
@@ -228,7 +227,9 @@
                         when there is no <codeph>navigation</codeph> alternative title available. In
                         this case, the one from the topic is present, and so is used. To override
                         the topic's navigation title in this case, the topic reference would have to
-                        explicitly provide a <codeph>navigation</codeph> alternative title.</li>
+                        explicitly provide a <codeph>navigation</codeph> alternative title. The
+                            <codeph>linking</codeph> title in the map still applies as the
+                        resource's linking title, just not its navigation title.</li>
                 </ol>
             </fig>
             <fig>
@@ -258,25 +259,26 @@
                     should be preserved.</p>
                 <p>The equivalent merged alternative titles, with duplicates removed, would look as
                     follows.</p>
-                <codeblock>&lt;titlealt title-role="subtitle">Doing Stuff&lt;/titlealt>
-&lt;titlealt title-role="flipbookTitle">Stuff&lt;/titlealt>
-&lt;titlealt title-role="breadcrumbTitle">Doin' Stuff&lt;/titlealt>
-&lt;titlealt title-role="longTitle">That thing you do when there's stuff that needs doing.&lt;/titlealt></codeblock>
+                <codeblock>&lt;titlealt title-role="breadcrumbTitle">Doin' Stuff&lt;/titlealt>
+&lt;titlealt title-role="longTitle">That thing you do when there's stuff that needs doing.&lt;/titlealt>
+&lt;titlealt title-role="subtitle">Doing Stuff&lt;/titlealt>
+&lt;titlealt title-role="flipbookTitle">Stuff&lt;/titlealt></codeblock>
             </fig>
-            <fig>
+            <fig id="fig_p2k_yf2_xnb">
                 <title>Example: Conrefs and Title Roles</title>
                 <p>Consider the following conrefs:</p>
                 <codeblock>&lt;titlealt title-role="linking" conref="titles.dita#someAltTitle"></codeblock>
-                <p>In this case, the roles for the resolved element will be <codeph>linking</codeph>; any
-                    other roles specified on the referenced element will be lost.</p>
-                <codeblock>&lt;titlealt title-role="-dita-use-conref-target" conref="titles.dita#someAltTitle"></codeblock>
-                <p>In this case, the roles for the resolved element will be whatever is specified on the
-                    referenced element.</p>
-                <p>Other tokens will have no effect when <codeph>-dita-use-conref-target</codeph> is
-                    present.</p>
+                <p>In this case, the roles for the resolved element will be
+                    <codeph>linking</codeph>; any other roles specified on the referenced element
+                    will be lost.</p>
                 <codeblock>&lt;titlealt title-role="search -dita-use-conref-target" conref="titles.dita#someAltTitle"></codeblock>
-                <p>In this case, the resolved element's title roles will be those from the referenced element,
-                    and <codeph>search</codeph> is ignored.</p>
+                <p>In this case, the roles for the resolved element will be whatever is specified on
+                    the referenced element.</p>
+                <note>The <codeph>search</codeph> token has no effect, and will be ignored. The
+                    presence of <codeph>-dita-use-conref-target</codeph> in
+                        <xmlatt>title-role</xmlatt> overrides all other tokens. The roles on the
+                    referencing and referenced elements are not merged; only those from the
+                    referenced element apply.</note>
             </fig>
             <fig>
                 <title>Keyrefs and alternative titles</title>
