@@ -48,17 +48,12 @@
         element is not present, the labels for the related links are generated in the following
           ways:<ul id="ul_u1n_wnw_1bb">
           <li>If the <xmlelement>relcolspec</xmlelement> element contains a
-              <xmlelement>topicref</xmlelement> element that references a non-DITA resource, the
-            value of the <xmlelement>topicref</xmlelement> element's navigation title is used for
-            the label.</li>
+              <xmlelement>topicref</xmlelement> element that specifies a navigation title, that
+            navigation title is used for the label.</li>
           <li>If the <xmlelement>relcolspec</xmlelement> element contains a
-              <xmlelement>topicref</xmlelement> element that references a DITA resource, the value
-            of the <xmlelement>topicref</xmlelement> element's navigation title is used for the
-            label.</li>
-          <li>If the <xmlelement>relcolspec</xmlelement> element contains a
-              <xmlelement>topicref</xmlelement> element that references a DITA resource and contains
-            no navigation title, the label is derived from the navigation title or, lacking that,
-            the title the topic.</li>
+              <xmlelement>topicref</xmlelement> element that does not specify a navigation title but
+            does reference a DITA topic, the label is derived from the navigation title of the
+            referenced topic or, lacking that, the title the topic.</li>
           <li>If no title is specified and no <xmlelement>topicref</xmlelement> is present in the
               <xmlelement>relcolspec</xmlelement>, a rendering tool might choose to generate a title
             for the links generated from that column.</li>
