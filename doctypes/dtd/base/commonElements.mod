@@ -59,8 +59,10 @@
                %state;"
 >
 <!ENTITY % basic.block
-              "%dl; |
+              "%audio; |
+               %dl; |
                %div; |
+               %example; |
                %fig; |
                %image; |
                %lines; |
@@ -73,7 +75,8 @@
                %simpletable; |
                %sl; |
                %table; |
-               %ul;"
+               %ul; |
+               %video;"
 >
 <!ENTITY % basic.phandblock
               "%basic.block; |
@@ -104,8 +107,10 @@
                %state;"
 >
 <!ENTITY % basic.block.notbl
-              "%dl; |
+              "%audio; |
+               %dl; |
                %div; |
+               %example; |
                %fig; |
                %image; |
                %lines; |
@@ -116,11 +121,14 @@
                %p; |
                %pre; |
                %sl; |
-               %ul;"
+               %ul; |
+               %video;"
 >
 <!ENTITY % basic.block.nonote
-              "%dl; |
+              "%audio; |
+               %dl; |
                %div; |
+               %example; |
                %fig; |
                %image; |
                %lines; |
@@ -132,11 +140,14 @@
                %simpletable; |
                %sl; |
                %table; |
-               %ul;"
+               %ul; |
+               %video;"
 >
 <!ENTITY % basic.block.nopara
-              "%dl; |
+              "%audio; |
+               %dl; |
                %div; |
+               %example; |
                %fig; |
                %image; |
                %lines; |
@@ -148,11 +159,14 @@
                %simpletable; |
                %sl; |
                %table; |
-               %ul;"
+               %ul; |
+               %video;"
 >
 <!ENTITY % basic.block.nolq
-              "%dl; |
+              "%audio; |
+               %dl; |
                %div; |
+               %example; |
                %fig; |
                %image; |
                %lines; |
@@ -164,11 +178,33 @@
                %simpletable; |
                %sl; |
                %table; |
-               %ul;"
+               %ul; |
+               %video;"
+>
+<!ENTITY % basic.block.noexample
+              "%audio; |
+               %dl; |
+               %div; |
+               %fig; |
+               %image; |
+               %lines; |
+               %lq; |
+               %note; |
+               %object; |
+               %ol; |
+               %p; |
+               %pre; |
+               %simpletable; |
+               %sl; |
+               %table; |
+               %ul; |
+               %video;"
 >
 <!ENTITY % basic.block.notbnofg
-              "%dl; |
+              "%audio; |
+               %dl; |
                %div; |
+               %example; |
                %image; |
                %lines; |
                %lq; |
@@ -178,7 +214,8 @@
                %p; |
                %pre; |
                %sl; |
-               %ul;"
+               %ul; |
+               %video;"
 >
 <!ENTITY % basic.block.notbfgobj
               "%dl; |
@@ -200,23 +237,13 @@
                %required-cleanup;"
 >
 <!ENTITY % data.elements.incl
-              "%data; |
-               %data-about;"
+              "%data;"
 >
 <!ENTITY % foreign.unknown.incl
               "%foreign; |
                %unknown;"
 >
 <!ENTITY % listitem.cnt
-              "#PCDATA |
-               %basic.block; |
-               %basic.ph; |
-               %data.elements.incl; |
-               %foreign.unknown.incl; |
-               %itemgroup; |
-               %txt.incl;"
->
-<!ENTITY % itemgroup.cnt
               "#PCDATA |
                %basic.block; |
                %basic.ph; |
@@ -332,7 +359,6 @@
                %basic.ph; |
                %data.elements.incl; |
                %foreign.unknown.incl; |
-               %itemgroup; |
                %txt.incl;"
 >
 <!ENTITY % pre.cnt
@@ -340,6 +366,15 @@
                %basic.ph; |
                %data.elements.incl; |
                %foreign.unknown.incl; |
+               %txt.incl;"
+>
+<!ENTITY % example.cnt
+              "#PCDATA |
+               %basic.block.noexample; |
+               %basic.ph; |
+               %data.elements.incl; |
+               %foreign.unknown.incl; |
+               %title; |
                %txt.incl;"
 >
 <!ENTITY % fig.cnt
@@ -370,6 +405,7 @@
 >
 <!ENTITY % data.cnt
               "#PCDATA |
+               %audio; |
                %basic.ph; |
                %data.elements.incl; |
                %draft-comment; |
@@ -377,7 +413,8 @@
                %image; |
                %object; |
                %required-cleanup; |
-               %title;"
+               %title; |
+               %video;"
 >
 <!ENTITY % div.cnt
               "#PCDATA |
@@ -536,36 +573,6 @@
                           CDATA
                                     #IMPLIED"
 >
-<!--                    LONG NAME: Data About                      -->
-<!ENTITY % data-about.content
-                       "((%data;),
-                         (%data; |
-                          %data-about;)*)"
->
-<!ENTITY % data-about.attributes
-              "%univ-atts;
-               href
-                          CDATA
-                                    #IMPLIED
-               keyref
-                          CDATA
-                                    #IMPLIED
-               format
-                          CDATA
-                                    #IMPLIED
-               type
-                          CDATA
-                                    #IMPLIED
-               scope
-                          (external |
-                           local |
-                           peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED"
->
-<!ELEMENT  data-about %data-about.content;>
-<!ATTLIST  data-about %data-about.attributes;>
-
 
 <!ENTITY % data-element-atts
               "%univ-atts;
@@ -830,8 +837,7 @@
 
 <!--                    LONG NAME: Simple List                     -->
 <!ENTITY % sl.content
-                       "((%data; |
-                          %data-about;)*,
+                       "((%data;)*,
                          (%sli;)+)"
 >
 <!ENTITY % sl.attributes
@@ -862,8 +868,7 @@
 
 <!--                    LONG NAME: Unordered List                  -->
 <!ENTITY % ul.content
-                       "((%data; |
-                          %data-about;)*,
+                       "((%data;)*,
                          (%li;)+)"
 >
 <!ENTITY % ul.attributes
@@ -883,8 +888,7 @@
 
 <!--                    LONG NAME: Ordered List                    -->
 <!ENTITY % ol.content
-                       "((%data; |
-                          %data-about;)*,
+                       "((%data;)*,
                          (%li;)+)"
 >
 <!ENTITY % ol.attributes
@@ -913,21 +917,9 @@
 <!ATTLIST  li %li.attributes;>
 
 
-<!--                    LONG NAME: Item Group                      -->
-<!ENTITY % itemgroup.content
-                       "(%itemgroup.cnt;)*"
->
-<!ENTITY % itemgroup.attributes
-              "%univ-atts;"
->
-<!ELEMENT  itemgroup %itemgroup.content;>
-<!ATTLIST  itemgroup %itemgroup.attributes;>
-
-
 <!--                    LONG NAME: Definition List                 -->
 <!ENTITY % dl.content
-                       "((%data; |
-                          %data-about;)*,
+                       "((%data;)*,
                          (%dlhead;)?,
                          (%dlentry;)+)"
 >
@@ -1016,6 +1008,18 @@
 <!ELEMENT  dd %dd.content;>
 <!ATTLIST  dd %dd.attributes;>
 
+<!--                    LONG NAME: Example                         -->
+<!ENTITY % example.content
+                       "(%example.cnt;)*"
+>
+<!ENTITY % example.attributes
+              "spectitle
+                          CDATA
+                                    #IMPLIED
+               %univ-atts;"
+>
+<!ELEMENT  example %example.content;>
+<!ATTLIST  example %example.attributes;>
 
 <!--                    LONG NAME: Figure                          -->
 <!ENTITY % fig.content
@@ -1664,6 +1668,181 @@
 <!ATTLIST  xref %xref.attributes;>
 
 
+<!--                    LONG NAME: Audio                           -->
+<!ENTITY % audio.content
+                       "((%desc;)?,
+                         (%longdescref;)?,
+                         (%fallback;)?,
+                         (%media-source;)*,
+                         (%media-track;)*,
+                         (%foreign.unknown.incl;)*)"
+>
+<!ENTITY % audio.attributes
+              "autoplay
+                          (true |
+                           false |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               controls
+                          (true |
+                           false |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               loop
+                          (true |
+                           false |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               muted
+                          (true |
+                           false |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               href
+                          CDATA
+                                    #IMPLIED
+               keyref
+                          CDATA
+                                    #IMPLIED
+               format
+                          CDATA
+                                    #IMPLIED
+               scope
+                          (external |
+                           local |
+                           peer |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               tabindex
+                          NMTOKEN
+                                    #IMPLIED
+               %univ-atts;"
+>
+<!ELEMENT  audio %audio.content;>
+<!ATTLIST  audio %audio.attributes;>
+
+
+<!--                    LONG NAME: Video                            -->
+<!ENTITY % video.content
+                       "((%desc;)?,
+                         (%longdescref;)?,
+                         (%fallback;)?,
+                         (%media-source;)*,
+                         (%media-track;)*,
+                         (%foreign.unknown.incl;)*)"
+>
+<!ENTITY % video.attributes
+              "autoplay
+                          (true |
+                           false |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               controls
+                          (true |
+                           false |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               loop
+                          (true |
+                           false |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               muted
+                          (true |
+                           false |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               poster
+                          CDATA
+                                    #IMPLIED
+               posterkeyref                          
+                          CDATA
+                                    #IMPLIED
+               href
+                          CDATA
+                                    #IMPLIED
+               keyref
+                          CDATA
+                                    #IMPLIED
+               format
+                          CDATA
+                                    #IMPLIED
+               scope
+                          (external |
+                           local |
+                           peer |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               tabindex
+                          NMTOKEN
+                                    #IMPLIED
+               %univ-atts;"
+>
+<!ELEMENT  video %video.content;>
+<!ATTLIST  video %video.attributes;>
+
+
+<!--                    LONG NAME: Media source                -->
+<!ENTITY % media-source.content
+                       "EMPTY"
+>
+<!ENTITY % media-source.attributes
+              "href
+                          CDATA
+                                    #IMPLIED
+               keyref
+                          CDATA
+                                    #IMPLIED
+               format
+                          CDATA
+                                    #IMPLIED
+               scope
+                          (external |
+                           local |
+                           peer |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               %univ-atts;"
+>
+<!ELEMENT  media-source %media-source.content;>
+<!ATTLIST  media-source %media-source.attributes;>
+
+
+<!--                    LONG NAME: Media track                -->
+<!ENTITY % media-track.content
+                       "(#PCDATA)"
+>
+<!ENTITY % media-track.attributes
+              "href
+                          CDATA
+                                    #IMPLIED
+               keyref
+                          CDATA
+                                    #IMPLIED
+               format
+                          CDATA
+                                    #IMPLIED
+               scope
+                          (external |
+                           local |
+                           peer |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               kind       (subtitles |
+                           captions |
+                           descriptions |
+                           chapters |
+                           metadata |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               srclang
+                          CDATA
+                                    #IMPLIED
+               %univ-atts;"
+>
+<!ELEMENT  media-track %media-track.content;>
+<!ATTLIST  media-track %media-track.attributes;>
+
 
 <!ENTITY % tblDecl-def
   PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Exchange Table Model//EN"
@@ -1675,10 +1854,10 @@
 <!-- ============================================================= -->
   
 <!ATTLIST  alt            class CDATA "- topic/alt "        >
+<!ATTLIST  audio          class CDATA "- topic/audio "      >
 <!ATTLIST  cite           class CDATA "- topic/cite "       >
 <!ATTLIST  dd             class CDATA "- topic/dd "         >
 <!ATTLIST  data           class CDATA "- topic/data "       >
-<!ATTLIST  data-about     class CDATA "- topic/data-about " >
 <!ATTLIST  ddhd           class CDATA "- topic/ddhd "       >
 <!ATTLIST  desc           class CDATA "- topic/desc "       >
 <!ATTLIST  div            class CDATA "- topic/div "        >
@@ -1688,6 +1867,7 @@
 <!ATTLIST  draft-comment  class CDATA "- topic/draft-comment ">
 <!ATTLIST  dt             class CDATA "- topic/dt "         >
 <!ATTLIST  dthd           class CDATA "- topic/dthd "       >
+<!ATTLIST  example        class CDATA "- topic/example "    >
 <!ATTLIST  fallback       class CDATA "- topic/fallback "   >
 <!ATTLIST  fig            class CDATA "- topic/fig "        >
 <!ATTLIST  figgroup       class CDATA "- topic/figgroup "   >
@@ -1699,7 +1879,6 @@
 <!ATTLIST  index-see-also class CDATA "- topic/index-see-also ">
 <!ATTLIST  indexterm      class CDATA "- topic/indexterm "  >
 <!ATTLIST  index-base     class CDATA "- topic/index-base " >
-<!ATTLIST  itemgroup      class CDATA "- topic/itemgroup "  >
 <!ATTLIST  keyword        class CDATA "- topic/keyword "    >
 <!ATTLIST  li             class CDATA "- topic/li "         >
 <!ATTLIST  lines          class CDATA "- topic/lines "      >
@@ -1707,6 +1886,8 @@
 <!ATTLIST  longdescref    class CDATA "- topic/longdescref ">
 <!ATTLIST  longquoteref   class CDATA "- topic/longquoteref ">
 <!ATTLIST  lq             class CDATA "- topic/lq "         >
+<!ATTLIST  media-source   class CDATA "- topic/media-source ">
+<!ATTLIST  media-track    class CDATA "- topic/media-track ">
 <!ATTLIST  navtitle       class CDATA "- topic/navtitle "   >
 <!ATTLIST  note           class CDATA "- topic/note "       >
 <!ATTLIST  object         class CDATA "- topic/object "     >
@@ -1732,6 +1913,7 @@
 <!ATTLIST  tm             class CDATA "- topic/tm "         >
 <!ATTLIST  ul             class CDATA "- topic/ul "         >
 <!ATTLIST  unknown        class CDATA "- topic/unknown "    >
+<!ATTLIST  video          class CDATA "- topic/video "      >
 <!ATTLIST  xref           class CDATA "- topic/xref "       >
 
 <!-- ================== End of DITA Common Elements ==================== -->

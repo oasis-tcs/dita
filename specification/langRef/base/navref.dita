@@ -4,7 +4,10 @@
  "reference.dtd">
 <reference id="navref" xml:lang="en-us">
 <title><xmlelement>navref</xmlelement></title>
-<shortdesc><ph conkeyref="reuse-general/navtitle_shortdesc"/></shortdesc>
+<shortdesc>A navigation reference is a reference to another map which is preserved as a transcluding
+    link in the result deliverable rather than resolved when the deliverable is produced. Output
+    formats that support such linking can integrate the referenced resource when displaying the
+    referencing map to an end user. </shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -16,18 +19,18 @@
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>For example, if a map is converted to the Eclipse help system format, the DITA element
-          <codeph>&lt;navref mapref="other.ditamap"/&gt;</codeph>
-        <ph>is</ph> converted to the Eclipse element <codeph>&lt;link toc="other.xml"/&gt;</codeph>.
-        When Eclipse loads the referencing map, it will replace this link element with the contents
-        of the file <filepath>other.xml</filepath>, provided that the file
-          <filepath>other.xml</filepath> is available.</p>
-      <p>Note that not all output formats support such linking. In order to include another map
-        directly without depending on the output format, use a <xmlelement>topicref</xmlelement>
-        element with the <xmlatt>format</xmlatt> attribute set to <keyword>ditamap</keyword>. The
-        effect is similar to using a <xmlatt>conref</xmlatt> attribute. For example, the following
-        markup represents a literal inclusion of the map <filepath>other.ditamap</filepath>:</p>
-      <codeblock>&lt;topicref href="other.ditamap" format="ditamap"/&gt;</codeblock>
+      <p>The <xmlelement>navref</xmlelement> element is intended as a reference to a navigation
+        resource that can be resolved at rendering time. It allows for maps to be published into a
+        help system where the referenced navigation is published independently (or may not be
+        avilable at all). If available, the referenced navigation can then be resolved at render
+        time within a help system.</p>
+      <!--<p>For example, if a map is converted to the Eclipse help system format, the DITA element <codeph>&lt;navref mapref="other.ditamap"/&gt;</codeph> <ph>is</ph> converted to the Eclipse element <codeph>&lt;link toc="other.xml"/&gt;</codeph>. When Eclipse loads the referencing map, it will replace this link element with the contents of the file <filepath>other.xml</filepath>, provided that the file <filepath>other.xml</filepath> is available.</p>-->
+      <p>In order to include another map directly without depending on the output format or help
+        system, use a <xmlelement>topicref</xmlelement> element with the <xmlatt>format</xmlatt>
+        attribute set to <codeph>ditamap</codeph>. The effect is similar to using a
+          <xmlatt>conref</xmlatt> attribute. For example, the following markup represents a literal
+        inclusion of the map
+        <filepath>other.ditamap</filepath>:<codeblock>&lt;topicref href="other.ditamap" format="ditamap"/&gt;</codeblock></p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -37,25 +40,18 @@
       <dl>
         <dlentry>
           <dt><xmlatt>mapref</xmlatt></dt>
-          <dd>Specifies the URI of the map file or non-DITA resource to be referenced. It
-              <ph>might</ph> reference a DITA map or a resource that is appropriate for your output
-            format (such as XML TOC file for Eclipse output).
-            <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>--></dd>
-        </dlentry>
-        <dlentry>
-          <dt><xmlatt>keyref</xmlatt>
-            <ph conkeyref="reuse-attributes/deprecated-attr"/></dt>
-          <dd>The <xmlatt>keyref</xmlatt> attribute was unintentionally defined for
-              <xmlelement>navref</xmlelement> in the original DITA grammar files. It is retained for
-            backwards compatibility. The attribute will be removed in a future release, and
-            processors are not expected to support it.</dd>
+          <dd>Specifies the URI of the map file or non-DITA resource to be referenced. It might
+            reference a DITA map or a resource that is appropriate for a target help system. <ph
+              otherprops="examples">For example, it could reference an XML TOC file for use with
+              Eclipse help.</ph>
+          </dd>
         </dlentry>
       </dl>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><p>In this example, the map titled "MyComponent tasks" references the maps
-<filepath>othermap2.ditamap</filepath> and <filepath>othermap3.ditamap</filepath>.</p><codeblock>&lt;map title="MyComponent tasks"&gt;
- &lt;navref mapref="../com.ibm.xml.doc/othermap1.ditamap"/&gt;
- &lt;navref mapref="../com.ibm.xml.doc/othermap2.ditamap"/&gt;
+<example id="example" otherprops="examples"><title>Example</title><p>In the following code sample, the map titled "MyComponent tasks" references the maps
+          <filepath>othermap2.ditamap</filepath> and <filepath>othermap3.ditamap</filepath>.</p><codeblock>&lt;map title="MyComponent tasks"&gt;
+ &lt;navref mapref="../com.example.plugin.xml.doc/othermap1.ditamap"/&gt;
+ &lt;navref mapref="../com.example.plugin.xml.doc/othermap2.ditamap"/&gt;
 &lt;/map&gt;</codeblock></example>
 </refbody>
 </reference>

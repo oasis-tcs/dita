@@ -3,7 +3,9 @@
  "reference.dtd">
 <reference id="anchor" xml:lang="en-us">
 <title><xmlelement>anchor</xmlelement></title>
-<shortdesc><ph conkeyref="reuse-general/anchor_shortdesc"/></shortdesc>
+<shortdesc>An anchor within a map is an integration point that another map can reference in order to
+    insert its navigation into the referenced map's navigation
+    tree.<!--For those familiar with Eclipse help systems, this serves the same purpose as the <xmlelement>anchor</xmlelement> element in that system.--></shortdesc>
 <prolog><metadata>
 <keywords><indexterm>elements<indexterm>basic map<indexterm><xmlelement>anchor</xmlelement></indexterm></indexterm></indexterm>
 </keywords>
@@ -34,12 +36,35 @@
           <dd>Provides an integration point that another map <ph>can</ph> reference in order to
             insert its navigation into the current navigation tree. The <xmlatt>anchorref</xmlatt>
             attribute on a map <ph>can</ph> be used to reference this attribute. See <xref
-              href="../../archSpec/base/id.dita"/> for more details.
-            <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-NMTOKEN"/>--></dd>
+              href="../../archSpec/base/id.dita"/> for more details.</dd>
         </dlentry>
       </dl>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><p conkeyref="reuse-general/anchor"/><p conkeyref="reuse-general/anchoref"/></example>
+<example id="example" otherprops="examples"><title>Example</title>
+      <p id="anchor_ex">The following code sample shows how a map creates an
+          <xmlelement>anchor</xmlelement> element with an <xmlatt>id</xmlatt> attribute set to
+          "a1".<fig id="fig_c53_pdx_3nb">
+          <title>DITA map that contains an anchor</title>
+          <codeblock>&lt;map>
+  &lt;title&gt;MyComponent tasks&lt;/title&gt;
+  &lt;topicref href="start.dita" toc="yes">
+    &lt;navref mapref="othermap2.ditamap"/>
+    &lt;navref mapref="othermap3.ditamap"/>
+    &lt;anchor id="a1"/>
+  &lt;/topicref>
+&lt;/map></codeblock>
+        </fig></p>
+      <p id="anchoref">The <xmlatt>id</xmlatt> on an <xmlelement>anchor</xmlelement> element can be
+        referenced by the <xmlatt>anchorref</xmlatt> attribute on another map's
+          <xmlelement>map</xmlelement> element. For example, the map to be integrated at that spot
+        could be defined as follows.<fig id="fig_gpx_sdx_3nb">
+          <title>DITA map that references an anchor</title>
+          <codeblock>&lt;map anchorref="map1.ditamap#a1"&gt;
+  &lt;title&gt;This map is can be rendered at the "a1" anchor 
+         in the MyComponent task map&lt;/title&gt;
+  &lt;!-- ... -->
+&lt;/map&gt;</codeblock>
+        </fig></p></example>
 </refbody>
 </reference>
 

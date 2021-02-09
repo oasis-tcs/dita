@@ -3,8 +3,8 @@
  "reference.dtd">
 <reference id="ditaval-startflag" xml:lang="en-us">
 <title><xmlelement>startflag</xmlelement></title>
-<shortdesc>The <xmlelement>startflag</xmlelement> provides information (optional image reference and
-    alternate text) that identifies the beginning of flagged content.</shortdesc>
+<shortdesc>The <xmlelement>startflag</xmlelement> element in a DITAVAL document provides information
+    that identifies the beginning of flagged content.</shortdesc>
 <prolog><metadata>
 <keywords><indexterm>DITAVAL<indexterm>elements<indexterm><xmlelement>startflag</xmlelement></indexterm></indexterm></indexterm>
         <indexterm>elements<indexterm>DITAVAL<indexterm><xmlelement>startflag</xmlelement></indexterm></indexterm></indexterm>
@@ -13,11 +13,17 @@
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>If an image is specified, the specified image will be used to flag the beginning of the
-        content, with the <xmlelement>alt-text</xmlelement> contents as alternative text. If
-          <xmlelement>alt-text</xmlelement> is specified without an image, that text will be used to
-        flag the content instead of an image. If no image and no <xmlelement>alt-text</xmlelement>
-        are specified, then this element has no defined purpose.</p>
+      <p>The <xmlelement>start</xmlelement> element defines a flag to be used at the beginning of
+        content identified by "flag" conditions in a DITAVAL document:<ul id="ul_r1g_lws_jnb">
+          <li>If an image is specified, the specified image is a flag to identify the beginning of
+            the content, with the <xmlelement>alt-text</xmlelement> contents as alternative text for
+            that image.</li>
+          <li> If <xmlelement>alt-text</xmlelement> is specified but
+              <xmlelement>startflag</xmlelement> does not reference an image, that text can be used
+            to flag the content instead of an image.</li>
+          <li>If no image and no <xmlelement>alt-text</xmlelement> are specified, then this element
+            has no defined purpose.</li>
+        </ul></p>
     </section>
     <section id="attributes">
       <title>Attributes</title>

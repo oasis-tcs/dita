@@ -2,10 +2,10 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference xml:lang="en-us" id="ux-window" >
   <title><xmlelement>ux-window</xmlelement></title>
-  <shortdesc>Use the <xmlelement>ux-window</xmlelement> element to provide specifications for a
-    window or viewport in which a user assistance topic or Web page can be displayed. The window or
-    viewport can be referenced by the <xmlelement>resourceid</xmlelement> element associated with a
-    topic or <xmlelement>topicref</xmlelement> element.</shortdesc>
+  <shortdesc>The <xmlelement>ux-window</xmlelement> element provides specifications for a window or
+    viewport in which a user assistance topic or web page can be displayed. The window or viewport
+    can be referenced by the <xmlelement>resourceid</xmlelement> element associated with a topic or
+      <xmlelement>topicref</xmlelement> element.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -26,8 +26,8 @@
     <section id="attributes">
       <title>Attributes</title>
       <p>The following attributes are available on this element: <xref
-          keyref="attributes-id"/>, <xref
-          keyref="attributes-metadata"/>, <xref
+          keyref="attributes-universal/idatts"/>, <xref
+          keyref="attributes-universal/metadataatts"/>, <xref
           keyref="attributes-universal/class"/>, and the attributes
         defined below.</p>
       <dl>
@@ -113,10 +113,16 @@
     </section>
     <example id="example" otherprops="examples">
       <title>Example</title>
-      <p>In this example, a window with a name of "help" is defined in the map. The window name is
-        later referenced by the <xmlatt>ux-windowref</xmlatt> attribute on the
-          <xmlelement>resourceid</xmlelement> element.</p>
-      <codeblock>&lt;map title="Widget Help">
+      <p>This section shows how <xmlelement>ux-window</xmlelement> and
+          <xmlelement>resourceid</xmlelement> work together to define and use window
+        definitions.</p>
+      <fig id="fig_nky_ftw_3nb">
+        <title>Using <xmlelement>ux-window</xmlelement> with
+          <xmlelement>resourceid</xmlelement></title>
+        <p>The following code sample shows how a window with a name of "help" is defined in the map.
+          The window name is later referenced by the <xmlatt>ux-windowref</xmlatt> attribute on the
+            <xmlelement>resourceid</xmlelement> element.</p>
+        <codeblock>&lt;map title="Widget Help">
  &lt;topicmeta>
   <b>&lt;ux-window id="fg23" name="help" top="10" left="20" height="400" width="500" 
      features="status=yes,toolbar=no,menubar=no,location=no" relative="yes"
@@ -133,9 +139,14 @@
    &lt;/topicref>
 &lt;/topicref>
 &lt;/map&gt;</codeblock>
-      <p>In this example, different window specifications are defined for tablet and desktop
-        presentation:</p>
-      <codeblock>&lt;map title="Puggles Help"&gt;
+      </fig>
+      <p>This section shows how multiple window specifications can be defined for alternate
+        presentations.</p>
+      <fig id="fig_tvf_jtw_3nb">
+        <title>Using multiple <xmlelement>ux-window</xmlelement> definitions</title>
+        <p>The following code sample shows different window specifications for tablet and display
+          presentation.</p>
+        <codeblock>&lt;map title="Puggles Help"&gt;
  &lt;topicmeta>
  <b>&lt;ux-window id="p76" name="ux-tablet" top="1cm" left="1cm" height="4cm" width="3cm" 
     features="status=no,toolbar=no,menubar=no,location=no" relative="no"
@@ -148,6 +159,7 @@
   &lt;!-- ... -->
  &lt;/topicref>
 &lt;/map&gt;</codeblock>
+      </fig>
     </example>
   </refbody>
 </reference>

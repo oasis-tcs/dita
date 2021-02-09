@@ -82,22 +82,6 @@
 >%metaXML;
 
 <!-- ============================================================= -->
-<!--                COMMON ENTITY DECLARATIONS                     -->
-<!-- ============================================================= -->
-
-<!-- Use of this entity is deprecated; the nbsp entity will be 
-     removed in DITA 2.0.                                          -->
-<!ENTITY nbsp                   "&#xA0;"                             >
-
-
-<!-- ============================================================= -->
-<!--                    NOTATION DECLARATIONS                      -->
-<!-- ============================================================= -->
-<!--                    DITA uses the direct reference model; 
-                        notations may be added later as required   -->
-
-
-<!-- ============================================================= -->
 <!--                    STRUCTURAL MEMBERS                         -->
 <!-- ============================================================= -->
 
@@ -106,11 +90,6 @@
   "topic
   "
 > 
-
-<!-- ============================================================= -->
-<!--                    COMMON ATTLIST SETS                        -->
-<!-- ============================================================= -->
-
 
 <!-- ============================================================= -->
 <!--                    SPECIALIZATION OF DECLARED ELEMENTS        -->
@@ -156,15 +135,6 @@
                %basic.ph; |
                %data.elements.incl; |
                %foreign.unknown.incl; |
-               %txt.incl;"
->
-<!ENTITY % example.cnt
-              "#PCDATA |
-               %basic.block; |
-               %basic.ph; |
-               %data.elements.incl; |
-               %foreign.unknown.incl; |
-               %title; |
                %txt.incl;"
 >
 <!ENTITY % section.cnt
@@ -306,7 +276,6 @@
 <!ENTITY % body.content
                        "(%body.cnt; |
                          %bodydiv; |
-                         %example; |
                          %section;)*"
 >
 <!ENTITY % body.attributes
@@ -357,20 +326,6 @@
 >
 <!ELEMENT  sectiondiv %sectiondiv.content;>
 <!ATTLIST  sectiondiv %sectiondiv.attributes;>
-
-
-<!--                    LONG NAME: Example                         -->
-<!ENTITY % example.content
-                       "(%example.cnt;)*"
->
-<!ENTITY % example.attributes
-              "spectitle
-                          CDATA
-                                    #IMPLIED
-               %univ-atts;"
->
-<!ELEMENT  example %example.content;>
-<!ATTLIST  example %example.attributes;>
 
 
 <!--                    LONG NAME: prolog                          -->
@@ -450,9 +405,6 @@
                            yes |
                            -dita-use-conref-target)
                                     #IMPLIED
-               mapkeyref
-                          CDATA
-                                    #IMPLIED
                %relational-atts;
                %univ-atts;
                spectitle
@@ -492,9 +444,6 @@
                            yes |
                            -dita-use-conref-target)
                                     #IMPLIED
-               mapkeyref
-                          CDATA
-                                    #IMPLIED
                %relational-atts;
                %univ-atts;"
 >
@@ -510,7 +459,6 @@
 <!ATTLIST  abstract       class CDATA "- topic/abstract "   >
 <!ATTLIST  body           class CDATA "- topic/body "       >
 <!ATTLIST  bodydiv        class CDATA "- topic/bodydiv "    >
-<!ATTLIST  example        class CDATA "- topic/example "    >
 <!ATTLIST  link           class CDATA "- topic/link "       >
 <!ATTLIST  linkinfo       class CDATA "- topic/linkinfo "   >
 <!ATTLIST  linklist       class CDATA "- topic/linklist "   >

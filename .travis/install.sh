@@ -4,14 +4,15 @@ set -e
 
 # Install DITA-OT
 curl -sfL https://github.com/dita-ot/dita-ot/releases/download/$DITA_OT_VERSION/dita-ot-$DITA_OT_VERSION.zip -o dita-ot-$DITA_OT_VERSION.zip
-unzip dita-ot-$DITA_OT_VERSION.zip
+unzip -q dita-ot-$DITA_OT_VERSION.zip
 export DITA_HOME=$PWD/dita-ot-$DITA_OT_VERSION
 
-# Create and install plugin for 2.0 with latest doctypes
-mkdir $DITA_HOME/plugins/org.oasis-open.dita.v2_0/
-cp -a ./doctypes/. $DITA_HOME/plugins/org.oasis-open.dita.v2_0/
-cp .travis/ditaotplugin.xml $DITA_HOME/plugins/org.oasis-open.dita.v2_0/plugin.xml
-$DITA_HOME/bin/dita -install
+# Copy latest base doctype updates over the beta version in DITA-OT;
+# replace whatever (possibly older) version is currently shipped.
+rm -rv $DITA_HOME/plugins/org.oasis-open.dita.v2_0/dtd/
+rm -rv $DITA_HOME/plugins/org.oasis-open.dita.v2_0/rng/
+cp -av ./doctypes/. $DITA_HOME/plugins/org.oasis-open.dita.v2_0/
+$DITA_HOME/bin/dita install
 
 # Install RNG support
 #curl -sfL https://github.com/oxygenxml/dita-relaxng-defaults/archive/master.zip -o dita-ng.zip

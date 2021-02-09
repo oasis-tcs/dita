@@ -12,15 +12,11 @@
         <indexterm>quotations<indexterm>long</indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
-    <section id="formatting-expecttions">
-      <title>Rendering expectations</title>
-      <p>Processors typically render a <xmlelement>lq</xmlelement> as an indented block.</p>
-    </section>
     <section id="attributes">
       <title>Attributes</title>
       <p>The following attributes are available on this element: <xref
           keyref="attributes-universal"/>, <xref
-          keyref="attributes-linkRelationship"/> (with a narrowed definition for
+          keyref="attributes-common/linkatts"/> (with a narrowed definition for
           <xmlatt>type</xmlatt>, given below), and <xref
           keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>, and the
         attributes defined below.</p>
@@ -32,9 +28,8 @@
         <dlentry id="type">
           <dt><xmlatt>type</xmlatt></dt>
           <dd>Indicates the location of the source of the quote. <ph
-              conkeyref="reuse-attributes/nonstandard-type"/> See
-          <xref keyref="attributes-type"/> for detailed information on the
-            usual supported values and processing implications. </dd>
+              conkeyref="reuse-attributes/nonstandard-type"/> See <xref keyref="attributes-type"/>
+            for detailed information on the usual supported values and processing implications. </dd>
         </dlentry>
       </dl>
     </section>
@@ -43,13 +38,12 @@
       <p>The following code sample contains a quotation. The <xmlatt>reftitle</xmlatt> attribute
         specifies the title of the document that is quoted, and the <xmlatt>href</xmlatt> attribute
         indicates a Web site where the full text of the address can be accessed.</p>
-      <codeblock>&lt;p&gt;This is the first line of the address that 
-Abraham Lincoln delivered on November 19, 1863 for the dedication 
-of the cemetery at Gettysburg, Pennsylvania.&lt;/p&gt;
+      <codeblock>&lt;p&gt;This is the first line of the address that Abraham Lincoln delivered
+on November 19, 1863 for the dedication of the cemetery at Gettysburg, Pennsylvania.&lt;/p&gt;
 &lt;lq reftitle="Gettysburg address"
 href="https://en.wikisource.org/wiki/Gettysburg_Address_(Nicolay_draft)" format="html"
-scope="external"&gt;Four score and seven years ago our fathers brought forth on this continent a new
-nation, conceived in liberty, and dedicated to the proposition that all men
+scope="external"&gt;Four score and seven years ago our fathers brought forth on this continent 
+a new nation, conceived in liberty, and dedicated to the proposition that all men
 are created equal.&lt;/lq&gt;</codeblock>
       <!--<p>When processed, the output might look like the following:</p><p>This is the first line of the address that Abraham Lincoln delivered on November 19, 1863 for the dedication of the cemetery at Gettysburg, Pennsylvania.</p><lq reftitle="Gettysburg address" href="https://en.wikisource.org/wiki/Gettysburg_Address_(Nicolay_draft)" format="html" scope="external">Four score and seven years ago our fathers brought forth on this continent a new nation, conceived in liberty, and dedicated to the proposition that all men are created equal.</lq>-->
     </example>

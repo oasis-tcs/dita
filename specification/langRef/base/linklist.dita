@@ -2,59 +2,37 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="linklist" xml:lang="en-us">
 <title><xmlelement>linklist</xmlelement></title>
-<shortdesc>The <xmlelement>linklist</xmlelement> element defines an author-arranged group of
-    links.</shortdesc>
+<shortdesc>A link list is an author-ordered group of links.</shortdesc>
 <prolog><metadata>
 <keywords>
         <indexterm>elements<indexterm>related
               links<indexterm><xmlelement>linklist</xmlelement></indexterm></indexterm></indexterm>
-        <indexterm>related links
-          elements<indexterm><xmlelement>linklist</xmlelement></indexterm></indexterm>
         <indexterm>examples<indexterm>links<indexterm>order of links within
                 <xmlelement>linklist</xmlelement></indexterm></indexterm></indexterm>
-        <indexterm>processing expectations<indexterm>links</indexterm><indexterm>order of links
-            within <xmlelement>linklist</xmlelement></indexterm></indexterm></keywords>
+        <indexterm>related links
+          elements<indexterm><xmlelement>linklist</xmlelement></indexterm></indexterm>
+        <indexterm>rendering
+          expectations<indexterm><xmlelement>linklist</xmlelement></indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
+    <!--<section id="usage-information"><title>Usage information</title><p>There are two ways to organize related information links within a topic. First, you can add them all in no particular order, either by using <xmlelement>linkpool</xmlelement> elements or by placing <xmlelement>link</xmlelement> elements directly within <xmlelement>related-links</xmlelement>, in which case the rendering is implementation dependent. For example, a tool could sort all links based on the role or type; a tool could also move or remove links to fit the context (for example, moving a prerequisite link to the top of a browser window, or removing links to the next topic if it is rendered on the same page in a PDF). These behaviors are examples only and are not required.</p><p>Second, links can be grouped using one or more <xmlelement>linklist</xmlelement> elements. When you group them using <xmlelement>linklist</xmlelement>, then the order of the links within each <xmlelement>linklist</xmlelement> is preserved when rendered. You can also use a combination of the two approaches, which will allow some links to be automatically sorted while the others are left as-is.</p><p>Attributes set on the <xmlelement>linkpool</xmlelement> and <xmlelement>linklist</xmlelement> elements are inherited by their descendants. For example, if you have a <xmlelement>linklist</xmlelement> element that contains all external links, you can set <codeph>scope="external"</codeph> on that outer <xmlelement>linklist</xmlelement> element and leave it off the <xmlelement>link</xmlelement> elements within that <xmlelement>linklist</xmlelement>.</p></section>-->
     <section id="usage-information">
       <title>Usage information</title>
-      <p>There are two ways to organize related information links within a topic. First, you can add
-        them all in no particular order, either by using <xmlelement>linkpool</xmlelement> elements
-        or by placing <xmlelement>link</xmlelement> elements directly within
-          <xmlelement>related-links</xmlelement>, in which case the rendering is implementation
-        dependent. For example, a tool could sort all links based on the role or type; a tool could
-        also move or remove links to fit the context (for example, moving a prerequisite link to the
-        top of a browser window, or removing links to the next topic if it is rendered on the same
-        page in a PDF). These behaviors are examples only and are not required.</p>
-      <!--Note: following section says "order of the links within each linklist is preserved". Think this originally intended an RFC "MUST" level requirement, but shortdesc in previous DITA versions used "should", so leaving this language unchanged for DITA 1.3.-->
-      <p>Second, links can be grouped using one or more <xmlelement>linklist</xmlelement> elements.
-        When you group them using <xmlelement>linklist</xmlelement>, then the order of the links
-        within each <xmlelement>linklist</xmlelement> is preserved when rendered. You can also use a
-        combination of the two approaches, which will allow some links to be automatically sorted
-        while the others are left as-is.</p>
-      <p>Attributes set on the <xmlelement>linkpool</xmlelement> and
-          <xmlelement>linklist</xmlelement> elements are inherited by their descendants. For
-        example, if you have a <xmlelement>linklist</xmlelement> element that contains all external
-        links, you can set <codeph>scope="external"</codeph> on that outer
-          <xmlelement>linklist</xmlelement> element and leave it off the
-          <xmlelement>link</xmlelement> elements within that <xmlelement>linklist</xmlelement>.</p>
+      <p>Attributes that are set on the <xmlelement>linklist</xmlelement> element cascade to the
+        contained links.</p>
     </section>
     <section id="rendering-expectations">
       <title>Rendering expectations</title>
-      <p>When rendering links, processors <term outputclass="RFC-2119">SHOULD</term> preserve the
-        order of links specified within a <xmlelement>linklist</xmlelement> element.</p>
-      <draft-comment author="Kristen J Eberlein" time="01 June 2018" audience="tc-reviewers">
-        <p>Change this to MUST for DITA 2.0?</p>
-      </draft-comment>
+      <p>When rendering links, processors <term outputclass="RFC-2119">MUST</term> preserve the
+        order of links that are specified within <xmlelement>linklist</xmlelement> elements.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
       <p>The following attributes are available on this element: <xref keyref="attributes-universal"
-        />, <xref keyref="attributes-commonMap/collection-type"/>, <xref keyref="attributes-role"/>,
-          <xref keyref="attributes-specialization/spectitle"/>, <xref
-          keyref="attributes-common/mapkeyref"/>, and the attributes defined below. This element
+        />, <xref keyref="attributes-common/collection-type"/>, <xref keyref="attributes-role"/>,
+          <xref keyref="attributes-common/spectitle"/>, and the attributes defined below. This element
         also uses <xmlatt>format</xmlatt>, <xmlatt>scope</xmlatt>, and <xmlatt>type</xmlatt> from
-          <xref keyref="attributes-linkRelationship"/>. </p>
+          <xref keyref="attributes-common/linkatts"/>. </p>
       <dl conkeyref="reuse-attributes/linklist-and-linkpool">
         <dlentry>
           <dt/>
@@ -64,10 +42,12 @@
     </section>
     <example id="example" otherprops="examples">
       <title>Example</title>
+      <p>The following code sample shows how the <xmlelement>linklist</xmlelement> element is used
+        to construct an author-defined group of links. The <xmlatt>format</xmlatt> and
+          <xmlatt>scope</xmlatt> attributes are set on the <xmlelement>linklist</xmlelement> element
+        and cascade to the contained links. The order of links is preserved in the output.</p>
       <codeblock>&lt;related-links>
-  &lt;linklist scope="external">
-    &lt;title>Example links&lt;/title>
-    &lt;desc>These links will always appear in this order.&lt;/desc>
+  &lt;linklist format="html" scope="external">
     &lt;link href="http://www.example.org">
       &lt;linktext>Example 1&lt;/linktext>
     &lt;/link>

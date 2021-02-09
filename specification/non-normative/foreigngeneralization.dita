@@ -30,21 +30,21 @@
     <example id="example-simple" otherprops="examples">
       <title>Example: Simple object generalization</title>
       <p>For example, a DITA document could contain a specialization of
-          <xmlelement>foreign</xmlelement> for MathML using the MathML domain that ships with DITA
-        1.3. It could look like this:</p>
+          <xmlelement>foreign</xmlelement> for MathML using the OASIS MathML domain. It could look
+        like this:</p>
       <codeblock>&lt;mathml class="+ topic/foreign mathml-d/mathml "&gt;
   &lt;m:math&gt;
     &lt;m:mi&gt;x&lt;/m:mi&gt;&lt;m:mo&gt;+&lt;/m:mo&gt;&lt;m:mn&gt;3&lt;/m:mn&gt;
   &lt;/m:math&gt;
-  &lt;data-about&gt;X plus three&lt;/data-about&gt;
+  &lt;data&gt;X plus three&lt;/data&gt;
 &lt;/mathml&gt;</codeblock>
       <p>The <xmlelement>mathml</xmlelement> container is a DITA element, so it should be
         generalized using normal rules. The <xmlelement>m:math</xmlelement> element, which is not a
-        DITA element, will be exported to another file. The <xmlelement>data-about</xmlelement>
-        element will remain:</p>
+        DITA element, will be exported to another file. The <xmlelement>data</xmlelement> element
+        will remain:</p>
       <codeblock>&lt;foreign class="+ topic/foreign mathml-d/mathml "&gt;
   &lt;object data="dita-generalized-topicid_mathml1.xml" type="DITA-foreign"/&gt;
-  &lt;data-about&gt;X plus three&lt;/data-about&gt;
+  &lt;data&gt;X plus three&lt;/data&gt;
 &lt;/foreign&gt;
 
 Contents of dita-generalized-topicid_mathml1.xml:
@@ -63,7 +63,7 @@ Contents of dita-generalized-topicid_mathml1.xml:
   &lt;m:math&gt;
     &lt;m:mi&gt;x&lt;/m:mi&gt;&lt;m:mo&gt;+&lt;/m:mo&gt;&lt;m:mn&gt;3&lt;/m:mn&gt;
   &lt;/m:math&gt;
-  &lt;data-about&gt;X plus three&lt;/data-about&gt;
+  &lt;data&gt;X plus three&lt;/data&gt;
   &lt;m:math&gt;
     &lt;m:mi&gt;y&lt;/m:mi&gt;&lt;m:mo&gt;-&lt;/m:mo&gt;&lt;m:mn&gt;2&lt;/m:mn&gt;
   &lt;/m:math&gt;
@@ -75,7 +75,7 @@ Contents of dita-generalized-topicid_mathml1.xml:
       <p>The modified source:</p>
       <codeblock>&lt;foreign class="+ topic/foreign mathml-d/mathml "&gt;
   &lt;object data="dita-generalized-topicid_mathml1.xml" type="DITA-foreign"/&gt;
-  &lt;data-about&gt;X plus three&lt;/data-about&gt;
+  &lt;data&gt;X plus three&lt;/data&gt;
   &lt;object data="dita-generalized-topicid_mathml2.xml" type="DITA-foreign"/&gt;
 &lt;/foreign&gt;
 </codeblock>

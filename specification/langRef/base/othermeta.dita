@@ -3,9 +3,8 @@
  "reference.dtd">
 <reference id="othermeta" xml:lang="en-us">
  <title><xmlelement>othermeta</xmlelement></title>
- <shortdesc>The <xmlelement>othermeta</xmlelement> element can be used to identify properties not
-  otherwise included in <xmlelement>metadata</xmlelement> and to assign name/content values to those
-  properties.</shortdesc>
+ <shortdesc>An <xmlelement>othermeta</xmlelement> element specifies properties not otherwise
+  included in <xmlelement>metadata</xmlelement> using name/content values.</shortdesc>
  <prolog>
   <metadata>
    <keywords>
@@ -14,13 +13,10 @@
   </metadata>
  </prolog>
  <refbody>
-  <section id="usage-information">
-   <title>Usage information</title>
-   <p>The <xmlatt>name</xmlatt> attribute identifies the property and the <xmlatt>content</xmlatt>
-    attribute specifies the property's value. </p>
-  </section>
   <section id="processing-expectations">
    <title>Processing expectations</title>
+   <draft-comment author="rodaande">Is it useful to say that metadata is considered part of the
+    topic metadata?</draft-comment>
    <p>All <xmlelement>othermeta</xmlelement> elements are considered part of the topic's metadata
     and should be reflected in the output as appropriate for the output medium.</p>
   </section>
@@ -32,16 +28,12 @@
     <dlentry id="name">
      <dt><xmlatt>name</xmlatt>
       <ph conkeyref="reuse-attributes/required-attr"/></dt>
-     <dd>The name of the metadata property.
-      <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>-->
-     </dd>
+     <dd>Specifies the name of the metadata property. </dd>
     </dlentry>
     <dlentry id="content">
      <dt><xmlatt>content</xmlatt>
       <ph conkeyref="reuse-attributes/required-attr"/></dt>
-     <dd>The value for the property named in the <xmlatt>name</xmlatt> attribute.
-      <!--<ph conref="../../common/conref-attribute.dita#conref-attribute/define-CDATA"/>-->
-     </dd>
+     <dd>Specifies the value for the property named in the <xmlatt>name</xmlatt> attribute. </dd>
     </dlentry>
     <dlentry id="translate-content">
      <dt><xmlatt>translate-content</xmlatt></dt>
@@ -54,6 +46,8 @@
   </section>
   <example id="example" otherprops="examples">
    <title>Example</title>
+   <p>The following code sample shows that for the current topic, the metadata
+     <codeph>ThreadWidthSystem</codeph> has a value of <codeph>metric</codeph>.</p>
    <codeblock xml:space="preserve">&lt;othermeta name="ThreadWidthSystem" content="metric"/&gt;</codeblock>
   </example></refbody>
 </reference>
