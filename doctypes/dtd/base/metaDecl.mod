@@ -251,10 +251,7 @@
                           %foreign.unknown.incl;)*)"
 >
 <!ENTITY % metadata.attributes
-              "%univ-atts;
-               mapkeyref
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  metadata %metadata.content;>
 <!ATTLIST  metadata %metadata.attributes;>
