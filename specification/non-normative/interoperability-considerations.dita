@@ -10,8 +10,8 @@
     differences in behavior when DITA content will be processed by different processors.</shortdesc>
   <conbody>
     <p>In general, in any situation in which two elements interact during processing, applying
-      filtering before or after the processing is done <ph >can</ph> result in
-      different results when either or both of the elements is conditional.</p>
+      filtering before or after the processing is done <ph>can</ph> result in different results when
+      either or both of the elements is conditional.</p>
     <p>For conditional elements, an element is "applicable" if it is filtered in and "inapplicable"
       if it is filtered out.</p>
     <section id="filtering-and-conref-resolution">
@@ -36,12 +36,12 @@
         value of the referencing element reflects the referenced element. If content referencing is
         resolved <i>after</i> filtering, the referenced element is filtered out and the content
         reference cannot be resolved, typically generating an error.</p>
-      <p >The same scenario results in different results for the case of conref push.
-        An applicable, referencing element can use conref push to replace another element that would
-        otherwise be filtered out. If content references are resolved <i>before</i> filtering, the
-        content is pushed and the effective value of the referenced element reflects the referencing
-        element. If content referencing is resolved <i>after</i> filtering, the referenced element
-        will be filtered out and the content reference can no longer be resolved.</p>
+      <p>The same scenario results in different results for the case of conref push. An applicable,
+        referencing element can use conref push to replace another element that would otherwise be
+        filtered out. If content references are resolved <i>before</i> filtering, the content is
+        pushed and the effective value of the referenced element reflects the referencing element.
+        If content referencing is resolved <i>after</i> filtering, the referenced element will be
+        filtered out and the content reference can no longer be resolved.</p>
       <p>If the referencing element is not conditional and the referenced element is inapplicable,
         filtering applied before content reference resolution results in an unresolvable content
         reference. If filtering is applied after content resolution, the explicit condition on the
@@ -51,12 +51,12 @@
         a potentially nonsensical element if the referencing element has required subelements (for
         example, a content reference from a topic to another topic, where the referencing topic must
         have a title subelement), but in the second case the element is filtered completely out.</p>
-      <p >Different processing orders might also provide different results in the case
-        where pushed content is wrapped in an element that is filtered out. If filtering is applied
-        before content resolution, that entire block of content (the wrapper and the content to be
-        pushed) is filtered out before the content reference is resolved. If filtering is applied
-        after content resolution, the push action will be resolved first so that content appears in
-        the referenced location, after which the referencing element (along with its wrapper) is
+      <p>Different processing orders might also provide different results in the case where pushed
+        content is wrapped in an element that is filtered out. If filtering is applied before
+        content resolution, that entire block of content (the wrapper and the content to be pushed)
+        is filtered out before the content reference is resolved. If filtering is applied after
+        content resolution, the push action will be resolved first so that content appears in the
+        referenced location, after which the referencing element (along with its wrapper) is
         filtered from the original source location.</p>
     </section>
     <section id="filtering-and-key-space-resolution">
@@ -106,13 +106,7 @@
         missing topic. </p>
     </section>
     <!--<section><title>Chunking</title><p>A topicref subsequently filtered out that generates chunks would create chunks in the output if chunk processing is done before filtering but since the topicref would then be filtered out, the chunks would not be referenced.</p></section>-->
-    <section id="copy-to-processing">
-      <title>Copy-to processing</title>
-      <p>If copy-to processing is done before filtering, two <xmlelement>topicref</xmlelement>
-        elements, only one of which is applicable, could specify the same <xmlatt>copy-to</xmlatt>
-        target, leading to a conflict and a potential ambiguity about which governs. If the
-          <xmlelement>topicref</xmlelement> elements are filtered before <xmlatt>copy-to</xmlatt>
-        processing, the conflict does not occur.</p>
-    </section>
+    <?oxy_delete author="ekimber" timestamp="20210315T113825-0500" content="&lt;section id=&quot;copy-to-processing&quot;&gt;&lt;title&gt;Copy-to processing&lt;/title&gt;&lt;p&gt;If copy-to processing is done before filtering, two &lt;xmlelement&gt;topicref&lt;/xmlelement&gt; elements, only one of which is applicable, could specify the same &lt;xmlatt&gt;copy-to&lt;/xmlatt&gt; target, leading to a conflict and a potential ambiguity about which governs. If the &lt;xmlelement&gt;topicref&lt;/xmlelement&gt; elements are filtered before &lt;xmlatt&gt;copy-to&lt;/xmlatt&gt; processing, the conflict does not occur.&lt;/p&gt;&lt;/section&gt;"?>
   </conbody>
 </concept>
+<?oxy_options track_changes="on"?>
