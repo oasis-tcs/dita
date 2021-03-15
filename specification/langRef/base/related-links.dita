@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="related-links" xml:lang="en-us">
 <title><xmlelement>related-links</xmlelement></title>
-<shortdesc>The related information links of a topic (<xmlelement>related-links</xmlelement> element)
-    are stored in a special section following the body of the topic.</shortdesc>
+<shortdesc>The (<xmlelement>related-links</xmlelement> element contains …. This element follows the
+    body of the topic.</shortdesc>
 <prolog><metadata>
 <keywords>
         <indexterm>processing expectations<indexterm>related links</indexterm></indexterm>
+        <indexterm>rendering expectations<indexterm>related links</indexterm></indexterm>
 </keywords>
 </metadata></prolog>
 <refbody>
-    <section id="processing-expectations">
-      <title>Processing expectations</title>
+    <section id="rendering-expectations">
+      <title>Rendering expectations</title>
       <p>After a topic is processed into its final output form, the related links usually are
         displayed at the end of the topic, although some Web-based help systems might display them
         in a separate navigation frame.</p>
       <p>Links specified within the <xmlelement>related-links</xmlelement> element typically are
-        displayed together with links generated based on a map context.</p>
+        displayed together with the links that are generated based on the map context.</p>
+    </section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
       <p>The following lists contains processing expectations for the
           <xmlelement>related-link</xmlelement> element:</p>
       <ol>
@@ -34,12 +37,11 @@
       <title>Attributes</title>
       <p>The following attributes are available on this element: <xref
           keyref="attributes-universal"/>, <xref
-          keyref="attributes-linkRelationship"/> (apart from <xmlatt>href</xmlatt>), and
+          keyref="attributes-common/linkatts"/> (apart from <xmlatt>href</xmlatt>), and
       <xref keyref="attributes-role"/>.</p>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><p>The following
-indicates that the two external links are always applicable to this
-topic, regardless of how the topic is used.</p><codeblock>&lt;related-links scope="external" format="html">
+<example id="example" otherprops="examples"><title>Example</title><p>The following code sample show how the <xmlelement>related-link</xmlelement> element is used to
+        specify links to Web sites that always will be relevant to the topic:</p><codeblock>&lt;related-links scope="external" format="html">
   &lt;link href="http://www.example.org">
     &lt;linktext>Example 1&lt;/linktext>
   &lt;/link>

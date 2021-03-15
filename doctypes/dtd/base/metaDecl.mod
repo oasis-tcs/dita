@@ -251,10 +251,7 @@
                           %foreign.unknown.incl;)*)"
 >
 <!ENTITY % metadata.attributes
-              "%univ-atts;
-               mapkeyref
-                          CDATA
-                                    #IMPLIED"
+              "%univ-atts;"
 >
 <!ELEMENT  metadata %metadata.content;>
 <!ATTLIST  metadata %metadata.attributes;>
@@ -268,13 +265,7 @@
               "type
                           CDATA
                                     #IMPLIED
-               othertype
-                          CDATA
-                                    #IMPLIED
                job
-                          CDATA
-                                    #IMPLIED
-               otherjob
                           CDATA
                                     #IMPLIED
                experiencelevel

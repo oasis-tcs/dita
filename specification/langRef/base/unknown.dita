@@ -21,7 +21,11 @@
     </section>
 <example id="example" otherprops="examples"><title>Example</title><p>This example features a specialized <xmlelement>unknown</xmlelement> element that includes other
         non-DITA content. If this specialization is imported to a DTD or schema, the DTD or schema
-        will need to handle declaring the new elements or any namespaces.</p><codeblock>&lt;body>
+        will need to handle declaring the new elements or any namespaces.</p>
+      <p>By definition, the content of <xmlelement>unknown</xmlelement> can only be understood by
+        DITA processors as unknown XML. This means that processors would generally ignore this
+        content unless they are configured to recognize the <xmlelement>my-unknown</xmlelement>
+        specialization.</p><codeblock>&lt;body>
   &lt;my-unknown class="+ topic/unknown mything/my-unknown ">
     &lt;thing value="4"/>
     &lt;otherthing value="16"/>

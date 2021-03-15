@@ -51,9 +51,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
       <modulePublicIds>
         <dtdEnt>-//OASIS//ENTITIES DITA<var presep=" " name="ditaver"/> Topic//EN</dtdEnt>
         <dtdMod>-//OASIS//ELEMENTS DITA<var presep=" " name="ditaver"/> Topic//EN</dtdMod>
-        <xsdMod>urn:oasis:names:tc:dita:xsd:topicMod.xsd<var presep=":" name="ditaver"/></xsdMod>
-        <xsdGrp>urn:oasis:names:tc:dita:xsd:topicGrp.xsd<var presep=":" name="ditaver"/></xsdGrp>
-        <rncMod>urn:oasis:names:tc:dita:rnc:topicMod.rnc<var presep=":" name="ditaver"/></rncMod>
         <rngMod>urn:oasis:names:tc:dita:rng:topicMod.rng<var presep=":" name="ditaver"/></rngMod>
       </modulePublicIds>
     </moduleMetadata>
@@ -86,9 +83,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
     </define>
     <define name="bodydiv">
       <ref name="bodydiv.element"/>
-    </define>
-    <define name="example">
-      <ref name="example.element"/>
     </define>
     <define name="link">
       <ref name="link.element"/>
@@ -161,17 +155,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
         <ref name="txt.incl"/>
       </choice>
     </define>
-    <define name="example.cnt">
-      <choice>
-        <text/>
-        <ref name="basic.block"/>
-        <ref name="basic.ph"/>
-        <ref name="data.elements.incl"/>
-        <ref name="foreign.unknown.incl"/>
-        <ref name="title"/>
-        <ref name="txt.incl"/>
-      </choice>
-    </define>
     <define name="section.cnt">
       <choice>
         <text/>
@@ -211,7 +194,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
         <attribute name="type"/>
       </optional>
       <optional>
-        <attribute name="cascade" dita:since="1.3"/>
+        <attribute name="cascade"/>
       </optional>
       <optional>
         <attribute name="format"/>
@@ -391,7 +374,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
           <choice>
             <ref name="body.cnt"/>
             <ref name="bodydiv"/>
-            <ref name="example"/>
             <ref name="section"/>
           </choice>
         </zeroOrMore>
@@ -518,34 +500,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
       <define name="sectiondiv.attlist" combine="interleave">
         <ref name="sectiondiv.attributes"/>
       </define>
-
-    </div>
-    <div>
-      <a:documentation>LONG NAME: Example</a:documentation>
-
-      <define name="example.content">
-        <zeroOrMore>
-          <ref name="example.cnt"/>
-        </zeroOrMore>
-      </define>
-      <define name="example.attributes">
-        <optional>
-          <attribute name="spectitle"/>
-        </optional>
-        <ref name="univ-atts"/>
-      </define>
-      <define name="example.element">
-        <element name="example" dita:longName="Example">
-          <a:documentation>The &lt;example> element is a section with the specific role of containing examples that illustrate or support the current topic. The &lt;example> element has the same
-            content model as &lt;section>. Category: Topic elements</a:documentation>
-          <ref name="example.attlist"/>
-          <ref name="example.content"/>
-        </element>
-      </define>
-      <define name="example.attlist" combine="interleave">
-        <ref name="example.attributes"/>
-      </define>
-
 
     </div>
     <div>
@@ -718,9 +672,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
               </choice>
             </attribute>
           </optional>
-          <optional>
-            <attribute name="mapkeyref"/>
-          </optional>
           <ref name="relational-atts"/>
           <ref name="univ-atts"/>
           <optional>
@@ -799,9 +750,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
               </choice>
             </attribute>
           </optional>
-          <optional>
-            <attribute name="mapkeyref"/>
-          </optional>
           <ref name="relational-atts"/>
           <ref name="univ-atts"/>
         </define>
@@ -835,11 +783,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
     <define name="bodydiv.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="- topic/bodydiv "/>
-      </optional>
-    </define>
-    <define name="example.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- topic/example "/>
       </optional>
     </define>
     <define name="link.attlist" combine="interleave">

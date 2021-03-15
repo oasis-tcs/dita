@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="linkpool" xml:lang="en-us">
 <title><xmlelement>linkpool</xmlelement></title>
-<shortdesc>The <xmlelement>linkpool</xmlelement> element defines a group of links that have common
-    characteristics, such as type or audience or source. When links are in a
-      <xmlelement>linkpool</xmlelement> element, the organization of links on final output is
-    determined by the output process, not by the order that the links actually occur in the DITA
-    topic.</shortdesc>
+<shortdesc>A link pool is a group of links; the order that the links are rendered in the output is
+    determined by the processor.</shortdesc>
 <prolog><metadata>
 <keywords>
         <indexterm>elements<indexterm>related
@@ -16,17 +12,28 @@
           elements<indexterm><xmlelement>linkpool</xmlelement></indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
-<section conref="linklist.dita#linklist/usage-information" id="section-1"/>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>Attributes that are set on the <xmlelement>linkpool</xmlelement> element cascade to the
+        contained links.</p>
+    </section>
+    <section id="rendering-expectations">
+      <title>Rendering expectations</title>
+      <p>The order in which links in a <xmlelement>linkpool</xmlelement> element are rendered is
+        processor-specific. A processor might order links based on role or type. A processor might
+        move or remove links based on the context; for example, prerequisite links might be rendered
+        at the beginning of a Web page, or links to the next topic might be removed if the two
+        topics are rendered on the same page in a PDF. Processors might automatically sort some
+        links, while others are left ordered as authored.</p>
+    </section>
 <section id="attributes"><title>Attributes</title>
-      <!--RDA: during 1.3 work, discovered an issue with @collection type: https://lists.oasis-open.org/archives/dita/201312/msg00101.html Update: Discussed at TC Jan 14, 2014, agreed to keep the "tree" value in the DTD, consider it deprecated, do not add to XSD or RNG-->
    <p>The following attributes are available on this element: <xref
           keyref="attributes-universal"/>, <xref
-          keyref="attributes-commonMap/collection-type"/>, <xref
-          keyref="attributes-role"/>, <xref
-          keyref="attributes-common/mapkeyref"/>, and the attributes
+          keyref="attributes-common/collection-type"/>, <xref
+          keyref="attributes-role"/>, and the attributes
         defined below. This element also uses <xmlatt>format</xmlatt>, <xmlatt>scope</xmlatt>, and
           <xmlatt>type</xmlatt> from <xref
-          keyref="attributes-linkRelationship"/>. </p>
+          keyref="attributes-common/linkatts"/>. </p>
    <dl conkeyref="reuse-attributes/linklist-and-linkpool">
     <dlentry>
      <dt/>
@@ -34,7 +41,25 @@
     </dlentry>
    </dl>
    </section>
-    <example conref="link.dita#link/example" id="example" otherprops="examples"
-        ><title>Example</title></example>
+    <example id="example">
+      <title>Example</title>
+      <p>The following code sample shows how a <xmlelement>linkpool</xmlelement> element is used to
+        group a set of conceptual information. The order in which the links are rendered in the
+        output is processor-dependent.</p>
+      <codeblock>&lt;related-links&gt;
+  &lt;linkpool type="concept"&gt;
+    &lt;link href="czez.dita#czez" role="next"/>
+    &lt;link href="czunder.dita"/>
+    &lt;link format="html" href="czover.htm#sqljsupp" role="parent"&gt;
+      &lt;linktext>Overview of the CZ&lt;/linktext>
+    &lt;/link>
+    &lt;link format="html" href="czesqlj.htm#sqljemb"&gt;
+      &lt;linktext>Working with CZESQLJ&lt;/linktext>
+      &lt;desc>When you work with CZESQLJ, you need to know...&lt;/desc>
+    &lt;/link>
+  &lt;/linkpool&gt;
+&lt;/related-links&gt;
+</codeblock>
+    </example>
 </refbody>
 </reference>

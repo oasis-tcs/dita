@@ -3,9 +3,10 @@
  "reference.dtd">
 <reference id="ditaval-revprop" xml:lang="en-us">
 <title><xmlelement>revprop</xmlelement></title>
-<shortdesc>Identifies a value in the <xmlatt>rev</xmlatt> attribute that should be flagged in some
-        manner. Unlike the conditional processing attributes, which can be used for both filtering
-        and flagging, the <xmlatt>rev</xmlatt> attribute only can be used for flagging. </shortdesc>
+<shortdesc>The <xmlelement>revprop</xmlelement> element in a DITAVAL document identifies a value in
+        the <xmlatt>rev</xmlatt> attribute that should be flagged in some manner. Unlike the
+        conditional processing attributes, which can be used for both filtering and flagging, the
+            <xmlatt>rev</xmlatt> attribute only can be used for flagging. </shortdesc>
 <prolog><metadata>
 <keywords><indexterm>DITAVAL<indexterm>elements<indexterm><xmlelement>revprop</xmlelement></indexterm></indexterm></indexterm>
                 <indexterm>elements<indexterm>DITAVAL<indexterm><xmlelement>revprop</xmlelement></indexterm></indexterm></indexterm>
@@ -14,8 +15,6 @@
 <refbody>
         <section id="usage-information">
             <title>Usage information</title>
-        </section>
-        <section>
             <p>The <xmlatt>rev</xmlatt> attribute identifies when a particular section of a document
                 was added or modified. The attribute is not considered a filtering attribute because
                 this is not sufficient to be used for full version control, such as single-sourcing
@@ -25,16 +24,11 @@
         <section id="rendering-expectations">
             <title>Rendering expectations</title>
             <p><ph id="default-text">When no alternate text is specified for a revision flag, the
-                    default alternate text for <xmlelement>revprop</xmlelement> start of change is a
-                    localized translation of "Start of change", and the default alternate text for
-                        <xmlelement>revprop</xmlelement> end of change is a localized translation of
-                    "End of change". </ph></p>
-            <p
-                conkeyref="rendering/color-backcolor-style"/>
-            <p
-                conkeyref="rendering/style-attr"/>
-            <p
-                conkeyref="rendering/other-tokens-style"/>
+                    default alternate text for <xmlelement>revprop</xmlelement> start of change is
+                    typically a localized translation of "Start of change", and the default
+                    alternate text for <xmlelement>revprop</xmlelement> end of change is typically a
+                    localized translation of "End of change". </ph></p>
+            <div conkeyref="rendering/ditaval-rendering"/>
         </section>
         <section id="processing-expectations">
             <title>Processing expectations</title>
@@ -43,21 +37,19 @@
                 implementation dependent; in such cases processors <term outputclass="RFC-2119"
                     >MAY</term> provide an error or warning message.</p>
         </section>
-<section id="attrs"><title>Attributes</title>
+<section id="attributes"><title>Attributes</title>
             <p>The following attributes are available on this element:<dl>
                     <dlentry>
                         <dt><xmlatt>val</xmlatt></dt>
-                        <dd>The value to be acted upon. If the <xmlatt>val</xmlatt> attribute is
-                            absent, then the <xmlelement>revprop</xmlelement> element declares a
-                            default behavior for any value in the <xmlatt>rev</xmlatt>
-                            attribute.</dd>
+                        <dd>Specifies the revision value to be acted upon. If the
+                                <xmlatt>val</xmlatt> attribute is absent, then the
+                                <xmlelement>revprop</xmlelement> element declares a default behavior
+                            for any value in the <xmlatt>rev</xmlatt> attribute.</dd>
                     </dlentry>
                     <dlentry>
                         <dt><xmlatt>action</xmlatt>
-                            <ph
-                                conkeyref="reuse-attributes/required-attr"
-                            /></dt>
-                        <dd>The action to be taken. Allowable values are:<dl>
+                            <ph conkeyref="reuse-attributes/required-attr"/></dt>
+                        <dd>Specifies the action to be taken. Allowable values are:<dl>
                                 <dlentry>
                                     <dt>include</dt>
                                     <dd>Include the content in output without flags. This is the
@@ -67,25 +59,27 @@
                                     <dt>passthrough</dt>
                                     <dd>Include the content in output, and preserve the attribute
                                         value as part of the output stream for further processing by
-                                        a runtime engine, for example runtime filtering based on
-                                        individual user settings. The value should be preserved in
-                                        whatever syntax is required by the target runtime. Values
-                                        that are not explicitly passed through should be removed
-                                        from the output stream, even though the content is still
-                                        included.</dd>
+                                        a runtime engine. <ph otherprops="examples">For example,
+                                            this could be used to enable runtime highlighting based
+                                            on individual user settings.</ph> The value should be
+                                        preserved in whatever syntax is required by the target
+                                        runtime. Values that are not explicitly passed through
+                                        should be removed from the output stream, even though the
+                                        content is still included.</dd>
                                 </dlentry>
                                 <dlentry>
                                     <dt>flag</dt>
-                                    <dd>Include and flag the content on output (if the content has
-                                        not been excluded).</dd>
+                                    <dd>Include and flag the content when rendered (if the content
+                                        has not been excluded).</dd>
                                 </dlentry>
                             </dl></dd>
                     </dlentry>
                     <dlentry>
                         <dt><xmlatt>changebar</xmlatt></dt>
                         <dd>When flag has been set, specify a changebar color, style, or character,
-                            according to the changebar support of the target output format. If flag
-                            has not been set, this attribute is ignored.</dd>
+                            according to the changebar support of the target output format. If the
+                                <xmlatt>action</xmlatt> attribute is not set to "flag", this
+                            attribute is ignored.</dd>
                     </dlentry>
 <dlentry conkeyref="reuse-attributes/ditaval-outputclass">
 <dt/>

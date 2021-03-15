@@ -77,6 +77,9 @@
               "href
                           CDATA
                                     #IMPLIED
+               format
+                          CDATA
+                                    #IMPLIED
                scope
                           (external |
                            local |
@@ -120,7 +123,7 @@
 <!--                    LONG NAME: Hazard Message panel            -->
 <!ENTITY % messagepanel.content
                        "(
-                         (%data; | %data-about;)*,
+                         (%data;)*,
                          (%typeofhazard;),
                          (
                           ((%consequence;)*, (%howtoavoid;)+) |

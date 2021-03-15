@@ -81,10 +81,7 @@
                         <lines>
                           <!-- Short description for language reference edition topic -->
 <ph id="langRef-shortdesc">The language reference portion of the DITA specification contains a topic for each DITA element. The topic defines the element, its inheritance hierarchy, and provides examples of usage. This portion of the DITA specification also includes information about DITA attributes.</ph>
-                          <!--Short description for <anchor>: Used in anchor.dita and dita_spec_23_mapstruct.dita-->
-<ph id="anchor_shortdesc">The <xmlelement>anchor</xmlelement> element provides an integration point that another map can reference in order to insert its navigation into the referenced map's navigation tree. For those familiar with Eclipse help systems, this serves the same purpose as the <xmlelement>anchor</xmlelement> element in that system. It might not be supported for all output formats.</ph>
-<!--Short description for <navref>: Used in navref.dita and dita_spec_23_mapstruct.dita-->
-<ph id="navtitle_shortdesc">The <xmlelement>navref</xmlelement>  element represents a pointer to another map which is preserved as a transcluding link in the result deliverable rather than resolved when the deliverable is produced. Output formats that support such linking can integrate the referenced resource when displaying the referencing map to an end user. </ph></lines>
+</lines>
                 </section>
                 <section id="section-3">
                         <title>Code blocks</title>
@@ -175,7 +172,7 @@ to alert more birds to the presence of your bird feeder.&lt;/shortdesc&gt;
                         <title>Notes</title>
       <note id="deprecated-print-attribute">Beginning with DITA 1.3, the <xmlatt>print</xmlatt>
         attribute is deprecated. It is replaced with a conditional processing attribute:
-          <xmlatt>deliveryTarget</xmlatt>. See <xref keyref="attributes-metadata/deliveryTarget"
+          <xmlatt>deliveryTarget</xmlatt>. See <xref keyref="attributes-universal/metadataatts/deliveryTarget"
             ><xmlatt>deliveryTarget</xmlatt></xref> for more details.</note>
                         <note id="mapref-with-child-elements">If a <xmlelement>topicref</xmlelement>
                                 element that references a map contains child
@@ -219,24 +216,26 @@ to alert more birds to the presence of your bird feeder.&lt;/shortdesc&gt;
                         <p id="release-domain-best-practices">The recommended best practice is to
         use date strings that conform to the ISO 8601 standard, unless a <ph 
           >UNIX-style</ph> machine time stamp is used. The string might contain a date and time (for
-        example, <codeph>2007-04-05T12:30-02:00</codeph>) or just a date (for example,
-          <codeph>2014-03-04</codeph>).</p>
+        example, <codeph>2017-04-05T12:30-02:00</codeph>) or just a date (for example,
+          <codeph>2019-03-04</codeph>).</p>
                         <p id="pgwide-explain">In DITA tables, in place of the
           <xmlatt>expanse</xmlatt> attribute used by other DITA elements, the
           <xmlatt>pgwide</xmlatt> attribute is used in order to conform to the OASIS Exchange Table
         Model. The <xmlatt>pgwide</xmlatt> attribute has a similar semantic
         (<keyword>1</keyword>=page width; <keyword>0</keyword>=resize to galley or column). </p>
-      <p id="sort-as-1">When a <xmlelement>sort-as</xmlelement> element is specified, processors
-        that sort the containing element <term outputclass="RFC-2119">MUST</term>
-        construct the effective sort phrase by prepending the content of the
-          <xmlelement>sort-as</xmlelement> element to the base sort phrase. This ensures that two
-        items with the same <xmlelement>sort-as</xmlelement> element but different base sort phrases
-        will sort in the appropriate order.</p>
-      <p otherprops="examples" id="sort-as-2">For example, if a processor uses the content of the
-          <xmlelement>title</xmlelement> element as the base sort phrase, and the title of a topic
-        is "24 Hour Support Hotline" and the value of the <xmlelement>sort-as</xmlelement> element
-        is "twenty-four hour", then the effective sort phrase would be "twenty-four hour24 Hour
-        Support Hotline".</p>
+      <div id="sort-as-construction">
+        <p id="sort-as-1">When a <xmlelement>sort-as</xmlelement> element is specified, processors
+          that sort the containing element <term outputclass="RFC-2119">MUST</term> construct the
+          effective sort phrase by prepending the content of the <xmlelement>sort-as</xmlelement>
+          element to the base sort phrase. This ensures that two items with the same
+            <xmlelement>sort-as</xmlelement> element but different base sort phrases will sort in
+          the appropriate order.</p>
+        <p otherprops="examples" id="sort-as-2">For example, if a processor uses the content of the
+            <xmlelement>title</xmlelement> element as the base sort phrase, and the title of a topic
+          is "24 Hour Support Hotline" and the value of the <xmlelement>sort-as</xmlelement> element
+          is "twenty-four hour", then the effective sort phrase would be "twenty-four hour24 Hour
+          Support Hotline".</p>
+      </div>
       <p id="rng-attribute-domain-name">An attribute domain's name is the name of the attribute plus
           <keyword>Att</keyword>. For example, for the attribute named
           <xmlatt>deliveryTarget</xmlatt>, the attribute domain name is "deliveryTargetAtt". The
@@ -256,36 +255,6 @@ to alert more birds to the presence of your bird feeder.&lt;/shortdesc&gt;
 <ph id="groupdefn">The attribute also can include groups of values specified using the same syntax as generalized attributes within <xmlatt>props</xmlatt>; see <xref href="../archSpec/base/generalization-attributes.dita"/> for details on grouping syntax.</ph>
 <ph id="ditavalref-copyto">If <xmlatt>copy-to</xmlatt> is specified on a topic reference where <xmlelement>dvrResourcePrefix</xmlelement> or <xmlelement>dvrResourceSuffix</xmlelement> based renaming is in effect, the prefixes or suffixes are applied to the resource name inside the <xmlatt>copy-to</xmlatt> attribute.</ph>
 </lines>
-                </section>
-
-                <section id="section-8">
-                        <title>Examples</title>
-                        <!--Content used in <example> element in anchor.dita and dita_23_mapstruct.dita-->
-                        <p id="anchor" >In this example, the
-                                        <filepath>map1.ditamap</filepath> contains an
-                                        <xmlelement>anchor</xmlelement> element with an
-                                        <xmlatt>id</xmlatt> attribute set to "a1". <fig>
-                                        <title>DITA map that contains an anchor</title>
-          <codeblock>&lt;map>
-  &lt;title&gt;MyComponent tasks&lt;/title&gt;
-  &lt;topicref href="start.dita" toc="yes">
-    &lt;navref mapref="othermap2.ditamap"/>
-    &lt;navref mapref="othermap3.ditamap"/>
-    &lt;anchor id="a1"/>
-  &lt;/topicref>
-&lt;/map></codeblock>
-                                </fig></p>
-                        <p id="anchoref" >The <xmlatt>id</xmlatt> on an
-                                        <xmlelement>anchor</xmlelement> element can be referenced by
-                                the <xmlatt>anchorref</xmlatt> attribute on another map's
-                                        <xmlelement>map</xmlelement> element. For example, the map
-                                to be integrated at that spot could be defined as follows.<fig>
-                                        <title>DITA map that references an anchor</title>
-                                        <codeblock>&lt;map anchorref="map1.ditamap#a1"&gt;
-  &lt;title&gt;This map is pulled into the MyComponent task map&lt;/title&gt;
-  &lt;!-- ... -->
-&lt;/map&gt;</codeblock>
-                                </fig></p>
                 </section>
                 <section id="section-9"><title>Reused error conditions</title><ph id="index-sort-as">When located
                                 within the <xmlelement>indexterm</xmlelement> element, the

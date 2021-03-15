@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="searchtitle" xml:lang="en-us">
 <title><xmlelement>searchtitle</xmlelement></title>
-<shortdesc>The <xmlelement>searchtitle</xmlelement> element is used to specify a title that
-      <ph>is</ph> displayed by search tools that locate the topic.</shortdesc>
+<shortdesc>A search title is a title that is displayed by search
+    tools.<!--The <xmlelement>searchtitle</xmlelement> element specifies a title that is displayed by search tools.--></shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -16,42 +15,57 @@
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>This is most useful when the topic has a title that makes sense in the context of a single
-        information set, but might be too general in a list of search results; for example, a topic
-        title of "Markup example" might make sense as part of a guide to DITA, but when found among
-        thousands of unrelated topics, a search title of "DITA markup example" is more useful.</p>
+      <p>A search title is useful when the topic has a title that makes sense in the context of a
+        single information set, but might be too general in a list of search results. For example, a
+        topic title of "Markup example" might make sense as part of a guide to DITA, but when found
+        among thousands of unrelated topics, a search title of "DITA markup example" is more
+        useful.</p>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>When a topic is rendered as XHTML, the contents of the <xmlelement>searchtitle</xmlelement>
-        will typically appear in the XHTML&apos;s title element, which used in the result summary
-        for many search engines. This element might not be supported for output formats that do not
-        support distinct search titles for topics.</p>
+      <p>When a topic is rendered as HTML, the contents of the <xmlelement>searchtitle</xmlelement>
+        typically appear in the HTML title element, which used in the result summary for many
+        search engines. </p>
+      <p>The <xmlelement>searchtitle</xmlelement> element might not be supported for output formats
+        that do not support distinct search titles for topics.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
     <p conkeyref="reuse-attributes/only-universal"/>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><p>In the
-following example, the general title "Programming Example" is likely
-very useful in a set of information about XSLT basics; however, the
-same title is not helpful among a set of search results from the entire
-internet. In that case, "Example of basic programming in XSLT" will
-be much more helpful.</p><codeblock>&lt;task id="progexample"&gt;
- &lt;title&gt;Programming Example&lt;/title&gt;
-  &lt;titlealts&gt;&lt;searchtitle&gt;Example of basic
-             programming in XSLT&lt;/searchtitle&gt;&lt;/titlealts&gt;
- &lt;taskbody&gt; . . . &lt;/taskbody&gt;
-&lt;/task&gt;</codeblock><p>When <xmlelement>searchtitle</xmlelement> is used in maps, the element provides a new search
-        title for the topic when used in a specific context. For example, the if the following map
-        includes information about programming in many languages, searches among that information
-        set will be most useful when they return "Example of programming in
-        XSLT":<codeblock>&lt;topicref href="progexample.dita">
+<example id="example" otherprops="examples"><title>Examples</title>
+      <p>This section contains examples of how the <xmlelement>searchtitle</xmlelement> element can
+        be used.</p>
+      <fig>
+        <title>Search title used in a topic</title>
+        <p>In the following code sample, the title "Programming Example" is useful in a set of
+          information about XSLT basics; however, the same title is not helpful among a set of
+          search results from the entire Internet. In the latter case, a title of "Example of basic
+          programming in XSLT" will be more useful:</p>
+        <codeblock>&lt;topic id="programming-example"&gt;
+  &lt;title&gt;Programming example&lt;/title&gt;
+  &lt;titlealts&gt;
+    &lt;searchtitle&gt;Example of basic programming in XSLT&lt;/searchtitle&gt;
+  &lt;/titlealts&gt;
+  &lt;body&gt; 
+    &lt;!-- ... -->  
+  &lt;/body&gt;
+&lt;/topic&gt;</codeblock>
+      </fig>
+      <fig>
+        <title>Search title in a map</title>
+        <p>When <xmlelement>searchtitle</xmlelement> is used in maps, the element provides a new
+          search title for the topic when used in that specific context. For example, if the
+          following code sample is from a map that includes information about programming in many
+          languages, searches among that information set will be most useful when they return
+          "Example of programming in XSLT":</p>
+        <codeblock>&lt;topicref href="programming-example.dita">
   &lt;topicmeta>
     &lt;navtitle>Programming example&lt;/navtitle>
     &lt;searchtitle>Example of programming in XSLT&lt;/searchtitle>
   &lt;/topicmeta>
-&lt;/topicref></codeblock></p></example>
+&lt;/topicref></codeblock>
+      </fig></example>
 </refbody>
 </reference>
 
