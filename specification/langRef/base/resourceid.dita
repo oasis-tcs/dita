@@ -18,14 +18,63 @@
     <section id="usage-information">
       <title>Usage information</title>
       <p>The <xmlatt>appid</xmlatt> and <xmlatt>appname</xmlatt> attributes are available to
-        associate an ID with an application. Multiple <xmlatt>appid</xmlatt> values can be
-        associated with a single <xmlatt>appname</xmlatt> value, and multiple
-          <xmlatt>appname</xmlatt> values can be associated with a single <xmlatt>appid</xmlatt>
-        value. Because the values for the <xmlatt>appid</xmlatt> and <xmlatt>appname</xmlatt>
-        attributes work in combination to specify a specific ID for a specific application, each
-        combination of values for the <xmlatt>appid</xmlatt> and <xmlatt>appname</xmlatt> attributes
-        should be unique within the context of a single root map.</p>
+        associate an ID<?oxy_insert_start author="ekimber" timestamp="20210315T134153-0500"?> or
+        deliverable anchor component<?oxy_insert_end?> with an application. Multiple
+          <xmlatt>appid</xmlatt> values can be associated with a single <xmlatt>appname</xmlatt>
+        value, and multiple <xmlatt>appname</xmlatt> values can be associated with a single
+          <xmlatt>appid</xmlatt> value. Because the values for the <xmlatt>appid</xmlatt> and
+          <xmlatt>appname</xmlatt> attributes work in combination to specify a specific ID for a
+        specific application, each combination of values for the <xmlatt>appid</xmlatt> and
+          <xmlatt>appname</xmlatt> attributes should be unique within the context of a single root
+        map.<?oxy_insert_start author="ekimber" timestamp="20210315T145641-0500"?> The
+          <xmlatt>appid</xmlatt> attribute <i>contributes</i> to deliverable anchors while
+          <xmlatt>ux-context-string</xmlatt> specifies an exact context-sensitive help context
+        identifier.<?oxy_insert_end?></p>
     </section>
+    <?oxy_insert_start author="ekimber" timestamp="20210315T135454-0500"?>
+    <section id="section_zyn_l4v_y4b">
+      <title>Processing expectations </title>
+      <p>Processors determine which <xmlelement>resourceid</xmlelement> elements apply to them,
+        normally by examining the <xmlatt>appname</xmlatt> value, if present. Processors are free to
+        assume that a <xmlelement>resourceid</xmlelement> element with no <xmlatt>appname</xmlatt>
+        attribute applies to them. Normal filtering can also be used to control which resource IDs
+        are used for a given deliverable, i.e., filtering on <xmlatt>deliveryTarget</xmlatt>.</p>
+      <p>When the <xmlatt>appid-role</xmlatt> value is "deliverable-anchor", the resource ID is
+        intended to contribute to the effective anchor URI of the resource as delivered in the
+        deliverables to which the resource ID applies, i.e., the base part of an HTML filename, a
+        URI fragment identifier, a PDF anchor name, etc. Processors MAY choose to use IDs with the
+        role "context-sensitive-help" to construct deliverable anchors in any kind of deliverable. A
+        given deliverable component MAY have any number of anchors associated with it if the
+        deliverable provides for multiple anchors (for example, a single topic might get multiple
+        anchors in a PDF and multiple <xmlelement>a</xmlelement> elements with different
+          <xmlatt>id</xmlatt> values in an HTML deliverable).</p>
+      <p>When <xmlatt>appid-role</xmlatt> is "deliverable-anchor", processors that accept the
+          <xmlelement>resourceid</xmlelement> element as applying to them MUST use the
+          <xmlatt>appid</xmlatt> value when constructing a delivery URI for the resource. The
+        details of how a processor uses <xmlatt>appid</xmlatt> values in the construction of URIs is
+        processor dependent. However the resulting URI SHOULD reflect as much as possible the
+        original <xmlatt>appid</xmlatt> in such a way that one can reasonably go from the URI to the
+          <xmlelement>resourceid</xmlelement> element that may have contributed to it.</p>
+      <p>Processors MAY use other properties of the referenced resource or of the reference to the
+        resource to construct full deliverable anchors, for example, using key scope names, key
+        names, or source filenames to construct unique anchor values. Processors SHOULD clearly
+        document the algorithms used to construct anchors.</p>
+      <p>When the nature of a deliverable precludes the use of anchors that obviously correlate to
+          <xmlelement>resourceid</xmlelement> values, processors SHOULD provide some form of
+        resourceid-to-anchor record.</p>
+      <p>To the greatest degree possible, processors SHOULD ensure that a resource ID used for the
+        same resource and produced as the same deliverable type from the same DITA source, filtering
+        conditions, and processor settings, will result in the same deliverable URI. This should
+        always be true for the same version in time of the DITA source and should be true for
+        closely-related different versions in time of the same source. For example, producing a
+        deliverable from a new version of the DITA source where the source was revised but large
+        structural changes were not made should result in the same deliverable URIs as for the
+        previous version if at all possible.</p>
+      <p>The intent of these expectations is to encourage the stability of deliverable URIs over
+        time as well as to make it possible, if not easy, to correlate URIs in deliverables back to
+        the resource IDs from which they were derived.</p>
+    </section>
+    <?oxy_insert_end?>
     <section id="attributes">
       <title>Attributes</title>
       <p>The following attributes are available on this element: <xref keyref="attributes-universal"
@@ -38,8 +87,57 @@
         </dlentry>
         <dlentry id="appid">
           <dt><xmlatt>appid</xmlatt></dt>
-          <dd>Specifies an ID used by an application to identify the topic. </dd>
+          <dd>Specifies an ID used by an application to identify the topic.
+              <?oxy_insert_start author="ekimber" timestamp="20210315T144035-0500"?><p>The values
+              used for <xmlatt>appid</xmlatt> when <xmlatt>appid-role</xmlatt> is
+              "deliverable-anchor" SHOULD be limited to values that can contribute to any of the
+              following URI components:<ul id="ul_nsk_b4f_l4b">
+                <li>the last path component of any URI path</li>
+                <li>fragment identifiers</li>
+                <li>query parameters.</li>
+              </ul><xmlatt>appid</xmlatt> values SHOULD NOT contain multiple URI path
+              components.</p><p><xmlatt>appid</xmlatt> values should avoid specifying
+              deliverable-specific aspects of URIs such as filename extensions. For example, for a
+              targeted deliverable that produces HTML files as its primary deliverable component,
+                <xmlatt>appid</xmlatt> values should specify only the base filename for the
+              delivered files, i.e., "installation-guide" not "installation-guide.html".<note
+                id="note_e35_t4v_y4b">In the general case, map authors cannot know or predict the
+                full URIs of deliverables produced by a given deliverable producer. Therefore,
+                deliverable-specific values such as relative paths ("../foo/bar") and filenames with
+                extensions are very likely to be incorrect in the final deliverable. It is
+                ultimately up to processors to manage the URI structure of the deliverable. There is
+                no necessary relationship between either the source organization of topics and maps
+                or the map-defined hierarchy of topics and the organizational structure of a given
+                deliverable. Thus, making any assumption, as a map author, about where a given
+                deliverable component will be relative to other components, especially in the face
+                of the reuse of submaps, is risky. Even if the targeted processor produces a certain
+                result today it may not do so tomorrow. Thus it is prudent to keep
+                  <xmlatt>appid</xmlatt> values as general-purpose as
+            possible.</note></p><?oxy_insert_end?></dd>
         </dlentry>
+        <?oxy_insert_start author="ekimber" timestamp="20210315T134254-0500"?>
+        <dlentry>
+          <dt><xmlatt>appid-role</xmlatt></dt>
+          <dd>Specifies the role the ID plays for the applications the ID is intended for. The value
+            is a single name token. Applications MAY define their own <xmlatt>appid-role</xmlatt>
+            values, If not specified, the effective value of <xmlatt>appid-role</xmlatt> is
+            "context-sensitive-help". Applications MUST recognize the following values:<dl
+              id="dl_xmd_hnv_y4b">
+              <dlentry>
+                <dt>deliverable-anchor</dt>
+                <dd>The <xmlatt>appid</xmlatt> value MUST be used to construct anchors for the
+                  associated resource in any deliverables associated with the
+                    <xmlelement>resourceid</xmlelement>.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>context-sensitive-help</dt>
+                <dd>The <xmlatt>appid</xmlatt> value SHOULD be used in connecting the associated
+                  resource with application components that use the resource as context sensitive
+                  help.</dd>
+              </dlentry>
+            </dl></dd>
+        </dlentry>
+        <?oxy_insert_end?>
       </dl>
       <dl>
         <dlentry>
@@ -88,7 +186,7 @@
         </dlentry>
       </dl>
     </section>
-<example id="example"  otherprops="examples">
+    <example id="example" otherprops="examples">
       <title>Example</title>
       <p>In the following example, user-assistance context hooks are applied to three topics that
         are referenced from a DITA map. The second topic has two hooks for the same topic.</p>
@@ -135,7 +233,88 @@
   &lt;/steps>
  &lt;/taskbody>
 &lt;/task></codeblock>
+      <?oxy_insert_start author="ekimber" timestamp="20210315T141746-0500"?>
+      <p>In the following examples, intended anchor components are defined for two different
+        topicrefs to the same topic. The same topic is used in two different key scopes, where each
+        scope represents the documentation for a different model of the same base
+        device.<codeblock id="codeblock_sjb_qrv_y4b">&lt;map>
+  ...
+  &lt;topicref keyscope="model-01" keys="operation" keyref="topic-0100">
+    ...
+    &lt;topicref keys="replace-cartridge" keyref="topic-0014">
+      &lt;topicmeta>
+        <b>&lt;resourceid appid="replace_cartridge_model_01"</b>
+          appid-role="deliverable-anchor"
+        />
+      &lt;/topicmet>
+    &lt;/topicref>
+    ...
+  &lt;/topicref>
+  &lt;topicref keyscope="model-02" keys="operation" keyref="topic-0200">
+    ...
+    &lt;topicref keys="replace-cartridge" keyref="topic-0014">
+      &lt;topicmeta>
+        <b>&lt;resourceid appid="replace_cartridge_model_02"</b>
+          appid-role="deliverable-anchor"
+        />
+      &lt;/topicmet>
+    &lt;/topicref>
+    ...
+  &lt;/topicref>
+  ...
+&lt;/map></codeblock></p>
+      <p>For this content the HTML deliverable might generate two HTML files for the "replace
+        cartridge" topic with the names "replace_cartridge_model_01.html" and
+        "replace_cartridge_model_02.html" and for PDF the PDF anchors might just be the
+          <xmlatt>appid</xmlatt> values (as PDF anchors are just unique strings).</p>
+      <p>Because this map uses key scopes, the author could choose to let the key scopes determine
+        the full deliverable anchors, allowing the two topicrefs to use the same
+          <xmlatt>appid</xmlatt> values:<codeblock id="codeblock_zhx_ftv_y4b">&lt;map>
+  ...
+  &lt;topicref keyscope="model-01" keys="operation" keyref="topic-0100">
+    ...
+    &lt;topicref keys="replace-cartridge" keyref="topic-0014">
+      &lt;topicmeta>
+        <b>&lt;resourceid appid="replace_cartridge"</b>
+          appid-role="deliverable-anchor"
+        />
+      &lt;/topicmet>
+    &lt;/topicref>
+    ...
+  &lt;/topicref>
+  &lt;topicref keyscope="model-02" keys="operation" keyref="topic-0200">
+    ...
+    &lt;topicref keys="replace-cartridge" keyref="topic-0014">
+      &lt;topicmeta>
+        <b>&lt;resourceid appid="replace_cartridge"</b>
+          appid-role="deliverable-anchor"
+        />
+      &lt;/topicmet>
+    &lt;/topicref>
+    ...
+  &lt;/topicref>
+  ...
+&lt;/map></codeblock></p>
+      <p>This approach requires that the processors implement the use of key scope names to
+        construct deliverable anchors, making it less general over all but more convenient for
+        authors.</p>
+      <p>This example could be further simplified by moving the now-identical
+          <xmlelement>resourceid</xmlelement> elements from the topicrefs into the topic
+        itself:<codeblock id="codeblock_gml_ntv_y4b">&lt;topic id="topic-0200">
+  &lt;title>Replace the cartridge&lt;/title>
+  &lt;topicmeta>
+    <b>&lt;resourceid appid="replace_cartridge"</b>
+          appid-role="deliverable-anchor"
+     />
+  &lt;/topicmeta>
+  ...
+&lt;/topic></codeblock></p>
+      <p>The topic now specifies a base resource ID that, when combined with any applicable key
+        scopes, should result in use-specific deliverable anchors without the need to specify the
+        resource IDs in the referencing maps.</p>
+      <?oxy_insert_end?>
     </example>
-</refbody>
+  </refbody>
 </reference>
 
+<?oxy_options track_changes="on"?>

@@ -465,9 +465,6 @@
                query
                           CDATA
                                     #IMPLIED
-               copy-to
-                          CDATA
-                                    #IMPLIED
                collection-type
                           (choice |
                            family |
@@ -673,9 +670,6 @@
                           CDATA
                                     #IMPLIED
                query
-                          CDATA
-                                    #IMPLIED
-               copy-to
                           CDATA
                                     #IMPLIED
                type

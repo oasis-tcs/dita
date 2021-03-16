@@ -454,9 +454,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                keys
                           CDATA
                                     #IMPLIED
-               copy-to
-                          CDATA
-                                    #IMPLIED
                %topicref-atts;
                %univ-atts;"
 >
