@@ -56,10 +56,7 @@
                           %topicref;)*)"
 >
 <!ENTITY % topicsubject.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -110,10 +107,7 @@
                           %topicref;)*)"
 >
 <!ENTITY % topicapply.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -176,10 +170,7 @@
                          (%data.elements.incl;)*)"
 >
 <!ENTITY % subjectref.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref

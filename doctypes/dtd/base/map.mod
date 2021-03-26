@@ -110,11 +110,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                            peer |
                            -dita-use-conref-target)
                                     #IMPLIED
-               locktitle
-                          (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
                format
                           CDATA
                                     #IMPLIED
@@ -165,11 +160,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                           (external |
                            local |
                            peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               locktitle
-                          (no |
-                           yes |
                            -dita-use-conref-target)
                                     #IMPLIED
                format
@@ -224,11 +214,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                            peer |
                            -dita-use-conref-target)
                                     #IMPLIED
-               locktitle
-                          (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
                format
                           CDATA
                                     #IMPLIED
@@ -278,11 +263,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                            peer |
                            -dita-use-conref-target)
                                     #IMPLIED
-               locktitle
-                          (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
                linking
                           (none |
                            normal |
@@ -323,11 +303,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                           (external |
                            local |
                            peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               locktitle
-                          (no |
-                           yes |
                            -dita-use-conref-target)
                                     #IMPLIED
                format
@@ -551,9 +526,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
 <!--                    LONG NAME: Topic Metadata                  -->
 <!ENTITY % topicmeta.content
                        "((%keytext;)?,
-                         (%navtitle;)?,
-                         (%linktext;)?,
-                         (%searchtitle;)?,
+                         (%titlealt;)*,
                          (%shortdesc;)?,
                          (%author;)*,
                          (%source;)?,

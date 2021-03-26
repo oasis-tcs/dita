@@ -73,10 +73,7 @@
                        "(%ditavalmeta;)?"
 >
 <!ENTITY % ditavalref.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                scope
@@ -99,7 +96,7 @@
 
 <!--                    LONG NAME: Ditavalmeta                     -->
 <!ENTITY % ditavalmeta.content
-                       "((%navtitle;)?,
+                       "((%titlealt;)*,
                          ((%dvrResourcePrefix;)?,
                           (%dvrResourceSuffix;)?,
                           (%dvrKeyscopePrefix;)?,

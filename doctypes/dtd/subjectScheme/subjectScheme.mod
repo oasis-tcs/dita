@@ -88,11 +88,6 @@
                            peer |
                            -dita-use-conref-target)
                                     #IMPLIED
-               locktitle
-                          (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
                format
                           CDATA
                                     #IMPLIED
@@ -492,11 +487,6 @@
                            peer |
                            -dita-use-conref-target)
                                     #IMPLIED
-               locktitle
-                          (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
                format
                           CDATA
                                     #IMPLIED
@@ -553,7 +543,7 @@
 
 <!--                    LONG NAME: Subject Heading Metadata        -->
 <!ENTITY % subjectHeadMeta.content
-                       "((%navtitle;)?,
+                       "((%titlealt;)*,
                          (%shortdesc;)?)"
 >
 <!ENTITY % subjectHeadMeta.attributes
@@ -693,11 +683,6 @@
                processing-role
                           (normal |
                            resource-only |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               locktitle
-                          (no |
-                           yes |
                            -dita-use-conref-target)
                                     #IMPLIED
                format
