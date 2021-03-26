@@ -107,6 +107,9 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
     <define name="topicmeta">
       <ref name="topicmeta.element"/>
     </define>
+    <define name="keytext">
+      <ref name="keytext.element"/>
+    </define>
     <define name="ux-window">
       <ref name="ux-window.element"/>
     </define>
@@ -783,6 +786,9 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
     <div>
       <a:documentation>LONG NAME: Topic Metadata</a:documentation>
       <define name="topicmeta.content">
+        <optional>
+          <ref name="keytext"/>
+        </optional>
         <zeroOrMore>
           <ref name="titlealt"/>
         </zeroOrMore>
@@ -852,6 +858,36 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
       </define>
       <define name="topicmeta.attlist" combine="interleave">
         <ref name="topicmeta.attributes"/>
+      </define>
+    </div>
+    <div>
+      <a:documentation>LONG NAME: Key text</a:documentation>
+      <define name="keytext.content">
+        <zeroOrMore>
+          <choice>
+            <text/>
+            <ref name="cite"/>
+            <ref name="data"/>
+            <ref name="keyword"/>
+            <ref name="ph"/>
+            <ref name="q"/>
+            <ref name="term"/>
+            <ref name="text"/>
+            <ref name="tm"/>
+          </choice>
+        </zeroOrMore>
+      </define>
+      <define name="keytext.attributes">
+        <ref name="univ-atts"/>
+      </define>
+      <define name="keytext.element">
+        <element name="keytext" dita:longName="Key text">
+          <ref name="keytext.attlist"/>
+          <ref name="keytext.content"/>
+        </element>
+      </define>
+      <define name="keytext.attlist" combine="interleave">
+        <ref name="keytext.attributes"/>
       </define>
     </div>
     <div>
@@ -972,6 +1008,11 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
     <define name="topicmeta.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="- map/topicmeta "/>
+      </optional>
+    </define>
+    <define name="keytext.attlist" combine="interleave">
+      <optional>
+        <attribute name="class" a:defaultValue="- map/keytext "/>
       </optional>
     </define>
     <define name="ux-window.attlist" combine="interleave">

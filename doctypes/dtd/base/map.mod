@@ -78,6 +78,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
 <!ENTITY % relrow      "relrow"                                      >
 <!ENTITY % relcell     "relcell"                                     >
 <!ENTITY % topicmeta   "topicmeta"                                   >
+<!ENTITY % keytext     "keytext"                                     >
 <!ENTITY % shortdesc   "shortdesc"                                   >
 <!ENTITY % linktext    "linktext"                                    >
 <!ENTITY % searchtitle "searchtitle"                                 >
@@ -552,7 +553,8 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
 
 <!--                    LONG NAME: Topic Metadata                  -->
 <!ENTITY % topicmeta.content
-                       "((%navtitle;)?,
+                       "((%keytext;)?,
+                         (%navtitle;)?,
                          (%linktext;)?,
                          (%searchtitle;)?,
                          (%shortdesc;)?,
@@ -578,6 +580,25 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
 >
 <!ELEMENT  topicmeta %topicmeta.content;>
 <!ATTLIST  topicmeta %topicmeta.attributes;>
+
+
+<!--                    LONG NAME: Key text                        -->
+<!ENTITY % keytext.content
+                        "(#PCDATA |
+                          %cite; |
+                          %data; |
+                          %keyword; |
+                          %ph; |
+                          %q; |
+                          %term; |
+                          %text; |
+                          %tm;)*"
+>
+<!ENTITY % keytext.attributes
+              "%univ-atts;"
+>
+<!ELEMENT  keytext %keytext.content;>
+<!ATTLIST  keytext %keytext.attributes;>
 
 
 <!--                    LONG NAME: User Experience Window          -->
@@ -643,6 +664,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
 <!ATTLIST  relrow         class CDATA "- map/relrow "       >
 <!ATTLIST  relcell        class CDATA "- map/relcell "      >
 <!ATTLIST  topicmeta      class CDATA "- map/topicmeta "    >
+<!ATTLIST  keytext        class CDATA "- map/keytext "      >
 <!ATTLIST  ux-window      class CDATA "- map/ux-window "    >
 
 <!-- ================== End of DITA Map Module ==================== -->
