@@ -48,58 +48,6 @@
 <!--                    COMMON ATTLIST SETS                        -->
 <!-- ============================================================= -->  
 
-<!ENTITY % topicref-atts-no-locktitle
-              "collection-type
-                          (choice |
-                           family |
-                           sequence |
-                           unordered |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               type
-                          CDATA
-                                    #IMPLIED
-               cascade
-                          CDATA
-                                    #IMPLIED
-               processing-role
-                          (normal |
-                           resource-only |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               scope
-                          (external |
-                           local |
-                           peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               format
-                          CDATA
-                                    #IMPLIED
-               linking
-                          (none |
-                           normal |
-                           sourceonly |
-                           targetonly |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               toc
-                          (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               search
-                          (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               chunk
-                          CDATA
-                                    #IMPLIED
-               keyscope
-                          CDATA
-                                    #IMPLIED"
->
 
 <!-- ============================================================= -->
 <!--                    ELEMENT DECLARATIONS                       -->
@@ -114,16 +62,13 @@
                           %topicref;)*)"
 >
 <!ENTITY % topichead.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               keys
+              "keys
                           CDATA
                                     #IMPLIED
                copy-to
                           CDATA
                                     #IMPLIED
-               %topicref-atts-no-locktitle;
+               %topicref-atts;
                %univ-atts;"
 >
 <!ELEMENT  topichead %topichead.content;>
@@ -139,7 +84,7 @@
                           %topicref;)*)"
 >
 <!ENTITY % topicgroup.attributes
-              "%topicref-atts-no-locktitle;
+              "%topicref-atts;
                %univ-atts;"
 >
 <!ELEMENT  topicgroup %topicgroup.content;>
@@ -153,10 +98,7 @@
                           %topicref;)*)"
 >
 <!ENTITY % anchorref.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -193,11 +135,6 @@
                           (external |
                            local |
                            peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               locktitle
-                          (no |
-                           yes |
                            -dita-use-conref-target)
                                     #IMPLIED
                format
@@ -241,10 +178,7 @@
                          (%data.elements.incl;)*)"
 >
 <!ENTITY % mapref.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -274,10 +208,7 @@
                           %topicref;)*)"
 >
 <!ENTITY % keydef.attributes
-              "navtitle
-                          CDATA
-                                    #IMPLIED
-               href
+              "href
                           CDATA
                                     #IMPLIED
                keyref
@@ -314,11 +245,6 @@
                           (external |
                            local |
                            peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               locktitle
-                          (no |
-                           yes |
                            -dita-use-conref-target)
                                     #IMPLIED
                format
