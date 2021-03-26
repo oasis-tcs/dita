@@ -79,9 +79,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
 <!ENTITY % relcell     "relcell"                                     >
 <!ENTITY % topicmeta   "topicmeta"                                   >
 <!ENTITY % keytext     "keytext"                                     >
-<!ENTITY % shortdesc   "shortdesc"                                   >
-<!ENTITY % linktext    "linktext"                                    >
-<!ENTITY % searchtitle "searchtitle"                                 >
 <!ENTITY % ux-window   "ux-window"                                   >
 
 <!-- ============================================================= -->
