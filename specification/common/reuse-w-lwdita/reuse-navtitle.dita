@@ -2,45 +2,31 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="navtitle" xml:lang="en-us">
 <title><xmlelement>navtitle</xmlelement></title>
-  <shortdesc id="shortdesc">A navigation title is an alternate title for a resource; this alternate
-    title is optimized for situations where the topic title is unsuitable for use in a table of
-    contents or navigation pane.</shortdesc>
+  <shortdesc id="shortdesc">A navigation title is an alternative title for a resource; this
+    alternate title is optimized for situations where the topic title is unsuitable for use in a
+    table of contents or navigation pane.</shortdesc>
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>Navigation titles can be used in both topics and maps. When used in maps, a navigation
-        title can serve as an alternate title or simply as an aid to understanding the DITA map.</p>
-      <p platform="dita">Because the <xmlelement>navtitle</xmlelement> element is available within
-          <xmlelement>topicmeta</xmlelement>,
-        <!--and <xmlelement>topicmeta</xmlelement> is used in many different contexts, --> a
-          <xmlelement>navtitle</xmlelement> element might occur in contexts where a navigation title
-        does not make sense, for example, on a <xmlelement>topicgroup</xmlelement> element. In those
-        situations, the <xmlelement>navtitle</xmlelement> element has no defined purpose.</p>
+      <p>Navigation titles specify the title for use in tables of contents and other navigation
+        aids. In some cases, when processing a <xmlelement>topicref</xmlelement> that has no
+          <xmlatt>href</xmlatt>, this should also be used as the title of the generated
+        pseudo-topic, if applicable.</p>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <div platform="dita">
-        <p>When the <xmlelement>navtitle</xmlelement> element is used in a topic, processors <term
-            outputclass="RFC-2119">SHOULD</term> use the contents of the element to generate the
-          navigation title.</p>
-        <p>When the <xmlelement>navtitle</xmlelement> element is used in a map, processors <term
-            outputclass="RFC-2119">SHOULD</term> retrieve the navigation title in the following order:<ol>
-            <li>From the content of a <xmlelement>navtitle</xmlelement> element in the map, if the
-              containing <xmlelement>topicref</xmlelement> element sets the value of the
-                <xmlatt>locktitle</xmlatt> attribute to "yes"</li>
-            <li>From the contents of a <xmlelement>navtitle</xmlelement> element in the referenced
-              topic</li>
-            <li>From the title of the referenced topic</li>
-          </ol></p>
-        <p platform="lwdita">When the navigation title component is used in a map, processors <term
-            outputclass="RFC-2119">SHOULD</term> use the contents of the component to generate the
-          navigation title.</p>
-      </div>
+      <div platform="dita">The <xmlelement>navtitle</xmlelement> element is a specialization of
+          <xmlelement>titlealt</xmlelement> with the <xmlatt>title-role</xmlatt> set to
+          <codeph>navigation</codeph>. Processing is dictated by the rules for
+          <xmlelement>titlealt</xmlelement>.</div>
     </section>
     <section id="attributes">
       <title>Attributes</title>
-      <p platform="dita">The following attributes are available on this element: <xref
-          keyref="attributes-universal"/>.</p>
+      <p platform="lwdita">The following attributes are available on this element: <xref
+          keyref="attributes-universal"/>, <xref keyref="attributes-universal/class"
+            ><xmlatt>class</xmlatt></xref>, <xref keyref="attributes-universal/outputclass"
+            ><xmlatt>outputclass</xmlatt></xref>, and the <xmlatt>title-role</xmlatt> attribute set
+        to <codeph>navigation</codeph>.</p>
       <p platform="lwdita">The following attributes are available on this element: <xref
           keyref="attributes-universal/localizationatts"/>, <xref keyref="attributes-universal/class"
             ><xmlatt>class</xmlatt></xref>, and <xref keyref="attributes-universal/outputclass"

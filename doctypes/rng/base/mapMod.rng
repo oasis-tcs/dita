@@ -153,15 +153,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
         </attribute>
       </optional>
       <optional>
-        <attribute name="locktitle">
-          <choice>
-            <value>no</value>
-            <value>yes</value>
-            <value>-dita-use-conref-target</value>
-          </choice>
-        </attribute>
-      </optional>
-      <optional>
         <attribute name="format"/>
       </optional>
       <optional>
@@ -234,15 +225,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
             <value>external</value>
             <value>local</value>
             <value>peer</value>
-            <value>-dita-use-conref-target</value>
-          </choice>
-        </attribute>
-      </optional>
-      <optional>
-        <attribute name="locktitle">
-          <choice>
-            <value>no</value>
-            <value>yes</value>
             <value>-dita-use-conref-target</value>
           </choice>
         </attribute>
@@ -324,15 +306,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
         </attribute>
       </optional>
       <optional>
-        <attribute name="locktitle">
-          <choice>
-            <value>no</value>
-            <value>yes</value>
-            <value>-dita-use-conref-target</value>
-          </choice>
-        </attribute>
-      </optional>
-      <optional>
         <attribute name="format"/>
       </optional>
       <optional>
@@ -405,15 +378,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
         </attribute>
       </optional>
       <optional>
-        <attribute name="locktitle">
-          <choice>
-            <value>no</value>
-            <value>yes</value>
-            <value>-dita-use-conref-target</value>
-          </choice>
-        </attribute>
-      </optional>
-      <optional>
         <attribute name="linking">
           <choice>
             <value>none</value>
@@ -471,15 +435,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
             <value>external</value>
             <value>local</value>
             <value>peer</value>
-            <value>-dita-use-conref-target</value>
-          </choice>
-        </attribute>
-      </optional>
-      <optional>
-        <attribute name="locktitle">
-          <choice>
-            <value>no</value>
-            <value>yes</value>
             <value>-dita-use-conref-target</value>
           </choice>
         </attribute>
@@ -828,15 +783,9 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
     <div>
       <a:documentation>LONG NAME: Topic Metadata</a:documentation>
       <define name="topicmeta.content">
-        <optional>
-          <ref name="navtitle"/>
-        </optional>
-        <optional>
-          <ref name="linktext"/>
-        </optional>
-        <optional>
-          <ref name="searchtitle"/>
-        </optional>
+        <zeroOrMore>
+          <ref name="titlealt"/>
+        </zeroOrMore>
         <optional>
           <ref name="shortdesc"/>
         </optional>

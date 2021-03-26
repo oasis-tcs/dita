@@ -147,15 +147,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"
         </attribute>
       </optional>
       <optional>
-        <attribute name="locktitle">
-          <choice>
-            <value>no</value>
-            <value>yes</value>
-            <value>-dita-use-conref-target</value>
-          </choice>
-        </attribute>
-      </optional>
-      <optional>
         <attribute name="format"/>
       </optional>
       <optional>
@@ -751,15 +742,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"
           </attribute>
         </optional>
         <optional>
-          <attribute name="locktitle">
-            <choice>
-              <value>no</value>
-              <value>yes</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
           <attribute name="format"/>
         </optional>
         <optional>
@@ -786,7 +768,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"
       </define>
       <define name="subjectdef.element">
         <element name="subjectdef" dita:longName="Subject definition">
-          <a:documentation><![CDATA[The <subjectdef> element defines a subject (also known as a controlled value) within a scheme. To make the subject easy to identify, a <subjectdef> may use a keys attribute to assign a key to the subject. A subject with a key can be identified elsewhere with a keyref. The <subjectdef> may use a navtitle element or attribute to supply a label for the subject. The <subjectdef> may also refer to a topic that captures the consensus definition for the subject. If a <subjectdef> refers to a topic, the <subjectdef> must also have the locktitle attribute set to &#34;yes&#34; in order to use the navtitle instead of the topic title to label the subject.]]></a:documentation>
+          <a:documentation><![CDATA[The <subjectdef> element defines a subject (also known as a controlled value) within a scheme. To make the subject easy to identify, a <subjectdef> may use a keys attribute to assign a key to the subject. A subject with a key can be identified elsewhere with a keyref. The <subjectdef> may use a navtitle element or attribute to supply a label for the subject. The <subjectdef> may also refer to a topic that captures the consensus definition for the subject.]]></a:documentation>
           <ref name="subjectdef.attlist"/>
           <ref name="subjectdef.content"/>
         </element>
@@ -865,9 +847,9 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"
     <div>
       <a:documentation>LONG NAME: Subject Heading Metadata</a:documentation>
       <define name="subjectHeadMeta.content">
-        <optional>
-          <ref name="navtitle"/>
-        </optional>
+        <zeroOrMore>
+          <ref name="titlealt"/>
+        </zeroOrMore>
         <optional>
           <ref name="shortdesc"/>
         </optional>
@@ -1082,15 +1064,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"
             <choice>
               <value>normal</value>
               <value>resource-only</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="locktitle">
-            <choice>
-              <value>no</value>
-              <value>yes</value>
               <value>-dita-use-conref-target</value>
             </choice>
           </attribute>

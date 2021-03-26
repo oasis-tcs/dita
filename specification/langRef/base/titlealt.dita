@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="titlealt">
+    <title><xmlelement>titlealt</xmlelement></title>
+    <shortdesc>An alternative title is used to convey information about a document in contexts other
+        than straightforward display.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>processing
+                        expectations<indexterm><xmlelement>titlealt</xmlelement></indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <refbody>
+        <section id="section_c2t_k5k_nnb">
+            <title>Usage Information</title>
+            <p>Alternative titles can be used in topics and in maps. When used directly beneath a
+                root <xmlelement>map</xmlelement> element, the alternative title applies to the map
+                itself. When used inside a <xmlelement>topicref</xmlelement> or specialization of
+                    <xmlelement>topicref</xmlelement>, the alternative title applies to the resource
+                referenced by the <xmlelement>topicref</xmlelement>. When the referenced resource is
+                a DITA topic, the alternative titles from the <xmlelement>topicref</xmlelement> are
+                merged with those authored directly in the topic, with the alternative titles from
+                the <xmlelement>topicref</xmlelement> taking higher priority.</p>
+            <p>The roles of an alternative title are specified by its <xmlatt>title-role</xmlatt>
+                attribute. Multiple roles may be specified, separated by white space. An alternative
+                title must specify at least one role.</p>
+            <p>Some roles may not be meaningful in certain contexts. For example, a navigational
+                alternate title is not meaningful in the context of a
+                    <xmlelement>topicgroup</xmlelement> element's
+                <xmlelement>topicmeta</xmlelement>, since the element is not part of a publication's
+                navigational structure. Such alternate titles should be ignored by processors.</p>
+        </section>
+        <section id="section_awx_mvk_nnb">
+            <title>Processing expectations</title>
+            <p>The processing of an alternative title depends on its roles. Processors are required
+                to support the following role tokens.</p>
+            <dl>
+                <dlentry>
+                    <dt><codeph>linking</codeph></dt>
+                    <dd>The title for use in references to the resources generated from DITA map
+                        structures, such as hierarchical parent/child/sibling links and links
+                        generated from relationship tables. In addition, this is the fallback
+                        alternative title for <codeph>navigation</codeph> and
+                            <codeph>search</codeph> roles. Other, non-standardized title roles meant
+                        for use in link generation should also use this as a fallback.</dd>
+                </dlentry>
+                <dlentry>
+                    <dt><codeph>navigation</codeph></dt>
+                    <dd>The title for use in tables of content and other navigation aids. In some
+                        cases, when processing a <xmlelement>topicref</xmlelement> that has no
+                            <xmlatt>href</xmlatt>, this should also be used as the title of the
+                        generated pseudo-topic, if applicable. If not present, this role is
+                        fulfilled by the <codeph>linking</codeph> role.</dd>
+                </dlentry>
+                <dlentry>
+                    <dt><codeph>search</codeph></dt>
+                    <dd>The title for use in search results for systems that support content search.
+                        If not present, this role is fulfilled by the <codeph>linking</codeph>
+                        role.</dd>
+                </dlentry>
+                <dlentry>
+                    <dt><codeph>subtitle</codeph></dt>
+                    <dd>A subtitle for the document, generally to be rendered below the primary
+                        title in a smaller size.</dd>
+                </dlentry>
+                <dlentry>
+                    <dt><codeph>hint</codeph></dt>
+                    <dd>A hint for the benefit of map authors, allowing them to see the title of a
+                        referenced resource without needing to access the resource itself. Does not
+                        have an effect on processing or output.</dd>
+                </dlentry>
+                <dlentry>
+                    <dt><codeph>-dita-use-conref-target</codeph></dt>
+                    <dd>When present, instructs processors to use the <xmlatt>title-role</xmlatt>
+                        tokens from the element referenced by <xmlatt>conref</xmlatt> or
+                            <xmlatt>conkeyref</xmlatt>. All other tokens are ignored, replaced by
+                        those on the referenced element.</dd>
+                </dlentry>
+            </dl>
+            <p>Other roles may be defined by processors, authors, or content architects for specific
+                purposes. Content architects are encouraged to develop specializations of this
+                element specifying default roles for use by their authors for specific use cases.
+                The base DITA vocabulary contains an alternative titles domain providing
+                specializations of this element that fulfill each of the above roles.</p>
+            <p>Alternative titles bearing roles that are not recognized by the processor <keyword
+                    outputclass="RFC-2119">MUST</keyword> be ignored and not appear in output.</p>
+        </section>
+        <section id="section_pwf_1xk_nnb">
+            <title>Attributes</title>
+            <p platform="lwdita">The following attributes are available on this element: <xref
+                    keyref="attributes-universal"/>, <xref keyref="attributes-universal/class"
+                        ><xmlatt>class</xmlatt></xref>, <xref
+                    keyref="attributes-universal/outputclass"><xmlatt>outputclass</xmlatt></xref>,
+                and the attributes listed below.</p>
+            <dl>
+                <dlentry>
+                    <dt><xmlatt>title-role</xmlatt></dt>
+                    <dd>Specifies the role or roles fulfilled by the alternative title. Multiple
+                        roles are separated by white space.</dd>
+                </dlentry>
+            </dl>
+        </section>
+        <example id="example" otherprops="examples">
+            <title>Examples</title>
+            <p>This section contains examples of how the <xmlelement>titlealt</xmlelement> element
+                can be used.</p>
+            <fig id="fig_zzv_3zk_nnb">
+                <title>Subtitles</title>
+                <p>The following map specifies a subtitle.</p>
+                <codeblock>&lt;map>
+  &lt;title>Publication title&lt;/title>
+  &lt;topicmeta>
+    &lt;titlealt title-role="subtitle">Publication subtitle&lt;/titlealt>
+  &lt;/topicmeta>
+&lt;/map></codeblock>
+            </fig>
+            <fig id="fig_gyy_mzk_nnb">
+                <title>Alternative titles with multiple roles</title>
+                <p>The following alternative title serves both as a navigation title and a search
+                    title.</p>
+                <codeblock>&lt;titlealt title-role="navigation search">Short title&lt;/titlealt></codeblock>
+            </fig>
+            <fig>
+                <title>Example: Multiple Titles and their Uses</title>
+                <p>The following topicref contains a number of alternative titles.</p>
+                <codeblock>&lt;topicref keys="about" href="about.dita">
+  &lt;topicmeta>
+    &lt;titlealt title-role="navigation">About the Product&lt;/titlealt>
+    &lt;titlealt title-role="linking">About This Product&lt;/titlealt>
+    &lt;titlealt title-role="search">About&lt;/titlealt>
+    &lt;titlealt title-role="hint">About the Acme TextMax 5000&lt;/titlealt>
+  &lt;/topicmeta>
+&lt;/topicref></codeblock>
+                <ol id="ol_av5_mps_yjb">
+                    <li>The <codeph>navigation</codeph> title will be used when rendering the table
+                        of contents.</li>
+                    <li>The <codeph>linking</codeph> title will be used when generating
+                        parent/child/sibling and relationship table-based related links to this
+                        topic.</li>
+                    <li>The <codeph>search</codeph> title will be used to provide the title in
+                        systems that support dynamic content searches.</li>
+                    <li>The <codeph>hint</codeph> title describes the actual title of the topic for
+                        the benefit of map authors, but will not be used in output.</li>
+                </ol>
+            </fig>
+            <fig id="fig_kpg_vyk_nnb">
+                <title>Custom title roles</title>
+                <p>A content architect could create a Topic specialization with custom
+                        <xmlelement>titlealt</xmlelement> specializations called
+                        <xmlelement>windowtitle</xmlelement> and
+                        <xmlelement>breadcrumbtitle</xmlelement>. These specializations specify
+                    default <xmlatt>title-role</xmlatt> values of <codeph>window</codeph> and
+                        <codeph>breadcrumb</codeph>, respectively, so that authors do not have to
+                    specify those roles explicitly. Content containing these specializations could
+                    look like the following.</p>
+                <codeblock>&lt;helpTopic id="topic167">
+  &lt;title>Doing the Thing in the Place where the Stuff Is&lt;/title>
+  &lt;prolog>
+    &lt;windowtitle>Doing Things&lt;/windowtitle>
+    &lt;breadcrumbtitle>Things&lt;/breadcrumbtitle>
+  &lt;/prolog></codeblock>
+                <p>They could also incorporate these elements into their map document type shell,
+                    enabling map authors to override the values in topics.</p>
+                <codeblock>&lt;topicref href="topic167.dita">
+  &lt;topicmeta>
+    &lt;breadcrumbtitle>Thing Doing&lt;/breadcrumbtitle>
+  &lt;/topicmeta>
+&lt;/topicref></codeblock>
+            </fig>
+            
+            <fig id="fig_kpm_rxk_nnb">
+                <title>Navigation titles and precedence</title>
+                <p>Consider the following series of topic references:</p>
+                <codeblock>&lt;topicref href="topics.dita#one"/>
+&lt;topicref href="topics.dita#two">
+  &lt;topicmeta>
+    &lt;titlealt title-role="navigation">Topic Two (Map navigation title)&lt;/titlealt>
+  &lt;/topicmeta>
+&lt;/topicref>
+&lt;topicref href="topics.dita#three">
+  &lt;topicmeta>
+    &lt;titlealt title-role="linking">Topic Three (Map linking title)&lt;/titlealt>
+  &lt;/topicmeta>
+&lt;/topicref>
+&lt;topicref href="topics.dita#four">
+  &lt;topicmeta>
+    &lt;titlealt title-role="linking">Topic Four (Map linking title)&lt;/titlealt>
+  &lt;/topicmeta>
+&lt;/topicref></codeblock>
+                <p>Here is the ditabase document containing those topics:</p>
+                <codeblock>&lt;dita>
+  &lt;topic id="one">
+    &lt;title>Topic One&lt;/title>
+  &lt;/topic>
+  &lt;topic id="two">
+    &lt;title>Topic Two&lt;/title>
+    &lt;prolog>
+      &lt;titlealt title-role="navigation">Topic Two (Topic navigation title)&lt;/titlealt>
+    &lt;/prolog>
+  &lt;/topic>
+  &lt;topic id="three">
+    &lt;title>Topic Three&lt;/title>
+  &lt;/topic>
+  &lt;topic id="four">
+    &lt;title>Topic Four&lt;/title>
+    &lt;prolog>
+      &lt;titlealt title-role="navigation">Topic Four (Topic navigation title)&lt;/titlealt>
+    &lt;/prolog>
+  &lt;/topic>
+&lt;/dita></codeblock>
+                <p>The resulting navigation structure would be as follows:</p>
+                <ol id="ul_z2w_rx5_dgb">
+                    <li><b>Topic One</b> - The navigation title is pulled from the title of the
+                        topic, since neither the map nor the topic specify a navigation title.</li>
+                    <li><b>Topic Two (Map navigation title)</b> - The navigation title comes from
+                        the map, as its navigation title takes precedence over that in the
+                        topic.</li>
+                    <li><b>Topic Three (Map linking title)</b> - The navigation title comes from the
+                        map, which serves as the fallback for navigation titles when no
+                            <codeph>navigation</codeph> alternative title is provided.</li>
+                    <li><b>Topic Four (Topic navigation title)</b> - The navigation title comes from
+                        the topic. Even though the map specifies a <xmlelement>titlealt</xmlelement>
+                        with a role of <codeph>linking</codeph>, and normally maps take precedence,
+                        a <codeph>linking</codeph> alternative title is only used for navigation
+                        when there is no <codeph>navigation</codeph> alternative title available. In
+                        this case, the one from the topic is present, and is therefore used. To
+                        override the topic's navigation title in this case, the topic reference
+                        would have to explicitly provide a <codeph>navigation</codeph> alternative
+                        title. The <codeph>linking</codeph> title in the map still applies as the
+                        resource's linking title, just not its navigation title.</li>
+                </ol>
+            </fig>
+            <fig>
+                <title>Example: Reconciling Map and Topic Alternative Titles</title>
+                <p>A <xmlelement>topicref</xmlelement> contains the following titles:</p>
+                <codeblock>&lt;topicref href="topic.dita">
+  &lt;topicmeta>
+    &lt;titlealt title-role="breadcrumbTitle">Doin' Stuff&lt;/titlealt>
+    &lt;titlealt title-role="longTitle">That thing you do when there's stuff that needs doing.&lt;/titlealt>
+  &lt;/topicmeta.
+&lt;/topicref></codeblock>
+                <p>The referenced topic has the following prolog:</p>
+                <codeblock>&lt;prolog>
+  &lt;titlealt title-role="subtitle">Doing Stuff&lt;/titlealt>
+  &lt;titlealt title-role="breadcrumbTitle flipbookTitle">Stuff&lt;/titlealt>
+&lt;/prolog></codeblock>
+                <p>During processing, the two sets of elements will be concatenated together (logically,
+                    if not physically), with the map's elements coming first:</p>
+                <codeblock>&lt;titlealt title-role="breadcrumbTitle">Doin' Stuff&lt;/titlealt>
+&lt;titlealt title-role="longTitle">That thing you do when there's stuff that needs doing.&lt;/titlealt>
+&lt;titlealt title-role="subtitle">Doing Stuff&lt;/titlealt>
+&lt;titlealt title-role="breadcrumbTitle flipbookTitle">Stuff&lt;/titlealt></codeblock>
+                <p>Note that <codeph>breadcrumbTitle</codeph> is specified in both the map and the
+                    topic, and the map's value takes precedence. However, that same alternative
+                    title in the topic specifies an additional role of
+                        <codeph>flipbookTitle</codeph>, which is not overridden by the map, and so
+                    should be preserved.</p>
+                <p>The equivalent merged alternative titles, with duplicates removed, would look as
+                    follows.</p>
+                <codeblock>&lt;titlealt title-role="breadcrumbTitle">Doin' Stuff&lt;/titlealt>
+&lt;titlealt title-role="longTitle">That thing you do when there's stuff that needs doing.&lt;/titlealt>
+&lt;titlealt title-role="subtitle">Doing Stuff&lt;/titlealt>
+&lt;titlealt title-role="flipbookTitle">Stuff&lt;/titlealt></codeblock>
+            </fig>
+            <fig id="fig_p2k_yf2_xnb">
+                <title>Example: Conrefs and Title Roles</title>
+                <p>Consider the following conrefs:</p>
+                <codeblock>&lt;titlealt title-role="linking" conref="titles.dita#someAltTitle"></codeblock>
+                <p>In this case, the roles for the resolved element will be
+                    <codeph>linking</codeph>; any other roles specified on the referenced element
+                    will be lost.</p>
+                <codeblock>&lt;titlealt title-role="search -dita-use-conref-target" conref="titles.dita#someAltTitle"></codeblock>
+                <p>In this case, the roles for the resolved element will be whatever is specified on
+                    the referenced element.</p>
+                <note>The <codeph>search</codeph> token has no effect, and will be ignored. The
+                    presence of <codeph>-dita-use-conref-target</codeph> in
+                        <xmlatt>title-role</xmlatt> overrides all other tokens. The roles on the
+                    referencing and referenced elements are not merged; only those from the
+                    referenced element apply.</note>
+            </fig>
+            <fig>
+                <title>Keyrefs and alternative titles</title>
+                <p>Consider the following two topic references:</p>
+                <codeblock>&lt;topicref keys="a">
+  &lt;topicmeta>
+    &lt;titlealt title-role="linking">Linking Title from Keyref&lt;/titlealt>
+    &lt;titlealt title-role="navigation">Navigation Title from Keyref&lt;/titlealt>
+  &lt;/topicmeta>
+&lt;/topicref>
+&lt;topicref keyref="a">
+  &lt;topicmeta>
+    &lt;titlealt title-role="navigation">Navigation Title&lt;/titlealt>
+  &lt;/topicmeta>
+&lt;/topicref></codeblock>
+                <p>The resolved titles would look something like this:</p>
+                <codeblock>&lt;titlealt title-role="navigation">Navigation Title&lt;/titlealt>
+&lt;titlealt title-role="linking">Linking Title from Keyref&lt;/titlealt>
+&lt;titlealt title-role="navigation">Navigation Title from Keyref&lt;/titlealt></codeblock>
+                <p>That is, the "local" alternative titles come before those pulled from the key
+                    reference. In cases where only a single alternative title of a given role can be
+                    used, the first takes precedence, so the <codeph>navigation</codeph> title from
+                    the key reference has no effect.</p>
+            </fig>
+        </example>
+    </refbody>
+</reference>

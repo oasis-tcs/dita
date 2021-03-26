@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="titlehint" xml:lang="en-us">
+  <title><xmlelement>titlehint</xmlelement></title>
+  <shortdesc>A title hint provides information to map authors about the title of the referenced
+    resource.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>processing
+          expectations<indexterm><xmlelement>titlehint</xmlelement></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody>
+    <section id="section_fpd_43h_rnb">
+      <title>Usage information</title>
+      <p>Title hints are intended to provide the title of referenced resources to map authors when
+        the title may not be immediately accessible. It is not rendered as part of the
+        publication.</p>
+    </section>
+    <section id="section_jhh_njh_rnb">
+      <title>Processing expectations</title>
+      <p>The <xmlelement>titlehint</xmlelement> element is a specialization of
+          <xmlelement>titlealt</xmlelement> with the <xmlatt>title-role</xmlatt> set to
+          <codeph>hint</codeph>. Processing is dictated by the rules for
+          <xmlelement>titlealt</xmlelement>.</p>
+    </section>
+    <section id="specialization-hierachy">
+      <title>Specialization hierarchy</title>
+      <p>The <xmlelement>titlehint</xmlelement> element is specialized from
+          <xmlelement>titlealt</xmlelement>. It is defined in the alternativeTitle-domain
+        module.</p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element: <xref keyref="attributes-universal"
+        />, <xref keyref="attributes-universal/class"><xmlatt>class</xmlatt></xref>, <xref
+          keyref="attributes-universal/outputclass"><xmlatt>outputclass</xmlatt></xref>, and the
+          <xmlatt>title-role</xmlatt> attribute set to <codeph>hint</codeph>.</p>
+    </section>
+    <example id="example" otherprops="examples">
+      <title>Examples</title>
+      <p>This section contains examples of how the <xmlelement>titlehint</xmlelement> element can be
+        used.</p>
+      <fig id="figure-3">
+        <title>Referencing remote DITA resources</title>
+        <p>The following code sample shows how <xmlelement>titlehint</xmlelement> can be used to
+          show the title of a referenced topic to map authors in the context of a CMS with opaque
+          URIs.</p>
+        <codeblock>&lt;topicref href="x-id://AOE82KJAW1B0">
+  &lt;topicmeta>
+    <b>&lt;titlehint>Getting started&lt;/titlehint></b>
+  &lt;/topicmeta>
+&lt;/topicref></codeblock>
+      </fig>
+    </example>
+  </refbody>
+</reference>
