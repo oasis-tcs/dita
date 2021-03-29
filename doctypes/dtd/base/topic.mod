@@ -360,9 +360,6 @@
                keyref
                           CDATA
                                     #IMPLIED
-               query
-                          CDATA
-                                    #IMPLIED
                %relational-atts;
                %univ-atts;"
 >

@@ -152,12 +152,6 @@
                            yes |
                            -dita-use-conref-target)
                                     #IMPLIED
-               print
-                          (no |
-                           printonly |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
                search
                           (no |
                            yes |
@@ -259,12 +253,6 @@
                                     #IMPLIED
                toc
                           (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               print
-                          (no |
-                           printonly |
                            yes |
                            -dita-use-conref-target)
                                     #IMPLIED

@@ -65,9 +65,6 @@
                keys
                           CDATA
                                     #IMPLIED
-               query
-                          CDATA
-                                    #IMPLIED
                type
                           CDATA
                                     #IMPLIED
@@ -114,9 +111,6 @@
                           CDATA
                                     #IMPLIED
                keys
-                          CDATA
-                                    #IMPLIED
-               query
                           CDATA
                                     #IMPLIED
                collection-type
@@ -177,9 +171,6 @@
                           CDATA
                                     #IMPLIED
                keys
-                          CDATA
-                                    #IMPLIED
-               query
                           CDATA
                                     #IMPLIED
                collection-type
