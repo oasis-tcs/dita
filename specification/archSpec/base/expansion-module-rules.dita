@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="expansion_module_rules">
+    <title>Expansion module rules</title>
+    <shortdesc>There are certain rules that apply to the design and implementation of expansion
+        modules.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>design and implementation rules<indexterm>expansion
+                    modules</indexterm></indexterm>
+                <indexterm>expansion modules<indexterm>design and implementation
+                    rules</indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <dl>
+            <dlentry>
+                <dt>Specialization base of expanded elements</dt>
+                <dd>
+                    <p>Elements added to content models by expansion models must be specializations
+                        of existing elements that are permitted in the content model. The elements
+                        that are added must only be allowed where their specialization base is
+                        allowed.</p>
+                    <p>For example, when creating an expansion model that adds a specialization of
+                            <xmlelement>data</xmlelement> to <xmlelement>ol</xmlelement>, the
+                        element must only be allowed before any <xmlelement>li</xmlelement>
+                        elements, as that is the only place <xmlelement>data</xmlelement> is allowed
+                        in the content model for ordered lists.</p>
+                </dd>
+            </dlentry>
+            <dlentry>
+                <dt>Content model of expanded elements</dt>
+                <dd>
+                    <p>Expansion modules must not affect the ordinality of the original content
+                        model. If the original content model only permits an element to occur once,
+                        then the expanded content model cannot break this requirement.</p>
+                    <div otherprops="examples">
+                        <p>For example, a DITA architect wants to add a new specialization of
+                                <xmlelement>title</xmlelement> to the <xmlelement>topic</xmlelement>
+                            element. Since the <xmlelement>title</xmlelement> element is only
+                            permitted once within a topic, the expansion module must perform one of
+                            the following actions:</p>
+                        <ul>
+                            <li>Replace <xmlelement>title</xmlelement> with the new specialization
+                                of title (<xmlelement>nomarkup-title</xmlelement></li>
+                            <li>Modify the content model of topic to require a choice between
+                                    <xmlelement>title</xmlelement> and the new specialized
+                                element</li>
+                        </ul>
+                    </div>
+                    <!--<draft-comment author="Kristen J Eberlein" time="28 March 2021"><p>Original content authored by Chris Nitchie:</p><q>Mix-ins applied to elements that are allowed only once in the content model must either allow a choice between the base element and the specialized element, or require the use of the specialized element instead of the base element. For example, consider a mix-in adding a <xmlelement>nomarkuptitle</xmlelement> element specialized from <xmlelement>title</xmlelement> to the <xmlelement>topic</xmlelement> element. The modified content model must either remove <xmlelement>title</xmlelement> or provide an "exactly-once" choice between <xmlelement>title</xmlelement> and <xmlelement>nomarkuptitle</xmlelement>. It must not allow both <xmlelement>title</xmlelement> and <xmlelement>nomarkuptitle</xmlelement> to exist inside the same <xmlelement>topic</xmlelement> element.</q></draft-comment>-->
+                </dd>
+            </dlentry>
+            <dlentry>
+                <dt>Aggregation of expansion modules</dt>
+                <dd>
+                    <p>The content model of an element can be modified by one of the following
+                        element-configuration modules:</p>
+                    <ul>
+                        <li>Constraint module</li>
+                        <li>Expansion module</li>
+                    </ul>
+                    <p>If multiple modules exist to modify the content model of an element, those
+                        modules must be replaced by an new module that reflect the aggregation of
+                        the element-configuration modules.</p>
+                </dd>
+            </dlentry>
+        </dl>
+    </conbody>
+</concept>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="overview_of_expansion_modules">
+    <title>Overview of expansion modules</title>
+    <shortdesc>Expansion modules enable information architects to include specialized attributes or
+        elements in specific elements types, without making them globally available.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>expansion modules<indexterm>overview</indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <p>An expansion module can perform the following functions:</p>
+        <dl>
+            <dlentry>
+                <dt>Expand content models</dt>
+                <dd>
+                    <p>Expansion modules extend the content models of specific elements, without
+                        making the specialized elements available wherever the specialization base
+                        is permitted.</p>
+                    <p otherprops="examples">For example, an expansion for
+                            <xmlelement>section</xmlelement> can make a new element
+                            (<xmlelement>section-shortdesc</xmlelement>) available as an optional,
+                        child element. The <xmlelement>section-shortdesc</xmlelement> is specialized
+                        from <xmlelement>p</xmlelement>, but it is available only within
+                            <xmlelement>section.</xmlelement></p>
+                    <p>The elements must be defined in a separate element-domain specialization
+                        module that declares the content model and attributes list for the new
+                        elements.</p>
+                    <!--<draft-comment author="Kristen J Eberlein" time="28 March 2021"><p>In your draft, you mention that the specialization module must not "make the element available gobally." Do you have an example of this? Is it as simple as not having an ENT file that declares the extension entities?</p></draft-comment>-->
+                </dd>
+            </dlentry>
+            <dlentry>
+                <dt>Expand attribute lists</dt>
+                <dd>
+                    <p>Expansion modules extend the attribute lists of specific elements by adding
+                        attributes specialized from either <xmlatt>base</xmlatt> or
+                            <xmlatt>props</xmlatt>.</p>
+                    <p otherprops="examples">For example, an expansion for
+                            <xmlelement>entry</xmlelement>, <xmlelement>row</xmlelement>, and
+                            <xmlelement>colspec</xmlelement> can make <xmlatt>cell-purpose</xmlatt>
+                        available only on those elements. The <xmlatt>cell-purpose</xmlatt>
+                        attribute is specialized from <xmlatt>base</xmlatt>. (It could be
+                        specialized from <xmlatt>props</xmlatt>, but the ability to perform
+                        filtering is not wanted – and would be problematic if applied on
+                            <xmlelement>entry</xmlelement> or <xmlelement>colspec</xmlelement>.</p>
+                    <p>The additional attributes either can be defined directly within the expansion
+                        module, or they can be defined in a separate attribute-specialization
+                        module.</p>
+                    <draft-comment author="Kristen J Eberlein" time="28 March 2021">
+                        <p>What can't one do with an expansion module? With constraints, one can not
+                            only restrict the attributes available on an element; one also can limit
+                            the set of permissable values for an attribute. Is there a parallel
+                            functionaliy for expansion modules?</p>
+                        <p>Also, constraints enable DITA architects to restrict elements that are
+                            available in domains. Do expansion modules permit DITA architects to add
+                            elements to domains?</p>
+                    </draft-comment>
+                </dd>
+            </dlentry>
+        </dl>
+    </conbody>
+</concept>
