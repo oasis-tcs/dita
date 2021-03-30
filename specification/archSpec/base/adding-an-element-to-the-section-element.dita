@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="adding_an_element_to_the_section_element">
+    <title>Adding an element to the <xmlelement>section</xmlelement> element</title>
+    <shortdesc>In this scenario, a DITA architect wants to modify the content model for the
+            <xmlelement>section</xmlelement> element. He wants to add an optional
+            <xmlelement>section-shortdesc</xmlelement> element that is specialized from
+            <xmlelement>p</xmlelement>.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>expansion modules<indexterm>examples<indexterm>expanding content model of
+                                <xmlelement>section</xmlelement></indexterm></indexterm></indexterm>
+                <indexterm>examples<indexterm>expansion modules<indexterm>expanding content model of
+                                <xmlelement>section</xmlelement></indexterm></indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <example>
+            <p>To accomplish this, the DITA architect needs to create the following modules and
+                integrate them into the document-type shell:</p>
+            <ul>
+                <li>An element specialization module that defines the
+                        <xmlelement>section-shortdesc</xmlelement> element</li>
+                <li>An expansion module that adds the <xmlelement>section-shortdesc</xmlelement>
+                    element to the content model for <xmlelement>section</xmlelement></li>
+            </ul>
+            <ol>
+                <li>First, the DITA architect creates the entity declaration file:
+                        <filepath>sectionShortdescDomain.ent</filepath><codeblock>&lt;!ENTITY sectionShortdesc-d-p-expansion "section-shortdesc">
+
+&lt;!ENTITY % section-shortdesc "section-shortdesc"></codeblock><note>This
+                        entity file declares a
+                            <parameterentity>sectionShortdesc-d-p-expansion</parameterentity>
+                        entity, not <parameterentity>sectionShortdesc-d-p</parameterentity>,
+                        indicating that the expansion nature of this domain. The content author
+                        wants to control exactly where the element is allowed; he does not want to
+                        allow it everywhere that <xmlelement>p</xmlelement> is allowed.</note></li>
+                <li>Then the DITA architect creates the DTD module that defines the content model
+                    and attributes for <xmlelement>section-shortdesc</xmlelement>:
+                        <filepath>sectionShortdescDomain.mod</filepath><codeblock>&lt;!ENTITY % section-shortdesc.content "(%para.cnt;)*">
+&lt;!ENTITY % section-shortdesc.attributes "%univ-atts;">
+
+&lt;!ELEMENT section-shortdesc %section-shortdesc.content;>
+&lt;!ATTLIST section-shortdesc %section-shortdesc.attributes;>
+
+&lt;!ATTLIST section-shortdesc    class CDATA "+ topic/p sectionShortdesc-d/section-shortdesc"></codeblock></li>
+                <li>Next, the content architect modifies the document-type shell to integrate the
+                    domain
+                        modules:<codeblock>&lt;!-- ============================================================= -->
+&lt;!--             DOMAIN ENTITY DECLARATIONS                        -->
+&lt;!-- ============================================================= -->
+
+&lt;!-- ... other domains ... -->
+<b>
+&lt;!ENTITY % sectionShortdesc-d-dec
+  PUBLIC "-//ACME//ENTITIES DITA Section Short Description Domain//EN"
+         "sectionShortdescDomain.ent"
+>%sectionShortdesc-d-dec;</b>
+
+&lt;!-- ... other DTD content ... -->
+
+&lt;!-- ============================================================= -->
+&lt;!--                    DOMAIN ELEMENT INTEGRATION                 -->
+&lt;!-- ============================================================= -->
+
+&lt;!-- ... other domains ... -->
+<b>
+&lt;!ENTITY % sectionShortdesc-d-def
+  PUBLIC "-//ACME//ELEMENTS DITA Section Short Description Domain//EN"
+         "sectionShortdescDomain.mod"
+>%sectionShortdesc-d-def;
+</b></codeblock><p>At this point, the new domain is integrated into the
+                        topic document-type shell. However, the new element is not added to the
+                        content model for <xmlelement>section</xmlelement>.</p></li>
+                <li>Next, the DITA architect creates an expansion module that adds the
+                        <xmlelement>section-shortdesc</xmlelement> element to the content model of
+                        <xmlelement>section</xmlelement>:
+                        <filepath>acme-SectionExpansion.mod</filepath><codeblock>&lt;!-- Declares the entities referenced in the modified content  -->
+&lt;!-- model.                                                       -->
+
+&lt;!ENTITY % dl "dl">
+&lt;!ENTITY % div "div">
+&lt;!ENTITY % fig "fig">
+&lt;!ENTITY % image "image">
+&lt;!ENTITY % lines "lines">
+&lt;!ENTITY % lq "lq">
+&lt;!ENTITY % note "note">
+&lt;!ENTITY % object "object">
+&lt;!ENTITY % ol "ol">
+&lt;!ENTITY % p "p">
+&lt;!ENTITY % pre "pre">
+&lt;!ENTITY % simpletable "simpletable">
+&lt;!ENTITY % sl "sl">
+&lt;!ENTITY % table "table">
+&lt;!ENTITY % ul "ul">
+&lt;!ENTITY % cite "cite">
+&lt;!ENTITY % include "include">
+&lt;!ENTITY % keyword "keyword">
+&lt;!ENTITY % ph "ph">
+&lt;!ENTITY % q "q">
+&lt;!ENTITY % term "term">
+&lt;!ENTITY % text "text">
+&lt;!ENTITY % tm "tm">
+&lt;!ENTITY % xref "xref">
+&lt;!ENTITY % state "state">
+&lt;!ENTITY % data "data">
+&lt;!ENTITY % data-about "data-about">
+&lt;!ENTITY % foreign "foreign">
+&lt;!ENTITY % unknown "unknown">
+&lt;!ENTITY % sectiondiv "sectiondiv">
+&lt;!ENTITY % title "title">
+&lt;!ENTITY % draft-comment "draft-comment">
+&lt;!ENTITY % fn "fn">
+&lt;!ENTITY % indexterm "indexterm">
+&lt;!ENTITY % required-cleanup "required-cleanup">
+
+&lt;!-- Defines the modified content model for &lt;section>.       -->
+
+&lt;!ENTITY % section.content
+              "(#PCDATA |
+               %dl; |
+               %div; |
+               %fig; |
+               %image; |
+               %lines; |
+               %lq; |
+               %note; |
+               %object; |
+               %ol; |
+               %p; |
+               %pre; |
+               %simpletable; |
+               %sl; |
+               %table; |
+               %ul; |
+               %cite; |
+               %include; |
+               %keyword; |
+               %ph; |
+               %q; |
+               %term; |
+               %text; |
+               %tm; |
+               %xref; |
+               %state; |
+               %data; |
+               %data-about; |
+               %foreign; |
+               %unknown; |
+               %sectiondiv; |
+               %title; |
+               %draft-comment; |
+               %fn; |
+               %indexterm; |
+               %required-cleanup; <b>|
+               %sectionShortdesc-d-p-expansion;</b>)*"
+>
+</codeblock>
+                    <note>The DITA architect needed to explicitly declare all the elements, rather
+                        than using the parameter entity used in the definition of
+                            <xmlelement>section</xmlelement>:
+                            <parameterentity>section.cnt</parameterentity>. Because the
+                        element-configuration modules are integrated into the document-type shell
+                        before the base grammar modules, none of the parameter entities that used in
+                        the base DITA vocabulary modules are available.</note></li>
+                <li>Finally, the DITA architect integrates the expansion module into the
+                    document-type
+                        shell:<codeblock>&lt;!-- ============================================================= -->
+&lt;!--                    ELEMENT-TYPE CONFIGURATION INTEGRATION              -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY % acmeSection-def
+  PUBLIC "-//ACME//ELEMENTS DITA Section Mix-in//EN"
+         "acme-SectionMixin.mod"
+>%acmeSection-def;
+</codeblock><draft-comment author="Kristen J Eberlein" time="28 March 2021">
+                        <p>Do we want to have a separate section for expansion modules? If not, we
+                            should change the header comment.</p>
+                        <p>Do any rules apply about the order in which expansion modules and
+                            constraint modules are integrated?</p>
+                    </draft-comment></li>
+                <li>After updating the <filepath>catalog.xml</filepath> file to include the new
+                    domain modules and the expansion module, the work is done.</li>
+            </ol>
+        </example>
+    </conbody>
+</concept>
