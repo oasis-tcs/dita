@@ -44,7 +44,7 @@
                             the following actions:</p>
                         <ul>
                             <li>Replace <xmlelement>title</xmlelement> with the new specialization
-                                of title (<xmlelement>nomarkup-title</xmlelement></li>
+                                of title: <xmlelement>nomarkup-title</xmlelement></li>
                             <li>Modify the content model of topic to require a choice between
                                     <xmlelement>title</xmlelement> and the new specialized
                                 element</li>
@@ -62,9 +62,11 @@
                         <li>Constraint module</li>
                         <li>Expansion module</li>
                     </ul>
-                    <p>If multiple modules exist to modify the content model of an element, those
-                        modules must be replaced by an new module that reflect the aggregation of
-                        the element-configuration modules.</p>
+                    <p>The content model of an element only can be modified by a single element-type
+                        configuration module. If multiple constraints or extensions need to be
+                        applied to a single element, the element configurations must be combined
+                        into a single module that reflects all the constraints and expansion defined
+                        in the original separate modules.</p>
                 </dd>
             </dlentry>
         </dl>

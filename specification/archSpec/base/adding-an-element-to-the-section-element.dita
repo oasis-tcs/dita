@@ -155,17 +155,20 @@
                %fn; |
                %indexterm; |
                %required-cleanup; <b>|
-               %sectionShortdesc-d-p-mixin;</b>)*"
+               %sectionShortdesc-d-p-expansion;</b>)*"
 >
-</codeblock><draft-comment author="Kristen J Eberlein" time="28 March 2021">
-                        <p>Why do we need to enumerate the complete content model of
-                                <xmlelement>section</xmlelement>, rather than using
-                                <parameterentity>section.cnt</parameterentity>?</p>
-                    </draft-comment></li>
+</codeblock>
+                    <note>The DITA architect needed to explicitly declare all the elements, rather
+                        than using the parameter entity used in the definition of
+                            <xmlelement>section</xmlelement>:
+                            <parameterentity>section.cnt</parameterentity>. Because the
+                        element-configuration modules are integrated into the document-type shell
+                        before the base grammar modules, none of the parameter entities that used in
+                        the base DITA vocabulary modules are available.</note></li>
                 <li>Finally, the DITA architect integrates the expansion module into the
                     document-type
                         shell:<codeblock>&lt;!-- ============================================================= -->
-&lt;!--                    CONTENT CONSTRAINT INTEGRATION             -->
+&lt;!--                    ELEMENT-TYPE CONFIGURATION INTEGRATION              -->
 &lt;!-- ============================================================= -->
 
 &lt;!ENTITY % acmeSection-def
