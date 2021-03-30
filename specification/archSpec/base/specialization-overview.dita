@@ -9,6 +9,12 @@
  <prolog>
   <metadata>
    <keywords>
+    <indexterm>best practices<indexterm>specialization</indexterm></indexterm>
+    <indexterm>examples<indexterm>specialization<indexterm><xmlelement>context</xmlelement> and
+        <xmlelement>prereq</xmlelement></indexterm></indexterm></indexterm>
+    <indexterm>specialization<indexterm>examples<indexterm><xmlelement>context</xmlelement> and
+        <xmlelement>prereq</xmlelement></indexterm></indexterm></indexterm>
+    <indexterm>specialization<indexterm>best practices</indexterm></indexterm>
     <indexterm>specialization<indexterm>overview</indexterm></indexterm>
    </keywords>
   </metadata>
@@ -20,13 +26,11 @@
   <p>In traditional XML applications, all semantics for a given element instance are bound to the
    element type, such as <xmlelement>para</xmlelement> for a paragraph or
     <xmlelement>title</xmlelement> for a title. The XML specification provides no built-in mechanism
-   for relating two element types to say "element type B is a subtype of element type A".
-   <!--However, in most documentation-focused XML applications there is often a clear hierarchy of types. For example, in a technical manual, there might be generic sections and more specialized sections, e.g. "Troubleshooting" or "Assembly Procedures". The presentation of the generic and specialized sections might be identical, but the more specialized sections might have more restrictive <ph rev="review-2">content models</ph> or include additional element types relevant only to those section types. While these relationships might be understood by authors and system implementers, the XML standard provides no direct way to express the relationship, to say explicitly "A Troubleshooting section is a generic section and must conform to all requirements of generic sections". --><!--Having created the element type <xmlelement>section</xmlelement> and implemented presentation processing for it and then having later created the element type <xmlelement>troubleshooting</xmlelement>, there is no obvious mechanism for having all <xmlelement>troubleshooting</xmlelement> elements <i>automatically</i> get the processing associated with <xmlelement>section</xmlelement> elements. To get that behavior someone has to explicitly update all processors involved to apply <xmlelement>section</xmlelement> processing to <xmlelement>troubleshooting</xmlelement>.--></p>
+   for relating two element types to say "element type B is a subtype of element type A". </p>
   <p>In contrast, the DITA specialization mechanism provides a standard mechanism for defining that
-   an element type or attribute is derived from an ancestor type. <ph >This
-    means that a specialized type inherits the semantics and default processing behavior from its
-    ancestor type.</ph> Additional processing behavior optionally can be associated with the
-   specialized descendant type.</p>
+   an element type or attribute is derived from an ancestor type. This means that a specialized type
+   inherits the semantics and default processing behavior from its ancestor type. Additional
+   processing behavior optionally can be associated with the specialized descendant type.</p>
   <p otherprops="examples">For example, the <xmlelement>section</xmlelement> element type is part of
    the DITA base or core. It represents an organizational division in a topic. Within the task
    information type (itself a specialization of <xmlelement>topic</xmlelement>), the
@@ -70,8 +74,7 @@
     the current content model.</li>
   </ul>
   <p>Do not use specialization to simply eliminate element types from specific content models. Use
-    <ph >constraint modules</ph> to <ph >restrict</ph> content
-   models and attribute lists without changing semantics.</p>
-  <!--<p>The DITA specialization feature provides a standard mechanism for saying explicitly, using normal XML syntax, "A Troubleshooting section is a generic section and must conform to all requirements of generic sections" and, having said that, makes it possible for generic section processing to be applied to troubleshooting sections <i>with no further effort</i>.</p>-->
+   constraint modules to <ph>restrict</ph> content models and attribute lists without changing
+   semantics.</p>
  </conbody>
 </concept>
