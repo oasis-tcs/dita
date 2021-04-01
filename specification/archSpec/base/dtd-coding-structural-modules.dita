@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
- "concept.dtd">
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="dtdStructuralCoding" xml:lang="en-us">
   <title>DTD: Coding requirements for structural modules</title>
   <shortdesc>A structural vocabulary module defines a new topic or map type as a specialization of a
     topic or map type.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>coding requirements<indexterm>DTDs<indexterm>structural
+            modules</indexterm></indexterm></indexterm>
+        <indexterm>DTDs<indexterm>coding requirements<indexterm>structural
+            modules</indexterm></indexterm></indexterm>
+        <indexterm>topic nesting<indexterm>controlling</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
   <conbody>
     <section id="architectural-attributes">
       <title>Required topic and map element attributes</title>
@@ -12,14 +22,16 @@
         the version of DITA in use, typically by referencing the <codeph>arch-atts</codeph>
         parameter entity. It must also set the <xmlatt>specializations</xmlatt> attribute to the
           <codeph>included-domains</codeph> entity. These attributes give processors a reliable way
-        to check the architecture version and look up the list of attribute domains available in the
-        document type.</p>
-      <p>The following example shows how these attributes are defined for the
-          <xmlelement>concept</xmlelement> element in DITA 2.0:</p>
-      <codeblock>&lt;!ATTLIST concept    
+        to check the architecture version and look up the list of attribute domains that are
+        available in the document type.</p>
+      <div otherprops="examples">
+        <p>The following example shows how these attributes are defined for the
+            <xmlelement>concept</xmlelement> element in DITA 2.0:</p>
+        <codeblock>&lt;!ATTLIST concept    
   %concept.attributes;
   %arch-atts;
   specializations  CDATA  "&amp;included-domains;"></codeblock>
+      </div>
     </section>
     <section id="topic-nesting" >
       <title>Controlling nesting in topic types</title>
@@ -40,8 +52,8 @@
           <dt>Parameter entity value</dt>
           <dd>
             <p>To set up default topic nesting rules, set the entity to the desired topic elements.
-              The default topic nesting will be used when a document-type shell does not set up
-              different rules. </p>
+              The default topic nesting is used when a document-type shell does not set up different
+              rules. </p>
             <p otherprops="examples">For example, the following parameter entity sets up default
               nesting so that <xmlelement>concept</xmlelement> will nest only other
                 <xmlelement>concept</xmlelement> topics:</p>
@@ -70,12 +82,13 @@
               If default nesting rules reference the <codeph>info-types</codeph> parameter entity, a
               shell can efficiently create common nesting rules by redefining the
                 <codeph>info-types</codeph> entity.</p>
-            <p otherprops="examples">For example, with the following content
-              model defined for <xmlelement>concept</xmlelement>, a document-type shell that uses
-              the concept specialization can control which topics are nested in
-                <xmlelement>concept</xmlelement> by redefining the
-                <codeph>concept-info-types</codeph> parameter entity:</p>
-            <codeblock otherprops="examples">&lt;!ENTITY % concept.content
+            <div otherprops="examples">
+              <p>For example, with the following content model defined for
+                  <xmlelement>concept</xmlelement>, a document-type shell that uses the concept
+                specialization can control which topics are nested in
+                  <xmlelement>concept</xmlelement> by redefining the
+                  <codeph>concept-info-types</codeph> parameter entity:</p>
+              <codeblock otherprops="examples">&lt;!ENTITY % concept.content
   "((%title;), 
     (%titlealts;)?,
     (%abstract; | %shortdesc;)?, 
@@ -84,6 +97,7 @@
     (%related-links;)?,
     <b>(%concept-info-types;)*</b>)"
 ></codeblock>
+            </div>
           </dd>
         </dlentry>
       </dl>

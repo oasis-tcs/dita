@@ -4,15 +4,26 @@
   <title>DTD: Coding requirements for element type declarations</title>
   <shortdesc>This topic covers general coding requirements for defining element types in both
     structural and element-domain vocabulary modules.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>coding requirements<indexterm>DTDs<indexterm> element-domain vocabulary
+              modules</indexterm></indexterm></indexterm>
+        <indexterm>DTDs<indexterm>coding requirements<indexterm> element-domain vocabulary
+              modules</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
   <conbody>
     <p>A vocabulary module that defines a structural or element domain specialization is composed of
       two files:</p>
     <ul>
-      <li>An entity declaration (<filepath>.ent</filepath>) file, which declares the text entities
-        that are used to integrate the vocabulary module into a document-type shell</li>
       <li>A definition module (<filepath>.mod</filepath>) file, which declares the element names,
         content models, and attribute lists for the element types that are defined in the vocabulary
         module</li>
+      <li>An entity declaration (<filepath>.ent</filepath>) file, which declares the text and
+        parameter entities that are used to integrate the vocabulary module into a document-type
+        shell</li>
     </ul>
     <section id="element-definitions">
       <title>Element definitions</title>
@@ -50,7 +61,8 @@
                 <codeph><varname>tagname</varname>.content</codeph>, and the value is the content
               model definition. Consistent use and naming of the
                 <codeph><varname>tagname</varname>.content</codeph> parameter entity enables the use
-              of constraint modules to restrict the content model.</p>
+              of <ph rev="2.0">element-configuration modules (constraints and expansion) to redefine
+                the content model.</ph></p>
             <p otherprops="examples">For
               example:<codeblock>&lt;!ENTITY % topichead.content
   "((%topicmeta;)?, 
@@ -67,9 +79,11 @@
             <p>For each element type, there must be a parameter entity that declares the attributes
               that are available on the element. The name of the parameter entity is
                   <codeph><varname>tagname</varname>.attributes</codeph>, and the value is a list of
-              the attributes that are used by the element type (except for <xmlatt>class</xmlatt>). Consistent use and naming of the
+              the attributes that are used by the element type (except for <xmlatt>class</xmlatt>).
+              Consistent use and naming of the
                 <codeph><varname>tagname</varname>.attributes</codeph> parameter entity enables the
-              use of constraint modules to restrict attributes.</p>
+              use of <ph rev="2.0">element-configuration modules (constraints and expansion) to
+                redefine the attribute list.</ph></p>
             <p otherprops="examples">For
 example:<codeblock>&lt;!ENTITY % topichead.attributes
  "keys CDATA #IMPLIED
@@ -100,10 +114,9 @@ example:<codeblock>&lt;!ENTITY % topichead.attributes
         <dlentry>
           <dt>Specialization attribute declarations</dt>
           <dd>
-            <p>A vocabulary module must define a <xmlatt>class</xmlatt> attribute for every <ph
-                >element that is </ph>declared in the module. The value of the
-              attribute is constructed according to the rules in <xref
-                href="specialization-class-attribute.dita"/>.</p>
+            <p>A vocabulary module must define a <xmlatt>class</xmlatt> attribute for every element
+              that is declared in the module. The value of the attribute is constructed according to
+              the rules in <xref href="specialization-class-attribute.dita"/>.</p>
             <p otherprops="examples">For example, the <codeph>ATTLIST</codeph>
               definition for the <xmlelement>topichead</xmlelement> element (a specialization of the
                 <xmlelement>topicref</xmlelement> element in the base map type) includes

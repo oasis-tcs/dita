@@ -37,8 +37,8 @@
                         indicating that the expansion nature of this domain. The content author
                         wants to control exactly where the element is allowed; he does not want to
                         allow it everywhere that <xmlelement>p</xmlelement> is allowed.</note></li>
-                <li>Then the DITA architect creates the DTD module that defines the content model
-                    and attributes for <xmlelement>section-shortdesc</xmlelement>:
+                <li>Then the DITA architect creates the <filepath>.mod</filepath> file that defines
+                    the content model and attributes for <xmlelement>section-shortdesc</xmlelement>:
                         <filepath>sectionShortdescDomain.mod</filepath><codeblock>&lt;!ENTITY % section-shortdesc.content "(%para.cnt;)*">
 &lt;!ENTITY % section-shortdesc.attributes "%univ-atts;">
 
@@ -167,7 +167,7 @@
                         the base DITA vocabulary modules are available.</note></li>
                 <li>Finally, the DITA architect integrates the expansion module into the
                     document-type
-                        shell:<codeblock>&lt;!-- ============================================================= -->
+                    shell:<codeblock>&lt;!-- ============================================================= -->
 &lt;!--                    ELEMENT-TYPE CONFIGURATION INTEGRATION              -->
 &lt;!-- ============================================================= -->
 
@@ -175,12 +175,7 @@
   PUBLIC "-//ACME//ELEMENTS DITA Section Mix-in//EN"
          "acme-SectionMixin.mod"
 >%acmeSection-def;
-</codeblock><draft-comment author="Kristen J Eberlein" time="28 March 2021">
-                        <p>Do we want to have a separate section for expansion modules? If not, we
-                            should change the header comment.</p>
-                        <p>Do any rules apply about the order in which expansion modules and
-                            constraint modules are integrated?</p>
-                    </draft-comment></li>
+</codeblock></li>
                 <li>After updating the <filepath>catalog.xml</filepath> file to include the new
                     domain modules and the expansion module, the work is done.</li>
             </ol>
