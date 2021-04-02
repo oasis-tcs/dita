@@ -316,7 +316,8 @@
 
 <!--                    LONG NAME: prolog                          -->
 <!ENTITY % prolog.content
-                       "((%author;)*,
+                       "((%titlealt;)*,
+                         (%author;)*,
                          (%source;)?,
                          (%publisher;)?,
                          (%copyright;)*,
