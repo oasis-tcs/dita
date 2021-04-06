@@ -29,12 +29,10 @@
 <!-- PUBLIC "-//OASIS//DTD DITA 2.0 Base Map//EN"                  -->
 <!-- ============================================================= -->
 <!--                                                               -->
-<!--             (C) Copyright OASIS Open 2010, 2019               -->
+<!--             (C) Copyright OASIS Open 2010, 2021               -->
 <!--             All Rights Reserved.                              -->
 <!--                                                               -->
 <!--  UPDATES:                                                     -->
-<!--    2019.08.21 KJE: Removed indexing domain                    -->
-<!--    2019.08.28 KJE: Changed specialization base of imagemap    -->
 <!--                                                               -->
 <!-- ============================================================= -->
 
@@ -49,11 +47,6 @@
 <!-- ============================================================= -->
 <!--             DOMAIN ENTITY DECLARATIONS                        -->
 <!-- ============================================================= -->
-
-<!ENTITY % mapgroup-d-dec
-  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Map Group Domain//EN"
-         "mapGroup.ent"
->%mapgroup-d-dec;
 
 <!ENTITY % alternativetitles-d-dec
   PUBLIC "-//OASIS//ENTITIES DITA 2.0 Alternative Titles Domain//EN"
@@ -70,20 +63,15 @@
          "emphasisDomain.ent"
 >%emphasis-d-dec;
 
-<!ENTITY % hazard-d-dec
-  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Hazard Statement Domain//EN"
-         "hazardstatementDomain.ent"
->%hazard-d-dec;
-
 <!ENTITY % hi-d-dec
   PUBLIC "-//OASIS//ENTITIES DITA 2.0 Highlight Domain//EN"
          "highlightDomain.ent"
 >%hi-d-dec;
 
-<!ENTITY % ut-d-dec
-  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Utilities Domain//EN"
-         "utilitiesDomain.ent"
->%ut-d-dec;
+<!ENTITY % mapgroup-d-dec
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Map Group Domain//EN"
+         "mapGroup.ent"
+>%mapgroup-d-dec;
 
 <!-- ============================================================= -->
 <!--             DOMAIN ATTRIBUTES DECLARATIONS                    -->
@@ -99,6 +87,11 @@
          "deliveryTargetAttDomain.ent"
 >%deliveryTargetAtt-d-dec;
 
+<!ENTITY % otherpropsAtt-d-dec
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Otherprops Attribute Domain//EN"
+         "otherpropsAttDomain.ent"
+>%otherpropsAtt-d-dec;
+
 <!ENTITY % platformAtt-d-dec
   PUBLIC "-//OASIS//ENTITIES DITA 2.0 Platform Attribute Domain//EN"
          "platformAttDomain.ent"
@@ -109,11 +102,6 @@
          "productAttDomain.ent"
 >%productAtt-d-dec;
 
-<!ENTITY % otherpropsAtt-d-dec
-  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Otherprops Attribute Domain//EN"
-         "otherpropsAttDomain.ent"
->%otherpropsAtt-d-dec;
-
 <!-- ============================================================= -->
 <!--                    DOMAIN EXTENSIONS                          -->
 <!-- ============================================================= -->
@@ -121,44 +109,46 @@
                         the name of the domain(s) in which the
                         extension was declared                     -->
 
-<!ENTITY % topicref     "topicref |
-                         %ditavalref-d-topicref;|
-                         %mapgroup-d-topicref; 
-                        ">
-<!ENTITY % titlealt     "titlealt |
-                         %alternativeTitles-d-titlealt;
-                        ">                        
-<!ENTITY % note         "note |
-                         %hazard-d-note;
-                        ">
 <!ENTITY % ph           "ph |
                          %emphasis-d-ph; |
                          %hi-d-ph;
                         ">
-<!ENTITY % data         "data |
-                         %ut-d-data;
-                        ">
-<!ENTITY % div          "div |
-                         %ut-d-div;
-                        ">
+                        
+<!ENTITY % titlealt     "titlealt |
+                         %alternativeTitles-d-titlealt;
+                        ">                        
 
+<!ENTITY % topicref     "topicref |
+                         %ditavalref-d-topicref;|
+                         %mapgroup-d-topicref; 
+                        ">
+                        
 <!-- ============================================================= -->
 <!--                    DOMAIN ATTRIBUTE EXTENSIONS                -->
 <!-- ============================================================= -->
 
-<!ENTITY % props-attribute-extensions
-  "%audienceAtt-d-attribute;
-  %deliveryTargetAtt-d-attribute;
-  %platformAtt-d-attribute;
-  %productAtt-d-attribute;
-  %otherpropsAtt-d-attribute;"
->
 <!ENTITY % base-attribute-extensions
   ""
 >
 
+<!ENTITY % props-attribute-extensions
+  "%audienceAtt-d-attribute;
+   %deliveryTargetAtt-d-attribute;
+   %otherpropsAtt-d-attribute;
+   %platformAtt-d-attribute;
+   %productAtt-d-attribute;"
+>
+
 <!-- ============================================================= -->
-<!--                    DOMAINS ATTRIBUTE OVERRIDE                 -->
+<!--                    TOPIC NESTING OVERRIDE                     -->
+<!-- ============================================================= -->
+
+<!ENTITY % topic-info-types
+              "topic"
+>
+
+<!-- ============================================================= -->
+<!--                 SPECIALIZATIONS ATTRIBUTE OVERRIDE            -->
 <!-- ============================================================= -->
 
 <!ENTITY included-domains
@@ -166,8 +156,7 @@
                            &deliveryTargetAtt-d-att;
                            &otherpropsAtt-d-att;
                            &platformAtt-d-att;
-                           &productAtt-d-att;
-  "
+                           &productAtt-d-att;"
 >
 
 <!-- ============================================================= -->
@@ -187,11 +176,6 @@
 <!--                    DOMAIN ELEMENT INTEGRATION                 -->
 <!-- ============================================================= -->
 
-<!ENTITY % mapgroup-d-def
-  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map Group Domain//EN"
-         "mapGroup.mod"
->%mapgroup-d-def;
-
 <!ENTITY % alternativetitles-d-def
   PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Alternative Titles Domain//EN"
          "alternativeTitlesDomain.mod"
@@ -207,19 +191,14 @@
          "emphasisDomain.mod"
 >%emphasis-d-def;
 
-<!ENTITY % hazard-d-def
-  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Hazard Statement Domain//EN"
-         "hazardstatementDomain.mod"
->%hazard-d-def;
-
 <!ENTITY % hi-d-def
   PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Highlight Domain//EN"
          "highlightDomain.mod"
 >%hi-d-def;
 
-<!ENTITY % ut-d-def
-  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Utilities Domain//EN"
-         "utilitiesDomain.mod"
->%ut-d-def;
+<!ENTITY % mapgroup-d-def
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map Group Domain//EN"
+         "mapGroup.mod"
+>%mapgroup-d-def;
 
 <!-- ================= End of DITA Base Map Shell ================= -->
