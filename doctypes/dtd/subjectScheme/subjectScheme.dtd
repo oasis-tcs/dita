@@ -43,33 +43,27 @@
 <!-- ============================================================= -->
 
 <!-- ============================================================= -->
+<!--             DOMAIN CONSTRAINT INTEGRATION                     -->
+<!-- ============================================================= -->
+
+<!-- ============================================================= -->
 <!--             DOMAIN ENTITY DECLARATIONS                        -->
 <!-- ============================================================= -->
+
+<!ENTITY % alternativetitles-d-dec
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Alternative Titles Domain//EN"
+         "../base/alternativeTitlesDomain.ent"
+>%alternativetitles-d-dec;
 
 <!ENTITY % emphasis-d-dec
   PUBLIC "-//OASIS//ENTITIES DITA 2.0 Emphasis Domain//EN"
          "../base/emphasisDomain.ent"
 >%emphasis-d-dec;
 
-<!ENTITY % hazard-d-dec
-  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Hazard Statement Domain//EN"
-         "../base/hazardstatementDomain.ent"
->%hazard-d-dec;
-
 <!ENTITY % hi-d-dec
   PUBLIC "-//OASIS//ENTITIES DITA 2.0 Highlight Domain//EN"
          "../base/highlightDomain.ent"
 >%hi-d-dec;
-
-<!ENTITY % mapgroup-d-dec
-  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Map Group Domain//EN"
-         "../base/mapGroup.ent"
->%mapgroup-d-dec;
-
-<!ENTITY % ut-d-dec
-  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Utilities Domain//EN"
-         "../base/utilitiesDomain.ent"
->%ut-d-dec;
 
 <!-- ============================================================= -->
 <!--             DOMAIN ATTRIBUTES DECLARATIONS                    -->
@@ -85,6 +79,11 @@
          "../base/deliveryTargetAttDomain.ent"
 >%deliveryTargetAtt-d-dec;
 
+<!ENTITY % otherpropsAtt-d-dec
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Otherprops Attribute Domain//EN"
+         "../base/otherpropsAttDomain.ent"
+>%otherpropsAtt-d-dec;
+
 <!ENTITY % platformAtt-d-dec
   PUBLIC "-//OASIS//ENTITIES DITA 2.0 Platform Attribute Domain//EN"
          "../base/platformAttDomain.ent"
@@ -95,35 +94,22 @@
          "../base/productAttDomain.ent"
 >%productAtt-d-dec;
 
-<!ENTITY % otherpropsAtt-d-dec
-  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Otherprops Attribute Domain//EN"
-         "../base/otherpropsAttDomain.ent"
->%otherpropsAtt-d-dec;
-
 <!-- ============================================================= -->
 <!--                    DOMAIN EXTENSIONS                          -->
 <!-- ============================================================= -->
 <!--                    One for each extended base element, with
                         the name of the domain(s) in which the
                         extension was declared                     -->
-                        
-<!ENTITY % data         "data |
-                         %ut-d-data;
-                        ">
-<!ENTITY % div          "div |
-                         %ut-d-div;
-                        ">
-<!ENTITY % topicref     "topicref |
-                         %mapgroup-d-topicref;
-                        ">
-<!ENTITY % note         "note |
-                         %hazard-d-note;
-                        ">
+
 <!ENTITY % ph           "ph |
                          %emphasis-d-ph; |
                          %hi-d-ph;
                         ">
-
+                        
+<!ENTITY % titlealt     "titlealt |
+                         %alternativeTitles-d-titlealt;
+                        "> 
+                        
 <!-- ============================================================= -->
 <!--                    DOMAIN ATTRIBUTE EXTENSIONS                -->
 <!-- ============================================================= -->
@@ -131,15 +117,17 @@
 <!ENTITY % base-attribute-extensions
   ""
 >
+
 <!ENTITY % props-attribute-extensions
   "%audienceAtt-d-attribute;
    %deliveryTargetAtt-d-attribute;
+   %otherpropsAtt-d-attribute;
    %platformAtt-d-attribute;
-   %productAtt-d-attribute;
-   %otherpropsAtt-d-attribute;"
+   %productAtt-d-attribute;"
 >
+
 <!-- ============================================================= -->
-<!--                    DOMAINS ATTRIBUTE OVERRIDE                 -->
+<!--                 SPECIALIZATIONS ATTRIBUTE OVERRIDE            -->
 <!-- ============================================================= -->
 
 <!ENTITY included-domains
@@ -147,12 +135,11 @@
                            &deliveryTargetAtt-d-att;
                            &otherpropsAtt-d-att;
                            &platformAtt-d-att;
-                           &productAtt-d-att;
-"
+                           &productAtt-d-att;"
 >
 
 <!-- ============================================================= -->
-<!--                    CONTENT CONSTRAINT INTEGRATION             -->
+<!--           ELEMENT-TYPE CONFIGURATION INTEGRATION              -->
 <!-- ============================================================= -->
 
 <!-- ============================================================= -->
@@ -173,29 +160,19 @@
 <!--                    DOMAIN ELEMENT INTEGRATION                 -->
 <!-- ============================================================= -->
 
+<!ENTITY % alternativetitles-d-def
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Alternative Titles Domain//EN"
+         "../base/alternativeTitlesDomain.mod"
+>%alternativetitles-d-def;
+
 <!ENTITY % emphasis-d-def
   PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Emphasis Domain//EN"
          "../base/emphasisDomain.mod"
 >%emphasis-d-def;
 
-<!ENTITY % hazard-d-def
-  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Hazard Statement Domain//EN"
-         "../base/hazardstatementDomain.mod"
->%hazard-d-def;
-
 <!ENTITY % hi-d-def
   PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Highlight Domain//EN"
          "../base/highlightDomain.mod"
 >%hi-d-def;
-
-<!ENTITY % mapgroup-d-def
-  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map Group Domain//EN"
-         "../base/mapGroup.mod"
->%mapgroup-d-def;
-
-<!ENTITY % ut-d-def
-  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Utilities Domain//EN"
-         "../base/utilitiesDomain.mod"
->%ut-d-def;
 
 <!-- ================= End of DITA Subject Scheme Map Shell ================= -->
