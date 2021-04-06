@@ -72,9 +72,9 @@ PUBLIC "-//OASIS//DTD DITA 2.0 Subject Scheme Map//EN"
                        a:defaultValue="
                          @props/audience
                          @props/deliveryTarget
+                         @props/otherprops
                          @props/platform
-                         @props/product
-                         @props/otherprops"/>
+                         @props/product"/>
          </optional>
       </define>
   </div>
@@ -84,18 +84,15 @@ PUBLIC "-//OASIS//DTD DITA 2.0 Subject Scheme Map//EN"
   <div>
       <a:documentation>MODULE INCLUSIONS</a:documentation>
       <include href="../base/mapMod.rng"/>
-      <include href="../base/mapGroupDomain.rng"/>
-      <include href="subjectSchemeMod.rng"/>      
-      <include href="../base/alternativeTitlesDomain.rng" dita:since="2.0"/>
+      <include href="subjectSchemeMod.rng"/>
       <include href="../base/audienceAttDomain.rng" dita:since="2.0"/>
       <include href="../base/deliveryTargetAttDomain.rng"/>
       <include href="../base/otherpropsAttDomain.rng" dita:since="2.0"/>
       <include href="../base/platformAttDomain.rng" dita:since="2.0"/>
-      <include href="../base/productAttDomain.rng" dita:since="2.0"/>
+      <include href="../base/productAttDomain.rng" dita:since="2.0"/>      
+      <include href="../base/alternativeTitlesDomain.rng" dita:since="2.0"/>
       <include href="../base/emphasisDomain.rng"/>
-      <include href="../base/hazardstatementDomain.rng"/>
       <include href="../base/highlightDomain.rng"/>
-      <include href="../base/utilitiesDomain.rng"/>
   </div>
   <div>
       <a:documentation>ID-DEFINING ELEMENT OVERRIDES</a:documentation>
@@ -106,9 +103,9 @@ PUBLIC "-//OASIS//DTD DITA 2.0 Subject Scheme Map//EN"
                <element>
                   <anyName>
                      <except>
+                        <name>anchor</name>
                         <name>map</name>
                         <name>subjectScheme</name>
-                        <name>anchor</name>
                      </except>
                   </anyName>
                   <zeroOrMore>
