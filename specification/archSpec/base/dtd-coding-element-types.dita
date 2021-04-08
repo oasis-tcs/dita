@@ -15,22 +15,25 @@
     </metadata>
   </prolog>
   <conbody>
-    <p>A vocabulary module that defines a structural or element domain specialization is composed of
-      two files:</p>
-    <ul>
-      <li>A definition module (<filepath>.mod</filepath>) file, which declares the element names,
-        content models, and attribute lists for the element types that are defined in the vocabulary
-        module</li>
-      <li>An entity declaration (<filepath>.ent</filepath>) file, which declares the text and
-        parameter entities that are used to integrate the vocabulary module into a document-type
-        shell</li>
-    </ul>
+    <section id="files">
+      <title>Module files</title>
+      <p>A vocabulary module that defines a structural or element domain specialization is composed
+        of two files:</p>
+      <ul>
+        <li>A definition module (<filepath>.mod</filepath>) file, which declares the element names,
+          content models, and attribute lists for the element types that are defined in the
+          vocabulary module</li>
+        <li>An entity declaration (<filepath>.ent</filepath>) file, which declares the text and
+          parameter entities that are used to integrate the vocabulary module into a document-type
+          shell</li>
+      </ul>
+    </section>
     <section id="element-definitions">
       <title>Element definitions</title>
-      <p>A structural or domain vocabulary module must contain a declaration for each element type
-        that is named by the module. While the XML standard allows content models to refer to
+      <p>A structural or element-domain vocabulary module contains a declaration for each element
+        type that is named by the module. While the XML standard allows content models to refer to
         undeclared element types, the DITA standard does not permit this. All element types or
-        attribute lists that are named within a vocabulary module must be declared in one of the
+        attribute lists that are named within a vocabulary module are declared in one of the
         following objects:</p>
       <ul>
         <li>The vocabulary module</li>
@@ -43,85 +46,98 @@
         <dlentry>
           <dt>Element name entities</dt>
           <dd>
-            <p>For each element type, there must be a parameter entity with a name that matches the
-              element type name. The default value is the element type name. This parameter entity
-              provides a layer of abstraction when setting up content models; it can be redefined in
-              a document-type shell in order to create domain extensions or constraints. Element
-              name entities for a single vocabulary module are typically grouped together at the top
-              of the vocabulary module.</p>
-            <p otherprops="examples">For example:
-                <codeph><![CDATA[<!ENTITY % topichead "topichead">]]></codeph></p>
+            <p>For each element type, there is a parameter entity with a name that matches the
+              element type name. The default value is the element-type name. </p>
+            <div otherprops="examples">
+              <p>For example:</p>
+              <codeblock>&lt;!ENTITY % topichead "topichead"></codeblock>
+            </div>
+            <p>The parameter entity provides a layer of abstraction when setting up content models;
+              it can be redefined in a document-type shell in order to create domain extensions <ph
+                rev="2.0">or implement element configuration (constraints and expansion).</ph></p>
+            <p>Element name entities for a single vocabulary module are typically grouped together
+              at the top of the vocabulary module. They can occur in any order.</p>
           </dd>
         </dlentry>
         <dlentry>
           <dt>Content-model parameter entity</dt>
           <dd>
-            <p>For each element type, there must be a parameter entity that defines the content
-              model. The name of the parameter entity is
+            <p>For each element type, there is a parameter entity that defines the content model.
+              The name of the parameter entity is
                 <codeph><varname>tagname</varname>.content</codeph>, and the value is the content
-              model definition. Consistent use and naming of the
-                <codeph><varname>tagname</varname>.content</codeph> parameter entity enables the use
-              of <ph rev="2.0">element-configuration modules (constraints and expansion) to redefine
-                the content model.</ph></p>
-            <p otherprops="examples">For
-              example:<codeblock>&lt;!ENTITY % topichead.content
+              model definition.</p>
+            <div otherprops="examples">
+              <p>For example:</p>
+              <codeblock>&lt;!ENTITY % topichead.content
   "((%topicmeta;)?, 
     (%anchor; | 
      %data.elements.incl; | 
      %navref; | 
      %topicref;)*)
-"></codeblock></p>
+"></codeblock>
+            </div>
+            <p>Consistent use and naming of the <codeph><varname>tagname</varname>.content</codeph>
+              parameter entity enables the use of <ph rev="2.0">element-configuration modules
+                (constraints and expansion) to redefine the content model.</ph></p>
           </dd>
         </dlentry>
         <dlentry>
           <dt>Attribute-list parameter entity</dt>
           <dd>
-            <p>For each element type, there must be a parameter entity that declares the attributes
-              that are available on the element. The name of the parameter entity is
+            <p>For each element type, there is a parameter entity that declares the attributes that
+              are available on the element. The name of the parameter entity is
                   <codeph><varname>tagname</varname>.attributes</codeph>, and the value is a list of
               the attributes that are used by the element type (except for <xmlatt>class</xmlatt>).
               Consistent use and naming of the
                 <codeph><varname>tagname</varname>.attributes</codeph> parameter entity enables the
               use of <ph rev="2.0">element-configuration modules (constraints and expansion) to
                 redefine the attribute list.</ph></p>
-            <p otherprops="examples">For
-example:<codeblock>&lt;!ENTITY % topichead.attributes
+            <div otherprops="examples">
+              <p>For example:</p>
+              <codeblock>&lt;!ENTITY % topichead.attributes
  "keys CDATA #IMPLIED
   copy-to CDATA #IMPLIED
   %topicref-atts;
   %univ-atts;"
-></codeblock></p>
+></codeblock>
+            </div>
           </dd>
         </dlentry>
         <dlentry>
           <dt>Element declaration</dt>
           <dd>
-            <p>For each element type, there must be an element declaration that consists of a
-              reference to the content-model parameter entity.</p>
-            <p otherprops="examples">For
-              example:<codeblock>&lt;!ELEMENT topichead    %topichead.content;></codeblock></p>
+            <p>For each element type, there is an element declaration that consists of a reference
+              to the content-model parameter entity.</p>
+            <div otherprops="examples">
+              <p>For example:</p>
+              <codeblock>&lt;!ELEMENT topichead    %topichead.content;></codeblock>
+            </div>
           </dd>
         </dlentry>
         <dlentry>
           <dt>Attribute list declaration</dt>
           <dd>
-            <p>For each element type, there must be an attribute list declaration that consists of a
+            <p>For each element type, there is an attribute list declaration that consists of a
               reference to the attribute-list parameter entity.</p>
-            <p otherprops="examples">For
-              example:<codeblock>&lt;!ATTLIST topichead    %topichead.attributes;></codeblock></p>
+            <div otherprops="examples">
+              <p>For example:</p>
+              <codeblock>&lt;!ATTLIST topichead    %topichead.attributes;></codeblock>
+            </div>
           </dd>
         </dlentry>
         <dlentry>
           <dt>Specialization attribute declarations</dt>
           <dd>
-            <p>A vocabulary module must define a <xmlatt>class</xmlatt> attribute for every element
-              that is declared in the module. The value of the attribute is constructed according to
-              the rules in <xref href="specialization-class-attribute.dita"/>.</p>
-            <p otherprops="examples">For example, the <codeph>ATTLIST</codeph>
-              definition for the <xmlelement>topichead</xmlelement> element (a specialization of the
-                <xmlelement>topicref</xmlelement> element in the base map type) includes
-              the definition of the <xmlatt>class</xmlatt> attribute, as
-              follows:<codeblock>&lt;!ATTLIST topichead  class CDATA "+ map/topicref  mapgroup-d/topichead "&gt;</codeblock></p>
+            <p>A vocabulary module defines a <xmlatt>class</xmlatt> attribute for every element that
+              is declared in the module. The value of the attribute is constructed according to the
+              rules in <xref href="specialization-class-attribute.dita"/>.</p>
+            <div otherprops="examples">
+              <p>For example, the <codeph>ATTLIST</codeph> definition for the
+                  <xmlelement>topichead</xmlelement> element (a specialization of the
+                  <xmlelement>topicref</xmlelement> element in the base map type) includes the
+                definition of the <xmlatt>class</xmlatt> attribute, as follows:</p>
+              <codeblock>&lt;!ATTLIST topichead  class CDATA "+ map/topicref  mapgroup-d/topichead "&gt;</codeblock>
+            </div>
           </dd>
         </dlentry>
       </dl>

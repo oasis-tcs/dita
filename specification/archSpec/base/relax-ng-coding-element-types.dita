@@ -2,37 +2,44 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept xml:lang="en-us" id="concept_yvl_ncv_dn">
  <title>RELAX NG: Coding requirements for element type declarations</title>
- <shortdesc>Structural and domain vocabulary modules have the same coding requirements for element
-    type declarations. Each RELAX NG vocabulary module consists of a single module file.</shortdesc>
+ <shortdesc>This topic covers general coding requirements for element types in structural and
+    element-domain vocabulary modules.</shortdesc>
  <conbody>
-  <section id="section_AF5B8ABA77DA4474A0AF0DF0AFD8E018">
-   <title>Element definitions</title>
-   <p>A structural or element-domain vocabulary module must contain a declaration for each
-        specialized element type that is named in the module. While the XML standard allows content
-        models to refer to undeclared element types, all element types that are named in content
-        models or attribute list declarations within a vocabulary module must have a RELAX NG
-        element declaration. The RELAX NG element declaration can occur in one of the following:</p>
+    <section id="files">
+      <title>Module files</title>
+      <p>Each RELAX NG vocabulary module consists of a single module file.</p>
+    </section>
+  <section id="element-definitions">
+      <title>Element definitions</title>
+      <p>A structural or element-domain vocabulary module contains a declaration for each element
+        type that is named in the module. While the XML standard allows content models to refer to
+        undeclared element types, the DITA standard does not permit it. All element types or
+        attribute lists that are named in a vocabulary module are declared in one of the following
+        objects:</p>
       <ul>
         <li>The vocabulary module</li>
         <li>A base module of which the vocabulary module is a direct or indirect specialization</li>
         <li>(If the vocabulary module is a structural module) A required domain or structural
           module</li>
       </ul>
-   <p>The element type patterns are organized into the following sections:</p>
+      <p>The element type patterns are organized into the following sections:</p>
       <dl>
         <dlentry>
           <dt>Element type name patterns</dt>
           <dd>
-            <p>For each element type that is declared in the vocabulary module, there must be a
-              pattern whose name is the element type name and whose content is a reference to the
-              element type <codeph><varname>tagname</varname>.element</codeph> pattern. For
-              example:<codeblock>&lt;div>
+            <p>For each element type that is declared in the vocabulary module, there is a pattern
+              whose name is the element type name and whose content is a reference to the
+              element-type <codeph><varname>tagname</varname>.element</codeph> pattern.</p>
+            <div otherprops="examples">
+              <p>For example:</p>
+              <codeblock>&lt;div>
   &lt;a:documentation>ELEMENT TYPE NAME PATTERNS&lt;/a:documentation>
   &lt;define name="b">
     &lt;ref name="b.element"/>
   &lt;/define>
   &lt;!-- ... -->
-&lt;/div></codeblock></p>
+&lt;/div></codeblock>
+            </div>
             <p>The element-type name pattern provides a layer of abstraction that facilitates
               redefinition. The element-type name patterns are referenced from content model and
               domain extension patterns. Specialization modules can re-declare the patterns to
@@ -55,88 +62,113 @@
         </dlentry>
         <dlentry>
           <dt>Element type declarations</dt>
-          <dd>For each element type that is declared in the vocabulary module, the following set of
-            patterns must be used to define the content model and attributes for the element type.
-            Each set of patterns is typically grouped within a <xmlelement>div</xmlelement> element
-            for clarity.<ul>
-              <li><codeph><varname>tagname</varname>.content</codeph> defines the complete content
-                model for the element <varname>tagname</varname>. The content model pattern
-                  <ph>can</ph> be overridden in constraint modules to further constrain the content
-                model for the element type.</li>
-              <li><codeph><varname>tagname</varname>.attributes</codeph> defines the complete
-                attribute list for the element <varname>tagname</varname>, except for
-                  <xmlatt>class</xmlatt>. The attribute list declaration <ph>can</ph> be overridden
-                in constraint modules to further constrain the attribute list for the element
-                type.</li>
-              <li><codeph><varname>tagname</varname>.attlist</codeph> is an additional attribute
-                list pattern with a <xmlatt>combine</xmlatt> attribute set to the value
-                "interleave". This pattern contains only a reference to the
-                    <codeph><varname>tagname</varname>.attributes</codeph> pattern.</li>
-              <li><codeph><varname>tagname</varname>.element</codeph> is the actual element type
-                definition. It contains an <xmlelement>element</xmlelement> element whose
-                  <xmlatt>name</xmlatt> value is the element type name and whose content is a
-                reference to the <codeph><varname>tagname</varname>.content</codeph> and
-                    <codeph><varname>tagname</varname>.attlist</codeph> patterns. In OASIS grammar
-                files, the <xmlatt>longName</xmlatt> attribute in the DITA architecture namespace is
-                also used to help enable generation of DTD and XSD grammar files.</li>
-            </ul><p otherprops="examples">The following example shows the declaration for the
-                <xmlelement>topichead</xmlelement> element, including the definition for each
-              pattern described above.</p><draft-comment author="robander">Reminder to update this
-              example with a 2.0 version of the
-            declaration.</draft-comment><codeblock otherprops="examples">&lt;div>
-  &lt;a:documentation>LONG NAME: Topic Head&lt;/a:documentation>
-  &lt;define name="topichead.content">
-    &lt;optional>
-      &lt;ref name="topicmeta"/>
-    &lt;/optional>
-    &lt;zeroOrMore>
-      &lt;choice>
-        &lt;ref name="anchor"/>
-        &lt;ref name="data.elements.incl"/>
-        &lt;ref name="navref"/>
-        &lt;ref name="topicref"/>
-      &lt;/choice>
-    &lt;/zeroOrMore>
-  &lt;/define>
-  &lt;define name="topichead.attributes">
-    &lt;optional>
-      &lt;attribute name="keys"/>
-    &lt;/optional>
-    &lt;optional>
-      &lt;attribute name="copy-to"/>
-    &lt;/optional>
-    &lt;ref name="topicref-atts"/>
-    &lt;ref name="univ-atts"/>
-  &lt;/define>
-  &lt;define name="topichead.element">
-    &lt;element name="topichead" ditaarch:longName="Topic head">
-      &lt;a:documentation>The &amp;lt;topichead> element provides a title-only entry in a navigation map,
-        as an alternative to the fully-linked title provided by the &amp;lt;topicref> element. 
-        Category: Mapgroup elements&lt;/a:documentation>
-      &lt;ref name="topichead.attlist"/>
-      &lt;ref name="topichead.content"/>
-    &lt;/element>
-  &lt;/define>
-  &lt;define name="topichead.attlist" combine="interleave">
-    &lt;ref name="topichead.attributes"/>
-  &lt;/define>
-&lt;/div></codeblock></dd>
+          <dd>
+            <p>For each element type that is declared in the vocabulary module, the following set of
+              patterns are used to define the content model and attributes for the element type.
+              Each set of patterns typically is grouped within a <xmlelement>div</xmlelement>
+              element.</p>
+            <dl>
+              <dlentry>
+                <dt><codeph><varname>tagname</varname>.content</codeph></dt>
+                <dd>Defines the complete content model for the element <varname>tagname</varname>.
+                  The content model pattern can be overridden in <ph rev="2.0">element-configuration
+                    modules (constraints and expansion)</ph>.</dd>
+              </dlentry>
+              <dlentry>
+                <dt><codeph><varname>tagname</varname>.attributes</codeph></dt>
+                <dd>Defines the complete attribute list for the element <varname>tagname</varname>,
+                  except for <xmlatt>class</xmlatt>. The attribute list declaration can be
+                  overridden in <ph rev="2.0">element-configuration modules (constraints and
+                    expansion)</ph>.</dd>
+              </dlentry>
+              <dlentry>
+                <dt><codeph><varname>tagname</varname>.element</codeph></dt>
+                <dd>Provides the actual element-type definition. It contains an
+                    <xmlelement>element</xmlelement> element whose <xmlatt>name</xmlatt> value is
+                  the element type name and whose content is a reference to the
+                      <codeph><varname>tagname</varname>.content</codeph> and
+                      <codeph><varname>tagname</varname>.attlist</codeph> patterns. In OASIS grammar
+                  files, the <xmlatt>longName</xmlatt> attribute in the DITA architecture namespace
+                  is also used to help enable generation of DTD and XSD grammar files.<draft-comment
+                    author="Kristen J Eberlein" time="07 April 2021">
+                    <p>Are we removing the stuff for generating DTD and XSD from the RNG?</p>
+                  </draft-comment></dd>
+              </dlentry>
+              <dlentry>
+                <dt><codeph><varname>tagname</varname>.attlist</codeph></dt>
+                <dd>An additional attribute-list pattern with a <xmlatt>combine</xmlatt> attribute
+                  set to the value <keyword>interleave</keyword>. This pattern contains only a
+                  reference to the <codeph><varname>tagname</varname>.attributes</codeph>
+                  pattern.</dd>
+              </dlentry>
+            </dl>
+            <div otherprops="examples">
+              <p>The following example shows the declaration for the
+                  <xmlelement>topichead</xmlelement> element, including the definition for each
+                pattern described above.</p>
+              <codeblock>    &lt;div>
+      &lt;a:documentation>Topic Head&lt;/a:documentation>
+      <b>&lt;define name="topichead.content"></b>
+        &lt;optional>
+          &lt;ref name="topicmeta"/>
+        &lt;/optional>
+        &lt;zeroOrMore>
+          &lt;choice>
+            &lt;ref name="anchor"/>
+            &lt;ref name="data.elements.incl"/>
+            &lt;ref name="navref"/>
+            &lt;ref name="topicref"/>
+          &lt;/choice>
+        &lt;/zeroOrMore>
+      &lt;/define>
+      <b>&lt;define name="topichead.attributes">
+</b>        &lt;optional>
+          &lt;attribute name="keys"/>
+        &lt;/optional>
+        &lt;optional>
+          &lt;attribute name="copy-to"/>
+        &lt;/optional>
+        &lt;ref name="topicref-atts"/>
+        &lt;ref name="univ-atts"/>
+      &lt;/define>
+      <b>&lt;define name="topichead.element"></b>
+        &lt;element name="topichead">
+          &lt;a:documentation>The &amp;lt;topichead> element provides a title-only entry in a navigation map, as an alternative to the fully-linked title provided by the &amp;lt;topicref> element. Category:
+            Mapgroup elements&lt;/a:documentation>
+          &lt;ref name="topichead.attlist"/>
+          &lt;ref name="topichead.content"/>
+        &lt;/element>
+      &lt;/define>
+      <b>&lt;define name="topichead.attlist" combine="interleave">
+</b>        &lt;ref name="topichead.attributes"/>
+      &lt;/define>
+
+    &lt;/div></codeblock>
+            </div>
+            <draft-comment author="robander">Reminder to update this example with a 2.0 version of
+              the declaration.</draft-comment>
+          </dd>
         </dlentry>
         <dlentry>
           <dt>idElements pattern contribution</dt>
-          <dd>Element types that declare the <xmlatt>id</xmlatt> attribute as type "ID", including
-            all topic and map element types, must provide a declaration for the
-              <codeph>idElements</codeph> pattern. This is needed to correctly configure the "any"
-            pattern override in document-type shells and avoid errors from RELAX NG parsers. The
-            declaration is specified with a <xmlatt>combine</xmlatt> attribute set to the value
-            "choice". For
-            example:<codeblock>&lt;div>
+          <dd>
+            <p>Element types that declare the <xmlatt>id</xmlatt> attribute as type "ID", including
+              all topic and map element types, provide a declaration for the
+                <codeph>idElements</codeph> pattern. This is required to correctly configure the
+                <keyword>any</keyword> pattern override in document-type shells and avoid errors
+              from RELAX NG parsers. The declaration is specified with a <xmlatt>combine</xmlatt>
+              attribute set to the value <keyword>choice</keyword>.</p>
+            <div rev="2.0">
+              <p> For example:</p>
+              <codeblock>&lt;div>
   &lt;a:documentation>LONG NAME: Map&lt;/a:documentation>
   &lt;!-- ... -->
   &lt;define name="idElements" combine="choice">
     &lt;ref name="map.element"/>
   &lt;/define>
-&lt;/div></codeblock></dd>
+&lt;/div></codeblock>
+            </div>
+          </dd>
         </dlentry>
         <dlentry>
           <dt>Specialization attribute declarations</dt>
@@ -162,6 +194,6 @@
           </dd>
         </dlentry>
       </dl>
-  </section>
+    </section>
  </conbody>
 </concept>

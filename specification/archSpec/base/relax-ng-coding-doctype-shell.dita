@@ -2,12 +2,10 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept xml:lang="en-us" id="concept_rrq_p45_dn" >
   <title>RELAX NG: Coding requirements for document-type shells</title>
-  <abstract>
-    <shortdesc product="DITA-1.3">A document-type shell integrates one or more topic type or map
-      type modules, zero or more domain modules, and zero or more constraint modules.</shortdesc>
-    <shortdesc rev="2.0">A RNG-based document-type shell is organized into sections; each section
-      contains ...</shortdesc>
-  </abstract>
+  <shortdesc>A RNG-based document-type shell is organized into sections; each section follows a
+    pattern. These patterns help ensure that the shell follows XML parsing rules for RELAX NG; they
+    also establish a modular design that simplifies creation of new document-type
+    shells.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -21,20 +19,9 @@
     </metadata>
   </prolog>
   <conbody>
-    <p>Because RELAX NG modules are self-integrating, document-type shells only need to include
-      vocabulary modules. No additional declarations are required in order to integrate domain and
-      nested topic elements into the base content models.</p>
-    <draft-comment author="Kristen J Eberlein" time="03 April 2021">
-      <p>I think the above paragraph needs an overhaul for the following reasons:</p>
-      <ul>
-        <li>The shells need to include constraint and expansion modules, so the statement that
-          "document-type shells only need to include vocabulary modules" is incorrect.</li>
-        <li>I'm not really sure what we are trying to communicate by "no additional declarations are
-          required in order to integrate domain and nested topic elements into the base topic
-          elements." If we are trying to draw a comparison to how DTD-based document-type shells
-          work, why?</li>
-      </ul>
-    </draft-comment>
+    <p>Because RELAX NG modules are self-integrating, RNG-based document-type shells only need to
+      include vocabulary modules<ph rev="2.0"> and element-configuration modules (constraints and
+        expansion)</ph>.</p>
     <p>An RNG-based document-type shell contains the following sections:</p>
     <ol>
       <li><xref href="#./root-element-declarations" format="dita"/></li>
@@ -43,9 +30,6 @@
       <li><xref href="#./module-inclusion" format="dita"/></li>
       <li><xref href="#./id-defining-element-overrides" format="dita"/></li>
     </ol>
-    <p>Each of the sections in a RNG-based document-type shell follows a pattern. These patterns
-      help ensure that the shell follows XML parsing rules for RELAX NG; they also establish a
-      modular design that simplifies creation of new document-type shells.</p>
     <dl>
       <dlentry id="root-element-declarations">
         <dt>Root element declaration</dt>
@@ -64,35 +48,21 @@
       <dlentry id="specializations-attribute">
         <dt><xmlatt>specializations</xmlatt> attribute</dt>
         <dd>
-          <p>The document-type shell must list the attribute domain modules that are named as
-            dependencies in the <xmlatt>specializations</xmlatt> attribute value. Unlike DTDs, a
-            default value for <xmlatt>specializations</xmlatt> cannot automatically be constructed
-            using RELAX NG facilities. Instead, the values used to construct
-              <xmlatt>specializations</xmlatt> are taken from each attribute module.</p>
-          <draft-comment author="Kristen J Eberlein" time="03 April 2021">
-            <p>The above paragraph seems ... quite off. Again, why are we comparing RNGs to DTDs?
-              And if we strictly parse the 2nd sentence, it suggests that DTDs can use RELAX NG
-              facilities to automatically construct the default value for the
-                <xmlatt>specializations</xmlatt> attribute!</p>
-            <p>What we need to do here is explain what goes in this section of the shell and
-              why:</p>
-            <ul>
-              <li>Tokens for the <xmlatt>specializations</xmlatt> attribute that are contributed by
-                attribute specialization modules</li>
-              <li>Tokens for the <xmlatt>specializations</xmlatt> attribute that are contributed by
-                vexpansion modules that expand the attribute list of an element</li>
-            </ul>
-          </draft-comment>
+          <!--<p>The document-type shell must list the attribute domain modules that are named as dependencies in the <xmlatt>specializations</xmlatt> attribute value. Unlike DTDs, a default value for <xmlatt>specializations</xmlatt> cannot automatically be constructed using RELAX NG facilities. Instead, the values used to construct <xmlatt>specializations</xmlatt> are taken from each attribute module.</p>
+-->
+          <p>This section lists the tokens that attribute-domain <ph rev="2.0">and
+              element-configuration</ph> modules contribute to the <xmlatt>specialization</xmlatt>
+            attribute.</p>
           <p otherprops="examples">For example:<codeblock>&lt;div>
   &lt;a:documentation>SPECIALIZATIONS ATTRIBUTE&lt;/a:documentation>
   &lt;define name="specializations-att">
     &lt;optional>
-      &lt;attribute name="domains"
+      &lt;attribute name="specializations"
                  a:defaultValue="@props/audience
-                                 @props/deliveryTarget
+                                 @props/deliveryTarget                                 
+                                 @props/otherprops
                                  @props/platform
-                                 @props/product
-                                 @props/otherprops"
+                                 @props/product"
       />
     &lt;/optional>
   &lt;/define>
@@ -102,19 +72,14 @@
       <dlentry id="content-constraint">
         <dt rev="2.0">Element-type configuration integration</dt>
         <dd>
-          <p>The document-type shell must include any constraint modules. Constraint modules include
-            the module they override and override the patterns that they constrain directly in the
-            constraint module itself. Any module that is constrained in this section (including the
-            base topic or map modules) will be left out of the following section.</p>
-          <draft-comment author="Kristen J Eberlein" time="03 April 2021">
-            <p>Again, this needs to be reworked. What exactly happens in this section of the RNG
-              shell? Let's state that clearly and avoid using the "phrase section" in an unclear
-              way. (What follows? The code block? The next section of the topic? Or do we mean the
-              "MODULE INCLUSIONS" section of the shell?)</p>
-            <p>Of course, the new wording needs to cover expansion modules also.</p>
-          </draft-comment>
+          <p>This section of the document-type shell contains includes for <ph rev="2.0"
+              >element-type configuration modules (constraints and expansions)</ph>.
+            <!--Constraint modules include the module they override and override the patterns that they constrain directly in the constraint module itself.-->
+            Because the element-configuration module imports the module that it override, any module
+            that is<ph rev="2.0"> configured</ph> in this section (including the base topic or map
+            modules) is left out of the following "Module inclusion" section.</p>
           <div otherprops="examples" rev="2.0">
-            <p>For example, the following code sample shows the portion of an RNG-based
+            <p>For example, the following code sample shows the section of an RNG-based
               document-type shell that redefines the <xmlelement>taskbody</xmlelement> element to
               create the strict task topic.</p>
             <codeblock>&lt;div>
@@ -126,28 +91,13 @@
   &lt;/include>
 &lt;/div></codeblock>
           </div>
-          <p otherprops="examples">For example, when the following constraint
-            is included for the task module, the task module itself will <i>not</i> be included in
-            the shell; the task module itself is included within
-              <filepath>strictTaskbodyConstraintMod.rng</filepath>:<codeblock>&lt;div>
-&lt;a:documentation>CONTENT CONSTRAINT INTEGRATION&lt;/a:documentation>
-  &lt;include href="strictTaskbodyConstraintMod.rng">
-    &lt;define name="task-info-types">
-      &lt;ref name="task.element"/>
-    &lt;/define>            
-  &lt;/include>
-&lt;/div></codeblock></p>
         </dd>
       </dlentry>
       <dlentry id="module-inclusion">
         <dt>Module inclusions</dt>
         <dd>
-          <p>The document-type shell must include any unconstrained domain or structural module. If
-            the top-level map or topic type is unconstrained, it is also included in this
-            section.</p>
-          <draft-comment author="Kristen J Eberlein" time="03 April 2021">
-            <p>Why the 2nd sentence? Especially given the word "also" ...</p>
-          </draft-comment>
+          <p>This section of the RNG-based document-type shell includes all unconstrained domain or
+            structural modules.</p>
           <p otherprops="examples">For example:<codeblock>  &lt;div>
     &lt;a:documentation>MODULE INCLUSIONS&lt;/a:documentation>
     &lt;include href="topicMod.rng">
@@ -171,21 +121,19 @@
       <dlentry id="id-defining-element-overrides">
         <dt>ID-defining element overrides</dt>
         <dd>
-          <p>This section must declare any element in the document type that uses an
-              <xmlatt>id</xmlatt> attribute with an XML data type of "ID". This declaration is
-            required in order to avoid errors from RELAX NG parsers that would otherwise complain
-            about different uses of the <xmlatt>id</xmlatt> attribute.</p>
+          <p>This section declares any element in the document type that uses an <xmlatt>id</xmlatt>
+            attribute with an XML data type of <keyword>ID</keyword>. This declaration is required
+            in order to prevent RELAX NG parsers from issuing errors.</p>
           <p>If the document-type shell includes domains for foreign vocabularies such as SVG or
             MathML, this section also includes exclusions for the namespaces used by those
             domains.</p>
-          <!--<p>Typically, this section lists only a few elements, such as topic types or the <xmlelement>anchor</xmlelement> element, but it could include specializations that constrain <xmlatt>id</xmlatt>. In addition, foreign vocabularies require you to include exclusions for the namespaces used by those domains.</p>-->
           <div otherprops="examples">
             <p>For example, the following code sample is from an RNG-based document-type shell for a
               task topic. It declares that both the <xmlelement>topic</xmlelement> and
                 <xmlelement>task</xmlelement> elements have an <xmlatt>id</xmlatt> attribute with a
               XML data type of ID. These elements and any elements in the SVG or MathML namespaces
               are excluded from the "any" pattern by being placed within the
-                <xmlelement>except</xmlelement>element:<codeblock>  &lt;div&gt;
+                <xmlelement>except</xmlelement> element:<codeblock>  &lt;div&gt;
       &lt;a:documentation&gt; ID-DEFINING-ELEMENT OVERRIDES &lt;/a:documentation&gt;
       &lt;define name="any"&gt;
          &lt;zeroOrMore&gt;
@@ -214,7 +162,6 @@
   &lt;/div&gt;
 </codeblock></p>
           </div>
-          <!--<p otherprops="examples">For example, this section declares that <xmlelement>topic</xmlelement> and <xmlelement>task</xmlelement> use an <xmlatt>id</xmlatt> attribute with an XML data type of ID, along with any elements in the SVG or MathML namespaces. Each of these is excluded from the "any" pattern by placing them within the <xmlelement>except</xmlelement> rule as shown below:</p>-->
         </dd>
       </dlentry>
       <!--<dlentry id="constrain-domains-in-shell"><dt>Constraining domains in the shell</dt><dd><p>Domains can be constrained to disallow some extension elements without the use of a separate module file. This is done by overriding the base type pattern within the reference to the domain module. There is not a designated section of the document-type shell for this type of constraint; it can be placed either in <xref href="#concept_rrq_p45_dn/content-constraint" format="dita"/> or <xref href="#concept_rrq_p45_dn/module-inclusion" format="dita"/>.</p><p otherprops="examples">The following example demonstrates the portion of a document type shell that includes the highlight domain module while directly constraining that module to remove the <xmlelement>u</xmlelement> element.</p><codeblock otherprops="examples">
