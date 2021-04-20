@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.x Concept//EN" "concept.dtd">
 <concept id="dtd_coding_requirements_expansion_modules" rev="2.0">
     <title>DTD: Coding requirements for expansion modules</title>
     <shortdesc>An expansion module defines the expanded configuration for a map or topic element
@@ -8,12 +8,12 @@
         <metadata>
             <keywords>
                 <indexterm>coding
-                        requirements<indexterm>DTDs<indexterm>expansion</indexterm></indexterm></indexterm>
-                <indexterm>DTDs<indexterm>coding requirements<indexterm>expansion
-                            modules</indexterm></indexterm></indexterm>
-                <indexterm>expansion modules<indexterm>DTDs<indexterm>coding
-                            requirements</indexterm></indexterm></indexterm>
-                <indexterm>expansion modules<indexterm>DTDs<indexterm>naming conventions for
+                        requirements<indexterm>DTD<indexterm>expansion</indexterm></indexterm></indexterm>
+                <indexterm>DTD<indexterm>coding requirements<indexterm>expansion
+                        modules</indexterm></indexterm></indexterm>
+                <indexterm>expansion modules<indexterm>DTD<indexterm>coding
+                        requirements</indexterm></indexterm></indexterm>
+                <indexterm>expansion modules<indexterm>DTD<indexterm>naming conventions for
                             parameter entities</indexterm></indexterm></indexterm>
                 <indexterm>naming conventions<indexterm>expansion modules<indexterm>naming
                             conventions for parameter entities</indexterm></indexterm></indexterm>
@@ -23,16 +23,14 @@
     <conbody>
         <section id="structural">
             <title>Expansion modules</title>
-            <p>Expansion modules have the following requirements:</p>
+            <p>Expansion modules have the following coding requirements:</p>
             <dl>
                 <dlentry>
                     <dt>The <codeph><varname>tagname</varname>.attributes</codeph> parameter
                         entity</dt>
                     <dd>
-                        <p>When the attribute set for an element is expanded, there must be a
-                            declaration of the
-                                <codeph><varname>tagname</varname>.attributes</codeph> parameter
-                            entity that defines the expanded attributes.</p>
+                        <p>The <codeph><varname>tagname</varname>.attributes</codeph> parameter
+                            entity declares the expanded attributes.</p>
                         <p>This parameter entity can be defined in an attribute specialization
                             module, or it can be defined directly in the expansion module.</p>
                         <div otherprops="examples">
@@ -43,21 +41,27 @@
 &gt;</codeblock>
                         </div>
                         <p>Note that the name of the parameter entity ends with
-                                <codeph>-expansion</codeph>; ; this indicates that this is an
+                                <codeph>-expansion</codeph>; this indicates that this is an
                             expansion attribute and should not be included in the
                                 <parameterentity>base-attribute-extensions</parameterentity> entity
                             in the document-type shell.</p>
+                        <draft-comment author="Kristen J Eberlein" time="08 April 2021">
+                            <p>Should we call this
+                                    <codeph><varname>tagname</varname>.attributes</codeph> parameter
+                                entity? Or would
+                                    <codeph><varname>Domain</varname>.attributes</codeph> parameter
+                                entity be more appropriate?</p>
+                        </draft-comment>
                     </dd>
                 </dlentry>
                 <dlentry>
                     <dt>The <codeph><varname>tagname</varname>.content</codeph> parameter
                         entity</dt>
                     <dd>
-                        <p>When the content model for an element is expanded, there must be a
-                            redefinition of the <codeph><varname>tagname</varname>.content</codeph>
-                            parameter entity that defines the content model for the element. This
-                            redefinition of the content model references the parameter entity that
-                            was defined in the element specialization module.</p>
+                        <p>The <codeph><varname>tagname</varname>.content</codeph> parameter entity
+                            declares the expanded content model for the element. This redefinition
+                            of the content model references the parameter entity that was defined in
+                            the element specialization module.</p>
                         <div otherprops="examples">
                             <p>For example, the following code sample shows the entity declaration
                                 file for an element specialization module that defines a

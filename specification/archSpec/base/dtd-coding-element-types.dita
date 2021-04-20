@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.x Concept//EN" "concept.dtd">
 <concept id="general-coding-requirements" xml:lang="en-us">
   <title>DTD: Coding requirements for element type declarations</title>
   <shortdesc>This topic covers general coding requirements for defining element types in both
@@ -7,9 +7,9 @@
   <prolog>
     <metadata>
       <keywords>
-        <indexterm>coding requirements<indexterm>DTDs<indexterm> element-domain
+        <indexterm>coding requirements<indexterm>DTD<indexterm> element-domain
             modules</indexterm></indexterm></indexterm>
-        <indexterm>DTDs<indexterm>coding requirements<indexterm> element-domain
+        <indexterm>DTD<indexterm>coding requirements<indexterm> element-domain
             modules</indexterm></indexterm></indexterm>
       </keywords>
     </metadata>
@@ -17,7 +17,7 @@
   <conbody>
     <section id="files">
       <title>Module files</title>
-      <p>A vocabulary module that defines a structural or element domain specialization is composed
+      <p>A vocabulary module that defines a structural or element-domain specialization is composed
         of two files:</p>
       <ul>
         <li>A definition module (<filepath>.mod</filepath>) file, which declares the element names,
@@ -47,15 +47,15 @@
           <dt>Element name entities</dt>
           <dd>
             <p>For each element type, there is a parameter entity with a name that matches the
-              element type name. The default value is the element-type name. </p>
-            <div otherprops="examples">
+              element-type name. The default value is the element-type name. </p>
+            <example>
               <p>For example:</p>
               <codeblock>&lt;!ENTITY % topichead "topichead"></codeblock>
-            </div>
+            </example>
             <p>The parameter entity provides a layer of abstraction when setting up content models;
               it can be redefined in a document-type shell in order to create domain extensions <ph
-                rev="2.0">or implement element configuration (constraints and expansion).</ph></p>
-            <p>Element name entities for a single vocabulary module are typically grouped together
+                rev="2.0">or implement element configuration (constraint and expansion).</ph></p>
+            <p>Element name entities for a single vocabulary module typically are grouped together
               at the top of the vocabulary module. They can occur in any order.</p>
           </dd>
         </dlentry>
@@ -66,7 +66,7 @@
               The name of the parameter entity is
                 <codeph><varname>tagname</varname>.content</codeph>, and the value is the content
               model definition.</p>
-            <div otherprops="examples">
+            <example>
               <p>For example:</p>
               <codeblock>&lt;!ENTITY % topichead.content
   "((%topicmeta;)?, 
@@ -75,10 +75,7 @@
      %navref; | 
      %topicref;)*)
 "></codeblock>
-            </div>
-            <p>Consistent use and naming of the <codeph><varname>tagname</varname>.content</codeph>
-              parameter entity enables the use of <ph rev="2.0">element-configuration modules
-                (constraints and expansion) to redefine the content model.</ph></p>
+            </example>
           </dd>
         </dlentry>
         <dlentry>
@@ -87,12 +84,9 @@
             <p>For each element type, there is a parameter entity that declares the attributes that
               are available on the element. The name of the parameter entity is
                   <codeph><varname>tagname</varname>.attributes</codeph>, and the value is a list of
-              the attributes that are used by the element type (except for <xmlatt>class</xmlatt>).
-              Consistent use and naming of the
-                <codeph><varname>tagname</varname>.attributes</codeph> parameter entity enables the
-              use of <ph rev="2.0">element-configuration modules (constraints and expansion) to
-                redefine the attribute list.</ph></p>
-            <div otherprops="examples">
+              the attributes that are used by the element type (except for
+              <xmlatt>class</xmlatt>).</p>
+            <example>
               <p>For example:</p>
               <codeblock>&lt;!ENTITY % topichead.attributes
  "keys CDATA #IMPLIED
@@ -100,7 +94,10 @@
   %topicref-atts;
   %univ-atts;"
 ></codeblock>
-            </div>
+            </example>
+            <p>Consistent use and naming of the <codeph><varname>tagname</varname>.content</codeph>
+              parameter entity enables the use of <ph rev="2.0">element-configuration modules
+                (constraint and expansion) to redefine the content model.</ph></p>
           </dd>
         </dlentry>
         <dlentry>
@@ -108,10 +105,10 @@
           <dd>
             <p>For each element type, there is an element declaration that consists of a reference
               to the content-model parameter entity.</p>
-            <div otherprops="examples">
+            <example>
               <p>For example:</p>
               <codeblock>&lt;!ELEMENT topichead    %topichead.content;></codeblock>
-            </div>
+            </example>
           </dd>
         </dlentry>
         <dlentry>
@@ -119,10 +116,10 @@
           <dd>
             <p>For each element type, there is an attribute list declaration that consists of a
               reference to the attribute-list parameter entity.</p>
-            <div otherprops="examples">
+            <example otherprops="examples">
               <p>For example:</p>
               <codeblock>&lt;!ATTLIST topichead    %topichead.attributes;></codeblock>
-            </div>
+            </example>
           </dd>
         </dlentry>
         <dlentry>
@@ -131,16 +128,66 @@
             <p>A vocabulary module defines a <xmlatt>class</xmlatt> attribute for every element that
               is declared in the module. The value of the attribute is constructed according to the
               rules in <xref href="specialization-class-attribute.dita"/>.</p>
-            <div otherprops="examples">
+            <example>
               <p>For example, the <codeph>ATTLIST</codeph> definition for the
                   <xmlelement>topichead</xmlelement> element (a specialization of the
                   <xmlelement>topicref</xmlelement> element in the base map type) includes the
                 definition of the <xmlatt>class</xmlatt> attribute, as follows:</p>
-              <codeblock>&lt;!ATTLIST topichead  class CDATA "+ map/topicref  mapgroup-d/topichead "&gt;</codeblock>
-            </div>
+              <codeblock><u>&lt;!ATTLIST topichead  class CDATA "+ map/topicref  mapgroup-d/topichead "&gt;</u></codeblock>
+            </example>
           </dd>
         </dlentry>
       </dl>
+      <example>
+        <title>Definition of the <xmlelement>topichead</xmlelement> element</title>
+        <p>The following code sample shows how the <xmlelement>topichead</xmlelement> element is
+          defined in <filepath>mapGroup.mod</filepath>. Ellipses indicate where the code sample has
+          been snipped for brevity.</p>
+        <codeblock>&lt;!-- ============================================================= -->
+&lt;!--                   ELEMENT NAME ENTITIES                       -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY % topichead      "topichead"                                   >
+
+...
+
+&lt;!-- ============================================================= -->
+&lt;!--                    ELEMENT DECLARATIONS                       -->
+&lt;!-- ============================================================= -->
+
+&lt;!--                    LONG NAME: Topichead                       -->
+&lt;!ENTITY % topichead.content
+                       "((%topicmeta;)?,
+                         (%anchor; |
+                          %data.elements.incl; |
+                          %navref; |
+                          %topicref;)*)"
+>
+&lt;!ENTITY % topichead.attributes
+              "keys
+                          CDATA
+                                    #IMPLIED
+               copy-to
+                          CDATA
+                                    #IMPLIED
+               %topicref-atts;
+               %univ-atts;"
+>
+&lt;!ELEMENT  topichead %topichead.content;>
+&lt;!ATTLIST  topichead %topichead.attributes;>
+
+...
+
+&lt;!-- ============================================================= -->
+&lt;!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
+&lt;!-- ============================================================= -->
+  
+...
+
+&lt;!ATTLIST  topichead      class CDATA "+ map/topicref mapgroup-d/topichead ">
+
+&lt;!-- ================== End of DITA Map Group Domain ==================== --></codeblock>
+      </example>
     </section>
   </conbody>
 </concept>
