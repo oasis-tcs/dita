@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.x Concept//EN" "concept.dtd">
 <concept xml:lang="en-us" id="concept_yvl_ncv_dn">
- <title>RELAX NG: Coding requirements for element type declarations</title>
+ <title>RELAX NG: Coding requirements for element-type declarations</title>
  <shortdesc>This topic covers general coding requirements for element types in structural and
     element-domain vocabulary modules.</shortdesc>
  <conbody>
@@ -30,7 +30,7 @@
             <p>For each element type that is declared in the vocabulary module, there is a pattern
               whose name is the element type name and whose content is a reference to the
               element-type <codeph><varname>tagname</varname>.element</codeph> pattern.</p>
-            <div otherprops="examples">
+            <example>
               <p>For example:</p>
               <codeblock>&lt;div>
   &lt;a:documentation>ELEMENT TYPE NAME PATTERNS&lt;/a:documentation>
@@ -39,7 +39,7 @@
   &lt;/define>
   &lt;!-- ... -->
 &lt;/div></codeblock>
-            </div>
+            </example>
             <p>The element-type name pattern provides a layer of abstraction that facilitates
               redefinition. The element-type name patterns are referenced from content model and
               domain extension patterns. Specialization modules can re-declare the patterns to
@@ -102,7 +102,7 @@
                   pattern.</dd>
               </dlentry>
             </dl>
-            <div otherprops="examples">
+            <example>
               <p>The following example shows the declaration for the
                   <xmlelement>topichead</xmlelement> element, including the definition for each
                 pattern described above.</p>
@@ -144,7 +144,7 @@
       &lt;/define>
 
     &lt;/div></codeblock>
-            </div>
+            </example>
             <draft-comment author="robander">Reminder to update this example with a 2.0 version of
               the declaration.</draft-comment>
           </dd>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="adding_an_element_to_the_section_element">
+    <title>RNG: Adding an element to the <xmlelement>section</xmlelement> element</title>
+    <shortdesc>In this scenario, a DITA architect wants to modify the content model for the
+            <xmlelement>section</xmlelement> element. He wants to add an optional
+            <xmlelement>section-shortdesc</xmlelement> element that is specialized from
+            <xmlelement>p</xmlelement>.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>expansion modules<indexterm>examples<indexterm>expanding content model of
+                                <xmlelement>section</xmlelement></indexterm></indexterm></indexterm>
+                <indexterm>examples<indexterm>expansion modules<indexterm>expanding content model of
+                                <xmlelement>section</xmlelement></indexterm></indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <example>
+            <p>To accomplish this, the DITA architect needs to create the following modules and
+                integrate them into the document-type shell:</p>
+            <ul>
+                <li>An element specialization module that defines the
+                        <xmlelement>section-shortdesc</xmlelement> element</li>
+                <li>An expansion module that adds the <xmlelement>section-shortdesc</xmlelement>
+                    element to the content model for <xmlelement>section</xmlelement><draft-comment
+                        author="Kristen J Eberlein" time="20 April 2021">
+                        <p>Is this true? Or will this simply be done in the document-type shell by
+                            redefining the content model for <xmlelement>section</xmlelement>?</p>
+                    </draft-comment></li>
+            </ul>
+            <ol>
+                <li>First, the DITA architect creates the element-specialization module:
+                        <filepath>X</filepath><codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+                         schematypens="http://relaxng.org/ns/structure/1.0"?>
+&lt;grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:dita="http://dita.oasis-open.org/architecture/2005/" 
+  xmlns="http://relaxng.org/ns/structure/1.0">
+  &lt;!--&lt;div>
+    &lt;a:documentation>DOMAIN EXTENSION PATTERNS&lt;/a:documentation>
+
+  &lt;/div>-->
+  &lt;div>
+    &lt;a:documentation>ELEMENT TYPE NAME PATTERNS&lt;/a:documentation>
+    &lt;define name="section-shortdesc">
+      &lt;ref name="section-shortdesc.element"/>
+    &lt;/define>
+  &lt;/div>
+  
+  &lt;div>
+    &lt;a:documentation>ELEMENT TYPE DECLARATIONS&lt;/a:documentation>
+    &lt;div>
+      &lt;a:documentation>LONG NAME: Section short description&lt;/a:documentation>
+      &lt;define name="section-shortdesc.content">
+        &lt;zeroOrMore>
+            &lt;ref name="para.cnt"/>
+          &lt;/zeroOrMore>
+      &lt;/define>
+      &lt;define name="section-shortdesc.attributes">
+        &lt;ref name="univ-atts"/>
+      &lt;/define>
+    &lt;/div>
+  &lt;/div>
+&lt;/grammar></codeblock></li>
+                <li>How does the new element get added to the content model for
+                        <xmlelement>section</xmlelement>? Where does the redefinition happen?</li>
+                <li>Integrate the element-specialization module into the doctype shell.</li>
+                <li>Update <filepath>catalog.xml</filepath> file.</li>
+            </ol>
+        </example>
+    </conbody>
+</concept>

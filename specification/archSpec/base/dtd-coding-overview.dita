@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.x Concept//EN" "concept.dtd">
 <concept xml:lang="en-us" id="dtd-requirements-overview">
- <title>DTD: Overview of coding requirements</title>
- <shortdesc>DITA coding practices for DTDs rely heavily on entities to implement specialization
-   and<ph rev="2.0">element-configuration (constraints and expansion).</ph>. As such, an
-  understanding of entities is critical when working with DTD document-type shells, vocabulary
-  modules, or <ph>element configuration modules (constraints and expansion).</ph></shortdesc>
+ <title>DTD: Use of entities</title>
+ <shortdesc>DITA-based DTDs use entities to implement specialization and <ph rev="2.0">element
+   configuration.</ph> Therefore, an understanding of entities is critical when working with
+  DTD-based  document-type shells, vocabulary modules, or <ph rev="2.0">element-configuration
+   modules (constraint and expansion).</ph></shortdesc>
  <prolog>
   <metadata>
    <keywords>
-    <indexterm>coding requirements<indexterm>DTDs<indexterm>entities, use
-     of</indexterm></indexterm></indexterm>
+    <indexterm>coding requirements<indexterm>DTD<indexterm>entities, use
+          of</indexterm></indexterm></indexterm>
     <indexterm>coding
-     requirements<indexterm>DTDs<indexterm>overview</indexterm></indexterm></indexterm>
-    <indexterm>DTDs<indexterm>coding requirements<indexterm>entities, use
-     of</indexterm></indexterm></indexterm>
-    <indexterm>DTDs<indexterm>coding
-     requirements<indexterm>overview</indexterm></indexterm></indexterm>
+          requirements<indexterm>DTD<indexterm>overview</indexterm></indexterm></indexterm>
+    <indexterm>DTD<indexterm>coding requirements<indexterm>entities, use
+          of</indexterm></indexterm></indexterm>
+    <indexterm>DTD<indexterm>coding
+          requirements<indexterm>overview</indexterm></indexterm></indexterm>
+    <indexterm>entities, role in DTDs</indexterm>
    </keywords>
   </metadata>
  </prolog>
@@ -28,47 +29,51 @@
    <dlentry>
     <dt>Elements defined as entities</dt>
     <dd>
-     <p>In DITA DTDs, every element is defined as an entity. When elements are added to a content
+     <p>Every element in a DITA DTD is defined as an entity. When elements are added to a content
       model, they are added using the entity. This enables extension with domain
       specializations.</p>
-     <p>For example, the entity <codeph>%ph;</codeph> usually just means the
-       <xmlelement>ph</xmlelement> element, but it can be defined in a document-type shell to mean
-       "<xmlelement>ph</xmlelement> plus the elements from the highlighting domain". Because the
-      document-type shell places that entity definition before the usual definition, every element
-      that includes <codeph>%ph;</codeph> in its content model now includes
-       <xmlelement>ph</xmlelement> plus every element in the highlighting domain that is specialized
-      from <xmlelement>ph</xmlelement>.</p>
+     <example>
+      <p>For example, the entity <codeph>%ph;</codeph> usually just means the
+        <xmlelement>ph</xmlelement> element, but it can be defined in a document-type shell to mean
+        "<xmlelement>ph</xmlelement> plus the elements from the highlighting domain". Because the
+       document-type shell places that entity definition before the usual definition, every element
+       that includes <codeph>%ph;</codeph> in its content model now includes
+        <xmlelement>ph</xmlelement> plus every element in the highlighting domain that is
+       specialized from <xmlelement>ph</xmlelement>.</p>
+     </example>
     </dd>
    </dlentry>
    <dlentry>
     <dt>Content models defined as entities</dt>
-    <dd>Every element in a DITA DTD defines its content model using an entity. For example, rather
-     than directly setting what is allowed in <xmlelement>ph</xmlelement>, that element sets its
-     content model to <codeph>%ph.content;</codeph>; that entity defines the actual content model.
-      <ph product="DITA-1.3">This is done to enable constraints; a constraint module can redefine
-      the <codeph>%ph.content;</codeph> model to remove selected elements.</ph><ph
-      product="DITA-2.0">This is done to enable element configuration; a constraint module can
-      redefine the <codeph>%ph.content;</codeph> model to remove selected elements, or an expansion
-      module could redefine the <codeph>%ph.content;</codeph> module to add elements.</ph></dd>
+    <dd>
+     <p>Every element in a DITA DTD defines its content model using an entity. <ph rev="2.0">This
+       enables element configuration.</ph></p>
+     <example>For example, rather than directly setting what is allowed in
+       <xmlelement>ph</xmlelement>, that element sets its content model to
+       <codeph>%ph.content;</codeph>; that entity defines the actual content model. <ph rev="2.0">A
+       constraint module can redefine the <codeph>%ph.content;</codeph> model to remove selected
+       elements, or an expansion module can redefine the <codeph>%ph.content;</codeph> module to add
+       elements.</ph>.</example>
+    </dd>
    </dlentry>
    <dlentry>
     <dt>Attribute sets defined as entities</dt>
-    <dd>Every element in a DITA DTD defines its attribute using an entity. For example, rather than
-     directly defining attributes for <xmlelement>ph</xmlelement>, that element sets its attributes
-     using the <codeph>%ph.attributes;</codeph> entity; that entity defines the actual attributes.
-     As above, this is done to enable <ph product="DITA-2.0">constraints; a constraint module can
-      redefine the <codeph>%ph.attributes;</codeph> model to remove selected
-      attributes.</ph><ph>element configuration; a constraint module can remove attributes from the
-      attribute list, or expansion modules can add attributes to the attribute list.</ph></dd>
+    <dd>
+     <p>Every element in a DITA DTD defines its attributes using an entity. <ph rev="2.0">This
+       enables element configuration.</ph></p>
+     <example> For example, rather than directly defining attributes for
+      <xmlelement>ph</xmlelement>, that element sets its attributes using the
+       <codeph>%ph.attributes;</codeph> entity; that entity defines the actual attributes. <ph
+       rev="2.0">A constraint module can remove attributes from the attribute list, or an expansion
+       module can add attributes to the attribute list.</ph></example>
+    </dd>
    </dlentry>
   </dl>
-  <note><ph product="DITA-2.0">When constructing a constraint module or document-type shell, new
-    entities are usually viewed as "redefinitions" because they redefine entities that already
-    exist. </ph><ph product="DITA-2.0">When constructing an element-configuration module or
-    document-type shell, new entities are usually viewed as "redefinitions" because they redefine
-    entities that already exist. </ph>However, these new definitions only work because they are
-   added to a document-type shell before the existing definitions. Most topics about DITA DTDs,
-   including others in this specification, will describe these overrides as redefinitions to ease
+  <note><ph product="DITA-2.0">When constructing an element-configuration module or document-type
+    shell, new entities are usually viewed as "redefinitions" because they redefine entities that
+    already exist. </ph>However, these new definitions only work because they are added to a
+   document-type shell before the existing definitions. Most topics about DITA DTDs, including
+   others in this specification, describe these overrides as redefinitions to ease
    understanding.</note>
  </conbody>
 </concept>
