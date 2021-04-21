@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="reference_cfb_ck4_5p">
+  <title>Example: Apply multiple constraints to a single document-type shell using RNG</title>
+  <shortdesc>You can apply multiple constraints to a single document-type shell. However, there can
+    be only one constraint module for a given vocabulary module. </shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>constraints<indexterm>examples<indexterm>applying multiple
+              constraints</indexterm></indexterm></indexterm>
+        <indexterm>examples<indexterm>constraints<indexterm>applying multiple
+              constraints</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <example id="example">
+      <p>Here is a list of constraint modules and what they do:</p>
+      <simpletable frame="all" relcolwidth="1.0* 1.0* 1.0*">
+        <sthead>
+          <stentry>File name</stentry>
+          <stentry>What it constrains</stentry>
+          <stentry>Details</stentry>
+        </sthead>
+        <strow>
+          <stentry><filepath>example-TopicConstraint.mod</filepath></stentry>
+          <stentry><xmlelement>topic</xmlelement></stentry>
+          <stentry>
+            <ul>
+              <li>Removes <xmlelement>abstract</xmlelement></li>
+              <li>Makes <xmlelement>shortdesc</xmlelement> required</li>
+              <li>Removes <xmlelement>related-links</xmlelement></li>
+              <li>Disallows topic nesting</li>
+            </ul>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry><filepath>example-SectionConstraint.mod</filepath></stentry>
+          <stentry><xmlelement>section</xmlelement></stentry>
+          <stentry>
+            <ul>
+              <li>Makes <xmlatt>id</xmlatt> required</li>
+              <li>Removes <xmlatt>spectitle</xmlatt> attribute</li>
+            </ul>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry><filepath>example-HighlightingDomainConstraint.mod</filepath></stentry>
+          <stentry>Highlighting domain</stentry>
+          <stentry>Reduces the highlighting domain elements to <xmlelement>b</xmlelement> and
+              <xmlelement>i</xmlelement></stentry>
+        </strow>
+        <strow>
+          <stentry>N/A</stentry>
+          <stentry><xmlelement>ph</xmlelement></stentry>
+          <stentry>Remove the <xmlelement>ph</xmlelement> element, allowing only domain extensions
+            (does not require a <filepath>.mod</filepath> file)</stentry>
+        </strow>
+      </simpletable>
+      <!--<p>All of these constraints can be integrated into a single document-type shell for <xmlelement>topic</xmlelement>, since they constrain distinct element types and domains. The constraint for the highlighting domain must be integrated before the "DOMAIN ENTITIES" section, but the order in which the other constraints are listed does not matter.</p>-->
+      <p>The constraint modules that target the <xmlelement>topic</xmlelement> and
+          <xmlelement>section </xmlelement> elements must be combined, since both elements are
+        defined in <filepath>topicMod.rng</filepath>.</p>
+      <p>A constraint module that targets both the <xmlelement>topic</xmlelement> and
+          <xmlelement>section </xmlelement> elements would look like the following:</p>
+      <fig>
+        <title>Constraint module that combine constraints</title>
+        <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+                         schematypens="http://relaxng.org/ns/structure/1.0"?>
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:dita="http://dita.oasis-open.org/architecture/2005/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+  &lt;div>
+    &lt;a:documentation>CONTENT MODEL AND ATTRIBUTE LIST OVERRIDES&lt;/a:documentation>
+    &lt;include href="topicMod.rng">
+      &lt;define name="section.attributes">
+          &lt;attribute name="id">
+            &lt;data type="NMTOKEN"/>
+          &lt;/attribute>        
+        &lt;ref name="conref-atts"/>
+        &lt;ref name="select-atts"/>
+        &lt;ref name="localization-atts"/>
+        &lt;optional>
+          &lt;attribute name="outputclass"/>
+        &lt;/optional>
+      &lt;/define>
+      &lt;define name="topic.content">
+        &lt;ref name="title"/>
+        &lt;ref name="shortdesc"/>
+        &lt;optional>
+          &lt;ref name="prolog"/>
+        &lt;/optional>
+        &lt;optional>
+          &lt;ref name="body"/>
+        &lt;/optional>
+      &lt;/define>
+    &lt;/include>
+  &lt;/div>
+&lt;/grammar></codeblock>
+      </fig>
+      <draft-comment author="Kristen J Eberlein" time="21 April 2021">
+        <p>In the above code sample, is the following needed or just a residue of the RNG-to-DTD
+          converter?</p>
+        <codeblock>
+&lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+                         schematypens="http://relaxng.org/ns/structure/1.0"?></codeblock>
+        <p>Also, I made up the header comment, not wanting it to be "CONTENT MODEL CONSTRAINTS". We
+          should consider what we wants as sections/divs in the grammar files and ensure that the
+          "titles" are the same across all files.</p>
+      </draft-comment>
+      <p>There does not need to be a constraint module to restrict the elements contributed by the
+        highlight domain; redefining the domain can occur directly in the document-type shell.
+        Within the "MODULE INCLUSIONS" section, within the include statement for the highlight
+        domain, specify which elements are not allowed:</p>
+      <codeblock>&lt;div>
+  &lt;a:documentation>MODULE INCLUSIONS&lt;/a:documentation>
+  ...
+  &lt;include href="highlightDomain.rng">
+    &lt;define name="line-through">
+      &lt;notAllowed/>
+    &lt;/define>
+    &lt;define name="overline">
+      &lt;notAllowed/>
+    &lt;/define>
+    &lt;define name="sub">
+      &lt;notAllowed/>
+    &lt;/define>
+    &lt;define name="sup">
+      &lt;notAllowed/>
+    &lt;/define>
+    &lt;define name="tt">
+      &lt;notAllowed/>
+    &lt;/define>
+    &lt;define name="u">
+      &lt;notAllowed/>
+    &lt;/define>
+  &lt;/include>
+  ...
+&lt;/div></codeblock>
+      <draft-comment author="Kristen J Eberlein" time="21 April 2021">
+        <p>How do we handle removing the <xmlelement>ph</xmlelement> element but allowing the domain
+          extensions?</p>
+      </draft-comment>
+    </example>
+  </conbody>
+  
+</concept>
