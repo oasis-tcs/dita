@@ -19,49 +19,48 @@
         </metadata>
     </prolog>
     <conbody>
+    <draft-comment author="Kristen J Eberlein" time="21 April 2021">
+      <p>I tested this; while the markup is valid in the document-type shell, it does not restrict
+        the highlight domain elements that are allowed in a topic that references this shell.</p>
+      <p>This is unfortunate, since we shipped this info in the DITA 1.3 spec, although not in a
+        dedicated example topic.</p>
+    </draft-comment>
         <p>When using RNG, domains can be constrained directly in the document-type shells.</p>
         <ol>
             <li>She opens the document-type shell for topic in an XML editor, and then modifies the
-                "Modules inclusions" section to exclude the elements that she does not want the
-                implementation to use:<codeblock>  &lt;div>
-    &lt;a:documentation>MODULE INCLUSIONS&lt;/a:documentation>
-    &lt;include href="topicMod.rng">
-      &lt;define name="topic-info-types">
-        &lt;ref name="topic.element"/>
-      &lt;/define>
-    &lt;/include>
-    &lt;include href="audienceAttDomain.rng" dita:since="2.0"/>
-    &lt;include href="deliveryTargetAttDomain.rng"/>
-    &lt;include href="alternativeTitlesDomain.rng" dita:since="2.0"/>
-    &lt;include href="highlightDomain.rng">
-      &lt;define name="line-through">
-        &lt;notAllowed/>
-      &lt;/define>
-      &lt;define name="overline">
-        &lt;notAllowed/>
-      &lt;/define>
-      &lt;define name="sub">
-        &lt;notAllowed/>
-      &lt;/define>
-      &lt;define name="sup">
-        &lt;notAllowed/>
-      &lt;/define>
-      &lt;define name="tt">
-        &lt;notAllowed/>
-      &lt;/define>
-      &lt;define name="u">
-        &lt;notAllowed/>
-      &lt;/define>
-    &lt;/include>
-  &lt;/div></codeblock><note>The information architect made an arbitrary choice as
-                    to where in the document-type shell she would implement the constraint. It can
-                    be placed either in the "Element-type configuration integration" or the "Module
-                    inclusions" section.<draft-comment author="Kristen J Eberlein"
-                        time="03 April 2021">
-                        <p>I assume that if someone does this redefintion in the "Element-type
-                            configuration integration" section, then the domain module would not be
-                            included in the "Module inclusions" section?</p>
-                    </draft-comment></note></li>
+        "Modules inclusions" section to exclude the elements that she does not want the
+        implementation to use:<codeblock>&lt;div>
+  &lt;a:documentation>MODULE INCLUSIONS&lt;/a:documentation>
+  ...
+  &lt;include href="highlightDomain.rng">
+    &lt;define name="line-through">
+      &lt;notAllowed/>
+    &lt;/define>
+    &lt;define name="overline">
+      &lt;notAllowed/>
+    &lt;/define>
+    &lt;define name="sub">
+      &lt;notAllowed/>
+    &lt;/define>
+    &lt;define name="sup">
+      &lt;notAllowed/>
+    &lt;/define>
+    &lt;define name="tt">
+      &lt;notAllowed/>
+    &lt;/define>
+    &lt;define name="u">
+      &lt;notAllowed/>
+    &lt;/define>
+  &lt;/include>
+  ..  
+&lt;/div></codeblock><note>The information architect made an arbitrary choice as to where in
+          the document-type shell she would implement the constraint. It can be placed either in the
+          "Element-type configuration integration" or the "Module inclusions" section.<draft-comment
+            author="Kristen J Eberlein" time="03 April 2021">
+            <p>I assume that if someone does this redefinition in the "Element-type configuration
+              integration" section, then the domain module would not be included in the "Module
+              inclusions" section?</p>
+          </draft-comment></note></li>
             <li>She makes similar changes to all the other document-type shells in which she wants
                 to constrain the highlighting domain.</li>
         </ol>

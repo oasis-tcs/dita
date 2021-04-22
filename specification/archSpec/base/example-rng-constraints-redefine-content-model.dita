@@ -19,37 +19,47 @@
     </metadata>
   </prolog>
   <conbody>
+    <draft-comment author="Kristen J Eberlein" time="21 April 2021">
+      <p>Tested; verified that this works as written.</p>
+    </draft-comment>
     <example id="example">
       <ol>
         <li>She creates a <filepath>.mod</filepath> file using the following naming conventions:
-              <filepath><varname>qualifer</varname><varname>Tagname</varname>ConstraintMod.rng</filepath><p/>,
+              <filepath><varname>qualifer</varname><varname>Tagname</varname>ConstraintMod.rng</filepath>,
           where <varname>qualifer</varname> is a string the describes the constraint, and
             <varname>Tagname</varname> is the element type name with an initial capital. Her
           constraint module is named <filepath>acme-TopicConstraintMod.rng</filepath>.</li>
         <li>She adds the following content to
-          <filepath>acme-TopicConstraint.mod</filepath>:<codeblock>&lt;div>
+            <filepath>acme-TopicConstraint.mod</filepath>:<codeblock>&lt;div>
   &lt;a:documentation>CONTENT MODEL OVERRIDES&lt;/a:documentation>
-    &lt;include href="topicMod.rng">
-      &lt;define name="topic.content">
-        &lt;ref name="title"/>
-        &lt;ref name="shortdesc"/>
-        &lt;optional>
-          &lt;ref name="prolog"/>
-        &lt;/optional>
-        &lt;optional>
-          &lt;ref name="body"/>
-        &lt;/optional>
-      &lt;/define>
-    &lt;/include>
-  &lt;/div></codeblock></li>
+  &lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0">
+    &lt;define name="topic.content" combine="interleave">
+      &lt;ref name="title"/>
+      &lt;ref name="shortdesc"/>
+      &lt;optional>
+        &lt;ref name="prolog"/>
+      &lt;/optional>
+      &lt;optional>
+        &lt;ref name="body"/>
+      &lt;/optional>
+    &lt;/define>
+  &lt;/include>
+&lt;/div></codeblock><draft-comment author="Kristen J Eberlein" time="21 April 2021">
+            <p>Should we change the header to "ATTRIBUTE AND CONTENT MODEL OVERRIDES" in the
+              constraint module that we ship?</p>
+            <p>Also, I know that the override won't happen without
+                <codeph>combine="interleave"</codeph>, but I don't know if we cover that in the
+              coding requirements topic. If people start with copy-ing-and-pasting from the module
+              that they are overriding, they won't have that and will get errors.</p>
+          </draft-comment></li>
         <li>She then integrates the constraint module into her document-type shell for topic by
-          adding an <xmlelement>include</xmlelement> element in the "CONTENT CONSTRAINT INTEGRATION"
-          section:<codeblock>&lt;div>
-  &lt;a:documentation>CONTENT CONSTRAINT INTEGRATION&lt;/a:documentation>
+          adding an <xmlelement>include</xmlelement> element in the "ELEMENT-TYPE CONFIGURATION
+          INTEGRATION" section:<codeblock>&lt;div>
+  &lt;a:documentation>ELEMENT-TYPE CONFIGURATION INTEGRATION&lt;/a:documentation>
   &lt;include href="acme-TopicConstraintMod.rng">
-    &lt;define name="topic">
+    &lt;define name="topic-info-types">
       &lt;ref name="topic.element"/>
-    &lt;/define>            
+    &lt;/define>
   &lt;/include>
 &lt;/div></codeblock></li>
         <li>
