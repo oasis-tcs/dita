@@ -29,6 +29,8 @@
           where <varname>qualifer</varname> is a string the describes the constraint, and
             <varname>Tagname</varname> is the element type name with an initial capital. Her
           constraint module is named <filepath>acme-TopicConstraintMod.rng</filepath>.</li>
+        <li>She updates the <filepath>catalog.xml</filepath> file to include the new constraint
+          module.</li>
         <li>She adds the following content to
             <filepath>acme-TopicConstraint.mod</filepath>:<codeblock>&lt;div>
   &lt;a:documentation>CONTENT MODEL OVERRIDES&lt;/a:documentation>
@@ -56,11 +58,7 @@
           adding an <xmlelement>include</xmlelement> element in the "ELEMENT-TYPE CONFIGURATION
           INTEGRATION" section:<codeblock>&lt;div>
   &lt;a:documentation>ELEMENT-TYPE CONFIGURATION INTEGRATION&lt;/a:documentation>
-  &lt;include href="acme-TopicConstraintMod.rng">
-    &lt;define name="topic-info-types">
-      &lt;ref name="topic.element"/>
-    &lt;/define>
-  &lt;/include>
+  &lt;include href="acme-TopicConstraintMod.rng"/>
 &lt;/div></codeblock></li>
         <li>
           <p>She then removes the <xmlelement>include</xmlelement> statement that references
@@ -76,8 +74,8 @@
     &lt;include href="urn:oasis:names:tc:dita:rng:highlightDomain.rng:2.0"/>
   &lt;/div></codeblock>
         </li>
-        <li>After updating the <filepath>catalog.xml</filepath> file to include the new constraint
-          module, her work is done.</li>
+        <li>After checking her test topic to ensure that the content model is modified as expected,
+          her work is done.</li>
       </ol>
     </example>
   </conbody>

@@ -18,14 +18,15 @@
     </metadata>
   </prolog>
   <conbody>
-    <draft-comment author="Kristen J Eberlein" time="21 April 2021">
-      <p>Test; the sample code is not correct -- and there might be errors in topicMod.rng, which is
-        generating a message that specializations-atts is not declared.</p>
+    <draft-comment author="Kristen J Eberlein" time="23 April 2021">
+      <p>Tested; verified that this works as written.</p>
     </draft-comment>
     <example id="example">
       <ol>
         <li>He creates a file named <filepath>id-requiredSectionContraintMod.rng</filepath>, where
             <varname>id-required</varname> is a string that characterizes the constraint.</li>
+        <li>He updates the <filepath>catalog.xml</filepath> file to include the new constraint
+          module.</li>
         <li>He adds the following content to the constraint
             module:<codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
 &lt;grammar 
@@ -55,18 +56,14 @@
             using DTD, this constraint module did not need to re-declare the patterns that are
             referenced in the redefinition of the content model for
             <xmlelement>section</xmlelement></p></li>
-        <li>She then integrates the constraint module into her document-type shell for topic by
+        <li>He then integrates the constraint module into her document-type shell for topic by
           adding an <xmlelement>include</xmlelement> element in the "CONTENT CONSTRAINT INTEGRATION"
           section:<codeblock>&lt;div>
   &lt;a:documentation>CONTENT CONSTRAINT INTEGRATION&lt;/a:documentation>
-  &lt;include href="id-requiredSectionConstraintMod.rng">
-    &lt;define name="section">
-      &lt;ref name="section.attributes"/>
-    &lt;/define>            
-  &lt;/include>
+  &lt;include href="id-requiredSectionConstraintMod.rng"/>
 &lt;/div></codeblock></li>
         <li>
-          <p>She then removes the <xmlelement>include</xmlelement> statement that references
+          <p>He then removes the <xmlelement>include</xmlelement> statement that references
               <filepath>topicMod.rng</filepath> from the "MODULE INCLUSIONS" section:</p>
           <codeblock>&lt;div>
   &lt;a:documentation>MODULE INCLUSIONS &lt;/a:documentation>
@@ -79,8 +76,38 @@
     &lt;include href="urn:oasis:names:tc:dita:rng:highlightDomain.rng:2.0"/>
   &lt;/div></codeblock>
         </li>
-        <li>After updating the <filepath>catalog.xml</filepath> file to include the new constraint
-          module, her work is done.</li>
+        <li>
+          <p>He modifies the "ID-DEFINING ELEMENT OVERRIDES" division to add
+              <xmlelement>section</xmlelement>  as an element on which the <xmlatt>id</xmlatt>
+            attribute is required.</p>
+          <codeblock>&lt;div>
+  &lt;a:documentation>ID-DEFINING ELEMENT OVERRIDES&lt;/a:documentation>
+  &lt;define name="any">
+    &lt;zeroOrMore>
+      &lt;choice>
+        &lt;ref name="idElements"/>
+        &lt;element>
+          &lt;anyName>
+            &lt;except>
+              &lt;name>topic&lt;/name>
+              <b>&lt;name>section&lt;/name></b>
+            &lt;/except>
+          &lt;/anyName>
+          &lt;zeroOrMore>
+            &lt;attribute>
+              &lt;anyName/>
+            &lt;/attribute>
+          &lt;/zeroOrMore>
+          &lt;ref name="any"/>
+        &lt;/element>
+        &lt;text/>
+      &lt;/choice>
+    &lt;/zeroOrMore>
+  &lt;/define>
+&lt;/div></codeblock>
+        </li>
+        <li>After checking his test topic to ensure that the attribute list is modified as expected,
+          his work is done.</li>
       </ol>
     </example>
   </conbody>
