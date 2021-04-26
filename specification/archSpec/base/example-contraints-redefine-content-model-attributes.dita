@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept xml:lang="en-us" id="reference_cfb_ck4_5p">
-  <title>Example: Constrain attributes for the <xmlelement>section</xmlelement> element</title>
-  <shortdesc>In this scenario, an information architect wants to <ph >redefine
-      the attributes</ph> for the <xmlelement>section</xmlelement> element. He wants to make the
-      <xmlatt>id</xmlatt> attribute required and omit the <xmlatt>spectitle</xmlatt>
-    attribute.</shortdesc>
+  <title>Example: Constrain attributes for the <xmlelement>section</xmlelement> element using
+    DTD</title>
+  <shortdesc>In this scenario, an information architect wants to redefine the attributes for the
+      <xmlelement>section</xmlelement> element. He wants to make the <xmlatt>id</xmlatt> attribute
+    required and omit the <xmlatt>spectitle</xmlatt> attribute.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -17,70 +17,114 @@
     </metadata>
   </prolog>
   <conbody>
-    <example id="example" otherprops="examples">
+    <example id="example">
       <ol>
-        <li >He creates a <filepath>.mod</filepath> file named
+        <li>He creates a <filepath>.mod</filepath> file named
             <filepath>idRequiredSectionContraint.mod</filepath>, where "idRequired" is a string that
           characterizes the constraint.</li>
         <li>He adds the following content to
-            <filepath>idRequiredSectionContraint.mod</filepath>:<codeblock>&lt;!-- ============================================================= -->
-&lt;!--                    CONSTRAINED TOPIC ENTITIES                 -->
-&lt;!-- ============================================================= -->
-
-&lt;!-- Declares the entities referenced in the constrained content  -->
+            <filepath>idRequiredSectionContraint.mod</filepath>:<codeblock>&lt;!-- Declares the entities referenced in the constrained content  -->
 &lt;!-- model.                                                       -->
-&lt;!ENTITY % conref-atts 
-             'conref    CDATA #IMPLIED
-              conrefend CDATA #IMPLIED
-              conaction (mark|pushafter|pushbefore|pushreplace|-dita-use-conref-target) #IMPLIED
-              conkeyref CDATA #IMPLIED' >
+
+&lt;!ENTITY % localization-atts
+              "translate
+                          (no |
+                           yes |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               xml:lang
+                          CDATA
+                                    #IMPLIED
+               dir
+                          (lro |
+                           ltr |
+                           rlo |
+                           rtl |
+                           -dita-use-conref-target)
+                                    #IMPLIED"
+>
 &lt;!ENTITY % filter-atts
-             'props      CDATA #IMPLIED
-              platform   CDATA #IMPLIED
-              product    CDATA #IMPLIED
-              audience   CDATA #IMPLIED
-              otherprops CDATA #IMPLIED
-              %props-attribute-extensions;' >
-&lt;!ENTITY % select-atts 
-             '%filter-atts;
-              base      CDATA #IMPLIED
-              %base-attribute-extensions;
-              importance (default|deprecated|high|low|normal|obsolete|optional| 
-                          recommended|required|urgent|-dita-use-conref-target) #IMPLIED
-              rev       CDATA #IMPLIED
-              status     (changed|deleted|unchanged|-dita-use-conref-target) #IMPLIED' >
-&lt;!ENTITY % localization-atts 
-             'translate (no|yes|-dita-use-conref-target) #IMPLIED
-              xml:lang CDATA #IMPLIED
-              dir      (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED' >
+              "props
+                          CDATA
+                                    #IMPLIED
+               %props-attribute-extensions;"
+>
+&lt;!ENTITY % select-atts
+              "%filter-atts;
+               base
+                          CDATA
+                                    #IMPLIED
+               %base-attribute-extensions;
+               importance
+                          (default |
+                           deprecated |
+                           high |
+                           low |
+                           normal |
+                           obsolete |
+                           optional |
+                           recommended |
+                           required |
+                           urgent |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               rev
+                          CDATA
+                                    #IMPLIED
+               status
+                          (changed |
+                           deleted |
+                           new |
+                           unchanged |
+                           -dita-use-conref-target)
+                                    #IMPLIED"
+>
+&lt;!ENTITY % conref-atts
+              "conref
+                          CDATA
+                                    #IMPLIED
+               conrefend
+                          CDATA
+                                    #IMPLIED
+               conaction
+                          (mark |
+                           pushafter |
+                           pushbefore |
+                           pushreplace |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               conkeyref
+                          CDATA
+                                    #IMPLIED"
+>
+&lt;!-- Redefines the attributes available on section  -->
 
-&lt;!-- Declares the constrained content model. Original definition   -->
-&lt;!-- included %univ-atts; and spectitle; now includes-->
-&lt;!-- individual pieces of univ-atts, to make ID required.          -->
-
-&lt;!ENTITY % section.attributes 
-          "id          CDATA   #REQUIRED
-           %conref-atts;
-           %select-atts;
-           %localization-atts;
-           outputclass CDATA   #IMPLIED"></codeblock><note>The
-            information architect had to declare all the parameter entities that are referenced in
-              <ph>the redefined attributes</ph> for <xmlelement>section</xmlelement>. If he did not
-            do so, none of the attributes that are declared in the
-              <parameterentity>conref-atts</parameterentity>,
-              <parameterentity>select-atts</parameterentity>, or
-              <parameterentity>localization-atts</parameterentity> parameter entities would be
-            available on the <xmlelement>section</xmlelement> element. Furthermore, since the
-              <parameterentity>select-atts</parameterentity> parameter entity references the
+&lt;!ENTITY % section.attributes
+              "id
+                          ID
+                                    #REQUIRED
+               %conref-atts;
+               %select-atts;
+               %localization-atts;
+               outputclass
+                          CDATA
+                                    #IMPLIED"
+></codeblock><note>The information architect had to declare all the parameter entities
+            that are referenced in the redefined attributes for <xmlelement>section</xmlelement>. If
+            he did not do so, none of the attributes that are declared in the  parameter entities
+            would be available on the <xmlelement>section</xmlelement> element. Furthermore, since
+            the <parameterentity>select-atts</parameterentity> parameter entity references the
               <parameterentity>filter-atts</parameterentity> parameter entity, the
               <parameterentity>filter-atts</parameterentity> must be declared and it must precede
             the declaration for the <parameterentity>select-atts</parameterentity> parameter entity.
-              <ph>The <parameterentity>props-attribute-extensions</parameterentity> and
-                <parameterentity>base-attribute-extensions</parameterentity> parameter entities do
-              not need to be declared in the constraint module, because they are declared in the
-              document-type shells before the inclusion of the constraint module.</ph></note></li>
-        <li>He then integrates the constraint module into the applicable document-type shells and
-          adds it to his <filepath>catalog.xml</filepath> file.</li>
+            The <parameterentity>props-attribute-extensions</parameterentity> and
+              <parameterentity>base-attribute-extensions</parameterentity> parameter entities do not
+            need to be declared in the constraint module, because they are declared in the
+            document-type shells before the inclusion of the constraint module.</note></li>
+        <li>He adds the constraint module to the <filepath>catalog.xml</filepath> file.</li>
+        <li>He then integrates the constraint module into the applicable document-type shells.</li>
+        <li>After checking test topics to ensure that the content model is modified as expected, his
+          work is done.</li>
       </ol>
     </example>
   </conbody>
