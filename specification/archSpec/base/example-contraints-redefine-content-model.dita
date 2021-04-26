@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept xml:lang="en-us" id="reference_cfb_ck4_5p">
-  <title>Example: Redefine the content model for the <xmlelement>topic</xmlelement> element</title>
+  <title>Example: Redefine the content model for the <xmlelement>topic</xmlelement> element using
+    DTD</title>
   <shortdesc>In this scenario, an information architect for Acme, Incorporated wants to redefine the
     content model for the topic document type. She wants to omit the
       <xmlelement>abstract</xmlelement> element and make the <xmlelement>shortdesc</xmlelement>
@@ -18,7 +19,7 @@
     </metadata>
   </prolog>
   <conbody>
-    <example id="example" otherprops="examples">
+    <example id="example">
       <ol>
         <li>She creates a <filepath>.mod</filepath> file using the following naming conventions:
               <filepath><varname>qualifer</varname><varname>Tagname</varname>Constraint.mod</filepath>,
@@ -47,18 +48,19 @@
                          (%prolog;)?, 
                          (%body;)?)"
 ></codeblock></li>
+        <li>She adds the constraint module to the <filepath>catalog.xml</filepath> file.</li>
         <li>She then integrates the constraint module into her document-type shell for topic by
           adding the following section above the "TOPIC ELEMENT INTEGRATION"
           comment:<codeblock>&lt;!-- ============================================================= -->
-&lt;!--                    CONTENT CONSTRAINT INTEGRATION             -->
+&lt;!--           ELEMENT-TYPE CONFIGURATION INTEGRATION              -->
 &lt;!-- ============================================================= -->
 
 &lt;!ENTITY % topic-constraints-c-def  
   PUBLIC "-//ACME//ELEMENTS DITA Topic Constraint//EN" 
   "acme-TopicConstraint.mod">
 %topic-constraints-c-def;</codeblock></li>
-        <li>After updating the <filepath>catalog.xml</filepath> file to include the new constraints
-          file, her work is done.</li>
+        <li>After checking her test topic to ensure that the content model is modified as expected,
+          her work is done.</li>
       </ol>
     </example>
   </conbody>
