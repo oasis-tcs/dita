@@ -12,6 +12,18 @@ export DITA_HOME=$PWD/dita-ot-$DITA_OT_VERSION
 rm -rv $DITA_HOME/plugins/org.oasis-open.dita.v2_0/dtd/
 rm -rv $DITA_HOME/plugins/org.oasis-open.dita.v2_0/rng/
 cp -av ./doctypes/. $DITA_HOME/plugins/org.oasis-open.dita.v2_0/
+
+# Copy the latest tech comm grammars as well
+mkdir temp
+cd temp
+curl -sfL https://github.com/oasis-tcs/dita-techcomm/archive/refs/heads/DITA-2.0.zip -o DITA-2.0.zip
+unzip -q DITA-2.0.zip
+cd ..
+rm -rv $DITA_HOME/plugins/org.oasis-open.dita.techcomm.v2_0/dtd/
+rm -rv $DITA_HOME/plugins/org.oasis-open.dita.techcomm.v2_0/rng/
+cp -av ./temp/dita-techcomm-DITA-2.0/doctypes/. $DITA_HOME/plugins/org.oasis-open.dita.techcomm.v2_0/
+
+# Install the updated grammar plugins
 $DITA_HOME/bin/dita install
 
 # Install RNG support
