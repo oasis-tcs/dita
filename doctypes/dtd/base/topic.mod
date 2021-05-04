@@ -56,6 +56,57 @@
   "
 >
 
+<!ENTITY % abstract.cnt
+              "#PCDATA |
+               %basic.block; |
+               %basic.ph; |
+               %data.elements.incl; |
+               %foreign.unknown.incl; |
+               %shortdesc; |
+               %txt.incl;"
+>
+<!ENTITY % body.cnt
+              "%basic.block; |
+               %data.elements.incl; |
+               %draft-comment; |
+               %foreign.unknown.incl; |
+               %required-cleanup;"
+>
+<!ENTITY % bodydiv.cnt
+              "#PCDATA |
+               %basic.block; |
+               %basic.ph; |
+               %data.elements.incl; |
+               %foreign.unknown.incl; |
+               %txt.incl;"
+>
+<!ENTITY % section.cnt
+              "#PCDATA |
+               %basic.block; |
+               %basic.ph; |
+               %data.elements.incl; |
+               %foreign.unknown.incl; |
+               %sectiondiv; |
+               %title; |
+               %txt.incl;"
+>
+<!ENTITY % section.notitle.cnt
+              "#PCDATA |
+               %basic.block; |
+               %basic.ph; |
+               %data.elements.incl; |
+               %foreign.unknown.incl; |
+               %sectiondiv; |
+               %txt.incl;"
+>
+<!ENTITY % sectiondiv.cnt
+              "#PCDATA |
+               %basic.block; |
+               %basic.ph; |
+               %data.elements.incl; |
+               %foreign.unknown.incl; |
+               %txt.incl;"
+>
 
 
 <!-- ============================================================= -->
@@ -108,57 +159,7 @@
 <!--                    ELEMENT DECLARATIONS                       -->
 <!-- ============================================================= -->
 
-<!ENTITY % abstract.cnt
-              "#PCDATA |
-               %basic.block; |
-               %basic.ph; |
-               %data.elements.incl; |
-               %foreign.unknown.incl; |
-               %shortdesc; |
-               %txt.incl;"
->
-<!ENTITY % body.cnt
-              "%basic.block; |
-               %data.elements.incl; |
-               %draft-comment; |
-               %foreign.unknown.incl; |
-               %required-cleanup;"
->
-<!ENTITY % bodydiv.cnt
-              "#PCDATA |
-               %basic.block; |
-               %basic.ph; |
-               %data.elements.incl; |
-               %foreign.unknown.incl; |
-               %txt.incl;"
->
-<!ENTITY % section.cnt
-              "#PCDATA |
-               %basic.block; |
-               %basic.ph; |
-               %data.elements.incl; |
-               %foreign.unknown.incl; |
-               %sectiondiv; |
-               %title; |
-               %txt.incl;"
->
-<!ENTITY % section.notitle.cnt
-              "#PCDATA |
-               %basic.block; |
-               %basic.ph; |
-               %data.elements.incl; |
-               %foreign.unknown.incl; |
-               %sectiondiv; |
-               %txt.incl;"
->
-<!ENTITY % sectiondiv.cnt
-              "#PCDATA |
-               %basic.block; |
-               %basic.ph; |
-               %data.elements.incl; |
-               %foreign.unknown.incl; |
-               %txt.incl;"
->
+
 <!--                    LONG NAME: Topic                           -->
 <!ENTITY % topic.content
                        "((%title;),
