@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="adding_an_attribute_to_certain_table_elements">
+    <title>DTD: Adding an attribute to certain table elements</title>
+    <shortdesc>In this scenario, a company makes extensive use of complex tables to present product
+        listings. They occasionally highlight individual cells, rows, or columns for various
+        purposes. The DITA architect wants to implement a semantically meaningful way to identify
+        the purpose of various table elements.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>expansion modules<indexterm>examples<indexterm>expanding attributes for
+                            an element</indexterm></indexterm></indexterm>
+                <indexterm>examples<indexterm>expansion modules<indexterm>expanding attributes for
+                            an element</indexterm></indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <p>The DITA architect decides to create a new attribute (<xmlatt>cell-purpose</xmlatt>) and
+            add it to the content model of the following elements:</p>
+        <ul>
+            <li><xmlelement>entry</xmlelement></li>
+            <li><xmlelement>row</xmlelement></li>
+            <li><xmlelement>colspec</xmlelement></li>
+            <li><xmlelement>stentry</xmlelement></li>
+            <li><xmlelement>strow</xmlelement></li>
+        </ul>
+        <p>The new attribute will be specialized from <xmlatt>base</xmlatt>; it will have a small
+            set of tokens that can be values for the new attribute.</p>
+        <p>The DITA architect decides to integrate the attribute declaration and its assignment to
+            elements into a single expansion module. A more flexible approach would be to separate
+            each <codeph>&lt;!ATTLIST</codeph> declaration in its own separate expansion module,
+            thus allowing DITA architects who construct document-type shells to decide the elements
+            to which to apply the attribute.</p>
+        <ol>
+            <li>First, the DITA architect creates the attribute domain module for the
+                    <xmlatt>cell-purpose</xmlatt> attribute:
+                    <filepath>acme-cellPurposeAttExpansion.ent</filepath>.<codeblock>&lt;!-- Define the attribute -->
+&lt;!ENTITY % cellPurposeAtt-d-attribute-expansion
+  "cell-purpose  (sale | out-of-stock | new | last-chance | inherit | none)  #IMPLIED"
+&gt;
+
+&lt;!-- Declare the entity to be used in the @specializations attribute -->
+&lt;!ENTITY cellPurposeAtt-d-att "@base/cell-purpose" >
+
+&lt;!-- Add the attribute to the elements. -->
+&lt;!ATTLIST entry %cellPurposeAtt-d-attribute-expansion;>
+&lt;!ATTLIST row %cellPurposeAtt-d-attribute-expansion;>
+&lt;!ATTLIST colspec %cellPurposeAtt-d-attribute-expansion;>
+&lt;!ATTLIST strow %cellPurposeAtt-d-attribute-expansion;>
+&lt;!ATTLIST stentry %cellPurposeAtt-d-attribute-expansion;></codeblock><note>The
+                    attribute definition entity ends in <codeph>-expansion</codeph>; this indicates
+                    that this is an expansion attribute and should not be included in the
+                        <parameterentity>base-attribute-extensions</parameterentity> entity in the
+                    document-type shell.</note></li>
+            <li>The DITA architect integrates this module into the document-type
+                shell.<codeblock>&lt;!-- ============================================================= -->
+&lt;!--             DOMAIN ATTRIBUTES DECLARATIONS                    -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY % cellPurposeAttExpansion-d-dec
+  PUBLIC "-//ACME//ENTITIES DITA Cell Purpose Attribute Expansion//EN"
+         "cellPurposeAttExpansion.ent"
+>%cellPurposeAttExpansion-d-dec;</codeblock></li>
+            <li>After updating the <filepath>catalog.xml</filepath> file to include the new
+                expansion module, the work is done.</li>
+        </ol>
+    </conbody>
+</concept>

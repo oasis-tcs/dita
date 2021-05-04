@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="reference_cfb_ck4_5p">
+  <title>Example: Replace a base element with the domain extensions using RNG</title>
+  <shortdesc>In this scenario, an information architect wants to remove the
+      <xmlelement>ph</xmlelement> element but allow the extensions of <xmlelement>ph</xmlelement>
+    that exist in the highlight, programming, software, and user interface domains.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>constraints<indexterm>examples<indexterm>replacing base element with domain
+              extensions</indexterm></indexterm></indexterm>
+        <indexterm>examples<indexterm>constraints<indexterm>replacing base element with domain
+              extensions</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <draft-comment author="Kristen J Eberlein" time="23 April 2021">
+      <p>Tested; verified that it works as written.</p>
+    </draft-comment>
+    <example id="example">
+      <ol>
+        <li>
+          <p>She opens the document-type shell for topic in an XML editor, and then modifies the
+            "MODULE INCLUSIONS" division to exclude <xmlelement>ph</xmlelement>:</p>
+          <codeblock>&lt;div>
+  &lt;a:documentation>MODULE INCLUSIONS&lt;/a:documentation>    
+  &lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0">
+    <b>&lt;define name="ph.element">
+      &lt;notAllowed/>
+    &lt;/define>
+</b>  &lt;/include>
+  ...
+&lt;/div></codeblock>
+        </li>
+        <li>She makes similar changes to all the other document-type shells in which she wants
+            <xmlelement>ph</xmlelement> to not be available</li>
+      </ol>
+    </example>
+  </conbody>
+  
+</concept>

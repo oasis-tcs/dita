@@ -28,7 +28,7 @@
           <dt>Common map attributes</dt>
           <dd>Includes several attributes that are used on a variety of map elements:
               <xmlatt>cascade</xmlatt>, <xmlatt>chunk</xmlatt>, <xmlatt>collection-type</xmlatt>,
-              <xmlatt>keyscope</xmlatt>, <xmlatt>linking</xmlatt>, <xmlatt>locktitle</xmlatt>,
+              <xmlatt>keyscope</xmlatt>, <xmlatt>linking</xmlatt>,
               <xmlatt>processing-role</xmlatt>, <xmlatt>search</xmlatt>, and
             <xmlatt>toc</xmlatt>.</dd>
         </dlentry>
@@ -93,7 +93,7 @@
       <p>Common attributes, including those in the groups listed above, are defined as follows.</p>
       <dl>
         <dlentry id="align">
-          <dt><xmlatt>align</xmlatt> (complex table attributes)</dt>
+          <dt id="attr-align"><xmlatt>align</xmlatt> (complex table attributes)</dt>
           <dd>Describes the alignment of text in a table column. Allowable values are: <dl>
               <dlentry>
                 <dt>left </dt>
@@ -125,7 +125,7 @@
                 <xmlelement>entry</xmlelement>.</p></dd>
         </dlentry>
         <dlentry id="anchorref" platform="dita">
-          <dt><xmlatt>anchorref</xmlatt></dt>
+          <dt id="attr-anchorref"><xmlatt>anchorref</xmlatt></dt>
           <dd>Identifies a location within another map file where this map will be anchored at
             runtime. Resolution of the map is deferred until the final step in the delivery of any
             rendered content. For example, <codeph>anchorref="map1.ditamap/a1"</codeph> causes this
@@ -134,7 +134,7 @@
             for delivery. </dd>
         </dlentry>
         <dlentry id="cascade" platform="dita">
-          <dt><xmlatt>cascade</xmlatt> (common map attributes)</dt>
+          <dt id="attr-cascade"><xmlatt>cascade</xmlatt> (common map attributes)</dt>
           <dd>
             <p>Controls how metadata attributes cascade within a map. There are two defined values
               that should be supported: <keyword>merge</keyword> and <keyword>nomerge</keyword>.</p>
@@ -146,7 +146,7 @@
           </dd>
         </dlentry>
         <dlentry id="char">
-          <dt><xmlatt>char</xmlatt> (complex table attributes)</dt>
+          <dt id="attr-char"><xmlatt>char</xmlatt> (complex table attributes)</dt>
           <dd>Specifies the character for aligning the table entry data. <p>Default source for
                 <xmlelement>entry</xmlelement> elements starting in this column. If character
               alignment is specified, the value is the single alignment character source for any
@@ -159,7 +159,7 @@
               <xmlelement>entry</xmlelement>.</p><!--Comment in DITA 1.3 Phase 1 review asked what it means if the "r" isn't actually specified. The language here could be cleaned up, but is essentially the same as the language in the OASIS Exchange Model, so leaving it alone now; don't want to force processors to add an error for this condition in DITA, when not required in other languages that use this model.--></dd>
         </dlentry>
         <dlentry id="charoff">
-          <dt><xmlatt>charoff</xmlatt> (complex table attributes)</dt>
+          <dt id="attr-charoff"><xmlatt>charoff</xmlatt> (complex table attributes)</dt>
           <dd>Specifies the horizontal offset of alignment character when
               <codeph>align="char"</codeph>. <p>Default source for <xmlelement>entry</xmlelement>
               elements starting in this column. For character alignment on an entry in the column,
@@ -174,7 +174,7 @@
               <xmlelement>entry</xmlelement>.</p></dd>
         </dlentry>
         <dlentry id="chunk" platform="dita">
-          <dt><xmlatt>chunk</xmlatt> (common map attributes)</dt>
+          <dt id="attr-chunk"><xmlatt>chunk</xmlatt> (common map attributes)</dt>
           <dd>When a set of topics is transformed using a map, the <xmlatt>chunk</xmlatt> attribute
             allows documents that contain multiple topics to be broken into smaller files and
             multiple individual topics to be combined into larger combined documents.<p>For a
@@ -182,7 +182,7 @@
                 href="../../archSpec/base/chunking.dita"/>.</p></dd>
         </dlentry>
         <dlentry id="collection-type" platform="dita">
-          <dt><xmlatt>collection-type</xmlatt> (common map attributes)</dt>
+          <dt id="attr-collection-type"><xmlatt>collection-type</xmlatt> (common map attributes)</dt>
           <dd>Collection types describe how links relate to each other. The processing default is
               <keyword>unordered</keyword>, although no default is specified in the DTD or Schema.
             Allowable values are:<dl id="colltypevalues">
@@ -207,14 +207,14 @@
             </dl></dd>
         </dlentry>
         <dlentry id="colsep">
-          <dt><xmlatt>colsep</xmlatt> (complex table attributes)</dt>
+          <dt id="attr-colsep"><xmlatt>colsep</xmlatt> (complex table attributes)</dt>
           <dd>Column separator. A value of 0 indicates no separators; 1 indicates separators. <p>The
                 <xmlatt>colsep</xmlatt> attribute is available on the following table elements:
                 <xmlelement>table</xmlelement>, <xmlelement>tgroup</xmlelement>,
                 <xmlelement>colspec</xmlelement>, and <xmlelement>entry</xmlelement>.</p></dd>
         </dlentry>
         <dlentry id="compact" platform="dita">
-          <dt><xmlatt>compact</xmlatt></dt>
+          <dt id="attr-compact"><xmlatt>compact</xmlatt></dt>
           <dd>Indicates close vertical spacing between list items. Expanded spacing is the
             processing default. The output result of compact spacing depends on the processor or
             browser. Allowable values are: <dl>
@@ -233,7 +233,7 @@
             </dl></dd>
         </dlentry>
         <dlentry id="copy-to" platform="dita">
-          <dt><xmlatt>copy-to</xmlatt> (topicref-element attributes)</dt>
+          <dt id="attr-copy-to"><xmlatt>copy-to</xmlatt> (topicref-element attributes)</dt>
           <dd>
             <!--Updated based on TC meeting 1 April 2014, to allow references to non DITA, but disallow non local.-->
             <p>Use the <xmlatt>copy-to</xmlatt> attribute on the <xmlelement>topicref</xmlelement>
@@ -253,13 +253,13 @@
           </dd>
         </dlentry>
         <dlentry id="datatype" platform="dita">
-          <dt><xmlatt>datatype</xmlatt> (data-element attributes)</dt>
+          <dt id="attr-datatype"><xmlatt>datatype</xmlatt> (data-element attributes)</dt>
           <dd>Describes the type of data contained in the <xmlatt>value</xmlatt> attribute or within
             the <xmlelement>data</xmlelement> element. A typical use of <xmlatt>datatype</xmlatt>
             will be the identifying URI for an XML Schema datatype. </dd>
         </dlentry>
         <dlentry id="DITAArchVersion">
-          <dt><xmlatt>DITAArchVersion</xmlatt> (architectural attributes)</dt>
+          <dt id="attr-DITAArchVersion"><xmlatt>DITAArchVersion</xmlatt> (architectural attributes)</dt>
           <dd>Designates the version of the architecture that is in use. The default value will
             increase with each release of DITA. This attribute is in the namespace
             "http://dita.​oasis-open.​org/​architecture/​2005/". This attribute is defined with the
@@ -267,7 +267,7 @@
             current default is <keyword>2.0</keyword>.</dd>
         </dlentry>
         <dlentry id="encoding">
-          <dt><xmlatt>encoding</xmlatt> (inclusion attributes)</dt>
+          <dt id="attr-encoding"><xmlatt>encoding</xmlatt> (inclusion attributes)</dt>
           <dd><draft-comment author="Kristen J Eberlein" time="29 April 2019"
               audience="spec-editors">
               <p>Can we replace "should" in the following definition?</p>
@@ -283,7 +283,7 @@
               implementation-dependent.</p></dd>
         </dlentry>
         <dlentry id="expanse">
-          <dt><xmlatt>expanse</xmlatt> (display attributes)</dt>
+          <dt id="attr-expanse"><xmlatt>expanse</xmlatt> (display attributes)</dt>
           <dd>Determines the horizontal placement of the element. Allowable values are: <dl>
               <dlentry>
                 <dt><keyword>column</keyword></dt>
@@ -314,19 +314,19 @@
               processors or output formats might not be able to support all values. </p></dd>
         </dlentry>
         <dlentry id="expiry">
-          <dt><xmlatt>expiry</xmlatt> (date attributes)</dt>
+          <dt id="attr-expiry"><xmlatt>expiry</xmlatt> (date attributes)</dt>
           <dd>The date when the information should be retired or refreshed, entered as YYYY-MM-DD,
             where YYYY is the year, MM is the month from 01 to 12, and DD is the day from 01-31.
           </dd>
         </dlentry>
         <dlentry id="format">
-          <dt><xmlatt>format</xmlatt> (link-relationship attributes)</dt>
+          <dt id="attr-format"><xmlatt>format</xmlatt> (link-relationship attributes)</dt>
           <dd>The <xmlatt>format</xmlatt> attribute identifies the format of the resource being
             referenced. See <xref keyref="attributes-format"/> for details on supported values.
           </dd>
         </dlentry>
         <dlentry id="frame">
-          <dt><xmlatt>frame</xmlatt> (display attributes)</dt>
+          <dt id="attr-frame"><xmlatt>frame</xmlatt> (display attributes)</dt>
           <dd>Specifies which portion of a border should surround the element. Allowable values are: <dl>
               <dlentry>
                 <dt>all </dt>
@@ -365,35 +365,35 @@
             </p></dd>
         </dlentry>
         <dlentry id="golive">
-          <dt><xmlatt>golive</xmlatt> (date attributes)</dt>
+          <dt id="attr-golive"><xmlatt>golive</xmlatt> (date attributes)</dt>
           <dd>The publication or general availability (GA) date, entered as YYYY-MM-DD, where YYYY
             is the year, MM is the month from 01 to 12, and DD is the day from 01-31. </dd>
         </dlentry>
         <dlentry id="href">
-          <dt><xmlatt>href</xmlatt> (link-relationship attributes)</dt>
+          <dt id="attr-href"><xmlatt>href</xmlatt> (link-relationship attributes)</dt>
           <dd>Provides a reference to a resource. See <xref keyref="attributes-href"/> for detailed
             information on supported values and processing implications.</dd>
         </dlentry>
         <dlentry id="keycol">
-          <dt><xmlatt>keycol</xmlatt> (simpletable attributes)</dt>
+          <dt id="attr-keycol"><xmlatt>keycol</xmlatt> (simpletable attributes)</dt>
           <dd>Defines the column that contains headings for each row. No value indicates no key
             column. When present, the numerical value causes the specified column to be treated as a
             vertical header. </dd>
         </dlentry>
         <dlentry id="keyref">
-          <dt><xmlatt>keyref</xmlatt></dt>
+          <dt id="attr-keyref"><xmlatt>keyref</xmlatt></dt>
           <dd><ph id="keyrefDescription"><xmlatt>keyref</xmlatt> provides a redirectable reference
               based on a key defined within a map. See <xref keyref="attributes-keyref"/> for
               information on using this attribute. </ph></dd>
         </dlentry>
         <dlentry id="keyscope" platform="dita">
-          <dt><xmlatt>keyscope</xmlatt> (common map attributes)</dt>
+          <dt id="attr-keyscope"><xmlatt>keyscope</xmlatt> (common map attributes)</dt>
           <dd>Specifies that the element marks the boundaries of a key scope. See <xref
               keyref="attributes-keyscope"/> for details on how to use the <xmlatt>keyscope</xmlatt>
             attribute.</dd>
         </dlentry>
         <dlentry id="linking" platform="dita">
-          <dt><xmlatt>linking</xmlatt> (common map attributes)</dt>
+          <dt id="attr-linking"><xmlatt>linking</xmlatt> (common map attributes)</dt>
           <dd>Defines some specific linking characteristics of a topic&apos;s current location in
             the map. <ph conkeyref="reuse-attributes/inherit-in-map"/> Allowable values are:<dl>
               <dlentry>
@@ -419,36 +419,12 @@
               </dlentry>
             </dl></dd>
         </dlentry>
-        <dlentry>
-          <dt><xmlatt>locktitle</xmlatt> (common map attributes)</dt>
-          <dd>If the <xmlatt>locktitle</xmlatt> attribute is set to <keyword>yes</keyword>, the
-            content of the <xmlelement>navtitle</xmlelement> element is used for a navigation title,
-            if it is present. If the <xmlatt>locktitle</xmlatt> attribute is not present or set to
-              <keyword>no</keyword>, the content of the <xmlelement>navtitle</xmlelement> element is
-            ignored, and the title of the referenced topic is used as a navigation title.
-              <p>Allowable values for <xmlatt>locktitle</xmlatt> are:<dl>
-                <dlentry>
-                  <dt>yes </dt>
-                  <dd>The content of the <xmlelement>navtitle</xmlelement> element is used for a
-                    navigation title.</dd>
-                </dlentry>
-                <dlentry>
-                  <dt>no </dt>
-                  <dd>The content of the <xmlelement>navtitle</xmlelement> element is ignored. This
-                    is the processing default. </dd>
-                </dlentry>
-                <dlentry conkeyref="reuse-attributes/ditauseconref" platform="dita">
-                  <dt> </dt>
-                  <dd> </dd>
-                </dlentry>
-              </dl></p></dd>
-        </dlentry>
         <dlentry id="name">
-          <dt><xmlatt>name</xmlatt> (data-element attributes)</dt>
+          <dt id="attr-name"><xmlatt>name</xmlatt> (data-element attributes)</dt>
           <dd>Defines a unique name for the object.</dd>
         </dlentry>
         <dlentry id="parse">
-          <dt><xmlatt>parse</xmlatt> (inclusion attributes)</dt>
+          <dt id="attr-parse"><xmlatt>parse</xmlatt> (inclusion attributes)</dt>
           <dd>Specifies the processing expectations for the referenced resource. Processors must
             support the following values:<dl>
               <dlentry>
@@ -482,7 +458,7 @@
               with care.</note></dd>
         </dlentry>
         <dlentry id="processing-role">
-          <dt><xmlatt>processing-role</xmlatt> (common map attributes)</dt>
+          <dt id="attr-processing-role"><xmlatt>processing-role</xmlatt> (common map attributes)</dt>
           <dd>Describes the processing role of the referenced topic. The processing default is
               <keyword>normal</keyword>. <ph conkeyref="reuse-attributes/may-inherit"/> Allowable
             values are:<dl>
@@ -503,7 +479,7 @@
             </dl></dd>
         </dlentry>
         <dlentry id="relcolwidth">
-          <dt><xmlatt>relcolwidth</xmlatt> (simpletable attributes)</dt>
+          <dt id="attr-relcolwidth"><xmlatt>relcolwidth</xmlatt> (simpletable attributes)</dt>
           <dd>Specifies the width of each column in relationship to the width of the other columns.
             The value is a space separated list of relative column widths; each column width is
             specified as a positive integer or decimal number followed by an asterisk character.
@@ -513,7 +489,7 @@
               relative widths of 90/240 and 150/240 (37.5% and 62.5%).</p></dd>
         </dlentry>
         <dlentry id="rowsep">
-          <dt><xmlatt>rowsep</xmlatt> (complex table attributes)</dt>
+          <dt id="attr-rowsep"><xmlatt>rowsep</xmlatt> (complex table attributes)</dt>
           <dd>Row separator. A value of <keyword>0</keyword> indicates no separators;
               <keyword>1</keyword> indicates separators. <p>The <xmlatt>rowsep</xmlatt> attribute is
               available on the following table elements: <xmlelement>table</xmlelement>,
@@ -521,7 +497,7 @@
                 <xmlelement>colspec</xmlelement>, and <xmlelement>entry</xmlelement>.</p></dd>
         </dlentry>
         <dlentry id="rowheader">
-          <dt><xmlatt>rowheader</xmlatt> (complex table attributes)</dt>
+          <dt id="attr-rowheader"><xmlatt>rowheader</xmlatt> (complex table attributes)</dt>
           <dd>Indicates whether the entries in the respective column <term outputclass="RFC-2119"
               >SHOULD</term> be considered row headers. Allowable values are: <dl>
               <dlentry>
@@ -556,7 +532,7 @@
             <xmlelement>colspec</xmlelement>.</p></dd>
         </dlentry>
         <dlentry id="scale">
-          <dt><xmlatt>scale</xmlatt> (display attributes)</dt>
+          <dt id="attr-scale"><xmlatt>scale</xmlatt> (display attributes)</dt>
           <dd>Specifies a percentage, selected from an enumerated list, that is used to resize fonts
             in relation to the normal text size. This attribute is primarily useful for
             print-oriented display. <p>The <xmlatt>scale</xmlatt> attribute provides an acknowledged
@@ -572,7 +548,7 @@
               processors or output formats might not be able to support all values. </p></dd>
         </dlentry>
         <dlentry id="scope">
-          <dt><xmlatt>scope</xmlatt> (link-relationship attributes)</dt>
+          <dt id="attr-scope"><xmlatt>scope</xmlatt> (link-relationship attributes)</dt>
           <dd>The <xmlatt>scope</xmlatt> attribute identifies the closeness of the relationship
             between the current document and the target resource. Allowable values are
               <keyword>local</keyword>, <keyword>peer</keyword>, <keyword>external</keyword>, and
@@ -580,7 +556,7 @@
             more information on these values.</dd>
         </dlentry>
         <dlentry id="search" platform="dita">
-          <dt><xmlatt>search</xmlatt> (common map attributes)</dt>
+          <dt id="attr-search"><xmlatt>search</xmlatt> (common map attributes)</dt>
           <dd>Describes whether the target is available for searching. <ph
               conkeyref="reuse-attributes/inherit-in-map"/> Allowable values are: <dl>
               <dlentry>
@@ -599,26 +575,26 @@
             </dl></dd>
         </dlentry>
         <dlentry id="specentry">
-          <dt><xmlatt>specentry</xmlatt> (specialization attributes)</dt>
+          <dt id="attr-specentry"><xmlatt>specentry</xmlatt> (specialization attributes)</dt>
           <dd>The specialized entry attribute allows architects of specialized types to define a
             fixed or default header title for a specialized <xmlelement>stentry</xmlelement>
             element. Not intended for direct use by authors. </dd>
         </dlentry>
         <dlentry id="specializations">
-          <dt><xmlatt>specializations</xmlatt> (architectural attributes)</dt>
+          <dt id="attr-specializations"><xmlatt>specializations</xmlatt> (architectural attributes)</dt>
           <dd>Indicates the specialized attribute domains that are included in the grammar file.
             This attribute is defined with the XML data type CDATA. The value will differ depending
             on what domains are included in the current DTD or Schema; a sample value is
               <codeph>@props/audience @props/deliveryTarget @base/newBaseAtt</codeph>.</dd>
         </dlentry>
         <dlentry id="spectitle">
-          <dt><xmlatt>spectitle</xmlatt> (specialization attributes)</dt>
+          <dt id="attr-spectitle"><xmlatt>spectitle</xmlatt> (specialization attributes)</dt>
           <dd>The specialized title attribute allows architects of specialized types to define a
             fixed or default title for a specialized element. Not intended for direct use by
             authors. </dd>
         </dlentry>
         <dlentry id="toc" platform="dita">
-          <dt><xmlatt>toc</xmlatt> (common map attributes)</dt>
+          <dt id="attr-toc"><xmlatt>toc</xmlatt> (common map attributes)</dt>
           <dd>Specifies whether a topic appears in the table of contents (TOC). <ph
               conkeyref="reuse-attributes/inherit-in-map"/> Allowable values are:<dl>
               <dlentry>
@@ -636,16 +612,16 @@
             </dl></dd>
         </dlentry>
         <dlentry id="type" platform="dita">
-          <dt><xmlatt>type</xmlatt> (link-relationship attributes)</dt>
+          <dt id="attr-type"><xmlatt>type</xmlatt> (link-relationship attributes)</dt>
           <dd>Describes the target of a reference. See <xref keyref="attributes-type"/> for detailed
             information on supported values and processing implications. </dd>
         </dlentry>
         <dlentry id="value">
-          <dt><xmlatt>value</xmlatt> (data-element attributes)</dt>
+          <dt id="attr-value"><xmlatt>value</xmlatt> (data-element attributes)</dt>
           <dd>Specifies a value associated with the current property or element. </dd>
         </dlentry>
         <dlentry id="valign">
-          <dt><xmlatt>valign</xmlatt> (complex table attributes)</dt>
+          <dt id="attr-valign"><xmlatt>valign</xmlatt> (complex table attributes)</dt>
           <dd>Indicates the vertical alignment of text in a table entry (cell). Allowable values
             are: <dl>
               <dlentry>
@@ -669,7 +645,7 @@
                 <xmlelement>row</xmlelement>, and <xmlelement>entry</xmlelement>.</p></dd>
         </dlentry>
         <dlentry id="xmlspace">
-          <dt><xmlatt>xml:space</xmlatt></dt>
+          <dt id="attr-xml:space"><xmlatt>xml:space</xmlatt></dt>
           <dd>This attribute is provided on <xmlelement>pre</xmlelement>,
               <xmlelement>lines</xmlelement>, and on elements specialized from those. It ensures
             that parsers in editors and transforms respect the white space, including line-end
@@ -678,7 +654,7 @@
             defined, it has a fixed value of "preserve".</dd>
         </dlentry>
         <dlentry id="xmlnsditaarch">
-          <dt><xmlatt>xmlns:ditaarch</xmlatt> (architectural attributes)</dt>
+          <dt id="attr-xmlns:ditaarch"><xmlatt>xmlns:ditaarch</xmlatt> (architectural attributes)</dt>
           <dd>Declares the default DITA namespace. Although this is technically a namespace rather
             than an attribute, it is included here because it is specified as an attribute in the
             DTD grammar files distributed by OASIS. The value is fixed to

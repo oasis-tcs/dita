@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="expansion_modules_processing_and_interoperability">
+    <title>Expansion modules, processing, and interoperability</title>
+    <shortdesc>Expansion modules do not have an effect on processing or
+        interoperability.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>expansion modules<indexterm>processing and
+                    interoperability</indexterm></indexterm>
+                <indexterm>interoperability<indexterm>expansion modules</indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <p>Multiple expansion modules can contribute new attributes to an element.</p>
+        <draft-comment author="Kristen J Eberlein" time="28 March 2021">
+            <p>Why?</p>
+            <p>And what happens if one wants to apply multiple expansion modules and a constraint to
+                an element type? I'm assuming that they would need to be aggregated into a single
+                element-configuration module.</p>
+        </draft-comment>
+        <!--<p>The attributes of an element may be contributed to from any number of attribute domain mix-in modules. However, only one constraint module may be applied to the attributes of a given element type. If multiple constraints need to be applied to a given element's attributes, they must be replaced by a new constraint that aggregates them together.</p>-->
+        <p>Constraint modules cannot remove attributes that are contributed by expansion
+            modules.</p>
+        <p>Expansion modules can be authored in a granular manner with individual modules
+            contributing a single attribute to a single element. This allows the authors of
+            document-type shells to best control which attributes are added to an element. This
+            level of granularity is not required, but it is a best practice.</p>
+    </conbody>
+</concept>

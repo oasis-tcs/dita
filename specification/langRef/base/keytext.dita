@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="keytext">
+    <title><xmlelement>keytext</xmlelement></title>
+    <shortdesc>A <xmlelement>keytext</xmlelement> element specifies variable or link text; it also
+        specifies alternate text for images that are referenced by keys.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>elements<indexterm>basic
+                            map<indexterm><xmlelement>keytext</xmlelement></indexterm></indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <refbody>
+        <!--<section id="usage-information"><title>Usage information</title></section>-->
+        <!--<section id="rendering-expectations"><title>Rendering expectations</title></section>-->
+        <section id="processing-expectations">
+            <title>Processing expectations</title>
+            <p>See <xref href="../../archSpec/base/processing-keyref-for-text.dita" format="dita"
+                />.</p>
+            <draft-comment author="Kristen J Eberlein" time="31 October 2020">
+                <p>Should this be a related link instead of a cross reference?</p>
+            </draft-comment>
+        </section>
+        <section id="attributes">
+            <title>Attributes</title>
+            <p>The following attributes are available on this element: <xref
+                    keyref="attributes-universal"/>.</p>
+        </section>
+        <example id="example" otherprops="examples">
+            <title>Examples</title>
+            <p>The section contains examples of how the <xmlelement>keytext</xmlelement> element can
+                be used.</p>
+            <fig id="fig_mrm_52w_bpb">
+                <title>Simple example</title>
+                <p>The following code sample shows how variable text can be defined using the
+                        <xmlelement>keytext</xmlelement> element:</p>
+                <codeblock>&lt;keydef keys="company-name">
+  &lt;topicmeta>
+    &lt;keytext translate="no">Acme Widget Company&lt;/keytext>
+  &lt;/topicmeta>
+&lt;/keydef></codeblock>
+            </fig>
+            <fig id="fig_nrm_52w_bpb">
+                <title>More complex example</title>
+                <p>The following code sample shows a variable-text definition that includes
+                    highlighting elements:</p>
+                <codeblock>&lt;keydef keys="company-name">
+  &lt;topicmeta>
+    &lt;keytext translate="no">
+      &lt;i>Super&lt;/i> Widget Squared&lt;sup>2&lt;/sup>
+    &lt;/keytext>
+  &lt;/topicmeta>
+&lt;/keydef></codeblock>
+            </fig>
+            <fig id="fig_orm_52w_bpb">
+                <title>Alternate text for an image</title>
+                <p>DITA implementations often reference images using keys. In such cases, the
+                        <xmlelement>keytext</xmlelement> element provides the alternate text for the
+                    image. The following code sample shows the markup for the
+                        <xmlelement>keytext</xmlelement> element</p>
+                <codeblock>&lt;keydef keys="company-logo" href="images/logo.jpg" format="jpg">
+  &lt;topicmeta>
+    &lt;keytext>Blue Acorn logo&lt;/keytext>
+  &lt;/topicmeta>
+&lt;/keydef></codeblock>
+                <p>The image can be referenced by <codeph>&lt;image
+                    keyref="company-logo"/></codeph>. When rendered to mediums that support
+                    alternate text, the effective alternative text for the image is "Blue Acorn," as
+                    though a literal <xmlelement>alt</xmlelement>element had been a child of the
+                        <xmlelement>image</xmlelement></p>
+            </fig>
+            <fig id="fig_prm_52w_bpb">
+                <title>Variable text that is conditionally processed</title>
+                <p>DITA implementations often need to conditionally process product names. The
+                    following code sample shows a <xmlelement>keytext</xmlelement> element that
+                    contains <xmlelement>ph</xmlelement> elements that are conditionally
+                    processed:</p>
+                <codeblock>&lt;keydef keys="company-name">
+  &lt;topicmeta>
+    &lt;keytext translate="no">
+      &lt;ph product="cat">Acme Widgets for Cats&lt;/ph
+      &lt;ph product="dog">Acme Widgets for Dogs&lt;/ph>
+      &lt;ph product="pig">Acme Widgets for Pigs&lt;/ph>
+    &lt;/keytext>
+  &lt;/topicmeta>
+&lt;/keydef></codeblock>
+            </fig>
+            <fig id="fig_qrm_52w_bpb">
+                <title>Processing logic</title>
+                <p>The following sample shows a key definition that includes several elements within
+                    the <xmlelement>topicmeta</xmlelement> element:</p>
+                <codeblock>&lt;keydef href="http://www.example.com" keys="company-name">
+  &lt;topicmeta>
+    &lt;keytext>Acme Tools&lt;/keytext>
+    &lt;navtitle>Acme Tools web site&lt;/navtitle>
+    &lt;linktext>Acme Tools Web Portal&lt;/linktext>
+  &lt;/topicmeta>
+&lt;/keydef></codeblock>
+                <p>Once processed, the effective text content of both <codeph>&lt;ph
+                        keyref="company-name"/></codeph> and <codeph>&lt;xref
+                        keyref="company-name"/></codeph> is <keyword>Acme Tools</keyword>.</p>
+                <p>To set distinct text values for both the company name and the link text that is
+                    associated with the company Web site, best practices call for using two
+                    different key definitions.</p>
+            </fig>
+        </example>
+    </refbody>
+</reference>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="aggregating_constraint_and_expansion_modules">
+    <title>DTD: Aggregating constraint and expansion modules</title>
+    <shortdesc>With the new specialization rules introduced in DITA 2.0, DITA architect wants to add
+        certain extension modules to a document-type shell.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>expansion modules<indexterm>examples<indexterm>aggregating constraint and
+                            expansion  modules</indexterm></indexterm></indexterm>
+                <indexterm>examples<indexterm>expansion modules<indexterm><indexterm>aggregating
+                                constraint and expansion
+                        modules</indexterm></indexterm></indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <p>The following table lists the constraints that are currently integrated into the
+            document-type shell.</p>
+        <simpletable frame="all" relcolwidth="1.0* 1.0* 1.0*">
+            <sthead>
+                <stentry>File name</stentry>
+                <stentry>What it constrains</stentry>
+                <stentry>Details</stentry>
+            </sthead>
+            <strow>
+                <stentry><filepath>example-TopicConstraint.mod</filepath></stentry>
+                <stentry><xmlelement>topic</xmlelement></stentry>
+                <stentry>
+                    <ul>
+                        <li>Removes <xmlelement>abstract</xmlelement></li>
+                        <li>Makes <xmlelement>shortdesc</xmlelement> required</li>
+                        <li>Removes <xmlelement>related-links</xmlelement></li>
+                        <li>Disallows topic nesting</li>
+                    </ul>
+                </stentry>
+            </strow>
+            <strow>
+                <stentry><filepath>example-SectionConstraint.mod</filepath></stentry>
+                <stentry><xmlelement>section</xmlelement></stentry>
+                <stentry>
+                    <ul>
+                        <li>Makes <xmlatt>id</xmlatt> required</li>
+                        <li>Removes <xmlatt>spectitle</xmlatt> attribute</li>
+                    </ul>
+                </stentry>
+            </strow>
+            <strow>
+                <stentry><filepath>example-HighlightingDomainConstraint.mod</filepath></stentry>
+                <stentry>Highlighting domain</stentry>
+                <stentry>Reduces the highlighting domain elements to <xmlelement>b</xmlelement> and
+                        <xmlelement>i</xmlelement></stentry>
+            </strow>
+            <strow>
+                <stentry>N/A</stentry>
+                <stentry><xmlelement>ph</xmlelement></stentry>
+                <stentry>Remove the <xmlelement>ph</xmlelement> element, allowing only domain
+                    extensions (does not require a <filepath>.mod</filepath> file)</stentry>
+            </strow>
+        </simpletable>
+        <p>The following table lists the expansion modules that the DITA architect wants to add to
+            the document-type shell.</p>
+        <simpletable frame="all" relcolwidth="1.0* 1.0* 1.0*">
+            <sthead>
+                <stentry>File name</stentry>
+                <stentry>What it modifies</stentry>
+                <stentry>Details</stentry>
+            </sthead>
+            <strow>
+                <stentry><filepath>example-sectionSectionShortdescExpansion.mod</filepath></stentry>
+                <stentry><xmlelement>section</xmlelement></stentry>
+                <stentry>Adds an optional <xmlelement>section-shortdesc</xmlelement> element to
+                        <xmlelement>section</xmlelement>.</stentry>
+            </strow>
+            <strow>
+                <stentry><filepath>example-dlentryModeAttExpansion.ent</filepath></stentry>
+                <stentry><xmlelement>dlentry</xmlelement></stentry>
+                <stentry>Adds <xmlatt>dlentry-mode</xmlatt> to the attributes of
+                        <xmlelement>dlentry</xmlelement>.</stentry>
+            </strow>
+        </simpletable>
+        <p>The constraint and expansion modules that target the <xmlelement>section</xmlelement>
+            element must be combined into a single element-configuration module.</p>
+        <draft-comment author="Kristen J Eberlein" time="28 March 2021">
+            <p>Need to add full example here.</p>
+        </draft-comment>
+    </conbody>
+</concept>

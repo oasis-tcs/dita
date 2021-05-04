@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="rng_adding_an_attribute_to_certain_table_elements">
+    <title>RNG: Adding an attribute to certain table elements</title>
+    <shortdesc>In this scenario, a company makes extensive use of complex tables to present product
+        listings. They occasionally highlight individual cells, rows, or columns for various
+        purposes. The DITA architect wants to implement a semantically meaningful way to identify
+        the purpose of various table elements.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>expansion modules<indexterm>examples<indexterm>expanding attributes for
+                            an element</indexterm></indexterm></indexterm>
+                <indexterm>examples<indexterm>expansion modules<indexterm>expanding attributes for
+                            an element</indexterm></indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <p>The DITA architect decides to create a new attribute (<xmlatt>cell-purpose</xmlatt>) and
+            add it to the content model of the following elements:</p>
+        <ul>
+            <li><xmlelement>entry</xmlelement></li>
+            <li><xmlelement>row</xmlelement></li>
+            <li><xmlelement>colspec</xmlelement></li>
+            <li><xmlelement>stentry</xmlelement></li>
+            <li><xmlelement>strow</xmlelement></li>
+        </ul>
+        <p>The new attribute will be specialized from <xmlatt>base</xmlatt>; it will have a small
+            set of tokens that can be values for the new attribute.</p>
+        <ol>
+            <li>
+                <p>The DITA architect creates an attribute-domain specialization module:
+                        <filepath>acme-cellPurposeAttExpansion.rng</filepath>. It contains the
+                    following code:</p>
+                <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+                         schematypens="http://relaxng.org/ns/structure/1.0"?>
+&lt;grammar 
+  xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:dita="http://dita.oasis-open.org/architecture/2005/"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+  &lt;define name="cellPurposeAtt-d-attribute-expansion">
+    &lt;optional>
+      &lt;attribute name="cellPurpose">
+        &lt;a:documentation>Specifies the purpose of the table cell. This is a specialized
+                         attribute for Acme Corporation.
+        &lt;/a:documentation>
+        &lt;choice>
+          &lt;value>sale&lt;/value>
+          &lt;value>out-of-stock&lt;/value>
+          &lt;value>new&lt;/value>
+          &lt;value>last-chance&lt;/value>
+          &lt;value>inherit&lt;/value>
+          &lt;value>none&lt;/value>
+        &lt;/choice>
+      &lt;/attribute>
+    &lt;/optional>    
+  &lt;/define>
+  
+  &lt;define name="base-attribute-extensions" combine="interleave">
+    &lt;ref name="cellPurposeAtt-d-attribute-expansion"/>
+  &lt;/define>
+  
+&lt;/grammar></codeblock>
+                <draft-comment author="Kristen J Eberlein" time="20 April 2021">
+                    <p>Where does the application of this new attribute to only certain elements
+                        take place?</p>
+                </draft-comment>
+            </li>
+            <li>Integrate expansion module into the doc-type shell.</li>
+            <li>Update <filepath>catalog.xml</filepath> file.</li>
+        </ol>
+    </conbody>
+</concept>

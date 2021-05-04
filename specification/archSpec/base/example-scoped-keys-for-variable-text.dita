@@ -6,17 +6,20 @@
     DITA topic multiple times in a DITA map, and in each instance the variable text can resolve
     differently.</shortdesc>
  <conbody>
-  <p>The Acme Tractor Company produces two models of tractor: X and Y. Their product manual contains
-      sets of instructions for each model. While most maintenance procedures are different for each
-      model, the instructions for changing the oil are identical for both model X and model Y. The
-      company policies call for including the specific model number in each topic, so a generic
-      topic that could be used for both models is not permitted.</p>
+    <p>The Acme Tractor Company produces two models of tractor: X and Y. Their product manual
+      contains sets of instructions for each model; until now, the maintenance procedures have been
+      different for each model. Now, the product manual needs to add instructions for changing the
+      oil, and the procedure is identical for both model X and model Y. While most maintenance
+      procedures are different for each model, the instructions for changing the oil are identical
+      for both model X and model Y. The company policies call for including the specific model
+      number in each topic, so a generic topic that could be used for both models is not permitted.
+      Scoped keys can solve this problem.</p>
   <ol>
    <li>
-    <p>The authoring team references the model information in the
-      <filepath>changing-the-oil.dita</filepath> topic by using the following mark-up:</p>
-    <codeblock>&lt;keyword keyref="model"/></codeblock>
-   </li>
+        <p>The authoring team creates the new <filepath>changing-the-oil.dita</filepath>. The new
+          topic uses the following markup to reference the product model:</p>
+        <codeblock>&lt;keyword keyref="model"/></codeblock>
+      </li>
    <li>
     <p>The information architect examines the root map for the manual, and decides how to define key
           scopes. Originally, the map looked like the following:</p>
@@ -65,7 +68,7 @@
   &lt;topicgroup keyscope="model-x">
     <b>&lt;keydef keys="model">
       &lt;topicmeta>
-        &lt;linktext>X&lt;/linktext>
+        &lt;keytext>X&lt;/keytext>
       &lt;/topicmeta>
     &lt;/keydef></b>
     &lt;topicref href="model-x-procedures.dita">
@@ -79,7 +82,7 @@
   &lt;topicgroup keyscope="model-y">
     <b>&lt;keydef keys="model">
       &lt;topicmeta>
-        &lt;linktext>Y&lt;/linktext>
+        &lt;keytext>Y&lt;/keytext>
       &lt;/topicmeta>
     &lt;/keydef></b>
     &lt;topicref href="model-y-procedures.dita">

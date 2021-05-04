@@ -7,50 +7,60 @@
  <prolog>
   <metadata>
    <keywords>
-    <indexterm>coding requirements<indexterm>RELAX
-     NG<indexterm>constraints</indexterm></indexterm></indexterm>
-    <indexterm>constraints<indexterm>RELAX NG<indexterm>coding
-       requirements</indexterm><indexterm>integrating into document type
-      shells</indexterm></indexterm></indexterm>
-    <indexterm>domain constraint modules<indexterm>RELAX NG<indexterm>coding
-       requirements</indexterm></indexterm></indexterm>
-    <indexterm>file names<indexterm>RELAX NG<indexterm>domain constraint
-       modules</indexterm><indexterm>structural constraint
-     modules</indexterm></indexterm></indexterm>
-    <indexterm>structural constraint modules<indexterm>RELAX NG<indexterm>coding
-       requirements</indexterm></indexterm></indexterm>
+    <indexterm>coding
+          requirements<indexterm>RNG<indexterm>constraints</indexterm></indexterm></indexterm>
+    <indexterm>constraints<indexterm>RNG<indexterm>coding
+              requirements</indexterm><indexterm>integrating into document type
+            shells</indexterm></indexterm></indexterm>
+    <indexterm>domain constraint modules<indexterm>RNG<indexterm>coding
+            requirements</indexterm></indexterm></indexterm>
+    <indexterm>file names<indexterm>RNG<indexterm>domain constraint
+              modules</indexterm><indexterm>structural constraint
+          modules</indexterm></indexterm></indexterm>
+    <indexterm>structural constraint modules<indexterm>RNG<indexterm>coding
+            requirements</indexterm></indexterm></indexterm>
    </keywords>
   </metadata>
  </prolog>
  <conbody>
-  <p>Constraint modules are implemented by importing the constraint module into a document type
-   shell in place of the module that the constraint modifies. The constraint module itself imports
-   the base module to be constrained; within the import, the module redefines patterns as needed to
-   implement the constraint.</p>
-  <p otherprops="examples">For example, a constraint module that modifies the
-    <xmlelement>section</xmlelement> element needs to import the base module
-    <filepath>topicMod.rng</filepath>. Within that import, it will constrain the
-    <codeph>section.content</codeph>
-   pattern:<codeblock>&lt;include href="topicMod.rng"&gt;
+    <section>
+      <title>Implementation of constraint modules</title>
+      <p>Constraint modules are implemented by importing the constraint module into a document-type
+        shell in place of the module that the constraint modifies. The constraint module itself
+        imports the base module to be constrained; within the import, the module redefines the
+        patterns as needed to implement the constraint.</p>
+      <div otherprops="examples">
+        <p>For example, a constraint module that modifies the <xmlelement>section</xmlelement>
+          element imports the base module <filepath>topicMod.rng</filepath>. Within that import, it
+          constrains the <codeph>section.content</codeph> pattern:</p>
+        <codeblock>&lt;include href="topicMod.rng"&gt;
   &lt;define name="section.content"&gt;
     &lt;!-- Define constrained model here -->
   &lt;/define>
 &lt;/include>
-</codeblock></p>
-    <draft-comment author="robander">Need to update the following example statement for 2.0 to refer
-      to the correct name of the tech comm 2.0 spec.</draft-comment>
-  <p otherprops="examples">For a more complete example, see
-    <filepath>strictTaskbodyConstraintMod.rng</filepath>, delivered with the DITA 1.3 grammar
-   files.</p>
-  <p>Because the constraint module imports the module that it modifies, only one constraint module
-   can be used per vocabulary module (otherwise the module being constrained would be imported
-   multiple times). If multiple constraints are combined for a single vocabulary module, they must
-   be implemented in one of the following ways:<ul>
-    <li>The constraints <ph >can</ph> be combined into a single module. For
-          example, when combining separate constraints for <xmlelement>section</xmlelement> and
-            <xmlelement>shortdesc</xmlelement>, a single module <ph >can</ph>
-          be defined as
-          follows:<codeblock>&lt;include href="topicMod.rng"&gt;
+</codeblock>
+        <p>For a more complete example, see <filepath>strictTaskbodyConstraintMod.rng</filepath>,
+          delivered with the DITA 1.3 grammar files.</p>
+        <draft-comment author="robander">Need to update the above example statement for 2.0 to refer
+          to the correct name of the tech comm 2.0 spec.</draft-comment>
+      </div>
+    </section>
+    <section>
+      <title>Combining multiple constraints</title>
+      <p>Because the constraint module imports the module that it modifies, only one constraint
+        module can be used per vocabulary module (otherwise the module being constrained would be
+        imported multiple times). If multiple constraints are combined for a single vocabulary
+        module, they must be implemented in one of the following ways:</p>
+      <dl>
+        <dlentry>
+          <dt>Combing constraints into a single module</dt>
+          <dd>
+            <p>The constraints can be combined into a single module.</p>
+            <div otherprops="examples">
+              <p>For example, when combining separate constraints for
+                  <xmlelement>section</xmlelement> and <xmlelement>shortdesc</xmlelement>, a single
+                module can be defined as follows:</p>
+              <codeblock>&lt;include href="topicMod.rng"&gt;
   &lt;define name="section.content"&gt;
     &lt;!-- Constrained model for section -->
   &lt;/define>
@@ -58,16 +68,30 @@
     &lt;!-- Constrained model for shortdesc -->
   &lt;/define>
 &lt;/include>
-</codeblock></li>
-    <li>Constraints can be chained so that each constraint imports another, until the final
-          constraint imports the base vocabulary module. For example, when combining separate
-          constraints for <xmlelement>section</xmlelement>, <xmlelement>shortdesc</xmlelement>, and
-            <xmlelement>li</xmlelement> from the base vocabulary, the
-            <xmlelement>section</xmlelement> constraint can import the
-            <xmlelement>shortdesc</xmlelement> constraint, which in turn imports the
-            <xmlelement>li</xmlelement> constraint, which finally imports
-            <filepath>topicMod.rng</filepath>.</li>
-   </ul>
-  </p>
+</codeblock>
+            </div>
+          </dd>
+        </dlentry>
+        <dlentry>
+          <dt>Chaining constraints</dt>
+          <dd>
+            <p>Constraints can be chained so that each constraint imports another, until the final
+              constraint imports the base vocabulary module.</p>
+            <div otherprops="examples">
+              <p>For example, when combining separate constraints for
+                  <xmlelement>section</xmlelement>, <xmlelement>shortdesc</xmlelement>, and
+                  <xmlelement>li</xmlelement> from the base vocabulary, the
+                  <xmlelement>section</xmlelement> constraint can import the
+                  <xmlelement>shortdesc</xmlelement> constraint, which in turn imports the
+                  <xmlelement>li</xmlelement> constraint, which finally imports
+                  <filepath>topicMod.rng</filepath>.</p>
+              <draft-comment author="Kristen J Eberlein" time="07 April 2021">
+                <p>Need an example of this</p>
+              </draft-comment>
+            </div>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
  </conbody>
 </concept>

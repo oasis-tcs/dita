@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.x Concept//EN" "concept.dtd">
 <concept id="shell-dtd-coding-reqs" xml:lang="en-us">
     <title>DTD: Coding requirements for document-type shells</title>
     <shortdesc>A DTD-based document-type shell is organized into sections; each section contains
         entity declarations that follow specific coding rules.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>coding requirements<indexterm>DTD<indexterm>document-type
+                            shells</indexterm></indexterm></indexterm>
+                <indexterm>document-type shells<indexterm>DTD<indexterm>sections, patterns
+                            of</indexterm></indexterm></indexterm>
+                <indexterm>document-type shells<indexterm>DTD<indexterm>parameter
+                            entities</indexterm></indexterm></indexterm>
+                <indexterm>DTD<indexterm>coding requirements<indexterm>document-type
+                            shells</indexterm></indexterm></indexterm>
+                <indexterm>DTD<indexterm>parameter entities, use of</indexterm></indexterm>
+                <indexterm>naming conventions<indexterm>document-type shells<indexterm>parameter
+                            entities</indexterm></indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
     <conbody>
-        <p>The DTD-based approach to configuration, specialization, and constraints relies heavily
-            upon parameter entities. Several of the parameter entities that are declared in document
-            type shells contain references to other parameter entities. Because parameter entities
-            must be declared before they are used, the order of the sections in a DTD-based
-            document-type shell is significant.</p>
+        <p>The DTD-based approach to configuration, specialization, and <ph rev="2.0">element
+                configuration (constraint and expansion)</ph> relies heavily upon parameter
+            entities. Several of the parameter entities that are declared in document-type shells
+            contain references to other parameter entities. Because parameter entities must be
+            declared before they are used, the order of the sections in a DTD-based document-type
+            shell is significant.</p>
         <p>A DTD-based document-type shell contains the following sections:</p>
         <ol>
             <li>
@@ -45,20 +63,16 @@
                 <xref href="#shell-dtd-coding-reqs/domain-element-integration" format="dita"/>
             </li>
         </ol>
-        <!--<dl><dlentry><dt>Topic or map entity inclusions</dt><dd>This section includes the entity declaration files for the structural topic or map types that the shell configures. These files define tokens that are used within the <xmlatt>domains</xmlatt> attribute for the document-type shell.</dd></dlentry><dlentry><dt>Domain entity inclusions</dt><dd>This section includes the entity declaration files for each element domain that is integrated into the document-type shell. These files define additional tokens that are used within the <xmlatt>domains</xmlatt> attribute for the document-type shell.</dd></dlentry><dlentry><dt>Domain attribute inclusions</dt><dd>This section includes the files that define specialized attributes. Each file includes both the attribute extension and a token for the <xmlatt>domains</xmlatt> attribute.</dd></dlentry><dlentry><dt>Element extension redefinitions</dt><dd>This section redefines parameter entities to include extension elements; it does so by referencing entities in the "Domain entity inclusion" files. Each redefinition effectively means "Where element <xmlelement>X</xmlelement> is already allowed, also allow these domain specializations."</dd></dlentry><dlentry><dt>Attribute extension redefinitions</dt><dd>This section redefines parameter entities to add extension attributes; it does so by referencing entities in the "Domain attribute inclusion" files. Each redefinition effectively means "Where <xmlatt>props</xmlatt> or <xmlatt>base</xmlatt> are allowed, also allow these specialized attributes."</dd></dlentry><dlentry><dt>Topic nesting redefinitions</dt><dd>This section determines how topics nest. For example, it could specify that <xmlelement>topic</xmlelement> can only nest <xmlelement>topic</xmlelement>, or that it can nest <xmlelement>task</xmlelement> and <xmlelement>reference</xmlelement>, or that it doesn't allow any nested topics at all. The section applies only to document-type shells for topics.</dd></dlentry><dlentry><dt>Domain declaration redefinition</dt><dd>This section uses all of the previously-defined domain tokens to set a default value for the <xmlatt>domains</xmlatt> attribute.</dd></dlentry><dlentry><dt>Content constraint module inclusions</dt><dd>This section references constraint modules. Placing it before the following modules ensures that constraints are established before the default content models or attribute sets are defined.</dd></dlentry><dlentry><dt>Structural definition inclusions</dt><dd>This section defines content models and attribute sets for the core map or topic elements. Each module after the core topic or map module defines additional specialized elements.</dd></dlentry><dlentry><dt>Element domain definition inclusions</dt><dd>This section defines content models and attribute sets for specialized domain elements. This section is usually placed after the "Structural definition inclusions", but in some cases the two sections may be mixed.<draft-comment author="robander" time="10 February 2015">There is no technical requirement to have "highlight domain" module come after "task" module, though we require it by setting up these sections. If my APIRef doc depended on the programming domain, I would either need to embed the programmingDomain.mod before the APIRef structural module, or I would need the APIRef module to predeclare the %apiname; parameter entity (and any other entities I use).</draft-comment></dd></dlentry></dl>-->
-        <!--<p>Shells <term outputclass="RFC-2119" rev="terminology">SHOULD</term> have an initial set of comments that describe the shell and indicate the public identifiers, URNs, or absolute URLs by which the shell should be referenced in DOCTYPE declarations. </p>-->
         <p>Each of the sections in a DTD-based document-type shell follows a pattern. These patterns
             help ensure that the shell follows XML parsing rules for DTDs; they also establish a
-            modular design that simplifies creation of new document-type shells. By convention, an
-                <filepath>.ent</filepath> file extension is used to indicate files that define only
-            parameter entities, while a <filepath>.mod</filepath> file extension is used to indicate
-            files that define elements or constraints.</p>
+            modular design that simplifies creation of new document-type shells.</p>
+        <!--<p>By convention, an <filepath>.ent</filepath> file extension is used to indicate files that define only parameter entities, while a <filepath>.mod</filepath> file extension is used to indicate files that define elements or <ph rev="2.0">perform element configuration (constraint and expansion).</ph></p>-->
         <dl>
             <dlentry id="topic-map-entity-declarations">
                 <dt> Topic [or map] entity declarations </dt>
                 <dd>
                     <p>This section declares and references an external parameter entity for each of
-                        the following: </p>
+                        the following items: </p>
                     <ul>
                         <li>The top-level topic or map type that the document-type shell
                             configures</li>
@@ -66,207 +80,274 @@
                             shell</li>
                     </ul>
                     <p>The parameter entity is named
-                            <codeph><varname>type-name</varname>-dec</codeph>. </p>
-                    <p otherprops="examples">For example, a document-type shell that integrates the
-                            <xmlelement>concept</xmlelement> specialization would
-                        include:<codeblock>&lt;!ENTITY % concept-dec     
-  PUBLIC "-//OASIS//ENTITIES DITA 1.3 Concept//EN" 
+                            <codeph><varname>type-name</varname>-dec</codeph>.</p>
+                    <example>
+                        <p>In the following example, the <xmlelement>concept</xmlelement>
+                            specialization is integrated into a document-type shell:</p>
+                        <codeblock>
+&lt;!-- ============================================================= -->
+&lt;!--              TOPIC ENTITY DECLARATIONS                        -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY % concept-dec     
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Concept//EN" 
          "concept.ent"
->%concept-dec;</codeblock></p>
-                    <!--<p rev="DITA1.3 proposal-13121">This section <term outputclass="RFC-2119" rev="terminology">MUST</term> declare and reference as an external parameter entity the <filepath>.ent</filepath> file for any additional structural specialization modules on which the primary specialization depends; the entity is named <codeph>%<i>typename</i>-dec</codeph>. For example, if a troubleshooting specialization is specialized from topic but includes elements from task, it will need to include the <filepath>.ent</filepath> file for task:</p><codeblock rev="DITA1.3 proposal-13121">&lt;!ENTITY % task-dec     
-  PUBLIC "-//OASIS//ENTITIES DITA 1.3 Task//EN" 
-         "task.ent"
->%task-dec;</codeblock>-->
+>%concept-dec;</codeblock>
+                    </example>
                 </dd>
             </dlentry>
             <dlentry id="domain-constraint-integration">
                 <dt>Domain constraint integration</dt>
                 <dd>
-                    <p>For each domain constraint module that is integrated into the document type
-                        shell, this section declares a parameter entity and references the
-                        constraint module file where the constraint is defined. The parameter entity
-                        is named <codeph><varname>descriptorDomainName</varname>-c-dec</codeph>.</p>
-                    <p otherprops="examples">In the following example, the entity file for a
-                        constraint module that reduces the highlighting domain to a subset is
-                        included in a document type
-                        shell:<codeblock>&lt;!-- ============================================================= -->
+                    <p>This section declares and references an external parameter entity for each
+                        domain-constraint module that is integrated into the document-type
+                        shell.</p>
+                    <p>The parameter entity is named
+                            <codeph><varname>descriptorDomainName</varname>-c-dec</codeph>.</p>
+                    <example>
+                        <p>In the following example, the entity file for a constraint module that
+                            reduces the highlighting domain to a subset is integrated in a
+                            document-type shell:</p>
+                        <codeblock>&lt;!-- ============================================================= -->
 &lt;!--                    DOMAIN CONSTRAINT INTEGRATION              -->
 &lt;!-- ============================================================= -->
 
 &lt;!ENTITY % HighlightingDomain-c-dec  
   PUBLIC "-//ACME//ENTITIES DITA Highlighting Domain Constraint//EN" 
   "acme-HighlightingDomainConstraint.mod"
->%basic-HighlightingDomain-c-dec;</codeblock></p>
+>%basic-HighlightingDomain-c-dec;</codeblock>
+                    </example>
                 </dd>
             </dlentry>
             <dlentry id="domain-entity-declarations">
                 <dt> Domain entity declarations </dt>
                 <dd>
-                    <p>For each element domain that is integrated into the document-type shell, this
-                        section declares a parameter entity and references the external entities
-                        file where the element domain is defined. The parameter entity is named
-                                <codeph><varname>shortDomainName</varname>-dec</codeph>. </p>
-                    <p otherprops="examples">In the following example, the entity file for the
-                        highlighting domain is included in a document-type shell:<codeblock><![CDATA[<!ENTITY % hi-d-dec PUBLIC
-    "-//OASIS//ENTITIES DITA Highlight Domain//EN" 
+                    <p>This section declares and references an external parameter entity for each
+                        element-domain module that is integrated into the document-type shell.</p>
+                    <p>The parameter entity is named
+                            <codeph><varname>shortDomainName</varname>-dec</codeph>.</p>
+                    <example>
+                        <p>In the following example, the entity file for the highlighting domain is
+                            included in a document-type shell:</p>
+                        <codeblock>&lt;!-- ============================================================= -->
+&lt;!--             DOMAIN ENTITY DECLARATIONS                        -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY % hi-d-dec PUBLIC
+    "-//OASIS//ENTITIES DITA 2.0 Highlight Domain//EN" 
     "highlightDomain.ent"
->%hi-d-dec;]]></codeblock></p>
+>%hi-d-dec;</codeblock>
+                    </example>
                 </dd>
             </dlentry>
             <dlentry id="domain-attributes-declarations">
                 <dt> Domain attributes declarations </dt>
                 <dd>
-                    <p>For each attribute domain that is integrated into the document-type shell,
-                        this section declares a parameter entity and references the external
-                        entities file where the attribute domain is defined. The parameter entity is
-                        named <codeph><varname>domainName</varname>-dec</codeph>.</p>
-                    <p otherprops="examples">In the following example, the entity file for the
-                            <xmlatt>deliveryTarget</xmlatt> attribute domain is included in a
-                        document-type shell:<codeblock><![CDATA[<!ENTITY % deliveryTargetAtt-d-dec
-  PUBLIC "-//OASIS//ENTITIES DITA 1.3 Delivery Target Attribute Domain//EN"
+                    <p>This section declares and references an external parameter entity for each
+                        attribute domain that is integrated into the document-type shell.</p>
+                    <p>The parameter entity is named
+                            <codeph><varname>domainName</varname>-dec</codeph>.</p>
+                    <example>
+                        <p>In the following example, the entity file for the
+                                <xmlatt>deliveryTarget</xmlatt> attribute domain is included in a
+                            document-type shell:</p>
+                        <codeblock>&lt;!-- ============================================================= -->
+&lt;!--             DOMAIN ATTRIBUTES DECLARATIONS                    -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY % deliveryTargetAtt-d-dec
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Delivery Target Attribute Domain//EN"
          "deliveryTargetAttDomain.ent"
->%deliveryTargetAtt-d-dec;]]></codeblock></p>
+>%deliveryTargetAtt-d-dec;</codeblock>
+                    </example>
                 </dd>
             </dlentry>
             <dlentry id="domain-extensions">
                 <dt> Domain extensions </dt>
                 <dd>
-                    <p>For each element that is extended by one or more domains, this section
-                        redefines the parameter entity for the element. These entities are used by
-                        later modules to define content models; redefining the entity adds domain
+                    <p>This section declares and references a parameter entity for each element that
+                        is extended by one or more domain modules. These entities are used by later
+                        modules to define content models; redefining the entity adds domain
                         specializations wherever the base element is allowed.</p>
-                    <!--<draft-comment author="robander" time="10 February 2015"><p>Original text: "The new definition is a disjunctive list of alternatives comprising the literal name of the element followed by the element extension entity from each domain that is providing specializations." IMHO technically innacurate, as it's only followed by an extension entity from each domain <i>that specializes this element</i>. I've made that change.</p><p>But about the word "disjunctive": adjective 1. lacking connection."the novel's disjunctive detail". 2. (of a conjunction) expressing a choice between two mutually exclusive possibilities, for example <i>or</i> in <i>she asked if he was going or staying</i>. </p><p>Is that correct here? I had to look up the word because I never took Latin.</p></draft-comment>-->
-                    <p otherprops="examples">In the following example, the entity for the
-                            <xmlelement>pre</xmlelement> element is redefined to add specializations
-                        from the programming, software, and user interface domains:<codeblock><![CDATA[<!ENTITY % pre
+                    <example>
+                        <p>In the following example, the entity for the <xmlelement>pre</xmlelement>
+                            element is redefined to add specializations from the programming,
+                            software, and user interface domains:</p>
+                        <codeblock>&lt;!-- ============================================================= -->
+&lt;!--                    DOMAIN EXTENSIONS                          -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY % pre
     "pre        | 
      %pr-d-pre; | 
      %sw-d-pre; | 
-     %ui-d-pre;">]]></codeblock></p>
+     %ui-d-pre;"></codeblock>
+                    </example>
                 </dd>
             </dlentry>
             <dlentry id="domain-attribute-extensions">
                 <dt> Domain attribute extensions </dt>
                 <dd>
-                    <p>For each attribute domain that is integrated into the document-type shell,
-                        this section redefines the parameter entities for the attribute. It adds an
-                        extension to the parameter entity for the relevant attribute.</p>
-                    <!--<p>The <xmlatt>props</xmlatt> and <xmlatt>base</xmlatt> attributes are used together with entities that allow for extension. By default, these entities have a null value as there are no default specialized attributes. </p>-->
-                    <p otherprops="examples">In the following example, the <xmlatt>props</xmlatt>
-                        attribute is specialized to create the <xmlatt>new</xmlatt> and
-                            <xmlatt>othernew</xmlatt> attributes, while the <xmlatt>base</xmlatt>
-                        attribute is specialized to create <xmlatt>newfrombase</xmlatt> and
-                            <xmlatt>othernewfrombase</xmlatt>
-                        attributes:<codeblock>&lt;!ENTITY % props-attribute-extensions
-        "%newAtt-d-attribute; 
-         %othernewAtt-d-attribute;"&gt;
+                    <p>This section redefines the parameter entity for each attribute domain that is
+                        integrated <ph rev="2.0">globally</ph> into the document-type shell. The
+                        redefinition adds an extension to the parameter entity for the relevant
+                        attribute.</p>
+                    <example>
+                        <p>In the following example, the parameter entities for the
+                                <xmlatt>base</xmlatt> and <xmlatt>props</xmlatt> attributes are
+                            redefined to include the <xmlatt>newfrombase</xmlatt>,
+                                <xmlatt>othernewfrombase</xmlatt>, <xmlatt>new</xmlatt>, and
+                                <xmlatt>othernew</xmlatt> attributes:</p>
+                        <codeblock>&lt;!-- ============================================================= -->
+&lt;!--                    DOMAIN ATTRIBUTE EXTENSIONS                -->
+&lt;!-- ============================================================= -->
+
 &lt;!ENTITY % base-attribute-extensions
         "%newfrombaseAtt-d-attribute; 
          %othernewfrombaseAtt-d-attribute;"&gt;
-</codeblock></p>
+
+&lt;!ENTITY % props-attribute-extensions
+        "%newAtt-d-attribute; 
+         %othernewAtt-d-attribute;"&gt;</codeblock>
+                    </example>
                 </dd>
             </dlentry>
             <dlentry id="topic-nesting-overrides">
                 <dt> Topic nesting override </dt>
                 <dd>
-                    <p>For each topic type that is integrated into the document-type shell, this
-                        section specifies whether and how subtopics nest by redefining the
-                                <codeph><varname>topictype</varname>-info-types</codeph> entity. The
-                        definition is usually an OR list of the topic types that can be nested in
-                        the parent topic type. Use the literal root-element name, not the
+                    <p>This section redefines the entity that controls topic nesting for each topic
+                        type that is integrated into the document-type shell.</p>
+                    <p>The parameter entity is named
+                            <codeph><varname>topictype</varname>-info-types</codeph>.</p>
+                    <p>The definition usually is an "OR" list of the topic types that can be nested
+                        in the parent topic type. Use the literal root-element name, not the
                         corresponding parameter entity. Topic nesting can be disallowed completely
                         by specifying the <xmlelement>no-topic-nesting</xmlelement> element.</p>
-                    <p otherprops="examples">In the following example, the parameter entity
-                        specifies that <xmlelement>concept</xmlelement> can nest any number of
-                            <xmlelement>concept</xmlelement> or <xmlelement>myTopicType</xmlelement>
-                        topics, in any
-                        order:<codeblock><![CDATA[<!ENTITY % concept-info-types "concept | myTopicType">]]></codeblock></p>
+                    <example>
+                        <p>In the following example, the parameter entity specifies that
+                                <xmlelement>concept</xmlelement> can nest any number of
+                                <xmlelement>concept</xmlelement> or
+                                <xmlelement>myTopicType</xmlelement> topics, in any order:</p>
+                        <codeblock>&lt;!-- ============================================================= -->
+&lt;!--                    TOPIC NESTING OVERRIDE                     -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY % concept-info-types "concept | myTopicType"></codeblock>
+                    </example>
                 </dd>
             </dlentry>
             <dlentry id="domains-attribute-override">
                 <dt> Specializations attribute override </dt>
                 <dd>
-                    <p>This section sets the effective value of the <xmlatt>specializations</xmlatt>
-                        attribute for the top-level document type that is configured by the document
-                        type shell. It redefines the <codeph>included-domains</codeph> entity to
+                    <p>This section redefines the <codeph>included-domains</codeph> entity to
                         include the text entity for each attribute domain that is either included or
-                        reused in the document type shell.</p>
-                    <p otherprops="examples">In the following example, entities are included for
-                        both the <codeph>newAtt-d</codeph> and <codeph>deliveryTarget-d</codeph>
-                        attribute domains:<codeblock><![CDATA[<!ENTITY included-domains
-    "&deliveryTarget-d-att;
-     &newAtt-d-att;
-   "
->]]></codeblock></p>
+                        reused in the document-type shell. The redefinition sets the effective value
+                        of the <xmlatt>specializations</xmlatt> attribute for the top-level document
+                        type that is configured by the document-type shell.</p>
+                    <draft-comment author="Kristen J Eberlein" time="10 April 2021">
+                        <p>What is the difference between "including an attribute domain" and
+                            "reusing an attribute domain"? What distinction where we trying to make
+                            here?</p>
+                    </draft-comment>
+                    <example>
+                        <p>In the following example, parameter entities are included for the DITA
+                            conditional-processing attributes:</p>
+                        <codeblock>&lt;!-- ============================================================= -->
+&lt;!--                 SPECIALIZATIONS ATTRIBUTE OVERRIDE            -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY included-domains
+                          "&amp;audienceAtt-d-att;
+                           &amp;deliveryTargetAtt-d-att;
+                           &amp;otherpropsAtt-d-att;
+                           &amp;platformAtt-d-att;
+                           &amp;productAtt-d-att;"
+></codeblock>
+                    </example>
                 </dd>
             </dlentry>
             <dlentry id="content-constraint-integration">
-                <dt> Content constraint integration </dt>
+                <dt><ph rev="2.0">Element-type configuration integration</ph></dt>
                 <dd>
-                    <p>For each constraint module that is integrated into the document-type shell,
-                        this section declares and references the external module file where the
-                        constraint is defined. The parameter entity is named
-                                <codeph><varname>constraintName</varname>-c-def</codeph>.</p>
-                    <p otherprops="examples">In the following example, the constraint module that
-                        constrains the content model for the <xmlelement>taskbody</xmlelement>
-                        element is integrated into the document-type shell for strict
-                        task:<codeblock>&lt;!ENTITY % strictTaskbody-c-def  
-  PUBLIC "-//OASIS//ELEMENTS DITA 1.3 Strict Taskbody Constraint//EN" 
+                    <p>This section declares and references the parameter entity for each <ph
+                            rev="2.0">element-configuration module (constraint and expansion)</ph>
+                        that is integrated into the document-type shell</p>
+                    <p>The parameter entity is named
+                            <codeph><varname>descriptionElement</varname>-c-def</codeph>.</p>
+                    <example>
+                        <p>In the following example, the module that constrains the content model
+                            for the <xmlelement>taskbody</xmlelement> element is integrated into the
+                            document-type shell for strict task:</p>
+                        <codeblock>&lt;!ENTITY % strictTaskbody-c-def  
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Strict Taskbody Constraint//EN" 
   "strictTaskbodyConstraint.mod"
->%strictTaskbody-c-def;</codeblock></p>
+>%strictTaskbody-c-def;</codeblock>
+                    </example>
                 </dd>
             </dlentry>
             <dlentry id="topic-map-element-integration">
                 <dt> Topic [or map] element integration </dt>
                 <dd>
-                    <p>For each structural module that is integrated into the document-type shell,
-                        this section declares a parameter entity and references the external module
-                        file where the structural module is defined. The parameter entity is named
-                                <codeph><varname>structuralType</varname>-type</codeph>. The modules
-                        need to be included in ancestry order, so that the parameter entities that
-                        are used in an ancestor module are available for use in specializations.
-                        When a structural module depends on elements from a vocabulary module that
-                        is not part of its ancestry, the module upon which the structural module has
-                        a dependency (and any ancestor modules not already included) need to be
-                        included before the module with a dependency.</p>
-                    <!--<p rev="DITA1.3 proposal-13121">Likewise, when a structural module depends on elements from another module that is not part of its ancestry, then the module it depends on should be included before the module that depends on it, along with any ancestor modules not already included. For example, If a specialization called cppProgrammingTask specialized from task and needed to include some elements from cppAPIRef, then it would include the modules for topic, task, cppAPIRef, and cppProgrammingTask in that order.</p>-->
-                    <p otherprops="examples">The following example declares and references the
-                        structural modules that are integrated into the document-type shell for
-                        troubleshooting:<codeblock>&lt;!ENTITY % topic-type
-  PUBLIC "-//OASIS//ELEMENTS DITA 1.3 Topic//EN"
+                    <p>This section declares and references a parameter entity for each structural
+                        module that is integrated into the document-type shell.</p>
+                    <p>The parameter entity is named
+                            <codeph><varname>structuralType</varname>-type</codeph>.</p>
+                    <p>The structural modules are included in ancestry order, so that the parameter
+                        entities that are used in an ancestor module are available for use in
+                        specializations. When a structural module depends on elements from a
+                        vocabulary module that is not part of its ancestry, the module upon which
+                        the structural module has a dependency (and any ancestor modules not already
+                        included) need to be included before the module with a dependency.</p>
+                    <example>
+                        <p>In the following example, the structural modules required by the
+                            troubleshooting topic are integrated into the document-type shell:</p>
+                        <codeblock>&lt;!-- ============================================================= -->
+&lt;!--                    TOPIC ELEMENT INTEGRATION                  -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY % topic-type
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
          "../../base/dtd/topic.mod"
 >%topic-type;
 
 &lt;!ENTITY % task-type
-  PUBLIC "-//OASIS//ELEMENTS DITA 1.3 Task//EN"
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Task//EN"
          "task.mod"
 >%task-type;
 
 &lt;!ENTITY % troubleshooting-type
-  PUBLIC "-//OASIS//ELEMENTS DITA 1.3 Troubleshooting//EN"
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Troubleshooting//EN"
          "troubleshooting.mod"
->%troubleshooting-type;</codeblock></p>
+>%troubleshooting-type;</codeblock>
+                    </example>
                 </dd>
             </dlentry>
             <dlentry id="domain-element-integration">
                 <dt> Domain element integration </dt>
-                <!--<dd>This section defines content models and attribute sets for specialized domain elements. <draft-comment author="robander" time="10 February 2015">Need to think through this: in general, there is no requirement to have "highlight domain" module come after "task" module, though we require it by setting up these sections. I think if my APIRef doc depended on the software domain, I would either need to embed the softwareDomain.mod first (fine from XML perspective) or I would need to redeclare the %apiname; type parameter entities that I use.</draft-comment></dd>-->
                 <dd>
-                    <p>For each element domain that is integrated into the document-type shell, this
-                        section declares a parameter entity and references the external module file
-                        where the element domain is defined. The parameter entity is named
-                                <codeph><varname>domainName</varname>-def</codeph>.</p>
-                    <p>For example, the following code declares and references the parameter entity
-                        used for the highlighting domain:<codeblock><![CDATA[<!ENTITY % hi-d-def PUBLIC
-    "-//OASIS//ELEMENTS DITA Highlight Domain//EN" 
+                    <p>This section declares and references a parameter entity for each element
+                        domain that is integrated tinto the document-type shell.</p>
+                    <!--<p>For each element domain that is integrated into the document-type shell, this section declares a parameter entity and references the external module file where the element domain is defined. </p>-->
+                    <p>The parameter entity is named
+                            <codeph><varname>domainName</varname>-def</codeph>.</p>
+                    <example>
+                        <p>In the following example, the element-definition file for the
+                            highlighting domain is integrated into the document-type shell:</p>
+                        <codeblock>&lt;!-- ============================================================= -->
+&lt;!--                    DOMAIN ELEMENT INTEGRATION                 -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY % hi-d-def PUBLIC
+    "-//OASIS//ELEMENTS DITA 2.0 Highlight Domain//EN" 
     "highlightDomain.mod"
->%hi-d-def;]]></codeblock></p>
-                    <note>If a structural module depends on a domain, the domain module needs to be
+>%hi-d-def;</codeblock>
+                    </example>
+                    <p>If a structural module depends on a domain, the domain module needs to be
                         included before the structural module. This erases the boundary between the
-                        final two sections, but it is necessary to ensure that modules are embedded
-                        after their dependencies. Technically, the only solid requirement is that
-                        both domain and structural modules be declared after all other modules that
-                        they specialize from or depend on.</note>
+                        final two sections of the DTD-based document-type shell, but it is necessary
+                        to ensure that modules are embedded after their dependencies. Technically,
+                        the only solid requirement is that both domain and structural modules be
+                        declared after all other modules that they specialize from or depend on.</p>
                 </dd>
             </dlentry>
         </dl>

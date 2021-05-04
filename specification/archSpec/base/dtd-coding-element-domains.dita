@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.x Concept//EN" "concept.dtd">
 <concept
   id="domainpattern"
   xml:lang="en-us">
-  <title>DTD: Coding requirements for element domain modules</title>
+  <title>DTD: Coding requirements for element-domain modules</title>
   <shortdesc>The vocabulary modules that define element domains have an additional coding
     requirement. The entity declaration file must include a parameter entity for each element that
     the domain extends.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>coding requirements<indexterm>DTD<indexterm>element-domain
+            modules</indexterm></indexterm></indexterm>
+        <indexterm>DTD<indexterm>coding requirements<indexterm>element-domain
+            modules</indexterm></indexterm></indexterm>
+        <indexterm>examples<indexterm>DTD<indexterm>parameter entities for domain
+              extensions</indexterm></indexterm></indexterm>
+        <indexterm>naming conventions<indexterm>DTD<indexterm>parameter entity for element
+              domains</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
   <conbody>
     <dl>
       <dlentry>
@@ -14,26 +28,38 @@
         <dd>
           <p>The name of the parameter entity is the abbreviation for the domain, followed by a
             hyphen ("-"), and the name of the element that is extended.</p>
+          <example>
+            <p>For example, the name of the parameter entity for the highlight domain that extends
+              the <xmlelement>ph</xmlelement> element is <codeph>hi-d-ph</codeph>.</p>
+          </example>
         </dd>
       </dlentry>
       <dlentry>
         <dt>Parameter entity value</dt>
         <dd>
           <p>The value of the parameter entity is a list of the specialized elements that can occur
-            in the same locations as the extended element. Each element must be separated by the
-            vertical line ( | ) symbol.</p>
+            in the same locations as the extended element. Each element is separated by the vertical
+            line ( | ) symbol.</p>
+          <example>
+            <p>For example, the value of the <parameterentity>hi-d-ph</parameterentity> parameter
+              entity is <codeph>"b | u | i | <ph>line-through | overline |</ph> tt | sup |
+                sub"</codeph>.</p>
+          </example>
         </dd>
       </dlentry>
     </dl>
     <example id="example" otherprops="examples">
       <title>Example</title>
-      <p otherprops="examples">Because the highlighting domain extends the
-          <xmlelement>ph</xmlelement> element, the entity declaration file for that domain must
-        include a parameter entity corresponding to the <xmlelement>ph</xmlelement> element. The
-        name of the entity uses the short name of the domain (<codeph>hi-d</codeph>) followed by the
-        name of the base element. The value includes each specialization of
-          <xmlelement>ph</xmlelement> in the domain.</p>
-      <codeblock>&lt;!ENTITY % hi-d-ph "b | u | i | <ph >line-through | overline |</ph> tt | sup | sub"></codeblock>
+      <!--<p>Because the highlighting domain extends the <xmlelement>ph</xmlelement> element, the entity declaration file for that domain includes a parameter entity corresponding to the <xmlelement>ph</xmlelement> element. The name of the entity uses the short name of the domain (<codeph>hi-d</codeph>) followed by the name of the base element. The value includes each specialization of <xmlelement>ph</xmlelement> in the domain.</p>-->
+      <p>The following code sample shows the parameter entity for the highlight domain, as declared
+        in <filepath>highlightDomain.ent</filepath>:</p>
+      <codeblock>&lt;!-- ============================================================= -->
+&lt;!--                    ELEMENT EXTENSION ENTITY DECLARATIONS      -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY % hi-d-ph "b | i | line-through | overline | sup | sub | tt | u">
+
+&lt;!-- ================ End DITA Highlight Domain ================== --></codeblock>
     </example>
   </conbody>
 </concept>

@@ -14,7 +14,12 @@
       <title>Attributes</title>
       <p platform="dita">The following attributes are available on this element: <xref
           keyref="attributes-universal"/>, <xref keyref="attributes-keyref"
-          ><xmlatt>keyref</xmlatt></xref>, and the attributes defined below.</p>
+          ><xmlatt>keyref</xmlatt></xref>, and the attributes defined below.<draft-comment
+          author="rodaande">This uses format/href/scope (but not type) from the linking group. Can
+          we list and link to those here rather than redefining them below? Is there any real
+          benefit to saying that the href on &lt;image> is a reference to an image, when it is
+          otherwise just a normal href? Not sure if this would impact the lwdita section
+          though.</draft-comment></p>
       <p platform="lwdita">The following attributes are available on this element: <xref
           keyref="attributes-universal/localizationatts"/>, <xref keyref="attributes-universal/class"
             ><xmlatt>class</xmlatt></xref>, <xref keyref="attributes-keyref"
@@ -22,19 +27,19 @@
             ><xmlatt>outputclass</xmlatt></xref>.</p>
       <dl>
         <dlentry platform="dita">
-          <dt><xmlatt>align</xmlatt></dt>
+          <dt id="attr-align"><xmlatt>align</xmlatt></dt>
           <dd>Controls the horizontal alignment of an image when <xmlatt>placement</xmlatt> is
             specified as <keyword>break</keyword>. Common values include <keyword>left</keyword>,
               <keyword>right</keyword>, and <keyword>center</keyword>.</dd>
         </dlentry>
         <dlentry id="format">
-          <dt><xmlatt>format</xmlatt></dt>
+          <dt id="attr-format"><xmlatt>format</xmlatt></dt>
           <dd><!--TODO: In 2.0 make this common with version in link attribute group.-->Identifies
             the format of the resource that is referenced. See <xref keyref="attributes-format"/>
             for details on supported values.</dd>
         </dlentry>
         <dlentry>
-          <dt><xmlatt>height</xmlatt></dt>
+          <dt id="attr-height"><xmlatt>height</xmlatt></dt>
           <dd>Indicates the vertical dimension for the resulting display. The value of this
             attribute is a real number (expressed in decimal notation) optionally followed by a unit
             of measure from the set of pc, pt, px, in, cm, mm, em (picas, points, pixels, inches,
@@ -43,19 +48,19 @@
               <keyword>10.5cm</keyword>. </dd>
         </dlentry>
         <dlentry>
-          <dt><xmlatt>href</xmlatt></dt>
+          <dt id="attr-href"><xmlatt>href</xmlatt></dt>
           <dd>Provides a reference to the image. See <xref keyref="attributes-href"/> for detailed
             information on supported values and processing implications.</dd>
         </dlentry>
         <dlentry platform="dita">
-          <dt><xmlatt>placement</xmlatt></dt>
+          <dt id="attr-placement"><xmlatt>placement</xmlatt></dt>
           <dd>Indicates whether an image is displayed inline or on a separate line. The default
             value is inline. Allowable values are <keyword>inline</keyword>,
-              <keyword>break</keyword>, or and <xref keyref="attributes-useconreftarget"
+              <keyword>break</keyword>, and <xref keyref="attributes-useconreftarget"
               >"-dita-use-conref-target"</xref>.</dd>
         </dlentry>
         <dlentry platform="dita">
-          <dt><xmlatt>scale</xmlatt></dt>
+          <dt id="attr-scale"><xmlatt>scale</xmlatt></dt>
           <dd>Specifies a percentage as an unsigned integer by which to scale the image in the
             absence of any specified image height or width; a value of 100 implies that the image
             should be presented at its intrinsic size. If a value has been specified for the
@@ -70,9 +75,9 @@
           </dd>
         </dlentry>
         <dlentry platform="dita">
-          <dt><xmlatt>scalefit</xmlatt></dt>
+          <dt id="attr-scalefit"><xmlatt>scalefit</xmlatt></dt>
           <dd>Allows an image to be scaled up or down to fit within available space. Allowable
-            values are<keyword> yes</keyword>, <keyword>no</keyword>, and <xref
+            values are <keyword>yes</keyword>, <keyword>no</keyword>, and <xref
               keyref="attributes-useconreftarget">"-dita-use-conref-target"</xref>. If
               <xmlatt>height</xmlatt>, <xmlatt>width</xmlatt>, or <xmlatt>scale</xmlatt> is
             specified, those attributes determine the graphic size, and the
@@ -80,14 +85,14 @@
             specified and <codeph>scalefit="yes"</codeph>, then the image is scaled (the same factor
             in both dimensions) so that the graphic will just fit within the available height or
             width (whichever is more constraining). <p>The available width would be the prevailing
-              column (or table cell) width—that is, the width a paragraph of text would have if
-              the graphic were a paragraph instead. The available height is implementation
-              dependent, but if feasible, it is suggested to be the page (or table cell) height or
-              some other reasonable value. </p>
+              column (or table cell) width—that is, the width a paragraph of text would have if the
+              graphic were a paragraph instead. The available height is implementation dependent,
+              but if feasible, it is suggested to be the page (or table cell) height or some other
+              reasonable value. </p>
           </dd>
         </dlentry>
         <dlentry>
-          <dt><xmlatt>scope</xmlatt></dt>
+          <dt id="attr-scope"><xmlatt>scope</xmlatt></dt>
           <dd>Identifies the closeness of the relationship between the current document and the
             target resource. Allowable values are <keyword>local</keyword>, <keyword>peer</keyword>,
               <keyword>external</keyword>, and <xref keyref="attributes-useconreftarget"
@@ -95,7 +100,7 @@
             information on values.</dd>
         </dlentry>
         <dlentry>
-          <dt><xmlatt>width</xmlatt></dt>
+          <dt id="attr-width"><xmlatt>width</xmlatt></dt>
           <dd>Indicates the horizontal dimension for the resulting display. The value of this
             attribute is a real number (expressed in decimal notation) optionally followed by a unit
             of measure from the set of pc, pt, px, in, cm, mm, em (picas, points, pixels, inches,

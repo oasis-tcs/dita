@@ -1,61 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
- "concept.dtd">
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.x Concept//EN" "concept.dtd">
 <concept id="dtdStructuralCoding" xml:lang="en-us">
   <title>DTD: Coding requirements for structural modules</title>
-  <shortdesc>A structural vocabulary module defines a new topic or map type as a specialization of a
-    topic or map type.</shortdesc>
+  <shortdesc><!--A structural vocabulary module defines a new topic or map type as a specialization of a topic or map type.-->This
+    topic covers general coding requirements for DTD-based structural modules.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>coding requirements<indexterm>DTD<indexterm>structural
+            modules</indexterm></indexterm></indexterm>
+        <indexterm>DTD<indexterm>coding requirements<indexterm>structural
+            modules</indexterm></indexterm></indexterm>
+        <indexterm>topic nesting<indexterm>controlling</indexterm></indexterm>
+        <indexterm>topic nesting<indexterm>disabling</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
   <conbody>
     <section id="architectural-attributes">
       <title>Required topic and map element attributes</title>
-      <p>The topic or map element type must set the <xmlatt>DITAArchVersion</xmlatt> attribute to
-        the version of DITA in use, typically by referencing the <codeph>arch-atts</codeph>
-        parameter entity. It must also set the <xmlatt>specializations</xmlatt> attribute to the
-          <codeph>included-domains</codeph> entity. These attributes give processors a reliable way
-        to check the architecture version and look up the list of attribute domains available in the
-        document type.</p>
-      <p>The following example shows how these attributes are defined for the
-          <xmlelement>concept</xmlelement> element in DITA 2.0:</p>
-      <codeblock>&lt;!ATTLIST concept    
+      <p>The topic or map element type sets the <xmlatt>DITAArchVersion</xmlatt> attribute to the
+        version of DITA in use, typically by referencing the <codeph>arch-atts</codeph> parameter
+        entity. It also sets the <xmlatt>specializations</xmlatt> attribute to the
+          <codeph>included-domains</codeph> entity.</p>
+      <p>The <xmlatt>DITAArchVersion</xmlatt> and <xmlatt>specializations</xmlatt> attributes give
+        processors a reliable way to check the architecture version and look up the list of
+        attribute domains that are available in the document type.</p>
+      <example>
+        <p>The following example shows how the <xmlatt>DITAArchVersion</xmlatt> and
+            <xmlatt>specializations</xmlatt> attributes are defined for the
+            <xmlelement>concept</xmlelement> element in DITA 2.0. Ellipses indicate where the code
+          is snipped for brevity:</p>
+        <codeblock>&lt;!-- ============================================================= -->
+&lt;!--                    ELEMENT DECLARATIONS                       -->
+&lt;!-- ============================================================= -->
+
+...
+
+&lt;!--                    LONG NAME: Concept                         -->
+
+...
+
+&lt;!ATTLIST concept    
   %concept.attributes;
-  %arch-atts;
-  specializations  CDATA  "&amp;included-domains;"></codeblock>
+  <b>%arch-atts;
+  specializations  CDATA  "&amp;included-domains;</b>"></codeblock>
+      </example>
     </section>
-    <section id="topic-nesting" >
+    <section id="topic-nesting">
       <title>Controlling nesting in topic types</title>
       <p>Specialized topics typically use a parameter entity to define what topic types are
         permitted to nest. While there are known exceptions described below, the following rules
         apply when using parameter entities to control nesting.</p>
+      <draft-comment author="Kristen J Eberlein" time="07 April 2021">
+        <p>What are the exceptions, and are they indeed described below?</p>
+      </draft-comment>
       <dl>
         <dlentry>
           <dt>Parameter entity name</dt>
           <dd>
             <p>The name of the parameter entity is the topic element name plus the
                 <codeph>-info-types</codeph> suffix.</p>
-            <p otherprops="examples">For example, the name of the parameter
-              entity for the concept topic is <codeph>concept-info-types</codeph>. </p>
+            <example>
+              <p>For example, the name of the parameter entity for the concept topic is
+                  <codeph>concept-info-types</codeph>. </p>
+            </example>
           </dd>
         </dlentry>
         <dlentry>
           <dt>Parameter entity value</dt>
           <dd>
             <p>To set up default topic nesting rules, set the entity to the desired topic elements.
-              The default topic nesting will be used when a document-type shell does not set up
-              different rules. </p>
-            <p otherprops="examples">For example, the following parameter entity sets up default
-              nesting so that <xmlelement>concept</xmlelement> will nest only other
-                <xmlelement>concept</xmlelement> topics:</p>
-            <codeblock otherprops="examples"><![CDATA[<!ENTITY % concept-info-types "%concept;">]]></codeblock>
-            <p otherprops="examples">As an additional example, the following parameter entity sets
-              up a default that will not allow any nesting:</p>
-            <codeblock otherprops="examples"><![CDATA[<!ENTITY % glossentry-info-types "no-topic-nesting">]]></codeblock>
-            <p otherprops="examples">Default topic nesting in a structural module often set up to
-              use the <codeph>%info-types;</codeph> parameter entity rather than using a specific
-              element. When this is done consistently, a shell that includes multiple structural
-              modules can set common nesting rules for all topic types by setting
-                <codeph>%info-types;</codeph> entity. The following example shows a structural
-              module that uses <codeph>%info-types;</codeph> for default topic nesting:</p>
-            <codeblock otherprops="examples"><![CDATA[<!ENTITY % concept-info-types "%info-types;">]]></codeblock>
+              The default topic nesting is used when a document-type shell does not set up different
+              rules. </p>
+            <example>
+              <p>For example, the following parameter entity sets up default nesting so that
+                  <xmlelement>concept</xmlelement> will nest only other
+                  <xmlelement>concept</xmlelement> topics:</p>
+              <codeblock>&lt;!-- ============================================================= -->
+&lt;!--                    ELEMENT DECLARATIONS                       -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY % concept-info-types
+              "%info-types;"
+></codeblock>
+            </example>
+            <example>
+              <p>As an additional example, the following parameter entity sets up a default that
+                will not allow any nesting:</p>
+              <codeblock><![CDATA[<!ENTITY % glossentry-info-types "no-topic-nesting">]]></codeblock>
+            </example>
+            <p>Default topic nesting in a structural module often is set up to use the
+                <codeph>%info-types;</codeph> parameter entity rather than using a specific element.
+              When this is done consistently, a shell that includes multiple structural modules can
+              set common nesting rules for all topic types by setting <codeph>%info-types;</codeph>
+              entity. </p>
+            <example>
+              <p>The following example shows a structural module that uses
+                  <codeph>%info-types;</codeph> for default topic nesting:</p>
+              <codeblock>&lt;!ENTITY % concept-info-types "%info-types;"></codeblock>
+            </example>
           </dd>
         </dlentry>
         <dlentry>
@@ -70,12 +114,13 @@
               If default nesting rules reference the <codeph>info-types</codeph> parameter entity, a
               shell can efficiently create common nesting rules by redefining the
                 <codeph>info-types</codeph> entity.</p>
-            <p otherprops="examples">For example, with the following content
-              model defined for <xmlelement>concept</xmlelement>, a document-type shell that uses
-              the concept specialization can control which topics are nested in
-                <xmlelement>concept</xmlelement> by redefining the
-                <codeph>concept-info-types</codeph> parameter entity:</p>
-            <codeblock otherprops="examples">&lt;!ENTITY % concept.content
+            <example>
+              <p>For example, with the following content model defined for
+                  <xmlelement>concept</xmlelement>, a document-type shell that uses the concept
+                specialization can control which topics are nested in
+                  <xmlelement>concept</xmlelement> by redefining the
+                  <codeph>concept-info-types</codeph> parameter entity:</p>
+              <codeblock otherprops="examples">&lt;!ENTITY % concept.content
   "((%title;), 
     (%titlealts;)?,
     (%abstract; | %shortdesc;)?, 
@@ -84,19 +129,22 @@
     (%related-links;)?,
     <b>(%concept-info-types;)*</b>)"
 ></codeblock>
+            </example>
           </dd>
         </dlentry>
       </dl>
-      <p>In rare cases, it might not be desirable to control topic nesting with a parameter entity.
-        For example:</p>
+      <p>In certain cases, you do not need use <codeph>info-types</codeph> parameter entity to
+        control topic nesting:</p>
       <ul>
         <li>If you want a specialized topic type to never allow any nested topics, regardless of
           context, it can be defined without any entity or any nested topics.</li>
-        <li>If  you want a specialized topic type to only allow specific nesting patterns, such as
+        <li>If you want a specialized topic type to only allow specific nesting patterns, such as
           allowing only other topic types that are defined in the same module, it can nest those
           topics directly in the same way that other nested elements are defined.</li>
       </ul>
+      <draft-comment author="Kristen J Eberlein" time="07 April 2021">
+        <p>Examples? I think the wording needs to be crisped up.</p>
+      </draft-comment>
     </section>
   </conbody>
 </concept>
-

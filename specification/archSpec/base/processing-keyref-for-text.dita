@@ -1,111 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept xml:lang="en-us" id="processing_key_references">
+<concept xml:lang="en-us" id="processing-key-references">
     <title>Processing key references to generate text or link text</title>
-    <shortdesc>Key references can be used to pull text from the key definition. This topic explains
-        how to generate text from a key definition, regardless of whether the key reference also
-        results in a link.</shortdesc>
+    <shortdesc>Variable text can be specified by key definitions. Processors determine the effective
+        text by retrieving the content of elements in a specific sequence.</shortdesc>
     <conbody>
-        <note>The processing described in this topic is unrelated to the <xmlatt>conkeyref</xmlatt>
-            attribute. In that case <xmlatt>conkeyref</xmlatt> is used to determine the target of a
-                <xmlatt>conref</xmlatt> attribute, after which the normal <xmlatt>conref</xmlatt>
-            rules apply.</note>
-        <p>Empty elements that include a key reference with a defined key might get their effective
-            content from the key definition. Empty elements are defined as elements that meet the
-            following criteria:</p>
-        <ul>
-            <li>Have no text content, including white space</li>
-            <li>Have no
-                sub-elements<!--<draft-comment author="robander" time="September 16 2014" disposition="historic">There is a recognized edge case that could confuse processors. What if my specialization has a required kid. For validity, I must include that kid. (Same issue tends to come up with conref on something like &lt;step> or &lt;table>). For example, if I have an image with required &lt;alt> child, to be valid it must be: &lt;myImage keyref="a">&lt;alt/>&lt;/myImage>. This can never be empty, thus can never pull the alt-text along with @href. <p>Not sure what the alternative is though. Originally considered text: "Have no sub-elements that contain text or result in text". But as Chris pointed out this is troublesome - how can a processor know if a child element will result in text? Will &lt;myData/> result in text? What if it results in text for PDF but not HTML - then does my effective content get pulled from the key for one and not the other? What if you have &lt;keyword> child with @conref, but @conref doesn't resolve or pulls nothing? In that case again we have something that may be empty now but resolve later. So, for now using the much simpler "no sub-elements" rule, while recognizing that the edge case exists.</p></draft-comment>--></li>
-            <li>Have no attributes that would be used as text content</li>
-        </ul>
-        <p >When an empty element as defined above references a key definition that
-            has a child <xmlelement>topicmeta</xmlelement> element, content from that
-                <xmlelement>topicmeta</xmlelement> element is used to determine the effective
-            content of the referencing element. Effective content from the key definition becomes
-            the element content, with the following exceptions: </p>
-        <ul>
-            <li>For empty <xmlelement>image</xmlelement> elements, effective content is used as
-                alternate text, equivalent to creating an <xmlelement>alt</xmlelement> sub-element
-                to hold that content.</li>
-            <li>For empty <xmlelement>link</xmlelement> elements, effective content is used as link
-                text, equivalent to creating a <xmlelement>linktext</xmlelement> sub-element to hold
-                that content.</li>
-            <li>For empty <xmlelement>link</xmlelement> and <xmlelement>xref</xmlelement> elements,
-                a key definition can be used to provide a short description in addition to the
-                normal effective content. If the key definition includes
-                    <xmlelement>shortdesc</xmlelement> inside of <xmlelement>topicmeta</xmlelement>,
-                that <xmlelement>shortdesc</xmlelement> is used to provide effective content for a
-                    <xmlelement>desc</xmlelement>
-                sub-element.<!--<draft-comment author="robander" time="29 July 2014" disposition="open">Original DITA 1.2 text for this was: "For <xmlelement>link</xmlelement> tags with a <xmlatt>keyref</xmlatt> attribute, the contents of the <xmlelement>shortdesc</xmlelement> tag in the key-defining element should provide the <xmlelement>desc</xmlelement> contents." This restatement expands that to &lt;xref> which I believe is the intent. It also tries to stay consistent by using the term "effective content". Hopefully it is as clear / clearer.</draft-comment>--></li>
-            <li>The <xmlelement>longdescref</xmlelement> and <xmlelement>longquoteref</xmlelement>
-                elements are empty elements with no effective content. Key definitions are not used
-                to set effective text for these elements.</li>
-            <li>The <xmlelement>param</xmlelement> element does not have any effective content, <ph
-                    >so key definitions do not result in any effective content
-                    for <xmlelement>param</xmlelement> elements.</ph></li>
-            <li>The <xmlelement>indextermref</xmlelement> element is not completely defined, so
-                determining effective content for this element is also left undefined.</li>
-        </ul>
-        <p>Effective text content is determined using the following set of rules:</p>
-        <ol>
-            <li >For elements that also exist as a child of
-                    <xmlelement>topicmeta</xmlelement> in the key definition, effective content is
-                taken from the first matching direct child of <xmlelement>topicmeta</xmlelement>.
-                For example, given the following key definition, an empty
-                    <xmlelement>author</xmlelement> element with the attribute
-                    <codeph>keyref="justMe"</codeph> would result in the matching content "Just M.
-                Name":<codeblock>&lt;keydef keys="justMe" href="http://www.example.com/my-profile" format="html" scope="external">
-  &lt;topicmeta>
-    &lt;author>Just M. Name&lt;/author>
-  &lt;/topicmeta>
-&lt;/keydef></codeblock></li>
-            <li>For elements that do not allow the <xmlatt>href</xmlatt> attribute, content is taken
-                from the first <xmlelement>keyword</xmlelement> element inside of
-                    <xmlelement>keywords</xmlelement> inside of the
-                    <xmlelement>topicmeta</xmlelement>. For example, given the following key
-                definition, empty <xmlelement>keyword</xmlelement>, <xmlelement>term</xmlelement>,
-                and <xmlelement>dt</xmlelement> elements with the attribute
-                    <codeph>keyref="nohref"</codeph> would all result in the matching content
-                "first":<codeblock>&lt;keydef keys="nohref">
-  &lt;topicmeta>
-    &lt;keywords>&lt;keyword>first&lt;/keyword>&lt;keyword>second&lt;/keyword>&lt;keyword>third&lt;/keyword>&lt;/keywords>
-  &lt;/topicmeta>
-&lt;/keydef></codeblock></li>
-            <li>For elements that do allow <xmlatt>href</xmlatt>, elements from within
-                    <xmlelement>topicmeta</xmlelement> that are legal within the element using
-                    <xmlatt>keyref</xmlatt> are considered matching text. For example, the
-                    <xmlelement>xref</xmlelement> element allows <xmlatt>href</xmlatt>, and also
-                allows <xmlelement>keyword</xmlelement> as a child. Using the code sample from the
-                previous item, an empty <xmlelement>xref</xmlelement> with <codeph
-                    >keyref="nohref"</codeph> would use all three of these
-                elements as text content; after processing, the result would be equivalent
-                to:<codeblock>&lt;xref keyref="test">&lt;keyword>first&lt;/keyword>&lt;keyword>second&lt;/keyword>&lt;keyword>third&lt;/keyword>&lt;/xref></codeblock></li>
-            <li>Otherwise, if <xmlelement>linktext</xmlelement> is specified inside of
-                    <xmlelement>topicmeta</xmlelement>, the contents of
-                    <xmlelement>linktext</xmlelement> are used as the effective content.
-                    <note>Because all elements that get effective content will eventually look for
-                    content in the <xmlelement>linktext</xmlelement> element, using
-                        <xmlelement>linktext</xmlelement> for effective content is a best practice
-                    to ensure that all elements getting text from a key definition will result in
-                    the same value.</note></li>
-            <li>Otherwise, if the element with the key reference results in a link, normal link text
-                determination rules apply as they would for <xmlelement>xref</xmlelement> (for
-                example, using the <xmlelement>navtitle</xmlelement> or falling back to the URI of
-                the link target).</li>
-        </ol>
-        <p>When the effective content for a key reference element results in invalid elements, those
-            elements <term outputclass="RFC-2119">SHOULD</term> be generalized to produce a valid
-            result. </p>
-        <p>For example, <xmlelement>linktext</xmlelement> in the key definition might use a domain
-            specialization of <xmlelement>keyword</xmlelement> that is not valid in the key
-            reference context, in which case the specialized element is generalized to
-                <xmlelement>keyword</xmlelement>. If the generalized content is also not valid, a
-            text equivalent is used instead. For example, <xmlelement>linktext</xmlelement> might
-            include <xmlelement>ph</xmlelement> or a specialized <xmlelement>ph</xmlelement> in the
-            key definition, but neither of those are valid as the effective content for a
-                <xmlelement>keyword</xmlelement>. In that case, the text content of the
-                <xmlelement>ph</xmlelement> is used.</p>
-        <!--For posterity / easy reference, the text from DITA 1.2 that was expanded to most of the above: <p>When a key definition has a <xmlelement>topicmeta</xmlelement> subelement, elements that refer to that key and that are empty may get their effective content from the first matching subelement of the <xmlelement>topicmeta</xmlelement> subelement of the key-defining <xmlelement>topicref</xmlelement>. If no matching element is found, the contents of the <xmlelement>linktext</xmlelement> tag, if present, should be used. Elements within <xmlelement>linktext</xmlelement> that do not match the content model of the key reference directly or after generalization should be skipped. For <xmlelement>link</xmlelement> tags with a <xmlatt>keyref</xmlatt> attribute, the contents of the <xmlelement>shortdesc</xmlelement> tag in the key-defining element should provide the <xmlelement>desc</xmlelement> contents.</p>-->
+        <dl>
+            <dlentry>
+                <dt>Empty elements</dt>
+                <dd>
+                    <p>Empty elements that specify a key reference might get their effective content
+                        from the referenced key definitions. For the purpose of determining variable
+                        text, <term>empty elements</term> are defined as elements that meet the
+                        following criteria:</p>
+                    <ul id="ul_ylq_w1w_bpb">
+                        <li>Have no text content, including white space</li>
+                        <li>Have no
+                            sub-elements<!--<draft-comment author="robander" time="September 16 2014" disposition="historic">There is a recognized edge case that could confuse processors. What if my specialization has a required kid. For validity, I must include that kid. (Same issue tends to come up with conref on something like &lt;step> or &lt;table>). For example, if I have an image with required &lt;alt> child, to be valid it must be: &lt;myImage keyref="a">&lt;alt/>&lt;/myImage>. This can never be empty, thus can never pull the alt-text along with @href. <p>Not sure what the alternative is though. Originally considered text: "Have no sub-elements that contain text or result in text". But as Chris pointed out this is troublesome - how can a processor know if a child element will result in text? Will &lt;myData/> result in text? What if it results in text for PDF but not HTML - then does my effective content get pulled from the key for one and not the other? What if you have &lt;keyword> child with @conref, but @conref doesn't resolve or pulls nothing? In that case again we have something that may be empty now but resolve later. So, for now using the much simpler "no sub-elements" rule, while recognizing that the edge case exists.</p></draft-comment>--></li>
+                        <li>Have no attributes that would be used as text content</li>
+                    </ul>
+                </dd>
+            </dlentry>
+            <dlentry>
+                <dt>Key definitions with child <xmlelement>topicmeta</xmlelement> elements</dt>
+                <dd>
+                    <p>When an empty element references a key definition that has a child
+                            <xmlelement>topicmeta</xmlelement> element, content from that
+                            <xmlelement>topicmeta</xmlelement> element is used to determine the
+                        effective content of the referencing element. Effective content from the key
+                        definition becomes the element content, with the following exceptions: </p>
+                    <ul id="ul_zlq_w1w_bpb">
+                        <li>For empty <xmlelement>image</xmlelement> elements, the effective content
+                            is used as alternate text. This is equivalent to creating an
+                                <xmlelement>alt</xmlelement> sub-element to hold that content.</li>
+                        <li>For empty <xmlelement>link</xmlelement> elements, the effective content
+                            is used as link text. This is equivalent to creating a
+                                <xmlelement>linktext</xmlelement> sub-element to hold that
+                            content.</li>
+                        <li>For empty <xmlelement>link</xmlelement> and
+                                <xmlelement>xref</xmlelement> elements, a key definition can provide
+                            a short description in addition to the normal effective content. If the
+                            key definition includes <xmlelement>shortdesc</xmlelement> inside of
+                                <xmlelement>topicmeta</xmlelement>, the content of the
+                                <xmlelement>shortdesc</xmlelement> element also provides effective
+                            content for a <xmlelement>desc</xmlelement> sub-element.</li>
+                        <li>The <xmlelement>longdescref</xmlelement> and
+                                <xmlelement>longquoteref</xmlelement> elements are empty elements
+                            with no effective content. Key definitions do not set effective text for
+                            these elements.</li>
+                        <li>The <xmlelement>param</xmlelement> element does not have any effective
+                            content, so key definitions do not result in effective content for
+                                <xmlelement>param</xmlelement> elements.</li>
+                    </ul>
+                </dd>
+            </dlentry>
+            <dlentry>
+                <dt>Processing rules</dt>
+                <dd>
+                    <p>Processors <term outputclass="RFC-2119">MUST</term> resolve variable text
+                        that is defined using keys by using the following sequence:<ol
+                            id="ol_amq_w1w_bpb">
+                            <li>Effective text content is taken from the
+                                    <xmlelement>keytext</xmlelement> element.</li>
+                            <li>Effective text content is taken from the
+                                    <xmlelement>titlealt</xmlelement> element with
+                                    <xmlatt>title-role</xmlatt> set to
+                                <keyword>linking</keyword>.</li>
+                            <li>Effective text content is taken from the
+                                    <xmlelement>titlealt</xmlelement> element with
+                                    <xmlatt>title-role</xmlatt> set to
+                                <keyword>navigation</keyword>.</li>
+                            <li>Effective text content is taken from the
+                                    <xmlelement>titlealt</xmlelement> element with
+                                    <xmlatt>title-role</xmlatt> set to a processor-recognized
+                                value.</li>
+                            <li>Effective text content is taken from the title of the referenced
+                                document, if available.</li>
+                            <li>Effective text content is determined by the processor.</li>
+                        </ol></p>
+                </dd>
+            </dlentry>
+            <dlentry>
+                <dt>Generalization of effective content</dt>
+                <dd>
+                    <p>When the effective content for a key reference element results in invalid
+                        elements, those elements <term outputclass="RFC-2119">SHOULD</term> be
+                        generalized to produce a valid result. </p>
+                    <p>For example, <xmlelement>keytext</xmlelement> in the key definition might use
+                        a domain specialization of <xmlelement>keyword</xmlelement> that is not
+                        valid in the key reference context, in which case the specialized element is
+                        generalized to <xmlelement>keyword</xmlelement>. If the generalized content
+                        is also not valid, a text equivalent is used instead. For example,
+                            <xmlelement>keytext</xmlelement> might include
+                            <xmlelement>ph</xmlelement> or a specialized <xmlelement>ph</xmlelement>
+                        in the key definition, but neither of those are valid as the effective
+                        content for a <xmlelement>keyword</xmlelement>. In that case, the text
+                        content of the <xmlelement>ph</xmlelement> is used.</p>
+                </dd>
+            </dlentry>
+        </dl>
     </conbody>
 </concept>

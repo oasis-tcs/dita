@@ -48,12 +48,7 @@
                                         value are specified, implementations <term
                                                 outputclass="RFC-2119">MAY</term> ignore one of the
                                         two values when they are unable to scale to each direction
-                                        using different factors.</ph></p><p><ph
-                                        id="locktitle-no-purpose">Although
-                                                <xmlatt>locktitle</xmlatt> is available as part of
-                                                <xref
-                                                keyref="attributes-common/commonmapatts"
-                                        />, it has no defined purpose for this element.</ph></p><p id="data-link-universal-keyref-outputclass">The following attributes are available on this
+                                        using different factors.</ph></p><p id="data-link-universal-keyref-outputclass">The following attributes are available on this
                                         element: <xref keyref="attributes-common/dataatts"/>, <xref
 keyref="attributes-common/linkatts"/>, <xref
 keyref="attributes-universal"/>, and <xref
@@ -82,7 +77,7 @@ keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p><p id="universal-s
                                                 keyref="attributes-common/architecturalatts"/>.</p>
                                 <dl>
                                         <dlentry id="topic-id">
-                                                <dt><xmlatt>id</xmlatt>
+                                                <dt id="attr-id"><xmlatt>id</xmlatt>
                                                   <ph conref="#conref-attribute/required-attr"
                                                   /></dt>
                                                 <dd>Provides an anchor point. This ID is usually
@@ -112,7 +107,7 @@ keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p><sectiondiv id="fn
 keyref="attributes-universal"/> and the attribute defined below.</p>
 <dl>
 <dlentry id="callout">
-<dt><xmlatt>callout</xmlatt></dt>
+<dt id="attr-callout"><xmlatt>callout</xmlatt></dt>
 <dd>Specifies the character that is used for the footnote link, for example, a number or an
                                                   alphabetical character. The attribute also can
                                                   specify a short string of
@@ -123,7 +118,7 @@ keyref="attributes-universal"/> and the attribute defined below.</p>
 <sectiondiv>
 <dl>
 <dlentry id="lomdatatype">
-<dt><xmlatt>datatype</xmlatt></dt>
+<dt id="attr-datatype"><xmlatt>datatype</xmlatt></dt>
 <dd>Available for describing the type of data contained in the value attribute for this metadata
 element. The default value is the empty string "".</dd>
 </dlentry>
@@ -161,7 +156,8 @@ element. The default value is the empty string "".</dd>
                                                 ><xmlatt>keyref</xmlatt></xref>.</p>
                                 <dl>
                                         <dlentry id="href-on-topicref">
-                                                <dt><xmlatt>href</xmlatt></dt>
+                                                <dt id="attr-href-topicref"
+                                                  ><xmlatt>href</xmlatt></dt>
                                                 <dd>Specifies the referenced resource. See <xref
                                                   keyref="attributes-href"/> for detailed
                                                   information on supported values and processing
@@ -184,7 +180,8 @@ element. The default value is the empty string "".</dd>
                                                 ><xmlatt>keyref</xmlatt></xref>.</p>
                                 <dl>
                                         <dlentry id="href-for-booklist">
-                                                <dt><xmlatt>href</xmlatt></dt>
+                                                <dt id="attr-href-booklist"
+                                                  ><xmlatt>href</xmlatt></dt>
                                                 <dd>References a manual listing for the current
                                                   element. See <xref keyref="attributes-href"/> for
                                                   detailed information on supported values and
@@ -219,20 +216,19 @@ element. The default value is the empty string "".</dd>
                         </sectiondiv><sectiondiv id="bookmap-frontbackmatter" platform="dita">
                                 <p>The following attributes are available on this element: <xref
                                                 keyref="attributes-universal"/>, <xref
-                                                keyref="attributes-common/commonmapatts"/>, <xref
-                                                keyref="attributes-keyref"
-                                                ><xmlatt>keyref</xmlatt></xref>, and
-                                                <xmlatt>query</xmlatt> from <xref
-                                                keyref="attributes-common/topicrefatts"/>. This element
-                                        also uses <xmlatt>scope</xmlatt>, <xmlatt>format</xmlatt>,
-                                        and <xmlatt>type</xmlatt> from <xref
+                                                keyref="attributes-common/commonmapatts"/>, and
+                                                <xref keyref="attributes-keyref"
+                                                  ><xmlatt>keyref</xmlatt></xref>. This element also
+                                        uses <xmlatt>scope</xmlatt>, <xmlatt>format</xmlatt>, and
+                                                <xmlatt>type</xmlatt> from <xref
                                                 keyref="attributes-common/linkatts"/>.</p>
                         </sectiondiv><sectiondiv>
                                 <p>Define the <keyword>href</keyword> value common to map
                                         references.</p>
                                 <dl>
                                         <dlentry id="format-mapref">
-                                                <dt><xmlatt>format</xmlatt></dt>
+                                                <dt id="attr-format-mapref"
+                                                  ><xmlatt>format</xmlatt></dt>
                                                 <dd>Specifies the format of the resource. By
                                                   default, it is set to <keyword>ditamap</keyword>.
                                                   Otherwise, the attribute is the same as described
@@ -245,7 +241,7 @@ element. The default value is the empty string "".</dd>
                                         is a default of "no".</p>
                                 <dl>
                                         <dlentry id="toc-default-no">
-                                                <dt><xmlatt>toc</xmlatt></dt>
+                                                <dt id="attr-toc"><xmlatt>toc</xmlatt></dt>
                                                 <dd>Specifies whether the resource appears in the
                                                   table of contents (TOC). If the value is not
                                                   specified locally, but is specified on an
@@ -297,9 +293,7 @@ of map.-->
                                                   <dt/>
                                                   <dd/>
                                                   </dlentry>
-                                                  </dl><note
-                                                  conref="conref-file.dita#reuse_file/deprecated-print-attribute"
-                                                  /></dd>
+                                                  </dl><!--<note conref="conref-file.dita#reuse_file/deprecated-print-attribute"/>--></dd>
                                         </dlentry>
                                 </dl>
                         </sectiondiv><sectiondiv>
@@ -307,7 +301,8 @@ of map.-->
                                         with a default of "resource-only"</p>
                                 <dl>
                                         <dlentry id="processing-role-default-resource-only">
-                                                <dt><xmlatt>processing-role</xmlatt></dt>
+                                                <dt id="attr-processing-role"
+                                                  ><xmlatt>processing-role</xmlatt></dt>
                                                 <dd>Specifies the role that the resource plays in
                                                   processing. By default, this is set to
                                                   <keyword>resource-only</keyword>. Otherwise, the
@@ -360,7 +355,8 @@ keyref="attributes-universal"/> (with a narrowed definition of
 keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
                                 <dl>
                                         <dlentry id="translate-NO">
-                                                <dt><xmlatt>translate</xmlatt></dt>
+                                                <dt id="attr-translate"
+                                                  ><xmlatt>translate</xmlatt></dt>
                                                 <dd>Specifies whether the content of the element is
                                                   translatable. The default value is "no". Setting
                                                   <xmlatt>translate</xmlatt> to "yes" overrides the
@@ -393,7 +389,7 @@ keyref="attributes-universal"/> (with a narrowed definition of
 <xmlatt>id</xmlatt>, given below).</p>
                                 <dl>
                                         <dlentry>
-                                                <dt><xmlatt>id</xmlatt>
+                                                <dt id="attr-id-required"><xmlatt>id</xmlatt>
                                                   <ph conref="#conref-attribute/required-attr"
                                                   /></dt>
                                                 <dd>Defines an ID by which the element <ph
@@ -401,7 +397,7 @@ keyref="attributes-universal"/> (with a narrowed definition of
                                         </dlentry>
                                 </dl>
                         </sectiondiv><dl id="linklist-and-linkpool">
-                                <dlentry>
+                                <dlentry id="attr-duplicates">
                                         <dt><xmlatt>duplicates</xmlatt></dt>
                                         <dd>Specifies whether duplicate links are removed from a
                                                 group of links. Duplicate links are links that
@@ -428,7 +424,8 @@ keyref="attributes-universal"/> (with a narrowed definition of
                                                   and "no" for other links.</p></dd>
                                 </dlentry>
                                 <dlentry>
-                                        <dt><xmlatt>collection-type</xmlatt></dt>
+                                        <dt id="attr-collection-type"
+                                                  ><xmlatt>collection-type</xmlatt></dt>
                                         <dd>See <xref
                                         keyref="attributes-common/collection-type"
                                                 /> for a full definition and list of supported
@@ -448,7 +445,8 @@ keyref="attributes-universal"/> (with a narrowed definition of
 <xmlatt>importance</xmlatt>, given below).</p>
                                 <dl>
                                         <dlentry id="importance-optreq">
-                                                <dt><xmlatt>importance</xmlatt></dt>
+                                                <dt id="attr-importance-syn2"
+                                                  ><xmlatt>importance</xmlatt></dt>
                                                 <dd>The attribute indicates whether this item in a
                                                   syntax diagram is <keyword>optional</keyword> or
                                                   <keyword>required</keyword>. Output processors <ph
@@ -476,7 +474,8 @@ keyref="attributes-universal"/> (with a narrowed definition of
 <xmlatt>importance</xmlatt>, given below).</p>
                                 <dl>
                                         <dlentry>
-                                                <dt><xmlatt>importance</xmlatt></dt>
+                                                <dt id="attr-importance-syn3"
+                                                  ><xmlatt>importance</xmlatt></dt>
                                                 <dd>The attribute indicates whether this item in a
                                                   syntax diagram is <keyword>optional</keyword>,
                                                   <keyword>required</keyword>, or
@@ -511,7 +510,8 @@ keyref="attributes-universal"/> (with a narrowed definition of
 keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
                                 <dl>
                                         <dlentry>
-                                                <dt><xmlatt>importance</xmlatt></dt>
+                                                <dt id="attr-importance-syn4"
+                                                  ><xmlatt>importance</xmlatt></dt>
                                                 <dd>The attribute indicates whether this item in a
                                                   syntax diagram is <keyword>optional</keyword>,
                                                   <keyword>required</keyword>, or
@@ -549,13 +549,13 @@ keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
                                 apart from <xmlatt>alt</xmlatt></title>
                         <dl>
                                 <dlentry id="image-href">
-                                        <dt><xmlatt>href</xmlatt></dt>
+                                        <dt id="attr-href"><xmlatt>href</xmlatt></dt>
                                         <dd>Specifies the image. See <xref keyref="attributes-href"
                                                 /> for detailed information on supported values and
                                                 processing implications.</dd>
                                 </dlentry>
                                 <dlentry id="image-scope">
-                                        <dt><xmlatt>scope</xmlatt></dt>
+                                        <dt id="attr-scope"><xmlatt>scope</xmlatt></dt>
                                         <dd>Specifies the relationship between the current document
                                                 and the target resource. Allowable values are
                                                   <keyword>local</keyword>, <keyword>peer</keyword>,
@@ -566,13 +566,13 @@ keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
                                                 on values.</dd>
                                 </dlentry>
                                 <dlentry id="image-height">
-                                        <dt><xmlatt>height</xmlatt></dt>
+                                        <dt id="attr-height"><xmlatt>height</xmlatt></dt>
                                         <dd>Specifies the vertical dimension for the resulting display.<!-- If necessary, the image <term outputclass="RFC-2119">SHOULD</term> be scaled to the specified size.-->
                                                 <ph conref="#conref-attribute/height-width-units"/>
                                                 <!--If a height value is specified and no width value is specified, the width <term outputclass="RFC-2119">SHOULD</term> be scaled by the same factor as the height. --><!--<ph conref="#conref-attribute/height-width-warning"/>--></dd>
                                 </dlentry>
                                 <dlentry id="image-width">
-                                        <dt><xmlatt>width</xmlatt></dt>
+                                        <dt id="attr-width"><xmlatt>width</xmlatt></dt>
                                         <dd>Specifies the horizontal dimension for the resulting
                                                 display.
                                                   <!--If necessary, the image <term outputclass="RFC-2119">SHOULD</term> be scaled to the specified size. --><ph
@@ -580,7 +580,7 @@ keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
                                                 <!--If a width value is specified and no height value is specified, the height <term outputclass="RFC-2119">SHOULD</term> be scaled by the same factor as the width. <ph conref="#conref-attribute/height-width-warning"/>--></dd>
                                 </dlentry>
                                 <dlentry id="image-align">
-                                        <dt><xmlatt>align</xmlatt></dt>
+                                        <dt id="attr-align"><xmlatt>align</xmlatt></dt>
                                         <dd>Specifies the horizontal alignment of an image when
                                                 placement is specified as <keyword>break</keyword>.
                                                 Common values include <keyword>left</keyword>,
@@ -588,7 +588,7 @@ keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
                                                   <keyword>center</keyword>.</dd>
                                 </dlentry>
                                 <dlentry id="image-scale">
-                                        <dt><xmlatt>scale</xmlatt></dt>
+                                        <dt id="attr-scale"><xmlatt>scale</xmlatt></dt>
                                         <dd>Specifies a percentage as an unsigned integer by which
                                                 to scale the image in the absence of any specified
                                                 image height or width; a value of 100 implies that
@@ -604,7 +604,7 @@ keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
                                         </dd>
                                 </dlentry>
                                 <dlentry id="image-scalefit">
-                                        <dt><xmlatt>scalefit</xmlatt></dt>
+                                        <dt id="attr-scalefit"><xmlatt>scalefit</xmlatt></dt>
                                         <dd>Specifies whether an image is scaled up or down to fit
                                                 within available space. Allowable values are
                                                   <keyword>yes</keyword>, <keyword>no</keyword>, and
@@ -629,7 +629,7 @@ keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
                                         </dd>
                                 </dlentry>
                                 <dlentry id="image-placement">
-                                        <dt><xmlatt>placement</xmlatt></dt>
+                                        <dt id="attr-placement"><xmlatt>placement</xmlatt></dt>
                                         <dd>Specifies whether an image is displayed inline or on a
                                                 separate line. The default value is inline.
                                                 Allowable values are: <keyword>inline</keyword>,
@@ -652,7 +652,7 @@ below. This element also uses <xmlatt>type</xmlatt>, <xmlatt>scope</xmlatt>, and
 />.</p>
                                         <dl>
                                                 <dlentry id="map-attribute-id">
-                                                  <dt><xmlatt>id</xmlatt></dt>
+                                                  <dt id="attr-id-map"><xmlatt>id</xmlatt></dt>
                                                   <dd>Specifies an ID for the map. Note that maps do
                                                   not require IDs (unlike topics), and the map ID is
                                                   not included in references to elements within a
@@ -660,7 +660,8 @@ below. This element also uses <xmlatt>type</xmlatt>, <xmlatt>scope</xmlatt>, and
                                                   /></dd>
                                                 </dlentry>
                                                 <dlentry id="map-attribute-anchorref">
-                                                  <dt><xmlatt>anchorref</xmlatt></dt>
+                                                  <dt id="attr-anchorref"
+                                                  ><xmlatt>anchorref</xmlatt></dt>
                                                   <dd>Specifies a location within another map
                                                   document where this map will be anchored.
                                                   Resolution of the map is deferred until the final
@@ -689,17 +690,17 @@ below. This element also uses <xmlatt>type</xmlatt>, <xmlatt>scope</xmlatt>, and
                                         <xmlelement>entry</xmlelement></title>
                         <dl>
                                 <dlentry id="stentry-colspan">
-                                        <dt><xmlatt>colspan</xmlatt></dt>
+                                        <dt id="attr-colspan"><xmlatt>colspan</xmlatt></dt>
                                         <dd>Specifies the number of columns that a cell is to span
                                                 inside a simple table.</dd>
                                 </dlentry>
                                 <dlentry id="stentry-rowspan">
-                                        <dt><xmlatt>rowspan</xmlatt></dt>
+                                        <dt id="attr-rowspan"><xmlatt>rowspan</xmlatt></dt>
                                         <dd>Specifies the number of rows that a cells is to span
                                                 inside a simple table.</dd>
                                 </dlentry>
                                 <dlentry id="headers-att">
-                                        <dt><xmlatt>headers</xmlatt></dt>
+                                        <dt id="attr-headers"><xmlatt>headers</xmlatt></dt>
                                         <dd>Specifies one or more <xmlelement>entry</xmlelement>
                                                 headers that apply to the current entry. The
                                                   <xmlatt>headers</xmlatt> attribute contains an
@@ -708,7 +709,7 @@ below. This element also uses <xmlatt>type</xmlatt>, <xmlatt>scope</xmlatt>, and
                                                 same table. </dd>
                                 </dlentry>
                                 <dlentry id="tablescope">
-                                        <dt><xmlatt>scope</xmlatt></dt>
+                                        <dt id="attr-scope-simpletable"><xmlatt>scope</xmlatt></dt>
                                         <dd>Specifies that the current entry is a header for other
                                                 table entries. Allowable values are:<dl>
                                                   <dlentry>
@@ -764,7 +765,7 @@ keyref="attributes-universal"/> (with a narrowed definition of
 <xmlatt>importance</xmlatt>, given below).</p>
                                 <dl>
                                         <dlentry>
-                                                <dt>importance</dt>
+                                                <dt id="attr-importance-step">importance</dt>
                                                 <dd>Describes whether the current
                                                   <xmlelement>step</xmlelement> or
                                                   <xmlelement>substep</xmlelement> is optional or
@@ -781,7 +782,7 @@ keyref="attributes-universal"/> (with a narrowed definition of
                                 <title>DITAVAL related common attributes</title>
                                 <dl>
 <dlentry id="ditaval-outputclass">
-<dt><xmlatt>outputclass</xmlatt></dt>
+<dt id="attr-outputclass"><xmlatt>outputclass</xmlatt></dt>
 <dd>If the <xmlatt>action</xmlatt> attribute is set to "flag", treat the flagged element as if the full <xmlatt>outputclass</xmlatt>
 value in the DITAVAL was specified on that element's <xmlatt>outputclass</xmlatt> attribute. If two
 or more DITAVAL properties apply <xmlatt>outputclass</xmlatt> flags to the same element, treat the
@@ -791,7 +792,7 @@ element already specifies <xmlatt>outputclass</xmlatt>, treat the flagged elemen
 DITAVAL-based <xmlatt>outputclass</xmlatt> values come first in the attribute.</dd>
 </dlentry>
                                         <dlentry id="ditaval-color">
-                                                <dt><xmlatt>color</xmlatt></dt>
+                                                <dt id="attr-color"><xmlatt>color</xmlatt></dt>
                                                 <dd>If the <xmlatt>action</xmlatt> attribute is set
                                                 to "flag", specifies the color to use to flag text.
                                                 Colors can be entered by name or
@@ -800,7 +801,8 @@ DITAVAL-based <xmlatt>outputclass</xmlatt> values come first in the attribute.</
                                                 to "flag", this attribute is ignored.</dd>
                                         </dlentry>
                                         <dlentry id="ditaval-backcolor">
-                                                <dt><xmlatt>backcolor</xmlatt></dt>
+                                                <dt id="attr-backcolor"
+                                                ><xmlatt>backcolor</xmlatt></dt>
                                                 <dd>If the <xmlatt>action</xmlatt> attribute is set
                                                 to "flag", specifies the color to use as background
                                                 for flagged text. Colors can be entered by name or
@@ -810,7 +812,7 @@ DITAVAL-based <xmlatt>outputclass</xmlatt> values come first in the attribute.</
                                                 to "flag", this attribute is ignored.</dd>
                                         </dlentry>
                                         <dlentry id="ditaval-style">
-                                                <dt><xmlatt>style</xmlatt></dt>
+                                                <dt id="attr-style"><xmlatt>style</xmlatt></dt>
                                                 <dd>If the <xmlatt>action</xmlatt> attribute is set
                                                 to "flag", specifies the text styles to use for
                                                 flagged text. This attribute can contain multiple
@@ -819,7 +821,8 @@ DITAVAL-based <xmlatt>outputclass</xmlatt> values come first in the attribute.</
                                                 "flag", this attribute is ignored.</dd>
                                         </dlentry>
                                         <dlentry id="ditaval-imageref">
-                                                <dt><xmlatt>imageref</xmlatt></dt>
+                                                <dt id="attr-imageref"
+                                                ><xmlatt>imageref</xmlatt></dt>
                                                 <dd>Provides a URI reference to the image file,
                                                 using the same syntax as the <xmlatt>href</xmlatt>
                                                 attribute. See <xref
@@ -840,19 +843,19 @@ DITAVAL-based <xmlatt>outputclass</xmlatt> values come first in the attribute.</
                         <title>Definition list entries for multimedia domain</title>
                         <dl>
                                 <dlentry id="media-source-name">
-                                        <dt><xmlatt>name</xmlatt></dt>
+                                        <dt id="attr-name"><xmlatt>name</xmlatt></dt>
                                         <dd>The value is fixed to <keyword>source</keyword>.</dd>
                                 </dlentry>
                                 <dlentry id="media-source-value">
-                                        <dt><xmlatt>value</xmlatt></dt>
+                                        <dt id="attr-value"><xmlatt>value</xmlatt></dt>
                                         <dd>Specifies the URI of the media resource.</dd>
                                 </dlentry>
                                 <dlentry id="media-track-name">
-                                        <dt><xmlatt>name</xmlatt></dt>
+                                        <dt id="attr-name-track"><xmlatt>name</xmlatt></dt>
                                         <dd>The value is fixed to <keyword>track</keyword>.</dd>
                                 </dlentry>
                                 <dlentry id="media-track-type">
-                                        <dt><xmlatt>type</xmlatt></dt>
+                                        <dt id="attr-type"><xmlatt>type</xmlatt></dt>
                                         <dd>Specifies the usage for the track resource. This
                                                 attribute is modeled on the <xmlatt>kind</xmlatt>
                                                 attribute on the HTML5
@@ -911,15 +914,15 @@ DITAVAL-based <xmlatt>outputclass</xmlatt> values come first in the attribute.</
                                                 </dl></dd>
                                 </dlentry>
                                 <dlentry id="media-track-value">
-                                        <dt><xmlatt>value</xmlatt></dt>
+                                        <dt id="attr-value-track"><xmlatt>value</xmlatt></dt>
                                         <dd>Specifies the URI of the track resource.</dd>
                                 </dlentry>
                                 <dlentry id="video-poster-name">
-                                        <dt><xmlatt>name</xmlatt></dt>
+                                        <dt id="attr-name-poster"><xmlatt>name</xmlatt></dt>
                                         <dd>The value is fixed to <keyword>poster</keyword>.</dd>
                                 </dlentry>
                                 <dlentry id="video-poster-value">
-                                        <dt><xmlatt>value</xmlatt></dt>
+                                        <dt id="attr-value-poster"><xmlatt>value</xmlatt></dt>
                                         <dd>Specifies the URL of the image.</dd>
                                 </dlentry>
                         </dl>

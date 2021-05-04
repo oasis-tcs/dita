@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.x Concept//EN" "concept.dtd">
+<concept id="dtd_coding_requirements_expansion_modules" rev="2.0">
+    <title>DTD: Coding requirements for expansion modules</title>
+    <shortdesc>An expansion module defines the expanded configuration for a map or topic element
+        type.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>coding
+                        requirements<indexterm>DTD<indexterm>expansion</indexterm></indexterm></indexterm>
+                <indexterm>DTD<indexterm>coding requirements<indexterm>expansion
+                        modules</indexterm></indexterm></indexterm>
+                <indexterm>expansion modules<indexterm>DTD<indexterm>coding
+                        requirements</indexterm></indexterm></indexterm>
+                <indexterm>expansion modules<indexterm>DTD<indexterm>naming conventions for
+                            parameter entities</indexterm></indexterm></indexterm>
+                <indexterm>naming conventions<indexterm>expansion modules<indexterm>naming
+                            conventions for parameter entities</indexterm></indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <section id="structural">
+            <title>Expansion modules</title>
+            <p>Expansion modules have the following coding requirements:</p>
+            <dl>
+                <dlentry>
+                    <dt>The <codeph><varname>tagname</varname>.attributes</codeph> parameter
+                        entity</dt>
+                    <dd>
+                        <p>The <codeph><varname>tagname</varname>.attributes</codeph> parameter
+                            entity declares the expanded attributes.</p>
+                        <p>This parameter entity can be defined in an attribute specialization
+                            module, or it can be defined directly in the expansion module.</p>
+                        <example>
+                            <p>For example, the following parameter entity defines a new attribute
+                                intended for use with various table elements:</p>
+                            <codeblock>&lt;!ENTITY % cellPurposeAtt-d-attribute-expansion
+  "cell-purpose  (sale | out-of-stock | new | last-chance | inherit | none)  #IMPLIED"
+&gt;</codeblock>
+                        </example>
+                        <p>Note that the name of the parameter entity ends with
+                                <codeph>-expansion</codeph>; this indicates that this is an
+                            expansion attribute and should not be included in the
+                                <parameterentity>base-attribute-extensions</parameterentity> entity
+                            in the document-type shell.</p>
+                        <draft-comment author="Kristen J Eberlein" time="08 April 2021">
+                            <p>Should we call this
+                                    <codeph><varname>tagname</varname>.attributes</codeph> parameter
+                                entity? Or would
+                                    <codeph><varname>Domain</varname>.attributes</codeph> parameter
+                                entity be more appropriate?</p>
+                        </draft-comment>
+                    </dd>
+                </dlentry>
+                <dlentry>
+                    <dt>The <codeph><varname>tagname</varname>.content</codeph> parameter
+                        entity</dt>
+                    <dd>
+                        <p>The <codeph><varname>tagname</varname>.content</codeph> parameter entity
+                            declares the expanded content model for the element. This redefinition
+                            of the content model references the parameter entity that was defined in
+                            the element specialization module.</p>
+                        <example otherprops="examples">
+                            <p>For example, the following code sample shows the entity declaration
+                                file for an element specialization module that defines a
+                                    <xmlelement>section-shortdesc</xmlelement> element, which is
+                                intended to be added to the content model of
+                                    <xmlelement>section</xmlelement>:</p>
+                            <codeblock>&lt;!ENTITY sectionShortdesc-d-p-expansion "section-shortdesc">
+
+&lt;!ENTITY % section-shortdesc "section-shortdesc"></codeblock>
+                            <p>When the content model for <xmlelement>section</xmlelement> is
+                                redefined in the expansion module, it references the parameter
+                                entity defined in the entities file for the element
+                                specialization:</p>
+                            <codeblock>
+&lt;!ENTITY % section.content
+              "(#PCDATA |
+               %dl; |
+               %div; |
+               %fig; |
+               %image; |
+               %note; |
+               %ol; |
+               %p; |
+               %simpletable; |
+               %ul; |
+               %sectiondiv; |
+               %title; |
+               %draft-comment;<b>|
+               %sectionShortdesc-d-p-expansion;</b>)*"
+>
+</codeblock>
+                            <p>Note that this expansion module also constrains the content model of
+                                    <xmlelement>section</xmlelement> to only include certain block
+                                elements.</p>
+                        </example>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section>
+    </conbody>
+</concept>

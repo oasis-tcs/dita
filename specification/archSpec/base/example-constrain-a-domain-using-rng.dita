@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="example_constrain_a_domain_using_rng">
+    <title>Example: Constrain a domain module using RNG</title>
+    <shortdesc>In this scenario, an information architect wants to use only a subset of the elements
+        defined in the highlighting domain. She wants to use <xmlelement>b</xmlelement> and
+            <xmlelement>i</xmlelement> but not <xmlelement>line-through</xmlelement>,
+            <xmlelement>overline</xmlelement>, <xmlelement>sup</xmlelement>,
+            <xmlelement>sup</xmlelement>, <xmlelement>tt</xmlelement>, or
+        <xmlelement>u</xmlelement>. Her implementation uses RNG for its grammar files.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>constraints<indexterm>examples<indexterm>restricting content model for a
+                            domain</indexterm></indexterm></indexterm>
+                <indexterm>examples<indexterm>constraints<indexterm>restricting content model for a
+                            domain</indexterm></indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+    <draft-comment author="Kristen J Eberlein" time="23 April 2021">
+      <p>Tested; verified that it works as written.</p>
+    </draft-comment>
+        <p>When using RNG, domains can be constrained directly in the document-type shells.</p>
+        <ol>
+            <li>
+        <p>She opens the document-type shell for topic in an XML editor, and then modifies the
+          "MODULE INCLUSIONS" division to exclude the elements that she does not want the
+          implementation to use:</p>
+        <codeblock>&lt;div>
+  &lt;a:documentation>MODULE INCLUSIONS&lt;/a:documentation>
+  ...
+  &lt;include href="highlightDomain.rng">
+    &lt;define name="line-through.element">
+      &lt;notAllowed/>
+    &lt;/define>
+    &lt;define name="overline.element">
+      &lt;notAllowed/>
+    &lt;/define>
+    &lt;define name="sub.element">
+      &lt;notAllowed/>
+    &lt;/define>
+    &lt;define name="sup.element">
+      &lt;notAllowed/>
+    &lt;/define>
+    &lt;define name="tt.element">
+      &lt;notAllowed/>
+    &lt;/define>
+    &lt;define name="u.element">
+      &lt;notAllowed/>
+    &lt;/define>
+  &lt;/include>
+  ..  
+&lt;/div></codeblock>
+        <note>The information architect made an arbitrary choice as to where in the document-type
+          shell she would implement the constraint. It can be placed either in the "Element-type
+          configuration integration" or the "Module inclusions" section.<draft-comment
+            author="Kristen J Eberlein" time="03 April 2021">
+            <p>I assume that if someone does this redefinition in the "Element-type configuration
+              integration" section, then the domain module would not be included in the "Module
+              inclusions" section?</p>
+          </draft-comment></note>
+      </li>
+            <li>She makes similar changes to all the other document-type shells in which she wants
+                to constrain the highlighting domain.</li>
+        </ol>
+    </conbody>
+</concept>

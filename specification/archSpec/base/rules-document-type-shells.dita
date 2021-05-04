@@ -3,6 +3,18 @@
 <concept xml:lang="en-us" id="concept_vrp_lzb_wr">
  <title>Rules for document-type shells</title>
  <shortdesc>This topic collects the rules that concern DITA document-type shells.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>design and implementation rules<indexterm>document-type
+          shells</indexterm></indexterm>
+        <indexterm>document-type shells<indexterm>public identifiers</indexterm></indexterm>
+        <indexterm>document-type shells<indexterm>rules</indexterm></indexterm>
+        <indexterm>examples<indexterm>document-type shells<indexterm>public
+            identifiers</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
  <conbody>
     <dl>
       <dlentry>
@@ -17,22 +29,23 @@
         <dt>Defining element or attribute types</dt>
         <dd>
           <p>With two exceptions, a document-type shell <term outputclass="RFC-2119">MUST NOT</term>
-            directly define element or attribute types; it only includes and configures vocabulary
-            and constraint modules. The exceptions to this rule are the following:<ul>
+            directly define element or attribute types; it only includes vocabulary <ph rev="2.0"
+              >and element-configuration modules (constraints and expansions)</ph>. The exceptions
+            to this rule are the following:<ul>
               <li>The ditabase document-type shell directly defines the
                   <xmlelement>dita</xmlelement> element.</li>
-              <li>RNG-based shells directly specify values for the
-                  <xmlatt>specializations</xmlatt> attribute; these values reflect the details of the
-                attribute domains that are integrated by the document-type shell.</li>
+              <li>RNG-based shells directly specify values for the <xmlatt>specializations</xmlatt>
+                attribute; these values reflect the details of the attribute domains that are
+                integrated by the document-type shell.</li>
             </ul></p>
         </dd>
       </dlentry>
       <dlentry>
         <dt>Document-type shells not provided by OASIS</dt>
         <dd>
-          <p>Document type shells that are not provided by OASIS <term outputclass="RFC-2119"
+          <p>Document-type shells that are not provided by OASIS <term outputclass="RFC-2119"
               >MUST</term> have a unique public identifier, if public identifiers are used.</p>
-          <p>Document type shells that are not provided by OASIS <term outputclass="RFC-2119">MUST
+          <p>Document-type shells that are not provided by OASIS <term outputclass="RFC-2119">MUST
               NOT</term> indicate OASIS as the owner; the public identifier or URN for such
             document-type shells <term outputclass="RFC-2119">SHOULD</term> reflect the owner or
             creator of the document-type shell. </p>

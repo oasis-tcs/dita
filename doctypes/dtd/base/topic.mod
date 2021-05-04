@@ -221,7 +221,6 @@
 <!--                    LONG NAME: Topic                           -->
 <!ENTITY % topic.content
                        "((%title;),
-                         (%titlealts;)?,
                          (%shortdesc; |
                           %abstract;)?,
                          (%prolog;)?,
@@ -247,19 +246,6 @@
                         CDATA
                                   "&included-domains;"
 >
-
-
-<!--                    LONG NAME: Title Alternatives              -->
-<!ENTITY % titlealts.content
-                       "((%navtitle;)?,
-                         (%searchtitle;)?)"
->
-<!ENTITY % titlealts.attributes
-              "%univ-atts;"
->
-<!ELEMENT  titlealts %titlealts.content;>
-<!ATTLIST  titlealts %titlealts.attributes;>
-
 
 <!--                    LONG NAME: Abstract                        -->
 <!ENTITY % abstract.content
@@ -330,7 +316,8 @@
 
 <!--                    LONG NAME: prolog                          -->
 <!ENTITY % prolog.content
-                       "((%author;)*,
+                       "((%titlealt;)*,
+                         (%author;)*,
                          (%source;)?,
                          (%publisher;)?,
                          (%copyright;)*,
@@ -374,15 +361,22 @@
                keyref
                           CDATA
                                     #IMPLIED
-               query
-                          CDATA
-                                    #IMPLIED
                %relational-atts;
                %univ-atts;"
 >
 <!ELEMENT  link %link.content;>
 <!ATTLIST  link %link.attributes;>
 
+<!--                    LONG NAME: link text                       -->
+<!ENTITY % linktext.content
+                       "(%words.cnt; |
+                         %ph;)*"
+>
+<!ENTITY % linktext.attributes
+              "%univ-atts;"
+>
+<!ELEMENT  linktext %linktext.content;>
+<!ATTLIST  linktext %linktext.attributes;>
 
 <!--                    LONG NAME: linklist                        -->
 <!ENTITY % linklist.content
@@ -451,7 +445,6 @@
 <!ATTLIST  linkpool %linkpool.attributes;>
 
 
-
 <!-- ============================================================= -->
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
@@ -463,12 +456,12 @@
 <!ATTLIST  linkinfo       class CDATA "- topic/linkinfo "   >
 <!ATTLIST  linklist       class CDATA "- topic/linklist "   >
 <!ATTLIST  linkpool       class CDATA "- topic/linkpool "   >
+<!ATTLIST  linktext       class CDATA "- topic/linktext "   >
 <!ATTLIST  no-topic-nesting   class CDATA "- topic/no-topic-nesting ">
 <!ATTLIST  prolog         class CDATA "- topic/prolog "     >
 <!ATTLIST  related-links   class CDATA "- topic/related-links ">
 <!ATTLIST  section        class CDATA "- topic/section "    >
 <!ATTLIST  sectiondiv     class CDATA "- topic/sectiondiv " >
-<!ATTLIST  titlealts      class CDATA "- topic/titlealts "  >
 <!ATTLIST  topic          class CDATA "- topic/topic "      >
 
 <!-- ================== End of DITA Topic Module ==================== -->

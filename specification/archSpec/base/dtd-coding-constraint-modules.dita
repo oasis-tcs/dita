@@ -2,8 +2,8 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="constraintsDomainDesignPattern-dtd" xml:lang="en-us" >
   <title>DTD: Coding requirements for constraint modules</title>
-  <shortdesc>A structural constraint module defines the constraints for a map or topic element type.
-    A domain constraint module defines the constraints for an element or attribute
+  <shortdesc>An element-type constraint module defines the constraints for a map or topic element
+    type. A domain constraint module defines the constraints for an element or attribute
     domain.</shortdesc>
   <prolog>
     <metadata>
@@ -11,34 +11,29 @@
         <indexterm>coding
           requirements<indexterm>DTD<indexterm>constraints</indexterm></indexterm></indexterm>
         <indexterm>constraints<indexterm>DTD<indexterm>coding
-              requirements</indexterm><indexterm>integrating into document type
-            shells</indexterm></indexterm></indexterm>
+          requirements</indexterm></indexterm></indexterm>
         <indexterm>domain constraint modules<indexterm>DTD<indexterm>coding
             requirements</indexterm></indexterm></indexterm>
-        <indexterm>file names<indexterm>DTD<indexterm>domain constraint
-              modules</indexterm><indexterm>structural constraint
-          modules</indexterm></indexterm></indexterm>
-        <indexterm>structural constraint modules<indexterm>DTD<indexterm>coding
+        <indexterm>element-type constraint modules<indexterm>DTD<indexterm>coding
               requirements</indexterm></indexterm></indexterm>
       </keywords>
     </metadata>
   </prolog>
   <conbody>
     <section id="structural">
-      <title>Structural constraint modules</title>
-      <p>Structural constraint modules have the following requirements:</p>
+      <title>Element-type constraint modules</title>
+      <p>Element-type constraint modules have the following requirements:</p>
       <dl>
         <dlentry >
           <dt>The <codeph><varname>tagname</varname>.attributes</codeph> parameter entity</dt>
           <dd>
-            <p>When the attribute set for an element is constrained, there <ph 
-                >must</ph> be a declaration of the
-                <codeph><varname>tagname</varname>.attributes</codeph> parameter entity that defines
-              the constrained attributes.</p>
-            <p otherprops="examples">For example, the following parameter
-              entity defines a constrained set of attributes for the <xmlelement>note</xmlelement>
-              element that removes most of the values defined for <xmlatt>type</xmlatt>, and also
-              removes <xmlatt>spectitle</xmlatt> and <xmlatt>othertype</xmlatt>:</p>
+            <p>When the attribute set for an element is constrained, there must be a declaration of
+              the <codeph><varname>tagname</varname>.attributes</codeph> parameter entity that
+              defines the constrained attributes.</p>
+            <p otherprops="examples">For example, the following parameter entity defines a
+              constrained set of attributes for the <xmlelement>note</xmlelement> element that
+              removes most of the values defined for <xmlatt>type</xmlatt>; it also removes
+                <xmlatt>spectitle</xmlatt> and <xmlatt>othertype</xmlatt>:</p>
             <codeblock>&lt;!ENTITY % note.attributes  
        "type  (attention | caution | note ) #IMPLIED
         %univ-atts;"&gt;</codeblock>
@@ -47,10 +42,9 @@
         <dlentry>
           <dt>The <codeph><varname>tagname</varname>.content</codeph> parameter entity</dt>
           <dd>
-            <p><ph >When the content model for an element is constrained,</ph>
-              there <ph >must</ph> be a declaration of the
-                  <codeph><varname>tagname</varname>.content</codeph> parameter entity that defines
-              the constrained content model.</p>
+            <p><ph>When the content model for an element is constrained,</ph> there must be a
+              declaration of the <codeph><varname>tagname</varname>.content</codeph> parameter
+              entity that defines the constrained content model.</p>
             <p otherprops="examples">For example, the following parameter entity defines a more
               restricted content model for <xmlelement>topic</xmlelement>, in which the
                 <xmlelement>shortdesc</xmlelement> element is
@@ -74,8 +68,8 @@
         <dlentry>
           <dt>Parameter entity</dt>
           <dd>
-            <p><ph >When the set of extension elements are restricted, there
-                must</ph> be a parameter entity that defines the constrained content model.</p>
+            <p>When the set of extension elements are restricted, there must be a parameter entity
+              that defines the constrained content model.</p>
             <p otherprops="examples" >For example, the following
               parameter entity restricts the highlighting domain to <xmlelement>b</xmlelement> and
                 <xmlelement>i</xmlelement>:</p>

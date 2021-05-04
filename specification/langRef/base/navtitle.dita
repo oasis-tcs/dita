@@ -16,6 +16,12 @@
       ><title/><p/></section>
     <section conkeyref="reuse-navtitle/processing-expectations" id="processing-expectations"
       ><title/><p/></section>
+    <section id="specialization-hierachy">
+      <title>Specialization hierarchy</title>
+      <p>The <xmlelement>navtitle</xmlelement> element is specialized from
+          <xmlelement>titlealt</xmlelement>. It is defined in the alternativeTitle-domain
+        module.</p>
+    </section>
     <section conkeyref="reuse-navtitle/attributes" id="attributes"/>
 <example id="example" otherprops="examples"><title>Examples</title>
       <p>This section contains examples of how the <xmlelement>navtitle</xmlelement> element can be
@@ -26,37 +32,23 @@
           processors render in a TOC or navigation pane when the topic is published.</p>
         <codeblock>&lt;task id="publishing-dita">
   &lt;title>Publishing a DITA information set in PDF&lt;/title>
-  &lt;titlealts>
-    &lt;navtitle>Publishing in PDF&lt;/navtitle>
-  &lt;/titlealts>
   &lt;shortdesc>You can quickly publish your DITA information to PDF.
   &lt;/shortdesc>
+  &lt;prolog>
+    &lt;navtitle>Publishing in PDF&lt;/navtitle>
+  &lt;/prolog>
   &lt;!-- ... -->
 &lt;/task></codeblock>
       </fig><fig>
         <title><xmlelement>navtitle</xmlelement> in a map</title>
-        <p>
-          <draft-comment author="Kristen J Eberlein" time="08 September 2020">
-            <p>This example needs to be revised when <xmlatt>locktitle</xmlatt> is removed.</p>
-          </draft-comment>
-        </p>
         <p>The following code sample shows <xmlelement>navtitle</xmlelement> elements used in a DITA
-          map. The first <xmlelement>navtitle</xmlelement> is not locked; its content simply serves
-          to indicate information about the content of the referenced DITA topic. When the DITA map
-          is published, the navigation title is retrieved from
-            <filepath>GUID-gibberish.dita</filepath>. However, the second
-            <xmlelement>navtitle</xmlelement> is locked, so when the DITA map is published,
-          processors render <q>Publishing to ePub</q> as the navigation title.</p>
+          map. The navigation title in the map takes precedence over any navigation titles specified
+          in the topic.</p>
         <codeblock>&lt;map xml:lang="en">
   &lt;title>Publishing a DITA information set&lt;/title>
   &lt;topicref href="GUID-gibberish.dita">
     &lt;topicmeta>
       &lt;navtitle>Publishing to PDF&lt;/navtitle>
-    &lt;/topicmeta>
-  &lt;/topicref>
-  &lt;topicref href="publishing-ePub.dita" locktitle="yes">
-    &lt;topicmeta>
-      &lt;navtitle>Publishing to ePub&lt;/navtitle>
     &lt;/topicmeta>
   &lt;/topicref>
 &lt;/map></codeblock>

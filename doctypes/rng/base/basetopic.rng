@@ -12,7 +12,7 @@
 Darwin Information Typing Architecture (DITA) Version 2.0
 [[[Draft level]]]
 [[[Release date]]] 
-Copyright (c) OASIS Open 2019. All rights reserved. 
+Copyright (c) OASIS Open 2021. All rights reserved. 
 Source: [[[Source link]]]
 
 ============================================================
@@ -39,12 +39,11 @@ PUBLIC "-//OASIS//DTD DITA 2.0 Base Topic//EN"
 
 =============================================================
 
-            (C) Copyright OASIS Open 2010, 2014
+            (C) Copyright OASIS Open 2010, 2021
             All Rights Reserved.
             
 UPDATES:                                                    
-   2019.04.30 KJE: Added multimedia domain
-   2019.08.21 KJE: Removed indexing domain
+
 =============================================================
 </headerComment>
     <moduleMetadata>
@@ -63,18 +62,21 @@ UPDATES:
     </start>
   </div>
   <div>
-    <a:documentation>DOMAINS ATTRIBUTE</a:documentation>
-    <define name="specializations-att">
-      <optional>
-        <attribute name="specializations"
-          a:defaultValue="@props/audience
-                          @props/deliveryTarget
-                          @props/platform
-                          @props/product
-                          @props/otherprops"
-        />
-      </optional>
-    </define>
+    <a:documentation>SPECIALIZATIONS ATTRIBUTE</a:documentation>
+      <define name="specializations-att">
+         <optional>
+            <attribute name="specializations"
+                       a:defaultValue="
+                         @props/audience
+                         @props/deliveryTarget
+                         @props/otherprops
+                         @props/platform
+                         @props/product"/>
+         </optional>
+      </define>
+  </div>
+  <div>
+      <a:documentation>ELEMENT-TYPE CONFIGURATION INTEGRATION</a:documentation>
   </div>
   <div>
     <a:documentation>MODULE INCLUSIONS</a:documentation>
@@ -82,20 +84,20 @@ UPDATES:
       <define name="topic-info-types">
         <ref name="topic.element"/>
       </define>
-
     </include>
     <include href="audienceAttDomain.rng" dita:since="2.0"/>
     <include href="deliveryTargetAttDomain.rng"/>
     <include href="otherpropsAttDomain.rng" dita:since="2.0"/>
     <include href="platformAttDomain.rng" dita:since="2.0"/>
     <include href="productAttDomain.rng" dita:since="2.0"/>
-    <include href="emphasisDomain.rng"/>
+    <include href="alternativeTitlesDomain.rng" dita:since="2.0"/>
+    <include href="emphasisDomain.rng" dita:since="2.0"/>
     <include href="hazardstatementDomain.rng"/>
     <include href="highlightDomain.rng"/>
     <include href="utilitiesDomain.rng"/>
   </div>
   <div>
-    <a:documentation>ID-DEFINING-ELEMENT OVERRIDES</a:documentation>
+    <a:documentation>ID-DEFINING ELEMENT OVERRIDES</a:documentation>
     <define name="any">
       <zeroOrMore>
         <choice>

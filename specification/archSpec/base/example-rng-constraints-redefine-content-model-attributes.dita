@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us"
+  id="reference_cfb_ck4_5pexample-rng-constraints-redefine-content-model-attributes">
+  <title>Example: Constrain attributes for the <xmlelement>section</xmlelement> element using
+    RNG</title>
+  <shortdesc>In this scenario, an information architect wants to redefine the attributes for the
+      <xmlelement>section</xmlelement> element. He wants to make the <xmlatt>id</xmlatt> attribute
+    required and omit the <xmlatt>spectitle</xmlatt> attribute.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>constraints<indexterm>examples<indexterm>restricting attributes for an
+              element</indexterm></indexterm></indexterm>
+        <indexterm>examples<indexterm>constraints<indexterm>restricting attributes for an
+              element</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <draft-comment author="Kristen J Eberlein" time="23 April 2021">
+      <p>Tested; verified that this works as written.</p>
+    </draft-comment>
+    <example id="example">
+      <ol>
+        <li>He creates a file named <filepath>id-requiredSectionContraintMod.rng</filepath>, where
+            <varname>id-required</varname> is a string that characterizes the constraint.</li>
+        <li>He updates the <filepath>catalog.xml</filepath> file to include the new constraint
+          module.</li>
+        <li>He adds the following content to the constraint
+            module:<codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;grammar 
+  xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:dita="http://dita.oasis-open.org/architecture/2005/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+  &lt;div>
+    &lt;a:documentation>ATTRIBUTE LIST OVERRIDES&lt;/a:documentation>
+    &lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0">      
+      &lt;define name="section.attributes">
+          &lt;attribute name="id">
+            &lt;data type="NMTOKEN"/>
+          &lt;/attribute>        
+        &lt;ref name="conref-atts"/>
+        &lt;ref name="select-atts"/>
+        &lt;ref name="localization-atts"/>
+        &lt;optional>
+          &lt;attribute name="outputclass"/>
+        &lt;/optional>
+      &lt;/define>
+    &lt;/include>
+  &lt;/div>
+
+&lt;/grammar>  </codeblock><p>Note that unlike a constraint module that is implemented
+            using DTD, this constraint module did not need to re-declare the patterns that are
+            referenced in the redefinition of the content model for
+            <xmlelement>section</xmlelement></p></li>
+        <li>He then integrates the constraint module into her document-type shell for topic by
+          adding an <xmlelement>include</xmlelement> element in the "CONTENT CONSTRAINT INTEGRATION"
+          section:<codeblock>&lt;div>
+  &lt;a:documentation>CONTENT CONSTRAINT INTEGRATION&lt;/a:documentation>
+  &lt;include href="id-requiredSectionConstraintMod.rng"/>
+&lt;/div></codeblock></li>
+        <li>
+          <p>He then removes the <xmlelement>include</xmlelement> statement that references
+              <filepath>topicMod.rng</filepath> from the "MODULE INCLUSIONS" section:</p>
+          <codeblock>&lt;div>
+  &lt;a:documentation>MODULE INCLUSIONS &lt;/a:documentation>
+    <line-through>&lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0"/></line-through>
+    &lt;include href="urn:oasis:names:tc:dita:rng:audienceAttDomain.rng:2.0"/>
+    &lt;include href="urn:oasis:names:tc:dita:rng:deliveryTargetAttDomain.rng:2.0"/>
+    &lt;include href="urn:oasis:names:tc:dita:rng:platformAttDomain.rng:2.0"/>
+    &lt;include href="urn:oasis:names:tc:dita:rng:productAttDomain.rng:2.0"/>
+    &lt;include href="urn:oasis:names:tc:dita:rng:otherpropsAttDomain.rng:2.0"/>
+    &lt;include href="urn:oasis:names:tc:dita:rng:highlightDomain.rng:2.0"/>
+  &lt;/div></codeblock>
+        </li>
+        <li>
+          <p>He modifies the "ID-DEFINING ELEMENT OVERRIDES" division to add
+              <xmlelement>section</xmlelement>  as an element on which the <xmlatt>id</xmlatt>
+            attribute is required.</p>
+          <codeblock>&lt;div>
+  &lt;a:documentation>ID-DEFINING ELEMENT OVERRIDES&lt;/a:documentation>
+  &lt;define name="any">
+    &lt;zeroOrMore>
+      &lt;choice>
+        &lt;ref name="idElements"/>
+        &lt;element>
+          &lt;anyName>
+            &lt;except>
+              &lt;name>topic&lt;/name>
+              <b>&lt;name>section&lt;/name></b>
+            &lt;/except>
+          &lt;/anyName>
+          &lt;zeroOrMore>
+            &lt;attribute>
+              &lt;anyName/>
+            &lt;/attribute>
+          &lt;/zeroOrMore>
+          &lt;ref name="any"/>
+        &lt;/element>
+        &lt;text/>
+      &lt;/choice>
+    &lt;/zeroOrMore>
+  &lt;/define>
+&lt;/div></codeblock>
+        </li>
+        <li>After checking his test topic to ensure that the attribute list is modified as expected,
+          his work is done.</li>
+      </ol>
+    </example>
+  </conbody>
+</concept>

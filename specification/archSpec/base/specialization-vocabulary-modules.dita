@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
- "concept.dtd">
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept
   id="vocabularymodules" xml:lang="en-us">
   <title>Vocabulary modules</title>
-  <shortdesc><!--Vocabulary modules are units of XML vocabulary definition. -->A DITA element type
-    or attribute is declared in exactly one vocabulary module.</shortdesc>
+  <shortdesc>A DITA element type or attribute is declared in exactly one vocabulary
+    module.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>definitions<indexterm>attribute domain modules</indexterm></indexterm>
+        <indexterm>definitions<indexterm>element domain modules</indexterm></indexterm>
+        <indexterm>definitions<indexterm>structural modules</indexterm></indexterm>
+        <indexterm>naming conventions<indexterm>attribute domain modules</indexterm></indexterm>
+        <indexterm>naming conventions<indexterm>element domain modules</indexterm></indexterm>
+        <indexterm>naming conventions<indexterm>structural modules</indexterm></indexterm>
+        <indexterm>terminology<indexterm>attribute domain modules</indexterm></indexterm>
+        <indexterm>terminology<indexterm>element domain modules</indexterm></indexterm>
+        <indexterm>terminology<indexterm>structural module</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
   <conbody>
-    <!--<p>A given vocabulary module exists in an exclusive hierarchy relative to its ancestor modules. For example, the <xmlelement>concept</xmlelement> topic type is defined in the concept topic module and is itself derived from the topic topic module (that is, the topic-defining structural module that defines the topic type <xmlelement>topic</xmlelement>). Likewise, the <xmlelement>task</xmlelement> topic type is defined in the task topic module and is derived from the <xmlelement>topic</xmlelement> topic type. Thus the concept and task topic types are children of the <xmlelement>topic</xmlelement> topic type in the module hierarchy rooted at the <xmlelement>topic</xmlelement> topic vocabulary module.</p>-->
     <p>The following terminology is used to refer to DITA vocabulary modules:</p>
     <dl>
       <dlentry>
@@ -16,7 +29,6 @@
           can define specializations of, or reuse elements from, domain or other structural modules.
           When this happens, the structural module becomes dependent.</dd>
       </dlentry>
-      <!--<dlentry><dt>topic vocabulary module</dt><dd>A <ph rev="targeted-review">structural</ph> module that defines a single, top-level topic type that is<ph rev="targeted-review"> utlimately</ph> specialized from <xmlelement>topic</xmlelement>. It also can define new elements that are intended for use within the new topic specialization.</dd></dlentry><dlentry><dt>map vocabulary module</dt><dd>A vocabulary module that defines a single element type that is specialized from <xmlelement>map</xmlelement>. It also can define new elements that are intended for use within the new map specialization.</dd></dlentry>-->
       <dlentry>
         <dt>element domain module</dt>
         <dd>A vocabulary module that defines one or more specialized element types that can be
@@ -43,12 +55,12 @@
       topic types that are then allowed to occur as subordinate topics within the top-level topic.
       However, such subordinate topic types <term outputclass="RFC-2119">MAY NOT</term> be used as
       the root elements of conforming DITA documents.</p>
-    <p>For example, a top-level topic type might require the use of subordinate topic types that
-      would only ever be meaningful in the context of their containing type and thus would never be
-      candidates for standalone authoring or aggregation using maps. In that case, the subordinate
-      topic type can be declared in the module for the top-level topic type that uses it. However,
-      in most cases, potential subordinate topics are best defined in their own vocabulary
-      modules.</p>
+    <p otherprops="examples">For example, a top-level topic type might require the use of
+      subordinate topic types that would only ever be meaningful in the context of their containing
+      type and thus would never be candidates for standalone authoring or aggregation using maps. In
+      that case, the subordinate topic type can be declared in the module for the top-level topic
+      type that uses it. However, in most cases, potential subordinate topics are best defined in
+      their own vocabulary modules.</p>
     <p>Domain elements intended for use in topics <term outputclass="RFC-2119" 
         >MUST</term> ultimately be specialized from elements that are defined in the topic module.
       Domain elements intended for use in maps <term outputclass="RFC-2119" 
