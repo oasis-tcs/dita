@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!--                    HEADER                                     -->
+<!-- ============================================================= -->
+<!--  MODULE:    DITA Common Conent Model Components Entities      -->
+<!--  VERSION:   2.0                                               -->
+<!--  DATE:      [[[Release date]]]                                     -->
+<!--  PURPOSE:   Declares parameter entities that contribute       -->
+<!--             to content models for common elments              -->
+<!--                                                               -->
+<!--                                                               -->
+<!-- ============================================================= -->
+<!-- ============================================================= -->
+<!--                    PUBLIC DOCUMENT TYPE DEFINITION            -->
+<!--                    TYPICAL INVOCATION                         -->
+<!--                                                               -->
+<!--  Refer to this file by the following public identifier or an  -->
+<!--       appropriate system identifier                           -->
+<!-- PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"      -->
+<!--       Delivered as file "commonElements.mod"                  -->
+<!-- ============================================================= -->
+<!--                                                               -->
+<!--             (C) Copyright OASIS Open 2021.                    -->
+<!--             All Rights Reserved.                              -->
+<!--                                                               -->
+<!--  UPDATES:                                                     -->
+<!-- ============================================================= -->
+<!--                                                               -->
+
+
+<!ENTITY % basic.ph
+              "%cite; |
+               %include; |
+               %keyword; |
+               %ph; |
+               %q; |
+               %term; |
+               %text; |
+               %tm; |
+               %xref; |
+               %state;"
+>
+<!ENTITY % basic.block
+              "%audio; |
+               %dl; |
+               %div; |
+               %example; |
+               %fig; |
+               %image; |
+               %lines; |
+               %lq; |
+               %note; |
+               %object; |
+               %ol; |
+               %p; |
+               %pre; |
+               %simpletable; |
+               %sl; |
+               %table; |
+               %ul; |
+               %video;"
+>
+<!ENTITY % basic.phandblock
+              "%basic.block; |
+               %basic.ph;"
+>
+<!ENTITY % basic.ph.noxref.nocite
+              "%keyword; |
+               %ph; |
+               %q; |
+               %term; |
+               %text; |
+               %tm; |
+               %state;"
+>
+<!ENTITY % basic.ph.noxref
+              "%basic.ph.noxref.nocite; |
+               %cite;"
+>
+<!ENTITY % basic.ph.notm
+              "%cite; |
+               %include; |
+               %keyword; |
+               %ph; |
+               %q; |
+               %term; |
+               %text; |
+               %xref; |
+               %state;"
+>
+<!ENTITY % basic.block.notbl
+              "%audio; |
+               %dl; |
+               %div; |
+               %example; |
+               %fig; |
+               %image; |
+               %lines; |
+               %lq; |
+               %note; |
+               %object; |
+               %ol; |
+               %p; |
+               %pre; |
+               %sl; |
+               %ul; |
+               %video;"
+>
+<!ENTITY % basic.block.nonote
+              "%audio; |
+               %dl; |
+               %div; |
+               %example; |
+               %fig; |
+               %image; |
+               %lines; |
+               %lq; |
+               %object; |
+               %ol; |
+               %p; |
+               %pre; |
+               %simpletable; |
+               %sl; |
+               %table; |
+               %ul; |
+               %video;"
+>
+<!ENTITY % basic.block.nopara
+              "%audio; |
+               %dl; |
+               %div; |
+               %example; |
+               %fig; |
+               %image; |
+               %lines; |
+               %lq; |
+               %note; |
+               %object; |
+               %ol; |
+               %pre; |
+               %simpletable; |
+               %sl; |
+               %table; |
+               %ul; |
+               %video;"
+>
+<!ENTITY % basic.block.nolq
+              "%audio; |
+               %dl; |
+               %div; |
+               %example; |
+               %fig; |
+               %image; |
+               %lines; |
+               %note; |
+               %object; |
+               %ol; |
+               %p; |
+               %pre; |
+               %simpletable; |
+               %sl; |
+               %table; |
+               %ul; |
+               %video;"
+>
+<!ENTITY % basic.block.noexample
+              "%audio; |
+               %dl; |
+               %div; |
+               %fig; |
+               %image; |
+               %lines; |
+               %lq; |
+               %note; |
+               %object; |
+               %ol; |
+               %p; |
+               %pre; |
+               %simpletable; |
+               %sl; |
+               %table; |
+               %ul; |
+               %video;"
+>
+<!ENTITY % basic.block.notbnofg
+              "%audio; |
+               %dl; |
+               %div; |
+               %example; |
+               %image; |
+               %lines; |
+               %lq; |
+               %note; |
+               %object; |
+               %ol; |
+               %p; |
+               %pre; |
+               %sl; |
+               %ul; |
+               %video;"
+>
+<!ENTITY % basic.block.notbfgobj
+              "%dl; |
+               %div; |
+               %image; |
+               %lines; |
+               %lq; |
+               %note; |
+               %ol; |
+               %p; |
+               %pre; |
+               %sl; |
+               %ul;"
+>
+<!ENTITY % txt.incl
+              "%draft-comment; |
+               %fn; |
+               %indexterm; |
+               %required-cleanup;"
+>
+<!ENTITY % data.elements.incl
+              "%data;"
+>
+<!ENTITY % foreign.unknown.incl
+              "%foreign; |
+               %unknown;"
+>
+<!ENTITY % listitem.cnt
+              "#PCDATA |
+               %basic.block; |
+               %basic.ph; |
+               %data.elements.incl; |
+               %foreign.unknown.incl; |
+               %txt.incl;"
+>
+<!ENTITY % title.cnt
+              "#PCDATA |
+               %basic.ph.noxref; |
+               %data.elements.incl; |
+               %draft-comment; |
+               %foreign.unknown.incl; |
+               %required-cleanup; |
+               %image;"
+>
+<!ENTITY % xreftext.cnt
+              "#PCDATA |
+               %basic.ph.noxref; |
+               %data.elements.incl; |
+               %draft-comment; |
+               %foreign.unknown.incl; |
+               %required-cleanup; |
+               %image;"
+>
+<!ENTITY % xrefph.cnt
+              "#PCDATA |
+               %basic.ph.noxref.nocite; |
+               %data.elements.incl; |
+               %draft-comment; |
+               %foreign.unknown.incl; |
+               %required-cleanup;"
+>
+<!ENTITY % shortquote.cnt
+              "#PCDATA |
+               %basic.ph; |
+               %data.elements.incl; |
+               %draft-comment; |
+               %foreign.unknown.incl; |
+               %required-cleanup;"
+>
+<!ENTITY % para.cnt
+              "#PCDATA |
+               %basic.block.nopara; |
+               %basic.ph; |
+               %data.elements.incl; |
+               %foreign.unknown.incl; |
+               %txt.incl;"
+>
+<!ENTITY % note.cnt
+              "#PCDATA |
+               %basic.block.nonote; |
+               %basic.ph; |
+               %data.elements.incl; |
+               %foreign.unknown.incl; |
+               %txt.incl;"
+>
+<!ENTITY % longquote.cnt
+              "#PCDATA |
+               %basic.block.nolq; |
+               %basic.ph; |
+               %data.elements.incl; |
+               %foreign.unknown.incl; |
+               %longquoteref; |
+               %txt.incl;"
+>
+<!ENTITY % tblcell.cnt
+              "#PCDATA |
+               %basic.block.notbl; |
+               %basic.ph; |
+               %data.elements.incl; |
+               %foreign.unknown.incl; |
+               %txt.incl;"
+>
+<!ENTITY % desc.cnt
+              "#PCDATA |
+               %basic.block.notbfgobj; |
+               %basic.ph; |
+               %data.elements.incl; |
+               %draft-comment; |
+               %foreign.unknown.incl; |
+               %required-cleanup;"
+>
+<!ENTITY % ph.cnt
+              "#PCDATA |
+               %basic.ph; |
+               %data.elements.incl; |
+               %foreign.unknown.incl; |
+               %image; |
+               %txt.incl;"
+>
+<!ENTITY % fn.cnt
+              "#PCDATA |
+               %basic.block.notbl; |
+               %basic.ph; |
+               %data.elements.incl; |
+               %draft-comment; |
+               %foreign.unknown.incl; |
+               %required-cleanup;"
+>
+<!ENTITY % term.cnt
+              "#PCDATA |
+               %basic.ph; |
+               %data.elements.incl; |
+               %draft-comment; |
+               %foreign.unknown.incl; |
+               %required-cleanup; |
+               %image;"
+>
+<!ENTITY % defn.cnt
+              "#PCDATA |
+               %basic.block; |
+               %basic.ph; |
+               %data.elements.incl; |
+               %foreign.unknown.incl; |
+               %txt.incl;"
+>
+<!ENTITY % pre.cnt
+              "#PCDATA |
+               %basic.ph; |
+               %data.elements.incl; |
+               %foreign.unknown.incl; |
+               %txt.incl;"
+>
+<!ENTITY % example.cnt
+              "#PCDATA |
+               %basic.block.noexample; |
+               %basic.ph; |
+               %data.elements.incl; |
+               %foreign.unknown.incl; |
+               %title; |
+               %txt.incl;"
+>
+<!ENTITY % fig.cnt
+              "%basic.block.notbnofg; |
+               %data.elements.incl; |
+               %fn; |
+               %foreign.unknown.incl; |
+               %include; |
+               %simpletable; |
+               %xref;"
+>
+<!ENTITY % figgroup.cnt
+              "%basic.block.notbnofg; |
+               %basic.ph; |
+               %data.elements.incl; |
+               %draft-comment; |
+               %fn; |
+               %foreign.unknown.incl; |
+               %required-cleanup;"
+>
+<!ENTITY % words.cnt
+              "#PCDATA |
+               %data.elements.incl; |
+               %foreign.unknown.incl; |
+               %keyword; |
+               %term; |
+               %text;"
+>
+<!ENTITY % data.cnt
+              "#PCDATA |
+               %audio; |
+               %basic.ph; |
+               %data.elements.incl; |
+               %draft-comment; |
+               %foreign.unknown.incl; |
+               %image; |
+               %object; |
+               %required-cleanup; |
+               %title; |
+               %video;"
+>
+<!ENTITY % div.cnt
+              "#PCDATA |
+               %basic.block; |
+               %basic.ph; |
+               %data.elements.incl; |
+               %foreign.unknown.incl; |
+               %txt.incl;"
+>

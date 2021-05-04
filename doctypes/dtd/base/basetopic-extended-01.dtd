@@ -83,6 +83,14 @@
 >%topicDefns;
 
 <!--  ====================================================================
+      Global Content Model Constraints/Extensions
+      ==================================================================== -->
+
+<!ENTITY % commonContentModelComponents
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Common Content Model Components//EN"          "commonContentModelComponents.ent" 
+>%commonContentModelComponents;
+
+<!--  ====================================================================
       Element-Type-Specific Content Model Extensions
       ==================================================================== -->
 
@@ -161,8 +169,6 @@
    %productAtt-d-attribute;"
 >
 
-
-
 <!-- ============================================================= -->
 <!--                    TOPIC NESTING OVERRIDE                     -->
 <!-- ============================================================= -->
@@ -187,29 +193,12 @@
 <!--           ELEMENT-TYPE CONFIGURATION INTEGRATION              -->
 <!-- ============================================================= -->
 
-<!--  ====================================================================
-      Global Content Model Constraints/Extensions
-      ==================================================================== -->
-
-<!ENTITY % commonContentModelComponents
-  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Common Content Model Components//EN"          
-         "commonContentModelComponents.ent" 
->%commonContentModelComponents;
-
-<!ENTITY % commonAttributeListComponents
-  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Common Attribute List Components//EN"          
-         "commonAttributeListComponents.ent" 
->%commonAttributeListComponents;
-
-
 <!-- ============================================================= -->
 <!--                    TOPIC ELEMENT INTEGRATION                  -->
 <!-- ============================================================= -->
 
-
-
 <!ENTITY % topic-type
-  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
+  SYSTEM
          "topic.mod"
 >%topic-type;
 

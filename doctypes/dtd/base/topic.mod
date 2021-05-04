@@ -63,11 +63,6 @@
 <!-- ============================================================= -->
 
 
-<!--                    Definitions of declared elements           -->
-<!ENTITY % topicDefns
-    PUBLIC "-//OASIS//ENTITIES DITA 2.0 Topic Definitions//EN" "topicDefn.ent" 
->%topicDefns;
-
 <!--                      Content elements common to map and topic -->
 <!ENTITY % commonElements
 
