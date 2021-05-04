@@ -72,27 +72,10 @@
          "utilitiesDomain.ent"
 >%ut-d-dec;
 
-<!ENTITY % commonDefns
-  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Common Elements//EN"          
-         "commonElements.ent" 
->%commonDefns;
-
-<!--                    Definitions of declared elements           -->
-<!ENTITY % topicDefns
-    PUBLIC "-//OASIS//ENTITIES DITA 2.0 Topic Definitions//EN" "topicDefn.ent" 
->%topicDefns;
-
-<!--  ====================================================================
-      Global Content Model Constraints/Extensions
-      ==================================================================== -->
-
-<!ENTITY % commonContentModelComponents
-  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Common Content Model Components//EN"          "commonContentModelComponents.ent" 
->%commonContentModelComponents;
-
-<!--  ====================================================================
-      Element-Type-Specific Content Model Extensions
-      ==================================================================== -->
+<!ENTITY % foo-d-dec
+  PUBLIC "-//EXAMPLE/ENTITIES Foo Domain//EN"
+         "fooDomain.ent"
+>%foo-d-dec;
 
 <!-- ============================================================= -->
 <!--             DOMAIN ATTRIBUTES DECLARATIONS                    -->
@@ -123,7 +106,6 @@
          "productAttDomain.ent"
 >%productAtt-d-dec;
 
-
 <!-- ============================================================= -->
 <!--                    DOMAIN EXTENSIONS                          -->
 <!-- ============================================================= -->
@@ -151,7 +133,6 @@
 <!ENTITY % titlealt     "titlealt |
                          %alternativeTitles-d-titlealt;
                         ">
-                        
                         
 <!-- ============================================================= -->
 <!--                    DOMAIN ATTRIBUTE EXTENSIONS                -->
@@ -190,15 +171,44 @@
 >
 
 <!-- ============================================================= -->
-<!--           ELEMENT-TYPE CONFIGURATION INTEGRATION              -->
+<!-- Global ELEMENT-TYPE CONFIGURATION INTEGRATION                 -->
 <!-- ============================================================= -->
+
+<!ENTITY % commonDefns
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Common Elements//EN"          
+         "commonElements.ent" 
+>%commonDefns;
+
+<!--                    Definitions of declared elements           -->
+<!ENTITY % topicDefns
+    PUBLIC "-//OASIS//ENTITIES DITA 2.0 Topic Definitions//EN" "topicDefn.ent" 
+>%topicDefns;
+
+<!ENTITY % commonContentModelComponents
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Common Content Model Components//EN"          
+         "commonContentModelComponents.ent" 
+>%commonContentModelComponents;
+
+<!ENTITY % commonAttributeListComponents
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Common Attribute List Components//EN"          
+         "commonAttributeListComponents.ent" 
+>%commonAttributeListComponents;
+
+<!-- ============================================================= -->
+<!-- Element-Type-Specific ELEMENT-TYPE CONFIGURATION INTEGRATION  -->
+<!-- ============================================================= -->
+
+<!ENTITY % fooInSectionExtension
+  SYSTEM "fooInSectionExtension.ent"
+>%fooInSectionExtension;
 
 <!-- ============================================================= -->
 <!--                    TOPIC ELEMENT INTEGRATION                  -->
 <!-- ============================================================= -->
 
+
 <!ENTITY % topic-type
-  SYSTEM
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
          "topic.mod"
 >%topic-type;
 
@@ -230,5 +240,10 @@
   PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Utilities Domain//EN"
          "utilitiesDomain.mod"
 >%ut-d-def;
+
+<!ENTITY % foo-d-def
+  PUBLIC "-//EXAMPLE//ELEMENTS Foo Domain//EN"
+         "fooDomain.mod"
+>%foo-d-def;
 
 <!-- ================= End of DITA Base Topic Base Shell  ================= -->

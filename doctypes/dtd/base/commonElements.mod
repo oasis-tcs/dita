@@ -38,14 +38,6 @@
 <!-- ============================================================= -->
 
 
-
-<!ENTITY % props-attribute-extensions
-              ""
->
-<!ENTITY % base-attribute-extensions
-              ""
->
-
 <!--                    LONG NAME: Data                            -->
 <!ENTITY % data.content
                        "(%data.cnt;)*"

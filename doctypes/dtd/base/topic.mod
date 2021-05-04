@@ -159,60 +159,6 @@
                %foreign.unknown.incl; |
                %txt.incl;"
 >
-<!ENTITY % relational-atts
-              "type
-                          CDATA
-                                    #IMPLIED
-               cascade
-                          CDATA
-                                    #IMPLIED
-               format
-                          CDATA
-                                    #IMPLIED
-               scope
-                          (external |
-                           local |
-                           peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               role
-                          (ancestor |
-                           child |
-                           cousin |
-                           descendant |
-                           friend |
-                           next |
-                           other |
-                           parent |
-                           previous |
-                           sibling |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               otherrole
-                          CDATA
-                                    #IMPLIED"
->
-<!ENTITY % rel-atts
-              "type
-                          CDATA
-                                    #IMPLIED
-               role
-                          (ancestor |
-                           child |
-                           cousin |
-                           descendant |
-                           friend |
-                           next |
-                           other |
-                           parent |
-                           previous |
-                           sibling |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               otherrole
-                          CDATA
-                                    #IMPLIED"
->
 <!--                    LONG NAME: Topic                           -->
 <!ENTITY % topic.content
                        "((%title;),
