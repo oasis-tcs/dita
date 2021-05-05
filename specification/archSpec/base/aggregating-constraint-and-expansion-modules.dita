@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="aggregating_constraint_and_expansion_modules">
-    <title>DTD: Aggregating constraint and expansion modules</title>
-    <shortdesc>With the new specialization rules introduced in DITA 2.0, DITA architect wants to add
-        certain extension modules to a document-type shell.</shortdesc>
+    <title>Example: Aggregating constraint and expansion modules using DTD</title>
+    <shortdesc>With the new specialization rules introduced in DITA 2.0, the DITA architect wants to
+        add some extension modules to the document-type shell for topic. The document-type shell
+        already integrates a number of constraint modules.</shortdesc>
     <prolog>
         <metadata>
             <keywords>
@@ -41,8 +42,9 @@
                 <stentry><xmlelement>section</xmlelement></stentry>
                 <stentry>
                     <ul>
-                        <li>Makes <xmlatt>id</xmlatt> required</li>
-                        <li>Removes <xmlatt>spectitle</xmlatt> attribute</li>
+                        <li>Makes <xmlelement>title</xmlelement> required</li>
+                        <li>Reduces the content model of<xmlelement>section</xmlelement> to a
+                            smaller subset</li>
                     </ul>
                 </stentry>
             </strow>
@@ -51,12 +53,6 @@
                 <stentry>Highlighting domain</stentry>
                 <stentry>Reduces the highlighting domain elements to <xmlelement>b</xmlelement> and
                         <xmlelement>i</xmlelement></stentry>
-            </strow>
-            <strow>
-                <stentry>N/A</stentry>
-                <stentry><xmlelement>ph</xmlelement></stentry>
-                <stentry>Remove the <xmlelement>ph</xmlelement> element, allowing only domain
-                    extensions (does not require a <filepath>.mod</filepath> file)</stentry>
             </strow>
         </simpletable>
         <p>The following table lists the expansion modules that the DITA architect wants to add to
@@ -70,20 +66,18 @@
             <strow>
                 <stentry><filepath>example-sectionSectionShortdescExpansion.mod</filepath></stentry>
                 <stentry><xmlelement>section</xmlelement></stentry>
-                <stentry>Adds an optional <xmlelement>section-shortdesc</xmlelement> element to
-                        <xmlelement>section</xmlelement>.</stentry>
+                <stentry>Adds an optional <xmlelement>sectionDesc</xmlelement> element to
+                        <xmlelement>section</xmlelement>. The <xmlelement>sectionDesc</xmlelement>
+                    element can only appear directly after <xmlelement>title</xmlelement>.</stentry>
             </strow>
             <strow>
                 <stentry><filepath>example-dlentryModeAttExpansion.ent</filepath></stentry>
                 <stentry><xmlelement>dlentry</xmlelement></stentry>
-                <stentry>Adds <xmlatt>dlentry-mode</xmlatt> to the attributes of
+                <stentry>Adds <xmlatt>dlentryMode</xmlatt> to the attributes of
                         <xmlelement>dlentry</xmlelement>.</stentry>
             </strow>
         </simpletable>
         <p>The constraint and expansion modules that target the <xmlelement>section</xmlelement>
             element must be combined into a single element-configuration module.</p>
-        <draft-comment author="Kristen J Eberlein" time="28 March 2021">
-            <p>Need to add full example here.</p>
-        </draft-comment>
     </conbody>
 </concept>
