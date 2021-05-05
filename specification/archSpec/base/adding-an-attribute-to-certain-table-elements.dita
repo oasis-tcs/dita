@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="adding_an_attribute_to_certain_table_elements">
-    <title>DTD: Adding an attribute to certain table elements</title>
+    <title>Example: Adding an attribute to certain table elements using DTD</title>
     <shortdesc>In this scenario, a company makes extensive use of complex tables to present product
         listings. They occasionally highlight individual cells, rows, or columns for various
         purposes. The DITA architect wants to implement a semantically meaningful way to identify
@@ -33,6 +33,9 @@
             each <codeph>&lt;!ATTLIST</codeph> declaration in its own separate expansion module,
             thus allowing DITA architects who construct document-type shells to decide the elements
             to which to apply the attribute.</p>
+        <draft-comment author="Kristen J Eberlein" time="03 May 2021">
+            <p>Tested and verified that this works as written.</p>
+        </draft-comment>
         <ol>
             <li>First, the DITA architect creates the attribute domain module for the
                     <xmlatt>cell-purpose</xmlatt> attribute:
@@ -54,17 +57,33 @@
                     that this is an expansion attribute and should not be included in the
                         <parameterentity>base-attribute-extensions</parameterentity> entity in the
                     document-type shell.</note></li>
+            <li>The DITA architect updates the <filepath>catalog.xml</filepath> file to include the
+                expansion module.</li>
             <li>The DITA architect integrates this module into the document-type
                 shell.<codeblock>&lt;!-- ============================================================= -->
 &lt;!--             DOMAIN ATTRIBUTES DECLARATIONS                    -->
 &lt;!-- ============================================================= -->
-
+<b>
 &lt;!ENTITY % cellPurposeAttExpansion-d-dec
   PUBLIC "-//ACME//ENTITIES DITA Cell Purpose Attribute Expansion//EN"
          "cellPurposeAttExpansion.ent"
->%cellPurposeAttExpansion-d-dec;</codeblock></li>
-            <li>After updating the <filepath>catalog.xml</filepath> file to include the new
-                expansion module, the work is done.</li>
+>%cellPurposeAttExpansion-d-dec;</b></codeblock></li>
+            <li>The DITA architect adds the entity for the contribution to the
+                    <xmlatt>specialization</xmlatt>
+                attribute.<codeblock>&lt;!-- ============================================================= -->
+&lt;!--                 SPECIALIZATIONS ATTRIBUTE OVERRIDE            -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY included-domains
+                          "&amp;audienceAtt-d-att;
+                           <b>&amp;cellPurposeAtt-d-att;
+</b>                           &amp;deliveryTargetAtt-d-att;
+                           &amp;otherpropsAtt-d-att;
+                           &amp;platformAtt-d-att;
+                           &amp;productAtt-d-att;"
+></codeblock></li>
+            <li>After checking the test topic to ensure that the attribute lists are modified as
+                expected, the work is done.</li>
         </ol>
     </conbody>
 </concept>
