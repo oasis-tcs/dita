@@ -25,6 +25,50 @@
         attributes work in combination to specify a specific ID for a specific application, each
         combination of values for the <xmlatt>appid</xmlatt> and <xmlatt>appname</xmlatt> attributes
         should be unique within the context of a single root map.</p>
+      <p>When <xmlatt>appid-role</xmlatt> is set to <keyword>deliverable-anchor</keyword>, the
+          <xmlatt>appid</xmlatt> attribute <i>contributes</i> to deliverable anchors for a topic,
+        while <xmlatt>ux-context-string</xmlatt> specifies an exact context-sensitive help context
+        identifier.</p>
+      <p>When <xmlatt>appid-role</xmlatt> is set to <keyword>deliverable-anchor</keyword>, the
+        following limitations apply to the value of the <xmlatt>appid</xmlatt> attribute:<ul
+          id="ul_bcz_cfb_ppb">
+          <li>The <xmlatt>appid</xmlatt> attribute specifies only a single URI component</li>
+          <li>The <xmlatt>appid</xmlatt> value is limited to values that can contribute to the
+            following URI components:<ul id="ul_tgj_xnb_ppb">
+              <li>The last path component of a URI path</li>
+              <li>A fragment identifier</li>
+              <li>A query parameter</li>
+            </ul></li>
+          <li>The <xmlatt>appid</xmlatt> value should avoid specifying deliverable-specific aspects
+            of URIs such as filename extensions</li>
+        </ul></p>
+    </section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>By design, the <xmlelement>resourceid</xmlelement> element will not apply to all processors
+        in all situations. Processors can examine the <xmlatt>appname</xmlatt> and
+          <xmlatt>appid-role</xmlatt> attributes to determine whether a given
+          <xmlelement>resourceid</xmlelement> element is relevant to a specific deliverable; if
+          <xmlatt>appname</xmlatt> is not present, processors can assume that the element
+        applies.</p>
+      <p>When <xmlatt>appid-role</xmlatt> is set to <keyword>deliverable-anchor</keyword>, and the
+          <xmlelement>resourceid</xmlelement> applies to a deliverable, processors <term
+          outputclass="RFC-2119">SHOULD</term> use the <xmlatt>appid</xmlatt> value when
+        constructing a URI for the delivered resource. Effective <xmlatt>appid</xmlatt> values for
+        this reflect the application of any prefix or suffix values from <xref
+          keyref="elements-dvrKeyscopePrefix"/> and <xref keyref="elements-dvrResourceSuffix"/>.
+        Actual delivery anchors depend on the rendered format; for example, the anchor can be the
+        base part of an HTML file name, a PDF anchor name, or a URI fragment identifier. While
+        anchors values will vary by deliverable, the resulting URI should reflect the specified
+        anchor as much as possible. </p>
+      <p>When <xmlatt>appid-role</xmlatt> is set to <keyword>context-sensitive-help</keyword> or
+        another value, processors can optionally use the <xmlatt>appid</xmlatt> value IDs to
+        construct deliverable anchors. Deliverable components MAY have any number of anchors when
+        the deliverable format allows.</p>
+      <p>Processors can use other properties of the referenced resource, or properties of the
+        reference itself, when constructing full deliverable anchors. For example, key scope names,
+        key names, or source file names can all be used with the resource ID when constructing
+        unique anchor values.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -38,10 +82,27 @@
         </dlentry>
         <dlentry id="appid">
           <dt id="attr-appid"><xmlatt>appid</xmlatt></dt>
-          <dd>Specifies an ID used by an application to identify the topic. </dd>
+          <dd>Specifies an ID used by an application to identify the topic. See <xref
+              href="#./usage-information"/> for details on the syntax and allowed values.</dd>
         </dlentry>
-      </dl>
-      <dl>
+        <dlentry>
+          <dt id="attr-appid-role"><xmlatt>appid-role</xmlatt></dt>
+          <dd>Specifies the role that the <xmlatt>appid</xmlatt> value plays for intended
+            applications. The value is a single name token. The default value is
+              <keyword>context-sensitive-help</keyword>. While applications can define their own
+            values; the following values are defined by OASIS:<dl>
+              <dlentry>
+                <dt>deliverable-anchor</dt>
+                <dd>The <xmlatt>appid</xmlatt> value is used to construct anchors for the associated
+                  resource.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>context-sensitive-help</dt>
+                <dd>The <xmlatt>appid</xmlatt> value is used to connect the associated resource with
+                  applications that use the associated resource as context sensitive help.</dd>
+              </dlentry>
+            </dl></dd>
+        </dlentry>
         <dlentry>
           <dt id="attr-ux-context-string"><xmlatt>ux-context-string</xmlatt></dt>
           <dd>Specifies the value of a user-assistance context-string that is used to identify the
@@ -52,8 +113,8 @@
           <dd>
             <p>Specifies precedence for handling <xmlelement>resourceid</xmlelement> definitions
               that exist in both a map and a topic. This attribute only is valid when used within a
-                <xmlelement>topicref</xmlelement> element in a map. <ph>The allowable values are
-                  <keyword>-dita-use-conref-target</keyword> and the following:</ph></p>
+                <xmlelement>topicref</xmlelement> element in a map. The allowable values are
+                <keyword>-dita-use-conref-target</keyword> and the following:</p>
             <dl>
               <dlentry>
                 <dt>topic-and-map</dt>
@@ -88,7 +149,7 @@
         </dlentry>
       </dl>
     </section>
-<example id="example"  otherprops="examples">
+<example id="example" otherprops="examples">
       <title>Example</title>
       <p>In the following example, user-assistance context hooks are applied to three topics that
         are referenced from a DITA map. The second topic has two hooks for the same topic.</p>
@@ -135,7 +196,46 @@
   &lt;/steps>
  &lt;/taskbody>
 &lt;/task></codeblock>
+      <p>In the following examples, intended anchor components are defined for two different
+        references to the same topic, where each use represents the documentation for a different
+        model of the same base device.</p>
+      <codeblock>&lt;map>
+
+  &lt;!-- ... -->
+  &lt;keydef keys="topic-0014" href="replacing-widgetA.dita"/>
+  &lt;!-- ... -->
+
+  &lt;topicref keyscope="model-01">
+    &lt;!-- ... -->
+    &lt;topicref keys="replace-widgetA" keyref="topic-0014">
+      &lt;topicmeta>
+        &lt;resourceid appid="replace_widgetA_model_01" appid-role="deliverable-anchor"/>
+      &lt;/topicmeta>
+    &lt;/topicref>
+    &lt;!-- ... -->  
+  &lt;/topicref>
+  &lt;topicref keyscope="model-02">
+    &lt;!-- ... -->
+    &lt;topicref keys="replace-widgetA" keyref="topic-0014">
+      &lt;topicmeta>
+        &lt;resourceid appid="replace_widgetA_model_02" appid-role="deliverable-anchor"/>
+      &lt;/topicmeta>
+    &lt;/topicref>
+    &lt;!-- ... -->
+  &lt;/topicref>
+  &lt;!-- ... -->
+&lt;/map></codeblock>
+      <p>In that example, <filepath>replacing-widgetA.dita</filepath> is published twice, once in
+        each scope. When the map is published:<ul id="ul_qcv_dqb_ppb">
+          <li>An HTML deliverable might use the specified anchors to construct base file names for
+            the resulting HTML; in that case, the copy in the first scope would use the name
+              <filepath>replace_widgetA_model_01.html</filepath>, while the copy in the second scope
+            uses the name <filepath>replace_widgetA_model_02</filepath>.</li>
+          <li>A PDF deliverable might simply add the application IDs as anchors for each instance of
+            the topic, so that <codeph>replace_widgetA_model_01</codeph> and
+              <codeph>replace_widgetA_model_02</codeph> would be available as anchors within the
+            PDF.</li>
+        </ul></p>
     </example>
 </refbody>
 </reference>
-
