@@ -17,17 +17,19 @@
     </metadata>
   </prolog>
   <refbody>
-    <section id="section-1">
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
       <p>For map branches that are implied by <xmlelement>ditavalref</xmlelement> elements, the
-        value of the <xmlelement>dvrResourcePrefix</xmlelement> element contributes to the
-        effective file names of resources that are referenced within the branch. The effective
-        resource file name starts with the value of the <xmlelement>dvrResourcePrefix</xmlelement>
-        element. <ph conkeyref="reuse-general/ditavalref-copyto"/></p>
+        value of the <xmlelement>dvrResourcePrefix</xmlelement> element contributes to the effective
+        file names and resource IDs of resources that are referenced within the branch. The
+        effective resource file name starts with the value of the
+          <xmlelement>dvrResourcePrefix</xmlelement> element. If a topic reference includes
+          <xmlelement>resourceid</xmlelement> with the <xmlatt>appid-role</xmlatt> attribute set to
+          <keyword>deliverable-anchor</keyword>, the effective <xmlatt>appid</xmlatt> value for that
+          <xmlelement>resourceid</xmlelement> value starts with the value of the
+          <xmlelement>dvrResourcePrefix</xmlelement> element.</p>
       <p>Some resources are not eligible for renaming, such as those marked with
-          <codeph>scope="external"</codeph>. Rules for which resources are eligible for renaming,
-        and what names are allowed as valid resource names, are the same as those for the
-          <xmlatt>copy-to</xmlatt> attribute defined in <xref
-          keyref="attributes-common/topicrefatts"/>.</p>
+          <codeph>scope="external"</codeph>.</p>
     </section>
     <section id="specialization-hierachy">
       <title>Specialization hierarchy</title>
@@ -49,8 +51,11 @@
     </section>
     <example id="example" otherprops="examples">
       <title>Example</title>
-      <p>If the <xmlelement>dvrResourcePrefix</xmlelement> is specified in the following
-        way:<codeblock>&lt;topicref href="branch-01.dita">
+      <fig id="fig_twy_5w1_ppb">
+        <title>How <xmlelement>dvrResourcePrefix</xmlelement> affects resource file names</title>
+        <p>The following code sample shows a simple branch with a parent and child topic, where the
+          branch uses a <xmlelement>ditavalref</xmlelement> element and
+            <xmlelement>dvrResourcePrefix</xmlelement>.<codeblock>&lt;topicref href="branch-01.dita">
   &lt;ditavalref href="condition-01.ditaval">
     &lt;ditavalmeta>
       &lt;dvrResourcePrefix>cond01-&lt;/dvrResourcePrefix>
@@ -58,12 +63,39 @@
   &lt;/ditavalref>
   &lt;topicref href="topics/subtopic-01.dita"/>
 &lt;/topicref></codeblock></p>
-      <p>Then the effective file name of the resource <filepath>subtopic-01.dita</filepath> is
-          <filepath>cond01-subtopic-01.dita</filepath>, as though the <xmlatt>copy-to</xmlatt>
-        attribute had been specified with that value on the <xmlelement>topicref</xmlelement>
-        element that references <filepath>subtopic-01.dita</filepath>. <ph 
-          >Similarly, the effective file name of resource <filepath>branch-01.dita</filepath> is
-            <filepath>cond01-branch-01.dita</filepath>.</ph></p>
+        <p>After the <xmlelement>ditavalref</xmlelement> is evaluated:<ul id="ul_syl_cy1_ppb">
+            <li>The effective file name of the resource <filepath>subtopic-01.dita</filepath> is
+                <filepath>cond01-subtopic-01.dita</filepath>.</li>
+            <li>The effective file name of resource <filepath>branch-01.dita</filepath> is
+                <filepath>cond01-branch-01.dita</filepath>.</li>
+          </ul></p>
+      </fig>
+      <fig id="fig_s32_2y1_ppb">
+        <title>How <xmlelement>dvrResourcePrefix</xmlelement> interacts with
+            <xmlelement>resourceid</xmlelement></title>
+        <p>The following code sample shows the same branch with a parent and child topic, but in
+          this case the child topic specifies a deliverable anchor with
+            <xmlelement>resourceid</xmlelement>.<codeblock>&lt;topicref href="branch-01.dita">
+  &lt;ditavalref href="condition-01.ditaval">
+    &lt;ditavalmeta>
+      &lt;dvrResourcePrefix>cond01-&lt;/dvrResourcePrefix>
+    &lt;/ditavalmeta>
+  &lt;/ditavalref>
+  &lt;topicref href="topics/subtopic-01.dita">
+    &lt;topicmeta>
+      &lt;resourceid appid="ae35-unit-fault" appid-role="deliverable-anchor"/>
+    &lt;/topicmeta>
+  &lt;/topicref>
+&lt;/topicref></codeblock></p>
+        <p>After the <xmlelement>ditavalref</xmlelement> is evaluated:<ul id="ul_ybb_ly1_ppb">
+            <li>The effective file name of the resource <filepath>subtopic-01.dita</filepath> is
+                <filepath>cond01-subtopic-01.dita</filepath>.</li>
+            <li>The effective file name of resource <filepath>branch-01.dita</filepath> is
+                <filepath>cond01-branch-01.dita</filepath>.</li>
+            <li>The effective value of <xmlatt>appid</xmlatt> on <xmlelement>resourceid</xmlelement>
+              for the child topic is <keyword>cond01-ae35-unit-fault</keyword>.</li>
+          </ul></p>
+      </fig>
     </example>
   </refbody>
 </reference>
