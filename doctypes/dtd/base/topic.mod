@@ -56,63 +56,6 @@
   "
 >
 
-
-
-<!-- ============================================================= -->
-<!--                   ELEMENT NAME ENTITIES                       -->
-<!-- ============================================================= -->
-
-
-<!--                    Definitions of declared elements           -->
-<!ENTITY % topicDefns
-    PUBLIC "-//OASIS//ENTITIES DITA 2.0 Topic Definitions//EN" "topicDefn.ent" 
->%topicDefns;
-
-<!--                      Content elements common to map and topic -->
-<!ENTITY % commonElements
-
-  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
-         "commonElements.mod" 
->%commonElements;
-
-<!--                       MetaData Elements, plus indexterm       -->
-<!ENTITY % metaXML 
-  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Metadata//EN"
-         "metaDecl.mod" 
->%metaXML;
-
-<!-- ============================================================= -->
-<!--                    STRUCTURAL MEMBERS                         -->
-<!-- ============================================================= -->
-
-
-<!ENTITY % info-types 
-  "topic
-  "
-> 
-
-<!-- ============================================================= -->
-<!--                    SPECIALIZATION OF DECLARED ELEMENTS        -->
-<!-- ============================================================= -->
-
-<!ENTITY % topic-info-types 
-  "%info-types;
-  "
->
-
-<!-- ============================================================= -->
-<!--                    DOMAINS ATTRIBUTE OVERRIDE                 -->
-<!-- ============================================================= -->
-
-<!ENTITY included-domains 
-  ""
->
-
-
-<!-- ============================================================= -->
-<!--                    ELEMENT DECLARATIONS                       -->
-<!-- ============================================================= -->
-
 <!ENTITY % abstract.cnt
               "#PCDATA |
                %basic.block; |
@@ -164,60 +107,59 @@
                %foreign.unknown.incl; |
                %txt.incl;"
 >
-<!ENTITY % relational-atts
-              "type
-                          CDATA
-                                    #IMPLIED
-               cascade
-                          CDATA
-                                    #IMPLIED
-               format
-                          CDATA
-                                    #IMPLIED
-               scope
-                          (external |
-                           local |
-                           peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               role
-                          (ancestor |
-                           child |
-                           cousin |
-                           descendant |
-                           friend |
-                           next |
-                           other |
-                           parent |
-                           previous |
-                           sibling |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               otherrole
-                          CDATA
-                                    #IMPLIED"
+
+
+<!-- ============================================================= -->
+<!--                   ELEMENT NAME ENTITIES                       -->
+<!-- ============================================================= -->
+
+
+<!--                      Content elements common to map and topic -->
+<!ENTITY % commonElements
+
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
+         "commonElements.mod" 
+>%commonElements;
+
+<!--                       MetaData Elements, plus indexterm       -->
+<!ENTITY % metaXML 
+  PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Metadata//EN"
+         "metaDecl.mod" 
+>%metaXML;
+
+<!-- ============================================================= -->
+<!--                    STRUCTURAL MEMBERS                         -->
+<!-- ============================================================= -->
+
+
+<!ENTITY % info-types 
+  "topic
+  "
+> 
+
+<!-- ============================================================= -->
+<!--                    SPECIALIZATION OF DECLARED ELEMENTS        -->
+<!-- ============================================================= -->
+
+<!ENTITY % topic-info-types 
+  "%info-types;
+  "
 >
-<!ENTITY % rel-atts
-              "type
-                          CDATA
-                                    #IMPLIED
-               role
-                          (ancestor |
-                           child |
-                           cousin |
-                           descendant |
-                           friend |
-                           next |
-                           other |
-                           parent |
-                           previous |
-                           sibling |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               otherrole
-                          CDATA
-                                    #IMPLIED"
+
+<!-- ============================================================= -->
+<!--                    DOMAINS ATTRIBUTE OVERRIDE                 -->
+<!-- ============================================================= -->
+
+<!ENTITY included-domains 
+  ""
 >
+
+
+<!-- ============================================================= -->
+<!--                    ELEMENT DECLARATIONS                       -->
+<!-- ============================================================= -->
+
+
 <!--                    LONG NAME: Topic                           -->
 <!ENTITY % topic.content
                        "((%title;),
