@@ -65,9 +65,6 @@
               "keys
                           CDATA
                                     #IMPLIED
-               copy-to
-                          CDATA
-                                    #IMPLIED
                %topicref-atts;
                %univ-atts;"
 >
@@ -108,9 +105,6 @@
                           CDATA
                                     #IMPLIED
                keyscope
-                          CDATA
-                                    #IMPLIED
-               copy-to
                           CDATA
                                     #IMPLIED
                collection-type
@@ -181,9 +175,6 @@
                keys
                           CDATA
                                     #IMPLIED
-               copy-to
-                          CDATA
-                                    #IMPLIED
                format
                           CDATA
                                     'ditamap'
@@ -212,9 +203,6 @@
                           CDATA
                                     #REQUIRED
                keyscope
-                          CDATA
-                                    #IMPLIED
-               copy-to
                           CDATA
                                     #IMPLIED
                collection-type

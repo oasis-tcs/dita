@@ -448,9 +448,6 @@
                keys
                           CDATA
                                     #IMPLIED
-               copy-to
-                          CDATA
-                                    #IMPLIED
                collection-type
                           (choice |
                            family |
@@ -648,9 +645,6 @@
                           CDATA
                                     #IMPLIED
                keys
-                          CDATA
-                                    #IMPLIED
-               copy-to
                           CDATA
                                     #IMPLIED
                type
