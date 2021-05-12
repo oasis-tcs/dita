@@ -452,6 +452,9 @@
                appid
                           CDATA
                                     #IMPLIED
+               appid-role
+                           CDATA
+                                     'context-sensitive-help'
                ux-context-string
                           CDATA
                                     #IMPLIED

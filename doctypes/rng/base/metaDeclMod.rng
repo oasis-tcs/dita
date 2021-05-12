@@ -805,12 +805,16 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Metadata//EN"
           <attribute name="appid"/>
         </optional>
         <optional>
+          <attribute name="appid-role"
+            a:defaultValue="context-sensitive-help"
+            dita:since="2.0"/>
+        </optional>
+        <optional>
           <attribute name="ux-context-string"/>
         </optional>
         <optional>
           <attribute name="ux-source-priority"
-                     a:defaultValue="topic-and-map"
-            >
+                     a:defaultValue="topic-and-map">
             <choice>
               <value>topic-and-map</value>
               <value>topic-only</value>
@@ -828,8 +832,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Metadata//EN"
       <define name="resourceid.element">
         <element name="resourceid" dita:longName="Resource Identifier">
           <a:documentation>The &lt;resourceid> element provides an identifier for applications that require them in a particular format, when the normal id attribute of the topic can't be used. Each
-            resourceid entry should be unique. It is one of the metadata elements that can be included within the prolog of a topic, along with document tracking and product information, etc. The
-            element has no content, but takes an id attribute, an appname attribute, and an appid attribute. Category: Prolog elements</a:documentation>
+            resourceid entry should be unique. It is one of the metadata elements that can be included within the prolog of a topic, along with document tracking and product information, etc.</a:documentation>
           <ref name="resourceid.attlist"/>
           <ref name="resourceid.content"/>
         </element>
