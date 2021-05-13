@@ -4,9 +4,9 @@
  "reference.dtd">
 <reference id="dvrResourcePrefix" xml:lang="en-us" >
   <title><xmlelement>dvrResourcePrefix</xmlelement></title>
-  <shortdesc>The <xmlelement>dvrResourcePrefix</xmlelement> element specifies the prefix to use
-    when constructing the effective file names of the resources that are referenced from within the
-    map branch that is implied by the ancestor <xmlelement>ditavalref</xmlelement>
+  <shortdesc>The <xmlelement>dvrResourcePrefix</xmlelement> element specifies the prefix to use when
+    constructing the effective file names or resource IDs of the resources that are referenced from
+    within the map branch that is implied by the ancestor <xmlelement>ditavalref</xmlelement>
     element.</shortdesc>
   <prolog>
     <metadata>
@@ -34,23 +34,21 @@
     <section id="specialization-hierachy">
       <title>Specialization hierarchy</title>
       <p>The <xmlelement>dvrResourcePrefix</xmlelement> element is specialized from <xref
-          keyref="elements-data"/>. It is defined in the DITAVALref domain module.</p>
+          keyref="elements-data"/>. It is defined in the DITAVAL-reference domain module.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
       <p>The following attributes are available on this element: <xref keyref="attributes-universal"
         /> (except for <xmlatt>conkeyref</xmlatt>, which is removed for all elements in this domain)
-        and the attribute defined below.</p>
-      <dl>
-        <dlentry>
-          <dt id="attr-name"><xmlatt>name</xmlatt></dt>
-          <dd>The name of the metadata item. For this element the default value is
-            "dvrResourcePrefix".</dd>
-        </dlentry>
-      </dl>
+        and <xref keyref="attributes-common/attr-name"><xmlatt>name</xmlatt></xref>.</p>
+      <p id="attr-exception">For this element, the <xmlatt>name</xmlatt> attribute has a default
+        value of <keyword>dvrResourcPrefix</keyword>.</p>
     </section>
     <example id="example" otherprops="examples">
       <title>Example</title>
+      <draft-comment author="robander">The ditavalmeta element refers to arch spec examples, that
+        might be better here as well, given the new complexity of added resourceid
+        elements.</draft-comment>
       <fig id="fig_twy_5w1_ppb">
         <title>How <xmlelement>dvrResourcePrefix</xmlelement> affects resource file names</title>
         <p>The following code sample shows a simple branch with a parent and child topic, where the
