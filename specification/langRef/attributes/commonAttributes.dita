@@ -2,8 +2,7 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="common-atts" xml:lang="en-us">
   <title>Common attributes</title>
-  <shortdesc>Many attributes and attribute groups are not used universally, but are still used
-    across many DITA elements.</shortdesc>
+  <shortdesc>Common attributes include attributes used on more than one base element.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -79,6 +78,12 @@
           <dt>Specialization attributes</dt>
           <dd>Includes attributes designed to be used by specializations, but not intended for
             direct use by authors: <xmlatt>specentry</xmlatt> and <xmlatt>spectitle</xmlatt>.</dd>
+        </dlentry>
+        <dlentry id="otheratts">
+          <dt>Other attributes (not in a group)</dt>
+          <dd>Includes attributes used in the same way on more than one base element, but otherwise
+            not grouped together: <xmlatt>duplicates</xmlatt>, <xmlatt>role</xmlatt>, and
+              <xmlatt>otherrole</xmlatt></dd>
         </dlentry>
       </dl>
     </section>
@@ -240,6 +245,27 @@
             XML data type CDATA, but uses a default value of the current version of DITA. The
             current default is <keyword>2.0</keyword>.</dd>
         </dlentry>
+        <dlentry>
+          <dt id="attr-duplicates"><xmlatt>duplicates</xmlatt></dt>
+          <dd>Specifies whether duplicate links are removed from a group of links. Duplicate links
+            are links that address the same resource using the same properties, such as link text
+            and link role. How duplicate links are determined is processor-specific. Allowable
+            values are:<dl id="dl_ohs_fyg_ppb">
+              <dlentry>
+                <dt>yes</dt>
+                <dd>Specifies that duplicate links are retained.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>no</dt>
+                <dd>Specifies that duplicate links are removed.</dd>
+              </dlentry>
+              <dlentry conkeyref="reuse-attributes/ditauseconref" platform="dita">
+                <dt> </dt>
+                <dd> </dd>
+              </dlentry>
+            </dl><p>The suggested processing default is "yes" within
+                <xmlelement>linklist</xmlelement> elements and "no" for other links.</p></dd>
+        </dlentry>
         <dlentry id="encoding">
           <dt id="attr-encoding"><xmlatt>encoding</xmlatt> (inclusion attributes)</dt>
           <dd><draft-comment author="Kristen J Eberlein" time="29 April 2019"
@@ -397,6 +423,11 @@
           <dt id="attr-name"><xmlatt>name</xmlatt> (data-element attributes)</dt>
           <dd>Defines a unique name for the object.</dd>
         </dlentry>
+        <dlentry>
+          <dt id="attr-otherrole"><xmlatt>otherrole</xmlatt></dt>
+          <dd>Specifies an alternate role for a link relationship when the <xmlatt>role</xmlatt>
+            element is set to <keyword>other</keyword>.</dd>
+        </dlentry>
         <dlentry id="parse">
           <dt id="attr-parse"><xmlatt>parse</xmlatt> (inclusion attributes)</dt>
           <dd>Specifies the processing expectations for the referenced resource. Processors must
@@ -456,11 +487,70 @@
           <dt id="attr-relcolwidth"><xmlatt>relcolwidth</xmlatt> (simpletable attributes)</dt>
           <dd>Specifies the width of each column in relationship to the width of the other columns.
             The value is a space separated list of relative column widths; each column width is
-            specified as a positive integer or decimal number followed by an asterisk character.
-              <p>For example, the value <codeph>relcolwidth="1* 2* 3*"</codeph> gives a total of 6
-              units across three columns. The relative widths are 1/6, 2/6, and 3/6 (16.7%, 33.3%,
-              and <ph>50%</ph>). Similarly, the value <codeph>relcolwidth="90* 150*"</codeph> causes
-              relative widths of 90/240 and 150/240 (37.5% and 62.5%).</p></dd>
+            specified as a positive integer or decimal number followed by an asterisk character. <p
+              otherprops="examples">For example, the value <codeph>relcolwidth="1* 2* 3*"</codeph>
+              gives a total of 6 units across three columns. The relative widths are 1/6, 2/6, and
+              3/6 (16.7%, 33.3%, and <ph>50%</ph>). Similarly, the value <codeph>relcolwidth="90*
+                150*"</codeph> causes relative widths of 90/240 and 150/240 (37.5% and
+            62.5%).</p></dd>
+        </dlentry>
+        <dlentry>
+          <dt id="attr-role"><xmlatt>role</xmlatt></dt>
+          <dd>Specifies the role that a linked topic plays in relationship with the current topic.
+              <p otherprops="examples">For example, in a parent/child relationship, the role would
+              be "parent" when the target is the parent of the current topic, and "child" when the
+              target is the child of the current topic. This structure can be used to sort and
+              classify links at display time.</p><p>Allowable values for the <xmlatt>role</xmlatt>
+              attribute are:</p><dl id="linkrolevalues">
+              <dlentry>
+                <dt>parent</dt>
+                <dd>Indicates a link to a topic that is a parent of the current topic.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>child</dt>
+                <dd>Indicates a link to a direct child such as a directly nested or dependent
+                  topic.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>sibling</dt>
+                <dd>Indicates a link between two children of the same parent topic.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>friend</dt>
+                <dd>Indicates a link to a similar topic that is not necessarily part of the same
+                  hierarchy.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>next</dt>
+                <dd>Indicates a link to the next topic in a sequence.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>previous</dt>
+                <dd>Indicates a link to the previous topic in a sequence.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>cousin</dt>
+                <dd>Indicates a link to another topic in the same hierarchy that is not a parent,
+                  child, sibling, next, or previous.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>ancestor</dt>
+                <dd>Indicates a link to a topic above the parent topic.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>descendant</dt>
+                <dd>Indicates a link to a topic below a child topic.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>other</dt>
+                <dd>Indicates any other kind of relationship or role. Enter that role as the value
+                  for the <xmlatt>otherrole</xmlatt> attribute.</dd>
+              </dlentry>
+              <dlentry conkeyref="reuse-attributes/ditauseconref">
+                <dt> </dt>
+                <dd> </dd>
+              </dlentry>
+            </dl></dd>
         </dlentry>
         <dlentry id="rowsep">
           <dt id="attr-rowsep"><xmlatt>rowsep</xmlatt> (complex table attributes)</dt>
@@ -628,7 +718,7 @@
             defined, it has a fixed value of "preserve".</dd>
         </dlentry>
         <dlentry id="xmlnsditaarch">
-          <dt id="attr-xmlns:ditaarch"><xmlatt>xmlns:ditaarch</xmlatt> (architectural attributes)</dt>
+          <dt id="attr-xmlns-ditaarch"><xmlatt>xmlns:ditaarch</xmlatt> (architectural attributes)</dt>
           <dd>Declares the default DITA namespace. Although this is technically a namespace rather
             than an attribute, it is included here because it is specified as an attribute in the
             DTD grammar files distributed by OASIS. The value is fixed to
