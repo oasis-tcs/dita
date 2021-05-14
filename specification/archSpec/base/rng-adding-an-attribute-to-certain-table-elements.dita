@@ -30,9 +30,8 @@
             set of tokens that can be values for the new attribute.</p>
         <ol>
             <li>
-                <p>The DITA architect creates an attribute-domain specialization module:
-                        <filepath>acme-cellPurposeAttExpansion.rng</filepath>. It contains the
-                    following code:</p>
+                <p>The DITA architect creates an attribute domain module:
+                        <filepath>cellPurposeAtt.rng</filepath>. It contains the following code:</p>
                 <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
 &lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
                          schematypens="http://relaxng.org/ns/structure/1.0"?>
@@ -41,7 +40,6 @@
   xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
   xmlns:dita="http://dita.oasis-open.org/architecture/2005/"
   datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
-
   &lt;define name="cellPurposeAtt-d-attribute-expansion">
     &lt;optional>
       &lt;attribute name="cellPurpose">
@@ -58,20 +56,85 @@
         &lt;/choice>
       &lt;/attribute>
     &lt;/optional>    
-  &lt;/define>
-  
-  &lt;define name="base-attribute-extensions" combine="interleave">
-    &lt;ref name="cellPurposeAtt-d-attribute-expansion"/>
-  &lt;/define>
-  
+  &lt;/define> 
 &lt;/grammar></codeblock>
-                <draft-comment author="Kristen J Eberlein" time="20 April 2021">
-                    <p>Where does the application of this new attribute to only certain elements
-                        take place?</p>
-                </draft-comment>
             </li>
-            <li>Integrate expansion module into the doc-type shell.</li>
-            <li>Update <filepath>catalog.xml</filepath> file.</li>
+            <li>
+                <p>The DITA architect updates the <filepath>catalog.xml</filepath> file and
+                    integrates the attribute domain module into the document-type shell:</p>
+                <codeblock>&lt;div>
+    &lt;a:documentation>MODULE INCLUSIONS&lt;/a:documentation>
+    ...  
+    <b>&lt;include href="urn:example:names:tc:dita:rng:cellPurposeAtt.rng:2.0"/></b>
+  &lt;/div></codeblock>
+                <p>At this point, the new attribute domain is integrated into the document-type
+                    shell. However, the <xmlatt>cell-purpose</xmlatt> attribute is not added to the
+                    attribute lists for the table elements.</p>
+            </li>
+            <li>
+                <p>Next, the DITA architect creates the expansion module:
+                        <filepath>tableCellAttExpansion.rng</filepath></p>
+                <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+                         schematypens="http://relaxng.org/ns/structure/1.0"?>
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:dita="http://dita.oasis-open.org/architecture/2005/"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  &lt;div>
+    &lt;a:documentation>CONTENT MODEL AND ATTRIBUTE LIST OVERRIDES&lt;/a:documentation>
+    &lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0">
+      &lt;define name="topic-info-types">
+        &lt;ref name="topic.element"/>
+      &lt;/define>
+      &lt;define name="colspec.attributes" combine="interleave">
+        &lt;optional>
+          &lt;attribute name="cellPurpose"/>
+        &lt;/optional>
+      &lt;/define>
+      &lt;define name="entry.attributes" combine="interleave">
+        &lt;optional>
+          &lt;attribute name="cellPurpose"/>
+        &lt;/optional>
+      &lt;/define>
+      &lt;define name="row.attributes" combine="interleave">
+        &lt;optional>
+          &lt;attribute name="cellPurpose"/>
+        &lt;/optional>
+      &lt;/define>
+      &lt;define name="stentry.attributes" combine="interleave">
+        &lt;optional>
+          &lt;attribute name="cellPurpose"/>
+        &lt;/optional>
+      &lt;/define>
+      &lt;define name="strow.attributes" combine="interleave">
+        &lt;optional>
+          &lt;attribute name="cellPurpose"/>
+        &lt;/optional>
+      &lt;/define>
+    &lt;/include>
+  &lt;/div>
+&lt;/grammar>
+</codeblock>
+            </li>
+            <li>
+                <p>The DITA architect updates the <filepath>catalog.xml</filepath> file, and then
+                    integrates the expansion module into the document-type shell:</p>
+                <codeblock>  &lt;div>
+    &lt;a:documentation>ELEMENT-TYPE CONFIGURATION INTEGRATION&lt;/a:documentation>
+        <b>&lt;include href="urn:example:names:tc:dita:rng:tableCellAttExpansion.rng:2.0"/>
+</b>  &lt;/div>
+  &lt;div>
+    &lt;a:documentation>MODULE INCLUSIONS&lt;/a:documentation>
+    <line-through>&lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0"></line-through>
+    ...
+  &lt;/div></codeblock>
+                <p>Note that the DITA architect removed the <xmlelement>include</xmlelement> element
+                    for <filepath>topicMod.rng</filepath>, since that vocabulary module is included
+                    in the expansion module.</p>
+            </li>
+            <li>After checking the test file to ensure that the attribute lists are modified as
+                expected, the work is done.</li>
         </ol>
     </conbody>
 </concept>
