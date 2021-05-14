@@ -15,9 +15,17 @@
     <refbody>
         <section id="usage-information">
             <title>Usage Information</title>
-            <p>Alternative titles can be used in topics and in maps. When used directly beneath a
-                root <xmlelement>map</xmlelement> element, the alternative title applies to the map
-                itself. When used inside a <xmlelement>topicref</xmlelement> or specialization of
+            <draft-comment author="robander" time="13 May 2021">Questions as I read this more
+                    closely:<ol id="ul_y12_sgk_ppb">
+                    <li>"alternative titles from the topicref are merged with those" ==> merging
+                        implies processing, so I think this needs to be reworded or moved to
+                        processing.</li>
+                    <li>It says title-role must specify at least one role, but it's not a required
+                        attribute. What does it mean if it's *not* specified?</li>
+                </ol></draft-comment>
+            <p>Alternative titles can be used in topics and in maps. When used in the
+                    <xmlelement>topicmeta</xmlelement> of a root <xmlelement>map</xmlelement>
+                element, the alternative title applies to the map itself. When used inside a
                     <xmlelement>topicref</xmlelement>, the alternative title applies to the resource
                 referenced by the <xmlelement>topicref</xmlelement>. When the referenced resource is
                 a DITA topic, the alternative titles from the <xmlelement>topicref</xmlelement> are
@@ -34,6 +42,24 @@
         </section>
         <section id="processing-expectations">
             <title>Processing expectations</title>
+            <draft-comment author="robander" time="13 May 2021">Questions as I read this more
+                    closely:<ol id="ol_aff_zgk_ppb">
+                    <li>"Processors are required to support the following role tokens" ==> this
+                        sounds like a MUST? But they might not be relevant to some processors, so
+                        MUST is difficult.</li>
+                    <li>Some of this language implies a specific type of processor, which we've had
+                        trouble with in the past; language may need to be more processor
+                        agnostic</li>
+                    <li>Also overlaps with rendering, such as stating where a subtitle generally
+                        appears</li>
+                    <li>"Content architects are encouraged to develop..." sounds more like usage
+                        than processing</li>
+                    <li>it ends saying unknown roles MUST be ignored - can we make that a SHOULD?
+                        With MUST it seems like it would be invalid even for a review tool to
+                        display those.</li>
+                </ol><p>Given the complications, the number of required samples, and the impact on
+                    processing, it feels like this deserves a page in the architectural
+                    specifciation.</p></draft-comment>
             <p>The processing of an alternative title depends on its roles. Processors are required
                 to support the following role tokens.</p>
             <dl>
@@ -71,12 +97,9 @@
                         referenced resource without needing to access the resource itself. Does not
                         have an effect on processing or output.</dd>
                 </dlentry>
-                <dlentry>
-                    <dt><codeph>-dita-use-conref-target</codeph></dt>
-                    <dd>When present, instructs processors to use the <xmlatt>title-role</xmlatt>
-                        tokens from the element referenced by <xmlatt>conref</xmlatt> or
-                            <xmlatt>conkeyref</xmlatt>. All other tokens are ignored, replaced by
-                        those on the referenced element.</dd>
+                <dlentry conkeyref="reuse-attributes/ditauseconref">
+                    <dt/>
+                    <dd/>
                 </dlentry>
             </dl>
             <p>Other roles may be defined by processors, authors, or content architects for specific
@@ -95,7 +118,11 @@
                 <dlentry>
                     <dt id="attr-title-role"><xmlatt>title-role</xmlatt></dt>
                     <dd>Specifies the role or roles fulfilled by the alternative title. Multiple
-                        roles are separated by white space.</dd>
+                        roles are separated by white space. Applications can define roles; the
+                        following roles are defined in the specification:
+                        <keyword>linking</keyword>, <keyword>navigation</keyword>,
+                            <keyword>search</keyword>, <keyword>subtitle</keyword>, and
+                            <keyword>hint</keyword>.</dd>
                 </dlentry>
             </dl>
         </section>
