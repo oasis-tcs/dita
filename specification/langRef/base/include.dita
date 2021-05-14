@@ -2,14 +2,10 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="include">
     <title><xmlelement>include</xmlelement></title>
-    <shortdesc>The <xmlelement>include</xmlelement> element specifies that non-DITA content from a
-        resource outside the current document should be placed at that location. The resource is
-        specified using either a URI or a key reference. Processing expectations for the referenced
-        data can also be specified.<draft-comment author="Kristen J Eberlein"
-            time="09 September 2020">
-            <p>Should this topic be located here in "Body elements," or should it be relocated to
-                "Specialization elements?</p>
-        </draft-comment></shortdesc>
+    <shortdesc>Included content is a reference to non-DITA content outside the current document that
+        will be rendered at the location of the reference. The resource is specified using either a
+        URI or a key reference. Processing expectations for the referenced data can also be
+        specified.</shortdesc>
     <prolog>
         <metadata>
             <keywords>
@@ -35,11 +31,9 @@
                 <li>The transclusion of plain-text prose within DITA elements using
                         <codeph>parse="text"</codeph></li>
             </ul>
-            <draft-comment author="Kristen J Eberlein" time="29 April 2019" audience="spec-editors">
-                <p>Do we want to mention that <xmlelement>include</xmlelement> is the specialization
-                    base for <xmlelement>coderef</xmlelement>, <xmlelement>svgref</xmlelement>, and
-                        <xmlelement>mathmlref</xmlelement>?</p>
-            </draft-comment>
+            <p otherprops="examples">For example, the <xmlelement>include</xmlelement> element can
+                be specialized to an element such as <xmlelement>coderef</xmlelement> as a way to
+                include preformatted sample programming code.</p>
             <p>It is an error when the <xmlelement>include</xmlelement> element is used to reference
                 DITA content. Authors should use <xmlatt>conref</xmlatt> or
                     <xmlatt>conkeyref</xmlatt> to reuse DITA content.</p>
@@ -104,18 +98,17 @@ attribute.</p>
             </fig>
             <fig>
                 <title>Inclusion of README text into a DITA topic, with fallback</title>
-                <p>
-                    <draft-comment author="Kristen J Eberlein" time="29 April 2019"
-                        audience="spec-editors">
-                        <p>I can't imagine including a readme file into a short description ...</p>
-                    </draft-comment>
-                </p>
-                <codeblock>
-&lt;shortdesc>
-  &lt;include href="../src/README.txt" parse="text" encoding="UTF-8">
-    &lt;fallback>This topic describes XYZ.&lt;/fallback>
-  &lt;/include>
-&lt;/shortdesc></codeblock>
+                <p>In the following sample, a README text file is referenced in order to reuse a
+                    list of changes to a set of source code.</p>
+                <codeblock>&lt;topic id="readme">
+  &lt;title>Summary of changes&lt;/title>
+  &lt;shortdesc>This topic describes changes in the project source code.&lt;/shortdesc>
+  &lt;body>
+    &lt;include href="../src/README.txt" parse="text" encoding="UTF-8">
+      &lt;fallback>See README.txt in the source package for a list of changes.&lt;/fallback>
+    &lt;/include>
+  &lt;/body>
+&lt;/topic></codeblock>
             </fig>
             <fig>
                 <title>Inclusion of preformatted text</title>

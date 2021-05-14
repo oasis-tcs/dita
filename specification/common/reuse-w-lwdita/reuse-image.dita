@@ -13,30 +13,24 @@
     <section id="attributes">
       <title>Attributes</title>
       <p platform="dita">The following attributes are available on this element: <xref
-          keyref="attributes-universal"/>, <xref keyref="attributes-keyref"
-          ><xmlatt>keyref</xmlatt></xref>, and the attributes defined below.<draft-comment
-          author="rodaande">This uses format/href/scope (but not type) from the linking group. Can
-          we list and link to those here rather than redefining them below? Is there any real
-          benefit to saying that the href on &lt;image> is a reference to an image, when it is
-          otherwise just a normal href? Not sure if this would impact the lwdita section
-          though.</draft-comment></p>
-      <p platform="lwdita">The following attributes are available on this element: <xref
-          keyref="attributes-universal/localizationatts"/>, <xref keyref="attributes-universal/class"
-            ><xmlatt>class</xmlatt></xref>, <xref keyref="attributes-keyref"
-          ><xmlatt>keyref</xmlatt></xref>, and <xref keyref="attributes-universal/outputclass"
-            ><xmlatt>outputclass</xmlatt></xref>.</p>
+          keyref="attributes-universal"/>, <xref keyref="attributes-common/attr-href"/>, <xref
+          keyref="attributes-common/attr-format"/>, <xref keyref="attributes-common/attr-scope"/>,
+          <xref keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>, and the attributes
+        defined below.</p>
+      <p platform="lwdita"><draft-comment author="robander">href, format, and scope were moved from
+          the DL (marked for both lwdita and dita) into the paragraph above for full DITA; not sure
+          if they apply to lwdita, if so, the three should be listed here as
+        well.</draft-comment>The following attributes are available on this element: <xref
+          keyref="attributes-universal/localizationatts"/>, <xref
+          keyref="attributes-universal/class"><xmlatt>class</xmlatt></xref>, <xref
+          keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>, and <xref
+          keyref="attributes-universal/outputclass"><xmlatt>outputclass</xmlatt></xref>.</p>
       <dl>
         <dlentry platform="dita">
           <dt id="attr-align"><xmlatt>align</xmlatt></dt>
           <dd>Controls the horizontal alignment of an image when <xmlatt>placement</xmlatt> is
             specified as <keyword>break</keyword>. Common values include <keyword>left</keyword>,
               <keyword>right</keyword>, and <keyword>center</keyword>.</dd>
-        </dlentry>
-        <dlentry id="format">
-          <dt id="attr-format"><xmlatt>format</xmlatt></dt>
-          <dd><!--TODO: In 2.0 make this common with version in link attribute group.-->Identifies
-            the format of the resource that is referenced. See <xref keyref="attributes-format"/>
-            for details on supported values.</dd>
         </dlentry>
         <dlentry>
           <dt id="attr-height"><xmlatt>height</xmlatt></dt>
@@ -46,11 +40,6 @@
             centimeters, millimeters, and ems respectively). The default unit is px (pixels).
             Example values include <keyword>5</keyword>, <keyword>5in</keyword>, and
               <keyword>10.5cm</keyword>. </dd>
-        </dlentry>
-        <dlentry>
-          <dt id="attr-href"><xmlatt>href</xmlatt></dt>
-          <dd>Provides a reference to the image. See <xref keyref="attributes-href"/> for detailed
-            information on supported values and processing implications.</dd>
         </dlentry>
         <dlentry platform="dita">
           <dt id="attr-placement"><xmlatt>placement</xmlatt></dt>
@@ -90,14 +79,6 @@
               but if feasible, it is suggested to be the page (or table cell) height or some other
               reasonable value. </p>
           </dd>
-        </dlentry>
-        <dlentry>
-          <dt id="attr-scope"><xmlatt>scope</xmlatt></dt>
-          <dd>Identifies the closeness of the relationship between the current document and the
-            target resource. Allowable values are <keyword>local</keyword>, <keyword>peer</keyword>,
-              <keyword>external</keyword>, and <xref keyref="attributes-useconreftarget"
-              >"-dita-use-conref-target"</xref>. See <xref keyref="attributes-scope"/> for more
-            information on values.</dd>
         </dlentry>
         <dlentry>
           <dt id="attr-width"><xmlatt>width</xmlatt></dt>

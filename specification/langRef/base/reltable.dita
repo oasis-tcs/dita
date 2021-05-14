@@ -37,9 +37,16 @@
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
+      <draft-comment author="robander">Couple comments:<ol id="ol_rnd_3tq_ppb">
+          <li>"Not output for TOC purposes" I think can be worded better, maybe "are not rendered in
+            a table of contents"</li>
+          <li>"Within a map tree..." I think means "Within a root map, the effective relationship
+            table is the union of all relationship tables in the (map hierarchy? scope of the root
+            map?)</li>
+        </ol></draft-comment>
       <p>By default, the contents of a <xmlelement>reltable</xmlelement> element are not output for
-        navigation or TOC purposes; they are used only to define relationships that can be expressed
-        as topic-to-topic links. The <xmlelement>relcell</xmlelement> elements can contain
+        TOC purposes; they are used only to define relationships that can be expressed as
+        topic-to-topic links. The <xmlelement>relcell</xmlelement> elements can contain
           <xmlelement>topicref</xmlelement> elements, which are then related to other
           <xmlelement>topicref</xmlelement> elements in the same row (although not necessarily in
         the same cell).</p>
@@ -48,19 +55,15 @@
     </section>
     <section id="attributes">
       <title>Attributes</title>
-      <p>The following attributes are available on this element: <xref
-          keyref="attributes-universal"/>, <xref
-          keyref="attributes-common/commonmapatts"/> (without <xmlatt>keyscope</xmlatt> or
-          <xmlatt>collection-type</xmlatt>, and with a narrowed definition of
-          <xmlatt>toc</xmlatt>, given below), and the attributes
-        defined below. This element also uses <xmlatt>type</xmlatt>, <xmlatt>scope</xmlatt>, and
-          <xmlatt>format</xmlatt> from <xref keyref="attributes-common/linkatts"
-        />.</p>
+      <p>The following attributes are available on this element: <xref keyref="attributes-universal"
+        />, <xref keyref="attributes-common/commonmapatts"/> (without <xmlatt>keyscope</xmlatt> or
+          <xmlatt>collection-type</xmlatt>), <xref keyref="attributes-common/attr-type"
+            ><xmlatt>type</xmlatt></xref>, <xref keyref="attributes-common/attr-scope"
+            ><xmlatt>scope</xmlatt></xref>, <xref keyref="attributes-common/attr-format"
+            ><xmlatt>format</xmlatt></xref>, and the attributes defined below.</p>
+      <p id="attr-exception">For this element, the <xmlatt>toc</xmlatt> attribute has a default
+        value of <keyword>no</keyword>.</p>
       <dl>
-        <dlentry conkeyref="reuse-attributes/toc-default-no">
-          <dt/>
-          <dd/>
-        </dlentry>
         <dlentry>
           <dt id="attr-title"><xmlatt>title</xmlatt></dt>
           <dd>An identifying title for this element.</dd>
