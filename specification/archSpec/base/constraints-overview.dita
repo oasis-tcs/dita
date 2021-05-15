@@ -2,10 +2,10 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept xml:lang="en-us" id="concept_sv4_2gm_vp">
  <title>Overview of constraints</title>
- <shortdesc >Constraint modules enable information architects to restrict the
-  content models or attributes of OASIS-defined DITA grammars. A constraint is a simplification of
-  an XML grammar such that any instance that conforms to the constrained grammar also will conform
-  to the original grammar.<!-- The reverse is not true.--></shortdesc>
+ <shortdesc>Constraint modules enable information architects to restrict the content models or
+  attributes of DITA elements. A constraint is a simplification of an XML grammar such that any
+  instance that conforms to the constrained grammar also will conform to the original
+  grammar.<!-- The reverse is not true.--></shortdesc>
  <prolog>
   <metadata>
    <keywords>
@@ -45,11 +45,13 @@
     <dt>Restrict the elements that are available in a domain</dt>
     <dd>
      <p>Constraint modules can restrict the set of extension elements that are provided in a domain.
-       <ph >They also can restrict the content models for the extension
-       elements.</ph></p>
+      They also can restrict the content models for the extension elements.</p>
      <p otherprops="examples">For example, a constraint on the programming domain can reduce the
       list of included extension elements to <xmlelement>codeph</xmlelement> and
        <xmlelement>codeblock</xmlelement>.</p>
+     <note rev="2.0">For DITA implementations that use RNG-based grammar file, restricting the set of
+      extension elements that are provided in a domain can be handled simply by document-type
+      configuration.</note>
     </dd>
    </dlentry>
    <dlentry>

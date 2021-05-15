@@ -14,49 +14,47 @@
 		</metadata>
 	</prolog> 
   <conbody> 
-	 <p>A DITA document must either have an associated document-type definition
-		or all required attributes must be made explicit in the document instances.
-		Most DITA documents have an associated document-type shell. DITA documents that
-		reference a document-type shell can be validated using standard XML processors.
-		Such validation enables processors to read the XML grammar files and determine
-		default values for the <xmlatt>specializations</xmlatt> and <xmlatt>class</xmlatt>
-		attributes. 
-	 </p> 
+	 <p>A DITA document either must have an associated document-type definition or all required
+			attributes must be made explicit in the document instances. Most DITA documents have an
+			associated document-type shell. DITA documents that reference a document-type shell can
+			be validated using standard XML processors. Such validation enables processors to read
+			the XML grammar files and determine default values for the
+				<xmlatt>specializations</xmlatt> and <xmlatt>class</xmlatt> attributes. </p> 
 	 <p>The following figure illustrates the relationship between a DTD-based DITA document, its
 			document-type shell, the vocabulary modules that it uses, <ph rev="2.0">and the
-				element-configuration modules (constraints and expansions) that it integrates</ph>.
+				element-configuration modules (constraint and expansion) that it integrates</ph>.
 			Similar structure applies to DITA documents that use other XML grammars. </p> 
-	 <fig id="fig_A20B8879F2D94F41B6B732A546C8D772"> 
-		<title>Document type shell</title> 
-		<image href="../../images/instances-modules-declarations-01.png"
-		 placement="break" id="image_1EB5D8D620784EBA9C6D5F250A8C321B" scale="70"
-		 > 
-		  <alt>Diagram showing a typical architecture of a DITA document type shell. At the top left a
-					DITA document file named <filepath>myTopic.dita</filepath> refers to a document
-					type of 'myTopic'. An arrow from this file points to a document-type shell file
-					named <filepath>myTopic.dtd</filepath>. Arrows point to several other modules. A
-					constraint module is named <filepath>strictMyTopicConstraint.mod</filepath>.
-					Structural modules are named <filepath>mytopic.ent</filepath>,
-						<filepath>mytopic.mod</filepath>, <filepath>topic.ent</filepath>, and
-						<filepath>topic.mod</filepath>. Domain modules are named
-						<filepath>myPhraseDomain.ent</filepath>,
+	 <fig>
+			<title>Document type shell</title>
+			<image href="../../images/instances-modules-declarations-01.png" placement="break"
+				scale="70">
+				<alt>Diagram showing a typical architecture of a DITA document type shell. At the
+					top left a DITA document file named <filepath>myTopic.dita</filepath> refers to
+					a document type of 'myTopic'. An arrow from this file points to a document-type
+					shell file named <filepath>myTopic.dtd</filepath>. Arrows point to several other
+					modules. A constraint module is named
+						<filepath>strictMyTopicConstraint.mod</filepath>. Structural modules are
+					named <filepath>mytopic.ent</filepath>, <filepath>mytopic.mod</filepath>,
+						<filepath>topic.ent</filepath>, and <filepath>topic.mod</filepath>. Domain
+					modules are named <filepath>myPhraseDomain.ent</filepath>,
 						<filepath>myPhraseDomain.mod</filepath>,
 						<filepath>highlightDomain.ent</filepath>,
 						<filepath>highlightDomain.mod</filepath>,
 						<filepath>programmingDomain.ent</filepath>, and
 						<filepath>programmingDomain.mod</filepath>. The structural and domain
-					modules are grouped together and labeled vocabulary modules. </alt> 
-		</image> 
-	 </fig>
+					modules are grouped together and labeled vocabulary modules. </alt>
+			</image>
+		</fig>
 		<draft-comment author="Kristen J Eberlein" time="28 March 2021">
 			<p>The illustration needs to be updated to include expansion modules.</p>
 		</draft-comment> 
 	 <p>The DITA specification contains a starter set of document-type shells. These document-type
 			shells are commented and can be used as templates for creating custom document-type
-			shells. While the OASIS-provided document-type shells can be used without any
-			modification, creating custom document-type shells is a best practice. If the
-			document-type shells need to be modified in the future, for example, to include a
-			specialization or integrate a constraint, the existing DITA documents will not need to
-			be modified to reference a new document-type shell. </p> 
+			shells.</p>
+		<p>While the OASIS-provided document-type shells can be used without any modification,
+			creating custom document-type shells is a best practice. If the document-type shells
+			need to be modified in the future, for example, to include a specialization or integrate
+			a constraint, the existing DITA documents will not need to be modified to reference a
+			new document-type shell. </p> 
   </conbody> 
 </concept> 
