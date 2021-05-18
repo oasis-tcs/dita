@@ -25,11 +25,12 @@
                 modifies. The expansion module itself imports the vocabulary module to be expanded;
                 within the import, the module redefines the patterns as needed to implement the
                 expansion.</p>
-            <p>For example, an expansion module that modifies the content model of
-                    <xmlelement>section</xmlelement> imports the base module
-                    <filepath>topicMod.rng</filepath>. Within that import, it expands the
-                    <codeph>section.content</codeph>  pattern:</p>
-            <codeblock>    &lt;a:documentation>CONTENT MODEL AND ATTRIBUTE LIST OVERRIDES&lt;/a:documentation>
+            <div otherprops="examples">
+                <p>For example, an expansion module that modifies the content model of
+                        <xmlelement>section</xmlelement> imports the base module
+                        <filepath>topicMod.rng</filepath>. Within that import, it expands the
+                        <codeph>section.content</codeph> pattern:</p>
+                <codeblock>    &lt;a:documentation>CONTENT MODEL AND ATTRIBUTE LIST OVERRIDES&lt;/a:documentation>
     &lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0">
       <b>&lt;define name="section.content" combine="interleave">
         &lt;optional>
@@ -44,9 +45,10 @@
       &lt;/define></b>
     &lt;/include>
   &lt;/div></codeblock>
-            <p>Note that the specialized element <xmlelement>sectionDesc</xmlelement> must be
-                declared in an element domain module that also is integrated into the document-type
-                shell.</p>
+                <p>Note that the specialized element <xmlelement>sectionDesc</xmlelement> must be
+                    declared in an element domain module that also is integrated into the
+                    document-type shell.</p>
+            </div>
         </section>
     </conbody>
 </concept>

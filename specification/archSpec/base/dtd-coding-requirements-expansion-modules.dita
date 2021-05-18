@@ -58,12 +58,18 @@
                         <example otherprops="examples">
                             <p>For example, the following code sample shows the entity declaration
                                 file for an element specialization module that defines a
-                                    <xmlelement>section-shortdesc</xmlelement> element, which is
-                                intended to be added to the content model of
-                                    <xmlelement>section</xmlelement>:</p>
-                            <codeblock>&lt;!ENTITY sectionShortdesc-d-p-expansion "section-shortdesc">
+                                    <xmlelement>sectionDesc</xmlelement> element, which is intended
+                                to be added to the content model of
+                                <xmlelement>section</xmlelement>:</p>
+                            <codeblock>&lt;!ENTITY sectionDesc-d-p-expansion "sectionDesc">
 
-&lt;!ENTITY % section-shortdesc "section-shortdesc"></codeblock>
+&lt;!ENTITY % sectionDesc "sectionDesc"></codeblock>
+                            <draft-comment author="Kristen J Eberlein" time="18 May 2021">
+                                <p>Comment by Robert Anderson: "I don't understand why we have both
+                                    entities, sectionDesc-d-p-expansion and sectionDesc - that seems
+                                    like a leftover extra entity from the domain days that does not
+                                    really make sense here?"</p>
+                            </draft-comment>
                             <p>When the content model for <xmlelement>section</xmlelement> is
                                 redefined in the expansion module, it references the parameter
                                 entity defined in the entities file for the element
@@ -83,9 +89,15 @@
                %sectiondiv; |
                %title; |
                %draft-comment;<b>|
-               %sectionShortdesc-d-p-expansion;</b>)*"
+               %sectionDesc-d-p-expansion;</b>)*"
 >
 </codeblock>
+                            <draft-comment author="Kristen J Eberlein" time="18 May 2021">
+                                <p>Comment by Robert Anderson: "When adding it to the content model,
+                                    why do we use the "expansion" entity and not the element name? I
+                                    would expect the element name here with the other element
+                                    names."</p>
+                            </draft-comment>
                             <p>Note that this expansion module also constrains the content model of
                                     <xmlelement>section</xmlelement> to only include certain block
                                 elements.</p>

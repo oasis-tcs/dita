@@ -111,36 +111,6 @@
 &lt;/div></codeblock>
         </li>
         <li>
-          <p>The information architect modifies the "ID-DEFINING ELEMENT OVERRIDES" division to add
-              <xmlelement>section</xmlelement> as an element on which the <xmlatt>id</xmlatt>
-            attribute is required.</p>
-          <codeblock>&lt;div>
-  &lt;a:documentation>ID-DEFINING ELEMENT OVERRIDES&lt;/a:documentation>
-  &lt;define name="any">
-    &lt;zeroOrMore>
-      &lt;choice>
-        &lt;ref name="idElements"/>
-        &lt;element>
-          &lt;anyName>
-            &lt;except>
-              &lt;name>topic&lt;/name>
-              <b>&lt;name>section&lt;/name></b>
-            &lt;/except>
-          &lt;/anyName>
-          &lt;zeroOrMore>
-            &lt;attribute>
-              &lt;anyName/>
-            &lt;/attribute>
-          &lt;/zeroOrMore>
-          &lt;ref name="any"/>
-        &lt;/element>
-        &lt;text/>
-      &lt;/choice>
-    &lt;/zeroOrMore>
-  &lt;/define>
-&lt;/div></codeblock>
-        </li>
-        <li>
           <p>To constrain the highlight domain, the information architect modifies the include
             statement for the domain module:</p>
           <codeblock>&lt;div>
