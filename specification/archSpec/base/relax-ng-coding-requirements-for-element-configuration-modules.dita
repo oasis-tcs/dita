@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="relax_ng_coding_requirements_for_element_configuration_modules">
+    <title>RELAX NG: Coding requirements for element-configuration modules</title>
+    <shortdesc>An element-configuration module (constraint and expansion) redefines the content
+        model or attribute list for one or more elements.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords/>
+        </metadata>
+    </prolog>
+    <conbody>
+        <section>
+            <title>Implementation of element-configuration modules</title>
+            <p>Element-configuration modules are implemented by importing the element-configuration
+                modules into a document-type shell in place of the vocabulary module that is
+                redefined. The element-configuration module itself imports the base vocabulary
+                module; within the import, the module redefines the patterns as needed to implement
+                the constraint, expansion, or both.</p>
+            <dl otherprops="examples">
+                <dlentry>
+                    <dt>Constraint modules</dt>
+                    <dd>
+                        <p>For example, a constraint module that modifies the
+                                <xmlelement>topic</xmlelement> element imports the base module
+                                <filepath>topicMod.rng</filepath>. Within that import, it constrains
+                            the <codeph>topic.content</codeph> pattern:</p>
+                        <codeblock>  &lt;div>
+    &lt;a:documentation>ATTRIBUTES AND CONTENT MODEL OVERRIDES&lt;/a:documentation>
+    &lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0">
+      &lt;define name="topic.content" combine="interleave">
+        &lt;ref name="title"/>
+        &lt;ref name="shortdesc"/>
+        &lt;optional>
+          &lt;ref name="prolog"/>
+        &lt;/optional>
+        &lt;optional>
+          &lt;ref name="body"/>
+        &lt;/optional>
+      &lt;/define>
+    &lt;/include>
+  &lt;/div></codeblock>
+                    </dd>
+                </dlentry>
+                <dlentry>
+                    <dt>Expansion modules</dt>
+                    <dd>
+                        <p>For example, an expansion module that modifies the content model of
+                                <xmlelement>section</xmlelement> imports the base module
+                                <filepath>topicMod.rng</filepath>. Within that import, it expands
+                            the <codeph>section.content</codeph> pattern:</p>
+                        <codeblock>    &lt;a:documentation>CONTENT MODEL AND ATTRIBUTE LIST OVERRIDES&lt;/a:documentation>
+    &lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0">
+      <b>&lt;define name="section.content" combine="interleave">
+        &lt;optional>
+          &lt;ref name="title"/>
+        &lt;/optional>
+        &lt;optional>
+          &lt;ref name="sectionDesc"/>
+        &lt;/optional>
+        &lt;zeroOrMore>
+          &lt;ref name="section.cnt"/>
+        &lt;/zeroOrMore>
+      &lt;/define></b>
+    &lt;/include>
+  &lt;/div></codeblock>
+                        <p>Note that the specialized element <xmlelement>sectionDesc</xmlelement>
+                            must be declared in an element domain module that also is integrated
+                            into the document-type shell.</p>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section>
+        <section>
+            <title>Combining multiple element-configuration modules</title>
+            <p>Because the element-configuration module imports the module that it modifies, only
+                one element-configuration module can be used per vocabulary module; otherwise the
+                vocabulary module would be imported multiple times. If multiple element
+                configurations are combined for a single vocabulary module, they need to be
+                implemented in one of the following ways:</p>
+            <dl>
+                <dlentry>
+                    <dt>Combined into a single element-configuration module</dt>
+                    <dd>
+                        <p>The element configurations can be combined into a single module.</p>
+                        <div otherprops="examples">
+                            <p>For example, when combining separate constraints for
+                                    <xmlelement>section</xmlelement> and
+                                    <xmlelement>shortdesc</xmlelement>, a single module can be
+                                defined as follows:</p>
+                            <codeblock>&lt;include href="topicMod.rng"&gt;
+  &lt;define name="section.content"&gt;
+    &lt;!-- Constrained model for section -->
+  &lt;/define>
+  &lt;define name="shortdesc.content">
+    &lt;!-- Constrained model for shortdesc -->
+  &lt;/define>
+&lt;/include>
+</codeblock>
+                        </div>
+                    </dd>
+                </dlentry>
+                <dlentry>
+                    <dt>Chaining element-configuration modules</dt>
+                    <dd>
+                        <p>Element-configuration modules can be chained so that each
+                            element-configuration module imports another, until the final
+                            element-configuration module imports the base vocabulary module.</p>
+                        <div otherprops="examples">
+                            <p>For example, when combining separate constraints for
+                                    <xmlelement>section</xmlelement>,
+                                    <xmlelement>shortdesc</xmlelement>, and
+                                    <xmlelement>li</xmlelement> from the base vocabulary, the
+                                    <xmlelement>section</xmlelement> constraint can import the
+                                    <xmlelement>shortdesc</xmlelement> constraint, which in turn
+                                imports the <xmlelement>li</xmlelement> constraint, which finally
+                                imports <filepath>topicMod.rng</filepath>.</p>
+                            <draft-comment author="Kristen J Eberlein" time="07 April 2021">
+                                <p>Need an example of this. And do we really want to recommend that
+                                    people do this? When would doing this make sense/be a best
+                                    practice?</p>
+                            </draft-comment>
+                        </div>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section>
+    </conbody>
+</concept>

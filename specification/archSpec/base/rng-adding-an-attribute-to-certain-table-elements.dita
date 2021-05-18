@@ -17,6 +17,70 @@
         </metadata>
     </prolog>
     <conbody>
+    <draft-comment author="Kristen J Eberlein" time="18 May 2021">
+      <p>Comment from Robert Anderson: "This example feels like it is more complex than it needs to
+        be but maybe I'm missing something about RNG. If nothing else, I don't understand why we
+        would define 2 RNG files for this; couldn't we simplify and define the cellPurpose attribute
+        in the same module tableCellAttExpansion.rng?"</p>
+      <p>From a Skype message from Robert Anderson on 17 May 2021:</p>
+      <p>"I sent all my comments on the proposal a bit ago, but couldn't let it go and went back to
+        try a simpler way to add extension attributes with RNG. Set up a cellPurpose.rng file that
+        does it all in one file, without any need to override topicMod.rng like you do with
+        constraints."</p>
+      <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+                         schematypens="http://relaxng.org/ns/structure/1.0"?>
+&lt;grammar 
+  xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:dita="http://dita.oasis-open.org/architecture/2005/"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  &lt;define name="cellPurposeAtt">
+    &lt;optional>
+      &lt;attribute name="cellPurpose">
+        &lt;a:documentation>Specifies the purpose of the table cell. This is a specialized
+          attribute for Acme Corporation.
+        &lt;/a:documentation>
+        &lt;choice>
+          &lt;value>sale&lt;/value>
+          &lt;value>out-of-stock&lt;/value>
+          &lt;value>new&lt;/value>
+          &lt;value>last-chance&lt;/value>
+          &lt;value>inherit&lt;/value>
+          &lt;value>none&lt;/value>
+        &lt;/choice>
+      &lt;/attribute>
+    &lt;/optional>
+  &lt;/define>
+  
+  &lt;define name="entry.attributes" combine="interleave">
+    &lt;ref name="cellPurposeAtt"/>
+  &lt;/define>
+  &lt;define name="stentry.attributes" combine="interleave">
+    &lt;ref name="cellPurposeAtt"/>
+  &lt;/define>
+  &lt;define name="row.attributes" combine="interleave">
+    &lt;ref name="cellPurposeAtt"/>
+  &lt;/define>
+  &lt;define name="strow.attributes" combine="interleave">
+    &lt;ref name="cellPurposeAtt"/>
+  &lt;/define>
+  &lt;define name="colspec.attributes" combine="interleave">
+    &lt;ref name="cellPurposeAtt"/>
+  &lt;/define>
+&lt;/grammar></codeblock>
+      <p>when I add that to basetopic.rng with &lt;include href="cellPurpose.rng"/> I'm able to add
+        cellPurpose to the 5 table elements. Only other change should be to add this to the
+        specializations declaration in the shell: </p>
+      <codeblock>&lt;attribute name="specializations"
+                       a:defaultValue="
+                         @props/audience
+                         @props/deliveryTarget
+                         @props/otherprops
+                         @props/platform
+                         @props/product
+                         @base/cellPurpose"/></codeblock>
+    </draft-comment>
         <p>The DITA architect decides to create a new attribute (<xmlatt>cell-purpose</xmlatt>) and
             add it to the content model of the following elements:</p>
         <ul>

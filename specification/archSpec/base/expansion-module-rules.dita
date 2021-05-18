@@ -15,6 +15,12 @@
         </metadata>
     </prolog>
     <conbody>
+        <draft-comment author="Kristen J Eberlein" time="18 May 2021">
+            <p>Comment by Chris Nitchie: "I feel like somewhere we need something like this
+                sentence, maybe at the top: "The generalized form of an expanded element's content
+                model must match that of the unexpanded content model." All of what follows stems
+                from this statement."</p>
+        </draft-comment>
         <dl>
             <dlentry>
                 <dt>Specialization base of expanded elements</dt>
@@ -36,6 +42,16 @@
                     <p>Expansion modules must not affect the ordinality of the original content
                         model. If the original content model only permits an element to occur once,
                         then the expanded content model cannot break this requirement.</p>
+                    <draft-comment author="Kristen J Eberlein">
+                        <p>Comment from Robert Anderson: "Not sure about this, but not sure how to
+                            fix the concern: "Expansion modules must not affect the ordinality of
+                            the original content model". I don't think that's technically true in
+                            all cases, depending on how "ordinality" is defined. You can use an
+                            expansion model that adds &lt;mySpecialListItem> as the required first
+                            child of &lt;ol>, and then make all following list items optional. It's
+                            valid because every list has at least one list item (that specialized
+                            thing), but it changes lists to make a required &lt;li> optional."</p>
+                    </draft-comment>
                     <div otherprops="examples">
                         <p>For example, a DITA architect wants to add a new specialization of
                                 <xmlelement>title</xmlelement> to the <xmlelement>topic</xmlelement>
@@ -49,6 +65,14 @@
                                     <xmlelement>title</xmlelement> and the new specialized
                                 element</li>
                         </ul>
+                        <draft-comment author="Kristen J Eberlein" time="17 May 2021">
+                            <p>Robert had the following comment: "Actually isn't the actual example
+                                here doing what it sort of says not to do? It explains why this is
+                                valid, but ... it's making a required &lt;title> optional because an
+                                alternate title takes its place, which again, we might need to
+                                redefine "ordinality" as "DITA ordinality" to cover
+                                specialization?"</p>
+                        </draft-comment>
                     </div>
                 </dd>
             </dlentry>

@@ -29,10 +29,10 @@
         <p>The new attribute will be specialized from <xmlatt>base</xmlatt>; it will have a small
             set of tokens that can be values for the new attribute.</p>
         <p>The DITA architect decides to integrate the attribute declaration and its assignment to
-            elements into a single expansion module. A more flexible approach would be to separate
-            each <codeph>&lt;!ATTLIST</codeph> declaration in its own separate expansion module,
-            thus allowing DITA architects who construct document-type shells to decide the elements
-            to which to apply the attribute.</p>
+            elements into a single expansion module. An alternate approach would be to separate each
+                <codeph>&lt;!ATTLIST</codeph> declaration in its own separate expansion module, thus
+            allowing DITA architects who construct document-type shells to decide the elements to
+            which to apply the attribute.</p>
         <ol>
             <li>First, the DITA architect creates the attribute domain module for the
                     <xmlatt>cell-purpose</xmlatt> attribute:
@@ -53,7 +53,13 @@
                     attribute definition entity ends in <codeph>-expansion</codeph>; this indicates
                     that this is an expansion attribute and should not be included in the
                         <parameterentity>base-attribute-extensions</parameterentity> entity in the
-                    document-type shell.</note></li>
+                    document-type shell.</note><draft-comment author="Kristen J Eberlein"
+                    time="18 May 2021">
+                    <p>Comment by Robert Anderson: "[The note] should clarify that this entity is
+                        totally optional -- only useful here because we're adding the same attribute
+                        with the same tokens to several elements. If you're only adding one
+                        attribute to one element, you wouldn't want this entity."</p>
+                </draft-comment></li>
             <li>The DITA architect updates the <filepath>catalog.xml</filepath> file to include the
                 expansion module.</li>
             <li>The DITA architect integrates this module into the document-type
@@ -66,7 +72,7 @@
          "cellPurposeAttExpansion.ent"
 >%cellPurposeAttExpansion-d-dec;</b></codeblock></li>
             <li>The DITA architect adds the entity for the contribution to the
-                    <xmlatt>specialization</xmlatt>
+                    <xmlatt>specializations</xmlatt>
                 attribute.<codeblock>&lt;!-- ============================================================= -->
 &lt;!--                 SPECIALIZATIONS ATTRIBUTE OVERRIDE            -->
 &lt;!-- ============================================================= -->
