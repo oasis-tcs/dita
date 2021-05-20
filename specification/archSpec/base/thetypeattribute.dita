@@ -9,17 +9,17 @@
   <prolog>
     <metadata>
       <keywords>
-        <indexterm>attributes, complex<indexterm><xmlatt>type</xmlatt></indexterm></indexterm>
+        <indexterm>linking attributes<indexterm><xmlatt>type</xmlatt></indexterm></indexterm>
       </keywords>
     </metadata>
   </prolog>
 <refbody>
-<section id="section-1">The descriptions for the <xmlatt>type</xmlatt> attribute on linking elements and on
-        <xmlelement>note</xmlelement> are included in this section; for other elements, such as
-        <xmlelement>audience</xmlelement>, <xmlelement>copyright</xmlelement>, and
-        <xmlelement>object</xmlelement>, the description can be found with the topic for the
-      specific element.</section>
-<section id="linking"><title>Using <xmlatt>type</xmlatt> on a linking element</title><p>The <xmlatt>type</xmlatt> attribute describes the target of a cross-reference and might generate
+<section id="section-1">This topic describes how to interpret the <xmlatt>type</xmlatt> attribute
+      when it is used on linking elements. Usage information for the <xmlatt>type</xmlatt> attribute
+      on other elements, such as <xmlelement>note</xmlelement> or
+      <xmlelement>copyright</xmlelement>, is described in the element reference topics for those
+      elements.</section>
+<section id="linking"><p>The <xmlatt>type</xmlatt> attribute describes the target of a cross-reference and might generate
         cross-reference text based on that description. Only the <xmlelement>xref</xmlelement>
         element can link to content below the topic level: other types of linking can target whole
         topics, but not parts of topics. Typically <xmlelement>xref</xmlelement> should also be
@@ -28,6 +28,11 @@
         topics.</p><p>If not explicitly specified on an element, the <xmlatt>type</xmlatt> attribute value cascades
         from the closest ancestor element. If there is no explicit value for the
           <xmlatt>type</xmlatt> attribute on any ancestor, a default value of <q>topic</q> is used. </p>
+      <draft-comment author="robander" time="19 May 2021">I think we need to look closely at the
+        next clause, which is normative; I don't think the "specialization of the
+          <xmlatt>type</xmlatt> attribute value" is quite right. It's supposed to be a
+        specialization of the element type named as the <i>value</i> of
+        <xmlatt>type</xmlatt>.</draft-comment>
       <p>During output processing for references to DITA topics (<codeph>format="dita"</codeph>), it
         is an error if the actual type of a DITA topic and the explicit, inherited, or default value
         for the <xmlatt>type</xmlatt> attribute are not the same as or a specialization of the
@@ -82,63 +87,6 @@ be treated as "topic".</dd>
         </dlentry></dl><p>Other values can be used to indicate other types of topics or elements as targets. Processing is
         only required to support the above list or specializations of types in that list. Supporting
         additional types as targets might require the creation of processing overrides.</p></section>
-<section id="type-note"><title>Using <xmlatt>type</xmlatt> in a <xmlelement>note</xmlelement> element</title><p>In a <xmlelement>note</xmlelement> element, this defines the type of note. For example, if the
-        note is a tip, the word <b>Tip</b> might be used to draw the reader's attention to it. The
-        values danger, warning, and notice have meanings that are based on ANSI Z535 and ISO 3864
-        regulations.</p><p>If <xmlatt>type</xmlatt> is set to <keyword>other</keyword>, the value of the
-          <xmlatt>othertype</xmlatt> attribute can be used. If you use <xmlatt>othertype</xmlatt>,
-        many processors will require additional information on how to process the value. Allowable
-        values for the <xmlatt>type</xmlatt> attribute are:</p><dl><dlentry>
-<dt><keyword>note</keyword></dt>
-<dd>This is just a note.</dd>
-</dlentry><dlentry>
-<dt><keyword>attention</keyword></dt>
-<dd>Please pay extra attention to this note.</dd>
-</dlentry><dlentry>
-<dt><keyword>caution</keyword></dt>
-<dd>Care is required when proceeding.</dd>
-</dlentry><dlentry>
-<dt><keyword>danger</keyword></dt>
-<dd>Important! Be aware of this before doing anything else. <ph>When used with the
-                <xmlelement>hazardstatement</xmlelement> element, this indicates an imminently
-              hazardous situation which, if not avoided, <b>will</b> result in death or serious
-              injury.</ph></dd>
-</dlentry><dlentry>
-<dt><keyword>fastpath</keyword></dt>
-<dd>This note will speed you on your way.</dd>
-</dlentry><dlentry>
-<dt><keyword>important</keyword></dt>
-<dd>This note is important.</dd>
-</dlentry><dlentry>
-<dt><keyword>notice</keyword></dt>
-<dd> Indicates a potential situation which, if not avoided, might result in an <b>undesirable result
-              or state</b>.</dd>
-</dlentry><dlentry>
-<dt><keyword>remember</keyword></dt>
-<dd>Don&apos;t forget to do what this note says.</dd>
-</dlentry><dlentry>
-<dt><keyword>restriction</keyword></dt>
-<dd>You can&apos;t do what this note says.</dd>
-</dlentry><dlentry>
-<dt><keyword>tip</keyword></dt>
-<dd>This is a fine little tip.</dd>
-</dlentry><dlentry>
-<dt><keyword>warning</keyword></dt>
-<dd>Indicates a potentially hazardous situation. When used with the
-              <xmlelement>hazardstatement</xmlelement> element, this indicates a situation which, if
-            not avoided, could result in death or serious injury.</dd>
-</dlentry>
-    <dlentry >
-     <dt><keyword>trouble</keyword></dt>
-     <dd>Provides information about how to remedy a trouble situation.</dd>
-    </dlentry><dlentry>
-<dt><keyword>other</keyword></dt>
-<dd>This is something other than a normal note.</dd>
-</dlentry>
-        <dlentry conkeyref="reuse-attributes/ditauseconref">
-          <dt> </dt>
-          <dd> </dd>
-        </dlentry></dl></section>
 </refbody>
 </reference>
 
