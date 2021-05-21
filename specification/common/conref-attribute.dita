@@ -114,8 +114,7 @@
                                         delimited properties.</ph></p><p><ph id="inherit-in-map">If the value is not specified locally, the value might cascade from
                                         another element in the map (for cascade rules, see <xref
                                                 href="../archSpec/base/cascading-in-a-ditamap.dita#cascading-in-a-ditamap"
-                                        />).</ph></p><p><ph id="define-ID">This attribute is defined
-                                        with the XML Data Type ID.</ph></p><p><ph id="nonstandard-type"
+                                        />).</ph></p><p><ph id="nonstandard-type"
                                         >Note that this differs from the <xmlatt>type</xmlatt>
                                         attribute on many other DITA elements.</ph></p><p><ph
                                         id="non-dita-href">References to content other than DITA
@@ -146,12 +145,14 @@
                                         conkeyref="reuse-attributes/ref-universalatts"/>.</p><p id="only-universal">The following attributes are available on this element: <ph
                                         conkeyref="reuse-attributes/ref-universalatts"/>.</p><p id="universal-outputclass-name">The following attributes are available on this element: <ph
                                         conkeyref="reuse-attributes/ref-universalatts"/>, and <xref
-                                        keyref="attributes-common/name"/>.</p><p id="universal-keyref">The following attributes are available on this element: <ph
+                                        keyref="attributes-common/name"
+                                ><xmlatt>name</xmlatt></xref>.</p><p id="universal-keyref">The following attributes are available on this element: <ph
                                         conkeyref="reuse-attributes/ref-universalatts"/> and <xref
                                         keyref="attributes-common/attr-keyref"
                                 ><xmlatt>keyref</xmlatt></xref>.</p><p id="universal-specentry" platform="dita">The following attributes are available on this element:
                                         <ph conkeyref="reuse-attributes/ref-universalatts"/> and
-                                        <xref keyref="attributes-common/specentry"/>.</p><p id="universal-spectitle" platform="dita">The following attributes are available on this element:
+                                        <xref keyref="attributes-common/specentry"
+                                                ><xmlatt>specentry</xmlatt></xref>.</p><p id="universal-spectitle" platform="dita">The following attributes are available on this element:
                                         <ph conkeyref="reuse-attributes/ref-universalatts"/> and
                                         <xref keyref="attributes-common/spectitle"
                                                 ><xmlatt>spectitle</xmlatt></xref>.</p><p id="universal-spectitle-compact" platform="dita">The following attributes are available on this
@@ -162,31 +163,13 @@
                                                 ><xmlatt>spectitle</xmlatt></xref>.</p><!--Used in <topic>, <concept>, etc.-->
                         <sectiondiv id="topic-attributes">
                                 <p>The following attributes are available on this element: <ph
-                                                conkeyref="reuse-attributes/ref-universalatts"/>
-                                        (with a narrowed definition of <xmlatt>id</xmlatt>, given
-                                        below) and <ph
+                                                conkeyref="reuse-attributes/ref-universalatts"/> and
+                                                <ph
                                                 conkeyref="reuse-attributes/ref-architecturalatts"
                                         />.</p>
-                                <dl>
-                                        <dlentry id="topic-id">
-                                                <dt id="attr-id"><xmlatt>id</xmlatt>
-                                                  <ph conref="#conref-attribute/required-attr"
-                                                  /></dt>
-                                                <dd>Provides an anchor point. This ID is usually
-                                                  required as part of the <xmlatt>href</xmlatt> or
-                                                  <xmlatt>conref</xmlatt> syntax when cross
-                                                  referencing or reusing content within the topic;
-                                                  it also enables <xmlelement>topicref</xmlelement>
-                                                  elements in DITA maps to optionally reference a
-                                                  specific topic within a DITA document. <ph
-                                                  conref="#conref-attribute/define-ID"/></dd>
-                                        </dlentry>
-                                </dl>
-                        </sectiondiv><p id="topic-body">The following attributes are available on this element: <ph
-                                        conkeyref="reuse-attributes/ref-universalatts"/> (without
-                                the metadata attribute group) and <xref
-                                        keyref="attributes-universal/attr-base"
-                                                ><xmlatt>base</xmlatt></xref>.</p><p id="fig-attributes" platform="dita">The following attributes are available on this element: <ph
+                                <p id="attr-exception-topicid">For this element, the
+                                                <xmlatt>id</xmlatt> attribute is required.</p>
+                        </sectiondiv><p id="fig-attributes" platform="dita">The following attributes are available on this element: <ph
                                         conkeyref="reuse-attributes/ref-universalatts"/>, <ph
                                         conkeyref="reuse-attributes/ref-displayatts"/>, and <xref
                                         keyref="attributes-common/spectitle"
@@ -209,37 +192,21 @@
 <dt id="attr-callout"><xmlatt>callout</xmlatt></dt>
 <dd>Specifies the character that is used for the footnote link, for example, a number or an
                                                   alphabetical character. The attribute also can
-                                                  specify a short string of
-                                                  characters.<!-- When no <xmlatt>callout</xmlatt> value is specified, footnotes are typically numbered.--></dd>
-</dlentry>
-</dl>
-</sectiondiv>
-<sectiondiv>
-<dl>
-<dlentry id="lomdatatype">
-<dt id="attr-datatype"><xmlatt>datatype</xmlatt></dt>
-<dd>Available for describing the type of data contained in the value attribute for this metadata
-element. The default value is the empty string "".</dd>
+                                                  specify a short string of characters.</dd>
 </dlentry>
 </dl>
 </sectiondiv><sectiondiv id="author-attributes">
                                 <p>The following attributes are available on this element: <ph
                                                 conkeyref="reuse-attributes/ref-universalatts"/>,
-                                                <ph conkeyref="reuse-attributes/ref-linkatts"/>
-                                        (with a narrowed definition for <xmlatt>type</xmlatt>, given
-                                        below), and <xref keyref="attributes-common/attr-keyref"
+                                                <ph conkeyref="reuse-attributes/ref-linkatts"/>, and
+                                                <xref keyref="attributes-common/attr-keyref"
                                                   ><xmlatt>keyref</xmlatt></xref>.</p>
-                                <dl>
-                                        <dlentry id="type">
-                                                <dt><xmlatt>type</xmlatt></dt>
-                                                <dd>Describes the type of author. <ph
-                                                  conref="#conref-attribute/nonstandard-type"/>
-                                                  <ph otherprops="examples">For example, possible
-                                                  values enumerated in earlier versions of DITA
-                                                  included <keyword>creator</keyword> and
-                                                  <keyword>contributor</keyword>.</ph></dd>
-                                        </dlentry>
-                                </dl>
+                                <p id="attr-exception-authortype">For this element, the
+                                                <xmlatt>type</xmlatt> attribute specifies the type
+                                        of author. <ph otherprops="examples">For example, possible
+                                                values enumerated in earlier versions of DITA
+                                                included <keyword>creator</keyword> and
+                                                  <keyword>contributor</keyword>.</ph></p>
                         </sectiondiv><sectiondiv id="standard-topicref-attributes" platform="dita">
                                 <p>The following attributes are available on this element: <ph
                                                 conkeyref="reuse-attributes/ref-universalatts"/>,
@@ -250,36 +217,6 @@ element. The default value is the empty string "".</dd>
                                                 keyref="attributes-common/attr-keyref"
                                                 ><xmlatt>keyref</xmlatt></xref>.</p>
                         </sectiondiv><sectiondiv>
-                                <p>Define the <keyword>href</keyword> value common to map
-                                        references.</p>
-                                <dl>
-                                        <dlentry id="format-mapref">
-                                                <dt id="attr-format-mapref"
-                                                  ><xmlatt>format</xmlatt></dt>
-                                                <dd>Specifies the format of the resource. By
-                                                  default, it is set to <keyword>ditamap</keyword>.
-                                                  Otherwise, the attribute is the same as described
-                                                  in <ph conkeyref="reuse-attributes/ref-linkatts"
-                                                  />.</dd>
-                                        </dlentry>
-                                </dl>
-                        </sectiondiv><sectiondiv>
-                                <p>Provide a reusable definition of <xmlatt>toc</xmlatt> when there
-                                        is a default of "no".</p>
-                                <dl>
-                                        <dlentry id="toc-default-no">
-                                                <dt id="attr-toc"><xmlatt>toc</xmlatt></dt>
-                                                <dd>Specifies whether the resource appears in the
-                                                  table of contents (TOC). If the value is not
-                                                  specified locally, but is specified on an
-                                                  ancestor, the value cascades from the closest
-                                                  containing element. By default, the value for
-                                                  <xmlatt>toc</xmlatt> is set to "no". See <ph
-                                                  conkeyref="reuse-attributes/ref-commonmapatts"/>
-                                                  for a complete definition of
-                                                  <xmlatt>toc</xmlatt>.</dd>
-                                        </dlentry>
-                                </dl>
                                 <p>Provide a reusable definition of <xmlatt>print</xmlatt> attribute
                                         values, and a reusable definition when there is a default of
                                         "no".</p>
