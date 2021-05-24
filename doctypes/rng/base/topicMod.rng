@@ -108,10 +108,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
     <define name="section">
       <ref name="section.element"/>
     </define>
-    <define name="sectiondiv">
-      <ref name="sectiondiv.element"/>
-    </define>
-
 
   </div>
   <div>
@@ -162,24 +158,11 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
         <ref name="basic.ph"/>
         <ref name="data.elements.incl"/>
         <ref name="foreign.unknown.incl"/>
-        <ref name="sectiondiv"/>
         <ref name="title"/>
         <ref name="txt.incl"/>
       </choice>
     </define>
     <define name="section.notitle.cnt">
-      <choice>
-        <text/>
-        <ref name="basic.block"/>
-        <ref name="basic.ph"/>
-        <ref name="data.elements.incl"/>
-        <ref name="foreign.unknown.incl"/>
-        <ref name="sectiondiv"/>
-        <ref name="txt.incl"/>
-      </choice>
-    </define>
-    <define name="sectiondiv.cnt">
-      <a:documentation>sectiondiv also includes sectiondiv</a:documentation>
       <choice>
         <text/>
         <ref name="basic.block"/>
@@ -442,34 +425,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
       </define>
       <define name="section.attlist" combine="interleave">
         <ref name="section.attributes"/>
-      </define>
-
-    </div>
-    <div>
-      <a:documentation>LONG NAME: Section division</a:documentation>
-
-      <define name="sectiondiv.content">
-        <zeroOrMore>
-          <choice>
-            <ref name="sectiondiv.cnt"/>
-            <ref name="sectiondiv"/>
-          </choice>
-        </zeroOrMore>
-      </define>
-      <define name="sectiondiv.attributes">
-        <ref name="univ-atts"/>
-      </define>
-      <define name="sectiondiv.element">
-        <element name="sectiondiv" dita:longName="Section division">
-          <a:documentation>The &lt;sectiondiv> element allows logical grouping of content within a section. There is no additional semantic associated with the sectiondiv element, aside from its
-            function as a container for other content. The sectiondiv element does not contain a title; the lowest level of titled content within a topic is the section itself. If additional hierarchy
-            is required, nested topics should be used in place of the section.</a:documentation>
-          <ref name="sectiondiv.attlist"/>
-          <ref name="sectiondiv.content"/>
-        </element>
-      </define>
-      <define name="sectiondiv.attlist" combine="interleave">
-        <ref name="sectiondiv.attributes"/>
       </define>
 
     </div>
@@ -822,11 +777,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
     <define name="section.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="- topic/section "/>
-      </optional>
-    </define>
-    <define name="sectiondiv.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- topic/sectiondiv "/>
       </optional>
     </define>
     <define name="topic.attlist" combine="interleave">
