@@ -143,20 +143,10 @@
                %basic.ph; |
                %data.elements.incl; |
                %foreign.unknown.incl; |
-               %sectiondiv; |
                %title; |
                %txt.incl;"
 >
 <!ENTITY % section.notitle.cnt
-              "#PCDATA |
-               %basic.block; |
-               %basic.ph; |
-               %data.elements.incl; |
-               %foreign.unknown.incl; |
-               %sectiondiv; |
-               %txt.incl;"
->
-<!ENTITY % sectiondiv.cnt
               "#PCDATA |
                %basic.block; |
                %basic.ph; |
@@ -300,18 +290,6 @@
 >
 <!ELEMENT  section %section.content;>
 <!ATTLIST  section %section.attributes;>
-
-
-<!--                    LONG NAME: Section division                -->
-<!ENTITY % sectiondiv.content
-                       "(%sectiondiv.cnt; |
-                         %sectiondiv;)*"
->
-<!ENTITY % sectiondiv.attributes
-              "%univ-atts;"
->
-<!ELEMENT  sectiondiv %sectiondiv.content;>
-<!ATTLIST  sectiondiv %sectiondiv.attributes;>
 
 
 <!--                    LONG NAME: prolog                          -->
@@ -461,7 +439,6 @@
 <!ATTLIST  prolog         class CDATA "- topic/prolog "     >
 <!ATTLIST  related-links   class CDATA "- topic/related-links ">
 <!ATTLIST  section        class CDATA "- topic/section "    >
-<!ATTLIST  sectiondiv     class CDATA "- topic/sectiondiv " >
 <!ATTLIST  topic          class CDATA "- topic/topic "      >
 
 <!-- ================== End of DITA Topic Module ==================== -->
