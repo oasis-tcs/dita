@@ -1752,6 +1752,12 @@
                            peer |
                            -dita-use-conref-target)
                                     #IMPLIED
+               height
+                          NMTOKEN
+                                    #IMPLIED
+               width
+                          NMTOKEN
+                                    #IMPLIED
                tabindex
                           NMTOKEN
                                     #IMPLIED
