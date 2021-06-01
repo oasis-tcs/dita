@@ -144,9 +144,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
     <define name="longdescref">
       <ref name="longdescref.element"/>
     </define>
-    <define name="longquoteref">
-      <ref name="longquoteref.element"/>
-    </define>
     <define name="lq">
       <ref name="lq.element"/>
     </define>
@@ -662,7 +659,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
           <ref name="basic.ph"/>
           <ref name="data.elements.incl"/>
           <ref name="foreign.unknown.incl"/>
-          <ref name="longquoteref"/>
           <ref name="txt.incl"/>
         </choice>
       </define>
@@ -1334,50 +1330,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
 
       </div>
       <div>
-        <a:documentation>LONG NAME: Long quote reference</a:documentation>
-        <define name="longquoteref.content">
-          <empty/>
-        </define>
-        <define name="longquoteref.attributes">
-          <optional>
-            <attribute name="href"/>
-          </optional>
-          <optional>
-            <attribute name="keyref"/>
-          </optional>
-          <optional>
-            <attribute name="type"/>
-          </optional>
-          <optional>
-            <attribute name="format"/>
-          </optional>
-          <optional>
-            <attribute name="scope">
-              <choice>
-                <value>external</value>
-                <value>local</value>
-                <value>peer</value>
-                <value>-dita-use-conref-target</value>
-              </choice>
-            </attribute>
-          </optional>
-          <ref name="univ-atts"/>
-        </define>
-        <define name="longquoteref.element">
-          <element name="longquoteref" dita:longName="Long Quote Reference">
-            <a:documentation>The &lt;longquoteref> element provides a reference to the source of a long quote. The long quote (&lt;lq>) element itself allows an href attribute to specify the source of
-              a quote, but it does not allow other standard linking attributes such as keyref, scope, and format. The &lt;longquoteref> element should be used for references that make use of these
-              attributes. </a:documentation>
-            <ref name="longquoteref.attlist"/>
-            <ref name="longquoteref.content"/>
-          </element>
-        </define>
-        <define name="longquoteref.attlist" combine="interleave">
-          <ref name="longquoteref.attributes"/>
-        </define>
-
-      </div>
-      <div>
         <a:documentation>LONG NAME: Long Quote (Excerpt)</a:documentation>
         <define name="lq.content">
           <zeroOrMore>
@@ -1386,29 +1338,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="lq.attributes">
           <optional>
-            <attribute name="href"/>
-          </optional>
-          <optional>
             <attribute name="keyref"/>
-          </optional>
-          <optional>
-            <attribute name="format"/>
-          </optional>
-          <optional>
-            <attribute name="type"/>
-          </optional>
-          <optional>
-            <attribute name="scope">
-              <choice>
-                <value>external</value>
-                <value>local</value>
-                <value>peer</value>
-                <value>-dita-use-conref-target</value>
-              </choice>
-            </attribute>
-          </optional>
-          <optional>
-            <attribute name="reftitle"/>
           </optional>
           <ref name="univ-atts"/>
         </define>
@@ -3400,11 +3330,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
     <define name="longdescref.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="- topic/longdescref "/>
-      </optional>
-    </define>
-    <define name="longquoteref.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- topic/longquoteref "/>
       </optional>
     </define>
     <define name="lq.attlist" combine="interleave">

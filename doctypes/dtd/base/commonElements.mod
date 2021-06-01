@@ -307,7 +307,6 @@
                %basic.ph; |
                %data.elements.incl; |
                %foreign.unknown.incl; |
-               %longquoteref; |
                %txt.incl;"
 >
 <!ENTITY % tblcell.cnt
@@ -742,59 +741,12 @@
 <!ATTLIST  note %note.attributes;>
 
 
-<!--                    LONG NAME: Long Quote Reference            -->
-<!ENTITY % longquoteref.content
-                       "EMPTY"
->
-<!ENTITY % longquoteref.attributes
-              "href
-                          CDATA
-                                    #IMPLIED
-               keyref
-                          CDATA
-                                    #IMPLIED
-               type
-                          CDATA
-                                    #IMPLIED
-               format
-                          CDATA
-                                    #IMPLIED
-               scope
-                          (external |
-                           local |
-                           peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               %univ-atts;"
->
-<!ELEMENT  longquoteref %longquoteref.content;>
-<!ATTLIST  longquoteref %longquoteref.attributes;>
-
-
 <!--                    LONG NAME: Long Quote                      -->
 <!ENTITY % lq.content
                        "(%longquote.cnt;)*"
 >
 <!ENTITY % lq.attributes
-              "href
-                          CDATA
-                                    #IMPLIED
-               keyref
-                          CDATA
-                                    #IMPLIED
-               format
-                          CDATA
-                                    #IMPLIED
-               type
-                          CDATA
-                                    #IMPLIED
-               scope
-                          (external |
-                           local |
-                           peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               reftitle
+              "keyref
                           CDATA
                                     #IMPLIED
                %univ-atts;"
@@ -1868,7 +1820,6 @@
 <!ATTLIST  li             class CDATA "- topic/li "         >
 <!ATTLIST  lines          class CDATA "- topic/lines "      >
 <!ATTLIST  longdescref    class CDATA "- topic/longdescref ">
-<!ATTLIST  longquoteref   class CDATA "- topic/longquoteref ">
 <!ATTLIST  lq             class CDATA "- topic/lq "         >
 <!ATTLIST  media-source   class CDATA "- topic/media-source ">
 <!ATTLIST  media-track    class CDATA "- topic/media-track ">
