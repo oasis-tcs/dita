@@ -54,7 +54,10 @@
                          %required-cleanup;)*"
 >
 <!ENTITY % b.attributes
-              "%univ-atts;"
+              "keyref
+                          CDATA
+                                    #IMPLIED
+               %univ-atts;"
 >
 <!ELEMENT  b %b.content;>
 <!ATTLIST  b %b.attributes;>
@@ -70,7 +73,10 @@
                          %required-cleanup;)*"
 >
 <!ENTITY % u.attributes
-              "%univ-atts;"
+              "keyref
+                          CDATA
+                                    #IMPLIED
+               %univ-atts;"
 >
 <!ELEMENT  u %u.content;>
 <!ATTLIST  u %u.attributes;>
@@ -86,7 +92,10 @@
                          %required-cleanup;)*"
 >
 <!ENTITY % i.attributes
-              "%univ-atts;"
+              "keyref
+                          CDATA
+                                    #IMPLIED
+               %univ-atts;"
 >
 <!ELEMENT  i %i.content;>
 <!ATTLIST  i %i.attributes;>
@@ -102,7 +111,10 @@
                          %required-cleanup;)*"
 >
 <!ENTITY % line-through.attributes
-              "%univ-atts;"
+              "keyref
+                          CDATA
+                                    #IMPLIED
+               %univ-atts;"
 >
 <!ELEMENT  line-through %line-through.content;>
 <!ATTLIST  line-through %line-through.attributes;>
@@ -118,7 +130,10 @@
                          %required-cleanup;)*"
 >
 <!ENTITY % overline.attributes
-              "%univ-atts;"
+              "keyref
+                          CDATA
+                                    #IMPLIED
+               %univ-atts;"
 >
 <!ELEMENT  overline %overline.content;>
 <!ATTLIST  overline %overline.attributes;>
@@ -134,7 +149,10 @@
                          %required-cleanup;)*"
 >
 <!ENTITY % tt.attributes
-              "%univ-atts;"
+              "keyref
+                          CDATA
+                                    #IMPLIED
+               %univ-atts;"
 >
 <!ELEMENT  tt %tt.content;>
 <!ATTLIST  tt %tt.attributes;>
@@ -150,7 +168,10 @@
                          %required-cleanup;)*"
 >
 <!ENTITY % sup.attributes
-              "%univ-atts;"
+              "keyref
+                          CDATA
+                                    #IMPLIED
+               %univ-atts;"
 >
 <!ELEMENT  sup %sup.content;>
 <!ATTLIST  sup %sup.attributes;>
@@ -166,7 +187,10 @@
                          %required-cleanup;)*"
 >
 <!ENTITY % sub.attributes
-              "%univ-atts;"
+              "keyref
+                          CDATA
+                                    #IMPLIED
+               %univ-atts;"
 >
 <!ELEMENT  sub %sub.content;>
 <!ATTLIST  sub %sub.attributes;>

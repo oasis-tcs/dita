@@ -47,7 +47,10 @@
                          %required-cleanup;)*"
 >
 <!ENTITY % strong.attributes
-              "%univ-atts;"
+              "keyref
+                          CDATA
+                                    #IMPLIED
+               %univ-atts;"
 >
 <!ELEMENT  strong %strong.content;>
 <!ATTLIST  strong %strong.attributes;>
@@ -63,7 +66,10 @@
                          %required-cleanup;)*"
 >
 <!ENTITY % em.attributes
-              "%univ-atts;"
+              "keyref
+                          CDATA
+                                    #IMPLIED
+               %univ-atts;"
 >
 <!ELEMENT  em %em.content;>
 <!ATTLIST  em %em.attributes;>
