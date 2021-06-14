@@ -20,6 +20,12 @@
                 sentence, maybe at the top: "The generalized form of an expanded element's content
                 model must match that of the unexpanded content model." All of what follows stems
                 from this statement."</p>
+            <p>Comment by Eliot Kimber: "I think this is an expansion of the suggested qualification
+                of expansion I suggested for a much earlier point in the spec. I'm not sure it's
+                necessary to go into this level of detail because the constraints on expansion
+                should be clear based on the "no less constrained" requirement. That said, it's
+                always helpful to have examples. Maybe this is better represented as a set of
+                non-normative examples?"</p>
         </draft-comment>
         <dl>
             <dlentry>
@@ -51,6 +57,11 @@
                             child of &lt;ol>, and then make all following list items optional. It's
                             valid because every list has at least one list item (that specialized
                             thing), but it changes lists to make a required &lt;li> optional."</p>
+                        <p>Comment from Eliot Kimber: "I would say "violate" here, since per
+                            Robert's comment, you can change the ordinality as long as the result is
+                            consistent with the original. If A is only allowed before B you can't
+                            change that but if A and B are in an OR group you can put them into a
+                            sequence by extension."</p>
                     </draft-comment>
                     <div otherprops="examples">
                         <p>For example, a DITA architect wants to add a new specialization of
@@ -72,6 +83,19 @@
                                 alternate title takes its place, which again, we might need to
                                 redefine "ordinality" as "DITA ordinality" to cover
                                 specialization?"</p>
+                            <p>Comment from Eliot: "Using title in section as an example is both
+                                problematic but also very instructive. It's problematic because the
+                                grammar is *less constrained* than the prose of the specification,
+                                so the rule as stated in Kris' text is correct--the *prose* doesn't
+                                allow &lt;title> anywhere except as the first child of &lt;section>,
+                                so the solution proposed is correct, in particular, the requirement
+                                to make a choice between &lt;title> and the &lt;specialization>,
+                                *because of the prose-imposed rule*, a rule not expressed in the
+                                grammars. A better example, or at least a more obvious one, would be
+                                an expansion of an element whose base content model is a sequence
+                                (i.e., prolog). That said, it's probably useful to focus on
+                                &lt;section> for this because so many people don't understand this
+                                subtlety of &lt;section>."</p>
                         </draft-comment>
                     </div>
                 </dd>
