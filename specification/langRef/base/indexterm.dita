@@ -22,18 +22,17 @@
     <!--<section id="processing-expectations"><title>Processing expectations</title><p>It is an error if an <xmlelement>indexterm</xmlelement> that contains <xmlelement>indexterm</xmlelement> children contains both an <xmlelement>index-see</xmlelement> and an <xmlelement>index-see-also</xmlelement> element. In the case of this error condition, an implementation <term outputclass="RFC-2119">MAY</term> give an error message; it <term outputclass="RFC-2119">MAY</term> recover by treating all such <xmlelement>index-see</xmlelement> elements as <xmlelement>index-see-also</xmlelement> elements.</p></section>-->
     <section id="attributes">
       <title>Attributes</title>
-      <p>The following attributes are available on this element: <xref
-          keyref="attributes-universal"/>, <xref
-          keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>, and the
+      <p>The following attributes are available on this element: <ph conkeyref="reuse-attributes/ref-universalatts"/>, <xref
+          keyref="attributes-common/attr-keyref"><xmlatt>keyref</xmlatt></xref>, and the
         attributes defined below.</p>
       <dl>
         <dlentry id="start">
-          <dt><xmlatt>start</xmlatt></dt>
+          <dt id="attr-start"><xmlatt>start</xmlatt></dt>
           <dd>Specifies an identifier that indicates the start of an index
             range.<!--<draft-comment author="Eliot Kimber">Specifies a string that serves as the identifier for the start of an index range. </draft-comment>--></dd>
         </dlentry>
         <dlentry id="end">
-          <dt><xmlatt>end</xmlatt></dt>
+          <dt id="attr-end"><xmlatt>end</xmlatt></dt>
           <dd>Specifies an identifier that indicates the end of an index
             range.<!-- is indicated by whichever comes first of the following:<draft-comment author="Eliot Kimber">Specifies a value to be matched against an earlier @start value to indicate that this index term is the end of the index range.</draft-comment><ul><li>Applicable scope boundary</li><li>An <xmlelement>indexterm</xmlelement> element with an <xmlatt>end</xmlatt> attribute with a value that matches that <xmlatt>start</xmlatt> attribute that began the index range<draft-comment author="Eliot Kimber">This is giving the general rule for determining the end of a range. That rule is already stated elsewhere and shouldn't be repeated here.</draft-comment></li></ul>--></dd>
         </dlentry>

@@ -48,19 +48,12 @@
         element is not present, the labels for the related links are generated in the following
           ways:<ul id="ul_u1n_wnw_1bb">
           <li>If the <xmlelement>relcolspec</xmlelement> element contains a
-              <xmlelement>topicref</xmlelement> element that references a non-DITA resource, the
-            value of the <xmlelement>topicref</xmlelement> element's navigation title is used for
-            the label.</li>
+              <xmlelement>topicref</xmlelement> element that specifies a navigation title, that
+            navigation title is used for the label.</li>
           <li>If the <xmlelement>relcolspec</xmlelement> element contains a
-              <xmlelement>topicref</xmlelement> element that references a DITA resource and the
-              <xmlatt>locktitle</xmlatt> attribute is set to "yes," the value of the
-              <xmlelement>topicref</xmlelement> element's navigation title is used for the
-            label.</li>
-          <li>If the <xmlelement>relcolspec</xmlelement> element contains a
-              <xmlelement>topicref</xmlelement> element that references a DITA resource and the
-              <xmlatt>locktitle</xmlatt> attribute is missing or set to "no," the label is derived
-            from the <xmlelement>navtitle</xmlelement> or <xmlelement>title</xmlelement> element
-            specified within the topic.</li>
+              <xmlelement>topicref</xmlelement> element that does not specify a navigation title but
+            does reference a DITA topic, the label is derived from the navigation title of the
+            referenced topic or, lacking that, the title of the topic.</li>
           <li>If no title is specified and no <xmlelement>topicref</xmlelement> is present in the
               <xmlelement>relcolspec</xmlelement>, a rendering tool might choose to generate a title
             for the links generated from that column.</li>
@@ -76,12 +69,11 @@
     </section>
     <section id="attributes">
       <title>Attributes</title>
-      <p>The following attributes are available on this element: <xref
-          keyref="attributes-universal"/> and <xref
-          keyref="attributes-common/commonmapatts"/> (without <xmlatt>keyscope</xmlatt> or
-          <xmlatt>collection-type</xmlatt>). This element also
-        uses <xmlatt>type</xmlatt>, <xmlatt>scope</xmlatt>, and <xmlatt>format</xmlatt> from <xref
-          keyref="attributes-common/linkatts"/>.</p>
+      <p>The following attributes are available on this element: <ph conkeyref="reuse-attributes/ref-universalatts"/> and <ph conkeyref="reuse-attributes/ref-commonmapatts"/> (without <xmlatt>keyscope</xmlatt>
+        or <xmlatt>collection-type</xmlatt>), <xref keyref="attributes-common/attr-type"
+            ><xmlatt>type</xmlatt></xref>, <xref keyref="attributes-common/attr-scope"
+            ><xmlatt>scope</xmlatt></xref>, <xref keyref="attributes-common/attr-format"
+            ><xmlatt>format</xmlatt></xref>.</p>
     </section>
 <example id="example" otherprops="examples"><title>Example</title>
       <p>The following section shows how a simple relationship table uses column specifications to
@@ -126,26 +118,38 @@
         <codeblock>&lt;reltable>
   &lt;relheader>
     <b>&lt;relcolspec type="task"></b>
-      &lt;topicref navtitle="Troubleshooting" href="tbs.dita" locktitle="yes"/>
+      &lt;topicref href="tbs.dita">
+        &lt;topicmeta>&lt;navtitle>Troubleshooting&lt;/navtitle>&lt;/topicmeta>
+      &lt;/topicref>
     <b>&lt;/relcolspec></b>
     <b>&lt;relcolspec type="reference"></b>
-      &lt;topicref navtitle="Messages" href="msg.dita" locktitle="yes"/>
+      &lt;topicref href="msg.dita">
+        &lt;topicmeta>&lt;navtitle>Messages&lt;/navtitle>&lt;/topicmeta>
+      &lt;/topicref>
     <b>&lt;/relcolspec></b>
   &lt;/relheader>
   &lt;relrow>
     &lt;relcell>
-      &lt;topicref navtitle="Debugging login errors" href="debug_login.dita"/>
+      &lt;topicref href="debug_login.dita"/>
+        &lt;topicmeta>&lt;linktitle>Debugging login errors&lt;/linktitle>&lt;/topicmeta>
+      &lt;/topicref>
     &lt;/relcell>
     &lt;relcell>
-      &lt;topicref navtitle="Login not found" href="login_error_1.dita"/>
+      &lt;topicref href="login_error_1.dita">
+        &lt;topicmeta>&lt;linktitle>Login not found&lt;/linktitle>&lt;/topicmeta>
+      &lt;/topicref>
     &lt;/relcell>
   &lt;/relrow>
   &lt;relrow>
     &lt;relcell>
-      &lt;topicref navtitle="Checking access controls" href="checking_access.dita"/>
+      &lt;topicref href="checking_access.dita">
+        &lt;topicmeta>&lt;linktitle>Checking access controls&lt;/linktitle>&lt;/topicmeta>
+      &lt;/topicref>
     &lt;/relcell>
     &lt;relcell>
-      &lt;topicref navtitle="Login not allowed" href="login_error_2.dita"/>
+      &lt;topicref href="login_error_2.dita">
+        &lt;topicmeta>&lt;linktitle>Login not allowed&lt;/linktitle>&lt;/topicmeta>
+      &lt;/topicref>
     &lt;/relcell>
   &lt;/relrow>
 &lt;/reltable></codeblock>

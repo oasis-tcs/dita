@@ -3,9 +3,19 @@
 <concept id="concept-1" xml:lang="en-us">
   <title>Specializing to include non-DITA content</title>
   <shortdesc>You can extend DITA to incorporate standard vocabularies for non-textual content, such
-    as MathML and SVG, <ph >as markup within DITA documents.</ph> This
-    is done by specializing the <xmlelement>foreign</xmlelement> or <xmlelement>unknown</xmlelement>
-    elements.</shortdesc>
+    as MathML and SVG, as markup within DITA documents. This is done by specializing the
+      <xmlelement>foreign</xmlelement> or <xmlelement>unknown</xmlelement> elements.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>examples<indexterm>specialization<indexterm>including non-DITA
+              content</indexterm></indexterm></indexterm>
+        <indexterm>specialization<indexterm>examples<indexterm>including non-DITA
+              content</indexterm></indexterm></indexterm>
+        <indexterm>specialization<indexterm>including non-DITA content</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
   <conbody>
     <section id="foreign-methods">
       <p>There are three methods of incorporating foreign content into DITA. </p>
@@ -51,7 +61,7 @@
       <draft-comment author="robander">The following statement needs to be updated to refer to the
         eventual final name of the DITA-techcomm package.</draft-comment>
       <p>For more information, see the <filepath>svgDomain.mod</filepath> file that is shipped with
-        the OASIS DITA distributions. For an example of including the SVG domain in a document type
+        the OASIS DITA distributions. For an example of including the SVG domain in a document-type
         shell, see <filepath>task.dtd</filepath>.</p>
     </example>
     <!--<example rev="DITA1.3 proposal-13112" id="example-rng"><title>Example of specializing foreign content using RELAX NG</title> The code sample below illustrates how to create a domain declaration for the RELAX NG <xmlelement>grammar</xmlelement> element and integrate it into a document-type shell. Domain modules that include foreign grammars should use the <xmlelement>externalRef</xmlelement> element to refer to the foreign grammar when the grammar specifies a <xmlelement>start</xmlelement> element. When using the <xmlelement>externalRef</xmlelement> element, it is possible to safely include foreign vocabularies that are not in a namespace, because the externally-referenced grammar patterns are not merged with those of the referencing grammar. <p>The following domain specialization specializes <xmlelement>foreign</xmlelement> in order to contain RELAX NG <xmlelement>grammar</xmlelement> elements, for example, to document document types by rendering the grammar markup as diagrams. </p> <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>

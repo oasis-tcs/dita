@@ -14,11 +14,11 @@
 Darwin Information Typing Architecture (DITA) Version 2.0
 [[[Draft level]]]
 [[[Release date]]] 
-Copyright (c) OASIS Open 2019. All rights reserved. 
+Copyright (c) OASIS Open 2021. All rights reserved. 
 Source: [[[Source link]]]
 
 ============================================================
- MODULE:    DITA Base MAP (only base domains)
+ MODULE:    DITA Base MAP
  VERSION:   2.0
  DATE:      [[[Release date]]]
  PURPOSE:   DTD to describe DITA maps
@@ -40,12 +40,12 @@ The public ID above refers to the latest 2.x version of this DTD.
 PUBLIC "-//OASIS//DTD DITA 2.0 Base Map//EN"
 
 =============================================================
-                                                             
-            (C) Copyright OASIS Open 2010, 2014
+
+            (C) Copyright OASIS Open 2010, 2021
             All Rights Reserved.
-                                                             
- UPDATES:
-   2019.08.21 KJE: Removed indexing domain
+            
+UPDATES:                                                    
+
 =============================================================
 </headerComment>
       <moduleMetadata>
@@ -56,8 +56,7 @@ PUBLIC "-//OASIS//DTD DITA 2.0 Base Map//EN"
             <rngShell>urn:oasis:names:tc:dita:rng:basemap.rng<var presep=":" name="ditaver"/></rngShell>
          </shellPublicIds>
       </moduleMetadata>
-  </moduleDesc>
-  
+  </moduleDesc>  
   <div>
       <a:documentation>ROOT ELEMENT DECLARATION</a:documentation>
       <start>
@@ -65,7 +64,7 @@ PUBLIC "-//OASIS//DTD DITA 2.0 Base Map//EN"
       </start>
   </div>
   <div>
-      <a:documentation>DITA DOMAINS ATTRIBUTE</a:documentation>
+      <a:documentation>SPECIALIZATIONS ATTRIBUTE</a:documentation>
 
       <define name="specializations-att">
          <optional>
@@ -73,34 +72,32 @@ PUBLIC "-//OASIS//DTD DITA 2.0 Base Map//EN"
                        a:defaultValue="
                          @props/audience
                          @props/deliveryTarget
+                         @props/otherprops
                          @props/platform
-                         @props/product
-                         @props/otherprops"/>
+                         @props/product"/>
          </optional>
       </define>
-
-
+  </div>
+  <div>
+      <a:documentation>ELEMENT-TYPE CONFIGURATION INTEGRATION</a:documentation>
   </div>
   <div>
       <a:documentation>MODULE INCLUSIONS</a:documentation>
 
       <include href="mapMod.rng"/>
-      <include href="mapGroupDomain.rng"/>
-
       <include href="audienceAttDomain.rng" dita:since="2.0"/>
       <include href="deliveryTargetAttDomain.rng"/>
       <include href="otherpropsAttDomain.rng" dita:since="2.0"/>
       <include href="platformAttDomain.rng" dita:since="2.0"/>
       <include href="productAttDomain.rng" dita:since="2.0"/>
+      <include href="alternativeTitlesDomain.rng" dita:since="2.0"/>
       <include href="ditavalrefDomain.rng"/>
       <include href="emphasisDomain.rng"/>
-      <include href="hazardstatementDomain.rng"/>
       <include href="highlightDomain.rng"/>
-      <include href="utilitiesDomain.rng"/>
+      <include href="mapGroupDomain.rng"/>
   </div>
   <div>
-      <a:documentation>ID-DEFINING-ELEMENT OVERRIDES</a:documentation>
-
+      <a:documentation>ID-DEFINING ELEMENT OVERRIDES</a:documentation>
       <define name="any">
          <zeroOrMore>
             <choice>
@@ -108,8 +105,8 @@ PUBLIC "-//OASIS//DTD DITA 2.0 Base Map//EN"
                <element>
                   <anyName>
                      <except>
-                        <name>map</name>
                         <name>anchor</name>
+                        <name>map</name>
                      </except>
                   </anyName>
                   <zeroOrMore>

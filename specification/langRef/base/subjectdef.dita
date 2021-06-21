@@ -15,26 +15,12 @@
                 <section id="usage-information">
                         <title>Usage information</title>
                         <p>The <xmlelement>subjectdef</xmlelement> can use a
-                                        <xmlelement>navtitle</xmlelement> element to supply a label
-                                for the subject; the <xmlatt>href</xmlatt> attribute can be used to
+                                        <xmlelement>titlealt</xmlelement> element with a
+                                        <xmlatt>title-role</xmlatt> of <codeph>navigation</codeph>,
+                                such as <xmlelement>navtitle</xmlelement>, to supply a label for the
+                                subject; the <xmlatt>href</xmlatt> attribute can be used to
                                 reference a topic that captures the consensus definition for the
-                                subject. To use the <xmlelement>navtitle</xmlelement> as a subject
-                                label, set the <xmlatt>locktitle</xmlatt> attribute on the
-                                        <xmlelement>subjectdef</xmlelement> element to "yes".</p>
-                </section>
-                <section id="processing-expectations">
-                        <title>Processing expectations</title>
-                        <draft-comment author="Kristen J Eberlein" time="2 September 2017"
-                                audience="spec-editors">
-                                <p>Remove the following paragraph once we have verified that we have
-                                        clearly stated this processing expectation for the
-                                        &lt;topicref> and &lt;navtitle> elements.</p>
-                        </draft-comment>
-                        <p>As with normal <xmlelement>topicref</xmlelement> processing, when the
-                                        <xmlelement>subjectdef</xmlelement> element specifies a
-                                        <xmlelement>navtitle</xmlelement> and refers to a topic,
-                                processors should use the actual topic title in place of the
-                                        <xmlelement>navtitle</xmlelement>. </p>
+                                subject.</p>
                 </section>
                 <section id="specialization-hierachy">
                         <title>Specialization hierarchy</title>
@@ -44,24 +30,20 @@
                 </section>
                 <section id="attributes">
                         <title>Attributes</title>
-                        <p>The following attributes are available on this element: <xref
-                                        keyref="attributes-universal"/>, <xref
-                                        keyref="attributes-common/topicrefatts"/>, <xref
-                                        keyref="attributes-common/linkatts"/> (with
-                                a narrowed definition of <xmlatt>href</xmlatt>, given below), <xref keyref="attributes-keys"
-                                                ><xmlatt>keys</xmlatt></xref>, and <xref
-                                        keyref="attributes-keyref"
-                                                ><xmlatt>keyref</xmlatt></xref>. This element also
-                                uses <xmlatt>processing-role</xmlatt>, <xmlatt>toc</xmlatt>,
-                                        <xmlatt>collection-type</xmlatt>, <xmlatt>linking</xmlatt>,
-                                and <xmlatt>locktitle</xmlatt> from <xref
-                                        keyref="attributes-common/commonmapatts"/>. <dl>
-                                        <dlentry
-                                                conkeyref="reuse-attributes/href-on-topicref">
-                                                <dt/>
-                                                <dd/>
-                                        </dlentry>
-                                </dl></p>
+                        <p>The following attributes are available on this element: <ph
+                                        conkeyref="reuse-attributes/ref-universalatts"/>, <ph
+                                        conkeyref="reuse-attributes/ref-linkatts"/>, <xref
+                                        keyref="attributes-common/attr-keys"
+                                        ><xmlatt>keys</xmlatt></xref>, <xref
+                                        keyref="attributes-common/attr-keyref"><xmlatt>keyref</xmlatt></xref>,
+                                        <xref keyref="attributes-common/attr-processing-role"
+                                                ><xmlatt>processing-role</xmlatt></xref>, <xref
+                                        keyref="attributes-common/attr-toc"
+                                        ><xmlatt>toc</xmlatt></xref>, <xref
+                                        keyref="attributes-common/attr-collection-type"
+                                                ><xmlatt>collection-type</xmlatt></xref>, and <xref
+                                        keyref="attributes-common/attr-linking"
+                                                ><xmlatt>linking</xmlatt></xref>.</p>
                 </section>
 <example conkeyref="reuse-examples/example-subjectScheme" id="example" otherprops="examples"/>
 </refbody>

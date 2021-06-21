@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="adding_an_element_to_the_section_element">
+    <title>Example: Adding an element to the <xmlelement>section</xmlelement> element using
+        RNG</title>
+    <shortdesc>In this scenario, a DITA architect wants to modify the content model for the
+            <xmlelement>section</xmlelement> element. He wants to add an optional
+            <xmlelement>sectionDesc</xmlelement> element that is specialized from
+            <xmlelement>p</xmlelement>; the <xmlelement>sectionDesc</xmlelement> can occur once and
+        must be directly after the section title.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>expansion modules<indexterm>examples<indexterm>expanding content model of
+                                <xmlelement>section</xmlelement></indexterm></indexterm></indexterm>
+                <indexterm>examples<indexterm>expansion modules<indexterm>expanding content model of
+                                <xmlelement>section</xmlelement></indexterm></indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+        <example>
+            <p>To accomplish this, the DITA architect needs to create the following modules and
+                integrate them into the document-type shells:</p>
+            <ul>
+                <li>An element domain module that defines the <xmlelement>sectionDesc</xmlelement>
+                    element</li>
+                <li>An expansion module that adds the <xmlelement>sectionDesc</xmlelement> element
+                    to the content model for <xmlelement>section</xmlelement></li>
+            </ul>
+            <ol>
+                <li>First, the DITA architect creates the element domain module
+            (<filepath>sectionDescDomain.rng</filepath>):<codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+                         schematypens="http://relaxng.org/ns/structure/1.0"?>
+&lt;grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:dita="http://dita.oasis-open.org/architecture/2005/" 
+  xmlns="http://relaxng.org/ns/structure/1.0">
+  &lt;div>
+    &lt;a:documentation>DOMAIN EXTENSION PATTERNS&lt;/a:documentation>
+  &lt;/div>
+  &lt;div>
+    &lt;a:documentation>ELEMENT TYPE NAME PATTERNS&lt;/a:documentation>
+    &lt;define name="sectionDesc">
+      &lt;ref name="sectionDesc.element"/>
+    &lt;/define>   
+  &lt;/div>
+  &lt;div>
+    &lt;a:documentation>ELEMENT TYPE DECLARATIONS&lt;/a:documentation>
+    &lt;div>
+      &lt;a:documentation>LONG NAME: Section Description&lt;/a:documentation>
+      &lt;define name="sectionDesc.content">
+        &lt;zeroOrMore>
+            &lt;ref name="para.cnt"/>
+          &lt;/zeroOrMore>
+      &lt;/define>
+      &lt;define name="sectionDesc.attributes">
+        &lt;ref name="univ-atts"/>
+      &lt;/define>
+      &lt;define name="sectionDesc.element">
+        &lt;element name="sectionDesc" dita:longName="Section Description">
+          &lt;a:documentation/>
+          &lt;ref name="sectionDesc.attlist"/>
+          &lt;ref name="sectionDesc.content"/>
+        &lt;/element>
+      &lt;/define>
+      &lt;define name="sectionDesc.attlist" combine="interleave">
+        &lt;ref name="sectionDesc.attributes"/>
+      &lt;/define>
+    &lt;/div>
+  &lt;/div>
+  &lt;div>
+    &lt;a:documentation>SPECIALIZATION ATTRIBUTE DECLARATIONS&lt;/a:documentation>
+    &lt;define name="sectionDesc.attlist" combine="interleave">
+      &lt;optional>
+        &lt;attribute name="class" a:defaultValue="+ topic/p sectionDesc-d-p/sectionDesc "/>
+      &lt;/optional>
+    &lt;/define>
+  &lt;/div>
+&lt;/grammar></codeblock></li>
+                <li>The DITA architect adds the element domain module to the
+                        <filepath>catalog.xml</filepath> file.</li>
+                <li>
+                    <p>Next, the DITA architect modifies the document-type shell (in this example,
+                        the one for topic) to integrate the element domain module:</p>
+                    <codeblock>  &lt;div>
+    &lt;a:documentation>MODULE INCLUSIONS&lt;/a:documentation>
+    ...
+    <b>&lt;include href="urn:example:names:tc:dita:rng:sectionDescDomain.rng:2.0"/></b>
+  &lt;/div></codeblock>
+                    <p>At this point, the new domain is integrated into the document-type shell.
+                        However, the new element is not added to the content model for
+                            <xmlelement>section</xmlelement>.</p>
+                </li>
+                <li>
+                    <p>Next, the DITA architect created an expansion module
+                            (<filepath>sectionExpansionMod.rng</filepath>) that adds the
+                            <xmlelement>sectionDesc</xmlelement> element to the content model of
+                            <xmlelement>section</xmlelement>:</p>
+                    <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+                         schematypens="http://relaxng.org/ns/structure/1.0"?>
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:dita="http://dita.oasis-open.org/architecture/2005/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  &lt;div>
+    &lt;a:documentation>CONTENT MODEL AND ATTRIBUTE LIST OVERRIDES&lt;/a:documentation>
+    &lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0">  
+      &lt;define name="topic-info-types">
+        &lt;ref name="topic.element"/>
+      &lt;/define>    
+      &lt;define name="section.content" combine="interleave">
+        &lt;optional>
+          &lt;ref name="title"/>
+        &lt;/optional>
+        &lt;optional>
+          &lt;ref name="sectionDesc"/>
+        &lt;/optional>
+        &lt;zeroOrMore>
+          &lt;ref name="section.cnt"/>
+        &lt;/zeroOrMore>
+      &lt;/define>
+    &lt;/include>
+  &lt;/div>
+&lt;/grammar>
+</codeblock>
+                    <p>Note that the expansion module directly integrates
+                            <filepath>topicMod.rng</filepath>.</p>
+                </li>
+                <li>
+                    <p>Finally, the DITA architect integrates the expansion module into the
+                        document-type shell and removes the inclusion statement for
+                            <filepath>topicMod.rng</filepath>:</p>
+                    <codeblock>  &lt;div>
+    &lt;a:documentation>ELEMENT-TYPE CONFIGURATION INTEGRATION&lt;/a:documentation>
+    <b>&lt;include href="sectionExpansionMod.rng"/></b>
+  &lt;/div>
+  &lt;div>
+    &lt;a:documentation>MODULE INCLUSIONS&lt;/a:documentation>
+    <line-through>&lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0">
+      &lt;define name="topic-info-types">
+        &lt;ref name="topic.element"/>
+      &lt;/define>
+    &lt;/include></line-through>
+    ... 
+    &lt;include href="urn:example:names:tc:dita:rng:sectionDescDomain.rng:2.0"/>
+  &lt;/div></codeblock>
+                </li>
+                <li>After updating the <filepath>catalog.xml</filepath> file to include the
+                    expansion module and testing, the work is done.</li>
+            </ol>
+        </example>
+    </conbody>
+</concept>

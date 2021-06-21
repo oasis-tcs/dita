@@ -16,7 +16,14 @@
                             <li><xmlelement>topic</xmlelement> or a specialization of the
                                     <xmlelement>topic</xmlelement> element</li>
                             <li><xmlelement>dita</xmlelement>, which cannot be specialized, but
-                                which allows documents with multiple sibling topics</li>
+                                which allows documents with multiple sibling topics<draft-comment
+                                    author="robander" audience="spec-editors" time="26 may 2021"
+                                    >picky comment: a &lt;dita> root element (singular) only allows
+                                    ONE document with sibling topics. Also, not to over-complicate,
+                                    but an ordinary topic also allows sibling topics (as children),
+                                    so what really distinguishes this is that it allows "root"
+                                    siblings, but I don't think we have a word for
+                                    that.</draft-comment></li>
                         </ul></p>
                 </dd>
             </dlentry>
@@ -48,6 +55,12 @@
                             'must'; also, it needs to be better aligned with the topic about
                             architectural attributes.</p>
                     </draft-comment>
+                    <draft-comment author="robander" audience="spec-editors" time="26 may 2021"
+                        >Having @class is such a core part of being a DITA element that I'd be
+                        inclined to keep it, except that 1) we could just remove "must" (it's a
+                        statement of fact, not a rule) and 2) I am continually confused by the term
+                        "exhibit" in this context. Also, &lt;dita> doesn't have class and is a DITA
+                        element, so it's an oddball.</draft-comment>
                 </dd>
             </dlentry>
             <dlentry>

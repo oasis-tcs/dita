@@ -12,8 +12,8 @@
           a <xmlelement>topicref</xmlelement> element with <xmlatt>processing-role</xmlatt> set to
             <keyword>resource-only</keyword>. </p>
         <p>Attributes defaulted on the <xmlelement>keydef</xmlelement> element ensure that key
-          definitions do not appear in the TOC, do not add extra links, and are not rendered as
-          topics.</p>
+          definitions do not appear in tables of contents, do not add extra links, and are not
+          rendered as topics.</p>
       </div>
       <p platform="lwdita">The key definition component is a convenience component. It is equivalent
         to a topic reference component element with <xmlatt>processing-role</xmlatt> set to
@@ -23,44 +23,24 @@
     </section>
     <section id="attributes">
       <title>Attributes</title>
-      <sectiondiv id="keydef-attributes">
-        <p platform="dita">The following attributes are available on this element: <xref
-            keyref="attributes-universal"/>, <xref keyref="attributes-common/linkatts"/> (with a
-          narrowed definition of <xmlatt>href</xmlatt>, given below), <xref
-            keyref="attributes-common/commonmapatts"/> (with a narrowed definition of
-            <xmlatt>processing-role</xmlatt>, given below), <xref
-            keyref="attributes-common/topicrefatts"/>, <xref keyref="attributes-keyref"
+      <div id="keydef-attributes">
+        <p platform="dita">The following attributes are available on this element: <ph
+            conkeyref="reuse-attributes/ref-universalatts"/>, <ph
+            conkeyref="reuse-attributes/ref-linkatts"/>, <ph
+            conkeyref="reuse-attributes/ref-commonmapatts"/>, <xref keyref="attributes-common/attr-keyref"
               ><xmlatt>keyref</xmlatt></xref>, and the attributes defined below.</p>
-        <p platform="lwdita">The following attributes are available on this element: <xref
-            keyref="attributes-common/linkatts"/> (with a narrowed definition of
-            <xmlatt>href</xmlatt>, given below), <xref keyref="attributes-universal/localizationatts"/>, <xref
-            keyref="attributes-universal/metadataatts"/>, <xref keyref="attributes-universal/class"
+        <p platform="lwdita">The following attributes are available on this element: <ph conkeyref="reuse-attributes/ref-linkatts"/> (with a narrowed definition of
+            <xmlatt>href</xmlatt>, given below), <ph conkeyref="reuse-attributes/ref-localizationatts"/>, <ph conkeyref="reuse-attributes/ref-metadataatts"/>, <xref keyref="attributes-universal/class"
               ><xmlatt>class</xmlatt></xref>, and <xref keyref="attributes-universal/outputclass"
               ><xmlatt>outputclass</xmlatt></xref>.</p>
-        <dl>
-          <dlentry>
-            <dt><xmlatt>keys</xmlatt>
-              <ph>(REQUIRED)</ph></dt>
-            <dd>Specifies the required key. Otherwise, the attribute is the same as that described
-              in <xref keyref="attributes-keys"/>.</dd>
-          </dlentry>
-          <dlentry>
-            <dt><xmlatt>href</xmlatt></dt>
-            <dd>Specifies the referenced resource. In the case of a key definition for variable
-              text, this attribute might be omitted. See <xref keyref="attributes-href"/> for
-              detailed information on supported values and processing implications.
-              <!--References to DITA content cannot be below the topic level: that is, you cannot reference individual elements inside a topic. -->References
-              to non-DITA content need to use the <xmlatt>format</xmlatt> attribute to identify the
-              kind of resource.</dd>
-          </dlentry>
-          <dlentry>
-            <dt><xmlatt>processing-role</xmlatt></dt>
-            <dd>Specifies the role that the resource plays in processing. By default, this is set to
-                <keyword>resource-only</keyword>. Otherwise, the definition matches the one in <xref
-                keyref="attributes-common/commonmapatts"/>.</dd>
-          </dlentry>
-        </dl>
-      </sectiondiv>
+        <p id="attr-exception" outputclass="attr-exception">For this element: <ul id="ul_xxx_hd4_qpb">
+            <li>The <xmlatt>keys</xmlatt> attribute is required.</li>
+            <li>The <xmlatt>href</xmlatt> attribute might be omitted when the key definition is used
+              for variable text.</li>
+            <li>The <xmlatt>processing-role</xmlatt> attribute has a default value of
+                <keyword>resource-only</keyword>.</li>
+          </ul></p>
+      </div>
     </section>
 </refbody>
 </reference>

@@ -16,7 +16,8 @@
     </metadata>
   </prolog>
   <refbody>
-    <section id="section-1">
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
       <p>For map branches that are implied by <xmlelement>ditavalref</xmlelement> elements, the
         value of the <xmlelement>dvrKeyscopeSuffix</xmlelement> element contributes to the
         effective key scope names of the branch. The effective key scope names end with the value of
@@ -31,26 +32,21 @@
     </section>
     <section id="specialization-hierachy">
       <title>Specialization hierarchy</title>
-      <p>The <xmlelement>dvrKeyscopeSuffix</xmlelement> element is specialized from <xref
-          keyref="elements-data"/>. It is defined in the DITAVALref domain module.</p>
+      <p>The <xmlelement>dvrKeyscopeSuffix</xmlelement> element is specialized from
+          <xmlelement>data</xmlelement>. It is defined in the DITAVAL-reference domain module.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
-      <p>The following attributes are available on this element: <xref keyref="attributes-universal"
-        /> (except for <xmlatt>conkeyref</xmlatt>, which is removed for all elements in this domain)
-        and the attribute defined below.</p>
-      <dl>
-        <dlentry>
-          <dt><xmlatt>name</xmlatt></dt>
-          <dd>The name of the metadata item. For this element the default value is
-            "dvrKeyscopeSuffix".</dd>
-        </dlentry>
-      </dl>
+      <p>The following attributes are available on this element: <ph conkeyref="reuse-attributes/ref-universalatts"/> (except for <xmlatt>conkeyref</xmlatt>, which is removed for all elements in this domain)
+        and <xref keyref="attributes-common/attr-name"><xmlatt>name</xmlatt></xref>.</p>
+      <p id="attr-exception" outputclass="attr-exception">For this element, the <xmlatt>name</xmlatt> attribute has a default
+        value of <keyword>dvrKeyscopeSuffix</keyword>.</p>
     </section>
     <example id="example" otherprops="examples">
       <title>Example</title>
-      <p>If the <xmlelement>dvrKeyscopeSuffix</xmlelement> is specified in the following
-        way:<codeblock>&lt;topicref keys="branch-01"
+      <p>The following code sample shows how <xmlelement>dvrKeyscopeSuffix</xmlelement> supplements
+        the existing key scope name of <keyword>branch-01</keyword> to establish an effective key
+        scope of <keyword>branch-01-cond01</keyword>:<codeblock>&lt;topicref keys="branch-01"
     href="branch-01.dita" 
     keyscope="branch-01"
   >
@@ -61,7 +57,6 @@
   &lt;/ditavalref>
   &lt;topicref href="topics/subtopic-01.dita"/>
 &lt;/topicref></codeblock></p>
-      <p>Then the effective key scope name for the branch "branch-01" is "branch-01-cond01".</p>
     </example>
   </refbody>
 </reference>

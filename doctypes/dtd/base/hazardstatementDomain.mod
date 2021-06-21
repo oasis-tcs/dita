@@ -89,9 +89,6 @@
                keyref
                           CDATA
                                     #IMPLIED
-               longdescref
-                          CDATA
-                                    #IMPLIED
                height
                           NMTOKEN
                                     #IMPLIED

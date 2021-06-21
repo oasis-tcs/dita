@@ -4,22 +4,35 @@
   <title>Attribute generalization</title>
   <shortdesc>DITA provides a syntax to generalize attributes that have been specialized from the
       <xmlatt>props</xmlatt> or <xmlatt>base</xmlatt> attribute.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>examples<indexterm>generalization<indexterm>attribute
+            types</indexterm></indexterm></indexterm>
+        <indexterm>generalization<indexterm>examples<indexterm>attribute
+            types</indexterm></indexterm></indexterm>
+        <indexterm>generalization<indexterm>syntax</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
   <conbody>
     <p>Specialization-aware processors <term outputclass="RFC-2119">MUST</term> process both the
       specialized and generalized forms of an attribute as equivalent in their values.</p>
     <p>When a specialized attribute is generalized to an ancestor attribute, the value of the
       ancestor attribute consists of the name of the specialized attribute followed by its
-      specialized value in parentheses. For example, if <xmlatt>jobrole</xmlatt> is an attribute
-      specialized from <xmlatt>person</xmlatt>, which in turn is specialized from
-        <xmlatt>props</xmlatt>:</p>
-    <ul>
-      <li><codeph>jobrole="programmer"</codeph> can be generalized to
-          <codeph>person="jobrole(programmer)"</codeph> or to
-          <codeph>props="jobrole(programmer)"</codeph></li>
-      <li><codeph>props="jobrole(programmer)"</codeph> can be respecialized to
-          <codeph>person="jobrole(programmer)"</codeph> or to
-        <codeph>jobrole="programmer"</codeph></li>
-    </ul>
+      specialized value in parentheses.</p>
+    <div otherprops="examples">
+      <p>For example, if <xmlatt>jobrole</xmlatt> is an attribute specialized from
+          <xmlatt>person</xmlatt>, which in turn is specialized from <xmlatt>props</xmlatt>:</p>
+      <ul>
+        <li><codeph>jobrole="programmer"</codeph> can be generalized to
+            <codeph>person="jobrole(programmer)"</codeph> or to
+            <codeph>props="jobrole(programmer)"</codeph></li>
+        <li><codeph>props="jobrole(programmer)"</codeph> can be respecialized to
+            <codeph>person="jobrole(programmer)"</codeph> or to
+            <codeph>jobrole="programmer"</codeph></li>
+      </ul>
+    </div>
     <p>In this example, processors performing generalization and respecialization can use the
         <xmlatt>specializations</xmlatt> attribute to determine the ancestry of the specialized
         <xmlatt>jobrole</xmlatt> attribute, and therefore the validity of the specialized
@@ -31,14 +44,16 @@
       the circumstances in which the document is in a generalized form.</p>
     <p>A single element <term outputclass="RFC-2119">MUST NOT</term> contain both generalized and
       specialized values for the same attribute.</p>
-    <p>For example, the following <xmlelement>p</xmlelement> element provides two values for the
-        <xmlatt>jobrole</xmlatt> attribute, one in a generalized syntax and the other in a
-      specialized
-      syntax:<codeblock>&lt;p person="jobrole(programmer)" jobrole="admin">
+    <div otherprops="examples">
+      <p>For example, the following <xmlelement>p</xmlelement> element provides two values for the
+          <xmlatt>jobrole</xmlatt> attribute, one in a generalized syntax and the other in a
+        specialized syntax:</p>
+      <codeblock>&lt;p person="jobrole(programmer)" jobrole="admin">
     &lt;!-- ... -->
-&lt;/p></codeblock>This
-      is an error condition, since it means the document has been only partially generalized, or
-      that the document has been generalized and then edited using a specialized document type. </p>
+&lt;/p></codeblock>
+    </div>
+    <p>This is an error condition, since it means the document has been only partially generalized,
+      or that the document has been generalized and then edited using a specialized document type. </p>
   </conbody>
 </concept>
 

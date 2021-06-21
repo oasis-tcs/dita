@@ -32,8 +32,8 @@
         <section id="rendering-expectations">
             <title>Rendering expectations</title>
             <p>When possible, the content of the <xmlelement>anchorref</xmlelement> element is
-                rendered when  the map with <xmlelement>anchor</xmlelement> element is displayed in
-                an authoring tool.</p>
+                rendered at the referenced anchor when the map with that
+                    <xmlelement>anchor</xmlelement> element is displayed in an authoring tool.</p>
         </section>
         <section id="processing-expectations">
             <title>Processing expectations</title>
@@ -60,35 +60,23 @@
         </section>
         <section id="attributes">
             <title>Attributes</title>
-            <sectiondiv id="standard-topicref-attributes">
-                <p>The following attributes are available on this element: <xref
-                        keyref="attributes-universal"/>, <xref keyref="attributes-common/linkatts"
-                    /> (with narrowed definitions of <xmlatt>href</xmlatt>, <xmlatt>type</xmlatt>,
-                    and <xmlatt>format</xmlatt>, all given below), <xref
-                        keyref="attributes-common/commonmapatts"/>, <xref keyref="attributes-common/topicrefatts"
-                    />, <xref keyref="attributes-keys"><xmlatt>keys</xmlatt></xref>, and <xref
-                        keyref="attributes-keyref"><xmlatt>keyref</xmlatt></xref>. </p>
-                <dl>
-                    <dlentry>
-                        <dt><xmlatt>href</xmlatt></dt>
-                        <dd>Specifies an <xmlelement>anchor</xmlelement> element in this or another
-                            DITA map. When rendered, the contents of the current element are copied
-                            to the location of the <xmlelement>anchor</xmlelement> element. See
-                                <xref keyref="attributes-href"/> for the syntax to use when
-                            referencing a map element.</dd>
-                    </dlentry>
-                    <dlentry>
-                        <dt><xmlatt>type</xmlatt></dt>
-                        <dd>Specifies the type of the referenced resource. By default, this is set
-                            to <keyword>anchor</keyword>.</dd>
-                    </dlentry>
-                    <dlentry>
-                        <dt><xmlatt>format</xmlatt></dt>
-                        <dd>Specifies the format of the referenced resource. By default, this is set
-                            to <keyword>ditamap</keyword>.</dd>
-                    </dlentry>
-                </dl>
-            </sectiondiv>
+            <div id="standard-topicref-attributes">
+                <p>The following attributes are available on this element: <ph
+                        conkeyref="reuse-attributes/ref-universalatts"/>, <ph
+                        conkeyref="reuse-attributes/ref-linkatts"/>, <ph
+                        conkeyref="reuse-attributes/ref-commonmapatts"/>, <xref
+                        keyref="attributes-common/attr-keys"><xmlatt>keys</xmlatt></xref>, and <xref
+                        keyref="attributes-common/attr-keyref"><xmlatt>keyref</xmlatt></xref>. </p>
+                <p id="attr-exception" outputclass="attr-exception">For this element: <ul id="ul_bsg_4sq_ppb">
+                        <li>The <xmlatt>href</xmlatt> attribute refers to an
+                                <xmlelement>anchor</xmlelement> element in this or another DITA
+                            map.</li>
+                        <li>The <xmlatt>format</xmlatt> attribute has a default value of
+                                <keyword>ditamap</keyword>.</li>
+                        <li>The <xmlatt>type</xmlatt> attribute has a default value of
+                                <keyword>anchor</keyword>.</li>
+                    </ul></p>
+            </div>
         </section>
         <example id="example" otherprops="examples">
             <title>Example</title>

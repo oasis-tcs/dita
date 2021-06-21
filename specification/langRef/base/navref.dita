@@ -24,7 +24,6 @@
         help system where the referenced navigation is published independently (or may not be
         avilable at all). If available, the referenced navigation can then be resolved at render
         time within a help system.</p>
-      <!--<p>For example, if a map is converted to the Eclipse help system format, the DITA element <codeph>&lt;navref mapref="other.ditamap"/&gt;</codeph> <ph>is</ph> converted to the Eclipse element <codeph>&lt;link toc="other.xml"/&gt;</codeph>. When Eclipse loads the referencing map, it will replace this link element with the contents of the file <filepath>other.xml</filepath>, provided that the file <filepath>other.xml</filepath> is available.</p>-->
       <p>In order to include another map directly without depending on the output format or help
         system, use a <xmlelement>topicref</xmlelement> element with the <xmlatt>format</xmlatt>
         attribute set to <codeph>ditamap</codeph>. The effect is similar to using a
@@ -34,12 +33,11 @@
     </section>
     <section id="attributes">
       <title>Attributes</title>
-      <p id="universal-outputclass">The following attributes are available on this element: <xref
-          keyref="attributes-universal"/> and the attribute
+      <p id="universal-outputclass">The following attributes are available on this element: <ph conkeyref="reuse-attributes/ref-universalatts"/> and the attribute
         defined below.</p>
       <dl>
         <dlentry>
-          <dt><xmlatt>mapref</xmlatt></dt>
+          <dt id="attr-mapref"><xmlatt>mapref</xmlatt></dt>
           <dd>Specifies the URI of the map file or non-DITA resource to be referenced. It might
             reference a DITA map or a resource that is appropriate for a target help system. <ph
               otherprops="examples">For example, it could reference an XML TOC file for use with

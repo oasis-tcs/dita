@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="rng_adding_an_attribute_to_certain_table_elements">
+    <title>Example: Adding an attribute to certain table elements using RNG</title>
+    <shortdesc>In this scenario, a company makes extensive use of complex tables to present product
+        listings. They occasionally highlight individual cells, rows, or columns for various
+        purposes. The DITA architect wants to implement a semantically meaningful way to identify
+        the purpose of various table elements.</shortdesc>
+    <prolog>
+        <metadata>
+            <keywords>
+                <indexterm>expansion modules<indexterm>examples<indexterm>expanding attributes for
+                            an element</indexterm></indexterm></indexterm>
+                <indexterm>examples<indexterm>expansion modules<indexterm>expanding attributes for
+                            an element</indexterm></indexterm></indexterm>
+            </keywords>
+        </metadata>
+    </prolog>
+    <conbody>
+    <draft-comment author="Kristen J Eberlein" time="18 May 2021">
+      <p>Comment from Robert Anderson: "This example feels like it is more complex than it needs to
+        be but maybe I'm missing something about RNG. If nothing else, I don't understand why we
+        would define 2 RNG files for this; couldn't we simplify and define the cellPurpose attribute
+        in the same module tableCellAttExpansion.rng?"</p>
+      <p>From a Skype message from Robert Anderson on 17 May 2021:</p>
+      <p>"I sent all my comments on the proposal a bit ago, but couldn't let it go and went back to
+        try a simpler way to add extension attributes with RNG. Set up a cellPurpose.rng file that
+        does it all in one file, without any need to override topicMod.rng like you do with
+        constraints."</p>
+      <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+                         schematypens="http://relaxng.org/ns/structure/1.0"?>
+&lt;grammar 
+  xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:dita="http://dita.oasis-open.org/architecture/2005/"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  &lt;define name="cellPurposeAtt">
+    &lt;optional>
+      &lt;attribute name="cellPurpose">
+        &lt;a:documentation>Specifies the purpose of the table cell. This is a specialized
+          attribute for Acme Corporation.
+        &lt;/a:documentation>
+        &lt;choice>
+          &lt;value>sale&lt;/value>
+          &lt;value>out-of-stock&lt;/value>
+          &lt;value>new&lt;/value>
+          &lt;value>last-chance&lt;/value>
+          &lt;value>inherit&lt;/value>
+          &lt;value>none&lt;/value>
+        &lt;/choice>
+      &lt;/attribute>
+    &lt;/optional>
+  &lt;/define>
+  
+  &lt;define name="entry.attributes" combine="interleave">
+    &lt;ref name="cellPurposeAtt"/>
+  &lt;/define>
+  &lt;define name="stentry.attributes" combine="interleave">
+    &lt;ref name="cellPurposeAtt"/>
+  &lt;/define>
+  &lt;define name="row.attributes" combine="interleave">
+    &lt;ref name="cellPurposeAtt"/>
+  &lt;/define>
+  &lt;define name="strow.attributes" combine="interleave">
+    &lt;ref name="cellPurposeAtt"/>
+  &lt;/define>
+  &lt;define name="colspec.attributes" combine="interleave">
+    &lt;ref name="cellPurposeAtt"/>
+  &lt;/define>
+&lt;/grammar></codeblock>
+      <p>when I add that to basetopic.rng with &lt;include href="cellPurpose.rng"/> I'm able to add
+        cellPurpose to the 5 table elements. Only other change should be to add this to the
+        specializations declaration in the shell: </p>
+      <codeblock>&lt;attribute name="specializations"
+                       a:defaultValue="
+                         @props/audience
+                         @props/deliveryTarget
+                         @props/otherprops
+                         @props/platform
+                         @props/product
+                         @base/cellPurpose"/></codeblock>
+    </draft-comment>
+        <p>The DITA architect decides to create a new attribute (<xmlatt>cell-purpose</xmlatt>) and
+            add it to the content model of the following elements:</p>
+        <ul>
+            <li><xmlelement>entry</xmlelement></li>
+            <li><xmlelement>row</xmlelement></li>
+            <li><xmlelement>colspec</xmlelement></li>
+            <li><xmlelement>stentry</xmlelement></li>
+            <li><xmlelement>strow</xmlelement></li>
+        </ul>
+        <p>The new attribute will be specialized from <xmlatt>base</xmlatt>; it will have a small
+            set of tokens that can be values for the new attribute.</p>
+        <ol>
+            <li>
+                <p>The DITA architect creates an attribute domain module:
+                        <filepath>cellPurposeAtt.rng</filepath>. It contains the following code:</p>
+                <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+                         schematypens="http://relaxng.org/ns/structure/1.0"?>
+&lt;grammar 
+  xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:dita="http://dita.oasis-open.org/architecture/2005/"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  &lt;define name="cellPurposeAtt-d-attribute-expansion">
+    &lt;optional>
+      &lt;attribute name="cellPurpose">
+        &lt;a:documentation>Specifies the purpose of the table cell. This is a specialized
+                         attribute for Acme Corporation.
+        &lt;/a:documentation>
+        &lt;choice>
+          &lt;value>sale&lt;/value>
+          &lt;value>out-of-stock&lt;/value>
+          &lt;value>new&lt;/value>
+          &lt;value>last-chance&lt;/value>
+          &lt;value>inherit&lt;/value>
+          &lt;value>none&lt;/value>
+        &lt;/choice>
+      &lt;/attribute>
+    &lt;/optional>    
+  &lt;/define> 
+&lt;/grammar></codeblock>
+            </li>
+            <li>
+                <p>The DITA architect updates the <filepath>catalog.xml</filepath> file and
+                    integrates the attribute domain module into the document-type shell:</p>
+                <codeblock>&lt;div>
+    &lt;a:documentation>MODULE INCLUSIONS&lt;/a:documentation>
+    ...  
+    <b>&lt;include href="urn:example:names:tc:dita:rng:cellPurposeAtt.rng:2.0"/></b>
+  &lt;/div></codeblock>
+                <p>At this point, the new attribute domain is integrated into the document-type
+                    shell. However, the <xmlatt>cell-purpose</xmlatt> attribute is not added to the
+                    attribute lists for the table elements.</p>
+            </li>
+            <li>
+                <p>Next, the DITA architect creates the expansion module:
+                        <filepath>tableCellAttExpansion.rng</filepath></p>
+                <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+                         schematypens="http://relaxng.org/ns/structure/1.0"?>
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:dita="http://dita.oasis-open.org/architecture/2005/"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  &lt;div>
+    &lt;a:documentation>CONTENT MODEL AND ATTRIBUTE LIST OVERRIDES&lt;/a:documentation>
+    &lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0">
+      &lt;define name="topic-info-types">
+        &lt;ref name="topic.element"/>
+      &lt;/define>
+      &lt;define name="colspec.attributes" combine="interleave">
+        &lt;optional>
+          &lt;attribute name="cellPurpose"/>
+        &lt;/optional>
+      &lt;/define>
+      &lt;define name="entry.attributes" combine="interleave">
+        &lt;optional>
+          &lt;attribute name="cellPurpose"/>
+        &lt;/optional>
+      &lt;/define>
+      &lt;define name="row.attributes" combine="interleave">
+        &lt;optional>
+          &lt;attribute name="cellPurpose"/>
+        &lt;/optional>
+      &lt;/define>
+      &lt;define name="stentry.attributes" combine="interleave">
+        &lt;optional>
+          &lt;attribute name="cellPurpose"/>
+        &lt;/optional>
+      &lt;/define>
+      &lt;define name="strow.attributes" combine="interleave">
+        &lt;optional>
+          &lt;attribute name="cellPurpose"/>
+        &lt;/optional>
+      &lt;/define>
+    &lt;/include>
+  &lt;/div>
+&lt;/grammar>
+</codeblock>
+            </li>
+            <li>
+                <p>The DITA architect updates the <filepath>catalog.xml</filepath> file, and then
+                    integrates the expansion module into the document-type shell:</p>
+                <codeblock>  &lt;div>
+    &lt;a:documentation>ELEMENT-TYPE CONFIGURATION INTEGRATION&lt;/a:documentation>
+        <b>&lt;include href="urn:example:names:tc:dita:rng:tableCellAttExpansion.rng:2.0"/>
+</b>  &lt;/div>
+  &lt;div>
+    &lt;a:documentation>MODULE INCLUSIONS&lt;/a:documentation>
+    <line-through>&lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0"></line-through>
+    ...
+  &lt;/div></codeblock>
+                <p>Note that the DITA architect removed the <xmlelement>include</xmlelement> element
+                    for <filepath>topicMod.rng</filepath>, since that vocabulary module is included
+                    in the expansion module.</p>
+            </li>
+            <li>After checking the test file to ensure that the attribute lists are modified as
+                expected, the work is done.</li>
+        </ol>
+    </conbody>
+</concept>

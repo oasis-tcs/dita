@@ -88,11 +88,6 @@
                            peer |
                            -dita-use-conref-target)
                                     #IMPLIED
-               locktitle
-                          (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
                format
                           CDATA
                                     #IMPLIED
@@ -108,12 +103,6 @@
                            yes |
                            -dita-use-conref-target)
                                     'no'
-               print
-                          (no |
-                           printonly |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
                search
                           (no |
                            yes |
@@ -181,9 +170,6 @@
                           CDATA
                                     #IMPLIED
                keys
-                          CDATA
-                                    #IMPLIED
-               query
                           CDATA
                                     #IMPLIED
                processing-role
@@ -462,12 +448,6 @@
                keys
                           CDATA
                                     #IMPLIED
-               query
-                          CDATA
-                                    #IMPLIED
-               copy-to
-                          CDATA
-                                    #IMPLIED
                collection-type
                           (choice |
                            family |
@@ -490,11 +470,6 @@
                           (external |
                            local |
                            peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               locktitle
-                          (no |
-                           yes |
                            -dita-use-conref-target)
                                     #IMPLIED
                format
@@ -553,7 +528,7 @@
 
 <!--                    LONG NAME: Subject Heading Metadata        -->
 <!ENTITY % subjectHeadMeta.content
-                       "((%navtitle;)?,
+                       "((%titlealt;)*,
                          (%shortdesc;)?)"
 >
 <!ENTITY % subjectHeadMeta.attributes
@@ -672,12 +647,6 @@
                keys
                           CDATA
                                     #IMPLIED
-               query
-                          CDATA
-                                    #IMPLIED
-               copy-to
-                          CDATA
-                                    #IMPLIED
                type
                           CDATA
                                     #IMPLIED
@@ -693,11 +662,6 @@
                processing-role
                           (normal |
                            resource-only |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               locktitle
-                          (no |
-                           yes |
                            -dita-use-conref-target)
                                     #IMPLIED
                format
@@ -735,9 +699,6 @@
                           CDATA
                                     #IMPLIED
                keys
-                          CDATA
-                                    #IMPLIED
-               query
                           CDATA
                                     #IMPLIED
                collection-type

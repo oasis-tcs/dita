@@ -11,10 +11,10 @@
                         <!--Also used in "Basic concepts" topic-->
                         <p><ph id="topics-shortdesc">In DITA, a topic is the basic unit of authoring
           and reuse. All DITA topics have the same basic structure: a title and, optionally, a body
-          of content. <ph product="part-2">Topics can be generic or more specialized; specialized
-            topics represent more specific information types or semantic roles, for example,
-              <xmlelement>concept</xmlelement>, <xmlelement>task</xmlelement>, or
-              <xmlelement>reference</xmlelement></ph></ph></p>
+          of content. Topics can be generic or more specialized; specialized topics represent more
+          specific information types or semantic roles, for example,
+            <xmlelement>concept</xmlelement>, <xmlelement>task</xmlelement>, or
+            <xmlelement>reference</xmlelement></ph></p>
                         <p><ph id="maps-shortdesc">DITA maps are documents that organize topics and
           other resources into structured collections of information. DITA maps specify hierarchy
           and the relationships among the topics; they also provide the <ph>contexts</ph> in which
@@ -50,10 +50,11 @@
                                         known as profiling, is the filtering or flagging of
                                         information based on processing-time
                                         criteria.<!--Attribute-based profiling, also known as conditional processing or applicability, is the use of classifying metadata that enables the filtering, flagging, searching, indexing, and other processing based on the association of an element with one or more values in a specific classification domain.--></ph></p>
-                        <p><ph id="configuration-shortdesc">A document type shell is an XML grammar
+                        <p><ph id="configuration-shortdesc">A document-type shell is an XML grammar
           file that specifies the elements and attributes that are allowed in a DITA document. The
-          document type shell integrates structural modules, domain modules, and constraint modules.
-          In addition, a document type shell specifies whether and how topics can nest.</ph></p>
+          document-type shell integrates structural modules, domain modules, and <ph rev="2.0"
+            >element-configuration modules</ph>. In addition, a document-type shell specifies
+          whether and how topics can nest.</ph></p>
                         <p><ph id="specialization-shortdesc">The specialization feature of DITA
           allows for the creation of new element types and attributes that are explicitly and
           formally derived from existing types. This facilitates interchange of conforming DITA
@@ -170,10 +171,7 @@ to alert more birds to the presence of your bird feeder.&lt;/shortdesc&gt;
 
                 <section id="section-5">
                         <title>Notes</title>
-      <note id="deprecated-print-attribute">Beginning with DITA 1.3, the <xmlatt>print</xmlatt>
-        attribute is deprecated. It is replaced with a conditional processing attribute:
-          <xmlatt>deliveryTarget</xmlatt>. See <xref keyref="attributes-universal/metadataatts/deliveryTarget"
-            ><xmlatt>deliveryTarget</xmlatt></xref> for more details.</note>
+      <!--<note id="deprecated-print-attribute">Beginning with DITA 1.3, the <xmlatt>print</xmlatt> attribute is deprecated. It is replaced with a conditional processing attribute: <xmlatt>deliveryTarget</xmlatt>. See <xref keyref="attributes-universal/metadataatts/deliveryTarget"><xmlatt>deliveryTarget</xmlatt></xref> for more details.</note>-->
                         <note id="mapref-with-child-elements">If a <xmlelement>topicref</xmlelement>
                                 element that references a map contains child
                                         <xmlelement>topicref</xmlelement> elements, the processing
@@ -236,14 +234,14 @@ to alert more birds to the presence of your bird feeder.&lt;/shortdesc&gt;
           is "twenty-four hour", then the effective sort phrase would be "twenty-four hour24 Hour
           Support Hotline".</p>
       </div>
-      <p id="rng-attribute-domain-name">An attribute domain's name is the name of the attribute plus
-          <keyword>Att</keyword>. For example, for the attribute named
-          <xmlatt>deliveryTarget</xmlatt>, the attribute domain name is "deliveryTargetAtt". The
-        attribute domain name is used to construct pattern names for the domain. </p>
-      <p id="dtd-attribute-domain-name">An attribute domain's name is the name of the attribute plus
-          <keyword>Att</keyword>. For example, for the attribute named
-          <xmlatt>deliveryTarget</xmlatt>, the attribute domain name is "deliveryTargetAtt". The
-        attribute domain name is used to construct entity names for the domain. </p>
+      <p id="rng-attribute-domain-name">The name of an attribute domain is the name of the attribute
+        plus <keyword>Att</keyword>. For example, for the attribute named
+          <xmlatt>deliveryTarget</xmlatt>, the attribute-domain name is "deliveryTargetAtt". The
+        attribute-domain name is used to construct pattern names for the domain. </p>
+      <p id="dtd-attribute-domain-name">The name of an attribute domain is the name of the attribute
+        plus <keyword>Att</keyword>. For example, for the attribute named
+          <xmlatt>deliveryTarget</xmlatt>, the attribute-domain name is "deliveryTargetAtt". The
+        attribute-domain name is used to construct entity names for the domain. </p>
                 </section>
 
                 <section id="section-7">
@@ -253,7 +251,6 @@ to alert more birds to the presence of your bird feeder.&lt;/shortdesc&gt;
 <ph id="highlight-caution">This element is part of the highlighting domain. Use this element only when a more semantically appropriate element is not available.</ph>
 <ph id="xml-mention-domain">This element is part of the XML mention domain.</ph>
 <ph id="groupdefn">The attribute also can include groups of values specified using the same syntax as generalized attributes within <xmlatt>props</xmlatt>; see <xref href="../archSpec/base/generalization-attributes.dita"/> for details on grouping syntax.</ph>
-<ph id="ditavalref-copyto">If <xmlatt>copy-to</xmlatt> is specified on a topic reference where <xmlelement>dvrResourcePrefix</xmlelement> or <xmlelement>dvrResourceSuffix</xmlelement> based renaming is in effect, the prefixes or suffixes are applied to the resource name inside the <xmlatt>copy-to</xmlatt> attribute.</ph>
 </lines>
                 </section>
                 <section id="section-9"><title>Reused error conditions</title><ph id="index-sort-as">When located

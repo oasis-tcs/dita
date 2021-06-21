@@ -19,10 +19,7 @@
      <p>The content model for a constrained element must be at least as restrictive as the
       unconstrained content model for the element.
       <!--[Eberlein: 12 January 2015]: For example, a constraint for <xmlelement>note</xmlelement> might restrict the values for <xmlatt>type</xmlatt> but leave the content model unchanged.--></p>
-     <p>The content model and attributes of an element can be constrained by only one constraint
-      module. If two constraint modules exist that constrain the content model or attributes for a
-      specific element, those two modules must be replaced with a new constraint module that
-      reflects the aggregation of the two original constraint modules.</p>
+     <!--<p>The content model and attributes of an element can be constrained by only one constraint module. If two constraint modules exist that constrain the content model or attributes for a specific element, those two modules must be replaced with a new constraint module that reflects the aggregation of the two original modules.</p>-->
     </dd>
    </dlentry>
    <dlentry>
@@ -32,9 +29,9 @@
       be omitted from the domain extension group or parameter entity. In such a case, there is no
       separate constraint declaration, because the content model is configured directly in the
       document-type shell.</p>
-     <p >A domain module can be constrained by only one constraint module. This
-      means that all restrictions for the extension elements that are defined in the domain must be
-      contained within that one constraint module.</p>
+     <p>A domain module can be constrained by only one constraint module. This means that all
+      restrictions for the extension elements that are defined in the domain must be contained
+      within that one constraint module.</p>
     </dd>
    </dlentry>
    <dlentry>
@@ -48,6 +45,21 @@
      <p>Constraint modules that restrict different elements from within the same vocabulary module
       can be combined with one another. Such combinations of constraints on a single vocabulary
       module have no meaningful order or precedence.</p>
+    </dd>
+   </dlentry>
+   <dlentry rev="2.0">
+    <dt>Aggregation of constraint modules</dt>
+    <dd>
+     <p>The content model of an element can be modified by either of the following
+      element-configuration modules:</p>
+     <ul>
+      <li>Constraint module</li>
+      <li>Expansion module</li>
+     </ul>
+     <p>The content model of an element only can be modified by a single element-type configuration
+      module. If multiple constraints or extensions need to be applied to a single element, the
+      element configurations must be combined into a single module that reflects all the constraints
+      and expansions that were defined in the original separate modules.</p>
     </dd>
    </dlentry>
   </dl>

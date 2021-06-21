@@ -3,9 +3,8 @@
 <reference id="ditavalref" xml:lang="en-us" >
   <title><xmlelement>ditavalref</xmlelement></title>
   <shortdesc>The <xmlelement>ditavalref</xmlelement> element references a DITAVAL document that
-    specifies filter conditions that can be used to process a map or map branch. Other
-    DITAVAL-reference domain elements can be used to imply multiple copies of the map branch that
-    contains them and so apply a different set of conditions to each copy.</shortdesc>
+    specifies filter conditions to be used when processing a map or map
+    branch.<!--Other DITAVAL-reference domain elements can be used to imply multiple copies of the map branch that contains them and so apply a different set of conditions to each copy.--></shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -17,7 +16,8 @@
     </metadata>
   </prolog>
   <refbody>
-    <section id="section-1">
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
       <p>When a <xmlelement>ditavalref</xmlelement> element is included in a map, the conditions in
         the referenced DITAVAL document are used to filter the elements in the branch. The branch
         includes the parent element that contains the <xmlelement>ditavalref</xmlelement> element,
@@ -87,6 +87,11 @@
     </section>
     <section id="limitations">
       <title>Limitations</title>
+      <draft-comment author="robander">This topic overall has far more processing information than
+        seems appropriate for an element reference topic; there is likely a lot of overlap /
+        duplication of information contained in the Branch Filtering section of the arch spec. Most
+        of this information should be moved there, likely including the full set of
+        Limitations.</draft-comment>
       <p>The following limitations apply when using the <xmlelement>ditavalref</xmlelement> element;
         these limitations cannot be enforced in a DTD or other XML grammar files.</p>
       <p>When the use of the <xmlelement>ditavalref</xmlelement> element results in multiple copies
@@ -105,43 +110,38 @@
         scheme for the conflicting copies. <draft-comment author="Kristen J Eberlein"
           time="15 May 2019" audience="spec-editors">
           <p>Need more information about what situation the processor is recovering from ...</p>
-        </draft-comment></p>
+        </draft-comment><draft-comment author="robander">For the above, it would be recovering from
+          a map that instructs it to create two files of the same name, with different filter
+          conditions applied.</draft-comment></p>
     </section>
     <section id="specialization-hierachy">
       <title>Specialization hierarchy</title>
-      <p>The <xmlelement>ditavalref</xmlelement> element is specialized from <xref
-          keyref="elements-topicref"/>. It is defined in the DITAVALref domain module.</p>
+      <p>The <xmlelement>ditavalref</xmlelement> element is specialized from
+          <xmlelement>topicref</xmlelement>. It is defined in the DITAVAL-reference domain
+        module.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
-      <p>The following attributes are available on this element: <xref keyref="attributes-universal"
-        /> (except for <xmlatt>conkeyref</xmlatt>, which is removed for all elements in this domain)
-        and the attributes defined below.</p>
-      <dl>
-        <dlentry>
-          <dt id="ditavalref-href"><xmlatt>href</xmlatt></dt>
-          <dd>Provides a reference to a DITAVAL document. If the <xmlatt>href</xmlatt> attribute is
-            unspecified, this <xmlelement>ditavalref</xmlelement> will not result in any new
-            filtering behavior, but other aspects of the element are still evaluated. See <xref
-              keyref="attributes-href"/> for general information on the format and processing
-            implications of the <xmlatt>href</xmlatt> attribute.</dd>
-        </dlentry>
-        <dlentry>
-          <dt id="ditavalref-format"><xmlatt>format</xmlatt></dt>
-          <dd>Format of the target document, which <term outputclass="RFC-2119">MUST</term> be a
-            DITAVAL document. The default value for this element is <keyword>ditaval</keyword>. See
-              <xref keyref="attributes-format"/> for more information.</dd>
-        </dlentry>
-        <dlentry>
-          <dt id="ditavalref-processing-role"><xmlatt>processing-role</xmlatt></dt>
-          <dd>The processing role defaults to "resource-only" for DITAVAL documents, which are only
-            used for processing and do not contain content. There is no other valid value for this
-            attribute on this element.</dd>
-        </dlentry>
-      </dl>
+      <p>The following attributes are available on this element: <ph
+          conkeyref="reuse-attributes/ref-universalatts"/> (except for <xmlatt>conkeyref</xmlatt>,
+        which is removed for all elements in this domain), <xref
+          keyref="attributes-common/attr-format"><xmlatt>format</xmlatt></xref>, <xref
+          keyref="attributes-common/attr-href"><xmlatt>href</xmlatt></xref>, and <xref
+          keyref="attributes-common/attr-scope"><xmlatt>scope</xmlatt></xref>.</p>
+      <p>For this element:<ul id="ul_xlk_gc4_qpb">
+          <li>The <xmlatt>format</xmlatt> attribute has a default value of
+              <keyword>ditaval</keyword>.</li>
+          <li>The <xmlatt>href</xmlatt> attribute specivies a reference to a DITAVAL document. If
+            the <xmlatt>href</xmlatt> attribute is unspecified, this
+              <xmlelement>ditavalref</xmlelement> will not result in any new filtering behavior, but
+            other aspects of the element are still evaluated.</li>
+          <li>The <xmlatt>processing-role</xmlatt> attribute has a default value of
+              <keyword>resource-only</keyword>.</li>
+        </ul><draft-comment author="robander">DITA 1.3 said that format MUST be ditaval, and that no
+          value other than "resource-only" is valid for processing role. Should these be #FIXED in
+          the grammar files?</draft-comment></p>
+      <!--<dl><dlentry><dt id="ditavalref-href"><xmlatt>href</xmlatt></dt><dd>Provides a reference to a DITAVAL document. If the <xmlatt>href</xmlatt> attribute is unspecified, this <xmlelement>ditavalref</xmlelement> will not result in any new filtering behavior, but other aspects of the element are still evaluated. See <xref keyref="attributes-href"/> for general information on the format and processing implications of the <xmlatt>href</xmlatt> attribute.</dd></dlentry><dlentry><dt id="ditavalref-format"><xmlatt>format</xmlatt></dt><dd>Format of the target document, which <term outputclass="RFC-2119">MUST</term> be a DITAVAL document. The default value for this element is <keyword>ditaval</keyword>. See <xref keyref="attributes-format"/> for more information.</dd></dlentry><dlentry><dt id="ditavalref-processing-role"><xmlatt>processing-role</xmlatt></dt><dd>The processing role defaults to "resource-only" for DITAVAL documents, which are only used for processing and do not contain content. There is no other valid value for this attribute on this element.</dd></dlentry></dl>-->
     </section>
-<example id="example" otherprops="examples"
-conkeyref="reuse-examples/ditavalref"/>
+<example id="example" otherprops="examples" conkeyref="reuse-examples/ditavalref"/>
   </refbody>
 </reference>
-

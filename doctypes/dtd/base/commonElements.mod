@@ -307,7 +307,6 @@
                %basic.ph; |
                %data.elements.incl; |
                %foreign.unknown.incl; |
-               %longquoteref; |
                %txt.incl;"
 >
 <!ENTITY % tblcell.cnt
@@ -659,42 +658,21 @@
 <!ATTLIST  title %title.attributes;>
 
 
-<!--                    LONG NAME: Navigation Title                -->
-<!ENTITY % navtitle.content
+<!--                    LONG NAME: Alternate Title                -->
+<!ENTITY % titlealt.content
                        "(%words.cnt; |
                          %ph; |
                          %draft-comment; |
                          %required-cleanup;)*"
 >
-<!ENTITY % navtitle.attributes
-              "%univ-atts;"
+<!ENTITY % titlealt.attributes
+              "title-role
+                          CDATA
+                                    #IMPLIED
+               %univ-atts;"
 >
-<!ELEMENT  navtitle %navtitle.content;>
-<!ATTLIST  navtitle %navtitle.attributes;>
-
-<!--                    LONG NAME: Search Title                    -->
-<!ENTITY % searchtitle.content
-                       "(%words.cnt; |
-                         %ph;)*"
->
-<!ENTITY % searchtitle.attributes
-              "%univ-atts;"
->
-<!ELEMENT  searchtitle %searchtitle.content;>
-<!ATTLIST  searchtitle %searchtitle.attributes;>
-
-
-<!--                    LONG NAME: linktext                        -->
-<!ENTITY % linktext.content
-                       "(%words.cnt; |
-                         %ph;)*"
->
-<!ENTITY % linktext.attributes
-              "%univ-atts;"
->
-<!ELEMENT  linktext %linktext.content;>
-<!ATTLIST  linktext %linktext.attributes;>
-
+<!ELEMENT  titlealt %titlealt.content;>
+<!ATTLIST  titlealt %titlealt.attributes;>
 
 <!--                    LONG NAME: Short Description               -->
 <!ENTITY % shortdesc.content
@@ -763,59 +741,12 @@
 <!ATTLIST  note %note.attributes;>
 
 
-<!--                    LONG NAME: Long Quote Reference            -->
-<!ENTITY % longquoteref.content
-                       "EMPTY"
->
-<!ENTITY % longquoteref.attributes
-              "href
-                          CDATA
-                                    #IMPLIED
-               keyref
-                          CDATA
-                                    #IMPLIED
-               type
-                          CDATA
-                                    #IMPLIED
-               format
-                          CDATA
-                                    #IMPLIED
-               scope
-                          (external |
-                           local |
-                           peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               %univ-atts;"
->
-<!ELEMENT  longquoteref %longquoteref.content;>
-<!ATTLIST  longquoteref %longquoteref.attributes;>
-
-
 <!--                    LONG NAME: Long Quote                      -->
 <!ENTITY % lq.content
                        "(%longquote.cnt;)*"
 >
 <!ENTITY % lq.attributes
-              "href
-                          CDATA
-                                    #IMPLIED
-               keyref
-                          CDATA
-                                    #IMPLIED
-               format
-                          CDATA
-                                    #IMPLIED
-               type
-                          CDATA
-                                    #IMPLIED
-               scope
-                          (external |
-                           local |
-                           peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               reftitle
+              "keyref
                           CDATA
                                     #IMPLIED
                %univ-atts;"
@@ -1773,6 +1704,12 @@
                            peer |
                            -dita-use-conref-target)
                                     #IMPLIED
+               height
+                          NMTOKEN
+                                    #IMPLIED
+               width
+                          NMTOKEN
+                                    #IMPLIED
                tabindex
                           NMTOKEN
                                     #IMPLIED
@@ -1882,13 +1819,10 @@
 <!ATTLIST  keyword        class CDATA "- topic/keyword "    >
 <!ATTLIST  li             class CDATA "- topic/li "         >
 <!ATTLIST  lines          class CDATA "- topic/lines "      >
-<!ATTLIST  linktext       class CDATA "- topic/linktext "   >
 <!ATTLIST  longdescref    class CDATA "- topic/longdescref ">
-<!ATTLIST  longquoteref   class CDATA "- topic/longquoteref ">
 <!ATTLIST  lq             class CDATA "- topic/lq "         >
 <!ATTLIST  media-source   class CDATA "- topic/media-source ">
 <!ATTLIST  media-track    class CDATA "- topic/media-track ">
-<!ATTLIST  navtitle       class CDATA "- topic/navtitle "   >
 <!ATTLIST  note           class CDATA "- topic/note "       >
 <!ATTLIST  object         class CDATA "- topic/object "     >
 <!ATTLIST  ol             class CDATA "- topic/ol "         >
@@ -1898,7 +1832,6 @@
 <!ATTLIST  pre            class CDATA "- topic/pre "        >
 <!ATTLIST  q              class CDATA "- topic/q "          >
 <!ATTLIST  required-cleanup   class CDATA "- topic/required-cleanup ">
-<!ATTLIST  searchtitle    class CDATA "- topic/searchtitle ">
 <!ATTLIST  shortdesc      class CDATA "- topic/shortdesc "  >
 <!ATTLIST  simpletable    class CDATA "- topic/simpletable ">
 <!ATTLIST  sl             class CDATA "- topic/sl "         >
@@ -1910,6 +1843,7 @@
 <!ATTLIST  term           class CDATA "- topic/term "       >
 <!ATTLIST  text           class CDATA "- topic/text "       >
 <!ATTLIST  title          class CDATA "- topic/title "      >
+<!ATTLIST  titlealt       class CDATA "- topic/titlealt "   >
 <!ATTLIST  tm             class CDATA "- topic/tm "         >
 <!ATTLIST  ul             class CDATA "- topic/ul "         >
 <!ATTLIST  unknown        class CDATA "- topic/unknown "    >

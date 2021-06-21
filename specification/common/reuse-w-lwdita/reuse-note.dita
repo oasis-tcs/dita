@@ -9,28 +9,102 @@
             <title>Usage information</title>
             <p>Variant types of notes (caution, danger, warning, etc.) can be indicated through
                 values selected for the <xmlatt>type</xmlatt> attribute.</p>
+            <div platform="dita">
+                <p>For example, if the note is a tip, the word <b>Tip</b> might be used to draw the
+                    reader's attention to it. </p>
+                <p>The values danger, warning, and notice have meanings that are based on ANSI Z535
+                    and ISO 3864 regulations.</p>
+                <p>If <xmlatt>type</xmlatt> is set to <keyword>other</keyword>, the value of the
+                        <xmlatt>othertype</xmlatt> attribute can be used. If you use
+                        <xmlatt>othertype</xmlatt>, many processors will require additional
+                    information on how to process the value. Allowable values for the
+                        <xmlatt>type</xmlatt> attribute are:</p>
+                <dl id="dl_ntd_rry_qpb">
+                    <dlentry>
+                        <dt><keyword>note</keyword></dt>
+                        <dd>This is just a note.</dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><keyword>attention</keyword></dt>
+                        <dd>Please pay extra attention to this note.</dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><keyword>caution</keyword></dt>
+                        <dd>Care is required when proceeding.</dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><keyword>danger</keyword></dt>
+                        <dd>Important! Be aware of this before doing anything else. <ph>When used
+                                with the <xmlelement>hazardstatement</xmlelement> element, this
+                                indicates an imminently hazardous situation which, if not avoided,
+                                    <b>will</b> result in death or serious injury.</ph></dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><keyword>fastpath</keyword></dt>
+                        <dd>This note will speed you on your way.</dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><keyword>important</keyword></dt>
+                        <dd>This note is important.</dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><keyword>notice</keyword></dt>
+                        <dd> Indicates a potential situation which, if not avoided, might result in
+                            an <b>undesirable result or state</b>.</dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><keyword>remember</keyword></dt>
+                        <dd>Don&apos;t forget to do what this note says.</dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><keyword>restriction</keyword></dt>
+                        <dd>You can&apos;t do what this note says.</dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><keyword>tip</keyword></dt>
+                        <dd>This is a fine little tip.</dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><keyword>warning</keyword></dt>
+                        <dd>Indicates a potentially hazardous situation. When used with the
+                                <xmlelement>hazardstatement</xmlelement> element, this indicates a
+                            situation which, if not avoided, could result in death or serious
+                            injury.</dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><keyword>trouble</keyword></dt>
+                        <dd>Provides information about how to remedy a trouble situation.</dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><keyword>other</keyword></dt>
+                        <dd>This is something other than a normal note.</dd>
+                    </dlentry>
+                    <dlentry conkeyref="reuse-attributes/ditauseconref">
+                        <dt> </dt>
+                        <dd> </dd>
+                    </dlentry>
+                </dl>
+            </div>
         </section>
         <section id="attributes">
             <title>Attributes</title>
             <div platform="dita">
-                <p>The following attributes are available on this element: <xref
-                        keyref="attributes-universal"/>, <xref
-                        keyref="attributes-common/spectitle"/>, and the attributes defined
-                    below.</p>
+                <p>The following attributes are available on this element: <ph
+                        conkeyref="reuse-attributes/ref-universalatts"/>, <xref
+                        keyref="attributes-common/spectitle"><xmlatt>spectitle</xmlatt></xref>, and
+                    the attributes defined below.</p>
                 <dl>
                     <dlentry>
-                        <dt><xmlatt>othertype</xmlatt></dt>
+                        <dt id="attr-othertype"><xmlatt>othertype</xmlatt></dt>
                         <dd>Specifies an alternate note type. This value is used as the
                             user-provided note title when the <xmlatt>type</xmlatt> attribute value
                             is set to <keyword>other</keyword>.</dd>
                     </dlentry>
                     <dlentry>
-                        <dt><xmlatt>type</xmlatt></dt>
+                        <dt id="attr-type"><xmlatt>type</xmlatt></dt>
                         <dd>Specifies the type of a note. Note that this differs from the
-                                <xmlatt>type</xmlatt> attribute on many other DITA elements. See
-                                <xref keyref="attributes-type"/> for detailed information on
-                            supported values and processing implications. Available values are
-                                <keyword>note</keyword>, <keyword>tip</keyword>,
+                                <xmlatt>type</xmlatt> attribute on many other DITA elements.
+                            Allowable values are <keyword>note</keyword>, <keyword>tip</keyword>,
                                 <keyword>fastpath</keyword>, <keyword>restriction</keyword>,
                                 <keyword>important</keyword>, <keyword>remember</keyword>,
                                 <keyword>attention</keyword>, <keyword>caution</keyword>,
@@ -43,19 +117,19 @@
                 </dl>
             </div>
             <div platform="lwdita">
-                <p>The following attributes are available on this element: <xref
-                        keyref="attributes-universal"/> and the attribute defined below.</p>
+                <p>The following attributes are available on this element: <ph
+                        conkeyref="reuse-attributes/ref-universalatts"/> and the attribute defined
+                    below.</p>
                 <p conkeyref="reuse-attributes/mdita-attributes"/>
                 <dl>
                     <dlentry>
                         <dt>Type</dt>
                         <dd>Specifies the type of a note. Note that this differs from the
-                                <xmlatt>type</xmlatt> attribute on many other DITA elements. See
-                                <xref keyref="attributes-type"/> for detailed information on
-                            supported values and processing implications. Available values are
-                                <keyword>caution</keyword>, <keyword>danger</keyword>,
-                                <keyword>note</keyword>, <keyword>notice</keyword>,
-                                <keyword>trouble</keyword>, and <keyword>warning</keyword>.</dd>
+                                <xmlatt>type</xmlatt> attribute on many other DITA elements.
+                            Available values are <keyword>caution</keyword>,
+                                <keyword>danger</keyword>, <keyword>note</keyword>,
+                                <keyword>notice</keyword>, <keyword>trouble</keyword>, and
+                                <keyword>warning</keyword>.</dd>
                         <dd>XDITA: <xmlatt>type</xmlatt></dd>
                         <dd>HDITA: <xmlatt>data-type</xmlatt></dd>
                         

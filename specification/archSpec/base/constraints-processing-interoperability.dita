@@ -23,10 +23,6 @@
    unconstrained document type with an optional <xmlelement>shortdesc</xmlelement> element. Thus,
    the content processing for topic still works when <xmlelement>topic</xmlelement> is constrained
    to require a short description.</p>
-  <p>A constrained document type allows only a subset of the possible instances of the unconstrained
-   document type. Thus, for a processor to determine whether a document instance is compatible with
-   another document type, the document instance <term outputclass="RFC-2119" 
-    >MUST</term> declare any constraints on the document type. </p>
   <p otherprops="examples">For example, an unconstrained task is compatible with an unconstrained
    topic, because the <xmlelement>task</xmlelement> element can be generalized to
     <xmlelement>topic</xmlelement>. However, if the topic is constrained to require the
@@ -35,5 +31,15 @@
    a <xmlelement>shortdesc</xmlelement> element. However, if the task document type also has been
    constrained to require the <xmlelement>shortdesc</xmlelement> element, it is compatible with the
    constrained topic document type. </p>
+  <draft-comment author="Kristen J Eberlein" time="14 May 2021">
+   <p>For DITA 2.0, we've removed the requirement to add tokens for constraints; accordingly I
+    removed the following paragraph:</p>
+   <p>"A constrained document type allows only a subset of the possible instances of the
+    unconstrained document type. Thus, for a processor to determine whether a document instance is
+    compatible with another document type, the document instance <term outputclass="RFC-2119"
+     >MUST</term> declare any constraints on the document type."</p>
+   <p>Does this topic make sense without that paragraph? How do we need to rework it? Does it need
+    to cover anything about</p>
+  </draft-comment>
  </conbody>
 </concept>

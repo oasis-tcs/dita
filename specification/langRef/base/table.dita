@@ -14,15 +14,15 @@
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>The DITA table is based on the OASIS Exchange Table Model, augmented with DITA attributes
-        that enable it for accessibility, specialization, conref, and other DITA processing. An
-        optional <xmlelement>title</xmlelement> inside the <xmlelement>table</xmlelement> element
-        provides a caption to describe the table. In addition, the optional
-          <xmlelement>desc</xmlelement> element enables table description that is parallel with
-        figure description.</p>
+      <p>The DITA <xmlelement>table</xmlelement> element is based on the OASIS Exchange Table Model,
+        augmented with DITA attributes that enable accessibility, specialization, conref, and other
+        DITA processing. An optional <xmlelement>title</xmlelement> inside the
+          <xmlelement>table</xmlelement> element provides a caption to describe the table. In
+        addition, the optional <xmlelement>desc</xmlelement> element enables a table description
+        that is parallel with a figure description.</p>
       <p>See <xref keyref="elements-simpletable"/> for a simplified table model that is closer to
-        the HTML5 table model, and can be specialized to represent more regular relationships of
-        data.</p>
+        the HTML5 table model, and can be more easily specialized to represent regular relationships
+        of data.</p>
       <p conkeyref="reuse-general/pgwide-explain"/>
       <note>The <xmlatt>scale</xmlatt> attribute represents a stylistic markup property that is
         currently maintained in tables for legacy purposes. External stylesheets should enable less
@@ -30,20 +30,23 @@
     </section>
     <section id="attributes">
       <title>Attributes</title>
-      <p>The following attributes are available on this element: <xref
-          keyref="attributes-universal"/>, <xmlatt>frame</xmlatt> and <xmlatt>scale</xmlatt> from <xref
-          keyref="attributes-common/displayatts"/>, and the attributes defined below. This
-        element also uses <xmlatt>colsep</xmlatt>, <xmlatt>rowsep</xmlatt>, and
-          <xmlatt>rowheader</xmlatt> from <xref keyref="attributes-common/complextableatts"/>.</p>
-      <draft-comment author="Robert">Looking for consistency on orient, pgwide, and entry/@rotate.
-        Should they mention "not enforced by dtd / rng"? Should they say "Supported values" (seems
-        to imply "processors MUST support at least these") or "Allowed values" (implies no other
-        values are legal)?</draft-comment>
+      <p>The following attributes are available on this element: <ph conkeyref="reuse-attributes/ref-universalatts"/>, <xref keyref="attributes-common/attr-frame"><xmlatt>frame</xmlatt></xref>, <xref
+          keyref="attributes-common/attr-scale"><xmlatt>scale</xmlatt></xref>, <xref
+          keyref="attributes-common/attr-colsep"><xmlatt>colsep</xmlatt></xref>, <xref
+          keyref="attributes-common/attr-rowsep"><xmlatt>rowsep</xmlatt></xref>, <xref
+          keyref="attributes-common/attr-rowheader"><xmlatt>rowheader</xmlatt></xref>, and the
+        attributes defined below.</p>
+      <draft-comment author="Robert">Looking for consistency on orient, pgwide, colsep, rowsep, and
+        entry/@rotate. We have a mix of "Supported values" (seems to imply "processors MUST support
+        at least these") or "Allowed values" (implies no other values are legal, and the wording
+        used on most other attributes)? Also, are we consistent between "Allowable" and "Allowed"
+        (allowed seems more correct for ennumerated values)?<p>Update after talking with Kris 14 May
+          2021: Better to use: "The following values are valid:"</p></draft-comment>
       <dl>
         <dlentry id="orient">
-          <dt><xmlatt>orient</xmlatt></dt>
+          <dt id="attr-orient"><xmlatt>orient</xmlatt></dt>
           <dd>Specifies the orientation of the table in page-based outputs. This attribute is
-            primarily useful for print-oriented display. Allowable values are:<dl>
+            primarily useful for print-oriented display. The following values are valid:<dl>
               <dlentry>
                 <dt>port</dt>
                 <dd>The same orientation as the text flow.</dd>
@@ -61,12 +64,12 @@
                 <xmlatt>orient</xmlatt> attribute can be ignored.</p></dd>
         </dlentry>
         <dlentry>
-          <dt><xmlatt>pgwide</xmlatt></dt>
-          <dd>Specifies the horizontal placement of the element. Supported values are 1 and 0,
-            although these are not mandated by the DTD or RNG grammar files.<p>For print-oriented
-              display, the value &quot;1&quot; places the element on the left page margin;
-              &quot;0&quot; aligns the element with the left margin of the current text line and
-              takes indention into account. </p></dd>
+          <dt id="attr-pgwide"><xmlatt>pgwide</xmlatt></dt>
+          <dd>Specifies the horizontal placement of the element. The following values are valid:
+              <keyword>1</keyword> and <keyword>0</keyword>. For print-oriented display, the value
+              <keyword>1</keyword> places the element on the left page margin; <keyword>0</keyword>
+            aligns the element with the left margin of the current text line and takes indention
+            into account. </dd>
         </dlentry>
       </dl>
     </section>

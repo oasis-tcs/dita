@@ -6,23 +6,22 @@
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <!--<draft-comment author="robander" audience="spec-editors" time="2018"><p>This usage information needs to be entirely reworked. It currently contains processing information, tutorial information, and also ignores the fact that link text is now often used for text within a key definition (that does not actually specify a link).</p><p>Additionally: it says to use this ONLY when (x, y, or z); implying that it is incorrect to use link text for links to local topics.</p></draft-comment>-->
-      <!--<p>For links to local DITA topics, the text of a link typically can be resolved during processing. Use the <xmlelement>linktext</xmlelement> element only when the target cannot be reached, such as when it is a peer or external link, or when the target is local but not in DITA format. When used inside of a <xmlelement>link</xmlelement> element inside a topic, <xmlelement>linktext</xmlelement> is used as the text for the specified link; when used within a map, <xmlelement>linktext</xmlelement> is used as the text for generated links that refer to the specified topic.</p>-->
-      <p>The <xmlelement>linktext</xmlelement> element can provide descriptive text for a link when
-        the target cannot be resolved during processing, for example, as when the link is to a peer,
-        external, or non-DITA resource. When used in conjunction with a local DITA resource, the
-        content of the <xmlelement>linktext</xmlelement> is used as a label for the generated
-        link.</p>
-      <draft-comment author="Kristen J Eberlein" time="31 October 2020">
-        <p>Is the above correct and adequately resolves your draft comment from 2018?</p>
-      </draft-comment>
+      <p>The <xmlelement>linktext</xmlelement> element provides descriptive text for a link. It is
+        most commonly used when the target cannot be resolved during processing or when a title for
+        the reference cannot be determined by a processor. For example, link text might be required
+        when the link is to a peer, external, or non-DITA resource.</p>
+    </section>
+    <section id="rendering-expectations">
+      <title>Rendering expectations</title>
+      <draft-comment author="robander" time="14 May 2021">Pulled this from the "usage" section to
+        have a clearer rendering statement, but it needs editing.</draft-comment>
+      <p>For processors that can automatically retrieve link text from a target, a specified
+          <xmlelement>linktext</xmlelement> element is used instead of the retrieved link text.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
-      <p platform="dita">The following attributes are available on this element: <xref
-          keyref="attributes-universal"/>.</p>
-      <p platform="lwdita">The following attributes are available on this element: <xref
-          keyref="attributes-universal/localizationatts"/>, <xref keyref="attributes-universal/class"
+      <p platform="dita">The following attributes are available on this element: <ph conkeyref="reuse-attributes/ref-universalatts"/>.</p>
+      <p platform="lwdita">The following attributes are available on this element: <ph conkeyref="reuse-attributes/ref-localizationatts"/>, <xref keyref="attributes-universal/class"
             ><xmlatt>class</xmlatt></xref>, and <xref keyref="attributes-universal/outputclass"
             ><xmlatt>outputclass</xmlatt></xref>.</p>
     </section>

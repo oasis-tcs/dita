@@ -8,6 +8,16 @@
     the current name of the element to its more general equivalents, but it also can provide a
     mapping from the current name to more specialized equivalents. All specialization-aware
     processing can be defined in terms of <xmlatt>class</xmlatt> attribute values.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm><xmlatt>class</xmlatt> attribute<indexterm>rules and
+          syntax</indexterm></indexterm>
+        <indexterm><xmlatt>class</xmlatt> attribute<indexterm>examples</indexterm></indexterm>
+        <indexterm>examples<indexterm><xmlatt>class</xmlatt> attribute</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
   <conbody>
     <p>The <xmlatt>class</xmlatt> attribute tells a processor what general classes of elements the
       current element belongs to. DITA scopes elements by module type (for example topic type,
@@ -40,16 +50,22 @@
     </section>
     <section id="rules">
       <title>Rules</title>
-      <draft-comment author="robander">Question about the following statement.
-      If a topic has no integrated attribute domains in 2.0, the value of @specializations
-      will be empty. Is this really a MUST? Should we clarify to indicate that this must
-      be declared in the grammar, but does not necessarily need to have a value - I know
-      that has caused confusion in the past for a tool that reported errors for empty @domains</draft-comment>
-      <p>The root element of every topic and map <term outputclass="RFC-2119">MUST</term> declare
-        the following attributes:<ul>
-          <li><xmlatt>class</xmlatt></li>
-          <li><xmlatt>specializations</xmlatt></li>
-        </ul></p>
+      <draft-comment author="robander">Question about the following statement. If a topic has no
+        integrated attribute domains in 2.0, the value of @specializations will be empty. Is this
+        really a MUST? Should we clarify to indicate that this must be declared in the grammar, but
+        does not necessarily need to have a value - I know that has caused confusion in the past for
+        a tool that reported errors for empty @domains<p>Response by Eliot Kimber, 18 May 2021:</p><lq>
+          <p>If @specializations is only relevant to attribute specializations then I think it would
+            be sensible to allow it to be omitted, with an omitted @specializations being equivalent
+            to specializations="" (empty or whitespace-only value).</p>
+          <p>The counter to that approach is that you can't easily distinguish between really having
+            no attribute specializations and just forgetting to provide @specializations, but in
+            that case I think you'd get runtime failures if you actually had specializations that
+            weren't declared (i.e., your @props specializations aren't recognized so things don't
+            filter correctly).</p>
+          <p>Seems like an edge case in practice since DITA defines a number of out-of-the box
+            attribute specializations, including now all of the original conditional attributes.</p>
+        </lq></draft-comment>
       <p>Every DITA element (except the <xmlelement>dita</xmlelement> element that is used as the
         root of a ditabase document) <term outputclass="RFC-2119">MUST</term> declare a
           <xmlatt>class</xmlatt> attribute.</p>
@@ -62,8 +78,7 @@
         being generalized.</p>
       <p>A vocabulary module <term outputclass="RFC-2119">MUST NOT</term> change the
           <xmlatt>class</xmlatt> attribute for elements that it does not specialize, but simply
-        reuses by reference from more generic
-        levels.<!-- For example, if <xmlelement>task</xmlelement>, <xmlelement>bctask</xmlelement>, and <xmlelement>guitask</xmlelement> use the <xmlelement>p</xmlelement> element without specializing it, they <term outputclass="RFC-2119">MUST NOT</term> declare mappings for it. --></p>
+        reuses by reference from more generic levels.</p>
       <p>Authors <term outputclass="RFC-2119">SHOULD NOT</term> modify the <xmlatt>class</xmlatt>
         attribute.</p>
     </section>

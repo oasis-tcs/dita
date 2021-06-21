@@ -4,14 +4,20 @@
  <title>Normative versions of DITA grammar files</title>
  <shortdesc>The OASIS DITA Technical Committee uses the RELAX NG XML syntax for the normative
     versions of the XML grammar files that comprise the DITA release. </shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm/>
+      </keywords>
+    </metadata>
+  </prolog>
  <conbody>
     <p>The DITA Technical Committee chose the RELAX NG XML syntax for the following reasons:</p>
     <dl>
       <dlentry>
         <dt>Easy use of foreign markup</dt>
         <dd>The DITA grammar files maintained by OASIS depend on this feature of RELAX NG in order
-          to capture metadata about document-type shells and modules; such metadata is used to
-          generate the DTD- and XSD-based versions of the grammar files.<p>The foreign vocabulary
+          to capture metadata about document-type shells and modules.<p>The foreign vocabulary
             feature also can be used to include Schematron rules directly in RELAX NG grammars.
             Schematron rules can check for patterns that either are not expressible with RELAX NG
             directly or that would be difficult to express.</p></dd>
@@ -20,9 +26,9 @@
         <dt>RELAX NG <xmlelement>div</xmlelement> element </dt>
         <dd>This general grouping element allows for arbitrary organization and grouping of patterns
           within grammar documents. Such grouping tends to make the grammar documents easier to work
-          with, especially in XML-aware editors. <ph >The use or non-use of the RELAX
-            NG <xmlelement>div</xmlelement> element does not affect the meaning of the patterns that
-            are defined in a RELAX NG schema.</ph></dd>
+          with, especially in XML-aware editors. The use or non-use of the RELAX NG
+            <xmlelement>div</xmlelement> element does not affect the meaning of the patterns that
+          are defined in a RELAX NG schema.</dd>
       </dlentry>
       <dlentry>
         <dt>Capability of expressing precise restrictions</dt>
@@ -35,7 +41,12 @@
             documents can integrate constraint modules that use the full power of RELAX NG to
             enforce constraints that cannot be enforced by DTDs or XSDs. The grammar files provided
             by the OASIS DITA Technical Committee do not use any features of RELAX NG that cannot be
-            translated into equivalent DTD or XSD constructs.</p></dd>
+            translated into equivalent DTD or XSD constructs.</p><draft-comment
+            author="Kristen J Eberlein" time="31 March 2021">
+            <p>Regarding the above paragraph, do we want to remove the mentions of XSD? The advice
+              is still sound, although I think we want to encourage people who must use XSDs to
+              generate a single file for validation from either DTD or RNG.</p>
+          </draft-comment></dd>
       </dlentry>
     </dl>
     <p>The DITA use of RELAX NG depends on the <cite>RELAX NG DTD Compatibility</cite>

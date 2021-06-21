@@ -2,24 +2,34 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept xml:lang="en-us" id="rng-requirements-overview">
  <title>RELAX NG: Overview of coding requirements</title>
- <shortdesc>RELAX NG modules are self-integrating, which means that they automatically add to the
-  content models and attribute sets they extend. This means that information architects do not have
-  much work to do when assembling vocabulary modules and constraints into document type
-  shells.</shortdesc>
+ <shortdesc>RELAX NG modules are self-integrating; they automatically add to the content models and
+  attribute lists that they extend. This means that information architects do not have much work to
+  do when integrating vocabulary modules <ph rev="2.0">and element-configuration modules
+   (constraints and expansion)</ph> into document-type shells.</shortdesc>
+ <prolog>
+  <metadata>
+   <keywords>
+    <indexterm>coding
+     requirements<indexterm>RNG<indexterm>overview</indexterm></indexterm></indexterm>
+    <indexterm>RNG<indexterm>coding
+     requirements<indexterm>overview</indexterm></indexterm></indexterm>
+   </keywords>
+  </metadata>
+ </prolog>
  <conbody>
   <p>In addition to simplifying document-type shells, the self-integrating aspect of RELAX NG
    results in the following coding practices:</p>
   <ul>
-   <li>Each specialized vocabulary module consists of a single file, unlike the two required for
-    DTDs.</li>
+   <li>Each specialization module consists of a single file, unlike the two required for DTDs.</li>
    <li>Domain modules directly extend elements, unlike DTDs, which rely on an extra file and
     extensions within the document-type shell.</li>
-   <li>Constraint modules directly include the modules that they extend, which means that just by
-    referencing a constraint module, the document-type shell gets everything it needs to both define
-    and constrain a vocabulary module.</li>
+   <li rev="2.0">Element-configuration modules (constraint and expansion) directly include the
+    modules that they extend, which means that just by referencing an element-configuration module,
+    the document-type shell gets everything it needs to redefine a vocabulary module.</li>
   </ul>
-  <p>RELAX NG grammars for DITA document-type shells, vocabulary modules, and constraint modules
-    <term outputclass="RFC-2119">MAY</term> do the following:<ul>
+  <p>RELAX NG grammars for DITA document-type shells, vocabulary modules, and <ph rev="2.0"
+    >element-configuration modules (constraint and expansion) </ph><term outputclass="RFC-2119"
+    >MAY</term> do the following:<ul>
     <li>Use the <xmlelement>a:documentation</xmlelement> element anywhere that foreign elements are
      allowed by RELAX NG. The <xmlelement>a:documentation</xmlelement> element refers to the
       <xmlelement>documentation</xmlelement> element type from the
@@ -45,8 +55,14 @@
     from one RELAX NG syntax to the other might lose the information, as processors are not required
     to process the annotations and information from foreign vocabularies. </p>
    <p>The DITA coding requirements are defined for the RELAX NG XML syntax. Document type shells,
-    vocabulary modules, and constraint modules that use the RELAX NG compact syntax can use the same
-    organization requirements as those defined for the RELAX NG XML syntax. </p>
+    vocabulary modules, and <ph rev="2.0">element-configuration modules (constraints and
+     expansion)</ph> that use the RELAX NG compact syntax can use the same organization requirements
+    as those defined for the RELAX NG XML syntax. </p>
+   <draft-comment author="Kristen J Eberlein" time="02 April 2021">
+    <p>I have a problem with having a single section with a title. Either other content in this
+     topic needs to be grouped into at titled section, or the original section needs to be
+     removed.</p>
+   </draft-comment>
   </section>
  </conbody>
 </concept>

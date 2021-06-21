@@ -3,9 +3,10 @@
  "reference.dtd">
 <reference id="dvrResourceSuffix" xml:lang="en-us" >
   <title><xmlelement>dvrResourceSuffix</xmlelement></title>
-  <shortdesc>The <xmlelement>dvrResourceSuffix</xmlelement> element specifies the suffix to use
-    when constructing the effective file names of resources that are referenced from within the map
-    branch that is implied by the ancestor <xmlelement>ditavalref</xmlelement> element.</shortdesc>
+  <shortdesc>The <xmlelement>dvrResourceSuffix</xmlelement> element specifies the prefix to use when
+    constructing the effective file names or resource IDs of the resources that are referenced from
+    within the map branch that is implied by the ancestor <xmlelement>ditavalref</xmlelement>
+    element.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -15,38 +16,39 @@
     </metadata>
   </prolog>
   <refbody>
-    <section id="section-1">
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
       <p>For map branches that are implied by <xmlelement>ditavalref</xmlelement> elements, the
-        value of the <xmlelement>dvrResourceSuffix</xmlelement> element contributes to the
-        effective file names of the resources that are referenced within the branch. The base part
-        of the effective resource file name ends with the value of the
+        value of the <xmlelement>dvrResourceSuffix</xmlelement> element contributes to the effective
+        file names and resource IDs of the resources that are referenced within the branch. The base
+        part of the effective resource file name ends with the value of the
           <xmlelement>dvrResourceSuffix</xmlelement> element. The base part of the resource file
         name consists of the portion of the file name after any directory information, and before
         any period followed by the file extension. For example, in the original file name
-          <filepath>task/install.dita</filepath>, the base portion of the file name is "install".
-          <ph conkeyref="reuse-general/ditavalref-copyto"/></p>
+          <filepath>task/install.dita</filepath>, the base portion of the file name is
+        "install".</p>
+      <p>If a topic reference includes <xmlelement>resourceid</xmlelement> with the
+          <xmlatt>appid-role</xmlatt> attribute set to <keyword>deliverable-anchor</keyword>, the
+        effective <xmlatt>appid</xmlatt> value for that <xmlelement>resourceid</xmlelement> value
+        ends with the value of the <xmlelement>dvrResourceSuffix</xmlelement> element.</p>
+      <p>Path information is not valid in <xmlelement>dvrResourceSuffix</xmlelement>.</p>
       <p>Some resources are not eligible for renaming, such as those marked with
-          <codeph>scope="external"</codeph>. Rules for which resources are eligible for renaming,
-        and what names are allowed as valid resource names, are the same as those for the
-          <xmlatt>copy-to</xmlatt> attribute defined in <xref
-          keyref="attributes-common/topicrefatts"/>, with one
-        exception. Where <xmlatt>copy-to</xmlatt> and <xmlelement>dvrResourcePrefix</xmlelement>
-        <ph >might</ph> include path information, path information is not valid
-        in <xmlelement>dvrResourceSuffix</xmlelement>.</p>
+          <codeph>scope="external"</codeph>.</p>
     </section>
     <section id="specialization-hierachy">
       <title>Specialization hierarchy</title>
-      <p>The <xmlelement>dvrResourceSuffix</xmlelement> element is specialized from <xref
-          keyref="elements-data"/>. It is defined in the DITAVALref domain module.</p>
+      <p>The <xmlelement>dvrResourceSuffix</xmlelement> element is specialized from
+          <xmlelement>data</xmlelement>. It is defined in the DITAVAL-reference domain module.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
-      <p>The following attributes are available on this element: <xref keyref="attributes-universal"
-        /> (except for <xmlatt>conkeyref</xmlatt>, which is removed for all elements in this domain)
-        and the attribute defined below.</p>
+      <p>The following attributes are available on this element: <ph conkeyref="reuse-attributes/ref-universalatts"/> (except for <xmlatt>conkeyref</xmlatt>, which is removed for all elements in this domain)
+        and <xref keyref="attributes-common/attr-name"><xmlatt>name</xmlatt></xref>.</p>
+      <p id="attr-exception" outputclass="attr-exception">For this element, the <xmlatt>name</xmlatt> attribute has a default
+        value of <keyword>dvrResourcSuffix</keyword>.</p>
       <dl>
         <dlentry>
-          <dt><xmlatt>name</xmlatt></dt>
+          <dt id="attr-name"><xmlatt>name</xmlatt></dt>
           <dd>The name of the metadata item. For this element the default value is
             "dvrResourceSuffix".</dd>
         </dlentry>
@@ -54,8 +56,14 @@
     </section>
     <example id="example" otherprops="examples">
       <title>Example</title>
-      <p>If the <xmlelement>dvrResourceSuffix</xmlelement> is specified in the following
-        way:<codeblock>&lt;topicref href="branch-01.dita">
+      <draft-comment author="robander">The ditavalmeta element refers to arch spec examples, that
+        might be better here as well, given the new complexity of added resourceid
+        elements.</draft-comment>
+      <fig id="fig_twy_5w1_ppb">
+        <title>How <xmlelement>dvrResourceSuffix</xmlelement> affects resource file names</title>
+        <p>The following code sample shows a simple branch with a parent and child topic, where the
+          branch uses a <xmlelement>ditavalref</xmlelement> element and
+            <xmlelement>dvrResourceSuffix</xmlelement>.<codeblock>&lt;topicref href="branch-01.dita">
   &lt;ditavalref href="condition-01.ditaval">
     &lt;ditavalmeta>
       &lt;dvrResourceSuffix>-cond01&lt;/dvrResourceSuffix>
@@ -63,12 +71,39 @@
   &lt;/ditavalref>
   &lt;topicref href="topics/subtopic-01.dita"/>
 &lt;/topicref></codeblock></p>
-      <p>Then the effective file name of resource <filepath>topics/subtopic-01.dita</filepath> is
-          <filepath>topics/subtopic-01-cond01.dita</filepath>, as though the
-          <xmlatt>copy-to</xmlatt> attribute had been specified with that value on the
-          <xmlelement>topicref</xmlelement> to <filepath>topics/subtopic-01.dita</filepath>.
-        Similarly, the effective file name of resource <filepath>branch-01.dita</filepath> is
-          <filepath>branch-01-cond01.dita</filepath>.</p>
+        <p>After the <xmlelement>ditavalref</xmlelement> is evaluated:<ul id="ul_syl_cy1_ppb">
+            <li>The effective file name of the resource <filepath>subtopic-01.dita</filepath> is
+                <filepath>subtopic-01-cond01.dita</filepath>.</li>
+            <li>The effective file name of resource <filepath>branch-01.dita</filepath> is
+                <filepath>branch-01-cond01.dita</filepath>.</li>
+          </ul></p>
+      </fig>
+      <fig id="fig_s32_2y1_ppb">
+        <title>How <xmlelement>dvrResourceSuffix</xmlelement> interacts with
+            <xmlelement>resourceid</xmlelement></title>
+        <p>The following code sample shows the same branch with a parent and child topic, but in
+          this case the child topic specifies a deliverable anchor with
+            <xmlelement>resourceid</xmlelement>.<codeblock>&lt;topicref href="branch-01.dita">
+  &lt;ditavalref href="condition-01.ditaval">
+    &lt;ditavalmeta>
+      &lt;dvrResourceSuffix>cond01-&lt;/dvrResourceSuffix>
+    &lt;/ditavalmeta>
+  &lt;/ditavalref>
+  &lt;topicref href="topics/subtopic-01.dita">
+    &lt;topicmeta>
+      &lt;resourceid appid="ae35-unit-fault" appid-role="deliverable-anchor"/>
+    &lt;/topicmeta>
+  &lt;/topicref>
+&lt;/topicref></codeblock></p>
+        <p>After the <xmlelement>ditavalref</xmlelement> is evaluated:<ul id="ul_ybb_ly1_ppb">
+            <li>The effective file name of the resource <filepath>subtopic-01.dita</filepath> is
+                <filepath>subtopic-01-cond01.dita</filepath>.</li>
+            <li>The effective file name of resource <filepath>branch-01.dita</filepath> is
+                <filepath>branch-01-cond01.dita</filepath>.</li>
+            <li>The effective value of <xmlatt>appid</xmlatt> on <xmlelement>resourceid</xmlelement>
+              for the child topic is <keyword>ae35-unit-fault-cond01</keyword>.</li>
+          </ul></p>
+      </fig>
     </example>
   </refbody>
 </reference>

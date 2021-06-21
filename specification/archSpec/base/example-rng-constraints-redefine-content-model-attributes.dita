@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us"
+  id="reference_cfb_ck4_5pexample-rng-constraints-redefine-content-model-attributes">
+  <title>Example: Constrain attributes for the <xmlelement>section</xmlelement> element using
+    RNG</title>
+  <shortdesc>In this scenario, an information architect wants to redefine the attributes for the
+      <xmlelement>section</xmlelement> element. He wants to make the <xmlatt>id</xmlatt> attribute
+    required and omit the <xmlatt>spectitle</xmlatt> attribute.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>constraints<indexterm>examples<indexterm>restricting attributes for an
+              element</indexterm></indexterm></indexterm>
+        <indexterm>examples<indexterm>constraints<indexterm>restricting attributes for an
+              element</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <example id="example">
+      <ol>
+        <li>He creates a file named <filepath>id-requiredSectionContraintMod.rng</filepath>, where
+            <varname>id-required</varname> is a string that characterizes the
+            constraint.<draft-comment author="Kristen J Eberlein" time="17 May 2021">
+            <p>Comment from Robert Anderson: "Section 8.5.5.2, seems odd to me that we say "...where
+              id-required is a string that characterizes the constraint." First, because that's
+              clear from what we're doing, and second, because the author could use any name they
+              want."</p>
+            <p>Reminder to check other example topics (constraint and expansion) to see how often we
+              provide info about conventions for file naming, and then talk to Robert about it.</p>
+          </draft-comment></li>
+        <li>He updates the <filepath>catalog.xml</filepath> file to include the new constraint
+          module.</li>
+        <li>He adds the following content to the constraint
+            module:<codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;grammar 
+  xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:dita="http://dita.oasis-open.org/architecture/2005/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+  &lt;div>
+    &lt;a:documentation>ATTRIBUTE LIST OVERRIDES&lt;/a:documentation>
+    &lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0">      
+      &lt;define name="section.attributes">
+          &lt;attribute name="id">
+            &lt;data type="NMTOKEN"/>
+          &lt;/attribute>        
+        &lt;ref name="conref-atts"/>
+        &lt;ref name="select-atts"/>
+        &lt;ref name="localization-atts"/>
+        &lt;optional>
+          &lt;attribute name="outputclass"/>
+        &lt;/optional>
+      &lt;/define>
+    &lt;/include>
+  &lt;/div>
+
+&lt;/grammar>  </codeblock><p>Note that unlike a constraint module that is implemented
+            using DTD, this constraint module did not need to re-declare the patterns that are
+            referenced in the redefinition of the content model for
+            <xmlelement>section</xmlelement></p></li>
+        <li>He then integrates the constraint module into her document-type shell for topic by
+          adding an <xmlelement>include</xmlelement> element in the "CONTENT CONSTRAINT INTEGRATION"
+          section:<codeblock>&lt;div>
+  &lt;a:documentation>CONTENT CONSTRAINT INTEGRATION&lt;/a:documentation>
+  &lt;include href="id-requiredSectionConstraintMod.rng"/>
+&lt;/div></codeblock></li>
+        <li>
+          <p>He then removes the <xmlelement>include</xmlelement> statement that references
+              <filepath>topicMod.rng</filepath> from the "MODULE INCLUSIONS" section:</p>
+          <codeblock>&lt;div>
+  &lt;a:documentation>MODULE INCLUSIONS &lt;/a:documentation>
+    <line-through>&lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0"/></line-through>
+    &lt;include href="urn:oasis:names:tc:dita:rng:audienceAttDomain.rng:2.0"/>
+    &lt;include href="urn:oasis:names:tc:dita:rng:deliveryTargetAttDomain.rng:2.0"/>
+    &lt;include href="urn:oasis:names:tc:dita:rng:platformAttDomain.rng:2.0"/>
+    &lt;include href="urn:oasis:names:tc:dita:rng:productAttDomain.rng:2.0"/>
+    &lt;include href="urn:oasis:names:tc:dita:rng:otherpropsAttDomain.rng:2.0"/>
+    &lt;include href="urn:oasis:names:tc:dita:rng:highlightDomain.rng:2.0"/>
+  &lt;/div></codeblock>
+        </li>
+        <li>After checking his test topic to ensure that the attribute list is modified as expected,
+          his work is done.</li>
+      </ol>
+    </example>
+  </conbody>
+</concept>

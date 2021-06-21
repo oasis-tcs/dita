@@ -4,41 +4,47 @@
 <concept id="domainsatt" xml:lang="en-us">
 <title><xmlatt>specializations</xmlatt> attribute rules and syntax</title>
 <shortdesc>The <xmlatt>specializations</xmlatt> attribute enables processors to determine what
-    attribute extensions are available in a document. The attribute is declared on the root element
-    for each topic or map type. Each attribute domain defines a token to declare the extension; the
-    effective value of the <xmlatt>specializations</xmlatt> attribute is composed of these
-    tokens.</shortdesc>
+    attribute specializations are available in a document. The attribute is declared on the root
+    element for each topic or map type. Each attribute domain defines a token to declare the
+    extension; the effective value of the <xmlatt>specializations</xmlatt> attribute is composed of
+    these tokens.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm><xmlatt>specializations</xmlatt> attribute<indexterm>rules and
+          syntax</indexterm></indexterm>
+        <indexterm><xmlatt>specializations</xmlatt>
+          attribute<indexterm>examples</indexterm></indexterm>
+        <indexterm>examples<indexterm><xmlatt>specializations</xmlatt>
+          attribute</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
 <conbody>
     <section id="syntax">
       <title>Syntax and rules</title>
-      <!--<draft-comment author="Kristen Eberlein" time="16 May 2015" disposition="open"><p>The code blocks within this section that outline the syntax are confusing. They do not use any defined markup for syntax, nor are they explained. Robert and I are at a loss as how best to remedy this quickly.</p><p>This design has grown in a less than optimal way; see the corresponding topics from the 1.1 and 1.2 specs:</p><ul><li><xref href="http://docs.oasis-open.org/dita/v1.1/CS01/archspec/domainsatt.html" format="html" scope="external">The domains attribute</xref></li><li><xref href="http://docs.oasis-open.org/dita/v1.2/os/spec/archSpec/domainsatt.html#domainsattl" format="html" scope="external">2.1.4.3.4 Domain usage declaration (the @domains attribute)</xref></li></ul></draft-comment>-->
       <p>The <xmlatt>props</xmlatt> and <xmlatt>base</xmlatt> attributes are the only two core
-        attributes available for specialization. Each specialization of one of these attributes
+        attributes available for specialization.</p>
+      <p>Each specialization of the <xmlatt>props</xmlatt> and <xmlatt>base</xmlatt> attributes
           <term outputclass="RFC-2119">MUST</term> provide a token for use by the
           <xmlatt>specializations</xmlatt> attribute.</p>
-      <dl>
-        <dlentry id="attribute-domains">
-          <dt>attribute domains</dt>
-          <dd>
-            <p>The <xmlatt>specializations</xmlatt> token for an attribute specialization begins
-              with either <xmlatt>props</xmlatt> or <xmlatt>base</xmlatt> followed by a slash,
-              followed by the name of the new attribute:</p>
-            <codeblock>'@', <varname>props-or-base</varname>, ('/', <varname>attname</varname>)+</codeblock>
-            <p otherprops="examples">For example:<ul id="ul_arf_pxx_gkb">
-                <li>If <xmlatt>props</xmlatt> is specialized to create <xmlatt>myNewProp</xmlatt>,
-                  this results in the following token: <codeph>@props/myNewProp</codeph></li>
-                <li>If <xmlatt>base</xmlatt> is specialized to create <xmlatt>myFirstBase</xmlatt>,
-                  this results in the following token: <codeph>@base/myFirstBase</codeph></li>
-                <li>If that specialized attribute <xmlatt>myFirstBase</xmlatt> is further
-                  specialized to create <xmlatt>mySecondBase</xmlatt>, this results in the following
-                  token: <codeph>@base/myFirstBase/mySecondBase</codeph></li>
-              </ul></p>
-          </dd>
-        </dlentry>
-      </dl>
+      <p>The <xmlatt>specializations</xmlatt> token for an attribute specialization begins with
+        either <xmlatt>props</xmlatt> or <xmlatt>base</xmlatt> followed by a slash, followed by the
+        name of the new attribute:</p>
+      <codeblock>'@', <varname>props-or-base</varname>, ('/', <varname>attname</varname>)+</codeblock>
+      <p otherprops="examples">For example:<ul id="ul_arf_pxx_gkb">
+          <li>If <xmlatt>props</xmlatt> is specialized to create <xmlatt>myNewProp</xmlatt>, this
+            results in the following token: <codeph>@props/myNewProp</codeph></li>
+          <li>If <xmlatt>base</xmlatt> is specialized to create <xmlatt>myFirstBase</xmlatt>, this
+            results in the following token: <codeph>@base/myFirstBase</codeph></li>
+          <li>If that specialized attribute <xmlatt>myFirstBase</xmlatt> is further specialized to
+            create <xmlatt>mySecondBase</xmlatt>, this results in the following token:
+              <codeph>@base/myFirstBase/mySecondBase</codeph></li>
+        </ul></p>
     </section>
 <example id="example" otherprops="examples">
-      <title>Example: Task with multiple domains</title>
+      <title>Example: <xmlatt>specializations attribute for </xmlatt> a task with multiple
+        domains</title>
       <p>In this example, a document-type shell integrates the task structural module and the
         following domain modules:</p>
       <simpletable frame="all" relcolwidth="1.0* 1.0*">

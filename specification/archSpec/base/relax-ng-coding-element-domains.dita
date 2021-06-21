@@ -1,61 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.x Concept//EN" "concept.dtd">
 <concept xml:lang="en-us" id="relax-ng-element-domain-module-coding-requirements" >
- <title>RELAX NG: Coding requirements for element domain modules</title>
- <shortdesc>Vocabulary modules that define element domains must define an extension pattern for each
-    element that is extended by the domain. These patterns are used when including the domain module
-    in a document-type shell.</shortdesc>
+ <title>RELAX NG: Coding requirements for element-domain modules</title>
+ <shortdesc>Element-domain modules declare an extension pattern for each element that is extended by
+    the domain. These patterns are used when including the domain module in document-type
+    shells.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>coding requirements<indexterm>RNG<indexterm>element-domain
+            modules</indexterm></indexterm></indexterm>
+        <indexterm>examples<indexterm>RNG<indexterm>domain extension
+            patterns</indexterm></indexterm></indexterm>
+        <indexterm>naming conventions<indexterm>RNG<indexterm>pattern for element
+              domains</indexterm></indexterm></indexterm>
+        <indexterm>RNG<indexterm>coding requirements<indexterm>element-domain
+            modules</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
  <conbody>
-    <p>For each element type that is extended by the element domain module, the module must define a
-      domain extension pattern. The pattern consists of a choice group of references to element-type
-      name patterns, with one reference to each extension of the base element type.</p>
-    <p>The name of the pattern uses the following format, where <varname>shortName</varname> is the
-      short name for the domain, and <varname>elementName</varname> is the name of the element that
-      is
-      extended:<codeblock><codeph><varname>shortName</varname>-d-</codeph><varname>elementName</varname></codeblock></p>
-    <p otherprops="examples">For example, the following pattern extends the
-        <xmlelement>ph</xmlelement> element type by adding the specializations of
-        <xmlelement>ph</xmlelement> that are defined in the highlighting
-      domain:<codeblock>  &lt;define name="hi-d-ph">
-    &lt;choice>
-      &lt;ref name="b.element"/>
-      &lt;ref name="i.element"/>
-      &lt;ref name="sup.element"/>
-      &lt;ref name="sub.element"/>
-      &lt;ref name="tt.element"/>
-      &lt;ref name="u.element"/>
-    &lt;/choice>
-  &lt;/define>
-</codeblock></p>
-    <p>For each element type that is extended by the element domain module, the module extends the
-      element type pattern with a <xmlatt>combine</xmlatt> value of "choice" that contains a
-      reference to the domain extension pattern. Because the pattern uses a <xmlatt>combine</xmlatt>
-      value of "choice", the effect is that the domain-provided elements are automatically added to
-      the effective content model of the extended element in any grammar that includes the domain
-      module.</p>
-    <p otherprops="examples">For example, the following pattern adds the highlighting domain
-      specializations of the <xmlelement>ph</xmlelement> element to the content model of the
-        <xmlelement>ph</xmlelement>
-      element:<codeblock>  &lt;define name="ph" combine="choice">
-    &lt;ref name="hi-d-ph"/>
-  &lt;/define></codeblock></p>
-    <!--<section id="including-foreign"><title>Inclusion of foreign vocabularies</title><p>In order to enable the generation of DTD- and XSD-based versions of the RELAX NG vocabulary, domain modules that include foreign vocabularies by using the <xmlelement>externalRef</xmlelement> element <term outputclass="RFC-2119" rev="terminology">SHOULD</term> specify the following attributes:</p><dl><dlentry><dt><xmlatt>ditaarch:dtdSystemId</xmlatt></dt><dd>(DTD; optional) Specifies the system ID URI as it should be specified on the external parameter-entity reference to the foreign vocabulary module</dd></dlentry><dlentry><dt><xmlatt>ditaarch:dtdPublicId</xmlatt></dt><dd>(DTD) Specifies the public ID or URN as it should be specified on the external parameter-entity reference to the foreign vocabulary module</dd></dlentry><dlentry><dt><xmlatt>ditaarch:xsdURI</xmlatt></dt><dd>(XSD) Specifies the URI reference as it should be specified on the <xmlatt>schemalLocation</xmlatt> attribute on the <xmlelement>import</xmlelement> element or <xmlelement>include</xmlelement> element</dd></dlentry><dlentry><dt><xmlatt>ditaarch:xsdTargetNamespace</xmlatt></dt><dd>(XSD; required when the Schema targets a namespace) Specifies the namespace that the XML Schema targets</dd></dlentry></dl></section>-->
-    <!--<example id="example-rng-foreign"><title>Example: RELAX NG <ph rev="review-2">pattern</ph> that includes a foreign vocabulary</title><p>The following code example illustrates markup in a RELAX NG vocabulary module that enables the generation of DTD and XSD-based modules.</p><codeblock>
-    &lt;div>&lt;a:documentation>LONG NAME: RNG Grammar Container&lt;/a:documentation>
-      &lt;define name="rng_grammar.content">
-        &lt;zeroOrMore>
-          &lt;choice>
-            &lt;externalRef href="rngGrammarProxy.rng"
-              dita:namespacePrefix="rng"
-              dita:dtdSystemId="rngGrammar.dtd"
-              dita:xsdURI="rngGrammar.xsd"
-              dita:xsdTargetNamespace="http://relaxng.org/ns/structure/1.0"
-            />
-            &lt;ref name="data"/>
-          &lt;/choice>
-        &lt;/zeroOrMore>
-      &lt;/define>
-    &lt;/div>
-</codeblock></example>-->
+    <dl>
+      <dlentry>
+        <dt>Pattern name</dt>
+        <dd>
+          <p>The name of the pattern is the abbreviation for the domain, followed by a hyphen ("-"),
+            and the name of the element that is extended.</p>
+          <example>
+            <p>For example, the name of the pattern for the highlight domain that extends the
+                <xmlelement>ph</xmlelement> element is <codeph>hi-d-ph</codeph>.</p>
+          </example>
+        </dd>
+      </dlentry>
+      <dlentry>
+        <dt>Pattern definition</dt>
+        <dd>
+          <p>The pattern consists of a choice group that contains references to element-type name
+            patterns. Each extension of the base element type is referenced.</p>
+          <example>
+            <p>For example:</p>
+            <codeblock>&lt;a:documentation>DOMAIN EXTENSION PATTERNS&lt;/a:documentation>
+
+&lt;define name="hi-d-ph">
+  &lt;choice>
+    &lt;ref name="b.element"/>
+    &lt;ref name="i.element"/>
+    &lt;ref name="line-through.element"/>
+    &lt;ref name="overline.element"/>
+    &lt;ref name="sup.element"/>
+    &lt;ref name="sub.element"/>
+    &lt;ref name="tt.element"/>
+    &lt;ref name="u.element"/>
+  &lt;/choice>
+&lt;/define>
+</codeblock>
+          </example>
+        </dd>
+      </dlentry>
+      <dlentry>
+        <dt>Extension pattern</dt>
+        <dd>
+          <p>For each element type that is extended by the element-domain module, the module extends
+            the element-type pattern with a <xmlatt>combine</xmlatt> value of
+              <keyword>choice</keyword> that contains a reference to the domain pattern.</p>
+          <example>
+            <p>For example, the following pattern adds the highlight domain specializations of the
+                <xmlelement>ph</xmlelement> element to the content model of the
+                <xmlelement>ph</xmlelement> element:</p>
+            <codeblock>&lt;define name="ph" combine="choice">
+  &lt;ref name="hi-d-ph"/>
+&lt;/define></codeblock>
+          </example>
+          <p>Because the pattern uses a <xmlatt>combine</xmlatt> value of <keyword>choice</keyword>,
+            the effect is that the domain-provided elements automatically are added to the effective
+            content model of the extended element in any grammar that includes the domain
+            module.</p>
+        </dd>
+      </dlentry>
+    </dl>
+    <example>
+      <title>Example</title>
+      <p>The following code sample shows the extension pattern for the highlight domain, as declared
+        in <filepath>highlightDomain.rng</filepath>:</p>
+      <codeblock>  &lt;div>
+    &lt;a:documentation>DOMAIN EXTENSION PATTERNS&lt;/a:documentation>
+
+    &lt;define name="hi-d-ph">
+      &lt;choice>
+        &lt;ref name="b.element"/>
+        &lt;ref name="i.element"/>
+        &lt;ref name="line-through.element"/>
+        &lt;ref name="overline.element"/>
+        &lt;ref name="sup.element"/>
+        &lt;ref name="sub.element"/>
+        &lt;ref name="tt.element"/>
+        &lt;ref name="u.element"/>
+      &lt;/choice>
+    &lt;/define>
+
+    &lt;define name="ph" combine="choice">
+      &lt;ref name="hi-d-ph"/>
+    &lt;/define>
+  &lt;/div></codeblock>
+    </example>
  </conbody>
 </concept>

@@ -96,6 +96,9 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
     <define name="linkpool">
       <ref name="linkpool.element"/>
     </define>
+    <define name="linktext">
+      <ref name="linktext.element"/>
+    </define>
     <define name="prolog">
       <ref name="prolog.element"/>
     </define>
@@ -105,13 +108,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
     <define name="section">
       <ref name="section.element"/>
     </define>
-    <define name="sectiondiv">
-      <ref name="sectiondiv.element"/>
-    </define>
-    <define name="titlealts">
-      <ref name="titlealts.element"/>
-    </define>
-
 
   </div>
   <div>
@@ -162,24 +158,11 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
         <ref name="basic.ph"/>
         <ref name="data.elements.incl"/>
         <ref name="foreign.unknown.incl"/>
-        <ref name="sectiondiv"/>
         <ref name="title"/>
         <ref name="txt.incl"/>
       </choice>
     </define>
     <define name="section.notitle.cnt">
-      <choice>
-        <text/>
-        <ref name="basic.block"/>
-        <ref name="basic.ph"/>
-        <ref name="data.elements.incl"/>
-        <ref name="foreign.unknown.incl"/>
-        <ref name="sectiondiv"/>
-        <ref name="txt.incl"/>
-      </choice>
-    </define>
-    <define name="sectiondiv.cnt">
-      <a:documentation>sectiondiv also includes sectiondiv</a:documentation>
       <choice>
         <text/>
         <ref name="basic.block"/>
@@ -265,9 +248,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
       <define name="topic.content">
         <ref name="title"/>
         <optional>
-          <ref name="titlealts"/>
-        </optional>
-        <optional>
           <choice>
             <ref name="shortdesc"/>
             <ref name="abstract"/>
@@ -312,32 +292,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
       </define>
       <define name="idElements" combine="choice">
         <ref name="topic.element"/>
-      </define>
-    </div>
-    <div>
-      <a:documentation>LONG NAME: Title Alternatives</a:documentation>
-
-      <define name="titlealts.content">
-        <optional>
-          <ref name="navtitle"/>
-        </optional>
-        <optional>
-          <ref name="searchtitle"/>
-        </optional>
-      </define>
-      <define name="titlealts.attributes">
-        <ref name="univ-atts"/>
-      </define>
-      <define name="titlealts.element">
-        <element name="titlealts" dita:longName="Title Alternatives">
-          <a:documentation>The alternate title element (&lt;titlealts>) is optional, but can occur after the topic title. Two elements can be inserted as sub-elements of &lt;titlealts>: navigation
-            title &lt;navtitle> and search title &lt;searchtitle>. Category: Topic elements</a:documentation>
-          <ref name="titlealts.attlist"/>
-          <ref name="titlealts.content"/>
-        </element>
-      </define>
-      <define name="titlealts.attlist" combine="interleave">
-        <ref name="titlealts.attributes"/>
       </define>
     </div>
  
@@ -475,39 +429,14 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
 
     </div>
     <div>
-      <a:documentation>LONG NAME: Section division</a:documentation>
-
-      <define name="sectiondiv.content">
-        <zeroOrMore>
-          <choice>
-            <ref name="sectiondiv.cnt"/>
-            <ref name="sectiondiv"/>
-          </choice>
-        </zeroOrMore>
-      </define>
-      <define name="sectiondiv.attributes">
-        <ref name="univ-atts"/>
-      </define>
-      <define name="sectiondiv.element">
-        <element name="sectiondiv" dita:longName="Section division">
-          <a:documentation>The &lt;sectiondiv> element allows logical grouping of content within a section. There is no additional semantic associated with the sectiondiv element, aside from its
-            function as a container for other content. The sectiondiv element does not contain a title; the lowest level of titled content within a topic is the section itself. If additional hierarchy
-            is required, nested topics should be used in place of the section.</a:documentation>
-          <ref name="sectiondiv.attlist"/>
-          <ref name="sectiondiv.content"/>
-        </element>
-      </define>
-      <define name="sectiondiv.attlist" combine="interleave">
-        <ref name="sectiondiv.attributes"/>
-      </define>
-
-    </div>
-    <div>
       <a:documentation>PROLOG (METADATA FOR TOPICS)</a:documentation>
       <div>
         <a:documentation>LONG NAME: Prolog</a:documentation>
 
         <define name="prolog.content">
+          <zeroOrMore>
+            <ref name="titlealt"/>
+          </zeroOrMore>
           <zeroOrMore>
             <ref name="author"/>
           </zeroOrMore>
@@ -606,9 +535,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
           <optional>
             <attribute name="keyref"/>
           </optional>
-          <optional>
-            <attribute name="query"/>
-          </optional>
           <ref name="relational-atts"/>
           <ref name="univ-atts"/>
         </define>
@@ -657,9 +583,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
                 <value>sequence</value>
                 <value>unordered</value>
                 <value>-dita-use-conref-target</value>
-                <a:documentation>NOTE: The TC is maintaining the value "tree", which was
-                  in the 1.2 DTDs but never defined for documented, only in the DTD version
-                  of linklist.</a:documentation>
               </choice>
             </attribute>
           </optional>
@@ -735,9 +658,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
                 <value>sequence</value>
                 <value>unordered</value>
                 <value>-dita-use-conref-target</value>
-                <a:documentation>NOTE: The TC is maintaining the value "tree", which was
-                  in the 1.2 DTDs but never defined for documented, only in the DTD version
-                  of linkpool.</a:documentation>
               </choice>
             </attribute>
           </optional>
@@ -765,6 +685,35 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
         <define name="linkpool.attlist" combine="interleave">
           <ref name="linkpool.attributes"/>
         </define>
+      </div>
+      <div>
+        <a:documentation>LONG NAME: Link Text</a:documentation>
+        
+        <define name="linktext.content">
+          <zeroOrMore>
+            <choice>
+              <ref name="words.cnt"/>
+              <ref name="ph"/>
+            </choice>
+          </zeroOrMore>
+        </define>
+        <define name="linktext.attributes">
+          <ref name="univ-atts"/>
+        </define>
+        <define name="linktext.element">
+          <element name="linktext" dita:longName="linktext">
+            <a:documentation>The &lt;linktext> element provides the literal label or line of text for a link. In most cases, the text of a link can be resolved during processing by cross reference
+              with the target resource. Use the &lt;linktext> element only when the target cannot be reached, such as when it is a peer or external link, or the target is local, but not in DITA format.
+              When used inside a topic, it will be used as the text for the specified link; when used within a map, it will be used as the text for generated links that point to the specified topic.
+              Category: Related Links elements</a:documentation>
+            <ref name="linktext.attlist"/>
+            <ref name="linktext.content"/>
+          </element>
+        </define>
+        <define name="linktext.attlist" combine="interleave">
+          <ref name="linktext.attributes"/>
+        </define>
+        
       </div>
     </div>
   </div>
@@ -805,6 +754,11 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
         <attribute name="class" a:defaultValue="- topic/linkpool "/>
       </optional>
     </define>
+    <define name="linktext.attlist" combine="interleave">
+      <optional>
+        <attribute name="class" a:defaultValue="- topic/linktext "/>
+      </optional>
+    </define>
     <define name="no-topic-nesting.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="- topic/no-topic-nesting "/>
@@ -823,16 +777,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Topic//EN"
     <define name="section.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="- topic/section "/>
-      </optional>
-    </define>
-    <define name="sectiondiv.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- topic/sectiondiv "/>
-      </optional>
-    </define>
-    <define name="titlealts.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- topic/titlealts "/>
       </optional>
     </define>
     <define name="topic.attlist" combine="interleave">

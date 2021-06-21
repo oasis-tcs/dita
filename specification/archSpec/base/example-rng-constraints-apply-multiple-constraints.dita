@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="reference_cfb_ck4_5p">
+  <title>Example: Apply multiple constraints to a single document-type shell using RNG</title>
+  <shortdesc>In this scenario, an information architect wants to apply multiple constraints to a
+    document-type shell.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>constraints<indexterm>examples<indexterm>applying multiple
+              constraints</indexterm></indexterm></indexterm>
+        <indexterm>examples<indexterm>constraints<indexterm>applying multiple
+              constraints</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <example id="example">
+      <p>Here is a list of the constraint modules and what they do:</p>
+      <simpletable frame="all" relcolwidth="1.0* 1.0* 1.0*">
+        <sthead>
+          <stentry>File name</stentry>
+          <stentry>What it constrains</stentry>
+          <stentry>Details</stentry>
+        </sthead>
+        <strow>
+          <stentry><filepath>example-TopicConstraint.mod</filepath></stentry>
+          <stentry><xmlelement>topic</xmlelement></stentry>
+          <stentry>
+            <ul>
+              <li>Removes <xmlelement>abstract</xmlelement></li>
+              <li>Makes <xmlelement>shortdesc</xmlelement> required</li>
+              <li>Removes <xmlelement>related-links</xmlelement></li>
+              <li>Disallows topic nesting</li>
+            </ul>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry><filepath>example-SectionConstraint.mod</filepath></stentry>
+          <stentry><xmlelement>section</xmlelement></stentry>
+          <stentry>
+            <ul>
+              <li>Makes <xmlatt>id</xmlatt> required</li>
+              <li>Removes <xmlatt>spectitle</xmlatt> attribute</li>
+            </ul>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry>Not applicable</stentry>
+          <stentry>Highlighting domain</stentry>
+          <stentry>Reduces the highlighting domain elements to <xmlelement>b</xmlelement> and
+              <xmlelement>i</xmlelement></stentry>
+        </strow>
+        <strow>
+          <stentry>Not applicable</stentry>
+          <stentry><xmlelement>ph</xmlelement></stentry>
+          <stentry>Remove the <xmlelement>ph</xmlelement> element, allowing only domain
+            extensions</stentry>
+        </strow>
+      </simpletable>
+      <p>The constraint modules that target the <xmlelement>topic</xmlelement> and
+          <xmlelement>section </xmlelement> elements must be combined, since both elements are
+        defined in <filepath>topicMod.rng</filepath>. The other constraints can be implemented
+        directly in the document-type shell.</p>
+      <ol>
+        <li>
+          <p>The information architect creates a constraint module that combines the constraints
+            from <filepath>example-TopicConstraint.mod</filepath> and
+              <filepath>example-SectionConstraint.mod</filepath>:</p>
+          <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+                         schematypens="http://relaxng.org/ns/structure/1.0"?>
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:dita="http://dita.oasis-open.org/architecture/2005/"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  &lt;div>
+    &lt;a:documentation>CONTENT MODEL AND ATTRIBUTE LIST OVERRIDES&lt;/a:documentation>
+    &lt;include href="topicMod.rng">
+      &lt;define name="section.attributes">
+          &lt;attribute name="id">
+            &lt;data type="NMTOKEN"/>
+          &lt;/attribute>        
+        &lt;ref name="conref-atts"/>
+        &lt;ref name="select-atts"/>
+        &lt;ref name="localization-atts"/>
+        &lt;optional>
+          &lt;attribute name="outputclass"/>
+        &lt;/optional>
+      &lt;/define>
+      &lt;define name="topic.content">
+        &lt;ref name="title"/>
+        &lt;ref name="shortdesc"/>
+        &lt;optional>
+          &lt;ref name="prolog"/>
+        &lt;/optional>
+        &lt;optional>
+          &lt;ref name="body"/>
+        &lt;/optional>
+      &lt;/define>
+    &lt;/include>
+  &lt;/div>
+&lt;/grammar></codeblock>
+        </li>
+        <li>
+          <p>In the document-type shell, the information architect integrates the constraint module
+            (and removes the inclusion statement for <filepath>topicMod.rng</filepath>):</p>
+          <codeblock>&lt;div>
+  &lt;a:documentation>ELEMENT-TYPE CONFIGURATION INTEGRATION&lt;/a:documentation>
+  &lt;include href="acme-SectionTopicContraintMod.rng"/>
+&lt;/div></codeblock>
+        </li>
+        <li>
+          <p>To constrain the highlight domain, the information architect modifies the include
+            statement for the domain module:</p>
+          <codeblock>&lt;div>
+  &lt;a:documentation>MODULE INCLUSIONS&lt;/a:documentation>
+  ...
+  &lt;include href="highlightDomain.rng">
+    &lt;define name="line-through.element">
+      &lt;notAllowed/>
+    &lt;/define>
+    &lt;define name="overline.element">
+      &lt;notAllowed/>
+    &lt;/define>
+    &lt;define name="sub.element">
+      &lt;notAllowed/>
+    &lt;/define>
+    &lt;define name="sup.element">
+      &lt;notAllowed/>
+    &lt;/define>
+    &lt;define name="tt.element">
+      &lt;notAllowed/>
+    &lt;/define>
+    &lt;define name="u.element">
+      &lt;notAllowed/>
+    &lt;/define>
+  &lt;/include>
+  ..  
+&lt;/div></codeblock>
+        </li>
+        <li>Finally, to disallow <xmlelement>ph</xmlelement>, the information architect adds the
+          following statement to the constraint
+          module:<codeblock>      &lt;define name="ph.element">
+        &lt;notAllowed/>
+      &lt;/define></codeblock></li>
+      </ol>
+      <!--<draft-comment author="Kristen J Eberlein" time="21 April 2021"><p>In the above code sample, is the following needed or just a residue of the RNG-to-DTD converter?</p><codeblock>
+&lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+                         schematypens="http://relaxng.org/ns/structure/1.0"?></codeblock><p>Also, I made up the header comment, not wanting it to be "CONTENT MODEL CONSTRAINTS". We should consider what we wants as sections/divs in the grammar files and ensure that the "titles" are the same across all files.</p></draft-comment>-->
+    </example>
+  </conbody>
+  
+</concept>

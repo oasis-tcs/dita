@@ -22,8 +22,7 @@
 element, other than the <xmlatt>keys</xmlatt>,<ph>
 <xmlatt>processing-role</xmlatt>,</ph> and <xmlatt>id</xmlatt> attributes, are combined as for
 content references, including the special processing for the <xmlatt>xml:lang</xmlatt>,
-<xmlatt>dir</xmlatt>, and <xmlatt>translate</xmlatt> attributes. There is no special processing
-associated with the <xmlatt>locktitle</xmlatt> attribute when attributes are combined.</p>
+<xmlatt>dir</xmlatt>, and <xmlatt>translate</xmlatt> attributes.</p>
         </section>
         <section id="keys-and-condproc">
             <title>Keys and conditional processing</title>
@@ -49,8 +48,11 @@ associated with the <xmlatt>locktitle</xmlatt> attribute when attributes are com
                 processors <term outputclass="RFC-2119">MUST</term> produce multiple copies of the
                 source topic in resolved output for each distinct set of effective key definitions
                 that are referenced by the topic. </p>
-            <p>In such cases, authors can use the <xmlatt>copy-to</xmlatt> attribute to specify
-                different source URIs for each reference to a topic.</p>
+            <p>In such cases, authors can use <xmlelement>resourceid</xmlelement> within topic
+                references to specify distinct anchor components for each instance of the topic.</p>
+            <p> with the <xmlatt>appid-role</xmlatt> attribute set to
+                    <keyword>deliverable-anchor</keyword> to specify different source URIs for each
+                reference to a topic.</p>
         </section>
         <section id="error-conditions">
             <title>Error conditions</title>

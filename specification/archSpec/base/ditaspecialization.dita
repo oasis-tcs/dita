@@ -1,43 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
- "concept.dtd">
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="ditaspecialization" xml:lang="en-us">
   <title>Overview of DITA extension facilities</title>
-  <shortdesc>DITA provides three extension facilities: configuration, constraint, and
-    specialization. In addition, generalization augments specialization.</shortdesc>
+  <shortdesc rev="2.0">DITA provides three extension facilities: Document-type configuration,
+    specialization, and element-type configuration. In addition, generalization can be applied to
+    reverse specialization.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm/>
+      </keywords>
+    </metadata>
+  </prolog>
   <conbody>
     <dl>
       <dlentry>
-        <dt>Configuration</dt>
-        <dd>Configuration enables the definition of DITA document types that include only the
-          vocabulary modules that are required for a given set of documents. There is no need to
-          modify the vocabulary modules. Configurations are implemented as document type
-          shells.</dd>
+        <dt rev="2.0">Document-type configuration</dt>
+        <dd><ph rev="2.0">Document-type configuration</ph> enables the definition of DITA document
+          types that include only the vocabulary modules that are required for a given set of
+          documents. There is no need to modify the vocabulary modules. <ph rev="2.0">Document-type
+            configurations</ph> are implemented as document-type shells.</dd>
       </dlentry>
       <dlentry>
         <dt>Specialization</dt>
-        <dd><ph>Specialization enables the creation of new element types <ph >in a way
-              that preserves the ability to interchange those new element types with conforming DITA
-              applications.</ph> Specializations are implemented as vocabulary modules, which are
-            integrated into document-type shells.</ph><p>Specializations are implemented as sets of
-            vocabulary modules, each of which declares the markup and entities that are unique to a
-            specialization. The separation of the vocabulary and its declarations into modules makes
-            it easy to extend existing modules, because new modules can be added without affecting
-            existing document types. It also makes it easy to assemble elements from different
-            sources into a single document-type shell and to reuse specific parts of the
+        <dd>Specialization enables the creation of new element types in a way that preserves the
+          ability to interchange those new element types with conforming DITA applications.
+          Specializations are implemented as vocabulary modules, which are integrated into
+          document-type shells.<p>Specializations declare the elements and entities that are unique
+            to a specialization. The separation of the vocabulary and its declarations into modules
+            makes it easy to extend existing modules, because new modules can be added without
+            affecting existing document types. It also makes it easy to assemble elements from
+            different sources into a single document-type shell and to reuse specific parts of the
             specialization hierarchy in more than one document-type shell.</p></dd>
+      </dlentry>
+      <dlentry rev="2.0">
+        <dt>Element-type configuration</dt>
+        <dd>
+          <p>Element-type configuration enables DITA architects to modify the content models and
+            attribute lists for individual elements, without modifying the vocabulary modules in
+            which the elements are defined.</p>
+          <p>There are two types of element configuration: Constraint and expansion. Both constraint
+            and expansion are implemented as modules that are integrated into document-type
+            shells:</p>
+          <dl>
+            <dlentry>
+              <dt>Constraint</dt>
+              <dd>Constraint modules enables the restriction of content models and attribute lists
+                for individual elements.</dd>
+            </dlentry>
+            <dlentry>
+              <dt>Expansion</dt>
+              <dd>Expansion modules enable the expansion of content models and attribute lists for
+                individual elements.</dd>
+            </dlentry>
+          </dl>
+        </dd>
       </dlentry>
       <dlentry>
         <dt>Generalization</dt>
         <dd>Generalization is the process of reversing a specialization. It converts specialized
           elements or attributes into the original types from which they were derived.</dd>
-      </dlentry>
-      <dlentry>
-        <dt>Constraint</dt>
-        <dd>Constraint enables the <ph >restriction</ph> of content models and
-          attribute lists for individual elements. There is no need to modify the vocabulary
-          modules. Constraints are implemented as constraint modules, which are integrated into
-          document-type shells.</dd>
       </dlentry>
     </dl>
   </conbody>

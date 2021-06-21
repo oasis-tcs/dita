@@ -4,8 +4,7 @@
 <reference id="anchor" xml:lang="en-us">
 <title><xmlelement>anchor</xmlelement></title>
 <shortdesc>An anchor within a map is an integration point that another map can reference in order to
-    insert its navigation into the referenced map's navigation
-    tree.<!--For those familiar with Eclipse help systems, this serves the same purpose as the <xmlelement>anchor</xmlelement> element in that system.--></shortdesc>
+    insert its navigation into the referenced map's navigation tree.</shortdesc>
 <prolog><metadata>
 <keywords><indexterm>elements<indexterm>basic map<indexterm><xmlelement>anchor</xmlelement></indexterm></indexterm></indexterm>
 </keywords>
@@ -26,19 +25,10 @@
     </section>
     <section id="attributes">
       <title>Attributes</title>
-      <p>The following attributes are available on this element: <xref
-          keyref="attributes-universal"/> (with a narrowed definition of
-          <xmlatt>id</xmlatt>, given below).</p>
-      <dl>
-        <dlentry>
-          <dt><xmlatt>id</xmlatt>
-            <ph conkeyref="reuse-attributes/required-attr"/></dt>
-          <dd>Provides an integration point that another map <ph>can</ph> reference in order to
-            insert its navigation into the current navigation tree. The <xmlatt>anchorref</xmlatt>
-            attribute on a map <ph>can</ph> be used to reference this attribute. See <xref
-              href="../../archSpec/base/id.dita"/> for more details.</dd>
-        </dlentry>
-      </dl>
+      <p>The following attributes are available on this element: <ph conkeyref="reuse-attributes/ref-universalatts"/>.</p>
+      <p id="attr-exception" outputclass="attr-exception">For this element, the <xmlatt>id</xmlatt> attribute is required. It is
+        referenced by <xmlelement>anchorref</xmlelement> or by the <xmlatt>anchorref</xmlatt>
+        attribute on <xmlelement>map</xmlelement> elements.</p>
     </section>
 <example id="example" otherprops="examples"><title>Example</title>
       <p id="anchor_ex">The following code sample shows how a map creates an

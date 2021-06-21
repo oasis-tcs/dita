@@ -78,9 +78,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
 <!ENTITY % relrow      "relrow"                                      >
 <!ENTITY % relcell     "relcell"                                     >
 <!ENTITY % topicmeta   "topicmeta"                                   >
-<!ENTITY % shortdesc   "shortdesc"                                   >
-<!ENTITY % linktext    "linktext"                                    >
-<!ENTITY % searchtitle "searchtitle"                                 >
+<!ENTITY % keytext     "keytext"                                     >
 <!ENTITY % ux-window   "ux-window"                                   >
 
 <!-- ============================================================= -->
@@ -110,11 +108,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                           (external |
                            local |
                            peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               locktitle
-                          (no |
-                           yes |
                            -dita-use-conref-target)
                                     #IMPLIED
                format
@@ -169,11 +162,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                            peer |
                            -dita-use-conref-target)
                                     #IMPLIED
-               locktitle
-                          (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
                format
                           CDATA
                                     #IMPLIED
@@ -226,11 +214,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                            peer |
                            -dita-use-conref-target)
                                     #IMPLIED
-               locktitle
-                          (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
                format
                           CDATA
                                     #IMPLIED
@@ -280,11 +263,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                            peer |
                            -dita-use-conref-target)
                                     #IMPLIED
-               locktitle
-                          (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
                linking
                           (none |
                            normal |
@@ -325,11 +303,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                           (external |
                            local |
                            peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               locktitle
-                          (no |
-                           yes |
                            -dita-use-conref-target)
                                     #IMPLIED
                format
@@ -454,9 +427,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                keys
                           CDATA
                                     #IMPLIED
-               copy-to
-                          CDATA
-                                    #IMPLIED
                %topicref-atts;
                %univ-atts;"
 >
@@ -552,9 +522,8 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
 
 <!--                    LONG NAME: Topic Metadata                  -->
 <!ENTITY % topicmeta.content
-                       "((%navtitle;)?,
-                         (%linktext;)?,
-                         (%searchtitle;)?,
+                       "((%keytext;)?,
+                         (%titlealt;)*,
                          (%shortdesc;)?,
                          (%author;)*,
                          (%source;)?,
@@ -578,6 +547,25 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
 >
 <!ELEMENT  topicmeta %topicmeta.content;>
 <!ATTLIST  topicmeta %topicmeta.attributes;>
+
+
+<!--                    LONG NAME: Key text                        -->
+<!ENTITY % keytext.content
+                        "(#PCDATA |
+                          %cite; |
+                          %data; |
+                          %keyword; |
+                          %ph; |
+                          %q; |
+                          %term; |
+                          %text; |
+                          %tm;)*"
+>
+<!ENTITY % keytext.attributes
+              "%univ-atts;"
+>
+<!ELEMENT  keytext %keytext.content;>
+<!ATTLIST  keytext %keytext.attributes;>
 
 
 <!--                    LONG NAME: User Experience Window          -->
@@ -643,6 +631,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
 <!ATTLIST  relrow         class CDATA "- map/relrow "       >
 <!ATTLIST  relcell        class CDATA "- map/relcell "      >
 <!ATTLIST  topicmeta      class CDATA "- map/topicmeta "    >
+<!ATTLIST  keytext        class CDATA "- map/keytext "      >
 <!ATTLIST  ux-window      class CDATA "- map/ux-window "    >
 
 <!-- ================== End of DITA Map Module ==================== -->

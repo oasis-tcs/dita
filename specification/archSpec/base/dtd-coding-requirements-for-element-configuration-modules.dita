@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.x Concept//EN" "concept.dtd">
+<concept id="dtd_coding_requirements_for_element_configuration_modules">
+    <title>DTD: Coding requirements for element-configuration modules</title>
+    <shortdesc>Element-configuration modules (constraint and expansion) have specific coding
+        requirements.</shortdesc>
+    <conbody>
+        <section>
+            <title>The <codeph><varname>tagname</varname>.attributes</codeph> parameter
+                entity</title>
+            <p>When the attribute set for an element is constrained or expanded, there is a
+                declaration of the <codeph><varname>tagname</varname>.attributes</codeph> parameter
+                entity that defines the modified attributes.</p>
+            <example>
+                <p>The following list provides examples for both constraint and expansion
+                    modules:</p>
+                <dl>
+                    <dlentry>
+                        <dt>Constraint module</dt>
+                        <dd>
+                            <p>The following parameter entity defines a constrained set of
+                                attributes for the <xmlelement>note</xmlelement> element that
+                                removes most of the values defined for <xmlatt>type</xmlatt>; it
+                                also removes <xmlatt>spectitle</xmlatt> and
+                                    <xmlatt>othertype</xmlatt>:</p>
+                            <codeblock>&lt;!ENTITY % note.attributes  
+       "type  (attention | caution | note ) #IMPLIED
+        %univ-atts;"&gt;</codeblock>
+                            <p>The following parameter entity restricts the highlighting domain to
+                                    <xmlelement>b</xmlelement> and <xmlelement>i</xmlelement>:</p>
+                            <codeblock>
+&lt;!ENTITY % HighlightingDomain-c-ph     "b | i"  ></codeblock>
+                        </dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt>Expansion module</dt>
+                        <dd>
+                            <p>The following parameter entity defines a new attribute intended for
+                                use with various table elements:</p>
+                            <codeblock>&lt;!ENTITY % cellPurposeAtt-d-attribute<b>-expansion</b>
+  "cell-purpose  (sale | out-of-stock | new | last-chance | inherit | none)  #IMPLIED"
+&gt;</codeblock>
+                        </dd>
+                    </dlentry>
+                </dl>
+            </example>
+            <p>For expansion modules, note the following considerations:</p>
+            <ul>
+                <li>The <codeph><varname>tagname</varname>.attributes</codeph> parameter entity can
+                    be defined in an attribute specialization module, or it can be defined directly
+                    in the expansion module.</li>
+                <li>By convention, the name of the parameter entity ends with
+                        <codeph>-expansion</codeph>; this indicates that this is an expansion
+                    attribute and is not intended to be included in the
+                        <parameterentity>base-attribute-extensions</parameterentity> entity in the
+                    document-type shell.</li>
+            </ul>
+        </section>
+        <section>
+            <title>The <codeph><varname>tagname</varname>.content</codeph> parameter entity</title>
+            <p>When the content model for an element is constrained or expanded, there is a
+                declaration of the <codeph><varname>tagname</varname>.content</codeph> parameter
+                entity that defines the modified content model.</p>
+            <example>
+                <p>The following list provides examples for both constraint and expansion
+                    modules:</p>
+                <dl>
+                    <dlentry>
+                        <dt>Constraint module</dt>
+                        <dd>
+                            <p>The following parameter entity defines a more restricted content
+                                model for <xmlelement>topic</xmlelement>, in which the
+                                    <xmlelement>shortdesc</xmlelement> element is required.</p>
+                            <codeblock>&lt;!ENTITY % topic.content 
+
+  "((%title;), 
+    (%titlealts;)?, 
+    (%shortdesc;), 
+    (%prolog;)?, 
+    (%body;)?, 
+    (%topic-info-types;)*)"
+></codeblock>
+                        </dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt>Expansion module</dt>
+                        <dd>
+                            <p>The redefinition of the content model references the parameter entity
+                                that was defined in the element specialization module.</p>
+                            <p>The following code sample shows the entity declaration file for an
+                                element specialization module that defines a
+                                    <xmlelement>section-shortdesc</xmlelement> element, which is
+                                intended to be added to the content model of
+                                    <xmlelement>section</xmlelement>:</p>
+                            <codeblock>&lt;!ENTITY sectionShortdesc-d-p-expansion "section-shortdesc">
+
+&lt;!ENTITY % section-shortdesc "section-shortdesc"></codeblock>
+                            <p>When the content model for <xmlelement>section</xmlelement> is
+                                redefined in the expansion module, it references the parameter
+                                entity defined in the entities file for the element
+                                specialization:</p>
+                            <codeblock>
+&lt;!ENTITY % section.content
+              "(#PCDATA |
+               %dl; |
+               %div; |
+               %fig; |
+               %image; |
+               %note; |
+               %ol; |
+               %p; |
+               %simpletable; |
+               %ul; |
+               %title; |
+               %draft-comment;<b>|
+               %sectionShortdesc-d-p-expansion;</b>)*"
+>
+</codeblock>
+                            <p>Note that this expansion module also constrains the content model of
+                                    <xmlelement>section</xmlelement> to only include certain block
+                                elements.</p>
+                        </dd>
+                    </dlentry>
+                </dl>
+            </example>
+            <draft-comment author="Kristen J Eberlein" time="18 May 2021">
+                <p>If we go with this approach -- handling coding requirements for constraint and
+                    expansion in a single topic, we need to find a home for the following content
+                    that orginally was in the coding requirements for constraints topic:</p>
+            </draft-comment>
+        </section>
+        <section id="remove-base-element">
+            <title>Constraining to replace a base element with domain extensions</title>
+            <p>When element domains are used to extend a base element, those extensions can be used
+                to replace the base element. This form of constraint is done inside the
+                document-type shell.</p>
+            <p>Within a document-type shell, <xref
+                    href="dtd-coding-doctype-shell.dita#shell-dtd-coding-reqs/domain-extensions"
+                    >domain extensions</xref> are implemented by declaring an entity for a base
+                element. The value of the entity can omit any base element types from which the
+                other element types that are listed are specialized.</p>
+            <p otherprops="examples">In the following example, the <xmlelement>pre</xmlelement> base
+                type is removed from the entity declaration, effectively allowing only
+                specializations of <xmlelement>pre</xmlelement> but not <xmlelement>pre</xmlelement> itself.<codeblock otherprops="examples"><![CDATA[<!ENTITY % pre
+    "%pr-d-pre; | 
+     %sw-d-pre; | 
+     %ui-d-pre;">]]></codeblock></p>
+        </section>
+    </conbody>
+</concept>
