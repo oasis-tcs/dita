@@ -578,8 +578,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
       </define>
     </div>
     <div>
-      <a:documentation> Predefined content model groups, based on the previous, element-only categories: txt.incl is appropriate for any mixed content definitions (those that have PCDATA) the context
-        for blocks is implicitly an InfoMaster "containing_division" </a:documentation>
+      <a:documentation>Predefined content model groups</a:documentation>
       <define name="listitem.cnt">
         <choice>
           <text/>
@@ -928,18 +927,12 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
       </optional>
       <optional>
         <attribute name="conaction">
-          <a:documentation>This attribute enables users to push content into a new location.</a:documentation>
           <choice>
             <value>mark</value>
-            <a:documentation>Marks the reference position.</a:documentation>
             <value>pushafter</value>
-            <a:documentation>Push after the marked position.</a:documentation>
             <value>pushbefore</value>
-            <a:documentation>Push before the marked position.</a:documentation>
             <value>pushreplace</value>
-            <a:documentation>Push and replace content.</a:documentation>
             <value>-dita-use-conref-target</value>
-            <a:documentation>Use the value from the conref target.</a:documentation>
           </choice>
         </attribute>
       </optional>
@@ -1079,9 +1072,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="data.element">
           <element name="data" dita:longName="Data">
-            <a:documentation>The &lt;data> element represents a property within a DITA topic or map. While the &lt;data> element can be used directly to capture properties, it is particularly useful
-              as a basis for specialization. Default processing treats the property values as an unknown kind of metadata, but custom processing can match the name attribute or specialized element to
-              format properties as sidebars or other adornments or to harvest properties for automated processing. Category: Miscellaneous elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="data.attlist"/>
             <ref name="data.content"/>
           </element>
@@ -1101,8 +1092,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="unknown.element">
           <element name="unknown" dita:longName="Unknown">
-            <a:documentation>The &lt;unknown> element is an open extension that allows information architects to incorporate xml fragments that do not necessarily fit into an existing DITA use case.
-              The base processing for &lt;unknown> is to suppress unless otherwise instructed. Category: Specialization elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="unknown.attlist"/>
             <ref name="unknown.content"/>
           </element>
@@ -1122,9 +1112,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="foreign.element">
           <element name="foreign" dita:longName="Foreign">
-            <a:documentation>The &lt;foreign> element is an open extension that allows information architects to incorporate existing standard vocabularies for non-textual content. like MathML and
-              SVG, as inline objects. If &lt;foreign> contains more than one alternative content element, they will all be processed. Specialization of &lt;foreign> should be implemented as a domain,
-              but for those looking for more control over the content can implement foreign vocabulary as an element specialization. Category: Specialization elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="foreign.attlist"/>
             <ref name="foreign.content"/>
           </element>
@@ -1137,7 +1125,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
       <div>
         <a:documentation>LONG NAME: Title</a:documentation>
         <define name="title.content">
-          <a:documentation>This is referenced inside CALS table</a:documentation>
           <zeroOrMore>
             <ref name="title.cnt"/>
           </zeroOrMore>
@@ -1158,8 +1145,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="title.element">
           <element name="title" dita:longName="Title">
-            <a:documentation>The &lt;title> element contains a heading or label for the main parts of a topic, including the topic as a whole, its sections and examples, and its labelled content, such
-              as figures and tables. Beginning with DITA 1.1, the element may also be used to provide a title for a map. Category: Topic elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="title.attlist"/>
             <ref name="title.content"/>
           </element>
@@ -1187,7 +1173,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="titlealt.element">
           <element name="titlealt" dita:longName="Alternate Title">
-            <a:documentation>Specifies an alternative title fulfilling a particular role. Category: Topic elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="titlealt.attlist"/>
             <ref name="titlealt.content"/>
           </element>
@@ -1215,9 +1201,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="desc.element">
           <element name="desc" dita:longName="Description">
-            <a:documentation>The &lt;desc> element contains the description of the current element. A description should provide more information than the title. This is its behavior in
-              fig/table/linklist, for example. In xref/link, it provides a description of the target; processors that support it may choose to display this as hover help. In object, it contains
-              alternate content for use when in contexts that cannot display the object. Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="desc.attlist"/>
             <ref name="desc.content"/>
           </element>
@@ -1243,9 +1227,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="shortdesc.element">
           <element name="shortdesc" dita:longName="Short Description">
-            <a:documentation>The short description (&lt;shortdesc>) element occurs between the topic title and the topic body, as the initial paragraph-like content of a topic, or it can be embedded
-              in an abstract element. The short description, which represents the purpose or theme of the topic, is also intended to be used as a link preview and for searching. When used within a
-              DITA map, the short description of the &lt;topicref> can be used to override the short description in the topic. Category: Topic elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="shortdesc.attlist"/>
             <ref name="shortdesc.content"/>
           </element>
@@ -1270,7 +1252,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="p.element">
           <element name="p" dita:longName="Paragraph">
-            <a:documentation>A paragraph element (&lt;p>) is a block of text containing a single main idea. Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="p.attlist"/>
             <ref name="p.content"/>
           </element>
@@ -1318,8 +1300,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="note.element">
           <element name="note" dita:longName="Note">
-            <a:documentation>A &lt;note> element contains information, differentiated from the main text, which expands on or calls attention to a particular point. Category: Body
-              elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="note.attlist"/>
             <ref name="note.content"/>
           </element>
@@ -1344,9 +1325,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="lq.element">
           <element name="lq" dita:longName="Long Quote">
-            <a:documentation>The long quote (&lt;lq>) element indicates content quoted from another source. Use the quote element &lt;q> for short, inline quotations, and long quote &lt;lq> for
-              quotations that are too long for inline use, following normal guidelines for quoting other sources. You can store a URL to the source of the quotation in the href attribute; the href
-              value may point to a DITA topic. Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="lq.attlist"/>
             <ref name="lq.content"/>
           </element>
@@ -1368,8 +1347,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="q.element">
           <element name="q" dita:longName="Quote">
-            <a:documentation>A quotation element (&lt;q>) indicates content quoted from another source. This element is used for short quotes which are displayed inline. Use the long quote element
-              (&lt;lq>) for quotations that should be set off from the surrounding text. Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="q.attlist"/>
             <ref name="q.content"/>
           </element>
@@ -1406,8 +1384,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="sl.element">
           <element name="sl" dita:longName="Simple List">
-            <a:documentation>The simple list (&lt;sl>) element contains a simple list of items of short, phrase-like content, such as in documenting the materials in a kit or package. Category: Body
-              elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="sl.attlist"/>
             <ref name="sl.content"/>
           </element>
@@ -1429,9 +1406,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="sli.element">
           <element name="sli" dita:longName="Simple List Item">
-            <a:documentation>A simple list item (&lt;sli>) is a single item in a simple list &lt;sl>. Simple list items have phrase or text content, adequate for describing package contents, for
-              example. When a DITA topic is formatted for output, the items of a simple list are placed each on its own line, with no other prefix such as a number (as in an ordered list) or bullet
-              (as in an unordered list). Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="sli.attlist"/>
             <ref name="sli.content"/>
           </element>
@@ -1468,8 +1443,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="ul.element">
           <element name="ul" dita:longName="Unordered List">
-            <a:documentation>In an unordered list (&lt;ul>), the order of the list items is not significant. List items are typically styled on output with a "bullet" character, depending on nesting
-              level. Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <sch:pattern name="atLeastTwoChildren">
               <sch:rule context="ul">
                 <sch:assert test="count(*) > 1" role="warning"> Please make sure you have at least 2 items for this list! </sch:assert>
@@ -1511,7 +1485,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="ol.element">
           <element name="ol" dita:longName="Ordered List">
-            <a:documentation>An ordered list (&lt;ol>) is a list of items sorted by sequence or order of importance. Category: List elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="ol.attlist"/>
             <ref name="ol.content"/>
           </element>
@@ -1533,8 +1507,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="li.element">
           <element name="li" dita:longName="List Item">
-            <a:documentation>A list (&lt;li>) item is a single item in an ordered &lt;ol> or unordered &lt;ul> list. When a DITA topic is formatted for output, numbers and alpha characters are usually
-              output with list items in ordered lists, while bullets and dashes are usually output with list items in unordered lists. Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="li.attlist"/>
             <ref name="li.content"/>
           </element>
@@ -1574,8 +1547,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="dl.element">
           <element name="dl" dita:longName="Definition List">
-            <a:documentation>A definition list (&lt;dl>) is a list of terms and corresponding definitions. The term (&lt;dt>) is usually flush left. The description or definition (&lt;dd>) is usually
-              either indented and on the next line, or on the same line to the right of the term. Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="dl.attlist"/>
             <ref name="dl.content"/>
           </element>
@@ -1600,8 +1572,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="dlhead.element">
           <element name="dlhead" dita:longName="Definition List Head">
-            <a:documentation>The &lt;dlhead> element contains optional headings for the term and description columns in a definition list. The definition list heading contains a heading &lt;dthd> for
-              the column of terms and an optional heading &lt;ddhd>for the column of descriptions. Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="dlhead.attlist"/>
             <ref name="dlhead.content"/>
           </element>
@@ -1623,8 +1594,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="dthd.element">
           <element name="dthd" dita:longName="Term Header">
-            <a:documentation>The definition term heading (&lt;dthd>) element is contained in a definition list head (&lt;dlhead>) and provides an optional heading for the column of terms in a
-              description list. Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="dthd.attlist"/>
             <ref name="dthd.content"/>
           </element>
@@ -1646,8 +1616,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="ddhd.element">
           <element name="ddhd" dita:longName="Definition Header">
-            <a:documentation>The definition descriptions heading (&lt;ddhd>) element contains an optional heading or title for a column of descriptions or definitions in a definition list. Category:
-              Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="ddhd.attlist"/>
             <ref name="ddhd.content"/>
           </element>
@@ -1672,8 +1641,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="dlentry.element">
           <element name="dlentry" dita:longName="Definition List Entry">
-            <a:documentation>In a definition list, each list item is defined by the definition list entry (&lt;dlentry>) element. The definition list entry element includes a term &lt;dt> and one or
-              more definitions or descriptions &lt;dd> of that term. Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="dlentry.attlist"/>
             <ref name="dlentry.content"/>
           </element>
@@ -1698,7 +1666,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="dt.element">
           <element name="dt" dita:longName="Definition Term">
-            <a:documentation>The definition term &lt;dt> element contains a term in a definition list entry. Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="dt.attlist"/>
             <ref name="dt.content"/>
           </element>
@@ -1720,7 +1688,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="dd.element">
           <element name="dd" dita:longName="Definition Description">
-            <a:documentation>The definition description (&lt;dd>) element contains the description of a term in a definition list entry. Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="dd.attlist"/>
             <ref name="dd.content"/>
           </element>
@@ -1745,8 +1713,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="example.element">
           <element name="example" dita:longName="Example">
-            <a:documentation>The &lt;example> element is a section with the specific role of containing examples that illustrate or support the current topic. The &lt;example> element has the same
-              content model as &lt;section>. Category: Topic elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="example.attlist"/>
             <ref name="example.content"/>
           </element>
@@ -1780,9 +1747,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="fig.element">
           <element name="fig" dita:longName="Figure">
-            <a:documentation>The figure (&lt;fig>) element is a display context (sometimes called an exhibit) with an optional title for a wide variety of content. Most commonly, the figure element
-              contains an image element (a graphic or artwork), but it can contain several kinds of text objects as well. A title is placed inside the figure element to provide a caption to describe
-              the content. Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="fig.attlist"/>
             <ref name="fig.content"/>
           </element>
@@ -1810,8 +1775,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="figgroup.element">
           <element name="figgroup" dita:longName="Figure Group">
-            <a:documentation>The &lt;figgroup> element is used only for specialization at this time. Figure groups can be used to contain multiple cross-references, footnotes or keywords, but not
-              multipart images. Multipart images in DITA should be represented by a suitable media type displayed by the &lt;object> element. Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="figgroup.attlist"/>
             <ref name="figgroup.content"/>
           </element>
@@ -1842,9 +1806,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="pre.element">
           <element name="pre" dita:longName="Preformatted Text">
-            <a:documentation>The preformatted element (&lt;pre>) preserves line breaks and spaces entered manually by the author in the content of the element, and also presents the content in a
-              monospaced type font (depending on your output formatting processor). Do not use &lt;pre> when a more semantically specific element is appropriate, such as &lt;codeblock>. Category: Body
-              elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="pre.attlist"/>
             <ref name="pre.content"/>
           </element>
@@ -1875,8 +1837,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="lines.element">
           <element name="lines" dita:longName="Line Respecting Text">
-            <a:documentation>The &lt;lines> element may be used to represent dialogs, lists, text fragments, and so forth. The &lt;lines> element is similar to &lt;pre> in that hard line breaks are
-              preserved, but the font style is not set to monospace, and extra spaces inside the lines are not preserved. Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="lines.attlist"/>
             <ref name="lines.content"/>
           </element>
@@ -1897,7 +1858,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="div.element">
           <element name="div" dita:longName="Division">
-            <a:documentation> Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="div.attlist"/>
             <ref name="div.content"/>
           </element>
@@ -1924,9 +1885,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="text.element">
           <element name="text" dita:longName="Text">
-            <a:documentation>The text element associates no semantics with its content. It exists to serve as a container for text where a container is needed (e.g., for conref, or for restricted
-              content models in specializations). Unlike ph, text cannot contain images. Unlike keyword, text does not imply keyword-like semantics. The text element contains only text data, or nested
-              text elements. All universal attributes are available on text.</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="text.attlist"/>
             <ref name="text.content"/>
           </element>
@@ -1957,8 +1916,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="keyword.element">
           <element name="keyword" dita:longName="Keyword">
-            <a:documentation>The &lt;keyword> element identifies a keyword or token, such as a single value from an enumerated list, the name of a command or parameter, product name, or a lookup key
-              for a message. Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="keyword.attlist"/>
             <ref name="keyword.content"/>
           </element>
@@ -1989,8 +1947,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="term.element">
           <element name="term" dita:longName="Term">
-            <a:documentation>The &lt;term> element identifies words that may have or require extended definitions or explanations. In future development of DITA, for example, terms might provide
-              associative linking to matching glossary entries. Category: Specialization elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="term.attlist"/>
             <ref name="term.content"/>
           </element>
@@ -2017,9 +1974,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="ph.element">
           <element name="ph" dita:longName="Phrase">
-            <a:documentation>The phrase (&lt;ph>) element is used to organize content for reuse or conditional processing (for example, when part of a paragraph applies to a particular audience). It
-              can be used by specializations of DITA to create semantic markup for content at the phrase level, which then allows (but does not require) specific processing or formatting. Category:
-              Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="ph.attlist"/>
             <ref name="ph.content"/>
           </element>
@@ -2062,8 +2017,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="tm.element">
           <element name="tm" dita:longName="Trade Mark">
-            <a:documentation>The trademark (&lt;tm>) element in DITA is used to markup and identify a term or phrase that is trademarked. Trademarks include registered trademarks, service marks,
-              slogans and logos. Category: Miscellaneous elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="tm.attlist"/>
             <ref name="tm.content"/>
           </element>
@@ -2074,11 +2028,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
 
       </div>
       <div>
-        <a:documentation xml:space="preserve">LONG NAME: State
-        
-    A state can have a name and a string value, 
-    even if empty or indeterminate
-        </a:documentation>
+        <a:documentation xml:space="preserve">LONG NAME: State</a:documentation>
         <define name="state.content">
           <empty/>
         </define>
@@ -2089,9 +2039,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="state.element">
           <element name="state" dita:longName="State">
-            <a:documentation>The &lt;state> element specifies a name/value pair whenever it is necessary to represent a named state that has a variable value. The element is primarily intended for use
-              in specializations to represent specific states (like logic circuit states, chemical reaction states, airplane instrumentation states, and so forth). Category: Specialization
-              elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="state.attlist"/>
             <ref name="state.content"/>
           </element>
@@ -2102,7 +2050,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
 
       </div>
       <div>
-        <a:documentation>LONG NAME: Image Data</a:documentation>
+        <a:documentation>LONG NAME: Image</a:documentation>
         <define name="image.content">
           <optional>
             <ref name="alt"/>
@@ -2171,11 +2119,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="image.element">
           <element name="image" dita:longName="Image Data">
-            <a:documentation>Include artwork or images in a DITA topic by using the &lt;image> element. The &lt;image> element has optional attributes that indicate whether the placement of the
-              included graphic or artwork should be inline (like a button or icon) or on a separate line for a larger image. There are also optional attributes that indicate the size to which the
-              included graphic or artwork should be scaled. An href attribute is required on the image element, as this attribute creates a pointer to the image, and allows the output formatting
-              processor to bring the image into the text flow. To make the intent of the image more accessible for users using screen readers or text-only readers, always include a description of the
-              image's content in the alt element. Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="image.attlist"/>
             <ref name="image.content"/>
           </element>
@@ -2202,8 +2146,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="alt.element">
           <element name="alt" dita:longName="Alternate text">
-            <a:documentation>The alt element provides alternate text for an image. It is equivalent to the alt attribute on the image element; the attribute is deprecated, so the alt element should be
-              used instead. As an element, alt provides direct text entry within an XML editor and is more easily accessed than an attribute for translation. Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="alt.attlist"/>
             <ref name="alt.content"/>
           </element>
@@ -2245,7 +2188,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="longdescref.element">
           <element name="longdescref" dita:longName="Long description reference">
-            <a:documentation>A reference to a textual description of the graphic or object.</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="longdescref.attlist"/>
             <ref name="longdescref.content"/>
           </element>
@@ -2342,7 +2285,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="object.element">
           <element name="object" dita:longName="Object (Streaming/Executable Data)">
-            <a:documentation>DITA's &lt;object> element corresponds to the HTML &lt;object> element. Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="object.attlist"/>
             <ref name="object.content"/>
           </element>
@@ -2382,9 +2325,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="param.element">
           <element name="param" dita:longName="Parameter">
-            <a:documentation>The parameter (&lt;param>) element specifies a set of values that may be required by an &lt;object> at runtime. Any number of &lt;param> elements may appear in the content
-              of an object in any order, but must be placed at the start of the content of the enclosing object. This element is comparable to the XHMTL &lt;param> element. Category: Body
-              elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="param.attlist"/>
             <ref name="param.content"/>
           </element>
@@ -2424,10 +2365,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="simpletable.element">
           <element name="simpletable" dita:longName="Simple Table">
-            <a:documentation>The &lt;simpletable> element is used for tables that are regular in structure and do not need a caption. Choose the simple table element when you want to show information
-              in regular rows and columns. For example, multi-column tabular data such as phone directory listings or parts lists are good candidates for simpletable. Another good use of simpletable
-              is for information that seems to beg for a "three-part definition list"—just use the keycol attribute to indicate which column represents the "key" or term-like column of your structure.
-              Category: Table elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="simpletable.attlist"/>
             <ref name="simpletable.content"/>
           </element>
@@ -2449,7 +2387,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="sthead.element">
           <element name="sthead" dita:longName="Simple Table Head">
-            <a:documentation>The simpletable header (&lt;sthead>) element contains the table's header row. The header row is optional in a simple table. Category: Table elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="sthead.attlist"/>
             <ref name="sthead.content"/>
           </element>
@@ -2471,7 +2409,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="strow.element">
           <element name="strow" dita:longName="Simple Table Row">
-            <a:documentation>The &lt;simpletable> row (&lt;strow>) element specifies a row in a simple table. Category: Table elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="strow.attlist"/>
             <ref name="strow.content"/>
           </element>
@@ -2557,9 +2495,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="draft-comment.element">
           <element name="draft-comment" dita:longName="Review Comments Block">
-            <a:documentation>The &lt;draft-comment> element allows simple review and discussion of topic contents within the marked-up content. Use the &lt;draft-comment> element to ask a question or
-              make a comment that you would like others to review. To indicate the source of the draft comment or the status of the comment, use the author, time or disposition attributes. Category:
-              Miscellaneous elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="draft-comment.attlist"/>
             <ref name="draft-comment.content"/>
           </element>
@@ -2582,9 +2518,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="required-cleanup.element">
           <element name="required-cleanup" dita:longName="Required Cleanup Block">
-            <a:documentation>A &lt;required-cleanup> element is used as a placeholder for migrated elements that cannot be appropriately tagged without manual intervention. As the element name
-              implies, the intent for authors is to clean up the contained material and eventually get rid of the &lt;required-cleanup> element. Authors should not insert this element into documents.
-              Category: Specialization elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="required-cleanup.attlist"/>
             <ref name="required-cleanup.content"/>
           </element>
@@ -2609,8 +2543,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="fn.element">
           <element name="fn" dita:longName="Footnote">
-            <a:documentation>Use footnote (&lt;fn>) to annotate text with notes that are not appropriate for inclusion in line or to indicate the source for facts or other material used in the text.
-              Category: Miscellaneous elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="fn.attlist"/>
             <ref name="fn.content"/>
           </element>
@@ -2647,8 +2580,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="indexterm.element">
           <element name="indexterm" dita:longName="Index Term">
-            <a:documentation>An &lt;indexterm> element allows the author to indicate that a certain word or phrase should produce an index entry in the generated index. Category: Miscellaneous
-              elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="indexterm.attlist"/>
             <ref name="indexterm.content"/>
           </element>
@@ -2677,8 +2609,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
       </define>
       <define name="index-see.element">
         <element name="index-see" dita:longName="Index See">
-          <a:documentation>An &lt;index-see> element within an &lt;indexterm> directs the reader to another index entry that the reader should reference instead of the current one.
-          </a:documentation>
+          <a:documentation></a:documentation>
           <ref name="index-see.attlist"/>
           <ref name="index-see.content"/>
         </element>
@@ -2707,7 +2638,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
       </define>
       <define name="index-see-also.element">
         <element name="index-see-also" dita:longName="Index See Also">
-          <a:documentation>An &lt;index-see-also> element ... </a:documentation>
+          <a:documentation></a:documentation>
           <ref name="index-see-also.attlist"/>
           <ref name="index-see-also.content"/>
         </element>
@@ -2732,8 +2663,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="cite.element">
           <element name="cite" dita:longName="Citation (bibliographic source)">
-            <a:documentation>The &lt;cite> element is used when you need a bibliographic citation that refers to a book or article. It specifically identifies the title of the resource. Category: Body
-              elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="cite.attlist"/>
             <ref name="cite.content"/>
           </element>
@@ -2780,8 +2710,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </define>
         <define name="xref.element">
           <element name="xref" dita:longName="Cross Reference/Link">
-            <a:documentation>Use the cross-reference (&lt;xref>) element to link to a different location within the current topic, or a different topic within the same help system, or to external
-              sources, such as Web pages, or to a location in another topic. The href attribute on the &lt;xref> element provides the location of the target. Category: Body elements</a:documentation>
+            <a:documentation></a:documentation>
             <ref name="xref.attlist"/>
             <ref name="xref.content"/>
           </element>
@@ -2817,8 +2746,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
   </define>
   <define name="fallback.element">
     <element name="fallback" dita:longName="Fallback">
-      <a:documentation>The &lt;fallback> element contains content to be rendered when a multimedia
-        object reference cannot be rendered.</a:documentation>
+      <a:documentation></a:documentation>
       <ref name="fallback.attlist"/>
       <ref name="fallback.content"/>
     </element>
@@ -2870,9 +2798,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
   </define>
   <define name="include.element">
     <element name="include" dita:longName="Inclusion">
-      <a:documentation>Use the inclusion (&lt;include>) element to transclude content stored in another resource into a DITA topic. The
-        @href and @keyref attributes specify the resource to be transcluded. The @parse attribute declares the mode by which to include
-        the content.Category: Body elements</a:documentation>
+      <a:documentation></a:documentation>
       <ref name="include.attlist"/>
       <ref name="include.content"/>
     </element>
@@ -2968,8 +2894,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
     </define>
     <define name="audio.element">
       <element name="audio" dita:longName="Audio">
-        <a:documentation>DITA's &lt;audio> element corresponds to the HTML &lt;audio> element.
-          Category: Body elements</a:documentation>
+        <a:documentation></a:documentation>
         <ref name="audio.attlist"/>
         <ref name="audio.content"/>
       </element>
@@ -3081,8 +3006,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
     </define>
     <define name="video.element">
       <element name="video" dita:longName="Video">
-        <a:documentation>DITA's &lt;video> element corresponds to the HTML &lt;video> element.
-          Category: Body elements</a:documentation>
+        <a:documentation></a:documentation>
         <ref name="video.attlist"/>
         <ref name="video.content"/>
       </element>
@@ -3121,7 +3045,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
     </define>
     <define name="media-source.element">
       <element name="media-source" dita:longName="Audio">
-        <a:documentation>DITA's &lt;media-source> element corresponds to the HTML &lt;source> element within &lt;video> and &lt;audio> elements.</a:documentation>
+        <a:documentation></a:documentation>
         <ref name="media-source.attlist"/>
         <ref name="media-source.content"/>
       </element>
@@ -3175,7 +3099,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
     </define>
     <define name="media-track.element">
       <element name="media-track" dita:longName="Audio object reference">
-        <a:documentation>DITA's &lt;media-track> element corresponds to the HTML &lt;track> element within &lt;video> and &lt;audio> elements.</a:documentation>
+        <a:documentation></a:documentation>
         <ref name="media-track.attlist"/>
         <ref name="media-track.content"/>
       </element>
