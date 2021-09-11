@@ -1,0 +1,76 @@
+name: Test
+on: [ push, pull_request ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      DITA_OT_VERSION: '3.5.4'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Cache DITA-OT
+        uses: actions/cache@v2
+        with:
+          path: |
+            dita-ot-${{ env.DITA_OT_VERSION }}.zip
+          key: ${{ runner.os }}-${{ env.DITA_OT_VERSION }}
+      - name: Set up DITA-OT
+        run: |
+          set -e
+          if [ -f "dita-ot-$DITA_OT_VERSION.zip" ]; then
+            echo "Use cached $PWD/dita-ot-$DITA_OT_VERSION.zip"
+          else
+            curl -sfL https://github.com/dita-ot/dita-ot/releases/download/$DITA_OT_VERSION/dita-ot-$DITA_OT_VERSION.zip -o dita-ot-$DITA_OT_VERSION.zip
+          fi
+          unzip -q dita-ot-$DITA_OT_VERSION.zip
+          echo "DITA_HOME=$PWD/dita-ot-$DITA_OT_VERSION" >> $GITHUB_ENV
+      - name: Install plug-ins
+        run: |
+          set -e
+          # Copy latest base doctype updates over the beta version in DITA-OT;
+          # replace whatever (possibly older) version is currently shipped.
+          rm -rv $DITA_HOME/plugins/org.oasis-open.dita.v2_0/dtd/
+          rm -rv $DITA_HOME/plugins/org.oasis-open.dita.v2_0/rng/
+          cp -av ./doctypes/. $DITA_HOME/plugins/org.oasis-open.dita.v2_0/
+
+          # Copy the latest tech comm grammars as well
+          mkdir temp
+          cd temp
+          curl -sfL https://github.com/oasis-tcs/dita-techcomm/archive/refs/heads/DITA-2.0.zip -o DITA-2.0.zip
+          unzip -q DITA-2.0.zip
+          cd ..
+          rm -rv $DITA_HOME/plugins/org.oasis-open.dita.techcomm.v2_0/dtd/
+          rm -rv $DITA_HOME/plugins/org.oasis-open.dita.techcomm.v2_0/rng/
+          cp -av ./temp/dita-techcomm-DITA-2.0/doctypes/. $DITA_HOME/plugins/org.oasis-open.dita.techcomm.v2_0/
+
+          # Install the updated grammar plugins
+          $DITA_HOME/bin/dita install
+
+          # Install RNG support
+          #curl -sfL https://github.com/oxygenxml/dita-relaxng-defaults/archive/master.zip -o dita-ng.zip
+          #$DITA_HOME/bin/dita -install dita-ng.zip -v
+          #rm dita-ng.zip
+      - name: Install test files
+        run: |
+          set -e
+          curl --etag-compare testfiles.zip.etag --etag-save testfiles.zip.etag -sfL https://github.com/robander/metadita-sampledocs/archive/master.zip -o testfiles.zip
+          unzip testfiles.zip
+      - name: Test DITA 1.3 basemap
+        run: |
+          set -e
+          # Build 1.3 doctype to ensure builds working properly
+          #$DITA_HOME/bin/dita -i $PWD/metadita-sampledocs-master/doctypes/dita1.3/dtd/base/basemap.ditamap -f html5
+      - name: Test all-v2-grammars.ditamap
+        run: |
+          set -e
+          # Build beta 2.0 doctype
+          #$DITA_HOME/bin/dita -i $PWD/metadita-sampledocs-master/doctypes/dita20/dtd/base/basetopic.dita -f html5
+          #$DITA_HOME/bin/dita -i $PWD/metadita-sampledocs-master/doctypes/dita20/dtd/base/basemap.ditamap -f html5
+          $DITA_HOME/bin/dita -i $PWD/metadita-sampledocs-master/doctypes/all-v2-grammars.ditamap -f html5 --processing-mode=strict -v
+      - name: Test dita-2.0-specification.ditamap
+        run: |
+          set -e
+          $DITA_HOME/bin/dita -i $PWD/specification/dita-2.0-specification.ditamap -f html5 --processing-mode=strict -v
