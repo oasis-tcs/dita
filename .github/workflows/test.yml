@@ -46,6 +46,9 @@ jobs:
           rm -rv $DITA_HOME/plugins/org.oasis-open.dita.techcomm.v2_0/rng/
           cp -av ./temp/dita-techcomm-DITA-2.0/doctypes/. $DITA_HOME/plugins/org.oasis-open.dita.techcomm.v2_0/
 
+          # Install extract codeblock
+          cp -av .github/resources/extract-codeblock/ $DITA_HOME/plugins/extract-codeblock/
+
           # Install the updated grammar plugins
           $DITA_HOME/bin/dita install
 
@@ -53,6 +56,16 @@ jobs:
           #curl -sfL https://github.com/oxygenxml/dita-relaxng-defaults/archive/master.zip -o dita-ng.zip
           #$DITA_HOME/bin/dita -install dita-ng.zip -v
           #rm dita-ng.zip
+      - name: Extract codeblock content
+        run: |
+          $DITA_HOME/bin/dita \
+            -i $PWD/specification/dita-2.0-specification.ditamap \
+            --filter $PWD/specification/resources/DITA2.0-spec.ditaval \
+            -f extract-codeblock
+      - name: Validate codeblock content
+        working-directory: .github
+        run: |
+          ./gradlew test -Pcatalogs=$DITA_HOME/catalog-dita.xml -Pout=$PWD/../out -Proot=$GITHUB_WORKSPACE --info
       - name: Install test files
         run: |
           set -e
@@ -69,8 +82,16 @@ jobs:
           # Build beta 2.0 doctype
           #$DITA_HOME/bin/dita -i $PWD/metadita-sampledocs-master/doctypes/dita20/dtd/base/basetopic.dita -f html5
           #$DITA_HOME/bin/dita -i $PWD/metadita-sampledocs-master/doctypes/dita20/dtd/base/basemap.ditamap -f html5
-          $DITA_HOME/bin/dita -i $PWD/metadita-sampledocs-master/doctypes/all-v2-grammars.ditamap -f html5 --processing-mode=strict -v
+          $DITA_HOME/bin/dita \
+            -i $PWD/metadita-sampledocs-master/doctypes/all-v2-grammars.ditamap \
+            -f html5 \
+            --processing-mode=strict \
+            -v
       - name: Test dita-2.0-specification.ditamap
         run: |
           set -e
-          $DITA_HOME/bin/dita -i $PWD/specification/dita-2.0-specification.ditamap -f html5 --processing-mode=strict -v
+          $DITA_HOME/bin/dita \
+            -i $PWD/specification/dita-2.0-specification.ditamap \
+            -f html5 \
+            --processing-mode=strict \
+            -v

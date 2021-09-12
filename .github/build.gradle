@@ -5,6 +5,12 @@ repositories {
 }
 dependencies {
     testImplementation group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: 'xerces', name: 'xercesImpl', version: '2.12.0'
     testImplementation group: 'org.xmlresolver', name: 'xmlresolver', version: '3.1.0'
     testImplementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+}
+test {
+    systemProperty "root", project.getProperty("root")
+    systemProperty "out", project.getProperty("out")
+    systemProperty "catalogs", project.getProperty("catalogs")
 }
