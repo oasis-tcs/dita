@@ -10,6 +10,8 @@ dependencies {
     testImplementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
 }
 test {
+    systemProperty "repository", project.getProperty("repository")
+    systemProperty "sha", project.getProperty("sha")
     systemProperty "root", project.getProperty("root")
     systemProperty "out", project.getProperty("out")
     systemProperty "catalogs", project.getProperty("catalogs")

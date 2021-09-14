@@ -17,6 +17,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -28,7 +29,7 @@ import static org.junit.Assert.fail;
 @RunWith(Parameterized.class)
 public class CodeblockTest {
 
-    @Parameters
+    @Parameters(name = "{0}")
     public static Collection<Object[]> data() throws IOException {
         final Path out = Paths.get(System.getProperty("out"));
         return Files.list(out)
@@ -98,18 +99,23 @@ public class CodeblockTest {
         for (int i = 0; i < childNodes.getLength() ; i++) {
             final Node item = childNodes.item(i);
             if (item.getNodeType() == Node.PROCESSING_INSTRUCTION_NODE && item.getNodeName().equals("xtrf")) {
-//                buf.append(Paths.get(System.getProperty("root")).toAbsolutePath().toUri());
-//                buf.append(" ");
-                buf.append(item.getNodeValue());
+                final URI root = Paths.get(System.getProperty("root")).toAbsolutePath().normalize().toUri();
+                final URI nodeValue = Paths.get(URI.create(item.getNodeValue())).toAbsolutePath().normalize().toUri();
+                final URI path = root.relativize(nodeValue);
+                buf.append("https://github.com/");
+                buf.append(System.getProperty("repository"));
+                buf.append("/blob/");
+                buf.append(System.getProperty("sha"));
+                buf.append("/");
+                buf.append(path);
                 break;
             }
         }
-//        buf.append(" ");
         for (int i = 0; i < childNodes.getLength() ; i++) {
             final Node item = childNodes.item(i);
             if (item.getNodeType() == Node.PROCESSING_INSTRUCTION_NODE && item.getNodeName().equals("xtrc")) {
                 final String value = item.getNodeValue();
-                buf.append("#");
+                buf.append("#L");
                 buf.append(value, value.indexOf(";") + 1, value.lastIndexOf(":"));
                 break;
             }

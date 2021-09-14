@@ -65,7 +65,13 @@ jobs:
       - name: Validate codeblock content
         working-directory: .github
         run: |
-          ./gradlew test -Pcatalogs=$DITA_HOME/catalog-dita.xml -Pout=$PWD/../out -Proot=$GITHUB_WORKSPACE --info
+          ./gradlew test \
+            -Prepository=$GITHUB_REPOSITORY \
+            -Psha=$GITHUB_SHA \
+            -Pcatalogs=$DITA_HOME/catalog-dita.xml \
+            -Pout=$PWD/../out \
+            -Proot=$GITHUB_WORKSPACE \
+            --info
       - name: Install test files
         run: |
           set -e
