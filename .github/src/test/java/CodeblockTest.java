@@ -33,13 +33,16 @@ public class CodeblockTest {
     public static Collection<Object[]> data() throws IOException {
         final Path out = Paths.get(System.getProperty("out"));
         return Files.list(out)
+                .filter(file -> file.getFileName().endsWith(".xml") || file.getFileName().endsWith(".dita"))
                 .map(file -> new Object[]{file})
                 .collect(Collectors.toList());
     }
 
     private final Path file;
     private final DocumentBuilderFactory builderFactory;
+    private final DocumentBuilderFactory validatingBuilderFactory;
     private DocumentBuilder documentBuilder;
+    private DocumentBuilder validatingDocumentBuilder;
     private XMLResolverConfiguration config;
 
     public CodeblockTest(final Path file) {
@@ -47,7 +50,11 @@ public class CodeblockTest {
 
         builderFactory = DocumentBuilderFactory.newInstance();
         builderFactory.setNamespaceAware(true);
-        builderFactory.setValidating(true);
+        builderFactory.setValidating(false);
+
+        validatingBuilderFactory = DocumentBuilderFactory.newInstance();
+        validatingBuilderFactory.setNamespaceAware(true);
+        validatingBuilderFactory.setValidating(true);
 
         final String catalog = Paths.get(System.getProperty("catalogs")).toAbsolutePath().toUri().toString();
         config = new XMLResolverConfiguration(catalog);
@@ -56,10 +63,15 @@ public class CodeblockTest {
 
     @Before
     public void setup() throws ParserConfigurationException {
-        documentBuilder = builderFactory.newDocumentBuilder();
+        validatingDocumentBuilder = createDocumentBuilder(validatingBuilderFactory);
+        documentBuilder = createDocumentBuilder(builderFactory);
+    }
+
+    private DocumentBuilder createDocumentBuilder(DocumentBuilderFactory builderFactory) throws ParserConfigurationException {
+        final DocumentBuilder builder = builderFactory.newDocumentBuilder();
         final Resolver resolver = new Resolver(config);
-        documentBuilder.setEntityResolver(resolver);
-        documentBuilder.setErrorHandler(new ErrorHandler() {
+        builder.setEntityResolver(resolver);
+        builder.setErrorHandler(new ErrorHandler() {
             @Override
             public void warning(SAXParseException exception) throws SAXException {
                 throw new SAXException(exception.getMessage(), exception);
@@ -75,16 +87,18 @@ public class CodeblockTest {
                 throw new SAXException(exception.getMessage(), exception);
             }
         });
+        return builder;
     }
 
     @Test
     public void loadCatalog() throws IOException, SAXException, ParserConfigurationException {
         try {
-            documentBuilder.parse(file.toFile());
+            if (file.getFileName().endsWith(".dita")) {
+                validatingDocumentBuilder.parse(file.toFile());
+            } else {
+                documentBuilder.parse(file.toFile());
+            }
         } catch (SAXException e) {
-            DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
-            builderFactory.setNamespaceAware(true);
-            builderFactory.setValidating(false);
             DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
             final Resolver resolver = new Resolver(config);
             documentBuilder.setEntityResolver(resolver);
@@ -96,7 +110,7 @@ public class CodeblockTest {
     private String getLocation(Document doc) {
         final StringBuilder buf = new StringBuilder();
         final NodeList childNodes = doc.getChildNodes();
-        for (int i = 0; i < childNodes.getLength() ; i++) {
+        for (int i = 0; i < childNodes.getLength(); i++) {
             final Node item = childNodes.item(i);
             if (item.getNodeType() == Node.PROCESSING_INSTRUCTION_NODE && item.getNodeName().equals("xtrf")) {
                 final URI root = Paths.get(System.getProperty("root")).toAbsolutePath().normalize().toUri();
@@ -111,7 +125,7 @@ public class CodeblockTest {
                 break;
             }
         }
-        for (int i = 0; i < childNodes.getLength() ; i++) {
+        for (int i = 0; i < childNodes.getLength(); i++) {
             final Node item = childNodes.item(i);
             if (item.getNodeType() == Node.PROCESSING_INSTRUCTION_NODE && item.getNodeName().equals("xtrc")) {
                 final String value = item.getNodeValue();
