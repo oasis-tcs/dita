@@ -67,7 +67,7 @@
           <p>The information architect creates a constraint module that combines the constraints
             from <filepath>example-TopicConstraint.mod</filepath> and
               <filepath>example-SectionConstraint.mod</filepath>:</p>
-          <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+          <codeblock base="ci-xml">&lt;?xml version="1.0" encoding="UTF-8"?>
 &lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
                          schematypens="http://relaxng.org/ns/structure/1.0"?>
 &lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
@@ -105,7 +105,7 @@
         <li>
           <p>In the document-type shell, the information architect integrates the constraint module
             (and removes the inclusion statement for <filepath>topicMod.rng</filepath>):</p>
-          <codeblock>&lt;div>
+          <codeblock base="ci-xml">&lt;div>
   &lt;a:documentation>ELEMENT-TYPE CONFIGURATION INTEGRATION&lt;/a:documentation>
   &lt;include href="acme-SectionTopicContraintMod.rng"/>
 &lt;/div></codeblock>
@@ -113,7 +113,7 @@
         <li>
           <p>To constrain the highlight domain, the information architect modifies the include
             statement for the domain module:</p>
-          <codeblock>&lt;div>
+          <codeblock base="ci-xml">&lt;div>
   &lt;a:documentation>MODULE INCLUSIONS&lt;/a:documentation>
   ...
   &lt;include href="highlightDomain.rng">
@@ -141,7 +141,7 @@
         </li>
         <li>Finally, to disallow <xmlelement>ph</xmlelement>, the information architect adds the
           following statement to the constraint
-          module:<codeblock>      &lt;define name="ph.element">
+          module:<codeblock base="ci-xml">      &lt;define name="ph.element">
         &lt;notAllowed/>
       &lt;/define></codeblock></li>
       </ol>

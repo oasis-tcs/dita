@@ -25,7 +25,7 @@
                                 <xmlelement>topic</xmlelement> element imports the base module
                                 <filepath>topicMod.rng</filepath>. Within that import, it constrains
                             the <codeph>topic.content</codeph> pattern:</p>
-                        <codeblock>  &lt;div>
+                        <codeblock base="ci-xml">  &lt;div>
     &lt;a:documentation>ATTRIBUTES AND CONTENT MODEL OVERRIDES&lt;/a:documentation>
     &lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0">
       &lt;define name="topic.content" combine="interleave">
@@ -49,7 +49,7 @@
                                 <xmlelement>section</xmlelement> imports the base module
                                 <filepath>topicMod.rng</filepath>. Within that import, it expands
                             the <codeph>section.content</codeph> pattern:</p>
-                        <codeblock>    &lt;a:documentation>CONTENT MODEL AND ATTRIBUTE LIST OVERRIDES&lt;/a:documentation>
+                        <codeblock base="ci-xml">    &lt;a:documentation>CONTENT MODEL AND ATTRIBUTE LIST OVERRIDES&lt;/a:documentation>
     &lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0">
       <b>&lt;define name="section.content" combine="interleave">
         &lt;optional>
@@ -88,7 +88,7 @@
                                     <xmlelement>section</xmlelement> and
                                     <xmlelement>shortdesc</xmlelement>, a single module can be
                                 defined as follows:</p>
-                            <codeblock>&lt;include href="topicMod.rng"&gt;
+                            <codeblock base="ci-xml">&lt;include href="topicMod.rng"&gt;
   &lt;define name="section.content"&gt;
     &lt;!-- Constrained model for section -->
   &lt;/define>
