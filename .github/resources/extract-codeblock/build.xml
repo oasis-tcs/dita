@@ -16,7 +16,6 @@
     <sequential>
       <pipeline message="Convert DITA topic to HTML5" taskname="xslt">
         <xslt destdir="${dita.temp.dir}"
-              reloadstylesheet="${dita.html5.reloadstylesheet}"
               extension=".extract-codeblock.xml"
               style="${dita.plugin.extract-codeblock.dir}/xsl/extract.xsl"
               filenameparameter="FILENAME"
@@ -26,32 +25,5 @@
         </xslt>
       </pipeline>
     </sequential>
-    <!--fail>
-      <condition>
-        <not>
-          <resourcecount count="0">
-            <fileset dir="${dita.temp.dir}" includes="*.extract-codeblock.xml"/>
-          </resourcecount>
-        </not>
-      </condition>
-    </fail-->
-    <!--
-    <xmlvalidate failonerror="no" lenient="no" warn="no">
-      <fileset dir="${dita.output.dir}" includes="**/*.xml"/>
-      <xmlcatalog>
-        <catalogpath>
-          <pathelement location="/Users/jelovirt/Work/dita-ot/src/main/catalog-dita.xml"/>
-        </catalogpath>
-      </xmlcatalog>
-    </xmlvalidate>
-    <xmlvalidate failonerror="yes" lenient="no" warn="no">
-      <fileset dir="${dita.output.dir}" includes="**/*.xml"/>
-      <xmlcatalog>
-        <catalogpath>
-          <pathelement location="/Users/jelovirt/Work/dita-ot/src/main/catalog-dita.xml"/>
-        </catalogpath>
-      </xmlcatalog>
-    </xmlvalidate>
-    -->
   </target>
 </project>
