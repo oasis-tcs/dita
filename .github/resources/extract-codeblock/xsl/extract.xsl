@@ -83,6 +83,13 @@
     </xsl:result-document>
   </xsl:template>
 
+  <xsl:template match="fragment[descendant::topicsubject]" mode="serialize" priority="10">
+    <xsl:result-document href="{concat($output.dir, '/', $FILEDIR, '/', $FILENAME, '.xml')}"
+      doctype-public="-//OASIS//DTD DITA 2.0 Classification Map//EN" doctype-system="classifyMap.dtd">
+      <xsl:apply-templates select="." mode="copy"/>
+    </xsl:result-document>
+  </xsl:template>
+
   <xsl:template match="fragment[map | topicref | keydef | topicsubject | topicgroup]" mode="serialize">
     <xsl:result-document href="{concat($output.dir, '/', $FILEDIR, '/', $FILENAME, '.xml')}"
       doctype-public="-//OASIS//DTD DITA 2.0 Base Map//EN" doctype-system="map.dtd">
