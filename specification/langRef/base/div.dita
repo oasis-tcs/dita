@@ -38,7 +38,7 @@
         <title>Using <xmlelement>div</xmlelement> for specialization</title>
         <p>In the following example, <xmlelement>div</xmlelement> is used as the basis for
           specializing a new domain element, <xmlelement>pullquote</xmlelement>:</p>
-        <codeblock>&lt;!ENTITY % pullquote.content
+        <codeblock base="ci-skip">&lt;!ENTITY % pullquote.content
   "(%div.cnt;)*"
 >
 &lt;!ENTITY % pullquote.attributes
@@ -50,7 +50,7 @@
 &lt;!ATTLIST pullquote      class CDATA "+ topic/div pubcontent-d/pullquote "></codeblock>
         <p>Instances of <xmlelement>pullquote</xmlelement> could then be used in both
             <xmlelement>body</xmlelement> and <xmlelement>section</xmlelement> contexts:</p>
-        <codeblock>&lt;topic id="article-01">
+        <codeblock base="ci-xml">&lt;topic id="article-01">
   &lt;title>My Article&lt;/title>
   &lt;body>
     &lt;p>Something pithy someone said&lt;/p>
