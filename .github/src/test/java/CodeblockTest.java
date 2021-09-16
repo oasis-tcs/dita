@@ -33,7 +33,10 @@ public class CodeblockTest {
     public static Collection<Object[]> data() throws IOException {
         final Path out = Paths.get(System.getProperty("out"));
         return Files.list(out)
-                .filter(file -> file.getFileName().endsWith(".xml") || file.getFileName().endsWith(".dita"))
+                .filter(file -> {
+                    final String name = file.getFileName().toString();
+                    return name.endsWith(".xml") || name.endsWith(".dita");
+                })
                 .map(file -> new Object[]{file})
                 .collect(Collectors.toList());
     }
@@ -67,11 +70,29 @@ public class CodeblockTest {
         documentBuilder = createDocumentBuilder(builderFactory);
     }
 
-    private DocumentBuilder createDocumentBuilder(DocumentBuilderFactory builderFactory) throws ParserConfigurationException {
-        final DocumentBuilder builder = builderFactory.newDocumentBuilder();
+    @Test
+    public void parseCodeblock() throws IOException, SAXException, ParserConfigurationException {
+        try {
+            if (file.getFileName().toString().endsWith(".dita")) {
+                validatingDocumentBuilder.parse(file.toFile());
+            } else {
+                documentBuilder.parse(file.toFile());
+            }
+        } catch (SAXException e) {
+            e.printStackTrace();
+            DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
+            final Resolver resolver = new Resolver(config);
+            documentBuilder.setEntityResolver(resolver);
+            final Document doc = documentBuilder.parse(file.toFile());
+            fail("Failed to parse " + getLocation(doc) + ": " + e.getMessage());
+        }
+    }
+
+    private DocumentBuilder createDocumentBuilder(DocumentBuilderFactory factory) throws ParserConfigurationException {
+        final DocumentBuilder res = factory.newDocumentBuilder();
         final Resolver resolver = new Resolver(config);
-        builder.setEntityResolver(resolver);
-        builder.setErrorHandler(new ErrorHandler() {
+        res.setEntityResolver(resolver);
+        res.setErrorHandler(new ErrorHandler() {
             @Override
             public void warning(SAXParseException exception) throws SAXException {
                 throw new SAXException(exception.getMessage(), exception);
@@ -87,24 +108,7 @@ public class CodeblockTest {
                 throw new SAXException(exception.getMessage(), exception);
             }
         });
-        return builder;
-    }
-
-    @Test
-    public void loadCatalog() throws IOException, SAXException, ParserConfigurationException {
-        try {
-            if (file.getFileName().endsWith(".dita")) {
-                validatingDocumentBuilder.parse(file.toFile());
-            } else {
-                documentBuilder.parse(file.toFile());
-            }
-        } catch (SAXException e) {
-            DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
-            final Resolver resolver = new Resolver(config);
-            documentBuilder.setEntityResolver(resolver);
-            final Document doc = documentBuilder.parse(file.toFile());
-            fail("Failed to parse " + getLocation(doc) + ": " + e.getMessage());
-        }
+        return res;
     }
 
     private String getLocation(Document doc) {
