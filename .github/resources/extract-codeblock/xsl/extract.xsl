@@ -69,14 +69,32 @@
       <xsl:copy-of select="node()"/>
     </indexterm>
   </xsl:template>
-
-  <xsl:template match="wrapper" mode="wrap" priority="0">
-    <body>
+  
+  <xsl:template match="wrapper[topicref]" mode="wrap">
+    <map>
       <xsl:copy-of select="node()"/>
-    </body>
+    </map>
+  </xsl:template>
+  
+  <xsl:template match="wrapper[step]" mode="wrap">
+    <steps>
+      <xsl:copy-of select="node()"/>
+    </steps>
+  </xsl:template>
+  
+  <xsl:template match="wrapper[titlealt]" mode="wrap">
+    <topicmeta>
+      <xsl:copy-of select="node()"/>
+    </topicmeta>
   </xsl:template>
 
-  <xsl:template match="fragment[string(@validate) = 'false']" mode="serialize" priority="20">
+  <xsl:template match="wrapper" mode="wrap" priority="0">
+    <bodydiv>
+      <xsl:copy-of select="node()"/>
+    </bodydiv>
+  </xsl:template>
+
+  <xsl:template match="fragment[string(@validate) = 'false' or not(namespace-uri(*[1]) = '')]" mode="serialize" priority="20">
     <xsl:result-document href="{x:createFileName(., '.xml')}">
       <xsl:apply-templates select="." mode="copy"/>
     </xsl:result-document>
@@ -117,7 +135,7 @@
     </xsl:result-document>
   </xsl:template>
 
-  <xsl:template match="fragment[map | topicref | keydef | topicsubject | topicgroup]" mode="serialize">
+  <xsl:template match="fragment[map | topicmeta | topicref | keydef | topicsubject | topicgroup | mapref]" mode="serialize">
     <xsl:result-document href="{x:createFileName(., '.dita')}" doctype-public="-//OASIS//DTD DITA 2.0 Base Map//EN"
       doctype-system="map.dtd">
       <xsl:apply-templates select="." mode="copy"/>

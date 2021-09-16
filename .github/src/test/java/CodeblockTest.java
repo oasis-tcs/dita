@@ -79,7 +79,6 @@ public class CodeblockTest {
                 documentBuilder.parse(file.toFile());
             }
         } catch (SAXException e) {
-            e.printStackTrace();
             DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
             final Resolver resolver = new Resolver(config);
             documentBuilder.setEntityResolver(resolver);
