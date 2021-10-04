@@ -2,7 +2,7 @@
 <?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
                          schematypens="http://relaxng.org/ns/structure/1.0"?>
 <grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:dita="http://dita.oasis-open.org/architecture/2005/" xmlns="http://relaxng.org/ns/structure/1.0"
-  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes" xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   <moduleDesc xmlns="http://dita.oasis-open.org/architecture/2005/">
     <moduleTitle>DITA Common Elements</moduleTitle>
     <headerComment><![CDATA[
@@ -1444,11 +1444,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         <define name="ul.element">
           <element name="ul" dita:longName="Unordered List">
             <a:documentation></a:documentation>
-            <sch:pattern name="atLeastTwoChildren">
-              <sch:rule context="ul">
-                <sch:assert test="count(*) > 1" role="warning"> Please make sure you have at least 2 items for this list! </sch:assert>
-              </sch:rule>
-            </sch:pattern>
             <ref name="ul.attlist"/>
             <ref name="ul.content"/>
           </element>
