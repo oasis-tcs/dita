@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="example_scoped_key_name_conflicts">
+    <title>Example: How key scopes with the same name interact</title>
+    <shortdesc>In a large publication it is possible that two sets of content will use the same key
+        scope name. These scopes have no relationship with each other aside from the shared name;
+        key definitions in one are not shared with the other.</shortdesc>
+    <conbody>
+        <p>This scenario is more likely in a large publication that pulls from multiple sources,
+            where the root map refers to two sets of content that share a key scope name. Those key
+            scopes are <xref keyref="attributes-keyscope/non-intersecting">non-intersecting</xref>,
+            meaning that key definitions within one scope are not automatically available to the
+            other key scope that happens to share the same name.</p>
+        <p>In the following example, a root map refers to multiple product maps that are assembled
+            into a custom product suite:<codeblock>&lt;map>
+  &lt;title>Custom product suite overview&lt;/title>
+
+  &lt;!-- Content from product A -->
+  &lt;mapref href="productA/productA.ditamap"/>
+
+  &lt;!-- Content from product B -->
+  &lt;mapref href="productB/productB.ditamap"/>
+
+  &lt;!-- ...Content from additional products... -->
+&lt;/map></codeblock></p>
+        <p>In this scenario, both product A and product B share a key scope name
+                <keyword>using</keyword>. The full context, showing content from both A and B, shows
+            the shared key scope names and some shared key names:<codeblock>&lt;map>
+  &lt;title>Custom product suite overview&lt;/title>
+
+  &lt;!-- Content from product A (from productA.ditamap) -->
+  &lt;topicref href="productA/overview.dita">
+    &lt;topicref href="productA/using.dita" keys="usingprodA" <b>keyscope="using"</b>>
+      &lt;topicref href="productA/signup.dita" keys="signup"/>
+      &lt;topicref href="productA/logging-in.dita" keys="login"/>
+      &lt;!-- ... additional topics and keys -->
+      &lt;topicref href="productA/issues.dita" keys="troubleshooting"/>
+    &lt;/topicref>
+  &lt;/topicref>
+
+  &lt;!-- Content from product B (from productB.ditamap) -->
+  &lt;topicref href="productB/overview.dita">
+    &lt;topicref href="productB/using.dita" keys="usingprodB" <b>keyscope="using"</b>>
+      &lt;topicref href="productB/request-access.dita" keys="access"/>
+      &lt;topicref href="productB/log-in-to-portal.dita" keys="login-portal"/>
+      &lt;!-- ... additional topics and keys -->
+      &lt;topicref href="productB/troubleshooting.dita" keys="troubleshooting"/>
+    &lt;/topicref>
+  &lt;/topicref>
+
+  &lt;!-- ...Content from additional products... -->
+&lt;/map></codeblock></p>
+        <p>In the resolved view shown above, each product defines the key scope
+                <keyword>using</keyword>, and within that key scope each defines the key name
+                <keyword>troubleshooting</keyword>. Keys are resolved as follows:<ul
+                id="ul_g5c_bqj_grb">
+                <li>Within the root map context:<ol id="ol_bfl_wqj_grb">
+                        <li>Keys unique to Product A's <keyword>using</keyword> scope can be
+                            referenced with that prefix: <keyword>using.usingprodA</keyword>,
+                                <keyword>using.signup</keyword>, and
+                            <keyword>using.login</keyword>.</li>
+                        <li>Keys unique to Product B's <keyword>using</keyword> scope can be
+                            referenced with that prefix: <keyword>using.usingprodB</keyword>,
+                                <keyword>using.access</keyword>, and
+                                <keyword>using.login-portal</keyword>.</li>
+                        <li>The scoped reference <keyword>using.troubleshooting</keyword> is defined
+                            twice. In this case, normal key precedence rules apply. It resolves to
+                            the first definition, <filepath>productA/issues.dita</filepath>.</li>
+                        <li>Product B's troubleshooting topic cannot be referenced by key because of
+                            the conflict. The easiest way to make this key definition available
+                            would be to add an additional scope around all of Product B's
+                            content.</li>
+                    </ol></li>
+                <li>Within the Product A context:<ol id="ol_qzh_lrj_grb">
+                        <li><codeph>keyref="usingprodA"</codeph> resolves to
+                                <filepath>productA/using.dita</filepath></li>
+                        <li><codeph>keyref="signup"</codeph> resolves to
+                                <filepath>productA/signup.dita</filepath></li>
+                        <li><codeph>keyref="login"</codeph> resolves to
+                                <filepath>productA/logging-in.dita</filepath></li>
+                        <li><codeph>keyref="troubleshooting"</codeph> resolves to
+                                <filepath>productA/issues.dita</filepath></li>
+                        <li>Keys that are in Product B's <keyword>using</keyword> context, and are
+                            unique to that context, can be referenced with the scope prefix:
+                                <keyword>using.usingprodB</keyword>,
+                            <keyword>using.access</keyword>,
+                            <keyword>using.login-portal</keyword></li>
+                    </ol></li>
+                <li>Within the Product B context:<ol id="ol_hkj_3qj_grb">
+                        <li><codeph>keyref="usingprodB"</codeph> resolves to
+                                <filepath>productB/using.dita</filepath></li>
+                        <li><codeph>keyref="access"</codeph> resolves to
+                                <filepath>productB/request-access.dita</filepath></li>
+                        <li><codeph>keyref="login-portal"</codeph> resolves to
+                                <filepath>productB/log-in-to-portal.dita</filepath></li>
+                        <li><codeph>keyref="troubleshooting"</codeph> resolves to
+                                <filepath>productB/troubleshooting.dita</filepath></li>
+                        <li>Keys that are in Product A's <keyword>using</keyword> context, and are
+                            unique to that context, can be referenced with the scope prefix:
+                                <keyword>using.usingprodA</keyword>,
+                            <keyword>using.signup</keyword>, <keyword>using.login</keyword></li>
+                        <li>The shared key definition <keyword>using.troubleshooting</keyword>
+                            resolves against the root context, which means it resolves to the
+                            Product A context, <filepath>productA/issues.dita</filepath></li>
+                    </ol></li>
+            </ul></p>
+    </conbody>
+</concept>

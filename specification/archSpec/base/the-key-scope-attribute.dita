@@ -24,13 +24,15 @@
       <draft-comment author="robander" time="19 May 2021">This topic contains a lot of processor /
         implementation rules and was moved from the langref to the archspec seciton about keys. Need
         to merge with existing key scope rules to ensure no duplication / no conflicting
-        content.</draft-comment>
-      <p>All key scopes are contiguous and non-intersecting. Within a root map, two distinct key
-        scopes with the same name have no relationship with each other aside from that implied by
-        their relative locations in the key scope hierarchy. They do not, for example, share key
-        definitions. The only processing impact of a key scope's names is in defining the prefixes
-        used when contributing qualified key names to the parent scope. For example, consider the
-        following map segment:</p>
+          content.<p>Update Oct 14 2021: there is now a longer example of the non-intersecting
+          behavior in <xref href="example-scoped-key-name-conflicts.dita"/> so probably want to
+          remove the simpler example from this page</p></draft-comment>
+      <p id="non-intersecting">All key scopes are contiguous and non-intersecting. Within a root
+        map, two distinct key scopes with the same name have no relationship with each other aside
+        from that implied by their relative locations in the key scope hierarchy. They do not, for
+        example, share key definitions. The only processing impact of a key scope's names is in
+        defining the prefixes used when contributing qualified key names to the parent scope. For
+        example, consider the following map segment:</p>
       <codeblock>&lt;map>
   &lt;topicgroup keyscope="xyz" id="scope1">
     &lt;keydef keys="a" id="def1"/>
