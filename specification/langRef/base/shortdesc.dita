@@ -7,6 +7,8 @@
     <metadata>
       <keywords>
         <indexterm>maps<indexterm>short descriptions in</indexterm></indexterm>
+        <indexterm>processing expectations<indexterm>short descriptions in
+            maps</indexterm></indexterm>
         <indexterm>rendering expectations<indexterm>link previews</indexterm><indexterm>short
             descriptions</indexterm></indexterm>
         <indexterm>short descriptions</indexterm>
@@ -14,11 +16,26 @@
     </metadata>
   </prolog>
 <refbody>
-    <section conkeyref="reuse-shortdesc/usage-information" id="usage-information"><title/><p/></section>
-    <section conkeyref="reuse-shortdesc/rendering-expectations" id="rendering-expectations"><title/><p/></section>
+    <section conkeyref="reuse-shortdesc/usage-information"
+      id="usage-information"><title/><p/></section>
+    <section conkeyref="reuse-shortdesc/rendering-expectations"
+      id="rendering-expectations"><title/><p/></section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>When a <xmlelement>shortdesc</xmlelement> element occurs in a DITA
+        map, it overrides the short description provided in the topic for
+        the purpose of generating map-based link previews. It does not
+        replace the <xmlelement>shortdesc</xmlelement> in the rendered
+        topic itself. This means that generated map-based links to this
+        topic will use the short description from the map for any link
+        previews provided with the link, while the rendered topic continues
+        to use the short description inside the topic.</p>
+    </section>
     <section conkeyref="reuse-shortdesc/attributes" id="attributes"/>
     <example id="example" otherprops="examples">
       <title>Examples</title>
+      <p>This section contains examples of how the
+          <xmlelement>shortdesc</xmlelement> element can be used.</p>
       <fig>
         <title>Short description in a topic</title>
         <p>The following code sample shows how a <xmlelement>shortdesc</xmlelement> element can be
@@ -33,7 +50,7 @@
           for the American Birding Association is generated.</p>
         <codeblock>&lt;map>
   &lt;title>Enjoying birds&lt;/title>
-    ...
+    &lt;!-- ... -->
     &lt;topicref href="birds-in-colorado.dita"/>
     &lt;topicref href="bird-calling.dita"/>
     &lt;topicref href="https://www.birding.example.com/" format="external" type="html">
@@ -43,7 +60,7 @@
         Its mission is to "inspire all people to enjoy and protect wild birds."
       &lt;/topicmeta>
     &lt;/topicref>
-    ...
+    &lt;!-- ... -->
 &lt;/map>
 <!--<topicref href="myThing.dita">
   <topicmeta>
