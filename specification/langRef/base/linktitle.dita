@@ -1,78 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="linktext" xml:lang="en-us">
-<title><xmlelement>linktitle</xmlelement></title>
-  <shortdesc>A link title is an alternative title for a resource to be used with references to the
-    resource generated from relationships defined in map structures, such as relationship tables and
-    parent-to-child links.</shortdesc>
-<prolog><metadata>
+<reference id="linktitle" xml:lang="en-us">
+  <title><xmlelement>linktitle</xmlelement></title>
+  <shortdesc>A link title is an alternative title for a resource; it is
+    designed for use when a hyperlink or a cross-reference to a resource is
+    generated based on relationships described in a DITA map.</shortdesc>
+  <prolog>
+    <metadata>
       <keywords>
+        <indexterm>alternative
+              titles<indexterm><xmlelement>linktitle</xmlelement></indexterm></indexterm>
+        <indexterm>alternative titles
+              domain<indexterm><xmlelement>linktitle</xmlelement></indexterm></indexterm>
         <indexterm>processing
-          expectations<indexterm><xmlelement>linktitle</xmlelement></indexterm></indexterm>
+              expectations<indexterm><xmlelement>linktitle</xmlelement></indexterm></indexterm>
       </keywords>
-    </metadata></prolog>
-<refbody>
+    </metadata>
+  </prolog>
+  <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>Link titles are alternative titles for use in cases where a hyperlink or cross-reference to
-        a resource is generated based on relationships described by a DITA map. This includes, but
-        is not limited to, the following cases:</p>
-      <ul id="ul_j53_z3h_rnb">
-        <li>Links from a topic to its child topics in the map hierarchy.</li>
-        <li>Links from a topic to its parent topic in the map hierarchy.</li>
-        <li>Links between sibling topics when the parent <xmlelement>topicref</xmlelement> element's
-            <xmlatt>collection-type</xmlatt> is <codeph>sequence</codeph> or
-          <codeph>family</codeph>.</li>
+      <p>Features of DITA maps, such as relationship tables and hierarchy
+        created by nesting <xmlelement>topicref</xmlelement> elements,
+        generate the following kinds of links:</p>
+      <ul>
+        <li>Links from a topic to its child topics in the map
+          hierarchy</li>
+        <li>Links from a topic to its parent topic in the map
+          hierarchy</li>
+        <li>Links between sibling topics when the
+            <xmlatt>collection-type</xmlatt> attribute of the parent
+            <xmlelement>topicref</xmlelement> element is set to
+            <keyword>sequence</keyword> or <keyword>family</keyword></li>
       </ul>
-      <p>Processors may use this title for other custom linking scenarios.</p>
+      <p>Processors also might use a link title for custom linking
+        scenarios.</p>
+      <p>The <xmlelement>linktitle</xmlelement> element is a convenience
+        element. It is equivalent to a <xmlelement>titlealt</xmlelement>
+        element with <xmlatt>title-role</xmlatt> set to
+          <keyword>linking</keyword>. </p>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>The <xmlelement>linktitle</xmlelement> element is a specialization of
-          <xmlelement>titlealt</xmlelement> with the <xmlatt>title-role</xmlatt> set to
-          <codeph>linking</codeph>. Processing is dictated by the rules for
-          <xmlelement>titlealt</xmlelement>.</p>
+      <p>Processing expectations are dictated by the rules for the
+          <xmlelement>titlealt</xmlelement> element.</p>
     </section>
     <section id="specialization-hierachy">
       <title>Specialization hierarchy</title>
       <p>The <xmlelement>linktitle</xmlelement> element is specialized from
-          <xmlelement>titlealt</xmlelement>. It is defined in the alternativeTitle-domain
-        module.</p>
+          <xmlelement>titlealt</xmlelement>. It is defined in the
+        alternative-titles domain module.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
-      <p>The following attributes are available on this element: <ph conkeyref="reuse-attributes/ref-universalatts"/> and <xref
-        keyref="attributes-common/attr-title-role"><xmlatt>title-role</xmlatt></xref>.</p>
-      <p id="attr-exception" outputclass="attr-exception">For this element, <xmlatt>title-role</xmlatt> has a default value of
-        <keyword>linking</keyword>.</p>
+      <p>The following attributes are available on this element: <ph
+          conkeyref="reuse-attributes/ref-universalatts"/> and <xref
+          keyref="attributes-common/attr-title-role"
+            ><xmlatt>title-role</xmlatt></xref>.</p>
+      <p id="attr-exception" outputclass="attr-exception">For this element,
+          <xmlatt>title-role</xmlatt> has a default value of
+          <keyword>linking</keyword>.</p>
     </section>
-<example id="example" otherprops="examples"><title>Examples</title>
-      <p>This section contains examples of how the <xmlelement>linktitle</xmlelement> element can be
-        used.</p>
-<fig id="figure-3">
+    <example id="example" otherprops="examples">
+      <title>Examples</title>
+      <p>This section contains examples of how the
+          <xmlelement>linktitle</xmlelement> element can be used.</p>
+      <fig>
         <title>Link title within a map</title>
-        <p>The following code sample shows how a <xmlelement>linktitle</xmlelement> element can be
-          used within a <xmlelement>topicref</xmlelement> to provide text for a related link to a
-          non-DITA resource:</p>
+        <p>The following code sample shows how a
+            <xmlelement>linktitle</xmlelement> element can be used to
+          provide text for a related link to a non-DITA resource:</p>
         <codeblock>&lt;topicref href="SQLJ-example.html" format="html" scope="local"&gt;
   &lt;topicmeta>
-    <b>&lt;linktitle&gt;</b>Accessing relational data with SQLJ<b>&lt;/linktitle&gt;</b>
+    &lt;linktitle&gt;Accessing relational data with SQLJ&lt;/linktitle&gt;
   &lt;/topicmeta>
 &lt;/topicref></codeblock>
       </fig>
-      <fig id="fig_ofj_dkh_rnb">
+      <fig>
         <title>Link title within a topic</title>
-        <p>The following code sample shows how a <xmlelement>linktitle</xmlelement> element can be
-          used within a topic's prolog to provide text for generated links to this topic. Note that
-          this <xmlelement>linktitle</xmlelement> may be overridden by any
-            <xmlelement>topicref</xmlelement> element that references this topic via its
-            <xmlelement>topicmeta</xmlelement>.</p>
+        <p>The following code sample shows how a
+            <xmlelement>linktitle</xmlelement> element can be used to
+          provide text for generated links to a topic:</p>
         <codeblock>&lt;topic id="topic">
   &lt;title>Circuitry in the C-283 Drive Train&lt;/title>
   &lt;prolog>
-    <b>&lt;linktitle>Drive Train Circuitry&lt;/linktitle></b>
+    &lt;linktitle>Drive train circuitry&lt;/linktitle>
   &lt;/prolog>
 </codeblock>
-      </fig></example>
-</refbody>
+      </fig>
+      <p>Note that this link title might be overridden by a link title that
+        is specified in a DITA map that references the topic.</p>
+    </example>
+  </refbody>
 </reference>

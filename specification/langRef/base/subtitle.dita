@@ -2,34 +2,38 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="subtitle" xml:lang="en-us">
   <title><xmlelement>subtitle</xmlelement></title>
-  <shortdesc>A subtitle is an subordinate title for a resource to be used to augment the information
-    about the resource in certain display contexts.</shortdesc>
+  <shortdesc>A subtitle is an subordinate title for a resource; it is
+    designed to augment the information about the resource in certain
+    display contexts.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
+        <indexterm>alternative titles
+              domain<indexterm><xmlelement>linktitle</xmlelement></indexterm></indexterm>
         <indexterm>processing
           expectations<indexterm><xmlelement>subtitle</xmlelement></indexterm></indexterm>
+        <indexterm>subtitles</indexterm>
       </keywords>
     </metadata>
   </prolog>
   <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>Subtitles specify a subordinate title to be displayed alongside the title in certain
-        display contexts.</p>
+      <p>The <xmlelement>subtitle</xmlelement> element is a convenience
+        element. It is equivalent to a <xmlelement>titlealt</xmlelement>
+        element with <xmlatt>title-role</xmlatt> set to
+          <keyword>subtitle</keyword>. </p>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>The <xmlelement>subtitle</xmlelement> element is a specialization of
-          <xmlelement>titlealt</xmlelement> with the <xmlatt>title-role</xmlatt> set to
-          <codeph>subtitle</codeph>. Processing is dictated by the rules for
-          <xmlelement>titlealt</xmlelement>.</p>
+      <p>Processing expectations are dictated by the rules for the
+          <xmlelement>titlealt</xmlelement> element.</p>
     </section>
     <section id="specialization-hierachy">
       <title>Specialization hierarchy</title>
       <p>The <xmlelement>subtitle</xmlelement> element is specialized from
-          <xmlelement>titlealt</xmlelement>. It is defined in the alternativeTitle-domain
-        module.</p>
+          <xmlelement>titlealt</xmlelement>. It is defined in the
+        alternative-titles domain module.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -43,22 +47,24 @@
       <p>This section contains examples of how the <xmlelement>subtitle</xmlelement> element can be
         used.</p>
       <fig id="figure-3">
-        <title>Subtitle within a map</title>
-        <p>The following code sample shows how a map may carry a subtitle for the publication.</p>
+        <title>Subtitle used within a map</title>
+        <p>The following code sample shows how a map can specify a subtitle
+          for the publication:</p>
         <codeblock>&lt;map>
   &lt;title>Map title&lt;/title>
   &lt;topicmeta>
-    <b>&lt;subtitle>Sub title&lt;/subtitle></b>
+    &lt;subtitle>Sub title&lt;/subtitle>
   &lt;/topicmeta>
 &lt;/map></codeblock>
       </fig>
       <fig id="fig_ofj_dkh_rnb">
-        <title>Subtitle within a topic</title>
-        <p>The following code sample shows how a topic may carry a subtitle.</p>
+        <title>Subtitle used within a topic</title>
+        <p>The following code sample shows how a topic can specify a
+          subtitle:</p>
         <codeblock>&lt;topic id="topic">
   &lt;title>Getting started&lt;/title>
   &lt;prolog>
-    <b>&lt;subtitle>An introduction to the Acme Inc. processing system&lt;/subtitle></b>
+    &lt;subtitle>An introduction to the Acme Inc. processing system&lt;/subtitle>
   &lt;/prolog>
 </codeblock>
       </fig>

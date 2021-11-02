@@ -2,36 +2,45 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="searchtitle" xml:lang="en-us">
 <title><xmlelement>searchtitle</xmlelement></title>
-<shortdesc>A search title is a title that is displayed by search tools.</shortdesc>
+<shortdesc>A search title is an alternative title that is displayed by
+    search tools.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
+        <indexterm>alternative
+              titles<indexterm><xmlelement>searchtitle</xmlelement></indexterm></indexterm>
+        <indexterm>alternative titles
+              domain<indexterm><xmlelement>searchtitle</xmlelement></indexterm></indexterm>
         <indexterm>processing
             expectations<indexterm><xmlelement>searchtitle</xmlelement></indexterm></indexterm>
+        <indexterm>search titles</indexterm>
       </keywords>
     </metadata>
   </prolog>
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>A search title is useful when the topic has a title that makes sense in the context of a
-        single information set, but might be too general in a list of search results. For example, a
-        topic title of "Markup example" might make sense as part of a guide to DITA, but when found
-        among thousands of unrelated topics, a search title of "DITA markup example" is more
-        useful.</p>
+      <p>A search title is useful when the topic has a title that makes
+        sense in the context of a single information set, but might be too
+        general in a list of search results. For example, a topic title of
+          <q>Markup example</q> makes sense as part of a guide about DITA,
+        but when found among thousands of unrelated topics, a search title
+        of <q>DITA markup example</q> is more useful.</p>
+      <p>The <xmlelement>searchtitle</xmlelement> element is a convenience
+        element. It is equivalent to a <xmlelement>titlealt</xmlelement>
+        element with <xmlatt>title-role</xmlatt> set to
+          <keyword>search</keyword>. </p>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>The <xmlelement>searchtitle</xmlelement> element is a specialization of
-          <xmlelement>titlealt</xmlelement> with the <xmlatt>title-role</xmlatt> set to
-          <codeph>search</codeph>. Processing is dictated by the rules for
-          <xmlelement>titlealt</xmlelement>.</p>
+      <p>Processing expectations are dictated by the rules for the
+          <xmlelement>titlealt</xmlelement> element.</p>
     </section>
     <section id="specialization-hierachy">
       <title>Specialization hierarchy</title>
-      <p>The <xmlelement>searchtitle</xmlelement> element is specialized from
-          <xmlelement>titlealt</xmlelement>. It is defined in the alternativeTitle-domain
-        module.</p>
+      <p>The <xmlelement>searchtitle</xmlelement> element is specialized
+        from <xmlelement>titlealt</xmlelement>. It is defined in the
+        alternative-titles domain module.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -45,10 +54,11 @@
         be used.</p>
       <fig>
         <title>Search title used in a topic</title>
-        <p>In the following code sample, the title "Programming Example" is useful in a set of
-          information about XSLT basics; however, the same title is not helpful among a set of
-          search results from the entire Internet. In the latter case, a title of "Example of basic
-          programming in XSLT" will be more useful:</p>
+        <p>In the following code sample, the title "Programming Example" is
+          useful in a set of information about XSLT basics; however, the
+          same title is not helpful among a set of search results from the
+          entire Internet. In the latter case, a title of "Example of basic
+          programming in XSLT" is more useful:</p>
         <codeblock>&lt;topic id="programming-example"&gt;
   &lt;title&gt;Programming example&lt;/title&gt;
   &lt;prolog&gt;
@@ -60,12 +70,13 @@
 &lt;/topic&gt;</codeblock>
       </fig>
       <fig>
-        <title>Search title in a map</title>
-        <p>When <xmlelement>searchtitle</xmlelement> is used in maps, the element provides a new
-          search title for the topic when used in that specific context. For example, if the
-          following code sample is from a map that includes information about programming in many
-          languages, searches among that information set will be most useful when they return
-          "Example of programming in XSLT":</p>
+        <title>Search title used in a map</title>
+        <p>When <xmlelement>searchtitle</xmlelement> is used in maps, the
+          element provides a new search title for the topic when used in
+          that specific context. For example, if the following code sample
+          is from a map that includes information about programming in many
+          languages, searches among that information set will be most
+          useful when they return "Example of programming in XSLT":</p>
         <codeblock>&lt;topicref href="programming-example.dita">
   &lt;topicmeta>
     &lt;navtitle>Programming example&lt;/navtitle>
