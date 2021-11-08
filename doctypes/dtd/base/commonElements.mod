@@ -668,7 +668,7 @@
 <!ENTITY % titlealt.attributes
               "title-role
                           CDATA
-                                    #IMPLIED
+                                    #REQUIRED
                %univ-atts;"
 >
 <!ELEMENT  titlealt %titlealt.content;>
