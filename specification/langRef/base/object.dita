@@ -31,8 +31,9 @@
         </section>
         <section id="attributes">
             <title>Attributes</title>
-            <p>The following attributes are available on this element: <ph conkeyref="reuse-attributes/ref-universalatts"/> and the
-                attributes defined below.</p>
+            <p>The following attributes are available on this element: <ph
+                    conkeyref="reuse-attributes/ref-universalatts"/> and the attributes defined
+                below.</p>
             <dl>
                 <dlentry id="archive">
                     <dt id="attr-archive"><xmlatt>archive</xmlatt></dt>
@@ -108,6 +109,22 @@
                         definition referring to this declaration. The only allowable value is
                         "declare".</dd>
                 </dlentry>
+                <dlentry conkeyref="reuse-attributes/image-height" id="height">
+                    <dt/>
+                    <dd/>
+                </dlentry>
+                <dlentry id="name">
+                    <dt id="attr-name"><xmlatt>name</xmlatt></dt>
+                    <dd>Defines a unique name for the object.</dd>
+                </dlentry>
+                <dlentry id="standby">
+                    <dt id="attr-standby"><xmlatt>standby</xmlatt></dt>
+                    <dd>Contains a message to be displayed while an object is loading.</dd>
+                </dlentry>
+                <dlentry id="tabindex">
+                    <dt id="attr-tabindex"><xmlatt>tabindex</xmlatt></dt>
+                    <dd>Position the object in tabbing order.</dd>
+                </dlentry>
                 <dlentry id="type">
                     <dt id="attr-type"><xmlatt>type</xmlatt></dt>
                     <dd>Indicates the content type (MIME type) for the data specified by the
@@ -121,18 +138,6 @@
                             the key named by the <xmlatt>datakeyref</xmlatt> attribute is used as
                             the this attribute's value.</ph></dd>
                 </dlentry>
-                <dlentry id="standby">
-                    <dt id="attr-standby"><xmlatt>standby</xmlatt></dt>
-                    <dd>Contains a message to be displayed while an object is loading.</dd>
-                </dlentry>
-                <dlentry conkeyref="reuse-attributes/image-height">
-                    <dt/>
-                    <dd/>
-                </dlentry>
-                <dlentry conkeyref="reuse-attributes/image-width">
-                    <dt/>
-                    <dd/>
-                </dlentry>
                 <dlentry id="usemap">
                     <dt id="attr-usemap"><xmlatt>usemap</xmlatt></dt>
                     <dd>Indicates that a client-side image map is to be used. An image map specifies
@@ -140,69 +145,56 @@
                         region. When a link is selected, a document <ph>might</ph> be retrieved or a
                         program <ph>might</ph> run on the server.</dd>
                 </dlentry>
-                <dlentry id="name">
-                    <dt id="attr-name"><xmlatt>name</xmlatt></dt>
-                    <dd>Defines a unique name for the object.</dd>
-                </dlentry>
-                <dlentry id="tabindex">
-                    <dt id="attr-tabindex"><xmlatt>tabindex</xmlatt></dt>
-                    <dd>Position the object in tabbing order.</dd>
+                <dlentry conkeyref="reuse-attributes/image-width" id="width">
+                    <dt/>
+                    <dd/>
                 </dlentry>
             </dl>
         </section>
 <example id="example" otherprops="examples">
             <title>Example</title>
-            <p>Output processors might need to modify data in order to enable compatible function
-                across various browsers, so these examples are only representative:</p>
-            <codeblock>&lt;p&gt;Cutting the keys from the system unit:&lt;/p&gt;
+            <p>The following code sample shows how an <xmlelement>object</xmlelement> element can be
+                used to reference a flash video.</p>
+            <codeblock>
 &lt;object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
- codebase="http://download.macromedia.com/pub/shockwave/cabs/
-flash/swflash.cab#version=6,0,0,0"
- data="cutkey370.swf"
- type="application/x-shockwave-flash"
- height="280"
- width="370"
- id="cutkey370"&gt;
- &lt;desc&gt;A description of the task&lt;/desc&gt;
- <ph rev="2.0">&lt;fallback>Media not available.&lt;/fallback></ph>
- &lt;param name="movie" value="cutkey370.swf"/&gt;
- &lt;param name="quality" value="high"/&gt;
- &lt;param name="bgcolor" value="#FFFFFF"/&gt;
+   codebase="http://download.macromedia.com/pub/shockwave/cabs/
+   flash/swflash.cab#version=6,0,0,0"
+   data="cutkey370.swf"
+   type="application/x-shockwave-flash"
+   height="280"
+   width="370"
+   id="cutkey370"&gt;
+     &lt;desc&gt;Video that demonstrates how to cut keys from the system unit.&lt;/desc&gt;
+     &lt;fallback>Media not available.&lt;/fallback>
+     &lt;param name="movie" value="cutkey370.swf"/&gt;
+     &lt;param name="quality" value="high"/&gt;
+     &lt;param name="bgcolor" value="#FFFFFF"/&gt;
 &lt;/object&gt;
 </codeblock>
-            <codeblock>&lt;p&gt;What's EIM?&lt;/p&gt;
-&lt;object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
- codebase="http://download.macromedia.com/pub/shockwave/cabs/
-flash/swflash.cab#version=6,0,0,0"
- data="eim.swf"
- height="400"
- width="500"
- id="eim"&gt;
- &lt;desc&gt;Some great, glorious info&lt;/desc&gt;
- <ph rev="2.0">&lt;fallback>&lt;image href="media-not-available.png"/>&lt;/fallback></ph>
- &lt;param name="movie" value="eim.swf"/&gt;
- &lt;param name="quality" value="high"/&gt;
- &lt;param name="bgcolor" value="#FFFFFF"/&gt;
- &lt;param name="pluginspace"
- value="http://www.macromedia.com/go/getflashplayer"/&gt;
+            <p>The following code sample shows how an <xmlelement>object</xmlelement> element can be
+                used to render a PDF as an inline object.</p>
+            <codeblock>
+&lt;object type="application/pdf"
+        data="resources/pdf/terms.pdf"
+        width="300"
+        height="200"
+        id="terms-and-conditions">
+   &lt;desc&gt;Terms and conditions for using the site.&lt;/desc&gt;
+   &lt;fallback>PDF cannot be displayed; please download the terms and 
+             conditions from &lt;xref keyref="site-terms"/>.&lt;/fallback>
 &lt;/object&gt;</codeblock>
-            <fig id="fig_o2l_bfb_4k" >
+            <fig id="fig_o2l_bfb_4k">
                 <title>Object with reference to video using key reference on the
                         <xmlelement>param</xmlelement> elements</title>
-                <codeblock>&lt;object
-  id="E5123_026.mp4"
-  width="300"
-  height="300">
+                <p>The following code sample shows how key definitions can be used to reference
+                    supporting resources for an <xmlelement>object</xmlelement>.</p>
+                <codeblock>&lt;object id="E5123_026.mp4"
+      width="300" height="300">
   &lt;fallback>Media not available.&lt;/fallback>
-  &lt;param name="poster"
-     <b>keyref="E5123_026_poster"</b>
-  />
-  &lt;param name="source"
-     <b>keyref="E5123_026_video"</b>
-  />
+  &lt;param name="poster" <b>keyref="E5123_026_poster"</b> />
+  &lt;param name="source" <b>keyref="E5123_026_video"</b> />
 &lt;/object></codeblock>
-                <p>Where the keys could
-                    be:<codeblock>&lt;map>
+                <p>In this scenario, the keys could be defined as follows:<codeblock>&lt;map>
   &lt;!-- ... -->
   &lt;keydef keys="E5123_026_poster"
       href="../images/E5123_026_poster.png"
@@ -215,51 +207,43 @@ flash/swflash.cab#version=6,0,0,0"
   &lt;!-- ... -->
 &lt;/map></codeblock></p>
             </fig>
-            <fig >
-                <title>Object with indirect reference to a flash file and fallback
-                        <xmlatt>data</xmlatt> value</title>
-                <codeblock>&lt;object 
- <b>classidkeyref="video_classid"</b>
- <b>codebasekeyref="video_codebase"</b>
- <b>datakeyref="cutkey370"</b>
- height="280"
- width="370"
- id="cutkey370">
- &lt;desc>A description of the task&lt;/desc>
- <ph rev="2.0">&lt;fallback>Media not available.&lt;/fallback></ph>
- &lt;param name="movie" <b>keyref="cutkey370"</b>/>
- &lt;param name="quality" value="high"/>
- &lt;param name="bgcolor" value="#FFFFFF"/>
+            <fig>
+                <title>Object with indirect reference to a flash file</title>
+                <p>The following code sample shows how key definitions can be used to reference the
+                    main content for an <xmlelement>object</xmlelement>.</p>
+                <codeblock>&lt;object id="cutkey370"
+    <b>classidkeyref="video_classid"</b>
+    <b>codebasekeyref="video_codebase"</b>
+    <b>datakeyref="cutkey370"</b>
+    height="280"
+    width="370">
+  &lt;desc>Video illustration of how to cut a key&lt;/desc>
+  &lt;fallback>Media not available.&lt;/fallback>
+  &lt;param name="movie" <b>keyref="cutkey370"</b>/>
+  &lt;param name="quality" value="high"/>
+  &lt;param name="bgcolor" value="#FFFFFF"/>
 &lt;/object></codeblock>
-                <p>Where the key could
-                    be:<codeblock>&lt;map>
+                <p>In this scenario, the keys could be defined as follows:<codeblock>&lt;map>
   &lt;!-- ... -->
-  &lt;!-- NOTE: Using @scope="external" because
-       the class ID is a URI that is not intended to
-       be directly resolved.
-    -->
+  &lt;!-- NOTE: Using @scope="external" because the class ID is a URI
+       that is not intended to be directly resolved. -->
   &lt;keydef keys="video_classid"
     href="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
-    scope="external"
-  />
+    scope="external" />
+
   &lt;!-- NOTE: Using @scope="external" to avoid systems trying to
-             download this file when they don't need to.
-    -->
+             download this file when they don't need to. -->
   &lt;keydef keys="video_codebase"
-    href="http://download.macromedia.com/pub/shockwave/cabs/
-flash/swflash.cab#version=6,0,0,0"
+    href="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0"
     format="shockwave"
-    scope="external"
-  />
-  &lt;!-- Using @scope="external" here because the referenced URL
-       is not intended to be resolved in isolation but relative
-       to the codebase URI.
-    -->
+    scope="external" />
+
+  &lt;!-- Using @scope="external" here because the referenced URL is not intended
+       to be resolved in isolation but relative to the codebase URI. -->
   &lt;keydef keys="cutkey370"
-      href="cutkey370.swf"
-      type="application/x-shockwave-flash"
-      scope="external"
-  />
+    href="cutkey370.swf"
+    type="application/x-shockwave-flash"
+    scope="external" />
   &lt;!-- ... -->
 &lt;/map></codeblock></p>
             </fig>

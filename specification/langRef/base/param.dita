@@ -21,18 +21,64 @@
         HTML definitions. For example, the <xmlatt>type</xmlatt> attribute differs from the
           <xmlatt>type</xmlatt> attribute on many other DITA elements.</p>
     </section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>The <xmlatt>keyref</xmlatt> and <xmlatt>valuetype</xmlatt> attributes on
+          <xmlelement>param</xmlelement> have the following expectaions:<ul id="ul_evg_2gj_nrb">
+          <li>If <xmlatt>valuetype</xmlatt> is specified but is not set to "ref", the
+              <xmlatt>keyref</xmlatt> attribute is ignored.</li>
+          <li>When <xmlatt>valuetype</xmlatt> is not specified and <xmlatt>keyref</xmlatt> is
+            specified, it implies a setting of <codeph>valuetype="ref"</codeph>.</li>
+          <li>When <xmlatt>keyref</xmlatt> is specified and the effective value of
+              <xmlatt>valuetype</xmlatt> is "ref":<ol id="ol_tvg_2c2_z1b">
+              <li>When the key specified by <xmlatt>keyref</xmlatt> is resolvable and has an
+                associated URI, that URI is used as the value of this element (overriding
+                  <xmlatt>value</xmlatt>, if that is specified).</li>
+              <li>When the key specified by <xmlatt>keyref</xmlatt> is resolvable and has no
+                associated resource (only link text), the <xmlatt>keyref</xmlatt> attribute is
+                considered to be unresolvable for this element. If <xmlatt>value</xmlatt> is
+                specified, it is used as fallback.</li>
+              <li>When the key specified by <xmlatt>keyref</xmlatt> is not resolvable, the value of
+                the <xmlatt>value</xmlatt> attribute is used as a fallback target for the
+                  <xmlelement>param</xmlelement> element.</li>
+            </ol></li>
+        </ul></p>
+      <p>In addition, the following expectations apply to the <xmlatt>type</xmlatt> attribute:<ol
+          id="ol_svg_2c2_z1b">
+          <li>When <xmlatt>valuetype</xmlatt> is set to "ref", the <xmlatt>type</xmlatt> attribute
+            directly specifies the content type of the resource designated by
+            <xmlatt>value</xmlatt>.</li>
+          <li>Otherwise, if <xmlatt>type</xmlatt> is specified and <xmlatt>keyref</xmlatt> is
+            specified and resolvable, this attribute specifies the content type of the resource
+            designated by <xmlatt>keyref</xmlatt>.</li>
+          <li>Otherwise, if <xmlatt>type</xmlatt> is not specified and <xmlatt>keyref</xmlatt> is
+            specified and is resolvable, the effective type value specified for the key that is
+            named by the <xmlatt>keyref</xmlatt> attribute is used as the value of the
+              <xmlatt>type</xmlatt> attribute.</li>
+        </ol></p>
+    </section>
     <section id="attributes">
       <title>Attributes</title>
       <p>The following attributes are available on this element: <ph conkeyref="reuse-attributes/ref-universalatts"/> and the attributes defined below.</p>
       <dl>
+        <dlentry>
+          <dt id="attr-keyref"><xmlatt>keyref</xmlatt></dt>
+          <dd>Key reference to the thing the parameter references.</dd>
+        </dlentry>
         <dlentry>
           <dt id="attr-name"><xmlatt>name</xmlatt>
             <ph conkeyref="reuse-attributes/required-attr"/></dt>
           <dd>The name of the parameter.</dd>
         </dlentry>
         <dlentry>
+          <dt id="attr-type"><xmlatt>type</xmlatt></dt>
+          <dd>This attribute specifies for a user agent the type of values that will be found at the
+            URI designated by <xmlatt>value</xmlatt>. <ph
+              conkeyref="reuse-attributes/nonstandard-type"/></dd>
+        </dlentry>
+        <dlentry>
           <dt id="attr-value"><xmlatt>value</xmlatt></dt>
-          <dd>Specifies the value of a run-time parameter that is specified by the
+          <dd>Specifies the value of a run-time parameter that is described by the
               <xmlatt>name</xmlatt> attribute.</dd>
         </dlentry>
         <dlentry>
@@ -47,57 +93,20 @@
                 <dt>ref </dt>
                 <dd>A value of ref indicates that the value of the <xmlatt>value</xmlatt> attribute
                   is a URL that designates a resource where run-time values are stored. This allows
-                  support tools to identify URLs that are given as parameters. </dd>
+                  support tools to identify URLs that are given as parameters.</dd>
               </dlentry>
               <dlentry>
                 <dt>object</dt>
-                <dd>A value of object indicates that the value of <xmlatt>valuetype</xmlatt> is an
-                  identifier that refers to an object declaration in the document. The identifier
-                  must be the value of the ID attribute set for the declared object element. </dd>
+                <dd>A value of object indicates that the value of the <xmlatt>value</xmlatt>
+                  attribute is an identifier that refers to an object declaration in the document.
+                  The identifier must be the value of the <xmlatt>id</xmlatt> attribute set for the
+                  declared <xmlelement>object</xmlelement> element. </dd>
               </dlentry>
               <dlentry conkeyref="reuse-attributes/ditauseconref">
                 <dt/>
                 <dd/>
               </dlentry>
             </dl></dd>
-        </dlentry>
-        <dlentry>
-          <dt id="attr-type"><xmlatt>type</xmlatt></dt>
-          <dd>This attribute specifies for a user agent the type of values that will be found at the
-            URI designated by <xmlatt>value</xmlatt>. <ph
-              conkeyref="reuse-attributes/nonstandard-type"/>
-            <ol id="ol_svg_2c2_z1b">
-              <li>When <xmlatt>valuetype</xmlatt> is set to "ref", this attribute directly specifies
-                the content type of the resource designated by <xmlatt>value</xmlatt>.</li>
-              <li><ph>Otherwise, if <xmlatt>type</xmlatt> is specified and <xmlatt>keyref</xmlatt>
-                  is specified and resolvable, this attribute specifies the content type of the
-                  resource designated by <xmlatt>keyref</xmlatt>.</ph></li>
-              <li><ph>Otherwise, if <xmlatt>type</xmlatt> is not specified and
-                    <xmlatt>keyref</xmlatt> is specified and is resolvable, the effective type value
-                  specified for the key that is named by the <xmlatt>keyref</xmlatt> attribute is
-                  used as the value of the <xmlatt>type</xmlatt> attribute.</ph></li>
-            </ol></dd>
-        </dlentry>
-        <dlentry>
-          <dt id="attr-keyref"><xmlatt>keyref</xmlatt></dt>
-          <dd>Key reference to the thing the parameter references. If <xmlatt>valuetype</xmlatt> is
-            specified but is not set to "ref", this attribute is ignored. When
-              <xmlatt>valuetype</xmlatt> is not specified and <xmlatt>keyref</xmlatt> is specified,
-            it implies a setting of <codeph>valuetype="ref"</codeph>. When <xmlatt>keyref</xmlatt>
-            is specified and the effective value of <xmlatt>valuetype</xmlatt> is "ref":<ol
-              id="ol_tvg_2c2_z1b">
-              <li>When the key specified by <xmlatt>keyref</xmlatt> is resolvable and has an
-                associated URI, that URI is used as the value of this element (overriding
-                  <xmlatt>value</xmlatt>, if that is specified).</li>
-              <li>When the key specified by <xmlatt>keyref</xmlatt> is resolvable and has no
-                associated resource (only link text), the <xmlatt>keyref</xmlatt> attribute is
-                considered to be unresolvable for this element. If <xmlatt>value</xmlatt> is
-                specified, it is used as fallback.</li>
-              <li>When the key specified by <xmlatt>keyref</xmlatt> is not resolvable, the value of
-                the <xmlatt>value</xmlatt> attribute is used as a fallback target for the
-                  <xmlelement>param</xmlelement> element.</li>
-            </ol>
-          </dd>
         </dlentry>
       </dl>
     </section>
