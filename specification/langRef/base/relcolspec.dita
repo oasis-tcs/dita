@@ -65,11 +65,13 @@
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>When values are specified for attributes of <xmlelement>relcell</xmlelement> or
-          <xmlelement>relrow</xmlelement> elements, those values are inherited before those defined
-        for <xmlelement>relcolspec</xmlelement> attributes. Values specified for attributes of
-          <xmlelement>relcolspec</xmlelement> elements are inherited before those defined for the
-          <xmlelement>reltable</xmlelement> element.</p>
+      <p>When values are specified for attributes of
+          <xmlelement>relcell</xmlelement> or
+          <xmlelement>relrow</xmlelement> elements, those values override
+        those defined for <xmlelement>relcolspec</xmlelement> attributes.
+        Values specified for attributes of
+          <xmlelement>relcolspec</xmlelement> elements override those
+        defined for the <xmlelement>reltable</xmlelement> element.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -80,18 +82,22 @@
             ><xmlatt>format</xmlatt></xref>.</p>
     </section>
 <example id="example" otherprops="examples"><title>Example</title>
-      <p>The following section shows how a simple relationship table uses column specifications to
-        validate topic types.</p>
-      <fig id="fig_uhz_crw_3nb">
-        <title>Enforcing concept, type, and reference  types with
+      <p>The following section contains examples of how the
+          <xmlelement>relcolspec</xmlelement> element can be used.</p>
+      <fig>
+        <title>Enforcing concept, type, and reference types with
             <xmlelement>relcolspec</xmlelement></title>
-        <p>The following code sample shows how a relationship table groups relationships between
-          concepts, tasks, and references. Three cells are defined within one row. The first cell
-          contains one concept topic: <filepath>puffins.dita</filepath>. The second cell contains
-          two task topics: <filepath>puffinFeeding.dita</filepath> and
-            <filepath>puffinCleaning.dita</filepath>. The third cell contains a reference topic:
-            <filepath>puffinHistory.dita</filepath>. Setting the <xmlatt>type</xmlatt> on each
-          column allows (but does not require) processors to validate that the topics in each column
+        <p>The following code sample shows how a
+            <xmlelement>relcolspec</xmlelement> element can be used to
+          define the types of topics that are referenced in a column. Three
+          cells are defined within one row. The first cell contains one
+          concept topic: <filepath>puffins.dita</filepath>. The second cell
+          contains two task topics: <filepath>puffinFeeding.dita</filepath>
+          and <filepath>puffinCleaning.dita</filepath>. The third cell
+          contains a reference topic:
+            <filepath>puffinHistory.dita</filepath>. Setting the
+            <xmlatt>type</xmlatt> on each column allows (but does not
+          require) processors to validate that the topics in each column
           are of the expected type.</p>
         <codeblock>&lt;map>
  &lt;reltable>
@@ -113,12 +119,11 @@
  &lt;/reltable>
 &lt;/map></codeblock>
       </fig>
-      <p>The following section shows how relationship table columns can reference topics and specify
-        titles for use when generating groups of links.</p>
       <fig id="fig_y15_jrw_3nb">
         <title>Relationship table column headers with topics and titles</title>
-        <p>The following code sample shows how topics and titles can be specified in a relationship
-          table column header. </p>
+        <p>The following code sample shows how topics and titles can be
+          specified in a column header for relationship table column
+          header: </p>
         <codeblock>&lt;reltable>
   &lt;relheader>
     <b>&lt;relcolspec type="task"></b>
@@ -165,12 +170,15 @@
             <li><filepath>msg.dita</filepath> &lt;–> <filepath>login_error_1.dita</filepath></li>
             <li><filepath>msg.dita</filepath> &lt;–> <filepath>login_error_2.dita</filepath></li>
           </ul></p>
-        <p>Ignoring the headers for a moment, the <xmlelement>reltable</xmlelement> here would
-          ordinarily define a two-way relationship between <filepath>debug_login.dita</filepath> and
-            <filepath>login_error1.dita</filepath>. This will typically be expressed as a link from
-          each to the other. An application might render the link with a language-appropriate
-          heading such as "Related reference", indicating that the target of the link is a reference
-          topic.</p>
+        <p>Ignoring the headers for a moment, the
+            <xmlelement>reltable</xmlelement> here would ordinarily define
+          a two-way relationship between
+            <filepath>debug_login.dita</filepath> and
+            <filepath>login_error1.dita</filepath>. This typically will be
+          expressed as a link from each to the other. An application might
+          render the link with a language-appropriate heading such as
+          "Related reference", indicating that the target of the link is a
+          reference topic.</p>
         <p>The headers change this by specifying a new title. In the second column, the
             <xmlelement>topicref</xmlelement> specifies a title of "Messages", which should now be
           used together with the link to anything in that column. So, a generated link from
