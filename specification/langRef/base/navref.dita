@@ -4,9 +4,10 @@
  "reference.dtd">
 <reference id="navref" xml:lang="en-us">
 <title><xmlelement>navref</xmlelement></title>
-<shortdesc>A navigation reference is a reference to another map which is preserved as a transcluding
-    link in the result deliverable rather than resolved when the deliverable is produced. Output
-    formats that support such linking can integrate the referenced resource when displaying the
+<shortdesc>A navigation reference is a reference to another map that is
+    preserved as a transcluding link in the result deliverable, rather than
+    resolved when the deliverable is produced. Output formats that support
+    such linking can integrate the referenced resource when displaying the
     referencing map to an end user. </shortdesc>
   <prolog>
     <metadata>
@@ -19,17 +20,28 @@
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>The <xmlelement>navref</xmlelement> element is intended as a reference to a navigation
-        resource that can be resolved at rendering time. It allows for maps to be published into a
-        help system where the referenced navigation is published independently (or may not be
-        avilable at all). If available, the referenced navigation can then be resolved at render
-        time within a help system.</p>
-      <p>In order to include another map directly without depending on the output format or help
-        system, use a <xmlelement>topicref</xmlelement> element with the <xmlatt>format</xmlatt>
-        attribute set to <codeph>ditamap</codeph>. The effect is similar to using a
-          <xmlatt>conref</xmlatt> attribute. For example, the following markup represents a literal
-        inclusion of the map
-        <filepath>other.ditamap</filepath>:<codeblock>&lt;topicref href="other.ditamap" format="ditamap"/&gt;</codeblock></p>
+      <p>The <xmlelement>navref</xmlelement> element is intended as a
+        reference to a navigation resource that can be resolved at
+        rendering time. It enables DITA maps to be published into a help
+        system where the referenced navigation is published independently
+        (or might not be available at all). If available, the referenced
+        navigation can then be resolved at rendering time within a help
+        system.</p>
+      <div>
+        <draft-comment author="Kristen J Eberlein" time="10 November 2021">
+          <p>Does the following information really belong here? It seems to
+            be very basic map info.</p>
+        </draft-comment>
+        <p>In order to include another map directly without depending on
+          the output format or help system, use a
+            <xmlelement>topicref</xmlelement> element with the
+            <xmlatt>format</xmlatt> attribute set to
+            <codeph>ditamap</codeph>. The effect is similar to using a
+            <xmlatt>conref</xmlatt> attribute. For example, the following
+          markup represents a literal inclusion of the map
+            <filepath>other.ditamap</filepath>:</p>
+        <codeblock>&lt;topicref href="other.ditamap" format="ditamap"/&gt;</codeblock>
+      </div>
     </section>
     <section id="attributes">
       <title>Attributes</title>
