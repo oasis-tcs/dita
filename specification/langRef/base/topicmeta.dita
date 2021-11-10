@@ -24,19 +24,28 @@
       <title>Example</title>
       <draft-comment author="robander">Need to fix this example; audience is an empty element, so
         this is not currently valid</draft-comment>
-      <p>The following example shows how the <xmlelement>topicmeta</xmlelement> element can contain
-        a metadata element:</p>
+      <draft-comment author="Kristen J Eberlein" time="10 November 2021">
+        <p>Modified the example; does it work for you? I know we cover this
+          scenario in examples in other topics; is there something else
+          that we could demo here that can be done with
+            <xmlelement>topicmeta</xmlelement>?</p>
+      </draft-comment>
+      <p>The following example shows how the
+          <xmlelement>topicmeta</xmlelement> element can contain a link
+        title and short description:</p>
       <codeblock>&lt;map>
   &lt;title>Indexing elements&lt;/title>        
   &lt;topicref href=indexing.dita">
     &lt;topicmeta>
-      &lt;audience>Indexing specialists&lt;/audience>
+      &lt;linktitle>Indexing for company specialists&lt;/linktitle>
+      &lt;shortdesc>Guidelines for indexing company materials&lt;/shortdesc>
     &lt;/topicmeta>
-    &lt;!-- Adding topic references -->
+    &lt;!-- Additional topic references -->
   &lt;/topicref>
 &lt;/map></codeblock>
-      <p>The <xmlelement>audience</xmlelement> element indicates that the topic (and its child
-        topics) are of interest to the indexing specialists within the company.</p>
+      <p>When link previews for <filepath>indexing.dita</filepath> are
+        generated, the link title and short description provided within the
+          <xmlelement>topicmeta</xmlelement> element are used.</p>
     </example>
   </refbody>
 </reference>
