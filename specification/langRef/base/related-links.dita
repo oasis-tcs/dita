@@ -19,6 +19,9 @@
         displayed together with any links that are generated based on the map context.</p>
       <p>PDF or print-oriented output commonly ignores hierarchical links such as those with roles
         of ancestor, parent, child, descendant, next, previous, or sibling.</p>
+      <draft-comment author="rodaande">Assuming we add an architectural section that covers how link
+        roles are implied by the map, and can result in generated links, we should link to it from
+        this topic with a related link.</draft-comment>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -28,15 +31,14 @@
           keyref="attributes-common/attr-role"><xmlatt>role</xmlatt></xref>, and <xref
           keyref="attributes-common/attr-otherrole"><xmlatt>otherrole</xmlatt></xref>.</p>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><p>The following code sample shows how the
-          <xmlelement>related-link</xmlelement> element is used to specify
-        stable links to external information:</p><codeblock>&lt;related-links 
-    scope="external" format="html">
-  &lt;link href="http://www.example.org">
+<example id="example" otherprops="examples"><title>Example</title><p>The following code sample shows how the <xmlelement>related-link</xmlelement> element is used to
+        specify stable links to external and local information:</p><codeblock>&lt;related-links>
+  &lt;link href="http://www.example.org" scope="external" format="html">
     &lt;linktext>Example 1&lt;/linktext>
   &lt;/link>
-  &lt;link href="http://www.example.com">
-    &lt;linktext>Example 2&lt;/linktext>
+  &lt;link href="additional-details.dita">
+    &lt;!-- Link to a local topic for more detail, with link text
+         automated based on the target's title                 -->
   &lt;/link>
 &lt;/related-links></codeblock></example>
 </refbody>
