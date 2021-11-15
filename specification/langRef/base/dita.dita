@@ -7,17 +7,13 @@
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
+      <p>The ditabase document type is a container topic that can manage
+        any sequence of any type of topic. It can be used to hold elements
+        designed for reuse; it also is useful as an intermediate output for
+        conversion operations.</p>
       <p>The <xmlelement>dita</xmlelement> element cannot be specialized.
-        It is provided as a container that can manage any sequence of any
-        type of topic. Topic nesting rules can be configured in the
-        document-type shell.</p>
-      <draft-comment author="Kristen J Eberlein" time="01 November 2021">
-        <p>Do we want to mention common use case for the ditabase
-          document-type? For example, serving as a file that contains
-          reusable content for portion of a library or being the
-          (temporary) output for a migration operation. Can folks think of
-          other ways that ditabase is used?</p>
-      </draft-comment>
+        Topic nesting rules can be configured in the document-type
+        shell.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -27,7 +23,11 @@
           ><xmlatt>DITAArchVersion</xmlatt></xref>, and <ph conkeyref="reuse-attributes/ref-localizationatts"/>.</p>
     </section>
 <example id="example" otherprops="examples"><title>Example</title>
-      <p>The following code sample shows a ditabase document that contains multiple topics:</p><codeblock>&lt;dita&gt;
+      <p>The following code sample shows a ditabase document that contains
+        multiple topics. The <xmlelement>concept</xmlelement>,
+          <xmlelement>reference</xmlelement>, and
+          <xmlelement>task</xmlelement> elements are all specializations of
+          <xmlelement>topic</xmlelement>.</p><codeblock>&lt;dita&gt;
   &lt;concept id="batintro"&gt;
     &lt;title>Intro to bats&lt;/title>
     &lt;conbody>
