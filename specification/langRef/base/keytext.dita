@@ -22,8 +22,8 @@
         <section conkeyref="reuse-keytext/attributes" id="attributes"/>
         <example id="example" otherprops="examples">
             <title>Examples</title>
-            <p>The section contains examples of how the <xmlelement>keytext</xmlelement> element can
-                be used.</p>
+            <p>This section contains examples of how the
+          <xmlelement>keytext</xmlelement> element can be used.</p>
             <fig id="fig_mrm_52w_bpb">
                 <title>Simple example</title>
                 <p>The following code sample shows how variable text can be defined using the
@@ -59,18 +59,21 @@
   &lt;/topicmeta>
 &lt;/keydef></codeblock>
                 <p>The image can be referenced by <codeph>&lt;image
-                    keyref="company-logo"/></codeph>. When rendered to mediums that support
-                    alternate text, the effective alternative text for the image is "Acme Widgets
-                    logo" as though a literal <xmlelement>alt</xmlelement> element had been a child
-                    of the <xmlelement>image</xmlelement></p>
+            keyref="company-logo"/></codeph>. When rendered to mediums that
+          support alternate text, the effective alternative text for the
+          image is "Acme Widgets logo" as though a literal
+            <xmlelement>alt</xmlelement> element had been a child of the
+            <xmlelement>image</xmlelement>.</p>
             </fig>
             <fig id="fig_prm_52w_bpb">
                 <title>Variable text that is conditionally processed</title>
-                <p>DITA implementations often need to conditionally process product names. The
-                    following code sample shows a <xmlelement>keytext</xmlelement> element that
-                    contains <xmlelement>ph</xmlelement> elements that are conditionally
-                    processed:</p>
-                <codeblock>&lt;keydef keys="company-name">
+                <p>DITA implementations might need to conditionally process
+          product names, especially for topics that are reused in multiple
+          publications. The following code sample shows a
+            <xmlelement>keytext</xmlelement> element that contains
+            <xmlelement>ph</xmlelement> elements that are conditionally
+          processed:</p>
+                <codeblock>&lt;keydef keys="product-name">
   &lt;topicmeta>
     &lt;keytext translate="no">
       &lt;ph product="cat">Acme Widgets for Cats&lt;/ph>
@@ -94,9 +97,9 @@
                 <p>Once processed, the effective text content of both <codeph>&lt;ph
                         keyref="company-name"/></codeph> and <codeph>&lt;xref
                         keyref="company-name"/></codeph> is <keyword>Acme Tools</keyword>.</p>
-                <p>To set distinct text values for both the company name and the link text that is
-                    associated with the company Web site, best practices call for using two
-                    different key definitions.</p>
+                <p>To set distinct text values for both the company name
+          and the link text that is associated with the company Web site,
+          use two different keys.</p>
             </fig>
         </example>
     </refbody>
