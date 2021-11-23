@@ -3,13 +3,9 @@
  "reference.dtd">
 <reference id="anchor" xml:lang="en-us">
 <title><xmlelement>anchor</xmlelement></title>
-  <abstract>
-    <!--<shortdesc>An anchor is an integration point in a DITA map. Another map can reference the anchor by using an <xmlelement>anchorref</xmlelement> element or the <xmlatt>anchorred</xmlatt> attribute on <xmlelement>map</xmlelement>.</shortdesc>-->
-    <shortdesc>An anchor is an integration point in a DITA map. Another map
-      can reference the anchor in order to insert a navigation structure
-      into the map that contains the anchor.</shortdesc>
-    <!--<shortdesc>An anchor within a map is an integration point that another map can reference in order to insert its navigation into the navigation tree of the referenced map.</shortdesc>-->
-  </abstract>
+  <shortdesc>An anchor is an integration point in a DITA map. Another map
+    can reference the anchor in order to insert a navigation structure into
+    the map that contains the anchor.</shortdesc>
 <prolog><metadata>
 <keywords><indexterm>elements<indexterm>basic map<indexterm><xmlelement>anchor</xmlelement></indexterm></indexterm></indexterm>
 </keywords>
@@ -24,7 +20,6 @@
           <xmlelement>map</xmlelement>. This enables the navigation
         structure of a map or map branch to be inserted at the location of
         the anchor.</p>
-      <!--<p>The <xmlelement>anchor</xmlelement> element typically is used to allow integration of run-time components. For build-time integration, you can use a <xmlelement>topicref</xmlelement> element to reference another map, or use the <xmlatt>conref</xmlatt> or <xmlatt>conkeyref</xmlatt> attribute on an element inside the map.</p>-->
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
@@ -38,15 +33,13 @@
         referenced by <xmlelement>anchorref</xmlelement> or by the <xmlatt>anchorref</xmlatt>
         attribute on <xmlelement>map</xmlelement> elements.</p>
     </section>
-<example id="example" otherprops="examples"><title>Examples</title>
-      <p>This section contains examples of how the
-          <xmlelement>anchor</xmlelement> element can be used.<fig
-          id="fig_c53_pdx_3nb">
-          <title>DITA map that contains an anchor</title>
-          <p id="anchor_ex">The following code sample shows how a map
-            contains an <xmlelement>anchor</xmlelement> element with an
-              <xmlatt>id</xmlatt> attribute set to "a1".</p>
-          <codeblock>&lt;map>
+<example id="example" otherprops="examples"><title>Example</title>
+      <p>This section contains an example of how the
+          <xmlelement>anchor</xmlelement> element can be used.</p>
+      <p id="anchor_ex">The following code sample shows how a map contains
+        an <xmlelement>anchor</xmlelement> element with an
+          <xmlatt>id</xmlatt> attribute set to "a1".</p>
+      <codeblock>&lt;map>
   &lt;title&gt;MyComponent tasks&lt;/title&gt;
   &lt;topicref href="start.dita" toc="yes">
     &lt;navref mapref="othermap2.ditamap"/>
@@ -54,21 +47,15 @@
     &lt;anchor id="a1"/>
   &lt;/topicref>
 &lt;/map></codeblock>
-        </fig></p>
       <p id="anchoref">The <xmlatt>id</xmlatt> on an
           <xmlelement>anchor</xmlelement> element can be referenced by the
           <xmlatt>anchorref</xmlatt> attribute on the
-          <xmlelement>map</xmlelement> element in another map.<fig
-          id="fig_gpx_sdx_3nb">
-          <title>DITA map that references an anchor</title>
-          <p>In the following code sample, the DITA map references another
-            DITA map using the <xmlatt>anchorref</xmlatt> attribute:</p>
-          <codeblock>&lt;map anchorref="map1.ditamap#a1"&gt;
+          <xmlelement>map</xmlelement> element in another map:</p>
+      <codeblock>&lt;map anchorref="map1.ditamap#a1"&gt;
   &lt;title&gt;This map is rendered at the "a1" anchor 
          in the MyComponent task map&lt;/title&gt;
   &lt;!-- ... -->
-&lt;/map&gt;</codeblock>
-        </fig></p></example>
+&lt;/map&gt;</codeblock></example>
 </refbody>
 </reference>
 
