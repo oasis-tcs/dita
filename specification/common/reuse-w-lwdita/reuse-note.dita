@@ -2,88 +2,24 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="note" xml:lang="en-us">
 <title><xmlelement>note</xmlelement></title>
-    <shortdesc id="shortdesc">A note contains information that expands on or calls attention to a
-        particular point.</shortdesc>
+    <shortdesc id="shortdesc">A note is information that expands on or
+    calls attention to a particular point.</shortdesc>
 <refbody>
         <section id="usage-information">
             <title>Usage information</title>
-            <p>Variant types of notes (caution, danger, warning, etc.) can be indicated through
-                values selected for the <xmlatt>type</xmlatt> attribute.</p>
+            <p>The nature of a note (for example, caution, danger, or
+        warning) is indicated through the values selected for the
+          <xmlatt>type</xmlatt> attribute.</p>
             <div platform="dita">
-                <p>For example, if the note is a tip, the word <b>Tip</b> might be used to draw the
-                    reader's attention to it. </p>
-                <p>The values danger, warning, and notice have meanings that are based on ANSI Z535
-                    and ISO 3864 regulations.</p>
-                <p>If <xmlatt>type</xmlatt> is set to <keyword>other</keyword>, the value of the
-                        <xmlatt>othertype</xmlatt> attribute can be used. If you use
-                        <xmlatt>othertype</xmlatt>, many processors will require additional
-                    information on how to process the value. Allowable values for the
-                        <xmlatt>type</xmlatt> attribute are:</p>
-                <dl id="dl_ntd_rry_qpb">
-                    <dlentry>
-                        <dt><keyword>note</keyword></dt>
-                        <dd>This is just a note.</dd>
-                    </dlentry>
-                    <dlentry>
-                        <dt><keyword>attention</keyword></dt>
-                        <dd>Please pay extra attention to this note.</dd>
-                    </dlentry>
-                    <dlentry>
-                        <dt><keyword>caution</keyword></dt>
-                        <dd>Care is required when proceeding.</dd>
-                    </dlentry>
-                    <dlentry>
-                        <dt><keyword>danger</keyword></dt>
-                        <dd>Important! Be aware of this before doing anything else. <ph>When used
-                                with the <xmlelement>hazardstatement</xmlelement> element, this
-                                indicates an imminently hazardous situation which, if not avoided,
-                                    <b>will</b> result in death or serious injury.</ph></dd>
-                    </dlentry>
-                    <dlentry>
-                        <dt><keyword>fastpath</keyword></dt>
-                        <dd>This note will speed you on your way.</dd>
-                    </dlentry>
-                    <dlentry>
-                        <dt><keyword>important</keyword></dt>
-                        <dd>This note is important.</dd>
-                    </dlentry>
-                    <dlentry>
-                        <dt><keyword>notice</keyword></dt>
-                        <dd> Indicates a potential situation which, if not avoided, might result in
-                            an <b>undesirable result or state</b>.</dd>
-                    </dlentry>
-                    <dlentry>
-                        <dt><keyword>remember</keyword></dt>
-                        <dd>Don&apos;t forget to do what this note says.</dd>
-                    </dlentry>
-                    <dlentry>
-                        <dt><keyword>restriction</keyword></dt>
-                        <dd>You can&apos;t do what this note says.</dd>
-                    </dlentry>
-                    <dlentry>
-                        <dt><keyword>tip</keyword></dt>
-                        <dd>This is a fine little tip.</dd>
-                    </dlentry>
-                    <dlentry>
-                        <dt><keyword>warning</keyword></dt>
-                        <dd>Indicates a potentially hazardous situation. When used with the
-                                <xmlelement>hazardstatement</xmlelement> element, this indicates a
-                            situation which, if not avoided, could result in death or serious
-                            injury.</dd>
-                    </dlentry>
-                    <dlentry>
-                        <dt><keyword>trouble</keyword></dt>
-                        <dd>Provides information about how to remedy a trouble situation.</dd>
-                    </dlentry>
-                    <dlentry>
-                        <dt><keyword>other</keyword></dt>
-                        <dd>This is something other than a normal note.</dd>
-                    </dlentry>
-                    <dlentry conkeyref="reuse-attributes/ditauseconref">
-                        <dt> </dt>
-                        <dd> </dd>
-                    </dlentry>
-                </dl>
+                <p>The values <keyword>danger</keyword>,
+            <keyword>notice</keyword>, and <keyword>warning</keyword> have
+          meanings that are based on ANSI Z535 and ISO 3864
+          regulations.</p>
+                <p>If <xmlatt>type</xmlatt> is set to
+            <keyword>other</keyword>, the value of the
+            <xmlatt>othertype</xmlatt> attribute can be used as a label for
+          the note. Many processors will require additional information on
+          how to process the value.</p>
             </div>
         </section>
         <section id="attributes">
@@ -96,23 +32,89 @@
                 <dl>
                     <dlentry>
                         <dt id="attr-othertype"><xmlatt>othertype</xmlatt></dt>
-                        <dd>Specifies an alternate note type. This value is used as the
-                            user-provided note title when the <xmlatt>type</xmlatt> attribute value
-                            is set to <keyword>other</keyword>.</dd>
+                        <dd>Specifies an alternate note type. This value is
+              used as the user-provided note label when the
+                <xmlatt>type</xmlatt> attribute value is set to
+                <keyword>other</keyword>.</dd>
                     </dlentry>
                     <dlentry>
                         <dt id="attr-type"><xmlatt>type</xmlatt></dt>
-                        <dd>Specifies the type of a note. Note that this differs from the
-                                <xmlatt>type</xmlatt> attribute on many other DITA elements.
-                            Allowable values are <keyword>note</keyword>, <keyword>tip</keyword>,
-                                <keyword>fastpath</keyword>, <keyword>restriction</keyword>,
-                                <keyword>important</keyword>, <keyword>remember</keyword>,
-                                <keyword>attention</keyword>, <keyword>caution</keyword>,
-                                <keyword>notice</keyword>, <keyword>danger</keyword>,
-                                <keyword>warning</keyword>, <keyword>trouble</keyword>,
-                                <keyword>other</keyword>, and <xref
-                                keyref="attributes-useconreftarget"
-                                    ><keyword>-dita-use-​conref-​target</keyword></xref>. </dd>
+                        <dd>Specifies the type of a note. This differs from
+              the <xmlatt>type</xmlatt> attribute on many other DITA
+              elements. The following are the allowable
+                values:<draft-comment author="Kristen J Eberlein"
+                time="23 November 2021">
+                <p>The following explanation needs work! Most of this
+                  appeared in DITA 1.0 and has not been edited since then
+                  (with the exception of where there is association with
+                  the hazard statement domain). TC members, please
+                  help.</p>
+              </draft-comment><dl>
+                <dlentry>
+                  <dt><keyword>attention</keyword></dt>
+                  <dd>Please pay extra attention to this note.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt><keyword>caution</keyword></dt>
+                  <dd>Care is required when proceeding.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt><keyword>danger</keyword></dt>
+                  <dd>When used with the
+                      <xmlelement>hazardstatement</xmlelement> element,
+                    this indicates an imminently hazardous situation which,
+                    if not avoided, <b>will</b> result in death or serious
+                    injury.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt><keyword>important</keyword></dt>
+                  <dd>This note is important.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt><keyword>note</keyword></dt>
+                  <dd>This is just a note.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt><keyword>notice</keyword></dt>
+                  <dd>When used with the
+                      <xmlelement>hazardstatement</xmlelement> element,
+                    this indicates a potential situation which, if not
+                    avoided, might result in an <b>undesirable result or
+                      state</b>.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt><keyword>other</keyword></dt>
+                  <dd>This is something other than a normal note.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt><keyword>remember</keyword></dt>
+                  <dd>Don&apos;t forget to do what this note says.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt><keyword>restriction</keyword></dt>
+                  <dd>You can&apos;t do what this note says.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt><keyword>tip</keyword></dt>
+                  <dd>This is a fine little tip.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt><keyword>trouble</keyword></dt>
+                  <dd>Provides information about how to remedy a trouble
+                    situation.</dd>
+                </dlentry>
+                <dlentry>
+                  <dt><keyword>warning</keyword></dt>
+                  <dd>Indicates a potentially hazardous situation. When
+                    used with the <xmlelement>hazardstatement</xmlelement>
+                    element, this indicates a situation which, if not
+                    avoided, could result in death or serious injury.</dd>
+                </dlentry>
+                <dlentry conkeyref="reuse-attributes/ditauseconref">
+                  <dt> </dt>
+                  <dd> </dd>
+                </dlentry>
+              </dl></dd>
                     </dlentry>
                 </dl>
             </div>
