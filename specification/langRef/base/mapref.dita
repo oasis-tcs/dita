@@ -41,7 +41,8 @@
     <section id="specialization-hierarchy">
       <title>Specialization hierarchy</title>
       <p>The <xmlelement>mapref</xmlelement> element is specialized from
-          <xmlelement>topicref</xmlelement>. It is defined in the map-group module.</p>
+          <xmlelement>topicref</xmlelement>. It is defined in the <ph
+          rev="review-b">mapgroup-domain module</ph>.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -56,15 +57,12 @@
           value of <keyword>ditamap</keyword>.</p>
       </div>
     </section>
-<example id="example" otherprops="examples"><title>Examples</title>
-      <p>The following section shows how <xmlelement>mapref</xmlelement>
-        elements can be used to reference submaps.</p>
-      <fig>
-        <title>DITA map for all element-reference topics
-          (<filepath>base-elements.ditamap</filepath>)</title>
-        <p>The <filepath>base-elements.ditamap</filepath> document references the
-            <filepath>map-group-elements.ditamap)</filepath>:</p>
-        <codeblock>&lt;map>
+<example id="example" otherprops="examples"><title>Example</title>
+      <p>The following section shows how a <xmlelement>mapref</xmlelement>
+        element can be used to reference submaps.</p>
+      <p>The <filepath>base-elements.ditamap</filepath> document references
+        the <filepath>map-group-elements.ditamap)</filepath>:</p>
+      <codeblock>&lt;map>
  &lt;title>Base elements&lt;/title>
  &lt;!-- ... -->
  &lt;topicref href="containers/domain-elements.dita" >
@@ -74,14 +72,11 @@
  &lt;/topicref>
  &lt;!-- ... -->
 &lt;/map></codeblock>
-      </fig>
-      <fig>
-        <title>DITA map for map-group elements
-          (<filepath>map-group-elements.ditamap)</filepath></title>
-        <p>The <filepath>map-group-elements.ditamap</filepath> document contains references to the
-          element-reference topics for the map group domain. It is constructed as a map in order to
-          enable easy editing of the child topics. </p>
-        <codeblock>&lt;map>
+      <p>The <filepath>map-group-elements.ditamap</filepath> document
+        contains references to the element-reference topics for the map
+        group domain. It is constructed as a map in order to enable easy
+        editing of the child topics. </p>
+      <codeblock>&lt;map>
  &lt;title>Map group elements&lt;/title>
  &lt;topicref keyref="mapgroup-d" >
   &lt;topicref keyref="anchorref" />
@@ -91,10 +86,10 @@
   &lt;topicref keyref="topichead" />
  &lt;/topicref>
 &lt;/map></codeblock>
-      </fig><fig><title>Result after processing <filepath>base-elements.ditamap</filepath></title>
-        <p>After processing, the <filepath>base-elements.ditamap</filepath> contains the topic
-          references that originally were located in the submap:</p>
-<codeblock>&lt;map>
+      <p>After processing, the <filepath>base-elements.ditamap</filepath>
+        contains the topic references that originally were located in the
+        submap:</p>
+      <codeblock>&lt;map>
  &lt;title>Base elements&lt;/title>
  &lt;!-- ... -->
  &lt;topicref href="containers/domain-elements.dita" >
@@ -109,7 +104,6 @@
   &lt;!-- ... -->
  &lt;/topicref>
  &lt;!-- ... -->
-&lt;/map></codeblock>
-</fig></example>
+&lt;/map></codeblock></example>
 </refbody>
 </reference>
