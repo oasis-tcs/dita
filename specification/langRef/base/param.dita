@@ -14,32 +14,41 @@
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>Any number of <xmlelement>param</xmlelement> elements might appear in the content of an
-          <xmlelement>object</xmlelement> in any order, but must be placed at the start of the
-        content of the enclosing object. This element is comparable to the HMTL
-          <xmlelement>param</xmlelement> element, and its attributes' semantics derive from their
-        HTML definitions. For example, the <xmlatt>type</xmlatt> attribute differs from the
-          <xmlatt>type</xmlatt> attribute on many other DITA elements.</p>
+      <p>Any number of <xmlelement>param</xmlelement> elements might appear
+        in the content of an <xmlelement>object</xmlelement> in any order,
+        but must be placed at the start of the content of the enclosing
+        object. This element is comparable to the HMTL
+          <xmlelement>param</xmlelement> element, and the <ph
+          rev="review-c">attribute semantics</ph> derive from their HTML
+        definitions. For example, the <xmlatt>type</xmlatt> attribute
+        differs from the <xmlatt>type</xmlatt> attribute on many other DITA
+        elements.</p>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>The <xmlatt>keyref</xmlatt> and <xmlatt>valuetype</xmlatt> attributes on
-          <xmlelement>param</xmlelement> have the following expectaions:<ul id="ul_evg_2gj_nrb">
-          <li>If <xmlatt>valuetype</xmlatt> is specified but is not set to "ref", the
-              <xmlatt>keyref</xmlatt> attribute is ignored.</li>
-          <li>When <xmlatt>valuetype</xmlatt> is not specified and <xmlatt>keyref</xmlatt> is
-            specified, it implies a setting of <codeph>valuetype="ref"</codeph>.</li>
-          <li>When <xmlatt>keyref</xmlatt> is specified and the effective value of
-              <xmlatt>valuetype</xmlatt> is "ref":<ol id="ol_tvg_2c2_z1b">
-              <li>When the key specified by <xmlatt>keyref</xmlatt> is resolvable and has an
-                associated URI, that URI is used as the value of this element (overriding
+      <p>The <xmlatt>keyref</xmlatt> and <xmlatt>valuetype</xmlatt>
+        attributes on <xmlelement>param</xmlelement> have the following <ph
+          rev="review-3">expectations</ph>:<ul id="ul_evg_2gj_nrb">
+          <li>If <xmlatt>valuetype</xmlatt> is specified but is not set to
+            "ref", the <xmlatt>keyref</xmlatt> attribute is ignored.</li>
+          <li>When <xmlatt>valuetype</xmlatt> is not specified and
+              <xmlatt>keyref</xmlatt> is specified, it implies a setting of
+              <codeph>valuetype="ref"</codeph>.</li>
+          <li>When <xmlatt>keyref</xmlatt> is specified and the effective
+            value of <xmlatt>valuetype</xmlatt> is
+              <keyword>ref</keyword>:<ol id="ol_tvg_2c2_z1b">
+              <li>When the key specified by <xmlatt>keyref</xmlatt> is
+                resolvable and has an associated URI, that URI is used as
+                the value of this element (overriding
                   <xmlatt>value</xmlatt>, if that is specified).</li>
-              <li>When the key specified by <xmlatt>keyref</xmlatt> is resolvable and has no
-                associated resource (only link text), the <xmlatt>keyref</xmlatt> attribute is
-                considered to be unresolvable for this element. If <xmlatt>value</xmlatt> is
+              <li>When the key specified by <xmlatt>keyref</xmlatt> is
+                resolvable and has no associated resource (only link text),
+                the <xmlatt>keyref</xmlatt> attribute is considered to be
+                unresolvable for this element. If <xmlatt>value</xmlatt> is
                 specified, it is used as fallback.</li>
-              <li>When the key specified by <xmlatt>keyref</xmlatt> is not resolvable, the value of
-                the <xmlatt>value</xmlatt> attribute is used as a fallback target for the
+              <li>When the key specified by <xmlatt>keyref</xmlatt> is not
+                resolvable, the value of the <xmlatt>value</xmlatt>
+                attribute is used as a fallback target for the
                   <xmlelement>param</xmlelement> element.</li>
             </ol></li>
         </ul></p>
@@ -85,21 +94,26 @@
           <dd>Specifies the type of the <xmlatt>value</xmlatt> attribute. Allowed values are: <dl>
               <dlentry>
                 <dt>data </dt>
-                <dd>A value of data means that the value will be evaluated and passed to the
-                  object&apos;s implementation as a string. </dd>
+                <dd>A value of <keyword>data</keyword> means that the value
+                  will be evaluated and passed to the object&apos;s
+                  implementation as a string. </dd>
               </dlentry>
               <dlentry>
                 <dt>ref </dt>
-                <dd>A value of ref indicates that the value of the <xmlatt>value</xmlatt> attribute
-                  is a URL that designates a resource where run-time values are stored. This allows
-                  support tools to identify URLs that are given as parameters.</dd>
+                <dd>A value of <keyword>ref</keyword> indicates that the
+                  value of the <xmlatt>value</xmlatt> attribute is a URL
+                  that designates a resource where run-time values are
+                  stored. This allows support tools to identify URLs that
+                  are given as parameters.</dd>
               </dlentry>
               <dlentry>
                 <dt>object</dt>
-                <dd>A value of object indicates that the value of the <xmlatt>value</xmlatt>
-                  attribute is an identifier that refers to an object declaration in the document.
-                  The identifier must be the value of the <xmlatt>id</xmlatt> attribute set for the
-                  declared <xmlelement>object</xmlelement> element. </dd>
+                <dd>A value of <keyword>object</keyword> indicates that the
+                  value of the <xmlatt>value</xmlatt> attribute is an
+                  identifier that refers to an object declaration in the
+                  document. The identifier must be the value of the
+                    <xmlatt>id</xmlatt> attribute set for the declared
+                    <xmlelement>object</xmlelement> element. </dd>
               </dlentry>
               <dlentry conkeyref="reuse-attributes/ditauseconref">
                 <dt/>
