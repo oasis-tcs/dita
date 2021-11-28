@@ -23,36 +23,37 @@
                     keyref="attributes-universal/attr-base"><xmlatt>base</xmlatt></xref>, <xref
                     keyref="attributes-universal/outputclass"><xmlatt>outputclass</xmlatt></xref>,
                 and <xref keyref="attributes-universal/class"><xmlatt>class</xmlatt></xref>.</p>
-            <p id="attr-exception" outputclass="attr-exception">For this element, <ul id="ul_ddp_51l_ppb">
-                    <li>The <xmlatt>name</xmlatt> attribute is required, and specifies the name of
-                        an attribute that will take a set of enumerated values.</li>
-                    <li>The <xmlatt>translate</xmlatt> attribute has a default value of
-                            <keyword>no</keyword>.</li>
-                </ul></p>
+            <p id="attr-exception" outputclass="attr-exception">For this
+        element: <ul>
+          <li>The <xmlatt>name</xmlatt> attribute is required. It specifies
+            the name of the attribute to which the controlled values are
+            bound.</li>
+          <li>The <xmlatt>translate</xmlatt> attribute has a default value
+            of <keyword>no</keyword>.</li>
+        </ul></p>
         </section>
 <example id="example" otherprops="examples"><title>Example</title>
-            <p>In the following code sample, the enumeration definition for the
-                    <xmlatt>otherprops</xmlatt> attribute limits the permissible values to the
-                subject <keyword>values-otherprops</keyword>. This means that the only valid value
-                for the <xmlatt>otherprops</xmlatt> attribute is "examples".</p>
+            <p>In the following code sample, the enumeration definition for
+        the <xmlatt>otherprops</xmlatt> attribute limits the permissible
+        values to the subject <keyword>values-otherprops</keyword>:</p>
             <codeblock>&lt;subjectScheme>
-    
-    &lt;!-- DEFINE SETS OF CONTROLLED VALUES -->
-    
+    &lt;!-- DEFINE SETS OF CONTROLLED VALUES -->    
     &lt;!-- Values for @otherprops -->
     &lt;subjectdef keys="values-otherprops">
         &lt;subjectdef keys="examples"/>
     &lt;/subjectdef>
     
-    &lt;!-- BINDS SETS OF CONTROLLED VALUES -->
-    
+    &lt;!-- BINDS SETS OF CONTROLLED VALUES -->    
     &lt;!-- Binding for @otherprops -->
     &lt;enumerationdef>
         <b>&lt;attributedef name="otherprops"/></b>
         &lt;subjectdef keyref="values-otherprops"/>
     &lt;/enumerationdef>
 
-&lt;/subjectScheme></codeblock></example>
+&lt;/subjectScheme></codeblock>
+      <p>This means that the only valid value for the
+          <xmlatt>otherprops</xmlatt> attribute is
+          <keyword>examples</keyword>.</p></example>
 </refbody>
 </reference>
 
