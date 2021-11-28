@@ -2,19 +2,34 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="hasNarrower" xml:lang="en-us">
 <title><xmlelement>hasNarrower</xmlelement></title>
-  <shortdesc>The <xmlelement>hasNarrower</xmlelement> element specifies that the contained subjects
-    have a narrower focus than the container subject. The way in which a relationship is narrower is
-    not specified.<draft-comment author="robander" time="14 May 2021">I'm not sure whether to take
-      that "not specified" sentence as a statement that we don't know what this element is, or
-      merely stating that you can use your own definition / scope for "narrower"? If the former, we
-      should consider removing the element. If the latter, I think it should be moved to "Usage
-      information".</draft-comment></shortdesc>
-  <!--<shortdesc>For subjects within the <xmlelement>hasNarrower</xmlelement> element, the container subject is more general than each of the contained subjects. That is, this element makes the default hierarchical relationship explicit, although the way in which a relationship is narrower is not specified.</shortdesc>-->
+  <shortdesc>The <xmlelement>hasNarrower</xmlelement> element specifies
+    that the contained subjects have a narrower focus than the container
+      subject.<draft-comment author="robander" time="14 May 2021">I'm not
+      sure whether to take that "not specified" sentence as a statement
+      that we don't know what this element is, or merely stating that you
+      can use your own definition / scope for "narrower"? If the former, we
+      should consider removing the element. If the latter, I think it
+      should be moved to "Usage information".</draft-comment><draft-comment
+      author="Kristen J Eberlein" time="27 November 2021">
+      <p>The following is what the DITA 1.2 spec said:</p>
+      <lq>For subjects within the &lt;<xmlelement>hasNarrower</xmlelement>>
+        element, the container subject is more general than each of the
+        contained subjects. That is, this element makes the default
+        hierarchical relationship explicit, although the way in which a
+        relationship is narrower is not specified.</lq>
+    </draft-comment></shortdesc>
 <prolog><metadata>
 <keywords>
         <indexterm>subjectScheme<indexterm>elements<indexterm><xmlelement>hasNarrower</xmlelement></indexterm></indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>The container subject is more general than the subjects contained
+        within the <xmlelement>hasNarrower</xmlelement>element. The way in
+        which the contained subjects represent a narrow relationship is not
+        specified.</p>
+    </section>
     <section id="specialization-hierachy">
       <title>Specialization hierarchy</title>
       <p>The <xmlelement>hasNarrower</xmlelement> element is specialized from
@@ -24,8 +39,9 @@
       <title>Attributes</title>
       <div conkeyref="reuse-attributes/scheme-HAS-elements"/>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><p>The following code sample specifies that "Planting roses" is a narrower subject category than
-        "Horticulture", although it is part of the "Horticulture" subject.</p>
+<example id="example" otherprops="examples"><title>Example</title><p>The following code sample specifies that "Planting roses" is a narrower
+        subject category than "Horticulture", although it is part of the
+        "Horticulture" subject:</p>
       <codeblock>&lt;subjectScheme>
   &lt;hasNarrower>
     &lt;subjectdef keys="horticulture">

@@ -2,10 +2,11 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="enumerationdef" xml:lang="en-us">
 <title><xmlelement>enumerationdef</xmlelement></title>
-    <shortdesc>The <xmlelement>enumerationdef</xmlelement> contains an enumeration definition. An
-        enumeration definition specifies an attribute, a set of controlled values (optional), and
-        the element to which the attribute and controlled values pair are bound
-        (optional).</shortdesc>
+    <shortdesc>The <xmlelement>enumerationdef</xmlelement> contains an
+    enumeration definition. An enumeration definition specifies an
+    attribute, an optional set of controlled values, and the optional
+    element to which the attribute and controlled values pair are
+    bound.</shortdesc>
 <prolog><metadata>
 <keywords>
                 <indexterm>subjectScheme<indexterm>elements<indexterm><xmlelement>enumerationdef</xmlelement></indexterm></indexterm></indexterm></keywords>
@@ -52,14 +53,15 @@
                     </dd>
                 </dlentry>
             </dl>
-            <p>Whether an attribute takes a single value or multiple values from the enumeration is
-                part of the structural definition of the element. An attribute that is defined as
-                CDATA can take multiple values, while an attribute defined as NMTOKEN can take only
-                    one.<draft-comment author="Kristen J Eberlein" time="26 May 2019"
-                    audience="spec-editors">
-                    <p>This is very general info; is it needed? If so, find the best place to do a
-                        general explanation of "set of controlled values".</p>
-                </draft-comment></p>
+            <p>Whether an attribute takes a single value or multiple values
+        from the enumeration is part of the structural definition of the
+        element. An attribute that is defined as CDATA can take multiple
+        values, while an attribute defined as NMTOKEN can take only
+          one.<draft-comment author="Kristen J Eberlein" time="26 May 2019">
+          <p>This is very general info; is it needed? If so, find the best
+            place to do a general explanation of "set of controlled
+            values".</p>
+        </draft-comment></p>
         </section>
         <section id="specialization-hierachy">
             <title>Specialization hierarchy</title>
@@ -77,18 +79,8 @@
         </section>
         <example>
             <title>Example</title>
-            <p>The following subject scheme map contains three enumeration definitions:</p>
-            <ol>
-                <li>The permissible values for the <xmlatt>audience</xmlatt> attribute on the
-                        <xmlelement>draft-comment</xmlelement> element are restricted to the subject
-                    "values-audience-draft-comment". This means that the only allowed values are
-                        <keyword>spec-editors</keyword> and <keyword>tc-reviewers</keyword>.</li>
-                <li>The permissible values for <xmlatt>otherprops</xmlatt> are restricted to the
-                    subject <keyword>values-otherprops</keyword>. This means that the only valid
-                    value for <xmlatt>otherprops</xmlatt> is <keyword>examples</keyword>.</li>
-                <li>The enumeration for the <xmlatt>props</xmlatt> element is empty. No values are
-                    valid.</li>
-            </ol>
+            <p>The following code sample contains three enumeration
+        definitions:</p>
             <codeblock>&lt;subjectScheme>
     
     &lt;!-- DEFINE SETS OF CONTROLLED VALUES -->
@@ -125,6 +117,21 @@
     &lt;/enumerationdef>
 
 &lt;/subjectScheme></codeblock>
+      <ol>
+        <li>The permissible values for the <xmlatt>audience</xmlatt>
+          attribute on the <xmlelement>draft-comment</xmlelement> element
+          are restricted to the subject
+            <keyword>values-audience-draft-comment</keyword>. This means
+          that the only allowed values are <keyword>spec-editors</keyword>
+          and <keyword>tc-reviewers</keyword>.</li>
+        <li>The permissible values for <xmlatt>otherprops</xmlatt> are
+          restricted to the subject <keyword>values-otherprops</keyword>.
+          This means that the only valid value for
+            <xmlatt>otherprops</xmlatt> is
+          <keyword>examples</keyword>.</li>
+        <li>The enumeration for the <xmlatt>props</xmlatt> element is
+          empty. No values are valid.</li>
+      </ol>
         </example>
 </refbody>
 </reference>

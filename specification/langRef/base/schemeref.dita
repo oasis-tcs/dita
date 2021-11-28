@@ -2,16 +2,25 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="schemeref" xml:lang="en-us">
 <title><xmlelement>schemeref</xmlelement></title>
-<shortdesc >A <xmlelement>schemeref</xmlelement> element references another subject
-    scheme map. Typically, the referenced subject scheme defines a base set of controlled values;
-    the referencing map then extends the base set of controlled values. The values specified in the
-    subject scheme maps are merged; the result is equivalent to specifying all of the values in a
-    single map.</shortdesc>
+<shortdesc>A <xmlelement>schemeref</xmlelement> element references another
+    subject scheme map. Typically, the referenced subject scheme defines a
+    base set of controlled values; the referencing map then extends the
+    base set of controlled values.</shortdesc>
 <prolog><metadata>
 <keywords>
         <indexterm>subjectScheme<indexterm>elements<indexterm><xmlelement>schemeref</xmlelement></indexterm></indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>The values specified in the subject scheme maps are merged; the
+        result is equivalent to specifying all of the values in a single
+        map.</p>
+      <draft-comment time="27 November 2021" author="Kristen J Eberlein">
+        <p>If we don't already make a normative statement about this, we
+          should.</p>
+      </draft-comment>
+    </section>
     <section id="specialization-hierachy">
       <title>Specialization hierarchy</title>
       <p>The <xmlelement>schemeref</xmlelement> element is specialized from
@@ -25,16 +34,22 @@
                         conkeyref="reuse-attributes/ref-linkatts"/>, <xref
                         keyref="attributes-common/attr-keys"><xmlatt>keys</xmlatt></xref>, and <xref
                         keyref="attributes-common/attr-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
-        <p id="attr-exception" outputclass="attr-exception">For this element:<ul id="ul_pz3_w3r_ppb">
-            <li>The <xmlatt>format</xmlatt> attribute has a default value of
-                <keyword>ditamap</keyword>.</li>
+        <p id="attr-exception" outputclass="attr-exception">For this
+          element, certain attributes have default values:<ul
+            id="ul_pz3_w3r_ppb">
+            <li>The <xmlatt>format</xmlatt> attribute has a default value
+              of <keyword>ditamap</keyword>.</li>
             <li>The <xmlatt>type</xmlatt> attribute has a default value of
-              <keyword>scheme</keyword>.</li>
+                <keyword>scheme</keyword>.</li>
           </ul></p>
       </div>
     </section>
     <example id="example" otherprops="examples">
       <p>See <xref keyref="elements-subjectScheme"/>.</p>
+      <draft-comment author="Kristen J Eberlein" time="27 November 2021">
+        <p>Would it be good to have a separate example for this
+          element?</p>
+      </draft-comment>
     </example>
 </refbody>
 </reference>
