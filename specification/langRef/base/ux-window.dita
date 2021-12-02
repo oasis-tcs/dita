@@ -31,20 +31,26 @@
         attributes defined below.</p>
       <dl>
         <dlentry>
-          <dt id="uxatt-name"><xmlatt>name</xmlatt>
-            <ph conkeyref="reuse-attributes/required-attr"/></dt>
-          <dd>Specifies the value used to refer to this window
-            definition.</dd>
+          <dt id="uxatt-features"><xmlatt>features</xmlatt></dt>
+          <dd>Provides a list of other window features, such as size,
+            position, or scroll bars. Each feature name and value can not
+            contain any blank space, and each feature name and value is
+            separated by a comma or other delimiter character.</dd>
         </dlentry>
         <dlentry>
-          <dt id="uxatt-top"><xmlatt>top</xmlatt></dt>
-          <dd>Specifies the top position of the target help window, whether
-            relative to the calling window or to the entire display. The
-            value of this attribute is a real number optionally followed by
-            a unit of measure from the set of pc, pt, px, in, cm, mm, em
-            (picas, points, pixels, inches, centimeters, millimeters, and
-            ems respectively). The default unit is px (pixels).
-            <!--Possible values include: <userinput>5</userinput>, <userinput>5in</userinput>, and <userinput>10.5cm</userinput>. --></dd>
+          <dt id="uxatt-full-screen"><xmlatt>full-screen</xmlatt></dt>
+          <dd>Indicates whether the window is initially displayed in a
+            maximized state. Allowable values are <keyword>yes</keyword>,
+              <keyword>no</keyword>, and <xref
+              keyref="attributes-useconreftarget"
+              >-dita-use-conref-target</xref>. The default value is
+              <keyword>no</keyword>.</dd>
+        </dlentry>
+        <dlentry>
+          <dt id="uxatt-height"><xmlatt>height</xmlatt></dt>
+          <dd>Specifies the height of the window. <ph
+              conref="../../common/conref-attribute.dita#conref-attribute/height-width-units"
+            /></dd>
         </dlentry>
         <dlentry>
           <dt id="uxatt-left"><xmlatt>left</xmlatt></dt>
@@ -58,16 +64,10 @@
             <!--Possible values include: <userinput>5</userinput>, <userinput>5in</userinput>, and <userinput>10.5cm</userinput>. --></dd>
         </dlentry>
         <dlentry>
-          <dt id="uxatt-height"><xmlatt>height</xmlatt></dt>
-          <dd>Specifies the height of the window. <ph
-              conref="../../common/conref-attribute.dita#conref-attribute/height-width-units"
-            /></dd>
-        </dlentry>
-        <dlentry>
-          <dt id="uxatt-width"><xmlatt>width</xmlatt></dt>
-          <dd>Specifies the width of the window. <ph
-              conref="../../common/conref-attribute.dita#conref-attribute/height-width-units"
-            /></dd>
+          <dt id="uxatt-name"><xmlatt>name</xmlatt>
+            <ph conkeyref="reuse-attributes/required-attr"/></dt>
+          <dd>Specifies the value used to refer to this window
+            definition.</dd>
         </dlentry>
         <dlentry>
           <dt id="uxatt-on-top"><xmlatt>on-top</xmlatt></dt>
@@ -79,40 +79,42 @@
               <keyword>no</keyword>.</dd>
         </dlentry>
         <dlentry>
-          <dt id="uxatt-features"><xmlatt>features</xmlatt></dt>
-          <dd>Provides a list of other window features, such as size,
-            position, or scroll bars. Each feature name and value can not
-            contain any blank space, and each feature name and value is
-            separated by a comma or other delimiter character.</dd>
-        </dlentry>
-        <dlentry>
           <dt id="uxatt-relative"><xmlatt>relative</xmlatt></dt>
-          <dd>Indicates whether the window dimensions are relative to the calling window or the
-            entire target display. The default value is <keyword>no</keyword>. Allowable values are: <dl>
+          <dd>Indicates whether the window dimensions are relative to the
+            calling window or the entire target display. The default value
+            is <keyword>no</keyword>. The following are allowable values: <dl>
               <dlentry>
                 <dt>no</dt>
-                <dd>The window dimensions specified on this element are absolute positions; they are
-                  not relative to the calling window.</dd>
+                <dd>The window dimensions specified on this element are
+                  absolute positions; they are not relative to the calling
+                  window.</dd>
               </dlentry>
               <dlentry>
                 <dt>yes</dt>
-                <dd>The window dimensions specified on this element are relative to the calling
-                  window.</dd>
-              </dlentry>
-              <dlentry conkeyref="reuse-attributes/ditauseconref">
-                <dt/>
-                <dd/>
+                <dd>The window dimensions specified on this element are
+                  relative to the calling window.</dd>
               </dlentry>
             </dl></dd>
         </dlentry>
         <dlentry>
-          <dt id="uxatt-full-screen"><xmlatt>full-screen</xmlatt></dt>
-          <dd>Indicates whether the window is initially displayed in a
-            maximized state. Allowable values are <keyword>yes</keyword>,
-              <keyword>no</keyword>, and <xref
-              keyref="attributes-useconreftarget"
-              >-dita-use-conref-target</xref>. The default value is
-              <keyword>no</keyword>.</dd>
+          <dt id="uxatt-top"><xmlatt>top</xmlatt></dt>
+          <dd>Specifies the top position of the target help window, whether
+            relative to the calling window or to the entire display. The
+            value of this attribute is a real number optionally followed by
+            a unit of measure from the set of pc, pt, px, in, cm, mm, em
+            (picas, points, pixels, inches, centimeters, millimeters, and
+            ems respectively). The default unit is px (pixels).
+            <!--Possible values include: <userinput>5</userinput>, <userinput>5in</userinput>, and <userinput>10.5cm</userinput>. --></dd>
+        </dlentry>
+        <dlentry>
+          <dt id="uxatt-width"><xmlatt>width</xmlatt></dt>
+          <dd>Specifies the width of the window. <ph
+              conref="../../common/conref-attribute.dita#conref-attribute/height-width-units"
+            /></dd>
+        </dlentry>
+        <dlentry conkeyref="reuse-attributes/ditauseconref">
+          <dt/>
+          <dd/>
         </dlentry>
       </dl>
     </section>
