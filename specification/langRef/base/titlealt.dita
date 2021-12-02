@@ -21,31 +21,36 @@
         <li>When used in the <xmlelement>topicmeta</xmlelement> of a root
             <xmlelement>map</xmlelement> element, the alternative title
           applies to the map itself.</li>
-        <li>When used inside a <xmlelement>topicref</xmlelement>, the
-          alternative title applies to the resource referenced by the
-            <xmlelement>topicref</xmlelement>.</li>
+        <li>When used inside a <xmlelement>topicref</xmlelement>
+          <ph rev="review-a">element</ph>, the alternative title applies to
+          the resource <ph rev="review-a">that is</ph> referenced by the
+            <xmlelement>topicref</xmlelement>
+          <ph rev="review-a">element</ph>.</li>
         <li>When the referenced resource is a DITA topic, the alternative
-          titles from the <xmlelement>topicref</xmlelement> are merged with
-          those authored directly in the topic, with the alternative titles
-          from the <xmlelement>topicref</xmlelement> taking higher
-          priority.</li>
+          titles from the <xmlelement>topicref</xmlelement>
+          <ph rev="review-a">element</ph> are merged with those authored
+          directly in the topic, with the alternative titles from the
+            <xmlelement>topicref</xmlelement>
+          <ph rev="review-a">element</ph> taking higher priority.</li>
       </ul>
             <p>The roles of an alternative title are specified by the
           <xmlatt>title-role</xmlatt> attribute. Multiple roles can be
         specified, separated by white space. An alternative title specifies
-        at least one role.</p>
-      <p>Other tokens for the <xmlatt>title-role</xmlatt> attribute can be
-        defined for specific purposes. The base DITA vocabulary contains an
-        alternative titles domain that contains convenience elements that
-        are equivalent to <xmlelement>titlealt</xmlelement> elements with
-        the <xmlatt>title-role</xmlatt> attribute set to the tokens
-        outlined below.</p>
-            <p>Some roles might not be meaningful in certain contexts. For
+        at least one role. Other tokens for the <xmlatt>title-role</xmlatt>
+        attribute can be defined for specific purposes. </p>
+      <p>Some roles might not be meaningful in certain contexts. For
         example, a navigational alternate title is not meaningful in the
         context of a <xmlelement>topicgroup</xmlelement> element, since the
         element is not part of the navigation <ph rev="review-a"
           >structure</ph> of a publication. Such alternate titles are
         ignored by processors.</p>
+      <p>The base DITA vocabulary contains an alternative titles domain
+        that contains convenience elements that are equivalent to
+          <xmlelement>titlealt</xmlelement> elements with the
+          <xmlatt>title-role</xmlatt> attribute set to the tokens outlined
+          <ph rev="review-a">in <xref
+            href="#titlealt/processing-expectations" format="dita"
+        /></ph>.</p>
         </section>
         <section id="processing-expectations">
             <title>Processing expectations</title>
@@ -136,6 +141,9 @@
     &lt;titlealt title-role="subtitle">Publication subtitle&lt;/titlealt>
   &lt;/topicmeta>
 &lt;/map></codeblock>
+        <p rev="review-c">An identical result could be achieved by using
+          the <xmlelement>subtitle</xmlelement> element that is provided by
+          the alternative titles domain.</p>
       </fig>
             <fig>
                 <title>Multiple alternative titles and their <ph
@@ -160,6 +168,15 @@
             as to the contents of the referenced DITA resource. This title
             is not used in output.</li>
         </ol>
+        <p rev="review-a">If the alternative-titles domain is available,
+          the following markup would be equivalent:</p>
+        <codeblock rev="review-a">&lt;topicref keys="about" href="about.dita">
+  &lt;topicmeta>
+    &lt;linktitle>About the product&lt;/navtitle>
+    &lt;searchtitle">About&lt;/searchtitle>
+    &lt;titlehint>About the Acme TextMax 5000&lt;/titlehint>
+  &lt;/topicmeta>
+&lt;/topicref></codeblock>
             </fig>
         </example>
     </refbody>
