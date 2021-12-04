@@ -4,8 +4,9 @@
  "reference.dtd">
 <reference id="subjectHead" xml:lang="en-us">
 <title><xmlelement>subjectHead</xmlelement></title>
-<shortdesc>The <xmlelement>subjectHead</xmlelement> element provides a heading for a group of
-    subjects, for use if the scheme is displayed. \</shortdesc>
+<shortdesc>The <xmlelement>subjectHead</xmlelement> element provides a
+    heading for a group of subjects, for use if the subject scheme is
+    displayed. \</shortdesc>
 <prolog><metadata>
 <keywords>
         <indexterm>subjectScheme<indexterm>
@@ -15,10 +16,12 @@
     <section id="usage-information">
       <title>Usage information</title>
       <p>The heading provided by the <xmlelement>subjectHead</xmlelement>
-        element might be displayed as part of a scheme that is rendered to
-        let a user select subjects as part of faceted browsing.</p>
-      <p>The <xmlelement>subjectHead</xmlelement> element itself does not reference a file and
-        cannot be referenced as a key, so it does not define any controlled values.</p>
+        element might be displayed when a subject scheme is rendered to let
+        users select subjects as part of a faceted browsing experience.</p>
+      <p>The <xmlelement>subjectHead</xmlelement> element does not
+        reference a resource and cannot specify either the
+          <xmlatt>keys</xmlatt> or <xmlatt>keyref</xmlatt> attribute, so it
+        does not define any controlled values.</p>
     </section>
     <section id="specialization-hierachy">
       <title>Specialization hierarchy</title>
@@ -32,22 +35,28 @@
             ><xmlatt>toc</xmlatt></xref>, <xref keyref="attributes-common/attr-collection-type"
             ><xmlatt>collection-type</xmlatt></xref>, and <xref
           keyref="attributes-common/attr-linking"><xmlatt>linking</xmlatt></xref>. </p>
-      <p id="attr-exception" outputclass="attr-exception">For this element:<ul id="ul_pz3_w3r_ppb">
-          <li>The <xmlatt>collection-type</xmlatt> attribute has an expected processing default
-            value of <keyword>unordered</keyword>, although this value is not defaulted in the
-            grammar files. This element limits the available values for
-              <xmlatt>collection-type</xmlatt> to <keyword>unordered</keyword>,
-              <keyword>sequence</keyword>, and <keyword>-dita-use-conref-target</keyword>.</li>
-          <li>The <xmlatt>linking</xmlatt> has a default value of <keyword>normal</keyword>, and no
-            other values are valid.</li>
+      <p id="attr-exception" outputclass="attr-exception">For this element,
+        the following considerations apply:<ul id="ul_pz3_w3r_ppb">
+          <li>The <xmlatt>collection-type</xmlatt> attribute has an
+            expected processing default value of
+              <keyword>unordered</keyword>, although this value is not
+            defaulted in the grammar files. This element limits the
+            available values for <xmlatt>collection-type</xmlatt> to
+              <keyword>unordered</keyword>, <keyword>sequence</keyword>,
+            and <keyword>-dita-use-conref-target</keyword>.</li>
+          <li>The <xmlatt>linking</xmlatt> attribute has a default value of
+              <keyword>normal</keyword>, and no other values are
+            valid.</li>
         </ul></p>
     </section>
-<example conkeyref="reuse-examples/example-subjectHead" id="example" otherprops="examples"/>
-    <example>
-      <draft-comment author="Kristen J Eberlein" time="27 November 2021">
-        <p>The above code sample is conrefed; where else is it used?</p>
-      </draft-comment>
+    <example id="example">
+      <title>Example</title>
+      <p>In the following code sample, the
+          <xmlelement>subjectHead</xmlelement> element groups together
+        several subjects and a label:</p>
+      <codeblock conkeyref="reuse-examples/example-subjectHead-subjectHeadMeta"/>
     </example>
+    <example/>
 </refbody>
 </reference>
 
