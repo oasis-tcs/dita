@@ -2,16 +2,19 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
  "reference.dtd">
 <reference id="param" xml:lang="en-us">
-<title><xmlelement>param</xmlelement></title>
-<shortdesc>The <xmlelement>param</xmlelement> (parameter) element specifies a set of values that
-    might be required by an <xmlelement>object</xmlelement> at runtime.</shortdesc>
-<prolog><metadata>
-<keywords>
+  <title><xmlelement>param</xmlelement></title>
+  <shortdesc>The <xmlelement>param</xmlelement> (parameter) element
+    specifies a set of values that might be required by an
+      <xmlelement>object</xmlelement> at runtime.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
         <indexterm>elements<indexterm>body<indexterm><xmlelement>param</xmlelement></indexterm></indexterm></indexterm>
         <indexterm>objects<indexterm>parameters</indexterm></indexterm>
-</keywords>
-</metadata></prolog>
-<refbody>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody>
     <section id="usage-information">
       <title>Usage information</title>
       <p>Any number of <xmlelement>param</xmlelement> elements might appear
@@ -28,7 +31,7 @@
       <title>Processing expectations</title>
       <p>The <xmlatt>keyref</xmlatt> and <xmlatt>valuetype</xmlatt>
         attributes on <xmlelement>param</xmlelement> have the following <ph
-          rev="review-3">expectations</ph>:<ul id="ul_evg_2gj_nrb">
+          rev="review-c">expectations</ph>:<ul id="ul_evg_2gj_nrb">
           <li>If <xmlatt>valuetype</xmlatt> is specified but is not set to
             "ref", the <xmlatt>keyref</xmlatt> attribute is ignored.</li>
           <li>When <xmlatt>valuetype</xmlatt> is not specified and
@@ -52,27 +55,33 @@
                   <xmlelement>param</xmlelement> element.</li>
             </ol></li>
         </ul></p>
-      <p>In addition, the following expectations apply to the <xmlatt>type</xmlatt> attribute:<ol
-          id="ol_svg_2c2_z1b">
-          <li>When <xmlatt>valuetype</xmlatt> is set to "ref", the <xmlatt>type</xmlatt> attribute
-            directly specifies the content type of the resource designated by
-            <xmlatt>value</xmlatt>.</li>
-          <li>Otherwise, if <xmlatt>type</xmlatt> is specified and <xmlatt>keyref</xmlatt> is
-            specified and resolvable, this attribute specifies the content type of the resource
-            designated by <xmlatt>keyref</xmlatt>.</li>
-          <li>Otherwise, if <xmlatt>type</xmlatt> is not specified and <xmlatt>keyref</xmlatt> is
-            specified and is resolvable, the effective type value specified for the key that is
-            named by the <xmlatt>keyref</xmlatt> attribute is used as the value of the
+      <p>In addition, the following expectations apply to the
+          <xmlatt>type</xmlatt> attribute:<ol id="ol_svg_2c2_z1b">
+          <li>When <xmlatt>valuetype</xmlatt> is set to "ref", the
+              <xmlatt>type</xmlatt> attribute directly specifies the
+            content type of the resource designated by
+              <xmlatt>value</xmlatt>.</li>
+          <li>Otherwise, if <xmlatt>type</xmlatt> is specified and
+              <xmlatt>keyref</xmlatt> is specified and resolvable, this
+            attribute specifies the content type of the resource designated
+            by <xmlatt>keyref</xmlatt>.</li>
+          <li>Otherwise, if <xmlatt>type</xmlatt> is not specified and
+              <xmlatt>keyref</xmlatt> is specified and is resolvable, the
+            effective type value specified for the key that is named by the
+              <xmlatt>keyref</xmlatt> attribute is used as the value of the
               <xmlatt>type</xmlatt> attribute.</li>
         </ol></p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
-      <p>The following attributes are available on this element: <ph conkeyref="reuse-attributes/ref-universalatts"/> and the attributes defined below.</p>
+      <p>The following attributes are available on this element: <ph
+          conkeyref="reuse-attributes/ref-universalatts"/> and the
+        attributes defined below.</p>
       <dl>
         <dlentry>
           <dt id="attr-keyref"><xmlatt>keyref</xmlatt></dt>
-          <dd>Specifies a key reference to the thing the parameter references.</dd>
+          <dd>Specifies a key reference to the thing the parameter
+            references.</dd>
         </dlentry>
         <dlentry>
           <dt id="attr-name"><xmlatt>name</xmlatt>
@@ -81,17 +90,19 @@
         </dlentry>
         <dlentry>
           <dt id="attr-type"><xmlatt>type</xmlatt></dt>
-          <dd>Specifies for a user agent the type of values that will be found at the URI designated
-            by <xmlatt>value</xmlatt>. <ph conkeyref="reuse-attributes/nonstandard-type"/></dd>
+          <dd>Specifies for a user agent the type of values that will be
+            found at the URI designated by <xmlatt>value</xmlatt>. <ph
+              conkeyref="reuse-attributes/nonstandard-type"/></dd>
         </dlentry>
         <dlentry>
           <dt id="attr-value"><xmlatt>value</xmlatt></dt>
-          <dd>Specifies the value of a run-time parameter that is described by the
-              <xmlatt>name</xmlatt> attribute.</dd>
+          <dd>Specifies the value of a run-time parameter that is described
+            by the <xmlatt>name</xmlatt> attribute.</dd>
         </dlentry>
         <dlentry>
           <dt id="attr-valuetype"><xmlatt>valuetype</xmlatt></dt>
-          <dd>Specifies the type of the <xmlatt>value</xmlatt> attribute. Allowed values are: <dl>
+          <dd>Specifies the type of the <xmlatt>value</xmlatt> attribute.
+            Allowed values are: <dl>
               <dlentry>
                 <dt>data </dt>
                 <dd>A value of <keyword>data</keyword> means that the value
@@ -123,6 +134,8 @@
         </dlentry>
       </dl>
     </section>
-    <example id="example" otherprops="examples"><title>Example</title><p>See <xref keyref="elements-object"/>.</p></example>
-</refbody>
+    <example id="example" otherprops="examples"
+        ><title>Example</title><p>See <xref keyref="elements-object/example"
+            ><xmlelement>object</xmlelement></xref>.</p></example>
+  </refbody>
 </reference>
