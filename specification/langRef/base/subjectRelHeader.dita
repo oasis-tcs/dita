@@ -3,12 +3,9 @@
  "reference.dtd">
 <reference id="subjectRelHeader" xml:lang="en-us">
 <title><xmlelement>subjectRelHeader</xmlelement></title>
-  <abstract>
-    <shortdesc>(Old) The <xmlelement>subjectRelHeader</xmlelement> element
-      specifies the roles played by subjects in associations established by
-      a <xmlelement>subjectRelTable</xmlelement>.</shortdesc>
-    <shortdesc/>
-  </abstract>
+  <shortdesc>A subject relationship-table header is the header in a subject
+    relationship table. It contains column definitions for the subject
+    relationship table.</shortdesc>
 <prolog><metadata>
 <keywords>
                 <indexterm>subjectScheme<indexterm>
@@ -17,12 +14,11 @@
 <refbody>
         <section id="usage-information">
             <title>Usage information</title>
-            <p>You use the <xmlelement>subjectRelHeader</xmlelement> element to supply a header row
-                for a subject relationship table when you want to identify the roles played by the
-                subjects in each column. Each cell in the header row identifies a subject topic that
-                defines a role. When specializing the <xmlelement>subjectRelTable</xmlelement>
-                element, you can accomplish the same purpose by specializing the cells within the
-                rows to enforce the roles.</p>
+            <p>Each cell in the header row identifies a subject topic that
+        defines a role. When specializing the
+          <xmlelement>subjectRelTable</xmlelement> element, you can
+        accomplish the same purpose by specializing the cells within the
+        rows to enforce the roles.</p>
         </section>
         <section id="specialization-hierachy">
             <title>Specialization hierarchy</title>
@@ -30,8 +26,21 @@
                     <xmlelement>relrow</xmlelement>. It is defined in the subject scheme module.</p>
       <draft-comment author="Kristen J Eberlein">
         <p>Why wasn't this element specialized from
-            <xmlelement>relheader</xmlelement>? Is that something we should
-          correct for DITA 2.0?</p>
+            <xmlelement>relheader</xmlelement>?</p>
+        <p>I think Erik Hennum wanted a different content model than
+            <xmlelement>relheader</xmlelement> allowed:</p>
+        <ul>
+          <li><xmlelement>relheader</xmlelement> contains one or more
+              <xmlelement>relcolspec</xmlelement>;
+              <xmlelement>relcolspec</xmlelement> contains an optional
+            title, optional topicmeta. and zero or more
+              <xmlelement>topicref</xmlelement>.</li>
+          <li><xmlelement>subjectRelHeader</xmlelement> has the same
+            content model as <xmlelement>subjectRole</xmlelement> (subject
+            reltable row): one or more <xmlelement>subjectRel</xmlelement>
+            (subject reltable cell).</li>
+        </ul>
+        <p>I'm honestly not sure what the use cases for this were.</p>
       </draft-comment>
         </section>
         <section id="attributes">
@@ -39,10 +48,21 @@
             <p conkeyref="reuse-attributes/only-universal"/>
         </section>
 <example id="example" otherprops="examples">
-            <title>Example</title>
-            <p>For a complete example in the context of the
-                <xmlelement>subjectRelTable</xmlelement>, see <xref
-                    keyref="elements-subjectRelTable/example"/>.</p>
+            <title>Examples</title>
+      <p>The section contains examples of how the
+          <xmlelement>subjectRelHeader</xmlelement> can be used.</p>
+      <fig>
+        <title>Simple example of a subject relationship-table
+          header</title>
+        <p>See <xref keyref="elements-subjectRelTable/example"/> in the
+            <xmlelement>subjectRelTable</xmlelement> topic.</p>
+      </fig>
+      <fig>
+        <title>More complex example of a  subject relationship-table
+          header</title>
+      </fig>
+      <p>The following code sample shows XXX:</p>
+      <codeblock>Code sample needed here</codeblock>
         </example>
 </refbody>
 </reference>
