@@ -16,9 +16,9 @@
    <refbody>
       <section id="usage-information">
          <title>Usage information</title>
-      <p>Use this section to provide additional information that is necessary for a reader to
-        understand the element. This section focuses on information that is necessary for an author
-        writing in DITA to understand. For example:</p>
+      <p>Use this section to provide additional information <ph
+          rev="review-c">that is necessary for a DITA practitioner</ph> to
+        understand. For example:</p>
       <lq>The <xmlelement>dita</xmlelement> element cannot be specialized.
         It is provided as a container that can manage any sequence of any
         type of topic. Topic nesting rules can be configured in the
@@ -66,6 +66,14 @@
         topic will use the short description from the map for any link
         previews provided with the link, while the rendered topic continues
         to use the short description inside the topic.</lq>
+      <div rev="review-c">
+        <p>If the processing expectations for the element are described in
+          the archSpec, link to that content. For example, the following
+          paragraph is the sole content of "Processing expectations" topic
+          in the <xmlelement>keytext</xmlelement> topic:</p>
+        <lq>See "Processing key references to generate text or link
+          text".</lq>
+      </div>
       </section>
       <section id="specialization-hierarchy">
          <title>Specialization hierarchy</title>
@@ -103,6 +111,28 @@
         spaces.</p>
       <p>If content is "snipped" from the code sample, it should be
         indicated with <codeph>&lt;!-- ... --></codeph>.</p>
+      <div rev="review-c">
+        <p>If the "Example" section points to another topic, instead of
+          containing its own example, be sure and hyperlink directly to the
+          other topic. Keep the wording simple, for example "See
+          &lt;topicA>." or "See &lt;topicA> and &lt;topicB>."</p>
+        <p>Use the following markup conventions:</p>
+        <dl>
+          <dlentry>
+            <dt>Linking to the entire "Example" section</dt>
+            <dd>Cross reference to the "Example" section, and insert
+                <codeph>&lt;xmlelement>element-name&lt;/xmlelement></codeph>
+              inside the cross reference.</dd>
+          </dlentry>
+          <dlentry>
+            <dt>Linking to a specific example</dt>
+            <dd>Cross reference to the (first) specific figure that
+              contains an appropriate example. Insert
+                <codeph>&lt;xmlelement>element-name&lt;/xmlelement></codeph>
+              inside the cross reference.</dd>
+          </dlentry>
+        </dl>
+      </div>
     </example>
    </refbody>
 </reference>
