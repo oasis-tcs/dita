@@ -4,9 +4,9 @@
  "reference.dtd">
 <reference id="subjectRelTable" xml:lang="en-us">
 <title><xmlelement>subjectRelTable</xmlelement></title>
-<shortdesc>The <xmlelement>subjectRelTable</xmlelement> element is a specialized relationship table
-    which establishes relationships between the subjects in different columns of the same
-    row.</shortdesc>
+<shortdesc>The <xmlelement>subjectRelTable</xmlelement> element is a
+    specialized relationship table that establishes relationships between
+    subjects.</shortdesc>
 <prolog><metadata>
 <keywords>
         <indexterm>subjectScheme<indexterm>
@@ -15,10 +15,20 @@
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>This element provides an efficient way to author non-hierarchical relationships between
-        subjects. Tools (such as search tools) that use subject relationships to find related
-        content might use these associative relationships in a similar way to the hierarchical
-        relationships.</p>
+      <p>Subject relationship table provide an efficient way to author
+        non-hierarchical relationships between subjects. Tools that use
+        subject relationships to find related content, such as search
+        tools, might use these associative relationships.</p>
+      <draft-comment author="Kristen J Eberlein" time="04 December 2021">
+        <p>Should the above content be moved into the shortdesc?S</p>
+        <p>Should we state that the subject relationship table functions in
+          the same way as a reltable? Are there some of the rendering and
+          processing expectations for reltable that we need to
+          reiterate?</p>
+        <p>each <xmlelement>subjectRel</xmlelement> represents a single row,
+          and each <xmlelement>subjectRole</xmlelement> represents a
+          cell.</p>
+      </draft-comment>
     </section>
     <section id="specialization-hierachy">
       <title>Specialization hierarchy</title>
@@ -31,13 +41,41 @@
     </section>
     <example id="example" otherprops="examples">
       <title>Example</title>
-      <p>The subject relationship table in this example establishes relationships between operating
-        systems and applications. Based on the <xmlelement>subjectRole</xmlelement> element,
-        subjects in the first column are operating systems which are the environment for an
-        application, while subjects in the second column are applications that run in that
-        environment. For a user interested in content about the operating system, content about the
-        applications might also be relevant.</p>
-      <codeblock>&lt;subjectScheme>
+      <p>The following code sample shows a subject relationship table that
+        establishes relationships between operating systems and
+        applications. Subjects in the first column are the operating
+        systems, and subjects in the second column are applications.</p>
+      <codeblock>
+  &lt;subjectRelTable>
+    &lt;subjectRelHeader>
+      &lt;subjectRole>
+        &lt;subjectdef keyref="operatingSystem"/>
+      &lt;/subjectRole>
+      &lt;subjectRole>
+        &lt;subjectdef keyref="application"/>
+      &lt;/subjectRole>
+    &lt;/subjectRelHeader>
+    &lt;subjectRel>
+      &lt;subjectRole>
+        &lt;subjectdef keyref="linuxOS"/>
+        &lt;subjectdef keyref="windowsOS"/>
+      &lt;/subjectRole>
+      &lt;subjectRole>
+        &lt;subjectdef keyref="eclipseIDE"/>
+        &lt;subjectdef keyref="firefoxBrowser"/>
+      &lt;/subjectRole>
+    &lt;/subjectRel>
+    &lt;subjectRel>
+      &lt;subjectRole>
+        &lt;subjectdef keyref="windowsOS"/>
+      &lt;/subjectRole>
+      &lt;subjectRole>
+        &lt;subjectdef keyref="ieBrowser"/>
+        &lt;subjectdef keyref="visualStudioIDE"/>
+      &lt;/subjectRole>
+    &lt;/subjectRel>
+  &lt;/subjectRelTable></codeblock>
+      <!--<codeblock>&lt;subjectScheme>
   &lt;hasKind>
     &lt;subjectdef keys="operatingSystem">
         &lt;subjectdef keys="linuxOS"/>
@@ -54,7 +92,6 @@
         &lt;/subjectdef>
     &lt;/subjectdef>
   &lt;/hasKind>
-  &lt;!-- ... -->
   &lt;subjectRelTable>
     &lt;subjectRelHeader>
       &lt;subjectRole>
@@ -88,52 +125,49 @@
       &lt;/subjectRole>
     &lt;/subjectRel>
   &lt;/subjectRelTable>
-&lt;/subjectScheme></codeblock>
-      <p>A table view of the <xmlelement>subjectRelTable</xmlelement>
-        <ph >might</ph> look like this; each
-          <xmlelement>subjectRel</xmlelement> represents a single row, and each
-          <xmlelement>subjectRole</xmlelement> represents a cell.<table id="table_em3_syg_dn">
-          <title><xmlelement>subjectRelTable</xmlelement> as a table</title>
-          <tgroup cols="2">
-            <colspec colname="col1"/>
-            <colspec colname="col2"/>
-            <thead>
-              <row valign="bottom">
-                <entry colname="col1">
-                  <codeblock><i>&lt;subjectdef keyref="operatingSystem">
- &lt;hasRelated keyref="environmentFor">
-  &lt;subjectdef keyref="application"/>
- &lt;/hasRelated>
-&lt;/subjectdef></i></codeblock>
-                </entry>
-                <entry colname="col2">
-                  <codeblock><i>&lt;subjectdef keyref="application"/></i></codeblock>
-                </entry>
-              </row>
-            </thead>
-            <tbody>
-              <row>
-                <entry colname="col1">
-                  <codeblock>&lt;subjectdef keyref="linuxOS"/>
+&lt;/subjectScheme></codeblock>-->
+      <p>A table view of the subject relationship table might look like
+        this:</p><simpletable id="table_em3_syg_dn">
+        
+        
+          
+          
+          
+            <sthead>
+              <stentry>
+                <codeblock>&lt;subjectdef keyref="operatingSystem"/></codeblock>
+              </stentry>
+              <stentry>
+                <codeblock>&lt;subjectdef keyref="application"/></codeblock>
+              </stentry>
+            </sthead>
+          
+          
+            <strow>
+              <stentry>
+                <codeblock>&lt;subjectdef keyref="linuxOS"/>
 &lt;subjectdef keyref="windowsOS"/></codeblock>
-                </entry>
-                <entry colname="col2">
-                  <codeblock>&lt;subjectdef keyref="eclipseIDE"/>
+              </stentry>
+              <stentry>
+                <codeblock>&lt;subjectdef keyref="eclipseIDE"/>
 &lt;subjectdef keyref="firefoxBrowser"/></codeblock>
-                </entry>
-              </row>
-              <row>
-                <entry colname="col1">
-                  <codeblock>&lt;subjectdef keyref="windowsOS"/></codeblock>
-                </entry>
-                <entry colname="col2">
-                  <codeblock>&lt;subjectdef keyref="ieBrowser"/>
+              </stentry>
+            </strow>
+            <strow>
+              <stentry>
+                <codeblock>&lt;subjectdef keyref="windowsOS"/></codeblock>
+              </stentry>
+              <stentry>
+                <codeblock>&lt;subjectdef keyref="ieBrowser"/>
 &lt;subjectdef keyref="visualStudioIDE"/></codeblock>
-                </entry>
-              </row>
-            </tbody>
-          </tgroup>
-        </table></p>
+              </stentry>
+            </strow>
+          
+        
+      </simpletable>
+      <draft-comment author="Kristen J Eberlein" time="04 December 2021">
+        <p>Need to replace the above DITA table with a screen capture.</p>
+      </draft-comment>
     </example>
 </refbody>
 </reference>
