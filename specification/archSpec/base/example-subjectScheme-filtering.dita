@@ -20,11 +20,12 @@
  </prolog>
  <conbody>
   <example id="example" otherprops="examples">
-   <p>A company defines a subject category for "Operating system", with a key set to
-     <keyword>os</keyword>. There are sub-categories for Linux, Windows, and z/OS, as well as
-    specific Linux variants: Red Hat Linux and SuSE Linux. The company then binds the values that
-    are enumerated in the "Operating system" category to the <xmlatt>platform</xmlatt>
-    attribute.</p>
+   <p>A company defines a subject category for "Operating system", with a
+        key set to <keyword>os</keyword>. There are sub-categories for
+        Linux, Windows, and z/OS, as well as specific Linux variants: Red
+        Hat Linux and SuSE Linux. The company then binds the values that
+        are enumerated in the "Operating system" category to the
+          <xmlatt>platform</xmlatt> attribute:</p>
    <codeblock conkeyref="reuse-code-samples/basic-subjectScheme"/>
    <p>The enumeration limits valid values for the <xmlatt>platform</xmlatt> attribute to the
     following: <keyword>linux</keyword>, <keyword>redhat</keyword>, <keyword>suse</keyword>,
@@ -36,6 +37,27 @@
     processed by a processor. The first two columns provide the values specified in the DITAVAL
     file; the third and fourth columns indicate the results of the filtering or flagging
     operation.</p>
+      <draft-comment author="Kristen J Eberlein" time="05 December 2021">
+        <p>This table uses spans. Does it need any of the "accessibility
+          markup" introduced in DITA 1.3? (My guess is that it does not.)
+          If it does, did we add it to the markup in the 1.3 time
+          frame?</p>
+        <p>Also, I am confused about a few of the table rows and want to
+          talk them over before this goes out for review:</p>
+        <ul>
+          <li>Row 2, column 3: Linux set to exclude, but Red Hat set to
+            "include". Result: "Red Hat" is excluded.</li>
+          <li>Row 4, column 3: Linux set to include, but Red Hat set to
+            "exclude". Result: "Red Hat" is excluded. So, the Red Hat value
+            overrides in this situation? Inclusion can be override, but
+            exclusion (set on Linux) cannot?</li>
+          <li>Default values for can be set in a DITAVAL file? See rows
+            12-15, column 4.</li>
+        </ul>
+        <p>We also need to check the wording in "Processing controlled
+          attribute values," because it suggests that values "can be
+          explicitly set to be included."</p>
+      </draft-comment>
    <table colsep="1" rowsep="1">
     <tgroup cols="4">
      <colspec colname="col1" colwidth="1*"/>
