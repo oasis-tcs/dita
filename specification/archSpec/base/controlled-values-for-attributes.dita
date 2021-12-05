@@ -30,9 +30,10 @@
             elements define the controlled values.</p>
         <p>The subject definitions can include additional information within a
                 <xmlelement>topicmeta</xmlelement> element to clarify the meaning of a value:<ul>
-                <li>A <xmlelement>titlealt</xmlelement> element with a <xmlatt>title-role</xmlatt>
-                    of <codeph>navigation</codeph> (e.g. the <xmlelement>navtitle</xmlelement>
-                    element) can provide a more readable value name.</li>
+                <li>A <xmlelement>navtitle</xmlelement> (or a
+            <xmlelement>titlealt</xmlelement> element with a
+            <xmlatt>title-role</xmlatt> of <codeph>navigation</codeph>) can
+          provide a more readable name for the controlled value.</li>
                 <li>The <xmlelement>shortdesc</xmlelement> element can provide a definition.</li>
             </ul></p>
         <p>In addition, the <xmlelement>subjectdef</xmlelement> element can reference a more
@@ -53,11 +54,17 @@
                     PDF, or other readable catalog to help authors better understand the controlled
                     values.</li>
             </ul></p>
+    <draft-comment author="Kristen J Eberlein" time="05 December 2021">
+      <p>Now that we do not have to be concerned bout backwards
+        compatibility, do we want to change some of these MAYs to
+        SHOULDs?</p>
+    </draft-comment>
         <example  id="example" otherprops="examples">
             <title>Example: Controlled values that provide additional information about the
                 subject</title>
-            <p>The following code fragment illustrates how a subject definition can provide a richer
-                level of information about a controlled value:</p>
+            <p>The following code sample illustrates how a subject
+        definition can provide a richer level of information about a
+        controlled value:</p>
             <codeblock>&lt;subjectdef keys="terminology" href="https://www.oasis-open.org/policies-guidelines/keyword-guidelines">
   &lt;subjectdef keys="rfc2119" href="rfc-2119.dita">
     &lt;topicmeta>
@@ -73,11 +80,15 @@
   &lt;/subjectdef>
 &lt;/subjectdef></codeblock>
             <p>The content of the <xmlelement>navtitle</xmlelement> and
-                    <xmlelement>shortdesc</xmlelement> elements provide additional information that
-                a processor might display to users as they select attribute values or classify
-                content. The resources referenced by the <xmlatt>href</xmlatt> attributes provide
-                even more detailed information; a processor might render expandable links as part of
-                a user interface that implements a progressive disclosure strategy.</p>
+          <xmlelement>shortdesc</xmlelement> elements provide additional
+        information that a processor might display to users as they select
+        attribute values or classify content. The resources referenced by
+        the <xmlatt>href</xmlatt> attributes provide even more detailed
+        information. A processor might render expandable links as part of a
+        user interface that implements a progressive disclosure strategy,
+        or an authoring tool might include the navigation title and short
+        description in a window where the user selects a controlled
+        value.</p>
         </example>
     </conbody>
 </concept>
