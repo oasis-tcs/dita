@@ -50,15 +50,23 @@
           <dt>Specify the default value for an attribute or element and
             attribute pair</dt>
           <dd>When the <xmlelement>enumerationdef</xmlelement> element
-            contains a <xmlelement>defaultSubject</xmlelement> element,
-            XXX.</dd>
-          <dd>
-            <draft-comment author="Kristen J Eberlein"
-              time="03 December 2021">
-              <p>See my draft comment in <xref href="defaultSubject.dita"
-                />.</p>
-            </draft-comment>
-          </dd>
+            contains a <xmlelement>defaultSubject</xmlelement> element, the
+            value specified by the <xmlelement>defaultSubject</xmlelement>
+            element is assumed when no attribute value is explicitly set in
+            the DITA source<div otherprops="examples">
+              <p>For example, given the following
+                  <xmlelement>enumerationdef</xmlelement> element, any
+                draft comment in the DITA source that does not explicitly
+                set the <xmlatt>audience</xmlatt> attribute is assumed to
+                have a value of <keyword>spec-editors</keyword>:</p>
+              <codeblock>&lt;enumerationdef>
+    &lt;elementdef name="draft-comment"/>
+    &lt;attributedef name="audience"/>
+    &lt;subjectdef keyref="values-audience-draft-comment"/>
+    &lt;defaultSubject keyref="spec-editors"/>
+&lt;/enumerationdef></codeblock>
+            </div></dd>
+          <dd/>
         </dlentry>
                 <dlentry>
                     <dt>Specify that an attribute is not valid.</dt>
@@ -68,13 +76,7 @@
                     </dd>
                 </dlentry>
             </dl>
-            <p>Whether an attribute takes a single value or multiple values
-        from the enumeration is part of the structural definition of the
-        element. An attribute that is defined as CDATA can take multiple
-        values, while an attribute defined as NMTOKEN can take only
-          one.<draft-comment author="Kristen J Eberlein" time="26 May 2019">
-          <p>The above paragraph is very general info; is it needed?</p>
-        </draft-comment></p>
+      <!--<p>Whether an attribute takes a single value or multiple values from the enumeration is part of the structural definition of the element. An attribute that is defined as CDATA can take multiple values, while an attribute defined as NMTOKEN can take only one.<draft-comment author="Kristen J Eberlein" time="26 May 2019"><p>The above paragraph is very general info; is it needed?</p></draft-comment></p>-->
         </section>
         <section id="specialization-hierachy">
             <title>Specialization hierarchy</title>
