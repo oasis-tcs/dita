@@ -52,8 +52,8 @@
           <dd>When the <xmlelement>enumerationdef</xmlelement> element
             contains a <xmlelement>defaultSubject</xmlelement> element, the
             value specified by the <xmlelement>defaultSubject</xmlelement>
-            element is assumed when no attribute value is explicitly set in
-            the DITA source<div otherprops="examples">
+            element is assumed when no attribute value is explicitly set in the DITA source.
+<div otherprops="examples">
               <p>For example, given the following
                   <xmlelement>enumerationdef</xmlelement> element, any
                 draft comment in the DITA source that does not explicitly
@@ -66,7 +66,7 @@
     &lt;defaultSubject keyref="spec-editors"/>
 &lt;/enumerationdef></codeblock>
             </div></dd>
-          <dd/>
+
         </dlentry>
                 <dlentry>
                     <dt>Specify that an attribute is not valid.</dt>
@@ -76,7 +76,7 @@
                     </dd>
                 </dlentry>
             </dl>
-      <!--<p>Whether an attribute takes a single value or multiple values from the enumeration is part of the structural definition of the element. An attribute that is defined as CDATA can take multiple values, while an attribute defined as NMTOKEN can take only one.<draft-comment author="Kristen J Eberlein" time="26 May 2019"><p>The above paragraph is very general info; is it needed?</p></draft-comment></p>-->
+
         </section>
         <section id="specialization-hierachy">
             <title>Specialization hierarchy</title>
@@ -118,6 +118,7 @@
         &lt;elementdef name="draft-comment"/>
         &lt;attributedef name="audience"/>
         &lt;subjectdef keyref="values-audience-draft-comment"/>
+        &lt;defaultSubject keyref="spec-editors"/>
     &lt;/enumerationdef>
     
     &lt;!-- 2. Binding for @otherprops -->
@@ -138,7 +139,11 @@
           are restricted to the subject
             <keyword>values-audience-draft-comment</keyword>. This means
           that the only allowed values are <keyword>spec-editors</keyword>
-          and <keyword>tc-reviewers</keyword>.</li>
+          and <keyword>tc-reviewers</keyword>. If no value for
+            <xmlatt>audience</xmlatt> is specified for a
+            <xmlelement>draft-comment</xmlelement> element in the DITA
+          source, it is assumed to be set to
+            <keyword>spec-editors</keyword>.</li>
         <li>The permissible values for <xmlatt>otherprops</xmlatt> are
           restricted to the subject <keyword>values-otherprops</keyword>.
           This means that the only valid value for
@@ -147,10 +152,6 @@
         <li>The enumeration for the <xmlatt>props</xmlatt> element is
           empty. No values are valid.</li>
       </ol>
-      <draft-comment author="Kristen J Eberlein" time="03 December 2021">
-        <p>Should we add <xmlelement>defaultSubject</xmlelement> to the
-          example?</p>
-      </draft-comment>
         </example>
 </refbody>
 </reference>
