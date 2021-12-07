@@ -27,7 +27,6 @@
     </metadata>
   </prolog>
  <conbody>
-    <!--<p> Processors <term outputclass="RFC-2119" rev="terminology">SHOULD</term> be aware of hierarchies of attribute values that are defined in subject scheme maps; processors <term outputclass="RFC-2119" rev="terminology">SHOULD</term> process them differently than they might if the attribute values were not defined in a hierarchy.</p>-->
     <p>The following behavior is expected of processors in regard to subject scheme maps:<ul>
         <li>Processors <term outputclass="RFC-2119">SHOULD</term> be aware of the hierarchies of
           attribute values that are defined in subject scheme maps for purposes of filtering,
@@ -71,17 +70,11 @@
       <p>Processors that are aware of the hierarchy that is defined in the subject scheme map will
         handle filtering and flagging in the following ways:</p>
       <ul>
-        <li>If "therapist" is excluded, both "novice-therapist" and "expert-therapist" are by
-          default excluded (unless they are explicitly set to be included).</li>
+        <li>If "therapist" is excluded, both "novice-therapist" and
+          "expert-therapist" are by default excluded.</li>
         <li>If "therapist" is flagged and "novice-therapist" is not explicitly flagged, processors
           automatically flag "novice-therapist" since it is a type of therapist.</li>
       </ul>
-      <draft-comment author="Kristen J Eberlein" time="05 December 2021">
-        <p>Robert, I want to check with you about the parenthetical
-          statement in the first list item. On my read, it seeme to
-          contradict what we state in the "Example: How hierachies defined
-          in a subject scheme map affect filtering" topic.</p>
-      </draft-comment>
     </example>
   </conbody>
 </concept>
