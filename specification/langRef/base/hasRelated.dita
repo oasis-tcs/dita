@@ -20,25 +20,28 @@
         <p>The following attributes are available on this element: <ph
             conkeyref="reuse-attributes/ref-universalatts"/>, <ph
             conkeyref="reuse-attributes/ref-linkatts"/>, <xref
-            keyref="attributes-common/attr-processing-role"><xmlatt>processing-role</xmlatt></xref>,
-            <xref keyref="attributes-common/attr-keys"><xmlatt>keys</xmlatt></xref>, and <xref
-            keyref="attributes-common/attr-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
+            keyref="attributes-common/attr-processing-role"
+              ><xmlatt>processing-role</xmlatt></xref>, <xref
+            keyref="attributes-common/attr-keys"
+            ><xmlatt>keys</xmlatt></xref>, and <xref
+            keyref="attributes-common/attr-keyref"
+            ><xmlatt>keyref</xmlatt></xref>.</p>
       </div>
     </section>
-<example id="example" otherprops="examples"><title>Example</title>
-      <draft-comment author="Kristen J Eberlein" time="27 May 2019">
-        <p>This example needs to be replaced,but I honestly do not
-          understand the intent of the element enough to do that
-          currently.</p>
-      </draft-comment><p>The following code sample specifies that myProgram runs on Linux and
-        Windows:</p>
+<example id="example" otherprops="examples"><title>Example</title><p rev="review-d">The following code sample specifies that the myProgram
+        application is associated with Linux and Windows. In addition, the
+          <xmlatt>keys</xmlatt> attribute on the
+          <xmlelement>hasRelated</xmlelement> element clarifies the type of
+        relationship between the Linux and Windows subjects. Both subjects
+        are platforms.</p>
       <codeblock>&lt;subjectScheme>
-  &lt;subjectdef keys="myProgram">
-    &lt;hasRelated keys="platforms">
-      &lt;subjectdef keys="linux">
-      &lt;subjectdef keys="windows"/>
-    &lt;/hasRelated>
-  &lt;/subjectdef>
+    &lt;!-- Definition of subjects, including those for operating systems. -->
+    &lt;subjectdef keys="myProgram">
+        &lt;hasRelated keys="platforms">
+            &lt;subjectdef keyref="linux"/>
+            &lt;subjectdef keyref="windows"/>
+        &lt;/hasRelated>
+    &lt;/subjectdef>
 &lt;/subjectScheme></codeblock></example>
 </refbody>
 </reference>

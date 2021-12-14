@@ -47,23 +47,30 @@ the <xmlelement>ditavalref</xmlelement> element.</p>
     </example>
     <example id="example-subjectHead" otherprops="examples">
       <title>Example</title>
-      <p>In this example the <q>Server setup</q> label doesn't classify content but, when selected, is
-        equivalent to the union of its child subjects. That is, the heading covers content about
-        planning for any application, installing for any application, any task for web servers, or
-        any task for database servers.</p>
-      <codeblock id="example-subjectHead-subjectHeadMeta">&lt;subjectScheme toc="yes" search="no">
-  &lt;!-- ... -->
-  &lt;subjectHead>
-    &lt;subjectHeadMeta>
-      &lt;navtitle>Server setup&lt;/navtitle>
-    &lt;/subjectHeadMeta>
-    &lt;subjectdef href="planningTaskType.dita"/>
-    &lt;subjectdef href="installingTaskType.dita"/>
-    &lt;subjectdef href="webServerApp.dita"/>
-    &lt;subjectdef href="databaseApp.dita"/>
-  &lt;/subjectHead>
-  &lt;!-- ... -->
+      <p rev="review-d">In the following code sample, the
+          <xmlelement>subjectHead</xmlelement> element defines a grouping
+        of subjects and associates a label of <q>Server setup</q>. The
+        heading covers content about planning, installing, web servers, and
+        database applications.</p>
+      <codeblock id="example-subjectHead-subjectHeadMeta" rev="review-d">&lt;subjectScheme toc="yes" search="no">
+    &lt;!-- ... -->
+    &lt;subjectdef keys="server-setup> 
+        &lt;subjectHead>
+            &lt;subjectHeadMeta>
+                &lt;navtitle>Server setup&lt;/navtitle>
+            &lt;/subjectHeadMeta>
+            &lt;subjectdef href="planningTaskType.dita"/>
+            &lt;subjectdef href="installingTaskType.dita"/>
+            &lt;subjectdef href="webServerApp.dita"/>
+            &lt;subjectdef href="databaseApp.dita"/>
+        &lt;/subjectHead>
+    &lt;/subjectdef>
+    &lt;!-- ... -->
 &lt;/subjectScheme></codeblock>
+      <p rev="review-d">Note that the <xmlatt>toc</xmlatt> attribute on the
+          <xmlelement>subjectScheme</xmlelement> element is set to
+          <keyword>yes</keyword>, so that the subject scheme map can be
+        rendered.</p>
     </example>
     <example id="example-subjectref" otherprops="examples">
       <title>Example</title>

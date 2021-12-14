@@ -22,11 +22,12 @@
             element contains only an <xmlelement>attributedef</xmlelement>
             and a <xmlelement>subjectdef</xmlelement> element, the set of
             controlled values that are bound to the attribute apply to all
-              elements.<p otherprops="examples">For example, when
-                <xmlelement>enumerationdef</xmlelement> contains only
-                <codeph>&lt;attributedef name="value"/></codeph>, the
-                <xmlatt>value</xmlatt> attribute is limited to the
-              specified enumeration for all elements.</p></dd>
+            elements.For example, when
+              <xmlelement>enumerationdef</xmlelement> contains only
+              <codeph>&lt;attributedef name="value"/></codeph>, the
+              <xmlatt>value</xmlatt> attribute is limited to the specified
+            enumeration for all elements <ph rev="review-d">that can
+              specify the <xmlatt>value</xmlatt> attribute.</ph></dd>
                 </dlentry>
                 <dlentry>
                     <dt>Limit a set of controlled values to a specific element and attribute
@@ -50,15 +51,19 @@
           <dt>Specify the default value for an attribute or element and
             attribute pair</dt>
           <dd>When the <xmlelement>enumerationdef</xmlelement> element
-            contains a <xmlelement>defaultSubject</xmlelement> element, the
-            value specified by the <xmlelement>defaultSubject</xmlelement>
-            element is assumed when no attribute value is explicitly set in the DITA source.
-<div otherprops="examples">
+            contains a <xmlelement>defaultSubject</xmlelement> element, <ph
+              rev="review-a">processors operate as if the value specified
+              by the <xmlelement>defaultSubject</xmlelement> element is
+              explicitly set in the DITA source.</ph><div
+              otherprops="examples">
               <p>For example, given the following
-                  <xmlelement>enumerationdef</xmlelement> element, any
-                draft comment in the DITA source that does not explicitly
-                set the <xmlatt>audience</xmlatt> attribute is assumed to
-                have a value of <keyword>spec-editors</keyword>:</p>
+                  <xmlelement>enumerationdef</xmlelement> element, <ph
+                  rev="review-d">if no value is set for the
+                    <xmlatt>audience</xmlatt> attribute on
+                    <xmlelement>draft-comment</xmlelement> in the DITA
+                  source, processors operate as if the @audience attribute
+                  is explicitly set to
+                <keyword>spec-editors</keyword></ph>:</p>
               <codeblock>&lt;enumerationdef>
     &lt;elementdef name="draft-comment"/>
     &lt;attributedef name="audience"/>
@@ -84,6 +89,12 @@
                     <xmlelement>topicref</xmlelement>. It is defined in the subject scheme
                 module.</p>
         </section>
+    <section id="processing-expectations" rev="review-d">
+      <title>Processing expectations</title>
+      <p>See <xref
+          href="../../archSpec/base/determining-effective-attribute-values.dita"
+        /></p>
+    </section>
         <section id="attributes">
             <title>Attributes</title>
             <p>The following attributes are available on this element: <ph conkeyref="reuse-attributes/ref-idandconrefatts"/>, <xref
