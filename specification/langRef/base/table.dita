@@ -94,7 +94,7 @@
       </dl>
     </section>
 <example id="example" otherprops="examples"><title>Example</title>
-      <p>This section contains example of how the
+      <p>This section contains <ph rev="review-e">examples</ph> of how the
           <xmlelement>table</xmlelement> element can be used.</p>
       <fig>
         <title>Example of a table</title>
@@ -107,29 +107,28 @@
     &lt;thead&gt;
         &lt;row&gt;
             &lt;entry colname="COLSPEC0" valign="top"&gt;Animal&lt;/entry&gt;
-            &lt;entry colname="COLSPEC1" valign="top"&gt;Gestation&lt;/entry&gt;
+            &lt;entry colname="COLSPEC1" valign="top"&gt;Gestation (in months)&lt;/entry&gt;
         &lt;/row&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
         &lt;row&gt;
             &lt;entry&gt;Elephant (African and Asian)&lt;/entry&gt;
-            &lt;entry&gt;19-22 months&lt;/entry&gt;
+            &lt;entry&gt;19-22&lt;/entry&gt;
         &lt;/row&gt;
         &lt;row&gt;
             &lt;entry&gt;Giraffe&lt;/entry&gt;
-            &lt;entry&gt;15 months&lt;/entry&gt;
+            &lt;entry&gt;15&lt;/entry&gt;
         &lt;/row&gt;
         &lt;row&gt;
             &lt;entry&gt;Rhinoceros&lt;/entry&gt;
-            &lt;entry&gt;14-16 months&lt;/entry&gt;
+            &lt;entry&gt;14-16&lt;/entry&gt;
         &lt;/row&gt;
         &lt;row&gt;
             &lt;entry&gt;Hippopotamus&lt;/entry&gt;
-            &lt;entry&gt;7 1/2 months&lt;/entry&gt;
+            &lt;entry&gt;7 1/2&lt;/entry&gt;
         &lt;/row&gt;
     &lt;/tbody&gt;
   &lt;/tgroup&gt;
-
 &lt;/table&gt;</codeblock>
         <p>
           <draft-comment author="Kristen J Eberlein"
@@ -178,10 +177,10 @@
         <title>Example: Complex table with implied accessibility
           markup</title>
         <p>
-          <draft-comment author="Robert">Discussed with Kris October 5
-            2020: would be good to have a section on accessibility in the
-            architectural spec; if that is created, some of these examples
-            might be better placed there.</draft-comment>
+          <draft-comment author="robander" time="Oct 5 2020">Per discussion
+            with Kris: would be good to have a section on accessibility in
+            the architectural spec; if that is created, some of these
+            examples might be better placed there.</draft-comment>
         </p>
         <p>In the following code sample, the table uses
             <xmlelement>thead</xmlelement> to identify header rows and
@@ -190,43 +189,7 @@
           renderings of the table in other formats, such as HTML, that can
           be navigated using a screen reader or other assistive
           technology.</p>
-      <p>The formatted output might be displayed as follows:</p>
-        <p>
-      <table>
-        <tgroup cols="2">
-          <colspec colwidth="121*"/>
-          <colspec colwidth="76*"/>
-          <thead>
-            <row>
-              <entry valign="top">Animal</entry>
-              <entry valign="top">Gestation</entry>
-            </row>
-          </thead>
-          <tbody>
-            <row>
-              <entry>Elephant (African and Asian)</entry>
-              <entry>19-22 months</entry>
-            </row>
-            <row>
-              <entry>Giraffe</entry>
-              <entry>15 months</entry>
-            </row>
-            <row>
-              <entry>Rhinoceros</entry>
-              <entry>14-16 months</entry>
-            </row>
-            <row>
-              <entry>Hippopotamus</entry>
-              <entry>7 1/2 months</entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </table>
-          </p>
-      <p>In this example, the use of the <xmlelement>thead</xmlelement> element for the header
-        allows processors or screen readers to identify a header relationship between any cell in
-        the table body and the matching header cell above that column.</p></fig>
-      <!--<fig><title>Example: Complex table with implied accessibility markup</title><p><draft-comment author="robander" time="Oct 5 2020">Per discussion with Kris: would be good to have a section on accessibility in the architectural spec; if that is created, some of these examples might be better placed there.</draft-comment></p><p>In the following example, the table uses <xmlelement>thead</xmlelement> to identify header rows and <xmlatt>rowheader</xmlatt> to identify a header column. This header relationship can be used to automatically create renderings of the table in other formats, such as HTML, that can be navigated using a screen reader or other assistive technology.</p><codeblock>&lt;table frame="all" rowheader="firstcol"&gt;
+        <codeblock>&lt;table frame="all" rowheader="firstcol"&gt;
   &lt;title&gt;Sample of automated table accessibility&lt;/title>
   &lt;desc>Names are listed in the column c1. Points are listed in both data columns, with
         expected points in column c2 and actual points in column c3.&lt;/desc>
@@ -262,7 +225,111 @@
       &lt;/row>
      &lt;/tbody>
    &lt;/tgroup>
-&lt;/table></codeblock><p>In this sample, navigation information for assistive technology is derived from two sources:</p><ul><li>The <xmlelement>thead</xmlelement> element contains two rows, and indicates that each <xmlelement>entry</xmlelement> in those rows is a header cell for that column. This means that each body cell can be associated with the header cell or cells above the column. For example, in the second body row, the entry "Peter" can be associated with the header "Name"; similarly, the entry "9,000" can be associated with the headers "expected" and "points".</li><li>The <xmlatt>rowheader</xmlatt> attribute implies that the first column plays a similar roll as a header. This means that each body cell in columns two and three can be associated with the header cell in column one. For example, in the second body row, the entry "9,000" can be associated with the header "Peter".</li></ul><p>As a result of these two sets of headers, a rendering of the table can associate the entry "9,000" with three headers: "Peter", "expected", and "points", making it fully navigable by a screen reader or other assistive technology.</p><p>The formatted output might be displayed as follows:</p><p><table id="table_eww_xxl_4n" rowheader="firstcol" frame="all"><title>Sample of automated table accessibility</title><desc>Names are listed in the column c1. Points are listed in both data columns, with expected points in column c2 and actual points in column c3.</desc><tgroup cols="3"><colspec colname="c1"/><colspec colname="c2"/><colspec colname="c3"/><thead><row><entry morerows="1">Name</entry><entry namest="c2" nameend="c3">points</entry></row><row><entry>expected</entry><entry>actual</entry></row></thead><tbody><row><entry>Mark</entry><entry>10,000</entry><entry>11,123.45</entry></row><row><entry>Peter</entry><entry>9,000</entry><entry>11,012.34</entry></row><row><entry>Cindy</entry><entry>10,000</entry><entry>10,987.64</entry></row></tbody></tgroup></table></p><p>In some complex tables, the <xmlelement>thead</xmlelement> element and <xmlatt>rowheader</xmlatt> attribute might not be enough to support all accessibility needs. Assume that the table above is flipped so that the names are listed across the top row, instead of in the first column, as follows:</p><p><table frame="all" id="table_nzp_zzl_4n"><title>Sample with two header columns</title><tgroup cols="5"><colspec colname="c1" colnum="1" colwidth="1.0*"/><colspec colname="c2" colnum="2" colwidth="1.0*"/><colspec colname="c3" colnum="3" colwidth="1.0*"/><colspec colname="c4" colnum="4" colwidth="1.0*"/><colspec colname="newCol5" colnum="5" colwidth="1*"/><thead><row><entry namest="c1" nameend="c2"> Name</entry><entry>Mark</entry><entry>Peter</entry><entry>Cindy</entry></row></thead><tbody><row><entry morerows="1"><b>points</b></entry><entry><b>expected</b></entry><entry>10,000</entry><entry>9,000</entry><entry>10,000</entry></row><row><entry><b>actual</b></entry><entry>11,123.45</entry><entry>11,012.34</entry><entry>10,987.64</entry></row></tbody></tgroup></table></p></fig>-->
+&lt;/table></codeblock>
+        <p>In this code sample, navigation information for assistive
+          technology is derived from two sources:</p>
+        <ul>
+          <li>The <xmlelement>thead</xmlelement> element contains two rows,
+            and indicates that each <xmlelement>entry</xmlelement> in those
+            rows is a header cell for that column. This means that each
+            body cell can be associated with the header cell or cells above
+            the column. For example, in the second body row, the entry
+            "Peter" can be associated with the header "Name"; similarly,
+            the entry "9,000" can be associated with the headers "expected"
+            and "points".</li>
+          <li>The <xmlatt>rowheader</xmlatt> attribute implies that the
+            first column plays a similar roll as a header. This means that
+            each body cell in columns two and three can be associated with
+            the header cell in column one. For example, in the second body
+            row, the entry "9,000" can be associated with the header
+            "Peter".</li>
+        </ul>
+        <p>As a result of these two sets of headers, a rendering of the
+          table can associate the entry "9,000" with three headers:
+          "Peter", "expected", and "points", making it fully navigable by a
+          screen reader or other assistive technology.</p>
+        <p>The formatted output might be displayed as follows:</p>
+        <p>
+          <table id="table_eww_xxl_4n" rowheader="firstcol" frame="all">
+            <title>Sample of automated table accessibility</title>
+            <desc>Names are listed in the column c1. Points are listed in
+              both data columns, with expected points in column c2 and
+              actual points in column c3.</desc>
+            <tgroup cols="3">
+              <colspec colname="c1"/>
+              <colspec colname="c2"/>
+              <colspec colname="c3"/>
+              <thead>
+                <row>
+                  <entry morerows="1">Name</entry>
+                  <entry namest="c2" nameend="c3">points</entry>
+                </row>
+                <row>
+                  <entry>expected</entry>
+                  <entry>actual</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>Mark</entry>
+                  <entry>10,000</entry>
+                  <entry>11,123.45</entry>
+                </row>
+                <row>
+                  <entry>Peter</entry>
+                  <entry>9,000</entry>
+                  <entry>11,012.34</entry>
+                </row>
+                <row>
+                  <entry>Cindy</entry>
+                  <entry>10,000</entry>
+                  <entry>10,987.64</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </p>
+        <p>In some complex tables, the <xmlelement>thead</xmlelement>
+          element and <xmlatt>rowheader</xmlatt> attribute might not be
+          enough to support all accessibility needs. Assume that the table
+          above is flipped so that the names are listed across the top row,
+          instead of in the first column, as follows:</p>
+        <p>
+          <table frame="all" id="table_nzp_zzl_4n">
+            <title>Sample with two header columns</title>
+            <tgroup cols="5">
+              <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+              <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+              <colspec colname="c3" colnum="3" colwidth="1.0*"/>
+              <colspec colname="c4" colnum="4" colwidth="1.0*"/>
+              <colspec colname="newCol5" colnum="5" colwidth="1*"/>
+              <thead>
+                <row>
+                  <entry namest="c1" nameend="c2"> Name</entry>
+                  <entry>Mark</entry>
+                  <entry>Peter</entry>
+                  <entry>Cindy</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry morerows="1"><b>points</b></entry>
+                  <entry><b>expected</b></entry>
+                  <entry>10,000</entry>
+                  <entry>9,000</entry>
+                  <entry>10,000</entry>
+                </row>
+                <row>
+                  <entry><b>actual</b></entry>
+                  <entry>11,123.45</entry>
+                  <entry>11,012.34</entry>
+                  <entry>10,987.64</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </p>
+      </fig>
       <fig>
         <title>Complex table with some manually specified accessibility
           markup</title>
