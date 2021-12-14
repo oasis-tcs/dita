@@ -3,10 +3,12 @@
  "reference.dtd">
 <reference id="table" xml:lang="en-us">
 <title><xmlelement>table</xmlelement></title>
-<shortdesc>A table based on the OASIS Exchange Table Model organizes
-    arbitrarily complex relationships of tabular information. This table
-    markup allows column or row spanning, table captions, and
-    descriptions.</shortdesc>
+
+<shortdesc>A table based on the OASIS Exchange Table Model organizes arbitrarily complex
+    relationships of tabular information. This standard table markup provides a wide variety of
+    controls over the display properties of the data and even the table structure
+    itself.</shortdesc>
+
 <prolog><metadata>
 <keywords>
         <indexterm>table elements<indexterm><xmlelement>table</xmlelement></indexterm></indexterm>
@@ -33,20 +35,28 @@
         currently maintained in tables for legacy purposes. External stylesheets should enable less
         dependency on this attribute. Use the <xmlatt>scale</xmlatt> attribute judiciously.</note>
     </section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>In situations where a stylesheet or other formatting mechanism specifies table orientation
+        based on criteria other than the value of <xmlatt>orient</xmlatt>, or for non-paginated
+        outputs, the <xmlatt>orient</xmlatt> attribute can be ignored.</p>
+    </section>
     <section id="attributes">
       <title>Attributes</title>
-      <p>The following attributes are available on this element: <ph conkeyref="reuse-attributes/ref-universalatts"/>, <xref keyref="attributes-common/attr-frame"><xmlatt>frame</xmlatt></xref>, <xref
-          keyref="attributes-common/attr-scale"><xmlatt>scale</xmlatt></xref>, <xref
+      <p>The following attributes are available on this element: <ph
+          conkeyref="reuse-attributes/ref-universalatts"/>, <xref
           keyref="attributes-common/attr-colsep"><xmlatt>colsep</xmlatt></xref>, <xref
+          keyref="attributes-common/attr-frame"><xmlatt>frame</xmlatt></xref>,  <xref
           keyref="attributes-common/attr-rowsep"><xmlatt>rowsep</xmlatt></xref>, <xref
-          keyref="attributes-common/attr-rowheader"><xmlatt>rowheader</xmlatt></xref>, and the
-        attributes defined below.</p>
-      <draft-comment author="Robert">Looking for consistency on orient, pgwide, colsep, rowsep, and
-        entry/@rotate. We have a mix of "Supported values" (seems to imply "processors MUST support
-        at least these") or "Allowed values" (implies no other values are legal, and the wording
-        used on most other attributes)? Also, are we consistent between "Allowable" and "Allowed"
-        (allowed seems more correct for ennumerated values)?<p>Update after talking with Kris 14 May
-          2021: Better to use: "The following values are valid:"</p></draft-comment>
+          keyref="attributes-common/attr-rowheader"><xmlatt>rowheader</xmlatt></xref>, <xref
+          keyref="attributes-common/attr-scale"><xmlatt>scale</xmlatt></xref>, and the attributes
+        defined below.</p>
+      <draft-comment author="robander">Looking for consistency on orient, pgwide, colsep, rowsep,
+        and entry/@rotate. We have a mix of "Supported values" (seems to imply "processors MUST
+        support at least these") or "Allowed values" (implies no other values are legal, and the
+        wording used on most other attributes)? Also, are we consistent between "Allowable" and
+        "Allowed" (allowed seems more correct for ennumerated values)?<p>Update after talking with
+          Kris 14 May 2021: Better to use: "The following values are valid:"</p></draft-comment>
       <dl>
         <dlentry id="orient">
           <dt id="attr-orient"><xmlatt>orient</xmlatt></dt>
@@ -64,9 +74,7 @@
                 <dt/>
                 <dd/>
               </dlentry>
-            </dl><p>In situations where a stylesheet or other formatting mechanism specifies table
-              orientation based on other criteria, or for non-paginated outputs, the
-                <xmlatt>orient</xmlatt> attribute can be ignored.</p></dd>
+            </dl></dd>
         </dlentry>
         <dlentry>
           <dt id="attr-pgwide"><xmlatt>pgwide</xmlatt></dt>
@@ -121,6 +129,7 @@
         &lt;/row&gt;
     &lt;/tbody&gt;
   &lt;/tgroup&gt;
+
 &lt;/table&gt;</codeblock>
         <p>
           <draft-comment author="Kristen J Eberlein"
@@ -181,10 +190,54 @@
           renderings of the table in other formats, such as HTML, that can
           be navigated using a screen reader or other assistive
           technology.</p>
+      <p>The formatted output might be displayed as follows:</p>
+      <table>
+        <tgroup cols="2">
+          <colspec colwidth="121*"/>
+          <colspec colwidth="76*"/>
+          <thead>
+            <row>
+              <entry valign="top">Animal</entry>
+              <entry valign="top">Gestation</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>Elephant (African and Asian)</entry>
+              <entry>19-22 months</entry>
+            </row>
+            <row>
+              <entry>Giraffe</entry>
+              <entry>15 months</entry>
+            </row>
+            <row>
+              <entry>Rhinoceros</entry>
+              <entry>14-16 months</entry>
+            </row>
+            <row>
+              <entry>Hippopotamus</entry>
+              <entry>7 1/2 months</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      <p>In this example, the use of the <xmlelement>thead</xmlelement> element for the header
+        allows processors or screen readers to identify a header relationship between any cell in
+        the table body and the matching header cell above that column.</p></example>
+    <example id="implied-accessibility" otherprops="examples">
+      <title>Example: Complex table with implied accessibility markup</title>
+      <draft-comment author="robander" time="Oct 5 2020">Per discussion with Kris: would be good to
+        have a section on accessibility in the architectural spec; if that is created, some of these
+        examples might be better placed there.</draft-comment>
+      <p>In the following example, the table uses <xmlelement>thead</xmlelement> to identify header
+        rows and <xmlatt>rowheader</xmlatt> to identify a header column. This header relationship
+        can be used to automatically create renderings of the table in other formats, such as HTML,
+        that can be navigated using a screen reader or other assistive technology.</p>
+      
         <codeblock>&lt;table frame="all" rowheader="firstcol"&gt;
   &lt;title&gt;Sample of automated table accessibility&lt;/title>
-&lt;desc>Names are listed in the column c1. Points are listed in both data columns, with
-expected points in column c2 and actual points in column c3.&lt;/desc>
+  &lt;desc>Names are listed in the column c1. Points are listed in both data columns, with
+        expected points in column c2 and actual points in column c3.&lt;/desc>
   &lt;tgroup cols="3">
     &lt;colspec colname="c1"/>
     &lt;colspec colname="c2"/>
@@ -382,7 +435,7 @@ expected points in column c2 and actual points in column c3.&lt;/desc>
           <colspec colname="c3"/>
           <thead>
             <row>
-              <entry morerows="1"> </entry>
+              <entry morerows="1">Name</entry>
               <entry namest="c2" nameend="c3">points</entry>
             </row>
             <row>

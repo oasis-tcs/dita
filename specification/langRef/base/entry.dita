@@ -12,6 +12,12 @@
     </metadata>
   </prolog>
   <refbody>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
+      <p>If the <xmlatt>rotate</xmlatt> attribute is not specified, the contents of the cell are not
+        rotated. In situations where a stylesheet or other formatting mechanism specifies table cell
+        orientation, the <xmlatt>rotate</xmlatt> attribute can be ignored.</p>
+    </section>
     <section id="attributes">
       <title>Attributes</title>
       <p>The following attributes are available on this element: <ph
@@ -40,34 +46,9 @@
           <dd/>
         </dlentry>
         <dlentry>
-          <dt id="attr-rotate"><xmlatt>rotate</xmlatt></dt>
-          <dd>Specifies whether the contents of the entry is rotated. The following values are valid:<dl>
-              <dlentry>
-                <dt>1</dt>
-                <dd>The contents of the cell are rotated 90 degrees counterclockwise.</dd>
-              </dlentry>
-              <dlentry>
-                <dt>0</dt>
-                <dd>No rotation <ph>occurs</ph>.</dd>
-              </dlentry>
-              <dlentry conkeyref="reuse-attributes/ditauseconref">
-                <dt/>
-                <dd/>
-              </dlentry>
-            </dl><p>If this attribute is not specified, no rotation occurs. In situations where a
-              stylesheet or other formatting mechanism specifies table cell orientation, the
-                <xmlatt>rotate</xmlatt> attribute can be ignored.</p></dd>
-        </dlentry>
-        <dlentry>
           <dt id="attr-colname"><xmlatt>colname</xmlatt></dt>
           <dd>Specifies the column name in which an entry is found. The value is a reference to the
               <xmlatt>colname</xmlatt> attribute on the <xmlelement>colspec</xmlelement> element. </dd>
-        </dlentry>
-        <dlentry>
-          <dt id="attr-namest"><xmlatt>namest</xmlatt></dt>
-          <dd>Specifies the first logical column that is included in a horizontal span. The value is
-            a reference to the <xmlatt>colname</xmlatt> attribute on the
-              <xmlelement>colspec</xmlelement> element. </dd>
         </dlentry>
         <dlentry>
           <dt id="attr-nameend"><xmlatt>nameend</xmlatt></dt>
@@ -76,9 +57,38 @@
               <xmlelement>colspec</xmlelement> element. </dd>
         </dlentry>
         <dlentry>
+          <dt id="attr-namest"><xmlatt>namest</xmlatt></dt>
+          <dd>Specifies the first logical column that is included in a horizontal span. The value is
+            a reference to the <xmlatt>colname</xmlatt> attribute on the
+              <xmlelement>colspec</xmlelement> element. </dd>
+        </dlentry>
+        <dlentry conkeyref="reuse-attributes/headers-att">
+          <dt/>
+          <dd/>
+        </dlentry>
+        <dlentry>
           <dt id="attr-morerows"><xmlatt>morerows</xmlatt></dt>
           <dd>Specifies the number of additional rows to add in a vertical span. </dd>
         </dlentry>
+        <dlentry>
+          <dt id="attr-rotate"><xmlatt>rotate</xmlatt></dt>
+          <dd>Specifies whether the contents of the entry are rotated. The following values are
+              valid:<dl id="dl_mnb_2gh_xrb">
+              <dlentry>
+                <dt>1</dt>
+                <dd>The contents of the cell are rotated 90 degrees counterclockwise.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>0</dt>
+                <dd>No rotation occurs.</dd>
+              </dlentry>
+              <dlentry conkeyref="reuse-attributes/ditauseconref">
+                <dt/>
+                <dd/>
+              </dlentry>
+            </dl></dd>
+        </dlentry>
+\
         <dlentry conkeyref="reuse-attributes/tablescope">
           <dt/>
           <dd/>
