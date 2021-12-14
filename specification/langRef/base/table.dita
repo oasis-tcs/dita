@@ -3,9 +3,10 @@
  "reference.dtd">
 <reference id="table" xml:lang="en-us">
 <title><xmlelement>table</xmlelement></title>
-<shortdesc>A table based on the OASIS Exchange Table Model organizes arbitrarily complex
-    relationships of tabular information. This standard table markup allows column or row spanning
-    and table captions or descriptions.</shortdesc>
+<shortdesc>A table based on the OASIS Exchange Table Model organizes
+    arbitrarily complex relationships of tabular information. This table
+    markup allows column or row spanning, table captions, and
+    descriptions.</shortdesc>
 <prolog><metadata>
 <keywords>
         <indexterm>table elements<indexterm><xmlelement>table</xmlelement></indexterm></indexterm>
@@ -14,15 +15,19 @@
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>The DITA <xmlelement>table</xmlelement> element is based on the OASIS Exchange Table Model,
-        augmented with DITA attributes that enable accessibility, specialization, conref, and other
-        DITA processing. An optional <xmlelement>title</xmlelement> inside the
-          <xmlelement>table</xmlelement> element provides a caption to describe the table. In
-        addition, the optional <xmlelement>desc</xmlelement> element enables a table description
+      <p>The DITA <xmlelement>table</xmlelement> element is based on the
+        OASIS Exchange Table Model, augmented with DITA attributes that
+        enable accessibility, specialization, content reference, and other
+        DITA processing.</p>
+      <p>An optional <xmlelement>title</xmlelement> inside the
+          <xmlelement>table</xmlelement> element provides a caption to
+        describe the table. In addition, the optional
+          <xmlelement>desc</xmlelement> element enables a table description
         that is parallel with a figure description.</p>
-      <p>See <xref keyref="elements-simpletable"/> for a simplified table model that is closer to
-        the HTML5 table model, and can be more easily specialized to represent regular relationships
-        of data.</p>
+      <p>See <xref keyref="elements-simpletable"/> for a simplified table
+        model that is closer to the HTML5 table model, and which can be
+        more easily specialized to represent regular relationships of
+        data.</p>
       <p conkeyref="reuse-general/pgwide-explain"/>
       <note>The <xmlatt>scale</xmlatt> attribute represents a stylistic markup property that is
         currently maintained in tables for legacy purposes. External stylesheets should enable less
@@ -65,95 +70,117 @@
         </dlentry>
         <dlentry>
           <dt id="attr-pgwide"><xmlatt>pgwide</xmlatt></dt>
-          <dd>Specifies the horizontal placement of the element. The following values are valid:
-              <keyword>1</keyword> and <keyword>0</keyword>. For print-oriented display, the value
-              <keyword>1</keyword> places the element on the left page margin; <keyword>0</keyword>
-            aligns the element with the left margin of the current text line and takes indention
-            into account. </dd>
+          <dd>Specifies the horizontal placement of the element for
+            print-oriented rendering. The following values are valid: <dl>
+              <dlentry>
+                <dt><keyword>1</keyword></dt>
+                <dd>Places the element on the left page margin</dd>
+              </dlentry>
+              <dlentry>
+                <dt><keyword>0</keyword></dt>
+                <dd>Aligns the element with the left margin of the current
+                  text line and takes indention into account</dd>
+              </dlentry>
+            </dl></dd>
         </dlentry>
       </dl>
     </section>
 <example id="example" otherprops="examples"><title>Example</title>
+      <p>This section contains example of how the
+          <xmlelement>table</xmlelement> element can be used.</p>
       <fig>
         <title>DITA source</title>
         <p>The following code sample shows a table that is used to provide reference information
           about animals and gestation:</p>
         <codeblock xml:space="preserve">&lt;table&gt;
-&lt;tgroup cols="2"&gt;
-&lt;colspec colwidth="121*"/&gt;
-&lt;colspec colwidth="76*"/&gt;
-&lt;thead&gt;
-&lt;row&gt;
-&lt;entry colname="COLSPEC0" valign="top"&gt;Animal&lt;/entry&gt;
-&lt;entry colname="COLSPEC1" valign="top"&gt;Gestation&lt;/entry&gt;
-&lt;/row&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;row&gt;
-&lt;entry&gt;Elephant (African and Asian)&lt;/entry&gt;
-&lt;entry&gt;19-22 months&lt;/entry&gt;
-&lt;/row&gt;
-&lt;row&gt;
-&lt;entry&gt;Giraffe&lt;/entry&gt;
-&lt;entry&gt;15 months&lt;/entry&gt;
-&lt;/row&gt;
-&lt;row&gt;
-&lt;entry&gt;Rhinoceros&lt;/entry&gt;
-&lt;entry&gt;14-16 months&lt;/entry&gt;
-&lt;/row&gt;
-&lt;row&gt;
-&lt;entry&gt;Hippopotamus&lt;/entry&gt;
-&lt;entry&gt;7 1/2 months&lt;/entry&gt;
-&lt;/row&gt;
-&lt;/tbody&gt;
-&lt;/tgroup&gt;
+  &lt;tgroup cols="2"&gt;
+    &lt;colspec colwidth="121*"/&gt;
+    &lt;colspec colwidth="76*"/&gt;
+    &lt;thead&gt;
+        &lt;row&gt;
+            &lt;entry colname="COLSPEC0" valign="top"&gt;Animal&lt;/entry&gt;
+            &lt;entry colname="COLSPEC1" valign="top"&gt;Gestation&lt;/entry&gt;
+        &lt;/row&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;row&gt;
+            &lt;entry&gt;Elephant (African and Asian)&lt;/entry&gt;
+            &lt;entry&gt;19-22 months&lt;/entry&gt;
+        &lt;/row&gt;
+        &lt;row&gt;
+            &lt;entry&gt;Giraffe&lt;/entry&gt;
+            &lt;entry&gt;15 months&lt;/entry&gt;
+        &lt;/row&gt;
+        &lt;row&gt;
+            &lt;entry&gt;Rhinoceros&lt;/entry&gt;
+            &lt;entry&gt;14-16 months&lt;/entry&gt;
+        &lt;/row&gt;
+        &lt;row&gt;
+            &lt;entry&gt;Hippopotamus&lt;/entry&gt;
+            &lt;entry&gt;7 1/2 months&lt;/entry&gt;
+        &lt;/row&gt;
+    &lt;/tbody&gt;
+  &lt;/tgroup&gt;
 &lt;/table&gt;</codeblock>
+        <p>
+          <draft-comment author="Kristen J Eberlein"
+            time="13 December 2021">
+            <p>Replace the following content with a screen capture.</p>
+          </draft-comment>
+        </p>
+        <p>The formatted output might be displayed as follows:</p>
+<p>
+          <table>
+            <tgroup cols="2">
+              <colspec colwidth="121*"/>
+              <colspec colwidth="76*"/>
+              <thead>
+                <row>
+                  <entry valign="top">Animal</entry>
+                  <entry valign="top">Gestation</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>Elephant (African and Asian)</entry>
+                  <entry>19-22 months</entry>
+                </row>
+                <row>
+                  <entry>Giraffe</entry>
+                  <entry>15 months</entry>
+                </row>
+                <row>
+                  <entry>Rhinoceros</entry>
+                  <entry>14-16 months</entry>
+                </row>
+                <row>
+                  <entry>Hippopotamus</entry>
+                  <entry>7 1/2 months</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></p>
+        <p>In this example, the use of the <xmlelement>thead</xmlelement>
+          element for the header enables processors or screen readers to
+          identify a header relationship between any cell in the table body
+          and the matching header cell above that column.</p>
       </fig>
-      <p>The formatted output might be displayed as follows:</p>
-      <table>
-        <tgroup cols="2">
-          <colspec colwidth="121*"/>
-          <colspec colwidth="76*"/>
-          <thead>
-            <row>
-              <entry valign="top">Animal</entry>
-              <entry valign="top">Gestation</entry>
-            </row>
-          </thead>
-          <tbody>
-            <row>
-              <entry>Elephant (African and Asian)</entry>
-              <entry>19-22 months</entry>
-            </row>
-            <row>
-              <entry>Giraffe</entry>
-              <entry>15 months</entry>
-            </row>
-            <row>
-              <entry>Rhinoceros</entry>
-              <entry>14-16 months</entry>
-            </row>
-            <row>
-              <entry>Hippopotamus</entry>
-              <entry>7 1/2 months</entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </table>
-      <p>In this example, the use of the <xmlelement>thead</xmlelement> element for the header
-        allows processors or screen readers to identify a header relationship between any cell in
-        the table body and the matching header cell above that column.</p></example>
-    <example id="implied-accessibility" otherprops="examples">
-      <title>Example: Complex table with implied accessibility markup</title>
-      <draft-comment author="Robert">Discussed with Kris October 5 2020: would be good to have a
-        section on accessibility in the architectural spec; if that is created, some of these
-        examples might be better placed there.</draft-comment>
-      <p>In the following example, the table uses <xmlelement>thead</xmlelement> to identify header
-        rows and <xmlatt>rowheader</xmlatt> to identify a header column. This header relationship
-        can be used to automatically create renderings of the table in other formats, such as HTML,
-        that can be navigated using a screen reader or other assistive technology.</p>
-      <fig id="source-implied-accessibility">
-        <title>DITA source</title>
+      <fig>
+        <title>Example: Complex table with implied accessibility
+          markup</title>
+        <p>
+          <draft-comment author="Robert">Discussed with Kris October 5
+            2020: would be good to have a section on accessibility in the
+            architectural spec; if that is created, some of these examples
+            might be better placed there.</draft-comment>
+        </p>
+        <p>In the following code sample, the table uses
+            <xmlelement>thead</xmlelement> to identify header rows and
+            <xmlatt>rowheader</xmlatt> to identify a header column. This
+          header relationship can be used to automatically create
+          renderings of the table in other formats, such as HTML, that can
+          be navigated using a screen reader or other assistive
+          technology.</p>
         <codeblock>&lt;table frame="all" rowheader="firstcol"&gt;
   &lt;title&gt;Sample of automated table accessibility&lt;/title>
 &lt;desc>Names are listed in the column c1. Points are listed in both data columns, with
@@ -191,109 +218,125 @@ expected points in column c2 and actual points in column c3.&lt;/desc>
      &lt;/tbody>
    &lt;/tgroup>
 &lt;/table></codeblock>
+        <p>In this sample, navigation information for assistive technology
+          is derived from two sources:</p>
+        <ul>
+          <li>The <xmlelement>thead</xmlelement> element contains two rows,
+            and indicates that each <xmlelement>entry</xmlelement> in those
+            rows is a header cell for that column. This means that each
+            body cell can be associated with the header cell or cells above
+            the column. For example, in the second body row, the entry
+            "Peter" can be associated with the header "Name"; similarly,
+            the entry "9,000" can be associated with the headers "expected"
+            and "points".</li>
+          <li>The <xmlatt>rowheader</xmlatt> attribute implies that the
+            first column plays a similar roll as a header. This means that
+            each body cell in columns two and three can be associated with
+            the header cell in column one. For example, in the second body
+            row, the entry "9,000" can be associated with the header
+            "Peter".</li>
+        </ul>
+        <p>As a result of these two sets of headers, a rendering of the
+          table can associate the entry "9,000" with three headers:
+          "Peter", "expected", and "points", making it fully navigable by a
+          screen reader or other assistive technology.</p>
+        <p>The formatted output might be displayed as follows:</p>
+        <p>
+          <table id="table_eww_xxl_4n" rowheader="firstcol" frame="all">
+            <title>Sample of automated table accessibility</title>
+            <desc>Names are listed in the column c1. Points are listed in
+              both data columns, with expected points in column c2 and
+              actual points in column c3.</desc>
+            <tgroup cols="3">
+              <colspec colname="c1"/>
+              <colspec colname="c2"/>
+              <colspec colname="c3"/>
+              <thead>
+                <row>
+                  <entry morerows="1">Name</entry>
+                  <entry namest="c2" nameend="c3">points</entry>
+                </row>
+                <row>
+                  <entry>expected</entry>
+                  <entry>actual</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>Mark</entry>
+                  <entry>10,000</entry>
+                  <entry>11,123.45</entry>
+                </row>
+                <row>
+                  <entry>Peter</entry>
+                  <entry>9,000</entry>
+                  <entry>11,012.34</entry>
+                </row>
+                <row>
+                  <entry>Cindy</entry>
+                  <entry>10,000</entry>
+                  <entry>10,987.64</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </p>
       </fig>
-      <p>In this sample, navigation information for assistive technology is derived from two sources:<ul>
-          <li>The <xmlelement>thead</xmlelement> element contains two rows, and indicates that each
-              <xmlelement>entry</xmlelement> in those rows is a header cell for that column. This
-            means that each body cell can be associated with the header cell or cells above the
-            column. For example, in the second body row, the entry "Peter" can be associated with
-            the header "Name"; similarly, the entry "9,000" can be associated with the headers
-            "expected" and "points".</li>
-          <li>The <xmlatt>rowheader</xmlatt> attribute implies that the first column plays a similar
-            roll as a header. This means that each body cell in columns two and three can be
-            associated with the header cell in column one. For example, in the second body row, the
-            entry "9,000" can be associated with the header "Peter".</li>
-        </ul></p>
-      <p>As a result of these two sets of headers, a rendering of the table can associate the entry
-        "9,000" with three headers: "Peter", "expected", and "points", making it fully navigable by
-        a screen reader or other assistive technology.</p>
-      <p>The formatted output might be displayed as follows:</p>
-      <table id="table_eww_xxl_4n" rowheader="firstcol" frame="all">
-        <title>Sample of automated table accessibility</title>
-        <desc>Names are listed in the column c1. Points are listed in both data columns, with
-          expected points in column c2 and actual points in column c3.</desc>
-        <tgroup cols="3">
-          <colspec colname="c1"/>
-          <colspec colname="c2"/>
-          <colspec colname="c3"/>
-          <thead>
-            <row>
-              <entry morerows="1">Name</entry>
-              <entry namest="c2" nameend="c3">points</entry>
-            </row>
-            <row>
-              <entry>expected</entry>
-              <entry>actual</entry>
-            </row>
-          </thead>
-          <tbody>
-            <row>
-              <entry>Mark</entry>
-              <entry>10,000</entry>
-              <entry>11,123.45</entry>
-            </row>
-            <row>
-              <entry>Peter</entry>
-              <entry>9,000</entry>
-              <entry>11,012.34</entry>
-            </row>
-            <row>
-              <entry>Cindy</entry>
-              <entry>10,000</entry>
-              <entry>10,987.64</entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </table>
-    </example>
-  <example  id="accessibility-manual" otherprops="examples">
-      <title>Complex table with some manually specified accessibility markup</title>
-      <p>In some complex tables, the <xmlelement>thead</xmlelement> element and
-          <xmlatt>rowheader</xmlatt> attribute might not be enough to support all accessibility
-        needs. Assume that the table above is flipped so that the names are listed across the top
-        row, instead of in the first column, as follows:</p>
-      <table frame="all" id="table_nzp_zzl_4n">
-        <title>Sample with two header columns</title>
-        <tgroup cols="5">
-          <colspec colname="c1" colnum="1" colwidth="1.0*"/>
-          <colspec colname="c2" colnum="2" colwidth="1.0*"/>
-          <colspec colname="c3" colnum="3" colwidth="1.0*"/>
-          <colspec colname="c4" colnum="4" colwidth="1.0*"/>
-          <colspec colname="newCol5" colnum="5" colwidth="1*"/>
-          <thead>
-            <row>
-              <entry namest="c1" nameend="c2"> Name</entry>
-              <entry>Mark</entry>
-              <entry>Peter</entry>
-              <entry>Cindy</entry>
-            </row>
-          </thead>
-          <tbody>
-            <row>
-              <entry morerows="1"><b>points</b></entry>
-              <entry><b>expected</b></entry>
-              <entry>10,000</entry>
-              <entry>9,000</entry>
-              <entry>10,000</entry>
-            </row>
-            <row>
-              <entry><b>actual</b></entry>
-              <entry>11,123.45</entry>
-              <entry>11,012.34</entry>
-              <entry>10,987.64</entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </table>
-      <p>In this case the <xmlatt>rowheader</xmlatt> attribute cannot be used, because it is only
-        able to specify the first column as a header column. In this case, the
-          <xmlatt>scope</xmlatt> attribute can be used to indicate that entries in the first and
-        second columns function as headers for the entire row (or row group, in the case of a cell
-        that spans more than one row). The following code sample demonstrates the use of
-          <xmlatt>scope</xmlatt> to facilitate navigation of these rows by a screen reader or other
-        assistive technology; note that the <xmlelement>thead</xmlelement> element is still used to
-        imply a header relationship with the names at the top of each column.</p>
-      <codeblock>&lt;table frame="all">
+      <fig>
+        <title>Complex table with some manually specified accessibility
+          markup</title>
+        <p>In some complex tables, the <xmlelement>thead</xmlelement>
+          element and <xmlatt>rowheader</xmlatt> attribute might not be
+          enough to support all accessibility needs. Assume that the table
+          above is flipped so that the names are listed across the top row,
+          instead of in the first column, as follows:</p>
+        <p>
+          <table frame="all" id="table_nzp_zzl_4n">
+            <title>Sample with two header columns</title>
+            <tgroup cols="5">
+              <colspec colname="c1" colnum="1" colwidth="1.0*"/>
+              <colspec colname="c2" colnum="2" colwidth="1.0*"/>
+              <colspec colname="c3" colnum="3" colwidth="1.0*"/>
+              <colspec colname="c4" colnum="4" colwidth="1.0*"/>
+              <colspec colname="newCol5" colnum="5" colwidth="1*"/>
+              <thead>
+                <row>
+                  <entry namest="c1" nameend="c2"> Name</entry>
+                  <entry>Mark</entry>
+                  <entry>Peter</entry>
+                  <entry>Cindy</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry morerows="1"><b>points</b></entry>
+                  <entry><b>expected</b></entry>
+                  <entry>10,000</entry>
+                  <entry>9,000</entry>
+                  <entry>10,000</entry>
+                </row>
+                <row>
+                  <entry><b>actual</b></entry>
+                  <entry>11,123.45</entry>
+                  <entry>11,012.34</entry>
+                  <entry>10,987.64</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </p>
+        <p>In this case the <xmlatt>rowheader</xmlatt> attribute cannot be
+          used, because it is only able to specify the first column as a
+          header column. In this case, the <xmlatt>scope</xmlatt> attribute
+          can be used to indicate that entries in the first and second
+          columns function as headers for the entire row (or row group, in
+          the case of a cell that spans more than one row). The following
+          code sample demonstrates the use of <xmlatt>scope</xmlatt> to
+          facilitate navigation of these rows by a screen reader or other
+          assistive technology; note that the
+            <xmlelement>thead</xmlelement> element is still used to imply a
+          header relationship with the names at the top of each column.</p>
+        <codeblock>&lt;table frame="all">
  &lt;title>Sample with two header columns&lt;/title>
  &lt;tgroup cols="5">
   &lt;colspec colname="c1"/>
@@ -326,66 +369,13 @@ expected points in column c2 and actual points in column c3.&lt;/desc>
   &lt;/tbody>
  &lt;/tgroup>
 &lt;/table></codeblock>
-    </example>
-    <example  id="complex-manual-accessibility" otherprops="examples">
-      <title>Example: complex table with manual accessibility markup</title>
-      <p>In extremely complex tables, such as those with a single header cell in the middle of the
-        table, extremely fine grained accessibility controls are available to explicitly associate
-        any content cell with any header cell. This <ph >might</ph> also be
-        useful for cases where processors do not support the implied accessibility relationships
-        described above.</p>
-      <p>In the following sample, header cells are identified using the <xmlatt>id</xmlatt>
-        attribute, which is referenced using the <xmlatt>headers</xmlatt> attribute on appropriate
-        content cells. This makes all header relationships in the table explicit. Note that this
-        sample ignores the <xmlatt>scope</xmlatt> attribute, which could be used to exercise manual
-        control without setting as many attribute values; it also ignores the fact that
-          <xmlelement>thead</xmlelement> creates a header relationship even when the
-          <xmlatt>id</xmlatt> and <xmlatt>headers</xmlatt> attributes are not used.</p>
-      <fig id="fig_qt4_sbm_4n">
-        <title>DITA source</title>
-        <codeblock>&lt;table frame="all"&gt;
-  &lt;title&gt;Sample with fully manual accessibility control&lt;/title>
-&lt;desc>Names are listed in the column c1. Points are listed in both data columns, with
-expected points in column c2 and actual points in column c3.&lt;/desc>
-  &lt;tgroup cols="3">
-    &lt;colspec colname="c1"/>
-    &lt;colspec colname="c2"/>
-    &lt;colspec colname="c3"/>
-    &lt;thead>
-      &lt;row>
-        &lt;entry morerows="1"> &lt;/entry>
-        &lt;entry namest="c2" nameend="c3" <b>id="pts"</b>>points&lt;/entry>
-      &lt;/row>
-      &lt;row>
-        &lt;entry <b>id="exp" headers="pts"</b>>expected&lt;/entry>
-        &lt;entry <b>id="act" headers="pts"</b>>actual&lt;/entry>
-      &lt;/row>
-    &lt;/thead>
-    &lt;tbody>
-      &lt;row>
-        &lt;entry <b>id="name1"</b>>Mark&lt;/entry>
-        &lt;entry <b>headers="name1 exp pts"</b>>10,000&lt;/entry>
-        &lt;entry <b>headers="name1 act pts"</b>>11,123.45&lt;/entry>
-      &lt;/row>
-      &lt;row>
-        &lt;entry <b>id="name2"</b>>Peter&lt;/entry>
-        &lt;entry <b>headers="name2 exp pts"</b>>9,000&lt;/entry>
-        &lt;entry <b>headers="name2 act pts"</b>>11,012.34&lt;/entry>
-      &lt;/row>
-      &lt;row>
-        &lt;entry <b>id="name3"</b>>Cindy&lt;/entry>
-        &lt;entry <b>headers="name3 exp pts"</b>>10,000&lt;/entry>
-        &lt;entry <b>headers="name3 act pts"</b>>10,987.64&lt;/entry>
-      &lt;/row>
-     &lt;/tbody>
-   &lt;/tgroup>
-&lt;/table></codeblock>
       </fig>
       <p>The formatted output might be displayed as follows:</p>
       <table id="table_yrp_sbm_4n">
         <title>Sample with fully manual accessibility control</title>
-        <desc>Names are listed in the column c1. Points are listed in both data columns, with
-          expected points in column c2 and actual points in column c3.</desc>
+        <desc>Names are listed in the column c1. Points are listed in both
+          data columns, with expected points in column c2 and actual points
+          in column c3.</desc>
         <tgroup cols="3">
           <colspec colname="c1"/>
           <colspec colname="c2"/>
@@ -418,8 +408,7 @@ expected points in column c2 and actual points in column c3.&lt;/desc>
             </row>
           </tbody>
         </tgroup>
-      </table>
-    </example>
+      </table></example>
 </refbody>
 </reference>
 
