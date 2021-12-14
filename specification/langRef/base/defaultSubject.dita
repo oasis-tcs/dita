@@ -17,6 +17,35 @@
           should handle default values for attributes when they are
           specified by <xmlelement>defaultSubject</xmlelement>?</p>
       </draft-comment>
+      <draft-comment author="Kristen J Eberlein" time="13 December 2021">
+        <p>Comments from review D:</p>
+        <p><b>Frank Wegmann:</b> Let's assume, in the DTD or a
+          specialization there is an attribute defined with an enumeration
+          data type and some default value. Now a subject scheme imposes
+          maybe different controlled values for that attribute with a
+          different default value? How is an implementation supposed to
+          validate a document instance? My naive understanding would be
+          that the DTD/schema definitions have precedence. This would mean
+          that if the subject scheme defines a set of controlled values
+          none of which are in the attribute definition of the schema, then
+          the default value of the DTD would be taken. But what is a tool
+          like Oxygen supposed to be doing then? Maybe I ask this, because
+          I have (apparently) no idea what's going on behind the scenes,
+          but then I wonder if this is worth discussing in the spec? Not
+          necessarily here, but earlier in the usage chapter.</p>
+        <p><b>Robert Anderson: </b>I think we should add this as a draft
+          comment in this page, and then make sure it is covered in the
+          section about how to determine values:
+          https://github.com/oasis-tcs/dita/blob/DITA-2.0/specification/archSpec/base/determining-effective-attribute-values.dita</p>
+        <p>I think the answer is implied by the language today, but it's
+          not directly addressed. The spec says that if your scheme tells
+          you "a" and "b" are the only valid values in an attribute, then
+          specifying "x" and "y" are both in error, and processors /
+          applications can treat that as an error. If you set up that
+          scheme but your grammar files only allow "x" and "y", then you've
+          set up a scheme that means every usage of that element is
+          automatically an error condition.</p>
+      </draft-comment>
     </section>
     <section id="specialization-hierachy">
       <title>Specialization hierarchy</title>

@@ -27,14 +27,14 @@
         existing <keyword>os</keyword> subject; it also adds special versions of Windows as children
         of the existing <keyword>windows</keyword> subject:</p>
       <codeblock>&lt;subjectScheme>
-  &lt;schemeref href="baseOS.ditamap"/>
-  &lt;subjectdef keyref="os">
-    &lt;subjectdef keys="macos"/>
-    &lt;subjectdef keyref="windows">
-      &lt;subjectdef keys="win10"/>
-      &lt;subjectdef keys="win11"/>
+    &lt;schemeref href="baseOS.ditamap"/>
+    &lt;subjectdef keyref="os">
+        &lt;subjectdef keys="macos"/>
+        &lt;subjectdef keyref="windows">
+            &lt;subjectdef keys="win10"/>
+            &lt;subjectdef keys="win11"/>
+        &lt;/subjectdef>
     &lt;/subjectdef>
-  &lt;/subjectdef>
 &lt;/subjectScheme></codeblock>
       <p>Note that the references to the subjects that are defined in
           <filepath>baseOS.ditamap</filepath> use the <xmlatt>keyref</xmlatt> attribute. This avoids
@@ -42,22 +42,22 @@
         enumeration. </p>
       <p>The effective result is the same as the following subject scheme map:</p>
       <codeblock>&lt;subjectScheme>
-  &lt;subjectdef keys="os">
-    &lt;subjectdef keys="linux">
-      &lt;subjectdef keys="redhat"/>
-      &lt;subjectdef keys="suse"/>
+    &lt;subjectdef keys="os">
+        &lt;subjectdef keys="linux">
+            &lt;subjectdef keys="redhat"/>
+            &lt;subjectdef keys="suse"/>
+        &lt;/subjectdef>
+        &lt;subjectdef keys="macos"/>
+        &lt;subjectdef keys="windows">
+            &lt;subjectdef keys="win10"/>
+            &lt;subjectdef keys="win11"/>
+        &lt;/subjectdef>
+        &lt;subjectdef keys="zos"/>
     &lt;/subjectdef>
-    &lt;subjectdef keys="macos">
-    &lt;subjectdef keys="windows">
-      &lt;subjectdef keys="win10"/>
-      &lt;subjectdef keys="win11"/>
-    &lt;/subjectdef>
-    &lt;subjectdef keys="zos"/>
-  &lt;/subjectdef>
-  &lt;enumerationdef>
-    &lt;attributedef name="platform"/>
-    &lt;subjectdef keyref="os"/>
-  &lt;/enumerationdef>
+    &lt;enumerationdef>
+        &lt;attributedef name="platform"/>
+        &lt;subjectdef keyref="os"/>
+    &lt;/enumerationdef>
 &lt;/subjectScheme></codeblock>
     </example>
   </conbody>
