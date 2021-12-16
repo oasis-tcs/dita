@@ -2,19 +2,20 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
  "reference.dtd">
 <reference id="table" xml:lang="en-us">
-<title><xmlelement>table</xmlelement></title>
-
-<shortdesc>A table based on the OASIS Exchange Table Model organizes arbitrarily complex
-    relationships of tabular information. This standard table markup provides a wide variety of
-    controls over the display properties of the data and even the table structure
-    itself.</shortdesc>
-
-<prolog><metadata>
-<keywords>
-        <indexterm>table elements<indexterm><xmlelement>table</xmlelement></indexterm></indexterm>
-</keywords>
-</metadata></prolog>
-<refbody>
+  <title><xmlelement>table</xmlelement></title>
+  <shortdesc>A table based on the OASIS Exchange Table Model organizes
+    arbitrarily complex relationships of tabular information. This standard
+    table markup provides a wide variety of controls over the display
+    properties of the data and even the table structure itself.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>table
+            elements<indexterm><xmlelement>table</xmlelement></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody>
     <section id="usage-information">
       <title>Usage information</title>
       <p>The DITA <xmlelement>table</xmlelement> element is based on the
@@ -24,51 +25,63 @@
       <p>An optional <xmlelement>title</xmlelement> inside the
           <xmlelement>table</xmlelement> element provides a caption to
         describe the table. In addition, the optional
-          <xmlelement>desc</xmlelement> element enables a table description
-        that is parallel with a figure description.</p>
+          <xmlelement>desc</xmlelement> element enables a table
+        description.</p>
       <p>See <xref keyref="elements-simpletable"/> for a simplified table
         model that is closer to the HTML5 table model, and which can be
         more easily specialized to represent regular relationships of
         data.</p>
       <p conkeyref="reuse-general/pgwide-explain"/>
-      <note>The <xmlatt>scale</xmlatt> attribute represents a stylistic markup property that is
-        currently maintained in tables for legacy purposes. External stylesheets should enable less
-        dependency on this attribute. Use the <xmlatt>scale</xmlatt> attribute judiciously.</note>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>In situations where a stylesheet or other formatting mechanism specifies table orientation
-        based on criteria other than the value of <xmlatt>orient</xmlatt>, or for non-paginated
-        outputs, the <xmlatt>orient</xmlatt> attribute can be ignored.</p>
+      <p>In situations where a stylesheet or other formatting mechanism
+        specifies table orientation based on criteria other than the value
+        of <xmlatt>orient</xmlatt>, or for non-paginated outputs, the
+          <xmlatt>orient</xmlatt> attribute can be ignored.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
       <p>The following attributes are available on this element: <ph
           conkeyref="reuse-attributes/ref-universalatts"/>, <xref
-          keyref="attributes-common/attr-colsep"><xmlatt>colsep</xmlatt></xref>, <xref
-          keyref="attributes-common/attr-frame"><xmlatt>frame</xmlatt></xref>,  <xref
-          keyref="attributes-common/attr-rowsep"><xmlatt>rowsep</xmlatt></xref>, <xref
-          keyref="attributes-common/attr-rowheader"><xmlatt>rowheader</xmlatt></xref>, <xref
-          keyref="attributes-common/attr-scale"><xmlatt>scale</xmlatt></xref>, and the attributes
-        defined below.</p>
-      <draft-comment author="robander">Looking for consistency on orient, pgwide, colsep, rowsep,
-        and entry/@rotate. We have a mix of "Supported values" (seems to imply "processors MUST
-        support at least these") or "Allowed values" (implies no other values are legal, and the
-        wording used on most other attributes)? Also, are we consistent between "Allowable" and
-        "Allowed" (allowed seems more correct for ennumerated values)?<p>Update after talking with
-          Kris 14 May 2021: Better to use: "The following values are valid:"</p></draft-comment>
+          keyref="attributes-common/attr-colsep"
+          ><xmlatt>colsep</xmlatt></xref>, <xref
+          keyref="attributes-common/attr-frame"
+          ><xmlatt>frame</xmlatt></xref>, <xref
+          keyref="attributes-common/attr-rowsep"
+          ><xmlatt>rowsep</xmlatt></xref>, <xref
+          keyref="attributes-common/attr-rowheader"
+            ><xmlatt>rowheader</xmlatt></xref>, <xref
+          keyref="attributes-common/attr-scale"
+          ><xmlatt>scale</xmlatt></xref>, and the attributes defined
+        below.</p>
+      <draft-comment author="robander">Looking for consistency on orient,
+        pgwide, colsep, rowsep, and entry/@rotate. We have a mix of
+        "Supported values" (seems to imply "processors MUST support at
+        least these") or "Allowed values" (implies no other values are
+        legal, and the wording used on most other attributes)? Also, are we
+        consistent between "Allowable" and "Allowed" (allowed seems more
+        correct for ennumerated values)?<p>Update after talking with Kris
+          14 May 2021: Better to use: "The following values are
+        valid:"</p></draft-comment>
       <dl>
         <dlentry id="orient">
           <dt id="attr-orient"><xmlatt>orient</xmlatt></dt>
-          <dd>Specifies the orientation of the table in page-based outputs. This attribute is
-            primarily useful for print-oriented display. The following values are valid:<dl>
+          <dd>Specifies the orientation of the table in page-based <ph
+              rev="review-e">output formats</ph>. This attribute is
+            primarily useful for print-oriented display. The following
+            values are valid:<dl>
               <dlentry>
                 <dt>port</dt>
-                <dd>The same orientation as the text flow.</dd>
+                <dd rev="review-e">Portrait page orientation. The page is
+                  oriented with its long side vertical and its short side
+                  horizontal.</dd>
               </dlentry>
               <dlentry>
                 <dt>land</dt>
-                <dd>90 degrees counterclockwise from the text flow.</dd>
+                <dd rev="review-e">Landscape page orientation. The page is
+                  oriented with its long side horizontal and its short side
+                  vertical.</dd>
               </dlentry>
               <dlentry conkeyref="reuse-attributes/ditauseconref">
                 <dt/>
@@ -93,13 +106,14 @@
         </dlentry>
       </dl>
     </section>
-<example id="example" otherprops="examples"><title>Example</title>
+    <example id="example" otherprops="examples">
+      <title rev="review-e">Examples</title>
       <p>This section contains <ph rev="review-e">examples</ph> of how the
           <xmlelement>table</xmlelement> element can be used.</p>
       <fig>
         <title>Example of a table</title>
-        <p>The following code sample shows a table that is used to provide reference information
-          about animals and gestation:</p>
+        <p>The following code sample shows a table that is used to provide
+          reference information about animals and gestation:</p>
         <codeblock xml:space="preserve">&lt;table&gt;
   &lt;tgroup cols="2"&gt;
     &lt;colspec colwidth="121*"/&gt;
@@ -137,7 +151,7 @@
           </draft-comment>
         </p>
         <p>The formatted output might be displayed as follows:</p>
-<p>
+        <p>
           <table>
             <tgroup cols="2">
               <colspec colwidth="121*"/>
@@ -167,7 +181,8 @@
                 </row>
               </tbody>
             </tgroup>
-          </table></p>
+          </table>
+        </p>
         <p>In this example, the use of the <xmlelement>thead</xmlelement>
           element for the header enables processors or screen readers to
           identify a header relationship between any cell in the table body
@@ -341,7 +356,7 @@
           the case of a cell that spans more than one row). The following
           code sample demonstrates the use of <xmlatt>scope</xmlatt> to
           facilitate navigation of these rows by a screen reader or other
-          assistive technology; note that the
+          assistive technology<ph rev="review-e">. Note</ph> that the
             <xmlelement>thead</xmlelement> element is still used to imply a
           header relationship with the names at the top of each column.</p>
         <codeblock>&lt;table frame="all">
@@ -474,7 +489,7 @@ expected points in column c2 and actual points in column c3.&lt;/desc>
             </row>
           </tbody>
         </tgroup>
-      </table></example>
-</refbody>
+      </table>
+    </example>
+  </refbody>
 </reference>
-
