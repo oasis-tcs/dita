@@ -18,21 +18,10 @@
       ><title/></section>
     <section conkeyref="reuse-fn/attributes" id="attributes"/>
 <example id="example" otherprops="examples"><title>Examples</title>
-      <draft-comment author="Kristen J Eberlein" time="29 November 2021">
-        <p>In this section, we need to replace each of "examples of
-          rendered output" with screen captures. This effects the following
-          examples:</p>
-        <ul>
-          <li>A single-use footnote</li>
-          <li>A single-use footnote with a <xmlatt>callout</xmlatt>
-            attribute</li>
-          <li>A use-by-reference footnote</li>
-        </ul>
-      </draft-comment>
       <p>This section contains examples of how the <xmlelement>fn</xmlelement> element can be
         used.</p>
       <fig>
-        <title>A single-use footnote</title>
+        <title>An example of a single-use footnote</title>
         <p>The following code sample shows a single-use footnote. It contains a simple
             <xmlelement>fn</xmlelement> element, with no <xmlatt>id</xmlatt> or
             <xmlatt>callout</xmlatt> attribute.</p>
@@ -45,18 +34,23 @@
             <xmlelement>fn</xmlelement>, which is typically placed at the
           bottom of a PDF page or the end of an online article. The type of
           symbol used is implementation specific.</p>
-        <p>The above code sample might produce output similar to the following:<lq>
-            <p>The memory storage capacity of the computer is 2 GB<sup>1</sup> with error correcting
-              support.</p>
-            <p><codeph>......</codeph></p>
-            <p><sup>1</sup> A GB (gigabyte) is equal to 1000 million bytes</p>
-            <p>----- [bottom of page]
-              -----------------------------------------------------------------</p>
-          </lq></p>
+        <p>The above code sample might produce the following output similar
+          to the following:</p>
+        <image placement="break" href="../images/simple-footnote.jpg"
+          scale="80">
+          <alt>The screen capture shows a text in a document that includes
+            a footnote. In the body of the text, the location of the
+            footnote is marked with the numeral one in superscript. At the
+            bottom on the page, the text of the footnote appears along with
+            the associated numeral one. The edges of the screen capture are
+            tattered, to indicate that the image is part of a larger
+            document.</alt>
+        </image>
+        <!--<p><lq><p>The memory storage capacity of the computer is 2 GB<sup>1</sup> with error correcting support.</p><p><codeph>......</codeph></p><p><sup>1</sup> A GB (gigabyte) is equal to 1000 million bytes</p></lq></p>-->
       </fig>
       <fig>
-        <title>A single-use footnote with a <xmlatt>callout</xmlatt>
-          attribute</title>
+        <title>An example of a single-use footnote with a
+            <xmlatt>callout</xmlatt> attribute</title>
         <p>The following code sample shows a single-use footnote that uses a
             <xmlatt>callout</xmlatt> attribute:</p>
         <codeblock>The memory storage capacity of the computer is 
@@ -79,17 +73,12 @@
 &lt;p>I like pets. At my house, I have a dog&lt;xref href="#topic/dog-name" type="fn"/&gt;, a
 cat&lt;xref href="#topic/cat-name" type="fn"/&gt;, and a 
 llama&lt;xref href="#topic/llama-name" type="fn"/&gt;.&lt;/p></codeblock>
-        <p>The code sample might produce output similar to the following:<lq>
-            <p><codeph>......</codeph></p>
-            <p>I like pets. At my house, I have a dog<sup>1</sup>, a cat<sup>2</sup>, and a
-                llama<sup>3</sup>.</p>
-            <p><codeph>......</codeph></p>
-            <p><sup>1</sup>Fido</p>
-            <p><sup>2</sup>Puss</p>
-            <p><sup>3</sup>My llama</p>
-            <p>----- [bottom of page]
-              -----------------------------------------------------------------</p>
-          </lq></p>
+        <p>The code sample might produce output similar to the
+          following:</p>
+        <image placement="break"
+          href="../images/footnote-use-by-reference.jpg" scale="80">
+          <alt/>
+        </image>
       </fig>
       <fig>
         <title>A single-use footnote that uses conref</title>
@@ -112,12 +101,12 @@ llama&lt;xref href="#topic/llama-name" type="fn"/&gt;.&lt;/p></codeblock>
         <codeblock>&lt;topic id="evaluating-quality">
   &lt;title>Evaluating documentation quality&lt;/title>
   &lt;body>
-  ...
+  &lt;!-- ... -->
   &lt;fn conref="footnotes.dita#footnotes/DQTI" id="dqti"/>
-  ...
+  &lt;!-- ... -->
   &lt;p>See the online resource&lt;xref="./evaluating-quality/dqti" type="fn"/> for more 
      information about how to assess the quality of technical documentation ...&lt;/p>
-  ...
+  &lt;!-- ... -->
   &lt;/body>
 &lt;topic></codeblock>
       </fig></example>
