@@ -12,6 +12,7 @@
       <keywords>
         <indexterm>table
             elements<indexterm><xmlelement>table</xmlelement></indexterm></indexterm>
+        <indexterm>tables<indexterm>complex<indexterm>overview</indexterm></indexterm></indexterm>
       </keywords>
     </metadata>
   </prolog>
@@ -144,7 +145,7 @@
           and the matching header cell above that column.</p>
       </fig>
       <fig>
-        <title>Example: Complex table with implied accessibility
+        <title>Example of a complex table with implied accessibility
           markup</title>
         <p>
           <draft-comment author="robander" time="Oct 5 2020">Per discussion
@@ -170,11 +171,11 @@
     &lt;thead>
       &lt;row>
         &lt;entry morerows="1">Name&lt;/entry>
-        &lt;entry namest="c2" nameend="c3">points&lt;/entry>
+        &lt;entry namest="c2" nameend="c3">Points&lt;/entry>
       &lt;/row>
       &lt;row>
-        &lt;entry>expected&lt;/entry>
-        &lt;entry>actual&lt;/entry>
+        &lt;entry>Expected&lt;/entry>
+        &lt;entry>Actual&lt;/entry>
       &lt;/row>
     &lt;/thead>
     &lt;tbody>
@@ -205,8 +206,8 @@
             body cell can be associated with the header cell or cells above
             the column. For example, in the second body row, the entry
             "Peter" can be associated with the header "Name"; similarly,
-            the entry "9,000" can be associated with the headers "expected"
-            and "points".</li>
+            the entry "9,000" can be associated with the headers "Expected"
+            and "Points".</li>
           <li>The <xmlatt>rowheader</xmlatt> attribute implies that the
             first column plays a similar roll as a header. This means that
             each body cell in columns two and three can be associated with
@@ -216,7 +217,7 @@
         </ul>
         <p>As a result of these two sets of headers, a rendering of the
           table can associate the entry "9,000" with three headers:
-          "Peter", "expected", and "points", making it fully navigable by a
+          "Peter", "Expected", and "Points", making it fully navigable by a
           screen reader or other assistive technology.</p>
         <p>The formatted output might be displayed as follows:</p>
         <image placement="break" href="../images/table-with-spans.jpg">
@@ -231,8 +232,8 @@
         <!--<p><table id="table_eww_xxl_4n" rowheader="firstcol" frame="all"><title>Sample of automated table accessibility</title><desc>Names are listed in the column c1. Points are listed in both data columns, with expected points in column c2 and actual points in column c3.</desc><tgroup cols="3"><colspec colname="c1"/><colspec colname="c2"/><colspec colname="c3"/><thead><row><entry morerows="1">Name</entry><entry namest="c2" nameend="c3">points</entry></row><row><entry>expected</entry><entry>actual</entry></row></thead><tbody><row><entry>Mark</entry><entry>10,000</entry><entry>11,123.45</entry></row><row><entry>Peter</entry><entry>9,000</entry><entry>11,012.34</entry></row><row><entry>Cindy</entry><entry>10,000</entry><entry>10,987.64</entry></row></tbody></tgroup></table><draft-comment author="Kristen J Eberlein" time="20 December 2021"><p>When replacing the above with a screen capture, consider the following comment from Gershon Joseph:</p><p>"In addition, I would expect the output to show the header column also formatted in bold, or some background shading, to illustrate the use of the @rowheader."</p></draft-comment></p>-->
       </fig>
       <fig>
-        <title>Complex table with some manually specified accessibility
-          markup</title>
+        <title>Example of a complex table with some manually specified
+          accessibility markup</title>
         <p>In some complex tables, the <xmlelement>thead</xmlelement>
           element and <xmlatt>rowheader</xmlatt> attribute might not be
           enough to support all accessibility needs. Assume that the table
@@ -279,14 +280,14 @@
   &lt;/thead>
   &lt;tbody>
    &lt;row>
-    &lt;entry morerows="1" <b>scope="rowgroup"</b>>&lt;b>points&lt;/b>&lt;/entry>
-    &lt;entry <b>scope="row"</b>>&lt;b>expected&lt;/b>&lt;/entry>
+    &lt;entry morerows="1" <b>scope="rowgroup"</b>>&lt;b>Points&lt;/b>&lt;/entry>
+    &lt;entry <b>scope="row"</b>>&lt;b>Expected&lt;/b>&lt;/entry>
     &lt;entry>10,000&lt;/entry>
     &lt;entry>9,000&lt;/entry>
     &lt;entry>10,000&lt;/entry>
    &lt;/row>
    &lt;row>
-    &lt;entry <b>scope="row"</b>>&lt;b>actual&lt;/b>&lt;/entry>
+    &lt;entry <b>scope="row"</b>>&lt;b>Actual&lt;/b>&lt;/entry>
     &lt;entry>11,123.45&lt;/entry>
     &lt;entry>11,012.34&lt;/entry>
     &lt;entry>10,987.64&lt;/entry>
@@ -297,14 +298,14 @@
         <!--<p>The formatted output might be displayed as follows:</p><p><table id="table_yrp_sbm_4n"><title>Sample with fully manual accessibility control</title><desc>Names are listed in the column c1. Points are listed in both data columns, with expected points in column c2 and actual points in column c3.</desc><tgroup cols="3"><colspec colname="c1"/><colspec colname="c2"/><colspec colname="c3"/><thead><row><entry morerows="1">Name</entry><entry namest="c2" nameend="c3">points</entry></row><row><entry>expected</entry><entry>actual</entry></row></thead><tbody><row><entry>Mark</entry><entry>10,000</entry><entry>11,123.45</entry></row><row><entry>Peter</entry><entry>9,000</entry><entry>11,012.34</entry></row><row><entry>Cindy</entry><entry>10,000</entry><entry>10,987.64</entry></row></tbody></tgroup></table></p>-->
       </fig>
       <fig>
-        <title>Example: complex table with manual accessibility
+        <title>Example of a complex table with manual accessibility
           markup</title>
         <p>In extremely complex tables, such as those with a single header
-          cell in the middle of the table, extremely fine grained
-          accessibility controls are available to explicitly associate any
-          content cell with any header cell. This might also be useful for
-          cases where processors do not support the implied accessibility
-          relationships described above.</p>
+          cell in the middle of the table, fine-grained accessibility
+          controls are available to explicitly associate any content cell
+          with any header cell. This might also be useful for cases where
+          processors do not support the implied accessibility relationships
+          described above.</p>
         <p>In the following sample, header cells are identified using the
             <xmlatt>id</xmlatt> attribute, which is referenced using the
             <xmlatt>headers</xmlatt> attribute on appropriate content
@@ -315,6 +316,15 @@
             <xmlelement>thead</xmlelement> creates a header relationship
           even when the <xmlatt>id</xmlatt> and <xmlatt>headers</xmlatt>
           attributes are not used.</p>
+        <p>
+          <draft-comment author="Kristen J Eberlein"
+            time="20 December 2021">
+            <p>Do we want to use a different example here? It's a bit
+              confusing to read, since the result output is very similar to
+              the "Example of a complex table with implied accessibility
+              markup".</p>
+          </draft-comment>
+        </p>
         <codeblock>&lt;table frame="all"&gt;
   &lt;title&gt;Sample with fully manual accessibility control&lt;/title>
 &lt;desc>Names are listed in the column c1. Points are listed in both data columns, with
@@ -326,11 +336,11 @@ expected points in column c2 and actual points in column c3.&lt;/desc>
     &lt;thead>
       &lt;row>
         &lt;entry morerows="1"> &lt;/entry>
-        &lt;entry namest="c2" nameend="c3" <b>id="pts"</b>>points&lt;/entry>
+        &lt;entry namest="c2" nameend="c3" <b>id="pts"</b>>Points&lt;/entry>
       &lt;/row>
       &lt;row>
-        &lt;entry <b>id="exp" headers="pts"</b>>expected&lt;/entry>
-        &lt;entry <b>id="act" headers="pts"</b>>actual&lt;/entry>
+        &lt;entry <b>id="exp" headers="pts"</b>>Expected&lt;/entry>
+        &lt;entry <b>id="act" headers="pts"</b>>Actual&lt;/entry>
       &lt;/row>
     &lt;/thead>
     &lt;tbody>
@@ -354,44 +364,14 @@ expected points in column c2 and actual points in column c3.&lt;/desc>
 &lt;/table></codeblock>
       </fig>
       <p>The formatted output might be displayed as follows:</p>
-      <table id="table_yrp_sbm_4n">
-        <title>Sample with fully manual accessibility control</title>
-        <desc>Names are listed in the column c1. Points are listed in both
-          data columns, with expected points in column c2 and actual points
-          in column c3.</desc>
-        <tgroup cols="3">
-          <colspec colname="c1"/>
-          <colspec colname="c2"/>
-          <colspec colname="c3"/>
-          <thead>
-            <row>
-              <entry morerows="1"> </entry>
-              <entry namest="c2" nameend="c3">points</entry>
-            </row>
-            <row>
-              <entry>expected</entry>
-              <entry>actual</entry>
-            </row>
-          </thead>
-          <tbody>
-            <row>
-              <entry>Mark</entry>
-              <entry>10,000</entry>
-              <entry>11,123.45</entry>
-            </row>
-            <row>
-              <entry>Peter</entry>
-              <entry>9,000</entry>
-              <entry>11,012.34</entry>
-            </row>
-            <row>
-              <entry>Cindy</entry>
-              <entry>10,000</entry>
-              <entry>10,987.64</entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </table>
+      <image placement="break"
+        href="../images/table-manual-accessibility.jpg">
+        <alt>The image shows … The header row is shaded with green, and the
+          text in the header column and rows is bold. The edges of the
+          screen capture are tattered, to indicate that the image is part
+          of a larger document.</alt>
+      </image>
+      <!--<table id="table_yrp_sbm_4n"><title>Sample with fully manual accessibility control</title><desc>Names are listed in the column c1. Points are listed in both data columns, with expected points in column c2 and actual points in column c3.</desc><tgroup cols="3"><colspec colname="c1"/><colspec colname="c2"/><colspec colname="c3"/><thead><row><entry morerows="1"> </entry><entry namest="c2" nameend="c3">points</entry></row><row><entry>expected</entry><entry>actual</entry></row></thead><tbody><row><entry>Mark</entry><entry>10,000</entry><entry>11,123.45</entry></row><row><entry>Peter</entry><entry>9,000</entry><entry>11,012.34</entry></row><row><entry>Cindy</entry><entry>10,000</entry><entry>10,987.64</entry></row></tbody></tgroup></table>-->
     </example>
   </refbody>
 </reference>
