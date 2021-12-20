@@ -5,7 +5,7 @@
   <shortdesc conkeyref="reuse-simpletable/shortdesc"/>
 <prolog><metadata>
 <keywords><indexterm>simple tables</indexterm><indexterm>table elements<indexterm><xmlelement>simpletable</xmlelement></indexterm></indexterm>
-    <indexterm>tables<indexterm>simple</indexterm></indexterm>
+    <indexterm>tables<indexterm>simple<indexterm>overview</indexterm></indexterm></indexterm>
 </keywords>
 </metadata></prolog>
 <refbody>
@@ -17,8 +17,8 @@
           <xmlelement>simpletable</xmlelement> element can be used.</p>
       <fig>
         <title>Example of a simple table</title>
-        <p>The following code sample shows a simple table that contains
-            <ph>menu items and prices:</ph></p>
+        <p>The following code sample shows a simple table that contains <ph
+            rev="review-e">menu items and prices:</ph></p>
         <codeblock rev="review-e">&lt;simpletable&gt;
   &lt;sthead&gt;
     &lt;stentry&gt;Menu item&lt;/stentry&gt;
@@ -26,7 +26,7 @@
   &lt;/sthead&gt;
   &lt;strow&gt;
     &lt;stentry&gt;Apple pie&lt;/stentry&gt;
-    &lt;stentry&gt;$7.00&lt;stentry&gt;
+    &lt;stentry&gt;$7.00&lt;/stentry&gt;
   &lt;/strow&gt;
   &lt;strow&gt;
     &lt;stentry&gt;Cheese sandwich&lt;/stentry&gt;
@@ -37,6 +37,15 @@
     &lt;stentry&gt;$6.50&lt;/stentry&gt;
   &lt;/strow&gt;
 &lt;/simpletable&gt;</codeblock>
+        <p>The simple table might be rendered as follows:</p>
+        <image placement="break" href="../images/simpletable.jpg">
+          <alt>The image shows a two-column table. The first column lists
+            menu items, and the second column lists price. The header row
+            is shaded with green, and the text in the header row is bold.
+            The edges of the screen capture are tattered, to indicate that
+            the image is part of a larger document.</alt>
+        </image>
+        <!--<simpletable><sthead><stentry>Menu item</stentry><stentry>Price</stentry></sthead><strow><stentry>Apple pie</stentry><stentry>$7.00</stentry></strow><strow><stentry>Cheese sandwich</stentry><stentry>$10.00</stentry></strow><strow><stentry>Milk shake</stentry><stentry>$6.50</stentry></strow></simpletable>-->
       </fig>
       <fig id="fig_mnz_2gy_jlb">
         <title>Example <ph rev="review-e">of a simple table</ph> with
@@ -60,6 +69,18 @@
     &lt;stentry&gt;Dinner&lt;/stentry&gt;
   &lt;/strow&gt;
 &lt;/simpletable&gt;</codeblock>
+        <p>The simple table might be rendered as follows:</p>
+        <image placement="break" href="../images/simpletable-w-spans.jpg">
+          <alt>The image shows a two-column table. The first column lists
+            the meal, and the second column lists food eaten. The first row
+            contains the text "Fasting period," and it spans two columns.
+            The next two rows are for "Lunch" and "Dinner". The second cell
+            in both rows contains the text "Pasta," and it spans two rows.
+            The header row is shaded with green, and the text in the header
+            row is bold. The edges of the screen capture are tattered, to
+            indicate that the image is part of a larger document.</alt>
+        </image>
+        <!--<p><simpletable><title>Food log for Wednesday</title><sthead><stentry>Meal</stentry><stentry>Food</stentry></sthead><strow><stentry colspan="2">Fasting period</stentry></strow><strow><stentry>Lunch</stentry><stentry rowspan="2">Pasta</stentry></strow><strow><stentry>Dinner</stentry></strow></simpletable></p>-->
       </fig>
       <fig>
         <title rev="review-e">Example of a simple table that uses
@@ -68,9 +89,7 @@
           that contains information about menu items: calories and price.
           The <xmlatt>keycol</xmlatt> attribute indicates that the first
           column, which contains the menu items, is the header column. This
-          indicates that first column is treated as a vertical header.
-          Rendering of the header column is left up to the
-          implementation.</p>
+          indicates that first column is treated as a vertical header.</p>
         <codeblock rev="review-e">&lt;simpletable keycol="1">
     &lt;sthead>
         &lt;stentry>Menu item&lt;/stentry>
@@ -94,6 +113,20 @@
     &lt;/strow>
 &lt;/simpletable></codeblock>
       </fig>
+      <p>This simple table might be rendered as follows:</p>
+      <image placement="break" href="../images/simpletable-w-keycols.jpg">
+        <alt>The image shows a three-column table. The first column lists
+          menu items, the second column lists calories, and the third
+          column lists price. The header row is shaded with green, and the
+          text in the header row is bold. In addition, the contents of the
+          first column are highlighted in bold, to indicate that the first
+          column serves as a vertical header. The edges of the screen
+          capture are tattered, to indicate that the image is part of a
+          larger document.</alt>
+      </image>
+      <p>In the above sample rendering, the content of the key column is
+        bolded. However, note that rendering of the header column is left
+        up to the implementation.</p>
       <!--<simpletable keycol="1"><sthead><stentry>Menu item</stentry><stentry>Calories</stentry><stentry>Price</stentry></sthead><strow><stentry>Chicken dish</stentry><stentry>850</stentry><stentry>$12.00</stentry></strow><strow><stentry>Vegetarian dish</stentry><stentry>525</stentry><stentry>$9.00</stentry></strow><strow><stentry>Vegan dish</stentry><stentry>475</stentry><stentry>$7.00</stentry></strow></simpletable>--></example>
 </refbody>
 </reference>
