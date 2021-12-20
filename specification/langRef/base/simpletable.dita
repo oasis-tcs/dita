@@ -37,12 +37,6 @@
     &lt;stentry&gt;$6.50&lt;/stentry&gt;
   &lt;/strow&gt;
 &lt;/simpletable&gt;</codeblock>
-        <p>
-          <draft-comment author="robander" time="Dec 13 2021">I feel like the P / not P example is
-            not very useful, as anyone without a grasp of boolean logic will not have any idea what
-            this is trying to illustrate. Maybe we should use something like a parts list, which we
-            already mention in Usage information?</draft-comment>
-        </p>
       </fig>
       <fig id="fig_mnz_2gy_jlb">
         <title>Example <ph rev="review-e">of a simple table</ph> with
@@ -68,28 +62,38 @@
 &lt;/simpletable&gt;</codeblock>
       </fig>
       <fig>
-        <title>Example using <xmlatt>keycol</xmlatt></title>
-        <p>The following code sample shows how the <xmlatt>keycol</xmlatt> attribute can be used.
-          The value of the <xmlatt>keycol</xmlatt> attribute specifies that the first column is the
-          header column. This indicates that items in the first column are headers for the row.
-          Rendering of the header column is left up to the implementation.</p>
-        <codeblock>&lt;simpletable keycol="1"&gt;
- &lt;sthead&gt;
-  &lt;stentry&gt;Term&lt;/stentry&gt;
-  &lt;stentry&gt;Categorization&lt;/stentry&gt;
-  &lt;stentry&gt;Definition&lt;/stentry&gt;
- &lt;/sthead&gt;
- &lt;strow&gt;
-  &lt;stentry&gt;Widget&lt;/stentry&gt;
-  &lt;stentry&gt;noun&lt;/stentry&gt;
-  &lt;stentry&gt;Thing that is used for something&lt;/stentry&gt;
- &lt;/strow&gt;
- &lt;strow&gt;
-  &lt;stentry&gt;Frustration&lt;/stentry&gt;
-  &lt;stentry&gt;noun&lt;/stentry&gt;
-  &lt;stentry&gt;What you feel when you drop the widget&lt;/stentry&gt;
- &lt;/strow&gt;
-&lt;/simpletable&gt;</codeblock>
-      </fig></example>
+        <title rev="review-e">Example of a simple table that uses
+            <xmlatt>keycol</xmlatt></title>
+        <p rev="review-e">The following code sample shows a simple table
+          that contains information about menu items: calories and price.
+          The <xmlatt>keycol</xmlatt> attribute indicates that the first
+          column, which contains the menu items, is the header column. This
+          indicates that first column is treated as a vertical header.
+          Rendering of the header column is left up to the
+          implementation.</p>
+        <codeblock rev="review-e">&lt;simpletable keycol="1">
+    &lt;sthead>
+        &lt;stentry>Menu item&lt;/stentry>
+        &lt;stentry>Calories&lt;/stentry>
+        &lt;stentry>Price&lt;/stentry>
+    &lt;/sthead>
+    &lt;strow>
+        &lt;stentry>Chicken dish&lt;/stentry>
+        &lt;stentry>850&lt;/stentry>
+        &lt;stentry>$12.00&lt;/stentry>
+    &lt;/strow>
+    &lt;strow>
+        &lt;stentry>Vegetarian dish&lt;/stentry>
+        &lt;stentry>525&lt;/stentry>
+        &lt;stentry>$9.00&lt;/stentry>
+    &lt;/strow>
+    &lt;strow>
+        &lt;stentry>Vegan dish&lt;/stentry>
+        &lt;stentry>475&lt;/stentry>
+        &lt;stentry>$7.00&lt;/stentry>
+    &lt;/strow>
+&lt;/simpletable></codeblock>
+      </fig>
+      <!--<simpletable keycol="1"><sthead><stentry>Menu item</stentry><stentry>Calories</stentry><stentry>Price</stentry></sthead><strow><stentry>Chicken dish</stentry><stentry>850</stentry><stentry>$12.00</stentry></strow><strow><stentry>Vegetarian dish</stentry><stentry>525</stentry><stentry>$9.00</stentry></strow><strow><stentry>Vegan dish</stentry><stentry>475</stentry><stentry>$7.00</stentry></strow></simpletable>--></example>
 </refbody>
 </reference>
