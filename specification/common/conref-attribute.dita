@@ -446,34 +446,43 @@
                                 </dlentry>
                                 <dlentry id="tablescope">
                                         <dt id="attr-scope-simpletable"><xmlatt>scope</xmlatt></dt>
-                                        <dd>Specifies that the current
-            entry is a header for other table entries. The following values
-            are valid:<dl>
-              <dlentry>
-                <dt><keyword>col</keyword></dt>
-                <dd>The current entry is a header for all cells in the
-                  column.</dd>
-              </dlentry>
-              <dlentry>
-                <dt><keyword>colgroup</keyword></dt>
-                <dd>The current entry is a header for all cells in the
-                  columns that are spanned by this entry.</dd>
-              </dlentry>
-              <dlentry>
-                <dt><keyword>row</keyword></dt>
-                <dd>The current entry is a header for all cells in the
-                  row.</dd>
-              </dlentry>
-              <dlentry>
-                <dt><keyword>rowgroup</keyword></dt>
-                <dd>The current entry is a header for all cells in the rows
-                  that are spanned by this entry.</dd>
-              </dlentry>
-              <dlentry conref="#conref-attribute/ditauseconref">
-                <dt/>
-                <dd/>
-              </dlentry>
-            </dl></dd>
+                                        <dd>Specifies that the current entry is a header for other
+                                                table entries. The following values are valid:<dl>
+                                                  <dlentry>
+                                                  <dt><keyword>col</keyword></dt>
+                                                  <dd>The current entry is a header for all cells in
+                                                  the column.</dd>
+                                                  </dlentry>
+                                                  <dlentry>
+                                                  <dt><keyword>colgroup</keyword></dt>
+                                                  <dd>The current entry is a header for all cells in
+                                                  the columns that are spanned by this entry.</dd>
+                                                  </dlentry>
+                                                  <dlentry>
+                                                  <dt><keyword>row</keyword></dt>
+                                                  <dd>The current entry is a header for all cells in
+                                                  the row.</dd>
+                                                  </dlentry>
+                                                  <dlentry>
+                                                  <dt><keyword>rowgroup</keyword></dt>
+                                                  <dd>The current entry is a header for all cells in
+                                                  the rows that are spanned by this entry.</dd>
+                                                  </dlentry>
+                                                  <dlentry conref="#conref-attribute/ditauseconref">
+                                                  <dt/>
+                                                  <dd/>
+                                                  </dlentry>
+                                                </dl><draft-comment author="robander"
+                                                  time="Dec 20 2021">If the TC agrees we could state
+                                                  that the use of <xmlelement>thead</xmlelement>
+                                                  implies a setting of scope="colgroup" (not sure if
+                                                  we should call that a processing default or
+                                                  something else). Basically a thead means
+                                                  everything in there is a heading for the relevant
+                                                  columns, so it is not required to set this
+                                                  attribute.<p>Same question for
+                                                  <xmlelement>sthead</xmlelement> as
+                                                  well.</p></draft-comment></dd>
                                 </dlentry>
                         </dl>
                 </section>
