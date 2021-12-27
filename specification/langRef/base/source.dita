@@ -4,9 +4,10 @@
  "reference.dtd">
 <reference id="source" xml:lang="en-us">
 <title><xmlelement>source</xmlelement></title>
-<shortdesc>Source information identifies a resource from which the present topic is derived, either
-    completely or in part.</shortdesc>
-<prolog><metadata>
+<shortdesc>A source is a resource from which the present topic is derived,
+    either completely or in part.</shortdesc>
+<prolog>
+    <source/><metadata>
 <keywords>
         <indexterm>elements<indexterm>prolog<indexterm><xmlelement>source</xmlelement></indexterm></indexterm></indexterm><indexterm>prolog elements<indexterm><xmlelement>source</xmlelement></indexterm></indexterm>
 </keywords>
@@ -17,12 +18,13 @@
       <p>The <xmlelement>source</xmlelement> element contains a description of the resource.
         Alternatively, the <xmlatt>href</xmlatt> or <xmlatt>keyref</xmlatt> attributes can be used
         to reference a description of the resource.</p>
-      <p>This element is equivalent to the <xmlelement>Source</xmlelement> element in Dublin
-        Core.</p>
+      <p>The <xmlelement>source</xmlelement> element is equivalent to the
+          <xmlelement>Source</xmlelement> element in Dublin Core.</p>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>It is implementation-dependent what it means when the element has both content and an
+      <p>It is implementation-dependent what it means when the
+          <xmlelement>source</xmlelement> element has both content and an
         attribute-based reference to another resource.</p>
     </section>
     <section id="attributes">
@@ -31,14 +33,16 @@
           conkeyref="reuse-attributes/ref-universalatts"/>, <ph
           conkeyref="reuse-attributes/ref-linkatts"/>, and <xref keyref="attributes-common/attr-keyref"
             ><xmlatt>keyref</xmlatt></xref>.</p>
-      <p id="attr-exception" outputclass="attr-exception">For this element, <xmlatt>href</xmlatt> provides a reference to a
+      <p id="attr-exception" outputclass="attr-exception">For this element,
+        the <xmlatt>href</xmlatt> attribute provides a reference to a
         resource from which the topic is derived.</p>
       <!--<dl><dlentry id="href"><dt id="attr-href"><xmlatt>href</xmlatt></dt><dd>Provides a reference to a resource from which the present resource is derived. See <xref keyref="attributes-href"/> for detailed information on supported values and processing implications. </dd></dlentry></dl>-->
     </section>
 <example id="example" otherprops="examples">    <title>Example</title>
-      <p>The following code sample shows that the content is based on information from "Somewhere,
-        someplace".</p>    <codeblock>&lt;prolog&gt;
- <b>&lt;source&gt;</b>Somewhere, someplace<b>&lt;/source&gt;</b>
+      <p>The following code sample shows that the content is based on
+        information from the <cite>XML Exchange Table Model Document Type
+          Definition</cite>:</p>    <codeblock>&lt;prolog&gt;
+    &lt;source&gt;XML Exchange Table Model Document Type Definition&lt;/source&gt;
 &lt;/prolog&gt;</codeblock></example>
 </refbody>
 </reference>
