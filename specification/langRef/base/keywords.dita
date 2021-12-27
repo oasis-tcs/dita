@@ -3,9 +3,8 @@
  "reference.dtd">
 <reference id="keywords" xml:lang="en-us">
  <title><xmlelement>keywords</xmlelement></title>
- <shortdesc>A <xmlelement>keywords</xmlelement> element contains a list of terms
-    <!--from a controlled or uncontrolled subject vocabulary -->that applies to the topic or
-    map.</shortdesc>
+ <shortdesc>A <xmlelement>keywords</xmlelement> element contains a list of
+    terms that applies to the topic or map.</shortdesc>
  <prolog>
   <metadata>
    <keywords>
@@ -16,21 +15,31 @@
  <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>Key words in <xmlelement>keywords</xmlelement> are used to help find content in the topic.
-          <ph otherprops="examples">For example, <xmlelement>keyword</xmlelement> elements can be
-          supplied as key words to search engines, and <xmlelement>indexterm</xmlelement> elements
-          can be collected for a document index.</ph></p>
-      <p>While the <xref keyref="elements-keyword"><xmlelement>keyword</xmlelement></xref> element can be
-        used inline, the <xmlelement>keywords</xmlelement> element is not an inline element. The
-          <xmlelement>keywords</xmlelement> element only appears in the
-          <xmlelement>topicmeta</xmlelement> or <xmlelement>prolog</xmlelement>, and is used to
-        specify keywords that apply to the topic.</p>
+      <!--<p>Key words in <xmlelement>keywords</xmlelement> are used to help find content in the topic. For example, <xmlelement>keyword</xmlelement> elements can be supplied as key words to search engines, and <xmlelement>indexterm</xmlelement> elements can be collected for a document index.</p>-->
+      <p>The content of the <xmlelement>keywords</xmlelement> element can
+        be used to optimize the rendered output:</p>
+      <ul>
+        <li>Processors might add metadata to the ouput format to facilitate
+          search engine optimization.</li>
+        <li>Processors might use the content of
+            <xmlelement>indexterm</xmlelement> elements to generate an
+          index for a document.</li>
+      </ul>
+      <p>While the <xref keyref="elements-keyword"
+            ><xmlelement>keyword</xmlelement></xref> element can be used
+        inline, the <xmlelement>keywords</xmlelement> element is not an
+        inline element. The <xmlelement>keywords</xmlelement> element only
+        appears in the <xmlelement>topicmeta</xmlelement> or
+          <xmlelement>prolog</xmlelement>, and it is used to specify
+        keywords that apply to the topic.</p>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>All <xmlelement>keyword</xmlelement> and/or <xmlelement>indexterm</xmlelement> elements in
-        the <xmlelement>keywords</xmlelement> element are considered part of the topic's metadata
-        and should be reflected in the output as appropriate for the output medium.</p>
+      <p>All <xmlelement>keyword</xmlelement> and
+          <xmlelement>indexterm</xmlelement> elements contained in the
+          <xmlelement>keywords</xmlelement> element are considered part of
+        the topic or map metadata. How the content of these elements is
+        processed depends on the output medium.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -38,18 +47,16 @@
     </section>
   <example id="example" otherprops="examples">
    <title>Example</title>
-   <p>The following code sample shows how several key words can be associated with a topic related
-        to installing software.</p>
-   <codeblock xml:space="preserve">&lt;prolog&gt;
- &lt;metadata>
-  &lt;keywords&gt;
-   &lt;keyword&gt;installing&lt;/keyword&gt;
-   &lt;keyword&gt;uninstalling&lt;/keyword&gt;
-   &lt;keyword&gt;prerequisites&lt;/keyword&gt; 
-   &lt;keyword&gt;helps&lt;/keyword&gt;
-   &lt;keyword&gt;wizards&lt;/keyword&gt;
-  &lt;/keywords&gt;
- &lt;/metadata>
+   <p>The following code sample shows how several key words can be
+        associated with a topic that is related to installing software:</p>
+   <codeblock>&lt;prolog&gt;
+    &lt;metadata>
+        &lt;keywords&gt;
+            &lt;keyword&gt;installing&lt;/keyword&gt;
+            &lt;keyword&gt;prerequisites&lt;/keyword&gt;
+            &lt;keyword&gt;wizards&lt;/keyword&gt;
+        &lt;/keywords&gt;
+    &lt;/metadata>
 &lt;/prolog&gt;</codeblock>
   </example></refbody>
 </reference>
