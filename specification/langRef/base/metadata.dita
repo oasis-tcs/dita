@@ -4,8 +4,8 @@
  "reference.dtd">
 <reference id="metadata" xml:lang="en-us">
 <title><xmlelement>metadata</xmlelement></title>
-  <shortdesc>A <xmlelement>metadata</xmlelement> section is a contaner that groups metadata such as
-    a topic's audience and key
+  <shortdesc>A <xmlelement>metadata</xmlelement> element is a container
+    that groups metadata such as audience and key
     words.<!-- Metadata can be used by computational processes to select particular topics or to prepare search indexes or to customize navigation.--></shortdesc>
 <prolog><metadata>
 <keywords>
@@ -15,29 +15,33 @@
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>Elements inside of <xmlelement>metadata</xmlelement> provide information about the content
-        and subject of a topic. When used in topics, other metadata elements outside of the
-          <xmlelement>metadata</xmlelement> container generally provide lifecycle information for
-        the content unit (such as the author or copyright), which are unrelated to the subject.</p>
-      <p>When used in maps, several metadata elements are allowed both inside and outside of the
-          <xmlelement>metadata</xmlelement> container, with the container made available to provide
-        parity with topic prologs.</p>
+      <p>Elements inside of the <xmlelement>metadata</xmlelement> element
+        provide information about the content and subject of an information
+        resource.</p>
+      <p>When used in topics,  metadata elements that are outside of the
+          <xmlelement>metadata</xmlelement> element generally provide
+        lifecycle information (such as the author or copyright) for the
+        content unit.</p>
+      <p>When used in maps, several metadata elements are allowed both
+        inside and outside of the <xmlelement>metadata</xmlelement>
+        container element. This is done to provide parity with topic
+        prologs.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
       <p conkeyref="reuse-attributes/only-universal"/>
     </section>
 <example id="example" otherprops="examples"><title>Example</title>
-      <p>The following code sample shows that a topic about jet packs is only intended for advanced
-        users.</p><codeblock>&lt;prolog&gt;
-  <b>&lt;metadata&gt;</b>
-    &lt;audience type="user" job="flying" experiencelevel="advanced"/&gt;
-    &lt;keywords>
-      &lt;keyword>jet pack&lt;/keyword>
-      &lt;keyword>danger&lt;/keyword>
-      &lt;keyword>don't try this&lt;/keyword>
-    &lt;/keywords>
-  <b>&lt;/metadata&gt;</b>
+      <p>The following code sample shows how metadata can be provided in a
+        topic about jet packs:</p><codeblock>&lt;prolog&gt;
+    &lt;metadata&gt;
+        &lt;audience type="user" job="flying" experiencelevel="advanced"/&gt;
+        &lt;keywords>
+            &lt;keyword>jet pack&lt;/keyword>
+            &lt;keyword>danger&lt;/keyword>
+            &lt;keyword>liability&lt;/keyword>
+        &lt;/keywords>
+    &lt;/metadata&gt;
 &lt;/prolog&gt;</codeblock></example>
 </refbody>
 </reference>
