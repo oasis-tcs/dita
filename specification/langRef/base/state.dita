@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE reference
   PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
-<reference id="state" xml:lang="en-us"><title><xmlelement>state</xmlelement></title><shortdesc>The <xmlelement>state</xmlelement> element specifies a name/value pair whenever it is
-    necessary to represent a named state that has a variable value.</shortdesc><prolog><metadata><keywords><indexterm>specialization elements<indexterm><xmlelement>state</xmlelement></indexterm></indexterm></keywords></metadata></prolog><refbody>
+<reference id="state" xml:lang="en-us"><title><xmlelement>state</xmlelement></title><shortdesc>The <xmlelement>state</xmlelement> element represents a named
+    property that has a variable state value.</shortdesc><prolog><metadata><keywords><indexterm>specialization elements<indexterm><xmlelement>state</xmlelement></indexterm></indexterm></keywords></metadata></prolog><refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>The element is primarily intended for use in specializations to represent specific states.
-          <ph otherprops="examples">For example, it could be used to represent logic circuit states,
-          chemical reaction states, or airplane instrumentation states.</ph></p>
+      <p>The <xmlelement>state</xmlelement> element is primarily intended
+        for use in specializations. It could be used to represent logic
+        circuit, chemical reaction, or airplane instrumentation states.</p>
+    </section>
+    <section id="rendering-expectations">
+      <title>Rendering expectations</title>
+      <p>Rendering expectation for the <xmlelement>state</xmlelement>
+        element are entirely implementation-dependent.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -16,17 +21,19 @@
         <dlentry>
           <dt id="attr-name"><xmlatt>name</xmlatt>
             <ph conkeyref="reuse-attributes/required-attr"/></dt>
-          <dd>Specifies the name of the property whose state is being described.</dd>
+          <dd>Specifies the name of the
+            property<!-- whose state is being described.--></dd>
         </dlentry>
         <dlentry>
           <dt id="attr-value"><xmlatt>value</xmlatt>
             <ph conkeyref="reuse-attributes/required-attr"/></dt>
-          <dd>Specifies the state of the property identified by the <xmlatt>name</xmlatt>
-            attribute.</dd>
+          <dd>Specifies the state of the
+            property<!-- identified by the <xmlatt>name</xmlatt> attribute.--></dd>
         </dlentry>
       </dl>
     </section><example id="example" otherprops="examples"><title>Example</title>
-      <p>The following code sample shows how <xmlelement>state</xmlelement> can be used to indicate
-        a "high" value for a flow rate in a device.</p><codeblock>&lt;note type="warning">If the rate of flow reaches "high" on your FancyMeasureDevice
-(&lt;state name="flowrate" value="high"), take quick action or you will
-risk dangrous levels of exposure.&lt;/note></codeblock></example></refbody></reference>
+      <p>The following code sample shows how <xmlelement>state</xmlelement>
+        can be used to indicate a <keyword>high</keyword> value for a
+        device flow rate:</p><codeblock>&lt;note type="warning">If the rate of flow reaches "high" on your measuring device
+(&lt;state name="flowrate" value="high"/>), take quick action or you will
+risk dangerous levels of exposure.&lt;/note></codeblock></example></refbody></reference>
