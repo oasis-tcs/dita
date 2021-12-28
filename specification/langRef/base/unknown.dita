@@ -4,33 +4,46 @@
  "reference.dtd">
 <reference id="unknown" xml:lang="en-us">
 <title><xmlelement>unknown</xmlelement></title>
-<shortdesc>The <xmlelement>unknown</xmlelement> element is an open extension that enables
-    information architects to incorporate XML fragments.</shortdesc>
+<shortdesc>The <xmlelement>unknown</xmlelement> element is an open
+    extension that enables information architects to incorporate XML
+    fragments in DITA topics.</shortdesc>
 <prolog><metadata>
 <keywords><indexterm>specialization
           elements<indexterm><xmlelement>unknown</xmlelement></indexterm></indexterm></keywords>
 </metadata></prolog>
 <refbody>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p>The <xmlelement>unknown</xmlelement> element is intended primarily
+        as a base for specialization. It might also be used in
+        automatically-generated DITA topics or DITA used as a data-exchange
+        format.</p>
+    </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>Processors should ignore this element unless otherwise instructed.</p>
+      <p>Processors ignore the <xmlelement>unknown</xmlelement> element
+        unless otherwise instructed.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
       <p conkeyref="reuse-attributes/only-universal"/>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><p>This example features a specialized <xmlelement>unknown</xmlelement> element that includes other
-        non-DITA content. If this specialization is imported to a DTD or schema, the DTD or schema
-        will need to handle declaring the new elements or any namespaces.</p>
-      <p>By definition, the content of <xmlelement>unknown</xmlelement> can only be understood by
-        DITA processors as unknown XML. This means that processors would generally ignore this
-        content unless they are configured to recognize the <xmlelement>my-unknown</xmlelement>
-        specialization.</p><codeblock base="ci-xml">&lt;body>
+<example id="example" otherprops="examples"><title>Example</title>
+      <p>The following code sample shows a specialized
+          <xmlelement>unknown</xmlelement> element that contains non-DITA
+        content:</p>
+      <codeblock base="ci-xml">&lt;body>
   &lt;my-unknown class="+ topic/unknown mything/my-unknown ">
     &lt;thing value="4"/>
     &lt;otherthing value="16"/>
   &lt;/my-unknown>
-&lt;/body></codeblock></example>
+&lt;/body></codeblock>
+      <!--<p>This example features a specialized <xmlelement>unknown</xmlelement> element that includes other non-DITA content. If this specialization is imported to a DTD or schema, the DTD or schema will need to handle declaring the new elements or any namespaces.</p>-->
+      <p>By definition, the content of <xmlelement>unknown</xmlelement> can
+        only be understood by DITA processors as unknown XML. This means
+        that processors generally ignore this content unless they are
+        configured to recognize the <xmlelement>my-unknown</xmlelement>
+        specialization.</p></example>
 </refbody>
 </reference>
 

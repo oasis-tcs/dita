@@ -2,8 +2,11 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="foreign" xml:lang="en-us">
 <title><xmlelement>foreign</xmlelement></title>
-<shortdesc>The <xmlelement>foreign</xmlelement> element allows the introduction of non-DITA content,
-    such as MathML, SVG, or Rich Text Format (RTF).</shortdesc>
+  <abstract>
+    <shortdesc>Foreign content is non-DITA content, such as MathML, SVG, or
+      Rich Text Format (RTF).</shortdesc>
+    <!--<shortdesc>The <xmlelement>foreign</xmlelement> element enables the inclusion of non-DITA content, such as MathML, SVG, or Rich Text Format (RTF).</shortdesc>-->
+  </abstract>
 <prolog><metadata>
 <keywords>
         <indexterm>specialization
@@ -13,22 +16,30 @@
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>The <xmlelement>foreign</xmlelement> element or a specialization can contain more than one
-        type of non-DITA content or a mix of DITA and non-DITA content. Specialization of the
-          <xmlelement>foreign</xmlelement> element is typically implemented as a domain, but it is
-        also possible to implement foreign vocabularies as structural specializations.</p>
-      <p>If alternate content is desired, use or specialize the <xmlelement>desc</xmlelement>
-        element inside of the <xmlelement>foreign</xmlelement> specialization. Such alternate
-        content needs to be valid wherever the <xmlelement>foreign</xmlelement> specialization is
-        valid. This way, if a processor is not able to recognize or render the
-          <xmlelement>foreign</xmlelement> content itself, it can use the alternate content from
-          <xmlelement>desc</xmlelement>.</p>
+      <p>The <xmlelement>unknown</xmlelement> element is intended primarily
+        as a base for specialization. Specializations of the
+          <xmlelement>foreign</xmlelement> element are typically
+        implemented as domains, but it is also possible to implement
+        foreign vocabularies as structural specializations.</p>
+      <p>The <xmlelement>foreign</xmlelement> element can contain non-DITA
+        content or a mix of DITA and non-DITA content.</p>
+      <p>If alternate content is wanted, use or specialize the
+          <xmlelement>desc</xmlelement> element inside of the
+          <xmlelement>foreign</xmlelement> specialization. Such alternate
+        content needs to be valid wherever the
+          <xmlelement>foreign</xmlelement> specialization is valid. This
+        way, if a processor is not able to recognize or render the
+          <xmlelement>foreign</xmlelement> content itself, it can use the
+        alternate content from <xmlelement>desc</xmlelement>.</p>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>Processors should attempt to display <xmlelement>foreign</xmlelement> content unless
-        otherwise instructed. If the processor cannot render the content, it <term
-          outputclass="RFC-2119">MAY</term> issue a warning.</p>
+      <p>Processors attempt to display <xmlelement>foreign</xmlelement>
+        content unless otherwise instructed. If a processor cannot render
+        the content, it <term outputclass="RFC-2119">MAY</term> issue a
+        warning.</p>
+      <draft-comment author="Kristen J Eberlein" time="28 December 2021"
+        >The following content needs editing.</draft-comment>
       <p>The enabler of the foreign vocabulary must provide the processing and override the base
         processing for <xmlelement>foreign</xmlelement>. </p>
       <ul id="ul_f2h_3kf_bbb">
@@ -55,11 +66,15 @@
       <p conkeyref="reuse-attributes/only-universal"/>
     </section>
 <example id="example" otherprops="examples">       <title>Example</title>
+      <draft-comment author="Kristen J Eberlein" time="28 December 2021">
+        <p>Is the following example valid now that we have an SVG reference
+          domain?</p>
+      </draft-comment>
       <p>The following code sample shows a specialization of
-          <xmlelement>foreign</xmlelement> used to hold SVG elements. For
-        this to work, the specialization module that defines
-          <xmlelement>svg</xmlelement> needs also to include definitions
-        for the SVG elements.</p><codeblock>&lt;p&gt;... as in the formula 
+          <xmlelement>foreign</xmlelement> that is used to hold SVG
+        elements. For this to work, the specialization module that defines
+          <xmlelement>svg</xmlelement> also needs to include the
+        definitions for the SVG elements.</p><codeblock>&lt;p&gt;... as in the formula 
   &lt;svg&gt;
     &lt;svg:svg width="100%" height="100%" version="1.1"
 xmlns="http://www.w3.org/2000/svg"&gt;

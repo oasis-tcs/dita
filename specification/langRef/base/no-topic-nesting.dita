@@ -14,34 +14,37 @@
       <title>Usage information</title>
       <p>The <xmlelement>no-topic-nesting</xmlelement> element  is not intended for use in DITA
                 source files.</p>
-            <p>The <xmlelement>no-topic-nesting</xmlelement> element is designed for use only when
-                configuring a document-type shell where the information designer wants to eliminate
-                the ability to nest topics. When a specialized topic is set up to allow topic
-                nesting, the <xmlelement>no-topic-nesting</xmlelement> element can be used in a
-                shell as a way to disallow that nesting.</p>
+            <p>The <xmlelement>no-topic-nesting</xmlelement> element is
+        designed for use only when configuring a document-type shell. It
+        enables the DITA practitioner to disallow topic nesting for the
+        topic type.
+        <!--When a specialized topic is set up to allow topic nesting, the <xmlelement>no-topic-nesting</xmlelement> element can be used in a shell as a way to disallow that nesting.--></p>
     </section>
-    <section id="processing-expectations">
-      <title>Processing expectations</title>
-      <p>The <xmlelement>no-topic-nesting</xmlelement> element has no associated output
-        processing.</p>
-    </section>
+    <!--<section id="processing-expectations"><title>Processing expectations</title><p>The <xmlelement>no-topic-nesting</xmlelement> element has no associated output processing.</p></section>-->
     <section id="attributes">
       <title>Attributes</title>
       <p>The following attribute is available on this element: <xref
           keyref="attributes-universal/class"/>.</p>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><p><i>This element is not intended to be used in source files.</i></p>
-            <p>In the "base topic" DTD document-type shell distributed by OASIS, the
-                    <parameterentity>topic-info-types</parameterentity> entity is set to
-                    <codeph>topic</codeph>, meaning that <xmlelement>topic</xmlelement> elements can
-                nest other <xmlelement>topic</xmlelement> elements. The following code sample shows
-                how <xmlelement>no-topic-nesting</xmlelement> is used instead to disallow nesting.
-                <codeblock>&lt;!ENTITY % topic-info-types
+<example id="example" otherprops="examples"><title>Example</title>
+      <!--<p><i>This element is not intended to be used in source files.</i></p>-->
+      <p>The following code sample shows how the
+          <xmlelement>no-topic-nesting</xmlelement> can be used in a
+        document-type shell to disallow topic nesting.</p>
+            <p>In the DTD document-type shell that is distributed by OASIS
+        for the base topic, the
+          <parameterentity>topic-info-types</parameterentity> entity is set
+        to <codeph>topic</codeph>. This means that
+          <xmlelement>topic</xmlelement> elements can nest other
+          <xmlelement>topic</xmlelement> elements. The following code
+        sample shows how a DITA practitioner redefines the entity to
+          <keyword>no-topic-nesting</keyword>:<codeblock>&lt;!ENTITY % topic-info-types
               "no-topic-nesting"
 ></codeblock></p>
-            <p>In that shell, topics can no longer nest other topics. DTD grammar rules require that
-                some element be specified in this entity, so
-                    <xmlelement>no-topic-nesting</xmlelement> is used as a placeholder to replace
-                any nested topics.</p></example>
+            <p>Now, topics that use that document-type shell can no longer
+        nest other topics. DTD grammar rules require that some element be
+        specified in this entity, so
+          <xmlelement>no-topic-nesting</xmlelement> is used as a
+        placeholder.</p></example>
 </refbody>
 </reference>
