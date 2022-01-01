@@ -11,6 +11,8 @@
 <refbody>
     <section conkeyref="reuse-simpletable/usage-information"
       id="usage-information"><title/><p/></section>
+    <section conkeyref="reuse-simpletable/rendering-expectations"
+      ><title/><p/></section>
   <section conkeyref="reuse-simpletable/attributes" id="attributes"/>
 <example id="example" otherprops="examples"><title>Examples</title>
       <p>This section contains examples of how the
@@ -37,7 +39,8 @@
     &lt;stentry&gt;$6.50&lt;/stentry&gt;
   &lt;/strow&gt;
 &lt;/simpletable&gt;</codeblock>
-        <p>The simple table might be rendered as follows:</p>
+        <p>The simple table might be rendered <ph rev="review-e">in the
+            following way:</ph></p>
         <image placement="break" href="../images/simpletable.jpg">
           <alt>The image shows a two-column table. The first column lists
             menu items, and the second column lists price. The header row
@@ -51,7 +54,7 @@
         <title>Example <ph rev="review-e">of a simple table</ph> with
           column and row spanning</title>
         <p>The following code sample shows a simple table that tracks
-          meals. It has a title and column and row spans.</p>
+          meals. The table has a title and column and row spans.</p>
         <codeblock>&lt;simpletable&gt;
   &lt;title>Food log for Wednesday&lt;/title>
   &lt;sthead&gt;
@@ -69,7 +72,8 @@
     &lt;stentry&gt;Dinner&lt;/stentry&gt;
   &lt;/strow&gt;
 &lt;/simpletable&gt;</codeblock>
-        <p>The simple table might be rendered as follows:</p>
+        <p>The simple table might be rendered <ph rev="review-e">in the
+            following way:</ph></p>
         <image placement="break" href="../images/simpletable-w-spans.jpg">
           <alt>The image shows a two-column table. The first column lists
             the meal, and the second column lists food eaten. The first row
@@ -86,10 +90,11 @@
         <title rev="review-e">Example of a simple table that uses
             <xmlatt>keycol</xmlatt></title>
         <p rev="review-e">The following code sample shows a simple table
-          that contains information about menu items: calories and price.
-          The <xmlatt>keycol</xmlatt> attribute indicates that the first
-          column, which contains the menu items, is the key column.</p>
-        <codeblock rev="review-e">&lt;simpletable keycol="1">
+          that contains information about the caloric content and prices of
+          menu items. The <xmlatt>keycol</xmlatt> attribute indicates that
+          the first column, which contains the menu items, is the key
+          column.</p>
+        <codeblock rev="review-e">&lt;simpletable <b>keycol="1"</b>>
     &lt;sthead>
         &lt;stentry>Menu item&lt;/stentry>
         &lt;stentry>Calories&lt;/stentry>
@@ -112,7 +117,8 @@
     &lt;/strow>
 &lt;/simpletable></codeblock>
       </fig>
-      <p>This simple table might be rendered as follows:</p>
+      <p>This simple table might be <ph rev="review-e">rendered in the
+          following way:</ph></p>
       <image placement="break" href="../images/simpletable-w-keycols.jpg">
         <alt>The image shows a three-column table. The first column lists
           menu items, the second column lists calories, and the third
@@ -123,9 +129,10 @@
           capture are tattered, to indicate that the image is part of a
           larger document.</alt>
       </image>
-      <p>In the above sample rendering, the content of the key column is
-        bolded. However, note that rendering of the key column is left up
-        to the implementation.</p>
+      <p><ph rev="review-e">In the sample rendering, the content of the key
+          column is highlighted with bold formatting.</ph> However, note
+        that rendering of the key column is left up to the
+        implementation.</p>
       <!--<simpletable keycol="1"><sthead><stentry>Menu item</stentry><stentry>Calories</stentry><stentry>Price</stentry></sthead><strow><stentry>Chicken dish</stentry><stentry>850</stentry><stentry>$12.00</stentry></strow><strow><stentry>Vegetarian dish</stentry><stentry>525</stentry><stentry>$9.00</stentry></strow><strow><stentry>Vegan dish</stentry><stentry>475</stentry><stentry>$7.00</stentry></strow></simpletable>--></example>
 </refbody>
 </reference>
