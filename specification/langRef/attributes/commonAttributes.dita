@@ -46,13 +46,14 @@
           <dd>
             <p id="complex-table-attr">This group includes attributes that
               are defined on table elements but not simple table elements.
-              Most of these attributes are part of the OASIS Table Exchange
-              Model. Table elements generally use only a subset of the
-              attributes that are defined in this group. This group
-              contains the following attributes: <xmlatt>align</xmlatt>,
-                <xmlatt>char</xmlatt>, <xmlatt>charoff</xmlatt>,
-                <xmlatt>colsep</xmlatt>, <xmlatt>rowheader</xmlatt>,
-                <xmlatt>rowsep</xmlatt>, and <xmlatt>valign</xmlatt>.</p>
+              These attributes are part of the OASIS Exchange Table Model,
+              unless otherwise noted. Table elements generally use only a
+              subset of the attributes that are defined in this group. This
+              group contains the following attributes:
+                <xmlatt>align</xmlatt>, <xmlatt>char</xmlatt>,
+                <xmlatt>charoff</xmlatt>, <xmlatt>colsep</xmlatt>,
+                <xmlatt>rowheader</xmlatt>, <xmlatt>rowsep</xmlatt>, and
+                <xmlatt>valign</xmlatt>.</p>
           </dd>
         </dlentry>
         <dlentry id="dataatts">
@@ -69,10 +70,9 @@
         <dlentry id="displayatts">
           <dt>Display attributes</dt>
           <dd>
-            <p id="display-attr">This group includes attributes that
-              control the display of many elements:
-                <xmlatt>expanse</xmlatt>, <xmlatt>frame</xmlatt>, and
-                <xmlatt>scale</xmlatt>.</p>
+            <p id="display-attr">This group includes attributes that affect
+              the rendering of many elements: <xmlatt>expanse</xmlatt>,
+                <xmlatt>frame</xmlatt>, and <xmlatt>scale</xmlatt>.</p>
           </dd>
         </dlentry>
         <dlentry id="inclusionatts">
@@ -93,28 +93,22 @@
         <dlentry id="simpletableatts">
           <dt>Simple table attributes</dt>
           <dd>
-            <draft-comment author="Kristen J Eberlein"
-              time="29 December 2021" audience="spec-editors">
-              <p>Suggest we change this to "Simple table group". Rationale:
-                natural language and being parallel to "Complex table
-                attributes".</p>
-              <p>Also, if I have jumped to this place in a document from
-                the element-reference topic, I want the attributes listed
-                here in the "Simple table group" to be hyperlinked to the
-                actual definition.</p>
-            </draft-comment>
+            <!--<draft-comment author="Kristen J Eberlein" time="29 December 2021" audience="spec-editors"><p>Suggest we change this to "Simple table group". Rationale: natural language and being parallel to "Complex table attributes".</p><p>Also, if I have jumped to this place in a document from the element-reference topic, I want the attributes listed here in the "Simple table group" to be hyperlinked to the actual definition.</p></draft-comment>-->
             <p id="simpletable-attr">This group includes attributes that
               are defined only on the <xmlelement>simpletable</xmlelement>
               element: <xmlatt>keycol</xmlatt> and
-                <xmlatt>relcolwidth</xmlatt>.</p>
+                <xmlatt>relcolwidth</xmlatt>. These attributes are listed
+              in a group because the <xmlelement>simpletable</xmlelement>
+              element is frequently used as a specialization base.</p>
           </dd>
         </dlentry>
         <dlentry id="specializationatts">
           <dt>Specialization attributes</dt>
           <dd>
             <p id="specialization-attr">This group includes attributes that
-              are designed to be used by specializations but not intended
-              for direct use by authors: <xmlatt>specentry</xmlatt> and
+              are designed to be used by DITA practitioners when they
+              create specializations. They are not intended for direct use
+              by authors: <xmlatt>specentry</xmlatt> and
                 <xmlatt>spectitle</xmlatt>.</p>
           </dd>
         </dlentry>
@@ -209,7 +203,7 @@
         </dlentry>
         <dlentry id="char">
           <dt id="attr-char"><xmlatt>char</xmlatt> (complex table attributes)</dt>
-          <dd>Specifies the <term>alignment character</term>: a character
+          <dd>Specifies the alignment character, which is the character
             that is used for aligning the text in table entries. This
             attribute applies when <codeph>align="char"</codeph>. A value
             of &quot;&quot; (the null string) means there is no aligning
@@ -221,7 +215,7 @@
               is required.</p><p>The <xmlatt>char</xmlatt> attribute is
               available on the following table elements:
                 <xmlelement>colspec</xmlelement> and
-                <xmlelement>entry</xmlelement>.</p><!--Comment in DITA 1.3 Phase 1 review asked what it means if the "r" isn't actually specified. The language here could be cleaned up, but is essentially the same as the language in the OASIS Exchange Model, so leaving it alone now; don't want to force processors to add an error for this condition in DITA, when not required in other languages that use this model.--></dd>
+                <xmlelement>entry</xmlelement>.</p></dd>
         </dlentry>
         <dlentry id="charoff">
           <dt id="attr-charoff"><xmlatt>charoff</xmlatt> (complex table attributes)</dt>
@@ -232,11 +226,11 @@
             alignment
               character.<!--<p>Default source for <xmlelement>entry</xmlelement> elements starting in this column. For character alignment on an entry in the column, horizontal character offset is the percent of the current column width to the left of the (left edge of the) alignment character. </p>--><p>For
               example, if <codeph>align="char"</codeph>,
-                <codeph>char="r"</codeph>, and
+                <codeph>char="."</codeph>, and
                 <codeph>charoff="50"</codeph> are all specified, then text
-              in the table entry is align 50% of the distance to the left
-              of the first occurrence of the character "r" within the
-              entry.</p><p>The <xmlatt>charoff</xmlatt> attribute is
+              in the table entry is aligned 50% of the distance to the left
+              of the first occurrence of the period character within the
+              table entry.</p><p>The <xmlatt>charoff</xmlatt> attribute is
               available on the following table elements:
                 <xmlelement>colspec</xmlelement> and
                 <xmlelement>entry</xmlelement>.</p></dd>
@@ -277,7 +271,7 @@
         </dlentry>
         <dlentry id="colsep">
           <dt id="attr-colsep"><xmlatt>colsep</xmlatt> (complex table attributes)</dt>
-          <dd>Specifies whether to render column separators between
+          <dd>Specifies whether to render column separators between table
             entries. The following values are valid: <keyword>0</keyword>
             no separators) and <keyword>1</keyword> (separators). <p>The
                 <xmlatt>colsep</xmlatt> attribute is available on the
@@ -293,8 +287,7 @@
               <keyword>yes</keyword>, <keyword>no</keyword>, and
               <keyword>-dita-use-conref-target</keyword>. Some DITA
             processors or output formats might not support the
-              <xmlatt>compact</xmlatt> attribute.
-            <!--<draft-comment author="robander">Is expanded spacing really the processing default? Does it have to be? This seems like it should be left to the processor. Also odd to say that compact rendering depends on the browser, but expanded does not. A processor that only ever renders things in a (subjectively) compact manner might flip this, where default seems compact and expanded is up to the renderer.</draft-comment>--><!--<dl><dlentry><dt>yes </dt><dd>Indicates compact spacing. </dd></dlentry><dlentry><dt>no </dt><dd>Indicates expanded spacing. </dd></dlentry><dlentry conkeyref="reuse-attributes/ditauseconref"><dt> </dt><dd> </dd></dlentry></dl>--></dd>
+              <xmlatt>compact</xmlatt> attribute. </dd>
         </dlentry>
         <dlentry id="datatype" platform="dita">
           <dt id="attr-datatype"><xmlatt>datatype</xmlatt> (data-element attributes)</dt>
@@ -363,39 +356,30 @@
             following values are valid: <dl>
               <dlentry>
                 <dt><keyword>column</keyword></dt>
-                <dd>Aligns the element with the current column margin.</dd>
+                <dd>Indicates that the element is aligned with the current
+                  column margin.</dd>
               </dlentry>
               <dlentry>
                 <dt><keyword>page</keyword></dt>
-                <dd>Places the element on the left page margin for
-                  left-to-right presentation or the right page margin for
-                  right-to-left presentation.</dd>
+                <dd>Indicates that the element is placed on the left page
+                  margin for left-to-right presentation or the right page
+                  margin for right-to-left presentation.</dd>
               </dlentry>
               <dlentry>
                 <dt><keyword>spread</keyword></dt>
-                <dd><draft-comment author="Kristen J Eberlein"
-                    time="29 December 2021" audience="spec-editors">
-                    <p>We use the phrase "rendition target" here. Do we
-                      want to use output format instead?</p>
-                    <p>I googled to see if spread was a common term used
-                      for discussion of rendering, and I found the
-                      following coverage: <xref
-                        href="https://www.juliekaren.com/blog/2018/7/10/what-does-the-term-spread-refer-to"
-                        format="html" scope="external">What Does the Term
-                        “Spread” Refer to in Book Design and
-                      Layout?</xref></p>
-                  </draft-comment>Indicates that the object is rendered
-                  across a multi-page spread. If the rendition target does
-                  not have anything that corresponds to spreads, then
+                <dd><!--<draft-comment author="Kristen J Eberlein" time="29 December 2021" audience="spec-editors"><p>We use the phrase "rendition target" here. Do we want to use output format instead?</p><p>I googled to see if spread was a common term used for discussion of rendering, and I found the following coverage: <xref href="https://www.juliekaren.com/blog/2018/7/10/what-does-the-term-spread-refer-to" format="html" scope="external">What Does the Term “Spread” Refer to in Book Design and Layout?</xref></p></draft-comment>-->Indicates
+                  that the object is rendered across a multi-page spread.
+                  If the <!--rendition target--> output format does not
+                  have anything that corresponds to spreads, then
                     <keyword>spread</keyword> has the same meaning as
                     <keyword>page</keyword>.</dd>
               </dlentry>
               <dlentry>
                 <dt><keyword>textline</keyword></dt>
-                <dd>Aligns the element with the left (for left-to-right
-                  presentation) or right (for right-to-left presentation)
-                  margin of the current text line and takes indentation
-                  into account.</dd>
+                <dd>Indicated that the element is aligned with the left
+                  (for left-to-right presentation) or right (for
+                  right-to-left presentation) margin of the current text
+                  line and takes indentation into account.</dd>
               </dlentry>
               <dlentry conkeyref="reuse-attributes/ditauseconref"
                 platform="dita">
@@ -403,15 +387,9 @@
                 <dd> </dd>
               </dlentry>
             </dl><p conkeyref="reuse-general/pgwide-explain"
-              platform="dita"/><p>Some DITA processors or output formats
-              might not support all values.</p><draft-comment
-              author="robander" audience="spec-editors">This statement
-              seems to get wrapped up in the "implementation dependent"
-              discussion. Also note that "spread" already says "if
-              possible" which also means that support can vary - we can
-              probably remove "if possible" there, it seems redundant with
-              this statement?<p>Same statement is repeated for @frame
-                below.</p></draft-comment></dd>
+              platform="dita"/><p>Some processors or output formats might
+              not support all
+            values.</p><!--<draft-comment author="robander" audience="spec-editors">This statement seems to get wrapped up in the "implementation dependent" discussion. Also note that "spread" already says "if possible" which also means that support can vary - we can probably remove "if possible" there, it seems redundant with this statement?<p>Same statement is repeated for @frame below.</p></draft-comment>--></dd>
         </dlentry>
         <dlentry id="expiry">
           <dt id="attr-expiry"><xmlatt>expiry</xmlatt> (date attributes)</dt>
@@ -428,71 +406,48 @@
         <dlentry id="frame">
           <dt id="attr-frame"><xmlatt>frame</xmlatt> (display attributes)</dt>
           <dd>Specifies which portion of a border surrounds the element.
-            The following values are valid: <draft-comment
-              author="Kristen J Eberlein" time="29 December 2021"
-              audience="spec-editors">
-              <p>The descriptions seem ... off, as a description to a
-                rendering engine. How do we usually describe attribute
-                values? How about, as an example, for
-                  <keyword>bottom</keyword>, "A line is rendered below the
-                element"? How is @frame (or its equivalent) described in
-                other specs? I looked briefly at CSS details and tried to
-                search on XSL spec ...</p>
-              <p>Per <xref href="https://www.w3.org/TR/xsl11/#border"
-                  format="html" scope="external"/>, maybe we should use "A
-                line is rendered at the bottom of the element."  The spec
-                uses the words "top, bottom, left, and right" to describe
-                the borders of a box.</p>
-              <p>I've added new descriptions of the values, but commented
-                the old ones out in case you did not like this change.</p>
-            </draft-comment><dl>
+            The following values are valid: <!--<draft-comment author="Kristen J Eberlein" time="29 December 2021" audience="spec-editors"><p>The descriptions seem ... off, as a description to a rendering engine. How do we usually describe attribute values? How about, as an example, for <keyword>bottom</keyword>, "A line is rendered below the element"? How is @frame (or its equivalent) described in other specs? I looked briefly at CSS details and tried to search on XSL spec ...</p><p>Per <xref href="https://www.w3.org/TR/xsl11/#border" format="html" scope="external"/>, maybe we should use "A line is rendered at the bottom of the element." The spec uses the words "top, bottom, left, and right" to describe the borders of a box.</p><p>I've added new descriptions of the values, but commented the old ones out in case you did not like this change.</p></draft-comment>--><dl>
               <dlentry>
                 <dt>all </dt>
-                <dd>A line is rendered at the top, bottom, left, and right
-                  of the containing element.</dd>
-                <!--<dd>Draw a box around the element </dd>-->
+                <dd>Indicates that a line is rendered at the top, bottom,
+                  left, and right of the containing element.</dd>
               </dlentry>
             </dl><dl>
               <dlentry>
                 <dt>bottom </dt>
-                <dd>A line is rendered at the bottom of the containing
-                  element.</dd>
-                <!--<dd>Draw a line after the element </dd>-->
+                <dd>Indicates that a line is rendered at the bottom of the
+                  containing element.</dd>
               </dlentry>
             </dl><dl>
               <dlentry>
                 <dt>none </dt>
-                <dd>No lines are rendered.</dd>
-                <!--<dd>Do not draw any lines around this element </dd>-->
+                <dd>Indicates that no lines are rendered.</dd>
               </dlentry>
             </dl><dl>
               <dlentry>
                 <dt>sides </dt>
-                <dd>A line is rendered at the left and right of the
-                  containing element.</dd>
-                <!--<dd>Draw a line at each side of the element </dd>-->
+                <dd>Indicates that a line is rendered at the left and right
+                  of the containing element.</dd>
               </dlentry>
             </dl><dl>
               <dlentry>
                 <dt>top </dt>
-                <dd>A line is rendered at the top of the containing
-                  element.</dd>
-                <!--<dd>Draw a line before the element </dd>-->
+                <dd>Indicates that a line is rendered at the top of the
+                  containing element.</dd>
               </dlentry>
               <dlentry>
                 <dt><keyword>topbot</keyword>
                 </dt>
-                <dd>A line is rendered at the top and bottom of the
-                  containing element.</dd>
-                <!--<dd>Draw a line both before and after the element </dd>-->
+                <dd>Indicates that a line is rendered at the top and bottom
+                  of the containing element.</dd>
               </dlentry>
               <dlentry conkeyref="reuse-attributes/ditauseconref"
                 platform="dita">
                 <dt> </dt>
                 <dd> </dd>
               </dlentry>
-            </dl><p>Some DITA processors or output formats might not
-              support all values.</p></dd>
+            </dl><p>Some processors or output formats might not support all
+              values.</p></dd>
         </dlentry>
         <dlentry id="golive">
           <dt id="attr-golive"><xmlatt>golive</xmlatt> (date attributes)</dt>
@@ -509,9 +464,9 @@
           <dt id="attr-keycol"><xmlatt>keycol</xmlatt> (simpletable attributes)</dt>
           <dd><ph rev="review-e">Specifies the column that contains the
               content that represents the key to the tabular
-              structure.</ph> No value indicates no key column. When
-            present, the numerical value causes the specified column to be
-            treated as a vertical header.</dd>
+              structure.</ph>. If <xmlatt>keycol</xmlatt> is present and
+            assigned a numerical value, the specified column is treated as
+            a vertical header.</dd>
         </dlentry>
         <dlentry id="keyref">
           <dt id="attr-keyref"><xmlatt>keyref</xmlatt></dt>
@@ -737,11 +692,11 @@
             </dl><dl>
               <dlentry>
                 <dt><keyword>headers</keyword></dt>
-                <dd>Indicates that entries of the column described using
-                  the <xmlelement>colspec</xmlelement> element are row
-                  headers. This applies when the <xmlatt>rowheader</xmlatt>
-                  attribute is specified on the
-                    <xmlelement>colspec</xmlelement> element.</dd>
+                <dd>Indicates that entries of the column that is described
+                  using the <xmlelement>colspec</xmlelement> element are
+                  row headers. This applies when the
+                    <xmlatt>rowheader</xmlatt> attribute is specified on
+                  the <xmlelement>colspec</xmlelement> element.</dd>
               </dlentry>
               <dlentry>
                 <dt><keyword>norowheader</keyword></dt>
@@ -755,18 +710,17 @@
                 <dd/>
               </dlentry>
             </dl><note>This attribute is not part of the OASIS Exchange
-              Table model upon which DITA tables are based. Some DITA
-              processors or output formats might not support all values.
-              </note><p>The <xmlatt>rowheader</xmlatt> attribute is
-              available on the following table elements:
-                <xmlelement>table</xmlelement> and
+              Table Model upon which DITA tables are based. Some processors
+              or output formats might not support all values. </note><p>The
+                <xmlatt>rowheader</xmlatt> attribute is available on the
+              following table elements: <xmlelement>table</xmlelement> and
                 <xmlelement>colspec</xmlelement>.</p></dd>
         </dlentry>
         <dlentry id="rowsep">
           <dt id="attr-rowsep"><xmlatt>rowsep</xmlatt> (complex table attributes)</dt>
-          <dd>Specifies whether to render row separators between entries.
-            The following values are valid: <keyword>0</keyword> (no
-            separators) and <keyword>1</keyword> (separators).<p>The
+          <dd>Specifies whether to render row separators between table
+            entries. The following values are valid: <keyword>0</keyword>
+            (no separators) and <keyword>1</keyword> (separators).<p>The
                 <xmlatt>rowsep</xmlatt> attribute is available on the
               following table elements: <xmlelement>colspec</xmlelement>,
                 <xmlelement>entry</xmlelement>,
@@ -786,42 +740,13 @@
               <keyword>180</keyword>, <keyword>200</keyword>, and <xref
               keyref="attributes-useconreftarget"
               >-dita-use-conref-target</xref>. <p>This attribute is
-              primarily useful for print-oriented display. Some DITA
-              processors might not support all values.</p><p>If the
+              primarily useful for print-oriented display. Some processors
+              might not support all values.</p><p>If the
                 <xmlatt>scale</xmlatt> attribute is specified on an element
               that contains an image, the image is not scaled. The image is
-              scaled only if a scaling-property is explicitly specified for
-              the <xmlelement>image</xmlelement> element.</p><draft-comment
-              author="robander" time="Dec 28 2021">Just noting that we seem
-              to repeat ourselves here, saying this is 1) primarily for
-              print-oriented, 2) primarily for print accommodation, and 3)
-              some processors (implementations) might not support all
-              values. Also feels really odd to say it's "an acknowledged
-              style-based property", I think we can just delete that
-              sentence? It doesn't add anything except to suggest we might
-              be embarassed to have this
-              attribute?</draft-comment><draft-comment
-              author="Kristen J Eberlein" time="29 December 2021">
-              <p>I've made some edits, including some that I think
-                eliminated the repetition.</p>
-              <p>Is <xmlatt>scale</xmlatt> used on elements other than fig,
-                simpletable, and table? Note that we do not mention
-                  <xmlelement>simpletable</xmlelement> above ...</p>
-              <p>Maybe the paragraph about image should be moved to the
-                  <xmlelement>image</xmlelement> topic? Or covered in the
-                topics for elements that support
-                <xmlatt>scale</xmlatt>?</p>
-              <p>Do we need to discuss processing expectations about
-                scaling elsewhere? It's buried here. Putting it in a more
-                prominent place might improve the likelihood that
-                processors would support it.</p>
-              <p>Based on a quick test, DITA-OT PDF: <ul>
-                  <li>Supports <xmlatt>scale</xmlatt> on table but not
-                      <xmlelement>simpletable</xmlelement></li>
-                  <li>Scales the image contained in a table when the
-                      <xmlatt>scale</xmlatt> attribute is set</li>
-                </ul> .</p>
-            </draft-comment></dd>
+              scaled <b>only</b> if a scaling property is explicitly
+              specified for the <xmlelement>image</xmlelement>
+            element.</p><!--<draft-comment author="robander" time="Dec 28 2021">Just noting that we seem to repeat ourselves here, saying this is 1) primarily for print-oriented, 2) primarily for print accommodation, and 3) some processors (implementations) might not support all values. Also feels really odd to say it's "an acknowledged style-based property", I think we can just delete that sentence? It doesn't add anything except to suggest we might be embarassed to have this attribute?</draft-comment>--><!--<draft-comment author="Kristen J Eberlein" time="29 December 2021"><p>I've made some edits, including some that I think eliminated the repetition.</p><p>Is <xmlatt>scale</xmlatt> used on elements other than fig, simpletable, and table? Note that we do not mention <xmlelement>simpletable</xmlelement> above ...</p><p>Maybe the paragraph about image should be moved to the <xmlelement>image</xmlelement> topic? Or covered in the topics for elements that support <xmlatt>scale</xmlatt>?</p><p>Do we need to discuss processing expectations about scaling elsewhere? It's buried here. Putting it in a more prominent place might improve the likelihood that processors would support it.</p><p>Based on a quick test, DITA-OT PDF: <ul><li>Supports <xmlatt>scale</xmlatt> on table but not <xmlelement>simpletable</xmlelement></li><li>Scales the image contained in a table when the <xmlatt>scale</xmlatt> attribute is set</li></ul> .</p></draft-comment>--></dd>
         </dlentry>
         <dlentry id="scope">
           <dt id="attr-scope"><xmlatt>scope</xmlatt> (link-relationship attributes)</dt>
@@ -863,9 +788,10 @@
         <dlentry id="spectitle">
           <dt id="attr-spectitle"><xmlatt>spectitle</xmlatt> (specialization attributes)</dt>
           <dd>Specifies a fixed or default header title for a specialized
-            element.
-            <!--This attribute allows architects of specialized types to define such headers for a specialized element. -->This
-            attribute is not intended for direct use by authors.</dd>
+            element. This attribute enables DITA practitioners to define
+            header titles for specialized elements that represent examples,
+            figures, lists, notes, and more. This attribute is not intended
+            for direct use by authors.</dd>
         </dlentry>
         <dlentry id="title-role">
           <dt id="attr-title-role"><xmlatt>title-role</xmlatt>
@@ -911,22 +837,22 @@
         </dlentry>
         <dlentry id="valign">
           <dt id="attr-valign"><xmlatt>valign</xmlatt> (complex table attributes)</dt>
-          <dd>Specifies the vertical alignment of text in a table entry
-            (cell). The following values are valid: <dl>
+          <dd>Specifies the vertical alignment of text in a table entry.
+            The following values are valid: <dl>
               <dlentry>
                 <dt>bottom </dt>
-                <dd>Align the text to the bottom of the table entry (cell).
-                </dd>
+                <dd>Indicates that text is aligned with the bottom of the
+                  table entry. </dd>
               </dlentry>
               <dlentry>
                 <dt>middle </dt>
-                <dd>Align the text to the middle of the table entry (cell).
-                </dd>
+                <dd>Indicates that text is aligned with the middle of the
+                  table entry. </dd>
               </dlentry>
               <dlentry>
                 <dt>top </dt>
-                <dd>Align the text to the top of the table entry (cell).
-                </dd>
+                <dd>Indicates that text is aligned with the top of the
+                  table entry. </dd>
               </dlentry>
               <dlentry conkeyref="reuse-attributes/ditauseconref">
                 <dt>-dita-use-conref-target </dt>

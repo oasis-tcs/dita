@@ -20,33 +20,33 @@
       <title>Attributes</title>
       <p>The following attributes are available on this element: <ph
           conkeyref="reuse-attributes/ref-universalatts"/> (without the
-        Metadata attribute group), <xref
-          keyref="attributes-universal/attr-base"
-          ><xmlatt>base</xmlatt></xref>, <xref
+        metadata attribute group), <xref
           keyref="attributes-common/attr-align"
           ><xmlatt>align</xmlatt></xref>, <xref
+          keyref="attributes-universal/attr-base"
+          ><xmlatt>base</xmlatt></xref>,  <xref
           keyref="attributes-common/attr-char"
         ><xmlatt>char</xmlatt></xref>, <xref
           keyref="attributes-common/attr-charoff"
           ><xmlatt>charoff</xmlatt></xref>, <xref
           keyref="attributes-common/attr-colsep"
           ><xmlatt>colsep</xmlatt></xref>, <xref
-          keyref="attributes-common/attr-rowsep"
-          ><xmlatt>rowsep</xmlatt></xref>, <xref
           keyref="attributes-common/attr-rowheader"
-            ><xmlatt>rowheader</xmlatt></xref>,  and the attributes defined
+            ><xmlatt>rowheader</xmlatt></xref>, <xref
+          keyref="attributes-common/attr-rowsep"
+          ><xmlatt>rowsep</xmlatt></xref>, and the attributes defined
         below.</p>
       <dl>
         <dlentry>
           <dt id="attr-colnum"><xmlatt>colnum</xmlatt></dt>
-          <dd>Specifies the number of the column in the table <ph
+          <dd>Specifies the number of the column in the table<ph
               rev="review-e">, where 1 represents the first logical
               column.</ph></dd>
         </dlentry>
         <dlentry>
           <dt id="attr-colname"><xmlatt>colname</xmlatt></dt>
           <dd>Specifies a name for the column. The
-              <xmlelement>entry</xmlelement> element can use
+              <xmlelement>entry</xmlelement> element can use the
               <xmlatt>colname</xmlatt><ph rev="review-e"> attribute to
               refer to the column.</ph></dd>
         </dlentry>
@@ -57,34 +57,22 @@
               rev="review-e">
               <dlentry>
                 <dt>Proportional measure</dt>
-                <dd><keyword>5*</keyword> indicates five times the
-                  proportion.</dd>
+                <dd>A value of <keyword>5*</keyword> indicates five times
+                  the proportion.</dd>
               </dlentry>
               <dlentry>
                 <dt>Fixed measure</dt>
-                <dd>Coefficients are positive integers or fixed point
-                  numbers. The fixed unit values are case-insensitive. The
-                  allowed units of measure are cm (centimeters), in
-                  (inches), pi (picas), and pt (points). The default unit
-                  of measure is pt.</dd>
+                <dd>A value of a coefficient followed by a unit of
+                  measurement. The coefficients are positive integers or
+                  fixed point numbers. The fixed unit values are
+                  case-insensitive. The allowed units of measure are cm
+                  (centimeters), in (inches), pi (picas), and pt (points).
+                  The default unit of measure is pt.</dd>
               </dlentry>
-            </dl><ph rev="review-e">The null string is treated as a
-              proportional measure of <keyword>1*</keyword>.</ph></dd>
-          <dd rev="review-e">
-            <p>For more information, see <xref
-                href="https://www.oasis-open.org/specs/tm9901.html#AEN530"
-                format="html" scope="external"><cite>XML Exchange Table
-                  Model Document Type Definition</cite>.</xref></p>
-            <draft-comment author="Kristen J Eberlein"
-              time="20 December 2021">
-              <p>I added the above (expanded) information about
-                  <xmlatt>colwidth</xmlatt> based on a review comment by
-                Gershon Joseph. I think it should be less exhaustive,
-                perhaps just a simple explanation that both proportional
-                and fixed measures are supported, and then point off to the
-                authoritative document.</p>
-            </draft-comment>
-          </dd>
+            </dl><ph rev="review-e">If the <xmlatt>colwidth</xmlatt>
+              attribute is not specified or is empty, a proportional
+              measure of <keyword>1*</keyword> is assumed.</ph></dd>
+          <!--<dd rev="review-e"><p>For more information, see <xref href="https://www.oasis-open.org/specs/tm9901.html#AEN530" format="html" scope="external"><cite>XML Exchange Table Model Document Type Definition</cite>.</xref></p><draft-comment author="Kristen J Eberlein" time="20 December 2021"><p>I added the above (expanded) information about <xmlatt>colwidth</xmlatt> based on a review comment by Gershon Joseph. I think it should be less exhaustive.</p><p>Also, the description uses the phrase "null string," which has a different meaning in the OASIS Exchange Table Model than it does in Java ...</p></draft-comment></dd>-->
         </dlentry>
       </dl>
     </section>

@@ -19,19 +19,18 @@
   <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>The DITA <xmlelement>table</xmlelement> element is based on the
-        OASIS Exchange Table Model, augmented with DITA attributes that
-        enable accessibility, specialization, content reference, and other
-        DITA processing.</p>
+      <p>The <xmlelement>table</xmlelement> element is based on the OASIS
+        Exchange Table Model<ph rev="review-e">. However, it is</ph>
+        augmented with DITA attributes that enable accessibility, content
+        reference, specialization, and more.</p>
       <p>An optional <xmlelement>title</xmlelement> inside the
           <xmlelement>table</xmlelement> element provides a caption to
         describe the table. In addition, the optional
           <xmlelement>desc</xmlelement> element enables a table
         description.</p>
       <p>See <xref keyref="elements-simpletable"/> for a simplified table
-        model that is closer to the HTML5 table model, and which can be
-        more easily specialized to represent regular relationships of
-        data.</p>
+        model that is <ph rev="review-e">closely aligned with</ph> the
+        HTML5 table model, and which can be easily specialized.</p>
       <p conkeyref="reuse-general/pgwide-explain"/>
     </section>
     <!--<section id="processing-expectations"><title>Processing expectations</title><p>In situations where a stylesheet or other formatting mechanism specifies table orientation based on criteria other than the value of <xmlatt>orient</xmlatt>, or for non-paginated outputs, the <xmlatt>orient</xmlatt> attribute can be ignored.</p></section>-->
@@ -39,12 +38,15 @@
       <title>Attributes</title>
       <p>The following attributes are available on this element: <ph
           conkeyref="reuse-attributes/ref-universalatts"/>, <xref
-          keyref="attributes-common/attr-colsep"><xmlatt>colsep</xmlatt></xref>, <xref
-          keyref="attributes-common/attr-frame"><xmlatt>frame</xmlatt></xref>, <xref
-          keyref="attributes-common/attr-rowsep"><xmlatt>rowsep</xmlatt></xref>, <xref
-          keyref="attributes-common/attr-rowheader"><xmlatt>rowheader</xmlatt></xref>, <xref
-          keyref="attributes-common/attr-scale"><xmlatt>scale</xmlatt></xref>, and the attributes
-        defined below.</p>
+          keyref="attributes-common/attr-colsep"
+          ><xmlatt>colsep</xmlatt></xref>, <xref
+          keyref="attributes-common/attr-frame"
+          ><xmlatt>frame</xmlatt></xref>, <xmlatt>rowheader</xmlatt>, <xref
+          keyref="attributes-common/attr-rowsep"
+          ><xmlatt>rowsep</xmlatt></xref>, <xref
+          keyref="attributes-common/attr-scale"
+          ><xmlatt>scale</xmlatt></xref>, and the attributes defined
+        below.</p>
       <dl>
         <dlentry id="orient">
           <dt id="attr-orient"><xmlatt>orient</xmlatt></dt>
@@ -54,15 +56,15 @@
             values are valid:<dl>
               <dlentry>
                 <dt>port</dt>
-                <dd rev="review-e">Portrait page orientation. The page is
-                  oriented with its long side vertical and its short side
-                  horizontal.</dd>
+                <dd rev="review-e">Indicates portrait page orientation. The
+                  page is oriented with its long side vertical and its
+                  short side horizontal.</dd>
               </dlentry>
               <dlentry>
                 <dt>land</dt>
-                <dd rev="review-e">Landscape page orientation. The page is
-                  oriented with its long side horizontal and its short side
-                  vertical.</dd>
+                <dd rev="review-e">Indicates landscape page orientation.
+                  The page is oriented with its long side horizontal and
+                  its short side vertical.</dd>
               </dlentry>
               <dlentry conkeyref="reuse-attributes/ditauseconref">
                 <dt/>
@@ -75,13 +77,13 @@
           <dd>Specifies the horizontal placement of the element for
             print-oriented rendering. The following values are valid: <dl>
               <dlentry>
-                <dt><keyword>1</keyword></dt>
-                <dd>Places the element on the left page margin</dd>
-              </dlentry>
-              <dlentry>
                 <dt><keyword>0</keyword></dt>
                 <dd>Aligns the element with the left margin of the current
                   text line and takes indention into account</dd>
+              </dlentry>
+              <dlentry>
+                <dt><keyword>1</keyword></dt>
+                <dd>Places the element on the left page margin</dd>
               </dlentry>
             </dl></dd>
         </dlentry>
@@ -125,7 +127,8 @@
     &lt;/tbody&gt;
   &lt;/tgroup&gt;
 &lt;/table&gt;</codeblock>
-        <p>The formatted output might be displayed as follows:</p>
+        <p>The formatted output might be <ph rev="review-e">rendered in the
+            following way:</ph></p>
         <image placement="break" href="../images/table.jpg">
           <alt>The image shows a two-column table. The first column lists
             animals, and the second column lists gestation (in months). The
@@ -140,21 +143,20 @@
           and the matching header cell above that column.</p>
       </fig>
       <fig>
-        <title>Example of a complex table with implied accessibility
-          markup</title>
+        <title>Example of a complex table with accessibility markup</title>
         <p>
           <draft-comment author="robander" time="Oct 5 2020">Per discussion
             with Kris: would be good to have a section on accessibility in
             the architectural spec; if that is created, some of these
             examples might be better placed there.</draft-comment>
         </p>
-        <p>In the following code sample, the table uses
-            <xmlelement>thead</xmlelement> to identify header rows and
-            <xmlatt>rowheader</xmlatt> to identify a header column. This
-          header relationship can be used to automatically create
-          renderings of the table in other formats, such as HTML, that can
-          be navigated using a screen reader or other assistive
-          technology.</p>
+        <p>In the following code sample, the table uses the
+            <xmlelement>thead</xmlelement> element to identify header rows
+          and the <xmlatt>rowheader</xmlatt> attribute to identify a header
+          column. <ph rev="review-e">These header relationships</ph> can be
+          used to automatically create renderings of the table in other
+          formats, such as HTML, that can be navigated using a screen
+          reader or other assistive technology.</p>
         <codeblock>&lt;table frame="all" rowheader="firstcol"&gt;
   &lt;title&gt;Sample of automated table accessibility&lt;/title>
   &lt;desc>Names are listed in the column c1. Points are listed in both data columns, with
@@ -196,25 +198,28 @@
           technology is derived from two sources:</p>
         <ul>
           <li>The <xmlelement>thead</xmlelement> element contains two rows,
-            and indicates that each <xmlelement>entry</xmlelement> in those
-            rows is a header cell for that column. This means that each
-            body cell can be associated with the header cell or cells above
-            the column. For example, in the second body row, the entry
-            "Peter" can be associated with the header "Name"; similarly,
-            the entry "9,000" can be associated with the headers "Expected"
-            and "Points".</li>
-          <li>The <xmlatt>rowheader</xmlatt> attribute implies that the
-            first column plays a similar roll as a header. This means that
-            each body cell in columns two and three can be associated with
-            the header cell in column one. For example, in the second body
-            row, the entry "9,000" can be associated with the header
-            "Peter".</li>
+            and indicates that each <ph rev="review-e">entry</ph> in those
+              <ph rev="review-e">header</ph> rows is a header cell for that
+            column. This means that each body cell can be associated with
+            the header cell or cells above the column. For example, in the
+            second body row, the entry "Peter" can be associated with the
+            header "Name"; similarly, the entry "9,000" can be associated
+            with the headers "Expected" and "Points".</li>
+          <li>The <xmlatt>rowheader</xmlatt> attribute <ph rev="review-e"
+              >that is specified on <xmlelement>table</xmlelement>
+              indicates</ph> that the first column plays a role as a
+            header. This means that each body cell in columns two and three
+            can be associated with the header cell in column one. For
+            example, in the second body row, the entry "9,000" can be
+            associated with the header "Peter".</li>
         </ul>
         <p>As a result of these two sets of headers, a rendering of the
           table can associate the entry "9,000" with three headers:
-          "Peter", "Expected", and "Points", making it fully navigable by a
-          screen reader or other assistive technology.</p>
-        <p>The formatted output might be displayed as follows:</p>
+          "Peter", "Expected", and "Points", <ph rev="review-e">thus</ph>
+          making it fully navigable by a screen reader or other assistive
+          technology.</p>
+        <p>The formatted output might be <ph rev="review-e">rendered in the
+            following way:</ph></p>
         <image placement="break" href="../images/table-with-spans.jpg">
           <alt>The image shows a three-column table. The first column lists
             names, the second column lists expected points, and the third
@@ -227,8 +232,8 @@
         <!--<p><table id="table_eww_xxl_4n" rowheader="firstcol" frame="all"><title>Sample of automated table accessibility</title><desc>Names are listed in the column c1. Points are listed in both data columns, with expected points in column c2 and actual points in column c3.</desc><tgroup cols="3"><colspec colname="c1"/><colspec colname="c2"/><colspec colname="c3"/><thead><row><entry morerows="1">Name</entry><entry namest="c2" nameend="c3">points</entry></row><row><entry>expected</entry><entry>actual</entry></row></thead><tbody><row><entry>Mark</entry><entry>10,000</entry><entry>11,123.45</entry></row><row><entry>Peter</entry><entry>9,000</entry><entry>11,012.34</entry></row><row><entry>Cindy</entry><entry>10,000</entry><entry>10,987.64</entry></row></tbody></tgroup></table><draft-comment author="Kristen J Eberlein" time="20 December 2021"><p>When replacing the above with a screen capture, consider the following comment from Gershon Joseph:</p><p>"In addition, I would expect the output to show the header column also formatted in bold, or some background shading, to illustrate the use of the @rowheader."</p></draft-comment></p>-->
       </fig>
       <fig>
-        <title>Example of a complex table with some manually specified
-          accessibility markup</title>
+        <title>Example of a complex table with some <ph rev="review-e"
+            >manually-specified</ph> accessibility markup</title>
         <p>In some complex tables, the <xmlelement>thead</xmlelement>
           element and <xmlatt>rowheader</xmlatt> attribute might not be
           enough to support all accessibility needs. Assume that the table
@@ -245,12 +250,13 @@
             the image is part of a larger document.</alt>
         </image>
         <!--<p><table frame="all" id="table_nzp_zzl_4n"><title>Sample with two header columns</title><tgroup cols="5"><colspec colname="c1" colnum="1" colwidth="1.0*"/><colspec colname="c2" colnum="2" colwidth="1.0*"/><colspec colname="c3" colnum="3" colwidth="1.0*"/><colspec colname="c4" colnum="4" colwidth="1.0*"/><colspec colname="newCol5" colnum="5" colwidth="1*"/><thead><row><entry namest="c1" nameend="c2"> Name</entry><entry>Mark</entry><entry>Peter</entry><entry>Cindy</entry></row></thead><tbody><row><entry morerows="1"><b>points</b></entry><entry><b>expected</b></entry><entry>10,000</entry><entry>9,000</entry><entry>10,000</entry></row><row><entry><b>actual</b></entry><entry>11,123.45</entry><entry>11,012.34</entry><entry>10,987.64</entry></row></tbody></tgroup></table></p>-->
-        <p>In this case the <xmlatt>rowheader</xmlatt> attribute cannot be
-          used, because it is only able to specify the first column as a
-          header column. In this case, the <xmlatt>scope</xmlatt> attribute
-          can be used to indicate that entries in the first and second
-          columns function as headers for the entire row (or row group, in
-          the case of a cell that spans more than one row).</p>
+        <p><ph rev="review-e">Here,</ph> the <xmlatt>rowheader</xmlatt>
+          attribute cannot be used, because it is only able to specify the
+          first column as a header column. In this case, the
+            <xmlatt>scope</xmlatt> attribute can be used to indicate that
+          entries in the first and second columns function as headers for
+          the entire row (or row group, in the case of a cell that spans
+          more than one row).</p>
         <p>The following code sample demonstrates the use of the
             <xmlatt>scope</xmlatt> attribute to facilitate navigation of
           these rows by a screen reader or other assistive technology<ph
@@ -316,7 +322,7 @@
             time="20 December 2021">
             <p>Do we want to use a different example here? It's a bit
               confusing to read, since the result output is very similar to
-              the "Example of a complex table with implied accessibility
+              the "Example of a complex table with accessibility
               markup".</p>
           </draft-comment>
         </p>
@@ -358,7 +364,8 @@ expected points in column c2 and actual points in column c3.&lt;/desc>
    &lt;/tgroup>
 &lt;/table></codeblock>
       </fig>
-      <p>The formatted output might be displayed as follows:</p>
+      <p>The formatted output might be <ph rev="review-e">rendered in the
+          following way:</ph></p>
       <image placement="break"
         href="../images/table-manual-accessibility.jpg">
         <alt>The image shows … The header row is shaded with green, and the
