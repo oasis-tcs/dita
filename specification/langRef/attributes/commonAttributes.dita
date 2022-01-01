@@ -20,18 +20,26 @@
       <dl>
         <dlentry id="architecturalatts">
           <dt>Architectural attributes</dt>
-          <dd>Includes a set of attributes defined for document level elements such as
-              <xmlelement>topic</xmlelement> and <xmlelement>map</xmlelement>:
-              <xmlatt>DITAArchVersion</xmlatt>, <xmlatt>specializations</xmlatt>, and
-              <xmlatt>xmlns:ditaarch</xmlatt>.</dd>
+          <dd>
+            <p id="architectural-attr">This group includes a set of
+              attributes that are defined for document-level elements such
+              as <xmlelement>topic</xmlelement> and
+                <xmlelement>map</xmlelement>:
+                <xmlatt>DITAArchVersion</xmlatt>,
+                <xmlatt>specializations</xmlatt>, and
+                <xmlatt>xmlns:ditaarch</xmlatt>.</p>
+          </dd>
         </dlentry>
         <dlentry id="commonmapatts">
           <dt>Common map attributes</dt>
-          <dd>Includes several attributes that are used on a variety of map elements:
-              <xmlatt>cascade</xmlatt>, <xmlatt>chunk</xmlatt>, <xmlatt>collection-type</xmlatt>,
-              <xmlatt>keyscope</xmlatt>, <xmlatt>linking</xmlatt>,
-              <xmlatt>processing-role</xmlatt>, <xmlatt>search</xmlatt>, and
-            <xmlatt>toc</xmlatt>.</dd>
+          <dd>
+            <p id="common-map-attr">This group includes attributes that are
+              frequently used on map elements: <xmlatt>cascade</xmlatt>,
+                <xmlatt>chunk</xmlatt>, <xmlatt>collection-type</xmlatt>,
+                <xmlatt>keyscope</xmlatt>, <xmlatt>linking</xmlatt>,
+                <xmlatt>processing-role</xmlatt>, <xmlatt>search</xmlatt>,
+              and <xmlatt>toc</xmlatt>.</p>
+          </dd>
         </dlentry>
         <dlentry id="complextableatts">
           <dt>Complex table attributes</dt>
@@ -112,9 +120,13 @@
         </dlentry>
         <dlentry id="otheratts">
           <dt>Other attributes (not in a group)</dt>
-          <dd>Includes attributes used in the same way on more than one base element, but otherwise
-            not grouped together: <xmlatt>compact</xmlatt>, <xmlatt>duplicates</xmlatt>, <xmlatt>role</xmlatt>,
-              <xmlatt>otherrole</xmlatt>, and <xmlatt>title-role</xmlatt>.</dd>
+          <dd>
+            <p id="other-attr">These are attributes that are used in the
+              same way on more than one base element, but they are not
+              formally grouped together: <xmlatt>compact</xmlatt>,
+                <xmlatt>duplicates</xmlatt>, <xmlatt>otherrole</xmlatt>,
+                <xmlatt>role</xmlatt>, and <xmlatt>title-role</xmlatt>.</p>
+          </dd>
         </dlentry>
       </dl>
     </section>
@@ -167,12 +179,30 @@
         <dlentry id="cascade" platform="dita">
           <dt id="attr-cascade"><xmlatt>cascade</xmlatt> (common map attributes)</dt>
           <dd>
-            <p>Specifies how metadata attributes cascade within a map.</p>
-            <p>The specification defines two values for this attribute: <keyword>merge</keyword> and
-                <keyword>nomerge</keyword>. If no value is set, and no value cascades from an
-              ancestor element, processors <term outputclass="RFC-2119">SHOULD</term> assume a
-              default of <keyword>merge</keyword>. Processors can define and support additional
-              values.</p>
+            <draft-comment author="Kristen J Eberlein"
+              time="31 December 2021">
+              <p>We need to move the normative statement elsewere. Should
+                it go in <xref
+                  href="../../archSpec/base/cascading-in-a-ditamap.dita"
+                />?</p>
+            </draft-comment>
+            <p>Specifies how metadata attributes cascade within a map. The
+              specification defines the following values:</p>
+            <dl>
+              <dlentry>
+                <dt><keyword>merge</keyword></dt>
+                <dd>Explanation needed</dd>
+              </dlentry>
+              <dlentry>
+                <dt><keyword>nomerge</keyword></dt>
+                <dd>Explanation needed</dd>
+              </dlentry>
+            </dl>
+            <p>If no value is set and no value cascades from a containing
+              element, processors <term outputclass="RFC-2119"
+                >SHOULD</term> assume a default of
+              <keyword>merge</keyword>. Processors can define custom values
+              for the <xmlatt>cascade</xmlatt> attribute.</p>
             <p> See <xref href="../../archSpec/base/cascading-in-a-ditamap.dita"/> for more
               information about how this attribute interacts with metadata attributes.</p>
           </dd>
@@ -258,27 +288,13 @@
         </dlentry>
         <dlentry id="compact" platform="dita">
           <dt id="attr-compact"><xmlatt>compact</xmlatt></dt>
-          <dd>Specifies the amount of vertical spacing between list items. Expanded spacing is the
-            processing default. The output result of compact spacing depends on the processor or
-            browser. <draft-comment author="robander">Is expanded spacing really the processing
-              default? Does it have to be? This seems like it should be left to the processor. Also
-              odd to say that compact rendering depends on the browser, but expanded does not. A
-              processor that only ever renders things in a (subjectively) compact manner might flip
-              this, where default seems compact and expanded is up to the
-            renderer.</draft-comment>The following values are valid: <dl>
-              <dlentry>
-                <dt>yes </dt>
-                <dd>Indicates compact spacing. </dd>
-              </dlentry>
-              <dlentry>
-                <dt>no </dt>
-                <dd>Indicates expanded spacing. </dd>
-              </dlentry>
-              <dlentry conkeyref="reuse-attributes/ditauseconref">
-                <dt> </dt>
-                <dd> </dd>
-              </dlentry>
-            </dl></dd>
+          <dd>Specifies whether the vertical spacing between list items is
+            tightened. The following values are valid:
+              <keyword>yes</keyword>, <keyword>no</keyword>, and
+              <keyword>-dita-use-conref-target</keyword>. Some DITA
+            processors or output formats might not support the
+              <xmlatt>compact</xmlatt> attribute.
+            <!--<draft-comment author="robander">Is expanded spacing really the processing default? Does it have to be? This seems like it should be left to the processor. Also odd to say that compact rendering depends on the browser, but expanded does not. A processor that only ever renders things in a (subjectively) compact manner might flip this, where default seems compact and expanded is up to the renderer.</draft-comment>--><!--<dl><dlentry><dt>yes </dt><dd>Indicates compact spacing. </dd></dlentry><dlentry><dt>no </dt><dd>Indicates expanded spacing. </dd></dlentry><dlentry conkeyref="reuse-attributes/ditauseconref"><dt> </dt><dd> </dd></dlentry></dl>--></dd>
         </dlentry>
         <dlentry id="datatype" platform="dita">
           <dt id="attr-datatype"><xmlatt>datatype</xmlatt> (data-element attributes)</dt>
@@ -288,18 +304,21 @@
         </dlentry>
         <dlentry id="DITAArchVersion">
           <dt id="attr-DITAArchVersion"><xmlatt>DITAArchVersion</xmlatt> (architectural attributes)</dt>
-          <dd>Specifies the version of the DITA architecture that is in use. The default value will
-            increase with each release of DITA. This attribute is in the namespace
-            "http://dita.​oasis-open.​org/​architecture/​2005/". This attribute is defined with the
-            XML data type CDATA, but uses a default value of the current version of DITA. The
+          <dd>Specifies the version of the DITA architecture that is in
+            use. The default value increases with each release of DITA.
+            This attribute is in the namespace
+              <xmlnsname>http://dita.​oasis-open.​org/​architecture/​2005/</xmlnsname>.
+            This attribute is defined with the XML data type CDATA, but it
+            uses a default value of the current version of DITA. The
             current default is <keyword>2.0</keyword>.</dd>
         </dlentry>
-        <dlentry>
+        <dlentry id="duplicates">
           <dt id="attr-duplicates"><xmlatt>duplicates</xmlatt></dt>
-          <dd>Specifies whether duplicate links are removed from a group of links. Duplicate links
-            are links that address the same resource using the same properties, such as link text
-            and link role. How duplicate links are determined is processor-specific. The following
-            values are valid:<dl id="dl_ohs_fyg_ppb">
+          <dd>Specifies whether duplicate links are removed from a group of
+            links. Duplicate links are links that address the same resource
+            using the same properties, such as link text and link role. How
+            duplicate links are determined is processor-specific. The
+            following values are valid:<dl>
               <dlentry>
                 <dt>yes</dt>
                 <dd>Specifies that duplicate links are retained.</dd>
@@ -308,15 +327,19 @@
                 <dt>no</dt>
                 <dd>Specifies that duplicate links are removed.</dd>
               </dlentry>
-              <dlentry conkeyref="reuse-attributes/ditauseconref" platform="dita">
+              <dlentry conkeyref="reuse-attributes/ditauseconref"
+                platform="dita">
                 <dt> </dt>
                 <dd> </dd>
               </dlentry>
-            </dl><p>The suggested processing default is "yes" within
-                <xmlelement>linklist</xmlelement> elements and "no" for other
-              links.</p><draft-comment author="robander" time="Dec 28 2021">"How duplicate links are
-              determined is processor-specific" ==> this should be included in any updates to
-              standardize language around "implementation dependent".</draft-comment></dd>
+            </dl><p>The suggested processing default is
+                <keyword>yes</keyword> within
+                <xmlelement>linklist</xmlelement> elements and
+                <keyword>no</keyword> for other links.</p><draft-comment
+              author="robander" time="Dec 28 2021">"How duplicate links are
+              determined is processor-specific" ==> this should be included
+              in any updates to standardize language around "implementation
+              dependent".</draft-comment></dd>
         </dlentry>
         <dlentry id="encoding">
           <dt id="attr-encoding"><xmlatt>encoding</xmlatt> (inclusion attributes)</dt>
@@ -399,8 +422,8 @@
         <dlentry id="format">
           <dt id="attr-format"><xmlatt>format</xmlatt> (link-relationship attributes)</dt>
           <dd>Specifies the format of the resource that is referenced. See
-              <xref keyref="attributes-format"/> for details on supported
-            values and processing implications. </dd>
+              <xref keyref="attributes-format"/> for detailed information
+            on supported values and processing implications.</dd>
         </dlentry>
         <dlentry id="frame">
           <dt id="attr-frame"><xmlatt>frame</xmlatt> (display attributes)</dt>
@@ -479,8 +502,8 @@
         <dlentry id="href">
           <dt id="attr-href"><xmlatt>href</xmlatt> (link-relationship attributes)</dt>
           <dd>Specifies a reference to a resource. See <xref
-              keyref="attributes-href"/> for details on supported values
-            and processing implications.</dd>
+              keyref="attributes-href"/> for detailed information on
+            supported values and processing implications.</dd>
         </dlentry>
         <dlentry id="keycol">
           <dt id="attr-keycol"><xmlatt>keycol</xmlatt> (simpletable attributes)</dt>
@@ -555,10 +578,11 @@
               audience="spec-editors">Do we need to specify the scope of "unique"
               here?</draft-comment></dd>
         </dlentry>
-        <dlentry>
+        <dlentry id="otherrole">
           <dt id="attr-otherrole"><xmlatt>otherrole</xmlatt></dt>
-          <dd>Specifies an alternate role for a link relationship when the <xmlatt>role</xmlatt>
-            attribute is set to <keyword>other</keyword>.</dd>
+          <dd>Specifies an alternate role for a link relationship when the
+              <xmlatt>role</xmlatt> attribute is set to
+              <keyword>other</keyword>.</dd>
         </dlentry>
         <dlentry id="parse">
           <dt id="attr-parse"><xmlatt>parse</xmlatt> (inclusion attributes)</dt>
@@ -632,56 +656,65 @@
                 <codeph>relcolwidth="90* 150*"</codeph> causes relative
               widths of 90/240 and 150/240 (37.5% and 62.5%).</p></dd>
         </dlentry>
-        <dlentry>
+        <dlentry id="role">
           <dt id="attr-role"><xmlatt>role</xmlatt></dt>
-          <dd>Specifies the role that a linked topic plays in relationship with the current topic.
-              <p otherprops="examples">For example, in a parent/child relationship, the role would
-              be "parent" when the target is the parent of the current topic, and "child" when the
-              target is the child of the current topic. This can be used to sort and classify links
-              when rendering.</p><p>The following values are valid:</p><dl id="linkrolevalues">
+          <dd>Specifies the role that a linked topic plays in relationship
+            with the current topic. <p otherprops="examples">For example,
+              in a parent/child relationship, the role would be
+                <keyword>parent</keyword> when the target is the parent of
+              the current topic, and <keyword>child</keyword> when the
+              target is the child of the current topic. This can be used to
+              sort and classify links when rendering.</p><p>The following
+              values are valid:</p><dl id="linkrolevalues">
               <dlentry>
-                <dt>parent</dt>
-                <dd>Indicates a link to a topic that is a parent of the current topic.</dd>
-              </dlentry>
-              <dlentry>
-                <dt>child</dt>
-                <dd>Indicates a link to a direct child such as a directly nested or dependent
+                <dt>ancestor</dt>
+                <dd>Indicates a link to a topic above the parent
                   topic.</dd>
               </dlentry>
               <dlentry>
-                <dt>sibling</dt>
-                <dd>Indicates a link between two children of the same parent topic.</dd>
-              </dlentry>
-              <dlentry>
-                <dt>friend</dt>
-                <dd>Indicates a link to a similar topic that is not necessarily part of the same
-                  hierarchy.</dd>
-              </dlentry>
-              <dlentry>
-                <dt>next</dt>
-                <dd>Indicates a link to the next topic in a sequence.</dd>
-              </dlentry>
-              <dlentry>
-                <dt>previous</dt>
-                <dd>Indicates a link to the previous topic in a sequence.</dd>
+                <dt>child</dt>
+                <dd>Indicates a link to a direct child such as a directly
+                  nested or dependent topic.</dd>
               </dlentry>
               <dlentry>
                 <dt>cousin</dt>
-                <dd>Indicates a link to another topic in the same hierarchy that is not a parent,
-                  child, sibling, next, or previous.</dd>
-              </dlentry>
-              <dlentry>
-                <dt>ancestor</dt>
-                <dd>Indicates a link to a topic above the parent topic.</dd>
+                <dd>Indicates a link to another topic in the same hierarchy
+                  that is not a parent, child, sibling, next, or
+                  previous.</dd>
               </dlentry>
               <dlentry>
                 <dt>descendant</dt>
                 <dd>Indicates a link to a topic below a child topic.</dd>
               </dlentry>
               <dlentry>
+                <dt>friend</dt>
+                <dd>Indicates a link to a similar topic that is not
+                  necessarily part of the same hierarchy.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>next</dt>
+                <dd>Indicates a link to the next topic in a sequence.</dd>
+              </dlentry>
+              <dlentry>
                 <dt>other</dt>
-                <dd>Indicates any other kind of relationship or role. Enter that role as the value
-                  for the <xmlatt>otherrole</xmlatt> attribute.</dd>
+                <dd>Indicates any other kind of relationship or role. The
+                  type of role is specified as the value for the
+                    <xmlatt>otherrole</xmlatt> attribute.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>parent</dt>
+                <dd>Indicates a link to a topic that is a parent of the
+                  current topic.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>previous</dt>
+                <dd>Indicates a link to the previous topic in a
+                  sequence.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>sibling</dt>
+                <dd>Indicates a link between two children of the same
+                  parent topic.</dd>
               </dlentry>
               <dlentry conkeyref="reuse-attributes/ditauseconref">
                 <dt> </dt>
@@ -792,11 +825,13 @@
         </dlentry>
         <dlentry id="scope">
           <dt id="attr-scope"><xmlatt>scope</xmlatt> (link-relationship attributes)</dt>
-          <dd>Specifies the closeness of the relationship between the current document and the
-            referenced resource. The following values are valid: <keyword>local</keyword>,
+          <dd>Specifies the closeness of the relationship between the
+            current document and the referenced resource. The following
+            values are valid: <keyword>local</keyword>,
               <keyword>peer</keyword>, <keyword>external</keyword>, and
-              <keyword>-dita-use-conref-target</keyword>. See <xref keyref="attributes-scope"/> for
-            more information on these values.</dd>
+              <keyword>-dita-use-conref-target</keyword>. See <xref
+              keyref="attributes-scope"/> for detailed information on
+            supported values and processing implications.</dd>
         </dlentry>
         <dlentry id="search" platform="dita">
           <dt id="attr-search"><xmlatt>search</xmlatt> (common map attributes)</dt>
@@ -814,13 +849,16 @@
         </dlentry>
         <dlentry id="specializations">
           <dt id="attr-specializations"><xmlatt>specializations</xmlatt> (architectural attributes)</dt>
-          <dd>Specifies the specialized attribute domains that are included in the grammar file.
-            This attribute is intended to be set as a default within the DTD or RelaxNG grammar
-            file. The value will differ depending on what domains are included in the current DTD or
-            Schema. <ph otherprops="examples">For example, a grammar file that includes the
-              specialized attributes <xmlatt>audience</xmlatt>, <xmlatt>deliveryTarget</xmlatt>, and
-                <xmlatt>newBaseAtt</xmlatt> would set the value to <codeph>@props/audience
-                @props/deliveryTarget @base/newBaseAtt</codeph>.</ph></dd>
+          <dd>Specifies the attribute domain specializations that are
+            included in the document-type shell. This attribute is set as a
+            default within the document-type shell. The value varies
+            depending on what domains are integrated into the document-type
+            shell. <ph otherprops="examples">For example, a grammar file
+              that includes the specialized attributes
+                <xmlatt>audience</xmlatt>, <xmlatt>deliveryTarget</xmlatt>,
+              and <xmlatt>newBaseAtt</xmlatt> would set the value to
+                <codeph>@props/audience @props/deliveryTarget
+                @base/newBaseAtt</codeph>.</ph></dd>
         </dlentry>
         <dlentry id="spectitle">
           <dt id="attr-spectitle"><xmlatt>spectitle</xmlatt> (specialization attributes)</dt>
@@ -829,14 +867,17 @@
             <!--This attribute allows architects of specialized types to define such headers for a specialized element. -->This
             attribute is not intended for direct use by authors.</dd>
         </dlentry>
-        <dlentry>
+        <dlentry id="title-role">
           <dt id="attr-title-role"><xmlatt>title-role</xmlatt>
             <ph conkeyref="reuse-attributes/required-attr"/></dt>
-          <dd>Specifies the role or roles fulfilled by the alternative title. Multiple roles are
-            separated by white space. Applications can define roles; the following roles are defined
-            in the specification: <keyword>linking</keyword>, <keyword>navigation</keyword>,
+          <dd>Specifies the role that the alternative title serves.
+            Multiple roles are separated by white space. The following
+            roles are defined in the specification:
+              <keyword>linking</keyword>, <keyword>navigation</keyword>,
               <keyword>search</keyword>, <keyword>subtitle</keyword>, and
-            <keyword>hint</keyword>.</dd>
+              <keyword>hint</keyword>.<p>Processors can define custom
+              values for the <xmlatt>title-role</xmlatt>
+            attribute.</p></dd>
         </dlentry>
         <dlentry id="toc" platform="dita">
           <dt id="attr-toc"><xmlatt>toc</xmlatt> (common map attributes)</dt>
@@ -908,9 +949,10 @@
         </dlentry>
         <dlentry id="xmlnsditaarch">
           <dt id="attr-xmlns-ditaarch"><xmlatt>xmlns:ditaarch</xmlatt> (architectural attributes)</dt>
-          <dd>Declares the default DITA namespace. Although this is technically a namespace rather
-            than an attribute, it is included here because it is specified as an attribute in the
-            DTD grammar files distributed by OASIS. The value is fixed to
+          <dd>Declares the default DITA namespace. Although this is
+            technically a namespace rather than an attribute, it is
+            specified as an attribute in the DTD-based grammar files that
+            are distributed by OASIS. The value is fixed to
               <keyword>http://dita.​oasis-open.​org/​architecture/​2005/</keyword>.</dd>
         </dlentry>
       </dl>
