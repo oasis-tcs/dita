@@ -5,10 +5,9 @@
   <shortdesc>The universal attribute group defines a set of common
     attributes that are available on almost every DITA element. The
     universal attribute group includes all attributes from the ID,
-    metadata, and localization attribute groups, plus the
+    localization, and metadata attribute groups, plus the
       <xmlatt>class</xmlatt> and <xmlatt>outputclass</xmlatt>
-      attributes.<draft-comment author="Kristen J Eberlein"
-      time="29 December 2021">
+      attributes.<draft-comment author="Kristen J Eberlein" time="29 December 2021">
       <p>This is something wrong with the organizational structure of this
         topic ... Look at it in outline form, and check that the sections,
         titles, and content all make logical sense with the topic title of
@@ -37,32 +36,51 @@
         </dlentry>
         <dlentry id="idatts">
           <dt>ID attributes</dt>
-          <dd>Includes attributes that enable the naming and referencing of
-            elements: <xmlatt>conaction</xmlatt>,
-              <xmlatt>conkeyref</xmlatt>, <xmlatt>conref</xmlatt>,
-              <xmlatt>conrefend</xmlatt>, and <xmlatt>id</xmlatt>.</dd>
+          <dd>
+            <p id="id-attr">This group includes the attributes that enable
+              the naming and referencing of elements:
+                <xmlatt>conaction</xmlatt>, <xmlatt>conkeyref</xmlatt>,
+                <xmlatt>conref</xmlatt>, <xmlatt>conrefend</xmlatt>, and
+                <xmlatt>id</xmlatt>.</p>
+          </dd>
         </dlentry>
         <dlentry id="localizationatts">
           <dt>Localization attributes</dt>
-          <dd>Includes attributes that are related to translation and localization:
-              <xmlatt>dir</xmlatt>, <xmlatt>translate</xmlatt>, and <xmlatt>xml:lang</xmlatt>.</dd>
+          <dd>
+            <p id="localization-attr">This group includes attributes that
+              are related to translation and localization:
+                <xmlatt>dir</xmlatt>, <xmlatt>translate</xmlatt>, and
+                <xmlatt>xml:lang</xmlatt>.</p>
+          </dd>
         </dlentry>
         <dlentry id="metadataatts">
           <dt>Metadata attributes</dt>
-          <dd>Includes common metadata attributes, two of which are available for specialization:
-              <xmlatt>base</xmlatt>, <xmlatt>importance</xmlatt>, <xmlatt>props</xmlatt>,
-              <xmlatt>rev</xmlatt>, and <xmlatt>status</xmlatt>.</dd>
-          <dd>The base DITA vocabulary from OASIS includes several
-            predefined specializations of <xmlatt>props</xmlatt>:
-              <xmlatt>audience</xmlatt>, <xmlatt>deliveryTarget</xmlatt>,
-              <xmlatt>platform</xmlatt>, <xmlatt>product</xmlatt>, and
-              <xmlatt>otherprops</xmlatt>. These attributes are defined as
-            attribute-extension domains. By default, they are integrated
-            into all OASIS-provided document-type shells, but they can be
-            easily removed from custom document-type shells.</dd>
           <dd>
-            <draft-comment author="Kristen J Eberlein"
-              time="29 December 2021">
+            <p id="metadata-attr"><draft-comment
+                author="Kristen J Eberlein" time="31 December 2021">
+                <p>Why do we need to mention that two attributes are
+                  available for specialization here? I think it makes the
+                  paragraph hard to read.</p>
+              </draft-comment>This group includes common metadata
+              attributes, two of which are available for specialization:
+                <xmlatt>base</xmlatt>, <xmlatt>importance</xmlatt>,
+                <xmlatt>props</xmlatt>, <xmlatt>rev</xmlatt>, and
+                <xmlatt>status</xmlatt>.</p>
+          </dd>
+          <dd>
+            <p id="specializations-of-props">The base DITA vocabulary from
+              OASIS includes several specializations of
+                <xmlatt>props</xmlatt>: <xmlatt>audience</xmlatt>,
+                <xmlatt>deliveryTarget</xmlatt>,
+                <xmlatt>otherprops</xmlatt>, <xmlatt>platform</xmlatt>, and
+                <xmlatt>product</xmlatt>. These attributes are defined as
+              attribute-extension domains. By default, they are integrated
+              into all OASIS-provided document-type shells, but they can be
+              made unavailable by implementing custom document-type
+              shells.</p>
+          </dd>
+          <dd>
+            <draft-comment author="Kristen J Eberlein" time="29 December 2021">
               <p>Why do we provide information about specialization and
                 custom document-type shells here? I think that information
                 could be removed.</p>
@@ -86,18 +104,15 @@
         </dlentry>
         <dlentry id="base" platform="dita">
           <dt id="attr-base"><xmlatt>base</xmlatt></dt>
-          <dd>Specifies metadata about the current element. New attributes can be specialized from
-            the <xmlatt>base</xmlatt> attribute. It is intended to act as a base for specialized
-            attributes that have a simple value syntax like the conditional processing attributes
-            (one or more alphanumeric values separated by whitespace), but is not itself a filtering
-            or flagging attribute. <draft-comment author="robander" audience="spec-editors">This one
-              feels a bit awkward, was previously "A generic attribute that has no specific
-              purpose." Updated to be roughly in line with
-              <xmlatt>props</xmlatt>.</draft-comment><p>The <xmlatt>base</xmlatt> attribute takes a
-              space-delimited set of values. However, when acting as a container for generalized
-              attributes, the attribute values will be more complex; see <xref
-                href="../../archSpec/base/generalization-attributes.dita"/> for more
-            details.</p></dd>
+          <dd>Specifies metadata about the current element. It is often
+            used as a base for specialized attributes that have a simple
+            syntax for values but are not filtering or flagging
+              attributes.<p>The <xmlatt>base</xmlatt> attribute takes a
+              space-delimited set of values. However, when serving as a
+              container for generalized attributes, the attribute values
+              will be more complex. See <xref
+                href="../../archSpec/base/generalization-attributes.dita"/>
+              for more details.</p></dd>
         </dlentry>
         <dlentry id="class">
           <dt id="attr-class"><xmlatt>class</xmlatt>
@@ -116,63 +131,76 @@
         </dlentry>
         <dlentry id="conaction" platform="dita">
           <dt id="attr-conaction"><xmlatt>conaction</xmlatt></dt>
-          <dd>Specifies how the element content will be pushed into a new location. See <xref
-              keyref="attributes-conaction"/> for examples and details about the syntax. The
-            following values are valid:<dl id="conactionvalues">
+          <dd>Specifies how the element content will be pushed into a new
+            location. The following values are valid:<dl
+              id="conactionvalues">
               <dlentry>
                 <dt>mark</dt>
-                <dd>This element acts as a marker when pushing content before or after the target,
-                  to help ensure the push action is valid. The element with
-                    <codeph>conaction="mark"</codeph> also specifies the target of the push action
-                  with <xmlatt>conref</xmlatt>. Content inside of the element with
-                    <codeph>conaction="mark"</codeph> is not pushed to the new location.</dd>
+                <dd>The element acts as a marker when pushing content
+                  before or after the target, to help ensure that the push
+                  action is valid. The element with
+                    <codeph>conaction="mark"</codeph> also specifies the
+                  target of the push action with <xmlatt>conref</xmlatt>.
+                  Content inside of the element with
+                    <codeph>conaction="mark"</codeph> is not pushed to the
+                  new location.</dd>
               </dlentry>
               <dlentry>
                 <dt>pushafter</dt>
-                <dd>Content from this element is pushed after the location specified by
-                    <xmlatt>conref</xmlatt> on the element with <codeph>conaction="mark"</codeph>.
-                  The element with <codeph>conaction="pushafter"</codeph> is the first sibling
-                  element after the element with <codeph>conaction="mark"</codeph>.</dd>
+                <dd>Content from this element is pushed after the location
+                  specified by <xmlatt>conref</xmlatt> on the element with
+                    <codeph>conaction="mark"</codeph>. The element with
+                    <codeph>conaction="pushafter"</codeph> is the first
+                  sibling element after the element with
+                    <codeph>conaction="mark"</codeph>.</dd>
               </dlentry>
               <dlentry>
-                <dt>pushafter</dt>
-                <dd>Content from this element is pushed before the location specified by
-                    <xmlatt>conref</xmlatt> on the element with <codeph>conaction="mark"</codeph>.
-                  The element with <codeph>conaction="pushbefore"</codeph> is the first sibling
-                  element before the element with <codeph>conaction="mark"</codeph>.</dd>
+                <dt>pushbefore</dt>
+                <dd>Content from this element is pushed before the location
+                  specified by <xmlatt>conref</xmlatt> on the element with
+                    <codeph>conaction="mark"</codeph>. The element with
+                    <codeph>conaction="pushbefore"</codeph> is the first
+                  sibling element before the element with
+                    <codeph>conaction="mark"</codeph>.</dd>
               </dlentry>
               <dlentry>
                 <dt>pushreplace</dt>
-                <dd>Content from this element replaces any content from the element referenced by
-                  the <xmlatt>conref</xmlatt> attribute. A second element with
-                    <codeph>conaction="mark"</codeph> is not used when using
-                    <codeph>conaction="pushreplace"</codeph>.</dd>
+                <dd>Content from this element replaces any content from the
+                  element referenced by the <xmlatt>conref</xmlatt>
+                  attribute. A second element with
+                    <codeph>conaction="mark"</codeph> is not used when
+                  using <codeph>conaction="pushreplace"</codeph>.</dd>
               </dlentry>
               <dlentry conkeyref="reuse-attributes/ditauseconref">
                 <dt/>
                 <dd/>
               </dlentry>
-            </dl></dd>
+            </dl><p>See <xref keyref="attributes-conaction"/> for examples
+              and details about the syntax.</p></dd>
         </dlentry>
         <dlentry id="conkeyref" platform="dita">
           <dt id="attr-conkeyref"><xmlatt>conkeyref</xmlatt></dt>
-          <dd>Specifies a key name or a key name with an element ID that acts as an indirect
-            reference to reusable content. The referenced content is used in place of the current
-            element's content. See <xref keyref="attributes-conkeyref"/> for more details about the
-            syntax and behaviors.</dd>
+          <dd>Specifies a key name or a key name with an element ID that
+            acts as an indirect reference to reusable content. The
+            referenced content is used in place of the content of the
+            current element. See <xref keyref="attributes-conkeyref"/> for
+            more details about the syntax and behaviors.</dd>
         </dlentry>
         <dlentry id="conref">
           <dt id="attr-conref"><xmlatt>conref</xmlatt></dt>
-          <dd id="reusable-conref">Specifies a URI that references a DITA element. The referenced
-            content is used in place of the current element's content. See <xref
-              keyref="attributes-conref"/> for examples and details about the syntax. </dd>
+          <dd id="reusable-conref">Specifies a URI that references a DITA
+            element. The referenced content is used in place of the content
+            of the current element. See <xref keyref="attributes-conref"/>
+            for examples and details about the syntax. </dd>
         </dlentry>
         <dlentry id="conrefend" platform="dita">
           <dt id="attr-conrefend"><xmlatt>conrefend</xmlatt></dt>
-          <dd>Specifies a URI that references the last element in a sequence of elements, with the
-            first element of the sequence specified by <xmlatt>conref</xmlatt>. The referenced
-            sequence of elements is used in place of the current element's content. See <xref
-              keyref="attributes-conrefend"/> for examples. </dd>
+          <dd>Specifies a URI that references the last element in a
+            sequence of elements, with the first element of the sequence
+            specified by <xmlatt>conref</xmlatt>. The referenced sequence
+            of elements is used in place of the content of the current
+            element. See <xref keyref="attributes-conrefend"/> for examples
+            and details about the syntax. </dd>
         </dlentry>
         <dlentry id="deliveryTarget">
           <dt id="attr-deliveryTarget"><xmlatt>deliveryTarget</xmlatt>
@@ -182,32 +210,34 @@
         </dlentry>
         <dlentry id="dir">
           <dt id="attr-dir"><xmlatt>dir</xmlatt></dt>
-          <dd id="reusable-dir">Specifies the directionality of text. See <xref
-              href="../../archSpec/base/diratt.dita"/> for more information. The following values
-            are valid:<dl id="dirvalues">
+          <dd id="reusable-dir">Specifies the directionality of text. The
+            following values are valid:<dl id="dirvalues">
               <dlentry>
                 <dt>lro</dt>
-                <dd>Indicates an override of normal bidirectional text presentation, forcing the
-                  element into left-to-right mode.</dd>
+                <dd>Indicates an override of normal bidirectional text
+                  presentation, forcing the element into left-to-right
+                  mode.</dd>
               </dlentry>
               <dlentry>
                 <dt>ltr</dt>
-                <dd>Left to right (the processing default)</dd>
+                <dd>Left to right (the processing default).</dd>
               </dlentry>
               <dlentry>
                 <dt>rlo</dt>
-                <dd>Indicates an override of normal bidirectional text presentation, forcing the
-                  element into right-to-left mode.</dd>
+                <dd>Indicates an override of normal bidirectional text
+                  presentation, forcing the element into right-to-left
+                  mode.</dd>
               </dlentry>
               <dlentry>
                 <dt>rtl</dt>
-                <dd>Right to left</dd>
+                <dd>Right to left.</dd>
               </dlentry>
               <dlentry conkeyref="reuse-attributes/ditauseconref">
                 <dt/>
                 <dd/>
               </dlentry>
-            </dl></dd>
+            </dl><p>See <xref href="../../archSpec/base/diratt.dita"/> for
+              more information.</p></dd>
         </dlentry>
         <dlentry id="id">
           <dt id="attr-id"><xmlatt>id</xmlatt></dt>
@@ -222,23 +252,29 @@
         </dlentry>
         <dlentry id="importance">
           <dt id="attr-importance"><xmlatt>importance</xmlatt></dt>
-          <dd>Specifies the importance or priority attributed to an element. <ph
-              otherprops="examples">For example, in steps of a task, the attribute indicates whether
-              a step is optional or required.</ph> This attribute is not used for DITAVAL-based
-            filtering or flagging; applications might use the importance value to highlight
-            elements. The following values are valid: <keyword>obsolete</keyword>,
-              <keyword>deprecated</keyword>, <keyword>optional</keyword>,
-            <keyword>default</keyword>, <keyword>low</keyword>, <keyword>normal</keyword>,
-              <keyword>high</keyword>, <keyword>recommended</keyword>, <keyword>required</keyword>,
-              <keyword>urgent</keyword>, and <keyword>-dita-use-conref-target</keyword>. </dd>
+          <dd>Specifies the importance or priority that is assigned to an
+            element. The following values are valid:
+              <keyword>default</keyword>, <keyword>deprecated</keyword>,
+              <keyword>high</keyword>, <keyword>low</keyword>,
+              <keyword>normal</keyword>, <keyword>obsolete</keyword>,
+              <keyword>optional</keyword>, <keyword>recommended</keyword>,
+              <keyword>required</keyword>, <keyword>urgent</keyword>, and
+              <keyword>-dita-use-conref-target</keyword>. This attribute is
+            not used for DITAVAL-based filtering or flagging, although
+            applications might use the importance value to highlight
+            elements. <ph otherprops="examples">For example, in steps of a
+              task, the value of the <xmlatt>importance</xmlatt> attribute
+              indicates whether a step is optional or required.</ph></dd>
         </dlentry>
         <dlentry id="otherprops">
           <dt id="attr-otherprops"><xmlatt>otherprops</xmlatt>
             <i>(specialized attribute)</i></dt>
-          <dd>Specifies a property or properties that provide selection criteria for the element.
-            Alternatively, the <xmlatt>props</xmlatt> attribute can be specialized to provide a new
-            metadata attribute instead of using the general <xmlatt>otherprops</xmlatt> attribute.
-              <ph conkeyref="reuse-attributes/may-inherit"/>
+          <dd>Specifies a property or properties that provide selection
+            criteria for the element. Alternatively, the
+              <xmlatt>props</xmlatt> attribute can be specialized to
+            provide a new metadata attribute instead of using the general
+              <xmlatt>otherprops</xmlatt> attribute. <ph
+              conkeyref="reuse-attributes/may-inherit"/>
           </dd>
         </dlentry>
         <dlentry id="outputclass">
@@ -256,36 +292,42 @@
         <dlentry id="platform">
           <dt id="attr-platform"><xmlatt>platform</xmlatt>
             <i>(specialized attribute)</i></dt>
-          <dd>Indicates operating system and hardware. <ph conkeyref="reuse-attributes/may-inherit"/>
-            <draft-comment author="robander" audience="spec-editors">I think this could specify a
-              platform that is not an operating system or hardware, right? The current definition
-              explicitly limits platform to those two … maybe "Specifies a platform or platforms to
-              which the element applies, such as the operating system or hardware relevant to a
-              task."</draft-comment></dd>
+          <dd>Indicates operating system and hardware. <ph
+              conkeyref="reuse-attributes/may-inherit"/>
+            <draft-comment author="robander" audience="spec-editors">I
+              think this could specify a platform that is not an operating
+              system or hardware, right? The current definition explicitly
+              limits platform to those two … maybe "Specifies a platform or
+              platforms to which the element applies, such as the operating
+              system or hardware relevant to a task."</draft-comment></dd>
         </dlentry>
         <dlentry id="product">
           <dt id="attr-product"><xmlatt>product</xmlatt>
             <i>(specialized attribute)</i></dt>
-          <dd>Specifies the name of the product to which the element applies. <ph
-              conkeyref="reuse-attributes/may-inherit"/>
+          <dd>Specifies the name of the product to which the element
+            applies. <ph conkeyref="reuse-attributes/may-inherit"/>
           </dd>
         </dlentry>
         <dlentry id="props">
           <dt id="attr-props"><xmlatt>props</xmlatt></dt>
-          <dd>Specifies metadata about the current element. New attributes can be specialized from
-            the <xmlatt>props</xmlatt> attribute. <ph conkeyref="reuse-attributes/propertyvalueattr"/>
+          <dd>Specifies metadata about the current element. New attributes
+            can be specialized from the <xmlatt>props</xmlatt> attribute.
+              <ph conkeyref="reuse-attributes/propertyvalueattr"/>
             <ph conkeyref="reuse-attributes/may-inherit"/>
-            <p>The <xmlatt>props</xmlatt> attribute takes a space-delimited set of values. However,
-              when acting as a container for generalized attributes, the attribute values will be
-              more complex; see <xref href="../../archSpec/base/generalization-attributes.dita"/>
+            <p>The <xmlatt>props</xmlatt> attribute takes a space-delimited
+              set of values. However, when acting as a container for
+              generalized attributes, the attribute values will be more
+              complex; see <xref
+                href="../../archSpec/base/generalization-attributes.dita"/>
               for more details.</p></dd>
         </dlentry>
         <dlentry id="rev">
           <dt id="attr-rev"><xmlatt>rev</xmlatt></dt>
-          <dd>Specifies a revision level of an element that identifies when the element was added or
-            modified. It can be used to flag outputs when it matches a run-time parameter; it cannot
-            be used for filtering. It is not sufficient to be used for version control. <ph
-              conkeyref="reuse-attributes/may-inherit"/>
+          <dd>Specifies a revision level of an element that identifies when
+            the element was added or modified. It can be used to flag
+            outputs when it matches a run-time parameter. It cannot be used
+            for filtering nor is it sufficient to be used for version
+            control. <ph conkeyref="reuse-attributes/may-inherit"/>
           </dd>
         </dlentry>
         <dlentry id="status">
@@ -296,21 +338,26 @@
         </dlentry>
         <dlentry id="translate">
           <dt id="attr-translate"><xmlatt>translate</xmlatt></dt>
-          <dd>Specifies whether the content of the element should be translated or not. The
-            following values are valid: <keyword>yes</keyword>, <keyword>no</keyword>, and
-              <keyword>-dita-use-conref-target</keyword>. See <xref
-              href="../../non-normative/elementsMerged.dita"/> for suggested processing defaults for
-            each element.</dd>
+          <dd><draft-comment author="Kristen J Eberlein" time="31 December 2021">
+              <p>Does <xref href="../../non-normative/elementsMerged.dita"/> really provide suggested processing defaults for each
+                element? I thought it covered whether an element was block
+                or in-line and whether there were considerations that
+                translators needed to be aware of.</p>
+            </draft-comment>Specifies whether the content of the element
+            should be translated. The following values are valid:
+              <keyword>yes</keyword>, <keyword>no</keyword>, and
+              <keyword>-dita-use-conref-target</keyword>. See <xref href="../../non-normative/elementsMerged.dita"/> for
+            suggested processing defaults for each element.</dd>
         </dlentry>
         <dlentry id="xml-lang">
           <dt id="attr-xml-lang"><xmlatt>xml:lang</xmlatt></dt>
-          <dd id="reusable-lang">Specifies the language of the element content. The <ph
-              platform="dita"><xmlatt>xml:lang</xmlatt></ph>
-            <ph platform="lwdita"><b>language</b></ph> attribute and its values are described in the
-            XML Recommendation at <xref format="html" scope="external"
-              href="http://www.w3.org/TR/REC-xml/#sec-lang-tag"
-              >http://www.w3.org/TR/REC-xml/#sec-lang-tag</xref>. Allowable values are language
-            tokens or the null string.</dd>
+          <dd id="reusable-lang">Specifies the language of the content
+            contained in an element. The following values are valid:
+            language tokens or the null string. The
+              <xmlatt>xml:lang</xmlatt> attribute and its values are
+            described in the <xref format="html" scope="external"
+              href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Extensible
+              Markup Language 1.0 specification, fifth edition</xref>.</dd>
         </dlentry>
       </dl>
     </section>
