@@ -358,51 +358,42 @@
         </dlentry>
         <dlentry id="expanse">
           <dt id="attr-expanse"><xmlatt>expanse</xmlatt> (display attributes)</dt>
-          <dd>Specifies the horizontal placement of the element. The
-            following values are valid: <dl>
+          <dd>Specifies the horizontal placement of the element. The following values are valid: <dl>
               <dlentry>
                 <dt><keyword>column</keyword></dt>
-                <dd>Indicates that the element is aligned with the current
-                  column margin.</dd>
+                <dd>Indicates that the element is aligned with the current column margin.</dd>
               </dlentry>
               <dlentry>
                 <dt><keyword>page</keyword></dt>
-                <dd>Indicates that the element is placed on the left page
-                  margin for left-to-right presentation or the right page
-                  margin for right-to-left presentation.</dd>
+                <dd>Indicates that the element is placed on the left page margin for left-to-right
+                  presentation or the right page margin for right-to-left presentation.</dd>
               </dlentry>
               <dlentry>
                 <dt><keyword>spread</keyword></dt>
                 <dd><!--<draft-comment author="Kristen J Eberlein" time="29 December 2021" audience="spec-editors"><p>We use the phrase "rendition target" here. Do we want to use output format instead?</p><p>I googled to see if spread was a common term used for discussion of rendering, and I found the following coverage: <xref href="https://www.juliekaren.com/blog/2018/7/10/what-does-the-term-spread-refer-to" format="html" scope="external">What Does the Term “Spread” Refer to in Book Design and Layout?</xref></p></draft-comment>-->Indicates
-                  that the object is rendered across a multi-page spread.
-                  If the <!--rendition target--> output format does not
-                  have anything that corresponds to spreads, then
-                    <keyword>spread</keyword> has the same meaning as
+                  that the object is rendered across a multi-page spread. If the
+                  <!--rendition target--> output format does not have anything that corresponds to
+                  spreads, then <keyword>spread</keyword> has the same meaning as
                     <keyword>page</keyword>.</dd>
               </dlentry>
               <dlentry>
                 <dt><keyword>textline</keyword></dt>
-                <dd><ph rev="review-e">Indicates</ph> that the element is
-                  aligned with the left (for left-to-right presentation) or
-                  right (for right-to-left presentation) margin of the
-                  current text line and takes indentation into
-                  account.</dd>
+                <dd><ph rev="review-e">Indicates</ph> that the element is aligned with the left (for
+                  left-to-right presentation) or right (for right-to-left presentation) margin of
+                  the current text line and takes indentation into account.</dd>
               </dlentry>
-              <dlentry conkeyref="reuse-attributes/ditauseconref"
-                platform="dita">
+              <dlentry conkeyref="reuse-attributes/ditauseconref" platform="dita">
                 <dt> </dt>
                 <dd> </dd>
               </dlentry>
-            </dl><p conkeyref="reuse-general/pgwide-explain"
-              platform="dita"/><p>Some processors or output formats might
-              not support all
+            </dl><p conkeyref="reuse-general/pgwide-explain" platform="dita"/><p>Some processors or
+              output formats might not support all
             values.</p><!--<draft-comment author="robander" audience="spec-editors">This statement seems to get wrapped up in the "implementation dependent" discussion. Also note that "spread" already says "if possible" which also means that support can vary - we can probably remove "if possible" there, it seems redundant with this statement?<p>Same statement is repeated for @frame below.</p></draft-comment>--></dd>
         </dlentry>
         <dlentry id="expiry">
           <dt id="attr-expiry"><xmlatt>expiry</xmlatt> (date attributes)</dt>
-          <dd>Specifies the date when the information should be retired or refreshed, entered as
-            YYYY-MM-DD, where YYYY is the year, MM is the month from 01 to 12, and DD is the day
-            from 01-31. </dd>
+          <dd>Specifies the date when the information should be retired or refreshed. <ph
+              conkeyref="reuse-general/dateformat"/></dd>
         </dlentry>
         <dlentry id="format">
           <dt id="attr-format"><xmlatt>format</xmlatt> (link-relationship attributes)</dt>
@@ -458,8 +449,8 @@
         </dlentry>
         <dlentry id="golive">
           <dt id="attr-golive"><xmlatt>golive</xmlatt> (date attributes)</dt>
-          <dd>Specifies the publication or general availability (GA) date, entered as YYYY-MM-DD,
-            where YYYY is the year, MM is the month from 01 to 12, and DD is the day from 01-31. </dd>
+          <dd>Specifies the publication or general availability (GA) date. <ph
+              conkeyref="reuse-general/dateformat"/></dd>
         </dlentry>
         <dlentry id="href">
           <dt id="attr-href"><xmlatt>href</xmlatt> (link-relationship attributes)</dt>
@@ -495,38 +486,30 @@
         </dlentry>
         <dlentry id="linking" platform="dita">
           <dt id="attr-linking"><xmlatt>linking</xmlatt> (common map attributes)</dt>
-          <dd>Specifies linking characteristics of a topic specific to the
-            location of this reference in a map. <ph
-              conkeyref="reuse-attributes/inherit-in-map"/>
-            <draft-comment author="robander" time="Dec 28 2021">The text
-              below matches <xref
+          <dd>Specifies linking characteristics of a topic specific to the location of this
+            reference in a map. <ph conkeyref="reuse-attributes/inherit-in-map"/>
+            <draft-comment author="robander" time="Dec 28 2021">The text below matches <xref
                 href="http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/attributes/commonMapAttributes.html#topicref-atts__linking"
-                format="html" scope="external">1.3 spec text</xref> but I'm
-              nervous about "cannot link" type definition. It's describing
-              how to generate links based on the current context in the map
-              - it's not describing what the topic itself is allowed to
-              link to, which is how I interpret "can".</draft-comment>The
-            following values are valid:<dl>
+                format="html" scope="external">1.3 spec text</xref> but I'm nervous about "cannot
+              link" type definition. It's describing how to generate links based on the current
+              context in the map - it's not describing what the topic itself is allowed to link to,
+              which is how I interpret "can".</draft-comment>The following values are valid:<dl>
               <dlentry>
                 <dt><keyword>targetonly</keyword></dt>
-                <dd>A topic can only be linked to and cannot link to other
-                  topics.</dd>
+                <dd>A topic can only be linked to and cannot link to other topics.</dd>
               </dlentry>
               <dlentry>
                 <dt><keyword>sourceonly</keyword></dt>
-                <dd>A topic cannot be linked to but can link to other
-                  topics.</dd>
+                <dd>A topic cannot be linked to but can link to other topics.</dd>
               </dlentry>
               <dlentry>
                 <dt>normal </dt>
-                <dd>A topic can be linked to and can link to other topics.
-                  Use this to override the linking value of a parent topic.
-                </dd>
+                <dd>A topic can be linked to and can link to other topics. Use this to override the
+                  linking value of a parent topic. </dd>
               </dlentry>
               <dlentry>
                 <dt>none </dt>
-                <dd>A topic cannot be linked to or link to other
-                  topics.</dd>
+                <dd>A topic cannot be linked to or link to other topics.</dd>
               </dlentry>
               <dlentry conkeyref="reuse-attributes/ditauseconref">
                 <dt> </dt>
@@ -582,24 +565,20 @@
         </dlentry>
         <dlentry id="processing-role">
           <dt id="attr-processing-role"><xmlatt>processing-role</xmlatt> (common map attributes)</dt>
-          <dd>Describes the processing role of the referenced topic. The
-            processing default is <keyword>normal</keyword>. <ph
-              conkeyref="reuse-attributes/may-inherit"/> The following
-            values are valid:<dl>
+          <dd>Describes the processing role of the referenced topic. The processing default is
+              <keyword>normal</keyword>. <ph conkeyref="reuse-attributes/may-inherit"/> The
+            following values are valid:<dl>
               <dlentry>
                 <dt>normal </dt>
-                <dd>Normal topic that is a readable part of the
-                  information.</dd>
+                <dd>Normal topic that is a readable part of the information.</dd>
               </dlentry>
               <dlentry>
                 <dt>resource-only </dt>
-                <dd>The topic is used as a resource for processing
-                  purposes. This topic should not be included in a rendered
-                  table of contents, and the topic should not be rendered
+                <dd>The topic is used as a resource for processing purposes. This topic should not
+                  be included in a rendered table of contents, and the topic should not be rendered
                   on its own. </dd>
               </dlentry>
-              <dlentry conkeyref="reuse-attributes/ditauseconref"
-                platform="dita">
+              <dlentry conkeyref="reuse-attributes/ditauseconref" platform="dita">
                 <dt> </dt>
                 <dd> </dd>
               </dlentry>
@@ -768,9 +747,8 @@
         <dlentry id="search" platform="dita">
           <dt id="attr-search"><xmlatt>search</xmlatt> (common map attributes)</dt>
           <dd>Specifies whether the target is available for searching. <ph
-              conkeyref="reuse-attributes/inherit-in-map"/> The following
-            values are valid: <keyword>yes</keyword>,
-            <keyword>no</keyword>, and
+              conkeyref="reuse-attributes/inherit-in-map"/> The following values are valid:
+              <keyword>yes</keyword>, <keyword>no</keyword>, and
               <keyword>-dita-use-conref-target</keyword>.</dd>
         </dlentry>
         <dlentry id="specentry">
@@ -814,10 +792,8 @@
         </dlentry>
         <dlentry id="toc" platform="dita">
           <dt id="attr-toc"><xmlatt>toc</xmlatt> (common map attributes)</dt>
-          <dd>Specifies whether a topic appears in the table of contents
-            (TOC) based on the current map context. <ph
-              conkeyref="reuse-attributes/inherit-in-map"/> The following
-            values are valid:<dl>
+          <dd>Specifies whether a topic appears in the table of contents (TOC) based on the current
+            map context. <ph conkeyref="reuse-attributes/inherit-in-map"/> The following values are valid:<dl>
               <dlentry>
                 <dt>yes </dt>
                 <dd>The topic appears in a generated TOC.</dd>
@@ -828,8 +804,7 @@
               </dlentry>
               <dlentry>
                 <dt>-dita-use-conref-target </dt>
-                <dd>See <xref keyref="attributes-useconreftarget"/> for
-                  more information. </dd>
+                <dd>See <xref keyref="attributes-useconreftarget"/> for more information. </dd>
               </dlentry>
             </dl></dd>
         </dlentry>
