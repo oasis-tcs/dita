@@ -54,21 +54,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"
     <define name="schemeref">
       <ref name="schemeref.element"/>
     </define>
-    <define name="hasNarrower">
-      <ref name="hasNarrower.element"/>
-    </define>
-    <define name="hasKind">
-      <ref name="hasKind.element"/>
-    </define>
-    <define name="hasPart">
-      <ref name="hasPart.element"/>
-    </define>
-    <define name="hasInstance">
-      <ref name="hasInstance.element"/>
-    </define>
-    <define name="hasRelated">
-      <ref name="hasRelated.element"/>
-    </define>
     <define name="subjectdef">
       <ref name="subjectdef.element"/>
     </define>
@@ -196,14 +181,8 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"
         </optional>
         <zeroOrMore>
           <choice>
-            <ref name="anchor"/>
             <ref name="data.elements.incl"/>
             <ref name="enumerationdef"/>
-            <ref name="hasInstance"/>
-            <ref name="hasKind"/>
-            <ref name="hasNarrower"/>
-            <ref name="hasPart"/>
-            <ref name="hasRelated"/>
             <ref name="navref"/>
             <ref name="relatedSubjects"/>
             <ref name="reltable"/>
@@ -222,9 +201,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"
           </attribute>
         </optional>
         <ref name="conref-atts"/>
-        <optional>
-          <attribute name="anchorref"/>
-        </optional>
         <optional>
           <attribute name="outputclass"/>
         </optional>
@@ -308,353 +284,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"
       </define>
 
     </div>
-    <div>
-      <a:documentation>LONG NAME: Has Narrower Relationship</a:documentation>
-      <define name="hasNarrower.content">
-        <optional>
-          <ref name="topicmeta"/>
-        </optional>
-        <zeroOrMore>
-          <choice>
-            <ref name="data.elements.incl"/>
-            <ref name="subjectdef"/>
-            <ref name="subjectHead"/>
-            <ref name="topicref"/>
-          </choice>
-        </zeroOrMore>
-      </define>
-      <define name="hasNarrower.attributes">
-       <optional>
-          <attribute name="href"/>
-        </optional>
-        <optional>
-          <attribute name="keyref"/>
-        </optional>
-        <optional>
-          <attribute name="keys"/>
-        </optional>
-        <optional>
-          <attribute name="scope">
-            <choice>
-              <value>external</value>
-              <value>local</value>
-              <value>peer</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="processing-role">
-            <choice>
-              <value>normal</value>
-              <value>resource-only</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="format"/>
-        </optional>
-        <optional>
-          <attribute name="type"/>
-        </optional>
-        <optional>
-          <attribute name="cascade"/>
-        </optional>
-        <ref name="univ-atts"/>
-      </define>
-      <define name="hasNarrower.element">
-        <element name="hasNarrower" dita:longName="Has Narrower Relationship">
-          <a:documentation></a:documentation>
-          <ref name="hasNarrower.attlist"/>
-          <ref name="hasNarrower.content"/>
-        </element>
-      </define>
-      <define name="hasNarrower.attlist" combine="interleave">
-        <ref name="hasNarrower.attributes"/>
-      </define>
 
-    </div>
-    <div>
-      <a:documentation>LONG NAME: Has Kind Relationship</a:documentation>
-      <define name="hasKind.content">
-        <optional>
-          <ref name="topicmeta"/>
-        </optional>
-        <zeroOrMore>
-          <choice>
-            <ref name="data.elements.incl"/>
-            <ref name="subjectdef"/>
-            <ref name="subjectHead"/>
-            <ref name="topicref"/>
-          </choice>
-        </zeroOrMore>
-      </define>
-      <define name="hasKind.attributes">
-        <optional>
-          <attribute name="href"/>
-        </optional>
-        <optional>
-          <attribute name="keyref"/>
-        </optional>
-        <optional>
-          <attribute name="keys"/>
-        </optional>
-        <optional>
-          <attribute name="scope">
-            <choice>
-              <value>external</value>
-              <value>local</value>
-              <value>peer</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="processing-role">
-            <choice>
-              <value>normal</value>
-              <value>resource-only</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="format"/>
-        </optional>
-        <optional>
-          <attribute name="type"/>
-        </optional>
-        <optional>
-          <attribute name="cascade"/>
-        </optional>
-        <ref name="univ-atts"/>
-      </define>
-      <define name="hasKind.element">
-        <element name="hasKind" dita:longName="Has Kind Relationship">
-          <a:documentation></a:documentation>
-          </a:documentation>
-          <ref name="hasKind.attlist"/>
-          <ref name="hasKind.content"/>
-        </element>
-      </define>
-      <define name="hasKind.attlist" combine="interleave">
-        <ref name="hasKind.attributes"/>
-      </define>
-
-    </div>
-    <div>
-      <a:documentation>LONG NAME: Has Part Relationship</a:documentation>
-      <define name="hasPart.content">
-        <optional>
-          <ref name="topicmeta"/>
-        </optional>
-        <zeroOrMore>
-          <choice>
-            <ref name="data.elements.incl"/>
-            <ref name="subjectdef"/>
-            <ref name="subjectHead"/>
-            <ref name="topicref"/>
-          </choice>
-        </zeroOrMore>
-      </define>
-      <define name="hasPart.attributes">
-        <optional>
-          <attribute name="href"/>
-        </optional>
-        <optional>
-          <attribute name="keyref"/>
-        </optional>
-        <optional>
-          <attribute name="keys"/>
-        </optional>
-        <optional>
-          <attribute name="scope">
-            <choice>
-              <value>external</value>
-              <value>local</value>
-              <value>peer</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="processing-role">
-            <choice>
-              <value>normal</value>
-              <value>resource-only</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="format"/>
-        </optional>
-        <optional>
-          <attribute name="type"/>
-        </optional>
-        <optional>
-          <attribute name="cascade"/>
-        </optional>
-        <ref name="univ-atts"/>
-      </define>
-      <define name="hasPart.element">
-        <element name="hasPart" dita:longName="Has Part Relationship">
-          <a:documentation></a:documentation>
-          <ref name="hasPart.attlist"/>
-          <ref name="hasPart.content"/>
-        </element>
-      </define>
-      <define name="hasPart.attlist" combine="interleave">
-        <ref name="hasPart.attributes"/>
-      </define>
-
-    </div>
-    <div>
-      <a:documentation>LONG NAME: Has Instance Relationship</a:documentation>
-      <define name="hasInstance.content">
-        <optional>
-          <ref name="topicmeta"/>
-        </optional>
-        <zeroOrMore>
-          <choice>
-            <ref name="data.elements.incl"/>
-            <ref name="subjectdef"/>
-            <ref name="subjectHead"/>
-            <ref name="topicref"/>
-          </choice>
-        </zeroOrMore>
-      </define>
-      <define name="hasInstance.attributes">
-        <optional>
-          <attribute name="href"/>
-        </optional>
-        <optional>
-          <attribute name="keyref"/>
-        </optional>
-        <optional>
-          <attribute name="keys"/>
-        </optional>
-        <optional>
-          <attribute name="scope">
-            <choice>
-              <value>external</value>
-              <value>local</value>
-              <value>peer</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="processing-role">
-            <choice>
-              <value>normal</value>
-              <value>resource-only</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="format"/>
-        </optional>
-        <optional>
-          <attribute name="type"/>
-        </optional>
-        <optional>
-          <attribute name="cascade"/>
-        </optional>
-        <ref name="univ-atts"/>
-      </define>
-      <define name="hasInstance.element">
-        <element name="hasInstance" dita:longName="Has Instance Relationship">
-          <a:documentation></a:documentation>
-          <ref name="hasInstance.attlist"/>
-          <ref name="hasInstance.content"/>
-        </element>
-      </define>
-      <define name="hasInstance.attlist" combine="interleave">
-        <ref name="hasInstance.attributes"/>
-      </define>
-
-    </div>
-    <div>
-      <a:documentation>LONG NAME: Has Related Relationship</a:documentation>
-      <define name="hasRelated.content">
-        <optional>
-          <ref name="topicmeta"/>
-        </optional>
-        <zeroOrMore>
-          <choice>
-            <ref name="data.elements.incl"/>
-            <ref name="subjectdef"/>
-            <ref name="subjectHead"/>
-            <ref name="topicref"/>
-          </choice>
-        </zeroOrMore>
-      </define>
-      <define name="hasRelated.attributes">
-        <optional>
-          <attribute name="href"/>
-        </optional>
-        <optional>
-          <attribute name="keyref"/>
-        </optional>
-        <optional>
-          <attribute name="keys"/>
-        </optional>
-        <optional>
-          <attribute name="collection-type">
-            <choice>
-              <value>choice</value>
-              <value>family</value>
-              <value>sequence</value>
-              <value>unordered</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="processing-role">
-            <choice>
-              <value>normal</value>
-              <value>resource-only</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="scope">
-            <choice>
-              <value>external</value>
-              <value>local</value>
-              <value>peer</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="format"/>
-        </optional>
-        <optional>
-          <attribute name="type"/>
-        </optional>
-        <optional>
-          <attribute name="cascade"/>
-        </optional>
-        <ref name="univ-atts"/>
-      </define>
-      <define name="hasRelated.element">
-        <element name="hasRelated" dita:longName="Has Related Relationship">
-          <a:documentation></a:documentation>
-          <ref name="hasRelated.attlist"/>
-          <ref name="hasRelated.content"/>
-        </element>
-      </define>
-      <define name="hasRelated.attlist" combine="interleave">
-        <ref name="hasRelated.attributes"/>
-      </define>
-
-    </div>
     <div>
       <a:documentation>LONG NAME: Subject definition</a:documentation>
       <define name="subjectdef.content">
@@ -664,11 +294,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"
         <zeroOrMore>
           <choice>
             <ref name="data.elements.incl"/>
-            <ref name="hasInstance"/>
-            <ref name="hasKind"/>
-            <ref name="hasNarrower"/>
-            <ref name="hasPart"/>
-            <ref name="hasRelated"/>
             <ref name="subjectdef"/>
             <ref name="subjectHead"/>
             <ref name="topicref"/>
@@ -1279,31 +904,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"
     <define name="schemeref.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="- map/topicref subjectScheme/schemeref "/>
-      </optional>
-    </define>
-    <define name="hasNarrower.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- map/topicref subjectScheme/hasNarrower "/>
-      </optional>
-    </define>
-    <define name="hasKind.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- map/topicref subjectScheme/hasKind "/>
-      </optional>
-    </define>
-    <define name="hasPart.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- map/topicref subjectScheme/hasPart "/>
-      </optional>
-    </define>
-    <define name="hasInstance.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- map/topicref subjectScheme/hasInstance "/>
-      </optional>
-    </define>
-    <define name="hasRelated.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- map/topicref subjectScheme/hasRelated "/>
       </optional>
     </define>
     <define name="enumerationdef.attlist" combine="interleave">

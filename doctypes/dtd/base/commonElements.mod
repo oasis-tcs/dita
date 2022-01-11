@@ -729,9 +729,6 @@
                            warning |
                            -dita-use-conref-target)
                                     #IMPLIED
-               spectitle
-                          CDATA
-                                    #IMPLIED
                othertype
                           CDATA
                                     #IMPLIED
@@ -777,9 +774,6 @@
                            yes |
                            -dita-use-conref-target)
                                     #IMPLIED
-               spectitle
-                          CDATA
-                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  sl %sl.content;>
@@ -808,9 +802,6 @@
                            yes |
                            -dita-use-conref-target)
                                     #IMPLIED
-               spectitle
-                          CDATA
-                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  ul %ul.content;>
@@ -827,9 +818,6 @@
                           (no |
                            yes |
                            -dita-use-conref-target)
-                                    #IMPLIED
-               spectitle
-                          CDATA
                                     #IMPLIED
                %univ-atts;"
 >
@@ -859,9 +847,6 @@
                           (no |
                            yes |
                            -dita-use-conref-target)
-                                    #IMPLIED
-               spectitle
-                          CDATA
                                     #IMPLIED
                %univ-atts;"
 >
@@ -944,10 +929,7 @@
                        "(%example.cnt;)*"
 >
 <!ENTITY % example.attributes
-              "spectitle
-                          CDATA
-                                    #IMPLIED
-               %univ-atts;"
+              "%univ-atts;"
 >
 <!ELEMENT  example %example.content;>
 <!ATTLIST  example %example.attributes;>
@@ -961,9 +943,6 @@
 >
 <!ENTITY % fig.attributes
               "%display-atts;
-               spectitle
-                          CDATA
-                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  fig %fig.content;>
@@ -989,9 +968,6 @@
 >
 <!ENTITY % pre.attributes
               "%display-atts;
-               spectitle
-                          CDATA
-                                    #IMPLIED
                xml:space
                           (preserve)
                                     #FIXED 
@@ -1008,9 +984,6 @@
 >
 <!ENTITY % lines.attributes
               "%display-atts;
-               spectitle
-                          CDATA
-                                    #IMPLIED
                xml:space
                           (preserve)
                                     #FIXED 
@@ -1389,9 +1362,6 @@
                           NMTOKEN
                                     #IMPLIED
                %display-atts;
-               spectitle
-                          CDATA
-                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  simpletable %simpletable.content;>
@@ -1425,10 +1395,7 @@
                        "(%tblcell.cnt;)*"
 >
 <!ENTITY % stentry.attributes
-              "specentry
-                          CDATA
-                                    #IMPLIED
-               colspan
+              "colspan
                           NMTOKEN
                                     #IMPLIED
                rowspan

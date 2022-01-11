@@ -34,11 +34,6 @@
 <!ENTITY % subjectScheme
                        "subjectScheme"                               >
 <!ENTITY % schemeref   "schemeref"                                   >
-<!ENTITY % hasNarrower "hasNarrower"                                 >
-<!ENTITY % hasKind     "hasKind"                                     >
-<!ENTITY % hasPart     "hasPart"                                     >
-<!ENTITY % hasInstance "hasInstance"                                 >
-<!ENTITY % hasRelated  "hasRelated"                                  >
 <!ENTITY % subjectdef  "subjectdef"                                  >
 <!ENTITY % subjectHead "subjectHead"                                 >
 <!ENTITY % subjectHeadMeta
@@ -116,14 +111,8 @@
 <!ENTITY % subjectScheme.content
                        "((%title;)?,
                          (%topicmeta;)?,
-                         (%anchor; |
-                          %data.elements.incl; |
+                         (%data.elements.incl; |
                           %enumerationdef; |
-                          %hasInstance; |
-                          %hasKind; |
-                          %hasNarrower; |
-                          %hasPart; |
-                          %hasRelated; |
                           %navref; |
                           %relatedSubjects; |
                           %reltable; |
@@ -138,9 +127,6 @@
                           ID
                                     #IMPLIED
                %conref-atts;
-               anchorref
-                          CDATA
-                                    #IMPLIED
                outputclass
                           CDATA
                                     #IMPLIED
@@ -198,242 +184,10 @@
 <!ATTLIST  schemeref %schemeref.attributes;>
 
 
-<!--                    LONG NAME: Has Narrower Relationship       -->
-<!ENTITY % hasNarrower.content
-                       "((%topicmeta;)?,
-                         (%data.elements.incl; |
-                          %subjectdef; |
-                          %subjectHead; |
-                          %topicref;)*)"
->
-<!ENTITY % hasNarrower.attributes
-              "href
-                          CDATA
-                                    #IMPLIED
-               keyref
-                          CDATA
-                                    #IMPLIED
-               keys
-                          CDATA
-                                    #IMPLIED
-               scope
-                          (external |
-                           local |
-                           peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               processing-role
-                          (normal |
-                           resource-only |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               format
-                          CDATA
-                                    #IMPLIED
-               type
-                          CDATA
-                                    #IMPLIED
-               cascade
-                          CDATA
-                                    #IMPLIED
-               %univ-atts;"
->
-<!ELEMENT  hasNarrower %hasNarrower.content;>
-<!ATTLIST  hasNarrower %hasNarrower.attributes;>
-
-
-<!--                    LONG NAME: Has Kind Relationship           -->
-<!ENTITY % hasKind.content
-                       "((%topicmeta;)?,
-                         (%data.elements.incl; |
-                          %subjectdef; |
-                          %subjectHead; |
-                          %topicref;)*)"
->
-<!ENTITY % hasKind.attributes
-              "href
-                          CDATA
-                                    #IMPLIED
-               keyref
-                          CDATA
-                                    #IMPLIED
-               keys
-                          CDATA
-                                    #IMPLIED
-               scope
-                          (external |
-                           local |
-                           peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               processing-role
-                          (normal |
-                           resource-only |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               format
-                          CDATA
-                                    #IMPLIED
-               type
-                          CDATA
-                                    #IMPLIED
-               cascade
-                          CDATA
-                                    #IMPLIED
-               %univ-atts;"
->
-<!ELEMENT  hasKind %hasKind.content;>
-<!ATTLIST  hasKind %hasKind.attributes;>
-
-
-<!--                    LONG NAME: Has Part Relationship           -->
-<!ENTITY % hasPart.content
-                       "((%topicmeta;)?,
-                         (%data.elements.incl; |
-                          %subjectdef; |
-                          %subjectHead; |
-                          %topicref;)*)"
->
-<!ENTITY % hasPart.attributes
-              "href
-                          CDATA
-                                    #IMPLIED
-               keyref
-                          CDATA
-                                    #IMPLIED
-               keys
-                          CDATA
-                                    #IMPLIED
-               scope
-                          (external |
-                           local |
-                           peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               processing-role
-                          (normal |
-                           resource-only |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               format
-                          CDATA
-                                    #IMPLIED
-               type
-                          CDATA
-                                    #IMPLIED
-               cascade
-                          CDATA
-                                    #IMPLIED
-               %univ-atts;"
->
-<!ELEMENT  hasPart %hasPart.content;>
-<!ATTLIST  hasPart %hasPart.attributes;>
-
-
-<!--                    LONG NAME: Has Instance Relationship       -->
-<!ENTITY % hasInstance.content
-                       "((%topicmeta;)?,
-                         (%data.elements.incl; |
-                          %subjectdef; |
-                          %subjectHead; |
-                          %topicref;)*)"
->
-<!ENTITY % hasInstance.attributes
-              "href
-                          CDATA
-                                    #IMPLIED
-               keyref
-                          CDATA
-                                    #IMPLIED
-               keys
-                          CDATA
-                                    #IMPLIED
-               scope
-                          (external |
-                           local |
-                           peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               processing-role
-                          (normal |
-                           resource-only |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               format
-                          CDATA
-                                    #IMPLIED
-               type
-                          CDATA
-                                    #IMPLIED
-               cascade
-                          CDATA
-                                    #IMPLIED
-               %univ-atts;"
->
-<!ELEMENT  hasInstance %hasInstance.content;>
-<!ATTLIST  hasInstance %hasInstance.attributes;>
-
-
-<!--                    LONG NAME: Has Related Relationship        -->
-<!ENTITY % hasRelated.content
-                       "((%topicmeta;)?,
-                         (%data.elements.incl; |
-                          %subjectdef; |
-                          %subjectHead; |
-                          %topicref;)*)"
->
-<!ENTITY % hasRelated.attributes
-              "href
-                          CDATA
-                                    #IMPLIED
-               keyref
-                          CDATA
-                                    #IMPLIED
-               keys
-                          CDATA
-                                    #IMPLIED
-               collection-type
-                          (choice |
-                           family |
-                           sequence |
-                           unordered |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               processing-role
-                          (normal |
-                           resource-only |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               scope
-                          (external |
-                           local |
-                           peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               format
-                          CDATA
-                                    #IMPLIED
-               type
-                          CDATA
-                                    #IMPLIED
-               cascade
-                          CDATA
-                                    #IMPLIED
-               %univ-atts;"
->
-<!ELEMENT  hasRelated %hasRelated.content;>
-<!ATTLIST  hasRelated %hasRelated.attributes;>
-
-
 <!--                    LONG NAME: Subject definition              -->
 <!ENTITY % subjectdef.content
                        "((%topicmeta;)?,
                          (%data.elements.incl; |
-                          %hasInstance; |
-                          %hasKind; |
-                          %hasNarrower; |
-                          %hasPart; |
-                          %hasRelated; |
                           %subjectdef; |
                           %subjectHead; |
                           %topicref;)*)"
@@ -799,11 +553,6 @@
   
 <!ATTLIST  subjectScheme   class CDATA "- map/map subjectScheme/subjectScheme ">
 <!ATTLIST  schemeref      class CDATA "- map/topicref subjectScheme/schemeref ">
-<!ATTLIST  hasNarrower    class CDATA "- map/topicref subjectScheme/hasNarrower ">
-<!ATTLIST  hasKind        class CDATA "- map/topicref subjectScheme/hasKind ">
-<!ATTLIST  hasPart        class CDATA "- map/topicref subjectScheme/hasPart ">
-<!ATTLIST  hasInstance    class CDATA "- map/topicref subjectScheme/hasInstance ">
-<!ATTLIST  hasRelated     class CDATA "- map/topicref subjectScheme/hasRelated ">
 <!ATTLIST  enumerationdef   class CDATA "- map/topicref subjectScheme/enumerationdef ">
 <!ATTLIST  elementdef     class CDATA "- topic/data subjectScheme/elementdef ">
 <!ATTLIST  attributedef   class CDATA "- topic/data subjectScheme/attributedef ">

@@ -71,7 +71,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
 <!ENTITY % map         "map"                                         >
 <!ENTITY % navref      "navref"                                      >
 <!ENTITY % topicref    "topicref"                                    >
-<!ENTITY % anchor      "anchor"                                      >
 <!ENTITY % reltable    "reltable"                                    >
 <!ENTITY % relheader   "relheader"                                   >
 <!ENTITY % relcolspec  "relcolspec"                                  >
@@ -365,8 +364,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
 <!ENTITY % map.content
                        "((%title;)?,
                          (%topicmeta;)?,
-                         (%anchor; |
-                          %data.elements.incl; |
+                         (%data.elements.incl; |
                           %navref; |
                           %reltable; |
                           %topicref;)*)"
@@ -376,9 +374,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                           ID
                                     #IMPLIED
                %conref-atts;
-               anchorref
-                          CDATA
-                                    #IMPLIED
                outputclass
                           CDATA
                                     #IMPLIED
@@ -412,8 +407,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
 <!--                    LONG NAME: Topic Reference                 -->
 <!ENTITY % topicref.content
                        "((%topicmeta;)?,
-                         (%anchor; |
-                          %data.elements.incl; |
+                         (%data.elements.incl; |
                           %navref; |
                           %topicref;)*)"
 >
@@ -432,25 +426,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
 >
 <!ELEMENT  topicref %topicref.content;>
 <!ATTLIST  topicref %topicref.attributes;>
-
-
-<!--                    LONG NAME: Anchor                          -->
-<!ENTITY % anchor.content
-                       "EMPTY"
->
-<!ENTITY % anchor.attributes
-              "outputclass
-                          CDATA
-                                    #IMPLIED
-               %localization-atts;
-               id
-                          ID
-                                    #REQUIRED
-               %conref-atts;
-               %select-atts;"
->
-<!ELEMENT  anchor %anchor.content;>
-<!ATTLIST  anchor %anchor.attributes;>
 
 
 <!--                    LONG NAME: Relationship Table              -->
@@ -624,7 +599,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
 <!ATTLIST  map            class CDATA "- map/map "          >
 <!ATTLIST  navref         class CDATA "- map/navref "       >
 <!ATTLIST  topicref       class CDATA "- map/topicref "     >
-<!ATTLIST  anchor         class CDATA "- map/anchor "       >
 <!ATTLIST  reltable       class CDATA "- map/reltable "     >
 <!ATTLIST  relheader      class CDATA "- map/relheader "    >
 <!ATTLIST  relcolspec     class CDATA "- map/relcolspec "   >

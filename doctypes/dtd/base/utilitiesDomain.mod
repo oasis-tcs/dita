@@ -50,9 +50,6 @@
 >
 <!ENTITY % imagemap.attributes
               "%display-atts;
-               spectitle
-                          CDATA
-                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  imagemap %imagemap.content;>

@@ -39,7 +39,6 @@
 
 <!ENTITY % topichead      "topichead"                                   >
 <!ENTITY % topicgroup     "topicgroup"                                  >
-<!ENTITY % anchorref      "anchorref"                                   >
 <!ENTITY % mapref         "mapref"                                      >
 <!ENTITY % keydef         "keydef"                                      >
 <!ENTITY % mapresources   "mapresources"                          >
@@ -56,8 +55,7 @@
 <!--                    LONG NAME: Topichead                       -->
 <!ENTITY % topichead.content
                        "((%topicmeta;)?,
-                         (%anchor; |
-                          %data.elements.incl; |
+                         (%data.elements.incl; |
                           %navref; |
                           %topicref;)*)"
 >
@@ -75,8 +73,7 @@
 <!--                    LONG NAME: Topicgroup                      -->
 <!ENTITY % topicgroup.content
                        "((%topicmeta;)?,
-                         (%anchor; |
-                          %data.elements.incl; |
+                         (%data.elements.incl; |
                           %navref; |
                           %topicref;)*)"
 >
@@ -86,78 +83,6 @@
 >
 <!ELEMENT  topicgroup %topicgroup.content;>
 <!ATTLIST  topicgroup %topicgroup.attributes;>
-
-
-<!--                    LONG NAME: Anchorref                       -->
-<!ENTITY % anchorref.content
-                       "((%topicmeta;)?,
-                         (%data.elements.incl; |
-                          %topicref;)*)"
->
-<!ENTITY % anchorref.attributes
-              "href
-                          CDATA
-                                    #IMPLIED
-               keyref
-                          CDATA
-                                    #IMPLIED
-               keys
-                          CDATA
-                                    #IMPLIED
-               keyscope
-                          CDATA
-                                    #IMPLIED
-               collection-type
-                          (choice |
-                           family |
-                           sequence |
-                           unordered |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               processing-role
-                          (normal |
-                           resource-only |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               type
-                          CDATA
-                                    'anchor'
-               cascade
-                          CDATA
-                                    #IMPLIED
-               scope
-                          (external |
-                           local |
-                           peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               format
-                          CDATA
-                                    'ditamap'
-               linking
-                          (none |
-                           normal |
-                           sourceonly |
-                           targetonly |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               toc
-                          (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               search
-                          (no |
-                           yes |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               chunk
-                          CDATA
-                                    #IMPLIED
-               %univ-atts;"
->
-<!ELEMENT  anchorref %anchorref.content;>
-<!ATTLIST  anchorref %anchorref.attributes;>
 
 
 <!--                    LONG NAME: Map reference                   -->
@@ -187,8 +112,7 @@
 <!--                    LONG NAME: Keydef                          -->
 <!ENTITY % keydef.content
                        "((%topicmeta;)?,
-                         (%anchor; |
-                          %data.elements.incl; |
+                         (%data.elements.incl; |
                           %navref; |
                           %topicref;)*)"
 >
@@ -323,7 +247,6 @@
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
   
-<!ATTLIST  anchorref      class CDATA "+ map/topicref mapgroup-d/anchorref ">
 <!ATTLIST  keydef         class CDATA "+ map/topicref mapgroup-d/keydef ">
 <!ATTLIST  mapref         class CDATA "+ map/topicref mapgroup-d/mapref ">
 <!ATTLIST  mapresources   class CDATA "+ map/topicref mapgroup-d/mapresources ">
