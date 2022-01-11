@@ -33,11 +33,13 @@
         <li>Processors <term outputclass="RFC-2119">SHOULD</term> be aware of the hierarchies of
           attribute values that are defined in subject scheme maps for purposes of filtering,
           flagging, or other metadata-based categorization.</li>
-        <li>Processors <term outputclass="RFC-2119">SHOULD</term> validate that the values of
-          attributes that are bound to controlled values contain only valid values from those sets.
-          (The list of controlled values is not validated by basic XML parsers.) If the controlled
-          values are part of a named key scope, the scope name is ignored for the purpose of
-          validating the controlled values.</li>
+        <li>Processors <term outputclass="RFC-2119">SHOULD</term> validate
+          that the values of attributes that are bound to controlled values
+          contain only valid values from those sets. <ph rev="review-d"
+            >This requirement is needed because basic XML parsers do not
+            validate the list of controlled values.</ph> If the controlled
+          values are part of a named key scope, the scope name is ignored
+          for the purpose of validating the controlled values.</li>
         <li>Processors <term outputclass="RFC-2119">SHOULD</term> check that all values listed for
           an attribute in a DITAVAL file are bound to the attribute by the subject scheme before
           filtering or flagging. If a processor encounters values that are not included in the

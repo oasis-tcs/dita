@@ -32,9 +32,9 @@
       set of controlled values to an attribute. Valid attribute values are
       those that are defined in the set of controlled values. Invalid
       attribute values are those that are not defined in the set of
-      controlled values. An enumeration can specify an empty
-        <xmlelement>subjectdef</xmlelement> element, in which case, no
-      value is valid for the attribute. An enumeration can also specify an
+      controlled values. <ph rev="review-d">If an enumeration specifies an
+        empty <xmlelement>subjectdef</xmlelement> element, no value is
+        valid for the attribute.</ph> An enumeration can also specify an
       optional default value by using the
         <xmlelement>defaultSubject</xmlelement> element.</p>
         <p>If an enumeration is bound, processors <term outputclass="RFC-2119">SHOULD</term>
@@ -106,22 +106,25 @@ ACTION: Kris and Robert to revise this content and run it by Eliot</lines></draf
     &lt;subjectdef keyref="users"/>
   &lt;/enumerationdef>
 &lt;/subjectScheme></codeblock>
-            <p >When the above subject scheme map is used, the only valid
-                values for the <xmlatt>audience</xmlatt> attribute are "therapist", "oncologist",
-                "physicist", and "radiologist". Note that "users" is not a valid value for the
-                    <xmlatt>audience</xmlatt> attribute; it merely identifies the parent or
-                container subject.</p>
+            <p>When the above subject scheme map is used, the only valid
+        values for the <xmlatt>audience</xmlatt> attribute are "therapist",
+        "oncologist", "physicist", and "radiologist". Note that "users" is
+        not a valid value for the <xmlatt>audience</xmlatt> attribute<ph
+          rev="review-d">, as it</ph> merely identifies the parent or
+        container subject.</p>
         </example>
-        <example  id="example-binding-empty-set" otherprops="examples">
-            <title>Example: Binding an attribute to an empty set</title>
-            <p>The following code sample declares that there are no valid
-        values for the <xmlatt>outputclass</xmlatt> attribute.</p>
-            <codeblock>&lt;subjectScheme>
+        <example id="example-binding-empty-set" otherprops="examples">
+      <title>Example: Binding an attribute to an empty set</title>
+      <p>The following code sample specifies that there are no valid values
+        for the <xmlatt>outputclass</xmlatt> attribute:</p>
+      <codeblock>&lt;subjectScheme>
   &lt;enumerationdef>
     &lt;attributedef name="outputclass"/>
-    &lt;subjectdef/>
+    <b rev="review-d">&lt;subjectdef/></b>
   &lt;/enumerationdef>
 &lt;/subjectScheme></codeblock>
-        </example>
+      <p rev="review-d">Authors will not be able to specify the
+          <xmlatt>outputclass</xmlatt> attribute on an element.</p>
+    </example>
     </conbody>
 </concept>
