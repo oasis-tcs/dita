@@ -56,9 +56,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map Group Domain//EN"
   </div>
   <div>
     <a:documentation>ELEMENT TYPE NAME PATTERNS</a:documentation>
-    <define name="anchorref">
-      <ref name="anchorref.element"/>
-    </define>
     <define name="keydef">
       <ref name="keydef.element"/>
     </define>
@@ -80,7 +77,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map Group Domain//EN"
     <a:documentation>Define domain extension patterns</a:documentation>
     <define name="mapgroup-d-topicref">
       <choice>
-        <ref name="anchorref.element"/>
         <ref name="keydef.element"/>
         <ref name="mapref.element"/>
         <ref name="mapresources"/>
@@ -103,7 +99,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map Group Domain//EN"
         </optional>
         <zeroOrMore>
           <choice>
-            <ref name="anchor"/>
             <ref name="data.elements.incl"/>
             <ref name="navref"/>
             <ref name="topicref"/>
@@ -137,7 +132,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map Group Domain//EN"
         </optional>
         <zeroOrMore>
           <choice>
-            <ref name="anchor"/>
             <ref name="data.elements.incl"/>
             <ref name="navref"/>
             <ref name="topicref"/>
@@ -158,117 +152,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map Group Domain//EN"
       <define name="topicgroup.attlist" combine="interleave">
         <ref name="topicgroup.attributes"/>
       </define>
-    </div>
-    <div>
-      <a:documentation>Anchor Reference</a:documentation>
-      <define name="anchorref.content">
-        <optional>
-          <ref name="topicmeta"/>
-        </optional>
-        <zeroOrMore>
-          <choice>
-            <ref name="data.elements.incl"/>
-            <ref name="topicref"/>
-          </choice>
-        </zeroOrMore>
-      </define>
-      <define name="anchorref.attributes">
-        <optional>
-          <attribute name="href"/>
-        </optional>
-        <optional>
-          <attribute name="keyref"/>
-        </optional>
-        <optional>
-          <attribute name="keys"/>
-        </optional>
-        <optional>
-          <attribute name="keyscope"/>
-        </optional>
-        <optional>
-          <attribute name="collection-type">
-            <choice>
-              <value>choice</value>
-              <value>family</value>
-              <value>sequence</value>
-              <value>unordered</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="processing-role">
-            <choice>
-              <value>normal</value>
-              <value>resource-only</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="type" a:defaultValue="anchor"/>
-        </optional>
-        <optional>
-          <attribute name="cascade"/>
-        </optional>
-        <optional>
-          <attribute name="scope">
-            <choice>
-              <value>external</value>
-              <value>local</value>
-              <value>peer</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="format" a:defaultValue="ditamap"/>
-        </optional>
-        <optional>
-          <attribute name="linking">
-            <choice>
-              <value>none</value>
-              <value>normal</value>
-              <value>sourceonly</value>
-              <value>targetonly</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="toc">
-            <choice>
-              <value>no</value>
-              <value>yes</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="search">
-            <choice>
-              <value>no</value>
-              <value>yes</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="chunk"/>
-        </optional>
-        <ref name="univ-atts"/>
-      </define>
-      <define name="anchorref.element">
-        <element name="anchorref">
-          <a:documentation></a:documentation>
-          <ref name="anchorref.attlist"/>
-          <ref name="anchorref.content"/>
-        </element>
-      </define>
-      <define name="anchorref.attlist" combine="interleave">
-        <ref name="anchorref.attributes"/>
-      </define>
-
     </div>
     <div>
       <a:documentation>Map Reference</a:documentation>
@@ -316,7 +199,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map Group Domain//EN"
         </optional>
         <zeroOrMore>
           <choice>
-            <ref name="anchor"/>
             <ref name="data.elements.incl"/>
             <ref name="navref"/>
             <ref name="topicref"/>
@@ -518,11 +400,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map Group Domain//EN"
       
   <div>
     <a:documentation>Specialization attributes. Global attributes and class defaults</a:documentation>
-    <define name="anchorref.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="+ map/topicref mapgroup-d/anchorref "/>
-      </optional>
-    </define>
     <define name="keydef.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="+ map/topicref mapgroup-d/keydef "/>

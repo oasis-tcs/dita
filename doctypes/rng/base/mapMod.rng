@@ -83,9 +83,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
     <define name="topicref">
       <ref name="topicref.element"/>
     </define>
-    <define name="anchor">
-      <ref name="anchor.element"/>
-    </define>
     <define name="navref">
       <ref name="navref.element"/>
     </define>
@@ -494,7 +491,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
         </optional>
         <zeroOrMore>
           <choice>
-            <ref name="anchor"/>
             <ref name="data.elements.incl"/>
             <ref name="navref"/>
             <ref name="reltable"/>
@@ -509,9 +505,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
           </attribute>
         </optional>
         <ref name="conref-atts"/>
-        <optional>
-          <attribute name="anchorref"/>
-        </optional>
         <optional>
           <attribute name="outputclass"/>
         </optional>
@@ -566,7 +559,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
         </optional>
         <zeroOrMore>
           <choice>
-            <ref name="anchor"/>
             <ref name="data.elements.incl"/>
             <ref name="navref"/>
             <ref name="topicref"/>
@@ -595,37 +587,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
       </define>
       <define name="topicref.attlist" combine="interleave">
         <ref name="topicref.attributes"/>
-      </define>
-
-    </div>
-    <div>
-      <a:documentation>LONG NAME: Anchor</a:documentation>
-      <define name="anchor.content">
-        <empty/>
-      </define>
-      <define name="anchor.attributes">
-        <optional>
-          <attribute name="outputclass"/>
-        </optional>
-        <ref name="localization-atts"/>
-        <attribute name="id">
-          <data type="ID"/>
-        </attribute>
-        <ref name="conref-atts"/>
-        <ref name="select-atts"/>
-      </define>
-      <define name="anchor.element">
-        <a:documentation></a:documentation>
-        <element name="anchor" dita:longName="Anchor">
-          <ref name="anchor.attlist"/>
-          <ref name="anchor.content"/>
-        </element>
-      </define>
-      <define name="anchor.attlist" combine="interleave">
-        <ref name="anchor.attributes"/>
-      </define>
-      <define name="idElements" combine="choice">
-        <ref name="anchor.element"/>
       </define>
 
     </div>
@@ -952,11 +913,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
     <define name="topicref.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="- map/topicref "/>
-      </optional>
-    </define>
-    <define name="anchor.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- map/anchor "/>
       </optional>
     </define>
     <define name="reltable.attlist" combine="interleave">

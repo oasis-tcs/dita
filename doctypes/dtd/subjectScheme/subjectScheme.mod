@@ -111,8 +111,7 @@
 <!ENTITY % subjectScheme.content
                        "((%title;)?,
                          (%topicmeta;)?,
-                         (%anchor; |
-                          %data.elements.incl; |
+                         (%data.elements.incl; |
                           %enumerationdef; |
                           %navref; |
                           %relatedSubjects; |
@@ -128,9 +127,6 @@
                           ID
                                     #IMPLIED
                %conref-atts;
-               anchorref
-                          CDATA
-                                    #IMPLIED
                outputclass
                           CDATA
                                     #IMPLIED
