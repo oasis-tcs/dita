@@ -283,10 +283,7 @@
                        "(%section.cnt;)*"
 >
 <!ENTITY % section.attributes
-              "spectitle
-                          CDATA
-                                    #IMPLIED
-               %univ-atts;"
+              "%univ-atts;"
 >
 <!ELEMENT  section %section.content;>
 <!ATTLIST  section %section.attributes;>
@@ -378,10 +375,7 @@
                            -dita-use-conref-target)
                                     #IMPLIED
                %relational-atts;
-               %univ-atts;
-               spectitle
-                          CDATA
-                                    #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  linklist %linklist.content;>
 <!ATTLIST  linklist %linklist.attributes;>

@@ -59,9 +59,6 @@
                            warning |
                            -dita-use-conref-target)
                                     #REQUIRED
-               spectitle
-                          CDATA
-                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  hazardstatement %hazardstatement.content;>
@@ -130,10 +127,7 @@
                          
 >
 <!ENTITY % messagepanel.attributes
-              "spectitle
-                          CDATA
-                                    #IMPLIED
-               %univ-atts;"
+              "%univ-atts;"
 >
 <!ELEMENT  messagepanel %messagepanel.content;>
 <!ATTLIST  messagepanel %messagepanel.attributes;>
