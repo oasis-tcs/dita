@@ -78,18 +78,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"
     <define name="relatedSubjects">
       <ref name="relatedSubjects.element"/>
     </define>
-    <define name="subjectRelTable">
-      <ref name="subjectRelTable.element"/>
-    </define>
-    <define name="subjectRelHeader">
-      <ref name="subjectRelHeader.element"/>
-    </define>
-    <define name="subjectRel">
-      <ref name="subjectRel.element"/>
-    </define>
-    <define name="subjectRole">
-      <ref name="subjectRole.element"/>
-    </define>
   </div>
   <div>
     <a:documentation>COMMON ATTRIBUTE SETS</a:documentation>
@@ -189,7 +177,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"
             <ref name="schemeref"/>
             <ref name="subjectdef"/>
             <ref name="subjectHead"/>
-            <ref name="subjectRelTable"/>
             <ref name="topicref"/>
           </choice>
         </zeroOrMore>
@@ -789,109 +776,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"
       </define>
 
     </div>
-    <div>
-      <a:documentation>LONG NAME: Subject Relationship Table</a:documentation>
-      <define name="subjectRelTable.content">
-        <optional>
-          <ref name="title"/>
-        </optional>
-        <optional>
-          <ref name="topicmeta"/>
-        </optional>
-        <optional>
-          <ref name="subjectRelHeader"/>
-        </optional>
-        <oneOrMore>
-          <ref name="subjectRel"/>
-        </oneOrMore>
-      </define>
-      <define name="subjectRelTable.attributes">
-        <ref name="topicref-atts-no-toc"/>
-        <ref name="univ-atts"/>
-      </define>
-      <define name="subjectRelTable.element">
-        <element name="subjectRelTable" dita:longName="Subject Relationship Table">
-          <a:documentation></a:documentation>
-          <ref name="subjectRelTable.attlist"/>
-          <ref name="subjectRelTable.content"/>
-        </element>
-      </define>
-      <define name="subjectRelTable.attlist" combine="interleave">
-        <ref name="subjectRelTable.attributes"/>
-      </define>
-
-    </div>
-    <div>
-      <a:documentation>LONG NAME: Subject Table Header</a:documentation>
-      <define name="subjectRelHeader.content">
-        <oneOrMore>
-          <ref name="subjectRole"/>
-        </oneOrMore>
-      </define>
-      <define name="subjectRelHeader.attributes">
-        <ref name="univ-atts"/>
-      </define>
-      <define name="subjectRelHeader.element">
-        <element name="subjectRelHeader" dita:longName="Subject Table Header">
-          <a:documentation></a:documentation>
-          <ref name="subjectRelHeader.attlist"/>
-          <ref name="subjectRelHeader.content"/>
-        </element>
-      </define>
-      <define name="subjectRelHeader.attlist" combine="interleave">
-        <ref name="subjectRelHeader.attributes"/>
-      </define>
-
-    </div>
-    <div>
-      <a:documentation>LONG NAME: Subject Table Row</a:documentation>
-      <define name="subjectRel.content">
-        <oneOrMore>
-          <ref name="subjectRole"/>
-        </oneOrMore>
-      </define>
-      <define name="subjectRel.attributes">
-        <ref name="univ-atts"/>
-      </define>
-      <define name="subjectRel.element">
-        <element name="subjectRel" dita:longName="Subject Table Row">
-          <a:documentation></a:documentation>
-          <ref name="subjectRel.attlist"/>
-          <ref name="subjectRel.content"/>
-        </element>
-      </define>
-      <define name="subjectRel.attlist" combine="interleave">
-        <ref name="subjectRel.attributes"/>
-      </define>
-
-    </div>
-    <div>
-      <a:documentation>LONG NAME: Subject Role</a:documentation>
-      <define name="subjectRole.content">
-        <zeroOrMore>
-          <choice>
-            <ref name="data.elements.incl"/>
-            <ref name="subjectdef"/>
-            <ref name="topicref"/>
-          </choice>
-        </zeroOrMore>
-      </define>
-      <define name="subjectRole.attributes">
-        <ref name="topicref-atts"/>
-        <ref name="univ-atts"/>
-      </define>
-      <define name="subjectRole.element">
-        <element name="subjectRole" dita:longName="Subject Role">
-          <a:documentation></a:documentation>
-          <ref name="subjectRole.attlist"/>
-          <ref name="subjectRole.content"/>
-        </element>
-      </define>
-      <define name="subjectRole.attlist" combine="interleave">
-        <ref name="subjectRole.attributes"/>
-      </define>
-
-    </div>
   </div>
   <div>
     <a:documentation>SPECIALIZATION ATTRIBUTE DECLARATIONS</a:documentation>
@@ -944,26 +828,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"
     <define name="relatedSubjects.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="- map/topicref subjectScheme/relatedSubjects "/>
-      </optional>
-    </define>
-    <define name="subjectRelTable.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- map/reltable subjectScheme/subjectRelTable "/>
-      </optional>
-    </define>
-    <define name="subjectRelHeader.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- map/relrow subjectScheme/subjectRelHeader "/>
-      </optional>
-    </define>
-    <define name="subjectRel.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- map/relrow subjectScheme/subjectRel "/>
-      </optional>
-    </define>
-    <define name="subjectRole.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- map/relcell subjectScheme/subjectRole "/>
       </optional>
     </define>
   </div>

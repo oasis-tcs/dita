@@ -47,12 +47,6 @@
                        "defaultSubject"                              >
 <!ENTITY % relatedSubjects
                        "relatedSubjects"                             >
-<!ENTITY % subjectRelTable
-                       "subjectRelTable"                             >
-<!ENTITY % subjectRelHeader
-                       "subjectRelHeader"                            >
-<!ENTITY % subjectRel  "subjectRel"                                  >
-<!ENTITY % subjectRole "subjectRole"                                 >
 
 <!-- ============================================================= -->
 <!--                    ELEMENT DECLARATIONS                       -->
@@ -119,7 +113,6 @@
                           %schemeref; |
                           %subjectdef; |
                           %subjectHead; |
-                          %subjectRelTable; |
                           %topicref;)*)"
 >
 <!ENTITY % subjectScheme.attributes
@@ -495,58 +488,6 @@
 <!ATTLIST  relatedSubjects %relatedSubjects.attributes;>
 
 
-<!--                    LONG NAME: Subject Relationship Table      -->
-<!ENTITY % subjectRelTable.content
-                       "((%title;)?,
-                         (%topicmeta;)?,
-                         (%subjectRelHeader;)?,
-                         (%subjectRel;)+)"
->
-<!ENTITY % subjectRelTable.attributes
-              "%topicref-atts-no-toc;
-               %univ-atts;"
->
-<!ELEMENT  subjectRelTable %subjectRelTable.content;>
-<!ATTLIST  subjectRelTable %subjectRelTable.attributes;>
-
-
-<!--                    LONG NAME: Subject Table Header            -->
-<!ENTITY % subjectRelHeader.content
-                       "(%subjectRole;)+"
->
-<!ENTITY % subjectRelHeader.attributes
-              "%univ-atts;"
->
-<!ELEMENT  subjectRelHeader %subjectRelHeader.content;>
-<!ATTLIST  subjectRelHeader %subjectRelHeader.attributes;>
-
-
-<!--                    LONG NAME: Subject Table Row               -->
-<!ENTITY % subjectRel.content
-                       "(%subjectRole;)+"
->
-<!ENTITY % subjectRel.attributes
-              "%univ-atts;"
->
-<!ELEMENT  subjectRel %subjectRel.content;>
-<!ATTLIST  subjectRel %subjectRel.attributes;>
-
-
-<!--                    LONG NAME: Subject Role                    -->
-<!ENTITY % subjectRole.content
-                       "(%data.elements.incl; |
-                         %subjectdef; |
-                         %topicref;)*"
->
-<!ENTITY % subjectRole.attributes
-              "%topicref-atts;
-               %univ-atts;"
->
-<!ELEMENT  subjectRole %subjectRole.content;>
-<!ATTLIST  subjectRole %subjectRole.attributes;>
-
-
-
 <!-- ============================================================= -->
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
@@ -561,10 +502,6 @@
 <!ATTLIST  subjectHeadMeta   class CDATA "- map/topicmeta subjectScheme/subjectHeadMeta ">
 <!ATTLIST  subjectdef     class CDATA "- map/topicref subjectScheme/subjectdef ">
 <!ATTLIST  relatedSubjects   class CDATA "- map/topicref subjectScheme/relatedSubjects ">
-<!ATTLIST  subjectRelTable   class CDATA "- map/reltable subjectScheme/subjectRelTable ">
-<!ATTLIST  subjectRelHeader   class CDATA "- map/relrow subjectScheme/subjectRelHeader ">
-<!ATTLIST  subjectRel     class CDATA "- map/relrow subjectScheme/subjectRel ">
-<!ATTLIST  subjectRole    class CDATA "- map/relcell subjectScheme/subjectRole ">
 
 <!-- ================== End of DITA Subject Scheme Map Type ==================== -->
  
