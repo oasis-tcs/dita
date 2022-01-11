@@ -45,14 +45,6 @@
                        "attributedef"                                >
 <!ENTITY % defaultSubject
                        "defaultSubject"                              >
-<!ENTITY % relatedSubjects
-                       "relatedSubjects"                             >
-<!ENTITY % subjectRelTable
-                       "subjectRelTable"                             >
-<!ENTITY % subjectRelHeader
-                       "subjectRelHeader"                            >
-<!ENTITY % subjectRel  "subjectRel"                                  >
-<!ENTITY % subjectRole "subjectRole"                                 >
 
 <!-- ============================================================= -->
 <!--                    ELEMENT DECLARATIONS                       -->
@@ -114,12 +106,10 @@
                          (%data.elements.incl; |
                           %enumerationdef; |
                           %navref; |
-                          %relatedSubjects; |
                           %reltable; |
                           %schemeref; |
                           %subjectdef; |
                           %subjectHead; |
-                          %subjectRelTable; |
                           %topicref;)*)"
 >
 <!ENTITY % subjectScheme.attributes
@@ -439,114 +429,6 @@
 <!ATTLIST  defaultSubject %defaultSubject.attributes;>
 
 
-<!--                    LONG NAME: Related Subjects                -->
-<!ENTITY % relatedSubjects.content
-                       "(%data.elements.incl; |
-                         %subjectdef; |
-                         %topicref;)*"
->
-<!ENTITY % relatedSubjects.attributes
-              "href
-                          CDATA
-                                    #IMPLIED
-               keyref
-                          CDATA
-                                    #IMPLIED
-               keys
-                          CDATA
-                                    #IMPLIED
-               collection-type
-                          (choice |
-                           family |
-                           sequence |
-                           unordered |
-                           -dita-use-conref-target)
-                                    'family'
-               processing-role
-                          (normal |
-                           resource-only |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               type
-                          CDATA
-                                    #IMPLIED
-               cascade
-                          CDATA
-                                    #IMPLIED
-               scope
-                          (external |
-                           local |
-                           peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               format
-                          CDATA
-                                    #IMPLIED
-               linking
-                          (none |
-                           normal |
-                           sourceonly |
-                           targetonly |
-                           -dita-use-conref-target)
-                                    'normal'
-               %univ-atts;"
->
-<!ELEMENT  relatedSubjects %relatedSubjects.content;>
-<!ATTLIST  relatedSubjects %relatedSubjects.attributes;>
-
-
-<!--                    LONG NAME: Subject Relationship Table      -->
-<!ENTITY % subjectRelTable.content
-                       "((%title;)?,
-                         (%topicmeta;)?,
-                         (%subjectRelHeader;)?,
-                         (%subjectRel;)+)"
->
-<!ENTITY % subjectRelTable.attributes
-              "%topicref-atts-no-toc;
-               %univ-atts;"
->
-<!ELEMENT  subjectRelTable %subjectRelTable.content;>
-<!ATTLIST  subjectRelTable %subjectRelTable.attributes;>
-
-
-<!--                    LONG NAME: Subject Table Header            -->
-<!ENTITY % subjectRelHeader.content
-                       "(%subjectRole;)+"
->
-<!ENTITY % subjectRelHeader.attributes
-              "%univ-atts;"
->
-<!ELEMENT  subjectRelHeader %subjectRelHeader.content;>
-<!ATTLIST  subjectRelHeader %subjectRelHeader.attributes;>
-
-
-<!--                    LONG NAME: Subject Table Row               -->
-<!ENTITY % subjectRel.content
-                       "(%subjectRole;)+"
->
-<!ENTITY % subjectRel.attributes
-              "%univ-atts;"
->
-<!ELEMENT  subjectRel %subjectRel.content;>
-<!ATTLIST  subjectRel %subjectRel.attributes;>
-
-
-<!--                    LONG NAME: Subject Role                    -->
-<!ENTITY % subjectRole.content
-                       "(%data.elements.incl; |
-                         %subjectdef; |
-                         %topicref;)*"
->
-<!ENTITY % subjectRole.attributes
-              "%topicref-atts;
-               %univ-atts;"
->
-<!ELEMENT  subjectRole %subjectRole.content;>
-<!ATTLIST  subjectRole %subjectRole.attributes;>
-
-
-
 <!-- ============================================================= -->
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
@@ -560,11 +442,6 @@
 <!ATTLIST  subjectHead    class CDATA "- map/topicref subjectScheme/subjectHead ">
 <!ATTLIST  subjectHeadMeta   class CDATA "- map/topicmeta subjectScheme/subjectHeadMeta ">
 <!ATTLIST  subjectdef     class CDATA "- map/topicref subjectScheme/subjectdef ">
-<!ATTLIST  relatedSubjects   class CDATA "- map/topicref subjectScheme/relatedSubjects ">
-<!ATTLIST  subjectRelTable   class CDATA "- map/reltable subjectScheme/subjectRelTable ">
-<!ATTLIST  subjectRelHeader   class CDATA "- map/relrow subjectScheme/subjectRelHeader ">
-<!ATTLIST  subjectRel     class CDATA "- map/relrow subjectScheme/subjectRel ">
-<!ATTLIST  subjectRole    class CDATA "- map/relcell subjectScheme/subjectRole ">
 
 <!-- ================== End of DITA Subject Scheme Map Type ==================== -->
  
