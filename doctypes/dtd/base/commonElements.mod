@@ -1425,10 +1425,7 @@
                        "(%tblcell.cnt;)*"
 >
 <!ENTITY % stentry.attributes
-              "specentry
-                          CDATA
-                                    #IMPLIED
-               colspan
+              "colspan
                           NMTOKEN
                                     #IMPLIED
                rowspan
