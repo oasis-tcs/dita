@@ -45,8 +45,6 @@
                        "attributedef"                                >
 <!ENTITY % defaultSubject
                        "defaultSubject"                              >
-<!ENTITY % relatedSubjects
-                       "relatedSubjects"                             >
 
 <!-- ============================================================= -->
 <!--                    ELEMENT DECLARATIONS                       -->
@@ -108,7 +106,6 @@
                          (%data.elements.incl; |
                           %enumerationdef; |
                           %navref; |
-                          %relatedSubjects; |
                           %reltable; |
                           %schemeref; |
                           %subjectdef; |
@@ -432,62 +429,6 @@
 <!ATTLIST  defaultSubject %defaultSubject.attributes;>
 
 
-<!--                    LONG NAME: Related Subjects                -->
-<!ENTITY % relatedSubjects.content
-                       "(%data.elements.incl; |
-                         %subjectdef; |
-                         %topicref;)*"
->
-<!ENTITY % relatedSubjects.attributes
-              "href
-                          CDATA
-                                    #IMPLIED
-               keyref
-                          CDATA
-                                    #IMPLIED
-               keys
-                          CDATA
-                                    #IMPLIED
-               collection-type
-                          (choice |
-                           family |
-                           sequence |
-                           unordered |
-                           -dita-use-conref-target)
-                                    'family'
-               processing-role
-                          (normal |
-                           resource-only |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               type
-                          CDATA
-                                    #IMPLIED
-               cascade
-                          CDATA
-                                    #IMPLIED
-               scope
-                          (external |
-                           local |
-                           peer |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               format
-                          CDATA
-                                    #IMPLIED
-               linking
-                          (none |
-                           normal |
-                           sourceonly |
-                           targetonly |
-                           -dita-use-conref-target)
-                                    'normal'
-               %univ-atts;"
->
-<!ELEMENT  relatedSubjects %relatedSubjects.content;>
-<!ATTLIST  relatedSubjects %relatedSubjects.attributes;>
-
-
 <!-- ============================================================= -->
 <!--             SPECIALIZATION ATTRIBUTE DECLARATIONS             -->
 <!-- ============================================================= -->
@@ -501,7 +442,6 @@
 <!ATTLIST  subjectHead    class CDATA "- map/topicref subjectScheme/subjectHead ">
 <!ATTLIST  subjectHeadMeta   class CDATA "- map/topicmeta subjectScheme/subjectHeadMeta ">
 <!ATTLIST  subjectdef     class CDATA "- map/topicref subjectScheme/subjectdef ">
-<!ATTLIST  relatedSubjects   class CDATA "- map/topicref subjectScheme/relatedSubjects ">
 
 <!-- ================== End of DITA Subject Scheme Map Type ==================== -->
  

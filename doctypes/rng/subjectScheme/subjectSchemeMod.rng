@@ -75,9 +75,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"
     <define name="defaultSubject">
       <ref name="defaultSubject.element"/>
     </define>
-    <define name="relatedSubjects">
-      <ref name="relatedSubjects.element"/>
-    </define>
   </div>
   <div>
     <a:documentation>COMMON ATTRIBUTE SETS</a:documentation>
@@ -172,7 +169,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"
             <ref name="data.elements.incl"/>
             <ref name="enumerationdef"/>
             <ref name="navref"/>
-            <ref name="relatedSubjects"/>
             <ref name="reltable"/>
             <ref name="schemeref"/>
             <ref name="subjectdef"/>
@@ -691,91 +687,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"
       </define>
 
     </div>
-    <div>
-      <a:documentation>LONG NAME: Related Subjects</a:documentation>
-      <define name="relatedSubjects.content">
-        <zeroOrMore>
-          <choice>
-            <ref name="data.elements.incl"/>
-            <ref name="subjectdef"/>
-            <ref name="topicref"/>
-          </choice>
-        </zeroOrMore>
-      </define>
-      <define name="relatedSubjects.attributes">
-        <optional>
-          <attribute name="href"/>
-        </optional>
-        <optional>
-          <attribute name="keyref"/>
-        </optional>
-        <optional>
-          <attribute name="keys"/>
-        </optional>
-        <optional>
-          <attribute name="collection-type" a:defaultValue="family">
-            <choice>
-              <value>choice</value>
-              <value>family</value>
-              <value>sequence</value>
-              <value>unordered</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="processing-role">
-            <choice>
-              <value>normal</value>
-              <value>resource-only</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="type"/>
-        </optional>
-        <optional>
-          <attribute name="cascade"/>
-        </optional>
-        <optional>
-          <attribute name="scope">
-            <choice>
-              <value>external</value>
-              <value>local</value>
-              <value>peer</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="format"/>
-        </optional>
-        <optional>
-          <attribute name="linking" a:defaultValue="normal">
-            <choice>
-              <value>none</value>
-              <value>normal</value>
-              <value>sourceonly</value>
-              <value>targetonly</value>
-              <value>-dita-use-conref-target</value>
-            </choice>
-          </attribute>
-        </optional>
-        <ref name="univ-atts"/>
-      </define>
-      <define name="relatedSubjects.element">
-        <element name="relatedSubjects" dita:longName="Related Subjects">
-          <a:documentation></a:documentation>
-          <ref name="relatedSubjects.attlist"/>
-          <ref name="relatedSubjects.content"/>
-        </element>
-      </define>
-      <define name="relatedSubjects.attlist" combine="interleave">
-        <ref name="relatedSubjects.attributes"/>
-      </define>
-
-    </div>
   </div>
   <div>
     <a:documentation>SPECIALIZATION ATTRIBUTE DECLARATIONS</a:documentation>
@@ -823,11 +734,6 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Subject Scheme Map//EN"
     <define name="subjectdef.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="- map/topicref subjectScheme/subjectdef "/>
-      </optional>
-    </define>
-    <define name="relatedSubjects.attlist" combine="interleave">
-      <optional>
-        <attribute name="class" a:defaultValue="- map/topicref subjectScheme/relatedSubjects "/>
       </optional>
     </define>
   </div>
