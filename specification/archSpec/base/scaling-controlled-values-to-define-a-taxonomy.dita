@@ -30,58 +30,5 @@
             <li>A category and its subjects can have a binding that enumerates the values of an
                 attribute.</li>
         </ul>
-        <p>Beyond the core elements and the <ph rev="review-d"
-        >attribute-binding</ph> elements, sophisticated taxonomies can take
-      advantage of some optional elements. These optional elements make it
-      possible to specify more precise relationships among subjects. The
-        <xmlelement>hasNarrower</xmlelement>,
-        <xmlelement>hasPart</xmlelement>, <xmlelement>hasKind</xmlelement>,
-        <xmlelement>hasInstance</xmlelement>, and
-        <xmlelement>hasRelated</xmlelement> elements specify the kind of
-      relationship in a hierarchy between a container subject and its
-      contained subjects. </p>
-        <p>While users who have access to sophisticated processing tools benefit from defining
-            taxonomies with this level of precision, other users can safely ignore this advanced
-            markup and define taxonomies with hierarchies of <xmlelement>subjectdef</xmlelement>
-            elements that are not precise about the kind of relationship between the subjects.</p>
-        <example id="example-taxonomy" otherprops="examples">
-            <title>Example: A taxonomy defined using subject scheme elements</title>
-            <p>The following code sample defines San Francisco as both an
-        instance of a city and a geographic part of California.</p>
-            <codeblock>&lt;subjectScheme>
-  &lt;hasInstance>
-    &lt;subjectdef keys="city">
-      &lt;subjectdef keys="los-angeles"/>
-      &lt;subjectdef keys="new-york-city"/>
-      &lt;subjectdef keys="san-francisco"/>
-    &lt;/subjectdef>
-    &lt;subjectdef keys="state">
-      &lt;subjectdef keys="california"/>
-      &lt;subjectdef keys="new-york"/>
-    &lt;/subjectdef>
-  &lt;/hasInstance>
-  &lt;hasPart>
-    &lt;subjectdef keys="place">
-      &lt;subjectdef keyref="california">
-        &lt;subjectdef keyref="los-angeles"/>
-        &lt;subjectdef keyref="san-francisco"/>
-      &lt;/subjectdef>
-      &lt;subjectdef keyref="new-york">
-        &lt;subjectdef keyref="new-york-city"/>
-      &lt;/subjectdef>
-    &lt;/subjectdef>
-  &lt;/hasPart>
-&lt;/subjectScheme></codeblock>
-            <p>Sophisticated tools can use this subject scheme map to
-        associate content about San Francisco with related content about
-        other California places or with related content about other cities,
-        depending on the interests of the user.</p>
-            <p>The subject scheme map can also define relationships between
-        subjects that are not hierarchical. For instance, cities sometimes
-        have "sister city" relationships. An information architect could
-        add a <xmlelement>subjectRelTable</xmlelement> element to define
-        these associative relationships, with a row for each sister-city
-        pair and the two cities in different columns in the row.</p>
-        </example>
     </conbody>
 </concept>
