@@ -5,8 +5,8 @@
 <reference id="subjectdef" xml:lang="en-us">
 <title><xmlelement>subjectdef</xmlelement></title>
         <shortdesc>The <xmlelement>subjectdef</xmlelement> element defines
-    a subject. A subject can be used for either taxonomic classification or
-    controlled value.</shortdesc>
+    a subject. A subject can be used to <ph rev="review-d">define a
+      controlled value or a taxonomic classification.</ph></shortdesc>
 <prolog><metadata>
 <keywords>
                 <indexterm>subject scheme<indexterm>
@@ -20,7 +20,8 @@
         label for the subject. The <xmlatt>href</xmlatt> attribute on
           <xmlelement>subjectdef</xmlelement> can be used to reference a
         topic that <ph rev="review-e">provides more information about a
-          subject and how authors use it when classifying content.</ph></p>
+          subject and how authors should use it when classifying content or
+          specifying a value for an attribute.</ph></p>
                 </section>
                 <section id="specialization-hierachy">
                         <title>Specialization hierarchy</title>
@@ -30,34 +31,58 @@
                 </section>
                 <section id="attributes">
                         <title>Attributes</title>
-                        <p>The following attributes are available on this element: <ph
-                                        conkeyref="reuse-attributes/ref-universalatts"/>, <ph
-                                        conkeyref="reuse-attributes/ref-linkatts"/>, <xref
-                                        keyref="attributes-common/attr-keys"
-                                        ><xmlatt>keys</xmlatt></xref>, <xref
-                                        keyref="attributes-common/attr-keyref"><xmlatt>keyref</xmlatt></xref>,
-                                        <xref keyref="attributes-common/attr-processing-role"
-                                                ><xmlatt>processing-role</xmlatt></xref>, <xref
-                                        keyref="attributes-common/attr-toc"
-                                        ><xmlatt>toc</xmlatt></xref>, <xref
-                                        keyref="attributes-common/attr-collection-type"
-                                                ><xmlatt>collection-type</xmlatt></xref>, and <xref
-                                        keyref="attributes-common/attr-linking"
-                                                ><xmlatt>linking</xmlatt></xref>.</p>
+                        <p>The following attributes are available on this
+        element: <ph conkeyref="reuse-attributes/ref-universalatts"/>, <ph
+          conkeyref="reuse-attributes/ref-linkatts"/>, <xref
+          keyref="attributes-common/attr-collection-type"
+            ><xmlatt>collection-type</xmlatt></xref>, <xref
+          keyref="attributes-common/attr-keyref"
+          ><xmlatt>keyref</xmlatt></xref>, <xref
+          keyref="attributes-common/attr-keys"
+        ><xmlatt>keys</xmlatt></xref>, <xref
+          keyref="attributes-common/attr-linking"
+          ><xmlatt>linking</xmlatt></xref>,  <xref
+          keyref="attributes-common/attr-processing-role"
+            ><xmlatt>processing-role</xmlatt></xref>, and <xref
+          keyref="attributes-common/attr-toc"
+        ><xmlatt>toc</xmlatt></xref>.</p>
                 </section>
     <example id="example">
-      <title>Example</title>
-      <p>The following code sample shows how
-          <xmlelement>subjectdef</xmlelement> elements are used to define
-        controlled values for the <xmlatt>product</xmlatt> attribute:</p>
-      <codeblock>&lt;subjectdef keys="values-product">
-    &lt;subjectdef keys="product-free"/>
-    &lt;subjectdef keys="product-premium"/>
+      <title>Examples</title>
+      <p>This section contains examples of how
+          <xmlelement>subjectdef</xmlelement> elements can be used.</p>
+      <fig>
+        <title>Example of defining a set of controlled values</title>
+        <p>The following code sample shows how
+            <xmlelement>subjectdef</xmlelement> elements <ph rev="review-e"
+            >can be used to define a set of controlled values:</ph></p>
+        <codeblock>&lt;subjectdef keys="values-product">
+    &lt;subjectdef keys="free"/>
+    &lt;subjectdef keys="premium"/>
 &lt;/subjectdef></codeblock>
-      <draft-comment author="Kristen J Eberlein" time="03 December 2021">
-        <p>Do we need a 2nd example that focuses on subjects for a simple
-          taxonomy?</p>
-      </draft-comment>
+        <p rev="review-e">When this set of controlled values is bound to an
+          attribute, the only valid values for the attribute are
+            <keyword>free</keyword> and <keyword>premium</keyword>.</p>
+      </fig>
+      <fig rev="review-d">
+        <title>Example of defining a simple taxonomy</title>
+        <p>The following code sample shows how
+            <xmlelement>subjectdef</xmlelement> elements can be used to
+          define a simple taxonomy of recreational hobbies:</p>
+        <codeblock>&lt;subjectdef keys="hobbies">
+    &lt;subjectdef keys="fiber-arts">
+        &lt;subjectdef keys="knitting"/>
+        &lt;subjectdef keys="quilting"/>
+        &lt;subjectdef keys="sewing"/>
+    &lt;/subjectdef>
+        &lt;subjectdef keys="woodworking">
+        &lt;subjectdef keys="scroll-sawing"/>
+        &lt;subjectdef keys="whittling"/>
+        &lt;subjectdef keys="wood-turning"/>
+    &lt;/subjectdef>
+&lt;/subjectdef></codeblock>
+        <p>The taxonomy might be used to classify DITA topics or maps.</p>
+      </fig>
     </example>
 </refbody>
 </reference>

@@ -76,14 +76,15 @@
                 <dlentry>
                     <dt>Specify that an attribute is not valid.</dt>
                     <dd><p>When the <xmlelement>enumerationdef</xmlelement>
-              element <ph rev="review-d">contains only an
-                  <xmlatt>attributedef</xmlatt> element that does not
+              element <ph rev="review-d">contains a
+                  <xmlatt>subjectdef</xmlatt> element that does not
                 reference a subject</ph>, no value is valid for the
               attribute.</p><p otherprops="examples"/>For example, the
             following code sample specifies that no tokens are valid for
             the <xmlatt>props</xmlatt>
             attribute:<codeblock>&lt;enumerationdef>
     &lt;attributedef name="props"/>
+    &lt;subjectdef/>
 &lt;/enumerationdef></codeblock></dd>
                 </dlentry>
             </dl>
@@ -108,11 +109,16 @@
     </section>
         <section id="attributes">
             <title>Attributes</title>
-            <p>The following attributes are available on this element: <ph conkeyref="reuse-attributes/ref-idandconrefatts"/>, <xref
-                    keyref="attributes-universal/attr-status"><xmlatt>status</xmlatt></xref>, <xref
-                    keyref="attributes-universal/attr-base"><xmlatt>base</xmlatt></xref>, <xref
-                    keyref="attributes-universal/outputclass"><xmlatt>outputclass</xmlatt></xref>,
-                and <xref keyref="attributes-universal/class"><xmlatt>class</xmlatt></xref>.</p>
+            <p>The following attributes are available on this element: <ph
+          conkeyref="reuse-attributes/ref-idandconrefatts"/>, <xref
+          keyref="attributes-universal/attr-status"
+          ><xmlatt>status</xmlatt></xref>, <xref
+          keyref="attributes-universal/attr-base"
+          ><xmlatt>base</xmlatt></xref>, <xref
+          keyref="attributes-universal/outputclass"
+            ><xmlatt>outputclass</xmlatt></xref>, and <xref
+          keyref="attributes-universal/class"
+        ><xmlatt>class</xmlatt></xref>.</p>
         </section>
         <example>
             <title>Example</title>
@@ -152,6 +158,7 @@
     &lt;!-- 3. Binding for @props -->
     &lt;enumerationdef>
         &lt;attributedef name="props"/>
+        <ph rev="review-d">&lt;subjectdef/></ph>
     &lt;/enumerationdef>
 
 &lt;/subjectScheme></codeblock>
@@ -171,8 +178,10 @@
           This means that the only valid value for
             <xmlatt>otherprops</xmlatt> is
           <keyword>examples</keyword>.</li>
-        <li>The enumeration for the <xmlatt>props</xmlatt> element is
-          empty. No values are valid.</li>
+        <li rev="review-d">The enumeration for the <xmlatt>props</xmlatt>
+          attribute contains a <xmlelement>subjectdef</xmlelement> element
+          that does not reference a subject. That means that no values are
+          valid for the <xmlatt>props</xmlatt> attribute.</li>
       </ol>
         </example>
 </refbody>
