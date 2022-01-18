@@ -4,9 +4,9 @@
  "reference.dtd">
 <reference id="prodinfo" xml:lang="en-us">
 <title><xmlelement>prodinfo</xmlelement></title>
-  <shortdesc>Product information is pivotal information about a product. It
-    might include the product name or number, brand name, associated
-    components, and more.</shortdesc>
+  <shortdesc>Product information is information about a product. It might
+    include the product name or number, brand name, associated components,
+    and more.</shortdesc>
 <prolog><metadata>
 <keywords>
                 <indexterm>elements<indexterm>prolog<indexterm><xmlelement>prodinfo</xmlelement></indexterm></indexterm></indexterm><indexterm>prolog elements<indexterm><xmlelement>prodinfo</xmlelement></indexterm></indexterm>
@@ -18,22 +18,51 @@
       <title>Attributes</title>
             <p conkeyref="reuse-attributes/only-universal"/>
     </section>
-<example id="example" otherprops="examples">    <title>Example</title>
-            <p>The following code sample shows that a topic is about the
-        product <keyword>Transcription Assistant</keyword>. The product is
-        at version number 1.3.1, operates on the Linux platform, and has
-        the program number SN-12345T.</p>    <codeblock xml:space="preserve">&lt;prolog&gt;
-    &lt;metadata&gt;
-        &lt;prodinfo&gt;
-            &lt;prodname&gt;Transcription Assistant&lt;/prodname&gt;
-            &lt;vrmlist&gt;
-                &lt;vrm version="1" release="3" modification="1"/&gt;
-            &lt;/vrmlist&gt;
-            &lt;platform&gt;Linux&lt;/platform&gt;
-            &lt;prognum>SN-12345T&lt;/prognum>
-        &lt;/prodinfo&gt;
-   &lt;/metadata&gt;
-&lt;/prolog&gt;</codeblock>   </example>
+<example id="example" otherprops="examples">    <title>Examples</title>
+      <p>This section contains examples of how the
+          <xmlelement>prodinfo</xmlelement> element can be used.</p>
+      <fig rev="review-g">
+        <title>Example of product information for an item of
+          cookware</title>
+        <p>The following code sample shows the
+            <xmlelement>prodinfo</xmlelement> element can contain several
+          elements that specify metadata about an item of cookware:</p>
+        <codeblock>&lt;prolog>
+  &lt;metadata>
+    &lt;prodinfo>
+      &lt;prodname>12'' Stainless Steel Skillet&lt;/prodname>
+      &lt;brand>Chef's Gourmet Kitchenware&lt;/brand>
+      &lt;prognum>4545455-AD&lt;/prognum>
+      &lt;platform>Electric&lt;/platform>
+      &lt;platform>Gas&lt;/platform>
+      &lt;platform>Induction&lt;/platform>
+      &lt;series>Stainless Cookware&lt;/series>
+    &lt;/prodinfo>
+  &lt;/metadata>
+&lt;/prolog></codeblock>
+      </fig>
+      <fig>
+        <title>Example of product information for a software
+          application</title>
+        <p>The following code sample shows that a topic is about the
+          product <keyword>Transcription Assistant</keyword>. The product
+          is at version number 1.3.1, operates on the Linux platform, and
+          has the program number SN-12345T.</p>
+        <codeblock>&lt;prolog&gt;
+  &lt;metadata>
+    &lt;prodinfo>
+      &lt;prodname>Transcription Assistant&lt;/prodname>
+      &lt;vrmlist>
+        &lt;vrm version="1" release="3" modification="1"/>
+      &lt;/vrmlist>
+      &lt;featnum>SN-12345T&lt;/featnum>
+      &lt;component>Voice Activation&lt;/component>
+      &lt;platform>Linux&lt;/platform>
+      &lt;platform>Windows&lt;/platform>
+    &lt;/prodinfo>
+  &lt;/metadata>
+&lt;/prolog&gt;</codeblock>
+      </fig>   </example>
 </refbody>
 </reference>
 
