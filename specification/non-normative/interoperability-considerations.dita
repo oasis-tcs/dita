@@ -51,13 +51,16 @@
         a potentially nonsensical element if the referencing element has required subelements (for
         example, a content reference from a topic to another topic, where the referencing topic must
         have a title subelement), but in the second case the element is filtered completely out.</p>
-      <p >Different processing orders might also provide different results in the case
-        where pushed content is wrapped in an element that is filtered out. If filtering is applied
-        before content resolution, that entire block of content (the wrapper and the content to be
-        pushed) is filtered out before the content reference is resolved. If filtering is applied
-        after content resolution, the push action will be resolved first so that content appears in
-        the referenced location, after which the referencing element (along with its wrapper) is
-        filtered from the original source location.</p>
+      <p>Different processing orders might also provide different results
+        in the case where pushed content is grouped in an element that is
+        filtered out. If filtering is applied before content resolution,
+        that entire block of content (the grouping element and the content
+        to be pushed) is filtered out before the content reference is
+        resolved. If filtering is applied after content resolution, the
+        push action will be resolved first so that content appears in the
+        referenced location, after which the referencing element (along
+        with its grouping element) is filtered from the original source
+        location.</p>
     </section>
     <section id="filtering-and-key-space-resolution">
       <title>Filtering and key space resolution</title>
