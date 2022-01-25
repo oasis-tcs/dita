@@ -2,8 +2,9 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="concept_nl2_m4j_1gb" xml:lang="en">
 <title>Example: Using <xmlatt>chunk</xmlatt> to split nested documents</title>
-<shortdesc>Special attention is necessary when evaluating the map hierarchy that results from
-splitting a documents with their own nested topics.</shortdesc>
+<shortdesc>Special attention is necessary when evaluating the map hierarchy
+    that results from splitting <ph rev="review-h">documents that
+      contain</ph> nested topics.</shortdesc>
 <conbody>
 <p>Consider the following source map <filepath>input.ditamap</filepath>:</p>
 <fig id="fig_ol2_m4j_1gb">
@@ -66,9 +67,11 @@ child.dita:
 results in multiple peer topic references (or branches) in the map. Topic references nested within
 the original reference to <filepath>ancestor.dita</filepath> are now located within the reference to
 "ancestor-last" (the last topic child of the <xmlelement>dita</xmlelement> element).</li>
-<li><filepath>middle.dita</filepath> has nested topics, so results in its own new hierarchy within
-the map. Content from the nested topic reference is now located within the reference to the root
-topic from <filepath>middle.dita</filepath>, but after any references to child topics.</li>
+<li><filepath>middle.dita</filepath> has nested topics, so it results in
+        its own new hierarchy within the map. Content from the nested topic
+        reference is now located within the reference to the root topic
+        from <filepath>middle.dita</filepath>, but after any references to
+        child topics.</li>
 </ul>
 <fig id="fig_ql2_m4j_1gb">
 <title>Equivalent source content </title>

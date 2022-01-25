@@ -36,11 +36,11 @@ elements.</p>
 <title>Chunk within a combined branch</title>
 <codeblock>&lt;map>
   &lt;title>Trying to "split" groups&lt;/title>
-  &lt;topicgroup chunk="split">
+  &lt;topicgroup <b>chunk="split"</b>>
     &lt;topicref href="ingroup1.dita">&lt;!--...-->&lt;/topicref>
     &lt;topicref href="ingroup2.dita">&lt;!--...-->&lt;/topicref>
   &lt;/topicgroup>
-  &lt;topichead chunk="split">
+  &lt;topichead <b>chunk="split"</b>>
     &lt;topicmeta>&lt;navtitle>Heading for a branch&lt;/navtitle>&lt;/topicmeta>
     &lt;topicref href="inhead1.dita">&lt;!--...-->&lt;/topicref>
     &lt;topicref href="inhead2.dita">&lt;!--...-->&lt;/topicref>
@@ -48,13 +48,18 @@ elements.</p>
 &lt;/map></codeblock>
 </fig>
 <ul id="ul_o3y_wng_thb">
-<li>The <xmlatt>chunk</xmlatt> attribute on the <xmlelement>topicgroup</xmlelement> is ignored; it
-does not cascade, and there is no referenced topic, so it has no effect.</li>
-<li>In some cases, an implementation might treat the <xmlelement>topichead</xmlelement> element as
-equivalent to a single title-only topic, while in other cases it might be ignored. In either case
-the <xmlatt>chunk</xmlatt> value has no effect. If the <xmlelement>topichead</xmlelement> is treated
-as a title-only topic, it cannot be split further; if it is ignored for the current processing
-context, it is no different than the <xmlelement>topicgroup</xmlelement>.</li>
+<li>The <xmlatt>chunk</xmlatt> attribute on the
+            <xmlelement>topicgroup</xmlelement> is ignored<ph
+            rev="review-h">. It</ph> does not cascade, and there is no
+          referenced topic, so it has no effect.</li>
+<li>In some cases, an implementation might treat the
+            <xmlelement>topichead</xmlelement> element as equivalent to a
+          single title-only topic, while in other cases it might be
+          ignored. In either case the <xmlatt>chunk</xmlatt> value has no
+          effect. If the <xmlelement>topichead</xmlelement> is treated as a
+          title-only topic, it cannot be split further<ph rev="review-h">.
+            If</ph> it is ignored for the current processing context, it is
+          no different than the <xmlelement>topicgroup</xmlelement>.</li>
 </ul>
 </example>
 </conbody>
