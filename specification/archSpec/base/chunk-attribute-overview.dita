@@ -2,31 +2,32 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="aboutchunk" xml:lang="en">
 <title>About the <xmlatt>chunk</xmlatt> attribute</title>
-<shortdesc>The <xmlatt>chunk</xmlatt> attribute is designed to handle cases
-    where the <ph rev="review-h">optimal</ph> organization for authoring
-    DITA topics is not the <ph rev="review-h">optimal</ph> organization for
-    publishing those topics.</shortdesc>
+  <!--
+<shortdesc>The <xmlatt>chunk</xmlatt> attribute is designed to handle cases where the <ph rev="review-h">optimal</ph> organization for authoring DITA topics is not the <ph rev="review-h">optimal</ph> organization for publishing those topics.</shortdesc>-->
+  <shortdesc>The <xmlatt>chunk</xmlatt> attribute specifies how a processor
+    can split or combine source DITA documents into alternate
+    organizational schemes for rendering purposes. This means that the
+      <xmlatt>chunk</xmlatt> attribute is only relevant when the
+    organization of source DITA documents has an effect on organization of
+    published documents.</shortdesc>
 <conbody>
-<p>The <xmlatt>chunk</xmlatt> attribute is composed of a single token without any 
-    white space. DITA defines two tokens for the <xmlatt>chunk</xmlatt> attribute:
-                                <codeph>combine</codeph> and <codeph>split</codeph>. Other tokens
-                        can be defined by applications, but support for those tokens will vary.</p>
+<p>The <xmlatt>chunk</xmlatt> attribute is composed of a single token
+      without any white space. DITA defines the <ph rev="review-h"
+        >following tokens for the <xmlatt>chunk</xmlatt>
+      attribute:</ph></p>
 
 <dl>
 <dlentry>
-<dt><codeph>chunk="combine"</codeph></dt>
+<dt><keyword>combine</keyword></dt>
 <dd><ph conkeyref="reuse-general/definitionChunkCombine"/></dd>
 </dlentry>
 <dlentry>
-<dt><codeph>chunk="split"</codeph></dt>
+<dt><keyword>split</keyword></dt>
 <dd><ph conkeyref="reuse-general/definitionChunkSplit"/></dd>
 </dlentry>
 </dl>
-
-        <p>The <xmlatt>chunk</xmlatt> attribute describes how a processor can split or combine source
-            DITA documents into alternate organizational schemes for rendering purposes. This means
-            that the <xmlatt>chunk</xmlatt> attribute is only relevant when the organization of
-            source DITA documents has an effect on organization of published documents.</p>
+    <p rev="review-h">Applications can use custom tokens for the
+        <xmlatt>chunk</xmlatt> attribute.</p>
         <p>The <xmlatt>chunk</xmlatt> attribute does not cascade.</p>
 <p>The following rules apply to all values of the <xmlatt>chunk</xmlatt> attribute:<ul>
                 <li>When the source document organization has no effect on published output, such as
