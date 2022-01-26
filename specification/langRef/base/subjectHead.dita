@@ -19,7 +19,7 @@
         element might be displayed when a subject scheme is rendered to let
         users select subjects as part of a faceted browsing experience.</p>
       <p>The <xmlelement>subjectHead</xmlelement> element does not
-        reference a resource and cannot specify either the
+        reference a resource. It also cannot specify either the
           <xmlatt>keys</xmlatt> or <xmlatt>keyref</xmlatt> attribute, so it
         does not define any controlled values.</p>
     </section>
@@ -49,7 +49,37 @@
             valid.</li>
         </ul></p>
     </section>
-    <example conkeyref="reuse-examples/example-subjectHead"/>
+    <example id="example" rev="review-d">
+      <title>Example</title>
+      <p>In the following code sample, the
+          <xmlelement>subjectHead</xmlelement> elements define two
+        groupings of subjects and associates labels.</p>
+      <codeblock>&lt;subjectScheme toc="yes" search="no">
+  &lt;subjectdef keys="hobbies">
+    &lt;subjectdef keys="fiber-arts">
+      &lt;subjectHead>
+        &lt;subjectHeadMeta>
+          &lt;navtitle>Fiber arts&lt;/navtitle>
+        &lt;/subjectHeadMeta>
+        &lt;subjectdef keys="knitting" href="knitting.dita"/>
+        &lt;subjectdef keys="quilting" href="quilting.dita"/>
+        &lt;subjectdef keys="sewing" href="sewing.dita/>
+      &lt;/subjectHead>
+    &lt;/subjectdef>
+    &lt;subjectdef keys="woodworking">
+      &lt;subjectHead>
+        &lt;subjectHeadMeta>
+          &lt;navtitle>Woodworking&lt;/navtitle>
+        &lt;/subjectHeadMeta>
+        &lt;subjectdef keys="scroll-sawing" href="scroll-sawing.dita"/>
+        &lt;subjectdef keys="whittling" href="whittling.dita"/>
+        &lt;subjectdef keys="wood-turning" href="woodturning.dita"/>
+      &lt;/subjectHead>
+    &lt;/subjectdef>
+  &lt;/subjectdef>
+&lt;/subjectScheme></codeblock>
+    </example>
+    <!--<example conkeyref="reuse-examples/example-subjectHead"/>-->
 </refbody>
 </reference>
 
