@@ -2,27 +2,31 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="chunksplit" xml:lang="en">
     <title>Processing <codeph>chunk="split"</codeph></title>
-    <shortdesc>Setting <codeph>chunk="split"</codeph> instructs a processor to split each topic from
-        the referenced source document into its own document for rendering purposes. Multiple result
-        documents are generated.</shortdesc>
+    <shortdesc><ph rev="review-h">The presence of </ph>
+    <codeph>chunk="split"</codeph> instructs a processor to split each
+    topic from the referenced source document into its own document for
+    rendering purposes. Multiple result documents are
+    generated.</shortdesc>
 <conbody>
         <p>The following rules apply:</p>
         <ul>
-            <li>When specified on a <xmlelement>topicref</xmlelement>
-        element that <ph rev="review-h">references</ph> a source DITA
-        document, it indicates that all topics within the referenced
-        document should be rendered as individual documents.</li>
-            <li>When specified on an element such as
+            <li>When <ph rev="review-h"><codeph>chunk="split"</codeph>
+          is</ph> specified on a <xmlelement>topicref</xmlelement> element
+        that <ph rev="review-h">references</ph> a source DITA document, it
+        indicates that all topics within the referenced document should be
+        rendered as individual documents.</li>
+            <li>When <ph rev="review-h"><codeph>chunk="split"</codeph>
+          is</ph> specified on an element such as
           <xmlelement>topicgroup</xmlelement> that does not <ph
           rev="review-h">reference a source DITA document or result in
           published output</ph>, the attribute has no meaning.</li>
-            <li>When specified on the root element of a map,
-          <codeph>chunk="split"</codeph> sets a default operation for all
-        source DITA documents <ph rev="review-h">in the navigation
-          structure of the map.</ph> The default <codeph>split</codeph>
-        value is used except where a <codeph>combine</codeph> value is
-        encountered, in which case <codeph>combine</codeph> takes over for
-        that entire branch. </li>
+            <li>When <ph rev="review-h"><codeph>chunk="split"</codeph>
+          is</ph> specified on the root element of a map, it sets a default
+        operation for all source DITA documents <ph rev="review-h">in the
+          navigation structure of the map.</ph> The default
+          <codeph>split</codeph> value is used except where a
+          <codeph>combine</codeph> value is encountered, in which case
+          <codeph>combine</codeph> takes over for that entire branch. </li>
         </ul>
 </conbody>
 </concept>
