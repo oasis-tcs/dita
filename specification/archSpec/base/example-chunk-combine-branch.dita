@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="chunkcombinefew">
-<title>Example: Using <xmlatt>chunk</xmlatt> to render a single document from one branch</title>
-<shortdesc>Where a publishing system typically would render each topic document as an independent
-    result document, the <xmlatt>chunk</xmlatt> attribute can be used to render individual branches
-    of a map as single documents.</shortdesc>
+<title>Example: Using <xmlatt>chunk</xmlatt> to render a single document
+    from one <ph rev="review-h">or more branches</ph></title>
+<shortdesc>When a publishing system typically would render each topic
+    document as an independent result document, the <xmlatt>chunk</xmlatt>
+    attribute can be used to render individual branches of a map as single
+    documents.</shortdesc>
 <conbody>
-<p>Consider the following source documents, with root map <filepath>input.ditamap</filepath>:</p>
 <fig>
-      <title>Input map without chunking</title>
-      <codeblock>input.ditamap:
-&lt;map>
+      <title>Root map and the topics that it references</title>
+      <p>Consider the following DITA map:</p>
+      <codeblock>&lt;map>
   &lt;title>Lesson plan&lt;/title>
   &lt;topicref href="goals.dita">
     &lt;!-- more goal topics -->
@@ -22,44 +23,43 @@
     &lt;!-- more tasks in the next lesson -->
   &lt;/topicref>
   &lt;!-- More branches -->
-&lt;/map>
-
-firstLesson.dita:
+&lt;/map></codeblock>
+    </fig>
+    <p>The following code samples show the content of
+        <filepath>firstLesson.dita</filepath> and
+        <filepath>nextLesson.dita</filepath>:</p>
+    <codeblock><b>&lt;!-- firstLesson.dita --></b>
 &lt;task id="firstLesson">
   &lt;title>Starting to work with scissors&lt;/title>
   &lt;shortdesc>This lesson will teach ...&lt;/shortdesc>
   &lt;taskbody>&lt;!-- ... -->&lt;/taskbody>
-&lt;/task>
-
-nextLesson.dita:
+&lt;/task></codeblock>
+    <codeblock><b>&lt;!-- nextLesson.dita --></b>
 &lt;task id="nextLesson">
   &lt;title>Advanced cutting&lt;/title>
   &lt;shortdesc>This lesson will introduce <ph rev="review-h">complex</ph> shapes...&lt;/shortdesc>
   &lt;taskbody>&lt;!-- ... -->&lt;/taskbody>
 &lt;/task></codeblock>
-    </fig>
-<p>For many systems or output formats, each document in the map is rendered as an independent
-      document. For example, rendering this map as HTML5 might result in
-        <filepath>goals.html</filepath>, <filepath>firstLesson.html</filepath>, and
-        <filepath>nextLesson.html</filepath>, while child documents within each branch would each
-      result in their own HTML files.</p>
-<p>When output requirements demand that portions of the map be combined
-      into a single document, adding <codeph>chunk="combine"</codeph> to a
-      branch of the map instructs a processor to render one document that
-      combines all topics in that branch. This is useful when the topics
-      need to be rendered independently for other contexts,or when the way
-      topics are contributed makes creating a single source document
-      impossible.</p>
-<p>In the following sample, the original map is updated with
-        <xmlatt>chunk</xmlatt> attributes to indicate that each lesson
-      branch is rendered as a single result document<ph rev="review-h">.
-        Topics</ph> in the first branch with
-        <filepath>goals.dita</filepath> are not affected as a result of the
-        <xmlatt>chunk</xmlatt> attribute.</p>
+<p>For many systems or output formats, each document in the map is rendered
+      as an independent document. For example, rendering this map as HTML5
+      might result in <filepath>goals.html</filepath>,
+        <filepath>firstLesson.html</filepath>, and
+        <filepath>nextLesson.html</filepath>, while the child documents
+      within each branch would each result in their own HTML files.</p>
+    <!--<p>This is useful when the topics need to be rendered independently for other contexts,or when the way topics are contributed makes creating a single source document impossible.</p>-->
 <fig>
-      <title>Map with chunking specified for one branch</title>
-      <codeblock>input.ditamap:
-&lt;map>
+      <title>Root map with chunking specified for certain branches</title>
+      <p>When output requirements demand that portions of the map be
+        combined into a single document, specifying
+          <codeph>chunk="combine"</codeph> on a map branch instructs a
+        processor to render one document that combines all topics in that
+        branch.</p>
+      <p>In the following code sample, <codeph>chunk="combine"</codeph> is
+        specified on the lesson branches. This indicates that each lesson
+        branch should rendered as a single result document<ph
+          rev="review-h">. Topics</ph> in the first branch with
+          <filepath>goals.dita</filepath> will not be affected.</p>
+      <codeblock>&lt;map>
   &lt;title>Lesson plan&lt;/title>
   &lt;topicref href="goals.dita">
     &lt;!-- more goal topics -->
@@ -73,13 +73,12 @@ nextLesson.dita:
   &lt;!-- More branches -->
 &lt;/map></codeblock>
     </fig>
-<p>The result of evaluating this <xmlatt>chunk</xmlatt> attribute is equivalent to the following map
-      and topic documents. Content from each branch where <xmlatt>chunk</xmlatt> attribute is set is
-      combined into a single result document, with an order and topic nesting structure that matches
-      the original map hierarchy. Content from outside of those branches remains unchanged.</p>
 <fig>
-      <title>Equivalent source content</title>
-      <codeblock>input.ditamap:
+      <title>Equivalent content of source documents after
+        evaluation</title>
+      <p>The result of evaluating this <xmlatt>chunk</xmlatt> attribute is
+        equivalent to the following map and topic documents:</p>
+      <codeblock><b>&lt;!-- Root map --></b>
 &lt;map>
   &lt;title>Lesson plan&lt;/title>
   &lt;topicref href="goals.dita">
@@ -88,23 +87,26 @@ nextLesson.dita:
   &lt;topicref href="firstLesson.dita"/>
   &lt;topicref href="nextLesson.dita"/>
   &lt;!-- More branches -->
-&lt;/map>
-
-firstLesson.dita:
+&lt;/map></codeblock>
+      <codeblock><b>&lt;!-- firstLesson.dita --></b>
 &lt;task id="firstLesson">
   &lt;title>Starting to work with scissors&lt;/title>
   &lt;shortdesc>This lesson will teach ...&lt;/shortdesc>
   &lt;taskbody>&lt;!-- ... -->&lt;/taskbody>
   <b>&lt;!-- more tasks in the first lesson --></b>
-&lt;/task>
-
-nextLesson.dita:
+&lt;/task></codeblock>
+      <codeblock><b>&lt;!-- nextLesson.dita --></b>
 &lt;task id="nextLesson">
   &lt;title>Advanced cutting&lt;/title>
   &lt;shortdesc>This lesson will introduce <ph rev="review-h">complex</ph> shapes...&lt;/shortdesc>
   &lt;taskbody>&lt;!-- ... -->&lt;/taskbody>
   <b>&lt;!-- more tasks in the next lesson --></b>
 &lt;/task></codeblock>
+      <p>Content from each branch where <xmlatt>chunk</xmlatt> attribute is
+        specified is combined into a single result document, with an order
+        and topic nesting structure that matches the original map
+        hierarchy. Content from outside of those branches remains
+        unchanged.</p>
     </fig>
 </conbody>
 </concept>
