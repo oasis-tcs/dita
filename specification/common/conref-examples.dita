@@ -13,14 +13,19 @@ the <xmlelement>ditavalref</xmlelement> element.</p>
     <example id="example-subjectScheme" otherprops="examples">
       <title>Example</title>
       <p>The following code sample shows a subject scheme map:</p>
-      <codeblock id="codesample">&lt;subjectScheme>
-  &lt;!-- Pull in a scheme that defines unix OS values -->
-  &lt;schemeref href="unixOS.ditamap"/>
-  &lt;!-- Define new OS values that are merged with those in the unixOS scheme -->
+      <codeblock id="codesample" rev="review-d">&lt;subjectScheme>
+  &lt;!-- Pull in a scheme that defines values for @deliveryTarget -->
+  &lt;schemeref href="deliveryTarget.ditamap"/>
+  &lt;!-- Define values for Windows and Linux -->
   &lt;subjectdef keys="operating-systems">
-    &lt;subjectdef keys="linux"/>
-    &lt;subjectdef keys="windows"/>
-    &lt;subjectdef keys="zOS"/>
+    &lt;subjectdef keys="windows">
+      &lt;subjectdef keys="windows-10"/>
+      &lt;subjectdef keys="windows-11"/>
+    &lt;/subjectdef>
+    &lt;subjectdef keys="linux">
+      &lt;subjectdef keys="redhat"/>
+      &lt;subjectdef keys="suse"/>
+    &lt;/subjectdef>
   &lt;/subjectdef>
   &lt;!-- Define application values -->
   &lt;subjectdef keys="applications">
@@ -28,13 +33,12 @@ the <xmlelement>ditavalref</xmlelement> element.</p>
     &lt;subjectdef keys="my-sql"      href="subject/sql.dita"/>
   &lt;/subjectdef>
 
-  &lt;!-- Define an enumeration of the platform attribute, equal to
-       each value in the OS subject. This makes the following values
-       valid for the platform attribute: linux, windows, zOS<ph rev="review-e">,
-       and the UNIX operating systems defined in unixOS.ditamap</ph> -->
+  &lt;!-- Define an enumeration of the platform attribute. This makes the
+       following values valuid for platform: windows, windows-10, windows-11,
+       linux, redhat, and suse. -->
   &lt;enumerationdef>
     &lt;attributedef name="platform"/>
-    &lt;subjectdef keyref=<ph rev="review-e">"operating-systems"</ph>/>
+    &lt;subjectdef keyref="operating-systems"/>
   &lt;/enumerationdef>
   &lt;!-- Define an enumeration of the otherprops attribute, equal to
        each value in the application subjects.
