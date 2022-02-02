@@ -6,11 +6,10 @@
     that results from splitting <ph rev="review-h">documents that
       contain</ph> nested topics.</shortdesc>
 <conbody>
-<p>Consider the following source map <filepath>input.ditamap</filepath>:</p>
 <fig id="fig_ol2_m4j_1gb">
-<title>Input map without chunking</title>
-<codeblock>input.ditamap:
-&lt;map chunk="split">
+<title>Source DITA map</title>
+      <p>Consider the following DITA map:</p>
+<codeblock>&lt;map <b>chunk="split"</b>>
   &lt;title>Generation example&lt;/title>
   &lt;topicref href="ancestor.dita">
     &lt;topicref href="middle.dita">
@@ -20,13 +19,16 @@
 &lt;/map>
 </codeblock>
 </fig>
-<p>In this case, the <xmlatt>chunk</xmlatt> attribute instructs a processor to render every topic in
-each of the three documents as its own document, while preserving any hierarchy from those
-documents. Now consider the following three topic documents, each of which includes nested or peer
-topics:</p>
+<p>In this case, the <xmlatt>chunk</xmlatt> attribute instructs a processor
+      to render every topic in each of the three documents as its own
+      document, while preserving any hierarchy from those documents.</p>
 <fig id="fig_pl2_m4j_1gb">
-<title>Source documents with nested structures</title>
-<codeblock>ancestor.dita:
+<title>Source  topic documents with nested structures</title>
+      <p>Now consider the following three topic documents, each of which
+        includes nested or peer topics:</p>
+      <p>
+        <fig>
+          <codeblock><b>&lt;!-- ancestor.dita --></b>
 &lt;dita>
   &lt;topic id="ancestor-first">
     &lt;title>First major topic in ancestor composite doc&lt;/title>
@@ -35,48 +37,57 @@ topics:</p>
   &lt;!-- more topics in ancestor composite doc -->
   &lt;topic id="ancestor-last">
     &lt;title>Last major topic in ancestor composite doc&lt;/title>
-    &lt;!-- ...topic content... -->
+    &lt;!-- ... Topic content ... -->
     &lt;topic id="ancestor-last-child">
       &lt;title>Child of last major topic in ancestor composite doc&lt;/title>
-      &lt;!-- ...topic content... -->
+      &lt;!-- ... Topic content ... -->
     &lt;/topic>
   &lt;/topic>
-&lt;/dita>
-
-middle.dita:
+&lt;/dita></codeblock>
+        </fig>
+        <codeblock><b>&lt;!-- middle.dita --></b>
 &lt;topic id="middle-root">
   &lt;title>Root topic in middle doc&lt;/title>
   &lt;body>&lt;!-- ... -->&lt;/body>
   &lt;topic id="middle-child">
     &lt;title>Child of root topic in middle doc&lt;/title>
-    &lt;!-- body content -->
+    &lt;!-- ... Body content, maybe more children topics -->
   &lt;/topic>
-&lt;/topic>
-
-child.dita:
+&lt;/topic></codeblock>
+        <codeblock><b>&lt;!-- child.dita --></b>
 &lt;topic id="child">
   &lt;title>Small child topic&lt;/title>
-  &lt;!-- small child topic content -->
+  &lt;!-- ... Topic content ... -->
 &lt;/topic></codeblock>
+      </p>
 </fig>
-<p>When <codeph>chunk="split"</codeph> is evaluated, both <filepath>ancestor.dita</filepath> and
-<filepath>middle.dita</filepath> are split and treated as multiple DITA topic documents.
-<filepath>child.dita</filepath> is only a single topic and has nothing to split.</p>
-<ul id="ul_n3y_wng_thb">
-<li><filepath>ancestor.dita</filepath> has a root <xmlelement>dita</xmlelement> element, so it
-results in multiple peer topic references (or branches) in the map. Topic references nested within
-the original reference to <filepath>ancestor.dita</filepath> are now located within the reference to
-"ancestor-last" (the last topic child of the <xmlelement>dita</xmlelement> element).</li>
-<li><filepath>middle.dita</filepath> has nested topics, so it results in
-        its own new hierarchy within the map. Content from the nested topic
-        reference is now located within the reference to the root topic
-        from <filepath>middle.dita</filepath>, but after any references to
-        child topics.</li>
-</ul>
+    <fig>
+      <title>Evaluating <codeph>chunk="split"</codeph></title>
+      <p>When <codeph>chunk="split"</codeph> is evaluated, both
+          <filepath>ancestor.dita</filepath> and
+          <filepath>middle.dita</filepath> are split and treated as
+        multiple topic documents. <filepath>child.dita</filepath> is only a
+        single topic and has nothing to split.</p>
+      <ul id="ul_n3y_wng_thb">
+        <li><filepath>ancestor.dita</filepath> has a root
+            <xmlelement>dita</xmlelement> element, so it results in
+          multiple peer topic references (or branches) in the map. Topic
+          references that were nested within the original reference
+            to<filepath>ancestor.dita</filepath> are now located within the
+          reference to "ancestor-last" (the last topic child of the
+            <xmlelement>dita</xmlelement> element).</li>
+        <li><filepath>middle.dita</filepath> has nested topics, so it
+          results in its own new hierarchy within the map. Content from the
+          nested topic reference is now located within the reference to the
+          root topic from <filepath>middle.dita</filepath>, but after any
+          references to child topics.</li>
+      </ul>
+    </fig>
 <fig id="fig_ql2_m4j_1gb">
-<title>Equivalent source content </title>
-<codeblock>input.ditamap:
-&lt;map chunk="split">
+<title>Equivalent content of source documents after evaluation</title>
+      <p>The result of evaluating the <xmlatt>chunk</xmlatt> attribute is
+        equivalent to the following DITA map:</p>
+<codeblock>&lt;map chunk="split">
   &lt;title>Generation example&lt;/title>
   &lt;topicref href="ancestor-first.dita"/>
   &lt;!-- more topics in ancestor composite doc -->
