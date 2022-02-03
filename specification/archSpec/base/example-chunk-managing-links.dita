@@ -48,7 +48,7 @@
 &lt;/topic></codeblock>
       <codeblock><b>&lt;!-- combinedChild.dita --></b>
 &lt;topic id="combinedChildRoot">
-  &lt;title>Topic in child document, combined with parent&lt;/title>
+  &lt;title><ph rev="review-h">Topic in map branch, will be combined with parent topicref</ph>&lt;/title>
   &lt;!-- ... -->
 &lt;/topic></codeblock>
     </fig>
@@ -64,15 +64,16 @@
       <ul id="ul_q3y_wng_thb">
         <li><filepath>splitThis.dita</filepath><ph rev="review-h">, which
             contains two topics,</ph> is rendered as two documents. For
-          this example, assume the processor creates two documents with
-          names that are based on the topic IDs:
+          this example, assume <ph rev="review-h">the</ph> processor
+          creates two documents with names <ph rev="review-h">that are
+            based on the topic IDs</ph>:
             <filepath>splitThisRoot.dita</filepath> and
             <filepath>splitThisChild.dita</filepath>.</li>
         <li>The <ph rev="review-h">map </ph>branch with
             <filepath>combineThis.dita</filepath><ph rev="review-h">, which
             contains two topic references,</ph> is rendered as one
           document: <filepath>combineThis.dita</filepath>. <ph
-            rev="review-h">The document contains the content of both
+            rev="review-h">The document contains the merged content of both
               <filepath>combineThis.dita</filepath> and
               <filepath>combinedChild.dita</filepath>.</ph></li>
       </ul>
@@ -102,10 +103,10 @@
     <fig>
       <title rev="review-h">Scenario in which the topic documents are
         rendered more than once</title>
-      <p>Now assume that <ph rev="review-h">the above map above is used as
-          a submap in another context, where the root map also references
-          the three topic documents.</ph> As a result, each of the three
-        topic documents (<filepath>splitThis.dita</filepath>,
+      <p>Now assume that <ph rev="review-h">the above map is used as a
+          submap in another context, where the root map also references the
+          three topic documents.</ph> As a result, each of the three topic
+        documents (<filepath>splitThis.dita</filepath>,
           <filepath>combineThis.dita</filepath>, and
           <filepath>combinedChild.dita</filepath>) are rendered more than
         once.</p>
@@ -115,8 +116,9 @@
       <ul id="ul_hd5_hd1_rhb">
         <li>The original source document
             <filepath>splitThis.dita</filepath> is rendered twice. Based on
-          the map above, assume a processor creates two documents with
-          names taken from the topic ID, so that topic becomes
+          the map above, assume <ph rev="review-h">the</ph> processor
+          creates two documents with names <ph rev="review-h">that are
+            based on the topic IDs</ph>, so that topic becomes
             <filepath>splitThisRoot.dita</filepath> and
             <filepath>splitThisChild.dita</filepath>. At the same time,
             <filepath>splitThis.dita</filepath> is rendered <i>in another
@@ -131,7 +133,7 @@
             <filepath>combinThis-2.dita</filepath>, while the documents
             <filepath>combineThis.dita</filepath> and
             <filepath>combinedChild.dita</filepath> retain their names in
-          their other context.</li>
+          the other context.</li>
       </ul>
       <p rev="review-h">In this scenario, the links to the topic documents
         are now problematic:</p>
