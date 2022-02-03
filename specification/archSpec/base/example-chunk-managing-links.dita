@@ -2,143 +2,196 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="chunklinking" xml:lang="en">
 <title>Example: Managing links when chunking</title>
-<shortdesc>Link management with <xmlatt>chunk</xmlatt> is often
-      straightforward<ph rev="review-h">. In</ph> most cases where
-    URI-based linking is ambiguous, using indirect links and
-      <xmlatt>keyref</xmlatt> will give the correct result.</shortdesc>
+  <abstract>
+    <!--<shortdesc>Link management with <xmlatt>chunk</xmlatt> is often straightforward<ph rev="review-h">. In</ph> most cases where URI-based linking is ambiguous, using indirect links and <xmlatt>keyref</xmlatt> will give the correct result.<draft-comment author="Kristen J Eberlein" time="03 February 2022"><p>This short description needs to be recrafted to more accurately convey the sense of what the topic covers. We accepted a DITAweb comment to that effect when this topic was reviewed.</p></draft-comment></shortdesc>-->
+    <shortdesc rev="review-h">If a topic is referenced more than once and
+      one of those instances involves chunking, links to that topic might
+      be ambiguous. In most of such cases, using key references to keys
+      that are defined directly on the chunked instance of the topic will
+      give the correct result.</shortdesc>
+  </abstract>
 <conbody>
-<example>
-<title>Input topics for following examples</title>
-<p>The following map and topics are used for all examples in this topic.</p>
-<fig id="fig_ys1_hrj_1gb">
-<title><filepath>input.ditamap</filepath></title>
-<codeblock>&lt;map>
-  &lt;title>Map with chunks and links&lt;/title>
-
+    <fig>
+      <title>Source documents</title>
+      <p>Consider the following DITA map, which is used for all examples in
+        this topic:</p>
+      <codeblock>&lt;map>
+  &lt;title>Map with chunks and <ph rev="review-h">key definitions</ph>&lt;/title>
+  &lt;!-- Key definitions -->
   &lt;keydef href="splitThis.dita" keys="splitThisKey"/>
   &lt;keydef href="splitThis.dita#splitThisChild" keys="splitThisChildKey"/>
-
-  &lt;topicref href="splitThis.dita" chunk="split" keys="explicitSplitKey"/>
-  &lt;topicref href="combineThis.dita" keys="combineThisKey">
+  &lt;!-- Navigational structure -->
+  &lt;topicref href="splitThis.dita" <b>chunk="split"</b> keys="explicitSplitKey"/>
+  &lt;topicref href="combineThis.dita" <b rev="review-h">chunk="combine"</b> keys="combineThisKey">
     &lt;topicref href="combinedChild.dita" keys="combinedChildKey"/>
   &lt;/topicref>
 &lt;/map>
 </codeblock>
-</fig>
-<fig id="fig_xcv_hrj_1gb">
-<title>Topics used by <filepath>input.ditamap</filepath></title>
-<codeblock>splitThis.dita:
+      <p>The DITA map references the following topics:</p>
+      <codeblock><b>&lt;!-- splitThis.dita --></b>
 &lt;topic id="splitThisRoot">
-  &lt;title>Root topic in split document&lt;/title>
+  &lt;title>Root topic&lt;/title>
   &lt;!-- ... -->
   &lt;topic id="splitThisChild">
-    &lt;title>Child topic in split document&lt;/title>
+    &lt;title>Child topic&lt;/title>
     &lt;!-- ... -->
   &lt;/topic>
-&lt;/topic>
-
-combineThis.dita:
+&lt;/topic></codeblock>
+      <codeblock><b>&lt;!-- combineThis.dita --></b>
 &lt;topic id="combineThisRoot">
-  &lt;title>Root topic in combined document&lt;/title>
+  &lt;title>Root topic&lt;/title>
   &lt;!-- ... -->
   &lt;topic id="combineThisChild">
-    &lt;title>Child topic in combined document&lt;/title>
+    &lt;title>Child topic&lt;/title>
     &lt;!-- ... -->
   &lt;/topic>
-&lt;/topic>
-
-combinedChild.dita:
+&lt;/topic></codeblock>
+      <codeblock><b>&lt;!-- combinedChild.dita --></b>
 &lt;topic id="combinedChildRoot">
   &lt;title>Topic in child document, combined with parent&lt;/title>
   &lt;!-- ... -->
-&lt;/topic>
-
-</codeblock></fig>
-</example>
-<example>
-<title>Topics that are rendered only once when publishing</title>
-<p>Assume that the map above is a root map or is used by another map <ph
-          rev="review-h">that</ph> does not otherwise render the three
-        topic documents. In that case, the following is true:<ul
-          id="ul_q3y_wng_thb">
-          <li><filepath>splitThis.dita</filepath> is rendered as two
-            documents. For this example, assume a processor creates two
-            documents with names taken from the topic ID, so that topic
-            becomes <filepath>splitThisRoot.dita</filepath> and
-              <filepath>splitThisChild.dita</filepath>.</li>
-          <li>The branch with <filepath>combineThis.dita</filepath> is
-            rendered as one document together with the content of
-              <filepath>combinedChild.dita</filepath>. For this example,
-            assume a processor merges the child topic into the file
-              <filepath>combineThis.dita</filepath>.</li>
-          <li>All links using <codeph>href="splitThis.dita"</codeph>,
-              <codeph>keyref="splitThisKey"</codeph>, or
-              <codeph>keyref="explicitSplitKey"</codeph> will resolve to
-              <filepath>splitThisRoot.dita</filepath> (the only rendered
-            instance of that topic).</li>
-          <li>All links using
-              <codeph>href="splitThis.dita#splitThisChild"</codeph> or
-              <codeph>keyref="splitThisChildKey"</codeph> will resolve to
-              <filepath>splitThisChild.dita</filepath> (the only rendered
-            instance of that topic).</li>
-          <li>All links using <codeph>href="combinedChild.dita"</codeph> or
-              <codeph>keyref="combinedChildKey"</codeph> will resolve to
-            that topic within <filepath>combineThis.dita</filepath> (the
-            only rendered instance of that topic).</li>
-        </ul></p>
-</example>
-<example>
-<title>Topics that are rendered twice when publishing</title>
-<p>Now assume that the map above is reused in another context that also renders all three topic
-documents as originally authored. As a result, each of the three documents in this map
-(<filepath>splitThis.dita</filepath>, <filepath>combineThis.dita</filepath>, and
-<filepath>combinedChild.dita</filepath>) are rendered more than once.</p>
-<p>When each of these documents is rendered twice, the following is true:<ul id="ul_hd5_hd1_rhb">
-<li>The original source document <filepath>splitThis.dita</filepath> is rendered twice. Based on the
-map above, assume a processor creates two documents with names taken from the topic ID, so that
-topic becomes <filepath>splitThisRoot.dita</filepath> and <filepath>splitThisChild.dita</filepath>.
-At the same time, <filepath>splitThis.dita</filepath> is rendered <i>in another context</i> as a
-single document, with a different name.</li>
-<li>Based on the map above, the branch that starts with the original source document
-<filepath>combineThis.dita</filepath> is rendered as one document combined with the content of
-<filepath>combinedChild.dita</filepath>. At the same time, those two documents are rendered in
-another context as individual documents. For this example, assume a processor generates the combined
-document using the generated name <filepath>combinThis-2.dita</filepath>, while the documents
-<filepath>combineThis.dita</filepath> and <filepath>combinedChild.dita</filepath> retain their names
-in their other context.</li>
-<li>All links in this map using the direct URI references <codeph>href="splitThis.dita"</codeph>,
-<codeph>href="splitThis.dita#splitThisChild"</codeph>, <codeph>href="combineThis.dita"</codeph>, or
-<codeph>href="combinedChild.dita"</codeph> are now ambiguous. They could go to the chunked instance
-from this map, or to the individual topics in the other context. Implementations will have to guess
-which topic to target: the split or combined instances from this map or versions in the alternate
-context from the root map.</li>
-<li>All links using indirect key-based references <codeph>keyref="splitThisKey"</codeph> or
-<codeph>keyref="splitThisChildKey"</codeph> are also ambiguous, because the key definitions are not
-associated explicitly with the chunked or not-chunked instance. If key scopes are used, applications
-might more reliably guess that the intended target is the split copy in this map, but this is not
-guaranteed.</li>
-<li>All links using <codeph>keyref="explicitSplitKey"</codeph>,
-<codeph>keyref="combinedThisKey"</codeph>, or <codeph>keyref="combinedChildKey"</codeph> are
-unambiguous; they can only resolve to the chunked instance from this submap, because they are
-defined directly within the chunk context.</li>
-<li>There is no way to unambiguously link to the child document that will
-            result from splitting <filepath>splitThis.dita</filepath>. This
-            is because it is only possible for the element using
-              <xmlatt>chunk</xmlatt> to associate a key definition with the
-            first or root topic in the document. While other key definition
-            elements can be used to associate keys with other topics in the
-            same document, that can only be done outside of the navigation
-            context that uses <xmlatt>chunk</xmlatt><ph rev="review-h">.
-              As</ph> a result, a processor cannot guarantee whether the
-            intended link target is the split topic from the
-              <xmlatt>chunk</xmlatt> context, or a use of the same topic in
-            the second context. It is possible for an implementation to
-            define its own way to resolve this ambiguity<ph rev="review-h"
-              >. However</ph>, if a situation requires both multiple
-            instances of split topics and unambiguous cross-implementation
-            links to those split topics, alternate reuse mechanisms need to
-            be considered.</li>
-</ul></p>
-</example>
+&lt;/topic></codeblock>
+    </fig>
+    <fig>
+      <title rev="review-h">Scenario in which the topic documents are
+        rendered only once</title>
+      <!--<p>Assume that the map above is a root map or is used by another map <ph rev="review-h">that</ph> does not otherwise render the three topic documents.</p>-->
+      <p>Assume that the above map is a root map or a <ph rev="review-h"
+          >submap that is referenced in a context that does not include any
+          references to the above topic documents.</ph></p>
+      <p rev="review-h">The topic documents that are referenced in the
+        above map are rendered in the following ways:</p>
+      <ul id="ul_q3y_wng_thb">
+        <li><filepath>splitThis.dita</filepath><ph rev="review-h">, which
+            contains two topics,</ph> is rendered as two documents. For
+          this example, assume the processor creates two documents with
+          names that are based on the topic IDs:
+            <filepath>splitThisRoot.dita</filepath> and
+            <filepath>splitThisChild.dita</filepath>.</li>
+        <li>The <ph rev="review-h">map </ph>branch with
+            <filepath>combineThis.dita</filepath><ph rev="review-h">, which
+            contains two topic references,</ph> is rendered as one
+          document: <filepath>combineThis.dita</filepath>. <ph
+            rev="review-h">The document contains the content of both
+              <filepath>combineThis.dita</filepath> and
+              <filepath>combinedChild.dita</filepath>.</ph></li>
+      </ul>
+      <p rev="review-h">Links are resolved in the following ways. Note that
+        the document names are those listed in the above explanation of how
+        the topic documents are rendered in this scenario.</p>
+      <ul>
+        <li>All links <ph rev="review-h">that specify</ph>
+          <codeph>href="splitThis.dita"</codeph>,
+            <codeph>keyref="splitThisKey"</codeph>, or
+            <codeph>keyref="explicitSplitKey"</codeph> resolve to
+            <filepath>splitThisRoot.dita</filepath><ph rev="review-h">,
+            which is </ph>the only rendered instance of the topic.</li>
+        <li>All links <ph rev="review-h">that specify</ph>
+          <codeph>href="splitThis.dita#splitThisChild"</codeph> or
+            <codeph>keyref="splitThisChildKey"</codeph> resolve to
+            <filepath>splitThisChild.dita</filepath><ph rev="review-h">,
+            which is </ph>the only rendered instance of the topic.</li>
+        <li>All links <ph rev="review-h">that specify</ph>
+          <codeph>href="combinedChild.dita"</codeph> or
+            <codeph>keyref="combinedChildKey"</codeph> resolve to that
+          topic within <filepath>combineThis.dita</filepath><ph
+            rev="review-h">, which is </ph>the only rendered instance of
+          the topic.</li>
+      </ul>
+    </fig>
+    <fig>
+      <title rev="review-h">Scenario in which the topic documents are
+        rendered more than once</title>
+      <p>Now assume that <ph rev="review-h">the above map above is used as
+          a submap in another context, where the root map also references
+          the three topic documents.</ph> As a result, each of the three
+        topic documents (<filepath>splitThis.dita</filepath>,
+          <filepath>combineThis.dita</filepath>, and
+          <filepath>combinedChild.dita</filepath>) are rendered more than
+        once.</p>
+      <p rev="review-h">In this scenario, the topic documents
+        <!--that are referenced in the DITA map -->are rendered in the
+        following ways:</p>
+      <ul id="ul_hd5_hd1_rhb">
+        <li>The original source document
+            <filepath>splitThis.dita</filepath> is rendered twice. Based on
+          the map above, assume a processor creates two documents with
+          names taken from the topic ID, so that topic becomes
+            <filepath>splitThisRoot.dita</filepath> and
+            <filepath>splitThisChild.dita</filepath>. At the same time,
+            <filepath>splitThis.dita</filepath> is rendered <i>in another
+            context</i> as a single document, with a different name.</li>
+        <li>Based on the map above, the branch that starts with the
+          original source document <filepath>combineThis.dita</filepath> is
+          rendered as one document combined with the content of
+            <filepath>combinedChild.dita</filepath>. At the same time,
+          those two documents are rendered in another context as individual
+          documents. For this example, assume a processor generates the
+          combined document using the generated name
+            <filepath>combinThis-2.dita</filepath>, while the documents
+            <filepath>combineThis.dita</filepath> and
+            <filepath>combinedChild.dita</filepath> retain their names in
+          their other context.</li>
+      </ul>
+      <p rev="review-h">In this scenario, the links to the topic documents
+        are now problematic:</p>
+      <ul>
+        <li>All links in this map <ph rev="review-h">that use</ph> the
+          direct URI references <codeph>href="splitThis.dita"</codeph>,
+            <codeph>href="splitThis.dita#splitThisChild"</codeph>,
+            <codeph>href="combineThis.dita"</codeph>, or
+            <codeph>href="combinedChild.dita"</codeph> are  ambiguous. They
+          could <ph rev="review-h">resolve to either</ph> the chunked
+          instance <ph rev="review-h">of the topic documents</ph> or to the
+          individual topics in the other context. Implementations will have
+          to guess which topic to target: the split or combined instances
+            <ph rev="review-h">of the topic documents</ph> or the versions
+          in the alternate context from the root map.</li>
+        <li>All links <ph rev="review-h">that specify</ph>
+          <codeph>keyref="splitThisKey"</codeph> or
+            <codeph>keyref="splitThisChildKey"</codeph> are also ambiguous.
+          The key definitions are not associated explicitly with the
+          chunked or not-chunked instance. If key scopes are used,
+          applications might more reliably guess that the intended target
+          is the split copy in this map, but this is not guaranteed.</li>
+      </ul>
+      <p>All links <ph rev="review-h">that specify</ph>
+        <codeph>keyref="explicitSplitKey"</codeph>,
+          <codeph>keyref="combinedThisKey"</codeph>, or
+          <codeph>keyref="combinedChildKey"</codeph> are unambiguous. These
+        links can only resolve to the chunked instance <ph rev="review-h"
+          >of the topic documents</ph>, because <ph rev="review-h">the key
+          definitions</ph> are defined directly within the chunked
+        context.</p>
+      <p>There is no way to unambiguously link to the child document that
+        will result from splitting <filepath>splitThis.dita</filepath>.
+        This is because a <xmlelement>topicref</xmlelement> element that
+        specifies <xmlatt>chunk</xmlatt> can only associate a key
+        definition with the first or root topic in the document. While
+        other key definition elements can be used to associate keys with
+        other topics in the same document, that can only be done outside of
+        the navigation context that uses <xmlatt>chunk</xmlatt><ph
+          rev="review-h">. As</ph> a result, a processor cannot guarantee
+        whether the intended link target is the split topic from the
+        chunked context or a use of the same topic in the second context. </p>
+      <p>It is possible for an implementation to define its own way to
+        resolve this ambiguity. <ph rev="review-h">However</ph>, if a
+        situation requires both multiple instances of split topics and
+        unambiguous cross-implementation links to those split topics,
+        alternate reuse mechanisms need to be considered.</p>
+      <p>
+        <draft-comment author="Kristen J Eberlein" time="03 February 2022">
+          <p>What do we mean by <term>cross-implementation links</term>?
+            Can we rephrase this? Or simply remove the adjective
+            "cross-implementation"?</p>
+          <p>I think that the situation that we are targeting involves the following:<ul>
+              <li>Multiple navigational references to a topic, at least one
+                of which is chunked</li>
+              <li>A need to have unambiguous links to each instance of the
+                topic</li>
+            </ul></p>
+        </draft-comment>
+      </p>
+    </fig>
 </conbody>
 </concept>
