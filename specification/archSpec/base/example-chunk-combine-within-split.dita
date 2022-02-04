@@ -2,30 +2,58 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="chunkedge" xml:lang="en">
 <title>Example: Combining topics within a split context</title>
-<shortdesc>While <xmlatt>chunk</xmlatt> attributes are ignored when a "combine" action is already in
-effect, it is possible to use <codeph>chunk="combine"</codeph> when <codeph>split</codeph> is
-otherwise in effect.</shortdesc>
+<shortdesc>While <xmlatt>chunk</xmlatt> attributes are ignored when <ph
+      rev="review-h"><codeph>chunk="combine"</codeph></ph> is already in
+    effect, it is possible to use <codeph>chunk="combine"</codeph> when
+      <codeph>chunk="split"</codeph> is in effect.</shortdesc>
 <conbody>
-<p>Assume the following map, where <codeph>chunk="split"</codeph> on the root element means that all
-topic documents within this map structure are split by default, but a branch within the map sets
-<codeph>chunk="combine"</codeph>.</p>
 <fig id="fig_htr_jyd_1gb">
-<title>Map with default "split" action, that also uses "combine"</title>
+      <title rev="review-h">Source DITA map</title>
+      <!--<title>Map with default "split" action, that also uses "combine"</title>-->
+      <p>Consider the following DITA map, where
+          <codeph>chunk="split"</codeph>
+        <ph rev="review-h">is specified</ph> on the root element. <ph
+          rev="review-h">The effect of this operation</ph> is that all
+        topic documents within <ph rev="review-h">the</ph> map structure
+        are split by default. <ph rev="review-h">However, a map branch also
+          specifies <codeph>chunk="combine"</codeph>:</ph></p>
 <codeblock>&lt;map <b>chunk="split"</b>>
   &lt;title>Split most, but not one branch&lt;/title>
-  &lt;topicref href="splitme.dita">...&lt;/topicref>
-  &lt;topicref href="exception.dita" <b>chunk="combine"</b>>...&lt;/topicref>
-  &lt;topicref href="splitmetoo.dita">...&lt;/topicref>
-&lt;/topicref></codeblock>
+  &lt;topicref href="splitme.dita">
+    &lt;!-- More topic references -->
+  &lt;/topicref>
+  &lt;topicref href="exception.dita" <b>chunk="combine"</b>>
+    &lt;!-- More topic references -->
+  &lt;/topicref>
+  &lt;topicref href="splitmetoo.dita">
+    &lt;!-- More topic references -->
+  &lt;/topicref><ph rev="review-h">
+&lt;/map></ph></codeblock>
+      <p><ph rev="review-h">Assume also</ph> that no other
+          <xmlatt>chunk</xmlatt> attributes are specified in the map.</p>
 </fig>
-<p>Assume as well that no other <xmlatt>chunk</xmlatt> attributes are specified in this map. The
-following points are true when <xmlatt>chunk</xmlatt> is evaluated:<ol id="ol_p3y_wng_thb">
-<li>The document <filepath>splitme.dita</filepath> is treated as multiple split documents when it
-contains more than one topic. The same is true for any other document within that branch.</li>
-<li>The second branch (beginning with <filepath>exception.dita</filepath>) is treated as a single
-DITA document, combining all topic documents within that branch.</li>
-<li>The document <filepath>splitmetoo.dita</filepath> is treated as multiple split documents when it
-contains more than one topic. The same is true for any other document within that branch.</li>
-</ol></p>
+    <fig>
+      <title>Evaluation of <xmlatt>chunk</xmlatt> attributes in the
+        map</title>
+    </fig>
+    <p>The following points are true when <xmlatt>chunk</xmlatt> is
+      evaluated:</p>
+    <ul id="ol_p3y_wng_thb">
+      <li>The document <filepath>splitme.dita</filepath> is <ph
+          rev="review-h">rendered</ph> as <ph rev="review-h">one result
+          document for each topic.</ph>. The same is true for any other <ph
+          rev="review-h">topic</ph> document within the map branch.</li>
+      <li>The second <ph rev="review-h">map</ph> branch<ph rev="review-h">,
+          where the outermost <xmlelement>topicref</xmlelement> elements
+          references <filepath>exception.dita</filepath>, </ph>is <ph
+          rev="review-h">rendered</ph> as a single <ph rev="review-h"
+          >result</ph> document <ph rev="review-h">that combines all topic
+          documents</ph> within <ph rev="review-h">the map</ph>
+        branch.</li>
+      <li>The document <filepath>splitmetoo.dita</filepath> is <ph
+          rev="review-h">rendered</ph> as <ph rev="review-h">one result
+          document for each topic.</ph>. The same is true for any other <ph
+          rev="review-h">topic</ph>document within the map branch.</li>
+    </ul>
 </conbody>
 </concept>
