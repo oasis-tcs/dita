@@ -6,14 +6,16 @@
 <codeph>chunk="combine"</codeph> is already in effect or when <codeph>chunk="split"</codeph> is
 specified on a grouping element.</shortdesc>
 <conbody>
-<example>
-<title>Ignoring <xmlatt>chunk</xmlatt> when already combining topics</title>
-<p>In the following example, evaluating <xmlatt>chunk</xmlatt> results in one rendered document for
-each branch of the map. Any additional <xmlatt>chunk</xmlatt> values within that branch are ignored
-(including <xmlatt>chunk</xmlatt> values within any referenced maps).</p>
-<fig id="fig_o2w_1vd_1gb">
-<title>Chunk within a combined branch</title>
-<codeblock>&lt;map>
+    <fig>
+      <title>Ignoring <xmlatt>chunk</xmlatt> when already combining
+        topics</title>
+      <p>In the following <ph rev="review-h">code sample</ph>, evaluating
+          <codeph>chunk="combine"</codeph> results in one rendered document
+        for each <ph rev="review-h">map branch</ph>. Any additional
+          <xmlatt>chunk</xmlatt> values within <ph rev="review-h">those
+          branches</ph> are ignored, including any <xmlatt>chunk</xmlatt>
+        values within any referenced maps.</p>
+      <codeblock>&lt;map>
   &lt;title>Ignoring chunking when already combined&lt;/title>
 
   &lt;topicref href="branchOne.dita" <b>chunk="combine"</b>>
@@ -26,15 +28,13 @@ each branch of the map. Any additional <xmlatt>chunk</xmlatt> values within that
     &lt;topicref href="submap.ditamap" format="ditamap"/>
   &lt;/topicref>
 </codeblock>
-</fig>
-</example>
-<example>
-<title>Ignoring <xmlatt>chunk</xmlatt> on a grouping element</title>
-<p>In the following example, <codeph>chunk="split"</codeph> is specified on two grouping
-elements.</p>
-<fig id="fig_ixs_tvd_1gb">
-<title>Chunk within a combined branch</title>
-<codeblock>&lt;map>
+    </fig>
+    <fig>
+      <title>Ignoring <xmlatt>chunk</xmlatt> on a grouping element</title>
+      <p>In the following <ph rev="review-h">code sample</ph>,
+          <codeph>chunk="split"</codeph> is specified on two grouping
+        elements.</p>
+      <codeblock>&lt;map>
   &lt;title>Trying to "split" groups&lt;/title>
   &lt;topicgroup <b>chunk="split"</b>>
     &lt;topicref href="ingroup1.dita">&lt;!--...-->&lt;/topicref>
@@ -46,21 +46,24 @@ elements.</p>
     &lt;topicref href="inhead2.dita">&lt;!--...-->&lt;/topicref>
   &lt;/topichead>
 &lt;/map></codeblock>
-</fig>
-<ul id="ul_o3y_wng_thb">
-<li>The <xmlatt>chunk</xmlatt> attribute on the
-            <xmlelement>topicgroup</xmlelement> is ignored<ph
-            rev="review-h">. It</ph> does not cascade, and there is no
-          referenced topic, so it has no effect.</li>
-<li>In some cases, an implementation might treat the
+      <p rev="review-h">When the chunking is evaluated, the following
+        occurs:</p>
+      <ul id="ul_o3y_wng_thb">
+        <li>The <xmlatt>chunk</xmlatt> attribute on the
+            <xmlelement>topicgroup</xmlelement>
+          <ph rev="review-h">element</ph> is ignored<ph rev="review-h">.
+            The <xmlatt>chunk</xmlatt> attribute</ph> does not cascade and
+          there is no referenced topic, so it has no effect.</li>
+        <li>In some cases, an implementation might treat the
             <xmlelement>topichead</xmlelement> element as equivalent to a
           single title-only topic, while in other cases it might be
-          ignored. In either case the <xmlatt>chunk</xmlatt> value has no
+          ignored. In either case, the <xmlatt>chunk</xmlatt> value has no
           effect. If the <xmlelement>topichead</xmlelement> is treated as a
           title-only topic, it cannot be split further<ph rev="review-h">.
             If</ph> it is ignored for the current processing context, it is
-          no different than the <xmlelement>topicgroup</xmlelement>.</li>
-</ul>
-</example>
+          no different than the <xmlelement>topicgroup</xmlelement>
+          <ph rev="review-h">element</ph>.</li>
+      </ul>
+    </fig>
 </conbody>
 </concept>
