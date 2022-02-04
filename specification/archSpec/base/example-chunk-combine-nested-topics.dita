@@ -4,6 +4,17 @@
 <title>Example: Using <xmlatt>chunk</xmlatt> to combine nested documents</title>
 <shortdesc>Special attention is necessary when combining a nested map hierarchy that includes
 documents with their own nested topics.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>chunking<indexterm>examples<indexterm>combining nested
+              documents</indexterm></indexterm></indexterm>
+        <indexterm>examples<indexterm><indexterm>chunking<indexterm>combining
+                nested
+          documents</indexterm></indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
 <conbody>
 <fig>
       <title>Source DITA map</title>
@@ -19,7 +30,7 @@ documents with their own nested topics.</shortdesc>
 </codeblock>
     </fig>
 <p>In this case, the <xmlatt>chunk</xmlatt> attribute instructs a processor
-      to treat the three topics as a single combined DITA document, while
+      to treat the three topics as a single combined document, while
       preserving the original map hierarchy.</p>
 <fig>
       <title>Source documents with nested structures</title>
@@ -30,15 +41,15 @@ documents with their own nested topics.</shortdesc>
       <codeblock><b>&lt;!-- ancestor.dita --></b>
 &lt;dita>
   &lt;topic id="ancestor-first">
-    &lt;title>First major topic in ancestor composite doc&lt;/title>
-    &lt;!-- ...topic content... -->
+    &lt;title>First major topic in ancestor composite document&lt;/title>
+    &lt;!-- ... Topic content ... -->
   &lt;/topic>
-  &lt;!-- more topics in ancestor composite doc -->
+  &lt;!-- More topics in ancestor composite document -->
   &lt;topic id="ancestor-last">
     &lt;title>Last major topic in ancestor composite doc&lt;/title>
     &lt;!-- ... Topic content ... -->
     &lt;topic id="ancestor-last-child">
-      &lt;title>Child of last major topic in ancestor composite doc&lt;/title>
+      &lt;title>Child of last major topic in ancestor composite document&lt;/title>
       &lt;!-- ... Topic content ... -->
     &lt;/topic>
   &lt;/topic>
@@ -46,10 +57,12 @@ documents with their own nested topics.</shortdesc>
     </fig>
     <codeblock><b>&lt;!-- middle.dita --></b>
 &lt;topic id="middle-root">
-  &lt;title>Root topic in middle doc&lt;/title>
-  &lt;body>&lt;!-- ... -->&lt;/body>
+  &lt;title>Root topic in middle document&lt;/title>
+  &lt;body>
+    &lt;!-- ... -->
+  &lt;/body>
   &lt;topic id="middle-child">
-    &lt;title>Child of root topic in middle doc&lt;/title>
+    &lt;title>Child of root topic in middle document&lt;/title>
     &lt;!-- ... Body content, maybe more children topics -->
   &lt;/topic>
 &lt;/topic></codeblock>

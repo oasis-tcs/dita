@@ -3,13 +3,30 @@
 <concept id="examplegrouping">
 <title>Example: Using <xmlatt>chunk</xmlatt> to combine <ph rev="review-h"
       >groups</ph> of topics</title>
-<shortdesc>The <xmlatt>chunk</xmlatt> attribute can be used on grouping elements to combine multiple
-source documents into one result document.</shortdesc>
+<shortdesc>The <xmlatt>chunk</xmlatt> attribute can be used on grouping
+    elements to combine multiple source documents into one result
+      document.<draft-comment author="Kristen J Eberlein"
+      time="04 February 2022">
+      <p>Here's an alternate short description for us to consider:
+          <q>Xpecifying <codeph>chunk="combine</codeph> on a  grouping
+          element instructs the processor to combine multiple source
+          documents into a single result document.</q></p>
+    </draft-comment></shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>chunking<indexterm>examples<indexterm>combining groups
+              of documents</indexterm></indexterm></indexterm>
+        <indexterm>examples<indexterm><indexterm>chunking<indexterm>combining
+                groups of
+          documents</indexterm></indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
 <conbody>
     <fig>
-      <title>Root map with <xmlatt>chunk</xmlatt> specified on
-          <xmlelement>topicgroup</xmlelement> and
-          <xmlelement>topichead</xmlelement></title>
+      <title>Root map with <xmlatt>chunk</xmlatt> specified on <ph
+          rev="review-h">grouping elements</ph></title>
       <p>Consider the following DITA map, where <xmlatt>chunk</xmlatt> is
         specified on both <xmlelement>topicgroup</xmlelement> and
           <xmlelement>topichead</xmlelement> elements:</p>
@@ -33,20 +50,21 @@ source documents into one result document.</shortdesc>
       single DITA document that contains the content of both
         <filepath>ingroup1.dita</filepath> and
         <filepath>ingroup2.dita</filepath>.</p>
-    <p>The <xmlatt>chunk</xmlatt> attribute on
+    <p><ph rev="review-h">The result of evaluating the</ph>
+      <xmlatt>chunk</xmlatt> attribute on
         <xmlelement>topichead</xmlelement> also results in a single <ph
         rev="review-h">result</ph> document. In many applications, a
         <xmlelement>topichead</xmlelement> is equivalent to a single
       title-only topic<ph rev="review-h">. In</ph> that case, the chunked
       result is equivalent to a root topic with the title "Heading for a
-      branch", containing as child topics the content of both
-        <filepath>inhead1.dita</filepath> and
+      branch", <ph rev="review-h">that contains</ph> as child topics the
+      content of both <filepath>inhead1.dita</filepath> and
         <filepath>inhead2.dita</filepath>. If
         <xmlelement>topichead</xmlelement> is ignorable in the current
       processing context, the chunked result would be equivalent to
-      processing <xmlelement>topicgroup</xmlelement> (a single DITA
+      processing <xmlelement>topicgroup</xmlelement>: a single DITA
       document with the content of both <filepath>inhead1.dita</filepath>
-      and <filepath>inhead2.dita</filepath>).</p>
+      and <filepath>inhead2.dita</filepath>.</p>
 <fig>
       <title>Equivalent content of source documents after
         evaluation</title>
@@ -62,15 +80,15 @@ source documents into one result document.</shortdesc>
           chunkgroup-2.dita</filepath>:</p>
       <codeblock><b>&lt;!-- chunkgroup-1.dita --></b>
 &lt;dita>
-  &lt;!-- content of ingroup1.dita -->
-  &lt;!-- content of ingroup2.dita -->
+  &lt;!-- Content of ingroup1.dita -->
+  &lt;!-- Content of ingroup2.dita -->
 &lt;/dita></codeblock>
       <codeblock><b>&lt;!-- chunkgroup-2.dita --></b>
 &lt;dita>
   &lt;topic id="head">
     &lt;title>Heading for a branch&lt;/title>
-    &lt;!-- content of inhead1.dita -->
-    &lt;!-- content of inhead2.dita -->
+    &lt;!-- Content of inhead1.dita -->
+    &lt;!-- Content of inhead2.dita -->
   &lt;/topic>
 &lt;/dita>
 </codeblock>

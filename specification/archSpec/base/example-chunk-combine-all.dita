@@ -4,7 +4,26 @@
 <title>Example: Using <xmlatt>chunk</xmlatt> to combine all documents into one</title>
 <shortdesc>When a processor would typically render each topic document as
     an independent result document, the <xmlatt>chunk</xmlatt> attribute
-    can be used to render all content as a single document.</shortdesc>
+    can be used to render all content as a single document.<draft-comment
+      author="Kristen J Eberlein" time="04 February 2022">
+      <p>Here's an alternate short description for us to consider: <q>When
+          a processor would typically render each topic document as an
+          independent result document, specifying
+            <codeph>chunk="combine</codeph> on the root map element
+          instructs the processor to render all content as a single
+          document.</q></p>
+    </draft-comment></shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>chunking<indexterm>examples<indexterm>combining all
+              documents</indexterm></indexterm></indexterm>
+        <indexterm>examples<indexterm><indexterm>chunking<indexterm>combining
+                all
+          documents</indexterm></indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
 <conbody>
 <fig>
       <title>Root map and the topics that it references</title>
@@ -12,12 +31,12 @@
       <codeblock>&lt;map>
   &lt;title>Lesson plan&lt;/title>
   &lt;topicref href="background.dita">
-    &lt;!-- more background topics -->
+    &lt;!-- More <ph rev="review-h">topic references to</ph> background topics -->
   &lt;/topicref>
   &lt;topicref href="goals.dita">
-    &lt;!-- more goal topics -->
+    &lt;!-- More <ph rev="review-h">topic references to</ph> goal topics -->
   &lt;/topicref>
-  &lt;!-- more topics -->
+  &lt;!-- More <ph rev="review-h">topic references</ph> -->
 &lt;/map>
 </codeblock>
       <p>The following code samples show the content of
@@ -32,13 +51,14 @@
       <codeblock><b>&lt;!-- Content of goals.dita --></b>
 &lt;topic id="goals">
   &lt;title>Lesson <ph rev="review-h">goals</ph>&lt;/title>
-  &lt;shortdesc>After you complete the lesson, ...&lt;/shortdesc>
+  &lt;shortdesc>After you complete the lesson ...&lt;/shortdesc>
   &lt;body> &lt;!-- ... --> &lt;/body>
 &lt;/topic></codeblock>
     </fig>
-<p>For many systems or output formats, each document in the map is rendered
-      as an independent document. For example, rendering this map as HTML5
-      might result in <filepath>background.html</filepath> and
+<p>For many systems or output formats, each document in the map is <ph
+        rev="review-h">typically</ph> rendered as an independent document.
+      For example, rendering this map as HTML5 might result in
+        <filepath>background.html</filepath> and
         <filepath>goals.html</filepath>, in addition to other HTML5
       files.</p>
 <fig>
@@ -46,16 +66,16 @@
       <p>If the output requirements demand only a single result document,
         specifying <codeph>chunk="combine"</codeph> on the root map element
         instructs a processor to render a single document that combines all
-        topics.</p>
+        topics:</p>
       <codeblock>&lt;map <b>chunk="combine"</b>>
   &lt;title>Lesson plan&lt;/title>
   &lt;topicref href="background.dita">
-    &lt;!-- more background topics -->
+    &lt;!-- More <ph rev="review-h">topic references to</ph> background topics -->
   &lt;/topicref>
   &lt;topicref href="goals.dita">
-    &lt;!-- more goal topics -->
+    &lt;!-- More <ph rev="review-h">topic references to</ph> goal topics -->
   &lt;/topicref>
-  &lt;!-- more topics -->
+  &lt;!-- More <ph rev="review-h">topic references</ph> -->
 &lt;/map></codeblock>
     </fig>
 <fig id="fig_fkg_dhd_1gb">
@@ -73,21 +93,21 @@
     &lt;title>Prerequisite concepts&lt;/title>
     &lt;shortdesc>This information is necessary before starting&lt;/shortdesc>
     &lt;body> ... &lt;/body>
-      &lt;!-- more background topics -->
+      &lt;!-- More background topics -->
   &lt;/topic>
   <b>&lt;!-- original content of goals.dita --></b>
   &lt;topic id="goals">
     &lt;title>Lesson <ph rev="review-h">goals</ph>&lt;/title>
-    &lt;shortdesc>After you complete the lesson, ...&lt;/shortdesc>
+    &lt;shortdesc>After you complete the lesson ...&lt;/shortdesc>
     &lt;body> ... &lt;/body>
-    &lt;!-- more goal topics -->
+    &lt;!-- More goal topics -->
   &lt;/topic>
-  &lt;!-- more topics -->
+   &lt;!-- More topics -->
 &lt;/dita></codeblock>
       <p><ph rev="review-h">The</ph> content from all topics within the map
         is combined into a single result <ph rev="review-h">document</ph>,
-        with a topic order and topic nesting structure that match the
-        original map hierarchy:</p>
+        with a topic order and topic nesting structure that <ph
+          rev="review-h">matches</ph> the original map hierarchy:</p>
 </fig>
 </conbody>
 </concept>
