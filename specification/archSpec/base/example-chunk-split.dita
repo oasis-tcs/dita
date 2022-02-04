@@ -7,6 +7,16 @@
       </ph><codeph>chunk="split"</codeph>
     <ph rev="review-h">instructs</ph> processors to render them
     individually when possible.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>chunking<indexterm>examples<indexterm>splitting
+              documents</indexterm></indexterm></indexterm>
+        <indexterm>examples<indexterm><indexterm>chunking<indexterm>splitting
+                documents</indexterm></indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
 <conbody>
     <p rev="review-h">This topic contains two examples: Splitting a single
       topic document and splitting all topic documents.</p>
@@ -14,7 +24,7 @@
       <title>Splitting a single <ph rev="review-h">topic</ph>
         document</title>
       <p rev="review-h">This example covers the scenario of splitting a
-        single <xmlelement>topicref</xmlelement> element in a DITA map.</p>
+        single topic referenced in a DITA map.</p>
       <fig id="fig_gqp_nqd_1gb">
         <title rev="review-h">Root map and the topic documents that it
           references</title>
@@ -124,20 +134,20 @@
         <ph rev="review-h">operation</ph> in this example.</note>
     </example>
 <example>
-<title>Splitting all topic document in a map</title>
+<title>Splitting all topic documents in a map</title>
       <p rev="review-h">This example covers the scenario of splitting all
-          <xmlelement>topicref</xmlelement> elements in a DITA map.</p>
+        the topics that are referenced in a DITA map.</p>
 <fig id="fig_qns_tsd_1gb">
-<title>Splitting every topic in the map</title>
+<title rev="review-h">Root map with chunking specified</title>
         <p><ph rev="review-h">Specifying</ph>
           <codeph>chunk="split"</codeph> on the
             <xmlelement>map</xmlelement> element sets a default for the
           entire map. The following change to the DITA map results in
             <i>every</i> referenced DITA document being split into one
           document per topic. The only source document <ph rev="review-h"
-            >that is</ph> not affected by this split is
-            <filepath>about.dita</filepath>, because it only <ph
-            rev="review-h">contains only one topic</ph>.</p>
+            >that is</ph> not affected by this <ph rev="review-h">splitting
+            operation</ph> is <filepath>about.dita</filepath>, because it
+          only <ph rev="review-h">contains only one topic</ph>.</p>
 <codeblock>&lt;map <b>chunk="split"</b>>
   &lt;title>Message guide&lt;/title>
   &lt;topicref href="about.dita">
@@ -150,23 +160,23 @@
       <fig>
         <title>Result of evaluating <codeph>chunk="split"</codeph></title>
       </fig>
-<p>Evaluating <codeph>chunk="split"</codeph> specified on the map
-          <xmlelement>element</xmlelement> yields the following
-        results:</p>
+<p>The result of evaluating <codeph>chunk="split"</codeph> specified on the
+        map element yields the following results:</p>
 <ul id="ul_m3y_wng_thb">
 <li><filepath>about.dita</filepath> is unchanged.</li>
 <li><filepath>messages-install.dita</filepath> is split into one document
-          per message.</li>
-<li><filepath>messages-run.dita</filepath> is split into one document per
-          message, exactly as in the previous example.</li>
+            <ph rev="review-h">for each</ph> message.</li>
+<li><filepath>messages-run.dita</filepath> is split into one document <ph
+            rev="review-h">for each</ph> message, exactly as in the
+          previous example.</li>
 <li><filepath>messages-other.dita</filepath> contains a root topic and two child topics, so it
 results in three documents. The hierarchy of those documents is preserved in the map.</li>
 </ul>
 <fig id="fig_pbm_dtd_1gb">
         <title>Equivalent content of source documents after
           evaluation</title>
-        <p>After evaluation, the DITA map would look like the
-          following:</p>
+        <p>The result of evaluating the <xmlatt>chunk</xmlatt> attribute is
+          the following map:</p>
 <codeblock>&lt;map>
   &lt;title>Message guide&lt;/title>
   &lt;topicref href="about.dita">

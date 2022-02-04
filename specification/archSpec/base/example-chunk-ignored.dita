@@ -5,6 +5,14 @@
 <shortdesc>The <xmlatt>chunk</xmlatt> attribute is ignored in some cases, such as when
 <codeph>chunk="combine"</codeph> is already in effect or when <codeph>chunk="split"</codeph> is
 specified on a grouping element.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>chunking<indexterm>examples<indexterm>ignoring</indexterm></indexterm></indexterm>
+        <indexterm>examples<indexterm><indexterm>chunking<indexterm>ignoring</indexterm></indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
 <conbody>
     <fig>
       <title>Ignoring <xmlatt>chunk</xmlatt> when already combining
@@ -41,13 +49,15 @@ specified on a grouping element.</shortdesc>
     &lt;topicref href="ingroup2.dita">&lt;!--...-->&lt;/topicref>
   &lt;/topicgroup>
   &lt;topichead <b>chunk="split"</b>>
-    &lt;topicmeta>&lt;navtitle>Heading for a branch&lt;/navtitle>&lt;/topicmeta>
+    &lt;topicmeta>
+      &lt;navtitle>Heading for a branch&lt;/navtitle>
+    &lt;/topicmeta>
     &lt;topicref href="inhead1.dita">&lt;!--...-->&lt;/topicref>
     &lt;topicref href="inhead2.dita">&lt;!--...-->&lt;/topicref>
   &lt;/topichead>
 &lt;/map></codeblock>
-      <p rev="review-h">When the chunking is evaluated, the following
-        occurs:</p>
+      <p rev="review-h">The result of evaluating chunking is the
+        following:</p>
       <ul id="ul_o3y_wng_thb">
         <li>The <xmlatt>chunk</xmlatt> attribute on the
             <xmlelement>topicgroup</xmlelement>
