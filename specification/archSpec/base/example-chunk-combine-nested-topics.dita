@@ -78,16 +78,19 @@ documents with their own nested topics.</shortdesc>
         middle documents have child topics that need to be taken into
         account:</p>
       <ul id="ul_l3y_wng_thb">
+        <!--<li><filepath>ancestor.dita</filepath> has a root <xmlelement>dita</xmlelement> element, so content from <ph rev="review-h">each topic that is referenced in the map</ph> is located after any nested topics within the final child of the <xmlelement>dita</xmlelement> element.</li>-->
+        <!--<li>ancestor.dita has a root &lt;dita> element, with several root-level topics. After evaluating the chunk attribute, content from middle.dita is placed after the the topic with id="ancestor-last-child" in ancestor.dita</li>-->
         <li><filepath>ancestor.dita</filepath> has a root
-            <xmlelement>dita</xmlelement> element, so content from <ph
-            rev="review-h">each topic that is referenced in the map</ph> is
-          located after any nested topics within the final child of the
-            <xmlelement>dita</xmlelement> element.</li>
+            <xmlelement>dita</xmlelement> element, with several root-level
+          topics. After evaluating the <xmlatt>chunk</xmlatt> attribute,
+          content from <filepath>middle.dita</filepath> is placed after the
+          topic with <codeph>id="ancestor-last-child"</codeph>in
+            <filepath>ancestor.dita</filepath>.</li>
+        <!--<li>middle.dita does not have a &lt;dita> element, but it does have a nested topic, so content from child.dita is located after that nested topic.</li>-->
         <li><filepath>middle.dita</filepath> does not have a
             <xmlelement>dita</xmlelement> element, but it does have a
-          nested topic, so content from <ph rev="review-h">any topic that
-            is referenced in the map</ph> is located after that nested
-          topic.</li>
+          nested topic, so content from <filepath>child.dita</filepath> is
+          located after that nested topic.</li>
       </ul>
       <p rev="review-h">In each case, the original map hierarchy is
         preserved.</p>
