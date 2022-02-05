@@ -5,8 +5,8 @@
     <shortdesc><ph rev="review-h">The presence of </ph>
     <codeph>chunk="split"</codeph> instructs a processor to split each
     topic from the referenced source document into its own document for
-    rendering purposes. Multiple result documents are
-    generated.</shortdesc>
+    rendering
+    purposes.<!-- Multiple result documents are generated.--></shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -19,6 +19,13 @@
 <conbody>
         <p>The following rules apply:</p>
         <ul>
+      <li>When <ph rev="review-h"><codeph>chunk="split"</codeph> is</ph>
+        specified on the root element of a map, it sets a default operation
+        for all source DITA documents <ph rev="review-h">in the navigation
+          structure of the map.</ph> The default <codeph>split</codeph>
+        value is used except where a <codeph>combine</codeph> value is
+        encountered, in which case <codeph>combine</codeph> takes over for
+        that entire branch. </li>
             <li>When <ph rev="review-h"><codeph>chunk="split"</codeph>
           is</ph> specified on a <xmlelement>topicref</xmlelement> element
         that <ph rev="review-h">references</ph> a source DITA document, it
@@ -29,19 +36,6 @@
           <xmlelement>topicgroup</xmlelement> that does not <ph
           rev="review-h">reference a source DITA document or result in
           published output</ph>, the attribute has no meaning.</li>
-            <li>When <ph rev="review-h"><codeph>chunk="split"</codeph>
-          is</ph> specified on the root element of a map, it sets a default
-        operation for all source DITA documents <ph rev="review-h">in the
-          navigation structure of the map.</ph> The default
-          <codeph>split</codeph> value is used except where a
-          <codeph>combine</codeph> value is encountered, in which case
-          <codeph>combine</codeph> takes over for that entire branch. </li>
         </ul>
-    <draft-comment author="Kristen J Eberlein" time="04 February 2022">
-      <p>What about <codeph>chunk="split" specified on a map reference or
-          map branch?</codeph></p>
-      <p>If possible, I'd like us to make this list and the one in the
-        previous topic parallel ...</p>
-    </draft-comment>
 </conbody>
 </concept>
