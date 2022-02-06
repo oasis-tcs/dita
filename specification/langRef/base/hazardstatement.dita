@@ -3,7 +3,8 @@
 <reference id="hazardstatement" xml:lang="en-us">
   <title><xmlelement>hazardstatement</xmlelement></title>
   <shortdesc>A hazard statement provides information about a hazard and its
-    consequences. It also explains how to avoid the hazard.</shortdesc>
+    consequences. It also explains how to avoid the hazard. It can also
+    associate an image.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -13,10 +14,6 @@
     </metadata>
   </prolog>
   <refbody>
-    <section id="usage-information">
-      <title>Usage information</title>
-      <p/>
-    </section>
     <section id="specialization-hierarchy">
       <title>Specialization hierarchy</title>
       <p>The <xmlelement>hazardstatement</xmlelement> element is
@@ -71,10 +68,8 @@
           <xmlelement>hazardstatement</xmlelement> element can be used.</p>
       <fig>
         <title>Simple hazard statement</title>
-        <p>The following code sample defines a hazard statement with a
-          signal word of "DANGER". It also includes an image that
-          illustrates the possible consequences of not avoiding the
-          hazard.</p>
+        <p>The following code sample shows the markup for a hazard
+          statement that warns about rotating blades:</p>
         <codeblock>&lt;hazardstatement type="danger">
   &lt;messagepanel>
     &lt;typeofhazard>
@@ -84,31 +79,48 @@
     &lt;howtoavoid>Follow lockout procedure before servicing.&lt;/howtoavoid>
   &lt;/messagepanel>
 &lt;/hazardstatement></codeblock>
-        <p>
-          <draft-comment author="Kristen J Eberlein" time="02 January 2021">
-            <p>Would it be helpful to have a screen capture of one possible
-              rending of the hazard statement, with the caveat that
-              rendering is implementation-specific?</p>
-          </draft-comment>
-        </p>
       </fig>
       <fig>
         <title>Example of a hazard statement that contains multiple
           hazards</title>
-        <p/>
-        <codeblock/>
+        <p>The following code sample generates an ANSI Z535.6 grouped
+          safety message that specifies information about multiple
+          hazards:</p>
+        <codeblock>&lt;hazardstatement type="warning">
+  &lt;messagepanel>
+    &lt;typeofhazard>
+      &lt;hazardsymbol keyref="hazard-electricshock"/>
+      ELECTRIC SHOCK HAZARD&lt;/typeofhazard>
+      &lt;consequence>The equipment must be grounded. Improper grounding, setup, or usage of
+                    the system can cause electric shock
+      &lt;/consequence>
+      &lt;howtoavoid>
+        &lt;hazardsymbol keyref="hazard-groundpowersource"/>
+        &lt;ul>
+          &lt;li>Turn off and disconnect power at main switch before disconnecting any
+              cables or before servicing or installing any equipment.&lt;/li>
+          &lt;li>Connect only to grounded power sources.&lt;/li>
+          &lt;li>All electric wiring must be done by a qualified electrician and comply
+              with all local codes and regulations.&lt;/li>
+        &lt;/ul>
+      &lt;/howtoavoid>
+    &lt;/messagepanel>
+    &lt;!-- ... -->
+    &lt;messagepanel>
+      &lt;typeofhazard>
+        &lt;hazardsymbol keyref="hazard-hotsurface"/>
+        BURN HAZARD&lt;/typeofhazard>
+        &lt;consequence>Electric sufaces and fluid can become very hot during
+                    operation.&lt;/consequence>
+        &lt;howtoavoid>
+          To avoid burns:
+          &lt;ul>
+            &lt;li>Do not touch hot fluid or equipment.&lt;/li>
+          &lt;/ul>
+        &lt;/howtoavoid>
+  <b>&lt;/messagepanel></b>
+&lt;/hazardstatement></codeblock>
       </fig>
-      <hazardstatement>
-        <messagepanel>
-          <typeofhazard/>
-          <howtoavoid/>
-        </messagepanel>
-        <messagepanel>
-          <typeofhazard/>
-          <howtoavoid/>
-        </messagepanel>
-      </hazardstatement>
-      <p/>
     </example>
   </refbody>
 </reference>
