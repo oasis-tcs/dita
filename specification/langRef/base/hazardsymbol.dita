@@ -18,7 +18,8 @@ a result of not avoiding a hazard, or any combination of these messages.</shortd
       <p>When a <xmlelement>hazardsymbol</xmlelement> element is directly
         contained by <xmlelement>messagepanel</xmlelement>, the
           <xmlelement>hazardsymbol</xmlelement> is assumed to be associated
-        with the <xmlelement>typeofhazard</xmlelement> element.</p>
+        with the <xmlelement>typeofhazard</xmlelement> element. Otherwise,
+        the image is associated with the containing element.</p>
     </section>
     <section id="rendering-expectations">
       <title>Rendering expectations</title>
@@ -66,9 +67,8 @@ a result of not avoiding a hazard, or any combination of these messages.</shortd
       </dl>
     </section>
 <example id="example" otherprops="examples"><title>Example</title>
-      <p>The following code sample defines a hazard statement with a signal word of "DANGER." The
-          <xmlelement>hazardsymbol</xmlelement> element is explicitly associated with the
-          <xmlelement>typeofhazard</xmlelement> element.</p>
+      <p>The following code sample defines a hazard statement that
+        specifies an image that illustrates the type of hazard: </p>
       <codeblock>&lt;hazardstatement type="danger">
   &lt;messagepanel>
     &lt;typeofhazard>
@@ -78,19 +78,15 @@ a result of not avoiding a hazard, or any combination of these messages.</shortd
     &lt;howtoavoid>Follow lockout procedure before servicing.&lt;/howtoavoid>
   &lt;/messagepanel>
 &lt;/hazardstatement></codeblock>
-      <p>In the following code sample, the <xmlelement>hazardsymbol</xmlelement> is contained by the
-          <xmlelement>messagepanel</xmlelement> element. By default, this markup also associates the
-          <xmlelement>hazardsymbol</xmlelement> element with the
-          <xmlelement>typeofhazard</xmlelement> element. This markup can be useful when migrating
-        hazard statements from earlier versions to DITA 2.0.</p>
-      <codeblock>&lt;hazardstatement type="danger">
+      <!--<p>In the following code sample, the <xmlelement>hazardsymbol</xmlelement> is contained by the <xmlelement>messagepanel</xmlelement> element. By default, this markup also associates the <xmlelement>hazardsymbol</xmlelement> element with the <xmlelement>typeofhazard</xmlelement> element. This markup can be useful when migrating hazard statements from earlier versions to DITA 2.0.</p>-->
+      <!--<codeblock>&lt;hazardstatement type="danger">
   &lt;messagepanel>
     &lt;typeofhazard>Rotating blade&lt;/typeofhazard>
     &lt;consequence>Moving parts can crush and cut.&lt;/consequence>
     &lt;howtoavoid>Follow lockout procedure before servicing.&lt;/howtoavoid>
     <b>&lt;hazardsymbol keyref="hazard-rotatingblade"/></b>
   &lt;/messagepanel>
-&lt;/hazardstatement></codeblock></example>
+&lt;/hazardstatement></codeblock>--></example>
 </refbody>
 </reference>
 
