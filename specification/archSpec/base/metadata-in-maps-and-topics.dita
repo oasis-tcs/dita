@@ -1,42 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="metadata-in-maps-and-topics" xml:lang="en-us"><title>Metadata in maps and topics</title>
-  <shortdesc>Information about topics can be specified as metadata on the map, as attributes on the
-<xmlelement>topicref</xmlelement> element, or as metadata attributes or elements in the topic
-itself. By default, metadata in the map supplements or overrides metadata that is specified at the
-topic level.</shortdesc><conbody>
-    <dl>
-      <dlentry>
-        <dt>DITA map: Metadata elements</dt>
-        <dd>
-          <p>At the map level, properties can be set by using metadata elements. They can be set for
-            an individual topic, for a set of topics, or globally for the entire document. The
-            metadata elements are authored within a <xmlelement>topicmeta</xmlelement> element,
-            which associates metadata with the parent element and its children. Because the topics
-            in a branch of the hierarchy typically have some common subjects or properties, this is
-            a convenient mechanism to define properties for a set of topics. For example, the
-              <xmlelement>topicmeta</xmlelement> element in a <xmlelement>relcolspec</xmlelement>
-            can associate metadata with all the topics that are referenced in the
-              <xmlelement>reltable</xmlelement> column.</p>
-          <p>A map can override or supplement everything about a topic except its primary title and
-            body content. All the metadata elements that are available in a topic also are available
-            in a map.</p>
-        </dd>
-      </dlentry>
-      <dlentry>
-        <dt>DITA map: Attributes of the <xmlelement>topicref</xmlelement> element</dt>
-        <dd>At the map level, properties can be set as attributes of the
-            <xmlelement>topicref</xmlelement> element. </dd>
-      </dlentry>
-      <dlentry>
-        <dt>DITA topic</dt>
-        <dd>Within a topic, authors can either set metadata attributes on the root element or add
-          metadata elements in the <xmlelement>prolog</xmlelement> element.</dd>
-      </dlentry>
-    </dl>
-    <p> When the same metadata element or attribute is specified in both a map and a topic, by
-default the value in the map takes precedence; the assumption here is that the author of the map has
-more knowledge of the reusing context than the author of the topic.</p>
+  <shortdesc>Information about topics can be specified using elements in the map, using attributes
+    on the <xmlelement>map</xmlelement> or <xmlelement>topicref</xmlelement> elements, or using
+    attributes or elements in the topic itself. By default, metadata in the map supplements or
+    overrides metadata that is specified at the topic level.</shortdesc><conbody>
+    <p>Metadata elements and attributes in a map might apply to an individual topic, a set of
+      topics, or globally for the entire document. Most metadata elements authored within a
+        <xmlelement>topicmeta</xmlelement> element associate metadata with the parent element and
+      its children. Because the topics in a branch of the hierarchy typically have some common
+      subjects or properties, this is a convenient mechanism to define metadata for a set of
+      topics.</p>
+    <draft-comment author="rodaande" time="8 Feb 2022">We should have a related link from this topic
+      to the section on cascading; this is a conceptual topic about metadata and should not repeat
+      the processing rules, but reading this I immediately want to know *which* elements cascade and
+      how that works.</draft-comment>
+    <p>When the same metadata element or attribute is specified in both a map and a topic, by
+      default the value in the map takes precedence; the assumption here is that the author of the
+      map has more knowledge of the reusing context than the author of the topic.</p>
   </conbody>
 </concept>
 
