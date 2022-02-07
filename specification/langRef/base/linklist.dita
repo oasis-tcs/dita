@@ -2,13 +2,10 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="linklist" xml:lang="en-us">
 <title><xmlelement>linklist</xmlelement></title>
-<shortdesc>A link list is an author-ordered group of links.</shortdesc>
+<shortdesc>A link list is an author-ordered group of links that can include
+    a title.</shortdesc>
 <prolog><metadata>
 <keywords>
-        <indexterm>elements<indexterm>related
-              links<indexterm><xmlelement>linklist</xmlelement></indexterm></indexterm></indexterm>
-        <indexterm>examples<indexterm>links<indexterm>order of links within
-                <xmlelement>linklist</xmlelement></indexterm></indexterm></indexterm>
         <indexterm>related links
           elements<indexterm><xmlelement>linklist</xmlelement></indexterm></indexterm>
         <indexterm>rendering
@@ -18,7 +15,6 @@
     <!--<section id="usage-information"><title>Usage information</title><p>There are two ways to organize related information links within a topic. First, you can add them all in no particular order, either by using <xmlelement>linkpool</xmlelement> elements or by placing <xmlelement>link</xmlelement> elements directly within <xmlelement>related-links</xmlelement>, in which case the rendering is implementation dependent. For example, a tool could sort all links based on the role or type; a tool could also move or remove links to fit the context (for example, moving a prerequisite link to the top of a browser window, or removing links to the next topic if it is rendered on the same page in a PDF). These behaviors are examples only and are not required.</p><p>Second, links can be grouped using one or more <xmlelement>linklist</xmlelement> elements. When you group them using <xmlelement>linklist</xmlelement>, then the order of the links within each <xmlelement>linklist</xmlelement> is preserved when rendered. You can also use a combination of the two approaches, which will allow some links to be automatically sorted while the others are left as-is.</p><p>Attributes set on the <xmlelement>linkpool</xmlelement> and <xmlelement>linklist</xmlelement> elements are inherited by their descendants. For example, if you have a <xmlelement>linklist</xmlelement> element that contains all external links, you can set <codeph>scope="external"</codeph> on that outer <xmlelement>linklist</xmlelement> element and leave it off the <xmlelement>link</xmlelement> elements within that <xmlelement>linklist</xmlelement>.</p></section>-->
     <section id="usage-information">
       <title>Usage information</title>
-      <p>A link list can have a title</p>
       <p>Attributes that are set on the <xmlelement>linklist</xmlelement> element cascade to the
         contained links.</p>
     </section>
@@ -42,24 +38,17 @@
     <example id="example" otherprops="examples">
       <title>Example</title>
       <p>The following code sample shows how the
-          <xmlelement>linklist</xmlelement> element is used to construct an
-        author-defined group of links. The author has assigned a title to
-        the list of links; they also have XXX</p>
-      <p>The <xmlatt>format</xmlatt> and <xmlatt>scope</xmlatt> attributes
-        are set on the <xmlelement>linklist</xmlelement> element and
-        cascade to the contained links. The order of links is preserved in
-        the output.</p>
-      <codeblock>&lt;related-links>
-  &lt;linklist format="html" scope="external">
-    &lt;title>Resources about COVID 19&lt;/title>
-    &lt;link href="http://www.example.org">
-      &lt;linktext>Testing sites&lt;/linktext>
-    &lt;/link>
-    &lt;link href="http://www.example.com">
-      &lt;linktext>National infection rates&lt;/linktext>
-    &lt;/link>
-  &lt;/linklist>
-&lt;/related-links></codeblock>
+          <xmlelement>linklist</xmlelement> is used to construct a list of
+        related links. The <xmlelement>linkinfo</xmlelement> element
+        provides additional information about the list of links.</p>
+      <codeblock>&lt;linklist&gt;
+  &lt;title&gt;Repairing widgets&lt;/title&gt;
+  &lt;link href="debug.dita"/&gt;
+  &lt;link href="repair.dita"/&gt;
+  &lt;link href="test.dita"/&gt;
+  &lt;linkinfo&gt;To repair a reciprocating widget,follow the instructions carefully
+            and in the specified order.&lt;/linkinfo&gt;
+&lt;/linklist&gt;</codeblock>
     </example>
 </refbody>
 </reference>
