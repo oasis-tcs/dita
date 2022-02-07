@@ -6,6 +6,8 @@
     a title.</shortdesc>
 <prolog><metadata>
 <keywords>
+        <indexterm>processing
+              expectations<indexterm><xmlelement>linklist</xmlelement></indexterm></indexterm>
         <indexterm>related links
           elements<indexterm><xmlelement>linklist</xmlelement></indexterm></indexterm>
         <indexterm>rendering
@@ -13,15 +15,14 @@
 </metadata></prolog>
 <refbody>
     <!--<section id="usage-information"><title>Usage information</title><p>There are two ways to organize related information links within a topic. First, you can add them all in no particular order, either by using <xmlelement>linkpool</xmlelement> elements or by placing <xmlelement>link</xmlelement> elements directly within <xmlelement>related-links</xmlelement>, in which case the rendering is implementation dependent. For example, a tool could sort all links based on the role or type; a tool could also move or remove links to fit the context (for example, moving a prerequisite link to the top of a browser window, or removing links to the next topic if it is rendered on the same page in a PDF). These behaviors are examples only and are not required.</p><p>Second, links can be grouped using one or more <xmlelement>linklist</xmlelement> elements. When you group them using <xmlelement>linklist</xmlelement>, then the order of the links within each <xmlelement>linklist</xmlelement> is preserved when rendered. You can also use a combination of the two approaches, which will allow some links to be automatically sorted while the others are left as-is.</p><p>Attributes set on the <xmlelement>linkpool</xmlelement> and <xmlelement>linklist</xmlelement> elements are inherited by their descendants. For example, if you have a <xmlelement>linklist</xmlelement> element that contains all external links, you can set <codeph>scope="external"</codeph> on that outer <xmlelement>linklist</xmlelement> element and leave it off the <xmlelement>link</xmlelement> elements within that <xmlelement>linklist</xmlelement>.</p></section>-->
-    <section id="usage-information">
-      <title>Usage information</title>
-      <p>Attributes that are set on the <xmlelement>linklist</xmlelement> element cascade to the
-        contained links.</p>
-    </section>
+    <section
+      conref="../../common/conref-file.dita#reuse_file/processing-expectations-link-cascade"
+      ><title/><p/></section>
     <section id="rendering-expectations">
       <title>Rendering expectations</title>
-      <p>When rendering links, processors <term outputclass="RFC-2119">MUST</term> preserve the
-        order of links that are specified within <xmlelement>linklist</xmlelement> elements.</p>
+      <p>When rendering links, processors preserve the order of links that
+        are specified within <xmlelement>linklist</xmlelement>
+        elements.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
