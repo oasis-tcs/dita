@@ -24,27 +24,21 @@
                     element has a default value of "no".</li>
                 <li id="common-end">The default values that are supplied by a controlled values file
                     are evaluated.</li>
-                <li id="attributes-cascade">The attributes cascade.</li>
+                <li id="attributes-cascade">The attributes cascade. </li>
                 <li>The processing-supplied default values are applied.</li>
-                <li>After the attributes are resolved within the map, they cascade to referenced
-                    maps. <draft-comment author="Kristen J Eberlein" time="15 May 2019"
-                        audience="spec-editors">
-                        <p>The following note is problematic. It contains a normative statement, but
-                            we explicitly state that notes are non-normative.</p>
-                        <p>Discussed at TC call on 28 May 2019.</p>
-                    </draft-comment><note>The processing-supplied default values do not cascade to
-                        other maps. For example, most processors will supply a default value of
+                <li>After the attributes are resolved within the map, <i>any values that do not come
+                        from processing-supplied defaults</i> will cascade to referenced maps.
+                        <p>For example, most processors will supply a default value of
                             <codeph>toc="yes"</codeph> when no <xmlatt>toc</xmlatt> attribute is
                         specified. However, a processor-supplied default of
-                            <codeph>toc="yes"</codeph>
-                        <term outputclass="RFC-2119">MUST</term> not override a value of
+                            <codeph>toc="yes"</codeph> does not override a value of
                             <codeph>toc="no"</codeph> that is set on a referenced map. If the
                             <codeph>toc="yes"</codeph> value is explicitly specified, is given as a
-                        default through a DTD, XSD, RNG, or controlled values file, or cascades from
-                        a containing element in the map, it <term outputclass="RFC-2119">MUST</term>
-                        override a <codeph>toc="no"</codeph> setting on the referenced map. See
-                            <xref href="map-to-map-cascading-of-metadata.dita"/> for more
-                        details.</note></li>
+                        default through a DTD, RNG, or controlled values file, or cascades from a
+                        containing element in the map, it will override a <codeph>toc="no"</codeph>
+                        setting on the referenced map. See <xref
+                            href="map-to-map-cascading-of-metadata.dita"/> for more
+                    details.</p><!--<draft-comment author="Kristen J Eberlein" time="15 May 2019" audience="spec-editors"><p>The following note is problematic. It contains a normative statement, but we explicitly state that notes are non-normative.</p><p>Discussed at TC call on 28 May 2019.</p></draft-comment><note>The processing-supplied default values do not cascade to other maps. For example, most processors will supply a default value of <codeph>toc="yes"</codeph> when no <xmlatt>toc</xmlatt> attribute is specified. However, a processor-supplied default of <codeph>toc="yes"</codeph> <term outputclass="RFC-2119">MUST</term> not override a value of <codeph>toc="no"</codeph> that is set on a referenced map. If the <codeph>toc="yes"</codeph> value is explicitly specified, is given as a default through a DTD, XSD, RNG, or controlled values file, or cascades from a containing element in the map, it <term outputclass="RFC-2119">MUST</term> override a <codeph>toc="no"</codeph> setting on the referenced map. See <xref href="map-to-map-cascading-of-metadata.dita"/> for more details.</note>--></li>
                 <li>Repeat steps <xref href="#processing-cascading-attributes-in-a-map/common-start" type="li"/> to
                         <xref href="#processing-cascading-attributes-in-a-map/common-end" type="li"/> for each
                     referenced map.</li>
@@ -54,13 +48,13 @@
                 <li>Repeat the process for maps referenced within the referenced maps.</li>
             </ol></p>
         <p>For example, in the case of <codeph>&lt;topicref toc="yes"></codeph>, applications must
-            stop at item <xref href="#processing-cascading-attributes-in-a-map/explicit-values" format="dita"/> in the
-            list; a value is specified for <xmlatt>toc</xmlatt> in the document instance, so
-                <xmlatt>toc</xmlatt> values from containing elements will not cascade to that
-            specific <xmlelement>topicref</xmlelement> element. The <codeph>toc="yes"</codeph>
-            setting on that <xmlelement>topicref</xmlelement> element will cascade to contained
-            elements, provided those elements reach item <xref
-                href="#processing-cascading-attributes-in-a-map/attributes-cascade" format="dita"/> below when
-            evaluating the <xmlatt>toc</xmlatt> attribute.</p>
+            stop at item <xref href="#processing-cascading-attributes-in-a-map/explicit-values"
+                format="dita"/> in the list; a value is specified for <xmlatt>toc</xmlatt> in the
+            document instance, so <xmlatt>toc</xmlatt> values from containing elements will not
+            cascade to that specific <xmlelement>topicref</xmlelement> element. The
+                <codeph>toc="yes"</codeph> setting on that <xmlelement>topicref</xmlelement> element
+            will cascade to contained elements, provided those elements reach item <xref
+                href="#processing-cascading-attributes-in-a-map/attributes-cascade" format="dita"/>
+            when evaluating the <xmlatt>toc</xmlatt> attribute.</p>
     </conbody>
 </concept>

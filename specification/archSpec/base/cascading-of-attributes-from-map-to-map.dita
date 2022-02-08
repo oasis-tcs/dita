@@ -16,8 +16,7 @@
     <p>The following attributes cascade from map to map:<ul id="cascading-attributes">
 <li><xmlatt>rev</xmlatt></li>
 <li><ph conkeyref="reuse-general/propsAndSpecializations"/></li>
-        <li><xmlatt>linking</xmlatt>, <xmlatt>toc</xmlatt>, <xmlatt>print</xmlatt>,
-            <xmlatt>search</xmlatt></li>
+        <li><xmlatt>linking</xmlatt>, <xmlatt>toc</xmlatt>, <xmlatt>search</xmlatt></li>
         <li><xmlatt>type</xmlatt></li>
         <li><xmlatt>translate</xmlatt></li>
         <li><xmlatt>processing-role</xmlatt></li>
@@ -26,21 +25,22 @@
     <p>Note that the above list excludes the following attributes:<dl>
         <dlentry>
           <dt><xmlatt>format</xmlatt></dt>
-          <dd>The <xmlatt>format</xmlatt> attribute must be set to <keyword>ditamap</keyword> in
-            order to reference a map or a branch of a map, so it cannot cascade through to the
-            referenced map.</dd>
+          <dd>The <xmlatt>format</xmlatt> attribute is set to <keyword>ditamap</keyword> when
+            referencing a map or a branch of a map, so it cannot cascade through to the referenced
+            map.</dd>
         </dlentry>
         <dlentry>
           <dt><xmlatt>xml:lang</xmlatt> and <xmlatt>dir</xmlatt></dt>
           <dd>Cascading behavior for <xmlatt>xml:lang</xmlatt> is defined in <xref
-              href="xmllang.dita"/>. The <xmlatt>dir</xmlatt> attribute work the same way.</dd>
+              href="xmllang.dita"/>. The <xmlatt>dir</xmlatt> attribute follows the same rules as
+              <xmlatt>xml:lang</xmlatt>.</dd>
         </dlentry>
         <dlentry>
           <dt><xmlatt>scope</xmlatt></dt>
           <dd>The value of the <xmlatt>scope</xmlatt> attribute describes the map itself, rather
-            than the content. When the <xmlatt>scope</xmlatt> attribute is set to "external", it
-            indicates that the referenced map itself is external and unavailable, so the value
-            cannot cascade into that referenced map.</dd>
+            than the content. For example, when the <xmlatt>scope</xmlatt> attribute is set to
+            <keyword>external</keyword>, it indicates that the referenced map itself is external and unavailable, so
+            the value cannot cascade into that referenced map.</dd>
         </dlentry>
       </dl></p>
     <p>The <xmlatt>class</xmlatt> attribute is used to determine the processing roles that cascade
@@ -71,8 +71,8 @@
         <li>The element with <codeph>id="branch2"</codeph> within the map
             <filepath>c.ditamap</filepath> is treated as if <codeph>platform="myPlatform"</codeph>
           is specified on that element. If the <xmlatt>platform</xmlatt> attribute is already
-          specified on the element with <codeph>id="branch"</codeph>, the value<keyword>
-            myPlatform</keyword> is added to existing values.</li>
+          specified on the element with <codeph>id="branch"</codeph>, the
+            value<keyword>myPlatform</keyword> is added to existing values.</li>
       </ul>
     </example>
   </conbody>

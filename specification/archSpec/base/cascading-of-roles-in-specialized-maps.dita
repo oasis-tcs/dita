@@ -23,8 +23,8 @@
         <xmlelement>topicref</xmlelement> element; it is equivalent to having the
         <xmlatt>class</xmlatt> attribute from the referencing <xmlelement>topicref</xmlelement>
       cascade to the top-level <xmlelement>topicref</xmlelement> elements in the referenced map.
-      Although this cascade behavior is not universal, there are general guidelines for when
-        <xmlatt>class</xmlatt> values should be replaced.</p>
+      Although this cascade behavior is not universal, there are general guidelines for when a role
+      based on the <xmlatt>class</xmlatt> attribute cascades.</p>
   <p>When a <xmlelement>topicref</xmlelement> element or a specialization of a
     <xmlelement>topicref</xmlelement> element references a DITA resource, it defines a role for that
    resource. In some cases this role is straightforward, such as when a
@@ -32,6 +32,12 @@
    role of "topic"), or when a <xmlelement>mapref</xmlelement> element references a DITA map (giving
    it the role of "DITA map").</p>
     <!--IGNORE may-must-should word-->
+    <draft-comment author="rodaande" time="8 Feb 2022">The following paragraph includes the
+      statement: "the non-default behavior should be clearly specified"<p>We do not say how or
+        where. For mapgroup, I believe it is only specified here in this topic. I think either we
+        need this as part of every mapgroup element definition, in "Processing expectations", or we
+        need a clear table here listing every element where this behavior does not
+      apply.</p></draft-comment>
   <p>Unless otherwise instructed, a specialized <xmlelement>topicref</xmlelement> element that
       references a map supplies a role for the referenced content. This means that, in effect, the
         <xmlatt>class</xmlatt> attribute of the referencing element cascades to top-level topicref
@@ -41,16 +47,16 @@
       references a map, it supplies a role of "chapter" for each top-level
         <xmlelement>topicref</xmlelement> element in the referenced map. When the
         <xmlelement>chapter</xmlelement> element references a branch in another map, it supplies a
-      role of "chapter" for that branch. The <xmlatt>class</xmlatt> attribute for
-        <xmlelement>chapter</xmlelement> ("- map/topicref bookmap/chapter ") cascades to the
-      top-level <xmlelement>topicref</xmlelement> element in the nested map, although it does not
-      cascade any further.</p>
+      role of "chapter" for that branch. In effect, the <xmlatt>class</xmlatt> attribute for
+        <xmlelement>chapter</xmlelement> (<codeph>"- map/topicref bookmap/chapter "</codeph>)
+      cascades to the top-level <xmlelement>topicref</xmlelement> elements in the nested map,
+      although it does not cascade any further.</p>
   <p>Because the <xmlelement>mapref</xmlelement> element is a convenience element, the top-level
         <xmlelement>topicref</xmlelement> elements in the map referenced by a
         <xmlelement>mapref</xmlelement> element <term outputclass="RFC-2119">MUST NOT</term> be
       processed as if they are <xmlelement>mapref</xmlelement> elements. The <xmlatt>class</xmlatt>
-      attribute from the <xmlelement>mapref</xmlelement> element ("+ map/topicref mapgroup-d/mapref
-      ") does not cascade to the referenced map.</p>
+      attribute from the <xmlelement>mapref</xmlelement> element (<codeph>"+ map/topicref
+        mapgroup-d/mapref "</codeph>) does not cascade to the referenced map.</p>
   <p>In some cases, preserving the role of the referencing element might result in out-of-context
    content. For example, a <xmlelement>chapter</xmlelement> element that references a bookmap might
    pull in <xmlelement>part</xmlelement> elements that contain nested
@@ -84,9 +90,10 @@
           <dlentry>
             <dt>Referenced map contains a single <xmlelement>part</xmlelement> element, with nested
                 <xmlelement>chapter</xmlelement> elements.</dt>
-            <dd>The <xmlelement>part</xmlelement> element is processed as it were a chapter element.
-              Nested <xmlelement>chapter</xmlelement> elements might not be understandable by
-              processors; applications can recover as described above.</dd>
+            <dd>The <xmlelement>part</xmlelement> element is processed as it were a
+                <xmlelement>chapter</xmlelement> element. Nested <xmlelement>chapter</xmlelement>
+              elements might not be understandable by processors; applications can recover as
+              described above.</dd>
           </dlentry>
           <dlentry>
             <dt><xmlelement>chapter</xmlelement> element references a single

@@ -14,21 +14,22 @@
      <dlentry>
       <dt>How does it apply to the topic?</dt>
       <dd>This column describes how the metadata specified within the
-        <xmlelement>topicmeta</xmlelement> element interacts with the metadata specified in the
-       topic. In most cases, the properties are additive. For example, when the
-        <xmlelement>audience</xmlelement> element is set to "user" at the map level, the value
-       "user" is added during processing to any audience metadata that is specified within the
-       topic.</dd>
+                <xmlelement>topicmeta</xmlelement> element interacts with the metadata specified in
+              the topic. In most cases, the properties are additive. For example, when the
+                <xmlelement>audience</xmlelement> element specifies an audience type of "user" at
+              the map level, the type "user" is added during processing to any audience metadata
+              that is specified within the topic.</dd>
      </dlentry>
      <dlentry>
       <dt>Does it cascade to other topics in the map?</dt>
       <dd>This column indicates whether the specified metadata value cascades to nested
                 <xmlelement>topicref</xmlelement> elements. For example, when an
-                <xmlelement>audience</xmlelement> element is set to "user" at the map level, all
-              child <xmlelement>topicref</xmlelement> elements implicitly have an
-                <xmlelement>audience</xmlelement> element set to "user" also. Elements that can
-              apply only to the specific <xmlelement>topicref</xmlelement> element, such as
-                <xmlelement>titlealt</xmlelement> or <xmlelement>keytext</xmlelement>, do not cascade.</dd>
+                <xmlelement>audience</xmlelement> element is specifies an audience type of "user" at
+              the map level, all child <xmlelement>topicref</xmlelement> elements implicitly have an
+                <xmlelement>audience</xmlelement> element with a type set to "user". Elements that
+              can apply only to the specific <xmlelement>topicref</xmlelement> element, such as
+                <xmlelement>titlealt</xmlelement> or <xmlelement>keytext</xmlelement>, do not
+              cascade.</dd>
      </dlentry>
      <dlentry>
       <dt>What is the purpose when specified on the <xmlelement>map</xmlelement> element?</dt>
@@ -43,8 +44,7 @@
 <row valign="bottom">
 <entry colname="col1">Element</entry>
 <entry colname="col2">How does it apply to the topic?</entry>
-<entry colname="COLSPEC0"><ph conkeyref="reuse-general/does-it-cascade"
-       /></entry>
+<entry colname="COLSPEC0"><ph conkeyref="reuse-general/does-it-cascade"/></entry>
 <entry colname="COLSPEC1">What is the purpose when set on the <xmlelement>map</xmlelement>
 element?</entry>
 </row>
@@ -85,15 +85,14 @@ element?</entry>
 <entry colname="col2">Add to the topic</entry>
 <entry colname="COLSPEC0">No, unless specialized for a purpose that
 cascades</entry>
-<entry colname="COLSPEC1">No stated purpose, until the element is specialized</entry>
+<entry colname="COLSPEC1">No stated purpose</entry>
 </row>
 <row>
 <entry colname="col1"><xmlelement>foreign</xmlelement></entry>
 <entry colname="col2">Add to the topic</entry>
 <entry colname="COLSPEC0">No, unless specialized for a purpose that
 cascades</entry>
-<entry colname="COLSPEC1">No stated purpose, until the element is
-specified</entry>
+<entry colname="COLSPEC1">No stated purpose</entry>
 </row>
           <row>
             <entry colname="col1"><xmlelement>keytext</xmlelement></entry>
@@ -141,12 +140,11 @@ specified</entry>
 <entry colname="col1"><xmlelement>resourceid</xmlelement></entry>
 <entry colname="col2">Add to the topic</entry>
 <entry colname="COLSPEC0">No</entry>
-<entry colname="COLSPEC1">Specify a resource ID for the map</entry>
+<entry colname="COLSPEC1">Specify a resource ID for the map itself</entry>
 </row>
 <row>
 <entry colname="col1"><xmlelement>shortdesc</xmlelement></entry>
-<entry colname="col2"><ph>Applies only to links created based on this occurrence in the
-              map.</ph></entry>
+<entry colname="col2">Applies only to links created based on this occurrence in the map</entry>
 <entry colname="COLSPEC0">No</entry>
 <entry colname="COLSPEC1">Provide a description of the map</entry>
 </row>
@@ -168,8 +166,7 @@ specified</entry>
 <entry colname="col2">Add to the topic</entry>
 <entry colname="COLSPEC0">No, unless specialized for a purpose that
 cascades</entry>
-<entry colname="COLSPEC1">No stated purpose, until the element is
-specified</entry>
+<entry colname="COLSPEC1">No stated purpose</entry>
 </row>
 <row >
   <entry colname="col1"><xmlelement>ux-window</xmlelement></entry>
@@ -200,8 +197,8 @@ specified</entry>
        &lt;/topicref>
 &lt;/map></codeblock></p>
       <p>The author and copyright information cascades to each of the DITA topics referenced in the
-        DITA map. When the DITA map is processed to HTML5, for example, each HTML5 file contains the
-        metadata information.</p>
+        DITA map. When the DITA map is processed to HTML5, for example, the author and copyright
+        metadata apply to each HTML5 file.</p>
     </example>
 </refbody>
 </reference>
