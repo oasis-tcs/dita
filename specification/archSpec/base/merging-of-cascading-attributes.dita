@@ -31,45 +31,5 @@
         <p>The predefined values for the <xmlatt>cascade</xmlatt> attribute <term
                 outputclass="RFC-2119">MUST</term> precede any implementation-specific tokens, for
             example, <codeph>cascade="merge appToken:audience"</codeph>.</p>
-        <example id="cascade-att-examples" otherprops="examples">
-            <title>Example: The <xmlatt>cascade</xmlatt> attribute in use</title>
-            <p>Consider the following code examples:</p>
-            <fig id="mapA">
-                <title>Map A</title>
-                <codeblock>&lt;map audience="a b" cascade="merge">
-     &lt;topicref href="topic.dita" audience="c"/>
-&lt;/map>
-</codeblock>
-            </fig>
-            <fig id="mapB">
-                <title>Map B</title>
-                <codeblock>&lt;map audience="a b" cascade="nomerge">
-     &lt;topicref href="topic.dita" audience="c"/>
-&lt;/map>
-</codeblock>
-            </fig>
-            <p>For map A, the values for the attribute are merged, and the effective value of the
-                    <xmlatt>audience</xmlatt> attribute for <filepath>topic.dita</filepath> is "a b
-                c". For map B, the values for the attribute are not additive, and the effective
-                value of the <xmlatt>audience</xmlatt> attribute for <filepath>topic.dita</filepath>
-                is "c".</p>
-            <p>In the following example, merging is active at the map level but turned off
-                below:</p>
-            <fig id="mapC">
-                <title>Map C</title>
-                <codeblock>&lt;map platform="a" product="x" cascade="merge">
-  &lt;topicref href="one.dita" platform="b" product="y">
-    &lt;topicref href="two.dita" cascade="nomerge" product="z"/>
-  &lt;/topicref>
-&lt;/map></codeblock>
-            </fig>
-            <p>In map C, the reference to <filepath>one.dita</filepath> has effective merged values
-                of "a b" for <xmlatt>platform</xmlatt> and "x y" for <xmlatt>product</xmlatt>.</p>
-            <p>The reference to <filepath>two.dita</filepath> turns off merging, so the explicit
-                    <xmlatt>product</xmlatt> value of "z" is used (it does not merge with ancestor
-                values). The <xmlatt>platform</xmlatt> attribute is not present, so the
-                already-merged value of "a b" continues to cascade and is the effective value of
-                    <xmlatt>platform</xmlatt> on this reference.</p>
-        </example>
     </conbody>
 </concept>
