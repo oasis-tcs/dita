@@ -16,8 +16,8 @@
     </prolog>
     <conbody>
         <p>For a complete list of which elements cascade within a map, see the column "<ph
-                conkeyref="reuse-general/does-it-cascade"/>" in the topic
-                <xref href="reconciling-topic-and-map-metadata.dita"/>.</p>
+                conkeyref="reuse-general/does-it-cascade"/>" in the topic <xref
+                href="reconciling-topic-and-map-metadata.dita"/>.</p>
         <draft-comment author="rodaande" audience="spec-editors" time="8 Feb 2022">I don't like
             saying "DITA does not currently support" for a couple reasons. 1) Currently implies it's
             coming, and at this point it's not. 2) I think what we mean is that an application could
@@ -30,53 +30,5 @@
         <note>It is possible that a specialization might define metadata that is intended to replace
             rather than add to metadata in the referenced map, but DITA (by default) does not
             currently support this behavior.</note>
-        <example id="example" otherprops="examples">
-            <p>For example, consider the following code examples:</p>
-            <fig id="figtest2">
-                <title><filepath>test-2.ditamap</filepath></title>
-                <codeblock>&lt;map>
-    &lt;topicref href="a.ditamap" format="ditamap">
-        &lt;topicmeta>
-            &lt;shortdesc>This map contains information about Acme defects.&lt;/shortdesc>
-        &lt;/topicmeta>
-    &lt;/topicref>
-    &lt;topicref href="b.ditamap" format="ditamap">
-        &lt;topicmeta>
-            &lt;audience type="programmer"/>
-        &lt;/topicmeta>
-    &lt;/topicref>    
-    &lt;mapref href="c.ditamap" format="ditamap"/>
-    &lt;mapref href="d.ditamap" format="ditamap"/>
-&lt;/map></codeblock>
-            </fig>
-            <fig id="figb">
-                <title><filepath>b.ditamap</filepath></title>
-                <codeblock>&lt;map>
-    &lt;topicmeta>
-        &lt;audience type="writer"/>
-    &lt;/topicmeta>
-    &lt;topicref href="b-1.dita"/>
-    &lt;topicref href="b-2.dita"/>
-&lt;/map>
-</codeblock>
-            </fig>
-            <p>When <filepath>test-2.ditamap</filepath> is processed, the following behavior occurs:<ul>
-                    <li>Because the <xmlelement>shortdesc</xmlelement> element does not cascade, it
-                        does not apply to the DITA topics that are referenced in
-                            <filepath>a.ditamap</filepath>.</li>
-                    <li>Because the <xmlelement>audience</xmlelement> element cascades, the
-                            <xmlelement>audience</xmlelement> element in the reference to
-                            <filepath>b.ditamap</filepath> combines with the
-                            <xmlelement>audience</xmlelement> element that is specified at the top
-                        level of <filepath>b.ditamap</filepath>. The result is that the
-                            <filepath>b-1.dita</filepath> topic and <filepath>b-2.dita</filepath>
-                        topic are processed as though they each contained the following child
-                            <xmlelement>topicmeta</xmlelement>
-                        element:<codeblock>&lt;topicmeta>
-    &lt;audience type="programmer"/>
-    &lt;audience type="writer"/>
-&lt;/topicmeta></codeblock></li>
-                </ul></p>
-        </example>
     </conbody>
 </concept>
