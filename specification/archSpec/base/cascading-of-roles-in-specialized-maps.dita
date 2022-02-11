@@ -65,43 +65,5 @@
    not valid in bookmap and might not be understandable by processors. The result is implementation
    specific; processors <term outputclass="RFC-2119">MAY</term> choose to treat
    this as an error, issue a warning, or simply assign new roles to the problematic elements.</p>
-  <example id="example" otherprops="examples">
-      <title>Example of cascading roles between maps</title>
-      <p>Consider the scenario of a <xmlelement>chapter</xmlelement> element that references a DITA
-        map. This scenario could take several forms:<dl>
-          <dlentry>
-            <dt>Referenced map contains a single top-level <xmlelement>topicref</xmlelement>
-              element</dt>
-            <dd>The entire branch functions as if it were included in the bookmap; the top-level
-                <xmlelement>topicref</xmlelement> element is processed as if it were the
-                <xmlelement>chapter</xmlelement> element.</dd>
-          </dlentry>
-          <dlentry>
-            <dt>Referenced map contains multiple top-level <xmlelement>topicref</xmlelement>
-              elements</dt>
-            <dd>Each top-level <xmlelement>topicref</xmlelement> element is processed as if it were
-              a <xmlelement>chapter</xmlelement> element (the referencing element).</dd>
-          </dlentry>
-          <dlentry>
-            <dt>Referenced map contains a single <xmlelement>appendix</xmlelement> element</dt>
-            <dd>The <xmlelement>appendix</xmlelement> element is processed as it were a
-                <xmlelement>chapter</xmlelement> element.</dd>
-          </dlentry>
-          <dlentry>
-            <dt>Referenced map contains a single <xmlelement>part</xmlelement> element, with nested
-                <xmlelement>chapter</xmlelement> elements.</dt>
-            <dd>The <xmlelement>part</xmlelement> element is processed as it were a
-                <xmlelement>chapter</xmlelement> element. Nested <xmlelement>chapter</xmlelement>
-              elements might not be understandable by processors; applications can recover as
-              described above.</dd>
-          </dlentry>
-          <dlentry>
-            <dt><xmlelement>chapter</xmlelement> element references a single
-                <xmlelement>topicref</xmlelement> element rather than a map</dt>
-            <dd>The referenced <xmlelement>topicref</xmlelement> element is processed as if it were
-              a <xmlelement>chapter</xmlelement> element.</dd>
-          </dlentry>
-        </dl></p>
-    </example>
  </conbody>
 </concept>
