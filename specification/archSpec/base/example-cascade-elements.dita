@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="cascadeelements">
+  <title>Example: How metadata elements cascade to topics</title>
+  <shortdesc>In this scenario, elements in <xmlelement>topicmeta</xmlelement> cascade within a map
+    and from maps to topics.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>cascading metadata<indexterm>example<indexterm>cascading
+            elemewnts</indexterm></indexterm></indexterm>
+        <indexterm>examples<indexterm><indexterm>cascading metadata<indexterm>cascading
+                elements</indexterm></indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>The following code sample illustrates how an information architect can apply certain metadata
+      to all the DITA topics in a
+      map:<codeblock id="codeblock_tgb_d45_nsb">&lt;map xml:lang="en-us">
+       &lt;title>DITA maps&lt;/title>
+	&lt;topicmeta>
+		&lt;author>Kristen James Eberlein&lt;/author>
+		&lt;copyright>
+			&lt;copyryear year="2020"/>
+			&lt;copyrholder>OASIS&lt;/copyrholder>
+		&lt;/copyright>
+	&lt;/topicmeta>
+	&lt;topicref href="dita_maps.dita">
+		&lt;topicref href="definition_ditamaps.dita"/>
+		&lt;topicref href="purpose_ditamaps.dita"/>
+		&lt;!-- ... -->
+       &lt;/topicref>
+&lt;/map></codeblock></p>
+    <p>The author and copyright information cascades to each of the DITA topics referenced in the
+      DITA map. When the DITA map is processed to HTML5, for example, the author and copyright
+      metadata apply to each HTML5 file.</p>
+  </conbody>
+</concept>
