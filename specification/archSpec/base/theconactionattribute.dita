@@ -54,8 +54,7 @@
           <xmlatt>id</xmlatt> set to example<keyword/>, and it contains a
           <xmlelement>step</xmlelement> element with the <xmlatt>id</xmlatt> set to
           <keyword>b</keyword>:</p>
-      <p>
-        <codeblock>&lt;task id="example" xml:lang="en">
+      <codeblock id="codeblock_scr_wqh_psb">&lt;task id="example" xml:lang="en">
   &lt;title>Example topic&lt;/title>
   &lt;taskbody>
     &lt;steps>
@@ -65,17 +64,16 @@
     &lt;/steps>
   &lt;/taskbody>
 &lt;/task></codeblock>
-      </p>
       <p>In order to replace the step with <codeph>id="b"</codeph>, another topic must combine a
           <xmlatt>conaction</xmlatt> value of <keyword>pushreplace</keyword> with a
           <xmlatt>conref</xmlatt> attribute that references this
-        <xmlelement>step</xmlelement>:<codeblock>&lt;task id="other" xml:lang="en">
-  ...
-   &lt;step conaction="pushreplace" 
-         conref="example.dita#example/b">
-     &lt;cmd>Updated B&lt;/cmd>
-   &lt;/step>
-  ...
+        <xmlelement>step</xmlelement>:<codeblock>&lt;!-- Steps element within another task -->
+&lt;steps>
+  &lt;step conaction="pushreplace" 
+        conref="example.dita#example/b">
+    &lt;cmd>Updated B&lt;/cmd>
+  &lt;/step>
+&lt;/steps>
 &lt;/task></codeblock></p>
       <p>The result will be an updated version of <filepath>example.dita</filepath> which contains
         the pushed
@@ -150,11 +148,14 @@
 <example id="example-pushbefore" otherprops="examples">
       <title>Example: pushing an element before the target</title>
       <p>The following example pushes a <xmlelement>step</xmlelement> before "b" in the
-          <filepath>example.dita</filepath> file shown above.
-        <codeblock>&lt;step conaction="pushbefore">&lt;cmd>Do this before B&lt;/cmd>&lt;/step>
-<ph >&lt;step conaction="mark" conref="example.dita#example/b">
-  &lt;cmd/>
-&lt;/step></ph></codeblock></p>
+          <filepath>example.dita</filepath> file shown above. <codeblock>&lt;steps>
+  &lt;step conaction="pushbefore">
+    &lt;cmd>Do this before B&lt;/cmd>
+  &lt;/step>
+  &lt;step conaction="mark" conref="example.dita#example/b">
+    &lt;cmd/>
+  &lt;/step>
+&lt;/steps></codeblock></p>
       <p>The result contains the pushed <xmlelement>step</xmlelement> element before
         "b".<codeblock>&lt;task id="example" xml:lang="en">
   &lt;title>Example topic&lt;/title>
@@ -171,12 +172,14 @@
 <example id="example-pushafter" otherprops="examples">
       <title>Example: pushing an element after the target</title>
       <p>Pushing an element after a target is exactly the same as pushing before, except that the
-        order of the "mark" element and the pushed element are
-        reversed.<codeblock><ph >&lt;step conaction="mark" conref="example.dita#example/b">
-  &lt;cmd/>
-&lt;/step></ph>
-&lt;step conaction="pushafter">&lt;cmd>Do this AFTER B&lt;/cmd>&lt;/step>
-</codeblock></p>
+        order of the "mark" element and the pushed element are reversed.<codeblock>&lt;steps>
+  &lt;step conaction="mark" conref="example.dita#example/b">
+    &lt;cmd/>
+  &lt;/step>
+  &lt;step conaction="pushafter">
+    &lt;cmd>Do this AFTER B&lt;/cmd>
+  &lt;/step>
+&lt;/steps></codeblock></p>
       <p>In this case the resulting document has the pushed content after
           <xmlelement>step</xmlelement>
         b:<codeblock>&lt;task id="example" xml:lang="en">

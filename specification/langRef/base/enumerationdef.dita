@@ -64,28 +64,33 @@
                   source, processors operate as if the @audience attribute
                   is explicitly set to
                 <keyword>spec-editors</keyword></ph>:</p>
-              <codeblock>&lt;enumerationdef>
+              <codeblock>&lt;subjectScheme>
+  &lt;!-- ... -->
+  &lt;enumerationdef>
     &lt;elementdef name="draft-comment"/>
     &lt;attributedef name="audience"/>
     &lt;subjectdef keyref="values-audience-draft-comment"/>
     &lt;defaultSubject keyref="spec-editors"/>
-&lt;/enumerationdef></codeblock>
+  &lt;/enumerationdef>
+  &lt;!-- ... -->
+&lt;/subjectScheme></codeblock>
             </div></dd>
 
         </dlentry>
                 <dlentry>
                     <dt>Specify that an attribute is not valid.</dt>
-                    <dd><p>When the <xmlelement>enumerationdef</xmlelement>
-              element <ph rev="review-d">contains a
-                  <xmlatt>subjectdef</xmlatt> element that does not
-                reference a subject</ph>, no value is valid for the
-              attribute.</p><p otherprops="examples"/>For example, the
-            following code sample specifies that no tokens are valid for
-            the <xmlatt>props</xmlatt>
-            attribute:<codeblock>&lt;enumerationdef>
+                    <dd><p>When the <xmlelement>enumerationdef</xmlelement> element <ph
+                rev="review-d">contains a <xmlatt>subjectdef</xmlatt> element that does not
+                reference a subject</ph>, no value is valid for the attribute.</p><p
+              otherprops="examples"/>For example, the following code sample specifies that no tokens
+            are valid for the <xmlatt>props</xmlatt> attribute:<codeblock>&lt;subjectScheme>
+  &lt;!-- ... -->
+  &lt;enumerationdef>
     &lt;attributedef name="props"/>
     &lt;subjectdef/>
-&lt;/enumerationdef></codeblock></dd>
+  &lt;/enumerationdef>
+  &lt;!-- ... -->
+&lt;/subjectScheme></codeblock></dd>
                 </dlentry>
             </dl>
 
