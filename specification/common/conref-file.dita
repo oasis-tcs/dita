@@ -104,10 +104,12 @@ to alert more birds to the presence of your bird feeder.&lt;/shortdesc&gt;
                         <title>Lists</title>
                         <ul id="cascading-attributes">
 <li><xmlatt>rev</xmlatt></li>
-<li><ph id="propsAndSpecializations"><xmlatt>props</xmlatt> and any attribute specialized from
-<xmlatt>props</xmlatt> (including those integrated by default in OASIS shells:
-<xmlatt>audience</xmlatt>, <xmlatt>deliveryTarget</xmlatt>, <xmlatt>platform</xmlatt>,
-<xmlatt>product</xmlatt>, <xmlatt>otherprops</xmlatt>)</ph></li>
+<li><ph id="propsAndSpecializations"><xmlatt>props</xmlatt> and any
+            attribute specialized from <xmlatt>props</xmlatt>, including
+            those integrated by default in OASIS shells:
+              <xmlatt>audience</xmlatt>, <xmlatt>deliveryTarget</xmlatt>,
+              <xmlatt>platform</xmlatt>, <xmlatt>product</xmlatt>,
+              <xmlatt>otherprops</xmlatt></ph></li>
                                 <li><xmlatt>linking</xmlatt>, <xmlatt>toc</xmlatt>,
             <xmlatt>search</xmlatt></li>
                                 <li><xmlatt>format</xmlatt>, <xmlatt>scope</xmlatt>,
@@ -132,19 +134,25 @@ to alert more birds to the presence of your bird feeder.&lt;/shortdesc&gt;
                         </dl>
                         <dl id="cascade-values">
                                 <dlentry>
-                                        <dt><codeph>cascade="merge"</codeph></dt>
-                                        <dd>The metadata attributes cascade; the values of the
-            metadata attributes are additive. This is the processing default for the
-              <xmlatt>cascade</xmlatt> attribute.</dd>
+                                        <dt>merge</dt>
+                                        <dd><ph rev="review-k">Indicates
+              that the metadata attributes cascade, and that </ph>the
+            values of the metadata attributes are additive. This is the
+            processing default for the <xmlatt>cascade</xmlatt>
+            attribute.</dd>
                                 </dlentry>
                                 <dlentry>
-                                        <dt><codeph>cascade="nomerge"</codeph></dt>
-                                        <dd>The metadata attributes cascade; however, they are not
-            additive for <xmlelement>topicref</xmlelement> elements that specify a different value
-            for a specific metadata attribute. If the cascading value for an attribute is already
-            merged based on multiple ancestor elements, that merged value continues to cascade until
-            a new value is encountered (that is, setting <codeph>cascade="nomerge"</codeph> does not
-            undo merging that took place on ancestors).</dd>
+                                        <dt>nomerge</dt>
+                                        <dd><ph rev="review-k">Indicates
+              that the metadata attributes cascade, but that </ph>they are
+            not additive for <xmlelement>topicref</xmlelement> elements
+            that specify a different value for a specific metadata
+            attribute. If the cascading value for an attribute is already
+            merged based on multiple ancestor elements, that merged value
+            continues to cascade until a new value is encountered<ph
+              rev="review-k">. That is,</ph> setting
+              <codeph>cascade="nomerge"</codeph> does not undo merging that
+            took place on ancestor elements.</dd>
                                 </dlentry>
                         </dl>
                 </section>
