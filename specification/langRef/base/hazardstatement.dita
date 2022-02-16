@@ -71,13 +71,13 @@
         <p>The following code sample shows the markup for a hazard
           statement that warns about rotating blades:</p>
         <codeblock>&lt;hazardstatement type="danger">
-  &lt;messagepanel>
-    &lt;typeofhazard>
-    &lt;hazardsymbol keyref="hazard-rotatingblade"/>
-    Rotating blade&lt;/typeofhazard>
-    &lt;consequence>Moving parts can crush and cut.&lt;/consequence>
-    &lt;howtoavoid>Follow lockout procedure before servicing.&lt;/howtoavoid>
-  &lt;/messagepanel>
+    &lt;messagepanel>
+        &lt;typeofhazard>
+            &lt;hazardsymbol keyref="hazard-rotatingblade"/>
+            Rotating blade&lt;/typeofhazard>
+        &lt;consequence>Moving parts can crush and cut.&lt;/consequence>
+        &lt;howtoavoid>Follow lockout procedure before servicing.&lt;/howtoavoid>
+    &lt;/messagepanel>
 &lt;/hazardstatement></codeblock>
       </fig>
       <fig>
@@ -86,39 +86,38 @@
         <p>The following code sample generates an ANSI Z535.6 grouped
           safety message that specifies information about multiple
           hazards:</p>
-        <codeblock>&lt;hazardstatement type="warning">
-  &lt;messagepanel>
-    &lt;typeofhazard>
-      &lt;hazardsymbol keyref="hazard-electricshock"/>
-      ELECTRIC SHOCK HAZARD&lt;/typeofhazard>
-      &lt;consequence>The equipment must be grounded. Improper grounding, setup, or usage of
-                    the system can cause electric shock
-      &lt;/consequence>
-      &lt;howtoavoid>
-        &lt;hazardsymbol keyref="hazard-groundpowersource"/>
-        &lt;ul>
-          &lt;li>Turn off and disconnect power at main switch before disconnecting any
-              cables or before servicing or installing any equipment.&lt;/li>
-          &lt;li>Connect only to grounded power sources.&lt;/li>
-          &lt;li>All electric wiring must be done by a qualified electrician and comply
-              with all local codes and regulations.&lt;/li>
-        &lt;/ul>
-      &lt;/howtoavoid>
+        <codeblock rev="review-j">&lt;hazardstatement type="warning">
+    &lt;messagepanel>
+        &lt;typeofhazard>
+            &lt;hazardsymbol keyref="hazard-electricshock"/>
+            ELECTRIC SHOCK HAZARD&lt;/typeofhazard>
+        &lt;consequence>The equipment must be grounded. Improper grounding, setup, or usage of
+                     the system can cause electric shock&lt;/consequence>
+        &lt;howtoavoid>
+            &lt;hazardsymbol keyref="hazard-groundpowersource"/>
+            &lt;ul>
+                &lt;li>Turn off and disconnect power at main switch before disconnecting any
+                    cables or before servicing or installing any equipment.&lt;/li>
+                &lt;li>Connect only to grounded power sources.&lt;/li>
+                &lt;li>All electric wiring must be done by a qualified electrician and comply
+                    with all local codes and regulations.&lt;/li>
+            &lt;/ul>
+        &lt;/howtoavoid>
     &lt;/messagepanel>
     &lt;!-- ... -->
     &lt;messagepanel>
-      &lt;typeofhazard>
-        &lt;hazardsymbol keyref="hazard-hotsurface"/>
-        BURN HAZARD&lt;/typeofhazard>
+        &lt;typeofhazard>
+            &lt;hazardsymbol keyref="hazard-hotsurface"/>
+            BURN HAZARD&lt;/typeofhazard>
         &lt;consequence>Electric sufaces and fluid can become very hot during
-                    operation.&lt;/consequence>
+                     operation.&lt;/consequence>
         &lt;howtoavoid>
-          To avoid burns:
-          &lt;ul>
-            &lt;li>Do not touch hot fluid or equipment.&lt;/li>
-          &lt;/ul>
+            To avoid burns:
+            &lt;ul>
+                &lt;li>Do not touch hot fluid or equipment.&lt;/li>
+            &lt;/ul>
         &lt;/howtoavoid>
-  <b>&lt;/messagepanel></b>
+    &lt;/messagepanel>
 &lt;/hazardstatement></codeblock>
       </fig>
     </example>
