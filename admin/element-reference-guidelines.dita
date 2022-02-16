@@ -121,8 +121,11 @@
         relevant elements in the code sample might be highlighted (bold) to
         draw the readers attention. Code samples should be indented four
         spaces.</p>
-      <p>If content is "snipped" from the code sample, it should be
-        indicated with <codeph>&lt;!-- ... --></codeph>.</p>
+      <p>If content is "snipped" from the code sample, it should be indicated with <codeph>&lt;!--
+          ... --></codeph>. All code samples that use real DITA need to validate. If a code sample
+        includes non-DITA XML, add <codeph>base="ci-xml"</codeph> to ensure our CI testing validates
+        it as XML (but not as DITA). If a code sample includes non-XML, add
+          <codeph>base="ci-skip"</codeph> to have the CI testing skip that code block.</p>
       <div rev="review-c">
         <p>If the "Example" section points to another topic, instead of
           containing its own example, be sure and hyperlink directly to the
