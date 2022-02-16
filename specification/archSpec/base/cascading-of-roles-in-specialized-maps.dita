@@ -2,9 +2,10 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept xml:lang="en-us" id="cascading-of-roles-in-specialized-maps" >
  <title>Cascading of roles from map to map</title>
- <shortdesc >When specialized <xmlelement>topicref</xmlelement> elements (such
-    as <xmlelement>chapter</xmlelement> or <xmlelement>mapref</xmlelement>) reference a map, they
-    typically imply a semantic role for the referenced content. </shortdesc>
+ <shortdesc>When specialized <xmlelement>topicref</xmlelement> elements,
+    such as <xmlelement>chapter</xmlelement> or
+      <xmlelement>mapref</xmlelement>, reference a map, they typically
+    imply a semantic role for the referenced content. </shortdesc>
  <prolog>
   <metadata>
    <keywords>
@@ -19,12 +20,15 @@
       <p>We need to look at the instances of "should" in this topic. Can they be recast? Do we need
         to introduce RFC-2119 language?</p>
     </draft-comment>
-    <p>The semantic role reflects the <xmlatt>class</xmlatt> hierarchy of the referencing
-        <xmlelement>topicref</xmlelement> element; it is equivalent to having the
-        <xmlatt>class</xmlatt> attribute from the referencing <xmlelement>topicref</xmlelement>
-      cascade to the top-level <xmlelement>topicref</xmlelement> elements in the referenced map.
-      Although this cascade behavior is not universal, there are general guidelines for when a role
-      based on the <xmlatt>class</xmlatt> attribute cascades.</p>
+    <p>The semantic role reflects the <xmlatt>class</xmlatt> hierarchy of
+      the referencing <xmlelement>topicref</xmlelement> element<ph
+        rev="review-k">. It </ph>is equivalent to having the
+        <xmlatt>class</xmlatt> attribute from the referencing
+        <xmlelement>topicref</xmlelement> cascade to the top-level
+        <xmlelement>topicref</xmlelement> elements in the referenced map.
+      Although this cascade behavior is not universal, there are general
+      guidelines for when a role based on the <xmlatt>class</xmlatt>
+      attribute cascades.</p>
   <p>When a <xmlelement>topicref</xmlelement> element or a specialization of a
     <xmlelement>topicref</xmlelement> element references a DITA resource, it defines a role for that
    resource. In some cases this role is straightforward, such as when a
@@ -57,13 +61,18 @@
       processed as if they are <xmlelement>mapref</xmlelement> elements. The <xmlatt>class</xmlatt>
       attribute from the <xmlelement>mapref</xmlelement> element (<codeph>"+ map/topicref
         mapgroup-d/mapref "</codeph>) does not cascade to the referenced map.</p>
-  <p>In some cases, preserving the role of the referencing element might result in out-of-context
-   content. For example, a <xmlelement>chapter</xmlelement> element that references a bookmap might
-   pull in <xmlelement>part</xmlelement> elements that contain nested
-    <xmlelement>chapter</xmlelement> elements. Treating the <xmlelement>part</xmlelement> element as
-   a <xmlelement>chapter</xmlelement> will result in a chapter that nests other chapters, which is
-   not valid in bookmap and might not be understandable by processors. The result is implementation
-   specific; processors <term outputclass="RFC-2119">MAY</term> choose to treat
-   this as an error, issue a warning, or simply assign new roles to the problematic elements.</p>
+  <p>In some cases, preserving the role of the referencing element might
+      result in out-of-context content. For example, a
+        <xmlelement>chapter</xmlelement> element that references a bookmap
+      might pull in <xmlelement>part</xmlelement> elements that contain
+      nested <xmlelement>chapter</xmlelement> elements. Treating the
+        <xmlelement>part</xmlelement> element as a
+        <xmlelement>chapter</xmlelement> will result in a chapter that
+      nests other chapters, which is not valid in bookmap and might not be
+      understandable by processors. The result is implementation
+        specific<ph rev="review-k">. P</ph>rocessors <term
+        outputclass="RFC-2119">MAY</term> choose to treat this as an error,
+      issue a warning, or simply assign new roles to the problematic
+      elements.</p>
  </conbody>
 </concept>
