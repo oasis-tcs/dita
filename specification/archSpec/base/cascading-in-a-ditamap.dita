@@ -27,21 +27,28 @@
       <li/>
     </ul>
     <p>Cascading is additive for attributes that accept multiple values,
-      except when the <xmlatt>cascade</xmlatt> attribute is set to avoid
-      adding values to attributes. For attributes that take a single value,
-      the closest value defined on a containing element takes effect.</p>
-    <p>In a relationship table, row-level metadata is considered more
-      specific than column-level metadata, as shown in the following
-      containment hierarchy:<ul id="containment">
+      except when <ph rev="review-k"><codeph>cascade="nomerge"</codeph> is
+        specified.</ph> For attributes that take a single value, the value
+        <ph rev="review-k">that is defined on the closest containing
+        element</ph> takes effect.</p>
+    <p><ph rev="review-k">The containment hierarchy that is defined in a
+        relationship table has additional nuances.</ph> In a relationship
+      table, row-level metadata is considered more specific than
+      column-level metadata, as shown in the following <ph rev="review-k"
+        >list that illustrates the containment hierarchy that is presented
+        by a map:</ph><ul id="containment">
         <li><xmlelement>map</xmlelement> (most general)<ul>
             <li><xmlelement>topicref</xmlelement> container (more specific)<ul>
                 <li><xmlelement>topicref</xmlelement> (most specific)</li>
               </ul></li>
             <li><xmlelement>reltable</xmlelement> (more specific)<ul>
                 <li><xmlelement>relcolspec</xmlelement> (more specific)<ul>
-                    <li><xmlelement>relrow</xmlelement> (more specific)<ul id="ul_dsk_qj2_nsb">
-                        <li><xmlelement>relcell</xmlelement> (more specific)<ul id="ul_pyd_rj2_nsb">
-                            <li><xmlelement>topicref</xmlelement> (most specific)</li>
+                    <li><xmlelement>relrow</xmlelement> (more specific)<ul
+                        id="ul_dsk_qj2_nsb">
+                        <li><xmlelement>relcell</xmlelement> (more
+                            specific)<ul id="ul_pyd_rj2_nsb">
+                            <li><xmlelement>topicref</xmlelement> (most
+                              specific)</li>
                           </ul></li>
                       </ul></li>
                   </ul></li>
