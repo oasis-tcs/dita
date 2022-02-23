@@ -19,20 +19,30 @@
       on other elements, such as <xmlelement>note</xmlelement> or
       <xmlelement>copyright</xmlelement>, is described in the element reference topics for those
       elements.</section>
-<section id="linking"><p>The <xmlatt>type</xmlatt> attribute describes the target of a cross-reference and might generate
-        cross-reference text based on that description. Only the <xmlelement>xref</xmlelement>
-        element can link to content below the topic level: other types of linking can target whole
-        topics, but not parts of topics. Typically <xmlelement>xref</xmlelement> should also be
-        limited to topic-level targets, unless the output is primarily print-oriented. Web-based
-        referencing works best at the level of whole topics, rather than anchor locations within
-        topics.</p><p>If not explicitly specified on an element, the <xmlatt>type</xmlatt> attribute value cascades
+<section id="linking">
+      <draft-comment author="robander" time="22 Feb 2022">The last sentences here, "Typically xref
+        should also..." and "Web-based referencing works best..." are really best practices - not
+        sure it belongs in the spec here?</draft-comment><p>The <xmlatt>type</xmlatt> attribute describes the target of a cross-reference and an application
+        might generate cross-reference text based on that description. Only the
+          <xmlelement>xref</xmlelement> element can link to content below the topic level: other
+        types of linking can target whole topics, but not parts of topics. Typically
+          <xmlelement>xref</xmlelement> should also be limited to topic-level targets, unless the
+        output is primarily print-oriented. Web-based referencing works best at the level of whole
+        topics, rather than anchor locations within topics.</p><p>If not explicitly specified on an element, the <xmlatt>type</xmlatt> attribute value cascades
         from the closest ancestor element. If there is no explicit value for the
-          <xmlatt>type</xmlatt> attribute on any ancestor, a default value of <q>topic</q> is used. </p>
+          <xmlatt>type</xmlatt> attribute on any ancestor, the processing default is
+          <keyword>topic</keyword>. </p>
       <draft-comment author="robander" time="19 May 2021">I think we need to look closely at the
-        next clause, which is normative; I don't think the "specialization of the
-          <xmlatt>type</xmlatt> attribute value" is quite right. It's supposed to be a
-        specialization of the element type named as the <i>value</i> of
-        <xmlatt>type</xmlatt>.</draft-comment>
+        next clause, which is normative; "specialization of the <xmlatt>type</xmlatt> attribute
+        value" is not quite right. It's supposed to be a specialization of the element type named as
+        the <i>value</i> of <xmlatt>type</xmlatt>. The language for this gets really awkward though
+        when trying to be precise.<p>Update: ok, the para below that starts "If the
+            <xmlatt>type</xmlatt> attribute is specified when referencing DITA content, it should
+          match one..." seems to say what we need for this? Probably don't need both, one for topics
+          and one for elements?</p></draft-comment>
+      <draft-comment author="robander" time="22 Feb 2022">The "MAY" recover also seems weird - it
+        MAY recover by using the specified value? Seems like the recovery would be to use the
+        detected correct value, not the incorrect specified one?</draft-comment>
       <p>During output processing for references to DITA topics (<codeph>format="dita"</codeph>), it
         is an error if the actual type of a DITA topic and the explicit, inherited, or default value
         for the <xmlatt>type</xmlatt> attribute are not the same as or a specialization of the
@@ -40,11 +50,18 @@
           outputclass="RFC-2119">MAY</term> give an error message, and <term outputclass="RFC-2119"
           >MAY</term> recover from this error condition by using the <xmlatt>type</xmlatt> attribute
         value. </p>
+      <draft-comment author="robander">And … this next para is also odd. It seems sort of a
+        tautology. "If you referenced something where type can't be validated, type isn't
+        validated". Can we just remove the paragraph? It is hard to parse and I don't think it adds
+        anything.</draft-comment>
       <p>During output processing for references to non-DITA objects (that is, either scope is
-        “external" or format is neither <keyword>dita</keyword> nor <keyword>ditamap</keyword>) or
-        other cases where the type of the referenced item cannot be determined from the item itself,
-        the explicit, inherited, or default value for the <xmlatt>type</xmlatt> attribute is used
-        without any validation. </p>
+          <keyword>external</keyword> or format is neither <keyword>dita</keyword> nor
+          <keyword>ditamap</keyword>) or other cases where the type of the referenced item cannot be
+        determined from the item itself, the explicit, inherited, or default value for the
+          <xmlatt>type</xmlatt> attribute is used without any validation. </p>
+      <draft-comment author="robander">Again … is the next para necessary? Seems like
+        over-specification to have a normative rule that when you reference something an application
+        MAY set or reset type for you.</draft-comment>
       <p>When a referencing element is first added to or updated in a document, DITA-aware editors
           <term outputclass="RFC-2119">MAY</term> set the <xmlatt>type</xmlatt> attribute value
         based on the actual type of a referenced DITA topic.</p><p>If the <xmlatt>type</xmlatt> attribute is specified when referencing DITA content, it should
@@ -84,7 +101,11 @@ be treated as "topic".</dd>
         <dlentry conkeyref="reuse-attributes/ditauseconref">
           <dt> </dt>
           <dd> </dd>
-        </dlentry></dl><p>Other values can be used to indicate other types of topics or elements as targets. Processing is
+        </dlentry></dl>
+      <draft-comment author="robander" time="22 feb 2022">In the base spec, are we mandating that
+        processors are REQUIRED to support every value listed above? If this is really a
+        requirement, it should be a normative rule, although I don't think the base can require
+        concept/task/reference in 2.0</draft-comment><p>Other values can be used to indicate other types of topics or elements as targets. Processing is
         only required to support the above list or specializations of types in that list. Supporting
         additional types as targets might require the creation of processing overrides.</p></section>
 </refbody>

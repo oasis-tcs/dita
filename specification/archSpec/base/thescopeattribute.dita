@@ -14,31 +14,42 @@
                 </metadata>
         </prolog>
 <refbody>
-<section id="section-1"><ul>
-<li>Set <xmlatt>scope</xmlatt> to "local" when the resource is part of the current set of
-                    content.</li>
-<li>Set <xmlatt>scope</xmlatt> to "peer" when the resource is part of the current set of content but
-                    might not accessible at build time, or for maps to be treated as root maps for
-                    the purpose of creating map-to-map key references (peer maps). An implementation
-                    might open such resources in the same browser window to distinguish them from
-                    those with <xmlatt>scope</xmlatt> set to "external".</li>
-<li>Set <xmlatt>scope</xmlatt> to "external" when the resource is not part of the current
-                    information set and should open in a new browser window.</li>
+<section id="section-1">
+                        <draft-comment author="robander" time="22 feb 2022">The "opens in new
+                                window" really is a processor choice but has been encoded in the
+                                spec from the beginning - should we drop that language? There is no
+                                reason for the spec to require that "external" opens in a new
+                                window, and I'm not sure that the spec should tie that behavior to
+                                this value.</draft-comment><ul>
+<li>Set <xmlatt>scope</xmlatt> to <keyword>local</keyword> when the resource is part of the current
+                                        set of content.</li>
+<li>Set <xmlatt>scope</xmlatt> to <keyword>peer</keyword> when the resource is part of the current
+                                        set of content but might not accessible at build time, or
+                                        for maps to be treated as root maps for the purpose of
+                                        creating map-to-map key references (peer maps). An
+                                        implementation might open such resources in the same browser
+                                        window to distinguish them from those with
+                                                <xmlatt>scope</xmlatt> set to
+                                                <keyword>external</keyword>.</li>
+<li>Set <xmlatt>scope</xmlatt> to <keyword>external</keyword> when the resource is not part of the
+                                        current information set and should open in a new browser
+                                        window.</li>
 <li>See <xref keyref="attributes-useconreftarget"/> for more information on
                                                 <keyword>-dita-use-conref-target</keyword>.</li>
 </ul><p><ph conkeyref="reuse-attributes/may-inherit"/> The processing default is determined by the value
                                 of the <xmlatt>href</xmlatt> attribute. In most cases, the
-                                processing default is "local". However the processing default is
-                                "external" whenever the absolute URI in the <xmlatt>href</xmlatt>
-                                attribute begins with one of the following schemes:</p>
+                                processing default is <keyword>local</keyword>. However the
+                                processing default is <keyword>external</keyword> whenever the
+                                absolute URI in the <xmlatt>href</xmlatt> attribute begins with one
+                                of the following schemes:</p>
     <ul >
                 <li><keyword>http</keyword></li>
                 <li><keyword>https</keyword></li>
                 <li><keyword>ftp</keyword></li>
                 <li><keyword>mailto</keyword></li>
             </ul>
-    <p>Processors can consider additional URI schemes as "external" by default. Processors <term
-                                        outputclass="RFC-2119">MUST</term> always consider relative
-                                URIs as "local" by default.</p></section>
+    <p>Processors can consider additional URI schemes as <keyword>external</keyword> by default.
+                                Processors <term outputclass="RFC-2119">MUST</term> always consider
+                                relative URIs as <keyword>local</keyword> by default.</p></section>
 </refbody>
 </reference>

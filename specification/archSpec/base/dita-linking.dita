@@ -6,6 +6,17 @@
     but they all use the same set of attributes to describe
     relationships between content.</shortdesc>
   <conbody>
+    <draft-comment author="robander" time="22 feb 2022" audience="spec-editors">Thought about this
+      topic … format/scope/type and to some extent href all apply whether the linking is done with
+      URI-based addressing, or keys. But the organization makes it seem like they are primarily for
+      URI, and then an add-on para at the bottom says they also come from keys.<p>I'd suggest that
+        we make URI-based and indirect into child topics, except that we have a whole giant map's
+        worth of content that follows. We also have a topic that follows this one that describes
+        URI-based addressing. </p><p>One idea … we remove most of the content that follows and
+        replace it with more general conceptual info. "Links are described through a few attributes,
+        each of which can be specified directly on the link or indirectly via key. The linking
+        attributes are format, href, scope, and type." Then remove all the content that follows,
+        leaving the 4 sub-topics that have moved here from the langref section.</p></draft-comment>
     <section id="uri">
       <title>URI-based addressing</title>
       <p>URI-based links are described by the following attributes.</p>
@@ -21,17 +32,16 @@
             addressed. For example, references to DITA topics are identified with
               <codeph>format="dita"</codeph>, whereas references to DITA maps use
               <codeph>format="ditamap"</codeph>. References to other types of content use other
-            values for this attribute. By default, references to non-XML content use the extension
-            of the URI in the <xmlatt>href</xmlatt> attribute as the effective format.</dd>
+            values for this attribute.</dd>
         </dlentry>
         <dlentry>
           <dt><xmlatt>scope</xmlatt></dt>
           <dd>The <xmlatt>scope</xmlatt> attribute describes the closeness of the relationship
             between the current document and the target resource. Resources in the same information
-            unit are considered <codeph>"local"</codeph>; resources in the same system as the
+            unit are considered <keyword>local</keyword>; resources in the same system as the
             referencing content but not part of the same information unit are considered
-              <codeph>"peer"</codeph>; and resources outside the system, such as Web pages, are
-            considered <codeph>"external"</codeph>.</dd>
+              <keyword>peer</keyword>; and resources outside the system, such as Web pages, are
+            considered <keyword>external</keyword>.</dd>
         </dlentry>
         <dlentry>
           <dt><xmlatt>type</xmlatt></dt>
@@ -42,6 +52,9 @@
       </dl>
       <p>These four attributes act as a unit, describing whatever link is established by the element
         that carries them.</p>
+      <draft-comment author="robander" time="22 feb 2022" audience="spec-editors">Really not a fan
+        of the next paragraph. This behavior should be described in the child topics, so maybe we
+        could just delete this paragraph that someone duplicates that info.</draft-comment>
       <p>The <xmlatt>format</xmlatt> and <xmlatt>scope</xmlatt> attributes are assigned default
         values based on the URI that is specified in the <xmlatt>href</xmlatt> attribute. Thus they
         rarely need to be explicitly specified in most cases. However, they can be useful in many
