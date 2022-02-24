@@ -3,12 +3,12 @@
  "concept.dtd">
 <concept id="cascading-in-a-ditamap" xml:lang="en-us">
   <title><ph>Cascading of metadata attributes in a DITA map</ph></title>
-  <shortdesc>Certain map-level attributes cascade throughout a map, which
-    facilitates attribute and metadata management. When attributes
-      <term>cascade</term>, they apply to the elements that are children of
-    the element where the attributes were specified. Cascading applies to a
-    containment hierarchy, as opposed to <ph rev="review-k">an</ph>
-    element-type hierarchy.</shortdesc>
+  <shortdesc>Certain attributes cascade throughout a map, which facilitates
+    attribute and metadata management. When attributes cascade, they apply
+    to the elements that are children of the element where the attributes
+    were specified. Cascading applies to a containment hierarchy, as
+    opposed to <ph rev="review-k">an</ph> element-type
+    hierarchy.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -19,8 +19,6 @@
     </metadata>
   </prolog>
   <conbody>
-    <!--Commenting out the following para/list/para, as suggested by Stan during the DITA 1.3 phase1 review. Seems redundant with the following info. May need to reinstate some or all of this, if the nested sections become distinct or nested topics.-->
-    <!--<p>The following attributes and metadata elements cascade throughout the entire map:</p><ul><li>Attributes set on the <xmlelement>map</xmlelement> element</li><li>Metadata elements that are contained in the <xmlelement>topicmeta</xmlelement> element that is a child of the <xmlelement>map</xmlelement> element</li></ul><p>Attribute values and metadata elements in relationship tables can be applied to entire columns or rows as well as individual cells, a practice that is particularly useful for attribute and metadata management.</p>-->
     <p>The following attributes cascade when set on the <xmlelement>map</xmlelement> element or when
       set within a map:</p>
     <ul conkeyref="reuse-general/cascading-attributes" id="ul_f2j_pwn_yl">
@@ -31,30 +29,28 @@
         specified.</ph> For attributes that take a single value, the value
         <ph rev="review-k">that is defined on the closest containing
         element</ph> takes effect.</p>
-    <p><ph rev="review-k">The containment hierarchy that is defined in a
-        relationship table has additional nuances.</ph> In a relationship
-      table, row-level metadata is considered more specific than
-      column-level metadata, as shown in the following <ph rev="review-k"
-        >list that illustrates the containment hierarchy that is presented
-        by a map:</ph><ul id="containment">
-        <li><xmlelement>map</xmlelement> (most general)<ul>
-            <li><xmlelement>topicref</xmlelement> container (more specific)<ul>
-                <li><xmlelement>topicref</xmlelement> (most specific)</li>
-              </ul></li>
-            <li><xmlelement>reltable</xmlelement> (more specific)<ul>
-                <li><xmlelement>relcolspec</xmlelement> (more specific)<ul>
-                    <li><xmlelement>relrow</xmlelement> (more specific)<ul
-                        id="ul_dsk_qj2_nsb">
-                        <li><xmlelement>relcell</xmlelement> (more
-                            specific)<ul id="ul_pyd_rj2_nsb">
-                            <li><xmlelement>topicref</xmlelement> (most
-                              specific)</li>
-                          </ul></li>
+    <div rev="review-k">
+      <p>In a relationship table, metadata can be applied to entire rows or
+        columns, as well as individual cells. The metadata cascade operates
+        differently due to the nature of this tabular structure The cascade
+        is not driven by a strict containment hierarchy because
+          <xmlelement>relcolspec</xmlelement> elements do not contain child
+        elements.</p>
+      <p>The following list illustrates how metadata cascades in a
+        relationship table:</p>
+      <ul id="containment">
+        <li><xmlelement>reltable</xmlelement><ul>
+            <li><xmlelement>relcolspec</xmlelement><ul>
+                <li><xmlelement>relrow</xmlelement><ul id="ul_dsk_qj2_nsb">
+                    <li><xmlelement>relcell</xmlelement><ul
+                        id="ul_pyd_rj2_nsb">
+                        <li><xmlelement>topicref</xmlelement></li>
                       </ul></li>
                   </ul></li>
               </ul></li>
           </ul></li>
-      </ul></p>
+      </ul>
+    </div>
   </conbody>
 </concept>
 
