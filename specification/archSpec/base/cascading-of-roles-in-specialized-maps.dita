@@ -1,67 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept xml:lang="en-us" id="cascading-of-roles-in-specialized-maps" >
- <title>Cascading of roles from map to map</title>
- <shortdesc>When specialized <xmlelement>topicref</xmlelement> elements,
-    such as <xmlelement>chapter</xmlelement> or
-      <xmlelement>mapref</xmlelement>, reference a map, they typically
-    imply a semantic role for the referenced content. </shortdesc>
- <prolog>
-  <metadata>
-   <keywords>
-    <indexterm>cascading<indexterm>map-to-map<indexterm>exceptions</indexterm></indexterm></indexterm>
-    <indexterm>map-to-map cascading<indexterm>exceptions</indexterm></indexterm>
-   </keywords>
-  </metadata>
- </prolog>
- <conbody>
-    <!--IGNORE may-must-should word-->
-    <draft-comment author="Kristen J Eberlein" audience="spec-editors" time="04 July 2019">
-      <p>We need to look at the instances of "should" in this topic. Can they be recast? Do we need
-        to introduce RFC-2119 language?</p>
-    </draft-comment>
-    <p>The semantic role reflects the <xmlatt>class</xmlatt> hierarchy of
-      the referencing <xmlelement>topicref</xmlelement> element<ph
-        rev="review-k">. It </ph>is equivalent to having the
-        <xmlatt>class</xmlatt> attribute from the referencing
-        <xmlelement>topicref</xmlelement> cascade to the top-level
-        <xmlelement>topicref</xmlelement> elements in the referenced map.
-      Although this cascade behavior is not universal, there are general
-      guidelines for when a role based on the <xmlatt>class</xmlatt>
-      attribute cascades.</p>
-  <p>When a <xmlelement>topicref</xmlelement> element or a specialization of a
-    <xmlelement>topicref</xmlelement> element references a DITA resource, it defines a role for that
-   resource. In some cases this role is straightforward, such as when a
-    <xmlelement>topicref</xmlelement> element references a DITA topic (giving it the already known
-   role of "topic"), or when a <xmlelement>mapref</xmlelement> element references a DITA map (giving
-   it the role of "DITA map").</p>
-    <!--IGNORE may-must-should word-->
-    <draft-comment author="rodaande" time="8 Feb 2022">The following paragraph includes the
-      statement: "the non-default behavior should be clearly specified"<p>We do not say how or
-        where. For mapgroup, I believe it is only specified here in this topic. I think either we
-        need this as part of every mapgroup element definition, in "Processing expectations", or we
-        need a clear table here listing every element where this behavior does not
-      apply.</p></draft-comment>
-  <p>Unless otherwise instructed, a specialized <xmlelement>topicref</xmlelement> element that
-      references a map supplies a role for the referenced content. This means that, in effect, the
-        <xmlatt>class</xmlatt> attribute of the referencing element cascades to top-level topicref
-      elements in the referenced map. In situations where this should not happen—such as all
-      elements from the mapgroup domain—the non-default behavior should be clearly specified.</p>
-  <p>For example, when a <xmlelement>chapter</xmlelement> element from the bookmap specialization
-      references a map, it supplies a role of "chapter" for each top-level
-        <xmlelement>topicref</xmlelement> element in the referenced map. When the
-        <xmlelement>chapter</xmlelement> element references a branch in another map, it supplies a
-      role of "chapter" for that branch. In effect, the <xmlatt>class</xmlatt> attribute for
-        <xmlelement>chapter</xmlelement> (<codeph>"- map/topicref bookmap/chapter "</codeph>)
-      cascades to the top-level <xmlelement>topicref</xmlelement> elements in the nested map,
+<concept xml:lang="en-us" id="cascading-of-roles-in-specialized-maps">
+  <title>Cascading of roles from map to map</title>
+  <shortdesc>When a <xmlelement>topicref</xmlelement> element or a
+    specialization of a <xmlelement>topicref</xmlelement> element
+    references a DITA resource, it defines a role for that resource. In
+    most cases, that role cascades to top-level topic references in the
+    submap.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>cascading<indexterm>map-to-map<indexterm>exceptions</indexterm></indexterm></indexterm>
+        <indexterm>map-to-map
+          cascading<indexterm>exceptions</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>In some cases, the role is straightforward:</p>
+    <ul>
+      <li>When a <xmlelement>topicref</xmlelement> element references a
+        DITA topic, the role of <keyword>topic</keyword> cascades.</li>
+      <li>When a <xmlelement>topicref</xmlelement> element references a
+        DITA map, the role of <keyword>map</keyword> cascades.</li>
+    </ul>
+    <p>In general, the semantic role that cascades reflects the
+        <xmlatt>class</xmlatt> hierarchy of the referencing
+        <xmlelement>topicref</xmlelement> element.</p>
+    <p>For example, when a <xmlelement>chapter</xmlelement> element from
+      the bookmap specialization references a map, it supplies a role of
+        <keyword>chapter</keyword> for each top-level
+        <xmlelement>topicref</xmlelement> element in the referenced map.
+      When the <xmlelement>chapter</xmlelement> element references a branch
+      in another map, it supplies a role of "chapter" for that branch. In
+      effect, the <xmlatt>class</xmlatt> attribute for
+        <xmlelement>chapter</xmlelement> (<codeph>"- map/topicref
+        bookmap/chapter "</codeph>) cascades to the top-level
+        <xmlelement>topicref</xmlelement> elements in the nested map,
       although it does not cascade any further.</p>
-  <p>Because the <xmlelement>mapref</xmlelement> element is a convenience element, the top-level
-        <xmlelement>topicref</xmlelement> elements in the map referenced by a
-        <xmlelement>mapref</xmlelement> element <term outputclass="RFC-2119">MUST NOT</term> be
-      processed as if they are <xmlelement>mapref</xmlelement> elements. The <xmlatt>class</xmlatt>
-      attribute from the <xmlelement>mapref</xmlelement> element (<codeph>"+ map/topicref
-        mapgroup-d/mapref "</codeph>) does not cascade to the referenced map.</p>
-  <p>In some cases, preserving the role of the referencing element might
+    <p>For the following elements, the role does not cascade:</p>
+    <ul>
+      <li>Any element in the map group domain</li>
+      <li>Any convenience elements that are based on
+          <xmlelement>topicref</xmlelement> elements</li>
+    </ul>
+    <!--<p><ph rev="review-k">. It </ph>is equivalent to having the <xmlatt>class</xmlatt> attribute from the referencing <xmlelement>topicref</xmlelement> cascade to the top-level <xmlelement>topicref</xmlelement> elements in the referenced map. Although this cascade behavior is not universal, there are general guidelines for when a role based on the <xmlatt>class</xmlatt> attribute cascades.</p>-->
+    <!--<p>When a <xmlelement>topicref</xmlelement> element or a specialization of a <xmlelement>topicref</xmlelement> element references a DITA resource, it defines a role for that resource. In some cases this role is straightforward, such as when a <xmlelement>topicref</xmlelement> element references a DITA topic (giving it the already known role of "topic"), or when a <xmlelement>mapref</xmlelement> element references a DITA map (giving it the role of "DITA map").</p>-->
+    <!--IGNORE may-must-should word-->
+    <!--<draft-comment author="rodaande" time="8 Feb 2022">The following paragraph includes the statement: "the non-default behavior should be clearly specified"<p>We do not say how or where. For mapgroup, I believe it is only specified here in this topic. I think either we need this as part of every mapgroup element definition, in "Processing expectations", or we need a clear table here listing every element where this behavior does not apply.</p></draft-comment>-->
+    <!--<p>Unless otherwise instructed, a specialized <xmlelement>topicref</xmlelement> element that references a map supplies a role for the referenced content. This means that, in effect, the <xmlatt>class</xmlatt> attribute of the referencing element cascades to top-level topicref elements in the referenced map. In situations where this should not happen—such as all elements from the mapgroup domain—the non-default behavior should be clearly specified.</p>-->
+    <p>Because the <xmlelement>mapref</xmlelement> element is a convenience
+      element, the top-level <xmlelement>topicref</xmlelement> elements in
+      the map referenced by a <xmlelement>mapref</xmlelement> element <term
+        outputclass="RFC-2119">MUST NOT</term> be processed as if they are
+        <xmlelement>mapref</xmlelement> elements. The
+        <xmlatt>class</xmlatt> attribute from the
+        <xmlelement>mapref</xmlelement> element (<codeph>"+ map/topicref
+        mapgroup-d/mapref "</codeph>) does not cascade to the referenced
+      map.</p>
+    <p>In some cases, preserving the role of the referencing element might
       result in out-of-context content. For example, a
         <xmlelement>chapter</xmlelement> element that references a bookmap
       might pull in <xmlelement>part</xmlelement> elements that contain
@@ -74,5 +71,5 @@
         outputclass="RFC-2119">MAY</term> choose to treat this as an error,
       issue a warning, or simply assign new roles to the problematic
       elements.</p>
- </conbody>
+  </conbody>
 </concept>
