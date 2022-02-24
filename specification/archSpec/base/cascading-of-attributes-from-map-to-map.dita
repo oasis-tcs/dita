@@ -13,16 +13,23 @@
     </metadata>
   </prolog>
   <conbody>
-    <p>The following attributes cascade from map to map:<ul id="cascading-attributes">
-<li><xmlatt>rev</xmlatt></li>
-<li><ph conkeyref="reuse-general/propsAndSpecializations"/></li>
-        <li><xmlatt>linking</xmlatt>, <xmlatt>toc</xmlatt>, <xmlatt>search</xmlatt></li>
-        <li><xmlatt>type</xmlatt></li>
-        <li><xmlatt>translate</xmlatt></li>
-        <li><xmlatt>processing-role</xmlatt></li>
-        <li ><xmlatt>cascade</xmlatt></li>
-      </ul></p>
-    <p>Note that the above list excludes the following attributes:<dl>
+    <p>The following attributes cascade from map to map:</p>
+    <ul id="cascading-attributes">
+      <li><xmlatt>rev</xmlatt></li>
+      <li><ph conkeyref="reuse-general/propsAndSpecializations"/></li>
+      <li><xmlatt>linking</xmlatt>, <xmlatt>toc</xmlatt>,
+          <xmlatt>search</xmlatt></li>
+      <li><xmlatt>type</xmlatt></li>
+      <li><xmlatt>translate</xmlatt></li>
+      <li><xmlatt>processing-role</xmlatt></li>
+      <li><xmlatt>cascade</xmlatt></li>
+    </ul>
+    <p>As with values that cascade within a map, the cascading is additive
+      if the attribute permits multiple values<ph rev="review-k">,
+      </ph>such as <xmlatt>audience</xmlatt>. <ph rev="review-k">For
+        attributes that take a single value, the value that is defined on
+        the closest containing element takes effect.</ph></p>
+    <p>The following attributes do not cascade from map to map<dl>
         <dlentry>
           <dt><xmlatt>format</xmlatt></dt>
           <dd>The <xmlatt>format</xmlatt> attribute is set to
@@ -31,26 +38,26 @@
             to the referenced map.</dd>
         </dlentry>
         <dlentry>
-          <dt><xmlatt>xml:lang</xmlatt> and <xmlatt>dir</xmlatt></dt>
-          <dd>Cascading behavior for <xmlatt>xml:lang</xmlatt> is defined in <xref
-              href="xmllang.dita"/>. The <xmlatt>dir</xmlatt> attribute follows the same rules as
-              <xmlatt>xml:lang</xmlatt>.</dd>
+          <dt><xmlatt>scope</xmlatt></dt>
+          <dd>The value of the <xmlatt>scope</xmlatt> attribute describes
+            the map itself, rather than the content. For example, when the
+              <xmlatt>scope</xmlatt> attribute is set to
+              <keyword>external</keyword>, it indicates that the referenced
+            map itself is external and unavailable, so the value cannot
+            cascade into that referenced map.</dd>
         </dlentry>
         <dlentry>
-          <dt><xmlatt>scope</xmlatt></dt>
-          <dd>The value of the <xmlatt>scope</xmlatt> attribute describes the map itself, rather
-            than the content. For example, when the <xmlatt>scope</xmlatt> attribute is set to
-            <keyword>external</keyword>, it indicates that the referenced map itself is external and unavailable, so
-            the value cannot cascade into that referenced map.</dd>
+          <dt><xmlatt>xml:lang</xmlatt> and <xmlatt>dir</xmlatt></dt>
+          <dd>Cascading behavior for <xmlatt>xml:lang</xmlatt> is defined
+            in <xref href="xmllang.dita"/>. The <xmlatt>dir</xmlatt>
+            attribute follows the same rules as
+            <xmlatt>xml:lang</xmlatt>.</dd>
         </dlentry>
       </dl></p>
-    <p>The <xmlatt>class</xmlatt> attribute is used to determine the processing roles that cascade
-      from map to map. See <xref href="cascading-of-roles-in-specialized-maps.dita"/> for more
-      information.</p>
-    <p>As with values that cascade within a map, the cascading is additive
-      if the attribute permits multiple values<ph rev="review-k">,
-      </ph>such as <xmlatt>audience</xmlatt>. <ph rev="review-k">For
-        attributes that take a single value, the value that is defined on
-        the closest containing element takes effect.</ph></p>
+    <p><ph rev="review-k">While the <xmlatt>class</xmlatt> attribute is
+        unique and does not cascade, the value of the attribute</ph> is
+      used to determine the processing roles that cascade from map to map.
+      See <xref href="cascading-of-roles-in-specialized-maps.dita"/> for
+      more information.</p>
   </conbody>
 </concept>
