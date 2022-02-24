@@ -3,11 +3,13 @@
  "reference.dtd">
 <reference id="reconciling-topic-and-map-metadata" xml:lang="en-us">
 <title><ph>Reconciling topic and map metadata elements</ph></title>
-<shortdesc>The <xmlelement>topicmeta</xmlelement> element in maps contains numerous elements that
-  can be used to declare metadata. These metadata elements have an effect on the parent
-   <xmlelement>topicref</xmlelement> element, any child <xmlelement>topicref</xmlelement> elements,
-  and – if a direct child of the <xmlelement>map</xmlelement> element – on the map as a
-  whole.</shortdesc>
+<shortdesc>The <xmlelement>topicmeta</xmlelement> element in maps <ph
+      rev="review-k">can contain</ph> numerous metadata elements. These
+    metadata elements <ph rev="review-k">can</ph> have an effect on the
+    parent <xmlelement>topicref</xmlelement> element, any child
+      <xmlelement>topicref</xmlelement> elements, and – if a direct child
+    of the <xmlelement>map</xmlelement> element – on the map as a
+    whole.</shortdesc>
 <refbody>
 <section id="section"><p>For each element that can be contained in the <xmlelement>topicmeta</xmlelement> element, the
     following table addresses the following questions:<dl>
@@ -15,21 +17,23 @@
       <dt>How does it apply to the topic?</dt>
       <dd>This column describes how the metadata specified within the
                 <xmlelement>topicmeta</xmlelement> element interacts with
-              the metadata specified in the topic. In most cases, the
-              properties are additive.  <ph rev="review-k">For example,
-                when a topic reference in a map contains
-                  <codeph>&lt;audience type="administrator"</codeph>,
-                  <codeph>&lt;audience type="administrator"</codeph> is
-                added during processing to any metadata that is specified
-                in within the topic prolog.</ph></dd>
+              the metadata specified in the <ph rev="review-k"
+                >referenced</ph> topic. In most cases, the properties are
+              additive. <ph rev="review-k">For example, when a topic
+                reference in a map contains <codeph>&lt;audience
+                  type="administrator"</codeph>, <codeph>&lt;audience
+                  type="administrator"</codeph> is added during processing
+                to any metadata that is specified in the topic
+              prolog.</ph></dd>
      </dlentry>
      <dlentry>
       <dt>Does it cascade to other topics in the map?</dt>
-      <dd>This column indicates whether the specified metadata value
-              cascades to nested <xmlelement>topicref</xmlelement>
-              elements. <ph rev="review-k">For example, when a topic
-                reference in a map contains <codeph>&lt;audience
-                  type="administrator"</codeph>, <codeph>&lt;audience
+      <dd>This column indicates whether the specified metadata <ph
+                rev="review-k">element</ph> cascades to nested
+                <xmlelement>topicref</xmlelement> elements. <ph
+                rev="review-k">For example, when a topic reference in a map
+                contains <codeph>&lt;audience
+                type="administrator"</codeph>, <codeph>&lt;audience
                   type="administrator"</codeph> is added during processing
                 to the metadata for all child topic references.</ph>
               Elements that can apply only to the specific
@@ -39,8 +43,13 @@
      </dlentry>
      <dlentry>
       <dt>What is the purpose when specified on the <xmlelement>map</xmlelement> element?</dt>
-      <dd>The map element allows metadata to be specified for the entire map. This column describes
-       what effect, if any, an element has when specified at this level.</dd>
+      <dd>The map element <ph rev="review-k">permits</ph> metadata to be
+              specified for the entire map. This column describes <ph
+                rev="review-k">the effect that</ph> an element has when
+              specified at this level. <ph rev="review-k">If a metadata
+                element is specified at this level and has a stated
+                purpose, the metadata element applies to all topics that
+                are referenced in the map.</ph></dd>
      </dlentry>
     </dl></p></section>
 <table><title><xmlelement>topicmeta</xmlelement> elements and their properties</title>
