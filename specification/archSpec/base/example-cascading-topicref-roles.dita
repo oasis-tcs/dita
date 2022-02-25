@@ -2,7 +2,10 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="cascadetopicrefrole">
   <title>Example: How <xmlelement>topicref</xmlelement> roles cascade to referenced maps</title>
-  <shortdesc>In this scenario, a specialized topicref references content in another map.</shortdesc>
+  <shortdesc>In this scenario, a specialized
+      <xmlelement>topicref</xmlelement>
+    <ph rev="review-k">element</ph> references content in another
+    map.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -20,15 +23,19 @@
         <dlentry>
           <dt>Referenced map contains a single top-level <xmlelement>topicref</xmlelement>
             element</dt>
-          <dd>The entire branch functions as if it were included in the bookmap; the top-level
-              <xmlelement>topicref</xmlelement> element is processed as if it were the
-              <xmlelement>chapter</xmlelement> element.</dd>
+          <dd>The entire branch functions as if it were included in the
+              bookmap<ph rev="review-k">. The</ph> top-level
+              <xmlelement>topicref</xmlelement> element is processed as if
+            it were the <xmlelement>chapter</xmlelement> element.</dd>
         </dlentry>
         <dlentry>
           <dt>Referenced map contains multiple top-level <xmlelement>topicref</xmlelement>
             elements</dt>
-          <dd>Each top-level <xmlelement>topicref</xmlelement> element is processed as if it were a
-              <xmlelement>chapter</xmlelement> element (the referencing element).</dd>
+          <dd>Each top-level <xmlelement>topicref</xmlelement> element is
+            processed as if it were a <xmlelement>chapter</xmlelement>
+              element<ph rev="review-k">, since the processing role of the
+                <xmlelement>chapter</xmlelement> element
+            cascades.</ph></dd>
         </dlentry>
         <dlentry>
           <dt>Referenced map contains a single <xmlelement>appendix</xmlelement> element</dt>
@@ -36,8 +43,9 @@
               <xmlelement>chapter</xmlelement> element.</dd>
         </dlentry>
         <dlentry>
-          <dt>Referenced map contains a single <xmlelement>part</xmlelement> element, with nested
-              <xmlelement>chapter</xmlelement> elements.</dt>
+          <dt>Referenced map contains a single
+              <xmlelement>part</xmlelement> element, with nested
+              <xmlelement>chapter</xmlelement> elements</dt>
           <dd>The <xmlelement>part</xmlelement> element is processed as it
             were a <xmlelement>chapter</xmlelement> element. Nested
               <xmlelement>chapter</xmlelement> elements might not be
