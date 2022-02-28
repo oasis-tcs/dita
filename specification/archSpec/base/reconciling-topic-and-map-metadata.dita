@@ -8,8 +8,7 @@
     metadata elements <ph rev="review-k">can</ph> have an effect on the
     parent <xmlelement>topicref</xmlelement> element, any child
       <xmlelement>topicref</xmlelement> elements, and – if a direct child
-    of the <xmlelement>map</xmlelement> element – on the map as a
-    whole.</shortdesc>
+    of the <xmlelement>map</xmlelement> element – on the .</shortdesc>
 <refbody>
 <section id="section"><p>For each element that can be contained in the <xmlelement>topicmeta</xmlelement> element, the
     following table addresses the following questions:<dl>
@@ -36,163 +35,211 @@
                 contains <codeph rev="review-k">&lt;author>Jane
                   Doe&lt;/author></codeph>, <codeph rev="review-k"
                   >&lt;author>Jane Doe&lt;/author></codeph> is added during
-                processing to the metadata for all child topic
-                references.</ph> Elements that can apply only to the
-              specific <xmlelement>topicref</xmlelement> element, such as
-                <xmlelement>titlealt</xmlelement> or
-                <xmlelement>keytext</xmlelement>, do not cascade.</dd>
+                processing to the metadata for all child topic references.
+                Some elements do not cascade.</ph></dd>
      </dlentry>
      <dlentry>
       <dt>What is the purpose when specified on the <xmlelement>map</xmlelement> element?</dt>
       <dd>The map element <ph rev="review-k">permits</ph> metadata to be
-              specified for the entire map. This column describes <ph
+              specified for the map. This column describes <ph
                 rev="review-k">the effect that</ph> an element has when
-              specified at this level. <ph rev="review-k">If a metadata
-                element is specified at this level and has a stated
-                purpose, the metadata element applies to all topics that
-                are referenced in the map.</ph></dd>
+              specified at this level.
+              <!--<ph rev="review-k">If a metadata element is specified at this level and has a stated purpose, the metadata element applies to all topics that are referenced in the map.</ph>--></dd>
      </dlentry>
+          <dlentry rev="review-k">
+            <dt>When set on the <xmlelement>map</xmlelement> element, does
+              it apply to all topics referenced in the map?</dt>
+            <dd>When specified on the  <xmlelement>map</xmlelement> element
+              element, some metadata elements then apply to all the topics
+              that are referenced in the map.</dd>
+          </dlentry>
     </dl></p></section>
 <table><title><xmlelement>topicmeta</xmlelement> elements and their properties</title>
-<tgroup cols="4"><colspec colname="col1"/><colspec colname="col2"/>
-<colspec colname="COLSPEC0"/><colspec colname="COLSPEC1"/>
-<thead>
-<row valign="bottom">
-<entry colname="col1">Element</entry>
-<entry colname="col2">How does it apply to the topic?</entry>
-<entry colname="COLSPEC0"><ph conkeyref="reuse-general/does-it-cascade"/></entry>
-<entry colname="COLSPEC1">What is the purpose when set on the <xmlelement>map</xmlelement>
-element?</entry>
-</row>
-</thead>
-<tbody>
-<row>
-<entry colname="col1"><xmlelement>audience</xmlelement></entry>
-<entry colname="col2">Add to the topic</entry>
-<entry colname="COLSPEC0">Yes</entry>
-<entry colname="COLSPEC1">Specify an audience for the entire map</entry>
-</row>
-<row>
-<entry colname="col1"><xmlelement>author</xmlelement></entry>
-<entry colname="col2">Add to the topic</entry>
-<entry colname="COLSPEC0">Yes</entry>
-<entry colname="COLSPEC1">Specify an author for the entire map</entry>
-</row>
-<row>
-<entry colname="col1"><xmlelement>category</xmlelement></entry>
-<entry colname="col2">Add to the topic</entry>
-<entry colname="COLSPEC0">Yes</entry>
-<entry colname="COLSPEC1">Specify a category for the entire map</entry>
-</row>
-<row>
-<entry colname="col1"><xmlelement>copyright</xmlelement></entry>
-<entry colname="col2">Add to the topic</entry>
-<entry colname="COLSPEC0">Yes</entry>
-<entry colname="COLSPEC1">Specify a copyright for the entire map</entry>
-</row>
-<row>
-<entry colname="col1"><xmlelement>critdates</xmlelement></entry>
-<entry colname="col2">Add to the topic</entry>
-<entry colname="COLSPEC0">Yes</entry>
-<entry colname="COLSPEC1">Specify critical dates for the entire map</entry>
-</row>
-<row>
-<entry colname="col1"><xmlelement>data</xmlelement></entry>
-<entry colname="col2">Add to the topic</entry>
-<entry colname="COLSPEC0">No, unless specialized for a purpose that
-cascades</entry>
-<entry colname="COLSPEC1">No stated purpose</entry>
-</row>
-<row>
-<entry colname="col1"><xmlelement>foreign</xmlelement></entry>
-<entry colname="col2">Add to the topic</entry>
-<entry colname="COLSPEC0">No, unless specialized for a purpose that
-cascades</entry>
-<entry colname="COLSPEC1">No stated purpose</entry>
-</row>
+<tgroup cols="5">
+        <colspec colname="col1"/>
+        <colspec colname="col2"/>
+        <colspec colname="COLSPEC0"/>
+        <colspec colname="COLSPEC1"/>
+        <colspec colname="newCol5"/>
+        <thead>
+          <row valign="bottom">
+            <entry colname="col1">Element</entry>
+            <entry colname="col2">How does it apply to the topic?</entry>
+            <entry colname="COLSPEC0"><ph
+                conkeyref="reuse-general/does-it-cascade"/></entry>
+            <entry colname="COLSPEC1">What is the purpose when set on the
+                <xmlelement>map</xmlelement> element?</entry>
+            <entry>When set on the <xmlelement>map</xmlelement> element,
+              does it apply to all topics referenced in the map?</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry colname="col1"><xmlelement>audience</xmlelement></entry>
+            <entry colname="col2">Add to the topic</entry>
+            <entry colname="COLSPEC0">Yes</entry>
+            <entry colname="COLSPEC1">Specify an audience for the
+              map</entry>
+            <entry>Yes</entry>
+          </row>
+          <row>
+            <entry colname="col1"><xmlelement>author</xmlelement></entry>
+            <entry colname="col2">Add to the topic</entry>
+            <entry colname="COLSPEC0">Yes</entry>
+            <entry colname="COLSPEC1">Specify an author for the map</entry>
+            <entry>Yes</entry>
+          </row>
+          <row>
+            <entry colname="col1"><xmlelement>category</xmlelement></entry>
+            <entry colname="col2">Add to the topic</entry>
+            <entry colname="COLSPEC0">Yes</entry>
+            <entry colname="COLSPEC1">Specify a category for the
+              map</entry>
+            <entry>Yes</entry>
+          </row>
+          <row>
+            <entry colname="col1"
+              ><xmlelement>copyright</xmlelement></entry>
+            <entry colname="col2">Add to the topic</entry>
+            <entry colname="COLSPEC0">Yes</entry>
+            <entry colname="COLSPEC1">Specify a copyright for the
+              map</entry>
+            <entry>Yes</entry>
+          </row>
+          <row>
+            <entry colname="col1"
+              ><xmlelement>critdates</xmlelement></entry>
+            <entry colname="col2">Add to the topic</entry>
+            <entry colname="COLSPEC0">Yes</entry>
+            <entry colname="COLSPEC1">Specify critical dates for the
+              map</entry>
+            <entry>Yes</entry>
+          </row>
+          <row>
+            <entry colname="col1"><xmlelement>data</xmlelement></entry>
+            <entry colname="col2">Add to the topic</entry>
+            <entry colname="COLSPEC0">No, unless specialized for a purpose
+              that cascades</entry>
+            <entry colname="COLSPEC1">No stated purpose</entry>
+            <entry>No</entry>
+          </row>
+          <row>
+            <entry colname="col1"><xmlelement>foreign</xmlelement></entry>
+            <entry colname="col2">Add to the topic</entry>
+            <entry colname="COLSPEC0">No, unless specialized for a purpose
+              that cascades</entry>
+            <entry colname="COLSPEC1">No stated purpose</entry>
+            <entry>No</entry>
+          </row>
           <row>
             <entry colname="col1"><xmlelement>keytext</xmlelement></entry>
             <entry colname="col2">Not added to the topic</entry>
             <entry colname="COLSPEC0">No</entry>
             <entry colname="COLSPEC1">No stated purpose</entry>
+            <entry>No</entry>
           </row>
-<row>
-<entry colname="col1"><xmlelement>keywords</xmlelement></entry>
-<entry colname="col2">Add to the topic</entry>
-<entry colname="COLSPEC0">No</entry>
-<entry colname="COLSPEC1">No stated purpose</entry>
-</row>
-<row>
-<entry colname="col1"><xmlelement>metadata</xmlelement></entry>
-<entry colname="col2">Add to the topic</entry>
-<entry colname="COLSPEC0">Yes</entry>
-<entry colname="COLSPEC1">Specify metadata for the entire map</entry>
-</row>
-<row>
-<entry colname="col1"><xmlelement>othermeta</xmlelement></entry>
-<entry colname="col2">Add to the topic</entry>
-<entry colname="COLSPEC0">No</entry>
-<entry colname="COLSPEC1">Define metadata for the entire map</entry>
-</row>
-<row>
-<entry colname="col1"><xmlelement>permissions</xmlelement></entry>
-<entry colname="col2">Add to the topic</entry>
-<entry colname="COLSPEC0">Yes</entry>
-<entry colname="COLSPEC1">Specify permissions for the entire map</entry>
-</row>
-<row>
-<entry colname="col1"><xmlelement>prodinfo</xmlelement></entry>
-<entry colname="col2">Add to the topic</entry>
-<entry colname="COLSPEC0">Yes</entry>
-<entry colname="COLSPEC1">Specify product info for the entire map</entry>
-</row>
-<row>
-<entry colname="col1"><xmlelement>publisher</xmlelement></entry>
-<entry colname="col2">Add to the topic</entry>
-<entry colname="COLSPEC0">Yes</entry>
-<entry colname="COLSPEC1">Specify a publisher for the map</entry>
-</row>
-<row>
-<entry colname="col1"><xmlelement>resourceid</xmlelement></entry>
-<entry colname="col2">Add to the topic</entry>
-<entry colname="COLSPEC0">No</entry>
-<entry colname="COLSPEC1">Specify a resource ID for the map itself</entry>
-</row>
-<row>
-<entry colname="col1"><xmlelement>shortdesc</xmlelement></entry>
-<entry colname="col2">Applies only to links created based on this occurrence in the map</entry>
-<entry colname="COLSPEC0">No</entry>
-<entry colname="COLSPEC1">Provide a description of the map</entry>
-</row>
-<row>
-<entry colname="col1"><xmlelement>source</xmlelement></entry>
-<entry colname="col2">Add to the topic</entry>
-<entry colname="COLSPEC0">No</entry>
-<entry colname="COLSPEC1">Specify a source for the map</entry>
-</row>
+          <row>
+            <entry colname="col1"><xmlelement>keywords</xmlelement></entry>
+            <entry colname="col2">Add to the topic</entry>
+            <entry colname="COLSPEC0">No</entry>
+            <entry colname="COLSPEC1">No stated purpose</entry>
+            <entry>No</entry>
+          </row>
+          <row>
+            <entry colname="col1"><xmlelement>metadata</xmlelement></entry>
+            <entry colname="col2">Add to the topic</entry>
+            <entry colname="COLSPEC0">Yes</entry>
+            <entry colname="COLSPEC1">Specify metadata for the map</entry>
+            <entry>Yes</entry>
+          </row>
+          <row>
+            <entry colname="col1"
+              ><xmlelement>othermeta</xmlelement></entry>
+            <entry colname="col2">Add to the topic</entry>
+            <entry colname="COLSPEC0">No</entry>
+            <entry colname="COLSPEC1">Define metadata for the map</entry>
+            <entry>Yes</entry>
+          </row>
+          <row>
+            <entry colname="col1"
+              ><xmlelement>permissions</xmlelement></entry>
+            <entry colname="col2">Add to the topic</entry>
+            <entry colname="COLSPEC0">Yes</entry>
+            <entry colname="COLSPEC1">Specify permissions for the
+              map</entry>
+            <entry>Yes</entry>
+          </row>
+          <row>
+            <entry colname="col1"><xmlelement>prodinfo</xmlelement></entry>
+            <entry colname="col2">Add to the topic</entry>
+            <entry colname="COLSPEC0">Yes</entry>
+            <entry colname="COLSPEC1">Specify product info for the
+              map</entry>
+            <entry>Yes</entry>
+          </row>
+          <row>
+            <entry colname="col1"
+              ><xmlelement>publisher</xmlelement></entry>
+            <entry colname="col2">Add to the topic</entry>
+            <entry colname="COLSPEC0">Yes</entry>
+            <entry colname="COLSPEC1">Specify a publisher for the
+              map</entry>
+            <entry>No</entry>
+          </row>
+          <row>
+            <entry colname="col1"
+              ><xmlelement>resourceid</xmlelement></entry>
+            <entry colname="col2">Add to the topic</entry>
+            <entry colname="COLSPEC0">No</entry>
+            <entry colname="COLSPEC1">Specify a resource ID for the map
+              itself</entry>
+            <entry>No</entry>
+          </row>
+          <row>
+            <entry colname="col1"
+              ><xmlelement>shortdesc</xmlelement></entry>
+            <entry colname="col2">Applies only to links created based on
+              this occurrence in the map</entry>
+            <entry colname="COLSPEC0">No</entry>
+            <entry colname="COLSPEC1">Provide a description of the
+              map</entry>
+            <entry>No</entry>
+          </row>
+          <row>
+            <entry colname="col1"><xmlelement>source</xmlelement></entry>
+            <entry colname="col2">Add to the topic</entry>
+            <entry colname="COLSPEC0">No</entry>
+            <entry colname="COLSPEC1">Specify a source for the map</entry>
+            <entry>No</entry>
+          </row>
           <row>
             <entry colname="col1"><xmlelement>titlealt</xmlelement></entry>
-            <entry colname="col2">Add to the topic before its <xmlelement>titlealt</xmlelement>
-              elements</entry>
+            <entry colname="col2">Add to the topic before its
+                <xmlelement>titlealt</xmlelement> elements</entry>
             <entry colname="COLSPEC0">No</entry>
-            <entry colname="COLSPEC1">Specify an alternative title for the map</entry>
+            <entry colname="COLSPEC1">Specify an alternative title for the
+              map</entry>
+            <entry>No</entry>
           </row>
-<row>
-<entry colname="col1"><xmlelement>unknown</xmlelement></entry>
-<entry colname="col2">Add to the topic</entry>
-<entry colname="COLSPEC0">No, unless specialized for a purpose that
-cascades</entry>
-<entry colname="COLSPEC1">No stated purpose</entry>
-</row>
-<row >
-  <entry colname="col1"><xmlelement>ux-window</xmlelement></entry>
-  <entry colname="col2">Not added to the topic</entry>
-  <entry colname="COLSPEC0">No</entry>
-  <entry colname="COLSPEC1">Definitions are global, so setting at map level is equivalent to setting
-              anywhere else.</entry>
-</row>
-</tbody>
-</tgroup>
+          <row>
+            <entry colname="col1"><xmlelement>unknown</xmlelement></entry>
+            <entry colname="col2">Add to the topic</entry>
+            <entry colname="COLSPEC0">No, unless specialized for a purpose
+              that cascades</entry>
+            <entry colname="COLSPEC1">No stated purpose</entry>
+            <entry>No</entry>
+          </row>
+          <row>
+            <entry colname="col1"
+              ><xmlelement>ux-window</xmlelement></entry>
+            <entry colname="col2">Not added to the topic</entry>
+            <entry colname="COLSPEC0">No</entry>
+            <entry colname="COLSPEC1">Definitions are global, so setting at
+              map level is equivalent to setting anywhere else.</entry>
+            <entry>No</entry>
+          </row>
+        </tbody>
+      </tgroup>
 </table>
 </refbody>
 </reference>
