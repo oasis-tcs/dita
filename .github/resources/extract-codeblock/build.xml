@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project>
+  <target name="extract-codeblock.init">
+    <property name="preprocess.move-meta-entries.skip" value="true"/>
+    <property name="preprocess.topicpull.skip" value="true"/>
+    <property name="preprocess.maplink.skip" value="true"/>
+    <property name="preprocess.clean-preprocess.skip" value="true"/>
+    <property name="preprocess.copy-image.skip" value="true"/>
+    <property name="preprocess.copy-flag.skip" value="true"/>
+  </target>
+  <target name="dita2extract-codeblock"
+          depends="extract-codeblock.init,
+                   build-init,
+                   preprocess2">
+    <makeurl property="output.dir.url" file="${dita.output.dir}" validate="no"/>
+    <sequential>
+      <pipeline message="Extract codeblock content" taskname="xslt">
+        <xslt destdir="${dita.temp.dir}"
+              extension=".extract-codeblock.xml"
+              style="${dita.plugin.extract-codeblock.dir}/xsl/extract.xsl"
+              filenameparameter="FILENAME"
+              filedirparameter="FILEDIR">
+          <ditafileset format="dita" processingRole="normal"/>
+          <param name="output.dir" value="${output.dir.url}"/>
+        </xslt>
+      </pipeline>
+    </sequential>
+  </target>
+</project>
