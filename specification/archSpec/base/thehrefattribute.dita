@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
-<reference id="thehrefattribute" xml:lang="en-us">
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="thehrefattribute" xml:lang="en-us">
  <title>The <xmlatt>href</xmlatt> attribute</title>
- <shortdesc>The <xmlatt>href</xmlatt> attribute is used to reference another DITA topic or map,  a
-  specific element inside a DITA topic or map, an external Web page, or another non-DITA
-  resource.</shortdesc>
+ <shortdesc>The <xmlatt>href</xmlatt> attribute specifies the URI of the
+    resource that is addressed. It can used to reference another DITA topic
+    or map, an element inside a DITA topic or map, or a non-DITA
+    resource.</shortdesc>
  <prolog>
   <metadata>
    <keywords>
@@ -13,97 +13,109 @@
    </keywords>
   </metadata>
  </prolog>
- <refbody>
-  <section id="section-1">
-   <draft-comment author="robander" time="22 feb 2022" audience="spec-editors">can we change "must
-    be a valid URI" to "is a valid URI"? </draft-comment>
-   <p>The value of a DITA <xmlatt>href</xmlatt> attribute must be a valid URI reference [<xref
-     format="txt" href="http://www.ietf.org/rfc/rfc3986.txt" scope="external">RFC 3986</xref>].</p>
-   <draft-comment author="robander" time="22 feb 2022" audience="spec-editors">Feels weird to say
-    here that if it's not a valid URI an application MAY generate a message, while on the previous
-    topic about format, we say that when a tool determines the format differes from what's specified
-    an application SHOULD issue a message. Should be consistent here (I'd favor MAY for
-    both).</draft-comment>
-   <p>If the value of the <xmlatt>href</xmlatt> attribute is not a valid URI reference, an
-    implementation <term outputclass="RFC-2119">MAY</term> generate an error message; it <term
-     outputclass="RFC-2119">MAY</term> recover from this error condition by attempting to convert
-    the value to a valid URI reference. </p>
-   <draft-comment author="robander" time="22 feb 2022">This is just part of the core definition of
-    URIs. Are we restating it here as a helpful note for those who do not know the URI definition?
-    Should it actually be in a &lt;note>, or is it even needed? We even note that backslash must be
-    escaped just 3 paragraphs further down.</draft-comment>
-   <p>Note that the path separator character in a URI is the forward slash (<q>/</q>); the backward
-    slash character (<q>\</q>) is not permitted unescaped within URIs.</p>
-   <p>When an <xmlatt>href</xmlatt> attribute references a DITA resource, an <xmlatt>href</xmlatt>
-    value that consists of a URI without a fragment identifier resolves to the document element in
-    the referenced document. For the purposes of rendering, such as when a
-     <xmlelement>topicref</xmlelement> reference to a DITA document is used to render the content as
-    HTML, this means that all topics (and topic specializations) in the target document are included
-    in the reference. For the purpose of linking, the reference resolves to the first (or only)
-    topic (or topic specialization) in the document.
-    <!--If the reference is from a topicref element or a topicref element
-specialization, all topics (and topic specializations) in the document
-are referenced. If the reference is not from a topicref element or
-a topicref element specialization, the reference resolves to the first
-(or only) topic (or topic specialization) in the document.--></p>
-   <p>An <xmlatt>href</xmlatt> value that consists of a URI with a fragment identifier must have a
-    DITA local identifier as the portion after the hash. A DITA local identifier consists of
-      <codeph><varname>topicID</varname>/<varname>elementID</varname></codeph> for a subelement of a
-    topic, and of <varname>elementID</varname> for topics, maps, and subelements of a map. If the
-    topic referenced by a DITA local identifier is the same topic that includes the reference, then
-     <varname>topicID</varname> can be replaced by a period; see <xref
-     href="handling-xref-and-conref-within-topics.dita#handling-xref-and-conref-within-topics"/> for
-    more information on how this syntax relates to conref resolution.</p>
-   <draft-comment author="robander" time="22 feb 2022">As above, this is just restating a core part
-    of how URIs operate. Might be better to combine with the above paragraph, and place in a note.
-    The "Some tools might..." also seems to overlap with the bits above about how applications MAY
-    automatically handle backslashes.</draft-comment>
-   <p>Note that certain characters—including but not limited to the hash sign ("#"), question mark
-    ("?"), back slash ("\"), and space—are not permitted unescaped within URIs. Such characters
-    must be percent-encoded. Also note that the ampersand ("&amp;") and less than (<q>&lt;</q>)
-    characters are not permitted in XML attribute values; they must be represented by appropriate
-    character or entity references. Some tools might perform this encoding automatically, while
-    other tools might require that users either avoid the special characters or manually insert the
-    encoding.</p>
-  </section>
+ <conbody>
+    <!--<draft-comment author="robander" time="22 feb 2022" audience="spec-editors">can we change "must be a valid URI" to "is a valid URI"? <p>Kris, 01 March 2022: "must be" seems right to me here, especially as we follow this sentence with a normative statement.</p></draft-comment>-->
+    <p>The value of the <xmlatt>href</xmlatt> attribute must be a valid URI
+      reference [<xref format="txt"
+        href="http://www.ietf.org/rfc/rfc3986.txt" scope="external">RFC
+        3986</xref>].</p>
+    <p>If the value of the <xmlatt>href</xmlatt> attribute is not a valid
+      URI reference, an implementation <term outputclass="RFC-2119"
+        >MAY</term> generate an error message. It <term
+        outputclass="RFC-2119">MAY</term> also recover from this error
+      condition by attempting to convert the value to a valid URI
+      reference. </p>
+    <p>The value of the <xmlatt>href</xmlatt> attribute can be a URI with
+      or without a fragment identifier.</p>
+    <p>When an <xmlatt>href</xmlatt> attribute references a DITA resource
+      using an <xmlatt>href</xmlatt> value that consists of a URI without a
+      fragment identifier, the URI resolves to the root element in the
+      referenced document. For the purposes of rendering, such as when a
+      topic reference to a DITA document is used to render the content as
+      HTML, this means that <b>all</b> topics in the target document are
+      included in the reference. For the purpose of linking, the reference
+      resolves to the first topic in the document. </p>
+    <p>When an <xmlatt>href</xmlatt> attribute references a DITA resource
+      using a value for the <xmlatt>href</xmlatt>attribute that consists of
+      a URI with a fragment identifier, the portion after the hash must be
+      a DITA local identifier. A DITA local identifier takes the following
+      forms:</p>
+    <simpletable relcolwidth="1* 1*">
+      <sthead>
+        <stentry>Target</stentry>
+        <stentry>Syntax</stentry>
+      </sthead>
+      <strow>
+        <stentry>Element in a topic</stentry>
+        <stentry><codeph><varname>topicID</varname>/<varname>elementID</varname></codeph></stentry>
+      </strow>
+      <strow>
+        <stentry>Topic, map, or element within a map</stentry>
+        <stentry><codeph><varname>elementID</varname></codeph></stentry>
+      </strow>
+    </simpletable>
+    <p>Where:</p>
+    <ul>
+      <li><varname>topicID</varname> is the value of the
+          <xmlatt>id</xmlatt> attribute of the DITA topic. If the topic
+        referenced by a DITA local identifier is the same topic that
+        includes the reference, then <varname>topicID</varname> can be
+        replaced by a period.</li>
+      <li><varname>elementID</varname> is the value of the
+          <xmlatt>id</xmlatt> attribute of the DITA topic, DITA map, or map
+        sub-element.</li>
+    </ul>
+    <draft-comment author="Kristen J Eberlein" time="01 March 2022">
+      <p>I think the above syntax and explanation needs work. It accurately
+        expresses what was conveyed in the legacy topic.</p>
+    </draft-comment>
+    <p>See <xref href="handling-xref-and-conref-within-topics.dita"/>for
+      more information on how this syntax relates to conref resolution.</p>
+    <draft-comment author="Kristen J Eberlein" time="03 March 2022">
+      <p>The above sentence was a phrase in the in legacy content. By "this
+        syntax," (I think) it referred to replacing
+          <varname>topicID</varname> with in period. If this material is
+        needed here in this topic, it needs to be recast.</p>
+    </draft-comment>
   <example id="example" otherprops="examples">
    <title>Example: Common syntax for the <xmlatt>href</xmlatt> attribute</title>
    <p>The following table includes some examples of common <xmlatt>href</xmlatt> syntax. Note that
     these examples represent only a few common scenarios and are not all-inclusive.</p>
-   <simpletable frame="all" relcolwidth="1.0* 3.0*">
-    <sthead>
-     <stentry>Target</stentry>
-     <stentry>Syntax</stentry>
-    </sthead>
-    <strow>
-     <stentry>The first topic in a DITA document</stentry>
-     <stentry><codeph>href="file.dita"</codeph></stentry>
-    </strow>
-    <strow>
-     <stentry>A specific topic in a DITA document</stentry>
-     <stentry><codeph>href="file.dita#<varname>topicid</varname>"</codeph></stentry>
-    </strow>
-    <strow>
-     <stentry>A non-topic element inside a DITA topic</stentry>
-     <stentry><codeph>href="#<varname>topicid</varname>/<varname>elementid</varname>"</codeph></stentry>
-    </strow>
-    <strow >
-     <stentry>A non-topic element inside the same DITA topic as the reference</stentry>
-     <stentry><codeph>href="#./<varname>elementid</varname>"</codeph></stentry>
-    </strow>
-    <strow>
-     <stentry>An element in a DITA map</stentry>
-     <stentry><codeph>href="myMap.ditamap#<varname>map-branch</varname>"</codeph></stentry>
-    </strow>
-    <strow>
-     <stentry>An image</stentry>
-     <stentry><codeph>href="exampleImage.jpg"</codeph></stentry>
-    </strow>
-    <strow>
-     <stentry>An external resource</stentry>
-     <stentry><codeph>href="http://www.example.org"</codeph></stentry>
-    </strow>
-   </simpletable>
+   <simpletable frame="all" relcolwidth="1.0* 1.0*">
+        <sthead>
+          <stentry>Target</stentry>
+          <stentry>Syntax</stentry>
+        </sthead>
+        <strow>
+          <stentry>The first topic in a DITA document</stentry>
+          <stentry><codeph>href="file.dita"</codeph></stentry>
+        </strow>
+        <strow>
+          <stentry>A specific topic in a DITA document</stentry>
+          <stentry><codeph>href="file.dita#<varname>topicid</varname>"</codeph></stentry>
+        </strow>
+        <strow>
+          <stentry>A non-topic element inside a DITA topic</stentry>
+          <stentry><codeph>href="#<varname>topicid</varname>/<varname>elementid</varname>"</codeph></stentry>
+        </strow>
+        <strow>
+          <stentry>A non-topic element inside the same DITA topic as the
+            reference</stentry>
+          <stentry><codeph>href="#./<varname>elementid</varname>"</codeph></stentry>
+        </strow>
+        <strow>
+          <stentry>An element in a DITA map</stentry>
+          <stentry><codeph>href="myMap.ditamap#<varname>map-branch</varname>"</codeph></stentry>
+        </strow>
+        <strow>
+          <stentry>An image</stentry>
+          <stentry><codeph>href="exampleImage.jpg"</codeph></stentry>
+        </strow>
+        <strow>
+          <stentry>An external resource</stentry>
+          <stentry><codeph>href="http://www.example.org"</codeph></stentry>
+        </strow>
+      </simpletable>
    <p>where:</p>
    <ul>
     <li><varname>topicid</varname> is the value of the <xmlatt>id</xmlatt> attribute on the
@@ -114,6 +126,6 @@ a topicref element specialization, the reference resolves to the first
      referenced DITA map element.</li>
    </ul>
   </example>
- </refbody>
-</reference>
+ </conbody>
+</concept>
 
