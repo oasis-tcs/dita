@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
- "reference.dtd">
-<reference id="theformatattribute" xml:lang="en-us">
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept id="theformatattribute" xml:lang="en-us">
 <title>The <xmlatt>format</xmlatt> attribute</title>
-<shortdesc>The <xmlatt>format</xmlatt> attribute identifies the format of the resource that is
-        referenced. <ph conkeyref="reuse-attributes/may-inherit"/></shortdesc>
+<shortdesc>The <xmlatt>format</xmlatt> attribute identifies the format of
+    the resource that is referenced. </shortdesc>
       <prolog>
             <metadata>
                   <keywords>
@@ -13,101 +13,135 @@
                   </keywords>
             </metadata>
       </prolog>
-<refbody>
-<section id="section-1"><p >The following values for <xmlatt>format</xmlatt> have special processing
-                        implications: </p><dl>
-                        <dlentry>
-                              <dt><keyword>dita</keyword></dt>
-                              <dd>The destination uses DITA topic markup or markup specialized from
-                        a DITA topic. Unless otherwise specified, when <xmlatt>format</xmlatt> is
-                        set to <keyword>dita</keyword>, the value for the <xmlatt>type</xmlatt>
-                        attribute will be treated as <keyword>topic</keyword>.</dd>
-                        </dlentry>
-                        <dlentry>
-                              <dt><keyword>ditamap</keyword></dt>
-                              <dd>The linked-to resource is a DITA map. It represents the referenced
-                        hierarchy at the current point in the referencing map. References to other
-                        maps can occur at any point in a map, but because relationship tables are
-                        only valid as children of a map, referenced relationship tables are treated
-                        as children of the referencing map. <note
-                            conkeyref="reuse-general/mapref-with-child-elements"/></dd>
-                        </dlentry>
-                        <dlentry>
-                              <dt>(no value)</dt>
-                              <dd>The processing default is used. The processing default for the
-                            <xmlatt>format</xmlatt> attribute is determined by inspecting the value
-                        of the <xmlatt>href</xmlatt> attribute. If the <xmlatt>href</xmlatt>
-                        attribute specifies a file extension, the processing default for the
-                            <xmlatt>format</xmlatt> attribute is that extension, after conversion to
-                        lower-case and with no leading period. The only exception to this is if the
-                        extension is <filepath>.xml</filepath>, in which case the default value for
-                            <xmlatt>format</xmlatt> is <keyword>dita</keyword>. If there is no
-                        extension, but the <xmlatt>href</xmlatt> value is an absolute URI whose
-                        scheme is <keyword>http</keyword> or <keyword>https</keyword>, then the
-                        processing default is <keyword>html</keyword>. In all other cases where no
-                        extension is available, the processing default is
-                            <keyword>dita</keyword>.<p>If the actual format of the referenced
-                            content differs from the effective value of the <xmlatt>format</xmlatt>
-                            attribute, and a processor is capable of identifying such cases, it
-                                <term outputclass="RFC-2119">MAY</term> recover gracefully and treat
-                            the content as its actual format, but <term outputclass="RFC-2119"
-                                >SHOULD</term> also issue a message.</p></dd>
-                        </dlentry>
-                  </dl>
-             <div id="lwdita_formats">
-                <p id="p_ckq_jxh_nhb">For DITA processors that support Lightweight DITA, the
-                    following values for <xmlatt>format</xmlatt> have special processing
-                    implications: </p>
-                <dl>
-                    <dlentry>
-                        <dt><keyword>xdita</keyword></dt>
-                        <dd>The format of the resource is XDITA.</dd>
-                    </dlentry>
-                    <dlentry>
-                        <dt><keyword>mdita</keyword></dt>
-                        <dd>The format of the resource is MDITA.</dd>
-                    </dlentry>
-                    <dlentry>
-                        <dt><keyword>hdita</keyword></dt>
-                        <dd>The format of the resource is HDITA. </dd>
-                    </dlentry>
-                    <dlentry>
-                        <dt><keyword>xditamap</keyword></dt>
-                        <dd>The resource is an XDITA map.</dd>
-                    </dlentry>
-                </dl>
-                <dl>
-                    <dlentry>
-                        <dt><keyword>hditamap</keyword></dt>
-                        <dd>The resource is an HDITA map.</dd>
-                    </dlentry>
-                </dl>
-                <dl>
-                    <dlentry>
-                        <dt><keyword>mditamap</keyword></dt>
-                        <dd>The resource is an MDITA map.</dd>
-                    </dlentry>
-                </dl>
-            </div>
-            <div id="sample-formats">
-                        <p>For other formats, the file extension without the "." character typically
-                    represents the format. For example, the following values are all possible values
-                    for <xmlatt>format</xmlatt>:</p>
-                        <dl>
-                              <dlentry>
-                                    <dt><keyword>html</keyword></dt>
-                                    <dd>The format of the linked-to resource is HTML or XHTML.</dd>
-                              </dlentry>
-                              <dlentry>
-                                    <dt><keyword>pdf</keyword></dt>
-                                    <dd>The format of the linked-to resource is PDF.</dd>
-                              </dlentry>
-                              <dlentry>
-                                    <dt><keyword>txt</keyword></dt>
-                                    <dd>The format of the linked-to resource is a text file.</dd>
-                              </dlentry>
-                        </dl>
-                  </div>
-            </section>
-</refbody>
-</reference>
+<conbody>
+    <p>The following values are explicitly supported: </p>
+    <dl>
+      <dlentry>
+        <dt><keyword>dita</keyword></dt>
+        <dd>Indicates that the target is a DITA topic or an element in a
+          DITA topic. Unless otherwise specified, when
+            <xmlatt>format</xmlatt> is set to <keyword>dita</keyword>, the
+          value for the <xmlatt>type</xmlatt> attribute is treated as
+            <keyword>topic</keyword>.</dd>
+      </dlentry>
+      <dlentry>
+        <dt><keyword>ditamap</keyword></dt>
+        <dd>Indicates that the target is a DITA map.</dd>
+        <dd>
+          <p>When a topic reference specifies
+              <codeph>format="ditamap"</codeph>, the topic reference
+            resolves to the hierarchy of the topic references in the
+            targeted map. This is equivalent to inserting those topic
+            references at the current point in the map that contains the
+            topic reference that specifies
+              <codeph>format="ditamap"</codeph>. References to submaps can
+            occur at any point in a map.</p>
+        </dd>
+        <dd>
+          <p>When a referenced map contains a relationship table, there are
+            special processing implications. Because relationship tables
+            are only valid as direct children of the DITA map,  referenced
+            relationship tables are treated as children of the referencing
+            map.</p>
+        </dd>
+        <dd>
+          <draft-comment author="Kristen J Eberlein" time="03 March 2022">
+            <p>I think we need to have an example of the expected
+              processing behaviour. I think it is a good candidate for the
+              new chapter on "DITA map processing".</p>
+          </draft-comment>
+        </dd>
+        <dd>
+          <note conkeyref="reuse-general/mapref-with-child-elements"/>
+        </dd>
+      </dlentry>
+    </dl>
+    <div id="sample-formats">
+      <p>For other formats, the file extension without the "." character
+        typically represents the format. For example, the following are all
+        possible values for <xmlatt>format</xmlatt>:
+          <keyword>html</keyword>, <keyword>pdf</keyword>, or
+          <keyword>txt</keyword>.</p>
+    </div>
+    <p>If no value is explicitly specified for the <xmlatt>format</xmlatt>
+      attribute, the following precedence rules apply:</p>
+    <ol>
+      <li>If the <xmlatt>format</xmlatt> attribute is specified on a
+        containing element within the map or within the related-links
+        section of the a topic, the value cascades from the closest
+        containing element.</li>
+      <li>If a value for the <xmlatt>format</xmlatt> attribute does not
+        cascade, the processing default is used. The processing default for
+        the <xmlatt>format</xmlatt> attribute is determined by inspecting
+        the value of the <xmlatt>href</xmlatt> attribute:<ol>
+          <li>If the <xmlatt>href</xmlatt> attribute specifies a file
+            extension, the processing default for the
+              <xmlatt>format</xmlatt> attribute is that extension, after
+            conversion to lower-case and with no leading period. The only
+            exception to this is if the extension is
+              <filepath>.xml</filepath>, in which case the default value
+            for <xmlatt>format</xmlatt> is <keyword>dita</keyword>.</li>
+          <li>If there is no file extension, but the <xmlatt>href</xmlatt>
+            value is an absolute URI whose scheme is
+              <keyword>http</keyword> or <keyword>https</keyword>, then the
+            processing default is <keyword>html</keyword>.</li>
+          <li>In all other cases where no file extension is available, the
+            processing default is <keyword>dita</keyword>.</li>
+        </ol></li>
+    </ol>
+    <!--<p><ph conkeyref="reuse-attributes/may-inherit"/></p>-->
+    <p>If the actual format of the referenced content differs from the
+      effective value of the <xmlatt>format</xmlatt> attribute, and a
+      processor is capable of identifying such cases, it <term
+        outputclass="RFC-2119">MAY</term> recover gracefully and treat the
+      content as its actual format. The processor <term
+        outputclass="RFC-2119">MAY</term> also issue a message.</p>
+    <div id="lwdita_formats">
+      <p>For processors that support Lightweight DITA, the following table
+        summarizes values for the <xmlatt>format</xmlatt> attribute:</p>
+      <table>
+        <tgroup cols="3">
+          <colspec colname="newCol1" colnum="1"/>
+          <colspec colname="c1" colnum="2"/>
+          <colspec colname="c2" colnum="3"/>
+          <thead>
+            <row>
+              <entry>Document type</entry>
+              <entry>Value of the <xmlatt>format</xmlatt> attribute</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry morerows="2">Map</entry>
+              <entry>hditamap</entry>
+              <entry>HDITA map</entry>
+            </row>
+            <row>
+              <entry>mditamap</entry>
+              <entry>MDITA map</entry>
+            </row>
+            <row>
+              <entry>xditamap</entry>
+              <entry>XDITA map</entry>
+            </row>
+            <row>
+              <entry morerows="2">Topic</entry>
+              <entry>hdita</entry>
+              <entry>HDITA topic</entry>
+            </row>
+            <row>
+              <entry>mdita</entry>
+              <entry>MDITA topic</entry>
+            </row>
+            <row>
+              <entry>xdita</entry>
+              <entry>XDITA topic</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </div>
+    <!--<div id="lwdita_formats"><p id="p_ckq_jxh_nhb">For DITA processors that support Lightweight DITA, the following values for <xmlatt>format</xmlatt> have special processing implications: </p><dl><dlentry><dt><keyword>xdita</keyword></dt><dd>The format of the resource is XDITA.</dd></dlentry><dlentry><dt><keyword>mdita</keyword></dt><dd>The format of the resource is MDITA.</dd></dlentry><dlentry><dt><keyword>hdita</keyword></dt><dd>The format of the resource is HDITA. </dd></dlentry><dlentry><dt><keyword>xditamap</keyword></dt><dd>The resource is an XDITA map.</dd></dlentry></dl><dl><dlentry><dt><keyword>hditamap</keyword></dt><dd>The resource is an HDITA map.</dd></dlentry></dl><dl><dlentry><dt><keyword>mditamap</keyword></dt><dd>The resource is an MDITA map.</dd></dlentry></dl></div>-->
+</conbody>
+</concept>
