@@ -15,18 +15,17 @@
  </prolog>
  <conbody>
     <!--<draft-comment author="robander" time="22 feb 2022" audience="spec-editors">can we change "must be a valid URI" to "is a valid URI"? <p>Kris, 01 March 2022: "must be" seems right to me here, especially as we follow this sentence with a normative statement.</p></draft-comment>-->
-    <p>The value of the <xmlatt>href</xmlatt> attribute must be a valid URI
-      reference [<xref format="txt"
-        href="http://www.ietf.org/rfc/rfc3986.txt" scope="external">RFC
-        3986</xref>].</p>
-    <p>If the value of the <xmlatt>href</xmlatt> attribute is not a valid
-      URI reference, an implementation <term outputclass="RFC-2119"
-        >MAY</term> generate an error message. It <term
-        outputclass="RFC-2119">MAY</term> also recover from this error
-      condition by attempting to convert the value to a valid URI
-      reference. </p>
-    <p>The value of the <xmlatt>href</xmlatt> attribute can be a URI with
-      or without a fragment identifier.</p>
+    <p>The value of the <xmlatt>href</xmlatt> attribute <term
+        outputclass="RFC-2119">MUST</term> be a valid URI reference [<xref
+        format="txt" href="http://www.ietf.org/rfc/rfc3986.txt"
+        scope="external">RFC 3986</xref>]. If the value of the
+        <xmlatt>href</xmlatt> attribute is not a valid URI reference, an
+      implementation <term outputclass="RFC-2119">MAY</term> generate an
+      error message. It <term outputclass="RFC-2119">MAY</term> also
+      recover from this error condition by attempting to convert the value
+      to a valid URI reference. </p>
+    <p>The value of the <xmlatt>href</xmlatt> can optionally contain a
+      fragment identifier.</p>
     <p>When an <xmlatt>href</xmlatt> attribute references a DITA resource
       using an <xmlatt>href</xmlatt> value that consists of a URI without a
       fragment identifier, the URI resolves to the root element in the
@@ -46,12 +45,16 @@
         <stentry>Syntax</stentry>
       </sthead>
       <strow>
+        <stentry>Topic element</stentry>
+        <stentry><codeph><varname>topicID</varname></codeph></stentry>
+      </strow>
+      <strow>
         <stentry>Element in a topic</stentry>
         <stentry><codeph><varname>topicID</varname>/<varname>elementID</varname></codeph></stentry>
       </strow>
       <strow>
-        <stentry>Topic, map, or element within a map</stentry>
-        <stentry><codeph><varname>elementID</varname></codeph></stentry>
+        <stentry>Element in a map</stentry>
+        <stentry><codeph><varname>mapElementID</varname></codeph></stentry>
       </strow>
     </simpletable>
     <p>Where:</p>
@@ -62,21 +65,15 @@
         includes the reference, then <varname>topicID</varname> can be
         replaced by a period.</li>
       <li><varname>elementID</varname> is the value of the
-          <xmlatt>id</xmlatt> attribute of the DITA topic, DITA map, or map
-        sub-element.</li>
+          <xmlatt>id</xmlatt> attribute of the element within a DITA
+        topic.</li>
+      <li><varname>mapElementID</varname> is the value of the
+          <xmlatt>id</xmlatt> attribute of the element within a DITA
+        map.</li>
     </ul>
-    <draft-comment author="Kristen J Eberlein" time="01 March 2022">
-      <p>I think the above syntax and explanation needs work. It accurately
-        expresses what was conveyed in the legacy topic.</p>
-    </draft-comment>
-    <p>See <xref href="handling-xref-and-conref-within-topics.dita"/>for
+    <p>See <xref href="handling-xref-and-conref-within-topics.dita"/> for
       more information on how this syntax relates to conref resolution.</p>
-    <draft-comment author="Kristen J Eberlein" time="03 March 2022">
-      <p>The above sentence was a phrase in the in legacy content. By "this
-        syntax," (I think) it referred to replacing
-          <varname>topicID</varname> with in period. If this material is
-        needed here in this topic, it needs to be recast.</p>
-    </draft-comment>
+    <!--<draft-comment author="Kristen J Eberlein" time="03 March 2022"><p>The <sub><i>above</i></sub> sentence was a phrase in the in legacy content. By "this syntax," (I think) it referred to replacing <varname>topicID</varname> with in period. If this material is needed here in this topic, it needs to be recast.</p></draft-comment>-->
   <example id="example" otherprops="examples">
    <title>Example: Common syntax for the <xmlatt>href</xmlatt> attribute</title>
    <p>The following table includes some examples of common <xmlatt>href</xmlatt> syntax. Note that
