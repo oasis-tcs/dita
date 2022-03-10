@@ -52,6 +52,43 @@
       <p>The following attributes are available on this element:</p>
       <dl>
         <dlentry>
+          <dt id="attr-action"><xmlatt>action</xmlatt>
+            <ph conkeyref="reuse-attributes/required-attr"/></dt>
+          <dd>
+            <p>Specifies the action to be taken. The following values are
+              supported:</p>
+            <dl>
+              <dlentry>
+                <dt>exclude</dt>
+                <dd>Indicates that the content is excluded from the output,
+                  if all values for the specified attribute are
+                  excluded.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>flag</dt>
+                <dd>Indicates that the content is included in the output
+                  and flagged, if the content has not been excluded.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>include</dt>
+                <dd>Indicates that the content is included in the output.
+                  This is the default behavior, unless otherwise set.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>passthrough</dt>
+                <dd>Indicates that the content is included in the output
+                  and that the attribute value is preserved. This enables
+                  further processing by a runtime engine. The attribute
+                  value is preserved in the syntax that is required by the
+                  runtime
+                  engine.<!-- Values that are not explicitly passed through should be removed from the output stream, even though the content is still included.--></dd>
+              </dlentry>
+            </dl>
+          </dd>
+        </dlentry>
+      </dl>
+      <dl>
+        <dlentry>
           <dt id="attr-att"><xmlatt>att</xmlatt></dt>
           <dd>Specifies the attribute to be acted upon. If using a literal attribute name, it is
               <xmlatt>props</xmlatt> or a specialization of <xmlatt>props</xmlatt> (such as
@@ -62,52 +99,15 @@
               <xmlelement>prop</xmlelement> element declares a default behavior for any conditional
             processing attribute.</dd>
         </dlentry>
-        <dlentry>
-          <dt id="attr-val"><xmlatt>val</xmlatt></dt>
-          <dd>Specifies the attribute value to be acted upon. If the <xmlatt>val</xmlatt> attribute
-            is absent, then the <xmlelement>prop</xmlelement> element declares a default behavior
-            for any value in the specified attribute.</dd>
+        <dlentry conkeyref="reuse-attributes/ditaval-backcolor">
+          <dt/>
+          <dd/>
         </dlentry>
-        <dlentry>
-          <dt id="attr-action"><xmlatt>action</xmlatt>
-            <ph conkeyref="reuse-attributes/required-attr"/></dt>
-          <dd>Specifies the action to be taken. Allowable values are:<dl>
-              <dlentry>
-                <dt>include</dt>
-                <dd>Include the content in output. This is the default behavior unless otherwise
-                  set.</dd>
-              </dlentry>
-              <dlentry>
-                <dt>exclude</dt>
-                <dd>Exclude the content from output (if all values in the particular attribute are
-                  excluded).</dd>
-              </dlentry>
-              <dlentry>
-                <dt>passthrough</dt>
-                <dd>Include the content in output, and preserve the attribute value as part of the
-                  output stream for further processing by a runtime engine. <ph
-                    otherprops="examples">For example, this could be used to enable runtime
-                    filtering based on individual user settings.</ph> The value should be preserved
-                  in whatever syntax is required by the target runtime. Values that are not
-                  explicitly passed through should be removed from the output stream, even though
-                  the content is still included.</dd>
-              </dlentry>
-              <dlentry>
-                <dt>flag</dt>
-                <dd>Include and flag the content on output (if the content has not been
-                  excluded).</dd>
-              </dlentry>
-            </dl></dd>
-        </dlentry>
-<dlentry conkeyref="reuse-attributes/ditaval-outputclass">
-<dt/>
-<dd/>
-</dlentry>
         <dlentry conkeyref="reuse-attributes/ditaval-color">
           <dt/>
           <dd/>
         </dlentry>
-        <dlentry conkeyref="reuse-attributes/ditaval-backcolor">
+        <dlentry conkeyref="reuse-attributes/ditaval-outputclass">
           <dt/>
           <dd/>
         </dlentry>
@@ -115,10 +115,18 @@
           <dt/>
           <dd/>
         </dlentry>
+        <dlentry>
+          <dt id="attr-val"><xmlatt>val</xmlatt></dt>
+          <dd>Specifies the attribute value to be acted upon. If the
+              <xmlatt>val</xmlatt> attribute is absent, then the
+              <xmlelement>prop</xmlelement> element declares a default
+            behavior for any value in the specified attribute.</dd>
+        </dlentry>
       </dl>
     </section>
-<example id="example" otherprops="examples"><title>Example</title><p>See the example
-in the <xref keyref="elements-ditaval-val">&lt;val></xref> description.</p></example>
+<example id="example" otherprops="examples"><title>Example</title>
+      <p>See <xref keyref="elements-ditaval-val/example"
+            ><xmlelement>val</xmlelement></xref>.</p></example>
 </refbody>
 </reference>
 
