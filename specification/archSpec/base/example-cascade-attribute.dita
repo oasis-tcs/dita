@@ -50,29 +50,40 @@
       <p>Consider the following code
         example:<codeblock id="codeblock_rcw_lh5_nsb">&lt;map platform="a" product="x" cascade="merge">
   &lt;topicref href="one.dita" platform="b" product="y">
-    &lt;topicref href="two.dita" cascade="nomerge" product="z"/>
+    <ph rev="review-k">&lt;topicref href="two.dita">
+      &lt;topicref href="three.dita" cascade="nomerge" product="z">
+        &lt;topicref href="four.dita"/>
+      &lt;/topicref>
+    &lt;/topicref></ph>
   &lt;/topicref>
 &lt;/map></codeblock></p>
       <p>In this map, the <xmlatt>cascade</xmlatt> attribute is set to <keyword>merge</keyword> at
         the map level but changes to <keyword>nomerge</keyword> on a topic reference.</p>
       <ul id="ul_sxj_f35_nsb">
-        <li>For the <ph rev="review-k">topic</ph> reference to
-            <filepath>one.dita</filepath>,
-            <codeph>cascade="merge"</codeph><ph rev="review-k"> is
-            specified</ph>. This results in an effective
-            <xmlatt>platform</xmlatt> value of <keyword>a b</keyword> and
-          an effective <xmlatt>product</xmlatt> value of <keyword
-            rev="review-k">x y</keyword>.</li>
-        <li>The <ph rev="review-k">topic</ph> reference to
-            <filepath>two.dita</filepath> specifies
-            <codeph>cascade="nomerge"</codeph>, so attribute values from
-          other elements do not merge with anything specified on <ph
-            rev="review-k">the topic</ph> reference. The
-            <xmlatt>platform</xmlatt> attribute is not specified, so the
-          effective value is <keyword>a b</keyword>, which still cascades
-          from the parent element. The <xmlatt>product</xmlatt> value does
-          not merge with values from the parent, so the effective value is
-            <keyword>z</keyword>.</li>
+        <li>For the <ph rev="review-k">topic</ph> reference to <filepath>one.dita</filepath>,
+            <codeph>cascade="merge"</codeph>
+          <ph rev="review-k">is specified</ph>. This results in an effective
+            <xmlatt>platform</xmlatt> value of <keyword>a b</keyword> and an effective
+            <xmlatt>product</xmlatt> value of <keyword rev="review-k">x y</keyword>.</li>
+        <li rev="review-k">The topic reference to <filepath>two.dita</filepath> does not specify any
+          additional attributes. The effective values for the <xmlatt>platform</xmlatt> and
+            <xmlatt>product</xmlatt> attributes are the same as those on the parent topic reference
+          to <filepath>one.dita</filepath>. The effective value of of the <xmlatt>platform</xmlatt>
+          attribute is <keyword>a b</keyword>, and the effective value for the
+            <xmlatt>product</xmlatt> attribute is <keyword>x y</keyword>.</li>
+        <li>The <ph rev="review-k">topic</ph> reference to <filepath rev="review-k"
+            >three.dita</filepath> specifies <codeph>cascade="nomerge"</codeph>, so attribute values
+          from other elements do not merge with anything specified on <ph rev="review-k">the
+            topic</ph> reference. The <xmlatt>platform</xmlatt> attribute is not specified, so the
+          effective value is <keyword>a b</keyword>, which still cascades from the parent element.
+          The <xmlatt>product</xmlatt> value does not merge with values from the parent, so the
+          effective value is <keyword>z</keyword>.</li>
+        <li rev="review-k">The topic reference to <filepath>four.dita</filepath> does not specify
+          any additional attributes. The effective values for the <xmlatt>platform</xmlatt> and
+            <xmlatt>product</xmlatt> attributes are the same as those on the parent topic reference
+          to <filepath>three.dita</filepath>. The effective value of of the
+            <xmlatt>platform</xmlatt> attribute is <keyword>a b</keyword>, and the effective value
+          for the <xmlatt>product</xmlatt> attribute is <keyword>z</keyword>.</li>
       </ul>
     </fig>
   </conbody>
