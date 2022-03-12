@@ -3,9 +3,9 @@
 <concept id="thehrefattribute" xml:lang="en-us">
  <title>The <xmlatt>href</xmlatt> attribute</title>
  <shortdesc>The <xmlatt>href</xmlatt> attribute specifies the URI of the
-    resource that is addressed. It can used to reference another DITA topic
-    or map, an element inside a DITA topic or map, or a non-DITA
-    resource.</shortdesc>
+    resource that is addressed. <ph rev="review-l">The referenced resource
+      can be  </ph> another DITA topic or map, an element inside a DITA
+    topic or map, or a non-DITA resource.</shortdesc>
  <prolog>
   <metadata>
    <keywords>
@@ -14,7 +14,6 @@
   </metadata>
  </prolog>
  <conbody>
-    <!--<draft-comment author="robander" time="22 feb 2022" audience="spec-editors">can we change "must be a valid URI" to "is a valid URI"? <p>Kris, 01 March 2022: "must be" seems right to me here, especially as we follow this sentence with a normative statement.</p></draft-comment>-->
     <p>The value of the <xmlatt>href</xmlatt> attribute <term
         outputclass="RFC-2119">MUST</term> be a valid URI reference [<xref
         format="txt" href="http://www.ietf.org/rfc/rfc3986.txt"
@@ -24,20 +23,19 @@
       error message. It <term outputclass="RFC-2119">MAY</term> also
       recover from this error condition by attempting to convert the value
       to a valid URI reference. </p>
-    <p>The value of the <xmlatt>href</xmlatt> can optionally contain a
-      fragment identifier.</p>
+    <p>The value of the <xmlatt>href</xmlatt>
+      <ph rev="review-l">attribute</ph> can optionally contain a fragment
+      identifier.</p>
     <p>When an <xmlatt>href</xmlatt> attribute references a DITA resource
-      using an <xmlatt>href</xmlatt> value that consists of a URI without a
-      fragment identifier, the URI resolves to the root element in the
-      referenced document. For the purposes of rendering, such as when a
-      topic reference to a DITA document is used to render the content as
-      HTML, this means that <b>all</b> topics in the target document are
-      included in the reference. For the purpose of linking, the reference
-      resolves to the first topic in the document. </p>
+      using a URI without a fragment identifier, the URI resolves to the
+      root element in the referenced document. For the purposes of
+      rendering, such as when a topic reference to a DITA document is used
+      to render the content as HTML, this means that <b>all</b> topics in
+      the target document are included in the reference. For the purpose of
+      linking, the reference resolves to the first topic in the document. </p>
     <p>When an <xmlatt>href</xmlatt> attribute references a DITA resource
-      using a value for the <xmlatt>href</xmlatt> attribute that consists
-      of a URI with a fragment identifier, the portion after the hash must
-      be a DITA local identifier. A DITA local identifier takes the
+      using a URI with a fragment identifier, the portion after the hash
+      must be a DITA local identifier. A DITA local identifier takes the
       following forms:</p>
     <simpletable relcolwidth="1* 1*">
       <sthead>
@@ -65,8 +63,8 @@
         includes the reference, then <varname>topicID</varname> can be
         replaced by a period.</li>
       <li><varname>elementID</varname> is the value of the
-          <xmlatt>id</xmlatt> attribute of the element within a DITA
-        topic.</li>
+          <xmlatt>id</xmlatt> attribute of the <ph rev="review-l"
+          >non-topic</ph> element within a DITA topic.</li>
       <li><varname>mapElementID</varname> is the value of the
           <xmlatt>id</xmlatt> attribute of the element within a DITA map
         document.</li>
