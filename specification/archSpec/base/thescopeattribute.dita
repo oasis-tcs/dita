@@ -17,6 +17,11 @@
     <p>The <xmlatt>scope</xmlatt> attribute takes the following values:</p>
     <dl>
       <dlentry>
+        <dt><keyword>external</keyword></dt>
+        <dd>Indicates that the resource is not part of the current <ph
+            rev="review-l">set of content.</ph></dd>
+      </dlentry>
+      <dlentry>
         <dt><keyword>local</keyword></dt>
         <dd>Indicates that the resource is part of the current set of
           content.</dd>
@@ -27,17 +32,13 @@
         <dd>
           <ul>
             <li>The resource is part of the current set of content, but it
-              might not accessible at build time.</li>
+              might not <ph rev="review-l">be</ph> accessible at build
+              time.</li>
             <li>The resource should be treated as a root map for the
               purpose of creating map-to-map key references (peer
               maps).</li>
           </ul>
         </dd>
-      </dlentry>
-      <dlentry>
-        <dt><keyword>external</keyword></dt>
-        <dd>Indicates that the resource is not part of the current
-          information set.</dd>
       </dlentry>
       <dlentry>
         <dt><keyword>-dita-use-conref-target</keyword></dt>
@@ -49,7 +50,10 @@
     <p>If no value is specified for the <xmlatt>scope</xmlatt> attribute,
       the following considerations apply:</p>
     <ul>
-      <li><ph conkeyref="reuse-attributes/may-inherit"/></li>
+      <li><ph rev="review-l">If the <xmlatt>scope</xmlatt> attribute</ph>
+        is specified on a containing element within a map or within the
+        related-links section, the value cascades from the closest
+        containing element.</li>
       <li>In most cases, the processing default is
         <keyword>local</keyword>. However the processing default is
           <keyword>external</keyword> whenever the absolute URI in the
@@ -58,7 +62,8 @@
           <keyword>ftp</keyword>, or <keyword>mailto</keyword></li>
     </ul>
     <!--<p> The processing default is determined by the value of the <xmlatt>href</xmlatt> attribute. </p><ul><li/><li/><li/><li/></ul>-->
-    <p>Processors can consider additional URI schemes as
+    <p><ph rev="review-l">For the <xmlatt>scope</xmlatt> attribute,
+      p</ph>rocessors can consider additional URI schemes as
         <keyword>external</keyword> by default. Processors <term
         outputclass="RFC-2119">MUST</term> always consider relative URIs as
         <keyword>local</keyword> by default.</p>
