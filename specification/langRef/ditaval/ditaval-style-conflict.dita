@@ -3,9 +3,9 @@
  "reference.dtd">
 <reference id="ditaval-style-conflict" xml:lang="en-us">
 <title><xmlelement>style-conflict</xmlelement></title>
-<shortdesc>The <xmlelement>style-conflict</xmlelement> element in a DITAVAL document declares the
-    behavior to be used when one or more flagging methods collide on a single content
-    element.</shortdesc>
+<shortdesc>The <xmlelement>style-conflict</xmlelement> element in a DITAVAL
+    document declares the behavior to be used when one or more flagging
+    methods collide<!-- on a single content element-->.</shortdesc>
 <prolog><metadata>
 <keywords><indexterm>DITAVAL<indexterm>elements<indexterm><xmlelement>style-conflict</xmlelement></indexterm></indexterm></indexterm>
         <indexterm>elements<indexterm>DITAVAL<indexterm><xmlelement>style-conflict</xmlelement></indexterm></indexterm></indexterm>
@@ -14,63 +14,85 @@
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>In case of conflicts between flagging methods at different levels (for example, a section
-        is flagged green and a paragraph within the section is flagged red), the most deeply nested
-        flagging method applies. </p>
+      <p>In the case of conflicts between flagging methods that are
+        specified for elements at different levels of the containment
+        hierarchy, the flagging method specified for the element at the
+        lowest level of the hierarchy applies. <ph otherprops="examples"
+          >For example, if the <xmlelement>section</xmlelement> element is
+          to be flagged with green text and a <xmlelement>p</xmlelement>
+          element is to be flagged with red text, a paragraph within a
+          section should be rendered with red text.</ph></p>
+      <!--<p>In case of conflicts between flagging methods at different levels (for example, a section is flagged green and a paragraph within the section is flagged red), the most deeply nested flagging method applies. </p>-->
     </section>
     <section id="rendering-expectations">
       <title>Rendering expectations</title>
-      <p>In case of conflicts between flagging methods on the same element (for example, a single
-        element is being flagged with both green and red color), it is recommended that the
-        conflicts be resolved as follows:<dl>
-          <dlhead>
-            <dthd>Flagging method</dthd>
-            <ddhd>Conflict behavior</ddhd>
-          </dlhead>
-          <dlentry>
-            <dt><xmlelement>startflag</xmlelement></dt>
-            <dd>Add all flags that apply.</dd>
-          </dlentry>
-          <dlentry>
-            <dt><xmlelement>endflag</xmlelement></dt>
-            <dd>Add all flags that apply.</dd>
-          </dlentry>
-          <dlentry>
-            <dt>color</dt>
-            <dd>Follow the <xmlelement>style-conflict</xmlelement> element's
-                <xmlatt>foreground-conflict-color</xmlatt> setting, or use an output-appropriate
-              default color if no conflict color is set.</dd>
-          </dlentry>
-          <dlentry>
-            <dt><keyword>backcolor</keyword></dt>
-            <dd>Follow the <xmlelement>style-conflict</xmlelement> element's
-                <xmlatt>background-conflict-color</xmlatt> setting, or use an output-appropriate
-              default color if no conflict color is set.</dd>
-          </dlentry>
-          <dlentry>
-            <dt>style</dt>
-            <dd>Add all font styles that apply. If two different kinds of underline are used,
-              default to the heaviest (double underline) and use the
-                <xmlatt>foreground-conflict-color</xmlatt>.</dd>
-          </dlentry>
-          <dlentry>
-            <dt>changebar</dt>
-            <dd>Add all change bars that apply.</dd>
-          </dlentry>
-        </dl></p>
+      <!--<p>In case of conflicts between flagging methods on the same element (for example, a single element is being flagged with both green and red color), it is recommended that the conflicts be resolved as follows:</p>-->
+      <p>The following table details how conflicts are resolved when
+        different flagging methods are specified for the same element:</p>
+      <!--<dl><dlhead><dthd>Flagging method</dthd><ddhd>Conflict behavior</ddhd></dlhead><dlentry><dt><xmlelement>startflag</xmlelement></dt><dd>Add all flags that apply.</dd></dlentry><dlentry><dt><xmlelement>endflag</xmlelement></dt><dd>Add all flags that apply.</dd></dlentry><dlentry><dt>color</dt><dd>Follow the <xmlelement>style-conflict</xmlelement> element's <xmlatt>foreground-conflict-color</xmlatt> setting, or use an output-appropriate default color if no conflict color is set.</dd></dlentry><dlentry><dt><keyword>backcolor</keyword></dt><dd>Follow the <xmlelement>style-conflict</xmlelement> element's <xmlatt>background-conflict-color</xmlatt> setting, or use an output-appropriate default color if no conflict color is set.</dd></dlentry><dlentry><dt>style</dt><dd>Add all font styles that apply. If two different kinds of underline are used, default to the heaviest (double underline) and use the <xmlatt>foreground-conflict-color</xmlatt>.</dd></dlentry><dlentry><dt>changebar</dt><dd>Add all change bars that apply.</dd></dlentry></dl>-->
+      <simpletable relcolwidth="1* 3*" keycol="1">
+        <sthead>
+          <stentry>Flagging method</stentry>
+          <stentry>Conflict behavior</stentry>
+        </sthead>
+        <strow>
+          <stentry>backcolor</stentry>
+          <stentry>
+            <p>Use the color specified by the
+                <xmlatt>background-conflict-color</xmlatt> attribute on the
+                <xmlelement>style-conflict</xmlelement> element. If no
+              background conflict color is specified, use a default color
+              that is appropriate for the output format.</p>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry>changebar</stentry>
+          <stentry>Add all change bars that apply.</stentry>
+        </strow>
+        <strow>
+          <stentry>color</stentry>
+          <stentry>
+            <p>Use the color specified by the
+                <xmlatt>foreground-conflict-color</xmlatt> attribute on the
+                <xmlelement>style-conflict</xmlelement> element. If no
+              foreground conflict color is specified, use a default color
+              that is appropriate for the output format.</p>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry>style</stentry>
+          <stentry>Add all font styles that apply. If two different kinds
+            of underline are used, default to the heaviest (double
+            underline) and use the color that is specified by the
+              <xmlatt>foreground-conflict-color</xmlatt> attribute. If no
+            foreground conflict color is specified, use a default color
+            that is appropriate for the output format.</stentry>
+        </strow>
+        <strow>
+          <stentry><xmlelement>endflag</xmlelement></stentry>
+          <stentry>Add all flags that apply.</stentry>
+        </strow>
+        <strow>
+          <stentry><xmlelement>startflag</xmlelement></stentry>
+          <stentry>Add all flags that apply.</stentry>
+        </strow>
+      </simpletable>
     </section>
     <section id="attributes">
       <title>Attributes</title>
       <p>The following attributes are available on this element: <dl>
           <dlentry>
-            <dt id="attr-foreground-conflict-color"><xmlatt>foreground-conflict-color</xmlatt></dt>
-            <dd>Specifies the color to be used when more than one flagging color applies to a single
-              content element.</dd>
+            <dt id="attr-background-conflict-color"
+                ><xmlatt>background-conflict-color</xmlatt></dt>
+            <dd>Specifies the color to be used when more than one
+              background color applies to a single
+              <!--content -->element.</dd>
           </dlentry>
           <dlentry>
-            <dt id="attr-background-conflict-color"><xmlatt>background-conflict-color</xmlatt></dt>
-            <dd>Specifies the color to be used when more than one flagging background color applies
-              to a single content element.</dd>
+            <dt id="attr-foreground-conflict-color"><xmlatt>foreground-conflict-color</xmlatt></dt>
+            <dd>Specifies the color to be used when more than one
+              <!--flagging -->color applies to a single
+              <!--content -->element.</dd>
           </dlentry>
         </dl></p>
     </section>

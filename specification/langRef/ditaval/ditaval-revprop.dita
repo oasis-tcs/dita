@@ -3,107 +3,138 @@
  "reference.dtd">
 <reference id="ditaval-revprop" xml:lang="en-us">
 <title><xmlelement>revprop</xmlelement></title>
-<shortdesc>The <xmlelement>revprop</xmlelement> element in a DITAVAL document identifies a value in
-        the <xmlatt>rev</xmlatt> attribute that should be flagged in some manner. Unlike the
-        conditional processing attributes, which can be used for both filtering and flagging, the
-            <xmlatt>rev</xmlatt> attribute only can be used for flagging. </shortdesc>
+<shortdesc>The <xmlelement>revprop</xmlelement> element in a DITAVAL
+    document identifies a value of the <xmlatt>rev</xmlatt> attribute for
+    flagging. Unlike the conditional processing attributes, which can be
+    used for both filtering and flagging, the <xmlatt>rev</xmlatt>
+    attribute can only be used for flagging. </shortdesc>
 <prolog><metadata>
 <keywords><indexterm>DITAVAL<indexterm>elements<indexterm><xmlelement>revprop</xmlelement></indexterm></indexterm></indexterm>
                 <indexterm>elements<indexterm>DITAVAL<indexterm><xmlelement>revprop</xmlelement></indexterm></indexterm></indexterm>
+        <indexterm>flagging</indexterm>
 </keywords>
 </metadata></prolog>
 <refbody>
         <section id="usage-information">
             <title>Usage information</title>
-            <p>The <xmlatt>rev</xmlatt> attribute identifies when a particular section of a document
-                was added or modified. The attribute is not considered a filtering attribute because
-                this is not sufficient to be used for full version control, such as single-sourcing
-                multiple product variants based on version level – it only represents one aspect of
-                the revision level.</p>
+      <p>The <xmlatt>rev</xmlatt> attribute is not designed to be used for
+        version control.</p>
+      <!--<p>The <xmlatt>rev</xmlatt> attribute identifies when a particular section of a document was added or modified. The attribute is not considered a filtering attribute because this is not sufficient to be used for full version control, such as single-sourcing multiple product variants based on version level – it only represents one aspect of the revision level.</p>-->
         </section>
         <section id="rendering-expectations">
             <title>Rendering expectations</title>
-            <p><ph id="default-text">When no alternate text is specified for a revision flag, the
-                    default alternate text for <xmlelement>revprop</xmlelement> start of change is
-                    typically a localized translation of "Start of change", and the default
-                    alternate text for <xmlelement>revprop</xmlelement> end of change is typically a
-                    localized translation of "End of change". </ph></p>
+      <p id="default-text">If no alternate text is specified, processors
+        can provide default alternate text to indicate the start and end
+        point of the revision.</p>
+      <!--<p><ph id="default-text">When no alternate text is specified for a revision flag, the default alternate text for <xmlelement>revprop</xmlelement> start of change is typically a localized translation of "Start of change", and the default alternate text for <xmlelement>revprop</xmlelement> end of change is typically a localized translation of "End of change". </ph></p>-->
             <div conkeyref="rendering/ditaval-rendering"/>
         </section>
         <section id="processing-expectations">
             <title>Processing expectations</title>
-            <p>It is an error to include more than one <xmlelement>revprop</xmlelement> element with
-                the same <xmlatt>val</xmlatt> attribute setting. Recovery from this error is
-                implementation dependent; in such cases processors <term outputclass="RFC-2119"
-                    >MAY</term> provide an error or warning message.</p>
+      <p>It is an error to include more than one
+          <xmlelement>revprop</xmlelement> element with the same
+          <xmlatt>val</xmlatt> attribute. Recovery from this error is
+        implementation dependent. In such cases processors <term
+          outputclass="RFC-2119">MAY</term> provide an error or warning
+        message.</p>
+      <p>If two or more DITAVAL properties apply
+          <xmlatt>outputclass</xmlatt> flags to the same element,
+        processors treat the flagged element as if each value was specified
+        for the <xmlatt>outputclass</xmlatt> attribute. The order of the
+        DITAVAL-provided tokens is undefined.</p>
+      <p>If one or more DITAVAL properties apply
+          <xmlatt>outputclass</xmlatt> flags to the same element, and the
+        flagged element already specifies one or more values for the
+          <xmlatt>outputclass</xmlatt> attribute, processors treat the
+        flagged element as if the DITAVAL-based tokens are specified
+        first.</p>
+      <!--<p>[Details about processing expectations that should go elsewhere] If two or more DITAVAL properties apply <xmlatt>outputclass</xmlatt> flags to the same element, treat the flagged element as if each value was specified on that element's <xmlatt>outputclass</xmlatt> attribute; in that case, the order of those DITAVAL-based tokens is undefined. If the flagged element already specifies <xmlatt>outputclass</xmlatt>, treat the flagged element as if all DITAVAL-based <xmlatt>outputclass</xmlatt> values come first in the attribute.</p>-->
         </section>
 <section id="attributes"><title>Attributes</title>
-            <p>The following attributes are available on this element:<dl>
-                    <dlentry>
-                        <dt id="attr-val"><xmlatt>val</xmlatt></dt>
-                        <dd>Specifies the revision value to be acted upon. If the
-                                <xmlatt>val</xmlatt> attribute is absent, then the
-                                <xmlelement>revprop</xmlelement> element declares a default behavior
-                            for any value in the <xmlatt>rev</xmlatt> attribute.</dd>
-                    </dlentry>
-                    <dlentry>
-                        <dt id="attr-action"><xmlatt>action</xmlatt>
-                            <ph conkeyref="reuse-attributes/required-attr"/></dt>
-                        <dd>Specifies the action to be taken. Allowable values are:<dl>
-                                <dlentry>
-                                    <dt>include</dt>
-                                    <dd>Include the content in output without flags. This is the
-                                        default behavior unless otherwise set.</dd>
-                                </dlentry>
-                                <dlentry>
-                                    <dt>passthrough</dt>
-                                    <dd>Include the content in output, and preserve the attribute
-                                        value as part of the output stream for further processing by
-                                        a runtime engine. <ph otherprops="examples">For example,
-                                            this could be used to enable runtime highlighting based
-                                            on individual user settings.</ph> The value should be
-                                        preserved in whatever syntax is required by the target
-                                        runtime. Values that are not explicitly passed through
-                                        should be removed from the output stream, even though the
-                                        content is still included.</dd>
-                                </dlentry>
-                                <dlentry>
-                                    <dt>flag</dt>
-                                    <dd>Include and flag the content when rendered (if the content
-                                        has not been excluded).</dd>
-                                </dlentry>
-                            </dl></dd>
-                    </dlentry>
-                    <dlentry>
-                        <dt id="attr-changebar"><xmlatt>changebar</xmlatt></dt>
-                        <dd>When flag has been set, specify a changebar color, style, or character,
-                            according to the changebar support of the target output format. If the
-                                <xmlatt>action</xmlatt> attribute is not set to "flag", this
-                            attribute is ignored.</dd>
-                    </dlentry>
-<dlentry conkeyref="reuse-attributes/ditaval-outputclass">
-<dt/>
-<dd/>
-</dlentry>
-                    <dlentry
-                        conkeyref="reuse-attributes/ditaval-color">
-                        <dt/>
-                        <dd/>
-                    </dlentry>
-                    <dlentry
-                        conkeyref="reuse-attributes/ditaval-backcolor">
-                        <dt/>
-                        <dd/>
-                    </dlentry>
-                    <dlentry
-                        conkeyref="reuse-attributes/ditaval-style">
-                        <dt/>
-                        <dd/>
-                    </dlentry>
-                </dl></p></section>
+            <p>The following attributes are available on this element:</p>
+      <dl>
+        <dlentry>
+          <dt id="attr-action"><xmlatt>action</xmlatt>
+            <ph conkeyref="reuse-attributes/required-attr"/></dt>
+          <dd>
+            <p>Specifies the action to be taken. The following values are
+              supported:</p>
+            <dl>
+              <dlentry>
+                <dt>flag</dt>
+                <dd>Indicates that the content is included in the output
+                  and flagged, if the content has not been excluded.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>include</dt>
+                <dd>Indicates that the content is included in the output
+                  and not flagged. This is the default behavior, unless
+                  otherwise set.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>passthrough</dt>
+                <dd>Indicates that the content is included in the output
+                  and that the attribute value is preserved. This enables
+                  further processing by a runtime engine. The attribute
+                  value is preserved in the syntax that is required by the
+                  runtime
+                  engine.<!-- Values that are not explicitly passed through should be removed from the output stream, even though the content is still included.--></dd>
+              </dlentry>
+            </dl>
+          </dd>
+        </dlentry>
+        <dlentry conkeyref="reuse-attributes/ditaval-backcolor">
+          <dt/>
+          <dd/>
+        </dlentry>
+        <dlentry>
+          <dt id="attr-changebar"><xmlatt>changebar</xmlatt></dt>
+          <dd>(If the <xmlatt>action</xmlatt> attribute is set to
+              <keyword>flag</keyword>) Specifies a color, style, or
+            character to be used for rendering a change bar. If the
+              <xmlatt>action</xmlatt> attribute is not set to
+              <keyword>flag</keyword>, this attribute is ignored.</dd>
+        </dlentry>
+        <dlentry conkeyref="reuse-attributes/ditaval-color">
+          <dt/>
+          <dd/>
+        </dlentry>
+        <dlentry conkeyref="reuse-attributes/ditaval-outputclass">
+          <dt/>
+          <dd/>
+        </dlentry>
+        <dlentry conkeyref="reuse-attributes/ditaval-style">
+          <dt/>
+          <dd/>
+        </dlentry>
+        <dlentry>
+          <dt id="attr-val"><xmlatt>val</xmlatt></dt>
+          <dd>Specifies the value of the <xmlatt>rev</xmlatt> attribute. If
+            the <xmlatt>val</xmlatt> attribute is not specified, then the
+              <xmlelement>revprop</xmlelement> element declares a default
+            behavior for any instance of the <xmlatt>rev</xmlatt>
+            attribute.</dd>
+        </dlentry>
+      </dl></section>
         <example id="example" otherprops="examples">
             <title>Example</title>
-            <p>See <xref keyref="elements-ditaval-val"/>.</p>
+      <!--<p>See <xref keyref="elements-ditaval-val"/>.</p>-->
+      <p>The following code sample shows how the
+          <xmlelement>revprop</xmlelement> element can be used to flag
+        content that has been marked with the <xmlatt>rev</xmlatt>
+        attribute. Elements that specify <codeph>rev="edits"</codeph> are
+        rendered in red text, and glyphs mark the start and end points of
+        the flagged revision. Alternate text is provided.</p>
+      <codeblock>&lt;val>
+  &lt;revprop action="flag" color="red" val="edits">
+    &lt;startflag imageref="start-glyph.png>
+      &lt;alt-text>Start of revision&lt;/alt-text>
+    &lt;/startflag>
+    &lt;endflag imageref="end-glyph.png>
+      &lt;alt-text>End of revision&lt;/alt-text>
+    &lt;/endflag>
+  &lt;/revprop>
+&lt;/val></codeblock>
         </example>
 </refbody>
 </reference>

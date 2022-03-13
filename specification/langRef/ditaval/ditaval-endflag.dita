@@ -2,8 +2,10 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="ditaval-endflag" xml:lang="en-us">
 <title><xmlelement>endflag</xmlelement></title>
-<shortdesc>The <xmlelement>endflag</xmlelement> element in a DITAVAL document provides information
-    that identifies the end of flagged content.</shortdesc>
+<shortdesc>The <xmlelement>endflag</xmlelement> element in a DITAVAL
+    document specifies information that identifies the end of flagged
+    content. The information can be an image, alternate text, or
+    both.</shortdesc>
 <prolog><metadata>
 <keywords><indexterm>DITAVAL<indexterm>elements<indexterm><xmlelement>endflag</xmlelement></indexterm></indexterm></indexterm>
         <indexterm>elements<indexterm>DITAVAL<indexterm><xmlelement>endflag</xmlelement></indexterm></indexterm></indexterm>
@@ -12,17 +14,26 @@
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>The <xmlelement>endflag</xmlelement> element defines a flag to be used at the end of
-        content identified by "flag" conditions in a DITAVAL document:<ul id="ul_r1g_lws_jnb">
-          <li>If an image is specified, the specified image is a flag to identify the end of the
-            content, with the <xmlelement>alt-text</xmlelement> contents as alternative text for
-            that image.</li>
-          <li> If <xmlelement>alt-text</xmlelement> is specified but
-              <xmlelement>endflag</xmlelement> does not reference an image, that text can be used to
-            flag the content instead of an image.</li>
-          <li>If no image and no <xmlelement>alt-text</xmlelement> are specified, then this element
-            has no defined purpose.</li>
-        </ul></p>
+      <p>If the <xmlelement>endflag</xmlelement> element does not specify
+        an image or provide alternate text, the element has no defined
+        purpose.</p>
+      <!--<p>The <xmlelement>endflag</xmlelement> element defines a flag to be used at the end of content identified by "flag" conditions in a DITAVAL document:<ul id="ul_r1g_lws_jnb"><li>If an image is specified, the specified image is a flag to identify the end of the content, with the <xmlelement>alt-text</xmlelement> contents as alternative text for that image.</li><li> If <xmlelement>alt-text</xmlelement> is specified but <xmlelement>endflag</xmlelement> does not reference an image, that text can be used to flag the content instead of an image.</li><li>If no image and no <xmlelement>alt-text</xmlelement> are specified, then this element has no defined purpose.</li></ul></p>-->
+    </section>
+    <section id="rendering-expectations">
+      <title>Rendering expectations</title>
+      <p>Processors treat the information provided by the
+          <xmlelement>endflag</xmlelement> element in the following
+        way:</p>
+      <ul>
+        <li>If an image is specified, the image is used as a flag to
+          identify the end of the flagged content. If the
+            <xmlelement>alt-text</xmlelement> element contains content, the
+          content is used as alternate text for the image.</li>
+        <li>If alternate text is specified but the
+            <xmlelement>startflag</xmlelement> element does not specify an
+          image, the alternate text is used to indicate the end of the
+          flagged content.</li>
+      </ul>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -35,6 +46,8 @@
       </dl>
     </section>
 <example id="example" otherprops="examples"><title>Example</title>
-      <p>See <xref keyref="elements-ditaval-val"/>.</p></example>
+      <!--<p>See <xref keyref="elements-ditaval-val/example"><xmlelement>val</xmlelement></xref>.</p>-->
+      <p>See <xref keyref="elements-ditaval-revprop/example"
+            ><xmlelement>revprop</xmlelement></xref></p></example>
 </refbody>
 </reference>
