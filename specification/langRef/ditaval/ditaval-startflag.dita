@@ -3,8 +3,10 @@
  "reference.dtd">
 <reference id="ditaval-startflag" xml:lang="en-us">
 <title><xmlelement>startflag</xmlelement></title>
-<shortdesc>The <xmlelement>startflag</xmlelement> element in a DITAVAL document provides information
-    that identifies the beginning of flagged content.</shortdesc>
+<shortdesc>The <xmlelement>startflag</xmlelement> element in a DITAVAL
+    document specifies information that identifies the beginning of flagged
+    content. The information can be an image, alternate text, or
+    both.</shortdesc>
 <prolog><metadata>
 <keywords><indexterm>DITAVAL<indexterm>elements<indexterm><xmlelement>startflag</xmlelement></indexterm></indexterm></indexterm>
         <indexterm>elements<indexterm>DITAVAL<indexterm><xmlelement>startflag</xmlelement></indexterm></indexterm></indexterm>
@@ -13,17 +15,26 @@
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>The <xmlelement>start</xmlelement> element defines a flag to be used at the beginning of
-        content identified by "flag" conditions in a DITAVAL document:<ul id="ul_r1g_lws_jnb">
-          <li>If an image is specified, the specified image is a flag to identify the beginning of
-            the content, with the <xmlelement>alt-text</xmlelement> contents as alternative text for
-            that image.</li>
-          <li> If <xmlelement>alt-text</xmlelement> is specified but
-              <xmlelement>startflag</xmlelement> does not reference an image, that text can be used
-            to flag the content instead of an image.</li>
-          <li>If no image and no <xmlelement>alt-text</xmlelement> are specified, then this element
-            has no defined purpose.</li>
-        </ul></p>
+      <p>If the <xmlelement>startflag</xmlelement> element does not specify
+        an image or provide alternate text, the element has no defined
+        purpose.</p>
+      <!--<p>The <xmlelement>start</xmlelement> element defines a flag to be used at the beginning of content identified by "flag" conditions in a DITAVAL document:<ul id="ul_r1g_lws_jnb"><li>If an image is specified, the specified image is a flag to identify the beginning of the content, with the <xmlelement>alt-text</xmlelement> contents as alternative text for that image.</li><li> If <xmlelement>alt-text</xmlelement> is specified but <xmlelement>startflag</xmlelement> does not reference an image, that text can be used to flag the content instead of an image.</li><li>If no image and no <xmlelement>alt-text</xmlelement> are specified, then this element has no defined purpose.</li></ul></p>-->
+    </section>
+    <section id="rendering-expectations">
+      <title>Rendering expectations</title>
+      <p>Processors treat the information provided by the
+          <xmlelement>startflag</xmlelement> element in the following
+        way:</p>
+      <ul>
+        <li>If an image is specified, the image is used as a flag to
+          identify the beginning of the flagged content. If the
+            <xmlelement>alt-text</xmlelement> element contains content, the
+          content is used as alternate text for the image.</li>
+        <li>If alternate text is specified but the
+            <xmlelement>startflag</xmlelement> element does not specify an
+          image, the alternate text is used to indicate the beginning of
+          the flagged content.</li>
+      </ul>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -36,6 +47,8 @@
       </dl>
     </section>
 <example id="example" otherprops="examples"><title>Example</title>
-      <p>See <xref keyref="elements-ditaval-val"/>.</p></example>
+      <!--<p>See <xref keyref="elements-ditaval-val"/>.</p>-->
+      <p>See <xref keyref="elements-ditaval-revprop/example"
+            ><xmlelement>revprop</xmlelement></xref></p></example>
 </refbody>
 </reference>

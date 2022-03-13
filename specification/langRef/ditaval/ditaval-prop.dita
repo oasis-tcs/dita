@@ -16,16 +16,18 @@
 <refbody>
 <section id="usage-information">
       <title>Usage information</title>
-      <p>A <xmlelement>prop</xmlelement> element performs the following functions:<ul
-          id="ul_dbk_mbt_jnb">
-          <li>A <xmlelement>prop</xmlelement> element with no <xmlatt>att</xmlatt> attribute
-            specified sets a default action for every <xmlelement>prop</xmlelement> element. </li>
-          <li>A <xmlelement>prop</xmlelement> element with an <xmlatt>att</xmlatt> attribute but no
-              <xmlatt>val</xmlatt> attribute sets a default action for that specific attribute or
-            attribute group.</li>
-          <li>A <xmlelement>prop</xmlelement> element with an <xmlatt>att</xmlatt> attribute and a
-              <xmlatt>val</xmlatt> attribute sets an action for that value within that attribute or
-            attribute group.</li>
+      <p>A <xmlelement>prop</xmlelement> element performs the following functions:<ul>
+          <li>A <xmlelement>prop</xmlelement> element that does not specify
+            an <xmlatt>att</xmlatt> attribute sets a default action for
+            every <xmlelement>prop</xmlelement> element. </li>
+          <li>A <xmlelement>prop</xmlelement> element that specifies an
+              <xmlatt>att</xmlatt> attribute but does not specify a
+              <xmlatt>val</xmlatt> attribute sets a default action for the
+            specified attribute or attribute group.</li>
+          <li>A <xmlelement>prop</xmlelement> element that specifies both
+            an <xmlatt>att</xmlatt> attribute and a <xmlatt>val</xmlatt>
+            attribute sets an action for elements that specify that value
+            for the attribute or attribute group.</li>
         </ul></p>
     </section>
     <section id="rendering-expectations">
@@ -37,6 +39,16 @@
       <title>Processing expectations</title>
       <draft-comment author="rodaande">This seems a weird way to write up error conditions, feels
         like each list item should explicitly state "It is an error to XYZ"?</draft-comment>
+      <draft-comment author="Kristen J Eberlein" time="12 March 2022">
+        <p>I agree with you about how the error conditions should be be
+          worded. I also think that the information belongs in the "Usage
+          information" section, since these error conditions are so tightly
+          linked to how default actions are set.</p>
+        <p>Then here, perhaps we could state "Processors <term
+            outputclass="RFC-2119">MAY</term> provide an error or warning
+          message when <xmlelement>prop</xmlelement> elements contain
+          errors."</p>
+      </draft-comment>
       <p>Processors <term outputclass="RFC-2119">MAY</term> provide an error or warning message for
         the following error conditions in a DITAVAL document:<ul>
           <li>More than one <xmlelement>prop</xmlelement> element with no <xmlatt>att</xmlatt>
