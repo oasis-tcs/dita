@@ -2,12 +2,13 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="ditaval-prop" xml:lang="en-us">
 <title><xmlelement>prop</xmlelement></title>
-<shortdesc>The <xmlelement>prop</xmlelement> element in a DITAVAL document identifies an attribute,
-    and usually values in the attribute, to take an action on. The identified attribute is a
-    conditional-processing attribute (either <xmlatt>props</xmlatt> or a specialization of
-      <xmlatt>props</xmlatt>, such as <xmlatt>audience</xmlatt>, <xmlatt>deliveryTarget</xmlatt>,
-      <xmlatt>platform</xmlatt>, <xmlatt>product</xmlatt>, or
-    <xmlatt>otherprops</xmlatt>).</shortdesc>
+  <shortdesc>The <xmlelement>prop</xmlelement> element in a DITAVAL
+    document specifies filtering or flagging actions that occur before
+    rendering. The actions target conditional-processing attributes:
+      <xmlatt>props</xmlatt> or specializations of <xmlatt>props</xmlatt>,
+    such as <xmlatt>audience</xmlatt>, <xmlatt>deliveryTarget</xmlatt>,
+      <xmlatt>otherprops</xmlatt>, <xmlatt>platform</xmlatt>, and
+      <xmlatt>product</xmlatt>.</shortdesc>
 <prolog><metadata>
 <keywords><indexterm>DITAVAL<indexterm>elements<indexterm><xmlelement>prop</xmlelement></indexterm></indexterm></indexterm>
         <indexterm>elements<indexterm>DITAVAL<indexterm><xmlelement>prop</xmlelement></indexterm></indexterm></indexterm>
@@ -16,19 +17,36 @@
 <refbody>
 <section id="usage-information">
       <title>Usage information</title>
-      <p>A <xmlelement>prop</xmlelement> element performs the following functions:<ul>
-          <li>A <xmlelement>prop</xmlelement> element that does not specify
-            an <xmlatt>att</xmlatt> attribute sets a default action for
-            every <xmlelement>prop</xmlelement> element. </li>
-          <li>A <xmlelement>prop</xmlelement> element that specifies an
-              <xmlatt>att</xmlatt> attribute but does not specify a
-              <xmlatt>val</xmlatt> attribute sets a default action for the
-            specified attribute or attribute group.</li>
-          <li>A <xmlelement>prop</xmlelement> element that specifies both
-            an <xmlatt>att</xmlatt> attribute and a <xmlatt>val</xmlatt>
-            attribute sets an action for elements that specify that value
-            for the attribute or attribute group.</li>
-        </ul></p>
+      <!--<p>A <xmlelement>prop</xmlelement> element performs the following functions:</p><ul><li>A <xmlelement>prop</xmlelement> element that does not specify an <xmlatt>att</xmlatt> attribute a default action (exclude, flag, include, or pass through) for anything not explicitly specified in the DITAVAL document. </li><li>A <xmlelement>prop</xmlelement> element that specifies an <xmlatt>att</xmlatt> attribute but does not specify a <xmlatt>val</xmlatt> attribute sets a default action for the specified attribute or attribute group.</li><li>A <xmlelement>prop</xmlelement> element that specifies both an <xmlatt>att</xmlatt> attribute and a <xmlatt>val</xmlatt> attribute sets an action for elements that specify that value for the attribute or attribute group.</li></ul>-->
+      <p>The following table lists the functions that the
+          <xmlelement>prop</xmlelement> element in a DITAVAL document
+        performs:</p>
+      <simpletable relcolwidth="1* 2*">
+        <sthead>
+          <stentry>Markup</stentry>
+          <stentry>Result</stentry>
+        </sthead>
+        <strow>
+          <stentry> A <xmlelement>prop</xmlelement> element that specifies
+            both an <xmlatt>att</xmlatt> and <xmlatt>val</xmlatt>
+            attribute</stentry>
+          <stentry>Specifies an action for the attribute or attribute group
+            with the specified value</stentry>
+        </strow>
+        <strow>
+          <stentry>A <xmlelement>prop</xmlelement> element that specifies
+            only an <xmlatt>att</xmlatt> attribute</stentry>
+          <stentry>Sets a default action for the specified attribute or
+            attribute group</stentry>
+        </strow>
+        <strow>
+          <stentry>A <xmlelement>prop</xmlelement> element without an
+              <xmlatt>att</xmlatt> and <xmlatt>val</xmlatt> attribute </stentry>
+          <stentry>Sets a default action (exclude, flag, include, or pass
+            through) for anything not explicitly specified in the DITAVAL
+            document</stentry>
+        </strow>
+      </simpletable>
     </section>
     <section id="rendering-expectations">
       <title>Rendering expectations</title>
@@ -37,27 +55,18 @@
     <!--<section conkeyref="rendering/rendering-expectations-prop-and-revprop"><title/><p/></section>-->
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <draft-comment author="rodaande">This seems a weird way to write up error conditions, feels
-        like each list item should explicitly state "It is an error to XYZ"?</draft-comment>
-      <draft-comment author="Kristen J Eberlein" time="12 March 2022">
-        <p>I agree with you about how the error conditions should be be
-          worded. I also think that the information belongs in the "Usage
-          information" section, since these error conditions are so tightly
-          linked to how default actions are set.</p>
-        <p>Then here, perhaps we could state "Processors <term
-            outputclass="RFC-2119">MAY</term> provide an error or warning
-          message when <xmlelement>prop</xmlelement> elements contain
-          errors."</p>
-      </draft-comment>
-      <p>Processors <term outputclass="RFC-2119">MAY</term> provide an error or warning message for
-        the following error conditions in a DITAVAL document:<ul>
-          <li>More than one <xmlelement>prop</xmlelement> element with no <xmlatt>att</xmlatt>
-            attribute</li>
-          <li>More than one <xmlelement>prop</xmlelement> element with the same <xmlatt>att</xmlatt>
-            attribute and no value </li>
-          <li>More than one <xmlelement>prop</xmlelement> element with the same <xmlatt>att</xmlatt>
-            attribute and same <xmlatt>value</xmlatt></li>
-        </ul></p>
+      <!--<draft-comment author="rodaande">This seems a weird way to write up error conditions, feels like each list item should explicitly state "It is an error to XYZ"?</draft-comment>-->
+      <!--<draft-comment author="Kristen J Eberlein" time="12 March 2022"><p>I agree with you about how the error conditions should be be worded. I also think that the information belongs in the "Usage information" section, since these error conditions are so tightly linked to how default actions are set.</p><p>Then here, perhaps we could state "Processors <term outputclass="RFC-2119">MAY</term> provide an error or warning message when <xmlelement>prop</xmlelement> elements contain errors."</p></draft-comment>-->
+      <p>The following markup in a DITAVAL document is an error condition:<ul>
+          <li>More than one <xmlelement>prop</xmlelement> element with no
+              <xmlatt>att</xmlatt> attribute</li>
+          <li>More than one <xmlelement>prop</xmlelement> element with the
+            same <xmlatt>att</xmlatt> attribute and no value </li>
+          <li>More than one <xmlelement>prop</xmlelement> element with the
+            same <xmlatt>att</xmlatt> attribute and same
+              <xmlatt>value</xmlatt></li>
+        </ul>Processors <term outputclass="RFC-2119">MAY</term> provide an
+        error or warning message for these error conditions.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -102,14 +111,14 @@
       <dl>
         <dlentry>
           <dt id="attr-att"><xmlatt>att</xmlatt></dt>
-          <dd>Specifies the attribute to be acted upon. If using a literal attribute name, it is
-              <xmlatt>props</xmlatt> or a specialization of <xmlatt>props</xmlatt> (such as
-              <xmlatt>audience</xmlatt>, <xmlatt>deliveryTarget</xmlatt>, <xmlatt>platform</xmlatt>,
-              <xmlatt>product</xmlatt>, or <xmlatt>otherprops</xmlatt>). Otherwise, the value is the
-            name of a group within one of those attributes, with the group name specified using the
-            generalized attribute syntax. If the <xmlatt>att</xmlatt> attribute is absent, then the
-              <xmlelement>prop</xmlelement> element declares a default behavior for any conditional
-            processing attribute.</dd>
+          <dd>Specifies the conditional-processing attribute that is
+            targeted. The value is the literal attribute name or the name
+            of a group within one of those attributes, with the group name
+            specified using the generalized attribute syntax. If the
+              <xmlatt>att</xmlatt> attribute is absent, then the
+              <xmlelement>prop</xmlelement> element declares a default
+            behavior for anything not explicitly specified in the DITAVAL
+            document.</dd>
         </dlentry>
         <dlentry conkeyref="reuse-attributes/ditaval-backcolor">
           <dt/>
@@ -137,8 +146,36 @@
       </dl>
     </section>
 <example id="example" otherprops="examples"><title>Example</title>
-      <p>See <xref keyref="elements-ditaval-val/example"
-            ><xmlelement>val</xmlelement></xref>.</p></example>
+      <!--<p>See <xref keyref="elements-ditaval-val/example"><xmlelement>val</xmlelement></xref>.</p>-->
+      <p>The following code sample shows a DITAVAL document that contains
+        three <xmlelement>prop</xmlelement>elements:</p>
+      <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;val>
+  &lt;prop action="exclude"/>
+  &lt;prop action="passthrough" att="otherprops"/>
+  &lt;prop action="include" att="product" val="base-product"/>
+&lt;/val></codeblock>
+      <p>The following list outlines the actions that the DITAVAL document
+        specifies:</p>
+      <ol>
+        <li>Sets a default action of <keyword>exclude</keyword>. With the
+          exception of the other conditions specified in the DITAVAL
+          document, the content of any element that specifies a
+          conditional-processing attribute is excluded from the rendered
+          output.</li>
+        <li>Sets a default action of <keyword>passthrough</keyword> for the
+            <xmlatt>otherprops</xmlatt> attribute. The content of any
+          element that specifies the <xmlatt>otherprops</xmlatt> attribute
+          is included in the output. In addition, the value for the
+            <xmlatt>otherprops</xmlatt> attribute is preserved in the
+          rendered output, if supported by the output format.</li>
+        <li>Sets an action of <keyword>include</keyword> for any element
+          that specifies a value of <keyword>base-product</keyword> for the
+            <xmlatt>product</xmlatt> attribute. The content of any element
+          that specifies a value of <keyword>base-product</keyword> for the
+            <xmlatt>product</xmlatt> attribute is included in the rendered
+          output.</li>
+      </ol></example>
 </refbody>
 </reference>
 

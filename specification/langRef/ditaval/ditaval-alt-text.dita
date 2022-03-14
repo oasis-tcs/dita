@@ -22,12 +22,23 @@
         way to flag content.</p>
       <!--<p><ph conref="ditaval-revprop.dita#ditaval-revprop/default-text"/></p>-->
     </section>
-    <section id="attributes">
-      <title>Attributes</title>
-      <p conkeyref="reuse-attributes/no-atts"/>
-    </section>
-<example id="example" otherprops="examples"><title>Example</title><p>See <xref keyref="elements-ditaval-val/example"
-            ><xmlelement>val</xmlelement></xref>.</p></example>
+    <!--<section id="attributes"><title>Attributes</title><p conkeyref="reuse-attributes/no-atts"/></section>-->
+<example id="example" otherprops="examples"><title>Example</title>
+      <p>The following code sample shows a DITAVAL document that is used to
+        render icons before content that is specific to particular
+        audiences. The <xmlelement>alt-text</xmlelement> element provides
+        alternate text for the icons:</p>
+      <codeblock>&lt;val>
+  &lt;prop action="flag" att="audience" val="novice">
+    &lt;startflag imageref="novice-icon.gif">
+      <b>&lt;alt-text>Novice&lt;/alt-text></b>
+    &lt;/startflag>
+  &lt;/prop>
+  &lt;prop action="flag" att="audience" val="expert">
+    &lt;startflag imageref="expert-icon.gif">
+      <b>&lt;alt-text>Expert&lt;/alt-text></b>
+    &lt;/startflag>
+&lt;/val></codeblock></example>
 </refbody>
 </reference>
 

@@ -25,7 +25,7 @@
             <title>Rendering expectations</title>
       <p id="default-text">If no alternate text is specified, processors
         can provide default alternate text to indicate the start and end
-        point of the revision.</p>
+        point of the flagged content.</p>
       <!--<p><ph id="default-text">When no alternate text is specified for a revision flag, the default alternate text for <xmlelement>revprop</xmlelement> start of change is typically a localized translation of "Start of change", and the default alternate text for <xmlelement>revprop</xmlelement> end of change is typically a localized translation of "End of change". </ph></p>-->
             <div conkeyref="rendering/ditaval-rendering"/>
         </section>
@@ -37,17 +37,17 @@
         implementation dependent. In such cases processors <term
           outputclass="RFC-2119">MAY</term> provide an error or warning
         message.</p>
-      <p>If two or more DITAVAL properties apply
-          <xmlatt>outputclass</xmlatt> flags to the same element,
-        processors treat the flagged element as if each value was specified
-        for the <xmlatt>outputclass</xmlatt> attribute. The order of the
-        DITAVAL-provided tokens is undefined.</p>
       <p>If one or more DITAVAL properties apply
           <xmlatt>outputclass</xmlatt> flags to the same element, and the
         flagged element already specifies one or more values for the
           <xmlatt>outputclass</xmlatt> attribute, processors treat the
         flagged element as if the DITAVAL-based tokens are specified
         first.</p>
+      <p>If two or more DITAVAL properties apply
+          <xmlatt>outputclass</xmlatt> flags to the same element,
+        processors treat the flagged element as if each value was specified
+        for the <xmlatt>outputclass</xmlatt> attribute. The order of the
+        DITAVAL-provided tokens is undefined.</p>
       <!--<p>[Details about processing expectations that should go elsewhere] If two or more DITAVAL properties apply <xmlatt>outputclass</xmlatt> flags to the same element, treat the flagged element as if each value was specified on that element's <xmlatt>outputclass</xmlatt> attribute; in that case, the order of those DITAVAL-based tokens is undefined. If the flagged element already specifies <xmlatt>outputclass</xmlatt>, treat the flagged element as if all DITAVAL-based <xmlatt>outputclass</xmlatt> values come first in the attribute.</p>-->
         </section>
 <section id="attributes"><title>Attributes</title>
