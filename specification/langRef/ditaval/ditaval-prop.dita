@@ -3,7 +3,7 @@
 <reference id="ditaval-prop" xml:lang="en-us">
 <title><xmlelement>prop</xmlelement></title>
   <shortdesc>The <xmlelement>prop</xmlelement> element in a DITAVAL
-    document specifies filtering or flagging actions that occur before
+    document specifies filtering or flagging actions that occur when
     rendering. The actions target conditional-processing attributes:
       <xmlatt>props</xmlatt> or specializations of <xmlatt>props</xmlatt>,
     such as <xmlatt>audience</xmlatt>, <xmlatt>deliveryTarget</xmlatt>,
@@ -43,8 +43,8 @@
           <stentry>A <xmlelement>prop</xmlelement> element without an
               <xmlatt>att</xmlatt> and <xmlatt>val</xmlatt> attribute </stentry>
           <stentry>Sets a default action (exclude, flag, include, or pass
-            through) for anything not explicitly specified in the DITAVAL
-            document</stentry>
+            through) for all conditional-processing attributes not
+            explicitly specified in the DITAVAL document</stentry>
         </strow>
       </simpletable>
     </section>
@@ -148,7 +148,7 @@
 <example id="example" otherprops="examples"><title>Example</title>
       <!--<p>See <xref keyref="elements-ditaval-val/example"><xmlelement>val</xmlelement></xref>.</p>-->
       <p>The following code sample shows a DITAVAL document that contains
-        three <xmlelement>prop</xmlelement>elements:</p>
+        three <xmlelement>prop</xmlelement> elements:</p>
       <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
 &lt;val>
   &lt;prop action="exclude"/>
