@@ -46,9 +46,31 @@
         </dlentry>
       </dl>
     </section>
-<example id="example" otherprops="examples"><title>Example</title>
-      <!--<p>See <xref keyref="elements-ditaval-val"/>.</p>-->
-      <p>See <xref keyref="elements-ditaval-revprop/example"
-            ><xmlelement>revprop</xmlelement></xref></p></example>
+    <example id="example" otherprops="examples">
+      <title>Example</title>
+      <!--<p>See <xref keyref="elements-ditaval-val/example"><xmlelement>val</xmlelement></xref>.</p>-->
+      <p>The following code sample shows a DITAVAL document that is used to
+        render icons before content that is specific to a particular
+        operating system. The <xmlelement>startflag</xmlelement> elements
+        specify the icons, and the <xmlelement>alt-text</xmlelement>
+        elements provides alternate text.</p>
+      <codeblock>&lt;val>
+  &lt;prop action="flag" att="platform" val="linux">
+    <b>&lt;startflag imageref="linux-icon.gif"></b>
+      &lt;alt-text>Linux&lt;/alt-text>
+    &lt;/startflag>
+  &lt;/prop>
+  &lt;prop action="flag" att="platform" val="windows">
+    <b>&lt;startflag imageref="windows-icon.gif"></b>
+      &lt;alt-text>Windows&lt;/alt-text>
+    &lt;/startflag>
+  &lt;/prop>
+  &lt;prop action="flag" att="platform" val="zos">
+    <b>&lt;startflag imageref="zos-icon.gif"></b>
+      &lt;alt-text>zOS&lt;/alt-text>
+    &lt;/startflag>
+  &lt;/prop>
+&lt;/val></codeblock>
+    </example>
 </refbody>
 </reference>
