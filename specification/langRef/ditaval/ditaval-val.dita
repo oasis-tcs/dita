@@ -20,74 +20,89 @@
         <p>Should this be in the "Processing expectations" section?</p>
       </draft-comment>
       </section>
-      <section id="attributes">
-         <title>Attributes</title>
-         <p conkeyref="reuse-attributes/no-atts"/>
-      </section>
+    <!--<section id="attributes"><title>Attributes</title><p conkeyref="reuse-attributes/no-atts"/></section>-->
 <example id="example" otherprops="examples"><title>Example</title>
       <p>This section contains examples of DITAVAL documents and how they
-        can be used.</p><fig><title>Sample
-DITAVAL file</title>
+        can be used.</p><fig><title>Sample DITAVAL document</title>
+        <p>The following code sample shows a DITAVAL document that includes
+          content, flags certain content, flags certain revisions, and
+          provides a background color for when there are style
+          conflicts:</p>
 <codeblock>&lt;val>
-   &lt;style-conflict background-conflict-color="red"/>
-   &lt;prop action="include" att="audience" val="everybody"/>
-   &lt;prop action="flag" att="product" val="YourProd" backcolor="purple"/>
-   &lt;prop action="flag" att="product" backcolor="blue"
-         color="yellow" style="underline" val="MyProd">
-      &lt;startflag imageref="startflag.jpg">
-        &lt;alt-text>This is the start of my product info&lt;/alt-text>
-      &lt;/startflag>
-      &lt;endflag imageref="endflag.jpg">
-        &lt;alt-text>This is the end of my product info&lt;/alt-text>
-      &lt;/endflag>
-   &lt;/prop>
-   &lt;revprop action="flag" val="1.2"/>
+  &lt;style-conflict background-conflict-color="red"/>
+  &lt;prop action="include" att="audience" val="everybody"/>
+  &lt;prop action="flag" att="product" val="YourProd" backcolor="purple"/>
+  &lt;prop action="flag" att="product" backcolor="blue"
+        color="yellow" style="underline" val="MyProd">
+    &lt;startflag imageref="startflag.jpg">
+      &lt;alt-text>This is the start of my product info&lt;/alt-text>
+    &lt;/startflag>
+    &lt;endflag imageref="endflag.jpg">
+      &lt;alt-text>This is the end of my product info&lt;/alt-text>
+    &lt;/endflag>
+  &lt;/prop>
+  &lt;revprop action="flag" val="1.2"/>
 &lt;/val></codeblock>
-<p>This sample DITAVAL file performs the following actions:<ul>
-                  <li>Elements with <codeph>audience="everybody"</codeph> are included without
-                     change.</li>
-                  <li>Elements with <codeph>product="YourProd"</codeph> get a background color of
-                     purple.</li>
-                  <li>Elements with <codeph>product="MyProd"</codeph> get the following actions:<ul>
-                        <li>The image <filepath>startflag.jpg</filepath> is placed at the start of
-                           the element.</li>
-                        <li>The image <filepath>endflag.jpg</filepath> is placed at the end of the
-                           element.</li>
-                        <li>The element gets a background color of blue.</li>
-                        <li>The text in the element appears in yellow; the text is underlined.</li>
-                     </ul></li>
-                  <li>Elements marked with are flagged with the default revision flags,
-                     which are implementation dependent.</li>
-                  <li>When there are conflicts, for example,  if an element is marked with
-                        <codeph>product="MyProd YourProd"</codeph>, it will be flagged with a
-                     background color of red.</li>
-               </ul></p>
-</fig><fig><title>DITAVAL file that overrides the default "include"
-action</title>
+<p>This sample DITAVAL document performs the following actions:<ul>
+            <li>Elements that specify <codeph>audience="everybody"</codeph>
+              are included without change.</li>
+            <li>Elements that specify <codeph>product="YourProd"</codeph>
+              are rendered with a background color of purple.</li>
+            <li>Elements with <codeph>product="MyProd"</codeph> get the
+              following actions:<ul>
+                <li>The image <filepath>startflag.jpg</filepath> is placed
+                  at the start of the element.</li>
+                <li>The image <filepath>endflag.jpg</filepath> is placed at
+                  the end of the element.</li>
+                <li>The element is rendered with a background color of
+                  blue.</li>
+                <li>The text in the element is rendered in yellow, and the
+                  text is underlined.</li>
+              </ul></li>
+            <li>Elements marked with <codeph>rev="1.2"</codeph>are flagged
+              with the default revision flags, which are implementation
+              dependent.</li>
+            <li>When there are conflicts, for example, if an element is
+              marked with <codeph>product="MyProd YourProd"</codeph>, it
+              will be flagged with a background color of red.</li>
+          </ul></p>
+</fig><fig><title>DITAVAL document that overrides the default
+            <keyword>include</keyword> action</title>
+        <p>The following code sample shows a DITAVAL document that sets a
+          default value of <keyword>exclude</keyword> for every
+          conditional-processing attribute. That default value is then
+          overriden by the <xmlelement>prop</xmlelement> elements with a
+          value of <keyword>include.</keyword></p>
 <codeblock>&lt;val>
-   &lt;prop action="exclude"/>
-   &lt;prop action="include" att="audience" val="everybody"/>
-   &lt;prop action="include" att="audience" val="novice"/>
-   &lt;prop action="include" att="product" val="productA"/>
-   &lt;prop action="include" att="product" val="productB"/>
+  &lt;prop action="exclude"/>
+  &lt;prop action="include" att="audience" val="everybody"/>
+  &lt;prop action="include" att="audience" val="novice"/>
+  &lt;prop action="include" att="product" val="productA"/>
+  &lt;prop action="include" att="product" val="productB"/>
 &lt;/val></codeblock>
-<p>This simple DITAVAL file performs the following actions:<ul>
-                  <li>The first <xmlelement>prop</xmlelement> element does not specify an attribute,
-                     which sets a default action of "exclude" for every prop value. This means that,
-                     by default, any property value not otherwise defined in this file evaluates to
-                     "exclude". Note that this same behavior can be limited to a single attribute;
-                     the following <xmlelement>prop</xmlelement> element sets a default action of
-                     "exclude" for all properties specified on the <xmlatt>platform</xmlatt>
-                     attribute: <codeph>&lt;prop action="exclude" att="platform"/></codeph></li>
-                  <li>The second and third <xmlelement>prop</xmlelement> elements set an action of
-                     "include" for two values on the <xmlatt>audience</xmlatt> attribute. All other
-                     values on the <xmlatt>audience</xmlatt> attribute still evaluate to
-                     "exclude".</li>
-                  <li>The fourth and fifth <xmlelement>prop</xmlelement> elements set an action of
-                     "include" for two values on the <xmlatt>product</xmlatt> attribute. All other
-                     values on the <xmlatt>product</xmlatt> attribute still evaluate to
-                     "exclude".</li>
-               </ul></p>
+<p>This DITAVAL document performs the following actions:<ul>
+            <li>The first <xmlelement>prop</xmlelement> element does not
+              specify an attribute, which sets a default action of
+                <keyword>exclude</keyword> for every conditional-processing
+              attribute. This means that, by default, any property value
+              not otherwise defined in this document evaluates to
+                <keyword>exclude</keyword>. Note that this same behavior
+              can be limited to a single attribute. The following
+                <xmlelement>prop</xmlelement> element sets a default action
+              of <keyword>exclude</keyword> for all properties specified on
+              the <xmlatt>platform</xmlatt> attribute: <codeph>&lt;prop
+                action="exclude" att="platform"/></codeph></li>
+            <li>The second and third <xmlelement>prop</xmlelement> elements
+              set an action of <keyword>include</keyword> for two values on
+              the <xmlatt>audience</xmlatt> attribute. All other values on
+              the <xmlatt>audience</xmlatt> attribute still evaluate to
+                <keyword>exclude</keyword>.</li>
+            <li>The fourth and fifth <xmlelement>prop</xmlelement> elements
+              set an action of <keyword>include</keyword> for two values on
+              the <xmlatt>product</xmlatt> attribute. All other values on
+              the <xmlatt>product</xmlatt> attribute still evaluate to
+                <keyword>exclude</keyword>.</li>
+          </ul></p>
 </fig></example>
 </refbody>
 </reference>
