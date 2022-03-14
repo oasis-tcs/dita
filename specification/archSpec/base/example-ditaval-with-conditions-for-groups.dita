@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="example-ditaval-with-conditions-for-groups">
+    <title>Example: DITAVAL with conditions for groups</title>
+    <shortdesc></shortdesc>
+    <refbody>
+    <example>
+      <fig>
+        <codeblock>&lt;val>
+   &lt;prop action="exclude" att="product" val="appserver"/>
+   &lt;prop action="include" att="product" val="mySERVER"/>
+   &lt;prop action="include" att="database" val="dbFIRST"/>
+   &lt;prop action="include" att="database" val="dbSECOND"/>
+   &lt;prop action="exclude" att="database" val="newDB"/>
+&lt;/val></codeblock>
+        <p>Assume that "database" and "appServer" are used as group names
+          within the <xmlatt>product</xmlatt> attribute. In that case, the
+          sample DITAVAL above performs the following actions:<ul>
+            <li>The first <xmlelement>prop</xmlelement> element excludes
+              the value "appServer" when used within the
+                <xmlatt>product</xmlatt> attribute. It also sets a default
+              of "exclude" for values within any appServer() group inside
+              of the <xmlatt>product</xmlatt> attribute.</li>
+            <li>The second <xmlelement>prop</xmlelement> element sets
+              "mySERVER" to include; this applies whether "mySERVER"
+              appears alone in the <xmlatt>product</xmlatt> attribute
+                (<codeph>product="mySERVER"</codeph>) or inside of any
+              group (<codeph>product="appServer(mySERVER)"</codeph> or
+                <codeph>product="otherGroup(mySERVER)"</codeph>).</li>
+            <li>The third and fourth <xmlelement>prop</xmlelement> elements
+              set the database values "dbFIRST" and "dbSECOND" to include.
+              If those values appear inside of a "database" group, they are
+              explicitly set to "include". If they appear elsewhere in a
+              conditional attribute (such as
+                <codeph>product="dbFIRST"</codeph> or
+                <codeph>platform="dbSECOND"</codeph>), this rule does not
+              apply.</li>
+            <li>The final <xmlelement>prop</xmlelement> element sets the
+              database value "newDB" to exclude. If that value appears
+              inside of a database group, it is explicitly set to
+              "exclude". If it appears in any other group or attribute,
+              this rule does not apply.</li>
+          </ul></p>
+        <p>Remember that with groups, if all values inside of a single
+          group evaluate to "exclude", that is equivalent to an entire
+          attribute evaluating to "exclude", which results in the removal
+          of the content. Using the above sample DITAVAL:<ul>
+            <li><codeph>&lt;p product="appServer"></codeph> is filtered
+              out, because this value is excluded.</li>
+            <li><codeph>&lt;p product="appServer(A B)"></codeph> is
+              filtered out, because there is no explicit rule for A or B,
+              and values in the "appServer" group inside of
+                <xmlatt>product</xmlatt> default to exclude.</li>
+            <li><codeph>&lt;p product="appServer(A B mySERVER)"></codeph>
+              is included, because <codeph>product="mySERVER"</codeph>
+              evaluates to "include", which means the entire group
+              evaluates to "include".</li>
+            <li><codeph>&lt;p product="newDB"></codeph> is included,
+              because no rule in the DITAVAL applies, so the "newDB" token
+              defaults to "include".</li>
+            <li><codeph>&lt;p product="database(newDB)"></codeph> is
+              filtered out, because the token "newDB" is excluded when
+              found in the database group.</li>
+            <li><codeph>&lt;p product="database(dbFIRST dbSECOND
+                newDB)"></codeph> is included, because both "dbFIRST" and
+              "dbSECOND" are included, so the group evaluates to
+              include.</li>
+            <li><codeph>&lt;p product="database(newDB)
+                appserver(mySERVER)"></codeph> is filtered out, because the
+              token "newDB" is excluded when found in the database group.
+              The entire "database" group on this paragraph evaluates to
+              "exclude", so the element is excluded, regardless of how the
+              "appServer" group evaluates.</li>
+          </ul></p>
+        <note>If two groups with the same name exist on different
+          attributes, each group will evaluate the same way. For example,
+          rules for the database group in this sample would evaluate the
+          same whether the group is used within <xmlatt>product</xmlatt> or
+            <xmlatt>platform</xmlatt>. See <xref href="condproc.dita"/> for
+          suggestions on how to handle similar groups on different
+          attributes.</note>
+      </fig>
+    </example>
+  </refbody>
+</reference>
