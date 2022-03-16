@@ -50,20 +50,14 @@
     </section>
     <section id="attributes">
       <title>Attributes</title>
-      <draft-comment author="Kristen J Eberlein" time="28 November 2021">
-        <p>This topic needs to be worked to use the new format for
-          attributes:</p>
-        <ul>
-          <li>Paragraph that references standard attribute definitions</li>
-          <li>Paragraph that explains that element-specific exceptions to
-            the standard attribute definition</li>
-        </ul>
-        <p>This is a work item for Robert Anderson.</p>
-      </draft-comment>
-      <p>The following attributes are available on this element: <ph conkeyref="reuse-attributes/ref-universalatts"/> and the attributes defined below.</p>
+      <p>The following attributes are available on this element: <ph
+          conkeyref="reuse-attributes/ref-universalatts"/>, <xref
+          keyref="attributes-common/attr-format"/>, <xref keyref="attributes-common/attr-href"/>,
+          <xref keyref="attributes-common/attr-keyref"/>, <xref
+          keyref="attributes-common/attr-scope"/>, and the attributes defined below.</p>
       <draft-comment author="rodaande">This list was significantly reworked when the element moved
-        into the base vocabulary; need to validate that the list is still correct for
-        LwDITA.</draft-comment>
+        into the base vocabulary; need to validate that the list is still correct for LwDITA. Also:
+        href, keyref were marked with platform=dita but that seems incorrect.</draft-comment>
       <dl>
         <dlentry>
           <dt id="attr-autoplay"><xmlatt>autoplay</xmlatt></dt>
@@ -79,33 +73,12 @@
             and <keyword>-dita-use-conref-target </keyword>. The default value is
               <keyword>true</keyword>.</dd>
         </dlentry>
-        <dlentry platform="dita">
-          <dt id="attr-format"><xmlatt>format</xmlatt></dt>
-          <dd>Specifies the MIME type for the resource. This attribute enables processors to avoid
-            loading unsupported resources. If <xmlatt>format</xmlatt> is not specified and
-              <xmlatt>keyref</xmlatt> is specified, the effective type for the key named by the
-              <xmlatt>keyref</xmlatt> attribute is used as the value. If an explicit
-              <xmlatt>format</xmlatt> is not specified on either the <xmlelement>video</xmlelement>
-            element or key definition, processors can use other means, such the URI file extension,
-            to determine the effective MIME type of the resource.</dd>
-        </dlentry>
         <dlentry>
           <dt id="attr-height"><xmlatt>height</xmlatt></dt>
           <dd>Indicates the vertical dimension for the resulting display.
               <ph
               conref="../conref-attribute.dita#conref-attribute/height-width-units"
             /></dd>
-        </dlentry>
-        <dlentry platform="dita">
-          <!--KJE: RDA and I discussed this on 29 April 2019. We could not come up with a phrasing that would not include "should". Adding this comment so that we don't have the discussion again.-->
-          <dt id="attr-href"><xmlatt>href</xmlatt></dt>
-          <dd>Specifies the absolute or relative URI of the video resource.
-            If <xmlatt>href</xmlatt> is specified, also specify
-              <xmlatt>format</xmlatt>.</dd>
-        </dlentry>
-        <dlentry platform="dita">
-          <dt id="attr-keyref"><xmlatt>keyref</xmlatt></dt>
-          <dd>Specifies a key reference to the video resource.</dd>
         </dlentry>
         <dlentry>
           <dt id="attr-loop"><xmlatt>loop</xmlatt></dt>
@@ -130,17 +103,6 @@
           <dt id="attr-posterkeyref"><xmlatt>posterkeyref</xmlatt></dt>
           <dd>Specifies a key reference for the poster image.</dd>
         </dlentry>
-        <dlentry>
-          <dt id="attr-scope"><xmlatt>scope</xmlatt></dt>
-          <dd><ph rev="review-a">Specifies the</ph> closeness of the
-            relationship between the current document and the target
-            resource. Resources in the same information unit are considered
-              <codeph>"local"</codeph>; resources in the same system as the
-            referencing content but not part of the same information unit
-            are considered <codeph>"peer"</codeph>; and resources outside
-            the system, such as web pages, are considered
-              <codeph>"external"</codeph>.</dd>
-        </dlentry>
         <dlentry platform="dita">
           <dt id="attr-tabindex"><xmlatt>tabindex</xmlatt></dt>
           <dd><draft-comment author="rodaande">Need to add the linked version of the HTML spec into
@@ -158,6 +120,20 @@
             /></dd>
         </dlentry>
       </dl>
+      <p id="attr-exception" outputclass="attr-exception" rev="review-a" platform="dita">For this
+        element: <ul id="ul_xxx_hd4_qpb">
+          <li>The <xmlatt>format</xmlatt> attribute specifies the MIME type for the resource. This
+            attribute enables processors to avoid loading unsupported resources. If
+              <xmlatt>format</xmlatt> is not specified and <xmlatt>keyref</xmlatt> is specified, the
+            effective type for the key named by the <xmlatt>keyref</xmlatt> attribute is used as the
+            value. If an explicit <xmlatt>format</xmlatt> is not specified on either the
+              <xmlelement>video</xmlelement> element or key definition, processors can use other
+            means, such the URI file extension, to determine the effective MIME type of the
+            resource.</li>
+          <li>The <xmlatt>href</xmlatt> attribute specifies the absolute or relative URI of the
+            video resource. If <xmlatt>href</xmlatt> is specified, also specify
+              <xmlatt>format</xmlatt>.<!--KJE: RDA and I discussed this on 29 April 2019. We could not come up with a phrasing that would not include "should". Adding this comment so that we don't have the discussion again.--></li>
+        </ul></p>
     </section>
   </refbody>
 </reference>
