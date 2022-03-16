@@ -1308,15 +1308,6 @@
                value
                           CDATA
                                     #IMPLIED
-               valuetype
-                          (data |
-                           object |
-                           ref |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               type
-                          CDATA
-                                    #IMPLIED
                keyref
                           CDATA
                                     #IMPLIED"

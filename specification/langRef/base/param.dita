@@ -29,55 +29,24 @@
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>The <xmlatt>keyref</xmlatt> and <xmlatt>valuetype</xmlatt>
-        attributes on <xmlelement>param</xmlelement> have the following <ph
-          rev="review-c">expectations</ph>:<ul id="ul_evg_2gj_nrb">
-          <li>If <xmlatt>valuetype</xmlatt> is specified but is not set to
-            "ref", the <xmlatt>keyref</xmlatt> attribute is ignored.</li>
-          <li>When <xmlatt>valuetype</xmlatt> is not specified and
-              <xmlatt>keyref</xmlatt> is specified, it implies a setting of
-              <codeph>valuetype="ref"</codeph>.</li>
-          <li>When <xmlatt>keyref</xmlatt> is specified and the effective
-            value of <xmlatt>valuetype</xmlatt> is
-              <keyword>ref</keyword>:<ol id="ol_tvg_2c2_z1b">
-              <li>When the key specified by <xmlatt>keyref</xmlatt> is
-                resolvable and has an associated URI, that URI is used as
-                the value of this element (overriding
-                  <xmlatt>value</xmlatt>, if that is specified).</li>
-              <li>When the key specified by <xmlatt>keyref</xmlatt> is
-                resolvable and has no associated resource (only link text),
-                the <xmlatt>keyref</xmlatt> attribute is considered to be
-                unresolvable for this element. If <xmlatt>value</xmlatt> is
-                specified, it is used as <ph rev="review-c">a
-                fallback</ph>.</li>
-              <li>When the key specified by <xmlatt>keyref</xmlatt> is not
-                resolvable, the value of the <xmlatt>value</xmlatt>
-                attribute is used as a fallback target for the
-                  <xmlelement>param</xmlelement> element.</li>
-            </ol></li>
-        </ul></p>
-      <p>In addition, the following expectations apply to the
-          <xmlatt>type</xmlatt> attribute:<ol id="ol_svg_2c2_z1b">
-          <li>When <xmlatt>valuetype</xmlatt> is set to "ref", the
-              <xmlatt>type</xmlatt> attribute directly specifies the
-            content type of the resource designated by
-              <xmlatt>value</xmlatt>.</li>
-          <li>Otherwise, if <xmlatt>type</xmlatt> is specified and
-              <xmlatt>keyref</xmlatt> is specified and resolvable, this
-            attribute specifies the content type of the resource designated
-            by <xmlatt>keyref</xmlatt>.</li>
-          <li>Otherwise, if <xmlatt>type</xmlatt> is not specified and
-              <xmlatt>keyref</xmlatt> is specified and is resolvable, the
-            effective type value specified for the key that is named by the
-              <xmlatt>keyref</xmlatt> attribute is used as the value of the
-              <xmlatt>type</xmlatt> attribute.</li>
+      <p>The <xmlatt>keyref</xmlatt> attribute on <xmlelement>param</xmlelement> has the following
+          <ph rev="review-c">expectations</ph>:<ol id="ol_tvg_2c2_z1b">
+          <li>When the key specified by <xmlatt>keyref</xmlatt> is resolvable and has an associated
+            URI, that URI is used as the value of this element (overriding <xmlatt>value</xmlatt>,
+            if that is specified).</li>
+          <li>When the key specified by <xmlatt>keyref</xmlatt> is resolvable and has no associated
+            resource (only link text), the <xmlatt>keyref</xmlatt> attribute is considered to be
+            unresolvable for this element. If <xmlatt>value</xmlatt> is specified, it is used as <ph
+              rev="review-c">a fallback</ph>.</li>
+          <li>When the key specified by <xmlatt>keyref</xmlatt> is not resolvable, the value of the
+              <xmlatt>value</xmlatt> attribute is used as a fallback target for the
+              <xmlelement>param</xmlelement> element.</li>
         </ol></p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
       <p>The following attributes are available on this element: <ph
-          conkeyref="reuse-attributes/ref-universalatts"/> and the
-        attributes defined below.</p>
+          conkeyref="reuse-attributes/ref-universalatts"/> and the attributes defined below.</p>
       <dl>
         <dlentry>
           <dt id="attr-keyref"><xmlatt>keyref</xmlatt></dt>
@@ -90,48 +59,9 @@
           <dd>Specifies the name of the parameter.</dd>
         </dlentry>
         <dlentry>
-          <dt id="attr-type"><xmlatt>type</xmlatt></dt>
-          <dd>Specifies for a user agent the type of values that will be
-            found at the URI designated by <xmlatt>value</xmlatt>. <ph
-              conkeyref="reuse-attributes/nonstandard-type"/></dd>
-        </dlentry>
-        <dlentry>
           <dt id="attr-value"><xmlatt>value</xmlatt></dt>
           <dd>Specifies the value of a run-time parameter that is described
             by the <xmlatt>name</xmlatt> attribute.</dd>
-        </dlentry>
-        <dlentry>
-          <dt id="attr-valuetype"><xmlatt>valuetype</xmlatt></dt>
-          <dd>Specifies the type of the <xmlatt>value</xmlatt> attribute.
-            Allowed values are: <dl>
-              <dlentry>
-                <dt>data </dt>
-                <dd>A value of <keyword>data</keyword> means that the value
-                  will be evaluated and passed to the object&apos;s
-                  implementation as a string. </dd>
-              </dlentry>
-              <dlentry>
-                <dt>ref </dt>
-                <dd>A value of <keyword>ref</keyword> indicates that the
-                  value of the <xmlatt>value</xmlatt> attribute is a URL
-                  that designates a resource where run-time values are
-                  stored. This allows support tools to identify URLs that
-                  are given as parameters.</dd>
-              </dlentry>
-              <dlentry>
-                <dt>object</dt>
-                <dd>A value of <keyword>object</keyword> indicates that the
-                  value of the <xmlatt>value</xmlatt> attribute is an
-                  identifier that refers to an object declaration in the
-                  document. The identifier must be the value of the
-                    <xmlatt>id</xmlatt> attribute set for the declared
-                    <xmlelement>object</xmlelement> element. </dd>
-              </dlentry>
-              <dlentry conkeyref="reuse-attributes/ditauseconref">
-                <dt/>
-                <dd/>
-              </dlentry>
-            </dl></dd>
         </dlentry>
       </dl>
     </section>
