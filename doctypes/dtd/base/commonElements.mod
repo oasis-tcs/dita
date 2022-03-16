@@ -1244,22 +1244,7 @@
                          (%foreign.unknown.incl;)*)"
 >
 <!ENTITY % object.attributes
-              "declare
-                          (declare)
-                                    #IMPLIED
-               classid
-                          CDATA
-                                    #IMPLIED
-               classidkeyref
-                          CDATA
-                                    #IMPLIED
-               codebase
-                          CDATA
-                                    #IMPLIED
-               codebasekeyref
-                          CDATA
-                                    #IMPLIED
-               data
+              "data
                           CDATA
                                     #IMPLIED
                datakeyref
@@ -1269,15 +1254,6 @@
                           CDATA
                                     #IMPLIED
                codetype
-                          CDATA
-                                    #IMPLIED
-               archive
-                          CDATA
-                                    #IMPLIED
-               archivekeyrefs
-                          CDATA
-                                    #IMPLIED
-               standby
                           CDATA
                                     #IMPLIED
                height
