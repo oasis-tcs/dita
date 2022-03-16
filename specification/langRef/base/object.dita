@@ -37,63 +37,12 @@
                     conkeyref="reuse-attributes/ref-universalatts"/> and the attributes defined
                 below.</p>
             <dl>
-                <dlentry id="archive">
-                    <dt id="attr-archive"><xmlatt>archive</xmlatt></dt>
-                    <dd>Specifies a space-separated list of URIs indicating resources needed by the
-                        object. These resources might include those URIs specified by the
-                            <xmlatt>classid</xmlatt> and <xmlatt>data</xmlatt> attributes.
-                        Preloading these resources usually results in faster load times for objects.
-                        The URIs in the list should be relative to the URI specified in the
-                            <xmlatt>codebase</xmlatt> attribute.</dd>
-                </dlentry>
-                <dlentry id="archivekeyrefs">
-                    <dt id="attr-archivekeyrefs"><xmlatt>archivekeyrefs</xmlatt></dt>
-                    <dd>Specifies key references to one or more archives, as for
-                            <xmlatt>archive</xmlatt>. The value is a space-separated list of key
-                        names. Each resolvable key reference is treated as a URI as though it had
-                        been specified on the <xmlatt>archive</xmlatt> attribute. When specified,
-                        and at least one key name is resolvable, the key-provided archive list is
-                        used. If <xmlatt>archive</xmlatt> is specified, it is used as a fallback
-                        when no key names can be resolved to a URI. </dd>
-                </dlentry>
-                <dlentry id="classid">
-                    <dt id="attr-classid"><xmlatt>classid</xmlatt></dt>
-                    <dd>Contains a URI that specifies the location of an object&apos;s
-                        implementation. It can be used together with the <xmlatt>data</xmlatt>
-                        attribute which is specified relative to the value of the
-                            <xmlatt>codebase</xmlatt> attribute. </dd>
-                </dlentry>
-                <dlentry id="classidkeyref">
-                    <dt id="attr-classidkeyref"><xmlatt>classidkeyref</xmlatt></dt>
-                    <dd>Specifies a key reference to the URI that specifies the location of an
-                        object's implementation, as for <xmlatt>classid</xmlatt>. When specified,
-                        and the key is resolvable, the key-provided class ID URI is used. If
-                            <xmlatt>classid</xmlatt> is specified, it is used as a fallback when the
-                        key cannot be resolved to a URI. </dd>
-                </dlentry>
-                <dlentry id="codebase">
-                    <dt id="attr-codebase"><xmlatt>codebase</xmlatt></dt>
-                    <dd>Specifies the base URI used for resolving the relative URI values given for
-                            <xmlatt>classid</xmlatt>, <xmlatt>data</xmlatt>, and
-                            <xmlatt>archive</xmlatt> attributes. If <xmlatt>codebase</xmlatt> is not
-                        set, the default is the base URI of the current element.</dd>
-                </dlentry>
-                <dlentry id="codebasekeyref">
-                    <dt id="attr-codebasekeyref"><xmlatt>codebasekeyref</xmlatt></dt>
-                    <dd>Specifies a key reference to the base URI used for resolving other
-                        attributes, as for <xmlatt>codebase</xmlatt>. When specified, and the key is
-                        resolvable, the key-provided code base URI is used. If
-                            <xmlatt>codebase</xmlatt> is specified, it is used as a fallback if the
-                        key cannot be resolved to a URI. If no URI results from processing
-                            <xmlatt>codebasekeyref</xmlatt> and <xmlatt>codebase</xmlatt> is not
-                        specified, the default is the base URL of the current element.</dd>
-                </dlentry>
                 <dlentry id="data">
                     <dt id="attr-data"><xmlatt>data</xmlatt></dt>
                     <dd>Contains a reference to the location of an object&apos;s data. If this
-                        attribute is a relative URL, it is specified relative to the value of the
-                            <xmlatt>codebase</xmlatt> attribute. If this attribute is set, the
-                            <xmlatt>type</xmlatt> attribute should also be set.</dd>
+                        attribute is a relative URL, it is specified relative to the document
+                        containing the <xmlelement>object</xmlelement> element. If this attribute is
+                        set, the <xmlatt>type</xmlatt> attribute should also be set.</dd>
                 </dlentry>
                 <dlentry id="datakeyref">
                     <!-- KJE: Modified to be parallel to the desciption of  @datakeyref in the audio and video topics-->
@@ -104,14 +53,6 @@
                             <xmlatt>data</xmlatt> is specified, it is used as a fallback when the
                         key cannot be resolved to a resource.</dd>
                 </dlentry>
-                <dlentry id="declare">
-                    <dt id="attr-declare"><xmlatt>declare</xmlatt></dt>
-                    <dd>Specifies whether the current object definition is only a declaration. When
-                        this attribute is set to "declare", the current object definition is a
-                        declaration only. The object must be instantiated by a later nested object
-                        definition referring to this declaration. The only allowable value is
-                        "declare".</dd>
-                </dlentry>
                 <dlentry conkeyref="reuse-attributes/image-height" id="height">
                     <dt/>
                     <dd/>
@@ -119,10 +60,6 @@
                 <dlentry id="name">
                     <dt id="attr-name"><xmlatt>name</xmlatt></dt>
                     <dd>Defines a unique name for the object.</dd>
-                </dlentry>
-                <dlentry id="standby">
-                    <dt id="attr-standby"><xmlatt>standby</xmlatt></dt>
-                    <dd>Contains a message to be displayed while an object is loading.</dd>
                 </dlentry>
                 <dlentry id="tabindex">
                     <dt id="attr-tabindex"><xmlatt>tabindex</xmlatt></dt>
@@ -205,8 +142,6 @@
           be used to reference the main content for an
             <xmlelement>object</xmlelement>:</p>
                 <codeblock>&lt;object id="cutkey370"
-    <b>classidkeyref="video_classid"</b>
-    <b>codebasekeyref="video_codebase"</b>
     <b>datakeyref="cutkey370"</b>
     height="280"
     width="370">
@@ -218,25 +153,14 @@
 &lt;/object></codeblock>
                 <p>In this scenario, the keys could be defined as follows:<codeblock>&lt;map>
   &lt;!-- ... -->
-  &lt;!-- NOTE: Using @scope="external" because the class ID is a URI
-       that is not intended to be directly resolved. -->
-  &lt;keydef keys="video_classid"
-    href="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
-    scope="external" />
 
-  &lt;!-- NOTE: Using @scope="external" to avoid systems trying to
-             download this file when they don't need to. -->
-  &lt;keydef keys="video_codebase"
-    href="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0"
-    format="shockwave"
-    scope="external" />
-
-  &lt;!-- Using @scope="external" here because the referenced URL is not intended
-       to be resolved in isolation but relative to the codebase URI. -->
+  &lt;!-- Using @scope="external" here because the referenced URL is external. -->
   &lt;keydef keys="cutkey370"
-    href="cutkey370.swf"
+    href="https://www.example.com/cutkey370.swf"
     type="application/x-shockwave-flash"
+    format="swf"
     scope="external" />
+
   &lt;!-- ... -->
 &lt;/map></codeblock></p>
             </fig>
