@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept xml:lang="en-us" id="usage-of-conditional-processing-attributes" >
-  <title>Conditional processing values and groups</title>
+  <title>Conditional processing attribute values</title>
   <shortdesc>Conditional processing attributes classify elements with metadata. The metadata is
-    specified using space-delimited string values <ph >or grouped
-      values.</ph></shortdesc>
+    specified using space-delimited string values or grouped values.</shortdesc>
   <conbody>
-    <p otherprops="examples">For example, the string values within <xmlatt>product</xmlatt> in
-<codeph>&lt;p product="basic deluxe"></codeph> indicate that the paragraph applies to the
-<q>basic</q> product and to the <q>deluxe</q> product. </p>
-<p>Groups can be used to organize classification metadata into subcategories. This is intended to
-support situations where a predefined metadata attribute applies to multiple specialized
-subcategories. The grouping syntax exactly matches the syntax used for generalized attributes,
-making it valid inside <ph conkeyref="reuse-general/propsAndSpecializations"
-/>.</p>
-<p otherprops="examples"> For example, the <xmlatt>product</xmlatt> attribute can be used to
-classify an element based on both related databases and related application servers. Using groups
-for these subcategories allows each category to be processed independently; when filter conditions
-exclude all applicable databases within a group, the element can be safely excluded, regardless of
-any other <xmlatt>product</xmlatt> conditions.</p>
-<p>Groups can be used within <ph
-conkeyref="reuse-general/propsAndSpecializations"/>. The following rules
-apply:</p>
+    <p>The simplest and most common way to specify metadata on a conditional processing attribute is
+      using individual string values. <ph otherprops="examples">For example, the values
+          <keyword>basic</keyword> and <keyword>deluxe</keyword> within <codeph>&lt;p product="basic
+          deluxe"></codeph> indicate that the paragraph applies to the basic and deluxe
+        products.</ph></p>
+    <p>For more advanced needs, groups can be used to organize metadata into subcategories within an
+      attribute. This is intended to support situations where a predefined metadata attribute
+      applies to multiple specialized subcategories. <ph otherprops="examples">For example, if
+        content is classified into two distinct types of product, those distinct types can become
+        named groups within the <xmlatt>product</xmlatt> attribute.</ph> The grouping syntax exactly
+      matches the syntax used for generalized attributes, making it valid inside <ph
+        conkeyref="reuse-general/propsAndSpecializations"/>.</p>
+<p>The following rules apply to groups within conditional processing attributes:</p>
     <ul >
       <li>Groups consist of a name immediately followed by a parenthetical group of zero or more
         space-delimited string values. For example, <codeph>"groupName(valueOne
