@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_xzh_h25_xsb">
+    <title>About conditional processing</title>
+    <shortdesc>The concepts described below are critical for a full understanding of conditional
+        processing.</shortdesc>
+    <body>
+        <dl>
+            <dlentry>
+                <dt>conditional processing</dt>
+                <dd>A process that determines whether content is rendered, excluded, or flagged
+                    based on the comparison of metadata attributes in the DITA source with rules set
+                    in one or more DITAVAL documents.</dd>
+            </dlentry>
+            <dlentry>
+                <dt>conditional processing attribute</dt>
+                <dd>DITA defines attributes that can be used to enable filtering and flagging
+                    individual elements. Those attributes include <ph
+                        conkeyref="reuse-general/propsAndSpecializations"/><p>In addition, the
+                            <xmlatt>rev</xmlatt> attribute is intended to enable flagging, but is
+                        not intended to enable filtering.</p></dd>
+            </dlentry>
+            <dlentry>
+                <dt>conditional processing profile</dt>
+                <dd>A set of rules provided to a processor when rendering content, based on one or
+                    more DITAVAL documents.<draft-comment author="rodaande" time="21 March 2022">I'm
+                        not certain "conditional processing profile" warrants a separate definition.
+                        I added it after going through some of the following topics, and seeing a
+                        distinctions between a DITAVAL document and a [set of conditions sent as
+                        input to a processor] – for example, DITA-OT or an editor can apply
+                        conditions from multiple DITAVAL documents as a single conditional
+                        processing profile.</draft-comment></dd>
+            </dlentry>
+            <dlentry>
+                <dt>DITAVAL document</dt>
+                <dd>A set of rules that defines which elements to include, exclude, or
+                        flag.<draft-comment author="rodaande" audience="spec-editors"
+                        time="18 March 2022">Do we need to / should we state here that this can be a
+                        file on the file system, a set of rules in memory, or any other way of
+                        storing filtering information that can be expressed using DITAVAL
+                        syntax?</draft-comment></dd>
+            </dlentry>
+            <dlentry>
+                <dt>filtering</dt>
+                <dd>Excluding content from processing or rendering, such as excluding a paragraph
+                    from a topic or a excluding a branch of topic references from a map.</dd>
+            </dlentry>
+            <dlentry>
+                <dt>flagging</dt>
+                <dd>Including extra text, images, or other formatting when rendering content.</dd>
+            </dlentry>
+        </dl>
+        <p>Processors <term outputclass="RFC-2119">SHOULD</term> be able to perform filtering and
+            flagging using the following attributes: <xmlatt>props</xmlatt>,
+                <xmlatt>audience</xmlatt>, <xmlatt>deliveryTarget</xmlatt>,
+                <xmlatt>platform</xmlatt>, <xmlatt>product</xmlatt>, and
+            <xmlatt>otherprops</xmlatt>.</p>
+        <p>The <xmlatt>props</xmlatt> attribute can be specialized to create new attributes, and
+            processors <term outputclass="RFC-2119">SHOULD</term> be able to perform conditional
+            processing on specializations of <xmlatt>props</xmlatt>.</p>
+        <p>Although metadata elements exist with similar names, such as the
+                <xmlelement>audience</xmlelement> element, the specification does not define any
+            mechanism for conditional processing using metadata elements.</p>
+    </body>
+</topic>
