@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="example-condproc-values">
+  <title>Example: Flagging with <xmlatt>outputclass</xmlatt></title>
+  <shortdesc>In this scenario, the <xmlatt>outputclass</xmlatt> attribute in a DITAVAL document is
+    used for CSS based flagging.</shortdesc>
+  <conbody>
+    <p>The following code sample illustrates a simple DITAVAL document that sets up two rules for
+      flagging using <xmlatt>outputclass</xmlatt>.</p>
+    <codeblock>&lt;val>
+  &lt;prop action="flag" att="product" val="myProduct" outputclass="myProductToken"/>
+  &lt;prop action="flag" att="product" val="myOtherProduct" outputclass="myOtherProductToken"/>
+&lt;/val></codeblock>
+    <p>Now, assume the following DITA content is processed using the rules from that DITAVAL
+      document:<codeblock>&lt;ol>
+  &lt;li>This list item applies to all content&lt;/li>
+  &lt;li product="myProduct">This list item is specific to my product&lt;/li>
+  &lt;li product="myProduct" outputclass="example">This list item is an example of an edge case&lt;/li>
+  &lt;li product="myOtherProduct">This list item is specific to my OTHER product&lt;/li>
+  &lt;li product="myProduct myOtherProduct">This list item is specific to both of my products&lt;/li>
+&lt;/ol></codeblock></p>
+    <p>Based on the rules from that DITAVAL document, the topic content is handled as follows:<ol
+        id="ol_lqn_3w4_ysb">
+        <li>The first item does not specify any conditional processing attributes, and is handled
+          normally.</li>
+        <li>The second item specifies <codeph>product="myProduct"</codeph>. Based on the DITAVAL
+          document, this results in a setting on <codeph>outputclass="myProductToken"</codeph>. The
+          content is processed as if the original element was: <codeph>&lt;li product="myProduct"
+            outputclass="myProductToken"></codeph>. A processor that uses
+            <xmlatt>outputclass</xmlatt> values for CSS based styling can now use CSS to style
+          anything flagged with this value.</li>
+        <li>The third item specifies <codeph>product="myProduct"</codeph>. Based on the DITAVAL
+          document, this results in a setting on <codeph>outputclass="myProductToken"</codeph>. The
+          content is processed as if the original element was: <codeph>&lt;li product="myProduct"
+            outputclass="myOtherProductToken example"></codeph>. The value supplied by the DITAVAL
+          document is placed before any value already in the attribute.</li>
+        <li>The fourth item specifies <codeph>product="myOtherProduct"</codeph>. Based on the
+          DITAVAL document, this results in a setting on
+            <codeph>outputclass="myOtherProductToken"</codeph>. The content is processed as if the
+          original element was: <codeph>&lt;li product="myOtherProduct"
+            outputclass="myOtherProductToken"></codeph>.</li>
+        <li>The fifth item specifies both products with <codeph>product="myProduct
+            myOtherProduct"</codeph>. Based on the DITAVAL document, this results in settings of
+            <codeph>outputclass="myProductToken"</codeph> and
+            <codeph>outputclass="myOtherProductToken</codeph>. The content is processed as if the
+          original element was: <codeph>&lt;li product="myProduct myOtherProduct"
+            outputclass="myProductToken myOtherProductToken"></codeph>. Because the order of
+          DITAVAL-based tokens is not defined, this could also result in a value of
+            <codeph>outputclass="myOtherProductToken myProductToken"</codeph></li>
+      </ol></p>
+  </conbody>
+</concept>

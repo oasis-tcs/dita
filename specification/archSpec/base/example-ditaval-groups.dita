@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="example_ditaval_groups">
+    <title>Example: Filtering based on groups</title>
+    <shortdesc>In this scenario, groups are used for filtering within a conditional processing
+        attribute.</shortdesc>
+    <conbody>
+        <p>The following code sample illustrates a list item that applies to two different types of
+            product. It applies to one application server and two database
+            applications:<codeblock id="groupcodesample">&lt;ol>
+  &lt;li>Common step&lt;/li>
+  &lt;li product="appServer(mySERVER) database(dbOne dbOther)">
+    &lt;ph>Do something special for databases dbTwo or dbOther when installing on mySERVER&lt;/ph>
+  &lt;/li>
+  &lt;!-- additional list items -->
+&lt;/ol></codeblock></p>
+        <p>If a publisher decides to exclude the application server <keyword>mySERVER</keyword>,
+            then the <codeph>appServer()</codeph> group evaluates to exclude. This can be done by
+            setting <codeph>product="mySERVER"</codeph> to exclude <i>or</i> by setting
+                <codeph>appServer="mySERVER"</codeph> to exclude. This means the item is excluded,
+            regardless of how the values <keyword>dbOne</keyword> or <keyword>dbOther</keyword>
+            evaluate. If a rule is specified for both <codeph>product="mySERVER"</codeph> and
+                <codeph>appServer="mySERVER"</codeph>, the rule for the more specific group name
+            "appServer" takes precedence.</p>
+        <p>Similarly, if both <keyword>dbOne</keyword> and <keyword>dbOther</keyword> evaluate to
+            exclude, then the <codeph>database()</codeph> group evaluates to exclude and the element
+            is excluded regardless of how the "mySERVER" value is set.</p>
+        <p>In more advanced usage, a DITAVAL can be used to specify a rule for a group name. For
+            example, an author could create a DITAVAL rule that sets
+                <codeph>product="database"</codeph> to "exclude". This is equivalent to setting a
+            default of "exclude" for any individual value in a <codeph>database()</codeph> group; it
+            also excludes the more common usage of "database" as a single value within the
+                <xmlatt>product</xmlatt> attribute. Thus when "myDB" appears in a
+                <codeph>database()</codeph> group within the <xmlatt>product</xmlatt> attribute, the
+            full precedence for determining whether to include or exclude the value is as
+                follows:<ol id="ol_dpb_tz4_ysb">
+                <li>Check for a DITAVAL rule for <codeph>database="dbOne"</codeph></li>
+                <li>Check for a DITAVAL rule for <codeph>product="dbOne"</codeph></li>
+                <li>Check for a DITAVAL rule for <codeph>product="database"</codeph> (default for
+                    the database group)</li>
+                <li>Check for a DITAVAL rule for "product" (default for the <xmlatt>product</xmlatt>
+                    attribute)</li>
+                <li>Check for a default rule for all conditions (default of include or exclude for
+                    all attributes)</li>
+                <li>Otherwise, evaluate to "include"</li>
+            </ol></p>
+    </conbody>
+</concept>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="example-condproc-values">
+  <title>Example: Changing the default behavior to "exclude"</title>
+  <shortdesc>In this scenario, a simple DITAVAL document resets the default behavior for unspecified
+    values to "exclude".</shortdesc>
+  <conbody>
+    <p>The following code sample illustrates a simple DITAVAL document that resets the default
+      behavior to "exclude", and then defines two rules to include content.</p>
+    <codeblock>&lt;val>
+  <b>&lt;prop action="exclude"/></b>
+  &lt;prop action="include" att="audience" val="novice"/>
+  &lt;prop action="include" att="product" val="myProductPrime"/>
+&lt;/val></codeblock>
+    <p>Based on those rules:<ol id="ol_klp_n54_ysb">
+        <li>Any element with <codeph>audience="novice"</codeph> will be included and will appear in
+          the rendered content.</li>
+        <li>Any element with <codeph>product="myProductPrime"</codeph> will be included and will
+          appear in the rendered content.</li>
+        <li>All other values in conditional processing attributes evaluate to
+            <keyword>exclude</keyword>.</li>
+      </ol></p>
+    <p>As a result, any element with conditional processing attributes that do not match either
+        <codeph>audience="novice"</codeph> or <codeph>product="myProductPrime"</codeph> will be
+      filtered and will not appear in the rendered content.</p>
+  </conbody>
+</concept>

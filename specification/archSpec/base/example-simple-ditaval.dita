@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="example-condproc-values">
+  <title>Example: Simple DITAVAL document</title>
+  <shortdesc>In this scenario, a simple DITAVAL document sets up rules for filtering and flagging
+    based on conditional processing attributes.</shortdesc>
+  <conbody>
+    <p>The following code sample illustrates a simple DITAVAL document that sets up two rules for
+      filtering, and two rules for flagging.</p>
+    <codeblock>&lt;val>
+  &lt;prop action="exclude" att="audience" val="advanced"/>
+  &lt;prop action="exclude" att="product" val="myProductPrime"/>
+  &lt;prop action="flag" att="product" val="myProduct" backcolor="purple"/>
+  &lt;revprop action="flag" val="v1.2" backcolor="yellow"/>
+&lt;/val></codeblock>
+    <p>Based on those rules:<ol id="ol_klp_n54_ysb">
+        <li>Any element with <codeph>audience="advanced"</codeph> will be filtered and will not
+          appear in the rendered content.</li>
+        <li>Any element with <codeph>product="myProductPrime"</codeph> will be filtered and will not
+          appear in the rendered content.</li>
+        <li>Any element with <codeph>product="myProduct"</codeph> will be flagged with a purple
+          background color.</li>
+        <li>Any element with <codeph>rev="v1.2"</codeph> will be flagged with a yellow background
+          color.</li>
+        <li>All other content will be rendered normally, because any other conditional processing
+          attribute values default to <keyword>include</keyword>.</li>
+      </ol></p>
+  </conbody>
+</concept>
