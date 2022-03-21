@@ -13,22 +13,22 @@
 <refbody>
       <section id="processing-expectations">
       <title>Processing expectations</title>
-      <p>For information about processing DITAVAL files, including how to
-        filter or flag elements with multiple property attributes or
-        multiple properties within a single attribute, see <xref
-          href="../../archSpec/base/condproc.dita"/>. </p>
+      <p>For information about processing DITAVAL <ph rev="review-m"
+          >documents</ph>, including how to filter or flag elements with
+        multiple property attributes or multiple properties within a single
+        attribute, see <xref href="../../archSpec/base/condproc.dita"/>. </p>
     </section>
     <!--<section id="attributes"><title>Attributes</title><p conkeyref="reuse-attributes/no-atts"/></section>-->
 <example id="example" otherprops="examples"><title>Example</title>
       <p>This section contains examples of DITAVAL documents and how they
         can be used.</p><fig><title>Sample DITAVAL document</title>
-        <p>The following code sample shows a DITAVAL document that includes
-          content, flags certain content, flags certain revisions, and
-          provides a background color for when there are style
-          conflicts:</p>
+        <p>The following code sample shows a DITAVAL document that
+            <ph>excludes certain</ph> content, flags certain content, flags
+          certain revisions, and provides a background color for when there
+          are style conflicts:</p>
 <codeblock>&lt;val>
   &lt;style-conflict background-conflict-color="red"/>
-  &lt;prop action="include" att="audience" val="everybody"/>
+  &lt;prop <ph rev="review-m">action="exclude"</ph> att="audience" <ph rev="review-m">val="internal-test"</ph>/>
   &lt;prop action="flag" att="product" val="YourProd" backcolor="purple"/>
   &lt;prop action="flag" att="product" backcolor="blue"
         color="yellow" style="underline" val="MyProd">
@@ -42,8 +42,9 @@
   &lt;revprop action="flag" val="1.2"/>
 &lt;/val></codeblock>
 <p>This sample DITAVAL document performs the following actions:<ul>
-            <li>Elements that specify <codeph>audience="everybody"</codeph>
-              are included without change.</li>
+            <li>Elements that specify <codeph>audience=<ph rev="review-m"
+                  >"internal-test"</ph></codeph> are <ph rev="review-m"
+                >excluded</ph>.</li>
             <li>Elements that specify <codeph>product="YourProd"</codeph>
               are rendered with a background color of purple.</li>
             <li>Elements with <codeph>product="MyProd"</codeph> get the

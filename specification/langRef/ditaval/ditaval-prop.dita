@@ -148,7 +148,8 @@
         </dlentry>
       </dl>
     </section>
-<example id="example" otherprops="examples"><title>Example</title>
+<example id="example" otherprops="examples">
+      <title>Example</title>
       <!--<p>See <xref keyref="elements-ditaval-val/example"><xmlelement>val</xmlelement></xref>.</p>-->
       <p>The following code sample shows a DITAVAL document that contains
         three <xmlelement>prop</xmlelement> elements:</p>
@@ -162,7 +163,8 @@
         specifies:</p>
       <ol>
         <li>Sets a default action of <keyword>exclude</keyword>. With the
-          exception of the other conditions specified in the DITAVAL
+          exception of the other conditions <ph rev="review-m">that
+            are</ph> specified in the <ph rev="review-m">above</ph> DITAVAL
           document, the content of any element that specifies a
           conditional-processing attribute is excluded from the rendered
           output.</li>
@@ -178,7 +180,22 @@
           that specifies a value of <keyword>base-product</keyword> for the
             <xmlatt>product</xmlatt> attribute is included in the rendered
           output.</li>
-      </ol></example>
+      </ol>
+      <div rev="review-m">
+        <p>When a DITA map is processed using the above DITAVAL document,
+          the following DITA elements are excluded:</p>
+        <ol>
+          <li>Any element for which the <xmlatt>audience</xmlatt>,
+              <xmlatt>deliveryTarget</xmlatt>, <xmlatt>platform</xmlatt>,
+            and <xmlatt>props</xmlatt> attributes (or specializations of
+              <xmlatt>props</xmlatt>) specify a non-null value.</li>
+          <li>Any element for which the <xmlatt>product</xmlatt> attribute
+            specifies a value that is not equal to
+              <keyword>base-product</keyword>.</li>
+        </ol>
+        <p>All other content is included.</p>
+      </div>
+    </example>
 </refbody>
 </reference>
 

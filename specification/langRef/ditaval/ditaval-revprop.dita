@@ -2,46 +2,51 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN"
  "reference.dtd">
 <reference id="ditaval-revprop" xml:lang="en-us">
-<title><xmlelement>revprop</xmlelement></title>
-<shortdesc>The <xmlelement>revprop</xmlelement> element in a DITAVAL
+  <title><xmlelement>revprop</xmlelement></title>
+  <shortdesc>The <xmlelement>revprop</xmlelement> element in a DITAVAL
     document identifies a value of the <xmlatt>rev</xmlatt> attribute for
     flagging. Unlike the conditional processing attributes, which can be
     used for both filtering and flagging, the <xmlatt>rev</xmlatt>
     attribute can only be used for flagging. </shortdesc>
-<prolog><metadata>
-<keywords><indexterm>DITAVAL<indexterm>elements<indexterm><xmlelement>revprop</xmlelement></indexterm></indexterm></indexterm>
-                <indexterm>elements<indexterm>DITAVAL<indexterm><xmlelement>revprop</xmlelement></indexterm></indexterm></indexterm>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>DITAVAL<indexterm>elements<indexterm><xmlelement>revprop</xmlelement></indexterm></indexterm></indexterm>
+        <indexterm>elements<indexterm>DITAVAL<indexterm><xmlelement>revprop</xmlelement></indexterm></indexterm></indexterm>
         <indexterm>flagging</indexterm>
-</keywords>
-</metadata></prolog>
-<refbody>
-        <section id="usage-information">
-            <title>Usage information</title>
-      <p>The <xmlatt>rev</xmlatt> attribute is not designed to be used for
-        version control.</p>
+      </keywords>
+    </metadata>
+  </prolog>
+  <refbody>
+    <section id="usage-information">
+      <title>Usage information</title>
+      <p><ph rev="review-m">Neither the <xmlelement>reprop</xmlelement>
+          element or the <xmlatt>rev</xmlatt> attribute are</ph> designed
+        to be used for version control.</p>
       <!--<p>The <xmlatt>rev</xmlatt> attribute identifies when a particular section of a document was added or modified. The attribute is not considered a filtering attribute because this is not sufficient to be used for full version control, such as single-sourcing multiple product variants based on version level – it only represents one aspect of the revision level.</p>-->
-        </section>
-        <section id="rendering-expectations">
-            <title>Rendering expectations</title>
+    </section>
+    <section id="rendering-expectations">
+      <title>Rendering expectations</title>
       <p id="default-text">If no alternate text is specified, processors
         can provide default alternate text to indicate the start and end
         point of the flagged content.</p>
       <!--<p><ph id="default-text">When no alternate text is specified for a revision flag, the default alternate text for <xmlelement>revprop</xmlelement> start of change is typically a localized translation of "Start of change", and the default alternate text for <xmlelement>revprop</xmlelement> end of change is typically a localized translation of "End of change". </ph></p>-->
-            <div conkeyref="rendering/ditaval-rendering"/>
-        </section>
-        <section id="processing-expectations">
-            <title>Processing expectations</title>
+      <div conkeyref="rendering/ditaval-rendering"/>
+    </section>
+    <section id="processing-expectations">
+      <title>Processing expectations</title>
       <p>It is an error to include more than one
           <xmlelement>revprop</xmlelement> element with the same
           <xmlatt>val</xmlatt> attribute. Recovery from this error is
         implementation dependent. In such cases processors <term
           outputclass="RFC-2119">MAY</term> provide an error or warning
         message.</p>
-          <div conkeyref="reuse-general/processing-outputclass"/>
+      <div conkeyref="reuse-general/processing-outputclass"/>
       <!--<p>[Details about processing expectations that should go elsewhere] If two or more DITAVAL properties apply <xmlatt>outputclass</xmlatt> flags to the same element, treat the flagged element as if each value was specified on that element's <xmlatt>outputclass</xmlatt> attribute; in that case, the order of those DITAVAL-based tokens is undefined. If the flagged element already specifies <xmlatt>outputclass</xmlatt>, treat the flagged element as if all DITAVAL-based <xmlatt>outputclass</xmlatt> values come first in the attribute.</p>-->
-        </section>
-<section id="attributes"><title>Attributes</title>
-            <p>The following attributes are available on this element:</p>
+    </section>
+    <section id="attributes">
+      <title>Attributes</title>
+      <p>The following attributes are available on this element:</p>
       <dl>
         <dlentry>
           <dt id="attr-action"><xmlatt>action</xmlatt>
@@ -105,9 +110,10 @@
             behavior for any instance of the <xmlatt>rev</xmlatt>
             attribute.</dd>
         </dlentry>
-      </dl></section>
-        <example id="example" otherprops="examples">
-            <title>Example</title>
+      </dl>
+    </section>
+    <example id="example" otherprops="examples">
+      <title>Example</title>
       <!--<p>See <xref keyref="elements-ditaval-val"/>.</p>-->
       <p>The following code sample shows how the
           <xmlelement>revprop</xmlelement> element can be used to flag
@@ -125,7 +131,6 @@
     &lt;/endflag>
   &lt;/revprop>
 &lt;/val></codeblock>
-        </example>
-</refbody>
+    </example>
+  </refbody>
 </reference>
-
