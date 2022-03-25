@@ -19,8 +19,7 @@
           <p>Attributes that can be used for filtering and flagging. These
             are the following attributes:</p>
           <ul>
-            <li><ph conkeyref="reuse-general/propsAndSpecializations"
-              /></li>
+            <li><ph conkeyref="reuse-general/propsAndSpecializations"/></li>
             <li>The <xmlatt>rev</xmlatt> attribute, which supports flagging
               but not filtering</li>
           </ul>
@@ -41,19 +40,21 @@
       </dlentry>
       <dlentry>
         <dt>DITAVAL document</dt>
-        <dd>A document that specifies a set of rules that define which
-          elements to include, exclude, or flag. A DITAVAL document can be
-          a file on the file system, a set of rules stored in memory, or
-          another way of storing information that is expressed using
-          DITAVAL
+        <dd>A document that specifies a set of rules that define which elements to include, exclude,
+          or flag. A DITAVAL document can be a file on the file system, a set of rules stored in
+          memory, or another way of storing information that is expressed using DITAVAL
             syntax.<!--<draft-comment author="rodaande" audience="spec-editors" time="18 March 2022">Do we need to / should we state here that this can be a file on the file system, a set of rules in memory, or any other way of storing filtering information that can be expressed using DITAVAL syntax?</draft-comment>--><draft-comment
             author="Kristen J Eberlein" time="21 March 2022">
-            <p>Do we need to explicitly mention passthrough in the first
-              sentence, or is passthrough considered to be part of
-              flagging? If the latter, we should explicitly state that in
-              the topic where we give a high-level overview of the sort of
-              rules that can be defined using a DITAVAL document.</p>
-          </draft-comment></dd>
+            <p>Do we need to explicitly mention passthrough in the first sentence, or is passthrough
+              considered to be part of flagging? If the latter, we should explicitly state that in
+              the topic where we give a high-level overview of the sort of rules that can be defined
+              using a DITAVAL document.</p>
+          </draft-comment><draft-comment author="rodaande" time="25 March 2022">I think it could be
+            considered a form of flagging. Given that I expect usage is low, and it is so nebulous
+            ("do this and something might happen, if your rendering format enables it"), I don't
+            think it deserves a whole topic on its own. Could we broaden the definition of flagging
+            to say that it also encompasses the "passthrough" value, and then extend the "Flagging"
+            topic to cover both?</draft-comment></dd>
       </dlentry>
       <dlentry>
         <dt>filtering</dt>
@@ -65,6 +66,13 @@
       <p>Do we need to broaden the definition of  filtering and mention
         inclusion also?</p>
     </draft-comment>
+    <draft-comment author="rodaande" time="25 March 2022">I'm wary of trying to pin down a broad
+      term like "including", but I don't really know. The assumption of the spec, and I assumed of
+      spec readers, was that the DITA content is rendered in some way (in an editor, as HTML, as
+      PDF, etc), and that by default the DITA content is meant for publishing. For that reason, we
+      go out of our way to say *not* to render data elements and foreign elements, but we don't do
+      the reverse for paragraphs, tables, etc.<p>I'm not sure though, beause "include" is clearly a
+        value you can specity in DITAVAL.</p></draft-comment>
     <dl>
       <dlentry>
         <dt>flagging</dt>
@@ -73,25 +81,5 @@
         <!--<dd>Including extra text, images, or other formatting when rendering content.</dd>-->
       </dlentry>
     </dl>
-    <draft-comment author="Kristen J Eberlein">
-      <p>The following content is not about core concepts, It is about the
-        following and should be relocated elsewhere:</p>
-      <ul>
-        <li>What we expect from processors</li>
-        <li>The fact that the spec does not define mechanisms for
-          conditional processing using metadata elements</li>
-      </ul>
-    </draft-comment>
-        <p>Processors <term outputclass="RFC-2119">SHOULD</term> be able to perform filtering and
-            flagging using the following attributes: <xmlatt>props</xmlatt>,
-                <xmlatt>audience</xmlatt>, <xmlatt>deliveryTarget</xmlatt>,
-                <xmlatt>platform</xmlatt>, <xmlatt>product</xmlatt>, and
-            <xmlatt>otherprops</xmlatt>.</p>
-        <p>The <xmlatt>props</xmlatt> attribute can be specialized to create new attributes, and
-            processors <term outputclass="RFC-2119">SHOULD</term> be able to perform conditional
-            processing on specializations of <xmlatt>props</xmlatt>.</p>
-        <p>Although metadata elements exist with similar names, such as the
-                <xmlelement>audience</xmlelement> element, the specification does not define any
-            mechanism for conditional processing using metadata elements.</p>
     </body>
 </topic>
