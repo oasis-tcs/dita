@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="accessibilitymarkup" xml:lang="en-US">
+	<title>Making tables accessible</title>
+	<shortdesc>The complex nature of table rendering requires authors and processors to be aware of
+		several DITA elements and attributes. This topic describes many common accessibility
+		guidelines related to tables, along with the DITA markup designed to support
+		them.</shortdesc>
+	<prolog>
+		<metadata>
+			<keywords>
+				<indexterm>accessibility<indexterm>tables</indexterm></indexterm>
+			</keywords>
+		</metadata>
+	</prolog>
+	<refbody>
+		<section id="tables">
+			<p>DITA provides two table models, a more complex one using the <xmlelement>table</xmlelement>
+				element and the other using <xmlelement>simpletable</xmlelement>. The
+					<xmlelement>table</xmlelement> is based on the OASIS Exchange Table Model, while
+				the second is a simpler model that is closer to an HTML table. Each table model is
+				addressed here. For some cases, such as a table with two header rows or two header
+				columns, the more complex <xmlelement>table</xmlelement> element needs to be
+				used.</p>
+			<dl>
+				<dlentry>
+					<dt>Table captions</dt>
+					<dd>Both table models allow for a caption using the
+							<xmlelement>title</xmlelement> element.</dd>
+				</dlentry>
+				<dlentry>
+					<dt>Table summary attribute</dt>
+					<dd>While the <xmlatt>summary</xmlatt> attribute on tables is deprecated in
+						HTML5, the <xmlelement>desc</xmlelement> element within a
+							<xmlelement>table</xmlelement> can be used to store a summary. The
+						description also is often used for rendered content about the table, so
+						processors might need to be configured to support this use.</dd>
+				</dlentry>
+				<dlentry>
+					<dt>Table header rows</dt>
+					<dd>When using a <xmlelement>table</xmlelement> element, one or more header rows can be
+						specified in the <xmlelement>thead</xmlelement> element. <p>When using a
+								<xmlelement>simpletable</xmlelement> element, the header row can be
+							placed in a <xmlelement>sthead</xmlelement> element.</p></dd>
+				</dlentry>
+				<dlentry>
+					<dt>Table column headers (first column)</dt>
+					<dd>When using a <xmlelement>table</xmlelement> element, set the <xmlatt>rowheader</xmlatt>
+						attribute to <keyword>firstcol</keyword> on the
+							<xmlelement>table</xmlelement> element to indicate that the first column
+						is a header. Alternatively, set the <xmlatt>scope</xmlatt> attribute in the
+						first entry in the first row to <keyword>col</keyword>, indicating that it
+						is a header for the entire column.<p>When using a
+								<xmlelement>simpletable</xmlelement> element, set the
+								<xmlatt>keycol</xmlatt> attribute to <keyword>1</keyword>.</p></dd>
+				</dlentry>
+				<dlentry>
+					<dt>Table column headers (other columns)</dt>
+					<dd>When using a <xmlelement>table</xmlelement> element, use the column
+						specifications (<xmlelement>colspec</xmlelement>) to define which columns
+						function as headers. For that case, set the attribute
+							<xmlelement>rowheader</xmlelement> to <keyword>headers</keyword> on the
+						column or columns that function as headers. Alternatively, set the
+							<xmlatt>scope</xmlatt> attribute on each relevent entry in the first row
+						to <keyword>col</keyword>, indicating that the entry is a header for the
+						entire column.<p>When using a <xmlelement>simpletable</xmlelement> element,
+							set the <xmlatt>keycol</xmlatt> attribute to the number of the column
+							that functions as a header.</p></dd>
+				</dlentry>
+				<dlentry>
+					<dt>Irregular header cells within a table</dt>
+					<dd>When entries within a table funtion as headers, but do not fall into the row
+						or column descriptions above, the <xmlatt>id</xmlatt> and
+							<xmlatt>headers</xmlatt> attributes on <xmlelement>table</xmlelement>
+						entries can be used to relate any entry to the header. Set the
+							<xmlatt>id</xmlatt> attribute on the cell that functions as a header,
+						and set the <xmlatt>headers</xmlatt> attribute to that ID value on any entry
+						for which it acts as a header.</dd>
+				</dlentry>
+			</dl>
+		</section>
+	</refbody>
+</reference> 

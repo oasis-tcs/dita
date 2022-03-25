@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="accessibilitymarkup" xml:lang="en-US">
+	<title>Making content accessible</title>
+	<shortdesc> DITA provides many elements and attributes that are specifically designed make
+		content more accessible.</shortdesc>
+	<prolog>
+		<metadata>
+			<keywords>
+				<indexterm>accessibility</indexterm>
+			</keywords>
+		</metadata>
+	</prolog>
+	<refbody>
+		<section id="about">
+			<p>Many common types of content are not accessible to all readers in all scenarios. For
+				example, an image cannot be rendered by a screen reader, and a video cannot be
+				rendered in many format. DITA includes markup features designed to convey alternate
+				versions of this content to all readers.</p>
+			<draft-comment author="rodaande" time="25 March 2022">This is initial draft content
+				meant as a starting point to see how we want this content organized. For things like
+				the alt element and longdescref element, we should be reusing content from the
+				element ref rather than effectively redefining the element here - likely reusing the
+				full short description.</draft-comment>
+			<dl>
+				<dlentry>
+					<dt id="images">Alternate text for images</dt>
+					<dd>The <xmlelement>alt</xmlelement> element is available inside of images as a
+						way to specify alternate text.</dd>
+				</dlentry>
+				<dlentry>
+					<dt>Long descriptions for media</dt>
+					<dd>The <xmlelement>longdescref</xmlelement> element is a reference to a textual
+						description of a graphic or object. It is intended for situations where
+						alternate text is not sufficient to explain the content. Processors can
+						handle the reference by turning the graphic or object into a link, or by
+						making the extended description available to accessibility tools such as a
+						screen reader.</dd>
+				</dlentry>
+				<dlentry>
+					<dt>Image maps</dt>
+					<dd>Within an image map, each defined area of the image can specify a cross
+						reference. Whether or not the cross reference actually provides a URI
+						reference, the text within that cross reference is intended to function as
+						alternate text or hover text for that area of the image.</dd>
+				</dlentry>
+			</dl>
+			<p>While DITA provides the markup to enable these accessibility features, it is up to
+				DITA processors and rendering formats to handle them properly. For example, when
+				rendering an image for HTML5, any alternate text must be rendered using the
+					<xmlatt>alt</xmlatt> attribute for the image to be considered accessible.</p>
+		</section>
+	</refbody>
+</reference> 
