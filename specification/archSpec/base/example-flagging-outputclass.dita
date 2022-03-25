@@ -3,8 +3,12 @@
 <concept xml:lang="en-us" id="example-condproc-values">
   <title>Example: Flagging with <xmlatt>outputclass</xmlatt></title>
   <shortdesc>In this scenario, the <xmlatt>outputclass</xmlatt> attribute in a DITAVAL document is
-    used for CSS based flagging.</shortdesc>
+    used to enable CSS based flagging.</shortdesc>
   <conbody>
+    <p>An additional expectation for this scenario is that the processor rendering DITA content
+      preserves <xmlatt>outputclass</xmlatt> values as CSS <xmlatt>class</xmlatt> tokens in HTML5.
+      For example, the phrase <codeph>&lt;ph outputclass="bird">eagle&lt;/ph></codeph> might be
+      rendered in HTML5 as <codeph>&lt;span class="bird">eagle&lt;/span></codeph>.</p>
     <p>The following code sample illustrates a simple DITAVAL document that sets up two rules for
       flagging using <xmlatt>outputclass</xmlatt>.</p>
     <codeblock>&lt;val>
@@ -19,34 +23,42 @@
   &lt;li product="myOtherProduct">This list item is specific to my OTHER product&lt;/li>
   &lt;li product="myProduct myOtherProduct">This list item is specific to both of my products&lt;/li>
 &lt;/ol></codeblock></p>
-    <p>Based on the rules from that DITAVAL document, the topic content is handled as follows:<ol
+    <p>Based on the rules from that DITAVAL document, the topic content is processed as follows:<ol
         id="ol_lqn_3w4_ysb">
         <li>The first item does not specify any conditional processing attributes, and is handled
           normally.</li>
         <li>The second item specifies <codeph>product="myProduct"</codeph>. Based on the DITAVAL
           document, this results in a setting on <codeph>outputclass="myProductToken"</codeph>. The
           content is processed as if the original element was: <codeph>&lt;li product="myProduct"
-            outputclass="myProductToken"></codeph>. A processor that uses
-            <xmlatt>outputclass</xmlatt> values for CSS based styling can now use CSS to style
-          anything flagged with this value.</li>
-        <li>The third item specifies <codeph>product="myProduct"</codeph>. Based on the DITAVAL
-          document, this results in a setting on <codeph>outputclass="myProductToken"</codeph>. The
-          content is processed as if the original element was: <codeph>&lt;li product="myProduct"
-            outputclass="myOtherProductToken example"></codeph>. The value supplied by the DITAVAL
-          document is placed before any value already in the attribute.</li>
+            outputclass="myProductToken"></codeph>.</li>
+        <li>The third item specifies <codeph>product="myProduct"</codeph>, but already has an
+            <xmlatt>outputclass</xmlatt> attribute specified in the source. Based on the DITAVAL
+          document, the content is processed as if the original element was: <codeph>&lt;li
+            product="myProduct" outputclass="myOtherProductToken example"></codeph>. Note that the
+          value supplied by the DITAVAL document is placed before any value already in the
+          source.</li>
         <li>The fourth item specifies <codeph>product="myOtherProduct"</codeph>. Based on the
           DITAVAL document, this results in a setting on
             <codeph>outputclass="myOtherProductToken"</codeph>. The content is processed as if the
           original element was: <codeph>&lt;li product="myOtherProduct"
             outputclass="myOtherProductToken"></codeph>.</li>
         <li>The fifth item specifies both products with <codeph>product="myProduct
-            myOtherProduct"</codeph>. Based on the DITAVAL document, this results in settings of
-            <codeph>outputclass="myProductToken"</codeph> and
-            <codeph>outputclass="myOtherProductToken</codeph>. The content is processed as if the
-          original element was: <codeph>&lt;li product="myProduct myOtherProduct"
-            outputclass="myProductToken myOtherProductToken"></codeph>. Because the order of
-          DITAVAL-based tokens is not defined, this could also result in a value of
-            <codeph>outputclass="myOtherProductToken myProductToken"</codeph></li>
+            myOtherProduct"</codeph>. Based on the DITAVAL document, this results in a setting of
+          either <codeph>outputclass="myProductToken myOtherProductToken"</codeph>
+          <i>or</i>
+          <codeph>outputclass="myOtherProductToken myProductToken"</codeph>. The order of the two
+          tokens is unspecified; if a processor chooses the first, the content is processed as if
+          the original element was: <codeph>&lt;li product="myProduct myOtherProduct"
+            outputclass="myProductToken myOtherProductToken"></codeph>.</li>
       </ol></p>
+    <p>With the expectation that the processor maps <xmlatt>outputclass</xmlatt> values onto the
+      HTML <xmlatt>class</xmlatt> attribute, the rendered HTML5 result would look like
+      this:<codeblock base="ci-xml">&lt;ol>
+  &lt;li>This list item applies to all content&lt;/li>
+  &lt;li class="myProductToken">This list item is specific to my product&lt;/li>
+  &lt;li class="myProductToken example">This list item is an example of an edge case&lt;/li>
+  &lt;li class="myOtherProductToken">This list item is specific to my OTHER product&lt;/li>
+  &lt;li class="myProductToken myOtherProductToken">This list item is specific to both of my products&lt;/li>
+&lt;/ol></codeblock></p>
   </conbody>
 </concept>
