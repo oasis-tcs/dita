@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="example-complex-table-with-accessibility-markup_0">
+    <title>Example: Complex table with manual accessibility markup</title>
+    <shortdesc/>
+    <conbody>
+    <p>In extremely complex tables, such as those with a single header cell
+      in the middle of the table, fine-grained accessibility controls are
+      available to explicitly associate any content cell with any header
+      cell. This might also be useful for cases where processors do not
+      support the implied accessibility relationships described above.</p>
+    <p>In the following sample, header cells are identified using the
+        <xmlatt>id</xmlatt> attribute, which is referenced using the
+        <xmlatt>headers</xmlatt> attribute on appropriate content cells.
+      This makes all header relationships in the table explicit. Note that
+      this sample ignores the <xmlatt>scope</xmlatt> attribute, which could
+      be used to exercise manual control without setting as many attribute
+      values; it also ignores the fact that <xmlelement>thead</xmlelement>
+      creates a header relationship even when the <xmlatt>id</xmlatt> and
+        <xmlatt>headers</xmlatt> attributes are not used.</p>
+    <p>
+      <draft-comment author="Kristen J Eberlein" time="20 December 2021">
+        <p>Do we want to use a different example here? It's a bit confusing
+          to read, since the result output is very similar to the "Example
+          of a complex table with accessibility markup".</p>
+      </draft-comment>
+    </p>
+    <codeblock>&lt;table frame="all"&gt;
+  &lt;title&gt;Sample with fully manual accessibility control&lt;/title>
+&lt;desc>Names are listed in the column c1. Points are listed in both data columns, with
+expected points in column c2 and actual points in column c3.&lt;/desc>
+  &lt;tgroup cols="3">
+    &lt;colspec colname="c1"/>
+    &lt;colspec colname="c2"/>
+    &lt;colspec colname="c3"/>
+    &lt;thead>
+      &lt;row>
+        &lt;entry morerows="1"> &lt;/entry>
+        &lt;entry namest="c2" nameend="c3" <b>id="pts"</b>>Points&lt;/entry>
+      &lt;/row>
+      &lt;row>
+        &lt;entry <b>id="exp" headers="pts"</b>>Expected&lt;/entry>
+        &lt;entry <b>id="act" headers="pts"</b>>Actual&lt;/entry>
+      &lt;/row>
+    &lt;/thead>
+    &lt;tbody>
+      &lt;row>
+        &lt;entry <b>id="name1"</b>>Mark&lt;/entry>
+        &lt;entry <b>headers="name1 exp pts"</b>>10,000&lt;/entry>
+        &lt;entry <b>headers="name1 act pts"</b>>11,123.45&lt;/entry>
+      &lt;/row>
+      &lt;row>
+        &lt;entry <b>id="name2"</b>>Peter&lt;/entry>
+        &lt;entry <b>headers="name2 exp pts"</b>>9,000&lt;/entry>
+        &lt;entry <b>headers="name2 act pts"</b>>11,012.34&lt;/entry>
+      &lt;/row>
+      &lt;row>
+        &lt;entry <b>id="name3"</b>>Cindy&lt;/entry>
+        &lt;entry <b>headers="name3 exp pts"</b>>10,000&lt;/entry>
+        &lt;entry <b>headers="name3 act pts"</b>>10,987.64&lt;/entry>
+      &lt;/row>
+     &lt;/tbody>
+   &lt;/tgroup>
+&lt;/table></codeblock>
+    <p>The formatted output might be <ph rev="review-e">rendered in the
+        following way:</ph></p>
+    <image placement="break"
+      href="../../langRef/images/table-manual-accessibility.jpg">
+      <alt>The image shows … The header row is shaded with green, and the
+        text in the header column and rows is bold. The edges of the screen
+        capture are tattered, to indicate that the image is part of a
+        larger document.</alt>
+    </image>
+    <!--<table id="table_yrp_sbm_4n"><title>Sample with fully manual accessibility control</title><desc>Names are listed in the column c1. Points are listed in both data columns, with expected points in column c2 and actual points in column c3.</desc><tgroup cols="3"><colspec colname="c1"/><colspec colname="c2"/><colspec colname="c3"/><thead><row><entry morerows="1"> </entry><entry namest="c2" nameend="c3">points</entry></row><row><entry>expected</entry><entry>actual</entry></row></thead><tbody><row><entry>Mark</entry><entry>10,000</entry><entry>11,123.45</entry></row><row><entry>Peter</entry><entry>9,000</entry><entry>11,012.34</entry></row><row><entry>Cindy</entry><entry>10,000</entry><entry>10,987.64</entry></row></tbody></tgroup></table>-->
+  </conbody>
+</concept>

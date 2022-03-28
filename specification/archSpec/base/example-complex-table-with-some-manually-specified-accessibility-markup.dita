@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="example-complex-table-with-some-manually-specified-accessibility-markup">
+    <title>Example: Complex table with some manually-specified accessibility markup</title>
+    <shortdesc></shortdesc>
+    <conbody>
+    <p>In some complex tables, the <xmlelement>thead</xmlelement> element
+      and <xmlatt>rowheader</xmlatt> attribute might not be enough to
+      support all accessibility needs. Assume that the table above is
+      flipped so that the names are listed across the top row, instead of
+      in the first column, as shown in the following screen capture:</p>
+    <image placement="break"
+      href="../../langRef/images/table-with-header-columns.jpg">
+      <alt>The image shows a five-column table, in which the header
+        information for the cells is contained in the first two columns:
+        expected and actual points. The header row is shaded with green,
+        and the text in the header column and rows is bold. The edges of
+        the screen capture are tattered, to indicate that the image is part
+        of a larger document.</alt>
+    </image>
+    <!--<p><table frame="all" id="table_nzp_zzl_4n"><title>Sample with two header columns</title><tgroup cols="5"><colspec colname="c1" colnum="1" colwidth="1.0*"/><colspec colname="c2" colnum="2" colwidth="1.0*"/><colspec colname="c3" colnum="3" colwidth="1.0*"/><colspec colname="c4" colnum="4" colwidth="1.0*"/><colspec colname="newCol5" colnum="5" colwidth="1*"/><thead><row><entry namest="c1" nameend="c2"> Name</entry><entry>Mark</entry><entry>Peter</entry><entry>Cindy</entry></row></thead><tbody><row><entry morerows="1"><b>points</b></entry><entry><b>expected</b></entry><entry>10,000</entry><entry>9,000</entry><entry>10,000</entry></row><row><entry><b>actual</b></entry><entry>11,123.45</entry><entry>11,012.34</entry><entry>10,987.64</entry></row></tbody></tgroup></table></p>-->
+    <p><ph rev="review-e">Here,</ph> the <xmlatt>rowheader</xmlatt>
+      attribute cannot be used, because it is only able to specify the
+      first column as a header column. In this case, the
+        <xmlatt>scope</xmlatt> attribute can be used to indicate that
+      entries in the first and second columns function as headers for the
+      entire row (or row group, in the case of a cell that spans more than
+      one row).</p>
+    <p>The following code sample demonstrates the use of the
+        <xmlatt>scope</xmlatt> attribute to facilitate navigation of these
+      rows by a screen reader or other assistive technology<ph
+        rev="review-e">. Note</ph> that the <xmlelement>thead</xmlelement>
+      element is still used to imply a header relationship with the names
+      at the top of each column.</p>
+    <codeblock>&lt;table frame="all">
+ &lt;title>Sample with two header columns&lt;/title>
+ &lt;tgroup cols="5">
+  &lt;colspec colname="c1"/>
+  &lt;colspec colname="c2"/>
+  &lt;colspec colname="c3"/>
+  &lt;colspec colname="c4"/>
+  &lt;colspec colname="c5"/>
+  &lt;thead>
+   &lt;row>
+    &lt;entry namest="c1" nameend="c2">Name&lt;/entry>
+    &lt;entry>Mark&lt;/entry>
+    &lt;entry>Peter&lt;/entry>
+    &lt;entry>Cindy&lt;/entry>
+   &lt;/row>
+  &lt;/thead>
+  &lt;tbody>
+   &lt;row>
+    &lt;entry morerows="1" <b>scope="rowgroup"</b>>&lt;b>Points&lt;/b>&lt;/entry>
+    &lt;entry <b>scope="row"</b>>&lt;b>Expected&lt;/b>&lt;/entry>
+    &lt;entry>10,000&lt;/entry>
+    &lt;entry>9,000&lt;/entry>
+    &lt;entry>10,000&lt;/entry>
+   &lt;/row>
+   &lt;row>
+    &lt;entry <b>scope="row"</b>>&lt;b>Actual&lt;/b>&lt;/entry>
+    &lt;entry>11,123.45&lt;/entry>
+    &lt;entry>11,012.34&lt;/entry>
+    &lt;entry>10,987.64&lt;/entry>
+   &lt;/row>
+  &lt;/tbody>
+ &lt;/tgroup>
+&lt;/table></codeblock>
+    <!--<p>The formatted output might be displayed as follows:</p><p><table id="table_yrp_sbm_4n"><title>Sample with fully manual accessibility control</title><desc>Names are listed in the column c1. Points are listed in both data columns, with expected points in column c2 and actual points in column c3.</desc><tgroup cols="3"><colspec colname="c1"/><colspec colname="c2"/><colspec colname="c3"/><thead><row><entry morerows="1">Name</entry><entry namest="c2" nameend="c3">points</entry></row><row><entry>expected</entry><entry>actual</entry></row></thead><tbody><row><entry>Mark</entry><entry>10,000</entry><entry>11,123.45</entry></row><row><entry>Peter</entry><entry>9,000</entry><entry>11,012.34</entry></row><row><entry>Cindy</entry><entry>10,000</entry><entry>10,987.64</entry></row></tbody></tgroup></table></p>-->
+  </conbody>
+</concept>
