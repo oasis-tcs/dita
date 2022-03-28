@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="location-of-the-xml-lang-attribute">
+    <title>Recommendations for the <xmlatt>xml:lang</xmlatt>
+    attribute</title>
+    <shortdesc>Specifying the <xmlatt>xml:lang</xmlatt> attribute in the
+    DITA source facilitates translation and helps ensure that processors
+    will handle content appropriately. Accordingly, this specification
+    makes certain recommendations for best practises for where the
+      <xmlatt>xml:lang</xmlatt> attribute should be set.</shortdesc>
+    <conbody>
+    <p>Setting the <xmlatt>xml:lang</xmlatt> attribute in the
+      source-language document facilitates the translation process. It
+      enables translation tools to simply change the value of the existing
+        <xmlatt>xml:lang</xmlatt> attribute to the value of the target
+      language. Since some translation tools do not support adding new
+      markup to the document that is being translated, if source language
+      content does not set the <xmlatt>xml:lang</xmlatt> attribute, it
+      might be difficult or impossible for the translator to add the
+        <xmlatt>xml:lang</xmlatt> attribute to the translated document.</p>
+    <p>In addition, setting the <xmlatt>xml:lang</xmlatt> attribute in the
+      DITA source ensures that processors handle content in a language- and
+      locale-appropriate way. If the <xmlatt>xml:lang</xmlatt> attribute is
+      not set, processors might assume a default value which is
+      inappropriate for the DITA content.</p>
+    <p>The following table outlines the recommended use of the
+        <xmlatt>xml:lang</xmlatt> attribute in topics and maps. These
+      recommendations ensure that DITA resources have a effective default
+      language.</p>
+    <simpletable relcolwidth="1* 1*">
+      <sthead>
+        <stentry>Object</stentry>
+        <stentry>Recommended use</stentry>
+      </sthead>
+      <strow>
+        <stentry>DITA topic document that contains a single
+          language</stentry>
+        <stentry>Specify the <xmlatt>xml:lang</xmlatt> attribute on the
+          root element of the topic.</stentry>
+      </strow>
+      <strow>
+        <stentry>DITA topic document that contains more than one
+          language</stentry>
+        <stentry>Specify the primary language and locale that applies to
+          the topic on the highest-level element that contains content. If
+          part of a topic is written in a different language, enclose that
+          content in an element with the <xmlatt>xml:lang</xmlatt>
+          attribute set appropriately. This
+          <!--method of overriding the default document language--> applies
+          to both block and inline elements that use the alternate
+          language.</stentry>
+      </strow>
+      <strow>
+        <stentry>DITA map</stentry>
+        <stentry>Specify the <xmlatt>xml:lang</xmlatt> attribute on the
+          root element of the map. This applies both to the root map and
+          any submaps.</stentry>
+      </strow>
+    </simpletable>
+  </conbody>
+</concept>

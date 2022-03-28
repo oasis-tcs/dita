@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="example-of-conref-and-the-xml-lang-attribute">
+    <title>Example: content reference and the <xmlatt>xml:lang</xmlatt>
+    attribute</title>
+    <shortdesc>This scenario outlines how processors determine the
+    effective value of the <xmlatt>xml:lang</xmlatt> attribute for content
+    that is referenced by the <xmlatt>conref</xmlatt> or
+      <xmlatt>conkeyref</xmlatt> attribute.</shortdesc>
+    <conbody>
+    <draft-comment author="Kristen J Eberlein" time="28 March 2022">
+      <p>This scenario kind of exemplifies an edge case of an edge case ...
+        I don't know how many examples of <xmlatt>xml:lang</xmlatt> we
+        need, but this one seems very contrived.</p>
+    </draft-comment>
+    <p>In this example, a DITA topic specifies an <xmlatt>xml:lang</xmlatt>
+      attribute of  <keyword>en</keyword>. However, it contains content
+      that is conrefed from a element that explicitly sets the
+        <xmlatt>xml:lang</xmlatt> attribute to <keyword>fr</keyword>.</p>
+    <p>The following code block shows the content of the DITA topic that
+      contains the referencing element:</p>
+    <codeblock>&lt;?xml version="1.0"?>
+&lt;!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+&lt;task xml:lang="en" id="install_acme">
+ &lt;title>Installing Acme&lt;/title>
+ &lt;shortdesc>Step-by-step details about how to install the Acme product.&lt;/shortdesc>
+ &lt;taskbody>
+   &lt;prereq>
+   &lt;p>Special notes when installing Acme in France:&lt;/p>
+   <b>&lt;note id="mynote" conref="warningsAcme.dita#warnings/french1"/></b>
+  &lt;/prereq>
+ &lt;/taskbody>
+&lt;/task>
+&lt;p>The following code block shows the content of the topic that contains the referenced elements:&lt;/p></codeblock>
+    <codeblock>&lt;?xml version="1.0"?>
+&lt;!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+&lt;topic id="warnings">
+ &lt;title>Warnings&lt;/title>
+ &lt;body>
+  &lt;sectionxml:lang="fr">
+   &lt;title>French warnings&lt;/title>
+   &lt;p>These are our French warnings.&lt;/p>
+   &lt;note id="french1">Note in French!&lt;/note>
+   &lt;!-- ... -->
+  &lt;/section>
+  &lt;section xml:lang="en">
+   &lt;title>English warnings&lt;/title>
+   &lt;p>These are our English warnings.&lt;/p>
+   &lt;note id="english1">Note in English!&lt;/note>
+   &lt;!-- ... -->
+  &lt;/section>
+ &lt;/body>
+&lt;/topic>
+</codeblock>
+    <p>Note that the value of the <xmlatt>xml:lang</xmlatt> attribute of
+      the included note is set by the containing
+        <xmlelement>section</xmlelement> element that sets the
+        <xmlatt>xml:lang</xmlatt> attribute to <keyword>fr</keyword>. When
+      the topic that contained the conrefed note is processed, the
+        <xmlelement>note</xmlelement> element with the <xmlatt>id</xmlatt>
+      attribute set to <keyword>mynote</keyword> has an effective value for
+      the <xmlatt>xml:lang</xmlatt> attribute of <keyword>fr</keyword>. </p>
+  </conbody>
+</concept>
