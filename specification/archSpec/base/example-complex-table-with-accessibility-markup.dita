@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="example-complex-table-with-accessibility-markup">
+    <title>Example: Complex table with accessibility markup</title>
+    <shortdesc></shortdesc>
+    <conbody>
+    <p>In the following code sample, the table uses the
+        <xmlelement>thead</xmlelement> element to identify header rows and
+      the <xmlatt>rowheader</xmlatt> attribute to identify a header column.
+        <ph rev="review-e">These header relationships</ph> can be used to
+      automatically create renderings of the table in other formats, such
+      as HTML, that can be navigated using a screen reader or other
+      assistive technology.</p>
+    <codeblock>&lt;table frame="all" rowheader="firstcol"&gt;
+  &lt;title&gt;Sample of automated table accessibility&lt;/title>
+  &lt;desc>Names are listed in the column c1. Points are listed in both data columns, with
+        expected points in column c2 and actual points in column c3.&lt;/desc>
+  &lt;tgroup cols="3">
+    &lt;colspec colname="c1"/>
+    &lt;colspec colname="c2"/>
+    &lt;colspec colname="c3"/>
+    &lt;thead>
+      &lt;row>
+        &lt;entry morerows="1">Name&lt;/entry>
+        &lt;entry namest="c2" nameend="c3">Points&lt;/entry>
+      &lt;/row>
+      &lt;row>
+        &lt;entry>Expected&lt;/entry>
+        &lt;entry>Actual&lt;/entry>
+      &lt;/row>
+    &lt;/thead>
+    &lt;tbody>
+      &lt;row>
+        &lt;entry>Mark&lt;/entry>
+        &lt;entry>10,000&lt;/entry>
+        &lt;entry>11,123.45&lt;/entry>
+      &lt;/row>
+      &lt;row>
+        &lt;entry>Peter&lt;/entry>
+        &lt;entry>9,000&lt;/entry>
+        &lt;entry>11,012.34&lt;/entry>
+      &lt;/row>
+      &lt;row>
+        &lt;entry>Cindy&lt;/entry>
+        &lt;entry>10,000&lt;/entry>
+        &lt;entry>10,987.64&lt;/entry>
+      &lt;/row>
+     &lt;/tbody>
+   &lt;/tgroup>
+&lt;/table></codeblock>
+    <p>In this code sample, navigation information for assistive technology
+      is derived from two sources:</p>
+    <ul>
+      <li>The <xmlelement>thead</xmlelement> element contains two rows, and
+        indicates that each <ph rev="review-e">entry</ph> in those <ph
+          rev="review-e">header</ph> rows is a header cell for that column.
+        This means that each body cell can be associated with the header
+        cell or cells above the column. For example, in the second body
+        row, the entry "Peter" can be associated with the header "Name";
+        similarly, the entry "9,000" can be associated with the headers
+        "Expected" and "Points".</li>
+      <li>The <xmlatt>rowheader</xmlatt> attribute <ph rev="review-e">that
+          is specified on <xmlelement>table</xmlelement> indicates</ph>
+        that the first column plays a role as a header. This means that
+        each body cell in columns two and three can be associated with the
+        header cell in column one. For example, in the second body row, the
+        entry "9,000" can be associated with the header "Peter".</li>
+    </ul>
+    <p>As a result of these two sets of headers, a rendering of the table
+      can associate the entry "9,000" with three headers: "Peter",
+      "Expected", and "Points", <ph rev="review-e">thus</ph> making it
+      fully navigable by a screen reader or other assistive technology.</p>
+    <p>The formatted output might be <ph rev="review-e">rendered in the
+        following way:</ph></p>
+    <image placement="break"
+      href="../../langRef/images/table-with-spans.jpg">
+      <alt>The image shows a three-column table. The first column lists
+        names, the second column lists expected points, and the third
+        column lists actual points. There are two headers rows that
+        contains spans. The header row is shaded with green, and the text
+        in the header column and rows is bold. The edges of the screen
+        capture are tattered, to indicate that the image is part of a
+        larger document.</alt>
+    </image>
+    <!--<p><table id="table_eww_xxl_4n" rowheader="firstcol" frame="all"><title>Sample of automated table accessibility</title><desc>Names are listed in the column c1. Points are listed in both data columns, with expected points in column c2 and actual points in column c3.</desc><tgroup cols="3"><colspec colname="c1"/><colspec colname="c2"/><colspec colname="c3"/><thead><row><entry morerows="1">Name</entry><entry namest="c2" nameend="c3">points</entry></row><row><entry>expected</entry><entry>actual</entry></row></thead><tbody><row><entry>Mark</entry><entry>10,000</entry><entry>11,123.45</entry></row><row><entry>Peter</entry><entry>9,000</entry><entry>11,012.34</entry></row><row><entry>Cindy</entry><entry>10,000</entry><entry>10,987.64</entry></row></tbody></tgroup></table><draft-comment author="Kristen J Eberlein" time="20 December 2021"><p>When replacing the above with a screen capture, consider the following comment from Gershon Joseph:</p><p>"In addition, I would expect the output to show the header column also formatted in bold, or some background shading, to illustrate the use of the @rowheader."</p></draft-comment></p>-->
+  </conbody>
+</concept>
