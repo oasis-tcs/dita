@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="branch_filtering_metadata_elements">
+    <title>Using metadata elements in the DITAVAL reference domain</title>
+    <shortdesc>Metadata within the <xmlelement>ditavalref</xmlelement> element makes it possible to
+        control changes to resource names and key scope names, so that each distinct filtered copy
+        can be referenced in a predictable manner.</shortdesc>
+    <conbody>
+        <p>The DITAVALref domain defines four elements to control URI and key scope values within
+            filtered map branches.</p>
+        <dl>
+            <dlentry>
+                <dt><xmlelement>dvrResourcePrefix</xmlelement></dt>
+                <dd>Enables a map author to specify a prefix that is added to the start of resource
+                    names for each resource in the branch.</dd>
+            </dlentry>
+            <dlentry>
+                <dt><xmlelement>dvrResourceSuffix</xmlelement></dt>
+                <dd>Enables a map author to specify a suffix that is added to the end of resource
+                    names (before any extension) for each resource in the branch.</dd>
+            </dlentry>
+            <dlentry>
+                <dt><xmlelement>dvrKeyscopePrefix</xmlelement></dt>
+                <dd>Enables a map author to specify a prefix that is added to the start of key scope
+                    names for each key scope in the branch. If no key scope is specified for the
+                    branch, this can be used to establish a new key scope, optionally combined with
+                    a value specified in <xmlelement>dvrKeyscopeSuffix</xmlelement>.</dd>
+            </dlentry>
+            <dlentry>
+                <dt><xmlelement>dvrKeyscopeSuffix</xmlelement></dt>
+                <dd>Enables a map author to specify a suffix that is added to the end of key scope
+                    names for each key scope in the branch.</dd>
+            </dlentry>
+        </dl>
+        <p>For example, the previous code sample can be modified as follows to create predictable
+            resource names and key scopes for the copy of the branch that is filtered using the
+            conditions that are specified in <filepath>admin.ditaval</filepath>.</p>
+        <codeblock>&lt;topicref href="productFeatures.dita" keys="features" keyscope="prodFeatures">
+  &lt;ditavalref href="novice.ditaval"/>
+  &lt;ditavalref href="admin.ditaval">
+    &lt;ditavalmeta>
+      &lt;dvrResourcePrefix>admin-&lt;/dvrResourcePrefix>
+      &lt;dvrKeyscopePrefix>adminscope-&lt;/dvrKeyscopePrefix>
+    &lt;/ditavalmeta>
+  &lt;/ditavalref>
+  &lt;topicref href="newFeature.dita" keys="newThing"/>
+&lt;/topicref></codeblock>
+        <p>The novice branch does not use any renaming, which allows it to be treated as the default
+            copy of the branch. As a result, when the topics are filtered using the conditions that
+            are specified in <filepath>novice.ditaval</filepath>, the resource names and key names
+            are unmodified, so that references to the original resource name and key name will
+            resolve to topics in the novice copy of the branch. This has the following effect on
+            topics that are filtered using the conditions specified in
+                <filepath>admin.ditaval</filepath>:</p>
+        <ul id="ul_gyv_2km_ctb">
+            <li>The prefix <codeph>admin-</codeph> is added to the beginning of each resource name
+                in the admin branch.<ul id="ul_hyv_2km_ctb">
+                    <li>The resource <filepath>productFeatures.dita</filepath> becomes
+                            <filepath>admin-productFeatures.dita</filepath></li>
+                    <li>The resource <filepath>newFeature.dita</filepath> becomes
+                            <filepath>admin-newFeature.dita</filepath></li>
+                </ul></li>
+            <li>The prefix <codeph>adminscope-</codeph> is added to the existing key scope
+                    "prodFeatures".<ul id="ul_iyv_2km_ctb">
+                    <li>The attribute value
+                            <codeph>keyref="adminscope-prodFeatures.features"</codeph> refers
+                        explicitly to the admin copy of
+                        <filepath>productFeatures.dita</filepath></li>
+                    <li>The attribute <codeph>keyref="adminscope-prodFeatures.newThing"</codeph>
+                        refers explicitly to the admin copy of
+                        <filepath>newFeature.dita</filepath></li>
+                </ul></li>
+        </ul>
+        <note>In general, the best way to <!--unambiguously -->reference a topic that will be
+            modified based on branch filtering is to use a key rather than a URI. Key scopes and key
+            names (including those modified based on the elements above) must be calculated by
+            processors before other processing. This means that in the example above, a key
+            reference to <codeph>adminscope-prodFeatures.features</codeph> will always refer
+            explicitly to the instance of <filepath>productFeatures.dita</filepath> filtered against
+            the conditions in <filepath>admin.ditaval</filepath>, regardless of whether a processor
+            has performed the filtering yet. References that use the URI
+                <filepath>productFeatures.dita</filepath> or
+                <filepath>admin-productFeatures.dita</filepath> could resolve differently (or fail
+            to resolve), as discussed in <xref
+                href="branch-filtering-implications-of-processing-order.dita"/>.</note>
+    </conbody>
+</concept>
