@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="branch_filtering_renaming_multiple_times">
+    <title>Renaming based on multiple <xmlelement>ditavalref</xmlelement> elements</title>
+    <shortdesc>It is possible for a branch with <xmlelement>ditavalref</xmlelement> already in
+        effect to specify an additional <xmlelement>ditavalref</xmlelement>, where each
+            <xmlelement>ditavalref</xmlelement> includes renaming metadata.</shortdesc>
+    <conbody>
+        <p>When renaming, metadata on the <xmlelement>ditavalref</xmlelement> nested more deeply
+            within the branch appears closer to the original resource or key name. For example:</p>
+        <codeblock>&lt;topicref href="branchParent.dita">
+  &lt;ditavalref href="parent.ditaval">
+    &lt;ditavalmeta>
+      &lt;dvrResourcePrefix>parentPrefix-&lt;/dvrResourcePrefix>
+    &lt;/ditavalmeta>
+  &lt;/ditavalref>
+  &lt;!-- additional topics or layers of nesting -->
+  &lt;topicref href="branchChild.dita">
+    &lt;ditavalref href="child.ditaval">
+      &lt;ditavalmeta>
+        &lt;dvrResourcePrefix>childPrefix-&lt;/dvrResourcePrefix>
+      &lt;/ditavalmeta>
+    &lt;/ditavalref>
+  &lt;/topicref>
+&lt;/topicref></codeblock>
+        <p>In this situation, the resource <filepath>branchChild.dita</filepath> is given a prefix
+            based on both the reference to <filepath>parent.ditaval</filepath> and the reference to
+                <filepath>child.ditaval</filepath>. The value <keyword>childPrefix-</keyword> is
+            specified in the <xmlelement>ditavalref</xmlelement> that is nested more deeply within
+            the branch, so it appears closer to the original resource name. The resource
+                <filepath>branchChild.dita</filepath> would result in
+                <filepath>parentPrefix-childPrefix-branchChild.dita</filepath>. Suffixes (if
+            specified) would be added in a similar manner, resulting in a name like
+                <filepath>branchChild-childSuffix-parentSuffix.dita</filepath>. Note that the
+            hyphens are part of the specified prefix; they are not added automatically.</p>
+    </conbody>
+</concept>
