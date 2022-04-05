@@ -31,22 +31,7 @@
       branch-specific conditions, content excluded based on external conditions will always be
       removed, regardless of the order in which processors evaluate conditions.</p>
     <!--IGNORE may-must-should word-->
-    <draft-comment author="Kristen J Eberlein" time="04 July 2019" audience="spec-editors">
-      <p>In the following paragraph, should we replace the lower-case should with a SHOULD?</p>
-    </draft-comment>
-    <draft-comment author="rodaande" time="4 Apr 2022" audience="spec-editors">I don't think so -
-      because it is not technically something that can affect interoperability. We have already
-      stated that both approaches are allowed. Thinking about a checklist of normative rules, this
-      one could only be evaluated by asking "but did you think about your choice" which is not very
-      meaningful.</draft-comment>
   <p>Processors should consider the following points when determining a processing order:</p>
-    <draft-comment author="rodaande" time="4 Apr 2022" audience="spec-editors">The following
-      considerations are valid for conref (which is the word used here). However they could not
-      apply, I think, to conkeyref - because we've already stated that branch filtering MUST be
-      resolved before keyrefs, which in turn means that it MUST be evaluated before conkeyref, which
-      at a minimum means that processors need to have a content reference resolution step after
-      branch filtering. It's still plausible I suppose that they could do URI-based resolution
-      first, then branch filter, then keyref, then conkeyref/content reference.</draft-comment>
     <ul>
       <!--IGNORE may-must-should word-->
       <li>If links are generated based on the map hierarchy, those links should be created using the
@@ -54,15 +39,15 @@
         filter conditions, to ensure that the links are consistent within the modified branches. For
         example, sequential links based on a map hierarchy should remain within the appropriate
         modified branch.</li>
-      <li>If conrefs are resolved in topics before the <xmlelement>ditavalref</xmlelement> filtering
-        conditions are evaluated, content that applies to multiple audiences can be brought in and
-        (later in the process) selectively filtered by branch. <ph otherprops="examples">For
-          example, if a set of installation steps is pulled in with conref (from outside the
-          branch), it might contain information that is later filtered by platform based on
-            <xmlelement>ditavalref</xmlelement>. This results in copies of the steps that are
-          specific to each operating system. If conref is processed after the
-            <xmlelement>ditavalref</xmlelement>, content might be pulled in that has not been
-          appropriately filtered for the new context.</ph></li>
+      <li>If URI-based content references are resolved in topics before the
+          <xmlelement>ditavalref</xmlelement> filtering conditions are evaluated, content that
+        applies to multiple audiences can be brought in and (later in the process) selectively
+        filtered by branch. <ph otherprops="examples">For example, if a set of installation steps is
+          pulled in with conref (from outside the branch), it might contain information that is
+          later filtered by platform based on <xmlelement>ditavalref</xmlelement>. This results in
+          copies of the steps that are specific to each operating system. If conref is processed
+          after the <xmlelement>ditavalref</xmlelement>, content might be pulled in that has not
+          been appropriately filtered for the new context.</ph></li>
       <li>The same scenario applies to conref values that push content into the branch.<ul>
           <li>Pushing content into a branch before resolving the <xmlelement>ditavalref</xmlelement>
             conditions allows content for multiple conditions to be pushed and then filtered by
