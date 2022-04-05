@@ -1271,11 +1271,7 @@
                tabindex
                           NMTOKEN
                                     #IMPLIED
-               longdescref
-                          CDATA
-                                    #IMPLIED
-               %univ-atts;
-               longdescre CDATA     #IMPLIED"
+               %univ-atts;"
 >
 <!ELEMENT  object %object.content;>
 <!ATTLIST  object %object.attributes;>
