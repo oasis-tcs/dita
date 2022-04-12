@@ -3,32 +3,40 @@
 <concept id="example-of-conref-and-the-xml-lang-attribute">
     <title>Example: content reference and the <xmlatt>xml:lang</xmlatt>
     attribute</title>
-    <shortdesc>This scenario outlines how processors determine the
-    effective value of the <xmlatt>xml:lang</xmlatt> attribute for content
-    that is referenced by the <xmlatt>conref</xmlatt> or
-      <xmlatt>conkeyref</xmlatt> attribute.</shortdesc>
+    <shortdesc>This <ph rev="review-n">example</ph> outlines how processors
+    determine the effective value of the <xmlatt>xml:lang</xmlatt>
+    attribute for content that is referenced by the <xmlatt>conref</xmlatt>
+    or <xmlatt>conkeyref</xmlatt> attribute.</shortdesc>
     <conbody>
-    <draft-comment author="Kristen J Eberlein" time="28 March 2022">\</draft-comment>
-    <p>In this example, a DITA topic specifies an <xmlatt>xml:lang</xmlatt> attribute of
-        <keyword>en</keyword>. However, it contains content that is conrefed from topics that
-      explicitly set the <xmlatt>xml:lang</xmlatt> attribute to <keyword>fr</keyword> and
-        <keyword>de</keyword>.</p>
-    <p>The following code block shows the content of the DITA topic that contains the referencing
-      elements:</p>
-    <codeblock>&lt;topic xml:lang="en" id="notices">
+    <p>In this <ph rev="review-n">scenario, a company has a notices topic
+        that contains warnings in multiple languages. The notices topic
+      </ph> specifies an <xmlatt>xml:lang</xmlatt> attribute of
+        <keyword>en</keyword>. However, it contains content that is reused
+      from topics that explicitly set the <xmlatt>xml:lang</xmlatt>
+      attribute to <keyword>fr</keyword><ph rev="review-n"> and
+          <keyword>de</keyword>.</ph></p>
+    <p>The following code block shows the content of the DITA topic that
+      contains the referencing <ph rev="review-n">elements</ph>:</p>
+    <fig rev="review-n" id="topic-with-conrefs">
+      <title>Topic that contains the conrefs</title>
+      <codeblock>&lt;topic xml:lang="en" id="notices">
  &lt;title>NOTICES&lt;/title>
- &lt;shortdesc>Please read all product safety information before using.&lt;/shortdesc>
+ &lt;shortdesc>Be sure to read all product safety information before using the product.&lt;/shortdesc>
  &lt;body>
-   &lt;note id="note-one" conref="warnings-en.dita#warnings/general"/>
-   <b>&lt;note id="note-two" conref="warnings-fr.dita#warnings/general"/></b>
-   <b>&lt;note id="note-three" conref="warnings-de.dita#warnings/general"/></b>
-   &lt;!-- ... all supported languages for the product ... -->
+   &lt;note id="warning-english" conref="warnings-en.dita#warnings/general"/>
+   <b>&lt;note id="warning-french" conref="warnings-fr.dita#warnings/general"/></b>
+   <b>&lt;note id="warning-german" conref="warnings-de.dita#warnings/general"/></b>
+   &lt;!-- ... All supported languages for the product ... -->
  &lt;/body>
 &lt;/topic></codeblock>
-    <p>The following code blocks show the content of the topics that contains the referenced element
-      in files <filepath>warnings-en.dita</filepath>, <filepath>warnings-fr.dita</filepath>, and
-        <filepath>warnings-de.dita</filepath>:</p>
-    <codeblock>&lt;topic id="warnings" xml:lang="en">
+    </fig>
+    <p>The following code <ph rev="review-n">blocks</ph> show the content
+      of the <ph rev="review-n">topics that contains the referenced
+        elements:</ph></p>
+    <fig rev="review-n">
+      <title>English warnings topic:
+        <filepath>warnings-en.dita</filepath></title>
+      <codeblock>&lt;topic id="warnings" xml:lang="en">
  &lt;title>Reusable warnings (English)&lt;/title>
  &lt;body>
   &lt;note id="general">General notice about using the product...&lt;/note>
@@ -37,7 +45,11 @@
  &lt;/body>
 &lt;/topic>
 </codeblock>
-    <codeblock>&lt;topic id="warnings" xml:lang="fr">
+    </fig>
+    <fig rev="review-n">
+      <title>French warnings topic:
+        <filepath>warnings-fr.dita</filepath></title>
+      <codeblock>&lt;topic id="warnings" xml:lang="fr">
  &lt;title>Reusable warnings (French)&lt;/title>
  &lt;body>
   &lt;note id="general">(French translation of: General notice about using the product...)&lt;/note>
@@ -46,7 +58,11 @@
  &lt;/body>
 &lt;/topic>
 </codeblock>
-    <codeblock>&lt;topic id="warnings" xml:lang="de">
+    </fig>
+    <fig rev="review-n">
+      <title>German warnings topic:
+        <filepath>warnings-de.dita</filepath></title>
+      <codeblock>&lt;topic id="warnings" xml:lang="de">
  &lt;title>Reusable warnings (German)&lt;/title>
  &lt;body>
   &lt;note id="general">(German translation of: General notice about using the product...)&lt;/note>
@@ -55,14 +71,28 @@
  &lt;/body>
 &lt;/topic>
 </codeblock>
-    <p>Note that the value of the <xmlatt>xml:lang</xmlatt> attribute of each referenced note is set
-      by the containing <xmlelement>topic</xmlelement> element that sets the
-        <xmlatt>xml:lang</xmlatt> attribute. When the topic that contained the conrefed notes is
-      processed, the <xmlelement>note</xmlelement> element with the <xmlatt>id</xmlatt> attribute
-      set to <keyword>note-two</keyword> has an effective value for the <xmlatt>xml:lang</xmlatt>
-      attribute of <keyword>fr</keyword>, which comes from the Frech topic with reusable notes.
-      Similarly, the <xmlelement>note</xmlelement> element with the <xmlatt>id</xmlatt> attribute
-      set to <keyword>note-three</keyword> has an effective value for the <xmlatt>xml:lang</xmlatt>
-      attribute of <keyword>de</keyword>, which comes from the German topic with reusable notes.</p>
+    </fig>
+    <div rev="review-n">
+      <p>When the topic that contains the conrefed notes is processed, the
+        following occurs:</p>
+      <ul>
+        <li>The <xmlelement>note</xmlelement> element with the
+            <xmlatt>id</xmlatt> attribute set to
+            <keyword>warning-french</keyword> has an effective value for
+          the <xmlatt>xml:lang</xmlatt> attribute of
+          <keyword>fr</keyword>.</li>
+        <li>The <xmlelement>note</xmlelement> element with the
+            <xmlatt>id</xmlatt> attribute set to
+            <keyword>warning-german</keyword> has an effective value for
+          the <xmlatt>xml:lang</xmlatt> attribute of
+          <keyword>de</keyword>.</li>
+      </ul>
+      <p>In each case, the effective value of the <xmlatt>xml:lang</xmlatt>
+        attribute for the note is determined by the value of the
+          <xmlatt>xml:lang</xmlatt> attribute that is specified on the
+        topic that contains the referenced element, instead of the value of
+        the <xmlatt>xml:lang</xmlatt> attribute that is specified on the
+        notices topic that contains the referencing elements.</p>
+    </div>
   </conbody>
 </concept>
