@@ -7,6 +7,23 @@
     recommended, a language for the content is clearly indicated. However,
     when the <xmlatt>xml:lang</xmlatt> attribute is not specified,
     processors might need to assign a default value.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>conref and
+            <xmlatt>xml:lang</xmlatt><indexterm>processing
+            expectations</indexterm></indexterm>
+        <indexterm>processing expectations<indexterm>conref and
+              <xmlatt>xml:lang</xmlatt></indexterm></indexterm>
+        <indexterm>processing
+              expectations<indexterm><xmlatt>xml:lang</xmlatt></indexterm></indexterm>
+        <indexterm><xmlatt>xml:lang</xmlatt><indexterm>default
+            value</indexterm></indexterm>
+        <indexterm><xmlatt>xml:lang</xmlatt><indexterm>processing
+            expectations</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
     <conbody>
     <p>If the root element of a map or a top-level topic has no value for the
         <xmlatt>xml:lang</xmlatt> attribute, a processor <term outputclass="RFC-2119">SHOULD</term>
@@ -17,11 +34,13 @@
       attribute is used to include content from one element into another,
       the processor <term outputclass="RFC-2119">MUST</term> use the
       effective value of the <xmlatt>xml:lang</xmlatt> attribute from the
-      referenced
-      element<!--, that is, the element that contains the content. If the referenced element does not have an explicit value for the <xmlatt>xml:lang</xmlatt> attribute, the processor <term outputclass="RFC-2119">SHOULD</term> default to using the default value-->. </p>
+      referenced element. <ph rev="review-n">If the referenced element does
+        not have an explicit value for the <xmlatt>xml:lang</xmlatt>
+        attribute, the processor <term outputclass="RFC-2119">SHOULD</term>
+        use the default value.</ph>
+    </p>
     <p>Processors <term outputclass="RFC-2119">SHOULD</term> render each
       element in a way that is appropriate for its language as identified
       by the <xmlatt>xml:lang</xmlatt> attribute.</p>
-    <!--<section><title>Normative statements from DITA 1.3</title><p>The <xmlatt>xml:lang</xmlatt> attribute <term outputclass="RFC-2119">SHOULD</term> be explicitly set on the root element of each map and topic.</p><p>The primary language for the map <term outputclass="RFC-2119">SHOULD</term> be set on the <xmlelement>map</xmlelement> element. The specified language remains in effect for all child <xmlelement>topicref</xmlelement> elements, unless a child specifies a different value for the <xmlatt>xml:lang</xmlatt> attribute. </p><p>When the <xmlatt>xml:lang</xmlatt> attribute is specified for a document, DITA processors <term outputclass="RFC-2119">MUST</term> use the specified value to determine the language of the document. </p></section>-->
   </conbody>
 </concept>
