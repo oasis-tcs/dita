@@ -116,46 +116,6 @@
      "deliveryTarget".</li>
    </ul>
   </section>
-  <section id="xsd-modules">
-   <title>XSD-based specialization modules</title>
-   <p>Use the following file-naming conventions for XSD-based specialization modules.</p>
-   <simpletable frame="all" relcolwidth="0.8* 2.2* 2.0*">
-    <sthead>
-     <stentry>Module</stentry>
-     <stentry>File name</stentry>
-     <stentry>Example</stentry>
-    </sthead>
-    <strow>
-     <stentry >Structural modules: Element  groups</stentry>
-     <stentry><filepath><varname>ModuleName</varname>Grp.xsd</filepath></stentry>
-     <stentry><filepath>conceptGrp.xsd</filepath></stentry>
-    </strow>
-    <strow>
-     <stentry >Structural modules: All other declarations</stentry>
-     <stentry><filepath><varname>ModuleName</varname>Mod.xsd</filepath></stentry>
-     <stentry><filepath>conceptMod.xsd</filepath></stentry>
-    </strow>
-    <strow>
-     <stentry>Domain modules</stentry>
-     <stentry><filepath><varname>DomainName</varname>.xsd</filepath></stentry>
-     <stentry><filepath>highlightDomain.xsd</filepath></stentry>
-    </strow>
-    <strow>
-     <stentry>Attribute domain</stentry>
-     <stentry><filepath><varname>AttributeName</varname>AttDomain.xsd</filepath></stentry>
-     <stentry><filepath>deliveryTargetAttDomain.xsd</filepath></stentry>
-    </strow>
-   </simpletable>
-   <p>where:</p>
-   <ul>
-    <li><varname>ModuleName</varname> is the name of the element type, such as "concept" or
-     "glossentry".</li>
-    <li><varname>DomainName</varname> is the name of the domain, for example, "highlight" or
-     "utilities".</li>
-    <li><varname>AttributeName</varname> is the name of the specialized attribute, for example,
-     "deliveryTarget".</li>
-   </ul>
-  </section>
   <section id="constraint-modules">
    <title>Constraint modules</title>
    <p>Use the following file-naming conventions for constraint modules.</p>
@@ -172,10 +132,6 @@
        <strow>
         <stentry>RELAX NG</stentry>
         <stentry><filepath><varname>qualifier</varname><varname>Tagname</varname>ConstraintMod.rng</filepath></stentry>
-       </strow>
-       <strow>
-        <stentry>XSD</stentry>
-        <stentry><filepath><varname>qualifier</varname><varname>Tagname</varname>ConstraintMod.xsd</filepath></stentry>
        </strow>
       </simpletable>
       <p>where:</p>
@@ -202,10 +158,6 @@
         <stentry>RELAX NG</stentry>
         <stentry><filepath><varname>qualifier</varname><varname>domain</varname>DomainConstraintMod.rng</filepath></stentry>
        </strow>
-       <strow>
-        <stentry>XSD</stentry>
-        <stentry><filepath><varname>qualifier</varname><varname>domain</varname>DomainConstraintMod.xsd</filepath></stentry>
-       </strow>
       </simpletable>
       <p>where: </p>
       <ul conref="../common/conref-file.dita#reuse_file/dtd-domains-constraint">
@@ -214,11 +166,6 @@
       <p otherprops="examples">For example, the file name for a constraint module that removes the
        syntax diagram from the programming domain might be
         <filepath>noSyntaxDiagramProgrammingDomainConstraint.ent</filepath>.</p>
-      <!--<p otherprops="examples">For example, the name of a domain constraint module that removes syntax diagrams from the programming domain <ph rev="targeted-review">might be</ph> <filepath>noSyntaxDiagramProgrammingDomainConstraintMod.rng</filepath>.</p>-->
-      <p>Because of restrictions on the redefine feature of XML Schema, it is sometimes necessary to
-       use an intermediate level of redefinition, which requires a separate XSD document. In that
-       case, the intermediate XSD document should be named
-         <filepath><varname>qualifier</varname><varname>domain</varname>DomainConstraintsInt.xsd</filepath>.</p>
      </dd>
     </dlentry>
    </dl>
