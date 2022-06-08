@@ -2,8 +2,27 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="example-fallback-information-for-multimedia">
     <title>Example: Fallback information for multimedia</title>
-    <shortdesc></shortdesc>
+    <shortdesc>In this scenario, fallback content is provided for systems that cannot display
+        multimedia content.</shortdesc>
     <conbody>
-        <p></p>
+        <p>The referenced video provides an image as fallback. If a system support video display, it
+            will display the image <filepath>video-not-available.png</filepath>, which specifies its
+            own alternate text.</p>
+        <fig id="fig_p32_ytm_5tb">
+            <title>Reference to a video with fallback content</title>
+            <codeblock id="codeblock_nmb_g5m_5tb">&lt;video height="300px"
+                loop="false"
+                muted="false"
+                poster="demo1-video-poster"
+                width="400px">
+  &lt;desc>A video illustrating this procedure.&lt;/desc>
+  &lt;fallback>
+    &lt;image href="video-not-available.png">
+      &lt;alt>This video cannot be displayed.&lt;/alt>
+    &lt;/image>
+  &lt;/fallback>
+  &lt;media-source href="video.mp4" format="video/mp4"/>
+&lt;/video></codeblock>
+        </fig>
     </conbody>
 </concept>
