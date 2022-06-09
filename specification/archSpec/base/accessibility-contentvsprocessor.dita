@@ -3,81 +3,87 @@
 <concept id="accessibility_contentvsprocessor">
     <title>Handling accessibility in content and in processors</title>
     <shortdesc>Accessibility requirements vary depending on how content is
-    rendered. These requirements fall on both content owners and on the
-    processors that render DITA content.</shortdesc>
+    rendered. Making content accessible is work that involves both content
+    authors and the processors that render DITA content.</shortdesc>
     <conbody>
-        <p>One of the best known standards for producing accessible content
-      is the set of <xref href="https://www.w3.org/TR/WCAG21/"
-        format="html" scope="external">Web Content Accessibility Guidelines
-        (WCAG)</xref> from W3C. While content formats and content owners
-      might always have unique or additional accessibility needs, the rules
-      in outline in the WCAG provide a reference point for considering how
-      to create accessible content in DITA.</p>
-        <p>When considering how to work with DITA, the guidelines fall into
-      several categories:<dl>
-        <dlentry>
-          <dt>General content guidelines</dt>
-          <dd>
-            <p>Many accessibility guidelines and best practices apply to
-              all content. Such guidelines are generally outside the scope
-              of this specification. </p>
-            <p>For example, a guideline might recommend against multiple
-              levels of nested unordered lists, because such lists are
-              difficult to navigate with a screen reader. As a general
-              content standard, DITA cannot prohibit such nesting. However,
-              implementations can prevent such nesting through business
-              processes or rule-based processing such as Schematron.</p>
-            <p>Another common accessibility recommendation is to avoid
-              flashing or flickering video content. The DITA
-                <xmlelement>video</xmlelement> element is a general
-              mechanism for including any video, and the content of that
-              video is outside the scope of this specification.</p>
-          </dd>
-        </dlentry>
-        <dlentry>
-          <dt>Markup guidelines</dt>
-          <dd>
-            <p>Many other accessibility guidelines require use of specific
-              DITA markup. Such guidelines are addressed in the
-              specification.</p>
-            <p>For example, a requirement that images specify alternate
-              text requires use of the <xmlelement>alt</xmlelement> element
-              within an image. However, a guideline that the alternate text
-              be <i>meaningful</i> is not something that can be enforced by
-              DITA markup.</p>
-          </dd>
-        </dlentry>
-        <dlentry>
-          <dt>Guidelines that require enablement by DITA processors</dt>
-          <dd>
-            <p>Some accessibility guidelines require processors to take
-              advantage of specific DITA markup.</p>
-            <p>Authors can use specific markup to enable accessible output.
-              For example, by placing a header row in a table using
-                <xmlelement>thead</xmlelement> or
-                <xmlelement>sthead</xmlelement>, an author can define a
-              header for every cell in the table body. However, to make the
-              relationship between the table cell and header cell specific
-              in a rendered format like HTML, the processor must make those
-              relationships explicit in the output</p>
-          </dd>
-        </dlentry>
-        <dlentry>
-          <dt>Processor requirements outside the scope of DITA markup</dt>
-          <dd>Processors have many other accessibility concerns that are
-            outside the scope of this specification.<p>For example, WCAG
-              has a requirement for contrast ratios when rendering text
-              content. That requirement is unrelated to the source content.
-              Such requirements apply to rendering tools such as the CSS
-              that is used to style DITA content in a browser.</p><p>As
-              another example, a DITA processor might generate automated
-              headings or text strings, such as a greater-than character
-              (>) that is used between DITA phrases that are identified as
-              a part of a menu navigation. It is up to the processor to use
-              correct rendering for these cases, such as heading markup and
-              accessible text alternatives for character displays such as
-              the menu separator.</p></dd>
-        </dlentry>
-      </dl></p>
+        <p>One of the best known standards for accessible content is the
+      set of <xref href="https://www.w3.org/TR/WCAG21/" format="html"
+        scope="external">Web Content Accessibility Guidelines (WCAG)</xref>
+      from W3C. While content formats and content authors might have unique
+      or additional accessibility needs, the rules outlined in the WCAG
+      provide a reference point for considering how to create accessible
+      content in DITA.</p>
+        <p>The guidelines fall into several categories:</p>
+    <dl>
+      <dlentry>
+        <dt>General content guidelines</dt>
+        <dd>
+          <p>Many accessibility guidelines and best practices apply to all
+            content. Such guidelines are generally outside the scope of
+            this specification. </p>
+          <p>For example, a guideline might recommend against multiple
+            levels of nested unordered lists, because such lists are
+            difficult to navigate with a screen reader. As a general
+            content standard, DITA cannot prohibit such nesting. However,
+            implementations can prevent such nesting through business
+            processes or rule-based processing such as Schematron.</p>
+          <p>Another common accessibility recommendation is to avoid
+            flashing or flickering video content. The DITA
+              <xmlelement>video</xmlelement> element is a general mechanism
+            for including video, and the content of that video is outside
+            the scope of this specification.</p>
+        </dd>
+      </dlentry>
+      <dlentry>
+        <dt>Markup guidelines</dt>
+        <dd>
+          <p>Other accessibility guidelines require use of specific DITA
+            markup. Such guidelines are addressed in this
+            specification.</p>
+          <p>For example, a requirement that images specify alternate text
+            requires use of the <xmlelement>alt</xmlelement> element within
+            an image. However, a guideline that the alternate text be
+              <i>meaningful</i> is not something that can be enforced by
+            DITA markup.</p>
+        </dd>
+      </dlentry>
+      <dlentry>
+        <dt>Guidelines that require enablement by DITA processors</dt>
+        <dd>
+          <p>Some accessibility guidelines require processors to take
+            advantage of specific DITA markup.</p>
+          <p>Authors can use specific markup to enable accessible output.
+            For example, by specifying a header row in a
+            table<!-- using <xmlelement>thead</xmlelement> or <xmlelement>sthead</xmlelement>-->,
+            an author can define a header for every cell in the table body.
+            However, to make the relationship between the table cell and
+            header cell specific in a rendered format like HTML, the
+            processor must make those relationships explicit in the
+            output</p>
+        </dd>
+      </dlentry>
+      <dlentry>
+        <dt>Processor requirements outside the scope of DITA markup</dt>
+        <dd>Processors have many other accessibility concerns that are
+          outside the scope of this specification.<p>For example, WCAG has
+            a requirement for contrast ratios when rendering text content.
+            That requirement is unrelated to the source content. Such
+            requirements apply to rendering mechanisms such as the CSS that
+            is used to style DITA content in a browser.</p><p>As another
+            example, a DITA processor might generate automated headings or
+            include characters in output, such as:</p><ul>
+            <li>A section heading for an element specialized from
+                <xmlelement>section</xmlelement>, such as
+                <keyword>Requirements</keyword> for the
+                <xmlelement>prereq</xmlelement> element in a task
+              topic</li>
+            <li>The greater-than character (>) that is typically used
+              between phrases that are part of a menu navigation</li>
+          </ul><p>It is up to the processor to use correct rendering for
+            these cases, such as heading markup and accessible text
+            alternatives for character displays such as the menu
+            separator.</p><!--<p>As another example, a DITA processor might generate automated headings or text strings, such as a greater-than character (>) that is used between DITA phrases that are identified as a part of a menu navigation. It is up to the processor to use correct rendering for these cases, such as heading markup and accessible text alternatives for character displays such as the menu separator.</p>--></dd>
+      </dlentry>
+    </dl>
     </conbody>
 </concept>
