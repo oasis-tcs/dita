@@ -2,61 +2,62 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="accessibilitymarkup" xml:lang="en-US">
 	<title>Accessible content</title>
-	<shortdesc> DITA provides many elements and attributes that are specifically designed make
-		content more accessible.</shortdesc>
+	<shortdesc> DITA provides elements and attributes that are designed to
+    make content accessible.</shortdesc>
 	<prolog>
 		<metadata>
 			<keywords>
-				<indexterm>accessibility</indexterm>
+				<indexterm>accessibility<indexterm>DITA markup</indexterm></indexterm>
 			</keywords>
 		</metadata>
 	</prolog>
 	<conbody>
 		<section id="about">
-			<p>Many common types of content are not accessible to all readers in all
-        scenarios. For example, an image cannot be rendered by a screen
-        reader, and a video cannot be rendered in many formats. DITA
-        includes markup features that are designed to convey alternate
-        versions of such content.</p>
-			<draft-comment author="rodaande" time="25 March 2022">For things like the alt element and
-				longdescref element, we should be reusing content from the element ref rather than
-				effectively redefining the element here - likely reusing the full short
-				description.</draft-comment>
+			<p>Many common types of content are not accessible to all readers. For
+        example, an image cannot be rendered by a screen reader, and a
+        video cannot be rendered in many formats. DITA includes markup
+        features that are designed to convey alternate versions of such
+        content.</p>
 			<dl>
 				<dlentry>
 					<dt id="images">Alternate text for images</dt>
-					<dd>The <xmlelement>alt</xmlelement> element is available inside of images as a
-						way to specify alternate text.</dd>
+					<dd>
+            <p><ph conkeyref="reuse-alt/alternate-text"/></p>
+            <p>The <xmlelement>alt</xmlelement> element is available inside
+              of images as a way to specify alternate text.</p>
+          </dd>
 				</dlentry>
         <dlentry>
-          <dt>Image maps</dt>
-          <dd>Within an image map, each defined area of the image can
-            specify a cross reference. Whether or not the cross reference
-            actually provides a URI reference, the text within that cross
-            reference is intended to function as alternate text or hover
-            text for that area of the image.</dd>
+          <dt>Alternate text for areas of image maps</dt>
+          <dd>
+            <p>Within an image map, each defined area of the image can
+              specify a cross reference. Whether the cross reference
+              actually specifies a URI reference, the text within that
+              cross reference is intended to function as alternate or hover
+              text.</p>
+          </dd>
         </dlentry>
 				<dlentry>
 					<dt>Long descriptions for media</dt>
 					<dd>
-            <p>The <xmlelement>longdescref</xmlelement> element is a
-              reference to a textual description of a graphic or object. It
-              is intended for situations where alternate text is not
-              sufficient to explain the content. Processors can handle the
-              reference in the following ways:</p>
+            <p><ph
+                conkeyref="elements-longdescref/long-description-reference"
+              /></p>
+            <p>Processors can handle the reference in the following
+              ways:</p>
             <ul>
-              <li>Rendering the graphic or object as a link</li>
-              <li>Making the extended description available to
-                accessibility tools such as a screen reader.</li>
+              <li>Render the graphic or object as a link</li>
+              <li>Make the extended description available to accessibility
+                tools such as a screen readers</li>
             </ul>
           </dd>
 				</dlentry>
 			</dl>
 			<p>While DITA provides the markup to enable these accessibility
-        features, it is up to DITA processors and rendering formats to
-        handle them properly. For example, when generating HTML5, any
-        alternate text must be rendered using the <xmlatt>alt</xmlatt>
-        attribute on the <xmlatt>img</xmlatt> element.</p>
+        features, it is up to DITA processors to render output that uses
+        the markup properly. For example, when a processor generates HTML5,
+        alternate text must be specified using the <xmlatt>alt</xmlatt>
+        attribute on the <xmlelement>img</xmlelement> element.</p>
 		</section>
 	</conbody>
 </concept> 
