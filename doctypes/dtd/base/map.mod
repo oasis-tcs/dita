@@ -436,10 +436,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                          (%relrow;)+)"
 >
 <!ENTITY % reltable.attributes
-              "title
-                          CDATA
-                                    #IMPLIED
-               %topicref-atts-for-reltable;
+              "%topicref-atts-for-reltable;
                %univ-atts;"
 >
 <!ELEMENT  reltable %reltable.content;>
