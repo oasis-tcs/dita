@@ -1,38 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="adding_an_element_to_the_section_element">
-    <title>Example: Adding an element to the <xmlelement>section</xmlelement> element using
-        DTD</title>
-    <shortdesc>In this scenario, a DITA architect wants to modify the content model for the
-            <xmlelement>section</xmlelement> element. He wants to add an optional
-            <xmlelement>sectionDesc</xmlelement> element that is specialized from
-            <xmlelement>p</xmlelement>.</shortdesc>
-    <prolog>
-        <metadata>
-            <keywords>
-                <indexterm>expansion modules<indexterm>examples<indexterm>expanding content model of
-                                <xmlelement>section</xmlelement></indexterm></indexterm></indexterm>
-                <indexterm>examples<indexterm>expansion modules<indexterm>expanding content model of
-                                <xmlelement>section</xmlelement></indexterm></indexterm></indexterm>
-            </keywords>
-        </metadata>
-    </prolog>
-    <conbody>
-        <example>
-            <p>To accomplish this, the DITA architect needs to create the following modules and
-                integrate them into the document-type shell:</p>
-            <ul>
-                <li>An element specialization module that defines the
-                        <xmlelement>sectionDesc</xmlelement> element</li>
-                <li>An expansion module that adds the <xmlelement>sectionDesc</xmlelement> element
-                    to the content model for <xmlelement>section</xmlelement></li>
-            </ul>
-            <ol>
-                <li>First the DITA architect creates the element specialization module. He does this
-                    in a single <filepath>.mod</filepath> file
-                        (<filepath>sectionDescDomain.mod</filepath>) that defines the parameter
-                    entity, content model, and attributes for <xmlelement>sectionDesc</xmlelement>:
-                    <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+<concept id="adding-an-element-to-the-section-element">
+  <title>Example: Adding an element to the <xmlelement>section</xmlelement>
+    element using DTDs</title>
+  <shortdesc>In this scenario, a DITA architect wants to modify the content
+    model for the <xmlelement>section</xmlelement> element. The DITA
+    architect wants to add an optional <xmlelement>sectionDesc</xmlelement>
+    element that is specialized from
+    <xmlelement>p</xmlelement>.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>expansion modules<indexterm>examples<indexterm>expanding
+              content model of
+            <xmlelement>section</xmlelement></indexterm></indexterm></indexterm>
+        <indexterm>examples<indexterm>expansion modules<indexterm>expanding
+              content model of
+            <xmlelement>section</xmlelement></indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <example>
+      <p>To accomplish this, the DITA architect needs to create the
+        following modules and integrate them into the document-type
+        shell:</p>
+      <ul>
+        <li>An element specialization module that defines the
+            <xmlelement>sectionDesc</xmlelement> element</li>
+        <li>An expansion module that adds the
+            <xmlelement>sectionDesc</xmlelement> element to the content
+          model for <xmlelement>section</xmlelement></li>
+      </ul>
+      <ol>
+        <li>First, the DITA architect creates the element specialization
+          module: <filepath>sectionDescDomain.mod</filepath>. This single
+            <filepath>.mod</filepath> file defines the parameter entity,
+          content model,  attributes, and value for the
+            <xmlatt>class</xmlatt> attribute for
+            <xmlelement>sectionDesc</xmlelement>.<codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
 
 &lt;!ENTITY % sectionDesc "sectionDesc">
 
@@ -43,26 +49,27 @@
 &lt;!ATTLIST sectionDesc %sectionDesc.attributes;>
 
 &lt;!ATTLIST sectionDesc    class CDATA "+ topic/p sectionShortdesc-d/sectionDesc "></codeblock></li>
-                <li>The DITA architect adds the element specialization module to the
-                        <filepath>catalog.xml</filepath> file.</li>
-                <li>Next, the content architect modifies the document-type shell to integrate the
-                    element specialization
-                        module:<codeblock>&lt;!-- ============================================================= -->
+        <li>The DITA architect adds the element specialization module to
+          the <filepath>catalog.xml</filepath> file.</li>
+        <li>Next, the DITA architect modifies the applicable document-type
+          shell to integrate the applicable element specialization
+            module:<codeblock>&lt;!-- ============================================================= -->
 &lt;!--                    DOMAIN ELEMENT INTEGRATION                 -->
 &lt;!-- ============================================================= -->
 
 &lt;!-- ... other domains ... -->
+
 <b>&lt;!ENTITY % sectionDesc-d-def
   PUBLIC "-//ACME//ELEMENTS DITA 2.0 Section Description Domain//EN"
          "sectionDescDomain.mod"
->%sectionDesc-d-def;</b></codeblock><p>At this point, the new domain is
-                        integrated into the topic document-type shell. However, the new element is
-                        not added to the content model for
-                    <xmlelement>section</xmlelement>.</p></li>
-                <li>Next, the DITA architect creates an expansion module
-                        (<filepath>acme-SectionExpansion.mod</filepath>) that adds the
-                        <xmlelement>sectionDesc</xmlelement> element to the content model of
-                        <xmlelement>section</xmlelement>: <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+>%sectionDesc-d-def;</b></codeblock><p>At this point, the new
+            domain is integrated into the topic document-type shell.
+            However, the new element is not added to the content model for
+              <xmlelement>section</xmlelement>.</p></li>
+        <li>Next, the DITA architect creates an expansion module:
+            <filepath>acme-SectionExpansion.mod</filepath>. This module
+          adds the <xmlelement>sectionDesc</xmlelement> element to the
+          content model of <xmlelement>section</xmlelement>.<codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
 
 &lt;!-- Declares the entities referenced in the modified content  -->
 &lt;!-- model.                                                    -->
@@ -141,25 +148,30 @@
                %required-cleanup; |
                %sectionDesc;)*"
 ></codeblock>
-                    <note>The DITA architect needed to explicitly declare all the elements, rather
-                        than using the <parameterentity>section.cnt</parameterentity> parameter
-                        entity used in the definition of <xmlelement>section</xmlelement>. Because
-                        the element-configuration modules are integrated into the document-type
-                        shell before the base grammar modules, none of the parameter entities that
-                        are used in the base DITA vocabulary modules are available.</note></li>
-                <li>Finally, the DITA architect integrates the expansion module into the
-                    document-type
-                    shell:<codeblock>&lt;!-- ============================================================= -->
+          <p>Note that the DITA architect needed to explicitly declare all
+            the elements, rather than using the
+              <parameterentity>section.cnt</parameterentity> parameter
+            entity that is used in the definition of
+              <xmlelement>section</xmlelement>. Because the
+            element-configuration modules are integrated into the
+            document-type shell before the base grammar modules, none of
+            the parameter entities that are used in the base DITA
+            vocabulary modules are available.</p></li>
+        <li>Finally, the DITA architect integrates the expansion module
+          into the document-type
+          shell:<codeblock>&lt;!-- ============================================================= -->
 &lt;!--           ELEMENT-TYPE CONFIGURATION INTEGRATION              -->
 &lt;!-- ============================================================= -->
 
+&lt;!-- Other constraint and expansion modules -->
+<b>
 &lt;!ENTITY % acmeSection-def
   PUBLIC "-//ACME//ELEMENTS DITA 2.0 Section Expansion//EN"
          "acme-SectionExpansion.mod"
->%acmeSection-def;</codeblock></li>
-                <li>After updating the <filepath>catalog.xml</filepath> file to include the
-                    expansion module and testing, the work is done.</li>
-            </ol>
-        </example>
-    </conbody>
+>%acmeSection-def;</b></codeblock></li>
+        <li>After updating the <filepath>catalog.xml</filepath> file to
+          include the expansion module and testing, the work is done.</li>
+      </ol>
+    </example>
+  </conbody>
 </concept>
