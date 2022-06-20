@@ -9,6 +9,20 @@
       support all accessibility needs. Assume that the table above is
       flipped so that the names are listed across the top row, instead of
       in the first column, as shown in the following screen capture:</p>
+    <draft-comment author="dstevens73" time="14 June 2022">
+      <p>Generally, I teach to avoid directional words; the reason for
+        which is illustrated in this topic-by-topic review, where I could
+        access this topic first and there is no "above". and even in print,
+        the example might be on a previous page, not "above". Best to cross
+        reference? </p>
+      <div>
+        <p>[Kris Eberlein, 14 June 2022] </p>
+        <p>This content was originally authored as part of a single
+          element-reference topic, and the examples developed on each
+          other. Thanks for catching this, which we certainly need to fix
+          now that these examples are separate topics.</p>
+      </div>
+    </draft-comment>
     <image placement="break"
       href="../../langRef/images/table-with-header-columns.jpg">
       <alt>The image shows a five-column table, in which the header
@@ -19,6 +33,37 @@
         of a larger document.</alt>
     </image>
     <!--<p><table frame="all" id="table_nzp_zzl_4n"><title>Sample with two header columns</title><tgroup cols="5"><colspec colname="c1" colnum="1" colwidth="1.0*"/><colspec colname="c2" colnum="2" colwidth="1.0*"/><colspec colname="c3" colnum="3" colwidth="1.0*"/><colspec colname="c4" colnum="4" colwidth="1.0*"/><colspec colname="newCol5" colnum="5" colwidth="1*"/><thead><row><entry namest="c1" nameend="c2"> Name</entry><entry>Mark</entry><entry>Peter</entry><entry>Cindy</entry></row></thead><tbody><row><entry morerows="1"><b>points</b></entry><entry><b>expected</b></entry><entry>10,000</entry><entry>9,000</entry><entry>10,000</entry></row><row><entry><b>actual</b></entry><entry>11,123.45</entry><entry>11,012.34</entry><entry>10,987.64</entry></row></tbody></tgroup></table></p>-->
+    <draft-comment author="Robert Johnson">I understand the motivation for
+      this capability to mimic the support available in HTML, but in
+      practice, I recommend against merging cells as in this example. A
+      user on a screenreader builds a mental model of the table.
+      Screenreaders do not have the ability to announce that a cell is
+      merged. If such a capability existed, I suspect it would hinder
+      understanding of the table and its contents. Merged cells are also
+      problematic for users navigating by keyboard. In this example,
+      keyboard navigation would default to the "Expected" row, which might
+      not be the intention of the user. If that user also has a congitive
+      disability such as ADD, the need to navigate to the correct row would
+      likely be distracting and hinder access to the content. A user on a
+      screenreader typically navigates using the keyboard, and the user
+      agent behavior would hinder the development of the mental model.
+      Merged cells within a table (in other owrds not in a first or last
+      column or row) are even more problematic. <p>This is another case,
+        similar the discussions in the "Handling accessibility" topic that
+        practice is outside the scope of the spec. I would like to see a
+        discussion somewhere that while this support exists, using it might
+        not be good practice. </p><p>If I were reviewing a topic that
+        included this example, I would recommend a single header column
+        with the text "Expected points" and "Actual points" respectively.
+        That would be easier to navigate, and more meaningful to a user on
+        a screenreader.</p><div>
+        <p>[Kris Eberlein, 20 June 2022] Regarding your second paragraph. I
+          hope that Tahzoo will join OASIS and so enable you to join the
+          TC. For years, I've wanted the DITA TC to issue a committee note
+          about "DITA and accessibility." In a committee note, we could
+          provide information about best practices in a way that we cannot
+          do in the specification.</p>
+      </div></draft-comment>
     <p><ph rev="review-e">Here,</ph> the <xmlatt>rowheader</xmlatt>
       attribute cannot be used, because it is only able to specify the
       first column as a header column. In this case, the
@@ -66,5 +111,18 @@
  &lt;/tgroup>
 &lt;/table></codeblock>
     <!--<p>The formatted output might be displayed as follows:</p><p><table id="table_yrp_sbm_4n"><title>Sample with fully manual accessibility control</title><desc>Names are listed in the column c1. Points are listed in both data columns, with expected points in column c2 and actual points in column c3.</desc><tgroup cols="3"><colspec colname="c1"/><colspec colname="c2"/><colspec colname="c3"/><thead><row><entry morerows="1">Name</entry><entry namest="c2" nameend="c3">points</entry></row><row><entry>expected</entry><entry>actual</entry></row></thead><tbody><row><entry>Mark</entry><entry>10,000</entry><entry>11,123.45</entry></row><row><entry>Peter</entry><entry>9,000</entry><entry>11,012.34</entry></row><row><entry>Cindy</entry><entry>10,000</entry><entry>10,987.64</entry></row></tbody></tgroup></table></p>-->
+    <draft-comment author="Robert Johnson">I think it would be helpful to
+      also illustrate the result HTML. Not an image of the rendered table,
+      but the result HTML code. <div>
+        <p>[Kris Eberlein, 18 June 2022]</p>
+        <p>We added the screen capture because spec reviewers were having
+          difficulties visualizing how the table would be rendered.</p>
+        <p>Robert, Anderson, can you address the issues that would be
+          involved if we included how the DITA markup might be rendered in
+          HTML output?</p>
+        <p>[Gershon Joseph, 19 June 2022] I think both sample HTML code and
+          an image of the resulting Web rendition would be most helpful to
+          spec readers.</p>
+      </div></draft-comment>
   </conbody>
 </concept>

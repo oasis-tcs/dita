@@ -8,7 +8,17 @@
       in the middle of the table, fine-grained accessibility controls are
       available to explicitly associate any content cell with any header
       cell. This might also be useful for cases where processors do not
-      support the implied accessibility relationships described above.</p>
+      support the implied accessibility relationships described
+        <draft-comment author="dstevens73" time="14 June 2022">
+        <p>see comment in previous example about the word "above"</p>
+        <div>
+          <p>[Kris Eberlein, 14 June 2022] </p>
+          <p>This content was originally authored as part of a single
+            element-reference topic, and the examples developed on each
+            other. Thanks for catching this, which we certainly need to fix
+            now that these examples are separate topics.</p>
+        </div>
+      </draft-comment>above.</p>
     <p>In the following sample, header cells are identified using the
         <xmlatt>id</xmlatt> attribute, which is referenced using the
         <xmlatt>headers</xmlatt> attribute on appropriate content cells.
@@ -57,14 +67,42 @@ expected points in column c2 and actual points in column c3.&lt;/desc>
    &lt;/tgroup>
 &lt;/table></codeblock>
     <p>The output might be <ph rev="review-e">rendered in the following
-        way:</ph></p>
+        way:</ph><draft-comment author="Robert Johnson">An image of the
+        rendered table in this case is not very informative. The rendering
+        does not show the HTML code that the screenreader, for example,
+        would be interpreting to announce to the user. The rendering would
+        be the same regardless of the existence of the row and columns
+          headers.<p>I think it would be more helpful to show the HTML code
+          that would result from the markup above, which the screenreader
+          would be interpreting for the user.</p><p>If someone were really
+          ambitious, adding a recording of a screenreader announcing the
+          table as it was navigated might be informative. The recording
+          should include both audio and video, so the user can see the
+          table being navigated and hear the screenreader interpreting the
+          table. </p><div>
+          <p>[Kris Eberlein, 18 June 2022]</p>
+          <p>We added the screen capture because spec reviewers were having
+            difficulties visualizing how the table would be rendered.</p>
+          <p>Robert, Anderson, can you address the issues that would be
+            involved if we included how the DITA markup might be rendered
+            in HTML output?</p>
+          <p>My initial reaction is that a recording of a screen reader
+            announcing the table as navigated would be awesome, but I might
+            not be thinking of all relevant issues. Robert, your
+            thoughts?</p>
+        </div></draft-comment>
+    </p>
     <image placement="break"
       href="../../langRef/images/table-manual-accessibility.jpg">
-      <alt>The image shows … The header row is shaded with green, and the
-        text in the header column and rows is bold. The edges of the screen
-        capture are tattered, to indicate that the image is part of a
-        larger document.</alt>
+      <alt><draft-comment author="dstevens73">I assume this alt text is
+          meant to be the same as in first complex table example?<div>
+            <p>[Kris Eberlein, 17 June 2022]</p>
+            <p>Robert has an action items to develop the alternate text for
+              this image. What's currently there is a placeholder.</p>
+          </div></draft-comment>The image shows … The header row is shaded
+        with green, and the text in the header column and rows is bold. The
+        edges of the screen capture are tattered, to indicate that the
+        image is part of a larger document.</alt>
     </image>
-    <!--<table id="table_yrp_sbm_4n"><title>Sample with fully manual accessibility control</title><desc>Names are listed in the column c1. Points are listed in both data columns, with expected points in column c2 and actual points in column c3.</desc><tgroup cols="3"><colspec colname="c1"/><colspec colname="c2"/><colspec colname="c3"/><thead><row><entry morerows="1"> </entry><entry namest="c2" nameend="c3">points</entry></row><row><entry>expected</entry><entry>actual</entry></row></thead><tbody><row><entry>Mark</entry><entry>10,000</entry><entry>11,123.45</entry></row><row><entry>Peter</entry><entry>9,000</entry><entry>11,012.34</entry></row><row><entry>Cindy</entry><entry>10,000</entry><entry>10,987.64</entry></row></tbody></tgroup></table>-->
   </conbody>
 </concept>

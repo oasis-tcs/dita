@@ -6,14 +6,44 @@
     rendered. Making content accessible is work that involves both content
     authors and the processors that render DITA content.</shortdesc>
     <conbody>
-        <p>One of the best known standards for accessible content is the
-      set of <xref href="https://www.w3.org/TR/WCAG21/" format="html"
+    <p>One of the best known standards for accessible content is the set of
+        <xref href="https://www.w3.org/TR/WCAG21/" format="html"
         scope="external">Web Content Accessibility Guidelines (WCAG)</xref>
       from W3C. While content formats and content authors might have unique
       or additional accessibility needs, the rules outlined in the WCAG
       provide a reference point for considering how to create accessible
       content in DITA.</p>
-        <p>The guidelines fall into several categories:</p>
+    <draft-comment author="Bob Johnson" time="14 June 2022">
+      <p>No alternative to WCAG is available. It is the accessibility
+        standard. I recommend revising this text to "The foundation for
+        accessible content is the Web Content Accessibility Guidelines
+        (WCAG).</p>
+      <p>[Regarding the inline link] Two points here. </p>
+      <p>First, accessibility guidance recommends against inline links.
+        Inline links are distracting for users on screen readers, and are
+        also problematic for users with cognitive disabilities such as ADD
+        and executive function disorder. I recommend moving the link to the
+        end of the topic.</p>
+      <p>Second, the currently effective versions of WCAG are 2.0 and 2.1.
+        They are cumulative. WCAG 2.1 extends the 2.0 standard</p>
+      <p>WCAG 2.2 is scheduled for release in September 2022. It should be
+        a recommended standard by the time this content is released. WCAG
+        2.2 is cumulative with 2.0 and 2.1. I recommend updating the text
+        to this effect. My text above " the currently effective versions of
+        WCAG are 2.0 and 2.1. They are cumulative. WCAG 2.1 extends the 2.0
+        standard." could be the basis of this text.</p>
+      <p>I recommend links to the 2.0, 2.1, and 2.2 standards formatted at
+        the end of the topic using a linklist element. I recommend using
+        "Web Content Accessibility Guidelines 2.0" and so forth as the link
+        text. .</p>
+      <div>
+        <p>[Kris Eberlein, 17 June 2022: Great info, Bob. We will
+          incorporate the changes that you suggested. Can you point me to
+          guidelines that recommend against inline links? I'd like to be
+          able to share them with clients who are link crazy.</p>
+      </div>
+    </draft-comment>
+    <p>The guidelines fall into several categories:</p>
     <dl>
       <dlentry>
         <dt>General content guidelines</dt>
@@ -60,6 +90,10 @@
             header cell specific in a rendered format like HTML, the
             processor must make those relationships explicit in the
             output</p>
+          <draft-comment author="Bob Johnson" time="14 June 2022">
+            <p>[Re the 2nd sentence, change "a header row" to] "header rows
+              and header columns"</p>
+          </draft-comment>
         </dd>
       </dlentry>
       <dlentry>
@@ -69,9 +103,17 @@
             a requirement for contrast ratios when rendering text content.
             That requirement is unrelated to the source content. Such
             requirements apply to rendering mechanisms such as the CSS that
-            is used to style DITA content in a browser.</p><p>As another
-            example, a DITA processor might generate automated headings or
-            include characters in output, such as:</p><ul>
+            is used to style DITA content in a browser.</p><draft-comment
+            author="Robert Johnson" time="20220618">Guidance regarding
+            contrast ratios applies to any substantive content, not just
+            text. So, for example, if the content includes a spacer that
+            serves only to support the look and feel of the content and has
+            no meaningful value, contrast ratio is ot important. But if the
+            content includes a graphic of bar chart or pie chart that is
+            meaningful to the content, the contrast ratio is important.
+            </draft-comment><p>As another example, a DITA processor might
+            generate automated headings or include characters in output,
+            such as:</p><ul>
             <li>A section heading for an element specialized from
                 <xmlelement>section</xmlelement>, such as
                 <keyword>Requirements</keyword> for the
@@ -82,8 +124,8 @@
           </ul><p>It is up to the processor to use correct rendering for
             these cases, such as heading markup and accessible text
             alternatives for character displays such as the menu
-            separator.</p><!--<p>As another example, a DITA processor might generate automated headings or text strings, such as a greater-than character (>) that is used between DITA phrases that are identified as a part of a menu navigation. It is up to the processor to use correct rendering for these cases, such as heading markup and accessible text alternatives for character displays such as the menu separator.</p>--></dd>
+            separator.</p></dd>
       </dlentry>
     </dl>
-    </conbody>
+  </conbody>
 </concept>
