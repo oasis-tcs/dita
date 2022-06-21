@@ -147,21 +147,7 @@
                            norowheader |
                            -dita-use-conref-target)
                                     #IMPLIED
-               scale
-                          (50 |
-                           60 |
-                           70 |
-                           80 |
-                           90 |
-                           100 |
-                           110 |
-                           120 |
-                           140 |
-                           160 |
-                           180 |
-                           200 |
-                           -dita-use-conref-target)
-                                    #IMPLIED
+               %table-scale-att;
                %univ-atts;"
 >
 <!ENTITY % dita.tgroup.attributes

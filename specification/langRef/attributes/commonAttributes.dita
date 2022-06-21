@@ -712,23 +712,19 @@
         </dlentry>
         <dlentry id="scale">
           <dt id="attr-scale"><xmlatt>scale</xmlatt> (display attributes)</dt>
-          <dd>Specifies the percentage by which fonts are resized in
-            relation to the normal text size. The following values are
-            valid: <keyword>50</keyword>, <keyword>60</keyword>,
-              <keyword>70</keyword>, <keyword>80</keyword>,
-              <keyword>90</keyword>, <keyword>100</keyword>,
-              <keyword>110</keyword>, <keyword>120</keyword>,
-              <keyword>140</keyword>, <keyword>160</keyword>,
-              <keyword>180</keyword>, <keyword>200</keyword>, and <xref
-              keyref="attributes-useconreftarget"
-              >-dita-use-conref-target</xref>. <p>This attribute is
-              primarily useful for print-oriented display. Some processors
-              might not support all values.</p><p>If the
-                <xmlatt>scale</xmlatt> attribute is specified on an element
-              that contains an image, the image is not scaled. The image is
-              scaled <b>only</b> if a scaling property is explicitly
-              specified for the <xmlelement>image</xmlelement>
-            element.</p><!--<draft-comment author="robander" time="Dec 28 2021">Just noting that we seem to repeat ourselves here, saying this is 1) primarily for print-oriented, 2) primarily for print accommodation, and 3) some processors (implementations) might not support all values. Also feels really odd to say it's "an acknowledged style-based property", I think we can just delete that sentence? It doesn't add anything except to suggest we might be embarassed to have this attribute?</draft-comment>--><!--<draft-comment author="Kristen J Eberlein" time="29 December 2021"><p>I've made some edits, including some that I think eliminated the repetition.</p><p>Is <xmlatt>scale</xmlatt> used on elements other than fig, simpletable, and table? Note that we do not mention <xmlelement>simpletable</xmlelement> above ...</p><p>Maybe the paragraph about image should be moved to the <xmlelement>image</xmlelement> topic? Or covered in the topics for elements that support <xmlatt>scale</xmlatt>?</p><p>Do we need to discuss processing expectations about scaling elsewhere? It's buried here. Putting it in a more prominent place might improve the likelihood that processors would support it.</p><p>Based on a quick test, DITA-OT PDF: <ul><li>Supports <xmlatt>scale</xmlatt> on table but not <xmlelement>simpletable</xmlelement></li><li>Scales the image contained in a table when the <xmlatt>scale</xmlatt> attribute is set</li></ul> .</p></draft-comment>--></dd>
+          <dd>Specifies the percentage by which fonts are resized in relation to the normal text
+            size. The value of this attribute is a positive integer. When used on
+              <xmlelement>table</xmlelement> or <xmlelement>simpletable</xmlelement>, the following
+            values are valid: <keyword>50</keyword>, <keyword>60</keyword>, <keyword>70</keyword>,
+              <keyword>80</keyword>, <keyword>90</keyword>, <keyword>100</keyword>,
+              <keyword>110</keyword>, <keyword>120</keyword>, <keyword>140</keyword>,
+              <keyword>160</keyword>, <keyword>180</keyword>, <keyword>200</keyword>, and <xref
+              keyref="attributes-useconreftarget">-dita-use-conref-target</xref>. <p>This attribute
+              is primarily useful for print-oriented display. Some processors might not support all
+              values.</p><p>If the <xmlatt>scale</xmlatt> attribute is specified on an element that
+              contains an image, the image is not scaled. The image is scaled <b>only</b> if a
+              scaling property is explicitly specified for the <xmlelement>image</xmlelement>
+              element.</p><!--<draft-comment author="robander" time="Dec 28 2021">Just noting that we seem to repeat ourselves here, saying this is 1) primarily for print-oriented, 2) primarily for print accommodation, and 3) some processors (implementations) might not support all values. Also feels really odd to say it's "an acknowledged style-based property", I think we can just delete that sentence? It doesn't add anything except to suggest we might be embarassed to have this attribute?</draft-comment>--><!--<draft-comment author="Kristen J Eberlein" time="29 December 2021"><p>I've made some edits, including some that I think eliminated the repetition.</p><p>Is <xmlatt>scale</xmlatt> used on elements other than fig, simpletable, and table? Note that we do not mention <xmlelement>simpletable</xmlelement> above ...</p><p>Maybe the paragraph about image should be moved to the <xmlelement>image</xmlelement> topic? Or covered in the topics for elements that support <xmlatt>scale</xmlatt>?</p><p>Do we need to discuss processing expectations about scaling elsewhere? It's buried here. Putting it in a more prominent place might improve the likelihood that processors would support it.</p><p>Based on a quick test, DITA-OT PDF: <ul><li>Supports <xmlatt>scale</xmlatt> on table but not <xmlelement>simpletable</xmlelement></li><li>Scales the image contained in a table when the <xmlatt>scale</xmlatt> attribute is set</li></ul> .</p></draft-comment>--></dd>
         </dlentry>
         <dlentry id="scope">
           <dt id="attr-scope"><xmlatt>scope</xmlatt> (link-relationship attributes)</dt>
