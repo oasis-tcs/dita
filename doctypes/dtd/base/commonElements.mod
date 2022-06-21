@@ -423,23 +423,8 @@
                %foreign.unknown.incl; |
                %txt.incl;"
 >
-<!ENTITY % display-atts
-              "scale
-                          (50 |
-                           60 |
-                           70 |
-                           80 |
-                           90 |
-                           100 |
-                           110 |
-                           120 |
-                           140 |
-                           160 |
-                           180 |
-                           200 |
-                           -dita-use-conref-target)
-                                    #IMPLIED
-               frame
+<!ENTITY % frame-expanse-atts
+              "frame
                           (all |
                            bottom |
                            none |
@@ -455,6 +440,33 @@
                            textline |
                            -dita-use-conref-target)
                                     #IMPLIED"
+>
+<!ENTITY % display-atts
+              "scale
+                          NMTOKEN
+                                    #IMPLIED
+               %frame-expanse-atts;"
+>
+<!ENTITY % table-scale-att
+              "scale
+                          (50 |
+                           60 |
+                           70 |
+                           80 |
+                           90 |
+                           100 |
+                           110 |
+                           120 |
+                           140 |
+                           160 |
+                           180 |
+                           200 |
+                           -dita-use-conref-target)
+                                    #IMPLIED"
+>
+<!ENTITY % simpletable-display-atts
+              "%table-scale-att;
+               %frame-expanse-atts;"
 >
 <!ENTITY % props-attribute-extensions
               ""
@@ -1324,7 +1336,7 @@
                keycol
                           NMTOKEN
                                     #IMPLIED
-               %display-atts;
+               %simpletable-display-atts;
                %univ-atts;"
 >
 <!ELEMENT  simpletable %simpletable.content;>

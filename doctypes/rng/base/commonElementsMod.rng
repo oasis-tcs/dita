@@ -818,26 +818,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
   </div>
   <div>
     <a:documentation>COMMON ATTRIBUTE SETS</a:documentation>
-    <define name="display-atts">
-      <optional>
-        <attribute name="scale">
-          <choice>
-            <value>50</value>
-            <value>60</value>
-            <value>70</value>
-            <value>80</value>
-            <value>90</value>
-            <value>100</value>
-            <value>110</value>
-            <value>120</value>
-            <value>140</value>
-            <value>160</value>
-            <value>180</value>
-            <value>200</value>
-            <value>-dita-use-conref-target</value>
-          </choice>
-        </attribute>
-      </optional>
+    <define name="frame-expanse-atts">
       <optional>
         <attribute name="frame">
           <choice>
@@ -862,6 +843,39 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
           </choice>
         </attribute>
       </optional>
+    </define>
+    <define name="display-atts">
+      <optional>
+        <attribute name="scale">
+          <data type="NMTOKEN"/>
+        </attribute>
+      </optional>
+      <ref name="frame-expanse-atts"/>
+    </define>
+    <define name="table-scale-att">
+      <optional>
+        <attribute name="scale">
+          <choice>
+            <value>50</value>
+            <value>60</value>
+            <value>70</value>
+            <value>80</value>
+            <value>90</value>
+            <value>100</value>
+            <value>110</value>
+            <value>120</value>
+            <value>140</value>
+            <value>160</value>
+            <value>180</value>
+            <value>200</value>
+            <value>-dita-use-conref-target</value>
+          </choice>
+        </attribute>
+      </optional>
+    </define>
+    <define name="simpletable-display-atts">
+      <ref name="table-scale-att"/>
+      <ref name="frame-expanse-atts"/>
     </define>
 
     <define name="props-attribute-extensions">
@@ -2281,7 +2295,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
               <data type="NMTOKEN"/>
             </attribute>
           </optional>
-          <ref name="display-atts"/>
+          <ref name="simpletable-display-atts"/>
           <ref name="univ-atts"/>
         </define>
         <define name="simpletable.element">
