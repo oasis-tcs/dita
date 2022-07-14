@@ -40,12 +40,6 @@
     <ol>
       <li><draft-comment author="Kristen J Eberlein" time="07 June 2021">
           <p>Comments by Eliot Kimber: </p>
-          <p>[Re defining the attribute]: I don't really see the value in
-            having the "-expansion" distinction here--whether to use this
-            as a global attribute or through extension is really up to the
-            doc type shell author. The definer of the attribute domain may
-            intend for it to be used only on specific element types but
-            that's not really their choice to make."</p>
           <p>[Re the entity to be used in the @specializations attribute]:
             "Should there be leading and trailing space in the replacement
             text?"</p>
@@ -71,33 +65,21 @@
 &lt;!ATTLIST row %cellPurposeAtt-d-attribute-expansion;>
 &lt;!ATTLIST colspec %cellPurposeAtt-d-attribute-expansion;>
 &lt;!ATTLIST strow %cellPurposeAtt-d-attribute-expansion;>
-&lt;!ATTLIST stentry %cellPurposeAtt-d-attribute-expansion;></codeblock><note>The
-          attribute definition entity ends in <codeph>-expansion</codeph>;
-          this indicates that this is an expansion attribute and should not
-          be included in the
-            <parameterentity>base-attribute-extensions</parameterentity>
-          entity in the document-type shell.<draft-comment
-            author="Kristen J Eberlein" time="07 June 2021">
-            <p>Comment by Eliot Kimber: "See my comment above: I don't
-              think we should do this."</p>
-          </draft-comment></note><draft-comment author="Kristen J Eberlein"
-          time="18 May 2021">
-          <p>Comment by Robert Anderson: "[The note] should clarify that
-            this entity is totally optional -- only useful here because
-            we're adding the same attribute with the same tokens to several
-            elements. If you're only adding one attribute to one element,
-            you wouldn't want this entity."</p>
-        </draft-comment></li>
-      <li>The DITA architect updates the <filepath>catalog.xml</filepath>
-        file to include the expansion module.<draft-comment
-          author="Kristen J Eberlein" time="07 June 2021">
+&lt;!ATTLIST stentry %cellPurposeAtt-d-attribute-expansion;></codeblock><note
+          rev="2.0">The attribute definition entity is optional. It is used
+          here to enable the DITA architect to add the same attribute with
+          the same tokens to several elements.</note></li>
+      <li><ph rev="2.0">They then update</ph> the
+          <filepath>catalog.xml</filepath> file to include the expansion
+          module.<draft-comment author="Kristen J Eberlein"
+          time="07 June 2021">
           <p>Comment by Eliot Kimber: "This is something almost everybody
             *would* do but it's not actually required since the use of
             catalogs is not required by DITA or by the use of DTDs
             generally, at least in theory (and in actual fact if you are an
             Author/Editor user, which doesn't support catalogs)."</p>
         </draft-comment></li>
-      <li>The DITA architect integrates this module into the applicable
+      <li><ph rev="2.0">They integrate</ph> this module into the applicable
         document-type
         shell.<codeblock>&lt;!-- ============================================================= -->
 &lt;!--             DOMAIN ATTRIBUTES DECLARATIONS                    -->
@@ -109,8 +91,8 @@
   PUBLIC "-//ACME//ENTITIES DITA Cell Purpose Attribute Expansion//EN"
          "cellPurposeAttExpansion.ent"
 >%cellPurposeAttExpansion-d-dec;</b></codeblock></li>
-      <li>The DITA architect adds the entity for the contribution to the
-          <xmlatt>specializations</xmlatt>
+      <li><ph rev="2.0">They add</ph> the entity for the contribution to
+        the <xmlatt>specializations</xmlatt>
         attribute.<codeblock>&lt;!-- ============================================================= -->
 &lt;!--                 SPECIALIZATIONS ATTRIBUTE OVERRIDE            -->
 &lt;!-- ============================================================= -->
