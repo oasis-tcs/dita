@@ -17,6 +17,14 @@
                 redefined. The element-configuration module itself imports the base vocabulary
                 module; within the import, the module redefines the patterns as needed to implement
                 the constraint, expansion, or both.</p>
+      <draft-comment author="Kristen J Eberlein" time="14 July 2022">
+        <p>The above contradicts what we show in the "Example: Adding an
+          attribute to certain table elements using RNG," where the
+          exansion modules does not import the base vocabulary module." The
+          current wording is true for constraints, inaccurate for
+          expansion.</p>
+        <p>The same issue crops up several times in this topic ...</p>
+      </draft-comment>
             <dl otherprops="examples">
                 <dlentry>
                     <dt>Constraint modules</dt>
@@ -115,26 +123,7 @@
                                     <xmlelement>shortdesc</xmlelement> constraint, which in turn
                                 imports the <xmlelement>li</xmlelement> constraint, which finally
                                 imports <filepath>topicMod.rng</filepath>.</p>
-                            <draft-comment author="Kristen J Eberlein" time="07 April 2021">
-                                <p>Need an example of this. And do we really want to recommend that
-                                    people do this? When would doing this make sense/be a best
-                                    practice?</p>
-                                <p>Comment from Robert Anderson, 17 May 2021: " I think you would
-                                    most likely want to chain them if you're reusing someone else's
-                                    constraint. For example, if someone wants to use the strict task
-                                    from OASIS but also wants to constrain &lt;step>, they could
-                                    import their module to constrain step, which then imports the
-                                    OASIS constraint for taskbody, which imports the core task
-                                    module. I find it hard to imagine chaining more than a couple,
-                                    because every one you add becomes more specific to your
-                                    configuration."</p>
-                                <p>Comment from Eliot Kimber, 18 May 2021: "I would be tempted to
-                                    just drop this discussion entirely. I think it's an edge case
-                                    for the reasons Robert gives. It's also inherent in the way RNG
-                                    works: anyone who understands RNG well enough to do this
-                                    understands it enough to know that they *can* do it--we don't
-                                    have to tell them how to do it (or that it's possible)."</p>
-                            </draft-comment>
+              <!--<draft-comment author="Kristen J Eberlein" time="07 April 2021"><p>Need an example of this. And do we really want to recommend that people do this? When would doing this make sense/be a best practice?</p><p>Comment from Robert Anderson, 17 May 2021: " I think you would most likely want to chain them if you're reusing someone else's constraint. For example, if someone wants to use the strict task from OASIS but also wants to constrain &lt;step>, they could import their module to constrain step, which then imports the OASIS constraint for taskbody, which imports the core task module. I find it hard to imagine chaining more than a couple, because every one you add becomes more specific to your configuration."</p><p>Comment from Eliot Kimber, 18 May 2021: "I would be tempted to just drop this discussion entirely. I think it's an edge case for the reasons Robert gives. It's also inherent in the way RNG works: anyone who understands RNG well enough to do this understands it enough to know that they *can* do it, we don't have to tell them how to do it (or that it's possible)."</p></draft-comment>-->
                         </div>
                     </dd>
                 </dlentry>
