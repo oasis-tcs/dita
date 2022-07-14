@@ -3,9 +3,10 @@
 <concept xml:lang="en-us" id="reference_cfb_ck4_5p">
   <title>Example: Constrain attributes for the <xmlelement>section</xmlelement> element using
     DTD</title>
-  <shortdesc>In this scenario, an information architect wants to redefine the attributes for the
-      <xmlelement>section</xmlelement> element. He wants to make the <xmlatt>id</xmlatt> attribute
-    required.</shortdesc>
+  <shortdesc>In this scenario, a <ph rev="2.0">DITA architect</ph> wants to
+    redefine the attributes for the <xmlelement>section</xmlelement>
+    element. <ph rev="2.0">They want</ph> to make the <xmlatt>id</xmlatt>
+    attribute required.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -19,10 +20,10 @@
   <conbody>
     <example id="example">
       <ol>
-        <li>He creates a <filepath>.mod</filepath> file named
-            <filepath>idRequiredSectionContraint.mod</filepath>, where "idRequired" is a string that
-          characterizes the constraint.</li>
-        <li>He adds the following content to
+        <li><ph rev="2.0">They create</ph> a <filepath>.mod</filepath> file
+          named <filepath>idRequiredSectionContraint.mod</filepath>, where
+          "idRequired" is a string that characterizes the constraint.</li>
+        <li><ph rev="2.0">They add</ph> the following content to
             <filepath>idRequiredSectionContraint.mod</filepath>:<codeblock>&lt;!-- Declares the entities referenced in the constrained content  -->
 &lt;!-- model.                                                       -->
 
@@ -109,22 +110,31 @@
                outputclass
                           CDATA
                                     #IMPLIED"
-></codeblock><note>The information architect had to declare all the parameter entities
-            that are referenced in the redefined attributes for <xmlelement>section</xmlelement>. If
-            he did not do so, none of the attributes that are declared in the  parameter entities
-            would be available on the <xmlelement>section</xmlelement> element. Furthermore, since
-            the <parameterentity>select-atts</parameterentity> parameter entity references the
-              <parameterentity>filter-atts</parameterentity> parameter entity, the
-              <parameterentity>filter-atts</parameterentity> must be declared and it must precede
-            the declaration for the <parameterentity>select-atts</parameterentity> parameter entity.
-            The <parameterentity>props-attribute-extensions</parameterentity> and
-              <parameterentity>base-attribute-extensions</parameterentity> parameter entities do not
-            need to be declared in the constraint module, because they are declared in the
-            document-type shells before the inclusion of the constraint module.</note></li>
-        <li>He adds the constraint module to the <filepath>catalog.xml</filepath> file.</li>
-        <li>He then integrates the constraint module into the applicable document-type shells.</li>
-        <li>After checking test topics to ensure that the content model is modified as expected, his
-          work is done.</li>
+></codeblock><note>The DITA architect had to declare all the
+            parameter entities that are referenced in the redefined
+            attributes for <xmlelement>section</xmlelement>. If <ph
+              rev="2.0">they</ph> did not do so, none of the attributes
+            that are declared in the parameter entities would be available
+            on the <xmlelement>section</xmlelement> element. Furthermore,
+            since the <parameterentity>select-atts</parameterentity>
+            parameter entity references the
+              <parameterentity>filter-atts</parameterentity> parameter
+            entity, the <parameterentity>filter-atts</parameterentity> must
+            be declared and it must precede the declaration for the
+              <parameterentity>select-atts</parameterentity> parameter
+            entity. The
+              <parameterentity>props-attribute-extensions</parameterentity>
+            and
+              <parameterentity>base-attribute-extensions</parameterentity>
+            parameter entities do not need to be declared in the constraint
+            module, because they are declared in the document-type shells
+            before the inclusion of the constraint module.</note></li>
+        <li><ph rev="2.0">They add</ph> the constraint module to the
+            <filepath>catalog.xml</filepath> file.</li>
+        <li><ph rev="2.0">They then integrate</ph> the constraint module
+          into the applicable document-type shells.</li>
+        <li>After checking the test topics to ensure that the content model
+          is modified as expected, the work is done.</li>
       </ol>
     </example>
   </conbody>

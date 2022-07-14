@@ -3,11 +3,14 @@
 <concept xml:lang="en-us" id="example-rng-constraints-redefine-content-model">
   <title>Example: Redefine the content model for the <xmlelement>topic</xmlelement> element using
     RNG</title>
-  <shortdesc>In this scenario, an information architect for Acme, Incorporated wants to redefine the
-    content model for the topic document type. She wants to omit the
-      <xmlelement>abstract</xmlelement> element and make the <xmlelement>shortdesc</xmlelement>
-    element required; she also wants to omit the <xmlelement>related-links</xmlelement> element and
-    disallow topic nesting.</shortdesc>
+  <shortdesc>In this scenario, <ph rev="2.0">a DITA architect</ph> for
+    Acme, Incorporated wants to redefine the content model for the topic
+    document type. <ph rev="2.0">They want</ph> to omit the
+      <xmlelement>abstract</xmlelement> element and make the
+      <xmlelement>shortdesc</xmlelement> element required; <ph rev="2.0"
+      >they also want</ph> to omit the
+      <xmlelement>related-links</xmlelement> element and disallow topic
+    nesting.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -21,14 +24,17 @@
   <conbody>
     <example id="example">
       <ol>
-        <li>She creates a <filepath>.mod</filepath> file using the following naming conventions:
+        <li><ph rev="2.0">They create</ph> a <filepath>.mod</filepath> file
+          using the following naming conventions:
               <filepath><varname>qualifer</varname><varname>Tagname</varname>ConstraintMod.rng</filepath>,
-          where <varname>qualifer</varname> is a string the describes the constraint, and
-            <varname>Tagname</varname> is the element type name with an initial capital. Her
-          constraint module is named <filepath>acme-TopicConstraintMod.rng</filepath>.</li>
-        <li>She updates the <filepath>catalog.xml</filepath> file to include the new constraint
-          module.</li>
-        <li>She adds the following content to
+          where <varname>qualifer</varname> is a string the describes the
+          constraint, and <varname>Tagname</varname> is the element type
+          name with an initial capital. Her constraint module is named
+            <filepath>acme-TopicConstraintMod.rng</filepath>.</li>
+        <li><ph rev="2.0">They update</ph> the
+            <filepath>catalog.xml</filepath> file to include the new
+          constraint module.</li>
+        <li><ph rev="2.0">They add</ph> the following content to
             <filepath>acme-TopicConstraint.mod</filepath>:<codeblock>&lt;div>
   &lt;a:documentation>CONTENT MODEL OVERRIDES&lt;/a:documentation>
   &lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0">
@@ -43,23 +49,28 @@
       &lt;/optional>
     &lt;/define>
   &lt;/include>
-&lt;/div></codeblock><draft-comment author="Kristen J Eberlein" time="21 April 2021">
-            <p>We need to change the header to "ATTRIBUTE AND CONTENT MODEL OVERRIDES" in the
-              constraint module that we ship.</p>
+&lt;/div></codeblock><draft-comment author="Kristen J Eberlein"
+            time="21 April 2021">
+            <p>We need to change the header to "ATTRIBUTE AND CONTENT MODEL
+              OVERRIDES" in the constraint module that we ship.</p>
             <p>Also, I know that the override won't happen without
-                <codeph>combine="interleave"</codeph>, but I don't know if we cover that in the
-              coding requirements topic. If people start with copy-ing-and-pasting from the module
-              that they are overriding, they won't have that and will get errors.</p>
+                <codeph>combine="interleave"</codeph>, but I don't know if
+              we cover that in the coding requirements topic. If people
+              start with copy-ing-and-pasting from the module that they are
+              overriding, they won't have that and will get errors.</p>
           </draft-comment></li>
-        <li>She then integrates the constraint module into her document-type shell for topic by
-          adding an <xmlelement>include</xmlelement> element in the "ELEMENT-TYPE CONFIGURATION
-          INTEGRATION" section:<codeblock>&lt;div>
+        <li><ph rev="2.0">They then integrate</ph> the constraint module
+          into the document-type shell for topic by adding an
+            <xmlelement>include</xmlelement> element in the "ELEMENT-TYPE
+          CONFIGURATION INTEGRATION" section:<codeblock>&lt;div>
   &lt;a:documentation>ELEMENT-TYPE CONFIGURATION INTEGRATION&lt;/a:documentation>
   &lt;include href="acme-TopicConstraintMod.rng"/>
 &lt;/div></codeblock></li>
         <li>
-          <p>She then removes the <xmlelement>include</xmlelement> statement that references
-              <filepath>topicMod.rng</filepath> from the "MODULE INCLUSIONS" section:</p>
+          <p><ph rev="2.0">They then remove</ph> the
+              <xmlelement>include</xmlelement> statement that references
+              <filepath>topicMod.rng</filepath> from the "MODULE
+            INCLUSIONS" section:</p>
           <codeblock>&lt;div>
   &lt;a:documentation>MODULE INCLUSIONS &lt;/a:documentation>
     <line-through>&lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0"/></line-through>
@@ -71,8 +82,8 @@
     &lt;include href="urn:oasis:names:tc:dita:rng:highlightDomain.rng:2.0"/>
   &lt;/div></codeblock>
         </li>
-        <li>After checking her test topic to ensure that the content model is modified as expected,
-          her work is done.</li>
+        <li>After checking the test topic to ensure that the content model
+          is modified as expected, the work is done.</li>
       </ol>
     </example>
   </conbody>

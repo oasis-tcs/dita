@@ -2,8 +2,8 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept xml:lang="en-us" id="reference_cfb_ck4_5p">
   <title>Example: Apply multiple constraints to a single document-type shell using RNG</title>
-  <shortdesc>In this scenario, an information architect wants to apply multiple constraints to a
-    document-type shell.</shortdesc>
+  <shortdesc>In this scenario, <ph rev="2.0">the DITA architect</ph> wants
+    to apply multiple constraints to a document-type shell.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -59,8 +59,9 @@
         directly in the document-type shell.</p>
       <ol>
         <li>
-          <p>The information architect creates a constraint module that combines the constraints
-            from <filepath>example-TopicConstraint.mod</filepath> and
+          <p>The <ph rev="2.0">DITA architect</ph> creates a constraint
+            module that combines the constraints from
+              <filepath>example-TopicConstraint.mod</filepath> and
               <filepath>example-SectionConstraint.mod</filepath>:</p>
           <codeblock base="ci-xml">&lt;?xml version="1.0" encoding="UTF-8"?>
 &lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
@@ -98,16 +99,17 @@
 &lt;/grammar></codeblock>
         </li>
         <li>
-          <p>In the document-type shell, the information architect integrates the constraint module
-            (and removes the inclusion statement for <filepath>topicMod.rng</filepath>):</p>
+          <p>In the document-type shell, <ph rev="2.0">they integrate</ph>
+            the constraint module (and <ph rev="2.0">remove</ph> the
+            inclusion statement for <filepath>topicMod.rng</filepath>):</p>
           <codeblock base="ci-xml">&lt;div>
   &lt;a:documentation>ELEMENT-TYPE CONFIGURATION INTEGRATION&lt;/a:documentation>
   &lt;include href="acme-SectionTopicContraintMod.rng"/>
 &lt;/div></codeblock>
         </li>
         <li>
-          <p>To constrain the highlight domain, the information architect modifies the include
-            statement for the domain module:</p>
+          <p>To constrain the highlight domain, <ph rev="2.0">they
+              modify</ph> the include statement for the domain module:</p>
           <codeblock base="ci-xml">&lt;div>
   &lt;a:documentation>MODULE INCLUSIONS&lt;/a:documentation>
   ...
@@ -134,15 +136,12 @@
   ..  
 &lt;/div></codeblock>
         </li>
-        <li>Finally, to disallow <xmlelement>ph</xmlelement>, the information architect adds the
-          following statement to the constraint
+        <li>Finally, to disallow <xmlelement>ph</xmlelement>, <ph rev="2.0"
+            >they add</ph> the following statement to the constraint
           module:<codeblock base="ci-xml">      &lt;define name="ph.element">
         &lt;notAllowed/>
       &lt;/define></codeblock></li>
       </ol>
-      <!--<draft-comment author="Kristen J Eberlein" time="21 April 2021"><p>In the above code sample, is the following needed or just a residue of the RNG-to-DTD converter?</p><codeblock>
-&lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
-                         schematypens="http://relaxng.org/ns/structure/1.0"?></codeblock><p>Also, I made up the header comment, not wanting it to be "CONTENT MODEL CONSTRAINTS". We should consider what we wants as sections/divs in the grammar files and ensure that the "titles" are the same across all files.</p></draft-comment>-->
     </example>
   </conbody>
   

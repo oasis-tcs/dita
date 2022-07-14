@@ -2,9 +2,10 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept xml:lang="en-us" id="reference_cfb_ck4_5p">
   <title>Example: Replace a base element with the domain extensions using DTD</title>
-  <shortdesc>In this scenario, an information architect wants to remove the
-      <xmlelement>ph</xmlelement> element but allow the extensions of <xmlelement>ph</xmlelement>
-    that exist in the highlighting, programming, software, and user interface domains.</shortdesc>
+  <shortdesc>In this scenario, <ph rev="2.0">a DITA</ph> architect wants to
+    remove the <xmlelement>ph</xmlelement> element but allow the extensions
+    of <xmlelement>ph</xmlelement> that exist in the highlighting,
+    programming, software, and user interface domains.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -18,18 +19,21 @@
   <conbody>
     <example id="example">
       <ol>
-        <li>In the "DOMAIN EXTENSIONS" section, the information architect removes the reference to
-          the <xmlelement>ph</xmlelement>
+        <li>In the "DOMAIN EXTENSIONS" section, <ph rev="2.0">the DITA
+            architect</ph> removes the reference to the
+            <xmlelement>ph</xmlelement>
           element:<codeblock>&lt;!-- Removed "ph | " so as to make &lt;ph> not available, only the domain extensions. -->
 &lt;!ENTITY % ph           "%pr-d-ph; |
                          %sw-d-ph; | 
                          %ui-d-ph;
                         "></codeblock></li>
       </ol>
-      <note>Because no other entities are modified or declared outside of the usual "DOMAIN
-        EXTENSIONS" section, this completes the information architect's task. Because no new grammar
-        file or entity is created that would highlight this change, adding a comment to highlight
-        the constraint becomes particularly important (as shown in the example above).</note>
+      <note>Because no other entities are modified or declared outside of
+        the usual "DOMAIN EXTENSIONS" section, this completes the
+        architect's task. Because no new grammar file or entity is created
+        that would highlight this change, adding a comment to highlight the
+        constraint becomes particularly important (as shown in the example
+        above).</note>
     </example>
   </conbody>
   
