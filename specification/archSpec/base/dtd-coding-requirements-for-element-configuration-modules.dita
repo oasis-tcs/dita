@@ -43,17 +43,10 @@
                     </dlentry>
                 </dl>
             </example>
-            <p>For expansion modules, note the following considerations:</p>
-            <ul>
-                <li>The <codeph><varname>tagname</varname>.attributes</codeph> parameter entity can
-                    be defined in an attribute specialization module, or it can be defined directly
-                    in the expansion module.</li>
-                <li>By convention, the name of the parameter entity ends with
-                        <codeph>-expansion</codeph>; this indicates that this is an expansion
-                    attribute and is not intended to be included in the
-                        <parameterentity>base-attribute-extensions</parameterentity> entity in the
-                    document-type shell.</li>
-            </ul>
+            <p>For expansion modules, note the following considerations.The
+            <codeph><varname>tagname</varname>.attributes</codeph>
+        parameter entity can be defined in an attribute specialization
+        module, or it can be defined directly in the expansion module.</p>
         </section>
         <section>
             <title>The <codeph><varname>tagname</varname>.content</codeph> parameter entity</title>
@@ -79,6 +72,18 @@
     (%body;)?, 
     (%topic-info-types;)*)"
 ></codeblock>
+              <p>Note that replacing a base element with domain extensions
+                is a form of constraint that can be accomplished directly
+                in the document-type shell. No constraint module is
+                required.</p>
+              <p otherprops="examples">In the following example, the
+                  <xmlelement>pre</xmlelement> base type is removed from
+                the entity declaration, effectively allowing only
+                specializations of <xmlelement>pre</xmlelement> but not
+                  <xmlelement>pre</xmlelement> itself.<codeblock otherprops="examples"><![CDATA[<!ENTITY % pre
+    "%pr-d-pre; | 
+     %sw-d-pre; | 
+     %ui-d-pre;">]]></codeblock></p>
                         </dd>
                     </dlentry>
                     <dlentry>
@@ -122,28 +127,11 @@
                     </dlentry>
                 </dl>
             </example>
-            <draft-comment author="Kristen J Eberlein" time="18 May 2021">
-                <p>If we go with this approach -- handling coding requirements for constraint and
-                    expansion in a single topic, we need to find a home for the following content
-                    that orginally was in the coding requirements for constraints topic:</p>
-            </draft-comment>
+      <!--<draft-comment author="Kristen J Eberlein" time="18 May 2021"><p>If we go with this approach,  handling coding requirements for constraint and expansion in a single topic, we need to find a home for the following content that orginally was in the coding requirements for constraints topic:</p></draft-comment>-->
         </section>
-        <section id="remove-base-element">
-            <title>Constraining to replace a base element with domain extensions</title>
-            <p>When element domains are used to extend a base element, those extensions can be used
-                to replace the base element. This form of constraint is done inside the
-                document-type shell.</p>
-            <p>Within a document-type shell, <xref
-                    href="dtd-coding-doctype-shell.dita#shell-dtd-coding-reqs/domain-extensions"
-                    >domain extensions</xref> are implemented by declaring an entity for a base
-                element. The value of the entity can omit any base element types from which the
-                other element types that are listed are specialized.</p>
-            <p otherprops="examples">In the following example, the <xmlelement>pre</xmlelement> base
-                type is removed from the entity declaration, effectively allowing only
-                specializations of <xmlelement>pre</xmlelement> but not <xmlelement>pre</xmlelement> itself.<codeblock otherprops="examples"><![CDATA[<!ENTITY % pre
+    <!--<section id="remove-base-element"><title>Constraining to replace a base element with domain extensions</title><p>When element domains are used to extend a base element, those extensions can be used to replace the base element. This form of constraint is done inside the document-type shell.</p><p>Within a document-type shell, <xref href="dtd-coding-doctype-shell.dita#shell-dtd-coding-reqs/domain-extensions">domain extensions</xref> are implemented by declaring an entity for a base element. The value of the entity can omit any base element types from which the other element types that are listed are specialized.</p><p otherprops="examples">In the following example, the <xmlelement>pre</xmlelement> base type is removed from the entity declaration, effectively allowing only specializations of <xmlelement>pre</xmlelement> but not <xmlelement>pre</xmlelement> itself.<codeblock otherprops="examples"><![CDATA[<!ENTITY % pre
     "%pr-d-pre; | 
      %sw-d-pre; | 
-     %ui-d-pre;">]]></codeblock></p>
-        </section>
+     %ui-d-pre;">]]></codeblock></p></section>-->
     </conbody>
 </concept>

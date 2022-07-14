@@ -17,30 +17,47 @@
   </metadata>
  </prolog>
  <conbody>
-  <p>In addition to simplifying document-type shells, the self-integrating aspect of RELAX NG
-   results in the following coding practices:</p>
-  <ul>
-   <li>Each specialization module consists of a single file, unlike the two required for DTDs.</li>
-   <li>Domain modules directly extend elements, unlike DTDs, which rely on an extra file and
-    extensions within the document-type shell.</li>
-   <li rev="2.0">Element-configuration modules (constraint and expansion) directly include the
-    modules that they extend, which means that just by referencing an element-configuration module,
-    the document-type shell gets everything it needs to redefine a vocabulary module.</li>
-  </ul>
-  <p>RELAX NG grammars for DITA document-type shells, vocabulary modules, and <ph rev="2.0"
-    >element-configuration modules (constraint and expansion) </ph><term outputclass="RFC-2119"
-    >MAY</term> do the following:<ul>
-    <li>Use the <xmlelement>a:documentation</xmlelement> element anywhere that foreign elements are
-     allowed by RELAX NG. The <xmlelement>a:documentation</xmlelement> element refers to the
-      <xmlelement>documentation</xmlelement> element type from the
-      <xmlnsname>http://relaxng.org/ns/compatibility/annotations/1.0</xmlnsname> as defined by the
-     DTD compatibility specification. The prefix "a" is used by convention.</li>
-    <li>Use <xmlelement>div</xmlelement> to group pattern declarations.</li>
-    <li>Include embedded Schematron rules or any other foreign vocabulary. Processors <term
-      outputclass="RFC-2119">MAY</term> ignore any foreign vocabularies within DITA grammars that
-     are not in the <xmlnsname>http://relaxng.org/ns/compatibility/annotations/1.0</xmlnsname> or
-      <xmlnsname>http://dita.oasis-open.org/architecture/2005/</xmlnsname> namespaces.</li>
-   </ul></p>
+    <section>
+      <title rev="2.0">Self-integration of RELAX NG</title>
+      <p>In addition to simplifying document-type shells, the
+        self-integrating aspect of RELAX NG results in the following coding
+        practices:</p>
+      <ul>
+        <li>Each specialization module consists of a single file, unlike
+          the two required for DTDs.</li>
+        <li>Domain modules directly extend elements, unlike DTDs, which
+          rely on an extra file and extensions within the document-type
+          shell.</li>
+        <li rev="2.0">Element-configuration modules (constraint and
+          expansion) directly include the modules that they extend, which
+          means that just by referencing an element-configuration module,
+          the document-type shell gets everything it needs to redefine a
+          vocabulary module.</li>
+      </ul>
+      <p>RELAX NG grammars for DITA document-type shells, vocabulary
+        modules, and <ph rev="2.0">element-configuration modules
+          (constraint and expansion) </ph><term outputclass="RFC-2119"
+          >MAY</term> do the following:<ul>
+          <li>Use the <xmlelement>a:documentation</xmlelement> element
+            anywhere that foreign elements are allowed by RELAX NG. The
+              <xmlelement>a:documentation</xmlelement> element refers to
+            the <xmlelement>documentation</xmlelement> element type from
+            the
+              <xmlnsname>http://relaxng.org/ns/compatibility/annotations/1.0</xmlnsname>
+            as defined by the DTD compatibility specification. The prefix
+            "a" is used by convention.</li>
+          <li>Use <xmlelement>div</xmlelement> to group pattern
+            declarations.</li>
+          <li>Include embedded Schematron rules or any other foreign
+            vocabulary. Processors <term outputclass="RFC-2119">MAY</term>
+            ignore any foreign vocabularies within DITA grammars that are
+            not in the
+              <xmlnsname>http://relaxng.org/ns/compatibility/annotations/1.0</xmlnsname>
+            or
+              <xmlnsname>http://dita.oasis-open.org/architecture/2005/</xmlnsname>
+            namespaces.</li>
+        </ul></p>
+    </section>
   <section id="complex-vs-xml-syntax">
    <title>Syntax for RELAX NG grammars</title>
    <p>The RELAX NG specification defines two syntaxes for RELAX NG grammars: the XML syntax and the
@@ -58,11 +75,6 @@
     vocabulary modules, and <ph rev="2.0">element-configuration modules (constraints and
      expansion)</ph> that use the RELAX NG compact syntax can use the same organization requirements
     as those defined for the RELAX NG XML syntax. </p>
-   <draft-comment author="Kristen J Eberlein" time="02 April 2021">
-    <p>I have a problem with having a single section with a title. Either other content in this
-     topic needs to be grouped into at titled section, or the original section needs to be
-     removed.</p>
-   </draft-comment>
   </section>
  </conbody>
 </concept>
