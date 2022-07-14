@@ -4,9 +4,10 @@
   id="reference_cfb_ck4_5pexample-rng-constraints-redefine-content-model-attributes">
   <title>Example: Constrain attributes for the <xmlelement>section</xmlelement> element using
     RNG</title>
-  <shortdesc>In this scenario, an information architect wants to redefine the attributes for the
-      <xmlelement>section</xmlelement> element. He wants to make the <xmlatt>id</xmlatt> attribute
-    required.</shortdesc>
+  <shortdesc>In this scenario, <ph rev="2.0">a DITA architect</ph> wants to
+    redefine the attributes for the <xmlelement>section</xmlelement>
+    element. <ph rev="2.0">They want</ph> to make the <xmlatt>id</xmlatt>
+    attribute required.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -20,19 +21,25 @@
   <conbody>
     <example id="example">
       <ol>
-        <li>He creates a file named <filepath>id-requiredSectionContraintMod.rng</filepath>, where
-            <varname>id-required</varname> is a string that characterizes the
-            constraint.<draft-comment author="Kristen J Eberlein" time="17 May 2021">
-            <p>Comment from Robert Anderson: "Section 8.5.5.2, seems odd to me that we say "...where
-              id-required is a string that characterizes the constraint." First, because that's
-              clear from what we're doing, and second, because the author could use any name they
-              want."</p>
-            <p>Reminder to check other example topics (constraint and expansion) to see how often we
-              provide info about conventions for file naming, and then talk to Robert about it.</p>
+        <li><ph rev="2.0">They create</ph> a file named
+            <filepath>id-requiredSectionContraintMod.rng</filepath>, where
+            <varname>id-required</varname> is a string that characterizes
+          the constraint.<draft-comment author="Kristen J Eberlein"
+            time="17 May 2021">
+            <p>Comment from Robert Anderson: "Section 8.5.5.2, seems odd to
+              me that we say "...where id-required is a string that
+              characterizes the constraint." First, because that's clear
+              from what we're doing, and second, because the author could
+              use any name they want."</p>
+            <p>Reminder to check other example topics (constraint and
+              expansion) to see how often we provide info about conventions
+              for file naming, and then talk to Robert about it.</p>
           </draft-comment></li>
-        <li>He updates the <filepath>catalog.xml</filepath> file to include the new constraint
-          module.</li>
-        <li>He adds the following content to the constraint
+        <li><ph rev="2.0">They update</ph> the
+            <filepath>catalog.xml</filepath> file to include the new
+          constraint module.</li>
+        <li><ph rev="2.0">They add</ph> the following content to the
+          constraint
             module:<codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
 &lt;grammar 
   xmlns="http://relaxng.org/ns/structure/1.0"
@@ -57,19 +64,23 @@
     &lt;/include>
   &lt;/div>
 
-&lt;/grammar>  </codeblock><p>Note that unlike a constraint module that is implemented
-            using DTD, this constraint module did not need to re-declare the patterns that are
-            referenced in the redefinition of the content model for
-            <xmlelement>section</xmlelement></p></li>
-        <li>He then integrates the constraint module into her document-type shell for topic by
-          adding an <xmlelement>include</xmlelement> element in the "CONTENT CONSTRAINT INTEGRATION"
-          section:<codeblock>&lt;div>
+&lt;/grammar>  </codeblock><p>Note that unlike a constraint
+            module that is implemented using DTD, this constraint module
+            did not need to re-declare the patterns that are referenced in
+            the redefinition of the content model for
+              <xmlelement>section</xmlelement></p></li>
+        <li><ph rev="2.0">They then integrate</ph> the constraint module
+          into the document-type shell for topic by adding an
+            <xmlelement>include</xmlelement> element in the "CONTENT
+          CONSTRAINT INTEGRATION" section:<codeblock>&lt;div>
   &lt;a:documentation>CONTENT CONSTRAINT INTEGRATION&lt;/a:documentation>
   &lt;include href="id-requiredSectionConstraintMod.rng"/>
 &lt;/div></codeblock></li>
         <li>
-          <p>He then removes the <xmlelement>include</xmlelement> statement that references
-              <filepath>topicMod.rng</filepath> from the "MODULE INCLUSIONS" section:</p>
+          <p><ph rev="2.0">They then remove</ph> the
+              <xmlelement>include</xmlelement> statement that references
+              <filepath>topicMod.rng</filepath> from the "MODULE
+            INCLUSIONS" section:</p>
           <codeblock>&lt;div>
   &lt;a:documentation>MODULE INCLUSIONS &lt;/a:documentation>
     <line-through>&lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0"/></line-through>
@@ -81,8 +92,8 @@
     &lt;include href="urn:oasis:names:tc:dita:rng:highlightDomain.rng:2.0"/>
   &lt;/div></codeblock>
         </li>
-        <li>After checking his test topic to ensure that the attribute list is modified as expected,
-          his work is done.</li>
+        <li>After checking the test topic to ensure that the attribute list
+          is modified as expected, the work is done.</li>
       </ol>
     </example>
   </conbody>
