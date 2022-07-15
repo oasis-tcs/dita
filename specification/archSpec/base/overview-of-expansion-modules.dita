@@ -21,14 +21,14 @@
                         making the specialized elements available wherever the specialization base
                         is permitted.</p>
                     <p otherprops="examples">For example, an expansion for
-                            <xmlelement>section</xmlelement> can make a new element
-                            (<xmlelement>sectionDesc</xmlelement>) available as an optional, child
-                        element. The <xmlelement>sectionDesc</xmlelement> is specialized from
-                            <xmlelement>p</xmlelement>, but it is available only within
-                            <xmlelement>section</xmlelement>.</p>
+              <xmlelement>section</xmlelement> can make a new element
+              (<xmlelement>sectionDesc</xmlelement>) available as an
+            optional, child element. The
+              <xmlelement>sectionDesc</xmlelement> element is specialized
+            from <xmlelement>p</xmlelement>, but it is available only
+            within <xmlelement>section</xmlelement>.</p>
                     <p>The elements must be defined in a separate element domain that declares the
                         content models and attribute lists for the new elements.</p>
-                    <!--<draft-comment author="Kristen J Eberlein" time="28 March 2021"><p>In your draft, you mention that the specialization module must not "make the element available gobally." Do you have an example of this? Is it as simple as not having an ENT file that declares the extension entities?</p></draft-comment>-->
                 </dd>
             </dlentry>
             <dlentry>
@@ -42,18 +42,11 @@
                             <xmlelement>colspec</xmlelement> can make <xmlatt>cell-purpose</xmlatt>
                         available only on those elements. The <xmlatt>cell-purpose</xmlatt>
                         attribute is specialized from <xmlatt>base</xmlatt>.</p>
-                    <p>The additional attributes either can be defined directly within the expansion
-                        module, or they can be defined in separate attribute-specialization modules.
-                        In either case, the token used as value for the
-                            <xmlatt>specializations</xmlatt> attribute must be defined.</p>
-                    <draft-comment author="Kristen J Eberlein" time="17 May 2021">
-                        <p>Robert had the following comment: "Also I'm not sure what it means to say
-                            they can be defined directly in the module or defined in separate
-                            modules -- does that mean it can be one module for entry/@cell-pupose,
-                            another for row/@cell-purpose, etc?"</p>
-                        <p>Wording came from Chris Nitchie's original rewrite; clarify intent with
-                            him.</p>
-                    </draft-comment>
+                    <p>The additional attribute can be either defined
+            directly within the expansion module, or it can be defined in a
+            separate attribute-specialization module. In either case, the
+            token used as value for the <xmlatt>specializations</xmlatt>
+            attribute must be defined.</p>
                 </dd>
             </dlentry>
         </dl>
