@@ -2,8 +2,11 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="expansion_module_rules">
     <title>Expansion module rules</title>
-    <shortdesc>There are certain rules that apply to the design and implementation of expansion
-        modules.</shortdesc>
+    <shortdesc>There are certain rules that apply to the design and
+    implementation of expansion modules. <ph rev="2.0">These rules all stem
+      from the requirement that, after generalization, the content model of
+      a element affected by an expansion module must match the original
+      content model for that element.</ph></shortdesc>
     <prolog>
         <metadata>
             <keywords>
@@ -15,91 +18,69 @@
         </metadata>
     </prolog>
     <conbody>
-        <draft-comment author="Kristen J Eberlein" time="18 May 2021">
-            <p>Comment by Chris Nitchie: "I feel like somewhere we need something like this
-                sentence, maybe at the top: "The generalized form of an expanded element's content
-                model must match that of the unexpanded content model." All of what follows stems
-                from this statement."</p>
-            <p>Comment by Eliot Kimber: "I think this is an expansion of the suggested qualification
-                of expansion I suggested for a much earlier point in the spec. I'm not sure it's
-                necessary to go into this level of detail because the constraints on expansion
-                should be clear based on the "no less constrained" requirement. That said, it's
-                always helpful to have examples. Maybe this is better represented as a set of
-                non-normative examples?"</p>
-        </draft-comment>
+    <!--<draft-comment author="Kristen J Eberlein" time="18 May 2021"><p>Comment by Chris Nitchie: "I feel like somewhere we need something like this sentence, maybe at the top: "The generalized form of an expanded element's content model must match that of the unexpanded content model." All of what follows stems from this statement."</p><p>Comment by Eliot Kimber: "I think this is an expansion of the suggested qualification of expansion I suggested for a much earlier point in the spec. I'm not sure it's necessary to go into this level of detail because the constraints on expansion should be clear based on the "no less constrained" requirement. That said, it's always helpful to have examples. Maybe this is better represented as a set of non-normative examples?"</p></draft-comment>-->
         <dl>
             <dlentry>
                 <dt>Specialization base of expanded elements</dt>
                 <dd>
-                    <p>Elements added to content models by expansion models must be specializations
-                        of existing elements that are permitted in the content model. The elements
-                        that are added must only be allowed where their specialization base is
-                        allowed.</p>
-                    <p>For example, when creating an expansion model that adds a specialization of
-                            <xmlelement>data</xmlelement> to <xmlelement>ol</xmlelement>, the
-                        element must only be allowed before any <xmlelement>li</xmlelement>
-                        elements, as that is the only place <xmlelement>data</xmlelement> is allowed
-                        in the content model for ordered lists.</p>
+                    <p>Elements that are added to content models by
+            expansion models must be specializations of existing elements
+            that are permitted in the content model.</p>
                 </dd>
             </dlentry>
             <dlentry>
                 <dt>Content model of expanded elements</dt>
                 <dd>
-                    <p>Expansion modules must not affect the ordinality of the original content
-                        model. If the original content model only permits an element to occur once,
-                        then the expanded content model cannot break this requirement.</p>
-                    <draft-comment author="Kristen J Eberlein">
-                        <p>Comment from Robert Anderson: "Not sure about this, but not sure how to
-                            fix the concern: "Expansion modules must not affect the ordinality of
-                            the original content model". I don't think that's technically true in
-                            all cases, depending on how "ordinality" is defined. You can use an
-                            expansion model that adds &lt;mySpecialListItem> as the required first
-                            child of &lt;ol>, and then make all following list items optional. It's
-                            valid because every list has at least one list item (that specialized
-                            thing), but it changes lists to make a required &lt;li> optional."</p>
-                        <p>Comment from Eliot Kimber: "I would say "violate" here, since per
-                            Robert's comment, you can change the ordinality as long as the result is
-                            consistent with the original. If A is only allowed before B you can't
-                            change that but if A and B are in an OR group you can put them into a
-                            sequence by extension."</p>
-                    </draft-comment>
-                    <div otherprops="examples">
-                        <p>For example, a DITA architect wants to add a new specialization of
-                                <xmlelement>title</xmlelement> to the <xmlelement>topic</xmlelement>
-                            element. Since the <xmlelement>title</xmlelement> element is only
-                            permitted once within a topic, the expansion module must perform one of
-                            the following actions:</p>
-                        <ul>
-                            <li>Replace <xmlelement>title</xmlelement> with the new specialization
-                                of title: <xmlelement>nomarkup-title</xmlelement></li>
-                            <li>Modify the content model of topic to require a choice between
-                                    <xmlelement>title</xmlelement> and the new specialized
-                                element</li>
-                        </ul>
-                        <draft-comment author="Kristen J Eberlein" time="17 May 2021">
-                            <p>Robert had the following comment: "Actually isn't the actual example
-                                here doing what it sort of says not to do? It explains why this is
-                                valid, but ... it's making a required &lt;title> optional because an
-                                alternate title takes its place, which again, we might need to
-                                redefine "ordinality" as "DITA ordinality" to cover
-                                specialization?"</p>
-                            <p>Comment from Eliot: "Using title in section as an example is both
-                                problematic but also very instructive. It's problematic because the
-                                grammar is *less constrained* than the prose of the specification,
-                                so the rule as stated in Kris' text is correct--the *prose* doesn't
-                                allow &lt;title> anywhere except as the first child of &lt;section>,
-                                so the solution proposed is correct, in particular, the requirement
-                                to make a choice between &lt;title> and the &lt;specialization>,
-                                *because of the prose-imposed rule*, a rule not expressed in the
-                                grammars. A better example, or at least a more obvious one, would be
-                                an expansion of an element whose base content model is a sequence
-                                (i.e., prolog). That said, it's probably useful to focus on
-                                &lt;section> for this because so many people don't understand this
-                                subtlety of &lt;section>."</p>
-                        </draft-comment>
-                    </div>
+          <p>Elements that are added to content models by expansion models
+            must be allowed only where their specialization base is
+            allowed.</p>
+          <p otherprops="examples">For example, when creating an expansion
+            model that adds a specialization of
+              <xmlelement>data</xmlelement> to <xmlelement>ol</xmlelement>,
+            the specialization of  <xmlelement>data</xmlelement> must only
+            be allowed before any <xmlelement>li</xmlelement> elements, as
+            that is the only place that the <xmlelement>data</xmlelement>
+            element is allowed in the content model for an ordered
+            list.</p>
                 </dd>
             </dlentry>
+      <dlentry>
+        <dt rev="2.0">Ordinality of expanded elements</dt>
+        <dd>
+          <p>Elements that are added to content models by expansion modules
+            must not <ph rev="2.0">violate</ph> the ordinality of the
+            original content model. <ph rev="2.0">If the original content
+              model requires a child element to occur at least once, then
+              the expanded content model cannot break this
+              requirement.</ph> If the original content model only permits
+            a <ph rev="2.0">child</ph> element to occur once, then the
+            expanded content model cannot break this requirement.</p>
+          <div otherprops="examples">
+            <p>For example, in the expansion module that adds a
+              specialization of <xmlelement>data</xmlelement> to
+                <xmlelement>ol</xmlelement>, the redefined content model
+              for <xmlelement>ol</xmlelement> cannot make the
+                <xmlelement>li</xmlelement> element optional.</p>
+            <p rev="2.0">However, a expansion module that adds a
+              specialization of <xmlelement>li</xmlelement>
+                (<xmlelement>listIntro</xmlelement>) to
+                <xmlelement>ol</xmlelement> can redefine the content model
+              of <xmlelement>ol</xmlelement> in the following ways:</p>
+            <ul rev="2.0">
+              <li>Make <xmlelement>listIntro</xmlelement> the first child
+                element and be required</li>
+              <li>Make <xmlelement>li</xmlelement> the second child element
+                and optional</li>
+            </ul>
+            <p rev="2.0">When a DITA topic affected by this expansion
+              module is generalized, the resulting markup would be valid;
+              the content model of <xmlelement>ol</xmlelement> would be
+              respected.</p>
+          </div>
+          <!--<draft-comment author="Kristen J Eberlein"><p>Comment from Robert Anderson: "Not sure about this, but not sure how to fix the concern: "Expansion modules must not affect the ordinality of the original content model". I don't think that's technically true in all cases, depending on how "ordinality" is defined. You can use an expansion model that adds &lt;mySpecialListItem> as the required first child of &lt;ol>, and then make all following list items optional. It's valid because every list has at least one list item (that specialized thing), but it changes lists to make a required &lt;li> optional."</p><p>Comment from Eliot Kimber: "I would say "violate" here, since per Robert's comment, you can change the ordinality as long as the result is consistent with the original. If A is only allowed before B you can't change that but if A and B are in an OR group you can put them into a sequence by extension."</p></draft-comment>-->
+          <!--<div otherprops="examples"><p>For example, a DITA architect wants to add a new specialization of <xmlelement>title</xmlelement> to the <xmlelement>topic</xmlelement> element. Since the <xmlelement>title</xmlelement> element is only permitted once within a topic, the expansion module must perform one of the following actions:</p><ul><li>Replace <xmlelement>title</xmlelement> with the new specialization of title: <xmlelement>nomarkup-title</xmlelement></li><li>Modify the content model of topic to require a choice between <xmlelement>title</xmlelement> and the new specialized element</li></ul><draft-comment author="Kristen J Eberlein" time="17 May 2021"><p>Robert had the following comment: "Actually isn't the actual example here doing what it sort of says not to do? It explains why this is valid, but ... it's making a required &lt;title> optional because an alternate title takes its place, which again, we might need to redefine "ordinality" as "DITA ordinality" to cover specialization?"</p><p>Comment from Eliot: "Using title in section as an example is both problematic but also very instructive. It's problematic because the grammar is *less constrained* than the prose of the specification, so the rule as stated in Kris' text is correct - the *prose* doesn't allow &lt;title> anywhere except as the first child of &lt;section>, so the solution proposed is correct, in particular, the requirement to make a choice between &lt;title> and the &lt;specialization>, *because of the prose-imposed rule*, a rule not expressed in the grammars. A better example, or at least a more obvious one, would be an expansion of an element whose base content model is a sequence (i.e., prolog). That said, it's probably useful to focus on &lt;section> for this because so many people don't understand this subtlety of &lt;section>."</p></draft-comment></div>-->
+        </dd>
+      </dlentry>
             <dlentry>
                 <dt>Aggregation of expansion modules</dt>
                 <dd>
