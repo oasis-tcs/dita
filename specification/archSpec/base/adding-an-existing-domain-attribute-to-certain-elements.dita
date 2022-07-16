@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="adding-an-attribute-to-certain-table-elements">
+  <title>Example: Adding an existing domain attribute to certain elements
+    using DTDs</title>
+  <shortdesc>In this scenario, a company wants to use the
+      <xmlatt>otherprops</xmlatt> attribute specialization. However, they
+    want to make the attribute available <b>only</b> on certain elements:
+      <xmlelement>p</xmlelement>, <xmlelement>div</xmlelement>, and
+      <xmlelement>section</xmlelement>.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>expansion modules<indexterm>examples<indexterm>expanding
+              attributes for an element</indexterm></indexterm></indexterm>
+        <indexterm>examples<indexterm>expansion modules<indexterm>expanding
+              attributes for an element</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>The DITA architect will need to create an extension module and
+      integrate it into the appropriate document-type shells.</p>
+    <ol>
+      <li>
+        <p>The DITA architect creates an expansion module that adds the
+            <xmlatt>otherprops</xmlatt> attribute to the selected elements:
+            <filepath>acme-otherpropsAttExpansion.mod</filepath>. The
+          expansion module contains the following code:</p>
+        <codeblock base="ci-xml">&lt;?xml version="1.0" encoding="UTF-8"?>
+<b>
+&lt;!-- Add the otherprops attribute to certain elements -->
+&lt;!ATTLIST p %otherpropsAtt-d-attribute;>
+&lt;!ATTLIST div %otherpropsAtt-d-attribute;>
+&lt;!ATTLIST section %otherpropsAtt-d-attribute;></b></codeblock>
+        <p>Note that the <codeph>%otherpropsAtt-d-attribute;</codeph> is
+          defined in the separate attribute-specialization module that
+          defines the <xmlatt>otherprops</xmlatt> attribute.</p>
+      </li>
+      <li>They then update the <filepath>catalog.xml</filepath> file to
+        include the expansion module.</li>
+      <li>They integrate the extension module into the applicable
+        document-type shell, <b>after</b> the declaration for the
+          <xmlatt>otherprops</xmlatt> attribute-specialization
+        module:<codeblock base="ci-xml">&lt;!-- ============================================================= -->
+&lt;!--             DOMAIN ATTRIBUTES DECLARATIONS                    -->
+&lt;!-- ============================================================= -->
+...
+
+&lt;!ENTITY % otherpropsAtt-d-dec
+  PUBLIC "-//OASIS//ENTITIES DITA 2.0 Otherprops Attribute Domain//EN"
+         "otherpropsAttDomain.ent"
+>%otherpropsAtt-d-dec;
+<b>
+&lt;!ENTITY % otherprops-expansion-e-def  
+  PUBLIC "-//ACME//DITA 2.0 Otherprops Expansion//EN" 
+         "acme-otherpropsAttExpansion.mod"
+  >%otherprops-expansion-e-def;</b>
+
+...</codeblock></li>
+      <li>
+        <p>They remove the reference to the <xmlatt>otherprops</xmlatt>
+          attribute from the <codeph>props-attribute-extension</codeph>
+          entity:</p>
+        <codeblock base="ci-xml">&lt;!-- ============================================================= -->
+&lt;!--                    DOMAIN ATTRIBUTE EXTENSIONS                -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY % base-attribute-extensions
+  ""
+>
+
+&lt;!ENTITY % props-attribute-extensions
+  "%audienceAtt-d-attribute;
+   %deliveryTargetAtt-d-attribute;
+   <b><line-through>%otherpropsAtt-d-attribute;</line-through></b>
+   %platformAtt-d-attribute;
+   %productAtt-d-attribute;"
+></codeblock>
+      </li>
+      <li>They ensure that the <codeph>included-domains</codeph> entity
+        contains the <xmlatt>otherprops</xmlatt> contribution to the
+          <xmlatt>specializations</xmlatt> attribute:
+        <codeblock base="ci-xml">&lt;!-- ============================================================= -->
+&lt;!--                 SPECIALIZATIONS ATTRIBUTE OVERRIDE            -->
+&lt;!-- ============================================================= -->
+
+&lt;!ENTITY included-domains
+                          "&amp;audienceAtt-d-att;
+                           &amp;deliveryTargetAtt-d-att;
+                           <b>&amp;otherpropsAtt-d-att;</b>
+                           &amp;platformAtt-d-att;
+                           &amp;productAtt-d-att;"
+></codeblock></li>
+      <li>After checking the test topic to ensure that the attribute lists
+        are modified as expected, the work is done.</li>
+    </ol>
+  </conbody>
+</concept>
