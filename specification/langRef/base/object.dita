@@ -34,8 +34,7 @@
         <section id="attributes">
             <title>Attributes</title>
             <p>The following attributes are available on this element: <ph
-                    conkeyref="reuse-attributes/ref-universalatts"/> and the attributes defined
-                below.</p>
+        conkeyref="reuse-attributes/ref-universalatts"/> and the attributes defined below.</p>
             <dl>
                 <dlentry id="data">
                     <dt id="attr-data"><xmlatt>data</xmlatt></dt>
@@ -96,20 +95,41 @@
       <p>This section contains examples of how the
           <xmlelement>object</xmlelement> element can be used.</p>
       <fig>
-        <title>Referencing a PDF</title>
-        <p>The following code sample shows how an
-            <xmlelement>object</xmlelement> element can be used to render a
-          PDF as an inline object:</p>
-        <codeblock>
-&lt;object type="application/pdf"
-        data="resources/pdf/terms.pdf"
-        width="300"
-        height="200"
-        id="terms-and-conditions">
-   &lt;desc&gt;Terms and conditions for using the site.&lt;/desc&gt;
-   &lt;fallback>PDF cannot be displayed; please download the terms and 
-             conditions from &lt;xref keyref="site-terms"/>.&lt;/fallback>
+        <title>Referencing a web page for display in an HTML iframe</title>
+        <p>The following code sample shows how an <xmlelement>object</xmlelement> element can be
+          used to render a web page in an iframe:</p>
+        <codeblock>&lt;object type="text/html"
+        data="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776
+              %2C0.00030577182769775396
+              %2C51.478569861898606
+              &amp;layer=mapnik"
+        width="800"
+        height="600"
+        id="volume-to-radius-calculator"
+        outputclass="iframe">
+   &lt;desc&gt;Volume-to-radius calculator.&lt;/desc&gt;
+   &lt;fallback>&lt;xref format="html" scope="external"
+       href="https://www.example.com/sphere-volume-to-radius-calculator/"
+    />https://www.example.com/sphere-volume-to-radius-calculator/&lt;/xref>&lt;/fallback>
 &lt;/object&gt;</codeblock>
+        <p>
+          <draft-comment author="eliot.kimber">The URL as shown works in my working example with the
+            line breaks before the %2C escaped
+            characters.<codeblock>&lt;!DOCTYPE html>
+&lt;html>
+  &lt;head>
+    &lt;title>Test of Iframe&lt;/title>
+  &lt;/head>
+  &lt;body>
+    &lt;p>Iframe:&lt;/p>
+    &lt;iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776
+      %2C0.00030577182769775396
+      %2C51.478569861898606
+      &amp;layer=mapnik"       
+      >Street map&lt;/iframe>
+  &lt;/body>
+&lt;/html></codeblock></draft-comment>
+        </p>
       </fig>
             <fig id="fig_o2l_bfb_4k">
                 <title>Object with reference to video using key reference on the
