@@ -38,20 +38,9 @@
       architects who construct document-type shells to decide the elements
       to which to apply the attribute.</p>
     <ol>
-      <li><draft-comment author="Kristen J Eberlein" time="07 June 2021">
-          <p>Comments by Eliot Kimber: </p>
-          <p>[Re the entity to be used in the @specializations attribute]:
-            "Should there be leading and trailing space in the replacement
-            text?"</p>
-          <p>[Re adding the attribute to the elements]: "I first thought we
-            shouldn't allow this specialization-and-integration-in-one kind
-            of module but I convinced myself it's OK. However, we still
-            need an example of not doing this, for example, taking an
-            *existing* attribute domain and using a separate extension
-            module to allow it in specific places, omitting the usual
-            global integration."</p>
-        </draft-comment>First, the DITA architect creates the expansion
-        module for the <xmlatt>cell-purpose</xmlatt> attribute:
+      <li><!--<draft-comment author="Kristen J Eberlein" time="07 June 2021"><p>Comments by Eliot Kimber: </p><p>[Re the entity to be used in the @specializations attribute]: "Should there be leading and trailing space in the replacement text?"</p><p>[Re adding the attribute to the elements]: "I first thought we shouldn't allow this specialization-and-integration-in-one kind of module but I convinced myself it's OK. However, we still need an example of not doing this, for example, taking an *existing* attribute domain and using a separate extension module to allow it in specific places, omitting the usual global integration."</p></draft-comment>-->First,
+        the DITA architect creates the expansion module for the
+          <xmlatt>cell-purpose</xmlatt> attribute:
           <filepath>acme-cellPurposeAttExpansion.ent</filepath>.<codeblock>&lt;!-- Define the attribute -->
 &lt;!ENTITY % cellPurposeAtt-d-attribute-expansion
   "cell-purpose  (sale | out-of-stock | new | last-chance | inherit | none)  #IMPLIED"
@@ -71,14 +60,7 @@
           the same tokens to several elements.</note></li>
       <li><ph rev="2.0">They then update</ph> the
           <filepath>catalog.xml</filepath> file to include the expansion
-          module.<draft-comment author="Kristen J Eberlein"
-          time="07 June 2021">
-          <p>Comment by Eliot Kimber: "This is something almost everybody
-            *would* do but it's not actually required since the use of
-            catalogs is not required by DITA or by the use of DTDs
-            generally, at least in theory (and in actual fact if you are an
-            Author/Editor user, which doesn't support catalogs)."</p>
-        </draft-comment></li>
+        module.<!-- <draft-comment author="Kristen J Eberlein" time="07 June 2021"><p>Comment by Eliot Kimber: "This is something almost everybody *would* do but it's not actually required since the use of catalogs is not required by DITA or by the use of DTDs generally, at least in theory (and in actual fact if you are an Author/Editor user, which doesn't support catalogs)."</p></draft-comment>--></li>
       <li><ph rev="2.0">They integrate</ph> this module into the applicable
         document-type
         shell.<codeblock>&lt;!-- ============================================================= -->
