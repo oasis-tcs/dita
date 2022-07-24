@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="adding-an-attribute-to-certain-table-elements">
+  <title>Example: Adding an existing domain attribute to certain elements
+    using RNG</title>
+  <shortdesc>In this scenario, a company wants to use the
+      <xmlatt>otherprops</xmlatt> attribute specialization. However, they
+    want to make the attribute available <b>only</b> on certain elements:
+      <xmlelement>p</xmlelement>, <xmlelement>div</xmlelement>, and
+      <xmlelement>section</xmlelement>.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>expansion modules<indexterm>examples<indexterm>expanding
+              attributes for an element</indexterm></indexterm></indexterm>
+        <indexterm>examples<indexterm>expansion modules<indexterm>expanding
+              attributes for an element</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>The DITA architect will need to create an extension module and
+      integrate it into the appropriate document-type shells.</p>
+    <ol>
+      <li>
+        <p>The DITA architect creates an expansion module that adds the
+            <xmlatt>otherprops</xmlatt> attribute to the selected elements:
+            <filepath>acme-otherpropsAttExpansion.mod</filepath>. The
+          expansion module contains the following content:</p>
+        <codeblock base="ci-xml">&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+                         schematypens="http://relaxng.org/ns/structure/1.0"?>
+&lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:dita="http://dita.oasis-open.org/architecture/2005/"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  &lt;div>
+    &lt;a:documentation>CONTENT MODEL AND ATTRIBUTE LIST OVERRIDES&lt;/a:documentation>
+    &lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0">
+      &lt;define name="topic-info-types">
+        &lt;ref name="topic.element"/>
+      &lt;/define>
+      <b>&lt;define name="p.attributes" combine="interleave">
+        &lt;optional>
+          &lt;attribute name="otherprops"/>
+        &lt;/optional>
+      &lt;/define>
+      &lt;define name="div.attributes" combine="interleave">
+        &lt;optional>
+          &lt;attribute name="otherprops"/>
+        &lt;/optional>
+      &lt;/define>
+      &lt;define name="section.attributes" combine="interleave">
+        &lt;optional>
+          &lt;attribute name="otherprops"/>
+        &lt;/optional>
+      &lt;/define></b>
+    &lt;/include>
+  &lt;/div>
+&lt;/grammar>
+</codeblock>
+      </li>
+      <li>They then update the <filepath>catalog.xml</filepath> file to
+        include the expansion module.</li>
+      <li>
+        <p>They integrate the extension module into the applicable
+          document-type shell, and remove the
+            <xmlelement>include</xmlelement> element for
+            <filepath>topicMod.rng:</filepath></p>
+        <codeblock base="ci-xml">  &lt;div>
+    &lt;a:documentation>ELEMENT-TYPE CONFIGURATION INTEGRATION&lt;/a:documentation>
+      <b>&lt;include href="acme-otherpropsAttExpansion.rng"/></b>
+  &lt;/div>
+  &lt;div>
+    &lt;a:documentation>MODULE INCLUSIONS&lt;/a:documentation>
+    <b><line-through>&lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.x"/></line-through></b>
+    ...
+    &lt;include href="urn:oasis:names:tc:dita:rng:otherpropsAttDomain.rng:2.0">
+    &lt;/include>
+  &lt;/div></codeblock>
+      </li>
+      <li>
+        <p>They remove the reference to the <xmlatt>otherprops</xmlatt>
+          attribute from the <codeph>props-attribute-extension</codeph>
+          pattern:</p>
+        <codeblock base="ci-xml">  &lt;div>
+    &lt;a:documentation>MODULE INCLUSIONS&lt;/a:documentation>
+      ...
+    &lt;include href="urn:oasis:names:tc:dita:rng:otherpropsAttDomain.rng:2.0">
+      <b>&lt;define name="props-attribute-extensions" combine="interleave">
+      &lt;empty/>
+      &lt;/define></b>
+    &lt;/include></codeblock>
+      </li>
+      <li>
+        <p>They ensure that the <codeph>included-domains</codeph> entity
+          contains the <xmlatt>otherprops</xmlatt> contribution to the
+            <xmlatt>specializations</xmlatt> attribute: </p>
+        <codeblock base="ci-xml">  &lt;div>
+    &lt;a:documentation>SPECIALIZATIONS ATTRIBUTE&lt;/a:documentation>
+    &lt;define name="specializations-att">
+      &lt;optional>
+        &lt;attribute name="specializations" a:defaultValue="
+                         @props/audience
+                         @props/deliveryTarget
+                         <b>@props/otherprops</b>
+                         @props/platform
+                         @props/product"/>
+      &lt;/optional>
+    &lt;/define>
+  &lt;/div></codeblock>
+      </li>
+      <li>After checking the test topic to ensure that the attribute lists
+        are modified as expected, the work is done.</li>
+    </ol>
+  </conbody>
+</concept>
