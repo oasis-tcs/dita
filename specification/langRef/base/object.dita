@@ -94,10 +94,14 @@
             <title>Example</title>
       <p>This section contains examples of how the
           <xmlelement>object</xmlelement> element can be used.</p>
-      <fig>
-        <title>Referencing a web page for display in an HTML iframe</title>
-        <p>The following code sample shows how an <xmlelement>object</xmlelement> element can be
-          used to render a web page in an iframe:</p>
+      <fig rev="2.0">
+        <title>Referencing a web page for display in an HTML inline frame
+          (iframe)</title>
+        <p>The following code sample shows how an
+            <xmlelement>object</xmlelement> element can be used to render a
+          web page in an inline frame. It assumes that the processing
+          engine uses the <codeph>outputclass="iframe"</codeph>
+          directive.</p>
         <codeblock>&lt;object type="text/html"
         data="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776
               %2C0.00030577182769775396
@@ -115,10 +119,8 @@
               &amp;layer=mapnik"
     />&lt;/fallback>
 &lt;/object&gt;</codeblock>
-        <p>
-          <draft-comment author="eliot.kimber">The URL as shown works in my working example with the
-            line breaks before the %2C escaped
-            characters.<codeblock>&lt;!DOCTYPE html>
+        <p>The above code might generate the following HTML:</p>
+        <codeblock>&lt;!DOCTYPE html>
 &lt;html>
   &lt;head>
     &lt;title>Test of Iframe&lt;/title>
@@ -131,7 +133,11 @@
       &amp;layer=mapnik"       
       >Street map&lt;/iframe>
   &lt;/body>
-&lt;/html></codeblock></draft-comment>
+&lt;/html></codeblock>
+        <p>
+          <draft-comment author="eliot.kimber">The URL as shown works in my
+            working example with the line breaks before the %2C escaped
+            characters.</draft-comment>
         </p>
       </fig>
             <fig id="fig_o2l_bfb_4k">
