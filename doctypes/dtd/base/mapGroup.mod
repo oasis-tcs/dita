@@ -176,6 +176,9 @@
                chunk
                           CDATA
                                     #IMPLIED
+               subjectrefs
+                          CDATA
+                                    #IMPLIED
                %univ-atts;"
 >
 <!ELEMENT  keydef %keydef.content;>
