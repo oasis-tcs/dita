@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="example-subjectrefs-attribute-with-key-scopes">
+    <title>Example: <xmlatt>subjectrefs</xmlatt> attribute with key
+    scopes</title>
+    <shortdesc></shortdesc>
+  <conbody>
+    <draft-comment author="Kristen J Eberlein" time="29 July 2022">
+      <p>The following is content that Eliot Kimber suggested be included
+        in the DITA 2.0 specification as part of the review of proposal
+        #647. It has not been edited.</p>
+    </draft-comment>
+    <p>A subject scheme map may be included in a map as either a normal sub
+      map or as a peer root map and associated with a key scope on the map
+      reference.</p>
+    <fig>
+      <title>A subject scheme map included as a sub map with a key scope: </title>
+      <codeblock>&lt;map>
+ &lt;title>User assistance for the Acme Widget&lt;/title>
+ &lt;!-- ... -->
+ &lt;mapref keyscope="subjects" href="subjectschemes/subject-scheme-01.ditamap"/>
+ &lt;topicref keyref="install-overview" subjectrefs="subjects.installing">
+   &lt;topicref keyref="install-linux"/>
+   &lt;topicref keyref="install-macosx"/>
+   &lt;topicref keyref="install-windows"/>
+   &lt;topicref keyref="install-troubleshooting" subjectrefs="subjects.troubleshooting"/>
+ &lt;/topicref>
+ &lt;!-- ... --> 
+&lt;/map></codeblock>
+    </fig>
+    <p> The keys defined in referenced subject scheme map are included in
+      the referencing map's key space. References to the subject keys must
+      be scope qualified (i.e., "subjects.installing"). Putting the subject
+      scheme keys in a key scope ensures that the keys defined in the
+      subject scheme do not conflict with any keys defined elsewhere in the
+      referencing map (although the referencing map could still override
+      any keys defined in the subject scheme map).</p>
+    <p>The subject scheme map can also be referenced as a peer-scope root
+      map in a key scope:</p>
+    <codeblock>&lt;map>
+ &lt;title>User assistance for the Acme Widget&lt;/title>
+ &lt;!-- ... -->
+ &lt;mapref keyscope="subjects" scope="peer" href="subjectschemes/subject-scheme-01.ditamap"/>
+ &lt;topicref keyref="install-overview" subjectrefs="subjects.installing">
+   &lt;topicref keyref="install-linux"/>
+   &lt;topicref keyref="install-macosx"/>
+   &lt;topicref keyref="install-windows"/>
+   &lt;topicref keyref="install-troubleshooting" subjectrefs="subjects.troubleshooting"/>
+ &lt;/topicref>
+ &lt;!-- ... --> 
+&lt;/map></codeblock>
+    <p>As a peer map, the keys defined in the subject scheme map are not
+      included in the referencing map's key space but may be resolved using
+      normal cross-deliverable key reference resolution. Processors that
+      support cross-deliverable linking may also choose to resolve
+      references from @"subjectrefs" to keys in peer subject scheme maps,
+      for example to report keys specified on @"subjectrefs" that cannot be
+      found in the peer subject scheme map.</p>
+  </conbody>
+</concept>
