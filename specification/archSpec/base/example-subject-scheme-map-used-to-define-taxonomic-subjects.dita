@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="a-subject-scheme-map-used-to-define-taxonomic-subjects">
+    <title>Example: a subject scheme map used to define taxonomic
+    subjects</title>
+  <shortdesc>A subject scheme map can be used to define taxonomic subjects.
+    Once defined, the subjects can be referenced by specifying a
+      <xmlatt>subjectrefs</xmlatt> attribute on a
+      <xmlelement>topicref</xmlelement> element.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>examples<indexterm>subject scheme
+              maps<indexterm>defining taxonomic
+            subjects</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>The following subject scheme map defines a set of subjects that are
+      used to classify content:</p>
+    <codeblock>&lt;subjectScheme>
+  &lt;subjectdef keys="content-types">
+    &lt;subjectdef keys="conceptual-material"/>
+    &lt;subjectdef keys="reference"/>
+    &lt;subjectdef keys="tutorial"/>
+  &lt;/subjectdef>
+  &lt;subjectdef keys="operating-systems">
+    &lt;subjectdef keys="linux"/>
+    &lt;subjectdef keys="macosx"/>
+    &lt;subjectdef keys="windows"/>
+  &lt;/subjectdef>
+  &lt;subjectdef keys="user-tasks">
+    &lt;subjectdef keys="administering"/>
+    &lt;subjectdef keys="developing"/>
+    &lt;subjectdef keys="installing"/>
+    &lt;subjectdef keys="troubleshooting"/>
+  &lt;/subjectdef>
+&lt;/subjectScheme></codeblock>
+    <p>The keys assigned to the subject definitions can be referenced by
+      specifying the <xmlatt>subjectrefs</xmlatt> attribute on topic
+      references in a navigation map:</p>
+    <codeblock>&lt;map>
+&lt;title>User assistance for the Acme Widget&lt;/title>
+&lt;!-- ... -->
+&lt;topicref keyref="install-overview" <b>subjectrefs="installing"</b>>
+  &lt;topicref keyref="install-linux"/>
+  &lt;topicref keyref="install-macosx"/>
+  &lt;topicref keyref="install-windows"/>
+  &lt;topicref keyref="install-troubleshooting" <b>subjectrefs="troubleshooting"</b>/>
+&lt;/topicref>
+&lt;!-- ... -->
+&lt;/map></codeblock>
+    <p>Because the <xmlatt>subjectrefs</xmlatt> attribute cascades, the
+      effective value of the above markup is the same as the following
+      markup:</p>
+    <codeblock>&lt;map>
+&lt;title>User assistance for the Acme Widget&lt;/title>
+&lt;!-- ... -->
+&lt;topicref keyref="install-overview" subjectrefs="installing">
+  &lt;topicref keyref="install-linux" subjectrefs="installing"/>
+  &lt;topicref keyref="install-macosx" subjectrefs="installing"/>
+  &lt;topicref keyref="install-windows" subjectrefs="installing"/>
+  &lt;topicref keyref="install-troubleshooting" subjectrefs="installing troubleshooting"/>
+&lt;/topicref>
+&lt;!-- ... -->
+&lt;/map></codeblock>
+  </conbody>
+</concept>

@@ -134,6 +134,9 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                                     #IMPLIED
                keyscope
                           CDATA
+                                    #IMPLIED
+               subjectrefs
+                          CDATA
                                     #IMPLIED"
 >
 <!ENTITY % topicref-atts-no-toc
@@ -283,6 +286,9 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                           CDATA
                                     #IMPLIED
                keyscope
+                          CDATA
+                                    #IMPLIED
+               subjectrefs
                           CDATA
                                     #IMPLIED"
 >
