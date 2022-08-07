@@ -1,49 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="expansion_module_rules">
-    <title>Expansion module rules</title>
+<concept id="expansion_module_rules" rev="2.0">
+  <title>Expansion module rules</title>
+  <abstract>
     <shortdesc>There are certain rules that apply to the design and
-    implementation of expansion modules. <ph rev="2.0">These rules all stem
-      from the requirement that, after generalization, the content model of
-      a element affected by an expansion module must match the original
-      content model for that element.</ph></shortdesc>
-    <prolog>
-        <metadata>
-            <keywords>
-                <indexterm>design and implementation rules<indexterm>expansion
-                    modules</indexterm></indexterm>
-                <indexterm>expansion modules<indexterm>design and implementation
-                    rules</indexterm></indexterm>
-            </keywords>
-        </metadata>
-    </prolog>
-    <conbody>
+      implementation of expansion modules. <ph rev="2.0">These rules all
+        stem from the requirement that the content model of a specialized
+        element must be consistent with the content model of the
+        specialization base. After generalization, the content model of an
+        element affected by an expansion module must match the original
+        content model for that element.</ph></shortdesc>
+  </abstract>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>design and implementation rules<indexterm>expansion
+            modules</indexterm></indexterm>
+        <indexterm>expansion modules<indexterm>design and implementation
+            rules</indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
     <!--<draft-comment author="Kristen J Eberlein" time="18 May 2021"><p>Comment by Chris Nitchie: "I feel like somewhere we need something like this sentence, maybe at the top: "The generalized form of an expanded element's content model must match that of the unexpanded content model." All of what follows stems from this statement."</p><p>Comment by Eliot Kimber: "I think this is an expansion of the suggested qualification of expansion I suggested for a much earlier point in the spec. I'm not sure it's necessary to go into this level of detail because the constraints on expansion should be clear based on the "no less constrained" requirement. That said, it's always helpful to have examples. Maybe this is better represented as a set of non-normative examples?"</p></draft-comment>-->
-        <dl>
-            <dlentry>
-                <dt>Specialization base of expanded elements</dt>
-                <dd>
-                    <p>Elements that are added to content models by
-            expansion models must be specializations of existing elements
-            that are permitted in the content model.</p>
-                </dd>
-            </dlentry>
-            <dlentry>
-                <dt>Content model of expanded elements</dt>
-                <dd>
+    <dl>
+      <dlentry>
+        <dt>Specialization base of expanded elements</dt>
+        <dd>
+          <p>Elements that are added to content models by expansion models
+            must be specializations of existing elements that are permitted
+            in the original content model.</p>
+        </dd>
+      </dlentry>
+      <dlentry>
+        <dt>Content model of expanded elements</dt>
+        <dd>
           <p>Elements that are added to content models by expansion models
             must be allowed only where their specialization base is
             allowed.</p>
           <p otherprops="examples">For example, when creating an expansion
             model that adds a specialization of
               <xmlelement>data</xmlelement> to <xmlelement>ol</xmlelement>,
-            the specialization of  <xmlelement>data</xmlelement> must only
+            the specialization of <xmlelement>data</xmlelement> must only
             be allowed before any <xmlelement>li</xmlelement> elements, as
             that is the only place that the <xmlelement>data</xmlelement>
             element is allowed in the content model for an ordered
             list.</p>
-                </dd>
-            </dlentry>
+        </dd>
+      </dlentry>
       <dlentry>
         <dt rev="2.0">Ordinality of expanded elements</dt>
         <dd>
@@ -81,22 +85,23 @@
           <!--<div otherprops="examples"><p>For example, a DITA architect wants to add a new specialization of <xmlelement>title</xmlelement> to the <xmlelement>topic</xmlelement> element. Since the <xmlelement>title</xmlelement> element is only permitted once within a topic, the expansion module must perform one of the following actions:</p><ul><li>Replace <xmlelement>title</xmlelement> with the new specialization of title: <xmlelement>nomarkup-title</xmlelement></li><li>Modify the content model of topic to require a choice between <xmlelement>title</xmlelement> and the new specialized element</li></ul><draft-comment author="Kristen J Eberlein" time="17 May 2021"><p>Robert had the following comment: "Actually isn't the actual example here doing what it sort of says not to do? It explains why this is valid, but ... it's making a required &lt;title> optional because an alternate title takes its place, which again, we might need to redefine "ordinality" as "DITA ordinality" to cover specialization?"</p><p>Comment from Eliot: "Using title in section as an example is both problematic but also very instructive. It's problematic because the grammar is *less constrained* than the prose of the specification, so the rule as stated in Kris' text is correct - the *prose* doesn't allow &lt;title> anywhere except as the first child of &lt;section>, so the solution proposed is correct, in particular, the requirement to make a choice between &lt;title> and the &lt;specialization>, *because of the prose-imposed rule*, a rule not expressed in the grammars. A better example, or at least a more obvious one, would be an expansion of an element whose base content model is a sequence (i.e., prolog). That said, it's probably useful to focus on &lt;section> for this because so many people don't understand this subtlety of &lt;section>."</p></draft-comment></div>-->
         </dd>
       </dlentry>
-            <dlentry>
-                <dt>Aggregation of expansion modules</dt>
-                <dd>
-                    <p>The content model of an element can be modified by either of the following
-                        element-configuration modules:</p>
-                    <ul>
-                        <li>Constraint module</li>
-                        <li>Expansion module</li>
-                    </ul>
-                    <p>The content model of an element can be modified only by a single element-type
-                        configuration module. If multiple constraints or extensions need to be
-                        applied to a single element, the element configurations must be combined
-                        into a single module that reflects all the constraints and expansions that
-                        were defined in the original separate modules.</p>
-                </dd>
-            </dlentry>
-        </dl>
-    </conbody>
+      <dlentry>
+        <dt>Aggregation of expansion modules</dt>
+        <dd>
+          <p>The content model of an element can be modified by either of
+            the following element-configuration modules:</p>
+          <ul>
+            <li>Constraint module</li>
+            <li>Expansion module</li>
+          </ul>
+          <p>The content model of an element can be modified only by a
+            single element-type configuration module. If multiple
+            constraints or extensions need to be applied to a single
+            element, the element configurations must be combined into a
+            single module that reflects all the constraints and expansions
+            that were defined in the original separate modules.</p>
+        </dd>
+      </dlentry>
+    </dl>
+  </conbody>
 </concept>
