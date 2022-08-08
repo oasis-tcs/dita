@@ -1,46 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
-<concept id="rng_adding_an_attribute_to_certain_table_elements">
-    <title>Example: Adding an attribute to certain table elements using RNG</title>
-    <shortdesc>In this scenario, a company makes extensive use of complex tables to present product
-        listings. They occasionally highlight individual cells, rows, or columns for various
-        purposes. The DITA architect wants to implement a semantically meaningful way to identify
-        the purpose of various table elements.</shortdesc>
-    <prolog>
-        <metadata>
-            <keywords>
-                <indexterm>expansion modules<indexterm>examples<indexterm>expanding attributes for
-                            an element</indexterm></indexterm></indexterm>
-                <indexterm>examples<indexterm>expansion modules<indexterm>expanding attributes for
-                            an element</indexterm></indexterm></indexterm>
-            </keywords>
-        </metadata>
-    </prolog>
-    <conbody>
-        <p>The DITA architect decides to create a new attribute (<xmlatt>cell-purpose</xmlatt>) and
-            add it to the content model of the following elements:</p>
-        <ul>
-            <li><xmlelement>entry</xmlelement></li>
-            <li><xmlelement>row</xmlelement></li>
-            <li><xmlelement>colspec</xmlelement></li>
-            <li><xmlelement>stentry</xmlelement></li>
-            <li><xmlelement>strow</xmlelement></li>
-        </ul>
-        <p>The new attribute will be specialized from
-      <xmlatt>base</xmlatt>, and it will take a small set of tokens as
-      values.</p>
+<concept id="rng_adding_an_attribute_to_certain_table_elements" rev="2.0">
+  <title>Example: Adding an attribute to certain table elements using
+    RNG</title>
+  <shortdesc>In this scenario, a company makes extensive use of complex
+    tables to present product listings. They occasionally highlight
+    individual cells, rows, or columns for various purposes. The DITA
+    architect wants to implement a semantically meaningful way to identify
+    the purpose of various table elements.</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>expansion modules<indexterm>examples<indexterm>expanding
+              attributes for an element</indexterm></indexterm></indexterm>
+        <indexterm>examples<indexterm>expansion modules<indexterm>expanding
+              attributes for an element</indexterm></indexterm></indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>The DITA architect decides to create a new attribute
+        (<xmlatt>cell-purpose</xmlatt>) and add it to the content model of
+      the following elements:</p>
+    <ul>
+      <li><xmlelement>entry</xmlelement></li>
+      <li><xmlelement>row</xmlelement></li>
+      <li><xmlelement>colspec</xmlelement></li>
+      <li><xmlelement>stentry</xmlelement></li>
+      <li><xmlelement>strow</xmlelement></li>
+    </ul>
+    <p>The new attribute will be specialized from <xmlatt>base</xmlatt>,
+      and it will take a small set of tokens as values.</p>
     <p>The DITA architect decides to integrate the attribute declaration
       and its assignment to elements into a single expansion module. An
       alternate approach would be to put each <codeph>&lt;!ATTLIST</codeph>
       declaration in its own separate expansion module, thus allowing DITA
       architects who construct document-type shells to decide the elements
       to which to apply the attribute.</p>
-        <ol>
-            <li>
-                <p>The DITA architect creates an expansion module:
+    <ol>
+      <li>
+        <p>The DITA architect creates an expansion module:
             <filepath>cellPurposeAtt.rng</filepath>. It contains the
           following code:</p>
-                <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+        <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
 &lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
                          schematypens="http://relaxng.org/ns/structure/1.0"?>
 &lt;grammar 
@@ -85,11 +87,11 @@
     &lt;ref name="cellPurposeAtt"/>
   &lt;/define>
 &lt;/grammar></codeblock>
-            </li>
-            <li>
-                <p>They then update the <filepath>catalog.xml</filepath>
-          file to include the expansion module.</p>
-            </li>
+      </li>
+      <li>
+        <p>They then update the <filepath>catalog.xml</filepath> file to
+          include the expansion module.</p>
+      </li>
       <li>
         <p>They integrate the expansion module into the document-type
           shell:</p>
@@ -115,8 +117,8 @@
       &lt;/optional>
     &lt;/define>
   &lt;/div></codeblock></li>
-            <li>After checking the test file to ensure that the attribute lists are modified as
-                expected, the work is done.</li>
-        </ol>
-    </conbody>
+      <li>After checking the test file to ensure that the attribute lists
+        are modified as expected, the work is done.</li>
+    </ol>
+  </conbody>
 </concept>

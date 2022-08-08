@@ -1,52 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
-<concept id="rng_aggregating_constraint_and_expansion_modules">
-    <title>Example: Aggregating constraint and expansion modules using RNG</title>
-    <shortdesc>The DITA architect wants to add some extension modules to the document-type shell for
-    topic. The document-type shell already integrates a constraint module.</shortdesc>
-    <conbody>
-        <p>The following table lists the constraint module and the extension modules that the DITA
-            architect wants to integrate into the document-type shell for topic.</p>
-        <simpletable frame="all" relcolwidth="1* 2* 2*">
-            <sthead>
-                <stentry>Type of element configuration</stentry>
-                <stentry>File name</stentry>
-                <stentry>What it does</stentry>
-            </sthead>
-            <strow>
-                <stentry>Constraint</stentry>
-                <stentry><filepath>topicSectionConstraint.rng</filepath></stentry>
-                <stentry>
-                    <p>Constrains <xmlelement>topic</xmlelement>:</p>
-                    <ul>
-                        <li>Removes <xmlelement>abstract</xmlelement></li>
-                        <li>Makes <xmlelement>shortdesc</xmlelement> required</li>
-                        <li>Removes <xmlelement>related-links</xmlelement></li>
-                        <li>Disallows topic nesting</li>
-                    </ul>
-                    <p>Constrains <xmlelement>section</xmlelement>:</p>
-                    <ul>
-                        <li>Makes <xmlatt>id</xmlatt> required</li>
-                    </ul>
-                </stentry>
-            </strow>
-            <strow>
-                <stentry>Expansion</stentry>
-                <stentry><filepath>sectionExpansionMod.rng</filepath></stentry>
-                <stentry>Adds <xmlelement>sectionDesc</xmlelement> to the content model of
-            <xmlelement>section</xmlelement></stentry>
-            </strow>
-            <strow>
-                <stentry>Expansion</stentry>
-                <stentry><filepath>tableCellAttExpansion.rng</filepath></stentry>
-                <stentry>Adds <xmlatt>cellPurpose</xmlatt> to the attribute lists for certain table
-                    elements</stentry>
-            </strow>
-        </simpletable>
-        <p>Because all of these element-configuration modules target elements declared in
-                <filepath>topicMod.rng</filepath>, the DITA architect needs to combine them into a
-            single element-configuration module like the following:</p>
-        <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
+<concept id="rng_aggregating_constraint_and_expansion_modules" rev="2.0">
+  <title>Example: Aggregating constraint and expansion modules using
+    RNG</title>
+  <shortdesc>The DITA architect wants to add some extension modules to the
+    document-type shell for topic. The document-type shell already
+    integrates a constraint module.</shortdesc>
+  <conbody>
+    <p>The following table lists the constraint module and the extension
+      modules that the DITA architect wants to integrate into the
+      document-type shell for topic.</p>
+    <simpletable frame="all" relcolwidth="1* 2* 2*">
+      <sthead>
+        <stentry>Type of element configuration</stentry>
+        <stentry>File name</stentry>
+        <stentry>What it does</stentry>
+      </sthead>
+      <strow>
+        <stentry>Constraint</stentry>
+        <stentry><filepath>topicSectionConstraint.rng</filepath></stentry>
+        <stentry>
+          <p>Constrains <xmlelement>topic</xmlelement>:</p>
+          <ul>
+            <li>Removes <xmlelement>abstract</xmlelement></li>
+            <li>Makes <xmlelement>shortdesc</xmlelement> required</li>
+            <li>Removes <xmlelement>related-links</xmlelement></li>
+            <li>Disallows topic nesting</li>
+          </ul>
+          <p>Constrains <xmlelement>section</xmlelement>:</p>
+          <ul>
+            <li>Makes <xmlatt>id</xmlatt> required</li>
+          </ul>
+        </stentry>
+      </strow>
+      <strow>
+        <stentry>Expansion</stentry>
+        <stentry><filepath>sectionExpansionMod.rng</filepath></stentry>
+        <stentry>Adds <xmlelement>sectionDesc</xmlelement> to the content
+          model of <xmlelement>section</xmlelement></stentry>
+      </strow>
+      <strow>
+        <stentry>Expansion</stentry>
+        <stentry><filepath>tableCellAttExpansion.rng</filepath></stentry>
+        <stentry>Adds <xmlatt>cellPurpose</xmlatt> to the attribute lists
+          for certain table elements</stentry>
+      </strow>
+    </simpletable>
+    <p>Because all of these element-configuration modules target elements
+      declared in <filepath>topicMod.rng</filepath>, the DITA architect
+      needs to combine them into a single element-configuration module like
+      the following:</p>
+    <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
 &lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
                          schematypens="http://relaxng.org/ns/structure/1.0"?>
 &lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
@@ -122,13 +126,14 @@
   &lt;/div>
 &lt;/grammar>
 </codeblock>
-        <p>When the DITA architect edits the document-type shell to
-      integrate the element configuration module, <ph rev="2.0">they also
-        need</ph> to do the following:</p>
-        <ul>
-            <li>Remove the include statement for <filepath>topicMod.rng</filepath></li>
-            <li>Add <xmlelement>section</xmlelement> to the "ID-DEFINING ELEMENT OVERRIDES"
-                division</li>
-        </ul>
-    </conbody>
+    <p>When the DITA architect edits the document-type shell to integrate
+      the element configuration module, <ph rev="2.0">they also need</ph>
+      to do the following:</p>
+    <ul>
+      <li>Remove the include statement for
+          <filepath>topicMod.rng</filepath></li>
+      <li>Add <xmlelement>section</xmlelement> to the "ID-DEFINING ELEMENT
+        OVERRIDES" division</li>
+    </ul>
+  </conbody>
 </concept>
