@@ -120,7 +120,7 @@
                          (%data;)*,
                          (%typeofhazard;),
                          (
-                          ((%consequence;)*, (%howtoavoid;)+) |
+                          ((%consequence;)+, (%howtoavoid;)+) |
                           ((%howtoavoid;)+, (%consequence;)*)
                           ),(%hazardsymbol;)*
                          )"
