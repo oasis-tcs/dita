@@ -97,105 +97,96 @@
 	 </p> 
 	 <p>Assume that each key scope contains numerous key references. The following tables demonstrate
 			how key references resolve in key scopes A-2 and B. The first column shows the value
-			used in key references; the second column shows the resource to which the key resolves. </p> 
-	 <table frame="topbot" rowsep="1" colsep="1">
-			<title>Key scope A-2</title>
-			<tgroup cols="2">
-				<colspec colname="c1" colnum="1" colwidth="1.0*"/>
-				<colspec colname="c2" colnum="2" colwidth="1.0*"/>
-				<thead>
-					<row>
-						<entry>Key reference </entry>
-						<entry>Resource to which the key resolves </entry>
-					</row>
-				</thead>
-				<tbody>
-					<row>
-						<entry>a </entry>
-						<entry>"a", defined in the root map: <filepath>topic-1.dita</filepath>
-						</entry>
-					</row>
-					<row>
-						<entry>d </entry>
-						<entry>"d", as defined in the immediate key scope:
-								<filepath>topic-4.dita</filepath>
-						</entry>
-					</row>
-					<row>
-						<entry>A-2.d </entry>
-						<entry>"d", as defined in the immediate key scope:
-								<filepath>topic-4.dita</filepath>
-						</entry>
-					</row>
-					<row>
-						<entry>c </entry>
-						<entry>Undefined </entry>
-					</row>
-					<row>
-						<entry>A-1.c </entry>
-						<entry>"A-1.c", as defined in key scope A-1. This key name is available
-							because it exists in the parent scope, key scope A. The key name
-							resolves to <filepath>topic-3.dita</filepath>
-						</entry>
-					</row>
-					<row>
-						<entry>A.A-1.c </entry>
-						<entry>"A-1.c", as defined in key scope A-1. This key name is available
-							because it exists in the root key scope. The key name resolves to
-								<filepath>topic-3.dita</filepath>
-						</entry>
-					</row>
-				</tbody>
-			</tgroup>
-		</table> 
-	 <table frame="topbot" rowsep="1" colsep="1">
-			<title>Key scope B</title>
-			<tgroup cols="2">
-				<colspec colname="c1" colnum="1" colwidth="1.0*"/>
-				<colspec colname="c2" colnum="2" colwidth="1.0*"/>
-				<thead>
-					<row>
-						<entry>Key reference </entry>
-						<entry>Resource to which the key resolves </entry>
-					</row>
-				</thead>
-				<tbody>
-					<row>
-						<entry>e </entry>
-						<entry>"e", defined in the immediate key scope:
-								<filepath>topic-6.dita</filepath>
-						</entry>
-					</row>
-					<row>
-						<entry>a </entry>
-						<entry>"a", as defined in the <i>root key scope</i>. (While a key definition
-							for "a" exists in the immediate key scope, it is overridden by the key
-							definition that occurs in the parent key scope.) The key name resolves
-							to <filepath>topic-1.dita</filepath>
-						</entry>
-					</row>
-					<row>
-						<entry>B.a </entry>
-						<entry>
-							<p>"a", as defined in the <i>immediate key scope</i>. Because the key
-								reference uses the scope-qualified names, it resolves to the key "a"
-								in scope B. The key name resolves to
-									<filepath>topic-5.dita</filepath>
-							</p>
-						</entry>
-					</row>
-					<row>
-						<entry>g </entry>
-						<entry>Undefined. The key "g" is defined only in key scope B-2, so no
-							unqualified key named "g" is defined in scope B. </entry>
-					</row>
-					<row>
-						<entry>B-2.g </entry>
-						<entry>"g", as defined in key scope B-2: <filepath>topic-8.dita</filepath>.
-						</entry>
-					</row>
-				</tbody>
-			</tgroup>
-		</table> 
+			used in key references; the second column shows the resource to which the key resolves. </p>
+    <fig>
+      <title>Key scope A-2</title>
+      <simpletable frame="all" relcolwidth="1.0* 1.0*">
+        <sthead>
+          <stentry>Key reference </stentry>
+          <stentry>Resource to which the key resolves </stentry>
+        </sthead>
+        <strow>
+          <stentry>a </stentry>
+          <stentry>"a", defined in the root map:
+              <filepath>topic-1.dita</filepath>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry>d </stentry>
+          <stentry>"d", as defined in the immediate key scope:
+              <filepath>topic-4.dita</filepath>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry>A-2.d </stentry>
+          <stentry>"d", as defined in the immediate key scope:
+              <filepath>topic-4.dita</filepath>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry>c </stentry>
+          <stentry>Undefined </stentry>
+        </strow>
+        <strow>
+          <stentry>A-1.c </stentry>
+          <stentry>"A-1.c", as defined in key scope A-1. This key name is
+            available because it exists in the parent scope, key scope A.
+            The key name resolves to <filepath>topic-3.dita</filepath>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry>A.A-1.c </stentry>
+          <stentry>"A-1.c", as defined in key scope A-1. This key name is
+            available because it exists in the root key scope. The key name
+            resolves to <filepath>topic-3.dita</filepath>
+          </stentry>
+        </strow>
+      </simpletable>
+    </fig>
+    <fig>
+      <title>Key scope B</title>
+      <simpletable frame="topbot" relcolwidth="1.0* 1.0*">
+        <sthead>
+          <stentry>Key reference </stentry>
+          <stentry>Resource to which the key resolves </stentry>
+        </sthead>
+        <strow>
+          <stentry>e </stentry>
+          <stentry>"e", defined in the immediate key scope:
+              <filepath>topic-6.dita</filepath>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry>a </stentry>
+          <stentry>"a", as defined in the <i>root key scope</i>. (While a
+            key definition for "a" exists in the immediate key scope, it is
+            overridden by the key definition that occurs in the parent key
+            scope.) The key name resolves to
+              <filepath>topic-1.dita</filepath>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry>B.a </stentry>
+          <stentry>
+            <p>"a", as defined in the <i>immediate key scope</i>. Because
+              the key reference uses the scope-qualified names, it resolves
+              to the key "a" in scope B. The key name resolves to
+                <filepath>topic-5.dita</filepath>
+            </p>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry>g </stentry>
+          <stentry>Undefined. The key "g" is defined only in key scope B-2,
+            so no unqualified key named "g" is defined in scope B.
+          </stentry>
+        </strow>
+        <strow>
+          <stentry>B-2.g </stentry>
+          <stentry>"g", as defined in key scope B-2:
+              <filepath>topic-8.dita</filepath>. </stentry>
+        </strow>
+      </simpletable>
+    </fig> 
   </conbody>
 </concept>
