@@ -30,10 +30,10 @@ documents with their own nested topics.</shortdesc>
   &lt;/topicref>
 &lt;/map>
 </codeblock>
+      <p>In this case, the <xmlatt>chunk</xmlatt> attribute instructs a
+        processor to treat the three topics as a single combined document,
+        while preserving the original map hierarchy.</p>
     </fig>
-<p>In this case, the <xmlatt>chunk</xmlatt> attribute instructs a processor
-      to treat the three topics as a single combined document, while
-      preserving the original map hierarchy.</p>
 <fig>
       <title>Source documents with nested structures</title>
       <p>Now consider the following three source documents, each of which
@@ -56,8 +56,7 @@ documents with their own nested topics.</shortdesc>
     &lt;/topic>
   &lt;/topic>
 &lt;/dita></codeblock>
-    </fig>
-    <codeblock><b>&lt;!-- middle.dita --></b>
+      <codeblock><b>&lt;!-- middle.dita --></b>
 &lt;topic id="middle-root">
   &lt;title>Root topic in middle document&lt;/title>
   &lt;body>
@@ -68,11 +67,12 @@ documents with their own nested topics.</shortdesc>
     &lt;!-- ... Body content, maybe more children topics -->
   &lt;/topic>
 &lt;/topic></codeblock>
-    <codeblock><b>&lt;!-- child.dita --></b>
+      <codeblock><b>&lt;!-- child.dita --></b>
 &lt;topic id="child">
   &lt;title>Small child topic&lt;/title>
   &lt;!-- ... Topic content ... -->
 &lt;/topic></codeblock>
+    </fig>
     <fig>
       <title>Evaluating <codeph>chunk="combine"</codeph></title>
       <p>When <codeph>chunk="combine"</codeph> is evaluated, the three
