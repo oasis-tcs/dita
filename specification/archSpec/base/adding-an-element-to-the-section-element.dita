@@ -26,8 +26,9 @@
         following modules and integrate them into the document-type
         shell:</p>
       <ul>
-        <li>An element specialization module that defines the
-            <xmlelement>sectionDesc</xmlelement> element</li>
+        <li>An <ph rev="review-p">element-domain</ph> specialization module
+          that defines the <xmlelement>sectionDesc</xmlelement>
+          element</li>
         <li>An expansion module that adds the
             <xmlelement>sectionDesc</xmlelement> element to the content
           model for <xmlelement>section</xmlelement></li>
@@ -107,7 +108,7 @@
 &lt;!ENTITY % fn "fn">
 &lt;!ENTITY % indexterm "indexterm">
 &lt;!ENTITY % required-cleanup "required-cleanup">
-&lt;!ENTITY % sectionDesc "sectionDesc">
+<b>&lt;!ENTITY % sectionDesc "sectionDesc"></b>
 
 &lt;!-- Defines the modified content model for &lt;section>.       -->
 
@@ -146,7 +147,7 @@
                %fn; |
                %indexterm; |
                %required-cleanup; |
-               %sectionDesc;)*"
+               <b>%sectionDesc;</b>)*"
 ></codeblock>
           <p>Note that the DITA architect needed to explicitly declare all
             the elements, rather than using the
