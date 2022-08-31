@@ -2,12 +2,15 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
  "concept.dtd">
 <concept id="classatt" xml:lang="en-us">
-  <title><xmlatt>class</xmlatt> attribute rules and syntax</title>
-  <shortdesc>The specialization hierarchy of each DITA element is declared as the value of the
-      <xmlatt>class</xmlatt> attribute. The <xmlatt>class</xmlatt> attribute provides a mapping from
-    the current name of the element to its more general equivalents, but it also can provide a
-    mapping from the current name to more specialized equivalents. All specialization-aware
-    processing can be defined in terms of <xmlatt>class</xmlatt> attribute values.</shortdesc>
+  <title>The <xmlatt>class</xmlatt> attribute rules and syntax</title>
+  <shortdesc>The specialization hierarchy of each DITA element is declared
+    as the value of the <xmlatt>class</xmlatt> attribute. The
+      <xmlatt>class</xmlatt> attribute provides a mapping from the current
+    name of the element to its more general equivalents.<ph rev="review-p">
+      The <xmlatt>class</xmlatt> attribute</ph> also can provide a mapping
+    from the current name to more specialized equivalents. All
+    specialization-aware processing can be defined in terms of
+      <xmlatt>class</xmlatt> attribute values.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -19,10 +22,12 @@
     </metadata>
   </prolog>
   <conbody>
-    <p>The <xmlatt>class</xmlatt> attribute tells a processor what general classes of elements the
-      current element belongs to. DITA scopes elements by module type (for example topic type,
-      domain type, or map type) instead of document type, which lets document type developers
-      combine multiple module types in a single document without complicating transformation
+    <p>The <xmlatt>class</xmlatt> attribute tells a processor what general
+      classes of elements the current element belongs to. DITA scopes
+      elements by module type instead of document type<ph rev="review-p">.
+        Examples of module types are topic type, domain type, or map type.
+        This enables document-type developers to </ph>combine multiple
+      module types in a single document without complicating transformation
       logic.</p>
     <p>The sequence of values in the <xmlatt>class</xmlatt> attribute is important because it tells
       processors which value is the most general and which is most specific. This sequence is what
@@ -73,11 +78,13 @@
       <p>The following code sample lists the DTD declaration for the <xmlatt>class</xmlatt>
         attribute for the <xmlelement>step</xmlelement> element:</p>
       <codeblock>&lt;!ATTLIST step         class  CDATA "- topic/li task/step "></codeblock>
-      <p>This indicates that the <xmlelement>step</xmlelement> element is specialized from the
-          <xmlelement>li</xmlelement> element in a generic topic. It also indicates explicitly that
-        the <xmlelement>step</xmlelement> element is available in a task topic; this enables
-        round-trip migration between upper level and lower level types without the loss of
-        information.</p>
+      <p>This indicates that the <xmlelement>step</xmlelement> element is
+        specialized from the <xmlelement>li</xmlelement> element in <ph
+          rev="review-p">the topic module</ph>. It also indicates
+        explicitly that the <xmlelement>step</xmlelement> element is
+        available in a task topic<ph rev="review-p">. This declaration</ph>
+        enables round-trip migration between upper level and lower level
+        types without the loss of information.</p>
     </example>
     <example id="example2" otherprops="examples">
       <title>Example: Element with <xmlatt>class</xmlatt> attribute made explicit</title>
