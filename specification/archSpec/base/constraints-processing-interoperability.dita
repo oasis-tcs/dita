@@ -18,18 +18,24 @@
    remain valid instances of the unconstrained element type, and the element type retains the same
    semantics and <xmlatt>class</xmlatt> attribute declaration. Thus, a constraint never creates a
    new case to which content processing might need to react. </p>
-  <p otherprops="examples">For example, a document type constrained to require the
-    <xmlelement>shortdesc</xmlelement> element allows a subset of the possible instances of the
-   unconstrained document type with an optional <xmlelement>shortdesc</xmlelement> element. Thus,
-   the content processing for topic still works when <xmlelement>topic</xmlelement> is constrained
-   to require a short description.</p>
-  <p otherprops="examples">For example, an unconstrained task is compatible with an unconstrained
-   topic, because the <xmlelement>task</xmlelement> element can be generalized to
-    <xmlelement>topic</xmlelement>. However, if the topic is constrained to require the
-    <xmlelement>shortdesc</xmlelement> element, a document type with an unconstrained task is not
-   compatible with the constrained document type, because some instances of the task might not have
-   a <xmlelement>shortdesc</xmlelement> element. However, if the task document type also has been
-   constrained to require the <xmlelement>shortdesc</xmlelement> element, it is compatible with the
-   constrained topic document type. </p>
+  <p otherprops="examples">For example, a document type constrained to
+      require the <xmlelement>shortdesc</xmlelement> element allows a
+      subset of the possible instances of the unconstrained document type
+      with an optional <xmlelement>shortdesc</xmlelement> element. Thus,
+      the content processing for topic still works when
+        <xmlelement>topic</xmlelement> is constrained to require a short
+      description. <ph rev="review-p">Similarly, </ph>an unconstrained task
+      is compatible with an unconstrained topic, because the
+        <xmlelement>task</xmlelement> element can be generalized to
+        <xmlelement>topic</xmlelement>. </p>
+  <p otherprops="examples">However, if a topic <ph rev="review-k">document
+        type</ph> is constrained to require the
+        <xmlelement>shortdesc</xmlelement> element, a document type with an
+      unconstrained task is not compatible with the constrained topic
+      document type, because some instances of the task might not have a
+        <xmlelement>shortdesc</xmlelement> element. <ph rev="review-k"
+        >But</ph>, if the task document type also has been constrained to
+      require the <xmlelement>shortdesc</xmlelement> element, it is
+      compatible with the constrained topic document type. </p>
  </conbody>
 </concept>
