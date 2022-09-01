@@ -5,12 +5,10 @@
   <shortdesc>In this scenario, <ph rev="2.0">a DITA architect</ph> wants to
     use only a subset of the elements defined in the highlighting domain.
       <ph rev="2.0">They want</ph> to use <xmlelement>b</xmlelement> and
-      <xmlelement>i,</xmlelement> but not
-      <xmlelement>line-through</xmlelement>,
-      <xmlelement>overline</xmlelement>, <xmlelement>sup</xmlelement>,
-      <xmlelement>sup</xmlelement>, <xmlelement>tt</xmlelement>, or
-      <xmlelement>u</xmlelement>. <ph rev="2.0">They want</ph> to integrate
-    this constraint into the document-type shell for task.</shortdesc>
+      <xmlelement>i</xmlelement> but not <ph rev="review-p">any other of
+      the elements in the domain</ph>. <ph rev="2.0">They want</ph> to
+    integrate this constraint into the document-type shell for
+    task.</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -22,22 +20,31 @@
     </metadata>
   </prolog>
   <conbody>
-    <example id="example">
-      <ol>
-        <li rev="2.0">The DITA architect creates a constraint module:
-            <filepath>reducedHighlightingDomainConstraint.mod</filepath>.</li>
-        <li><ph rev="2.0">They add</ph> the following content to
-            <filepath>reducedHighlightingDomainConstraint.mod</filepath>:<codeblock>&lt;!-- ============================================================= -->
+    <p rev="review-p">Specifically, the DITA architect wants to redefine
+      the content model in the following ways:</p>
+    <ul rev="review-p">
+      <li>Use <xmlelement>b</xmlelement> and
+        <xmlelement>i</xmlelement></li>
+      <li>Remove <xmlelement>line-through</xmlelement>,
+          <xmlelement>overline</xmlelement>, <xmlelement>sup</xmlelement>,
+          <xmlelement>sup</xmlelement>, <xmlelement>tt</xmlelement>, and
+          <xmlelement>u</xmlelement></li>
+    </ul>
+    <ol>
+      <li rev="2.0">The DITA architect creates a constraint module:
+          <filepath>reducedHighlightingDomainConstraint.mod</filepath>.</li>
+      <li><ph rev="2.0">They add</ph> the following content to
+          <filepath>reducedHighlightingDomainConstraint.mod</filepath>:<codeblock>&lt;!-- ============================================================= -->
 &lt;!--      CONSTRAINED HIGHLIGHT DOMAIN ENTITIES                    -->
 &lt;!-- ============================================================= -->
 
 &lt;!ENTITY % HighlightingDomain-c-ph     "b | i"                 >  </codeblock></li>
-        <li><ph rev="2.0">They add</ph> the constraint module to the
-            <filepath>catalog.xml</filepath> file.</li>
-        <li><ph rev="2.0">They then integrate</ph> the constraint module
-          into the company-specific, document-type shell for the task topic
-          by adding the content in the "DOMAIN CONSTRAINT INTEGRATION"
-          section:<codeblock>&lt;!-- ============================================================= -->
+      <li><ph rev="2.0">They add</ph> the constraint module to the
+          <filepath>catalog.xml</filepath> file.</li>
+      <li><ph rev="2.0">They then integrate</ph> the constraint module into
+        the company-specific, document-type shell for the task topic by
+        adding the content in the "DOMAIN CONSTRAINT INTEGRATION"
+        section:<codeblock>&lt;!-- ============================================================= -->
 &lt;!--                    DOMAIN CONSTRAINT INTEGRATION              -->
 &lt;!-- ============================================================= -->
 
@@ -45,18 +52,17 @@
   PUBLIC "-//ACME//ENTITIES DITA Highlighting Domain Constraint//EN" 
   "acme-HighlightDomainConstraint.mod"
 >%HighlightDomain-c-dec;</codeblock></li>
-        <li>In the "DOMAIN EXTENSIONS" section, <ph rev="2.0">they
-            replace</ph> the parameter entity for the highlighting domain
-          with the parameter entity for the constrained highlighting
-          domain:<codeblock>&lt;!ENTITY % ph           "ph |
+      <li>In the "DOMAIN EXTENSIONS" section, <ph rev="2.0">they
+          replace</ph> the parameter entity for the highlighting domain
+        with the parameter entity for the constrained highlighting
+        domain:<codeblock>&lt;!ENTITY % ph           "ph |
                          <b>%HighlightDomain-c-ph;</b> |
                          %sw-d-ph; | 
                          %ui-d-ph;
                         "></codeblock></li>
-        <li><ph rev="review-p">They check their</ph> test topic to ensure
-          that the content model is modified as expected.</li>
-      </ol>
-    </example>
+      <li><ph rev="review-p">They check their</ph> test topic to ensure
+        that the content model is modified as expected.</li>
+    </ol>
   </conbody>
   
 </concept>

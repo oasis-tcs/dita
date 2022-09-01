@@ -5,12 +5,9 @@
     the <xmlelement>topic</xmlelement> element using DTD</title>
   <shortdesc>In this scenario, <ph rev="2.0">the DITA architect</ph> for
     Acme Incorporated wants to redefine the content model for the topic
-    document type. <ph rev="2.0">They want</ph> to omit the
-      <xmlelement>abstract</xmlelement> element and make the
-      <xmlelement>shortdesc</xmlelement> element required; <ph rev="2.0"
-      >they also want</ph> to omit the
-      <xmlelement>related-links</xmlelement> element and disallow topic
-    nesting.</shortdesc>
+    document type. <ph rev="2.0">They want</ph><ph rev="review-p"> to omit
+      certain elements,  make the <xmlelement>shortdesc</xmlelement>
+      element required, and disallow topic nesting.</ph></shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -22,12 +19,20 @@
     </metadata>
   </prolog>
   <conbody>
-    <example id="example">
-      <ol>
-        <li><ph rev="2.0">The DITA architect creates a constraint module: </ph><!--<ph rev="2.0"/> a <filepath>.mod</filepath> file using the following naming conventions: <filepath><varname>qualifer</varname><varname>Tagname</varname>Constraint.mod</filepath>, where <varname>qualifer</varname> is a string the describes the constraint, and <varname>Tagname</varname> is the element type name with an initial capital. The constraint module is named-->
-          <filepath>acme-TopicConstraint.mod</filepath>.</li>
-        <li><ph rev="2.0">They add</ph> the following content to
-            <filepath>acme-TopicConstraint.mod</filepath>:<codeblock>
+    <p rev="review-p">Specifically, the DITA architect wants to redefine
+      the content model in the following ways:</p>
+    <ul rev="review-p">
+      <li>Remove <xmlelement>abstract</xmlelement></li>
+      <li>Require <xmlelement>shortdesc</xmlelement></li>
+      <li>Remove <xmlelement>related-links</xmlelement></li>
+      <li>Remove the <parameterentity>task-info-types</parameterentity>
+        entity in order to disallow topic nesting</li>
+    </ul>
+    <ol>
+      <li><ph rev="2.0">The DITA architect creates a constraint module: </ph>
+        <filepath>acme-TopicConstraint.mod</filepath>.</li>
+      <li><ph rev="2.0">They add</ph> the following content to
+          <filepath>acme-TopicConstraint.mod</filepath>:<codeblock>
 &lt;!-- ============================================================= -->
 &lt;!--                    CONSTRAINED TOPIC ENTITIES                 -->
 &lt;!-- ============================================================= -->
@@ -48,13 +53,13 @@
                          (%prolog;)?, 
                          (%body;)?)"
 ></codeblock></li>
-        <li><ph rev="2.0">They add</ph> the constraint module to the
-            <filepath>catalog.xml</filepath> file.</li>
-        <li><ph rev="2.0">They then integrate</ph> the constraint module
-          into the document-type shell for topic by adding the following
-            <ph rev="review-p">content to the "Element-Type Configuration
-            Integration
-          section</ph>:<codeblock>&lt;!-- ============================================================= -->
+      <li><ph rev="2.0">They add</ph> the constraint module to the
+          <filepath>catalog.xml</filepath> file.</li>
+      <li><ph rev="2.0">They then integrate</ph> the constraint module into
+        the document-type shell for topic by adding the following <ph
+          rev="review-p">content to the "Element-Type Configuration
+          Integration
+        section</ph>:<codeblock>&lt;!-- ============================================================= -->
 &lt;!--           ELEMENT-TYPE CONFIGURATION INTEGRATION              -->
 &lt;!-- ============================================================= -->
 
@@ -62,10 +67,9 @@
   PUBLIC "-//ACME//ELEMENTS DITA Topic Constraint//EN" 
   "acme-TopicConstraint.mod">
 %topic-constraints-c-def;</b></codeblock></li>
-        <li><ph rev="review-p">They check their</ph> test topic to ensure
-          that the content model is modified as expected.</li>
-      </ol>
-    </example>
+      <li><ph rev="review-p">They check their</ph> test topic to ensure
+        that the content model is modified as expected.</li>
+    </ol>
   </conbody>
   
 </concept>
