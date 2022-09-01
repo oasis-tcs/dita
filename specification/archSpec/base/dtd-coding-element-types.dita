@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.x Concept//EN" "concept.dtd">
 <concept id="general-coding-requirements" xml:lang="en-us">
-  <title>DTD: Coding requirements for element-type declarations</title>
+  <title>DTD: Coding requirements for structural and element-domain
+    modules</title>
   <shortdesc>This topic covers general coding requirements for defining element types in both
     structural and element-domain vocabulary modules.</shortdesc>
   <prolog>
@@ -19,14 +20,20 @@
       <title>Module files</title>
       <p>A vocabulary module that defines a structural or element-domain specialization is composed
         of two files:</p>
-      <ul>
-        <li>A definition module (<filepath>.mod</filepath>) file, which declares the element names,
-          content models, and attribute lists for the element types that are defined in the
-          vocabulary module</li>
-        <li>An entity declaration (<filepath>.ent</filepath>) file, which declares the text and
-          parameter entities that are used to integrate the vocabulary module into a document-type
-          shell</li>
-      </ul>
+      <dl>
+        <dlentry>
+          <dt>Definition module file</dt>
+          <dd>This (<filepath>.mod</filepath>) file declares the element
+            names, content models, and attribute lists for the element
+            types that are defined in the vocabulary module.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>Entity declaration file</dt>
+          <dd>This (<filepath>.ent</filepath>) file declares the text and
+            parameter entities that are used to integrate the vocabulary
+            module into a document-type shell.</dd>
+        </dlentry>
+      </dl>
     </section>
     <section id="element-definitions">
       <title>Element definitions</title>
@@ -52,9 +59,11 @@
               <p>For example:</p>
               <codeblock>&lt;!ENTITY % topichead "topichead"></codeblock>
             </example>
-            <p>The parameter entity provides a layer of abstraction when setting up content models;
-              it can be redefined in a document-type shell in order to create domain extensions <ph
-                rev="2.0">or implement element configuration (constraint and expansion).</ph></p>
+            <p>The parameter entity provides a layer of abstraction when
+              setting up content models. It can be redefined in a
+              document-type shell in order to create domain extensions <ph
+                rev="2.0">or implement element configuration (constraint
+                and expansion).</ph></p>
             <p>Element name entities for a single vocabulary module typically are grouped together
               at the top of the vocabulary module. They can occur in any order.</p>
           </dd>
