@@ -132,7 +132,16 @@
         <li><ph rev="2.0">They add</ph> the constraint module to the
             <filepath>catalog.xml</filepath> file.</li>
         <li><ph rev="2.0">They then integrate</ph> the constraint module
-          into the applicable document-type shells.</li>
+          into the applicable document-type shells<ph rev="review-p"> by
+            adding the following
+          code</ph>:<codeblock rev="review-p">&lt;!-- ============================================================= -->
+&lt;!--           ELEMENT-TYPE CONFIGURATION INTEGRATION              -->
+&lt;!-- ============================================================= -->
+
+<b>&lt;!ENTITY % section-constraints-c-def  
+  PUBLIC "-//ACME//ELEMENTS DITA 2.0 Section Constraint//EN" 
+  "idRequiredSectionContraint.mod">
+%section-constraints-c-def;</b></codeblock></li>
         <li><ph rev="review-p">They check their</ph> test topic to ensure
           that the attribute list is modified as expected.</li>
       </ol>

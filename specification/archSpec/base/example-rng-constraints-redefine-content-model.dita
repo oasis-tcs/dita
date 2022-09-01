@@ -4,14 +4,11 @@
   id="example-rng-constraints-redefine-content-model" rev="2.0">
   <title>Example: <ph rev="review-p">Restrict</ph> the content model for
     the <xmlelement>topic</xmlelement> element using RNG</title>
-  <shortdesc>In this scenario, <ph rev="2.0">a DITA architect</ph> for
-    Acme, Incorporated wants to redefine the content model for the topic
-    document type. <ph rev="2.0">They want</ph> to omit the
-      <xmlelement>abstract</xmlelement> element and make the
-      <xmlelement>shortdesc</xmlelement> element required; <ph rev="2.0"
-      >they also want</ph> to omit the
-      <xmlelement>related-links</xmlelement> element and disallow topic
-    nesting.</shortdesc>
+  <shortdesc>In this scenario, <ph rev="2.0">the DITA architect</ph> for
+    Acme Incorporated wants to redefine the content model for the topic
+    document type. <ph rev="2.0">They want</ph><ph rev="review-p"> to omit
+      certain elements,  make the <xmlelement>shortdesc</xmlelement>
+      element required, and disallow topic nesting.</ph></shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -23,15 +20,23 @@
     </metadata>
   </prolog>
   <conbody>
-    <example id="example">
-      <ol>
-        <li rev="2.0">The DITA architect creates a constraint module:
-            <filepath>acme-TopicConstraintMod.rng</filepath>.</li>
-        <li><ph rev="2.0">They update</ph> the
-            <filepath>catalog.xml</filepath> file to include the new
-          constraint module.</li>
-        <li><ph rev="2.0">They add</ph> the following content to
-            <filepath>acme-TopicConstraint.mod</filepath>:<codeblock>&lt;div>
+    <p rev="review-p">Specifically, the DITA architect wants to redefine
+      the content model in the following ways:</p>
+    <ul rev="review-p">
+      <li>Remove <xmlelement>abstract</xmlelement></li>
+      <li>Require <xmlelement>shortdesc</xmlelement></li>
+      <li>Remove <xmlelement>related-links</xmlelement></li>
+      <li>Remove the <codeph>task-info-types</codeph>pattern in order to
+        disallow topic nesting</li>
+    </ul>
+    <ol>
+      <li rev="2.0">The DITA architect creates a constraint module:
+          <filepath>acme-TopicConstraintMod.rng</filepath>.</li>
+      <li><ph rev="2.0">They update</ph> the
+          <filepath>catalog.xml</filepath> file to include the new
+        constraint module.</li>
+      <li><ph rev="2.0">They add</ph> the following content to
+          <filepath>acme-TopicConstraint.mod</filepath>:<codeblock>&lt;div>
   &lt;a:documentation>CONTENT MODEL OVERRIDES&lt;/a:documentation>
   &lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0">
     &lt;define name="topic.content" combine="interleave">
@@ -46,26 +51,26 @@
     &lt;/define>
   &lt;/include>
 &lt;/div></codeblock><draft-comment author="Kristen J Eberlein"
-            time="21 April 2021">
-            <p>I know that the override won't happen without
-                <codeph>combine="interleave"</codeph>, but I don't know if
-              we cover that in the coding requirements topic. If people
-              start with copying-and-pasting from the module that they are
-              overriding, they won't have that and will get errors.</p>
-          </draft-comment></li>
-        <li><ph rev="2.0">They then integrate</ph> the constraint module
-          into the document-type shell for topic by adding an
-            <xmlelement>include</xmlelement> element in the "ELEMENT-TYPE
-          CONFIGURATION INTEGRATION" section:<codeblock>&lt;div>
+          time="21 April 2021">
+          <p>I know that the override won't happen without
+              <codeph>combine="interleave"</codeph>, but I don't know if we
+            cover that in the coding requirements topic. If people start
+            with copying-and-pasting from the module that they are
+            overriding, they won't have that and will get errors.</p>
+        </draft-comment></li>
+      <li><ph rev="2.0">They then integrate</ph> the constraint module into
+        the document-type shell for topic by adding an
+          <xmlelement>include</xmlelement> element in the "ELEMENT-TYPE
+        CONFIGURATION INTEGRATION" section:<codeblock>&lt;div>
   &lt;a:documentation>ELEMENT-TYPE CONFIGURATION INTEGRATION&lt;/a:documentation>
   &lt;include href="acme-TopicConstraintMod.rng"/>
 &lt;/div></codeblock></li>
-        <li>
-          <p><ph rev="2.0">They then remove</ph> the
-              <xmlelement>include</xmlelement> statement that references
-              <filepath>topicMod.rng</filepath> from the "MODULE
-            INCLUSIONS" section:</p>
-          <codeblock>&lt;div>
+      <li>
+        <p><ph rev="2.0">They then remove</ph> the
+            <xmlelement>include</xmlelement> statement that references
+            <filepath>topicMod.rng</filepath> from the "MODULE INCLUSIONS"
+          section:</p>
+        <codeblock>&lt;div>
   &lt;a:documentation>MODULE INCLUSIONS &lt;/a:documentation>
     <line-through>&lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0"/></line-through>
     &lt;include href="urn:oasis:names:tc:dita:rng:audienceAttDomain.rng:2.0"/>
@@ -75,10 +80,9 @@
     &lt;include href="urn:oasis:names:tc:dita:rng:otherpropsAttDomain.rng:2.0"/>
     &lt;include href="urn:oasis:names:tc:dita:rng:highlightDomain.rng:2.0"/>
   &lt;/div></codeblock>
-        </li>
-        <li><ph rev="review-p">They check their</ph> test topic to ensure
-          that the content model is modified as expected.</li>
-      </ol>
-    </example>
+      </li>
+      <li><ph rev="review-p">They check their</ph> test topic to ensure
+        that the content model is modified as expected.</li>
+    </ol>
   </conbody>
 </concept>
