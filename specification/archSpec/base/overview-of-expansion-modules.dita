@@ -15,24 +15,31 @@
     </metadata>
   </prolog>
   <conbody>
-    <p>An expansion module can perform the following functions:</p>
+    <p><ph rev="review-p">An expansion module works in conjunction with an
+        element or attribute specialization.</ph> An expansion module can
+      perform the following functions:</p>
     <dl>
       <dlentry>
         <dt>Expand content models</dt>
         <dd>
-          <p>Expansion modules extend the content models of specific
-            elements, without making the specialized elements available
-            wherever the specialization base is permitted.</p>
-          <p otherprops="examples">For example, an expansion for
-              <xmlelement>section</xmlelement> can make a new element
-              (<xmlelement>sectionDesc</xmlelement>) available as an
-            optional, child element. The
-              <xmlelement>sectionDesc</xmlelement> element is specialized
-            from <xmlelement>p</xmlelement>, but it is available only
-            within <xmlelement>section</xmlelement>.</p>
-          <p>The elements are defined in a separate element domain that
-            declares the content models and attribute lists for the new
-            elements.</p>
+          <!--<p>Expansion modules extend the content models of specific elements, without making the specialized elements available wherever the specialization base is permitted.</p>-->
+          <p rev="review-k">Expansion modules can work in conjunction with
+            element-specialization modules to extend the content models of
+            specific elements. When an element-specialization module is
+            combined with an extension module, the specialized elements can
+            be made available <i>only</i> in specific contexts, rather than
+            wherever the specialization bases are allowed.</p>
+          <p otherprops="examples" rev="review-k">For example, a DITA
+            architect creates a new element-domain specialization that
+            declares a new element specialized from
+              <xmlelement>p</xmlelement>:
+              <xmlelement>sectionDesc</xmlelement>. Using an extension
+            module, the DITA architect can make
+              <xmlelement>sectionDesc</xmlelement> available <i>only</i> as
+            an optional child of <xmlelement>section</xmlelement>, rather
+            than wherever <xmlelement>p</xmlelement> is permitted. </p>
+          <!--<p otherprops="examples">For example, an expansion for <xmlelement>section</xmlelement> can make a new element (<xmlelement>sectionDesc</xmlelement>) available as an optional, child element. The <xmlelement>sectionDesc</xmlelement> element is specialized from <xmlelement>p</xmlelement>, but it is available only within <xmlelement>section</xmlelement>.</p>-->
+          <!--<p>The elements are defined in a separate element domain that declares the content models and attribute lists for the new elements.</p>-->
         </dd>
       </dlentry>
       <dlentry>
@@ -47,11 +54,11 @@
               <xmlatt>cell-purpose</xmlatt> available only on those
             elements. The <xmlatt>cell-purpose</xmlatt> attribute is
             specialized from <xmlatt>base</xmlatt>.</p>
-          <p>The additional attribute can be either defined directly within
-            the expansion module, or it can be defined in a separate
-            attribute-specialization module. In either case, the token used
-            as <ph rev="review-p">a</ph> value for the
-              <xmlatt>specializations</xmlatt> attribute must be
+          <p>The <ph rev="review-p">additional</ph> attribute can be either
+            defined directly within the expansion module, or it can be
+            defined in a separate attribute-specialization module. In
+            either case, the token used as <ph rev="review-p">a</ph> value
+            for the <xmlatt>specializations</xmlatt> attribute must be
             defined.</p>
         </dd>
       </dlentry>
