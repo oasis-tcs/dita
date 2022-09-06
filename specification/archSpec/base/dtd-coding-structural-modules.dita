@@ -50,10 +50,13 @@
     <section id="topic-nesting">
       <title>Controlling nesting in topic types</title>
       <p><ph rev="2.0">A structural module that defines a new topic
-          type</ph> typically uses a parameter entity to define what topic
-        types are permitted to nest. While there are known exceptions
-        described below, the following rules apply when using parameter
-        entities to control nesting.</p>
+          type</ph> typically uses a parameter entity to define a default
+        for what topic types are permitted to nest. When this is done
+        consistently, a shell that includes multiple structural modules can
+        set common nesting rules for all topic types by setting
+          <codeph>%info-types;</codeph> entity. </p>
+      <p>The following rules apply when using parameter entities to control
+        nesting.</p>
       <dl>
         <dlentry>
           <dt>Parameter entity name</dt>
@@ -89,16 +92,6 @@
                 will not allow any nesting:</p>
               <codeblock><![CDATA[<!ENTITY % glossentry-info-types "no-topic-nesting">]]></codeblock>
             </example>
-            <p>Default topic nesting in a structural module often is set up to use the
-                <codeph>%info-types;</codeph> parameter entity rather than using a specific element.
-              When this is done consistently, a shell that includes multiple structural modules can
-              set common nesting rules for all topic types by setting <codeph>%info-types;</codeph>
-              entity. </p>
-            <example>
-              <p>The following example shows a structural module that uses
-                  <codeph>%info-types;</codeph> for default topic nesting:</p>
-              <codeblock>&lt;!ENTITY % concept-info-types "%info-types;"></codeblock>
-            </example>
           </dd>
         </dlentry>
         <dlentry>
@@ -108,12 +101,10 @@
               element of a topic type should be the
                   <codeph><varname>topictype</varname>-info-types</codeph>
               parameter entity.</p>
-            <p>A document-type shell then can control how topics are allowed to nest for this
-              specific topic type by redefining the
-                <codeph><varname>topictype</varname>-info-types</codeph> entity for each topic type.
-              If default nesting rules reference the <codeph>info-types</codeph> parameter entity, a
-              shell can efficiently create common nesting rules by redefining the
-                <codeph>info-types</codeph> entity.</p>
+            <p>A document-type shell then can control how topics are
+              allowed to nest for this specific topic type by redefining
+              the <codeph><varname>topictype</varname>-info-types</codeph>
+              entity for each topic type.</p>
             <example>
               <p>For example, with the following content model defined for
                   <xmlelement>concept</xmlelement>, a document-type shell that uses the concept
@@ -142,9 +133,6 @@
           allowing only other topic types that are defined in the same module, it can nest those
           topics directly in the same way that other nested elements are defined.</li>
       </ul>
-      <draft-comment author="Kristen J Eberlein" time="07 April 2021">
-        <p>Examples? I think the wording needs to be crisped up.</p>
-      </draft-comment>
     </section>
   </conbody>
 </concept>

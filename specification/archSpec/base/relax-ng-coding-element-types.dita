@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.x Concept//EN" "concept.dtd">
 <concept xml:lang="en-us" id="concept_yvl_ncv_dn">
- <title>RELAX NG: Coding requirements for element-type declarations</title>
- <shortdesc>This topic covers general coding requirements for element types in structural and
-    element-domain vocabulary modules.</shortdesc>
+ <title>RELAX NG: Coding requirements for structural and element-domain
+    modules</title>
+  <shortdesc>This topic covers general coding requirements for defining
+    element types in both structural and element-domain vocabulary
+    modules.</shortdesc>
  <conbody>
     <section id="files">
       <title>Module files</title>
@@ -31,13 +33,15 @@
               whose name is the element type name and whose content is a reference to the
               element-type <codeph><varname>tagname</varname>.element</codeph> pattern.</p>
             <example>
-              <p>For example:</p>
+              <p>The following example shows the pattern for the
+                  <xmlelement>b</xmlelement> element:</p>
               <codeblock>&lt;div>
   &lt;a:documentation>ELEMENT TYPE NAME PATTERNS&lt;/a:documentation>
-  &lt;define name="b">
-    &lt;ref name="b.element"/>
-  &lt;/define>
-  &lt;!-- ... -->
+    &lt;!-- ... -->
+    <b>&lt;define name="b">
+      &lt;ref name="b.element"/>
+    &lt;/define></b>
+    &lt;!-- ... -->
 &lt;/div></codeblock>
             </example>
             <p>The element-type name pattern provides a layer of abstraction that facilitates
@@ -125,8 +129,7 @@
       &lt;/define>
       <b>&lt;define name="topichead.element"></b>
         &lt;element name="topichead">
-          &lt;a:documentation>The &amp;lt;topichead> element provides a title-only entry in a navigation map, as an alternative to the fully-linked title provided by the &amp;lt;topicref> element. Category:
-            Mapgroup elements&lt;/a:documentation>
+          &lt;a:documentation/>
           &lt;ref name="topichead.attlist"/>
           &lt;ref name="topichead.content"/>
         &lt;/element>
@@ -137,8 +140,6 @@
 
     &lt;/div></codeblock>
             </example>
-            <draft-comment author="robander">Reminder to update this example with a 2.0 version of
-              the declaration.</draft-comment>
           </dd>
         </dlentry>
         <dlentry>
@@ -169,12 +170,14 @@
               specialized element. This is done in a section at the end of each module that includes
               a <codeph><varname>tagname</varname>.attlist</codeph> pattern for each element type
               that is defined in the module. The declarations can occur in any order.</p>
-            <p>The <codeph><varname>tagname</varname>.attlist</codeph> pattern for each element
-              defines that element's <xmlatt>class</xmlatt> attribute. <xmlatt>class</xmlatt> is
-              declared as an optional attribute; the default value is declared using the
-                <xmlatt>a:defaultValue</xmlatt> attribute, and the value of the attribute is
-              constructed according to the rules in <xref href="specialization-class-attribute.dita"
-              />.</p>
+            <p>The <codeph><varname>tagname</varname>.attlist</codeph>
+              pattern for each element defines the value for the
+                <xmlatt>class</xmlatt> attribute for the element.
+                <xmlatt>class</xmlatt> is declared as an optional
+              attribute. The default value is declared using the
+                <xmlatt>a:defaultValue</xmlatt> attribute, and the value of
+              the attribute is constructed according to the rules in <xref
+                href="specialization-class-attribute.dita"/>.</p>
             <p otherprops="examples">For
               example:<codeblock>&lt;define name="topichead.attlist" combine="interleave">
   &lt;optional>
