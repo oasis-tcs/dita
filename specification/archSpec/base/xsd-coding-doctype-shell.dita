@@ -27,9 +27,9 @@
             this section uses an <xmlelement>xs:include</xmlelement> element to include the XSD
             module for that domain. </p>
           <p otherprops="examples">For
-            example:<codeblock>&lt;xs:include schemaLocation="urn:oasis:names:tc:dita:xsd:deliveryTargetAttDomain.xsd:1.3"/&gt;
-&lt;xs:include schemaLocation="urn:oasis:names:tc:dita:xsd:highlightDomain.xsd:1.3"/&gt;
-&lt;xs:include schemaLocation="urn:oasis:names:tc:dita:xsd:indexingDomain.xsd:1.3"/&gt;</codeblock></p>
+            example:<codeblock>&lt;xs:include schemaLocation="urn:pubid:oasis:names:tc:dita:xsd:deliveryTargetAttDomain.xsd:1.3"/&gt;
+&lt;xs:include schemaLocation="urn:pubid:oasis:names:tc:dita:xsd:highlightDomain.xsd:1.3"/&gt;
+&lt;xs:include schemaLocation="urn:pubid:oasis:names:tc:dita:xsd:indexingDomain.xsd:1.3"/&gt;</codeblock></p>
         </dd>
       </dlentry>
       <dlentry>
@@ -70,16 +70,16 @@
               <xmlelement>metadata</xmlelement> element from the metadata group. It also extends the
               <xmlatt>props</xmlatt> attribute from the common element module to add the specialized
             attribute
-            <xmlatt>deliveryTarget</xmlatt>.<codeblock>&lt;xs:include schemaLocation="urn:oasis:names:tc:dita:xsd:metaDeclMod.xsd:1.3"/&gt;
+            <xmlatt>deliveryTarget</xmlatt>.<codeblock>&lt;xs:include schemaLocation="urn:pubid:oasis:names:tc:dita:xsd:metaDeclMod.xsd:1.3"/&gt;
 &lt;!-- ... -->
-&lt;xs:redefine schemaLocation="urn:oasis:names:tc:dita:xsd:commonElementGrp.xsd:1.3"&gt;
+&lt;xs:redefine schemaLocation="urn:pubid:oasis:names:tc:dita:xsd:commonElementGrp.xsd:1.3"&gt;
   &lt;!-- ...Redefinition of any elements in common module -->
   &lt;xs:attributeGroup name=&quot;props-attribute-extensions&quot;&gt;
     &lt;xs:attributeGroup ref=&quot;props-attribute-extensions&quot;/&gt;
     &lt;xs:attributeGroup ref=&quot;deliveryTargetAtt-d-attribute&quot;/&gt;
   &lt;/xs:attributeGroup&gt;
 &lt;/xs:redefine>
-&lt;xs:redefine schemaLocation="urn:oasis:names:tc:dita:xsd:metaDeclGrp.xsd:1.3"&gt;
+&lt;xs:redefine schemaLocation="urn:pubid:oasis:names:tc:dita:xsd:metaDeclGrp.xsd:1.3"&gt;
   &lt;xs:group name="metadata"&gt;
     &lt;xs:choice&gt;
       &lt;xs:group ref="metadata"/&gt;
@@ -104,11 +104,11 @@
             module.</p>
           <p otherprops="examples">For example, the following portion of a document-type shell
             includes the structural modules for topic and
-            concept:.<codeblock>&lt;xs:include schemaLocation="urn:oasis:names:tc:dita:xsd:topicMod.xsd:1.3"/&gt;
-&lt;xs:include schemaLocation="urn:oasis:names:tc:dita:xsd:conceptMod.xsd:1.3"/&gt;</codeblock></p>
+            concept:.<codeblock>&lt;xs:include schemaLocation="urn:pubid:oasis:names:tc:dita:xsd:topicMod.xsd:1.3"/&gt;
+&lt;xs:include schemaLocation="urn:pubid:oasis:names:tc:dita:xsd:conceptMod.xsd:1.3"/&gt;</codeblock></p>
         </dd>
       </dlentry>
-      <!--<dlentry rev="DITA1.3   proposal-13121"><dt>Structural definition inclusions</dt><dd><p>The structural definition inclusion section includes the element type declaration (<filepath>*Mod.xsd</filepath>) files for each topic or map type integrated into the shell. </p><p>For example, if a troubleshooting specialization is specialized from topic but includes elements from task, then the task structural model <term outputclass="RFC-2119" rev="terminology">MUST</term> be included in the document shell as well as its structural dependency on the <xmlatt>domains</xmlatt> attribute. See <xref format="dita" href="specialization-domains-attribute.dita#domainsatt"/> for details.</p><codeblock>&lt;xs:include schemaLocation="urn:oasis:names:tc:dita:xsd:taskMod.xsd:1.2" /></codeblock><draft-comment author="robander" time="October 6 2014" disposition="open">Following sentence needs to be fixed, not sure of intent - 'When getting the domains attribute value from the [element] from the [file] files ..."</draft-comment><note>When getting the <xmlatt>domains</xmlatt> attribute value from the <xmlelement>dita:domainsModule</xmlelement> from the <filepath>*Mod.xsd</filepath> files you will need to add the element type hierarchy information for the structural definition to the base value. For instance in the troubleshooting specialization case you would need to add the following to the <xmlatt>domains</xmlatt> attribute:<codeblock>&lt;xs:attributeGroup name="domains-att">
+      <!--<dlentry rev="DITA1.3   proposal-13121"><dt>Structural definition inclusions</dt><dd><p>The structural definition inclusion section includes the element type declaration (<filepath>*Mod.xsd</filepath>) files for each topic or map type integrated into the shell. </p><p>For example, if a troubleshooting specialization is specialized from topic but includes elements from task, then the task structural model <term outputclass="RFC-2119" rev="terminology">MUST</term> be included in the document shell as well as its structural dependency on the <xmlatt>domains</xmlatt> attribute. See <xref format="dita" href="specialization-domains-attribute.dita#domainsatt"/> for details.</p><codeblock>&lt;xs:include schemaLocation="urn:pubid:oasis:names:tc:dita:xsd:taskMod.xsd:1.2" /></codeblock><draft-comment author="robander" time="October 6 2014" disposition="open">Following sentence needs to be fixed, not sure of intent - 'When getting the domains attribute value from the [element] from the [file] files ..."</draft-comment><note>When getting the <xmlatt>domains</xmlatt> attribute value from the <xmlelement>dita:domainsModule</xmlelement> from the <filepath>*Mod.xsd</filepath> files you will need to add the element type hierarchy information for the structural definition to the base value. For instance in the troubleshooting specialization case you would need to add the following to the <xmlatt>domains</xmlatt> attribute:<codeblock>&lt;xs:attributeGroup name="domains-att">
   &lt;xs:attribute name="domains" type="xs:string"
      default="<b>(topic troubleshooting+task) (topic task) </b>
               etc... 
@@ -170,7 +170,7 @@
   &lt;/xs:choice>
 &lt;/xs:group>
 
-&lt;xs:redefine schemaLocation="urn:oasis:names:tc:dita:xsd:conceptMod.xsd:1.3" >
+&lt;xs:redefine schemaLocation="urn:pubid:oasis:names:tc:dita:xsd:conceptMod.xsd:1.3" >
   &lt;xs:group name="concept-info-types">
     &lt;xs:choice>
       &lt;xs:group ref="info-types"/>
@@ -189,7 +189,7 @@
               either <xmlelement>concept</xmlelement> or <xmlelement>topic</xmlelement>. In order to
               make <xmlelement>topic</xmlelement> the <i>only</i> valid child topic, the
                 <codeph>concept-info-types</codeph> must be redefined as
-              follows:<codeblock>&lt;xs:redefine schemaLocation="urn:oasis:names:tc:dita:xsd:conceptMod.xsd:1.3" >
+              follows:<codeblock>&lt;xs:redefine schemaLocation="urn:pubid:oasis:names:tc:dita:xsd:conceptMod.xsd:1.3" >
   &lt;xs:group name="concept-info-types">
     &lt;xs:choice>
       &lt;xs:group ref="info-types"/>

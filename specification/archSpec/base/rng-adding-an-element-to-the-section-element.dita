@@ -38,7 +38,7 @@
             <filepath>sectionDescDomain.rng</filepath>. It contains the
           following
           code:<codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
-&lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+&lt;?xml-model href="urn:pubid:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
                          schematypens="http://relaxng.org/ns/structure/1.0"?>
 &lt;grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
   xmlns:dita="http://dita.oasis-open.org/architecture/2005/" 
@@ -94,7 +94,7 @@
           <codeblock>  &lt;div>
     &lt;a:documentation>MODULE INCLUSIONS&lt;/a:documentation>
     ...
-    <b>&lt;include href="urn:example:names:tc:dita:rng:sectionDescDomain.rng:2.0"/></b>
+    <b>&lt;include href="urn:pubid:example:names:tc:dita:rng:sectionDescDomain.rng:2.0"/></b>
   &lt;/div></codeblock>
           <p>At this point, the new domain is integrated into the
             document-type shell. However, the new element is not added to
@@ -106,7 +106,7 @@
               <xmlelement>sectionDesc</xmlelement> element to the content
             model of <xmlelement>section</xmlelement>:</p>
           <codeblock>&lt;?xml version="1.0" encoding="UTF-8"?>
-&lt;?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+&lt;?xml-model href="urn:pubid:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
                          schematypens="http://relaxng.org/ns/structure/1.0"?>
 &lt;grammar xmlns="http://relaxng.org/ns/structure/1.0"
   xmlns:dita="http://dita.oasis-open.org/architecture/2005/"
@@ -114,7 +114,7 @@
   datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   &lt;div>
     &lt;a:documentation>CONTENT MODEL AND ATTRIBUTE LIST OVERRIDES&lt;/a:documentation>
-    &lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0">  
+    &lt;include href="urn:pubid:oasis:names:tc:dita:rng:topicMod.rng:2.0">  
       &lt;define name="topic-info-types">
         &lt;ref name="topic.element"/>
       &lt;/define>    
@@ -146,13 +146,13 @@
   &lt;/div>
   &lt;div>
     &lt;a:documentation>MODULE INCLUSIONS&lt;/a:documentation>
-    <line-through>&lt;include href="urn:oasis:names:tc:dita:rng:topicMod.rng:2.0">
+    <line-through>&lt;include href="urn:pubid:oasis:names:tc:dita:rng:topicMod.rng:2.0">
       &lt;define name="topic-info-types">
         &lt;ref name="topic.element"/>
       &lt;/define>
     &lt;/include></line-through>
     ... 
-    &lt;include href="urn:example:names:tc:dita:rng:sectionDescDomain.rng:2.0"/>
+    &lt;include href="urn:pubid:example:names:tc:dita:rng:sectionDescDomain.rng:2.0"/>
   &lt;/div></codeblock>
         </li>
         <li>After updating the <filepath>catalog.xml</filepath> file to
