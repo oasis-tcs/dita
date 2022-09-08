@@ -22,9 +22,10 @@
   </metadata>
  </prolog>
  <conbody>
-  <p>Entities can be defined multiple times within a single document type, but only the first
-   definition is effective. How entities work shapes DTD coding practices. The following list
-   describes a few of the more important entities that are used in DITA DTDs:</p>
+  <p>Entities can be defined multiple times within a single document type,
+      but only the first definition is effective. How entities work shapes
+      DTD coding practices. The following list describes a few of the more
+      important entities that are used in DITA DTDs:</p>
   <dl>
    <dlentry>
     <dt>Elements defined as entities</dt>
@@ -48,12 +49,15 @@
     <dd>
      <p>Every element in a DITA DTD defines its content model using an entity. <ph rev="2.0">This
        enables element configuration.</ph></p>
-     <example>For example, rather than directly setting what is allowed in
-              <xmlelement>ph</xmlelement>, that element sets its content model to
-              <codeph>%ph.content;</codeph>; that entity defines the actual content model. <ph
-              rev="2.0">A constraint module can redefine the <codeph>%ph.content;</codeph> model to
-              remove selected elements, or an expansion module can redefine the
-                <codeph>%ph.content;</codeph> module to add elements</ph>.</example>
+          <example><ph rev="review-q">For example, the content model for
+              the <xmlelement>p</xmlelement> element is set to
+                <codeph>%ph.content;</codeph>, and the
+                <codeph>%ph.content;</codeph> entity defines the actual
+              content model. </ph><ph rev="2.0">A constraint module then
+              can redefine the <codeph>%ph.content;</codeph> model to
+              remove selected elements, or an expansion module can redefine
+              the <codeph>%ph.content;</codeph> module to add
+            elements</ph>.</example>
     </dd>
    </dlentry>
    <dlentry>

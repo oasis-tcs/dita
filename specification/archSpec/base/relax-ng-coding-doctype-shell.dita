@@ -78,10 +78,10 @@
               and expansion)</ph>.
             <!--Constraint modules include the module they override and override the patterns that they constrain directly in the constraint module itself.-->
             Because the element-configuration module imports the module
-            that it override,s any module that is<ph rev="2.0">
-              configured</ph> in this section (including the base topic or
-            map modules) is left out of the following "Module inclusion"
-            section.</p>
+            that it <ph rev="review-q">overrides,</ph> any module that
+              is<ph rev="2.0"> configured</ph> in this section (including
+            the base topic or map modules) is left out of the following
+            "Module inclusion" section.</p>
           <div otherprops="examples" rev="2.0">
             <p>The following code sample shows the section of an RNG-based
               document-type shell that redefines the
@@ -133,12 +133,16 @@
             MathML, this section also includes exclusions for the namespaces used by those
             domains.</p>
           <div otherprops="examples">
-            <p>For example, the following code sample is from an RNG-based document-type shell for a
-              task topic. It declares that both the <xmlelement>topic</xmlelement> and
-                <xmlelement>task</xmlelement> elements have an <xmlatt>id</xmlatt> attribute with a
-              XML data type of ID. These elements and any elements in the SVG or MathML namespaces
-              are excluded from the "any" pattern by being placed within the
-                <xmlelement>except</xmlelement> element:<codeblock>  &lt;div&gt;
+            <p>For example, the following code sample is from an RNG-based
+              document-type shell for a task topic. It declares that both
+              the <xmlelement>topic</xmlelement> and
+                <xmlelement>task</xmlelement> elements have an
+                <xmlatt>id</xmlatt> attribute with <ph rev="review-q"
+                >an</ph> XML data type of ID. These elements and any
+              elements in the SVG or MathML namespaces are excluded from
+              the "any" pattern by being placed within the
+                <xmlelement>except</xmlelement>
+              element:<codeblock>  &lt;div&gt;
       &lt;a:documentation&gt; ID-DEFINING-ELEMENT OVERRIDES &lt;/a:documentation&gt;
       &lt;define name="any"&gt;
          &lt;zeroOrMore&gt;
