@@ -51,37 +51,70 @@
     <p>In this code sample, navigation information for assistive technology
       is derived from two sources:</p>
     <ul>
-      <li>The <xmlelement>thead</xmlelement> element contains two rows, and
-        indicates that each <ph rev="review-e">entry</ph> in those <ph
-          rev="review-e">header</ph> rows is a header cell for that column.
-        This means that each body cell can be associated with the header
-        cell or cells above the column. For example, in the second body
-        row, the entry "Peter" can be associated with the header "Name";
-        similarly, the entry "9,000" can be associated with the headers
-        "Expected" and "Points".</li>
-      <li>The <xmlatt>rowheader</xmlatt> attribute <ph rev="review-e">that
-          is specified on <xmlelement>table</xmlelement> indicates</ph>
-        that the first column plays a role as a header. This means that
-        each body cell in columns two and three can be associated with the
-        header cell in column one. For example, in the second body row, the
-        entry "9,000" can be associated with the header "Peter".</li>
+      <li>The <xmlelement>thead</xmlelement> element contains two rows, and indicates that each <ph
+          rev="review-e">entry</ph> in those <ph rev="review-e">header</ph> rows is a header cell
+        for that column. This means that each body cell can be associated with the header cell or
+        cells above the column. For example, in the second body row, the entry "Peter" <ph
+          rev="review-o">is</ph> associated with the header "Name"; similarly, the entry "9,000" <ph
+          rev="review-o">is</ph> associated with the headers "Expected" and "Points".</li>
+      <li>The <xmlatt>rowheader</xmlatt> attribute <ph rev="review-e">that is specified on
+            <xmlelement>table</xmlelement> indicates</ph> that the first column plays a role as a
+          <ph rev="review-o">row</ph> header. <ph rev="review-o">This means that the header cell in
+          column one is associated with the other body cells in the same row</ph>. For example, in
+        the second body row, the entry "9,000" <ph rev="review-o">is</ph> associated with the header
+        "Peter".</li>
     </ul>
-    <p>As a result of these two sets of headers, a rendering of the table
-      can associate the entry "9,000" with three headers: "Peter",
-      "Expected", and "Points", <ph rev="review-e">thus</ph> making it
-      fully navigable by a screen reader or other assistive technology.</p>
+    <p>As a result of these two sets of headers, a rendering of the table <ph rev="review-o"
+        >associates</ph> the entry "9,000" with three headers: "Peter", "Expected", and "Points",
+        <ph rev="review-e">thus</ph> making it fully navigable by a screen reader or other assistive
+      technology. <ph rev="review-o">When the user navigates to the cell containing "9,000", it can
+        report the headers "Peter", "Expected", and "Points" as the headers for that cell.</ph></p>
     <p>The output might be <ph rev="review-e">rendered in the following
         way:</ph></p>
     <image placement="break"
       href="../../langRef/images/table-with-spans.jpg">
-      <alt>The image shows a three-column table. The first column lists
-        names, the second column lists expected points, and the third
-        column lists actual points. There are two headers rows that
-        contains spans. The header row is shaded with green, and the text
-        in the header column and rows is bold. The edges of the screen
-        capture are tattered, to indicate that the image is part of a
-        larger document.</alt>
+      <alt>The image shows a three-column table. The first column lists names, the second column
+        lists expected points, and the third column lists actual points. There are two <ph
+          rev="review-o">header</ph> rows that contains spans. The header row is shaded with green,
+        and the text in the header column and rows is bold. The edges of the screen capture are
+        tattered, to indicate that the image is part of a larger document.</alt>
     </image>
+    <p rev="review-o">The rendered HTML used by a screen reader might look as follows.</p>
+    <codeblock rev="review-o" base="ci-xml">&lt;table>
+  &lt;caption>
+    &lt;span>Sample of automated table accessibility&lt;/span>
+    &lt;span class="desc">Names are listed in the column c1. Points are listed in both data columns, 
+      with expected points in column c2 and actual points in column c3.&lt;/span>
+  &lt;/caption>
+  &lt;colgroup>&lt;col>&lt;col>&lt;col>&lt;/colgroup>
+  &lt;thead>
+    &lt;tr>
+      &lt;th id="source__entry__1" rowspan="2">Name&lt;/th>
+      &lt;th id="source__entry__2" colspan="2">Points&lt;/th>
+    &lt;/tr>
+    &lt;tr>
+      &lt;th id="source__entry__3">Expected&lt;/th>
+      &lt;th id="source__entry__4">Actual&lt;/th>
+    &lt;/tr>
+  &lt;/thead>
+  &lt;tbody>
+    &lt;tr>
+      &lt;th scope="row" id="source__entry__5" headers="source__entry__1">Mark&lt;/th>
+      &lt;td headers="source__entry__5 source__entry__2 source__entry__3">10,000&lt;/td>
+      &lt;td headers="source__entry__5 source__entry__2 source__entry__4">11,123.45&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+      &lt;th scope="row" id="source__entry__8" headers="source__entry__1">Peter&lt;/th>
+      &lt;td headers="source__entry__8 source__entry__2 source__entry__3">9,000&lt;/td>
+      &lt;td headers="source__entry__8 source__entry__2 source__entry__4">11,012.34&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+      &lt;th scope="row" id="source__entry__11" headers="source__entry__1">Cindy&lt;/th>
+      &lt;td headers="source__entry__11 source__entry__2 source__entry__3">10,000&lt;/td>
+      &lt;td headers="source__entry__11 source__entry__2 source__entry__4">10,987.64&lt;/td>
+    &lt;/tr>
+  &lt;/tbody>
+&lt;/table></codeblock>
     <!--<p><table id="table_eww_xxl_4n" rowheader="firstcol" frame="all"><title>Sample of automated table accessibility</title><desc>Names are listed in the column c1. Points are listed in both data columns, with expected points in column c2 and actual points in column c3.</desc><tgroup cols="3"><colspec colname="c1"/><colspec colname="c2"/><colspec colname="c3"/><thead><row><entry morerows="1">Name</entry><entry namest="c2" nameend="c3">points</entry></row><row><entry>expected</entry><entry>actual</entry></row></thead><tbody><row><entry>Mark</entry><entry>10,000</entry><entry>11,123.45</entry></row><row><entry>Peter</entry><entry>9,000</entry><entry>11,012.34</entry></row><row><entry>Cindy</entry><entry>10,000</entry><entry>10,987.64</entry></row></tbody></tgroup></table><draft-comment author="Kristen J Eberlein" time="20 December 2021"><p>When replacing the above with a screen capture, consider the following comment from Gershon Joseph:</p><p>"In addition, I would expect the output to show the header column also formatted in bold, or some background shading, to illustrate the use of the @rowheader."</p></draft-comment></p>-->
   </conbody>
 </concept>

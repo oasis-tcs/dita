@@ -4,11 +4,11 @@
     <title>Example: Complex table with manual accessibility markup</title>
     <shortdesc/>
     <conbody>
-    <p>In extremely complex tables, such as those with a single header cell
-      in the middle of the table, fine-grained accessibility controls are
-      available to explicitly associate any content cell with any header
-      cell. This might also be useful for cases where processors do not
-      support the implied accessibility relationships described above.</p>
+    <p>In extremely complex tables, such as those with a single header cell in the middle of the
+      table, fine-grained accessibility controls are available to explicitly associate any content
+      cell with any header cell. This might also be useful for cases where processors do not support
+      implied accessibility relationships <ph rev="review-o">that exist based on header markup such
+        as <xmlelement>thead</xmlelement></ph>.</p>
     <p>In the following sample, header cells are identified using the
         <xmlatt>id</xmlatt> attribute, which is referenced using the
         <xmlatt>headers</xmlatt> attribute on appropriate content cells.
@@ -58,13 +58,47 @@ expected points in column c2 and actual points in column c3.&lt;/desc>
 &lt;/table></codeblock>
     <p>The output might be <ph rev="review-e">rendered in the following
         way:</ph></p>
-    <image placement="break"
-      href="../../langRef/images/table-manual-accessibility.jpg">
-      <alt>The image shows … The header row is shaded with green, and the
-        text in the header column and rows is bold. The edges of the screen
-        capture are tattered, to indicate that the image is part of a
-        larger document.</alt>
+    <image placement="break" href="../../langRef/images/table-manual-accessibility.jpg">
+      <alt rev="review-o">The image shows a three-column table. The first column lists names, the
+        second column lists expected points, and the third column lists actual points. There are two
+        header rows that contains spans. The header row is shaded with green, and the text in the
+        header column and rows is bold. The edges of the screen capture are tattered, to indicate
+        that the image is part of a larger document.</alt>
     </image>
+    <p rev="review-o">The rendered HTML used by a screen reader might look as follows.</p>
+    <codeblock rev="review-o" base="ci-xml">&lt;table>
+  &lt;caption>Sample with fully manual accessibility control
+           &lt;span class="desc">Names are listed in the column c1. Points are listed in both data columns, with
+                expected points in column c2 and actual points in column c3.&lt;/span>&lt;/caption>
+  &lt;colgroup>&lt;col>&lt;col>&lt;col>&lt;/colgroup>
+  &lt;thead>
+    &lt;tr>
+      &lt;th id="entry__1" rowspan="2"> &lt;/th>
+      &lt;th id="pts" colspan="2">Points&lt;/th>
+    &lt;/tr>
+    &lt;tr>
+      &lt;th id="exp" headers="pts">Expected&lt;/th>
+      &lt;th id="act" headers="pts">Actual&lt;/th>
+    &lt;/tr>
+  &lt;/thead>
+  &lt;tbody>
+    &lt;tr>
+      &lt;td id="name1" headers="entry__1">Mark&lt;/td>
+      &lt;td headers="name1 pts exp">10,000&lt;/td>
+      &lt;td headers="name1 pts act">11,123.45&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+      &lt;td id="name2" headers="entry__1">Peter&lt;/td>
+      &lt;td headers="name2 pts exp">9,000&lt;/td>
+      &lt;td headers="name2 pts act">11,012.34&lt;/td>
+    &lt;/tr>
+    &lt;tr>
+      &lt;td id="name3" headers="entry__1">Cindy&lt;/td>
+      &lt;td headers="name3 pts exp">10,000&lt;/td>
+      &lt;td headers="name3 pts act">10,987.64&lt;/td>
+    &lt;/tr>
+  &lt;/tbody>
+&lt;/table></codeblock>
     <!--<table id="table_yrp_sbm_4n"><title>Sample with fully manual accessibility control</title><desc>Names are listed in the column c1. Points are listed in both data columns, with expected points in column c2 and actual points in column c3.</desc><tgroup cols="3"><colspec colname="c1"/><colspec colname="c2"/><colspec colname="c3"/><thead><row><entry morerows="1"> </entry><entry namest="c2" nameend="c3">points</entry></row><row><entry>expected</entry><entry>actual</entry></row></thead><tbody><row><entry>Mark</entry><entry>10,000</entry><entry>11,123.45</entry></row><row><entry>Peter</entry><entry>9,000</entry><entry>11,012.34</entry></row><row><entry>Cindy</entry><entry>10,000</entry><entry>10,987.64</entry></row></tbody></tgroup></table>-->
   </conbody>
 </concept>
