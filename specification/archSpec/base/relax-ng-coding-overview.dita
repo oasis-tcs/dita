@@ -2,12 +2,12 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept xml:lang="en-us" id="rng-requirements-overview">
  <title>RELAX NG: Overview of coding requirements</title>
- <shortdesc>RELAX NG modules are self-integrating; they automatically add
-    to the content models and attribute lists that they extend. This means
-    that <ph rev="review-q">DITA</ph> architects do not have much work to
-    do when integrating vocabulary modules <ph rev="2.0">and
-      element-configuration modules (constraints and expansion)</ph> into
-    document-type shells.</shortdesc>
+ <shortdesc><ph rev="review-q">Domain modules coded in RELAX NG</ph> are
+    self-integrating; they automatically add to the content models and
+    attribute lists that they extend. This means that <ph rev="review-q"
+      >DITA</ph> architects <ph>have less</ph> work to do when integrating
+      <ph rev="review-q">domain</ph> modules into document-type
+    shells.</shortdesc>
  <prolog>
   <metadata>
    <keywords>
@@ -20,16 +20,16 @@
  </prolog>
  <conbody>
     <section>
-      <title rev="2.0">Self-integration of RELAX NG</title>
+      <title rev="review-q">General RELAX NG practices</title>
       <p>In addition to simplifying document-type shells, the
         self-integrating aspect of RELAX NG results in the following coding
         practices:</p>
       <ul>
         <li>Each specialization module consists of a single file, unlike
           the two required for DTDs.</li>
-        <li>Domain modules directly extend elements, unlike DTDs, which
-          rely on an extra file and extensions within the document-type
-          shell.</li>
+        <li>Domain modules are <ph rev="review-q">self-integrating.
+            They</ph> directly extend elements, unlike DTDs, which rely on
+          an extra file and extensions within the document-type shell.</li>
         <li rev="2.0">Element-configuration modules (constraint and
           expansion) directly include the modules that they extend, which
           means that just by referencing an element-configuration module,
@@ -38,8 +38,8 @@
       </ul>
       <p>RELAX NG grammars for DITA document-type shells, vocabulary
         modules, and <ph rev="2.0">element-configuration modules
-          (constraint and expansion) </ph><term outputclass="RFC-2119"
-          >MAY</term> do the following:<ul>
+          (constraint and expansion) </ph>
+        <ph rev="review-q">can</ph> do the following:<ul>
           <li>Use the <xmlelement>a:documentation</xmlelement> element
             anywhere that foreign elements are allowed by RELAX NG. The
               <xmlelement>a:documentation</xmlelement> element refers to
