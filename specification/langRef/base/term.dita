@@ -2,8 +2,9 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="term" xml:lang="en-us">
 <title><xmlelement>term</xmlelement></title>
-<shortdesc>A term is a word or phrase that might have or require extended definitions or
-      explanations.</shortdesc>
+  <shortdesc rev="review-c">A term is a word or phrase that has specific
+    meanings in certain contexts. It might have or require extended
+    definitions or explanations.</shortdesc>
 <prolog><metadata>
 <keywords>
             <indexterm>elements<indexterm>body<indexterm><xmlelement>term</xmlelement></indexterm></indexterm></indexterm>
@@ -12,19 +13,54 @@
 <refbody>
       <section id="usage-information">
          <title>Usage information</title>
-         <p>The <xmlatt>keyref</xmlatt> attribute can be used to associate a term with a resource,
-            typically a definition of the term. The <xmlatt>keyref</xmlatt> attribute can also be
-            used to supply the text content for <xmlelement>term</xmlelement> using standard
-               <xmlatt>keyref</xmlatt> processing for variable text.</p>
+         <p rev="review-c">The <xmlatt>keyref</xmlatt> attribute can be
+        used in conjunction with the <xmlelement>term</xmlelement> element
+        to accomplish the following:</p>
+      <ul rev="review-c">
+        <li>Supply the text content for the <xmlelement>term</xmlelement>
+          element</li>
+        <li>Associate a term with a resource, typically a definition of the
+          term</li>
+      </ul>
       </section>
       <section id="attributes">
          <title>Attributes</title>
          <p conkeyref="reuse-attributes/universal-keyref"/>
       </section>
-<example id="example" otherprops="examples"><title>Example</title><p>The following code sample shows
-            how the <xmlelement>term</xmlelement> element can be
-         used:</p><codeblock>&lt;p&gt;A &lt;term&gt;reference implementation&lt;/term&gt; of DITA implements the standard, 
-fallback behaviors intended for DITA elements.&lt;/p&gt;</codeblock> </example>
+<example id="example" otherprops="examples">
+      <title>Example</title>
+      <p>The following code samples shows how the
+          <xmlelement>term</xmlelement> element can be used</p>
+      <fig>
+        <title>Simple use of the <xmlelement>term</xmlelement>
+          element</title>
+        <p>In the following code sample, the <xmlelement>term</xmlelement>
+          element is used simply to identify that <keyword>reference
+            implementation</keyword> is a term:</p>
+        <codeblock>&lt;p&gt;A &lt;term&gt;reference implementation&lt;/term&gt; of DITA implements the standard, 
+fallback behaviors intended for DITA elements.&lt;/p&gt;</codeblock>
+      </fig>
+      <fig rev="review-c">
+        <title>The <xmlelement>term</xmlelement> element used to reference
+          an external definition</title>
+        <p>In the following code sample, the <xmlelement>term</xmlelement>
+          element is used to reference an external resource that defines
+          the term:</p>
+        <codeblock>&lt;p&gt;A &lt;term keyref="reference-implementation"&gt;reference implementation&lt;/term&gt; of DITA 
+implements the standard, fallback behaviors intended for DITA elements.&lt;/p&gt;</codeblock>
+        <p>When combined with the following key definition, processors
+          might render the phrase <keyword>reference
+            implementation</keyword> as a hyperlink to the associated
+          Wikipedia page:</p>
+        <codeblock>&lt;map>
+  &lt;title>Information about DITA&lt;/title>
+  &lt;keydef keys="reference-implementation"
+          href="https://en.wikipedia.org/wiki/Reference_implementation"
+          format="html" scope="external"/>
+  &lt;!-- ... -->
+&lt;/map></codeblock>
+      </fig>
+    </example>
 </refbody>
 </reference>
 
