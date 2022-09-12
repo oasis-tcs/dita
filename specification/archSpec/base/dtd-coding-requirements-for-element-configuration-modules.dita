@@ -8,9 +8,10 @@
         <section>
             <title>The <codeph><varname>tagname</varname>.attributes</codeph> parameter
                 entity</title>
-            <p>When the attribute set for an element is constrained or expanded, there is a
-                declaration of the <codeph><varname>tagname</varname>.attributes</codeph> parameter
-                entity that defines the modified attributes.</p>
+            <p>When the attribute <ph rev="review-q">list</ph> for an
+        element is constrained or expanded, there is a declaration of the
+            <codeph><varname>tagname</varname>.attributes</codeph>
+        parameter entity that defines the modified attributes.</p>
             <example>
                 <p>The following list provides examples for both constraint and expansion
                     modules:</p>
@@ -18,10 +19,11 @@
                     <dlentry>
                         <dt>Constraint module</dt>
                         <dd>
-                            <p>The following parameter entity defines a constrained set of
-                                attributes for the <xmlelement>note</xmlelement> element that
-                                removes most of the values defined for <xmlatt>type</xmlatt>; it
-                                also removes <xmlatt>othertype</xmlatt>:</p>
+                            <p>The following parameter entity defines a
+                constrained attributes <ph rev="review-q">list</ph> for the
+                  <xmlelement>note</xmlelement> element that removes most
+                of the values defined for <xmlatt>type</xmlatt>. It also
+                removes <xmlatt>othertype</xmlatt>:</p>
                             <codeblock>&lt;!ENTITY % note.attributes  
        "type  (attention | caution | note ) #IMPLIED
         %univ-atts;"&gt;</codeblock>
@@ -63,10 +65,8 @@
                             <p>The following parameter entity defines a more restricted content
                                 model for <xmlelement>topic</xmlelement>, in which the
                                     <xmlelement>shortdesc</xmlelement> element is required.</p>
-                            <codeblock>&lt;!ENTITY % topic.content 
-
-  "((%title;), 
-    (%titlealts;)?, 
+                            <codeblock rev="review-q">&lt;!ENTITY % topic.content 
+  "((%title;),
     (%shortdesc;), 
     (%prolog;)?, 
     (%body;)?, 
