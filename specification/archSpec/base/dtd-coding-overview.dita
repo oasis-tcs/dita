@@ -49,27 +49,32 @@
     <dd>
      <p>Every element in a DITA DTD defines its content model using an entity. <ph rev="2.0">This
        enables element configuration.</ph></p>
-          <example><ph rev="review-q">For example, the content model for
-              the <xmlelement>p</xmlelement> element is set to
-                <codeph>%ph.content;</codeph>, and the
-                <codeph>%ph.content;</codeph> entity defines the actual
-              content model. </ph><ph rev="2.0">A constraint module then
-              can redefine the <codeph>%ph.content;</codeph> model to
-              remove selected elements, or an expansion module can redefine
-              the <codeph>%ph.content;</codeph> module to add
-            elements</ph>.</example>
+          <example rev="review-q">For example, the content model for the
+              <xmlelement>p</xmlelement> element is set to
+              <codeph>%ph.content;</codeph>, and the
+              <codeph>%ph.content;</codeph> entity defines the actual
+            content model. A constraint module then can redefine the
+              <codeph>%ph.content;</codeph> entity to remove selected
+            elements from the content model, or an expansion module can
+            redefine the <codeph>%ph.content;</codeph> entity to add
+            elements to the content model.</example>
     </dd>
    </dlentry>
    <dlentry>
     <dt>Attribute sets defined as entities</dt>
     <dd>
-     <p>Every element in a DITA DTD defines its attributes using an entity. <ph rev="2.0">This
-       enables element configuration.</ph></p>
-     <example> For example, rather than directly defining attributes for
-      <xmlelement>ph</xmlelement>, that element sets its attributes using the
-       <codeph>%ph.attributes;</codeph> entity; that entity defines the actual attributes. <ph
-       rev="2.0">A constraint module can remove attributes from the attribute list, or an expansion
-       module can add attributes to the attribute list.</ph></example>
+     <p>Every element <ph rev="review-q">name</ph> in a DITA DTD defines
+            its attributes using <ph rev="review-q">a parameter
+            entity</ph>. <ph rev="2.0">This enables element
+              configuration.</ph></p>
+          <example rev="review-q"> For example, the attribute list for the
+              <xmlelement>ph</xmlelement> element is set to
+              <codeph>%ph.attributes;</codeph>, and the
+              <codeph>%ph.attributes;</codeph> entity defines the actual
+            attribute list. A constraint module then can redefine the
+            entity to remove attributes from the attribute list, or an
+            expansion module can redefine the entity to add attributes to
+            the attribute list.</example>
     </dd>
    </dlentry>
   </dl>

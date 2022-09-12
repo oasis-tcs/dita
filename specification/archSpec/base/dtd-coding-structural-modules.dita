@@ -19,9 +19,11 @@
   <conbody>
     <section id="architectural-attributes">
       <title>Required topic and map element attributes</title>
-      <p>The topic or map element type sets the <xmlatt>DITAArchVersion</xmlatt> attribute to the
-        version of DITA in use, typically by referencing the <codeph>arch-atts</codeph> parameter
-        entity. It also sets the <xmlatt>specializations</xmlatt> attribute to the
+      <p>The topic or map element type sets the <xmlatt rev="review-q"
+          >ditaarch:DITAArchVersion</xmlatt> attribute to the version of
+        DITA in use, typically by referencing the
+          <codeph>arch-atts</codeph> parameter entity. It also sets the
+          <xmlatt>specializations</xmlatt> attribute to the
           <codeph>included-domains</codeph> entity.</p>
       <p>The <xmlatt>DITAArchVersion</xmlatt> and <xmlatt>specializations</xmlatt> attributes give
         processors a reliable way to check the architecture version and look up the list of
@@ -111,9 +113,8 @@
                 specialization can control which topics are nested in
                   <xmlelement>concept</xmlelement> by redefining the
                   <codeph>concept-info-types</codeph> parameter entity:</p>
-              <codeblock otherprops="examples">&lt;!ENTITY % concept.content
-  "((%title;), 
-    (%titlealts;)?,
+              <codeblock otherprops="examples" rev="review-q">&lt;!ENTITY % concept.content
+  "((%title;),
     (%abstract; | %shortdesc;)?, 
     (%prolog;)?, 
     (%conbody;)?, 
