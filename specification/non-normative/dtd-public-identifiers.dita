@@ -1,28 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference xml:lang="en-us" id="dtd-public-identifiers">
-  <title>Public identifiers in the base DITA edition</title>
-  <shortdesc/>
+  <title>Globally-unique identifiers in the base DITA edition</title>
+  <shortdesc>Each DITA grammar file has a globally-unique identifier. This
+    identifier can reference either the latest version or a specific
+    version of the grammar file.</shortdesc>
   <refbody>
     <section>
+      <p>Each of the following grammar files has globally-unique
+        identifier:</p>
+      <ul>
+        <li>Document-type shell</li>
+        <li>Structural vocabulary module</li>
+        <li>Element- or attribute domain module</li>
+        <li>Element-configuration module (constraint or expansion)</li>
+      </ul>
+    </section>
+    <section>
       <title>DTD-based grammar files</title>
-      <p>Each document-type shell (<filepath>.dtd</filepath> file) or
-        module component (<filepath>.mod</filepath> or
-          <filepath>.ent</filepath> file) has a public identifier. The
-        public identifier can reference either the latest version or a
-        specific version of the document-type shell or module.</p>
       <p>The public identifiers for the DTD files that are maintained by
         OASIS use the following format:</p>
       <codeblock>"-//OASIS//DTD DITA <varname>version</varname> <varname>information-type</varname>//EN"</codeblock>
       <p> where: </p>
       <ul>
-        <li><varname>version</varname> either is the DITA specific version
-          number (for example, 2.0, 1.3, or 1.2), 2.x (representing the
-          latest version of DITA 2.x), or 1.x (representing 1.3, which is
-          the final version of 1.x). Ommitting the version number entirely
-          is also equivalent to the final release of DITA 1.x.</li>
+        <li><varname>version</varname> either is the specific version
+          number (for example, 2.0) or 2.x, which represents the most
+          recent version of DITA 2.x. Omitting the version number entirely
+          is also equivalent to the most recent version of DITA 2.x.</li>
         <li><varname>information-type</varname> is the name of the topic or
-          map type, for example, Concept or BookMap.</li>
+          map type, for example, Base Topic.</li>
       </ul>
       <p>Note that "OASIS" is the owner identifier; this indicates that the
         artifacts are owned by OASIS. The keyword "DITA" is a convention
@@ -30,10 +36,22 @@
     </section>
     <section id="section-2">
       <title>RNG-based grammar files</title>
-      <draft-comment author="Kristen J Eberlein" time="11 September 2022">
-        <p>This topic needs to be updated to include information about
-          RNG-based identifiers.</p>
-      </draft-comment>
+      <p>The URNs for the RNG files that are maintained by OASIS use the
+        following format:</p>
+      <codeblock>"urn:pubid:oasis:names:tc:dita:rng:<varname>information-type</varname>.rng:<varname>version</varname>"</codeblock>
+      <p>where:</p>
+      <ul>
+        <li><varname>version</varname> either is the specific version
+          number (for example, 2.0) or 2.x, which represents the most
+          recent version of DITA 2.x. Omitting the version number entirely
+          is also equivalent to the most recent version of DITA 2.x.</li>
+        <li><varname>information-type</varname> is the name of the topic or
+          map type, for example, basetopic</li>
+      </ul>
+      <p>Note that <keyword>oasis</keyword> is the owner identifier; this
+        indicates that the artifacts are owned by OASIS. The keyword
+          <keyword>dita</keyword> is a convention that indicates that the
+        artifact is DITA-related.</p>
     </section>
   </refbody>
 </reference>
