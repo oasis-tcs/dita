@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference id="file-names-in-the-base-dita-edition">
+    <title>File names in the base DITA edition</title>
+  <shortdesc>The OASIS DITA Technical Committee uses certain conventions
+    for the names of XML grammar files. We suggest using these conventions
+    as a way to facilitate the interchange of grammar files.</shortdesc>
+    <refbody>
+    <section id="dtd-specialization-modules">
+      <title>DTD-based specialization modules</title>
+      <p>The DITA Technical Committee uses certain file-naming conventions
+        for DTD-based specialization modules. While the grammar files
+        shipped with DITA 2.0 do not include domain constraint or expansion
+        modules, we suggest conventions for those modules also.</p>
+      <simpletable frame="all" relcolwidth=".75* 1.50* 2.0*">
+        <sthead>
+          <stentry>Module type</stentry>
+          <stentry>File name </stentry>
+          <stentry>Example</stentry>
+        </sthead>
+        <strow>
+          <stentry>Structural</stentry>
+          <stentry><filepath><varname>moduleName</varname>.mod</filepath></stentry>
+          <stentry><filepath>topic.mod</filepath></stentry>
+        </strow>
+        <strow>
+          <stentry>Element domain</stentry>
+          <stentry><filepath><varname>domainName</varname>Domain.<varname>ext</varname></filepath></stentry>
+          <stentry>
+            <sl>
+              <sli><filepath>highlightDomain.ent</filepath></sli>
+              <sli><filepath>highlightDomain.mod</filepath></sli>
+            </sl>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry>Attribute domain</stentry>
+          <stentry><filepath><varname>attriName</varname>AttDomain.ent</filepath></stentry>
+          <stentry><filepath>deliveryTargetAttDomain.ent</filepath>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry>Constraint</stentry>
+          <stentry><filepath><varname>qualifier</varname><varname>Target</varname>Constraint.mod</filepath></stentry>
+          <stentry>
+            <sl>
+              <sli><filepath>strictTaskbodyConstraint.mod</filepath></sli>
+              <sli><filepath>acmeHighlightDomainConstraint.mod</filepath></sli>
+            </sl>
+          </stentry>
+        </strow>
+        <strow rev="2.0">
+          <stentry>Expansion</stentry>
+          <stentry/>
+          <stentry>
+            <sl>
+              <sli><filepath>acme-SectionExpansion.mod</filepath></sli>
+              <sli><filepath>acme-CellPurposeAttExpansion.ent</filepath></sli>
+              <sli><filepath>acme-otherpropsAttExpansion.mod</filepath></sli>
+              <sli><filepath>example-dlentryModeAttExpansion.ent</filepath></sli>
+            </sl>
+          </stentry>
+        </strow>
+      </simpletable>
+      <draft-comment author="Kristen J Eberlein" time="19 September 2022">
+        <p>The names of the expansion modules listed in the "Example"
+          column are taken from the example topics. They do not follow a
+          consistent pattern. I suspect that the same is true for file
+          names used in the constraint example topics.</p>
+      </draft-comment>
+      <p>where:</p>
+      <ul>
+        <li><varname>moduleName</varname> is the name of the element type,
+          such as "topic" or "map".</li>
+        <li><varname>domainName</varname> is the short name of the domain,
+          for example, "highlight" or "utilities".</li>
+        <li><varname>attrName</varname> is the name of the specialized
+          attribute, for example, "deliveryTarget".</li>
+        <li><varname>ext</varname> is the file extension, for example,
+          "ent" or "mod".</li>
+        <li conref="../common/conref-file.dita#reuse_file/qualifier-li"
+          conrefend="../common/conref-file.dita#reuse_file/Tagname-li"/>
+      </ul>
+    </section>
+    <section id="relax-ng-modules">
+      <title>RELAX NG-based specialization modules</title>
+      <p>The DITA Technical Committee uses certain file-naming conventions
+        for RNG-based specialization modules. While the grammar files
+        shipped with DITA 2.0 do not include domain constraint or expansion
+        modules, we suggest conventions for those modules also.</p>
+      <simpletable frame="all" relcolwidth=".75* 1.50* 2.0*">
+        <sthead>
+          <stentry>Module type</stentry>
+          <stentry>File name</stentry>
+          <stentry>Example</stentry>
+        </sthead>
+        <strow>
+          <stentry>Structural</stentry>
+          <stentry><filepath><varname>moduleName</varname>Mod.<varname>rng</varname></filepath></stentry>
+          <stentry><filepath>conceptMod.rng</filepath></stentry>
+        </strow>
+        <strow>
+          <stentry>Element domain</stentry>
+          <stentry><filepath><varname>domainName</varname>DomainMod.rng</filepath></stentry>
+          <stentry><filepath>highlightDomainMod.rng</filepath>
+          </stentry>
+        </strow>
+        <strow>
+          <stentry>Attribute domain</stentry>
+          <stentry><filepath><varname>attrName</varname>AttDomain.rng</filepath></stentry>
+          <stentry><filepath>deliveryTargetAttDomain.rng</filepath></stentry>
+        </strow>
+        <strow>
+          <stentry>Constraint</stentry>
+          <stentry><filepath><varname>qualifier</varname><varname>Target</varname>ConstraintMod.rng</filepath></stentry>
+          <stentry>
+            <sl>
+              <sli><filepath>strictTaskbodyConstraintMod.rng</filepath></sli>
+              <sli><filepath>acmeHighlightDomainConstraintMod.mod</filepath></sli>
+            </sl>
+          </stentry>
+        </strow>
+        <strow rev="2.0">
+          <stentry>Expansion</stentry>
+          <stentry/>
+          <stentry>
+            <sl>
+              <sli><filepath>sectionExpansionMod.rng</filepath></sli>
+              <sli><filepath>cellPurposeAtt.rng</filepath></sli>
+              <sli><filepath>acme-otherpropsAttExpansion.rng</filepath></sli>
+              <sli><filepath>tableCellAttExpansion.rng</filepath></sli>
+            </sl>
+          </stentry>
+        </strow>
+      </simpletable>
+      <draft-comment author="Kristen J Eberlein" time="19 September 2022">
+        <p>The names of the expansion modules listed in the "Example"
+          column are taken from the example topics. They do not follow a
+          consistent pattern. I suspect that the same is true for file
+          names used in the constraint example topics.</p>
+        <p>Also, is including "Mod" in element-domain or constraint files
+          something we really want to do, or was it necessary for the
+          RNG-to-DITA/XSD converter?</p>
+      </draft-comment>
+      <p>where:</p>
+      <ul>
+        <li><varname>moduleName</varname> is the name of the element type,
+          such as "topic" or "map".</li>
+        <li><varname>domainName</varname> is the short name of the domain,
+          for example, "highlight" or "utilities".</li>
+        <li><varname>attrName</varname> is the name of the specialized
+          attribute, for example, "deliveryTarget".</li>
+        <li conref="../common/conref-file.dita#reuse_file/qualifier-li"
+          conrefend="../common/conref-file.dita#reuse_file/Tagname-li"/>
+      </ul>
+    </section>
+  </refbody>
+</reference>
