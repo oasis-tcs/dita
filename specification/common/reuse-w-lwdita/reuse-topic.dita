@@ -8,10 +8,16 @@
   <section id="attributes">
    <title>Attributes</title>
       <p platform="dita">The following attributes are available on this element: <ph conkeyref="reuse-attributes/ref-universalatts"/> and <ph conkeyref="reuse-attributes/ref-architecturalatts"/>.</p>
-      <p platform="lwdita">The following attributes are available on this element: <xref
-          keyref="attributes-universal/attr-id"><xmlatt>id</xmlatt></xref>, <ph conkeyref="reuse-attributes/ref-architecturalatts"/>, <ph conkeyref="reuse-attributes/ref-localizationatts"/>, and <xref
-          keyref="attributes-universal/class"><xmlatt>class</xmlatt></xref>, <xref
-          keyref="attributes-universal/outputclass"><xmlatt>outputclass</xmlatt></xref>.</p>
+      <div platform="lwdita">
+        <codeblock>&lt;!ATTLIST topic
+             id       ID          #REQUIRED
+             xmlns:ditaarch CDATA #FIXED "http://dita.oasis-open.org/architecture/2005/"
+	         ditaarch:DITAArchVersion CDATA "2.0"
+             specializations CDATA "&amp;included-domains;"
+             outputclass  CDATA    #IMPLIED
+             %localization;
+             class CDATA "- topic/topic "></codeblock>
+      </div>
     <p id="attr-exception" outputclass="attr-exception"
         platform="dita lwdita">For this element, the <xmlatt>id</xmlatt>
         attribute is required.</p>

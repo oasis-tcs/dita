@@ -89,70 +89,15 @@
           element, the <xmlatt>href</xmlatt> attribute specifies the URI of the track resource.</p>
       </div>
       <div platform="lwdita">
-        <p>The following attributes are available on this element: <ph
-            conkeyref="reuse-attributes/ref-localizationatts"/>, <xref
-            keyref="attributes-universal/class"><xmlatt>class</xmlatt></xref>, <xref
-            keyref="attributes-universal/outputclass"><xmlatt>outputclass</xmlatt></xref>, and the
-          attributes defined below.</p>
-        <draft-comment author="Robert">Need to update these atts now that the element is part of the
-          base vocabulary.</draft-comment>
-        <dl>
-          <dlentry conkeyref="reuse-attributes/media-track-name">
-            <dt id="attr-name"><xmlatt>name</xmlatt></dt>
-            <dd>The value is fixed to <keyword>track</keyword>.</dd>
-          </dlentry>
-          <dlentry conkeyref="reuse-attributes/media-track-type">
-            <dt id="attr-type"><xmlatt>type</xmlatt></dt>
-            <dd>Specifies the usage for the track resource. This attribute is modeled on the
-                <xmlatt>kind</xmlatt> attribute on the HTML5 <xmlelement>track</xmlelement> element,
-              as described by the <xref
-                href="https://www.w3.org/TR/2011/WD-html5-author-20110809/the-track-element.html#attr-track-kind"
-                format="html" scope="external"><cite>W3C HTML5 specification</cite></xref>. The
-              values for this attribute are derived from the HTML5 standard:<dl>
-                <dlentry>
-                  <dt>captions</dt>
-                  <dd>Transcription or translation of the dialogue, sound effects, relevant musical
-                    cues, and other relevant audio information. This is intended for use when the
-                    soundtrack is unavailable (for example, because it is muted or because the user
-                    is hard-of-hearing). This information is rendered over the video and labeled as
-                    appropriate for hard-of-hearing users.</dd>
-                </dlentry>
-                <dlentry>
-                  <dt>chapters</dt>
-                  <dd>Chapter titles, which are intended to be used for navigating the media
-                    resource. The chapter titles are rendered as an interactive list in the
-                    interface for the user agent.</dd>
-                </dlentry>
-                <dlentry>
-                  <dt>descriptions</dt>
-                  <dd>Textual descriptions of the video component of the media resource. This is
-                    intended for audio synthesis when the visual component is unavailable (for
-                    example, because the user is interacting with the application without a screen
-                    or because the user is blind). Descriptions are synthesized as separate audio
-                    tracks.</dd>
-                </dlentry>
-                <dlentry>
-                  <dt>metadata</dt>
-                  <dd>Tracks intended for use from script. This metadata is not displayed by the
-                    user agent.</dd>
-                </dlentry>
-                <dlentry>
-                  <dt>subtitles</dt>
-                  <dd>Transcription or translation of the dialogue, suitable for when the sound is
-                    available but not understood (for example, because the user does not understand
-                    the language of the soundtrack). Subtitles are rendered over the video.</dd>
-                </dlentry>
-                <dlentry>
-                  <dt>-dita-use-conref-target</dt>
-                  <dd>See <xref keyref="attributes-useconreftarget"/> for more information. </dd>
-                </dlentry>
-              </dl></dd>
-          </dlentry>
-          <dlentry conkeyref="reuse-attributes/media-track-value">
-            <dt id="attr-valuetype"><xmlatt>valuetype</xmlatt></dt>
-            <dd>The value is fixed to "ref".</dd>
-          </dlentry>
-        </dl>
+        <codeblock>&lt;!ATTLIST media-track
+             %localization;
+             %reference-content;
+             keyref     CDATA            #IMPLIED
+             kind (subtitles | captions | descriptions | chapters | metadata) #IMPLIED
+             srclang     CDATA           #IMPLIED
+             outputclass  CDATA          #IMPLIED
+             class CDATA "- topic/media-track ">
+</codeblock>
       </div>
     </section>
   </refbody>

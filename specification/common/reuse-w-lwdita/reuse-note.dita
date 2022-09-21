@@ -58,21 +58,13 @@
                 </dl>
             </div>
             <div platform="lwdita">
-                <p>The following attributes are available on this element: <ph
-            conkeyref="reuse-attributes/ref-universalatts"/> and the attribute defined below.</p>
-        <dl>
-          <dlentry>
-            <dt>Type</dt>
-            <dd>Specifies the type of a note. Note that this differs from
-              the <xmlatt>type</xmlatt> attribute on many other DITA
-              elements. Available values are <keyword>caution</keyword>,
-                <keyword>danger</keyword>, <keyword>note</keyword>,
-                <keyword>notice</keyword>, <keyword>trouble</keyword>, and
-                <keyword>warning</keyword>.</dd>
-            <dd>XDITA: <xmlatt>type</xmlatt></dd>
-            <dd>HDITA: <xmlatt>data-type</xmlatt></dd>
-          </dlentry>
-        </dl>
+        <codeblock>&lt;!ATTLIST note
+             %localization;
+             %filters;
+             %reuse;
+             type (caution|warning|danger|trouble|notice|note) "note"
+             outputclass  CDATA          #IMPLIED
+             class        CDATA "- topic/note "></codeblock>
         <p conkeyref="reuse-attributes/mdita-attributes"/>
                 
             </div>
