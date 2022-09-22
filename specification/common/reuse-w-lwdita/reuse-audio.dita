@@ -38,11 +38,13 @@
     <section id="attributes">
       <title>Attributes</title>
       <div platform="dita">
-        <p rev="review-a">The following attributes are available on this element: <ph
-            conkeyref="reuse-attributes/ref-universalatts"/>, <xref
-            keyref="attributes-common/attr-format"/>, <xref keyref="attributes-common/attr-href"/>,
-            <xref keyref="attributes-common/attr-keyref"/>, <xref
-            keyref="attributes-common/attr-scope"/>, and the attributes defined below.</p>
+        <p rev="review-a">The following attributes are available on this
+          element: <ph conkeyref="reuse-attributes/ref-universalatts"/>,
+            <xref keyref="attributes-common/attr-format"/>, <xref
+            keyref="attributes-common/attr-href"/>, <xref
+            keyref="attributes-common/attr-keyref"/>, <xref
+            keyref="attributes-common/attr-scope"/>, and the attributes
+          defined below.</p>
         <dl>
           <dlentry>
             <dt id="attr-autoplay"><xmlatt>autoplay</xmlatt></dt>
@@ -81,35 +83,26 @@
               specification (WHATWG version).</dd>
           </dlentry>
         </dl>
-        <p id="attr-exception" outputclass="attr-exception" rev="review-a">For this element: <ul
-            id="ul_xxx_hd4_qpb">
-            <li>The <xmlatt>format</xmlatt> attribute specifies the MIME type for the resource. This
-              attribute enables processors to avoid loading unsupported resources. If
-                <xmlatt>format</xmlatt> is not specified and <xmlatt>keyref</xmlatt> is specified,
-              the effective type for the key named by the <xmlatt>keyref</xmlatt> attribute is used
-              as the value. If an explicit <xmlatt>format</xmlatt> is not specified on either the
-                <xmlelement>audio</xmlelement> element or key definition, processors can use other
-              means, such as the URI file extension, to determine the effective MIME type of the
-              resource.</li>
-            <li>The <xmlatt>href</xmlatt> attribute specifies the absolute or relative URI of the
-              audio resource. If <xmlatt>href</xmlatt> is specified, also specify
-                <xmlatt>format</xmlatt>.<!--KJE: RDA and I discussed this on 29 April 2019. We could not come up with a phrasing that would not include "should". Adding this comment so that we don't have the discussion again.--></li>
-          </ul></p>
       </div>
-      <div platform="lwdita">The following attributes are available on this
-        element: universal attributes.<codeblock>&lt;!ATTLIST audio
-              autoplay   (true | false )    #IMPLIED
-              controls   (true | false )    #IMPLIED
-              loop       (true |false )     #IMPLIED
-              muted      (true |false )     #IMPLIED
-              keyref      CDATA             #IMPLIED
-              tabindex      NMTOKEN         #IMPLIED
-              %localization;
-              %filters;
-              %reuse;
-              %reference-content;
-              outputclass  CDATA            #IMPLIED
-              class CDATA "- topic/audio "></codeblock></div>
+      <div conkeyref="lwattr/audio" platform="lwdita"/>
+      <p id="attr-exception" outputclass="attr-exception" rev="review-a"
+        platform="dita lwdita">For this element, the following
+        considerations apply: <ul>
+          <li>The <xmlatt>format</xmlatt> attribute specifies the MIME type
+            for the resource. This attribute enables processors to avoid
+            loading unsupported resources. If <xmlatt>format</xmlatt> is
+            not specified and <xmlatt>keyref</xmlatt> is specified, the
+            effective type for the key named by the <xmlatt>keyref</xmlatt>
+            attribute is used as the value. If an explicit
+              <xmlatt>format</xmlatt> is not specified on either the
+              <xmlelement>audio</xmlelement> element or key definition,
+            processors can use other means, such as the URI file extension,
+            to determine the effective MIME type of the resource.</li>
+          <li>The <xmlatt>href</xmlatt> attribute specifies the absolute or
+            relative URI of the audio resource. If <xmlatt>href</xmlatt> is
+            specified, also specify
+            <xmlatt>format</xmlatt>.<!--KJE: RDA and I discussed this on 29 April 2019. We could not come up with a phrasing that would not include "should". Adding this comment so that we don't have the discussion again.--></li>
+        </ul></p>
     </section>
   </refbody>
 </reference>
