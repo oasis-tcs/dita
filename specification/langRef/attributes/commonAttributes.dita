@@ -370,10 +370,10 @@
               </dlentry>
               <dlentry>
                 <dt><keyword>spread</keyword></dt>
-                <dd><!--<draft-comment author="Kristen J Eberlein" time="29 December 2021" audience="spec-editors"><p>We use the phrase "rendition target" here. Do we want to use output format instead?</p><p>I googled to see if spread was a common term used for discussion of rendering, and I found the following coverage: <xref href="https://www.juliekaren.com/blog/2018/7/10/what-does-the-term-spread-refer-to" format="html" scope="external">What Does the Term “Spread” Refer to in Book Design and Layout?</xref></p></draft-comment>-->Indicates
-                  that the object is rendered across a multi-page spread. If the
-                  <!--rendition target--> output format does not have anything that corresponds to
-                  spreads, then <keyword>spread</keyword> has the same meaning as
+                <dd>Indicates that the object is rendered across a
+                  multi-page spread. If the output format does not have
+                  anything that corresponds to spreads, then
+                    <keyword>spread</keyword> has the same meaning as
                     <keyword>page</keyword>.</dd>
               </dlentry>
               <dlentry>
@@ -397,9 +397,10 @@
         </dlentry>
         <dlentry id="format">
           <dt id="attr-format"><xmlatt>format</xmlatt> (link-relationship attributes)</dt>
-          <dd>Specifies the format of the resource that is referenced. See
-              <xref keyref="attributes-format"/> for detailed information
-            on supported values and processing implications.</dd>
+          <dd>Specifies the format of the resource that is referenced.<ph
+              platform="dita"> See <xref keyref="attributes-format"/> for
+              detailed information on supported values and processing
+              implications.</ph></dd>
         </dlentry>
         <dlentry id="frame">
           <dt id="attr-frame"><xmlatt>frame</xmlatt> (display attributes)</dt>
@@ -454,9 +455,9 @@
         </dlentry>
         <dlentry id="href">
           <dt id="attr-href"><xmlatt>href</xmlatt> (link-relationship attributes)</dt>
-          <dd>Specifies a reference to a resource. See <xref
-              keyref="attributes-href"/> for detailed information on
-            supported values and processing implications.</dd>
+          <dd>Specifies a reference to a resource.<ph platform="dita"> See
+                <xref keyref="attributes-href"/> for detailed information
+              on supported values and processing implications.</ph></dd>
         </dlentry>
         <dlentry id="keycol">
           <dt id="attr-keycol"><xmlatt>keycol</xmlatt> (simpletable attributes)</dt>
@@ -468,11 +469,14 @@
         </dlentry>
         <dlentry id="keyref">
           <dt id="attr-keyref"><xmlatt>keyref</xmlatt></dt>
-          <dd><ph id="keyrefDescription">Specifies a key name that acts as a redirectable reference
-              based on a key definition within a map. See <xref keyref="attributes-keyref"/> for
-              information on using this attribute.</ph><draft-comment author="robander">The
-              definiton above for @keyref should be synchronized with the definition in the linked
-              section on keys.</draft-comment></dd>
+          <dd><ph id="keyrefDescription">Specifies a key name that acts as
+              a redirectable reference based on a key definition within a
+                map.<ph platform="dita"> See <xref
+                  keyref="attributes-keyref"/> for information on using
+                this attribute.</ph></ph><draft-comment author="robander"
+              >The definiton above for @keyref should be synchronized with
+              the definition in the linked section on
+            keys.</draft-comment></dd>
         </dlentry>
         <dlentry>
           <dt id="attr-keys"><xmlatt>keys</xmlatt></dt>
@@ -717,19 +721,33 @@
         </dlentry>
         <dlentry id="scale">
           <dt id="attr-scale"><xmlatt>scale</xmlatt> (display attributes)</dt>
-          <dd>Specifies the percentage by which fonts are resized in relation to the normal text
-            size. The value of this attribute is a positive integer. When used on
-              <xmlelement>table</xmlelement> or <xmlelement>simpletable</xmlelement>, the following
-            values are valid: <keyword>50</keyword>, <keyword>60</keyword>, <keyword>70</keyword>,
-              <keyword>80</keyword>, <keyword>90</keyword>, <keyword>100</keyword>,
-              <keyword>110</keyword>, <keyword>120</keyword>, <keyword>140</keyword>,
-              <keyword>160</keyword>, <keyword>180</keyword>, <keyword>200</keyword>, and <xref
-              keyref="attributes-useconreftarget">-dita-use-conref-target</xref>. <p>This attribute
-              is primarily useful for print-oriented display. Some processors might not support all
-              values.</p><p>If the <xmlatt>scale</xmlatt> attribute is specified on an element that
-              contains an image, the image is not scaled. The image is scaled <b>only</b> if a
-              scaling property is explicitly specified for the <xmlelement>image</xmlelement>
-              element.</p><!--<draft-comment author="robander" time="Dec 28 2021">Just noting that we seem to repeat ourselves here, saying this is 1) primarily for print-oriented, 2) primarily for print accommodation, and 3) some processors (implementations) might not support all values. Also feels really odd to say it's "an acknowledged style-based property", I think we can just delete that sentence? It doesn't add anything except to suggest we might be embarassed to have this attribute?</draft-comment>--><!--<draft-comment author="Kristen J Eberlein" time="29 December 2021"><p>I've made some edits, including some that I think eliminated the repetition.</p><p>Is <xmlatt>scale</xmlatt> used on elements other than fig, simpletable, and table? Note that we do not mention <xmlelement>simpletable</xmlelement> above ...</p><p>Maybe the paragraph about image should be moved to the <xmlelement>image</xmlelement> topic? Or covered in the topics for elements that support <xmlatt>scale</xmlatt>?</p><p>Do we need to discuss processing expectations about scaling elsewhere? It's buried here. Putting it in a more prominent place might improve the likelihood that processors would support it.</p><p>Based on a quick test, DITA-OT PDF: <ul><li>Supports <xmlatt>scale</xmlatt> on table but not <xmlelement>simpletable</xmlelement></li><li>Scales the image contained in a table when the <xmlatt>scale</xmlatt> attribute is set</li></ul> .</p></draft-comment>--></dd>
+          <dd>Specifies the percentage by which fonts are resized in
+            relation to the normal text size. The value of this attribute
+            is a positive integer. <ph platform="dita">When used on
+                <xmlelement>table</xmlelement> or
+                <xmlelement>simpletable</xmlelement>, the following values
+              are valid: <keyword>50</keyword>, <keyword>60</keyword>,
+                <keyword>70</keyword>, <keyword>80</keyword>,
+                <keyword>90</keyword>, <keyword>100</keyword>,
+                <keyword>110</keyword>, <keyword>120</keyword>,
+                <keyword>140</keyword>, <keyword>160</keyword>,
+                <keyword>180</keyword>, <keyword>200</keyword>, and <xref
+                keyref="attributes-useconreftarget"
+                >-dita-use-conref-target</xref>. </ph><ph platform="lwdita"
+              >The following values are valid: <keyword>50</keyword>,
+                <keyword>60</keyword>, <keyword>70</keyword>,
+                <keyword>80</keyword>, <keyword>90</keyword>,
+                <keyword>100</keyword>, <keyword>110</keyword>,
+                <keyword>120</keyword>, <keyword>140</keyword>,
+                <keyword>160</keyword>, <keyword>180</keyword>, and
+                <keyword>200</keyword>. </ph><p>This attribute is primarily
+              useful for print-oriented display. Some processors might not
+              support all values.</p><p>If the <xmlatt>scale</xmlatt>
+              attribute is specified on an element that contains an image,
+              the image is not scaled. The image is scaled <b>only</b> if a
+              scaling property is explicitly specified for the
+                <xmlelement>image</xmlelement>
+            element.</p><!--<draft-comment author="robander" time="Dec 28 2021">Just noting that we seem to repeat ourselves here, saying this is 1) primarily for print-oriented, 2) primarily for print accommodation, and 3) some processors (implementations) might not support all values. Also feels really odd to say it's "an acknowledged style-based property", I think we can just delete that sentence? It doesn't add anything except to suggest we might be embarassed to have this attribute?</draft-comment>--><!--<draft-comment author="Kristen J Eberlein" time="29 December 2021"><p>I've made some edits, including some that I think eliminated the repetition.</p><p>Is <xmlatt>scale</xmlatt> used on elements other than fig, simpletable, and table? Note that we do not mention <xmlelement>simpletable</xmlelement> above ...</p><p>Maybe the paragraph about image should be moved to the <xmlelement>image</xmlelement> topic? Or covered in the topics for elements that support <xmlatt>scale</xmlatt>?</p><p>Do we need to discuss processing expectations about scaling elsewhere? It's buried here. Putting it in a more prominent place might improve the likelihood that processors would support it.</p><p>Based on a quick test, DITA-OT PDF: <ul><li>Supports <xmlatt>scale</xmlatt> on table but not <xmlelement>simpletable</xmlelement></li><li>Scales the image contained in a table when the <xmlatt>scale</xmlatt> attribute is set</li></ul> .</p></draft-comment>--></dd>
         </dlentry>
         <dlentry id="scope">
           <dt id="attr-scope"><xmlatt>scope</xmlatt> (link-relationship attributes)</dt>
@@ -737,9 +755,10 @@
             current document and the referenced resource. The following
             values are valid: <keyword>local</keyword>,
               <keyword>peer</keyword>, <keyword>external</keyword>, and
-              <keyword>-dita-use-conref-target</keyword>. See <xref
-              keyref="attributes-scope"/> for detailed information on
-            supported values and processing implications.</dd>
+              <keyword>-dita-use-conref-target</keyword>.<ph
+              platform="dita"> See <xref keyref="attributes-scope"/> for
+              detailed information on supported values and processing
+              implications.</ph></dd>
         </dlentry>
         <dlentry id="search" platform="dita">
           <dt id="attr-search"><xmlatt>search</xmlatt> (common map attributes)</dt>
@@ -755,8 +774,8 @@
             included in the document-type shell. This attribute is set as a
             default within the document-type shell. The value varies
             depending on what domains are integrated into the document-type
-            shell. <ph otherprops="examples">For example, a grammar file
-              that includes the specialized attributes
+            shell. <ph otherprops="examples" platform="dita">For example, a
+              grammar file that includes the specialized attributes
                 <xmlatt>audience</xmlatt>, <xmlatt>deliveryTarget</xmlatt>,
               and <xmlatt>newBaseAtt</xmlatt> would set the value to
                 <codeph>@props/audience @props/deliveryTarget
@@ -851,10 +870,10 @@
         <dlentry id="xmlnsditaarch" platform="dita lwdita">
           <dt id="attr-xmlns-ditaarch"><xmlatt>xmlns:ditaarch</xmlatt>
             (architectural attributes)</dt>
-          <dd>Declares the default DITA namespace. Although this is
-            technically a namespace rather than an attribute, it is
-            specified as an attribute in the DTD-based grammar files that
-            are distributed by OASIS. The value is fixed to
+          <dd>Declares the default DITA namespace. Although this is a
+            namespace rather than an attribute, it is specified as an
+            attribute in the DTD-based grammar files that are distributed
+            by OASIS. The value is fixed to
               <keyword>http://dita.​oasis-open.​org/​architecture/​2005/</keyword>.</dd>
         </dlentry>
       </dl>
