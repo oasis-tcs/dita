@@ -96,7 +96,13 @@
         <dlentry id="simpletableatts">
           <dt>Simple table attributes</dt>
           <dd>
-            <!--<draft-comment author="Kristen J Eberlein" time="29 December 2021" audience="spec-editors"><p>Suggest we change this to "Simple table group". Rationale: natural language and being parallel to "Complex table attributes".</p><p>Also, if I have jumped to this place in a document from the element-reference topic, I want the attributes listed here in the "Simple table group" to be hyperlinked to the actual definition.</p></draft-comment>-->
+            <draft-comment author="Kristen J Eberlein"
+              time="29 December 2021" audience="spec-editors">
+              <p>If I have jumped to this place in a document from the
+                element-reference topic, I want the attributes listed here
+                in the "Simple table group" to be hyperlinked to the actual
+                definition.</p>
+            </draft-comment>
             <p id="simpletable-attr">This group includes attributes that
               are defined only on the <xmlelement>simpletable</xmlelement>
               element: <xmlatt>keycol</xmlatt> and
@@ -149,7 +155,8 @@
                   the first occurrence of the character specified by the
                     <xmlatt>char</xmlatt> attribute.</dd>
               </dlentry>
-              <dlentry conkeyref="reuse-attributes/ditauseconref">
+              <dlentry conkeyref="reuse-attributes/ditauseconref"
+                platform="dita">
                 <dt>-dita-use-conref-target </dt>
                 <dd> </dd>
               </dlentry>
@@ -311,7 +318,7 @@
             uses a default value of the current version of DITA. The
             current default is <keyword>2.0</keyword>.</dd>
         </dlentry>
-        <dlentry id="duplicates">
+        <dlentry id="duplicates" platform="dita">
           <dt id="attr-duplicates"><xmlatt>duplicates</xmlatt></dt>
           <dd>Specifies whether duplicate links are removed from a group of
             links. Duplicate links are links that address the same resource
@@ -478,10 +485,11 @@
               the definition in the linked section on
             keys.</draft-comment></dd>
         </dlentry>
-        <dlentry>
+        <dlentry platform="dita lwdita">
           <dt id="attr-keys"><xmlatt>keys</xmlatt></dt>
-          <dd>Specifies one or more names for a resource. See <xref keyref="attributes-keys"/> for
-            information on using this attribute.</dd>
+          <dd>Specifies one or more names for a resource.<ph
+              platform="dita"> See <xref keyref="attributes-keys"/> for
+              information on using this attribute.</ph></dd>
         </dlentry>
         <dlentry id="keyscope" platform="dita">
           <dt id="attr-keyscope"><xmlatt>keyscope</xmlatt> (common map attributes)</dt>
@@ -602,7 +610,7 @@
                 <codeph>relcolwidth="90* 150*"</codeph> causes relative
               widths of 90/240 and 150/240 (37.5% and 62.5%).</p></dd>
         </dlentry>
-        <dlentry id="role">
+        <dlentry id="role" platform="dita">
           <dt id="attr-role"><xmlatt>role</xmlatt></dt>
           <dd>Specifies the role that a linked topic plays in relationship
             with the current topic. <p otherprops="examples">For example,
@@ -756,9 +764,15 @@
             values are valid: <keyword>local</keyword>,
               <keyword>peer</keyword>, <keyword>external</keyword>, and
               <keyword>-dita-use-conref-target</keyword>.<ph
-              platform="dita"> See <xref keyref="attributes-scope"/> for
-              detailed information on supported values and processing
-              implications.</ph></dd>
+              platform="dita"> The following values are valid:
+                <keyword>local</keyword>, <keyword>peer</keyword>,
+                <keyword>external</keyword>, and
+                <keyword>-dita-use-conref-target</keyword>. See <xref
+                keyref="attributes-scope"/> for detailed information on
+              supported values and processing implications.</ph><ph
+              platform="lwdita"> The following values are valid:
+                <keyword>local</keyword>, <keyword>peer</keyword>, and
+                <keyword>external</keyword>.</ph></dd>
         </dlentry>
         <dlentry id="search" platform="dita">
           <dt id="attr-search"><xmlatt>search</xmlatt> (common map attributes)</dt>
