@@ -37,72 +37,57 @@
     </section>
     <section id="attributes">
       <title>Attributes</title>
-      <div platform="dita">
-        <p rev="review-a">The following attributes are available on this
-          element: <ph conkeyref="reuse-attributes/ref-universalatts"/>,
-            <xref keyref="attributes-common/attr-format"/>, <xref
-            keyref="attributes-common/attr-href"/>, <xref
-            keyref="attributes-common/attr-keyref"/>, <xref
-            keyref="attributes-common/attr-scope"/>, and the attributes
-          defined below.</p>
-        <dl>
-          <dlentry>
-            <dt id="attr-autoplay"><xmlatt>autoplay</xmlatt></dt>
-            <dd>Specifies whether the resource automatically plays when it is presented. The
-              following values are recognized: <keyword>true</keyword>, <keyword>false</keyword>,
-              and <keyword>-dita-use-conref-target </keyword>. The default value is
-                <keyword>true</keyword>.</dd>
-          </dlentry>
-          <dlentry>
-            <dt id="attr-controls"><xmlatt>controls</xmlatt></dt>
-            <dd>Specifies whether the presentation of the resource includes user interface controls.
-              The following values are recognized: <keyword>true</keyword>,
-              <keyword>false</keyword>, and <keyword>-dita-use-conref-target </keyword>. The default
-              value is <keyword>true</keyword>.</dd>
-          </dlentry>
-          <dlentry>
-            <dt id="attr-loop"><xmlatt>loop</xmlatt></dt>
-            <dd>Specifies whether the resource loops when played. The following values are
-              recognized: <keyword>true</keyword>, <keyword>false</keyword>, and
-                <keyword>-dita-use-conref-target </keyword>. The default value is
-                <keyword>true</keyword>.</dd>
-          </dlentry>
-          <dlentry>
-            <dt id="attr-muted"><xmlatt>muted</xmlatt></dt>
-            <dd>Specifies whether the resource is muted. The following values are recognized:
-                <keyword>true</keyword>, <keyword>false</keyword>, and
-                <keyword>-dita-use-conref-target </keyword>. The default value is
-                <keyword>true</keyword>.</dd>
-          </dlentry>
-          <dlentry>
-            <dt id="attr-tabindex"><xmlatt>tabindex</xmlatt></dt>
-            <dd>Specifies whether the audio resource can be focused and where it participates in
-              sequential keyboard navigation. See <xref
-                href="https://html.spec.whatwg.org/dev/interaction.html#the-tabindex-attribute"
-                format="html" scope="external"><xmlatt>tabindex</xmlatt></xref> in the HTML
-              specification (WHATWG version).</dd>
-          </dlentry>
-        </dl>
+      <p rev="review-a" platform="dita">The following attributes are
+        available on this element: <ph
+          conkeyref="reuse-attributes/ref-universalatts"/>, <xref
+          keyref="attributes-common/attr-format"/>, <xref
+          keyref="attributes-common/attr-href"/>, <xref
+          keyref="attributes-common/attr-keyref"/>, <xref
+          keyref="attributes-common/attr-scope"/>, and the attributes
+        defined below.</p>
+      <p conkeyref="lwattr/audio" platform="lwdita"/>
+      <dl platform="dita lwdita">
+        <dlentry conkeyref="reuse-attributes/autoplay">
+          <dt/>
+          <dd/>
+        </dlentry>
+        <dlentry conkeyref="reuse-attributes/controls">
+          <dt/>
+          <dd/>
+        </dlentry>
+        <dlentry conkeyref="reuse-attributes/loop">
+          <dt/>
+          <dd/>
+        </dlentry>
+        <dlentry conkeyref="reuse-attributes/muted">
+          <dt/>
+          <dd/>
+        </dlentry>
+        <dlentry conkeyref="reuse-attributes/tabindex">
+          <dt/>
+          <dd/>
+        </dlentry>
+      </dl>
+      <div platform="dita lwdita">
+        <p id="attr-exception" outputclass="attr-exception" rev="review-a"
+          >For this element, the following considerations apply: <ul>
+            <li>The <xmlatt>format</xmlatt> attribute specifies the MIME
+              type for the resource. This attribute enables processors to
+              avoid loading unsupported resources. If
+                <xmlatt>format</xmlatt> is not specified and
+                <xmlatt>keyref</xmlatt> is specified, the effective type
+              for the key named by the <xmlatt>keyref</xmlatt> attribute is
+              used as the value. If an explicit <xmlatt>format</xmlatt> is
+              not specified on either the <xmlelement>audio</xmlelement>
+              element or key definition, processors can use other means,
+              such as the URI file extension, to determine the effective
+              MIME type of the resource.</li>
+            <li>The <xmlatt>href</xmlatt> attribute specifies the absolute
+              or relative URI of the audio resource. If
+                <xmlatt>href</xmlatt> is specified, also specify
+                <xmlatt>format</xmlatt>.<!--KJE: RDA and I discussed this on 29 April 2019. We could not come up with a phrasing that would not include "should". Adding this comment so that we don't have the discussion again.--></li>
+          </ul></p>
       </div>
-      <div conkeyref="lwattr/audio" platform="lwdita"/>
-      <p id="attr-exception" outputclass="attr-exception" rev="review-a"
-        platform="dita lwdita">For this element, the following
-        considerations apply: <ul>
-          <li>The <xmlatt>format</xmlatt> attribute specifies the MIME type
-            for the resource. This attribute enables processors to avoid
-            loading unsupported resources. If <xmlatt>format</xmlatt> is
-            not specified and <xmlatt>keyref</xmlatt> is specified, the
-            effective type for the key named by the <xmlatt>keyref</xmlatt>
-            attribute is used as the value. If an explicit
-              <xmlatt>format</xmlatt> is not specified on either the
-              <xmlelement>audio</xmlelement> element or key definition,
-            processors can use other means, such as the URI file extension,
-            to determine the effective MIME type of the resource.</li>
-          <li>The <xmlatt>href</xmlatt> attribute specifies the absolute or
-            relative URI of the audio resource. If <xmlatt>href</xmlatt> is
-            specified, also specify
-            <xmlatt>format</xmlatt>.<!--KJE: RDA and I discussed this on 29 April 2019. We could not come up with a phrasing that would not include "should". Adding this comment so that we don't have the discussion again.--></li>
-        </ul></p>
     </section>
   </refbody>
 </reference>
