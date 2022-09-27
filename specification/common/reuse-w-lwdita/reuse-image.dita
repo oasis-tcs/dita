@@ -22,75 +22,72 @@
             keyref="attributes-common/attr-keyref"
             ><xmlatt>keyref</xmlatt></xref>, and the attributes defined
           below.</p>
-        <p conkeyref="lwattr/image" platform="lwdita"/>
-        <dl platform="dita lwdita">
-          <dlentry platform="dita">
-            <dt id="attr-align"><xmlatt>align</xmlatt></dt>
-            <dd>Controls the horizontal alignment of an image when
-                <xmlatt>placement</xmlatt> is specified as
-                <keyword>break</keyword>. Common values include
-                <keyword>left</keyword>, <keyword>right</keyword>, and
-                <keyword>center</keyword>.</dd>
-          </dlentry>
-          <dlentry conkeyref="reuse-attributes/image-height"
-            platform="dita lwdita">
-            <dt/>
-            <dd/>
-          </dlentry>
-          <dlentry platform="dita">
-            <dt id="attr-placement"><xmlatt>placement</xmlatt></dt>
-            <dd>Indicates whether an image is displayed inline or on a
-              separate line. The default value is inline. Allowable values
-              are <keyword>inline</keyword>, <keyword>break</keyword>, and
-                <xref keyref="attributes-useconreftarget"
-                >"-dita-use-conref-target"</xref>.</dd>
-          </dlentry>
-          <dlentry platform="dita">
-            <dt id="attr-scale"><xmlatt>scale</xmlatt></dt>
-            <dd>Specifies a percentage as an unsigned integer by which to
-              scale the image in the absence of any specified image height
-              or width; a value of 100 implies that the image should be
-              presented at its intrinsic size. If a value has been
-              specified for the <xmlatt>height</xmlatt> or
-                <xmlatt>width</xmlatt> attribute (or both), the
-                <xmlatt>scale</xmlatt> attribute is
-              ignored.<!--<p>It is an error if the value of this attribute is not an unsigned integer. In this case, the implementation might give an error message and might recover by ignoring this attribute. </p>-->
-            </dd>
-          </dlentry>
-          <dlentry platform="dita">
-            <dt id="attr-scalefit"><xmlatt>scalefit</xmlatt></dt>
-            <dd>
-              <p>Specifies whether an image is scaled up or down to fit
-                within available space. The allowable values are
-                  <keyword>yes</keyword>, <keyword>no</keyword>, and <xref
-                  keyref="attributes-useconreftarget"
-                  >"-dita-use-conref-target"</xref>. If
-                  <xmlatt>height</xmlatt>, <xmlatt>width</xmlatt>, or
-                  <xmlatt>scale</xmlatt> is specified, those attributes
-                determine the graphic size, and the
-                  <xmlatt>scalefit</xmlatt> attribute is ignored. If none
-                of those attributes are specified and
-                  <codeph>scalefit="yes"</codeph>, <ph rev="review-c">then
-                  the image is scaled by the same factor in both
-                  dimensions, so that the graphic will just fit within the
-                  available height or width, whichever is more
-                  constraining</ph>. </p>
-              <p>The available width <ph rev="review-c">would be that of
-                  the prevailing column or table cell</ph>, that is, the
-                width a paragraph of text would have if the graphic were a
-                paragraph instead od text. The available height is
-                implementation dependent, but if feasible, it is suggested
-                to be the page or table cell height or some other
-                reasonable value. </p>
-            </dd>
-          </dlentry>
-          <dlentry conkeyref="reuse-attributes/image-width" id="width"
-            platform="dita lwdita">
-            <dt/>
-            <dd/>
-          </dlentry>
-        </dl>
       </div>
+      <p conkeyref="lwattr/image" platform="lwdita"/>
+      <dl platform="dita lwdita">
+        <dlentry platform="dita">
+          <dt id="attr-align"><xmlatt>align</xmlatt></dt>
+          <dd>Controls the horizontal alignment of an image when
+              <xmlatt>placement</xmlatt> is specified as
+              <keyword>break</keyword>. Common values include
+              <keyword>left</keyword>, <keyword>right</keyword>, and
+              <keyword>center</keyword>.</dd>
+        </dlentry>
+        <dlentry conkeyref="reuse-attributes/image-height"
+          platform="dita lwdita">
+          <dt/>
+          <dd/>
+        </dlentry>
+        <dlentry platform="dita">
+          <dt id="attr-placement"><xmlatt>placement</xmlatt></dt>
+          <dd>Indicates whether an image is displayed inline or on a
+            separate line. The default value is inline. Allowable values
+            are <keyword>inline</keyword>, <keyword>break</keyword>, and
+              <xref keyref="attributes-useconreftarget"
+              >"-dita-use-conref-target"</xref>.</dd>
+        </dlentry>
+        <dlentry platform="dita">
+          <dt id="attr-scale"><xmlatt>scale</xmlatt></dt>
+          <dd>Specifies a percentage as an unsigned integer by which to
+            scale the image in the absence of any specified image height or
+            width; a value of 100 implies that the image should be
+            presented at its intrinsic size. If a value has been specified
+            for the <xmlatt>height</xmlatt> or <xmlatt>width</xmlatt>
+            attribute (or both), the <xmlatt>scale</xmlatt> attribute is
+            ignored.<!--<p>It is an error if the value of this attribute is not an unsigned integer. In this case, the implementation might give an error message and might recover by ignoring this attribute. </p>-->
+          </dd>
+        </dlentry>
+        <dlentry platform="dita">
+          <dt id="attr-scalefit"><xmlatt>scalefit</xmlatt></dt>
+          <dd>
+            <p>Specifies whether an image is scaled up or down to fit
+              within available space. The allowable values are
+                <keyword>yes</keyword>, <keyword>no</keyword>, and <xref
+                keyref="attributes-useconreftarget"
+                >"-dita-use-conref-target"</xref>. If
+                <xmlatt>height</xmlatt>, <xmlatt>width</xmlatt>, or
+                <xmlatt>scale</xmlatt> is specified, those attributes
+              determine the graphic size, and the <xmlatt>scalefit</xmlatt>
+              attribute is ignored. If none of those attributes are
+              specified and <codeph>scalefit="yes"</codeph>, <ph
+                rev="review-c">then the image is scaled by the same factor
+                in both dimensions, so that the graphic will just fit
+                within the available height or width, whichever is more
+                constraining</ph>. </p>
+            <p>The available width <ph rev="review-c">would be that of the
+                prevailing column or table cell</ph>, that is, the width a
+              paragraph of text would have if the graphic were a paragraph
+              instead od text. The available height is implementation
+              dependent, but if feasible, it is suggested to be the page or
+              table cell height or some other reasonable value. </p>
+          </dd>
+        </dlentry>
+        <dlentry conkeyref="reuse-attributes/image-width" id="width"
+          platform="dita lwdita">
+          <dt/>
+          <dd/>
+        </dlentry>
+      </dl>
     </section>
 </refbody>
 </reference>
