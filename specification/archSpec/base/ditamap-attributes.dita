@@ -26,9 +26,15 @@
 		</metadata>
 	</prolog> 
   <conbody>
-		<draft-comment author="rodaande">We currently redefine a lot of attributes in this topic
-			that are more comprehensively defined in the element reference; we need to reconcile
-			those that are defined differently and ideally reuse definitions.</draft-comment> 
+		<draft-comment author="rodaande">We currently redefine a lot of
+      attributes in this topic that are more comprehensively defined in the
+      element reference; we need to reconcile those that are defined
+      differently and ideally reuse definitions.<div>
+        <p>Kris Eberlein, 28 September 2022</p>
+        <p>I alphabeticized the attributes in this topic. I also added them
+          to draft comments in the definitions in the "Attributes" topics,
+          so that we could consider them side-by-side.</p>
+      </div></draft-comment> 
 	 <section id="mostly-map">
 			<p>DITA maps often encode structures that are specific to a particular medium or output, for
 				example, Web pages or a PDF document. Attributes, such as
@@ -43,6 +49,41 @@
 				particular kind of output, should be entirely reusable regardless of the intended
 				output format.</p>
 			<dl>
+        <dlentry>
+          <dt><xmlatt id="cascade">cascade</xmlatt></dt>
+          <dd>
+            <p>Specifies whether the default rules for the cascading of
+              metadata attributes in a DITA map apply. The following values
+              are specified:</p>
+            <dl conkeyref="reuse-general/cascade-values">
+              <dlentry>
+                <dt/>
+                <dd/>
+              </dlentry>
+            </dl>
+            <p>For more information, see <xref
+                href="example-how-cascade-att-functions.dita" format="dita"
+              />.</p>
+          </dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt id="chunk">chunk</xmlatt>
+          </dt>
+          <dd>Specifies that the processor generates an interim set of DITA
+            topics that are used as the input for the final processing.
+            This can produce the following output results: <ul>
+              <li>Multi-topic files are transformed into smaller files, for
+                example, individual HTML files for each DITA topic. </li>
+              <li>Individual DITA topics are combined into a single file.
+              </li>
+            </ul><p>Specifying a value for the <xmlatt>chunk</xmlatt>
+              attribute on a <xmlelement>map</xmlelement> element
+              establishes chunking behavior that applies to the entire map,
+              unless overridden by <xmlatt>chunk</xmlatt> attributes that
+              are set on more specific elements in the DITA map. For a
+              detailed description of the <xmlatt>chunk</xmlatt> attribute
+              and its usage, see <xref href="chunking.dita"/>. </p></dd>
+        </dlentry>
 				<dlentry>
 					<dt><xmlatt id="collection-type">collection-type</xmlatt>
 					</dt>
@@ -61,6 +102,16 @@
 						on elements that cannot directly contain elements, the behavior of the
 						attribute is undefined. </dd>
 				</dlentry>
+        <dlentry>
+          <dt><xmlatt id="keys">keys</xmlatt></dt>
+          <dd>Specifies one or more key names.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt id="keyscope">keyscope</xmlatt></dt>
+          <dd>Defines a new scope for key definition and resolution, and
+            gives the scope one or more names. For more information about
+            key scopes, see <xref href="key-based-addressing.dita"/>.</dd>
+        </dlentry>
 				<dlentry>
 					<dt><xmlatt id="linking">linking</xmlatt></dt>
 					<dd>
@@ -117,82 +168,42 @@
 							determined by the processor. </p>
 					</dd>
 				</dlentry>
+        <dlentry>
+          <dt><xmlatt id="processing-role">processing-role</xmlatt>
+          </dt>
+          <dd>Specifies whether the topic or map referenced is processed
+            normally or treated as a resource that is only included in
+            order to resolve key or content references. <dl>
+              <dlentry>
+                <dt>processing-role="normal" </dt>
+                <dd>The topic is a readable part of the information set. It
+                  is included in navigation and search results. This is the
+                  default value for the <xmlelement>topicref</xmlelement>
+                  element.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>processing-role="resource-only" </dt>
+                <dd>The topic is used only as a resource for processing. It
+                  is not included in navigation or search results, nor is
+                  it rendered as a topic. This is the default value for the
+                    <xmlelement>keydef</xmlelement> element. </dd>
+              </dlentry>
+            </dl><p>If the <xmlatt>processing-role</xmlatt> attribute is
+              not specified locally, the value cascades from the closest
+              element in the containment hierarchy. </p></dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlatt id="search">search</xmlatt>
+          </dt>
+          <dd> Specifies whether the topic is included in search indexes.
+          </dd>
+        </dlentry>
 				<dlentry>
 					<dt><xmlatt id="toc">toc</xmlatt></dt>
 					<dd>Specifies whether topics are excluded from navigation output, such as a Web
 						site map or an online table of contents. By default,
 							<xmlelement>topicref</xmlelement> hierarchies are included in navigation
 						output; relationship tables are excluded. </dd>
-				</dlentry>
-				<dlentry>
-					<dt><xmlatt id="search">search</xmlatt>
-					</dt>
-					<dd> Specifies whether the topic is included in search indexes. </dd>
-				</dlentry>
-				<dlentry>
-					<dt><xmlatt id="chunk">chunk</xmlatt>
-					</dt>
-					<dd>Specifies that the processor generates an interim set of DITA topics that
-						are used as the input for the final processing. This can produce the
-						following output results: <ul>
-							<li>Multi-topic files are transformed into smaller files, for example,
-								individual HTML files for each DITA topic. </li>
-							<li>Individual DITA topics are combined into a single file. </li>
-						</ul><p>Specifying a value for the <xmlatt>chunk</xmlatt> attribute on a
-								<xmlelement>map</xmlelement> element establishes chunking behavior
-							that applies to the entire map, unless overridden by
-								<xmlatt>chunk</xmlatt> attributes that are set on more specific
-							elements in the DITA map. For a detailed description of the
-								<xmlatt>chunk</xmlatt> attribute and its usage, see <xref
-								href="chunking.dita"/>. </p></dd>
-				</dlentry>
-				<dlentry>
-					<dt><xmlatt id="processing-role">processing-role</xmlatt>
-					</dt>
-					<dd>Specifies whether the topic or map referenced is processed normally or treated as a
-						resource that is only included in order to resolve key or content
-						references. <dl>
-							<dlentry>
-								<dt>processing-role="normal" </dt>
-								<dd>The topic is a readable part of the information set. It is
-									included in navigation and search results. This is the default
-									value for the <xmlelement>topicref</xmlelement> element.</dd>
-							</dlentry>
-							<dlentry>
-								<dt>processing-role="resource-only" </dt>
-								<dd>The topic is used only as a resource for processing. It is not
-									included in navigation or search results, nor is it rendered as
-									a topic. This is the default value for the
-										<xmlelement>keydef</xmlelement> element. </dd>
-							</dlentry>
-						</dl><p>If the <xmlatt>processing-role</xmlatt> attribute is not specified
-							locally, the value cascades from the closest element in the containment
-							hierarchy. </p></dd>
-				</dlentry>
-				<dlentry >
-					<dt><xmlatt id="cascade">cascade</xmlatt></dt>
-					<dd>
-						<p>Specifies whether the default rules for the cascading of metadata
-							attributes in a DITA map apply. The following values are specified:</p>
-						<dl conkeyref="reuse-general/cascade-values">
-							<dlentry>
-								<dt/>
-								<dd/>
-							</dlentry>
-						</dl>
-						<p>For more information, see <xref
-								href="example-how-cascade-att-functions.dita" format="dita"/>.</p>
-					</dd>
-				</dlentry>
-				<dlentry >
-					<dt><xmlatt id="keys">keys</xmlatt></dt>
-					<dd>Specifies one or more key names.</dd>
-				</dlentry>
-				<dlentry >
-					<dt><xmlatt id="keyscope">keyscope</xmlatt></dt>
-					<dd>Defines a new scope for key definition and resolution, and gives the scope one or more
-						names. For more information about key scopes, see <xref
-							href="key-based-addressing.dita"/>.</dd>
 				</dlentry>
 			</dl>
 		</section> 
