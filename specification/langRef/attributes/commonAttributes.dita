@@ -186,6 +186,22 @@
                 href="../../archSpec/base/cascading-in-a-ditamap.dita"/>
               for more information about how this attribute interacts with
               metadata attributes.</p>
+            <draft-comment author="Kristen J Eberlein"
+              time="28 September 2022">
+              <p>Here is the content from the "DITA map attributes" topic
+                that is different (the attribute value definitions are
+                reused):</p>
+              <ul>
+                <li>Introductory paragraph<p>Specifies whether the default
+                    rules for the cascading of metadata attributes in a
+                    DITA map apply. The following values are
+                  specified:</p></li>
+                <li>See X for more information paragraph<p>For more
+                    information, see <xref
+                      href="../../archSpec/base/example-how-cascade-att-functions.dita"
+                      format="dita"/>.</p></li>
+              </ul>
+            </draft-comment>
           </dd>
         </dlentry>
         <dlentry id="char">
@@ -231,11 +247,12 @@
           <dt id="attr-chunk"><xmlatt>chunk</xmlatt>
             <ph otherprops="attr-list-label">(common map
             attributes)</ph></dt>
-          <dd>Specifies how a processor should render a map or branch of a map. <ph
-              otherprops="examples">For example, it can be used to specify that individual topic
-              documents should be rendered as a single document, or that a single document with
-              multiple topics should be rendered as multiple documents.</ph><p>The following values
-              are valid:<dl>
+          <dd>Specifies how a processor should render a map or branch of a
+            map. <ph otherprops="examples">For example, it can be used to
+              specify that individual topic documents should be rendered as
+              a single document, or that a single document with multiple
+              topics should be rendered as multiple documents.</ph><p>The
+              following values are valid:<dl>
                 <dlentry>
                   <dt>combine</dt>
                   <dd><ph conkeyref="reuse-general/definitionChunkCombine"
@@ -248,11 +265,42 @@
                 </dlentry>
                 <dlentry>
                   <dt><i>Application-defined token</i></dt>
-                  <dd>Other tokens can be defined by applications, but support for those tokens will
-                    vary.</dd>
+                  <dd>Other tokens can be defined by applications, but
+                    support for those tokens will vary.</dd>
                 </dlentry>
-              </dl></p><p>For a detailed description of the <xmlatt>chunk</xmlatt> attribute and its
-              usage, see <xref href="../../archSpec/base/chunking.dita"/>.</p></dd>
+              </dl></p><p>For a detailed description of the
+                <xmlatt>chunk</xmlatt> attribute and its usage, see <xref
+                href="../../archSpec/base/chunking.dita"
+              />.</p><draft-comment author="Kristen J Eberlein"
+              time="28 September 2022">
+              <p>Here is the content from the "DITA map attributes"
+                topic"</p>
+              <dl>
+                <dlentry>
+                  <dt><xmlatt>chunk</xmlatt>
+                  </dt>
+                  <dd>Specifies that the processor generates an interim set
+                    of DITA topics that are used as the input for the final
+                    processing. This can produce the following output
+                    results: <ul>
+                      <li>Multi-topic files are transformed into smaller
+                        files, for example, individual HTML files for each
+                        DITA topic. </li>
+                      <li>Individual DITA topics are combined into a single
+                        file. </li>
+                    </ul><p>Specifying a value for the
+                        <xmlatt>chunk</xmlatt> attribute on a
+                        <xmlelement>map</xmlelement> element establishes
+                      chunking behavior that applies to the entire map,
+                      unless overridden by <xmlatt>chunk</xmlatt>
+                      attributes that are set on more specific elements in
+                      the DITA map. For a detailed description of the
+                        <xmlatt>chunk</xmlatt> attribute and its usage, see
+                        <xref href="../../archSpec/base/chunking.dita"/>.
+                    </p></dd>
+                </dlentry>
+              </dl>
+            </draft-comment></dd>
         </dlentry>
         <dlentry id="collection-type" platform="dita">
           <dt id="attr-collection-type"><xmlatt>collection-type</xmlatt>
@@ -283,6 +331,38 @@
                 <dd>Indicates a tight grouping in which each of the
                   referenced topics not only relates to the current topic
                   but also relate to each other. <draft-comment
+                    author="Kristen J Eberlein" time="28 September 2022">
+                    <p>Here is the content from the "DITA map attributes"
+                      topic:</p>
+                    <dl>
+                      <dlentry>
+                        <dt><xmlatt>collection-type</xmlatt>
+                        </dt>
+                        <dd>The <xmlatt>collection-type</xmlatt> attribute
+                          specifies how the children of a
+                            <xmlelement>topicref</xmlelement> element
+                          relate to their parent and to each other. This
+                          attribute, which is set on the parent element,
+                          typically is used by processors to determine how
+                          to generate navigation links in the rendered
+                          topics. For example, a
+                            <xmlatt>collection-type</xmlatt> value of
+                          "sequence" indicates that children of the
+                          specifying <xmlelement>topicref</xmlelement>
+                          element represent an ordered sequence of topics;
+                          processors might add numbers to the list of child
+                          topics or generate next/previous links for online
+                          presentation. This attribute is available in
+                          topics on the <xmlelement>linklist</xmlelement>
+                          and <xmlelement>linkpool</xmlelement> elements,
+                          where it has the same behavior. Where the
+                            <xmlatt>collection-type</xmlatt> attribute is
+                          available on elements that cannot directly
+                          contain elements, the behavior of the attribute
+                          is undefined. </dd>
+                      </dlentry>
+                    </dl>
+                  </draft-comment><draft-comment
                     author="Kristen J Eberlein" time="28 September 2022">
                     <p>In the definitions of the supported values, do we
                       want to refer to "resources" instead of "topics"?
@@ -537,8 +617,23 @@
           <dt id="attr-keyscope"><xmlatt>keyscope</xmlatt>
             <ph otherprops="attr-list-label">(common map
             attributes)</ph></dt>
-          <dd>Specifies that the element marks the boundaries of a key scope. See <xref
-              keyref="attributes-keyscope"/> for information on using this attribute.</dd>
+          <dd>Specifies that the element marks the boundaries of a key
+            scope. See <xref keyref="attributes-keyscope"/> for information
+            on using this attribute.<draft-comment
+              author="Kristen J Eberlein" time="28 September 2022">
+              <p>Here is the content from the "DITA map attributes"
+                topic:</p>
+              <dl>
+                <dlentry>
+                  <dt><xmlatt>keyscope</xmlatt></dt>
+                  <dd>Defines a new scope for key definition and
+                    resolution, and gives the scope one or more names. For
+                    more information about key scopes, see <xref
+                      href="../../archSpec/base/key-based-addressing.dita"
+                    />.</dd>
+                </dlentry>
+              </dl>
+            </draft-comment></dd>
         </dlentry>
         <dlentry id="linking" platform="dita">
           <dt id="attr-linking"><xmlatt>linking</xmlatt>
@@ -581,7 +676,76 @@
                 <dt> </dt>
                 <dd> </dd>
               </dlentry>
-            </dl></dd>
+            </dl><draft-comment author="Kristen J Eberlein"
+              time="28 September 2022">
+              <p>Here is the content from the "DITA map attributes"
+                topic:</p>
+              <dl>
+                <dlentry>
+                  <dt><xmlatt>linking</xmlatt></dt>
+                  <dd>
+                    <p>By default, the relationships between the topics
+                      that are referenced in a map are reciprocal:</p>
+                    <ul>
+                      <li>Child topics link to parent topics and vice
+                        versa. </li>
+                      <li>Next and previous topics in a sequence link to
+                        each other. </li>
+                      <li>Topics in a family link to their sibling topics. </li>
+                      <li>Topics referenced in the table cells of the same
+                        row in a relationship table link to each other. A
+                        topic referenced within a table cell does not (by
+                        default) link to other topics referenced in the
+                        same table cell. </li>
+                    </ul>
+                    <p>This behavior can be modified by using the
+                        <xmlatt>linking</xmlatt> attribute, which enables
+                      an author or information architect to specify how a
+                      topic participates in a relationship. The following
+                      values are valid:</p>
+                    <dl>
+                      <dlentry>
+                        <dt><codeph>linking="none"</codeph>
+                        </dt>
+                        <dd>Specifies that the topic does not exist in the
+                          map for the purposes of calculating links. </dd>
+                      </dlentry>
+                      <dlentry>
+                        <dt><codeph>linking="sourceonly"</codeph>
+                        </dt>
+                        <dd>Specifies that the topic will link to its
+                          related topics but not vice versa. </dd>
+                      </dlentry>
+                      <dlentry>
+                        <dt><codeph>linking="targetonly"</codeph>
+                        </dt>
+                        <dd>Specifies that the related topics will link to
+                          it but not vice versa. </dd>
+                      </dlentry>
+                      <dlentry>
+                        <dt><codeph>linking="normal"</codeph>
+                        </dt>
+                        <dd>Default value. It specifies that linking will
+                          be reciprocal (the topic will link to related
+                          topics, and they will link back to it). </dd>
+                      </dlentry>
+                    </dl>
+                    <p>Authors also can create links directly in a topic by
+                      using the <xmlelement>xref</xmlelement> or
+                        <xmlelement>link</xmlelement> elements, but in most
+                      cases map-based linking is preferable, because links
+                      in topics create dependencies between topics that can
+                      hinder reuse. </p>
+                    <p>Note that while the relationships between the topics
+                      that are referenced in a map are reciprocal, the
+                      relationships merely <i>imply</i> reciprocal links in
+                      generated output that includes links. The rendered
+                      navigation links are a function of the presentation
+                      style that is determined by the processor. </p>
+                  </dd>
+                </dlentry>
+              </dl>
+            </draft-comment></dd>
         </dlentry>
         <dlentry id="name" platform="dita lwdita">
           <dt id="attr-name"><xmlatt>name</xmlatt>
@@ -650,13 +814,47 @@
                   a rendered table of contents, and the topic should not be
                   rendered on its own. </dd>
               </dlentry>
-            </dl><ph conkeyref="reuse-attributes/may-inherit"/><dl>
+            </dl><dl>
               <dlentry conkeyref="reuse-attributes/ditauseconref"
                 platform="dita">
                 <dt> </dt>
                 <dd> </dd>
               </dlentry>
-            </dl></dd>
+            </dl><p><ph conkeyref="reuse-attributes/may-inherit"
+              /></p><draft-comment author="Kristen J Eberlein"
+              time="28 September 2022">
+              <p>Here is the content from the "DITA map attributes
+                topic:</p>
+              <dl>
+                <dlentry>
+                  <dt><xmlatt>processing-role</xmlatt>
+                  </dt>
+                  <dd>Specifies whether the topic or map referenced is
+                    processed normally or treated as a resource that is
+                    only included in order to resolve key or content
+                    references. <dl>
+                      <dlentry>
+                        <dt>processing-role="normal" </dt>
+                        <dd>The topic is a readable part of the information
+                          set. It is included in navigation and search
+                          results. This is the default value for the
+                            <xmlelement>topicref</xmlelement> element.</dd>
+                      </dlentry>
+                      <dlentry>
+                        <dt>processing-role="resource-only" </dt>
+                        <dd>The topic is used only as a resource for
+                          processing. It is not included in navigation or
+                          search results, nor is it rendered as a topic.
+                          This is the default value for the
+                            <xmlelement>keydef</xmlelement> element. </dd>
+                      </dlentry>
+                    </dl><p>If the <xmlatt>processing-role</xmlatt>
+                      attribute is not specified locally, the value
+                      cascades from the closest element in the containment
+                      hierarchy. </p></dd>
+                </dlentry>
+              </dl>
+            </draft-comment></dd>
         </dlentry>
         <dlentry id="relcolwidth">
           <dt id="attr-relcolwidth"><xmlatt>relcolwidth</xmlatt>
@@ -852,7 +1050,19 @@
               conkeyref="reuse-attributes/inherit-in-map"/> The following
             values are valid: <keyword>yes</keyword>,
             <keyword>no</keyword>, and
-              <keyword>-dita-use-conref-target</keyword>.</dd>
+              <keyword>-dita-use-conref-target</keyword>.<draft-comment
+              author="Kristen J Eberlein" time="28 September 2022">
+              <p>Here is the content from the "DITA map attributes"
+                topic:</p>
+              <dl>
+                <dlentry>
+                  <dt><xmlatt>search</xmlatt>
+                  </dt>
+                  <dd> Specifies whether the topic is included in search
+                    indexes. </dd>
+                </dlentry>
+              </dl>
+            </draft-comment></dd>
         </dlentry>
         <dlentry id="specializations" platform="dita lwdita">
           <dt id="attr-specializations"><xmlatt>specializations</xmlatt>
@@ -910,7 +1120,21 @@
                 <dd>See <xref keyref="attributes-useconreftarget"/> for
                   more information. </dd>
               </dlentry>
-            </dl></dd>
+            </dl><draft-comment author="Kristen J Eberlein"
+              time="28 September 2022">
+              <p>Here is the content from the "DITA map attributes"
+                topic:</p>
+              <dl>
+                <dlentry>
+                  <dt><xmlatt>toc</xmlatt></dt>
+                  <dd>Specifies whether topics are excluded from navigation
+                    output, such as a Web site map or an online table of
+                    contents. By default, <xmlelement>topicref</xmlelement>
+                    hierarchies are included in navigation output;
+                    relationship tables are excluded. </dd>
+                </dlentry>
+              </dl>
+            </draft-comment></dd>
         </dlentry>
         <dlentry id="type" platform="dita">
           <dt id="attr-type"><xmlatt>type</xmlatt>
