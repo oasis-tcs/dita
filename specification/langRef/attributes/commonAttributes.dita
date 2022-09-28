@@ -173,32 +173,19 @@
               otherprops="attr-list-label"> (common map
             attributes)</ph></dt>
           <dd>
-            <draft-comment author="Kristen J Eberlein"
-              time="31 December 2021">
-              <p>We need to move the normative statement elsewere. Should
-                it go in <xref
-                  href="../../archSpec/base/cascading-in-a-ditamap.dita"
-                />?</p>
-            </draft-comment>
             <p>Specifies how metadata attributes cascade within a map. The
               specification defines the following values:</p>
-            <dl>
+            <dl conkeyref="reuse-general/cascade-values">
               <dlentry>
-                <dt><keyword>merge</keyword></dt>
-                <dd>Explanation needed</dd>
-              </dlentry>
-              <dlentry>
-                <dt><keyword>nomerge</keyword></dt>
-                <dd>Explanation needed</dd>
+                <dt/>
+                <dd/>
               </dlentry>
             </dl>
-            <p>If no value is set and no value cascades from a containing
-              element, processors <term outputclass="RFC-2119"
-                >SHOULD</term> assume a default of
-              <keyword>merge</keyword>. Processors can define custom values
-              for the <xmlatt>cascade</xmlatt> attribute.</p>
-            <p> See <xref href="../../archSpec/base/cascading-in-a-ditamap.dita"/> for more
-              information about how this attribute interacts with metadata attributes.</p>
+            <p> Processors can also define custom, implementation-specific
+              tokens for this attribute. See <xref
+                href="../../archSpec/base/cascading-in-a-ditamap.dita"/>
+              for more information about how this attribute interacts with
+              metadata attributes.</p>
           </dd>
         </dlentry>
         <dlentry id="char">
@@ -251,11 +238,13 @@
               are valid:<dl>
                 <dlentry>
                   <dt>combine</dt>
-                  <dd><ph conkeyref="reuse-general/definitionChunkCombine"/></dd>
+                  <dd><ph conkeyref="reuse-general/definitionChunkCombine"
+                    /></dd>
                 </dlentry>
                 <dlentry>
                   <dt>split</dt>
-                  <dd><ph conkeyref="reuse-general/definitionChunkSplit"/></dd>
+                  <dd><ph conkeyref="reuse-general/definitionChunkSplit"
+                    /></dd>
                 </dlentry>
                 <dlentry>
                   <dt><i>Application-defined token</i></dt>
@@ -269,26 +258,38 @@
           <dt id="attr-collection-type"><xmlatt>collection-type</xmlatt>
             <ph otherprops="attr-list-label">(common map
             attributes)</ph></dt>
-          <dd>Specifies how topics or links relate to each other. The processing default is
-              <keyword>unordered</keyword>, although no default is specified in the DTD or Schema.
-            The following values are valid:<dl id="colltypevalues">
+          <dd>Specifies how topics or links relate to each other. The
+            processing default is <keyword>unordered</keyword>, although no
+            default is specified in the OASIS-provided grammar files. The
+            following values are valid:<dl id="colltypevalues">
               <dlentry>
                 <dt>unordered </dt>
-                <dd>Indicates that the order of the child topics is not significant. </dd>
+                <dd>Indicates that the order of the child topics is not
+                  significant. </dd>
               </dlentry>
               <dlentry>
                 <dt>sequence </dt>
-                <dd>Indicates that the order of the child topics is significant; output processors
-                  will typically link between them in order. </dd>
+                <dd>Indicates that the order of the child topics is
+                  significant. Output processors will typically link
+                  between them in order. </dd>
               </dlentry>
               <dlentry>
                 <dt>choice </dt>
-                <dd>Indicates that one of the children should be selected.</dd>
+                <dd>Indicates that one of the children should be
+                  selected.</dd>
               </dlentry>
               <dlentry>
                 <dt>family </dt>
-                <dd>Indicates a tight grouping in which each of the referenced topics not only
-                  relates to the current topic but also relate to each other. </dd>
+                <dd>Indicates a tight grouping in which each of the
+                  referenced topics not only relates to the current topic
+                  but also relate to each other. <draft-comment
+                    author="Kristen J Eberlein" time="28 September 2022">
+                    <p>In the definitions of the supported values, do we
+                      want to refer to "resources" instead of "topics"?
+                      Since we specify that
+                        <xmlatt>collection-type</xmlatt> specifies "how
+                      topics <b>or links</b> relate to each other" ...</p>
+                  </draft-comment></dd>
               </dlentry>
             </dl></dd>
         </dlentry>
@@ -333,7 +334,12 @@
               <xmlnsname>http://dita.​oasis-open.​org/​architecture/​2005/</xmlnsname>.
             This attribute is defined with the XML data type CDATA, but it
             uses a default value of the current version of DITA. The
-            current default is <keyword>2.0</keyword>.</dd>
+            current default is <keyword>2.0</keyword>.<draft-comment
+              author="Kristen J Eberlein" time="28 September 2022">
+              <p>Is the second sentence really necessary? And do we want to
+                specify that this attribute is set in the grammar files,
+                specifically, all element-definition module files?</p>
+            </draft-comment></dd>
         </dlentry>
         <dlentry id="duplicates" platform="dita">
           <dt id="attr-duplicates"><xmlatt>duplicates</xmlatt></dt>
@@ -385,15 +391,18 @@
         <dlentry id="expanse">
           <dt id="attr-expanse"><xmlatt>expanse</xmlatt>
             <ph otherprops="attr-list-label">(display attributes)</ph></dt>
-          <dd>Specifies the horizontal placement of the element. The following values are valid: <dl>
+          <dd>Specifies the horizontal placement of the element. The
+            following values are valid: <dl>
               <dlentry>
                 <dt><keyword>column</keyword></dt>
-                <dd>Indicates that the element is aligned with the current column margin.</dd>
+                <dd>Indicates that the element is aligned with the current
+                  column margin.</dd>
               </dlentry>
               <dlentry>
                 <dt><keyword>page</keyword></dt>
-                <dd>Indicates that the element is placed on the left page margin for left-to-right
-                  presentation or the right page margin for right-to-left presentation.</dd>
+                <dd>Indicates that the element is placed on the left page
+                  margin for left-to-right presentation or the right page
+                  margin for right-to-left presentation.</dd>
               </dlentry>
               <dlentry>
                 <dt><keyword>spread</keyword></dt>
@@ -405,23 +414,27 @@
               </dlentry>
               <dlentry>
                 <dt><keyword>textline</keyword></dt>
-                <dd><ph rev="review-e">Indicates</ph> that the element is aligned with the left (for
-                  left-to-right presentation) or right (for right-to-left presentation) margin of
-                  the current text line and takes indentation into account.</dd>
+                <dd><ph rev="review-e">Indicates</ph> that the element is
+                  aligned with the left (for left-to-right presentation) or
+                  right (for right-to-left presentation) margin of the
+                  current text line and takes indentation into
+                  account.</dd>
               </dlentry>
-              <dlentry conkeyref="reuse-attributes/ditauseconref" platform="dita">
+              <dlentry conkeyref="reuse-attributes/ditauseconref"
+                platform="dita">
                 <dt> </dt>
                 <dd> </dd>
               </dlentry>
-            </dl><p conkeyref="reuse-general/pgwide-explain" platform="dita"/><p>Some processors or
-              output formats might not support all
+            </dl><p conkeyref="reuse-general/pgwide-explain"
+              platform="dita"/><p>Some processors or output formats might
+              not support all
             values.</p><!--<draft-comment author="robander" audience="spec-editors">This statement seems to get wrapped up in the "implementation dependent" discussion. Also note that "spread" already says "if possible" which also means that support can vary - we can probably remove "if possible" there, it seems redundant with this statement?<p>Same statement is repeated for @frame below.</p></draft-comment>--></dd>
         </dlentry>
         <dlentry id="expiry">
           <dt id="attr-expiry"><xmlatt>expiry</xmlatt>
             <ph otherprops="attr-list-label">(date attributes)</ph></dt>
-          <dd>Specifies the date when the information should be retired or refreshed. <ph
-              conkeyref="reuse-general/dateformat"/></dd>
+          <dd>Specifies the date when the information should be retired or
+            refreshed. <ph conkeyref="reuse-general/dateformat"/></dd>
         </dlentry>
         <dlentry id="format">
           <dt id="attr-format"><xmlatt>format</xmlatt>
@@ -482,8 +495,8 @@
         <dlentry id="golive">
           <dt id="attr-golive"><xmlatt>golive</xmlatt>
             <ph otherprops="attr-list-label">(date attributes)</ph></dt>
-          <dd>Specifies the publication or general availability (GA) date. <ph
-              conkeyref="reuse-general/dateformat"/></dd>
+          <dd>Specifies the publication or general availability (GA) date.
+              <ph conkeyref="reuse-general/dateformat"/></dd>
         </dlentry>
         <dlentry id="href">
           <dt id="attr-href"><xmlatt>href</xmlatt>
@@ -531,30 +544,38 @@
           <dt id="attr-linking"><xmlatt>linking</xmlatt>
             <ph otherprops="attr-list-label">(common map
             attributes)</ph></dt>
-          <dd>Specifies linking characteristics of a topic specific to the location of this
-            reference in a map. <ph conkeyref="reuse-attributes/inherit-in-map"/>
-            <draft-comment author="robander" time="Dec 28 2021">The text below matches <xref
+          <dd>Specifies linking characteristics of a topic specific to the
+            location of this reference in a map. <ph
+              conkeyref="reuse-attributes/inherit-in-map"/>
+            <draft-comment author="robander" time="Dec 28 2021">The text
+              below matches <xref
                 href="http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/attributes/commonMapAttributes.html#topicref-atts__linking"
-                format="html" scope="external">1.3 spec text</xref> but I'm nervous about "cannot
-              link" type definition. It's describing how to generate links based on the current
-              context in the map - it's not describing what the topic itself is allowed to link to,
-              which is how I interpret "can".</draft-comment>The following values are valid:<dl>
+                format="html" scope="external">1.3 spec text</xref> but I'm
+              nervous about "cannot link" type definition. It's describing
+              how to generate links based on the current context in the map
+              - it's not describing what the topic itself is allowed to
+              link to, which is how I interpret "can".</draft-comment>The
+            following values are valid:<dl>
               <dlentry>
                 <dt><keyword>targetonly</keyword></dt>
-                <dd>A topic can only be linked to and cannot link to other topics.</dd>
+                <dd>A topic can only be linked to and cannot link to other
+                  topics.</dd>
               </dlentry>
               <dlentry>
                 <dt><keyword>sourceonly</keyword></dt>
-                <dd>A topic cannot be linked to but can link to other topics.</dd>
+                <dd>A topic cannot be linked to but can link to other
+                  topics.</dd>
               </dlentry>
               <dlentry>
                 <dt>normal </dt>
-                <dd>A topic can be linked to and can link to other topics. Use this to override the
-                  linking value of a parent topic. </dd>
+                <dd>A topic can be linked to and can link to other topics.
+                  Use this to override the linking value of a parent topic.
+                </dd>
               </dlentry>
               <dlentry>
                 <dt>none </dt>
-                <dd>A topic cannot be linked to or link to other topics.</dd>
+                <dd>A topic cannot be linked to or link to other
+                  topics.</dd>
               </dlentry>
               <dlentry conkeyref="reuse-attributes/ditauseconref">
                 <dt> </dt>
@@ -829,15 +850,16 @@
             <ph otherprops="attr-list-label">(common map
             attributes)</ph></dt>
           <dd>Specifies whether the target is available for searching. <ph
-              conkeyref="reuse-attributes/inherit-in-map"/> The following values are valid:
-              <keyword>yes</keyword>, <keyword>no</keyword>, and
+              conkeyref="reuse-attributes/inherit-in-map"/> The following
+            values are valid: <keyword>yes</keyword>,
+            <keyword>no</keyword>, and
               <keyword>-dita-use-conref-target</keyword>.</dd>
         </dlentry>
         <dlentry id="specializations" platform="dita lwdita">
           <dt id="attr-specializations"><xmlatt>specializations</xmlatt>
             <ph otherprops="attr-list-label">(architectural
               attributes)</ph></dt>
-          <dd>Specifies the attribute domain specializations that are
+          <dd>Specifies the attribute-domain specializations that are
             included in the document-type shell. This attribute is set as a
             default within the document-type shell. The value varies
             depending on what domains are integrated into the document-type
@@ -872,8 +894,10 @@
           <dt id="attr-toc"><xmlatt>toc</xmlatt>
             <ph otherprops="attr-list-label">(common map
             attributes)</ph></dt>
-          <dd>Specifies whether a topic appears in the table of contents (TOC) based on the current
-            map context. <ph conkeyref="reuse-attributes/inherit-in-map"/> The following values are valid:<dl>
+          <dd>Specifies whether a topic appears in the table of contents
+            (TOC) based on the current map context. <ph
+              conkeyref="reuse-attributes/inherit-in-map"/> The following
+            values are valid:<dl>
               <dlentry>
                 <dt>yes </dt>
                 <dd>The topic appears in a generated TOC.</dd>
@@ -884,7 +908,8 @@
               </dlentry>
               <dlentry>
                 <dt>-dita-use-conref-target </dt>
-                <dd>See <xref keyref="attributes-useconreftarget"/> for more information. </dd>
+                <dd>See <xref keyref="attributes-useconreftarget"/> for
+                  more information. </dd>
               </dlentry>
             </dl></dd>
         </dlentry>
@@ -953,7 +978,11 @@
             namespace rather than an attribute, it is specified as an
             attribute in the DTD-based grammar files that are distributed
             by OASIS. The value is fixed to
-              <keyword>http://dita.​oasis-open.​org/​architecture/​2005/</keyword>.</dd>
+              <keyword>http://dita.​oasis-open.​org/​architecture/​2005/</keyword>.<draft-comment
+              author="Kristen J Eberlein" time="28 September 2022">
+              <p>Do we want to be precise and change grammar files to
+                "element-definition module files?</p>
+            </draft-comment></dd>
         </dlentry>
       </dl>
     </section>
