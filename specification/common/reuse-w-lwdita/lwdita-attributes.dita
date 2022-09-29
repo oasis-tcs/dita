@@ -73,7 +73,16 @@
       </dl>
     </section>
     <section>
+      <title>MDITA phrases</title>
+      <p><ph id="mdita-no-core-suport">There is no attribute support for
+          the MDITA core profile. For the MDITA extended profile,
+          attributes can be specified by using the HDITA
+          representation.</ph></p>
+    </section>
+    <section>
       <title>Content for "Attributes" sections</title>
+      <p id="intro-attributes">The available attributes vary based on the
+        authoring format:</p>
       <div id="inline-elements" platform="lwdita">
         <p>The following attributes are available on this element: <ph
             conref="#lwdita-attributes/localization-attr"/>, <ph
@@ -81,14 +90,12 @@
             keyref="attributes-lwdita-common/keyref"
               ><xmlatt>keyref</xmlatt></xref>.</p>
         <!--Inline elements: alt, b, em, i, ph, strong, sub, sup, and u-->
-        <!--<ul><li>Localization attributes: <xmlatt>dir</xmlatt>, <xmlatt>translate</xmlatt>, and <xmlatt>xml:lang</xmlatt></li><li>Universal attributes: <xmlatt>class</xmlatt> and <xmlatt>outputclass</xmlatt></li><li><xmlatt>keyref</xmlatt></li></ul>-->
       </div>
       <div id="body-keytext-navtitle-title" platform="lwdita">
         <p>The following attributes are available on this element:  <ph
             conref="#lwdita-attributes/localization-attr"> </ph> and <ph
             conref="#lwdita-attributes/universal-attr"/>.</p>
         <!--body, keytext, navtitle, and title-->
-        <!--<ul><li>Localization attributes: <xmlatt>dir</xmlatt>, <xmlatt>translate</xmlatt>, and <xmlatt>xml:lang</xmlatt></li><li>Universal attributes: <xmlatt>class</xmlatt> and <xmlatt>outputclass</xmlatt></li></ul>-->
       </div>
       <div id="block-elements" platform="lwdita">
         <p>The following attributes are available on this element: <ph
@@ -121,14 +128,32 @@
         <!--<ul><li>Display attributes: <xmlatt>expanse</xmlatt>, <xmlatt>frame</xmlatt>, and <xmlatt>scale</xmlatt></li><li>Link relationship attributes: <xmlatt>conref</xmlatt> and <xmlatt>id</xmlatt></li><li>Localization attributes: <xmlatt>dir</xmlatt>, <xmlatt>translate</xmlatt>, and <xmlatt>xml:lang</xmlatt></li><li>Universal attributes: <xmlatt>class</xmlatt> and <xmlatt>outputclass</xmlatt></li><li><xmlatt>props</xmlatt></li></ul>-->
       </div>
       <div id="map-topic" platform="lwdita">
-        <p>The following attributes are available on this element: <ph
-            conref="#lwdita-attributes/architectural-attr"/>, <ph
-            conref="#lwdita-attributes/localization-attr"/>, <ph
-            conref="#lwdita-attributes/universal-attr"/>, and <xref
-            keyref="attributes-groups/id"><xmlatt>id</xmlatt></xref>.</p>
-        <p platform="lwdita">For this element, the <xmlatt>id</xmlatt>
-          attribute is required.</p>
-        <!--<ul><li>Architectural attributes: <xmlatt>ditaarch:DITAArchVersion</xmlatt>, <xmlatt>specializations</xmlatt>, and <xmlatt>xmlns:ditaarch</xmlatt></li><li>Localization attributes: <xmlatt>dir</xmlatt>, <xmlatt>translate</xmlatt>, and <xmlatt>xml:lang</xmlatt></li><li>Universal attributes: <xmlatt>class</xmlatt> and <xmlatt>outputclass</xmlatt></li><li><xmlatt>id</xmlatt></li></ul>-->
+        <p conref="#lwdita-attributes/intro-attributes"/>
+        <dl>
+          <dlentry>
+            <dt>XDITA</dt>
+            <dd>The following attributes are available on this element: </dd>
+            <dd><ph conref="#lwdita-attributes/architectural-attr"/>, <ph
+                conref="#lwdita-attributes/localization-attr"/>, <ph
+                conref="#lwdita-attributes/universal-attr"/>, and <xref
+                keyref="attributes-groups/id"><xmlatt>id</xmlatt></xref>.<p
+                platform="lwdita">For this element, the <xmlatt>id</xmlatt>
+                attribute is required.</p></dd>
+          </dlentry>
+          <dlentry>
+            <dt>HDITA</dt>
+            <dd>The following attributes are available on this element: <ph
+                conkeyref="reuse-lwdita-attributes/localization-attr"
+                >,</ph>, <ph
+                conkeyref="reuse-lwdita-attributes/universal-attr"/>, and
+                <xref keyref="attributes-groups/id"
+                ><xmlatt>id</xmlatt></xref>.</dd>
+          </dlentry>
+          <dlentry>
+            <dt>MDITA</dt>
+            <dd><ph conref="#lwdita-attributes/mdita-no-core-suport"/></dd>
+          </dlentry>
+        </dl>
       </div>
       <div>
         <p id="audio">The following attributes are available on this

@@ -359,17 +359,11 @@
               otherprops="attr-list-label"> (architectural
             attributes)</ph></dt>
           <dd>Specifies the version of the DITA architecture that is in
-            use. The default value increases with each release of DITA.
-            This attribute is in the namespace
+            use. This attribute is in the namespace
               <xmlnsname>http://dita.​oasis-open.​org/​architecture/​2005/</xmlnsname>.
-            This attribute is defined with the XML data type CDATA, but it
-            uses a default value of the current version of DITA. The
-            current default is <keyword>2.0</keyword>.<draft-comment
-              author="Kristen J Eberlein" time="28 September 2022">
-              <p>Is the second sentence really necessary? And do we want to
-                specify that this attribute is set in the grammar files,
-                specifically, all element-definition module files?</p>
-            </draft-comment></dd>
+            This attribute is specified in the topic and map modules, and
+            it uses a default value of the current version of DITA. The
+            current default is <keyword>2.0</keyword>.</dd>
         </dlentry>
         <dlentry id="duplicates" platform="dita">
           <dt id="attr-duplicates"><xmlatt>duplicates</xmlatt></dt>
@@ -1116,15 +1110,13 @@
           <dt id="attr-xmlns-ditaarch"><xmlatt>xmlns:ditaarch</xmlatt>
             <ph otherprops="attr-list-label">(architectural
               attributes)</ph></dt>
-          <dd>Declares the default DITA namespace. Although this is a
-            namespace rather than an attribute, it is specified as an
-            attribute in the DTD-based grammar files that are distributed
-            by OASIS. The value is fixed to
-              <keyword>http://dita.​oasis-open.​org/​architecture/​2005/</keyword>.<draft-comment
-              author="Kristen J Eberlein" time="28 September 2022">
-              <p>Do we want to be precise and change grammar files to
-                "element-definition module files?</p>
-            </draft-comment></dd>
+          <dd>Declares the default DITA namespace. This namespace is
+            declared as such in the RNG modules for
+              <xmlelement>topic</xmlelement> and
+              <xmlelement>map</xmlelement>, but it is specified as an
+            attribute in the equivalent DTD-based modules. The value is
+            fixed to
+              <keyword>http://dita.​oasis-open.​org/​architecture/​2005/</keyword>.</dd>
         </dlentry>
       </dl>
     </section>
