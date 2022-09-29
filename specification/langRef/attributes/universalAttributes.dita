@@ -104,15 +104,13 @@
         </dlentry>
         <dlentry id="base" platform="dita">
           <dt id="attr-base"><xmlatt>base</xmlatt></dt>
-          <dd>Specifies metadata about the current element. It is often
-            used as a base for specialized attributes that have a simple
-            syntax for values but are not filtering or flagging
+          <dd>Specifies metadata about the element. It is often used as a
+            base for specialized attributes that have a simple syntax for
+            values, but which are not conditional processing
               attributes.<p>The <xmlatt>base</xmlatt> attribute takes a
-              space-delimited set of values. However, when serving as a
-              container for generalized attributes, the attribute values
-              will be more complex. See <xref
-                href="../../archSpec/base/generalization-attributes.dita"/>
-              for more details.</p></dd>
+              space-delimited set of values. <ph
+                conkeyref="reuse-attributes/generalized-attributes"
+            /></p></dd>
         </dlentry>
         <dlentry id="class">
           <dt id="attr-class"><xmlatt>class</xmlatt>
@@ -270,11 +268,19 @@
               <keyword>optional</keyword>, <keyword>recommended</keyword>,
               <keyword>required</keyword>, <keyword>urgent</keyword>, and
               <keyword>-dita-use-conref-target</keyword>. This attribute is
-            not used for DITAVAL-based filtering or flagging, although
-            applications might use the importance value to highlight
-            elements. <ph otherprops="examples">For example, in steps of a
-              task, the value of the <xmlatt>importance</xmlatt> attribute
-              indicates whether a step is optional or required.</ph></dd>
+            not used for conditional processing, although applications
+            might use the value of the <xmlatt>importance</xmlatt>
+            attribute to highlight elements. <ph otherprops="examples">For
+              example, in steps of a task topic, the value of the
+                <xmlatt>importance</xmlatt> attribute indicates whether a
+              step is optional or required.</ph><draft-comment
+              author="Kristen J Eberlein" time="29 September 2022">
+              <p>I think the phrase "to highlight elements" is a little
+                off. Maybe "render generated text"? And how about adding
+                "Processors often add text or images to ensure that readers
+                of the generated content understand whether the step is
+                optional or required." to the end of the example?</p>
+            </draft-comment></dd>
         </dlentry>
         <dlentry id="otherprops">
           <dt id="attr-otherprops"><xmlatt>otherprops</xmlatt>
@@ -322,17 +328,14 @@
         </dlentry>
         <dlentry id="props" platform="dita lwdita">
           <dt id="attr-props"><xmlatt>props</xmlatt></dt>
-          <dd id="def-props">Specifies metadata about the current element.
-            New attributes can be specialized from the
-              <xmlatt>props</xmlatt> attribute. <ph
-              conkeyref="reuse-attributes/propertyvalueattr"/>
+          <dd id="def-props">Specifies metadata about the element. New
+            attributes can be specialized from the <xmlatt>props</xmlatt>
+            attribute. <ph conkeyref="reuse-attributes/propertyvalueattr"/>
             <ph conkeyref="reuse-attributes/may-inherit"/>
             <p>The <xmlatt>props</xmlatt> attribute takes a space-delimited
-              set of values.<ph platform="dita"> However, when acting as a
-                container for generalized attributes, the attribute values
-                will be more complex; see <xref
-                  href="../../archSpec/base/generalization-attributes.dita"
-                /> for more details.</ph></p></dd>
+              set of values. <ph
+                conkeyref="reuse-attributes/generalized-attributes"
+                platform="dita"/></p></dd>
         </dlentry>
         <dlentry id="rev" platform="dita">
           <dt id="attr-rev"><xmlatt>rev</xmlatt></dt>
@@ -340,12 +343,23 @@
             the element was added or modified. It can be used to flag
             outputs when it matches a run-time parameter. It cannot be used
             for filtering nor is it sufficient to be used for version
-            control. <ph conkeyref="reuse-attributes/may-inherit"/>
+            control. <ph conkeyref="reuse-attributes/may-inherit"
+              /><draft-comment author="Kristen J Eberlein"
+              time="29 September 2022">
+              <p>I want to tweak this. How about the following? Also,
+                neither definition describes what values are permitted.</p>
+              <p>Specifies metadata that identifies when the element was
+                added or the content of the element was modified. The
+                  <xmlatt>rev</xmlatt> attribute can be used for flagging.
+                It cannot be used for filtering nor is it sufficient to be
+                used for version control. <ph
+                  conkeyref="reuse-attributes/may-inherit"/></p>
+            </draft-comment>
           </dd>
         </dlentry>
         <dlentry id="status" platform="dita">
           <dt id="attr-status"><xmlatt>status</xmlatt></dt>
-          <dd>Specifies modification status of the current element. The
+          <dd>Specifies the modification status of the element. The
             following values are valid: <keyword>new</keyword>,
               <keyword>changed</keyword>, <keyword>deleted</keyword>,
               <keyword>unchanged</keyword>, and
@@ -353,32 +367,38 @@
         </dlentry>
         <dlentry id="translate">
           <dt id="attr-translate"><xmlatt>translate</xmlatt></dt>
-          <dd><draft-comment author="Kristen J Eberlein"
+          <dd>Specifies whether the content of the element should be
+            translated. <ph platform="dita">The following values are valid:
+                <keyword>yes</keyword>, <keyword>no</keyword>, and
+                <keyword>-dita-use-conref-target</keyword>.</ph><ph
+              platform="lwdita">The following values are valid:
+                <keyword>yes</keyword> and <keyword>no</keyword>.</ph><p
+              platform="dita">See <xref
+                href="../../non-normative/elementsMerged.dita"/> for
+              suggested processing defaults for each
+              element.</p><draft-comment author="Kristen J Eberlein"
               time="31 December 2021" platform="dita">
               <p>Does <xref href="../../non-normative/elementsMerged.dita"
                 /> really provide suggested processing defaults for each
                 element? I thought it covered whether an element was block
                 or in-line and whether there were considerations that
                 translators needed to be aware of.</p>
-            </draft-comment>Specifies whether the content of the element
-            should be translated. <ph platform="dita">The following values
-              are valid: <keyword>yes</keyword>, <keyword>no</keyword>, and
-                <keyword>-dita-use-conref-target</keyword>.</ph><ph
-              platform="lwdita">The following values are valid:
-                <keyword>yes</keyword> and <keyword>no</keyword>.</ph><p
-              platform="dita">See <xref
-                href="../../non-normative/elementsMerged.dita"/> for
-              suggested processing defaults for each element.</p></dd>
+            </draft-comment></dd>
         </dlentry>
         <dlentry id="xml-lang">
           <dt id="attr-xml-lang"><xmlatt>xml:lang</xmlatt></dt>
-          <dd id="reusable-lang">Specifies the language of the content
-            contained in an element. The following values are valid:
-            language tokens or the null string. The
+          <dd id="reusable-lang">Specifies the language and optional locale
+            of the content that is contained in an element. Valid values
+            are language tokens or the null string. The
               <xmlatt>xml:lang</xmlatt> attribute and its values are
             described in the <xref format="html" scope="external"
               href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">Extensible
-              Markup Language 1.0 specification, fifth edition</xref>.</dd>
+              Markup Language 1.0 specification, fifth
+              edition</xref>.<draft-comment author="Kristen J Eberlein"
+              time="29 September 2022" platform="dita">
+              <p>Do we also want to direct readers to the architectural
+                topics about the <xmlatt>xml:lang</xmlatt> attribute?</p>
+            </draft-comment></dd>
         </dlentry>
       </dl>
     </section>
