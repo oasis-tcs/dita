@@ -228,6 +228,9 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
     <define name="video">
       <ref name="video.element"/>
     </define>  
+    <define name="video-poster">
+      <ref name="video-poster.element"/>
+    </define>
     <define name="xref">
       <ref name="xref.element"/>
     </define>
@@ -2847,6 +2850,9 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
       <optional>
         <ref name="fallback"/>
       </optional>
+      <optional>
+        <ref name="video-poster"/>
+      </optional>
       <zeroOrMore>
         <ref name="media-source"/>
       </zeroOrMore>
@@ -2895,16 +2901,10 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
         </attribute>
       </optional>
       <optional>
-        <attribute name="poster"/>
-      </optional>
-      <optional>
         <attribute name="href"/>
       </optional>
       <optional>
         <attribute name="keyref"/>
-      </optional>
-      <optional>
-        <attribute name="posterkeyref"/>
       </optional>
       <optional>
         <attribute name="format"/>
@@ -3038,6 +3038,45 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
     </define>
     <define name="media-track.attlist" combine="interleave">
       <ref name="media-track.attributes"/>
+    </define>
+  </div>
+  
+  <div>
+    <a:documentation xml:space="preserve"> LONG NAME: Video poster</a:documentation>
+    <define name="video-poster.content">
+      <empty/>
+    </define>
+    <define name="video-poster.attributes">
+      <optional>
+        <attribute name="href"/>
+      </optional>
+      <optional>
+        <attribute name="keyref"/>
+      </optional>
+      <optional>
+        <attribute name="format"/>
+      </optional>
+      <optional>
+        <attribute name="scope">
+          <choice>
+            <value>external</value>
+            <value>local</value>
+            <value>peer</value>
+            <value>-dita-use-conref-target</value>
+          </choice>
+        </attribute>
+      </optional>
+      <ref name="univ-atts"/>
+    </define>
+    <define name="video-poster.element">
+      <element name="video-poster" dita:longName="Video poster">
+        <a:documentation></a:documentation>
+        <ref name="video-poster.attlist"/>
+        <ref name="video-poster.content"/>
+      </element>
+    </define>
+    <define name="video-poster.attlist" combine="interleave">
+      <ref name="video-poster.attributes"/>
     </define>
   </div>
   
@@ -3326,6 +3365,11 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Common Elements//EN"
     <define name="video.attlist" combine="interleave">
       <optional>
         <attribute name="class" a:defaultValue="- topic/video "/>
+      </optional>
+    </define>
+    <define name="video-poster.attlist" combine="interleave">
+      <optional>
+        <attribute name="class" a:defaultValue="- topic/video-poster "/>
       </optional>
     </define>
     <define name="xref.attlist" combine="interleave">

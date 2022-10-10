@@ -1600,6 +1600,7 @@
                        "((%desc;)?,
                          (%longdescref;)?,
                          (%fallback;)?,
+                         (%video-poster;)?,
                          (%media-source;)*,
                          (%media-track;)*,
                          (%foreign.unknown.incl;)*)"
@@ -1624,12 +1625,6 @@
                           (true |
                            false |
                            -dita-use-conref-target)
-                                    #IMPLIED
-               poster
-                          CDATA
-                                    #IMPLIED
-               posterkeyref                          
-                          CDATA
                                     #IMPLIED
                href
                           CDATA
@@ -1722,6 +1717,30 @@
 <!ELEMENT  media-track %media-track.content;>
 <!ATTLIST  media-track %media-track.attributes;>
 
+<!--                    LONG NAME: Video poster              -->
+<!ENTITY % video-poster.content
+                       "EMPTY"
+>
+<!ENTITY % video-poster.attributes
+              "href
+                          CDATA
+                                    #IMPLIED
+               keyref
+                          CDATA
+                                    #IMPLIED
+               format
+                          CDATA
+                                    #IMPLIED
+               scope
+                          (external |
+                           local |
+                           peer |
+                           -dita-use-conref-target)
+                                    #IMPLIED
+               %univ-atts;"
+>
+<!ELEMENT  video-poster %video-poster.content;>
+<!ATTLIST  video-poster %video-poster.attributes;>
 
 <!ENTITY % tblDecl-def
   PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Exchange Table Model//EN"
@@ -1790,6 +1809,7 @@
 <!ATTLIST  ul             class CDATA "- topic/ul "         >
 <!ATTLIST  unknown        class CDATA "- topic/unknown "    >
 <!ATTLIST  video          class CDATA "- topic/video "      >
+<!ATTLIST  video-poster   class CDATA "- topic/video-poster " >
 <!ATTLIST  xref           class CDATA "- topic/xref "       >
 
 <!-- ================== End of DITA Common Elements ==================== -->
