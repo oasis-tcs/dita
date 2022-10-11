@@ -25,14 +25,14 @@
         <li>For all elements, the <xmlatt>translate</xmlatt> attribute
           overrides the suggested defaults specified in the tables
           below.</li>
-        <li>Certain block-level elements might appear in the middle of a
-          translation segment. They are considered <term>subflow</term>
-          elements in regard to translation. When located in the middle of
-          a translation segment, these element should not be translated as
-          part of that segment. Whenever possible, such elements should be
-          placed only at sentence boundaries in order to aid translation.
-          The subflow elements in base DITA are
-            <xmlelement>draft-comment</xmlelement>,
+        <li id="subflow">Certain block-level elements might appear in the
+          middle of a translation segment. They are considered
+            <term>subflow</term> elements in regard to translation. When
+          located in the middle of a translation segment, these element
+          should not be translated as part of that segment. Whenever
+          possible, such elements should be placed only at sentence
+          boundaries in order to aid translation. The subflow elements in
+          base DITA are <xmlelement>draft-comment</xmlelement>,
             <xmlelement>fn</xmlelement>, <xmlelement>idex-see</xmlelement>,
             <xmlelement>index-see-also</xmlelement>,
             <xmlelement>indexterm</xmlelement>, and
@@ -84,10 +84,8 @@
         <dlentry>
           <dt>Block/inline translation</dt>
           <dd>Indicates whether the element represents a complete
-            translatable segment. For example, the element
-              <xmlelement>cmd</xmlelement> is presented inline with other
-            elements, but it represents a complete translation
-            segment.</dd>
+            translatable
+            segment.<!-- For example, the element <xmlelement>cmd</xmlelement> is presented inline with other elements, but it represents a complete translation segment.--></dd>
         </dlentry>
         <dlentry>
           <dt>Translatable content?</dt>
@@ -99,34 +97,24 @@
         </dlentry>
         <dlentry>
           <dt>Notes</dt>
-          <dd>Extra needed information, including whether the element has
-            any attributes with values that might need translation, if
-            specializations of the element might need translation, or if
-            the element is a "subflow" element for the purposes of
-            translation. This column only appears in tables when it is
-            needed.</dd>
+          <dd>This column contains any additional information, including
+            the following items.This column only appears in tables when it
+            is needed.<ul>
+              <li>Whether the element has any attributes with values that
+                might need translation</li>
+              <li>If specializations of the element might need
+                translation,</li>
+              <li>If the element is a "subflow" element for the purposes of
+                translation</li>
+            </ul></dd>
         </dlentry>
       </dl>
     </section>
     <section id="section-topic">
       <title>Topic elements</title>
-      <draft-comment author="Kristen J Eberlein" time="11 October 2022">
-        <p>We need to do the following cleanup here:</p>
-        <ul>
-          <li>Add a paragraph that introduces the table.</li>
-          <li>Standardize values listed in the table. Here, in the
-            presentation column, we use the following values:
-              <keyword>block (metadata)</keyword>, <keyword>n/a</keyword>,
-            and <keyword>na (metadata)</keyword>. Are these distinctions
-            necessary? (I don't think they are used elsewhere.) Is the
-            intent of the value <keyword>n/a</keyword> to communicate that
-            the element is an empty element? If we want to convey that
-            information, we need to ensure that it is done consistently
-            throughout ALL the tables.</li>
-        </ul>
-      </draft-comment>
-      <!--Define footnotes used within the table-->
-      <!--<fn id="foreign">The block vs. inline designation for the <xmlelement>foreign</xmlelement> element is likely to change for some specializations.</fn> <fn id="foreign-translate">The <xmlelement>desc</xmlelement>, <xmlelement>object</xmlelement>, and <xmlelement>image</xmlelement> elements inside <xmlelement>foreign</xmlelement> should still be translatable; they provide an alternative display if the foreign content cannot be processed.</fn>-->
+      <p>The following table contains information about elements that are
+        available within topics. Some elements are also available in DITA
+        maps.</p>
       <simpletable id="simpletable_body" relcolwidth="1.25* 1* 1*  1* 2*">
         <sthead>
           <stentry>Element name</stentry>
@@ -148,7 +136,8 @@
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry>This element is considered a subflow element.</stentry>
+          <stentry>This element is considered a<xref
+              href="#elements/subflow"> subflow</xref> element.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>audience</xmlelement></stentry>
@@ -209,9 +198,9 @@
         </strow>
         <strow>
           <stentry><xmlelement>colspec</xmlelement></stentry>
-          <stentry>n/a</stentry>
-          <stentry>n/a</stentry>
-          <stentry>n/a</stentry>
+          <stentry rev="review-s">n/a (empty)</stentry>
+          <stentry rev="review-s">n/a (empty)</stentry>
+          <stentry rev="review-s">n/a (empty)</stentry>
           <stentry/>
         </strow>
         <strow>
@@ -319,8 +308,9 @@
           <stentry><xmlelement>draft-comment</xmlelement></stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
-          <stentry><b>no</b></stentry>
-          <stentry>This element is considered a subflow element.</stentry>
+          <stentry>no</stentry>
+          <stentry>This element is considered a<xref
+              href="#elements/subflow"> subflow</xref> element.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>dt</xmlelement></stentry>
@@ -383,7 +373,8 @@
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry>This element is considered a subflow element.</stentry>
+          <stentry>This element is considered a<xref
+              href="#elements/subflow"> subflow</xref> element.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>foreign</xmlelement>
@@ -425,21 +416,24 @@
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry>This element is considered a subflow element.</stentry>
+          <stentry>This element is considered a<xref
+              href="#elements/subflow"> subflow</xref> element.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>index-see-also</xmlelement></stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry>This element is considered a subflow element.</stentry>
+          <stentry>This element is considered a<xref
+              href="#elements/subflow"> subflow</xref> element.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>indexterm</xmlelement></stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry>This element is considered a subflow element.</stentry>
+          <stentry>This element is considered a<xref
+              href="#elements/subflow"> subflow</xref> element.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>keytext</xmlelement></stentry>
@@ -544,9 +538,9 @@
         </strow>
         <strow>
           <stentry><xmlelement>no-topic-nesting</xmlelement></stentry>
-          <stentry>n/a</stentry>
-          <stentry>n/a</stentry>
-          <stentry>n/a</stentry>
+          <stentry rev="review-s">n/a (empty)</stentry>
+          <stentry rev="review-s">n/a (empty)</stentry>
+          <stentry rev="review-s">n/a (empty)</stentry>
           <stentry/>
         </strow>
         <strow>
@@ -675,8 +669,9 @@
           <stentry><xmlelement>required-cleanup</xmlelement></stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
-          <stentry><b>no</b></stentry>
-          <stentry>This element is considered a subflow element.</stentry>
+          <stentry>no</stentry>
+          <stentry>This element is considered a<xref
+              href="#elements/subflow"> subflow</xref> element.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>resourceid</xmlelement></stentry>
@@ -908,20 +903,8 @@
     </section>
     <section id="section-map">
       <title>Map elements</title>
-      <draft-comment author="Kristen J Eberlein" time="11 October 2022">
-        <p>We need to do the following cleanup here:</p>
-        <ul>
-          <li>Add a paragraph that introduces the table.</li>
-          <li>Standardize values listed in the table. Here, in the
-            presentation column, we use the following values:
-              <keyword>n/a</keyword> and <keyword>n/a
-            (empty)</keyword>.</li>
-        </ul>
-        <p>Also Eliot pointed out in the Content Fusion review: " ... no
-          map element is directly presented in the way that topic elements
-          are so these should all be "n/a". Maps are 100% metadata that is
-          presented only indirectly through some presentation process.</p>
-      </draft-comment>
+      <p>The following table contains information about the elements that
+        are defined in the map module.</p>
       <simpletable relcolwidth="1.25* 1* 1* 1*">
         <sthead>
           <stentry>Element name</stentry>
@@ -937,9 +920,9 @@
         </strow>
         <strow>
           <stentry><xmlelement>navref</xmlelement></stentry>
-          <stentry>n/a</stentry>
-          <stentry>n/a</stentry>
-          <stentry>n/a</stentry>
+          <stentry rev="review-s">n/a (empty)</stentry>
+          <stentry rev="review-s">n/a (empty)</stentry>
+          <stentry rev="review-s">n/a (empty)</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>relcell</xmlelement></stentry>
@@ -993,7 +976,7 @@
           <stentry><xmlelement>ux-window</xmlelement></stentry>
           <stentry>n/a (empty)</stentry>
           <stentry>n/a (empty)</stentry>
-          <stentry>no</stentry>
+          <stentry rev="review-s">n/a (empty)</stentry>
         </strow>
       </simpletable>
     </section>
@@ -1290,7 +1273,8 @@
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry>This element is considered a subflow element.</stentry>
+          <stentry>This element is considered a<xref
+              href="#elements/subflow"> subflow</xref> element.</stentry>
         </strow>
       </simpletable>
     </section>
@@ -1459,7 +1443,7 @@
         </strow>
         <strow>
           <stentry><xmlelement>style-conflict</xmlelement></stentry>
-          <stentry>block</stentry>
+          <stentry rev="review-s">n/a (empty)</stentry>
           <stentry>n/a (empty element)</stentry>
         </strow>
         <strow>
