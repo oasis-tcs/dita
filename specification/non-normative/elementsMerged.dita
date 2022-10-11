@@ -10,83 +10,133 @@
     translation. Examples of content that is not suitable for translation
     include code fragments and mailing addresses.</shortdesc>
   <refbody>
-    <section id="section-1">Since the distinction between block and inline elements is ultimately
-      controlled by the container of the element and the processing associated with it, the same
-      element might be a block in one context and an inline element in another. Specializing
-      document types might vary this behavior according to the needs of the document type being
-      created, and the distinctions given below are provided only as a guide to known behavior with
-      the base DITA document types.</section>
     <section id="notes">
       <title>Notes on the tables below</title>
-      <!--<draft-comment>JO 2007/01/22: I've always been confused by the translate
-attribute.  If something is translatable (by default or because translate="yes")
-and then someone translates it, does the translate attribute change
-to "no" or is it removed or does it remain "yes" since the content
-could be translated again?  Is there a need for a translated attribute
-to go with the translate attribute?</draft-comment><draft-comment>MP:
-leaving to translation TC to determine particular workflow considerations.
-My personal guess would be that the translation attribute is preserved
-through translation, and that translation workflow - including mappings
-between source documents and translated versions - would be managed
-by a translation application. Although the source element in the prolog
-could potentially identify a source version of a translated topic.</draft-comment><draft-comment>NH
-2009/5/23: Did the translation SC ever come out with a best practice
-for this?</draft-comment>-->
       <ul>
-        <li>For specializations, the second column gives the ancestor element, and the third column
-          gives a quick yes/no guide to indicate whether all behavior is inherited. If something is
-          not inherited, the change will appear in bold.</li>
-        <li>For any specialization not listed below, the suggested default is to fall back to the
-          closest listed ancestor.</li>
-        <li>The block/inline presentation column indicates whether the element is formatted as a
-          single block.</li>
-        <li>The block/inline translation column indicates whether the element represents a complete
-          translatable segment. For example, the element <xmlelement>cmd</xmlelement> is presented inline with other
-          elements, but represents a complete translation segment.</li>
-        <li>Items marked as block*** are blocks on their own, but might appear in the middle of a
-          segment. They should not break the flow of the current segment. These are considered
-          "subflow" elements for translation. We recommend that, when possible, these elements
-          should only be placed at sentence boundaries to aid in translation.<fn id="subflow">This
-            element is considered a "subflow" element for translation. If it is located in the
-            middle of a translation segment, it should not be translated as part of that segment.
-            For example, <xmlelement>indexterm</xmlelement>, <xmlelement>fn</xmlelement>, and
-              <xmlelement>draft-comment</xmlelement> might divide a sentence in two, but should be
-            treated as blocks, and should not interrupt the sentence. </fn></li>
-        <li>For all elements, the <xmlatt>translate</xmlatt> attribute will override the suggested default
-          translation setting. So, a translation setting of "yes" or "no" in the table below does
-          not guarantee that an element will always, or never, be translated.</li>
-        <li>If an element has translatable attributes, they are listed in the last column.</li>
-        <li>The <xmlelement>keyword</xmlelement> element (as well as specializations of
-            <xmlelement>keyword</xmlelement>) is an inline, phrase-like element when it appears in
-          the body of a document. It <ph >can</ph> also appear in the
-            <xmlelement>keywords</xmlelement> element in <xmlelement>topicmeta</xmlelement> (for
-          maps) or in the <xmlelement>prolog</xmlelement> (for topic). When it appears in the
-            <xmlelement>keywords</xmlelement> element, each <xmlelement>keyword</xmlelement>
-          represents an individual segment, and is not part of a larger segment; in that location,
-            <xmlelement>keyword</xmlelement> can be considered a "subflow" element.</li>
+        <li>Note that an element might be a block element in one context
+          and an inline element in another. In addition, specialized
+          element types might be rendered in a way that varies from their
+          specialization base. Accordingly, the distinctions presented in
+          the tables are provided only as a guide to known behavior with
+          the base DITA. For element specializations that are not
+          distributed by OASIS, the suggested default is to fall back to
+          the closest ancestor element that is part of the OASIS
+          distribution.</li>
+        <li>For all elements, the <xmlatt>translate</xmlatt> attribute
+          overrides the suggested defaults specified in the tables
+          below.</li>
+        <li>Certain block-level elements might appear in the middle of a
+          translation segment. They are considered <term>subflow</term>
+          elements in regard to translation. When located in the middle of
+          a translation segment, these element should not be translated as
+          part of that segment. Whenever possible, such elements should be
+          placed only at sentence boundaries in order to aid translation.
+          The subflow elements in base DITA are
+            <xmlelement>draft-comment</xmlelement>,
+            <xmlelement>fn</xmlelement>, <xmlelement>idex-see</xmlelement>,
+            <xmlelement>index-see-also</xmlelement>,
+            <xmlelement>indexterm</xmlelement>, and
+            <xmlelement>required-cleanup</xmlelement></li>
+        <li>The <xmlelement>keyword</xmlelement> element (as well as
+          specializations of <xmlelement>keyword</xmlelement>) is an
+          inline, phrase-like element when it appears in the body of a
+          document. It can also appear in the
+            <xmlelement>keywords</xmlelement> element in
+            <xmlelement>topicmeta</xmlelement> (for maps) or in the
+            <xmlelement>prolog</xmlelement> (for topic). When it appears in
+          the <xmlelement>keywords</xmlelement> element, each
+            <xmlelement>keyword</xmlelement> represents an individual
+          segment. In that location, <xmlelement>keyword</xmlelement> is
+          considered a subflow element.</li>
       </ul>
+    </section>
+    <section>
+      <title>Explanation of column headers</title>
+      <p>The following list explains the headers for the columns:</p>
+      <dl>
+        <dlentry>
+          <dt>Element name</dt>
+          <dd>The name of the element.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>Specialization base</dt>
+          <dd>The element from which the current element is specialized.
+            This column only appears in tables for the domain
+            elements.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>Same behavior as specialization base?</dt>
+          <dd>Indicates whether the element has the same behaviors in
+            regard to translation as its specialization base. The behaviors
+            are whether the element is formatted as a single block or as an
+            inline element, whether the element represents a complete
+            translatable segment, and whether the element contains
+            translatable content. This column only appears in tables for
+            the domain elements.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>Block/inline presentation</dt>
+          <dd>Indicates whether the element is rendered in output as a
+            single block or as an inline element. Metadata typically is not
+            rendered, and so metadata elements are listed as <keyword>n/a
+              (metadata).</keyword></dd>
+        </dlentry>
+        <dlentry>
+          <dt>Block/inline translation</dt>
+          <dd>Indicates whether the element represents a complete
+            translatable segment. For example, the element
+              <xmlelement>cmd</xmlelement> is presented inline with other
+            elements, but it represents a complete translation
+            segment.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>Translatable content?</dt>
+          <dd>Whether the element contains one or both of the following:<ul>
+              <li>Text content that can be translated</li>
+              <li>Child elements that contain content that can be
+                translated</li>
+            </ul></dd>
+        </dlentry>
+        <dlentry>
+          <dt>Notes</dt>
+          <dd>Extra needed information, including whether the element has
+            any attributes with values that might need translation, if
+            specializations of the element might need translation, or if
+            the element is a "subflow" element for the purposes of
+            translation. This column only appears in tables when it is
+            needed.</dd>
+        </dlentry>
+      </dl>
     </section>
     <section id="section-topic">
       <title>Topic elements</title>
+      <draft-comment author="Kristen J Eberlein" time="11 October 2022">
+        <p>We need to do the following cleanup here:</p>
+        <ul>
+          <li>Add a paragraph that introduces the table.</li>
+          <li>Standardize values listed in the table. Here, in the
+            presentation column, we use the following values:
+              <keyword>block (metadata)</keyword>, <keyword>n/a</keyword>,
+            and <keyword>na (metadata)</keyword>. Are these distinctions
+            necessary? (I don't think they are used elsewhere.) Is the
+            intent of the value <keyword>n/a</keyword> to communicate that
+            the element is an empty element? If we want to convey that
+            information, we need to ensure that it is done consistently
+            throughout ALL the tables.</li>
+        </ul>
+      </draft-comment>
       <!--Define footnotes used within the table-->
-      <fn id="foreign">The block vs. inline designation for the <xmlelement>foreign</xmlelement>
-        element is likely to change for some specializations.</fn>
-      <fn id="foreign-translate">The <xmlelement>desc</xmlelement>, <xmlelement>object</xmlelement>,
-        and <xmlelement>image</xmlelement> elements inside <xmlelement>foreign</xmlelement> should
-        still be translatable; they provide an alternative display if the foreign content cannot be
-        processed.</fn>
-      <simpletable id="simpletable_body">
+      <!--<fn id="foreign">The block vs. inline designation for the <xmlelement>foreign</xmlelement> element is likely to change for some specializations.</fn> <fn id="foreign-translate">The <xmlelement>desc</xmlelement>, <xmlelement>object</xmlelement>, and <xmlelement>image</xmlelement> elements inside <xmlelement>foreign</xmlelement> should still be translatable; they provide an alternative display if the foreign content cannot be processed.</fn>-->
+      <simpletable id="simpletable_body" relcolwidth="1.25* 1* 1*  1* 2*">
         <sthead>
           <stentry>Element name</stentry>
-          <stentry>Specialized from</stentry>
-          <stentry>Block/Inline (presentation)</stentry>
-          <stentry>Block/Inline (translation)</stentry>
+          <stentry>Block/inline (presentation)</stentry>
+          <stentry>Block/inline (translation)</stentry>
           <stentry>Translatable content?</stentry>
-          <stentry>Translatable attributes?</stentry>
+          <stentry>Notes</stentry>
         </sthead>
         <strow>
           <stentry><xmlelement>abstract</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -95,15 +145,13 @@ for this?</draft-comment>-->
         <strow>
           <stentry><xmlelement>alt</xmlelement>
           </stentry>
-          <stentry>N/A</stentry>
-          <stentry>block***<xref href="elementsMerged.dita#elements/subflow" type="fn"/></stentry>
+          <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
+          <stentry>This element is considered a subflow element.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>audience</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -111,7 +159,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>audio</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -119,7 +166,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>author</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -127,7 +173,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>body</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -136,7 +181,6 @@ for this?</draft-comment>-->
         <strow>
           <stentry><xmlelement>bodydiv</xmlelement>
           </stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -144,7 +188,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>brand</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -152,7 +195,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>category</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -160,7 +202,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>cite</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>inline</stentry>
           <stentry>inline</stentry>
           <stentry>yes</stentry>
@@ -168,7 +209,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>colspec</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>n/a</stentry>
           <stentry>n/a</stentry>
           <stentry>n/a</stentry>
@@ -176,7 +216,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>component</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -184,7 +223,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>copyrholder</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -192,7 +230,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>copyright</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -200,7 +237,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>copyryear</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -208,7 +244,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>created</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -216,7 +251,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>critdates</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -224,15 +258,14 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>data</xmlelement></stentry>
-          <stentry>N/A</stentry>
-          <stentry>N/A (metadata)</stentry>
+          <stentry>n/a (metadata)</stentry>
           <stentry>block</stentry>
-          <stentry>no (likely to change for some specializations)</stentry>
-          <stentry/>
+          <stentry>no</stentry>
+          <stentry>Specializations of  <xmlelement>data</xmlelement> might
+            contain translatable content.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>dd</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -240,7 +273,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>ddhd</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -248,12 +280,7 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>desc</xmlelement>
-            <fn id="foreign2">The <xmlelement>desc</xmlelement>, <xmlelement>object</xmlelement>,
-              and <xmlelement>image</xmlelement> elements inside <xmlelement>foreign</xmlelement>
-              should still be translatable; they provide an alternative display if the foreign
-              content cannot be processed.</fn>
-            <!--<xref href='"#elements/foreign1"' type="fn"></xref>--></stentry>
-          <stentry>N/A</stentry>
+          </stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -262,7 +289,6 @@ for this?</draft-comment>-->
         <strow>
           <stentry><xmlelement>div</xmlelement>
           </stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -270,15 +296,13 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>dl</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry></stentry>
+          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>dlentry</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -286,7 +310,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>dlhead</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -294,15 +317,13 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>draft-comment</xmlelement></stentry>
-          <stentry>N/A</stentry>
-          <stentry>block***<xref href="elementsMerged.dita#elements/subflow" type="fn"/></stentry>
+          <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry><b>no</b></stentry>
-          <stentry/>
+          <stentry>This element is considered a subflow element.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>dt</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -310,7 +331,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>dthd</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -318,7 +338,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>entry</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -326,15 +345,13 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>example</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry></stentry>
+          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>fallback</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -342,7 +359,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>featnum</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -350,15 +366,13 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>fig</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry></stentry>
+          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>figgroup</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -366,34 +380,41 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>fn</xmlelement></stentry>
-          <stentry>N/A</stentry>
-          <stentry>block***<xref href="elementsMerged.dita#elements/subflow" type="fn"/></stentry>
+          <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
+          <stentry>This element is considered a subflow element.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>foreign</xmlelement>
-            <fn>The block vs. inline designation for the <xmlelement>foreign</xmlelement> element is
-              likely to change for some specializations.</fn></stentry>
-          <stentry>N/A</stentry>
-          <stentry>block<xref href="elementsMerged.dita#elements/foreign"/></stentry>
-          <stentry>block<xref href="elementsMerged.dita#elements/foreign"/></stentry>
-          <stentry>no<xref href="elementsMerged.dita#elements/foreign-translate"/></stentry>
-          <stentry/>
+          </stentry>
+          <stentry>block</stentry>
+          <stentry>block</stentry>
+          <stentry>no</stentry>
+          <stentry>
+            <p>The block vs. inline designation for the
+                <xmlelement>foreign</xmlelement> element is likely to
+              change for some specializations.</p>
+            <p>The <xmlelement>desc</xmlelement>,
+                <xmlelement>object</xmlelement>, and
+                <xmlelement>image</xmlelement> elements inside
+                <xmlelement>foreign</xmlelement> should still be
+              translatable; they provide an alternative display if the
+              foreign content cannot be processed.</p>
+          </stentry>
         </strow>
         <strow>
           <stentry><xmlelement>image</xmlelement>
             <!--<xref href='"#elements/foreign1"' type="fn"></xref>--></stentry>
-          <stentry>N/A</stentry>
-          <stentry>block when <xmlatt>placement</xmlatt>= break, otherwise inline</stentry>
-          <stentry>block when <xmlatt>placement</xmlatt>= break, otherwise inline</stentry>
+          <stentry>block when <xmlatt>placement</xmlatt>= break, otherwise
+            inline</stentry>
+          <stentry>block when <xmlatt>placement</xmlatt>= break, otherwise
+            inline</stentry>
           <stentry>yes</stentry>
           <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>include</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>inline</stentry>
           <stentry>inline</stentry>
           <stentry>yes</stentry>
@@ -401,31 +422,27 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>index-see</xmlelement></stentry>
-          <stentry>N/A</stentry>
-          <stentry>block***<xref href="elementsMerged.dita#elements/subflow" type="fn"/></stentry>
+          <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry>yes</stentry>
+          <stentry>This element is considered a subflow element.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>index-see-also</xmlelement></stentry>
-          <stentry>N/A</stentry>
-          <stentry>block***<xref href="elementsMerged.dita#elements/subflow" type="fn"/></stentry>
+          <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry>yes</stentry>
+          <stentry>This element is considered a subflow element.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>indexterm</xmlelement></stentry>
-          <stentry>N/A</stentry>
-          <stentry>block***<xref href="elementsMerged.dita#elements/subflow" type="fn"/></stentry>
+          <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
+          <stentry>This element is considered a subflow element.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>keytext</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -433,16 +450,15 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>keyword</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>inline</stentry>
-          <stentry>inline (except when within <xmlelement>keywords</xmlelement> – see note above the
+          <stentry>inline (except when within
+              <xmlelement>keywords</xmlelement> – see note above the
             table)</stentry>
           <stentry>yes</stentry>
           <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>keywords</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -450,7 +466,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>li</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -458,15 +473,13 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>lines</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry></stentry>
+          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>link</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -474,7 +487,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>linkinfo</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -482,15 +494,13 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>linklist</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry></stentry>
+          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>linkpool</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -498,7 +508,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>linktext</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -506,15 +515,14 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>lq</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry><xmlatt>reftitle</xmlatt></stentry>
+          <stentry><xmlatt>reftitle</xmlatt> can specify translatable
+            content.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>media-source</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>n/a</stentry>
@@ -522,7 +530,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>media-track</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>n/a</stentry>
@@ -530,7 +537,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>metadata</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -538,7 +544,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>no-topic-nesting</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>n/a</stentry>
           <stentry>n/a</stentry>
           <stentry>n/a</stentry>
@@ -546,16 +551,15 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>note</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry><xmlatt>othertype</xmlatt></stentry>
+          <stentry><xmlatt>othertype</xmlatt> can specify translatable
+            content.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>object</xmlelement>
             <!--<xref href='"#elements/foreign1"' type="fn"></xref>--></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -563,23 +567,21 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>ol</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry></stentry>
+          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>othermeta</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry><xmlatt>content</xmlatt></stentry>
+          <stentry><xmlatt>content</xmlatt> can specify translatable
+            content.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>p</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -587,7 +589,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>param</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>n/a</stentry>
@@ -595,7 +596,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>permissions</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -603,7 +603,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>ph</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>inline</stentry>
           <stentry>inline</stentry>
           <stentry>yes</stentry>
@@ -611,7 +610,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>platform</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -619,15 +617,13 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>pre</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry></stentry>
+          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>prodinfo</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -635,7 +631,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>prodname</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -643,7 +638,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>prognum</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -651,7 +645,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>prolog</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -659,7 +652,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>publisher</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -667,7 +659,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>q</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>inline</stentry>
           <stentry>inline</stentry>
           <stentry>yes</stentry>
@@ -675,7 +666,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>related-links</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -683,15 +673,13 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>required-cleanup</xmlelement></stentry>
-          <stentry>N/A</stentry>
-          <stentry>block***<xref href="elementsMerged.dita#elements/subflow" type="fn"/></stentry>
+          <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry><b>no</b></stentry>
-          <stentry/>
+          <stentry>This element is considered a subflow element.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>resourceid</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -699,7 +687,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>revised</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -707,7 +694,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>row</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -715,15 +701,13 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>section</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry></stentry>
+          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>series</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -731,7 +715,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>shortdesc</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -739,23 +722,20 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>simpletable</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry></stentry>
+          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>sl</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry></stentry>
+          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>sli</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -763,7 +743,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>source</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -771,23 +750,21 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>state</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>inline</stentry>
           <stentry>inline</stentry>
           <stentry>yes</stentry>
-          <stentry><xmlatt>value</xmlatt></stentry>
+          <stentry><xmlatt>value</xmlatt> can specify translatable
+            content.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>stentry</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry></stentry>
+          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>sthead</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -795,7 +772,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>strow</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -803,7 +779,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>table</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -811,7 +786,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>tbody</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -819,7 +793,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>term</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>inline</stentry>
           <stentry>inline</stentry>
           <stentry>yes</stentry>
@@ -828,7 +801,6 @@ for this?</draft-comment>-->
         <strow>
           <stentry><xmlelement>text</xmlelement>
           </stentry>
-          <stentry>N/A</stentry>
           <stentry>inline</stentry>
           <stentry>inline</stentry>
           <stentry>yes</stentry>
@@ -836,7 +808,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>tgroup</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -844,7 +815,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>thead</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -852,7 +822,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>title</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -860,7 +829,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>titlealt</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -868,7 +836,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>tm</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>inline</stentry>
           <stentry>inline</stentry>
           <stentry>yes</stentry>
@@ -876,7 +843,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>topic</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -884,16 +850,14 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>ul</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry></stentry>
+          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>unknown</xmlelement>
           </stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>no</stentry>
@@ -901,7 +865,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>video</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -909,7 +872,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>vrm</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -917,7 +879,6 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>vrmlist</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
@@ -925,153 +886,156 @@ for this?</draft-comment>-->
         </strow>
         <strow>
           <stentry><xmlelement>xref</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>inline</stentry>
           <stentry>inline</stentry>
           <stentry>yes</stentry>
           <stentry/>
         </strow>
       </simpletable>
+      <draft-comment author="Kristen J Eberlein" time="11 October 2022">
+        <p>We need to consider how we want to handle
+            <xmlelement>image</xmlelement> and
+            <xmlelement>hazardsymbol</xmlelement> (specialized from
+            <xmlelement>image</xmlelement>). The current wording in the
+          tables in awkward.</p>
+        <p>Also, Eliot pointed out the following in the Content Fusion
+          review: "<xmlelement>image</xmlelement> is not a block for
+          translation purposes, it is a container -- only the
+            <xmlelement>alt</xmlelement> element within
+            <xmlelement>image</xmlelement> contains translatable text.
+          Localization of the image would be separate."</p>
+      </draft-comment>
     </section>
     <section id="section-map">
       <title>Map elements</title>
-      <simpletable>
+      <draft-comment author="Kristen J Eberlein" time="11 October 2022">
+        <p>We need to do the following cleanup here:</p>
+        <ul>
+          <li>Add a paragraph that introduces the table.</li>
+          <li>Standardize values listed in the table. Here, in the
+            presentation column, we use the following values:
+              <keyword>n/a</keyword> and <keyword>n/a
+            (empty)</keyword>.</li>
+        </ul>
+        <p>Also Eliot pointed out in the Content Fusion review: " ... no
+          map element is directly presented in the way that topic elements
+          are so these should all be "n/a". Maps are 100% metadata that is
+          presented only indirectly through some presentation process.</p>
+      </draft-comment>
+      <simpletable relcolwidth="1.25* 1* 1* 1*">
         <sthead>
           <stentry>Element name</stentry>
-          <stentry>Specialized from</stentry>
-          <stentry>Block/Inline (presentation)</stentry>
-          <stentry>Block/Inline (translation)</stentry>
+          <stentry>Block/inline (presentation)</stentry>
+          <stentry>Block/inline (translation)</stentry>
           <stentry>Translatable content?</stentry>
-          <stentry>Translatable attributes?</stentry>
         </sthead>
         <strow>
           <stentry><xmlelement>map</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry> </stentry>
         </strow>
         <strow>
           <stentry><xmlelement>navref</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>n/a</stentry>
           <stentry>n/a</stentry>
           <stentry>n/a</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>relcell</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>relcolspec</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>relheader</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>relrow</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>reltable</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>shortdesc</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>topicmeta</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>topicref</xmlelement></stentry>
-          <stentry>N/A</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>ux-window</xmlelement></stentry>
-          <stentry>N/A</stentry>
-          <stentry>N/A (empty)</stentry>
-          <stentry>N/A (empty)</stentry>
+          <stentry>n/a (empty)</stentry>
+          <stentry>n/a (empty)</stentry>
           <stentry>no</stentry>
-          <stentry/>
         </strow>
       </simpletable>
     </section>
     <section id="section_j3d_lrh_rnb">
-      <title>Alternative Title Elements</title>
+      <title>Alternative title domain elements
+        (alternativetitles-d)</title>
+      <p>There are no translatable attributes or other special
+        considerations for elements in this domain. With the exception of
+        the <xmlelement>subtitle</xmlelement> element, all elements
+        represent metadata.</p>
       <simpletable id="simpletable_k3d_lrh_rnb">
         <sthead>
           <stentry>Element name</stentry>
-          <stentry>Specialized from</stentry>
-          <stentry>Inherits everything from ancestor?</stentry>
-          <stentry>Block/Inline (presentation)</stentry>
-          <stentry>Block/Inline (translation)</stentry>
+          <stentry>Specialization base</stentry>
+          <stentry>Same behavior as specialization base?</stentry>
+          <stentry>Block/inline (presentation)</stentry>
+          <stentry>Block/inline (translation)</stentry>
           <stentry>Translatable content?</stentry>
-          <stentry>Translatable attributes?</stentry>
         </sthead>
         <strow>
           <stentry><xmlelement>linktitle</xmlelement></stentry>
           <stentry><xmlelement>titlealt</xmlelement></stentry>
           <stentry>yes</stentry>
-          <stentry>N/A (metadata)</stentry>
+          <stentry>n/a (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>navtitle</xmlelement></stentry>
           <stentry><xmlelement>titlealt</xmlelement></stentry>
           <stentry>yes</stentry>
-          <stentry>N/A (metadata)</stentry>
+          <stentry>n/a (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>searchtitle</xmlelement></stentry>
           <stentry><xmlelement>titlealt</xmlelement></stentry>
           <stentry>yes</stentry>
-          <stentry>N/A (metadata)</stentry>
+          <stentry>n/a (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>subtitle</xmlelement></stentry>
@@ -1080,30 +1044,29 @@ for this?</draft-comment>-->
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>titlehint</xmlelement></stentry>
           <stentry><xmlelement>titlealt</xmlelement></stentry>
           <stentry>yes</stentry>
-          <stentry>N/A (metadata)</stentry>
+          <stentry>n/a (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
       </simpletable>
     </section>
     <section id="section-emphasis-d">
       <title>Emphasis domain elements (emphasis-d)</title>
+      <p>There are no translatable attributes or other special
+        considerations for elements in this domain.</p>
       <simpletable id="simpletable_hpm_cm1_knb">
         <sthead>
           <stentry>Element name</stentry>
-          <stentry>Specialized from</stentry>
-          <stentry>Inherits everything from ancestor?</stentry>
-          <stentry>Block/Inline (presentation)</stentry>
-          <stentry>Block/Inline (translation)</stentry>
+          <stentry>Specialization base</stentry>
+          <stentry>Same behavior as specialization base?</stentry>
+          <stentry>Block/inline (presentation)</stentry>
+          <stentry>Block/inline (translation)</stentry>
           <stentry>Translatable content?</stentry>
-          <stentry>Translatable attributes?</stentry>
         </sthead>
         <strow>
           <stentry><xmlelement>em</xmlelement></stentry>
@@ -1112,40 +1075,38 @@ for this?</draft-comment>-->
           <stentry>inline</stentry>
           <stentry>inline</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>strong</xmlelement>
           </stentry>
-          <stentry><ph/></stentry>
+          <stentry><xmlelement>ph</xmlelement></stentry>
           <stentry>yes</stentry>
           <stentry>inline</stentry>
           <stentry>inline</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
       </simpletable>
     </section>
     <section id="section-hazard-d">
-      <title>Hazard statement domain (hazard-d elements)</title>
+      <title>Hazard statement domain elements (hazard-d)</title>
+      <p>There are no translatable attributes or other special
+        considerations for elements in this domain.</p>
       <simpletable>
         <sthead>
           <stentry>Element name</stentry>
-          <stentry>Specialized from</stentry>
-          <stentry>Inherits everything from ancestor?</stentry>
-          <stentry>Block/Inline (presentation)</stentry>
-          <stentry>Block/Inline (translation)</stentry>
+          <stentry>Specialization base</stentry>
+          <stentry>Same behavior as specialization base?</stentry>
+          <stentry>Block/inline (presentation)</stentry>
+          <stentry>Block/inline (translation)</stentry>
           <stentry>Translatable content?</stentry>
-          <stentry>Translatable attributes?</stentry>
         </sthead>
         <strow>
           <stentry><xmlelement>consequence</xmlelement></stentry>
-          <stentry><xmlelement>li</xmlelement></stentry>
+          <stentry><xmlelement>div</xmlelement></stentry>
           <stentry>yes</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>hazardstatement</xmlelement></stentry>
@@ -1154,7 +1115,6 @@ for this?</draft-comment>-->
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry><xmlatt>othertype</xmlatt></stentry>
         </strow>
         <strow>
           <stentry><xmlelement>hazardsymbol</xmlelement></stentry>
@@ -1163,48 +1123,45 @@ for this?</draft-comment>-->
           <stentry>block when <xmlatt>placement</xmlatt>= break, otherwise inline</stentry>
           <stentry>block when <xmlatt>placement</xmlatt>= break, otherwise inline</stentry>
           <stentry>yes</stentry>
-          <stentry></stentry>
         </strow>
         <strow>
           <stentry><xmlelement>howtoavoid</xmlelement></stentry>
-          <stentry><xmlelement>li</xmlelement></stentry>
+          <stentry><xmlelement>div</xmlelement></stentry>
           <stentry>yes</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>messagepanel</xmlelement></stentry>
-          <stentry><xmlelement>ul</xmlelement></stentry>
+          <stentry><xmlelement>div</xmlelement></stentry>
           <stentry>yes</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry></stentry>
         </strow>
         <strow>
           <stentry><xmlelement>typeofhazard</xmlelement></stentry>
-          <stentry><xmlelement>li</xmlelement></stentry>
+          <stentry><xmlelement>div</xmlelement></stentry>
           <stentry>yes</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
       </simpletable>
     </section>
     <section id="section-hi-d">
       <title>Highlight domain elements (hi-d)</title>
+      <p>There are no translatable attributes or other special
+        considerations for elements in this domain.</p>
       <simpletable>
         <sthead>
           <stentry>Element name</stentry>
-          <stentry>Specialized from</stentry>
-          <stentry>Inherits everything from ancestor?</stentry>
-          <stentry>Block/Inline (presentation)</stentry>
-          <stentry>Block/Inline (translation)</stentry>
+          <stentry>Specialization base</stentry>
+          <stentry>Same behavior as specialization base?</stentry>
+          <stentry>Block/inline (presentation)</stentry>
+          <stentry>Block/inline (translation)</stentry>
           <stentry>Translatable content?</stentry>
-          <stentry>Translatable attributes?</stentry>
         </sthead>
         <strow>
           <stentry><xmlelement>b</xmlelement></stentry>
@@ -1213,17 +1170,15 @@ for this?</draft-comment>-->
           <stentry>inline</stentry>
           <stentry>inline</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>line-through</xmlelement>
           </stentry>
-          <stentry><ph/></stentry>
+          <stentry><xmlelement>ph</xmlelement></stentry>
           <stentry>yes</stentry>
           <stentry>inline</stentry>
           <stentry>inline</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>i</xmlelement></stentry>
@@ -1232,7 +1187,6 @@ for this?</draft-comment>-->
           <stentry>inline</stentry>
           <stentry>inline</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>overline</xmlelement>
@@ -1242,7 +1196,6 @@ for this?</draft-comment>-->
           <stentry>inline</stentry>
           <stentry>inline</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>sub</xmlelement></stentry>
@@ -1251,7 +1204,6 @@ for this?</draft-comment>-->
           <stentry>inline</stentry>
           <stentry>inline</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>sup</xmlelement></stentry>
@@ -1260,7 +1212,6 @@ for this?</draft-comment>-->
           <stentry>inline</stentry>
           <stentry>inline</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>tt</xmlelement></stentry>
@@ -1269,7 +1220,6 @@ for this?</draft-comment>-->
           <stentry>inline</stentry>
           <stentry>inline</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>u</xmlelement></stentry>
@@ -1278,21 +1228,22 @@ for this?</draft-comment>-->
           <stentry>inline</stentry>
           <stentry>inline</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
       </simpletable>
     </section>
     <section id="section-ut-d">
-      <title>Utilities domain elements</title>
+      <title>Utilities domain elements (ut-d)</title>
+      <p>There are no translatable attributes for elements in this
+        domain.</p>
       <simpletable>
         <sthead>
           <stentry>Element name</stentry>
-          <stentry>Specialized from</stentry>
-          <stentry>Inherits everything from ancestor?</stentry>
-          <stentry>Block/Inline (presentation)</stentry>
-          <stentry>Block/Inline (translation)</stentry>
+          <stentry>Specialization base</stentry>
+          <stentry>Same behavior as specialization base?</stentry>
+          <stentry>Block/inline (presentation)</stentry>
+          <stentry>Block/inline (translation)</stentry>
           <stentry>Translatable content?</stentry>
-          <stentry>Translatable attributes?</stentry>
+          <stentry>Notes</stentry>
         </sthead>
         <strow>
           <stentry><xmlelement>area</xmlelement></stentry>
@@ -1306,10 +1257,10 @@ for this?</draft-comment>-->
         <strow>
           <stentry><xmlelement>coords</xmlelement></stentry>
           <stentry><xmlelement>ph</xmlelement></stentry>
-          <stentry><b>NO</b></stentry>
+          <stentry>no</stentry>
           <stentry>inline</stentry>
           <stentry>inline</stentry>
-          <stentry><b>no</b></stentry>
+          <stentry>no</stentry>
           <stentry/>
         </strow>
         <strow>
@@ -1318,42 +1269,41 @@ for this?</draft-comment>-->
           <stentry>yes</stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
-          <stentry>yes (can contain translatable alternate text)</stentry>
-          <stentry></stentry>
+          <stentry>yes</stentry>
+          <stentry>This element can contain translatable alternate
+            text.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>shape</xmlelement></stentry>
           <stentry><xmlelement>keyword</xmlelement></stentry>
-          <stentry><b>NO</b></stentry>
+          <stentry>no</stentry>
           <stentry>inline</stentry>
           <stentry>inline</stentry>
-          <stentry><b>no</b></stentry>
+          <stentry>no</stentry>
           <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>sort-as</xmlelement>
           </stentry>
           <stentry><xmlelement>data</xmlelement></stentry>
-          <stentry><b>NO</b></stentry>
-          <stentry>block***<xref href="elementsMerged.dita#elements/subflow" type="fn"/></stentry>
+          <stentry>no</stentry>
+          <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
+          <stentry>This element is considered a subflow element.</stentry>
         </strow>
       </simpletable>
     </section>
-    <!--<section id="section-classify-d"><title>Classification domain elements (classify-d)</title><simpletable id="simpletable_classify"><sthead><stentry>Element name</stentry><stentry>Specialized from</stentry><stentry>Inherits everything from ancestor?</stentry><stentry>Block/Inline (presentation)</stentry><stentry>Block/Inline (translation)</stentry><stentry>Translatable content?</stentry><stentry>Translatable attributes?</stentry></sthead><strow><stentry><xmlelement>subjectCell</xmlelement></stentry><stentry><xmlelement>relcell</xmlelement></stentry><stentry>yes</stentry><stentry>block</stentry><stentry>block</stentry><stentry>yes</stentry><stentry/></strow><strow><stentry><xmlelement>subjectref</xmlelement></stentry><stentry><xmlelement>topicref</xmlelement></stentry><stentry>yes</stentry><stentry>block</stentry><stentry>block</stentry><stentry>yes</stentry><stentry/></strow><strow><stentry><xmlelement>topicapply</xmlelement></stentry><stentry><xmlelement>topicref</xmlelement></stentry><stentry>yes</stentry><stentry>block</stentry><stentry>block</stentry><stentry>yes</stentry><stentry/></strow><strow><stentry><xmlelement>topicCell</xmlelement></stentry><stentry><xmlelement>relcell</xmlelement></stentry><stentry>yes</stentry><stentry>block</stentry><stentry>block</stentry><stentry>yes</stentry><stentry/></strow><strow><stentry><xmlelement>topicsubject</xmlelement></stentry><stentry><xmlelement>topicref</xmlelement></stentry><stentry>yes</stentry><stentry>block</stentry><stentry>block</stentry><stentry>yes</stentry><stentry/></strow><strow><stentry><xmlelement>topicSubjectHeader</xmlelement></stentry><stentry><xmlelement>relrow</xmlelement></stentry><stentry>yes</stentry><stentry>block</stentry><stentry>block</stentry><stentry>yes</stentry><stentry/></strow><strow><stentry><xmlelement>topicSubjectRow</xmlelement></stentry><stentry><xmlelement>relrow</xmlelement></stentry><stentry>yes</stentry><stentry>block</stentry><stentry>block</stentry><stentry>yes</stentry><stentry/></strow><strow><stentry><xmlelement>topicSubjectTable</xmlelement></stentry><stentry><xmlelement>reltable</xmlelement></stentry><stentry>yes</stentry><stentry>block</stentry><stentry>block</stentry><stentry>yes</stentry><stentry/></strow></simpletable></section>-->
     <section id="section-ditavalref-d">
-      <title>DITAVALref domain elements</title>
+      <title>DITAVALref domain elements (ditavalref-d)</title>
       <simpletable>
         <sthead>
           <stentry>Element name</stentry>
-          <stentry>Specialized from</stentry>
-          <stentry>Inherits everything from ancestor?</stentry>
-          <stentry>Block/Inline (presentation)</stentry>
-          <stentry>Block/Inline (translation)</stentry>
+          <stentry>Specialization base</stentry>
+          <stentry>Same behavior as specialization base?</stentry>
+          <stentry>Block/inline (presentation)</stentry>
+          <stentry>Block/inline (translation)</stentry>
           <stentry>Translatable content?</stentry>
-          <stentry>Translatable attributes?</stentry>
         </sthead>
         <strow>
           <stentry><xmlelement>ditavalmeta</xmlelement>
@@ -1363,7 +1313,6 @@ for this?</draft-comment>-->
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>ditavalref</xmlelement>
@@ -1373,61 +1322,57 @@ for this?</draft-comment>-->
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>dvrKeyscopePrefix</xmlelement>
           </stentry>
           <stentry><xmlelement>data</xmlelement></stentry>
           <stentry>yes</stentry>
-          <stentry>N/A (metadata)</stentry>
+          <stentry>n/a (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>no</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>dvrKeyscopeSuffix</xmlelement>
           </stentry>
           <stentry><xmlelement>data</xmlelement></stentry>
           <stentry>yes</stentry>
-          <stentry>N/A (metadata)</stentry>
+          <stentry>n/a (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>no</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>dvrResourcePrefix</xmlelement>
           </stentry>
           <stentry><xmlelement>data</xmlelement></stentry>
           <stentry>yes</stentry>
-          <stentry>N/A (metadata)</stentry>
+          <stentry>n/a (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>no</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>dvrResourceSuffix</xmlelement>
           </stentry>
           <stentry><xmlelement>data</xmlelement></stentry>
           <stentry>yes</stentry>
-          <stentry>N/A (metadata)</stentry>
+          <stentry>n/a (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>no</stentry>
-          <stentry/>
         </strow>
       </simpletable>
     </section>
     <section id="section-mapgroup-d">
       <title>Map group domain elements (mapgroup-d)</title>
+      <p>There are no translatable attributes or other special
+        considerations for elements in this domain.</p>
       <simpletable id="simpletable_C7DA2F9DD1804D4CA09B7BB04EB13076">
         <sthead>
           <stentry>Element name</stentry>
-          <stentry>Specialized from</stentry>
-          <stentry>Inherits everything from ancestor?</stentry>
-          <stentry>Block/Inline (presentation)</stentry>
-          <stentry>Block/Inline (translation)</stentry>
+          <stentry>Specialization base</stentry>
+          <stentry>Same behavior as specialization base?</stentry>
+          <stentry>Block/inline (presentation)</stentry>
+          <stentry>Block/inline (translation)</stentry>
           <stentry>Translatable content?</stentry>
-          <stentry>Translatable attributes?</stentry>
         </sthead>
         <strow>
           <stentry><xmlelement>keydef</xmlelement>
@@ -1437,7 +1382,6 @@ for this?</draft-comment>-->
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>mapref</xmlelement>
@@ -1447,7 +1391,6 @@ for this?</draft-comment>-->
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>mapresources</xmlelement></stentry>
@@ -1456,7 +1399,6 @@ for this?</draft-comment>-->
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>topicgroup</xmlelement></stentry>
@@ -1465,7 +1407,6 @@ for this?</draft-comment>-->
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
         <strow>
           <stentry><xmlelement>topichead</xmlelement></stentry>
@@ -1474,7 +1415,6 @@ for this?</draft-comment>-->
           <stentry>block</stentry>
           <stentry>block</stentry>
           <stentry>yes</stentry>
-          <stentry/>
         </strow>
       </simpletable>
     </section>
@@ -1483,15 +1423,13 @@ for this?</draft-comment>-->
     
     <section id="section-ditaval">
       <title>DITAVAL elements</title>
-      <p>The DITAVAL elements are not specialized, and are not rendered on their own, so related
-        columns are dropped from this table. There are no translatable attributes in the DITAVAL
-        element set.</p>
-      <p>The only element that directly contains text for translation is
+      <p>There are no translatable attributes in the DITAVAL element set.
+        The only element that directly contains translatable text is
           <xmlelement>alt-text</xmlelement>.</p>
       <simpletable id="simpletable_ditaval">
         <sthead>
           <stentry>Element name</stentry>
-          <stentry>Block/Inline (translation)</stentry>
+          <stentry>Block/inline (translation)</stentry>
           <stentry>Translatable content?</stentry>
         </sthead>
         <strow>
@@ -1502,32 +1440,32 @@ for this?</draft-comment>-->
         <strow>
           <stentry><xmlelement>endflag</xmlelement></stentry>
           <stentry>block</stentry>
-          <stentry>yes (inside nested elements)</stentry>
+          <stentry>yes</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>prop</xmlelement></stentry>
           <stentry>block</stentry>
-          <stentry>yes (inside nested elements)</stentry>
+          <stentry>yes</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>revprop</xmlelement></stentry>
           <stentry>block</stentry>
-          <stentry>yes (inside nested elements)</stentry>
+          <stentry>yes</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>startflag</xmlelement></stentry>
           <stentry>block</stentry>
-          <stentry>yes (inside nested elements)</stentry>
+          <stentry>yes</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>style-conflict</xmlelement></stentry>
           <stentry>block</stentry>
-          <stentry>N/A <i>(empty element)</i></stentry>
+          <stentry>n/a (empty element)</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>val</xmlelement></stentry>
           <stentry>block</stentry>
-          <stentry>yes (inside nested elements)</stentry>
+          <stentry>yes</stentry>
         </strow>
       </simpletable>
     </section>
