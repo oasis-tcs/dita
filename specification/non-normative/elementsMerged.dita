@@ -83,8 +83,11 @@
         </dlentry>
         <dlentry>
           <dt>Block/inline translation</dt>
-          <dd>Indicates whether the element represents a complete
-            translatable
+          <dd>Specifies whether the element represents a complete
+            translatable segment. The value <keyword>block</keyword>
+            indicates that the element is a single segment, while the value
+              <keyword>inline</keyword> indicates that the element is part
+            of a larger
             segment.<!-- For example, the element <xmlelement>cmd</xmlelement> is presented inline with other elements, but it represents a complete translation segment.--></dd>
         </dlentry>
         <dlentry>
@@ -250,7 +253,7 @@
           <stentry>n/a (metadata)</stentry>
           <stentry>block</stentry>
           <stentry>no</stentry>
-          <stentry>Specializations of  <xmlelement>data</xmlelement> might
+          <stentry>Specializations of <xmlelement>data</xmlelement> might
             contain translatable content.</stentry>
         </strow>
         <strow>
@@ -381,18 +384,17 @@
           </stentry>
           <stentry>block</stentry>
           <stentry>block</stentry>
-          <stentry>no</stentry>
-          <stentry>
-            <p>The block vs. inline designation for the
+          <stentry rev="review-s">yes</stentry>
+          <stentry><p>The block vs. inline designation for the
                 <xmlelement>foreign</xmlelement> element is likely to
-              change for some specializations.</p>
-            <p>The <xmlelement>desc</xmlelement>,
-                <xmlelement>object</xmlelement>, and
-                <xmlelement>image</xmlelement> elements inside
-                <xmlelement>foreign</xmlelement> should still be
-              translatable; they provide an alternative display if the
-              foreign content cannot be processed.</p>
-          </stentry>
+              change for some specializations.</p><p>The
+                <xmlelement>foreign</xmlelement> element might contain DITA
+              elements, such </p><xmlelement>desc</xmlelement>,
+              <xmlelement>object</xmlelement>, and
+              <xmlelement>image</xmlelement>, in addition to non-DITA
+            elements. Such elements can contain translatable content;  they
+            provide an alternative display if the foreign content cannot be
+            processed.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>image</xmlelement>
@@ -1103,8 +1105,10 @@
           <stentry><xmlelement>hazardsymbol</xmlelement></stentry>
           <stentry><xmlelement>image</xmlelement></stentry>
           <stentry>yes</stentry>
-          <stentry>block when <xmlatt>placement</xmlatt>= break, otherwise inline</stentry>
-          <stentry>block when <xmlatt>placement</xmlatt>= break, otherwise inline</stentry>
+          <stentry>block when <xmlatt>placement</xmlatt>= break, otherwise
+            inline</stentry>
+          <stentry>block when <xmlatt>placement</xmlatt>= break, otherwise
+            inline</stentry>
           <stentry>yes</stentry>
         </strow>
         <strow>
@@ -1402,9 +1406,6 @@
         </strow>
       </simpletable>
     </section>
-    
-    
-    
     <section id="section-ditaval">
       <title>DITAVAL elements</title>
       <p>There are no translatable attributes in the DITAVAL element set.
