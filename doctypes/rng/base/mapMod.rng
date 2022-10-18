@@ -480,6 +480,31 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
         <attribute name="subjectrefs"/>
       </optional>
     </define>
+    <define name="impose-role-attribute">
+      <optional>
+        <attribute name="impose-role" a:defaultValue="keeptarget">
+          <choice>
+            <value>impose</value>
+            <value>keeptarget</value>
+            <value>-dita-use-conref-target</value>
+          </choice>
+        </attribute>
+      </optional>
+    </define>
+    <define name="impose-role-attribute-fixed-keeptarget">
+      <optional>
+        <attribute name="impose-role" a:defaultValue="keeptarget">
+          <value>keeptarget</value>
+        </attribute>
+      </optional>
+    </define>
+    <define name="impose-role-attribute-fixed-impose">
+      <optional>
+        <attribute name="impose-role" a:defaultValue="impose">
+          <value>impose</value>
+        </attribute>
+      </optional>
+    </define>
   </div>
   
 
@@ -581,6 +606,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
         <optional>
           <attribute name="keys"/>
         </optional>
+        <ref name="impose-role-attribute"/>
         <ref name="topicref-atts"/>
         <ref name="univ-atts"/>
       </define>
