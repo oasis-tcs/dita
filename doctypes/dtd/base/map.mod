@@ -335,6 +335,23 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                                     #IMPLIED"
 >
 
+<!ENTITY % impose-role-attribute
+              "impose-role
+                          (impose |
+                           keeptarget |
+                           -dita-use-conref-target)
+                                    'keeptarget'"
+>
+<!ENTITY % impose-role-attribute-fixed-keeptarget
+              "impose-role
+                          (keeptarget)
+                                    'keeptarget'"
+>
+<!ENTITY % impose-role-attribute-fixed-impose
+              "impose-role
+                          (impose)
+                                    'impose'"
+>
     
 <!-- ============================================================= -->
 <!--                    MODULES CALLS                              -->
@@ -427,6 +444,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                keys
                           CDATA
                                     #IMPLIED
+               %impose-role-attribute;
                %topicref-atts;
                %univ-atts;"
 >
