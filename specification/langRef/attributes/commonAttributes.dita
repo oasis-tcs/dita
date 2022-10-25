@@ -111,6 +111,17 @@
               element is frequently used as a specialization base.</p>
           </dd>
         </dlentry>
+        <dlentry id="table-access-atts">
+          <dt>Table accessibility attributes</dt>
+          <dd>
+            <p id="table-access-attr">This group contains attributes that
+              are defined on the <xmlelement>stentry</xmlelement> element
+              and its specializations: <xref href="#common-atts/headers"
+                  ><xmlatt>headers</xmlatt></xref> and <xref
+                href="#common-atts/tablescope"><xmlatt>scope</xmlatt> (as
+                defined on <xmlelement>stentry</xmlelement>)</xref>.</p>
+          </dd>
+        </dlentry>
         <dlentry id="otheratts">
           <dt>Other attributes (not in a group)</dt>
           <dd>
@@ -523,6 +534,14 @@
             <ph otherprops="attr-list-label">(date attributes)</ph></dt>
           <dd>Specifies the publication or general availability (GA) date.
               <ph conkeyref="reuse-general/dateformat"/></dd>
+        </dlentry>
+        <dlentry id="headers" platform="dita lwdita">
+          <dt id="attr-headers"><xmlatt>headers</xmlatt></dt>
+          <dd><ph rev="review-e">Specifies which entries in the current
+              table provide headers for this cell. </ph> The
+              <xmlatt>headers</xmlatt> attribute contains an unordered set
+            of unique, space-separated tokens, each of which is an ID
+            reference of an entry from the same table.</dd>
         </dlentry>
         <dlentry id="href">
           <dt id="attr-href"><xmlatt>href</xmlatt>
@@ -964,6 +983,37 @@
               on supported values and processing implications.</p><p
               platform="lwdita">For HDITA, the equivalent of
                 <xmlatt>scope</xmlatt> is <xmlatt>rel</xmlatt>.</p></dd>
+        </dlentry>
+        <dlentry id="tablescope" platform="dita lwdita">
+          <dt id="attr-scope-simpletable"><xmlatt>scope</xmlatt></dt>
+          <dd>Specifies that the current entry is a header for other table
+            entries. The following values are valid:<dl>
+              <dlentry>
+                <dt><keyword>col</keyword></dt>
+                <dd>Indicates that the current entry is a header for all
+                  cells in the column.</dd>
+              </dlentry>
+              <dlentry>
+                <dt><keyword>colgroup</keyword></dt>
+                <dd>Indicates that the current entry is a header for all
+                  cells in the columns that are spanned by this entry.</dd>
+              </dlentry>
+              <dlentry>
+                <dt><keyword>row</keyword></dt>
+                <dd>Indicates that the current entry is a header for all
+                  cells in the row.</dd>
+              </dlentry>
+              <dlentry>
+                <dt><keyword>rowgroup</keyword></dt>
+                <dd>Indicates that the current entry is a header for all
+                  cells in the rows that are spanned by this entry.</dd>
+              </dlentry>
+              <dlentry platform="dita"
+                conkeyref="reuse-attributes/ditauseconref">
+                <dt/>
+                <dd/>
+              </dlentry>
+            </dl><!--<draft-comment author="robander" time="Dec 20 2021">If the TC agrees we could state that the use of <xmlelement>thead</xmlelement> implies a setting of scope="colgroup" (not sure if we should call that a processing default or something else). Basically a thead means everything in there is a heading for the relevant columns, so it is not required to set this attribute.<p>Same question for <xmlelement>sthead</xmlelement> as well.</p></draft-comment>--></dd>
         </dlentry>
         <dlentry id="search" platform="dita">
           <dt id="attr-search"><xmlatt>search</xmlatt>
