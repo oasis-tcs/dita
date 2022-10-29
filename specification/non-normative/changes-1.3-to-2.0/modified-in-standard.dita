@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="modified_in_standard">
+    <title>Modified in standard</title>
+    <shortdesc>Existing items within the DITA standard have been modified. Modifications include
+        changing domains, content models, attribute sets, and specialization bases.</shortdesc>
+    <conbody>
+        <section id="section_sky_cyk_3vb">
+            <title>Domain changes</title>
+            <p>The following changes have been made to existing domains within DITA:<dl
+                    id="dl_n3k_2yk_3vb">
+                    <dlentry>
+                        <dt>Programming</dt>
+                        <dd>The Programming domain has been split into two separate domains, with
+                                <xmlelement>syntaxdiagram</xmlelement> and its child elements being
+                            moved to a new syntax diagram domain.</dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt>Indexing</dt>
+                        <dd><xmlelement>index-see</xmlelement> and
+                                <xmlelement>index-see-also</xmlelement> have been moved to be base
+                            elements.</dd>
+                    </dlentry>
+                </dl></p>
+            <draft-comment author="dawnstevens">Is there where we would put that
+                    <xmlelement>linktest</xmlelement> has been moved from commonElements to
+                TopicMod?</draft-comment>
+        </section>
+        <section id="section_xpc_sgk_3vb">
+            <title>Content Model Changes</title>
+            <p>DITA 2.0 has changed the content models of the following elements:</p>
+            <dl id="dl_oqx_ngk_3vb">
+                <dlentry>
+                    <dt><xmlelement>booklists</xmlelement></dt>
+                    <dd>Allow zero or more <xmlelement>amendments</xmlelement> elements</dd>
+                </dlentry>
+                <dlentry>
+                    <dt><xmlelement>bookmap</xmlelement></dt>
+                    <dd>
+                        <ul id="ul_ljv_cll_3vb">
+                            <li>Allow zero or more <xmlelement>ditavalref</xmlelement> elements
+                                after <xmlelement>bookmeta</xmlelement></li>
+                            <li>Allow zero or more <xmlelement>mapresources</xmlelement> elements
+                                after <xmlelement>ditavalref</xmlelement></li>
+                        </ul>
+                    </dd>
+                </dlentry>
+                <dlentry>
+                    <dt><xmlelement>ditavalmeta</xmlelement></dt>
+                    <dd>
+                        <ul id="ul_ryh_gpl_3vb">
+                            <li>Remove <xmlelement>navtitle</xmlelement></li>
+                            <li>Add <xmlelement>titlealt</xmlelement></li>
+                        </ul>
+                    </dd>
+                </dlentry>
+                <dlentry>
+                    <dt><xmlelement>example</xmlelement></dt>
+                    <dd>Allow example to occur in most places where block elements, such as
+                            <xmlelement>p</xmlelement>, may occur. </dd>
+                </dlentry>
+                <dlentry>
+                    <dt><xmlelement>glossentry</xmlelement> elements</dt>
+                    <dd>If other inline elements are allowed, also allow
+                            <xmlelement>sub</xmlelement> and <xmlelement>sup</xmlelement></dd>
+                </dlentry>
+                <dlentry>
+                    <dt><xmlelement>hazardstatement</xmlelement></dt>
+                    <dd>
+                        <ul id="ul_qy4_5mk_3vb">
+                            <li>Move <xmlatt>hazardsymbol</xmlatt> element to be a child of
+                                    <xmlelement>messagepanel</xmlelement></li>
+                            <li>Allow <xmlelement>hazardsymbol</xmlelement> within
+                                    <xmlelement>typeofhazard</xmlelement>
+                            </li>
+                            <li>Within <xmlelement>messagepanel</xmlelement>, allow
+                                    <xmlelement>howtoavoid</xmlelement> and
+                                    <xmlelement>consequence</xmlelement> elements to be paired in
+                                either order</li>
+                        </ul>
+                    </dd>
+                </dlentry>
+                <dlentry>
+                    <dt><xmlelement>object</xmlelement></dt>
+                    <dd>Allow one or more <xmlelement>fallback</xmlelement> elements.</dd>
+                </dlentry>
+                <dlentry>
+                    <dt><xmlelement>prolog</xmlelement></dt>
+                    <dd>Add <xmlelement>titlealt</xmlelement></dd>
+                </dlentry>
+                <dlentry>
+                    <dt><xmlelement>simpletable</xmlelement></dt>
+                    <dd>Add <xmlelement>title</xmlelement> as a child of
+                            <xmlelement>simpletable</xmlelement></dd>
+                </dlentry>
+                <dlentry>
+                    <dt><xmlelement>step</xmlelement></dt>
+                    <dd>Add <xmlelement>steps</xmlelement> as a child of
+                            <xmlelement>step</xmlelement></dd>
+                </dlentry>
+                <dlentry>
+                    <dt><xmlelement>subjectHeadMeta</xmlelement></dt>
+                    <dd>
+                        <ul id="ul_kmy_xpl_3vb">
+                            <li>Remove <xmlelement>navtitle</xmlelement></li>
+                            <li>Add <xmlelement>titlealt</xmlelement></li>
+                        </ul>
+                    </dd>
+                </dlentry>
+                <dlentry>
+                    <dt><xmlelement>topicmeta</xmlelement></dt>
+                    <dd>
+                        <ul id="ul_ufd_3pl_3vb">
+                            <li>Remove <xmlelement>linktext</xmlelement>,
+                                    <xmlelement>navtitle</xmlelement>, and
+                                    <xmlelement>searchtitle</xmlelement></li>
+                            <li>Add <xmlelement>titlealt</xmlelement></li>
+                        </ul>
+                    </dd>
+                </dlentry>
+            </dl>
+        </section>
+        <section id="section_wbq_sgk_3vb">
+            <title>Attributes</title>
+            <p>Attributes have been added to the following elements:<table id="table_ejs_2fl_3vb">
+                    <tgroup cols="2">
+                        <colspec colname="c1" colnum="1" colwidth="1*"/>
+                        <colspec colname="c2" colnum="2" colwidth="1*"/>
+                        <thead>
+                            <row>
+                                <entry>Element</entry>
+                                <entry>Added attributes</entry>
+                            </row>
+                        </thead>
+                        <tbody>
+                            <row>
+                                <entry>Specializations of <xmlelement>body</xmlelement></entry>
+                                <entry>Universal attributes</entry>
+                            </row>
+                            <row>
+                                <entry>Specializations of <xmlelement>keyword</xmlelement></entry>
+                                <entry><xmlatt>keyref</xmlatt></entry>
+                            </row>
+                            <row>
+                                <entry><xmlelement>lq</xmlelement></entry>
+                                <entry><xmlatt>keyref</xmlatt></entry>
+                            </row>
+                            <row>
+                                <entry><xmlelement>prop</xmlelement></entry>
+                                <entry><xmlatt>outputclass</xmlatt></entry>
+                            </row>
+                            <row>
+                                <entry><xmlelement>resourceid</xmlelement></entry>
+                                <entry><xmlatt>appid-role</xmlatt></entry>
+                            </row>
+                            <row>
+                                <entry><xmlelement>simpletable</xmlelement></entry>
+                                <entry>
+                                    <ul id="ul_cb3_jhk_3vb">
+                                        <li><xmlatt>colspan</xmlatt></li>
+                                        <li><xmlatt>rowspan</xmlatt></li>
+                                        <li><xmlatt>headers</xmlatt></li>
+                                        <li><xmlatt>scope</xmlatt></li>
+                                    </ul>
+                                </entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table></p>
+            <p>The following attributes have been modified:<ul id="ul_z15_2rl_3vb">
+                    <li>The <xmlatt>class</xmlatt> attribute for <xmlelement>linktext</xmlelement>,
+                            <xmlelement>shortdesc</xmlelement>, and
+                            <xmlelement>searchtitle</xmlelement> now has the same declarations for
+                        use in maps and topics.</li>
+                    <li>The <xmlatt>outputclass</xmlatt> attribute was added to the list of
+                        universal attributes, thereby making it available on a variety of elements
+                        where it had not been explicitly declared.</li>
+                </ul></p>
+        </section>
+        <section id="section_tlw_ckl_3vb">
+            <title>Specialization base changes</title>
+            <p>The following elements have been re-architected to be specialized from a different
+                base element, allowing more flexibility or consistency in the way they are used.</p>
+            <table id="table_wdq_dkl_3vb">
+                <tgroup cols="2">
+                    <colspec colname="c1" colnum="1" colwidth="1*" colsep="1" rowsep="1"/>
+                    <colspec colname="c2" colnum="2" colwidth="1*" colsep="1" rowsep="1"/>
+                    <thead>
+                        <row>
+                            <entry>Element</entry>
+                            <entry>New specialization base</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry>
+                                <ul id="ul_rgp_gkl_3vb">
+                                    <li><xmlelement>navtitle</xmlelement></li>
+                                    <li><xmlelement>searchtitle</xmlelement></li>
+                                </ul>
+                            </entry>
+                            <entry><xmlelement>titlealt</xmlelement></entry>
+                        </row>
+                        <row>
+                            <entry>
+                                <ul id="ul_ls4_hkl_3vb">
+                                    <li><xmlelement>codref</xmlelement></li>
+                                    <li><xmlelement>mathmlref</xmlelement></li>
+                                    <li><xmlelement>svgref</xmlelement></li>
+                                </ul>
+                            </entry>
+                            <entry><xmlelement>include</xmlelement></entry>
+                        </row>
+                        <row>
+                            <entry>
+                                <ul id="ul_vzc_pkl_3vb">
+                                    <li><xmlelement>area</xmlelement></li>
+                                    <li><xmlelement>consequence</xmlelement></li>
+                                    <li><xmlelement>howtoavoid</xmlelement></li>
+                                    <li><xmlelement>imagemap</xmlelement></li>
+                                    <li><xmlelement>messagepanel</xmlelement></li>
+                                    <li><xmlelement>typeofhazard</xmlelement></li>
+                                    <li/>
+                                </ul>
+                            </entry>
+                            <entry><xmlelement>div</xmlelement></entry>
+                        </row>
+                        <row>
+                            <entry>
+                                <ul id="ul_l2r_pml_3vb">
+                                    <li><xmlatt>audience</xmlatt></li>
+                                    <li><xmlatt>otherprops</xmlatt></li>
+                                    <li><xmlatt>platform</xmlatt></li>
+                                    <li><xmlatt>product</xmlatt></li>
+                                </ul>
+                            </entry>
+                            <entry><xmlatt>props</xmlatt></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section>
+    </conbody>
+</concept>

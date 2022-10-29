@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="added_to_standard">
+    <title>Added to standard</title>
+    <shortdesc>New domains, elements, and attributes have been added to DITA 2.0 to improve the
+        usability of the standard or to address use cases where DITA 1.3 failed to offer an
+        acceptable solution. <draft-comment author="dawnstevens">There's really no way in this
+            summary document to know where the new elements are allowed. Should this be specified
+            here somewhere – in changes to the content models of elements, for example?
+        </draft-comment></shortdesc>
+    <conbody>
+        <section id="section_dcz_jtd_3vb">
+            <title>Domains</title>
+            <p>DITA 2.0 introduces the following domains and elements within those domains:<dl
+                    id="dl_gxs_25d_3vb">
+                    <dlentry>
+                        <dt>Alternative-titles</dt>
+                        <dd>The alternative-titles domain introduces a new base element type
+                                <xmlelement>titlealt</xmlelement>which is used to define a variety
+                            of alternative titles, including the existing
+                                <xmlelement>navtitle</xmlelement> and
+                                <xmlelement>searchtitle</xmlelement> elements which become
+                            specializations of the new <xmlelement>titlealt</xmlelement>. The domain
+                            also adds the following new elements as specializations of
+                                <xmlelement>titlealt</xmlelement>:<dl id="dl_mmv_nzl_3vb">
+                                <dlentry>
+                                    <dt><xmlelement>linktitle</xmlelement></dt>
+                                    <dd>This element provide a title to use when the item is
+                                        referenced; for example, a title for a non-DITA
+                                        resource.</dd>
+                                </dlentry>
+                                <dlentry>
+                                    <dt><xmlelement>subtitle</xmlelement></dt>
+                                    <dd>This element indicates that the content is a subordinate
+                                        title for a resource.</dd>
+                                </dlentry>
+                                <dlentry>
+                                    <dt><xmlelement>titlehint</xmlelement></dt>
+                                    <dd>This element provides information to map authors about the
+                                        title of the referenced resource.</dd>
+                                </dlentry>
+                            </dl><p>Each of these elements are convenience elements, used instead of
+                                requiring users to specify an <xmlatt>title-role</xmlatt> attribute
+                                value on the base <xmlelement>titlealt</xmlelement>
+                            element.</p></dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt>Emphasis</dt>
+                        <dd>The emphasis domain is used to indicate text that has special meaning or
+                            importance, or text that needs to be distinguished from the surrounding
+                            text. It includes the following new elements:<dl id="dl_lkp_mzl_3vb">
+                                <dlentry>
+                                    <dt><xmlelement>em</xmlelement></dt>
+                                    <dd>This element indicates that the content is of particular
+                                        importance or has special meaning.</dd>
+                                </dlentry>
+                                <dlentry>
+                                    <dt><xmlelement>strong</xmlelement></dt>
+                                    <dd>This element indicates that its text is of greater
+                                        importance than its surrounding text.</dd>
+                                </dlentry>
+                            </dl></dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt>Hardware</dt>
+                        <dd>The hardware domain is used to document physical devices, much like the
+                            user interface domain documents software interfaces. It includes the
+                            following new elements:<ul id="ul_u5k_hvd_3vb">
+                                <li><xmlelement>hwcontrol</xmlelement>. This element contains the
+                                    name of a key, button, swithc, or other physical control on a
+                                    device. </li>
+                                <li><xmlelement>partno</xmlelement>. This element contains a part
+                                    number.</li>
+                            </ul></dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt>Syntax diagram</dt>
+                        <dd>The Syntax diagram domain was split from the Programming domain to
+                            contain the <xmlelement>syntaxdiagram</xmlelement> element and its
+                            children.</dd>
+                    </dlentry>
+                </dl></p>
+        </section>
+        <section id="section_u2z_qtd_3vb">
+            <title>Elements</title>
+            <p>DITA 2.0 introduces the following new elements:<dl id="dl_n4b_lxl_3vb">
+                    <dlentry>
+                        <dt><xmlelement>audio</xmlelement></dt>
+                        <dd>This element references audio content in a DITA topic. It is based on
+                            the HTML5 <xmlelement>audio</xmlelement> element and includes the
+                            following new attributes:<ul id="ul_fnw_zvd_3vb">
+                                <li><xmlatt>autoplay</xmlatt>. Specifies whether the resource
+                                    automatically plays when it is presented. T</li>
+                                <li><xmlatt>controls</xmlatt>. Specifies whether the presentation of
+                                    the resource includes user interface controls. </li>
+                                <li><xmlatt>loop</xmlatt>. Specifies whether the resource loops when
+                                    played. </li>
+                                <li><xmlatt>muted</xmlatt>. Specifies whether the resource is
+                                    muted.</li>
+                                <li><xmlatt>tabindex</xmlatt>. Specifies whether the resource can be
+                                    focused and where it participates in sequential keyboard
+                                    navigation.</li>
+                            </ul></dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><xmlelement>diagnostics</xmlelement></dt>
+                        <dd>This element provides information used in determining which cause-remedy
+                            pair applies in a given situation. It can contain one or both of the
+                            following new elements:<dl id="dl_css_pyl_3vb">
+                                <dlentry>
+                                    <dt><xmlelement>diagnostics-general</xmlelement></dt>
+                                    <dd>The element provides non-porcedural diagnostic information,
+                                        such as flowchart diagram or a look-up table of
+                                        symptoms.</dd>
+                                </dlentry>
+                                <dlentry>
+                                    <dt><xmlelement>diagnostics-steps</xmlelement></dt>
+                                    <dd>This element provides step-by-step instructions for
+                                        diagnosing the problem. </dd>
+                                </dlentry>
+                            </dl></dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><xmlelement>fallback</xmlelement></dt>
+                        <dd>This element is used to specify content to be rendered if a referenced
+                            item cannot be rendered or resolved.</dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><xmlelement>include</xmlelement></dt>
+                        <dd>This element points to non-DITA resources that should be directly
+                            included in rendered results. The attributes <xmlatt>encoding</xmlatt>
+                            and <xmlatt>parse</xmlatt> character encoding and processing
+                            expectations.</dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><xmlelement>keytext</xmlelement></dt>
+                        <dd>This element contains variable or link text
+              that is used when resolving key references. It also specifies
+              alternate text for images that are referenced by keys.</dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><xmlelement>mapresources</xmlelement></dt>
+                        <dd>This element serves as a general container within maps and bookmaps for
+                            resource-only topic references, such as key definitions and topics that
+                            contain content used only by content reference. It sets
+                                <xmlatt>processing-role</xmlatt> to "resource-only" by default.</dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><xmlelement>media-source</xmlelement></dt>
+                        <dd>This element specifies the location of an audio or video resource.</dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><xmlelement>media-track</xmlelement></dt>
+                        <dd>This element specifies supplemental text-based data for the referenced
+                            media. It includes the following new attributes:<dl id="dl_ubb_czl_3vb">
+                                <dlentry>
+                                    <dt><xmlatt>kind</xmlatt></dt>
+                                    <dd>Specifies the usage for the track resource. Recognized
+                                        values are limited to:<ul id="ul_gww_1zl_3vb">
+                                            <li>captions</li>
+                                            <li>chapters</li>
+                                            <li>descriptions</li>
+                                            <li>metadata</li>
+                                            <li>subtitles</li>
+                                        </ul></dd>
+                                </dlentry>
+                                <dlentry>
+                                    <dt><xmlatt>srclang</xmlatt></dt>
+                                    <dd>Specifies the language of the track resource.</dd>
+                                </dlentry>
+                            </dl></dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><xmlelement>poster</xmlelement></dt>
+                        <dd>This element specifies an image to display in place of the video
+                            referenced by its parent element before playback begins.</dd>
+                    </dlentry>
+                    <dlentry>
+                        <dt><xmlelement>video</xmlelement></dt>
+                        <dd>This element references video content in a DITA topic. It is based on
+                            the HTML5 <xmlelement>audio</xmlelement> element and includes  the same
+                            new attributes as those listed for <xmlelement>audio</xmlelement>.</dd>
+                    </dlentry>
+                </dl></p>
+        </section>
+        <section id="section_mwy_5td_3vb">
+            <title>Attributes</title>
+            <p>DITA 2.0 introduces the following new attributes:<ul id="ul_rbg_wtd_3vb">
+                    <li><xmlatt>impose-rule</xmlatt></li>
+                    <li><xmlatt>specializations</xmlatt>. This attribute enables processors to
+                        determine which attribute specializations are available in a document.</li>
+                    <li><xmlatt>subjectrefs</xmlatt>. This attribute associates
+                            <xmlelement>map</xmlelement> and <xmlelement>topicref</xmlelement>
+                        elements with subjects defined in subject scheme maps by specifying one or
+                        more keys that are each defined by a subject definition in the subject
+                        scheme map. Multiple values are separated by white space.</li>
+                </ul></p>
+        </section>
+    </conbody>
+</concept>
