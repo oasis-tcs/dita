@@ -4,8 +4,8 @@
  "reference.dtd">
 <reference id="shape" xml:lang="en-us">
 <title><xmlelement>shape</xmlelement></title>
-<shortdesc>The <xmlelement>shape</xmlelement> element defines the shape of a linkable area in an
-            <xmlelement>imagemap</xmlelement>.</shortdesc>
+<shortdesc>The <xmlelement>shape</xmlelement> element defines the shape of
+    a linkable region in an image map.</shortdesc>
 <prolog><metadata>
 <keywords>
     <indexterm>utilities domain<indexterm><xmlelement>shape</xmlelement></indexterm></indexterm>
@@ -14,39 +14,46 @@
 <refbody>
         <section id="usage-information">
             <title>Usage information</title>
-            <p>The <xmlelement>shape</xmlelement> element supports these values:</p>
-            <dl>
-                <dlentry>
-                    <dt>rect</dt>
-                    <dd>Define a rectangular region. If you leave the <xmlelement>shape</xmlelement>
-                        element blank, a rectangular shape is assumed.</dd>
-                </dlentry>
-                <dlentry>
-                    <dt>circle</dt>
-                    <dd>Define a circular region.</dd>
-                </dlentry>
-                <dlentry>
-                    <dt>poly</dt>
-                    <dd>Define a polygonal region.</dd>
-                </dlentry>
-                <dlentry>
-                    <dt>default</dt>
-                    <dd>Indicates the entire diagram. </dd>
-                </dlentry>
-            </dl>
+      <p>The following values are supported as the content of the
+          <xmlelement>shape</xmlelement> element:</p>
+      <dl>
+        <dlentry>
+          <dt>circle</dt>
+          <dd>Indicates that the linkable region is a circle</dd>
+        </dlentry>
+        <dlentry>
+          <dt>default</dt>
+          <dd>Indicates the linkable region is the entire image</dd>
+        </dlentry>
+        <dlentry>
+          <dt>poly</dt>
+          <dd>Indicates that the linkable region is a polygon</dd>
+        </dlentry>
+        <dlentry>
+          <dt>rect</dt>
+          <dd>Indicates that the linkable region is a rectangle</dd>
+        </dlentry>
+      </dl>
+      <p>If the <xmlelement>shape</xmlelement> element is left empty, a
+        rectangular shape is assumed. The values for use in the
+          <xmlelement>shape</xmlelement> element are defined by the <xref
+          href="https://www.w3.org/TR/2011/WD-html5-20110525/the-map-element.html#the-area-element"
+          format="html" scope="external">HTML5 specification</xref>.</p>
+      <!--<p>The following table lists the tokens that can be specified as the content of the <xmlelement>shape</xmlelement> element:<simpletable frame="all" relcolwidth="1* 1* 1*" keycol="1"><sthead><stentry>Token</stentry><stentry>Description</stentry><stentry>Example</stentry></sthead><strow><stentry>circle</stentry><stentry>Circular region</stentry><stentry><codeph>&lt;shape>circle&lt;/shape></codeph></stentry></strow><strow><stentry>default</stentry><stentry>The entire image</stentry><stentry><codeph>&lt;shape>default&lt;/shape></codeph></stentry></strow><strow><stentry>poly</stentry><stentry>Polygonal region</stentry><stentry><codeph>&lt;shape>poly&lt;/shape></codeph></stentry></strow><strow><stentry>rect</stentry><stentry>Rectangular region</stentry><stentry><codeph>&lt;shape>rect&lt;/shape></codeph></stentry></strow></simpletable></p>-->
         </section>
         <section id="specialization-hierachy">
             <title>Specialization hierarchy</title>
-            <p>The <xmlelement>shape</xmlelement> element is specialized from
-                    <xmlelement>keyword</xmlelement>. It is defined in the utilities-domain
-                module.</p>
+            <p>The <xmlelement>shape</xmlelement> element is specialized
+        from <xmlelement>keyword</xmlelement>. It is defined in the
+        utilities domain module.</p>
         </section>
         <section id="attributes">
             <title>Attributes</title>
             <div conkeyref="reuse-attributes/univ-outputclass-keyref-translate-NO"/>
         </section>
 <example id="example" otherprops="examples"><title>Example</title>
-            <p>See <xref keyref="elements-imagemap"/>.</p></example>
+            <p>See <xref keyref="elements-imagemap"
+            ><xmlelement>imagemap</xmlelement></xref>.</p></example>
 </refbody>
 </reference>
 
