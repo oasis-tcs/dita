@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
 <reference id="imagemap" xml:lang="en-us"> 
-  <title><xmlelement>imagemap</xmlelement></title> 
-  <shortdesc>The <xmlelement>imagemap</xmlelement> element supports the basic
-	 functionality of the HTML "client-side" image map markup.
-	 <xmlelement>imagemap</xmlelement> allows you to designate a linkable area or
-	 region over an image, allowing a link in that region to display another topic. 
-  </shortdesc> 
+  <title><xmlelement>imagemap</xmlelement></title>
+  <shortdesc>A image map is an image with areas that are linked to DITA
+    topics, web pages, PDFs, or any other resources that can be targeted by
+    the <xmlatt>href</xmlatt> attribute.</shortdesc> 
   <prolog><metadata> 
 		<keywords> 
 		  <indexterm>utilities domain<indexterm><xmlelement>imagemap</xmlelement></indexterm></indexterm> 
@@ -15,82 +13,112 @@
   <refbody>
 		<section id="usage-information">
 			<title>Usage information</title>
-			<p>An HTML client-side image map binds an image to the navigation structure (the "map")
-				by means of an ID association from the map to the image. In contrast, the DITA
-				version of <xmlelement>imagemap</xmlelement> markup simply includes the target image
-				as the first required element in the markup, followed by a sequence of
-					<xmlelement>area</xmlelement> elements that represent the links associated with
-				the contained image. </p>
-			<p>The <xmlelement>xref</xmlelement> content within <xmlelement>area</xmlelement> contains the
-				intended alternative text or hover text for that image map area. Normal text
-				retrieval for <xmlelement>xref</xmlelement> elements can be used to populate that
-				alternative text.</p>
+      <!--<p>An HTML client-side image map binds an image to the navigation structure (the "map") by means of an ID association from the map to the image. In contrast, the DITA version of <xmlelement>imagemap</xmlelement> markup simply includes the target image as the first required element in the markup, followed by a sequence of <xmlelement>area</xmlelement> elements that represent the links associated with the contained image. </p><p>The <xmlelement>xref</xmlelement> content within <xmlelement>area</xmlelement> contains the intended alternative text or hover text for that image map area. Normal text retrieval for <xmlelement>xref</xmlelement> elements can be used to populate that alternative text.</p>-->
+      <p>A DITA image map references the image, followed by a series of
+          <xmlelement>area</xmlelement> elements that define the linkable
+        regions of the image. Each <xmlelement>area</xmlelement> element
+        specifies the shape and coordinates of the region, as well as the
+        link target and link text.</p>
 		</section>
 		<section id="rendering-expectations">
 			<title>Rendering expectations</title>
-			<p>An <xmlelement>imagemap</xmlelement> structure can be rendered as a standard HTML image map or
-				as an alternative form of navigation (such as table-based image maps). When rendered
-				in PDF, the minimal form would be to represent the image; advanced PDF output
-				processors could provide equivalent region-oriented hyperlinks. </p>
+      <!--<p>(1.3 content) An <xmlelement>imagemap</xmlelement> structure can be rendered as a standard HTML image map or as an alternative form of navigation (such as table-based image maps). When rendered in PDF, the minimal form would be to represent the image; advanced PDF output processors could provide equivalent region-oriented hyperlinks.</p>-->
+      <p>The rendering expectations for the
+          <xmlelement>imagemap</xmlelement> element depends on the output
+        format. For HTML-based formats, it can be rendered as standard HTML
+        images or as an alternate form of navigation, such as table-based
+        image maps. For print-based formats, it can be rendered as an image
+        and a list of the specified link targets.</p>
 		</section>
 		<section id="specialization-hierachy">
 			<title>Specialization hierarchy</title>
 			<p>The <xmlelement>imagemap</xmlelement> element is specialized from
-				<xmlelement>div</xmlelement>. It is defined in the utilities-domain module.</p>
+          <xmlelement>div</xmlelement>. It is defined in the utilities
+        domain module.</p>
 		</section>
 		<section id="attributes">
 			<title>Attributes</title>
 			<p conkeyref="reuse-attributes/fig-attributes"/>
 		</section>
-		<example id="example" otherprops="examples">
-			<title>Example</title>
-			<p>The following code sample shows a simple <xmlelement>imagemap</xmlelement> with five areas,
-				using three different shapes:
-				<codeblock xml:space="preserve">&lt;imagemap&gt;
- &lt;image href="imagemapworld.jpg"&gt;
-   &lt;alt&gt;Map of the world showing 5 areas&lt;/alt&gt;
- &lt;/image&gt;
- &lt;area&gt;&lt;shape&gt;rect&lt;/shape&gt;&lt;coords&gt;2,0,53,59&lt;/coords&gt;
-  &lt;xref href="d1-s1.dita"&gt;Section 1 alternative text&lt;/xref&gt;
- &lt;/area&gt;
- &lt;area&gt;&lt;shape&gt;rect&lt;/shape&gt;&lt;coords&gt;54,1,117,60&lt;/coords&gt;
-  &lt;xref href="d1-s2.dita"&gt;&lt;!-- Pull title from d1-s2.dita --&gt;&lt;/xref&gt;
- &lt;/area&gt;
- &lt;area&gt;&lt;shape&gt;rect&lt;/shape&gt;&lt;coords&gt;54,62,114,116&lt;/coords&gt;
-  &lt;xref href="#inline" type="topic"&gt;Alternative text for this rectangle&lt;/xref&gt;
- &lt;/area&gt;
- &lt;area&gt;&lt;shape&gt;circle&lt;/shape&gt;&lt;coords&gt;120,154,29&lt;/coords&gt;
-  &lt;xref format="html" href="test.html"&gt;Link to a test html file&lt;/xref&gt;
- &lt;/area&gt;
- &lt;area&gt;&lt;shape&gt;poly&lt;/shape&gt;
-  &lt;coords&gt;246,39,200,35,173,52,177,86,215,90,245,84,254,65&lt;/coords&gt;
-  &lt;xref format="pdf" href="test.pdf"&gt;Link to a test PDF file&lt;/xref&gt;
- &lt;/area&gt;
-&lt;/imagemap&gt;</codeblock>
-			</p>
-			<p>The areas defined correspond to this graphic image with the areas visible:<image
-					href="../../images/imagemapworld.png" placement="break"
-					id="image_445FC20D011A400F8D51CD6C31A3E1F4">
-					<alt>Diagram showing a graphic image annotated to show the areas of an image map.
-						Each area is indicated with a bordered region on the image. To the right of
-						the image there is a list correlating the areas of the image map to the
-						targets of their respective links. </alt>
-				</image>
-			</p>
-			<draft-comment author="Robert">I think we should update this to use the HTML5 model,
-				rather than HTML4.1: <xref
-					href="https://www.w3.org/TR/2011/WD-html5-20110525/the-map-element.html#the-area-element"
-					format="html" scope="external"/><p>The "latest" version is much newer, but is
-					also a living standard, and creating a dependency would seem to turn this one
-					element from DITA into its own living standard: <xref
-						href="https://html.spec.whatwg.org/multipage/image-maps.html#image-map-processing-model:the-area-element-10"
-						format="html" scope="external"/></p></draft-comment>
-			<p>The values for use in the <xmlelement>shape</xmlelement> and
-					<xmlelement>coords</xmlelement> elements follow the guidelines defined for image
-				maps in HTML 4.1, <xref format="html"
-					href="http://www.w3.org/TR/html401/struct/objects.html#edef-MAP"
-					scope="external">Client-side image maps: the MAP and AREA elements</xref>
-			</p>
-		</example>
+    <example id="example" otherprops="examples">
+      <title>Example</title>
+      <p>The following code sample shows an image map for a detail of
+        Rembrandt's "The Night Watch":</p>
+      <codeblock><b>&lt;imagemap id="the-night-watch"></b>
+  &lt;image href="Detail_from_The_Night_Watch.jpg" id="night_watch">
+    &lt;alt>Detail from Rembrandt's The Night Watch&lt;/alt>
+  &lt;/image>
+  &lt;!-- Area #1: Frans Banninck Cocq -->
+  &lt;area>
+    &lt;shape>poly&lt;/shape>
+    &lt;coords>119, 4, 90, 7, 87, 20, 53, 36, 45, 51, 7, 188, 12, 467,
+          223, 464, 240, 315, 223, 254, 210, 168, 193, 146, 173, 121, 167,
+          87, 169, 70, 181, 57, 189, 35, 164, 24, 140, 4&lt;/coords>
+    &lt;xref format="html" scope="external"
+          href="https://en.wikipedia.org/wiki/Frans_Banninck_Cocq">
+          Frans Banninck Cocq&lt;/xref>
+  &lt;/area>
+  &lt;!-- Area #2: A member of the schutterij (the night watch) -->
+  &lt;area>
+    &lt;shape>circle&lt;/shape>
+    &lt;coords>223, 98, 48&lt;/coords>
+    &lt;xref format="html" scope="external"
+          href="https://en.wikipedia.org/wiki/Schutterij">A member of the
+          schutterij (the night watch)&lt;/xref>
+  &lt;/area>
+  &lt;!-- Area #3: Willem_van_Ruytenburch -->
+  &lt;area>
+    &lt;shape>rect&lt;/shape>
+    &lt;coords>276, 60, 425, 460&lt;/coords>
+    &lt;xref format="html" scope="external"
+          href="https://en.wikipedia.org/wiki/Willem_van_Ruytenburch">
+          Willem van Ruytenburch&lt;/xref>
+  &lt;/area><b>
+&lt;/imagemap></b></codeblock>
+      <p>The following image shows the areas that are defined by the image
+        map. Each of the three supported shapes are used.</p>
+      <image placement="break" href="../../images/night-watch-areas.jpg"
+        scale="70">
+        <alt>A screen capture of the image map as rendered in Oxygen
+          Editor, showing the three defined areas</alt>
+      </image>
+      <p>The following table lists the defined areas, the shape used,
+        alternate text, and link targets:</p>
+      <simpletable frame="topbot" relcolwidth="1* 2* 5* 5*" keycol="1">
+        <sthead>
+          <stentry>Area</stentry>
+          <stentry>Shape</stentry>
+          <stentry>Alternate text</stentry>
+          <stentry>Link target</stentry>
+        </sthead>
+        <strow>
+          <stentry>1</stentry>
+          <stentry>Polygon</stentry>
+          <stentry>Frans Banninck Cocq</stentry>
+          <stentry><xref
+              href="https://en.wikipedia.org/wiki/Frans_Banninck_Cocq"
+              format="html" scope="external">Wikipedia entry for Frans
+              Banninck Cocq</xref></stentry>
+        </strow>
+        <strow>
+          <stentry>2</stentry>
+          <stentry>Circle</stentry>
+          <stentry>A member of the           schutterij (the night
+            watch)</stentry>
+          <stentry><xref href="https://en.wikipedia.org/wiki/Schutterij"
+              format="html" scope="external">Wikipedia entry for
+              Schutterij</xref></stentry>
+        </strow>
+        <strow>
+          <stentry>3</stentry>
+          <stentry>Rectangle</stentry>
+          <stentry>Willem van Ruytenburch</stentry>
+          <stentry><xref
+              href="https://en.wikipedia.org/wiki/Willem_van_Ruytenburch"
+              format="html" scope="external">Wikipedia entry for Willem van
+              Ruytenburch</xref></stentry>
+        </strow>
+      </simpletable>
+    </example>
 	</refbody> 
 </reference> 
