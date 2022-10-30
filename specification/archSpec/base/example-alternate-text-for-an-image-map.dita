@@ -2,24 +2,133 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="example-alternate-text-for-an-image-map">
     <title>Example: Alternate text for an image map</title>
-    <shortdesc></shortdesc>
+    <shortdesc>In this scenario, alternate text is provided for an image
+    map<!--image that is used for an image map, as well as the linked regions-->.</shortdesc>
     <conbody>
-        <draft-comment author="robander">We have an example in the imagemap.dita element reference
-            topic, which already includes alternate text. Not sure it's the best example for alt
-            text, but also not sure whether it makes sense to come up with a new
-            one?</draft-comment>
-    <draft-comment author="Kristen J Eberlein" time="09 June 2022">
-      <p>I think we need a realistic example here in this section which focuses on accessibility.
-        The <xmlelement>imagemap</xmlelement> topic is in the "Utilities domain," which has not yet
-        been reviewed. The example there is old and not very good; it dates back to DITA 1.0.</p>
-      <p>Here are some possible ideas for what to showcase:</p>
-      <ul>
-        <li>A simple pie chart of application users by industry
-          sectors</li>
-        <li>A collage of photos of a company's executive team</li>
-        <li>A diagram of a sampler quilt, with various blocks linked to
-          pages that explain the specific blocks</li>
-      </ul>
-    </draft-comment>
-    </conbody>
+    <p>The following image shows "The Brontë Sisters". This portrait is in
+      the collection of the National Portrait Gallery, London. The images
+      of the three Brontë sisters (Charlotte, Emily, and Ann) are linked to
+      their Wikipedia pages.</p>
+    <imagemap id="bronte-sisters">
+      <image href="../../images/Bronte_Sisters.jpg" id="bronte" scale="70">
+        <alt>Portrait of "The Brontë Sisters"</alt>
+      </image>
+      <area>
+        <shape>poly</shape>
+        <coords>408, 345, 410, 223, 360, 158, 369, 98, 363, 65, 355, 46,
+          337, 34, 318, 36, 313, 46, 295, 58, 290, 69, 279, 79, 278, 95,
+          281, 103, 273, 116, 282, 141, 292, 148, 298, 165, 266, 196, 252,
+          211, 245, 249, 227, 272, 224, 315, 234, 350, 408, 349</coords>
+        <xref format="html" scope="external"
+          href="https://en.wikipedia.org/wiki/Charlotte_Bront%C3%AB"
+          >Charlotte Brontë.</xref>
+      </area>
+      <area>
+        <shape>poly</shape>
+        <coords>228, 343, 211, 289, 203, 278, 194, 249, 204, 221, 177, 178,
+          161, 157, 180, 138, 202, 112, 201, 69, 175, 52, 144, 45, 114, 52,
+          102, 75, 98, 90, 103, 114, 118, 131, 135, 149, 141, 154, 118,
+          197, 100, 226, 86, 234, 85, 254, 121, 318, 109, 328, 123, 350,
+          230, 349</coords>
+        <xref format="html" scope="external"
+          href="https://en.wikipedia.org/wiki/Emily_Bront%C3%AB">Emily
+          Brontë</xref>
+      </area>
+      <area>
+        <shape>poly</shape>
+        <coords>0, 347, 1, 252, 29, 225, 24, 195, 30, 161, 41, 123, 76,
+          110, 103, 119, 119, 137, 135, 154, 129, 172, 116, 195, 98, 224,
+          85, 231, 81, 252, 116, 317, 106, 329, 119, 350</coords>
+        <xref format="html" scope="external"
+          href="https://en.wikipedia.org/wiki/Anne_Bront%C3%AB">Anne
+          Brontë</xref>
+      </area>
+    </imagemap>
+    <p>The following code sample shows how the
+        <xmlelement>imagemap</xmlelement> element is used to generate the
+      above image map, as well as how alternate text can be provided to
+      ensure accessibility:</p>
+    <codeblock>&lt;imagemap id="bronte-sisters">
+  &lt;image href="Bronte_Sisters.jpg" id="bronte-sisters">
+    <b>&lt;alt>Portrait of "The Brontë Sisters"&lt;/alt></b>
+  &lt;/image>
+  &lt;!-- Area #1: Charlotte Brontë -->
+  &lt;area>
+    &lt;shape>poly&lt;/shape>
+    &lt;coords>408, 345, 410, 223, 360, 158, 369, 98, 363, 65, 355, 46,
+          337, 34, 318, 36, 313, 46, 295, 58, 290, 69, 279, 79, 278, 95,
+          281, 103, 273, 116, 282, 141, 292, 148, 298, 165, 266, 196, 252,
+          211, 245, 249, 227, 272, 224, 315, 234, 350, 408, 349&lt;/coords>
+    &lt;xref format="html" scope="external"
+          href="https://en.wikipedia.org/wiki/Charlotte_Bront%C3%AB">
+          <b>Charlotte Brontë</b>&lt;/xref>
+  &lt;/area>
+  &lt;!-- Area #2: Emily Brontë -->
+  &lt;area>
+    &lt;shape>poly&lt;/shape>
+    &lt;coords>228, 343, 211, 289, 203, 278, 194, 249, 204, 221, 177, 178,
+          161, 157, 180, 138, 202, 112, 201, 69, 175, 52, 144, 45, 114, 52,
+          102, 75, 98, 90, 103, 114, 118, 131, 135, 149, 141, 154, 118,
+          197, 100, 226, 86, 234, 85, 254, 121, 318, 109, 328, 123, 350,
+          230, 349&lt;/coords>
+    &lt;xref format="html" scope="external"
+          href="https://en.wikipedia.org/wiki/Emily_Bront%C3%AB">
+          <b>Emily Brontë</b>&lt;/xref>
+  &lt;/area>
+  &lt;!-- Area #3: Anne Brontë -->
+  &lt;area>
+    &lt;shape>poly&lt;/shape>
+    &lt;coords>0, 347, 1, 252, 29, 225, 24, 195, 30, 161, 41, 123, 76,
+          110, 103, 119, 119, 137, 135, 154, 129, 172, 116, 195, 98, 224,
+          85, 231, 81, 252, 116, 317, 106, 329, 119, 350&lt;/coords>
+    &lt;xref format="html" scope="external"
+          href="https://en.wikipedia.org/wiki/Anne_Bront%C3%AB">
+          <b>Anne Brontë</b>&lt;/xref>
+  &lt;/area>
+&lt;/imagemap></codeblock>
+    <p>The <xmlelement>alt</xmlelement> element provides alternate text for
+      the image as a whole, and the content of the
+        <xmlelement>xref</xmlelement> elements provide alternate text for
+      each of the linked regions.</p>
+    <p>The following image shows the areas that are defined by the image
+      map:</p>
+    <image placement="break" href="../../images/bronte-sisters-w-areas.jpg"
+      scale="70">
+      <alt>A screen capture of the image map as rendered in Oxygen Editor,
+        showing the three defined areas</alt>
+    </image>
+    <p>The following table lists the link targets and alternate text for
+      each of the defined areas:</p>
+    <simpletable frame="topbot" relcolwidth="1* 1* 1*" keycol="1">
+      <sthead>
+        <stentry>Area</stentry>
+        <stentry>Alternate text</stentry>
+        <stentry>Link target</stentry>
+      </sthead>
+      <strow>
+        <stentry>1</stentry>
+        <stentry>Charlotte Brontë</stentry>
+        <stentry><xref
+            href="https://en.wikipedia.org/wiki/Charlotte_Bront%C3%AB"
+            format="html" scope="external">Wikipedia entry for Charlotte
+            Brontë</xref></stentry>
+      </strow>
+      <strow>
+        <stentry>2</stentry>
+        <stentry>Emily Brontë</stentry>
+        <stentry><xref
+            href="https://en.wikipedia.org/wiki/Emily_Bront%C3%AB"
+            format="html" scope="external">Wikipedia entry for Emily
+            Brontë</xref></stentry>
+      </strow>
+      <strow>
+        <stentry>3</stentry>
+        <stentry>Anne Brontë</stentry>
+        <stentry><xref
+            href="https://en.wikipedia.org/wiki/Anne_Bront%C3%AB"
+            format="html" scope="external">Wikipeda entry for Anne
+            Brontë</xref></stentry>
+      </strow>
+    </simpletable>
+  </conbody>
 </concept>
