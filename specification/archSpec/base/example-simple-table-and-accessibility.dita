@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="example-simple-table-and-accessibility" rev="review-o">
-  <title>Example: Simple table and accessibility</title>
-  <shortdesc/>
+  <title>Example: Simple table with  accessibility markup</title>
+  <shortdesc>In this scenario, the topic author uses a header row and the
+      <xmlatt>keycol</xmlatt> attribute to ensure that the table is
+    accessible</shortdesc>
   <conbody>
-    <p/>
+    <p>In the following code sample, the <xmlatt>sthead</xmlatt> element
+      identifies the header row, and <xmlatt>keycol</xmlatt> attribute
+      identifies the header column:</p>
+    <!--<simpletable frame="all" relcolwidth="1* 1*" keycol="1"><sthead><stentry>Type of room</stentry><stentry>Price per day</stentry></sthead><strow><stentry>Single bed</stentry><stentry>$125.00</stentry></strow><strow><stentry>Two double beds</stentry><stentry>$150.00</stentry></strow><strow><stentry>Queen or king size bed</stentry><stentry>$165.00</stentry></strow></simpletable>-->
+    <codeblock>&lt;simpletable frame="all" relcolwidth="1* 1*" <b>keycol="1"</b>>
+  <b>&lt;sthead>
+    &lt;stentry>Type of room&lt;/stentry>
+    &lt;stentry>Price per day&lt;/stentry>
+  &lt;/sthead></b>
+  &lt;strow>
+    &lt;stentry>Single bed&lt;/stentry>
+    &lt;stentry>$125.00&lt;/stentry>
+  &lt;/strow>
+  &lt;strow>
+    &lt;stentry>Two double beds&lt;/stentry>
+    &lt;stentry>$150.00&lt;/stentry>
+  &lt;/strow>
+  &lt;strow>
+    &lt;stentry>Queen or king bed&lt;/stentry>
+    &lt;stentry>$165.00&lt;/stentry>
+  &lt;/strow>
+&lt;/simpletable></codeblock>
+    <p>This table might be rendered in the following way:</p>
+    <image placement="break"
+      href="../../images/simple-table-accessibility.jpg" scale="70"/>
   </conbody>
 </concept>
