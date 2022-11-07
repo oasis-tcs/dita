@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="cascadetopicrefrole">
+  <title>Example: How <xmlelement>topicref</xmlelement> roles are imposed on referenced maps</title>
+  <shortdesc>In this scenario, a specialized <xmlelement>topicref</xmlelement> element references
+    content in another map.</shortdesc>
+  <prolog>
+    <metadata/>
+  </prolog>
+  <conbody>
+    <p>Consider the scenario of a <xmlelement>chapter</xmlelement> element from the Bookmap
+      specialization that references a DITA map. This scenario could take several forms:<dl
+        id="dl_ohc_nq5_nsb">
+        <dlentry>
+          <dt>Referenced map contains a single top-level <xmlelement>topicref</xmlelement>
+            element</dt>
+          <dd>The entire branch functions as if it were included in the bookmap<ph rev="review-k">.
+              The</ph> "chapter" role is imposed on the branch, with the result that the top-level
+              <xmlelement>topicref</xmlelement> element is processed as if it were the
+              <xmlelement>chapter</xmlelement> element.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>Referenced map contains multiple top-level <xmlelement>topicref</xmlelement>
+            elements</dt>
+          <dd>The "chapter" role is imposed on each top-level element in the referenced map. Each
+            top-level <xmlelement>topicref</xmlelement> element is processed as if it were a
+              <xmlelement>chapter</xmlelement> element.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>Referenced map contains a single <xmlelement>appendix</xmlelement> element</dt>
+          <dd>The "chapter" role is imposed on the <xmlelement>appendix</xmlelement> element, which
+            is processed as it were a <xmlelement>chapter</xmlelement> element.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>Referenced map contains a single <xmlelement>part</xmlelement> element, with nested
+              <xmlelement>chapter</xmlelement> elements</dt>
+          <dd>The "chapter" role is imposed on the <xmlelement>part</xmlelement> element, which is
+            processed as it were a <xmlelement>chapter</xmlelement> element. Nested
+              <xmlelement>chapter</xmlelement> elements might not be understandable by processors,
+            which can treat this as an error or recover as they are able.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><xmlelement>chapter</xmlelement> element references a single
+              <xmlelement>topicref</xmlelement> element rather than a map</dt>
+          <dd>The "chapter" role is imposed on the referenced <xmlelement>topicref</xmlelement>
+            element, which is processed as if it were a <xmlelement>chapter</xmlelement>
+            element.</dd>
+        </dlentry>
+      </dl></p>
+  </conbody>
+</concept>

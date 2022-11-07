@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="cascading-of-roles-in-specialized-maps" >
+ <title>Imposing roles when referencing a map</title>
+ <shortdesc>When specialized <xmlelement>topicref</xmlelement> elements reference a map, they might
+    imply a semantic role for the referenced content. The <xmlatt>impose-role</xmlatt> attribute
+    provides a mechanism to declare that such references impose their original role on referenced
+    content.</shortdesc>
+ <prolog>
+  <metadata>
+   <keywords>
+    <indexterm>cascading<indexterm>map-to-map<indexterm>exceptions</indexterm></indexterm></indexterm>
+    <indexterm>map-to-map cascading<indexterm>exceptions</indexterm></indexterm>
+        <indexterm>imposing map role</indexterm>
+        <indexterm>map-to-map references</indexterm>
+   </keywords>
+  </metadata>
+ </prolog>
+ <conbody>
+    <p>In many cases the <xmlelement>topicref</xmlelement> element is specialized in order to create
+      a specific role for the reference. <ph otherprops="examples">For example, the
+          <xmlelement>keydef</xmlelement> element creates a new role for the reference, but does not
+        create a role for the target of the reference.</ph> In other cases, the element is
+      specialized to create a role for the target of the reference. <ph otherprops="examples">For
+        example, in the Bookmap specialization from the DITA Technical Communication
+        specializations, the <xmlelement>chapter</xmlelement> element creates a role for the target
+        of the reference: it declares that the referenced content is a chapter in the context of
+        this map.</ph></p>
+    <p>The declaration of roles can be harder to follow when the target of a reference is a map or
+      branch of a map. In such cases, a <xmlelement>topicref</xmlelement> element can reference a
+      map, which in turn references content. When resolving those references, processors need to
+      know which roles created by the <xmlelement>topicref</xmlelement> elements need to be
+      preserved for the content.</p>
+    <p>For example, assume that a specialized <xmlelement>setupProject</xmlelement> element
+      indicates that the referenced content plays the "setup a project" role in a publication. This
+      might result in special formatting or generated headings when the content is rendered. If that
+      element refers to a map instead of a topic, that specialized role still needs to be passed on
+      to topics in the referenced map - regardless of what <xmlelement>topicref</xmlelement>
+      elements might be used in that referenced map.</p>
+    <p>The <xmlatt>impose-role</xmlatt> attribute provides a way for specialized elements to declare
+      whether processors should use this behavior. This attribute is only evaluated when a
+        <xmlelement>topicref</xmlelement> element refers to a map or branch of a map. In that case,
+      it indicates whether the element provides a role for content that should be passed on to
+      content in the referenced map.</p>
+    <p>The role created by a <xmlelement>topicref</xmlelement> is reflected by the
+        <xmlatt>class</xmlatt> hierarchy of the element. Processors that need to do something with
+      the role do it based on that <xmlatt>class</xmlatt> attribute. In the
+        <xmlelement>setupProject</xmlelement> example above, that might be a <xmlatt>class</xmlatt>
+      attribute like <codeph>"- map/topicref taskmap/setupProject "</codeph>. Processors working
+      with the reference know to render the referenced content based on that value. When
+        <xmlelement>setupProject</xmlelement> instead pulls in content from another map, processors
+      need to preserve that intent. Effectively, they need to preserve awareness of that
+        <xmlatt>class</xmlatt> attribute value for topics that are indirectly referenced through the
+      other map.</p>
+    <p>Specialized topic references achieve this behavior by setting up a default value for the
+        <xmlatt>impose-role</xmlatt> attribute on the new element:
+        <codeph>impose-role="impose"</codeph>.</p>
+    <p>When a role is imposed in this manner, it does not apply to all content referenced by the
+      element. If a <xmlelement>topicref</xmlelement> refers to a branch of a map, the role is
+      imposed only on the root element of that branch. If a <xmlelement>topicref</xmlelement> refers
+      to an entire map, the role is imposed only on the highest-level topic references within that
+      map. The role does not cascade to other nested referencs within the map.</p>
+    <p>For elements that do not create a role for the referenced content, the
+        <xmlatt>impose-role</xmlatt> attribute is defined with a default value indicating that the
+      target of the reference keeps its original role: <codeph>impose-role="keeptarget"</codeph>.
+      For example, the <xmlelement>mapref</xmlelement> element is a convenience element used to
+      simplify references to other maps. It does not force the content in other maps to be treated
+      as <xmlelement>mapref</xmlelement> - no special role is created for the referenced content.
+      For this reason, it is defined in the grammar file with a fixed value of <keyword>keeptarget</keyword>.</p>
+  <p>In some cases, preserving the role of a referencing element might result in out-of-context
+      content. For example, a <xmlelement>chapter</xmlelement> element in one bookmap could pull in
+      a <xmlelement>part</xmlelement> element from another bookmap, where that referenced
+        <xmlelement>part</xmlelement> also contains nested <xmlelement>chapter</xmlelement>
+      elements. Treating the <xmlelement>part</xmlelement> element as a
+        <xmlelement>chapter</xmlelement> will result in a chapter that nests other chapters, which
+      is not valid in bookmap and might not be understandable by processors. The result is
+      implementation specific. Processors <term outputclass="RFC-2119">MAY</term> choose to treat
+      this as an error, issue a warning, or simply assign new roles to the problematic elements.</p>
+    <example>
+      <title>Defining a fixed role for a specialized element</title>
+      <p>In the Bookmap specialization from the OASIS DITA Technical Communications specializations,
+        the <xmlelement>chapter</xmlelement> element creates a role for the referenced topic. In
+        many contexts (such as a PDF version of the map), this will result in special formatting
+        that identifies the topic as the start of a chapter.</p>
+      <p>When a chapter element refers to another map, topic references in that other map need to be
+        treated as chapters in order to retain the structure of the book. The
+          <xmlatt>impose-role</xmlatt> attribute is set to a fixed value of
+          <keyword>impose</keyword>, which lets processors know that the role needs to be preserved
+        for content in the other map.</p>
+      <p>In an RNG grammar file, this default value can be set as
+        follows:<codeblock base="ci-xml">&lt;optional>
+  &lt;attribute name="impose-role" a:defaultValue="keeptarget">
+    &lt;value>keeptarget&lt;/value>
+  &lt;/attribute>
+&lt;/optional></codeblock></p>
+      <p>In a DTD grammar file, this default value can be set as
+        follows:<codeblock base="ci-skip">impose-role
+                          (impose)
+                                    'impose'</codeblock></p>
+      <p>With these fixed values, a <xmlelement>chapter</xmlelement> element that refers to a map
+        will impose the role of "chapter" as expected.</p>
+    </example>
+    <example>
+      <title>Imposing a role on a branch of a map</title>
+      <p>In this scenario, a specialized <xmlelement>chapter</xmlelement> element refers to a branch
+        of another map. The chapter element does not need to set the <xmlatt>impose-role</xmlatt>
+        attribute directly, because it is defined with a default value in the XML grammar files. The
+        element itself refers to a specific branch of the map, setting the <xmlatt>format</xmlatt>
+        attribute to indicate this is a map reference:<codeblock base="ci-xml">&lt;bookmap>
+  &lt;!-- ... title, front matter, and other chapters -->
+  &lt;chapter href="reusemap.ditamap#examplebranch" format="ditamap"/>
+  &lt;!-- additional content -->
+&lt;/bookmap></codeblock></p>
+      <p>The referenced map contains that branch along with other content:<codeblock>&lt;map>
+  &lt;title>Reusable map branches&lt;/title>
+  &lt;topicref> &lt;!-- ... --> &lt;/topicref>
+  &lt;topicref href="parent.dita" id="examplebranch">
+    &lt;topicref href="child1.dita"/>
+    &lt;topicref href="child2.dita">
+      &lt;!-- more children -->
+    &lt;/topicref>
+  &lt;/topicref>
+  &lt;!-- ... more reusable branches -->
+&lt;/map></codeblock></p>
+      <p>Because the <xmlelement>chapter</xmlelement> element is defined with a fixed value of
+          <keyword>impose</keyword> for the <xmlatt>impose-role</xmlatt> attribute, processors will
+        impose the "chapter" role on the reference to <filepath>parent.dita</filepath> at the root
+        of the referenced branch. The "chapter" role is not imposed on the child topics in that
+        branch. While processors do not need to literally resolve the content in a normal map, the
+        effective result is similar to this merged map:<codeblock base="ci-xml">&lt;bookmap>
+  &lt;!-- ... title, front matter, and other chapters -->
+  &lt;chapter href="parent.dita">
+    &lt;topicref href="child1.dita"/>
+    &lt;topicref href="child2.dita">
+      &lt;!-- more children -->
+    &lt;/topicref>
+  &lt;/chapter>
+  &lt;!-- additional content -->
+&lt;/bookmap></codeblock></p>
+    </example>
+    <example>
+      <title>Imposing a role on a referenced map</title>
+      <p>In this scenario, a specialized <xmlelement>chapter</xmlelement> element refers an entires
+        submap. The chapter element does not need to set the <xmlatt>impose-role</xmlatt> attribute
+        directly, because it is defined with a default value in the XML grammar files. The element
+        itself sets the <xmlatt>format</xmlatt> attribute to indicate this is a map
+        reference:<codeblock base="ci-xml">&lt;bookmap>
+  &lt;!-- ... title, front matter, and other chapters -->
+  &lt;chapter href="nestedmap.ditamap" format="ditamap"/>
+  &lt;!-- additional content -->
+&lt;/bookmap></codeblock></p>
+      <p>The referenced map contains three branches as children of of the root
+          <xmlelement>map</xmlelement> element:<codeblock>&lt;map>
+  &lt;title>Reusable map branches&lt;/title>
+  &lt;topicref href="branch1.dita"> &lt;!-- ... --> &lt;/topicref>
+  &lt;topicref href="branch2.dita">
+    &lt;topicref href="child1.dita"/>
+    &lt;topicref href="child2.dita">
+      &lt;!-- more children -->
+    &lt;/topicref>
+  &lt;/topicref>
+  &lt;topicref href="branch3.dita"> &lt;!-- ... --> &lt;/topicref>
+&lt;/map></codeblock></p>
+      <p>Because the <xmlelement>chapter</xmlelement> element is defined with a fixed value of
+          <keyword>impose</keyword> for the <xmlatt>impose-role</xmlatt> attribute, processors will
+        impose the "chapter" role on the highest-level references within the nested map. This means
+        the processors imposes the role of "chapter" on all three branches in the nested map. As
+        with the previous example, the "chapter" role is not imposed on the child topics in each
+        branch. While processors do not need to literally resolve the content in a normal map, the
+        effective result is similar to this merged map:<codeblock base="ci-xml">&lt;bookmap>
+  &lt;!-- ... title, front matter, and other chapters -->
+  &lt;chapter href="branch1.dita"> &lt;!-- ... --> &lt;/chapter>
+  &lt;chapter href="branch2.dita">
+    &lt;topicref href="child1.dita"/>
+    &lt;topicref href="child2.dita">
+      &lt;!-- more children -->
+    &lt;/topicref>
+  &lt;/chapter>
+  &lt;chapter href="branch3.dita"> &lt;!-- ... --> &lt;/chapter>
+  &lt;!-- additional content -->
+&lt;/bookmap></codeblock></p>
+    </example>
+ </conbody>
+</concept>
