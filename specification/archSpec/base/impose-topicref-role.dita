@@ -31,12 +31,12 @@
       map, which in turn references content. When resolving those references, processors need to
       know which roles created by the <xmlelement>topicref</xmlelement> elements need to be
       preserved for the content.</p>
-    <p>For example, assume that a specialized <xmlelement>setupProject</xmlelement> element
-      indicates that the referenced content plays the "setup a project" role in a publication. This
-      might result in special formatting or generated headings when the content is rendered. If that
-      element refers to a map instead of a topic, that specialized role still needs to be passed on
-      to topics in the referenced map - regardless of what <xmlelement>topicref</xmlelement>
-      elements might be used in that referenced map.</p>
+    <p>For example, assume a <xmlelement>setupProject</xmlelement> element that is specialized from
+        <xmlelement>topicref</xmlelement> indicates that the referenced content plays the "setup a
+      project" role in a publication. This might result in special formatting or generated headings
+      when the content is rendered. If that element refers to a map instead of a topic, that
+      specialized role still needs to be passed on to topics in the referenced map - regardless of
+      what <xmlelement>topicref</xmlelement> elements might be used in that referenced map.</p>
     <p>The <xmlatt>impose-role</xmlatt> attribute provides a way for specialized elements to declare
       whether processors should use this behavior. This attribute is only evaluated when a
         <xmlelement>topicref</xmlelement> element refers to a map or branch of a map. In that case,
@@ -59,7 +59,9 @@
       element. If a <xmlelement>topicref</xmlelement> refers to a branch of a map, the role is
       imposed only on the root element of that branch. If a <xmlelement>topicref</xmlelement> refers
       to an entire map, the role is imposed only on the highest-level topic references within that
-      map. The role does not cascade to other nested referencs within the map.</p>
+      map. The role does not cascade to other nested referencs within the map. For example, if a
+        <xmlelement>chapter</xmlelement> element applied that role to every reference in another
+      map, that map would be made up only of chapters nested within chapters.</p>
     <p>For elements that do not create a role for the referenced content, the
         <xmlatt>impose-role</xmlatt> attribute is defined with a default value indicating that the
       target of the reference keeps its original role: <codeph>impose-role="keeptarget"</codeph>.
@@ -140,16 +142,16 @@
     </example>
     <example>
       <title>Imposing a role on a referenced map</title>
-      <p>In this scenario, a specialized <xmlelement>chapter</xmlelement> element refers an entire
-        submap. The chapter element does not need to set the <xmlatt>impose-role</xmlatt> attribute
-        directly, because it is defined with a default value in the XML grammar files. The element
-        itself sets the <xmlatt>format</xmlatt> attribute to indicate this is a map
+      <p>In this scenario, a specialized <xmlelement>chapter</xmlelement> element refers to an
+        entire submap. The chapter element does not need to set the <xmlatt>impose-role</xmlatt>
+        attribute directly, because it is defined with a default value in the XML grammar files. The
+        element itself sets the <xmlatt>format</xmlatt> attribute to indicate this is a map
         reference:<codeblock base="ci-xml">&lt;bookmap>
   &lt;!-- ... title, front matter, and other chapters -->
   &lt;chapter href="nestedmap.ditamap" format="ditamap"/>
   &lt;!-- additional content -->
 &lt;/bookmap></codeblock></p>
-      <p>The referenced map contains three branches as children of of the root
+      <p>The referenced map contains three branches as children of the root
           <xmlelement>map</xmlelement> element:<codeblock>&lt;map>
   &lt;title>Reusable map branches&lt;/title>
   &lt;topicref href="branch1.dita"> &lt;!-- ... --> &lt;/topicref>
