@@ -17,8 +17,6 @@
 <refbody>
     <section id="usage-information">
       <title>Usage information</title>
-      <p>The <xmlelement>bodydiv</xmlelement> element cannot contain a title. If a title is
-        required, use nested topics.</p>
       <p>The <xmlelement>bodydiv</xmlelement> element is often used to group a sequence of related
         elements for reuse, so that another topic can reference the entire set with a single
           <xmlatt>conref</xmlatt> or <xmlatt>conkeyref</xmlatt> attribute.</p>
@@ -27,6 +25,8 @@
         element allows <xmlelement>section</xmlelement>, it cannot be used within
           <xmlelement>section</xmlelement> elements. Use the <xmlelement>div</xmlelement> element to
         group content that might occur in both topic bodies and sections.</p>
+      <p>The <xmlelement>bodydiv</xmlelement> element cannot contain a
+        title. If a title is required, use nested topics.</p>
     </section>
     <section id="attributes">
       <title>Attributes</title>
@@ -34,21 +34,17 @@
     </section>
 <example id="example" otherprops="examples"><title>Example</title>
       <p>The following code sample shows how the <xmlelement>bodydiv</xmlelement> element can be
-        used to group a sequence of elements for reuse:</p><codeblock>&lt;topic id="sample" xml:lang="en">
- &lt;title>Sample for bodydiv&lt;/title>
- &lt;body>
-  &lt;bodydiv id="reuse">
-   &lt;p>This set of information is reusable as a group.&lt;/p>
-   &lt;p>Lists of three contain three items.&lt;/p>
-   &lt;ul>
-    &lt;li>This is one item.&lt;/li>
-    &lt;li>This is another item.&lt;/li>
-    &lt;li>This is the third item.&lt;/li>
-   &lt;/ul>
-  &lt;/bodydiv>
-  &lt;p>This concludes my topic.&lt;/p>
- &lt;/body>
-&lt;/topic></codeblock></example>
+        used to group a sequence of elements for reuse:</p><codeblock>&lt;body>
+  <b>&lt;bodydiv id="mp-23475"></b>
+    &lt;p>The maintenance pack includes the following items:&lt;/p>
+    &lt;ul>
+      &lt;li>Gloves&lt;/li>
+      &lt;li>Small screwdriver&lt;/li>
+      &lt;li>Part #23475&lt;/li>
+    &lt;/ul>
+  <b>&lt;/bodydiv></b>
+  &lt;!-- ... -->
+&lt;/body></codeblock></example>
 </refbody>
 </reference>
 

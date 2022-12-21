@@ -31,7 +31,16 @@
         <title>Short description in a topic</title>
         <p>The following code sample shows how a <xmlelement>shortdesc</xmlelement> element can be
           used in a topic:</p>
-        <codeblock conkeyref="reuse-general/concept-codeblock" id="shortdesc-in-concept"/>
+        <codeblock id="shortdesc-in-concept">&lt;topic id="intro-to-bird-calling"&gt;
+  &lt;title&gt;Introduction to bird calling&lt;/title&gt;
+  &lt;<b>shortdesc&gt;</b>If you want to attract more birds to your Acme Bird Feeder, learn the art of 
+      bird calling. Bird calling is an efficient way to alert more birds to the presence of 
+      your bird feeder.
+  <b>&lt;/shortdesc&gt;</b>
+ &lt;body&gt;
+   &lt;!-- ... -->
+ &lt;/body&gt;
+&lt;/topic&gt;</codeblock>
       </fig>
       <fig>
         <title>Short description in a map</title>
@@ -41,30 +50,18 @@
           for the American Birding Association is generated.</p>
         <codeblock>&lt;map>
   &lt;title>Enjoying birds&lt;/title>
-    &lt;!-- ... -->
     &lt;topicref href="birds-in-colorado.dita"/>
     &lt;topicref href="bird-calling.dita"/>
     &lt;topicref href="https://www.birding.example.com/" format="external" type="html">
       &lt;topicmeta>
-        &lt;shortdesc>The American Birding Association is the only organization 
-        in North America that specifically caters to recreational birders.
-        Its mission is to "inspire all people to enjoy and protect wild birds."
+        <b>&lt;shortdesc></b>The American Birding Association is the only organization 
+            in North America that specifically caters to recreational birders.
+            Its mission is to "inspire all people to enjoy and protect wild birds."
+        <b>&lt;/shortdesc></b>
       &lt;/topicmeta>
     &lt;/topicref>
-    &lt;!-- ... -->
 &lt;/map>
-<!--<topicref href="myThing.dita">
-  <topicmeta>
-    <navtitle>Navigation title for my topic</navtitle>
-    <shortdesc>A description of myThing that is specific to this context.</shortdesc>
-  </topicmeta>
-</topicref>
-<topicref href="http://www.example.org" scope="external">
-  <topicmeta>
-    <navtitle>Example website</navtitle>
-    <shortdesc>The example.org address is often used in examples</shortdesc>
-  </topicmeta>
-</topicref>--></codeblock>
+</codeblock>
       </fig>
     </example>
   </refbody>

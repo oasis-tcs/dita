@@ -4,13 +4,9 @@
  "reference.dtd">
 <reference id="abstract" xml:lang="en-us">
 <title><xmlelement>abstract</xmlelement></title>
-  <abstract>
-    <shortdesc>An abstract summarizes the content of the topic; it appears
-      at the start of the topic. It can contain multiple short
-      descriptions, as well as block-level content such as paragraphs,
-      lists, and tables. </shortdesc>
-    <!--<shortdesc>The <xmlelement>abstract</xmlelement> element occurs between the topic title and the topic body. It is presented as the initial content of a topic. The <xmlelement>abstract</xmlelement> can contain paragraph-level content as well as one or more <xmlelement>shortdesc</xmlelement> elements, which can be used for providing link previews.</shortdesc>-->
-  </abstract>
+  <shortdesc>An abstract summarizes the content of the topic; it appears at
+    the start of the topic. It can contain multiple short descriptions, as
+    well as block-level content such as paragraphs, lists, and tables. </shortdesc>
 	<prolog>
 		<metadata>
 			<keywords>
@@ -40,10 +36,10 @@
             facilitate conditional processing.</li>
         </ul>
       </div>
-      <!--<div rev="review-a"><p>The <xmlelement>abstract</xmlelement> element is designed for use when the initial paragraph of a topic is unsuitable as a link preview or hover text. This might occur in the following circumstances:</p><ul><li>The initial paragraph contains lists, tables, or other block-level elements.</li><li>Only a portion of the content of the initial paragraph is suitable for a link preview.</li><li>The initial paragraph contains multiple short descriptions.</li></ul></div>-->
-      <p>When the initial paragraph is suitable as a link preview, simply
-        place the content in a <xmlelement>shortdesc</xmlelement> element
-        rather than in an <xmlelement>abstract</xmlelement> element.</p>
+      <p>When the initial paragraph is suitable as a link preview, authors
+        should simply place the content in a
+          <xmlelement>shortdesc</xmlelement> element rather than in an
+          <xmlelement>abstract</xmlelement> element.</p>
 		</section>
     <section id="rendering-expectations">
       <title>Rendering expectations</title>
@@ -70,12 +66,13 @@
         <title><xmlelement>abstract</xmlelement> with phrase-level short
           description</title>
         <p>The following code sample shows an
-            <xmlelement>abstract</xmlelement> element that contains
-          phrase-level content, in addition to a short description:</p>
-        <codeblock>&lt;abstract>
-  &lt;shortdesc>Use the wonderful Widget to automatically vacuum your house.
+            <xmlelement>abstract</xmlelement> element that contains a short
+          description, as well as additional phrase-level content:</p>
+        <codeblock><b>&lt;abstract></b>
+  &lt;shortdesc>
+      Use the wonderful Widget to automatically vacuum your house.
   &lt;/shortdesc> It requires a 1800 lithium ion battery.
-&lt;/abstract></codeblock>
+<b>&lt;/abstract></b></codeblock>
         <p>While the complete content of the
             <xmlelement>abstract</xmlelement> element is rendered as the
           first paragraph of the topic, only the content of the
@@ -86,18 +83,19 @@
         <title><xmlelement>abstract</xmlelement> with block-level short
           description</title>
         <p>The following code sample shows an
-            <xmlelement>abstract</xmlelement> element that contains
-          block-level content, in addition to a short description: </p>
-        <codeblock>&lt;abstract>
-  &lt;shortdesc>You have many options for arranging lodging in Brussels: 
-      hotels, bed and breakfasts, youth hostels, and flats. You can select
-      from a wide price range.&lt;/shortdesc>
+            <xmlelement>abstract</xmlelement> element that contains a short
+          description, as well as additional block-level content: </p>
+        <codeblock><b>&lt;abstract></b>
+  &lt;shortdesc>
+      You have many options for arranging lodging in Brussels: hotels, bed and
+      breakfasts, youth hostels, and flats. You can select from a wide price range.
+  &lt;/shortdesc>
   &lt;p>The following table explains the symbols that are used to indicate the price
      categories of the lodging options:&lt;/p>
   &lt;simpletable>
     &lt;! -- ... -->
   &lt;/simpletable>
-&lt;/abstract></codeblock>
+<b>&lt;/abstract></b></codeblock>
       </fig>
       <fig>
         <title><xmlelement>abstract</xmlelement> with multiple short
@@ -106,14 +104,16 @@
             <xmlelement>abstract</xmlelement> element that contains
           multiple short descriptions, which will be filtered when the
           topic is processed:</p>
-        <codeblock>&lt;abstract>
-  &lt;shortdesc platform="free-version">The free version of the platform
-      provides a single e-mail list, storage for up to one gigabyte of
-      files, and will support up to 100 users.&lt;/shortdesc>
-  &lt;shortdesc platform="premium-version">The premium version of the platform
-      provides multiple e-mails lists, storage for up to 30 gigabytes of
-      files, and will support up to 400 users.&lt;/shortdesc>
-&lt;/abstract></codeblock>
+        <codeblock><b>&lt;abstract></b>
+  &lt;shortdesc platform="free-version">
+      The free version of the platform provides a single e-mail list, storage 
+      for up to one gigabyte of files, and will support up to 100 users.
+  &lt;/shortdesc>
+  &lt;shortdesc platform="premium-version">
+      The premium version of the platform provides multiple e-mails lists, 
+      storage for up to 30 gigabytes of files, and will support up to 400 users.
+  &lt;/shortdesc>
+<b>&lt;/abstract></b></codeblock>
       </fig>
     </example>
 </refbody>
