@@ -9,13 +9,30 @@
     <p>Consider the following guidelines for making the "Example" sections
       consistent across the specification</p>
     <section>
+      <title>Markup</title>
+      <p>The <xmlelement>example</xmlelement> element should specify the
+          <xmlatt>id</xmlatt> and <xmlatt>otherprops</xmlatt> attributes.
+        Ensure that the following markup is used:</p>
+      <codeblock>&lt;example id="example" otherprops="examples></codeblock>
+      <p>This markup ensures the following:</p>
+      <ul>
+        <li>People can target the "Examples" section. The section might be
+          a target of a cross reference by spec editors, or it might be a
+          target of a conref push operation performed by companies that use
+          the DITA spec source as part of their company-specific style
+          guide.</li>
+        <li>Implementers that want to publish the spec for their own
+          purposes can choose to exclude non-normative content .</li>
+      </ul>
+    </section>
+    <section>
       <title><b>Introductory paragraphs and punctuation</b></title>
       <p>Each code sample should be preceded by an explanatory paragraph
         that describes what the example illustrates. Use the following
-        pattern: "The following code sample shows how X does Y:" If the
-        intro paragraph contains a single sentence, it should end with a
-        colon. If the intro paragraph contains more than one sentence, end
-        it with a period.</p>
+        pattern: "The following code sample shows how X can be used to Y:"
+        If the intro paragraph contains a single sentence, it should end
+        with a colon. If the intro paragraph contains more than one
+        sentence, end it with a period.</p>
       <p><b>Examples:</b><image placement="break"
           href="images/example-intro-sentence.jpg" scale="60"/><image
           placement="break" href="images/example-two-intro-sentences.jpg"
@@ -57,14 +74,18 @@
       <p>(For elements that are part of a larger structure, such as a table
         or definition list entry) Instead of containing an example, the
         section can have a cross reference to another topic. Use the
-        following type of markup:</p>
+        following type of markup, where the key reference targets the
+        "Example" section of the other target.</p>
       <codeblock>&lt;p>See 
-  &lt;xref keyref="elements-table">&lt;xmlelement>table&lt;/xmlelement>&lt;/xref>.
+  &lt;xref keyref="elements-table/example">&lt;xmlelement>table&lt;/xmlelement>&lt;/xref>.
 &lt;/p></codeblock>
       <p>This markup will be rendered in the following way:<image
           placement="break"
           href="images/examples-cross-reference-to-other-topic.jpg"
           scale="90"/></p>
+      <p>If you need to link to a specific figure within an "Example"
+        section, be sure to modify the target of the key reference so that
+        you are linking to the specific figure.</p>
     </section>
     <section>
       <title>Showing rendering of the code sample</title>
@@ -74,6 +95,11 @@
         when the output is generated. (Remember that the DITA specification
         often is republished by other businesses and organizations who use
         their own stylesheets.)</p>
+      <p>Both the dita and dita-techcom repositories have an associated
+        Word document that can be used to mock up rendered output.  This
+        document is named <filepath>screen-captures.docx</filepath>, and it
+        located in the  <filepath>specification/resources</filepath>
+        directories.</p>
     </section>
     <section>
       <title>Content of code samples</title>
