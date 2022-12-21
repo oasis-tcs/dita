@@ -102,7 +102,7 @@
           web page in an inline frame. It assumes that the processing
           engine uses the <codeph>outputclass="iframe"</codeph>
           directive.</p>
-        <codeblock>&lt;object type="text/html"
+        <codeblock><b>&lt;object type="text/html"</b>
         data="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776
               %2C0.00030577182769775396
               %2C51.478569861898606
@@ -117,8 +117,8 @@
               %2C0.00030577182769775396
               %2C51.478569861898606
               &amp;layer=mapnik"
-    />&lt;/fallback>
-&lt;/object&gt;</codeblock>
+    />&lt;/fallback><b>
+&lt;/object&gt;</b></codeblock>
         <p>The above code might generate the following HTML:</p>
         <codeblock>&lt;!DOCTYPE html>
 &lt;html>
@@ -134,7 +134,7 @@
       >Street map&lt;/iframe>
   &lt;/body>
 &lt;/html></codeblock>
-        <p><!--<draft-comment author="eliot.kimber">The URL as shown works in my working example with the line breaks before the %2C escaped characters.</draft-comment>--></p>
+        <p/>
       </fig>
             <fig id="fig_o2l_bfb_4k">
                 <title>Object with reference to video using key reference on the
@@ -142,22 +142,20 @@
                 <p>The following code sample shows how key definitions can
           be used to reference supporting resources for an
             <xmlelement>object</xmlelement>:</p>
-                <codeblock>&lt;object id="E5123_026.mp4"
-      width="300" height="300">
+                <codeblock><b>&lt;object id="E5123_026.mp4" width="300" height="300"></b>
   &lt;fallback>Media not available.&lt;/fallback>
-  &lt;param name="poster" <b>keyref="E5123_026_poster"</b> />
-  &lt;param name="source" <b>keyref="E5123_026_video"</b> />
-&lt;/object></codeblock>
-                <p>In this scenario, the keys could be defined as follows:<codeblock>&lt;map>
+  &lt;param name="poster" keyref="E5123_026_poster" />
+  &lt;param name="source" keyref="E5123_026_video" /><b>
+&lt;/object></b></codeblock>
+                <p>In this scenario, the keys could be defined as
+          follows:<codeblock>&lt;map>
   &lt;!-- ... -->
-  &lt;keydef keys="E5123_026_poster"
+  &lt;keydef <b>keys="E5123</b>_026_poster"
       href="../images/E5123_026_poster.png"
-      type="video/mp4"
-  />
-  &lt;keydef keys="E5123_026_video"
+      type="video/mp4"/>
+  &lt;keydef <b>keys="E5123_026_video"</b>
       href="../media/E5123_026_poster.mp4"
-      type="video/mp4"
-  />
+      type="video/mp4"/>
   &lt;!-- ... -->
 &lt;/map></codeblock></p>
             </fig>
@@ -176,11 +174,12 @@
   &lt;param name="quality" value="high"/>
   &lt;param name="bgcolor" value="#FFFFFF"/>
 &lt;/object></codeblock>
-                <p>In this scenario, the keys could be defined as follows:<codeblock>&lt;map>
+                <p>In this scenario, the keys could be defined as
+          follows:<codeblock>&lt;map>
   &lt;!-- ... -->
 
   &lt;!-- Using @scope="external" here because the referenced URL is external. -->
-  &lt;keydef keys="cutkey370"
+  &lt;keydef <b>keys="cutkey370"</b>
     href="https://www.example.com/cutkey370.swf"
     type="application/x-shockwave-flash"
     format="swf"
