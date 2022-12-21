@@ -21,36 +21,13 @@
         element is used to organize several elements together so that they
         can be referenced by <xmlatt>conref</xmlatt> or
           <xmlatt>conkeyref</xmlatt>:</p>
-      <codeblock>...
-&lt;div id="div-01">
- &lt;p>The first paragraph&lt;/p>
- &lt;p>The second paragraph&lt;/p>
- &lt;note>This is a note&lt;/note>
-&lt;/div>
-...</codeblock>
+      <codeblock><b>&lt;div id="rendered-table"></b>
+  &lt;p>The following screen capture shows one way the code sample might be rendered:&lt;/p>
+  &lt;image keyref="rendered-table" placement="break"/>
+<b>&lt;/div></b></codeblock>
       <p>Without using a <xmlelement>div</xmlelement> element, the content
         could not be grouped for content referencing since the start and
         end elements are of different types.</p>
-      <!--<fig id="fig_svh_vbs_sn"><title>Using <xmlelement>div</xmlelement> for specialization</title><p>In the following code sample, <xmlelement>div</xmlelement> is used as the basis for specializing a new domain element, <xmlelement>pullquote</xmlelement>:</p><codeblock base="ci-skip">&lt;!ENTITY % pullquote.content
-  "(%div.cnt;)*"
->
-&lt;!ENTITY % pullquote.attributes
-             "%univ-atts;"
->
-&lt;!ELEMENT pullquote    %pullquote.content;>
-&lt;!ATTLIST pullquote    %pullquote.attributes;>
-
-&lt;!ATTLIST pullquote      class CDATA "+ topic/div pubcontent-d/pullquote "></codeblock><p>Instances of <xmlelement>pullquote</xmlelement> could then be used in both <xmlelement>body</xmlelement> and <xmlelement>section</xmlelement> contexts:</p><codeblock base="ci-xml">&lt;topic id="article-01">
-  &lt;title>My Article&lt;/title>
-  &lt;body>
-    &lt;p>Something pithy someone said&lt;/p>
-    &lt;pullquote>&lt;p>Something Pithy&lt;/p>&lt;/pullquote>
-    &lt;section>
-      &lt;p>This is really really pithy&lt;/p>
-      &lt;pullquote>&lt;p>Really Pithy&lt;/p>&lt;/pullquote>
-    &lt;/section>
-  &lt;/body>
-&lt;/topic></codeblock></fig>-->
     </example>
     
   </refbody>
