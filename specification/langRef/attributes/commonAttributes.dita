@@ -125,11 +125,11 @@
         <dlentry id="otheratts">
           <dt>Other attributes (not in a group)</dt>
           <dd>
-            <p id="other-attr">These are attributes that are used in the
-              same way on more than one base element, but they are not
-              formally grouped together: <xmlatt>compact</xmlatt>,
-                <xmlatt>duplicates</xmlatt>, <xmlatt>otherrole</xmlatt>,
-                <xmlatt>role</xmlatt>, and <xmlatt>title-role</xmlatt>.</p>
+            <p id="other-attr">These are attributes that are used in the same way on more than one
+              base element, but they are not formally grouped together: <xmlatt>compact</xmlatt>,
+                <xmlatt>duplicates</xmlatt>, <xmlatt>impose-role</xmlatt>,
+                <xmlatt>otherrole</xmlatt>, <xmlatt>role</xmlatt>, and
+              <xmlatt>title-role</xmlatt>.</p>
           </dd>
         </dlentry>
       </dl>
@@ -550,6 +550,33 @@
           <dd>Specifies a reference to a resource.<ph platform="dita"> See
                 <xref keyref="attributes-href"/> for detailed information
               on supported values and processing implications.</ph></dd>
+        </dlentry>
+        <dlentry id="impose-role" platform="dita">
+          <dt id="attr-impose-role"><xmlatt>impose-role</xmlatt></dt>
+          <dd>Specifies whether this element will impose its role on elements in a referenced map.
+            The attribute is ignored if the target of the reference is not a map or branch of a map.
+            The following values are valid: <dl>
+              <dlentry>
+                <dt>keeptarget</dt>
+                <dd>The role of the current reference is not imposed on the target of the reference.
+                  This is the default for the unspecialized <xmlelement>topicref</xmlelement>
+                  element and for many convenience elements such as
+                  <xmlelement>keydef</xmlelement>.</dd>
+              </dlentry>
+              <dlentry>
+                <dt>impose</dt>
+                <dd>The role of the current reference is imposed on the target of the reference. <ph
+                    otherprops="examples">For example, if a specialized topic reference
+                      <xmlelement>chapter</xmlelement> uses this value and references a map, a topic
+                    reference that resolves in place of the <xmlelement>chapter</xmlelement> will be
+                    treated as if it were a chapter.</ph></dd>
+              </dlentry>
+              <dlentry conkeyref="reuse-attributes/ditauseconref" platform="dita">
+                <dt> </dt>
+                <dd> </dd>
+              </dlentry>
+            </dl><p><ph platform="dita"> See <xref keyref="attributes-href"/> for detailed
+                information on supported values and processing implications.</ph></p></dd>
         </dlentry>
         <dlentry id="keycol">
           <dt id="attr-keycol"><xmlatt>keycol</xmlatt>

@@ -90,6 +90,7 @@
                            yes |
                            -dita-use-conref-target)
                                     'no'
+               %impose-role-attribute-fixed-keeptarget;
                %univ-atts;"
 >
 <!ELEMENT  topicsubject %topicsubject.content;>
@@ -152,6 +153,7 @@
                            yes |
                            -dita-use-conref-target)
                                     'no'
+               %impose-role-attribute-fixed-keeptarget;
                %univ-atts;"
 >
 <!ELEMENT  topicapply %topicapply.content;>
@@ -212,6 +214,7 @@
                            yes |
                            -dita-use-conref-target)
                                     'no'
+               %impose-role-attribute-fixed-keeptarget;
                %univ-atts;"
 >
 <!ELEMENT  subjectref %subjectref.content;>

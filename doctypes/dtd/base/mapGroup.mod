@@ -103,6 +103,7 @@
                format
                           CDATA
                                     'ditamap'
+               %impose-role-attribute-fixed-keeptarget;
                %topicref-atts-without-format;
                %univ-atts;"
 >
@@ -179,6 +180,7 @@
                subjectrefs
                           CDATA
                                     #IMPLIED
+               %impose-role-attribute-fixed-keeptarget;
                %univ-atts;"
 >
 <!ELEMENT  keydef %keydef.content;>
@@ -241,6 +243,7 @@
                            yes |
                            -dita-use-conref-target)
                                     #IMPLIED
+               %impose-role-attribute;
                %univ-atts;"
 >
 <!ELEMENT  mapresources %mapresources.content;> 

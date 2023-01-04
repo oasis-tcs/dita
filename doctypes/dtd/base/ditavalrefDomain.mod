@@ -88,6 +88,7 @@
                processing-role
                           CDATA
                                     'resource-only'
+               %impose-role-attribute-fixed-keeptarget;
                %ditavalref-univ-atts;"
 >
 <!ELEMENT  ditavalref %ditavalref.content;>

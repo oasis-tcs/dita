@@ -168,6 +168,7 @@
                            peer |
                            -dita-use-conref-target)
                                     #IMPLIED
+               %impose-role-attribute-fixed-keeptarget;
                %univ-atts;"
 >
 <!ELEMENT  schemeref %schemeref.content;>
@@ -231,6 +232,7 @@
                            yes |
                            -dita-use-conref-target)
                                     #IMPLIED
+               %impose-role-attribute-fixed-keeptarget;
                %univ-atts;"
 >
 <!ELEMENT  subjectdef %subjectdef.content;>
@@ -423,6 +425,7 @@
                            yes |
                            -dita-use-conref-target)
                                     #IMPLIED
+               %impose-role-attribute-fixed-keeptarget;
                %univ-atts;"
 >
 <!ELEMENT  defaultSubject %defaultSubject.content;>
