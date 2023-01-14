@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="rewriting-short-descriptions">
+  <title>Rewriting short descriptions</title>
+  <shortdesc>Sometimes it's difficult to decide whether a short description
+    should use natural language. This topic provides some
+    guidance.</shortdesc>
+  <conbody>
+    <p>Consider the short descriptions for the elements in the programming
+      domain. When this domain went to review in January 2023, the short
+      descriptions did not implement natural language. The following table
+      contains commentary:</p>
+    <simpletable relcolwidth="1* 2* 2* 2*">
+      <sthead>
+        <stentry>Element</stentry>
+        <stentry>Original short description</stentry>
+        <stentry>Comments</stentry>
+        <stentry>Revised short description</stentry>
+      </sthead>
+      <strow>
+        <stentry><xmlelement>apiname</xmlelement></stentry>
+        <stentry>The <xmlelement>apiname</xmlelement> element identifies
+          the name of an application programming interface (API), such as a
+          Java class name or method name.</stentry>
+        <stentry>Poor candidate for natural language. A natural-language
+          short description wll tend to seem circular.</stentry>
+        <stentry/>
+      </strow>
+      <strow>
+        <stentry><xmlelement>codeblock</xmlelement></stentry>
+        <stentry>The <xmlelement>codeblock</xmlelement> element identifies
+          lines of program code.</stentry>
+        <stentry>Do not use natural language. A <term>code block</term> has
+          a <xref href="https://en.wikipedia.org/wiki/Block_(programming)"
+            format="html" scope="external">specific meaning</xref> in
+          porgamming that does not match how we use it in DITA.</stentry>
+        <stentry/>
+      </strow>
+      <strow>
+        <stentry><xmlelement>codeph</xmlelement></stentry>
+        <stentry>The <xmlelement>codeph</xmlelement> element identifies a
+          code snippet.</stentry>
+        <stentry>The current short description is problematic, as the term
+            <term>code snippet</term> has a <xref
+            href="https://en.wikipedia.org/wiki/Snippet_(programming)"
+            format="html" scope="external">specific meaning</xref> in
+          programming that does not match how we use the term in
+          DITA.</stentry>
+        <stentry>A code phrase is a small portion of source code, machine
+          code, or text that is displayed in-line.</stentry>
+      </strow>
+      <strow>
+        <stentry><xmlelement>coderef</xmlelement></stentry>
+        <stentry>The <xmlelement>coderef</xmlelement> element references an
+          external file that contains literal code.</stentry>
+        <stentry>This is iffy and needs to be approached carefully. The
+          short description for <xmlelement>topicref</xmlelement> should be
+          the model for how to recast this in natural language.</stentry>
+        <stentry>A code reference is the mechanism for referencing an
+          external file that contains literal code.</stentry>
+      </strow>
+      <strow>
+        <stentry><xmlelement>option</xmlelement></stentry>
+        <stentry>The <xmlelement>option</xmlelement> element describes an
+          option that can modify a command or a configuration.</stentry>
+        <stentry>This is iffy. The term <term>option</term> is too broad to
+          use as a natural-language replacement, and <term>command or
+            configuration option</term> seems cumbersome. Perhaps
+            <term>command-line option</term>? However, that might exclude
+          ways in which current DITA users have used
+            <xmlelement>option</xmlelement> to describe GUI
+          parameters.</stentry>
+        <stentry>[?] A command-line option is a command used to pass a
+          parameter to a program. These entries, also called command-line
+          switches, can pass along cues for changing various settings or
+          running commands in an interface.</stentry>
+      </strow>
+      <strow>
+        <stentry><xmlelement>parname</xmlelement></stentry>
+        <stentry>The <xmlelement>parmname</xmlelement> element identifies
+          the name of a parameter.</stentry>
+        <stentry>Poor candidate for natural language. A natural-language
+          short description wll tend to seem circular.</stentry>
+        <stentry/>
+      </strow>
+      <strow>
+        <stentry><xmlelement>parml</xmlelement></stentry>
+        <stentry>The <xmlelement>parml</xmlelement> element identifies a
+          specialized definition list that is designed for documenting
+          parameters.</stentry>
+        <stentry>Good candidate for natural language. It easily can move to
+          the format "An item is a …"</stentry>
+        <stentry>A parameter list is a specialized definition list that is
+          designed for documenting parameters.</stentry>
+      </strow>
+      <strow>
+        <stentry><xmlelement>plentry</xmlelement></stentry>
+        <stentry>The <xmlelement>plentry</xmlelement> element contains one
+          or more parameter terms and definitions.</stentry>
+        <stentry>Good candidate for natural language. It is a container
+          element, and it easily can move to the format "An item contains
+          …"</stentry>
+        <stentry>A parameter-list entry contains one or more parameter
+          terms and definitions.</stentry>
+      </strow>
+      <strow>
+        <stentry><xmlelement>pd</xmlelement></stentry>
+        <stentry>The <xmlelement>pd</xmlelement> element specifies a
+          parameter definition within a parameter list entry.</stentry>
+        <stentry>This is iffy. We can model if after how we defined
+            <xmlelement>dd</xmlelement>, but does that really add
+          value?</stentry>
+        <stentry>[?] A parameter definition is a definition of a term that
+          is defined in a parameter-list entry.</stentry>
+      </strow>
+      <strow>
+        <stentry><xmlelement>pt</xmlelement></stentry>
+        <stentry>The <xmlelement>pt</xmlelement> element specifies a
+          parameter term within a parameter list entry.</stentry>
+        <stentry>This is iffy. We can model if after how we defined
+            <xmlelement>dt</xmlelement>, but does that really add
+          value?</stentry>
+        <stentry>[?] A parameter term is a term that is defined in a
+          parameter-list entry.</stentry>
+      </strow>
+    </simpletable>
+  </conbody>
+</concept>
