@@ -16,11 +16,13 @@
   <refbody>
     <section id="section_pfp_2ty_1bb">
       <title>Usage information</title>
-      <p>Sort text can be specified in the content of the <xmlelement>sort-as</xmlelement> element
-        or in the <xmlatt>value</xmlatt> attribute on the <xmlelement>sort-as</xmlelement> element.
-        The <xmlelement>sort-as</xmlelement> element also is useful for elements where the base sort
-        phrase is inadequate or non-existent, such as an index entry for a Japanese Kanji
-        phrase.</p>
+      <p>Sort text can be specified in the content of the
+          <xmlelement>sort-as</xmlelement> element or in the
+          <xmlatt>value</xmlatt> attribute on the
+          <xmlelement>sort-as</xmlelement> element. The
+          <xmlelement>sort-as</xmlelement> elementis also useful for
+        elements where the base sort phrase is inadequate or non-existent,
+        such as an index entry for a Japanese Kanji phrase.</p>
       <p>If a <xmlelement>keyword</xmlelement> element is used within
           <xmlelement>sort-as</xmlelement>, the <xmlatt>keyref</xmlatt> attribute can be used to set
         the sort phrase. If a <xmlelement>keyword</xmlelement> uses <xmlatt>keyref</xmlatt> and
@@ -58,13 +60,14 @@
       <p>If the <xmlatt>value</xmlatt> attribute is not specified and the
           <xmlelement>sort-as</xmlelement> element does not contain content, then the
           <xmlelement>sort-as</xmlelement> element has no effect.</p>
-      <p>As a specialization of <xmlelement>data</xmlelement>, the <xmlelement>sort-as</xmlelement>
-        element is allowed in any context where <xmlelement>data</xmlelement> is allowed. However,
-        the presence of <xmlelement>sort-as</xmlelement> within an element does not, by itself,
-        indicate that the containing element should be sorted. Processors can choose to sort any
-        DITA elements for any reason. Likewise, processors are not required to sort any elements.
-        See <xref href="../../archSpec/base/sort-as-processing.dita"/> for more information on
-        sorting.</p>
+      <p>As a specialization of <xmlelement>data</xmlelement>, the
+          <xmlelement>sort-as</xmlelement> element is allowed in any
+        context where <xmlelement>data</xmlelement> is allowed. However,
+        the presence of <xmlelement>sort-as</xmlelement> within an element
+        does not necessarily indicate that the containing element should be
+        sorted. Processors can choose to sort any DITA elements for any
+        reason. Likewise, processors are not required to sort any
+        elements.</p>
       <p>Processors <term outputclass="RFC-2119">SHOULD</term> expect to encounter
           <xmlelement>sort-as</xmlelement> elements in the above locations. Processors that sort
           <term outputclass="RFC-2119">SHOULD</term> use the following precedence rules:<ul>
@@ -79,9 +82,12 @@
             elements, the first direct-child <xmlelement>sort-as</xmlelement> element in document
             order takes precedence.
             <!--Within topic prologs, the first direct-child <xmlelement>sort-as</xmlelement> element in document order takes precedence.--></li>
-          <li>It is an error if there is more than one <xmlelement>sort-as</xmlelement> child for a
-            given <xmlelement>indexterm</xmlelement>. An implementation encountering more than one
-              <xmlelement>sort-as</xmlelement> in this case might give an error message.</li>
+          <li>
+            <p outputclass="errorcondition">It is an error if there is more
+              than one <xmlelement>sort-as</xmlelement> child for a given
+                <xmlelement>indexterm</xmlelement>
+              element.<!-- An implementation encountering more than one <xmlelement>sort-as</xmlelement> in this case might give an error message.--></p>
+          </li>
           <li>Sort phrases are determined after filtering and content reference resolution
             occur.</li>
         </ul></p>
@@ -94,16 +100,20 @@
     </section>
     <section id="attributes">
       <title>Attributes</title>
-      <p id="only-universal">The following attributes are available on this element: <ph conkeyref="reuse-attributes/ref-universalatts"/>, <xref keyref="attributes-common/attr-name"
-            ><xmlatt>name</xmlatt></xref>, and <xref keyref="attributes-common/attr-value"
-            ><xmlatt>value</xmlatt></xref>.</p>
+      <p id="only-universal">The following attributes are available on this
+        element: <ph conkeyref="reuse-attributes/ref-universalatts"/>,
+          <xref keyref="attributes-common/attr-name"
+          ><xmlatt>name</xmlatt></xref>, and <xref
+          keyref="attributes-common/attr-value"
+          ><xmlatt>value</xmlatt></xref>.</p>
       <p id="attr-exception" outputclass="attr-exception">For this element,<ul id="ul_g3c_412_ppb">
           <li>The <xmlatt>name</xmlatt> attribute has a default value of
             <keyword>sort-as</keyword>.</li>
-          <li>The <xmlatt>value</xmlatt> attribute specifies a text to combine with the base sort
-            phrase to create an effective sort phrase. When the <xmlelement>sort-as</xmlelement>
-            element has content and the <xmlatt>value</xmlatt> attribute is specified, the
-              <xmlatt>value</xmlatt> attribute takes precedence.</li>
+          <li>The <xmlatt>value</xmlatt> attribute specifies text to
+            combine with the base sort phrase to create an effective sort
+            phrase. When the <xmlelement>sort-as</xmlelement> element has
+            content and the <xmlatt>value</xmlatt> attribute is specified,
+            the <xmlatt>value</xmlatt> attribute takes precedence.</li>
         </ul>
       </p>
     </section>
@@ -113,21 +123,31 @@
         character for <keyword>big</keyword> might specify an effective sort phrase of
           <keyword>dada</keyword> (the Pin-Yin transliteration for Mandarin):</p>
       <fig>
-        <title>The <xmlelement>sort-as</xmlelement> element located within
+        <title><xmlelement>sort-as</xmlelement> within
             <xmlelement>glossterm</xmlelement></title>
+        <p>In the following code sample, the
+            <xmlelement>sort-as</xmlelement> element is located within the
+            <xmlelement>glossterm</xmlelement> element:</p>
         <codeblock>&lt;glossentry id="gloss-dada">
-  &lt;glossterm>&lt;sort-as value="dada"/>&amp;#x5927;&amp;#x5927;&lt;/glossterm>
+  &lt;glossterm>
+    <b>&lt;sort-as value="dada"/</b>>
+    &amp;#x5927;&amp;#x5927;
+  &lt;/glossterm>
   &lt;glossdef>Literally "big big".&lt;/glossdef>
 &lt;/glossentry></codeblock>
       </fig>
       <fig>
-        <title>The <xmlelement>sort-as</xmlelement> element within
-          <xmlelement>prolog</xmlelement></title>
+        <title><xmlelement>sort-as</xmlelement> within
+            <xmlelement>prolog</xmlelement></title>
+        <p>In the following code sample, the
+            <xmlelement>sort-as</xmlelement> element is located within the
+            <xmlelement>prolog</xmlelement> element of the glossary entry
+          topic:</p>
         <codeblock>&lt;glossentry id="gloss-dada">
   &lt;glossterm>&amp;#x5927;&amp;#x5927;&lt;/glossterm>
   &lt;glossdef>Literally "big big".&lt;/glossdef>
   &lt;prolog>
-    &lt;sort-as>dada&lt;/sort-as>
+    <b>&lt;sort-as>dada&lt;/sort-as></b>
   &lt;/prolog>
 &lt;/glossentry></codeblock>
       </fig>
