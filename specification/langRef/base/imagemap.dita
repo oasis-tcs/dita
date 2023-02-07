@@ -42,9 +42,14 @@
 		</section>
     <example id="example" otherprops="examples">
       <title>Example</title>
-      <p>The following code sample shows an image map for a detail of
-        Rembrandt's "The Night Watch":</p>
-      <codeblock><b>&lt;imagemap id="the-night-watch"></b>
+      <p rev="review-t">This section contains examples of how the
+          <xmlelement>imagemap</xmlelement> element can be used:</p>
+      <fig>
+        <title>Example: Image map that uses the circle, rectangle, and
+          polygon shapes</title>
+        <p>The following code sample shows an image map for a detail of
+          Rembrandt's "The Night Watch":</p>
+        <codeblock><b>&lt;imagemap id="the-night-watch"></b>
   &lt;image href="Detail_from_The_Night_Watch.jpg" id="night_watch">
     &lt;alt>Detail from Rembrandt's The Night Watch&lt;/alt>
   &lt;/image>
@@ -75,50 +80,67 @@
           Willem van Ruytenburch&lt;/xref>
   &lt;/area><b>
 &lt;/imagemap></b></codeblock>
-      <p>The following image shows the areas that are defined by the image
-        map. Each of the three supported shapes are used.</p>
-      <image placement="break" href="../../images/night-watch-areas.jpg"
-        scale="70">
-        <alt>A screen capture of the image map as rendered in Oxygen
-          Editor, showing the three defined areas</alt>
-      </image>
-      <p>The following table lists the defined areas, the shape used,
-        alternate text, and link targets:</p>
-      <simpletable frame="topbot" relcolwidth="1* 2* 5* 5*" keycol="1">
-        <sthead>
-          <stentry>Area</stentry>
-          <stentry>Shape</stentry>
-          <stentry>Alternate text</stentry>
-          <stentry>Link target</stentry>
-        </sthead>
-        <strow>
-          <stentry>1</stentry>
-          <stentry>Polygon</stentry>
-          <stentry>Frans Banninck Cocq</stentry>
-          <stentry><xref
-              href="https://en.wikipedia.org/wiki/Frans_Banninck_Cocq"
-              format="html" scope="external">Wikipedia entry for Frans
-              Banninck Cocq</xref></stentry>
-        </strow>
-        <strow>
-          <stentry>2</stentry>
-          <stentry>Circle</stentry>
-          <stentry>A member of the           schutterij (the night
-            watch)</stentry>
-          <stentry><xref href="https://en.wikipedia.org/wiki/Schutterij"
-              format="html" scope="external">Wikipedia entry for
-              Schutterij</xref></stentry>
-        </strow>
-        <strow>
-          <stentry>3</stentry>
-          <stentry>Rectangle</stentry>
-          <stentry>Willem van Ruytenburch</stentry>
-          <stentry><xref
-              href="https://en.wikipedia.org/wiki/Willem_van_Ruytenburch"
-              format="html" scope="external">Wikipedia entry for Willem van
-              Ruytenburch</xref></stentry>
-        </strow>
-      </simpletable>
+        <p>The following image shows the areas that are defined by the
+          image map. Each of the three supported shapes are used.</p>
+        <image placement="break" href="../../images/night-watch-areas.jpg"
+          scale="70">
+          <alt>A screen capture of the image map as rendered in Oxygen
+            Editor, showing the three defined areas</alt>
+        </image>
+        <p>The following table lists the defined areas, the shape used,
+          alternate text, and link targets:</p>
+        <simpletable frame="topbot" relcolwidth="1* 2* 5* 5*" keycol="1">
+          <sthead>
+            <stentry>Area</stentry>
+            <stentry>Shape</stentry>
+            <stentry>Alternate text</stentry>
+            <stentry>Link target</stentry>
+          </sthead>
+          <strow>
+            <stentry>1</stentry>
+            <stentry>Polygon</stentry>
+            <stentry>Frans Banninck Cocq</stentry>
+            <stentry><xref
+                href="https://en.wikipedia.org/wiki/Frans_Banninck_Cocq"
+                format="html" scope="external">Wikipedia entry for Frans
+                Banninck Cocq</xref></stentry>
+          </strow>
+          <strow>
+            <stentry>2</stentry>
+            <stentry>Circle</stentry>
+            <stentry>A member of the schutterij (the night watch)</stentry>
+            <stentry><xref href="https://en.wikipedia.org/wiki/Schutterij"
+                format="html" scope="external">Wikipedia entry for
+                Schutterij</xref></stentry>
+          </strow>
+          <strow>
+            <stentry>3</stentry>
+            <stentry>Rectangle</stentry>
+            <stentry>Willem van Ruytenburch</stentry>
+            <stentry><xref
+                href="https://en.wikipedia.org/wiki/Willem_van_Ruytenburch"
+                format="html" scope="external">Wikipedia entry for Willem
+                van Ruytenburch</xref></stentry>
+          </strow>
+        </simpletable>
+      </fig>
+      <fig rev="review-t">
+        <title>Example: Image map with the default shape</title>
+        <p>The following code sample shows an image map that specifies that
+          the entire image is the linkable region. Because the default
+          shape is specified, the <xmlelement>coords</xmlelement> element
+          is empty.</p>
+        <codeblock><b>&lt;imagemap id="portrait"></b>
+  &lt;image keyref="bronte-sisters">
+    &lt;alt>Portrait of the Bronte sisters&lt;/alt>
+  &lt;/image>
+  &lt;area>
+    &lt;shape>default&lt;/shape>
+    &lt;coords/>
+    &lt;xref keyref="wiki-bronte-sisters"/>
+  &lt;/area><b>
+&lt;/imagemap></b></codeblock>
+      </fig>
     </example>
 	</refbody> 
 </reference> 
