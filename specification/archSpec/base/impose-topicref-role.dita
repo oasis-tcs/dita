@@ -69,15 +69,16 @@
       simplify references to other maps. It does not force the content in other maps to be treated
       as <xmlelement>mapref</xmlelement> - no special role is created for the referenced content.
       For this reason, it is defined in the grammar file with a fixed value of <keyword>keeptarget</keyword>.</p>
-  <p>In some cases, preserving the role of a referencing element might result in out-of-context
-      content. For example, a <xmlelement>chapter</xmlelement> element in one bookmap could pull in
-      a <xmlelement>part</xmlelement> element from another bookmap, where that referenced
-        <xmlelement>part</xmlelement> also contains nested <xmlelement>chapter</xmlelement>
-      elements. Treating the <xmlelement>part</xmlelement> element as a
-        <xmlelement>chapter</xmlelement> will result in a chapter that nests other chapters, which
-      is not valid in bookmap and might not be understandable by processors. The result is
-      implementation specific. Processors <term outputclass="RFC-2119">MAY</term> choose to treat
-      this as an error, issue a warning, or simply assign new roles to the problematic elements.</p>
+  <p outputclass="errorcondition">In some cases, preserving the role of a referencing element might
+      result in out-of-context content. For example, a <xmlelement>chapter</xmlelement> element in
+      one bookmap could pull in a <xmlelement>part</xmlelement> element from another bookmap, where
+      that referenced <xmlelement>part</xmlelement> also contains nested
+        <xmlelement>chapter</xmlelement> elements. Treating the <xmlelement>part</xmlelement>
+      element as a <xmlelement>chapter</xmlelement> will result in a chapter that nests other
+      chapters, which is not valid in bookmap and might not be understandable by processors. The
+      result is implementation specific. Processors <term outputclass="RFC-2119">MAY</term> choose
+      to treat this as an error, issue a warning, or simply assign new roles to the problematic
+      elements.</p>
     <example>
       <title>Defining a fixed role for a specialized element</title>
       <p>In the Bookmap specialization from the OASIS DITA Technical Communications specializations,

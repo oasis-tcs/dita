@@ -93,9 +93,9 @@
         priority over those on the referenced element. The exception is that if the source element
         does not specify an ID, the ID on the referenced element remains; if the source element does
         specify an ID then that replaces the ID on the referenced element.</p>
-      <p>It is an error for two source topics to replace the same element. Applications <term
-          outputclass="RFC-2119">MAY</term> warn users if more than one element
-        attempts to replace a single target.</p>
+      <p outputclass="errorcondition">It is an error for two source topics to replace the same
+        element. Applications <term outputclass="RFC-2119">MAY</term> warn users if more than one
+        element attempts to replace a single target.</p>
     </section>
 <section id="pushing-content">
       <title>Pushing content before or after another element</title>
@@ -205,11 +205,11 @@ was not addressed in the original proposal.-->
         on an element that also uses the <xmlatt>conaction</xmlatt> attribute, the
           <xmlatt>conkeyref</xmlatt> attribute is used to determine the target of the conref push
         (as it would normally be used to determine the target of <xmlatt>conref</xmlatt>).</p>
-      <p>The conref push function does not provide the ability to push a range of elements, so it is
-        an error to specify the <xmlatt>conrefend</xmlatt> attribute together with the
-          <xmlatt>conaction</xmlatt> attribute. If the two are specified together an application can
-        recover by warning the user, ignoring the <xmlatt>conrefend</xmlatt> attribute, or with some
-        other implementation strategy.</p>
+      <p outputclass="errorcondition">The conref push function does not provide the ability to push
+        a range of elements, so it is an error to specify the <xmlatt>conrefend</xmlatt> attribute
+        together with the <xmlatt>conaction</xmlatt> attribute. If the two are specified together an
+        application can recover by warning the user, ignoring the <xmlatt>conrefend</xmlatt>
+        attribute, or with some other implementation strategy.</p>
     </section>
 </refbody>
 </reference>

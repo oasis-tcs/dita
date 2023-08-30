@@ -16,49 +16,51 @@
             reader should use <i>instead of</i> the current one, whereas the
                 <xmlelement>index-see-also</xmlelement> element contains text for an index entry
             that the reader should use <i>in addition to</i> the current one.</p>
-        <p>Generated index entries should not contain both locators and redirections. Therefore, it
-            is an error if the following conditions occur:</p>
-        <dl>
-            <dlentry>
-                <dt>An <xmlelement>indexterm</xmlelement> contains
-                        <xmlelement>index-see</xmlelement>, and the publication contains other
-                        <xmlelement>indexterm</xmlelement> with matching content</dt>
-                <dd>
-                    <p>An <xmlelement>indexterm</xmlelement> element contains an
-                            <xmlelement>index-see</xmlelement> element, and the publication contains
-                        one or more <xmlelement>indexterm</xmlelement> elements with matching
-                        textual content.</p>
-                    <p>For example, topics referenced by the master map include the following
-                        markup:</p>
-                    <codeblock>&lt;!-- Topic A -->
+        <div outputclass="errorcondition">
+            <p>Generated index entries should not contain both locators and redirections. Therefore,
+                it is an error if the following conditions occur:</p>
+            <dl id="dl_sct_jmr_pyb">
+                <dlentry>
+                    <dt>An <xmlelement>indexterm</xmlelement> contains
+                            <xmlelement>index-see</xmlelement>, and the publication contains other
+                            <xmlelement>indexterm</xmlelement> with matching content</dt>
+                    <dd>
+                        <p>An <xmlelement>indexterm</xmlelement> element contains an
+                                <xmlelement>index-see</xmlelement> element, and the publication
+                            contains one or more <xmlelement>indexterm</xmlelement> elements with
+                            matching textual content.</p>
+                        <p>For example, topics referenced by the master map include the following
+                            markup:</p>
+                        <codeblock id="codeblock_tct_jmr_pyb">&lt;!-- Topic A -->
 &lt;indexterm>memory stick
   &lt;index-see>USB drive&lt;/index-see>
 &lt;/indexterm>
 
 &lt;!-- Topic B -->
 &lt;indexterm>memory stick&lt;/indexterm></codeblock>
-                </dd>
-            </dlentry>
-            <dlentry>
-                <dt>An <xmlelement>indexterm</xmlelement> contains
-                        <xmlelement>index-see</xmlelement> and
-                        <xmlelement>index-see-also</xmlelement></dt>
-                <dd>
-                    <p>An <xmlelement>indexterm</xmlelement> element contains both an
-                            <xmlelement>index-see</xmlelement> element and an
-                            <xmlelement>index-see-also</xmlelement> element.</p>
-                    <p>For example, a topic contains the following
-                            <xmlelement>indexterm</xmlelement> element:</p>
-                    <codeblock>&lt;indexterm>
+                    </dd>
+                </dlentry>
+                <dlentry>
+                    <dt>An <xmlelement>indexterm</xmlelement> contains
+                            <xmlelement>index-see</xmlelement> and
+                            <xmlelement>index-see-also</xmlelement></dt>
+                    <dd>
+                        <p>An <xmlelement>indexterm</xmlelement> element contains both an
+                                <xmlelement>index-see</xmlelement> element and an
+                                <xmlelement>index-see-also</xmlelement> element.</p>
+                        <p>For example, a topic contains the following
+                                <xmlelement>indexterm</xmlelement> element:</p>
+                        <codeblock id="codeblock_uct_jmr_pyb">&lt;indexterm>
   memory stick
     &lt;index-see>USB drive&lt;/index-see>
     &lt;index-see-also>flash stick&lt;/index-see-also>
 &lt;/indexterm></codeblock>
-                </dd>
-            </dlentry>
-        </dl>
-        <p>A processor <term outputclass="RFC-2119">MAY</term> give an error message when it
-            encounters the following error conditions:<ul>
+                    </dd>
+                </dlentry>
+            </dl>
+        </div>
+        <p outputclass="errorcondition">A processor <term outputclass="RFC-2119">MAY</term> give an
+            error message when it encounters the following error conditions:<ul>
                 <li rev="review-1">An <xmlelement>indexterm</xmlelement> element contains an
                         <xmlelement>index-see</xmlelement> element, and the publication contains one
                     or more <xmlelement>indexterm</xmlelement> elements with matching textual
