@@ -60,11 +60,11 @@
     <stentry>Check whether the <xmlatt>class</xmlatt> attribute contains the target module. If it
      does contain the target, rename the element to the value associated with the target module.
      Otherwise, ignore the element.</stentry>
-    <stentry>It is an error if the root element matches a specified source but its
-      <xmlatt>class</xmlatt> attribute does not contain the target. If the root element matches a
-     specified source module and its <xmlatt>class</xmlatt> attribute does contain the target
-     module, generalize to the target module. Otherwise, ignore the structural type instance unless
-     it has domains to generalize.</stentry>
+    <stentry outputclass="errorcondition">It is an error if the root element matches a specified
+     source but its <xmlatt>class</xmlatt> attribute does not contain the target. If the root
+     element matches a specified source module and its <xmlatt>class</xmlatt> attribute does contain
+     the target module, generalize to the target module. Otherwise, ignore the structural type
+     instance unless it has domains to generalize.</stentry>
    </strow>
   </simpletable>
   <p>For each element in a candidate structural type instance:</p>
@@ -87,11 +87,12 @@
     <stentry>Check whether the <xmlatt>class</xmlatt> attribute contains the target module; rename
      the element to the value associated with the target module if it does contain the target,
      otherwise ignore the element.</stentry>
-    <stentry>It is an error if the last value in the <xmlatt>class</xmlatt> attribute matches a
-     specified source but the previous values do not include the target. If the last value in the
-      <xmlatt>class</xmlatt> attribute matches a specified source module and the previous values do
-     include the target module, rename the element to the value associated with the target module.
-     Otherwise, ignore the element.</stentry>
+    <stentry outputclass="errorcondition">It is an error if the last value in the
+      <xmlatt>class</xmlatt> attribute matches a specified source but the previous values do not
+     include the target. If the last value in the <xmlatt>class</xmlatt> attribute matches a
+     specified source module and the previous values do include the target module, rename the
+     element to the value associated with the target module. Otherwise, ignore the
+     element.</stentry>
    </strow>
   </simpletable>
   <p>When renaming elements during round-trip generalization, the generalization processor <term
