@@ -189,7 +189,9 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                                     #IMPLIED
                keyscope
                           CDATA
-                                    #IMPLIED"
+                                    #IMPLIED
+               -- No subjectrefs --                                    
+                                    "
 >
 <!ENTITY % topicref-atts-no-toc-no-keyscope
               "collection-type
@@ -238,8 +240,10 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                                     #IMPLIED
                chunk
                           CDATA
-                                    #IMPLIED"
+                                    #IMPLIED               
+                                    "
 >
+<!-- No subjectRefs in preceding attribute set. -->
 <!ENTITY % topicref-atts-without-format
               "collection-type
                           (choice |
