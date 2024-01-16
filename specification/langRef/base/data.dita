@@ -10,60 +10,68 @@
 </metadata></prolog>
 <refbody>
     <section conkeyref="reuse-data/usage-information" id="usage-information"><title/><p/></section>
-    <section conkeyref="reuse-data/rendering-expectations" id="rendering-expectations"><title/><p/></section>
+    <section conkeyref="reuse-data/rendering-expectations" id="rendering-expectations"
+      ><title/><p/></section>
     <section conkeyref="reuse-data/attributes" id="attributes"/>
     <example id="example" otherprops="examples">
       <title>Examples</title>
+      <p>This section contains examples of how the <xmlelement>data</xmlelement> element can be
+        used.</p>
       <fig>
-<title>Using the <xmlatt>name</xmlatt> attribute on unspecialized <xmlelement>data</xmlelement>
-elements</title>
-<p>The following code sample shows how the <xmlelement>data</xmlelement> element can be used to
-          provide metadata. Rendering tools that recognize this metadata can automatically apply
-          highlighting to the code.</p><codeblock>&lt;codeblock>
-  &lt;data name="codestyle" value="javascript"/>
+        <title>Using the <xmlatt>name</xmlatt> attribute on unspecialized
+            <xmlelement>data</xmlelement> elements</title>
+        <p>The following code sample shows how the <xmlelement>data</xmlelement> element can be used
+          to provide metadata. Rendering tools that recognize this metadata can automatically apply
+          highlighting to the code.</p>
+        <codeblock>&lt;codeblock>
+  <b>&lt;data name="codestyle" value="javascript"/></b>
   &lt;!-- JavaScript code block -->
 &lt;/codeblock></codeblock>
-</fig>
-<fig id="fig_qsw_2lc_t2b"><title>Nesting <xmlelement>data</xmlelement> elements for complex
-metadata</title><p>The following code sample shows how nested <xmlelement>data</xmlelement> elements can provide
-          complex inventory metadata for a part that is described in the topic.</p><codeblock>&lt;topic id="sample">
+      </fig>
+      <fig id="fig_qsw_2lc_t2b">
+        <title>Nesting <xmlelement>data</xmlelement> elements for complex metadata</title>
+        <p>The following code sample shows how nested <xmlelement>data</xmlelement> elements can
+          provide complex inventory metadata for a part that is described in the topic:</p>
+        <codeblock>&lt;topic id="sample">
   &lt;title>How to purchase items from the warehouse&lt;/title>
   &lt;prolog>
-    &lt;data name="inventory">
+    <b>&lt;data name="inventory"></b>
       &lt;data name="aisle" value="4"/>
       &lt;data name="bin" value="13"/>
       &lt;data name="restock" value="weekly"/>
-    &lt;/data>
+    <b>&lt;/data></b>
   &lt;/prolog>
   &lt;body>
     &lt;!-- ... -->
   &lt;/body>
-&lt;/topic></codeblock></fig>
+&lt;/topic></codeblock>
+      </fig>
       <fig>
-<title>Specializing <xmlelement>data</xmlelement> for structured metadata</title>
-<p>The following code sample contains specializations of the <xmlelement>data</xmlelement> element:
-            <xmlelement>change-item</xmlelement>, <xmlelement>change-completed</xmlelement>, and
-            <xmlelement>change-summary</xmlelement>. These specialized elements each provide a
+        <title>Specializing <xmlelement>data</xmlelement> for structured metadata</title>
+        <p>The following code sample contains specializations of the <xmlelement>data</xmlelement>
+          element: <xmlelement>change-item</xmlelement>, <xmlelement>change-completed</xmlelement>,
+          and <xmlelement>change-summary</xmlelement>. These specialized elements each provide a
           default for <xmlatt>name</xmlatt> inside the grammar files, so that processors can work
-          with the data without authors having to specify the attribute.</p><codeblock>&lt;topic id="data">
+          with the data without authors having to specify the attribute.</p>
+        <codeblock>&lt;topic id="data">
   &lt;title>&lt;xmlelement>data&lt;/xmlelement>&lt;/title>
   &lt;prolog>
     &lt;change-historylist>
-      &lt;change-item>
+      <b>&lt;change-item></b>
         &lt;change-completed>2017-08-20&lt;/change-completed>
         &lt;change-summary>Refactored topic to use new template&lt;/change-summary>
-      &lt;/change-item>
-      &lt;change-item>
+      <b>&lt;/change-item></b>
+      <b>&lt;change-item></b>
         &lt;change-completed>2018-06-06&lt;/change-completed>
         &lt;change-summary>Created new examples&lt;/change-summary>
-      &lt;/change-item>
+      <b>&lt;/change-item></b>
     &lt;/change-historylist>
   &lt;/prolog>
   &lt;body>
     &lt;!-- ... -->
   &lt;/body>
 &lt;/topic></codeblock>
-</fig>
+      </fig>
     </example>
   </refbody>
 </reference>
