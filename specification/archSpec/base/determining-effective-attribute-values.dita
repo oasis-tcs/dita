@@ -24,20 +24,25 @@ evaluated.</li>
 <li id="attributes-cascade">The attributes cascade.</li>
 <li>The processing-supplied default values are applied.</li>
 <li>After the attributes are resolved within the map, they cascade to referenced maps.
-<draft-comment author="Kristen J Eberlein" time="15 May 2019" audience="spec-editors">
-<p>The following note is problematic. It contains a normative statement, but we explicitly state
-that notes are non-normative.</p>
-<p>Discussed at TC call on 28 May 2019.</p>
-</draft-comment><note>The processing-supplied default values do not cascade to other maps. For
-example, most processors will supply a default value of <codeph>toc="yes"</codeph> when no
-<xmlatt>toc</xmlatt> attribute is specified. However, a processor-supplied default of
-<codeph>toc="yes"</codeph>
-<term outputclass="RFC-2119">MUST</term> not override a value of <codeph>toc="no"</codeph> that is
-set on a referenced map. If the <codeph>toc="yes"</codeph> value is explicitly specified, is given
-as a default through a DTD, XSD, RNG, or controlled values file, or cascades from a containing
-element in the map, it <term outputclass="RFC-2119">MUST</term> override a <codeph>toc="no"</codeph>
-setting on the referenced map. See <xref href="map-to-map-cascading-of-metadata.dita"/> for more
-details.</note></li>
+                            <draft-comment author="Kristen J Eberlein" time="15 May 2019"
+                            audience="spec-editors">
+                            <p>The following note is problematic. It contains a normative statement,
+                                but we explicitly state that notes are non-normative.</p>
+                            <p>Discussed at TC call on 28 May 2019.</p>
+                        </draft-comment><note>The processing-supplied default values do not cascade
+                            to other maps. For example, most processors will supply a default value
+                            of <codeph>toc="yes"</codeph> when no <xmlatt>toc</xmlatt> attribute is
+                            specified. However, a processor-supplied default of
+                                <codeph>toc="yes"</codeph>
+                            <term outputclass="RFC-2119">MUST NOT</term> override a value of
+                                <codeph>toc="no"</codeph> that is set on a referenced map. If the
+                                <codeph>toc="yes"</codeph> value is explicitly specified, is given
+                            as a default through a DTD, XSD, RNG, or controlled values file, or
+                            cascades from a containing element in the map, it <term
+                                outputclass="RFC-2119">MUST</term> override a
+                                <codeph>toc="no"</codeph> setting on the referenced map. See <xref
+                                href="map-to-map-cascading-of-metadata.dita"/> for more
+                            details.</note></li>
 <li>Repeat steps <xref href="#./common-start" type="li"/> to <xref href="#./common-end" type="li"/>
 for each referenced map.</li>
 <li>The attributes cascade within each referenced map.</li>
