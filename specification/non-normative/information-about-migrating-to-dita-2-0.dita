@@ -2,8 +2,193 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="information-about-migrating-to-dita-2-0">
     <title>Information about migrating to DITA 2.0</title>
-    <shortdesc></shortdesc>
+    <shortdesc>This topic includes information on required steps to migrate content from DITA 1.x to
+        DITA 2.0.</shortdesc>
     <conbody>
-        <p></p>
+        <draft-comment author="rodaande">Initial draft of this topic includes all changes from both
+            the base specification and the technical content specification.<p>It does not currently
+                cover the duplicate learning modules that were removed.</p></draft-comment>
+        <section id="section_zvz_hlk_xhc">
+            <title>Markup to migrate for DITA 2.0</title>
+            <p>The following elements and attributes have been removed from the grammar as obsolete.
+                They have been replaced by alternate markup or approaches.</p>
+            <ul id="ul_axr_klk_xhc">
+                <li>The <xmlatt>navtitle</xmlatt> attribute on the <xmlelement>topicref</xmlelement>
+                    element is replaced by the <xmlelement>navtitle</xmlelement> or
+                        <xmlelement>titlehint</xmlelement> element within
+                        <xmlelement>topicmeta</xmlelement>. Use <xmlelement>navtitle</xmlelement> if
+                    you wish to preserve the title in any table of contents; use
+                        <xmlelement>titlehint</xmlelement> if you only used this attribute as a hint
+                    about the topic purpose.</li>
+                <li>The <xmlatt>locktitle</xmlatt> attribute is removed from
+                        <xmlelement>topicref</xmlelement> element. To preserve the title locking
+                    behavior, ensure you use the </li>
+                <li>In maps, the <xmlatt>title</xmlatt> attribute on <xmlelement>map</xmlelement> is
+                    replaced by the <xmlelement>title</xmlelement> element inside of the map.</li>
+                <li>In maps, the <xmlatt>title</xmlatt> attribute on
+                        <xmlelement>reltable</xmlelement> elements is replaced by the
+                        <xmlelement>title</xmlelement> element inside of the relationshipt
+                    table.</li>
+                <li>In maps, all existing values for the <xmlatt>chunk</xmlatt> attribute are
+                    removed. In the attribute, the DITA 1.x token <keyword>to-content</keyword> is
+                    replaced by the token <keyword>combine</keyword>, and the
+                        <keyword>by-topic</keyword> token is replaced by the token
+                        <keyword>split</keyword>. Other tokens from 1.x are no longer
+                    supported.</li>
+                <li>The <xmlatt>alt</xmlatt> attribute on images is removed in favor of the
+                        <xmlelement>alt</xmlelement> element within the image.</li>
+                <li>The <xmlatt>longdescref</xmlatt> attribute on images is removed in favor of the
+                        <xmlelement>longdescref</xmlelement> element within the image.</li>
+                <li>The <xmlatt>print</xmlatt> attribute is removed in favor of the specialized
+                        <xmlatt>deliveryTarget</xmlatt> attribute.</li>
+                <li>The <xmlatt>copy-to</xmlatt> attribute is removed in favor of an updated
+                        <xmlelement>resourceid</xmlelement> element that can specify the copy
+                    target.</li>
+                <li>The <xmlelement>substeps</xmlelement> and <xmlelement>substep</xmlelement>
+                    elements are removed in favor of directly nesting the
+                        <xmlelement>steps</xmlelement> element.</li>
+                <li>The <xmlelement>topicset</xmlelement> and <xmlelement>topicsetref</xmlelement>
+                    elements are removed in favor of the generic <xmlelement>topicref</xmlelement>
+                    element.</li>
+                <li>The <xmlelement>index-sort-as</xmlelement> element is removed in favor of the
+                        <xmlelement>sort-as</xmlelement> element.</li>
+                <li>The <xmlelement>titlealts</xmlelement> element is removed. Alternate titles are
+                    now stored within the topic <xmlelement>prolog</xmlelement>.</li>
+                <li>The <xmlelement>linktext</xmlelement> element in maps is removed in favor of the
+                    new <xmlelement>linktitle</xmlelement> element. </li>
+                <li>The <xmlelement>itemgroup</xmlelement> element is removed in favor of the
+                        <xmlelement>div</xmlelement> element.</li>
+                <li>The <xmlelement>sectiondiv</xmlelement> element is removed in favor of the
+                        <xmlelement>div</xmlelement> element.</li>
+                <li>The <xmlelement>state</xmlelement> element is removed. It can be migrated to the
+                        <xmlelement>data</xmlelement> element (if used for metadata) or to
+                        <xmlelement>keyword</xmlelement> (if used as a content element).</li>
+                <li>The <xmlelement>unknown</xmlelement> element is removed in favor of the
+                        <xmlelement>required-cleanup</xmlelement> element.</li>
+                <li>The <xmlatt>otherjob</xmlatt> and <xmlatt>othertype</xmlatt> attributes are
+                    removed from the <xmlelement>audience</xmlelement> element in favor of the
+                        <xmlatt>job</xmlatt> and <xmlatt>type</xmlatt> attributes.</li>
+                <li>In the <xmlatt>type</xmlatt> attribute on the
+                        <xmlelement>hazardstatement</xmlelement> element, the values
+                        <keyword>attention</keyword>, <keyword>fastpath</keyword>,
+                        <keyword>important</keyword>, <keyword>note</keyword>,
+                        <keyword>other</keyword>, <keyword>remember</keyword>,
+                        <keyword>restriction</keyword>, and <keyword>tip</keyword> are removed. The
+                        <xmlatt>type</xmlatt> attribute on this element is now required. Valid
+                    values are now <keyword>caution</keyword>, <keyword>danger</keyword>,
+                        <keyword>notice</keyword>, and <keyword>warning</keyword>.</li>
+                <li>The location of <xmlelement>hazardsymbol</xmlelement> within a hazard statement
+                    has moved. It is now located directly within the
+                        <xmlelement>consequence</xmlelement>, <xmlelement>howtoavoid</xmlelement>,
+                        <xmlelement>messagepanel</xmlelement>, or
+                        <xmlelement>typeofhazard</xmlelement> elements.</li>
+                <li>The <textentity>nbsp</textentity> entity is removed from the grammar files in
+                    favor of using the character or a hexidecimal entity.</li>
+            </ul>
+        </section>
+        <section id="section_mgq_2lk_xhc">
+            <title>Obsolete markup to remove</title>
+            <p>The following elements and attributes have been removed from the grammar as obsolete.
+                They can be removed.</p>
+            <ul id="ul_ewl_slk_xhc">
+                <li>The <xmlelement>boolean</xmlelement> element is removed.</li>
+                <li>The <xmlelement>indextermref</xmlelement> element is removed.</li>
+                <li>The <xmlelement>index-base</xmlelement> element is removed.</li>
+                <li>The <xmlelement>data-about</xmlelement> element is removed.</li>
+                <li>The <xmlelement>longquoteref</xmlelement> element is removed.</li>
+                <li>The <xmlelement>anchor</xmlelement> element is removed from maps.</li>
+                <li>The <xmlelement>anchorref</xmlelement> element is removed from the map group
+                    domain.</li>
+                <li>The <xmlelement>hasInstance</xmlelement>, <xmlelement>hasKind</xmlelement>,
+                        <xmlelement>hasNarrower</xmlelement>, <xmlelement>hasPart</xmlelement>,
+                        <xmlelement>hasRelated</xmlelement>,
+                        <xmlelement>relatedSubjects</xmlelement>,
+                        <xmlelement>subjectRel</xmlelement>,
+                        <xmlelement>subjectRelTable</xmlelement>,
+                        <xmlelement>subjectRelHeader</xmlelement>, and
+                        <xmlelement>subjectRole</xmlelement> elements are removed from the subject
+                    scheme specialization.</li>
+                <li>The <xmlelement>glossAbbreviation</xmlelement>,
+                        <xmlelement>glossAlternateFor</xmlelement>,
+                        <xmlelement>glossPartOfSpeech</xmlelement>,
+                        <xmlelement>glossProperty</xmlelement>,
+                        <xmlelement>glossScopeNote</xmlelement>,
+                        <xmlelement>glossShortForm</xmlelement>, and
+                        <xmlelement>glossStatus</xmlelement> elements are removed from the
+                    glossentry specialization module.</li>
+                <li>The <xmlatt>collection-type</xmlatt> attribute is removed from the
+                        <xmlelement>reltable</xmlelement> and <xmlelement>relcolspec</xmlelement>
+                    elements.</li>
+                <li>The <xmlatt>keyref</xmlatt> attribute is removed from the
+                        <xmlelement>navref</xmlelement> element.</li>
+                <li>The <xmlatt>mapkeyref</xmlatt> attribute is removed from all elements.</li>
+                <li>The <xmlatt>xtrc</xmlatt> and <xmlatt>xtrf</xmlatt> attributes are removed from
+                    all elements.</li>
+                <li>In the <xmlatt>collection-type</xmlatt> attribute, the value
+                        <keyword>tree</keyword> is removed.</li>
+                <li>In the <xmlatt>role</xmlatt> attribute, the values <keyword>sample</keyword> and
+                        <keyword>external</keyword> are removed.</li>
+                <li>In the <xmlatt>type</xmlatt> attribute on the <xmlelement>lq</xmlelement>
+                    element, the values <keyword>internal</keyword> and <keyword>external</keyword>
+                    are removed.</li>
+                <li>In the <xmlatt>type</xmlatt> attribute on the <xmlelement>note</xmlelement>
+                    element, the value <keyword>fastpath</keyword> is removed.</li>
+                <li>The <xmlatt>lockmeta</xmlatt> attribute is removed from
+                        <xmlelement>topicmeta</xmlelement> in maps.</li>
+                <li>The <xmlatt>query</xmlatt> attribute is removed from all elements.</li>
+                <li>The <xmlatt>specentry</xmlatt> attribute is removed from all elements.</li>
+                <li>The <xmlatt>spectitle</xmlatt> attribute is removed from all elements.</li>
+                <li>The <xmlatt>anchorref</xmlatt> attribute is removed from the
+                        <xmlelement>map</xmlelement> element.</li>
+                <li>The <xmlatt>refcols</xmlatt> attribute is removed from
+                        <xmlelement>simpletable</xmlelement>.</li>
+                <li>The <xmlatt>archive</xmlatt>, <xmlatt>archivekeyrefs</xmlatt>,
+                        <xmlatt>classid</xmlatt>, <xmlatt>classidkeyref</xmlatt>,
+                        <xmlatt>codebase</xmlatt>, <xmlatt>codebasekeyref</xmlatt>,
+                        <xmlatt>declare</xmlatt>, and <xmlatt>standby</xmlatt> attributes are
+                    removed from the <xmlelement>object</xmlelement> element.</li>
+            </ul>
+        </section>
+        <section id="section_jfp_1sw_xhc">
+            <title>Removed specialization modules</title>
+            <p>The following specialization modules are no longer maintained as part of the OASIS
+                DITA specification. Although they are no longer defined within the specification,
+                updated versions of these modules can still be used with DITA 2.0.</p>
+            <ul id="ul_ym4_fsw_xhc">
+                <li>Machinery task domain</li>
+                <li>Classification map domain</li>
+                <li>Delayed conref domain</li>
+                <li>XNAL domain</li>
+            </ul>
+        </section>
+        <section id="section_jtp_tbx_xhc">
+            <title>Removed document type configurations</title>
+            <p>The following configurted shells are no longer maintained as part of the OASIS DITA
+                specification.</p>
+            <ul id="ul_ktp_tbx_xhc">
+                <li>Machinery task doctype configuration</li>
+                <li>Classification map doctype configuration</li>
+                <li>The "glossary.dtd" is removed in favor of the equivalent "glossentry.dtd"
+                    doctype configuration.</li>
+            </ul>
+        </section>
+        <section id="section_jry_cmk_xhc">
+            <title>Other migration concerns</title>
+            <p>The following markup may require migration, depending on how you make use of your
+                content.</p>
+            <ul id="ul_swg_2mk_xhc">
+                <li>If you are using <xmlatt>navtitle</xmlatt> or <xmlelement>navtitle</xmlelement>
+                    in maps as a hint, without using the <xmlatt>locktitle</xmlatt> attribute, you
+                    might need to switch to the new <xmlelement>titlehint</xmlelement> element.</li>
+                <li>The <xmlelement>syntaxdiagram</xmlelement> and <xmlelement>synph</xmlelement>
+                    elements have moved from the programming domain into a new syntax diagram
+                    domain. If you use these elements within your own configured shells, you will
+                    need to update the shells to include the new domain.</li>
+                <li>The <xmlatt>domains</xmlatt> attribute is replaced by
+                        <xmlatt>specializations</xmlatt>. This attribute is typically set to a
+                    default inside of configured doctype shells; migration will typically be
+                    required for shells but not for content.</li>
+            </ul>
+        </section>
     </conbody>
 </concept>
