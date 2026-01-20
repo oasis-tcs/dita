@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept xml:lang="en-us" id="example-condproc-values">
-  <title>Example: Flagging with <xmlatt>outputclass</xmlatt></title>
-  <shortdesc>In this scenario, the <xmlatt>outputclass</xmlatt> attribute in a DITAVAL document is
-    used to enable CSS based flagging.</shortdesc>
+  <title>Example: Flagging with <xmlatt>add-outputclass</xmlatt></title>
+  <shortdesc>In this scenario, the <xmlatt>add-outputclass</xmlatt> attribute in a DITAVAL document
+    is used to enable CSS based flagging.</shortdesc>
   <conbody>
     <p>An additional expectation for this scenario is that the processor rendering DITA content
       preserves <xmlatt>outputclass</xmlatt> values as CSS <xmlatt>class</xmlatt> tokens in HTML5.
@@ -12,8 +12,8 @@
     <p>The following code sample illustrates a simple DITAVAL document that sets up two rules for
       flagging using <xmlatt>outputclass</xmlatt>.</p>
     <codeblock>&lt;val>
-  &lt;prop action="flag" att="product" val="myProduct" outputclass="myProductToken"/>
-  &lt;prop action="flag" att="product" val="myOtherProduct" outputclass="myOtherProductToken"/>
+  &lt;prop action="flag" att="product" val="myProduct" add-outputclass="myProductToken"/>
+  &lt;prop action="flag" att="product" val="myOtherProduct" add-outputclass="myOtherProductToken"/>
 &lt;/val></codeblock>
     <p>Now, assume the following DITA content is processed using the rules from that DITAVAL
       document:<codeblock>&lt;ol>
@@ -28,7 +28,7 @@
         <li>The first item does not specify any conditional processing attributes, and is handled
           normally.</li>
         <li>The second item specifies <codeph>product="myProduct"</codeph>. Based on the DITAVAL
-          document, this results in a setting on <codeph>outputclass="myProductToken"</codeph>. The
+          document, this results in a setting of <codeph>outputclass="myProductToken"</codeph>. The
           content is processed as if the original element was: <codeph>&lt;li product="myProduct"
             outputclass="myProductToken"></codeph>.</li>
         <li>The third item specifies <codeph>product="myProduct"</codeph>, but already has an
@@ -38,7 +38,7 @@
           value supplied by the DITAVAL document is placed before any value already in the
           source.</li>
         <li>The fourth item specifies <codeph>product="myOtherProduct"</codeph>. Based on the
-          DITAVAL document, this results in a setting on
+          DITAVAL document, this results in a setting of
             <codeph>outputclass="myOtherProductToken"</codeph>. The content is processed as if the
           original element was: <codeph>&lt;li product="myOtherProduct"
             outputclass="myOtherProductToken"></codeph>.</li>
