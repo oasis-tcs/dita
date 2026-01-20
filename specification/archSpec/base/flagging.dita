@@ -10,10 +10,17 @@
    applies to a specific audience or operating system. Flagging can also draw a reader's attention
    to content that has been marked as being revised.</p>
   <p>When deciding whether to flag a particular element, a processor evaluates each value. Wherever
-   an attribute value that has been set as flagged appears (for example,
-    <codeph>audience="administrator"</codeph>), the processor adds the flag. When multiple flags
-   apply to a single element, multiple flags are rendered, typically in the order that they are
-   encountered.</p>
+      an attribute value that has been set as flagged appears (for example,
+        <codeph>audience="administrator"</codeph>), the processor adds the flag. When multiple flags
+      apply to a single element, multiple flags are rendered, typically in the order that they are
+      encountered.</p>
+    <!--Following paragraph added with #964, changing "outputclass" to "add-outputclass"-->
+    <p>Flagging behavior is determined based on the DITAVAL rule that matches a metadata attribute
+      value. Flagging options for the content of an element include setting a text style, color, or
+      background color. It also includes the ability to place an image or text at the start or end
+      of the flagged content. If the <xmlatt>add-outputclass</xmlatt> attribute is present in the
+      matching DITAVAL rule, the flagged element is treated as if the specified value is added to
+      its <xmlatt>outputclass</xmlatt> attribute.</p>
   <p>When the same element evaluates as both flagged and included, the element is both flagged and
    included. When the same element evaluates as both flagged and filtered (for example, flagged
    because of a value for the <xmlatt>audience</xmlatt> attribute and filtered because of a value
