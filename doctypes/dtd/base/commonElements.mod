@@ -1741,7 +1741,6 @@
 <!ATTLIST  index-see      class CDATA "- topic/index-see "  >
 <!ATTLIST  index-see-also class CDATA "- topic/index-see-also ">
 <!ATTLIST  indexterm      class CDATA "- topic/indexterm "  >
-<!ATTLIST  index-base     class CDATA "- topic/index-base " >
 <!ATTLIST  keyword        class CDATA "- topic/keyword "    >
 <!ATTLIST  li             class CDATA "- topic/li "         >
 <!ATTLIST  lines          class CDATA "- topic/lines "      >
