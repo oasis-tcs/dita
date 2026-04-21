@@ -1,36 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept xml:lang="en-us" id="table-of-contents">
- <title>Table of contents</title>
- <shortdesc>Processors can generate a table of contents (TOC) based on the hierarchy of the elements
-  in a DITA map. By default, each <xmlelement>topicref</xmlelement> element in a map represents a
-  node in the TOC. These topic references define a navigation tree.</shortdesc>
+ <title>Navigation trees (Tables of contents)</title>
+ <shortdesc>Processors can produce navigation structures, such as tables of contents, based on the hierarchy of the elements in a DITA map. By default, each normal-role topic reference in a map represents an entry in a navigation tree. The
+    most common presentation form of navigation tree is a Table of Contents (TOC), but navigation structures derived from DITA maps may take many forms and be rendered  in many different ways.</shortdesc>
  <conbody>
-  <p>When a map contains a topic reference to a map (often called a map reference), processors
-      integrate the navigation tree of the referenced map with the navigation tree of the
-      referencing map at the point of reference. In this way, a deliverable can be compiled from
-      multiple DITA maps.</p>
-    <note conkeyref="reuse-general/mapref-with-child-elements"/>
-  <p>The effective navigation title is used for the value of the TOC node. A TOC node is generated
-   for every <xmlelement>topicref</xmlelement> element that references a topic or specifies a
-   navigation title, except in the following cases:</p>
-  <ul>
-   <li>The <xmlatt>processing-role</xmlatt> attribute that is specified on the
-     <xmlelement>topicref</xmlelement> element or an ancestor element is set to
-    "resource-only".</li>
-   <li>Conditional processing is used to filter out the node or an ancestor node.</li>
-   <li>There is no information from which a TOC entry can be constructed; there is no referenced
-    resource or navigation title.</li>
-   <li>The node is a <xmlelement>topicgroup</xmlelement> element, even if it specifies a navigation
-    title.</li>
-  </ul>
-  <p>To suppress a <xmlelement>topicref</xmlelement> element from appearing in the TOC, set the
-    <xmlatt>toc</xmlatt> attribute to "no". The value of the <xmlatt>toc</xmlatt> attribute cascades
-   to child <xmlelement>topicref</xmlelement> elements, so if <xmlatt>toc</xmlatt> is set to "no" on
-   a particular <xmlelement>topicref</xmlelement>, all children of the
-    <xmlelement>topicref</xmlelement> element are also excluded from the TOC. If a child
-    <xmlelement>topicref</xmlelement> overrides the cascading operation by specifying
-    <codeph>toc="yes"</codeph>, then the node that specifies <codeph>toc="yes"</codeph> appears in
-   the TOC (minus the intermediate nodes that set <xmlatt>toc</xmlatt> to "no").</p>
+    <p>Navigation trees are produced from the effective resolved map defined by the root map that is input to the production process, reflecting the resolving of any map references, the cascading of attributes and metadata, and any other
+      DITA-defined processing for DITA maps.</p>
+    <p>Each entry in a generated navigation structure SHOULD reflect the effective navigation title of the target resource if resource titles are used in the rendered navigation structure. By default, the navigation title for a navigation
+      entry is defined by the "navigation" role title alternative, if present. Processors can use other alternative title roles to determine effective navigation titles but should use "navigation"-role titles if no more specific alternative
+      title is available. See <xref
+        keyref="alternativeTitles-d"/>.<note>For example, a processor that produces "metro map" navigation structures for guided path navigation and recognizes the alternative title role "guided-path-title" can use guided path titles even
+        if a resource also defines a "navigation"-role alternative title. But if a resource defines only a "navigation"-role title, that title would be used in the metro map navigation.</note></p>
+    <p>Topic references in the effective resolved map SHOULD result in navigation entries unless they satisfy any of the following conditions:<ul
+        id="ul_xdm_h1s_r2c">
+        <li>The effective <xmlatt>processing-role</xmlatt> value is <codeph>resource-only</codeph>.</li>
+        <li>The effective <xmlatt>toc</xmlatt> value is "no".</li>
+        <li>The topic reference is filtered out.</li>
+        <li>The topic reference element is <xmlelement>topicgroup</xmlelement> or a specialization of <xmlelement>topicgroup</xmlelement>, even if it specifies a navigation title.</li>
+        <li>There is no information from which to construct a navigation entry: there is no referenced resource or effective navigation title.</li>
+      </ul></p>
+    <p>The effective values of <xmlatt>processing-role</xmlatt> and <xmlatt>toc</xmlatt> are determined by attribute cascading. See <xref
+        keyref="cascading-of-attributes-from-map-to-map"/>.</p>
  </conbody>
 </concept>

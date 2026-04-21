@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="alternative-title-examples">
+ <title>Alternative title examples</title>
+ <shortdesc>Non-normative examples of alternative titles</shortdesc>
+ <conbody>
+  <section
+   id="section_o3v_qwf_s2c">
+   <title>Examples: Navigation title precedence</title>
+   <p>Consider the following series of topic references to topics:</p>
+   <codeblock>&lt;topicref href="topics.dita#one"/>
+&lt;topicref href="topics.dita#two">
+  &lt;topicmeta>
+    &lt;titlealt title-role="navigation">Topic Two (Map navigation title)&lt;/titlealt>
+  &lt;/topicmeta>
+&lt;/topicref>
+&lt;topicref href="topics.dita#three">
+  &lt;topicmeta>
+    &lt;titlealt title-role="linking">Topic Three (Map linking title)&lt;/titlealt>
+  &lt;/topicmeta>
+&lt;/topicref>
+&lt;topicref href="topics.dita#four">
+  &lt;topicmeta>
+    &lt;titlealt title-role="linking">Topic Four (Map linking title)&lt;/titlealt>
+  &lt;/topicmeta>
+&lt;/topicref></codeblock>
+   <p>Here is the ditabase document containing those topics:</p>
+   <codeblock>&lt;dita>
+  &lt;topic id="one">
+    &lt;title>Topic One&lt;/title>
+  &lt;/topic>
+  &lt;topic id="two">
+    &lt;title>Topic Two&lt;/title>
+    &lt;prolog>
+      &lt;titlealt title-role="navigation">Topic Two (Topic navigation title)&lt;/titlealt>
+    &lt;/prolog>
+  &lt;/topic>
+  &lt;topic id="three">
+    &lt;title>Topic Three&lt;/title>
+  &lt;/topic>
+  &lt;topic id="four">
+    &lt;title>Topic Four&lt;/title>
+    &lt;prolog>
+      &lt;titlealt title-role="navigation">Topic Four (Topic navigation title)&lt;/titlealt>
+    &lt;/prolog>
+  &lt;/topic>
+&lt;/dita></codeblock>
+   <p>The resulting navigation structure would be as follows:</p>
+   <ol
+    id="ul_z2w_rx5_dgb">
+    <li><b>Topic One</b> — The navigation title is the title of the topic, as neither the topicref nor the topic specify a navigation title.</li>
+    <li><b>Topic Two (Map navigation title)</b> — The navigation title comes from the topicref, as its navigation title takes precedence over that in the topic.</li>
+    <li><b>Topic Three (Map linking title)</b> — The navigation title comes from the "linking" alternative title in the topicref, because  "linking" role titles serve as the fallback for navigation titles when no <codeph>navigation</codeph>
+     alternative title is provided.</li>
+    <li><b>Topic Four (Topic navigation title)</b> — The navigation title comes from the topic. Even though the map specifies a <xmlelement>titlealt</xmlelement> with a role of <codeph>linking</codeph>, and normally maps take precedence, a
+      <codeph>linking</codeph> alternative title is only used for navigation when there is no <codeph>navigation</codeph> alternative title available. In this case, the one from the topic is present, and is therefore used. To override the
+     topic's navigation title in this case, the topic reference would have to explicitly provide a <codeph>navigation</codeph> alternative title. The <codeph>linking</codeph> title in the map still applies as the resource's linking title,
+     just not its navigation title.</li>
+   </ol>
+  </section>
+  <section
+   id="section_p3v_qwf_s2c">
+   <title>Example: Reconciling map and topic alternative titles</title>
+   <p>A <xmlelement>topicref</xmlelement> contains the following titles:</p>
+   <codeblock>&lt;topicref href="topic.dita">
+  &lt;topicmeta>
+    &lt;titlealt title-role="breadcrumbTitle">Doin' Stuff&lt;/titlealt>
+    &lt;titlealt title-role="longTitle">That thing you do when there's stuff that needs doing.&lt;/titlealt>
+  &lt;/topicmeta.
+&lt;/topicref></codeblock>
+   <p>The referenced topic has the following prolog:</p>
+   <codeblock>&lt;prolog>
+  &lt;titlealt title-role="subtitle">Doing Stuff&lt;/titlealt>
+  &lt;titlealt title-role="breadcrumbTitle flipbookTitle">Stuff&lt;/titlealt>
+&lt;/prolog></codeblock>
+   <p>The effective set of alternative titles reflects the titles from the topicref followed by the titles from the topic. The "first title role has precendence" rule is used to determine the effective title for each role:</p>
+   <codeblock>&lt;titlealt title-role="breadcrumbTitle">Doin' Stuff&lt;/titlealt>
+&lt;titlealt title-role="longTitle">That thing you do when there's stuff that needs doing.&lt;/titlealt>
+&lt;titlealt title-role="subtitle">Doing Stuff&lt;/titlealt>
+&lt;titlealt title-role="breadcrumbTitle flipbookTitle">Stuff&lt;/titlealt></codeblock>
+   <p>Note that <codeph>breadcrumbTitle</codeph> is specified in both the topicref and the topic, and the topicref's value takes precedence. However, that same alternative title in the topic specifies an additional role of
+     <codeph>flipbookTitle</codeph>, which is not overridden by the map, and so should be preserved.</p>
+   <p>The equivalent merged alternative titles, with duplicates removed, is:</p>
+   <codeblock>&lt;titlealt title-role="breadcrumbTitle">Doin' Stuff&lt;/titlealt>
+&lt;titlealt title-role="longTitle">That thing you do when there's stuff that needs doing.&lt;/titlealt>
+&lt;titlealt title-role="subtitle">Doing Stuff&lt;/titlealt>
+&lt;titlealt title-role="flipbookTitle">Stuff&lt;/titlealt></codeblock>
+  </section>
+  <section
+   id="section_q3v_qwf_s2c">
+   <title>Example: Keyrefs and alternative titles</title>
+   <p>Consider the following two topic references:</p>
+   <codeblock>&lt;topicref keys="a">
+  &lt;topicmeta>
+    &lt;titlealt title-role="navigation">Navigation Title&lt;/titlealt>
+  &lt;/topicmeta>
+&lt;/topicref>
+&lt;topicref keyref="a">
+  &lt;topicmeta>
+    &lt;titlealt title-role="navigation">Navigation Title from Keyref&lt;/titlealt>
+    &lt;titlealt title-role="linking">Linking Title from Keyref&lt;/titlealt>
+  &lt;/topicmeta>
+&lt;/topicref></codeblock>
+   <p>The resolved titles would look something like this:</p>
+   <codeblock>
+&lt;titlealt title-role="linking">Linking Title from Keyref&lt;/titlealt>
+&lt;titlealt title-role="navigation">Navigation Title from Keyref&lt;/titlealt>
+&lt;titlealt title-role="navigation">Navigation Title&lt;/titlealt>
+</codeblock>
+   <p>That is, the "local" alternative titles in the referencing topicref have precedence over those in the refernenced topicref. In cases where only a single alternative title of a given role can be used, the first takes precedence, so the
+     <codeph>navigation</codeph> title from the referenced topicref has no effect.</p>
+  </section>
+  <section
+   id="section_n3v_qwf_s2c">
+   <title>Example: Custom title roles</title>
+   <p>A content architect could create a Topic specialization with custom <xmlelement>titlealt</xmlelement> specializations <xmlelement>windowtitle</xmlelement> and <xmlelement>breadcrumbtitle</xmlelement>. These specializations would
+    specify default <xmlatt>title-role</xmlatt> values of <codeph>window</codeph> and <codeph>breadcrumb</codeph>, respectively, so that authors do not have to specify those roles explicitly.</p>
+   <p>Content containing these specializations could look like the following.</p>
+   <codeblock base="ci-xml">&lt;helpTopic id="topic167">
+  &lt;title>Doing the Thing in the Place where the Stuff Is&lt;/title>
+  &lt;prolog>
+    &lt;windowtitle>Doing Things&lt;/windowtitle>
+    &lt;breadcrumbtitle>Things&lt;/breadcrumbtitle>
+  &lt;/prolog></codeblock>
+   <p>They could also incorporate these elements into their map document type shell, enabling map authors to override the values in topics.</p>
+   <codeblock base="ci-xml">&lt;topicref href="topic167.dita">
+  &lt;topicmeta>
+    &lt;breadcrumbtitle>Thing Doing&lt;/breadcrumbtitle>
+  &lt;/topicmeta>
+&lt;/topicref></codeblock>
+  </section>
+ </conbody>
+</concept>
