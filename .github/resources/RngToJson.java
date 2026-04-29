@@ -34,6 +34,9 @@ public final class RngToJson {
     private static final String RNG_NS = "http://relaxng.org/ns/structure/1.0";
     private static final String ANN_NS = "http://relaxng.org/ns/compatibility/annotations/1.0";
     private static final String CAT_NS = "urn:oasis:names:tc:entity:xmlns:xml:catalog";
+    private static final String MATHML_NS = "http://www.w3.org/1998/Math/MathML";
+    private static final String SVG_NS = "http://www.w3.org/2000/svg";
+    private static final String RNG_INHERITED_NS_USER_DATA = "rngInheritedNs";
 
     private RngToJson() {
     }
@@ -80,7 +83,7 @@ public final class RngToJson {
 
         for (Element element : forest.elementNodes) {
             String elementName = element.getAttribute("name");
-            if (elementName.isEmpty()) {
+            if (elementName.isEmpty() || isIgnoredElement(element)) {
                 continue;
             }
             Map<String, String> attrs = attrsByElement.computeIfAbsent(elementName, ignored -> new TreeMap<>());
@@ -137,6 +140,9 @@ public final class RngToJson {
         }
 
         if (isRng(node, "element")) {
+            if (isIgnoredElement(node)) {
+                return;
+            }
             for (Element child : childElements(node)) {
                 if (!isRng(child, "element")) {
                     collectAttrsFromPattern(child, ctx, attrs, seenRefs);
@@ -403,6 +409,31 @@ public final class RngToJson {
         return RNG_NS.equals(node.getNamespaceURI()) && localName.equals(node.getLocalName());
     }
 
+    private static boolean isIgnoredElement(Element element) {
+        String elementNamespace = rngElementNamespace(element);
+        return MATHML_NS.equals(elementNamespace) || SVG_NS.equals(elementNamespace);
+    }
+
+    private static String rngElementNamespace(Element element) {
+        String name = element.getAttribute("name");
+        int colon = name.indexOf(':');
+        if (colon > 0) {
+            String namespaceUri = element.lookupNamespaceURI(name.substring(0, colon));
+            return namespaceUri == null ? "" : namespaceUri;
+        }
+
+        for (Node node = element; node instanceof Element current; node = node.getParentNode()) {
+            if (current.hasAttribute("ns")) {
+                return current.getAttribute("ns");
+            }
+        }
+        Object inheritedNamespace = element.getUserData(RNG_INHERITED_NS_USER_DATA);
+        if (inheritedNamespace instanceof String namespace) {
+            return namespace;
+        }
+        return "";
+    }
+
     private static String normalizeAttrValue(String attrName, String value) {
         if ("class".equals(attrName)) {
             return value;
@@ -533,6 +564,11 @@ public final class RngToJson {
         }
 
         private void ingest(Path path) throws IOException, ParserConfigurationException, SAXException {
+            ingest(path, "");
+        }
+
+        private void ingest(Path path, String inheritedNamespace)
+                throws IOException, ParserConfigurationException, SAXException {
             Path absPath = path.toAbsolutePath().normalize();
             if (!visitedFiles.add(absPath)) {
                 return;
@@ -541,6 +577,7 @@ public final class RngToJson {
             Document doc = newDocumentBuilder().parse(absPath.toFile());
             Element root = doc.getDocumentElement();
             Path baseDir = absPath.getParent();
+            String effectiveNamespace = root.hasAttribute("ns") ? root.getAttribute("ns") : inheritedNamespace;
 
             for (Element define : descendants(root, RNG_NS, "define")) {
                 String name = define.getAttribute("name");
@@ -551,19 +588,20 @@ public final class RngToJson {
 
             elementNodes.addAll(descendants(root, RNG_NS, "element").stream()
                     .filter(element -> element.hasAttribute("name"))
+                    .peek(element -> element.setUserData(RNG_INHERITED_NS_USER_DATA, effectiveNamespace, null))
                     .collect(Collectors.toCollection(LinkedHashSet::new)));
 
             for (Element include : descendants(root, RNG_NS, "include")) {
                 String href = include.getAttribute("href");
                 if (!href.isEmpty()) {
-                    ingest(resolveHref(href, baseDir, catalogs));
+                    ingest(resolveHref(href, baseDir, catalogs), effectiveNamespace);
                 }
             }
 
             for (Element externalRef : descendants(root, RNG_NS, "externalRef")) {
                 String href = externalRef.getAttribute("href");
                 if (!href.isEmpty()) {
-                    ingest(resolveHref(href, baseDir, catalogs));
+                    ingest(resolveHref(href, baseDir, catalogs), effectiveNamespace);
                 }
             }
         }

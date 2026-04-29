@@ -34,6 +34,8 @@ import org.xml.sax.helpers.DefaultHandler;
  * entity references in default literals.
  */
 public final class DtdToJson {
+    private static final List<String> IGNORED_ELEMENT_PREFIXES = List.of("svg:", "m:", "mml:", "mathml:");
+
     private static final String DECL_HANDLER_PROPERTY =
             "http://xml.org/sax/properties/declaration-handler";
 
@@ -198,6 +200,10 @@ public final class DtdToJson {
         return left.compareTo(right);
     }
 
+    private static boolean isIgnoredElementName(String name) {
+        return IGNORED_ELEMENT_PREFIXES.stream().anyMatch(name::startsWith);
+    }
+
     private static String toJson(Map<String, Map<String, String>> report) {
         StringBuilder out = new StringBuilder();
         out.append("{\n");
@@ -282,6 +288,9 @@ public final class DtdToJson {
 
         @Override
         public void elementDecl(String name, String model) {
+            if (isIgnoredElementName(name)) {
+                return;
+            }
             elements.add(name);
         }
 
@@ -292,6 +301,9 @@ public final class DtdToJson {
                 String type,
                 String mode,
                 String value) {
+            if (isIgnoredElementName(elementName)) {
+                return;
+            }
             elements.add(elementName);
             String reportValue = value == null ? type : value;
             attrsByElement
