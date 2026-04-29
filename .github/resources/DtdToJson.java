@@ -149,7 +149,18 @@ public final class DtdToJson {
         if ("class".equals(attrName)) {
             return value;
         }
+        if ("specializations".equals(attrName)) {
+            return sortWhitespaceTokens(value);
+        }
         return sortEnumerationValue(value.trim().replaceAll("\\s+", " "));
+    }
+
+    private static String sortWhitespaceTokens(String value) {
+        return Arrays.stream(value.trim().split("\\s+"))
+                .filter(token -> !token.isEmpty())
+                .distinct()
+                .sorted()
+                .collect(Collectors.joining(" "));
     }
 
     private static String sortEnumerationValue(String value) {
