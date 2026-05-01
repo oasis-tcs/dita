@@ -77,6 +77,13 @@ def merge_reports(paths: Iterable[Path]) -> dict[str, set[str]]:
     return element_attr_map
 
 
+def load_excluded_elements(paths: Iterable[Path]) -> set[str]:
+    excluded: set[str] = set()
+    for path in paths:
+        excluded.update(load_report(path).keys())
+    return excluded
+
+
 def build_report(
     json_files: Iterable[Path],
     exclude_elements: set[str],
@@ -129,6 +136,16 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         help="Element name to exclude. Can be provided multiple times (default includes no-topic-nesting).",
     )
     parser.add_argument(
+        "--exclude-json",
+        action="append",
+        default=[],
+        type=Path,
+        help=(
+            "JSON report whose element names should be excluded from the final report. "
+            "Can be provided multiple times."
+        ),
+    )
+    parser.add_argument(
         "--exceptions-threshold",
         type=int,
         default=10,
@@ -146,9 +163,11 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
 def main(argv: list[str]) -> int:
     args = parse_args(argv)
     try:
+        exclude_elements = set(args.exclude_element)
+        exclude_elements.update(load_excluded_elements(args.exclude_json))
         report_list = build_report(
             json_files=args.json_files,
-            exclude_elements=set(args.exclude_element),
+            exclude_elements=exclude_elements,
             exceptions_threshold=args.exceptions_threshold,
         )
     except ValueError as exc:
