@@ -174,24 +174,24 @@ def main(argv: list[str]) -> int:
         print(exc, file=sys.stderr)
         return 2
 
-    print('<?xml version="1.0" encoding="UTF-8"?>\n')
-    print("<!DOCTYPE reference PUBLIC \"-//OASIS//DTD DITA 2.0 Reference//EN\" \"reference.dtd\">\n")
-    print("<reference id=\"attributes-a-to-z\">\n")
-    print("<title>DITA Atrributes, A to Z</title>\n")
-    print("<shortdesc>This topic includes a simple list of all attributes defined on all elements in this specification.</shortdesc>\n")
-    print("<refbody><section>\n")
+    print('<?xml version="1.0" encoding="UTF-8"?>')
+    print("<!DOCTYPE reference PUBLIC \"-//OASIS//DTD DITA 2.0 Reference//EN\" \"reference.dtd\">")
+    print("<reference id=\"attributes-a-to-z\">")
+    print("<title>DITA Atrributes, A to Z</title>")
+    print("<shortdesc>This topic includes a simple list of all attributes defined on all elements in this specification.</shortdesc>")
+    print("<refbody><section>")
     if args.spec == "techcomm":
         print("<p>This report includes only elements from the technical communications specification; it does not include elements from the base specification.</p>")
     else:
         print("<p>The following exceptions apply:</p>")
-        print("<ul>\n")
+        print("<ul>")
         print("<li>DITAVAL elements are not included.</li>")
         print("<li>The <xref keyref=\"elements-no-topic-nesting\"/> element is not included.</li>")
-        print("</ul>\n")
-    print('<note type="reminder">Some attribtues are defined differently for different elements; ')
-    print('check the element description for details on values and any expected processing.</note>\n')
+        print("</ul>")
+    print('<note>Some attribtues are defined differently for different elements; ')
+    print('check the element description for details on values and any expected processing.</note>')
     print(report_list)
-    print("</section></refbody>\n")
+    print("</section></refbody>")
     print("</reference>")
     return 0
 
