@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Generate an attribute coverage report from RngToJson JSON output.
 
-Output format matches doctypes/dtd/rng_attribute_report.py:
-- HTML <ul>/<li> list
-- Attribute names wrapped in <xmlatt>...</xmlatt>
-- Element names rendered as <xref keyref="elements-<name>"/>
+Output format is a DITA reference topic:
+- Uses a DITA simple list
+- Each attribute name is wrapped in <xmlatt>...</xmlatt>
+- Each element name is linked using keyref, as <xref keyref="elements-<name>"/>
+- Additional information is included about the usage of the list
 """
 
 from __future__ import annotations
@@ -91,7 +92,7 @@ def build_report(
         for attr in attrs:
             attr_to_elements[attr].add(elem)
 
-    lines: list[str] = ["<ul>"]
+    lines: list[str] = ["<sl id=\"attributelist\">"]
 
     for attr in sorted(attr_to_elements, key=str.lower):
         present = attr_to_elements[attr]
@@ -99,15 +100,15 @@ def build_report(
         attr_xml = f"<xmlatt>{attr}</xmlatt>"
 
         if not missing:
-            lines.append(f"  <li>{attr_xml} (All elements)</li>")
+            lines.append(f"  <sli>{attr_xml}: All elements</sli>")
         elif len(missing) < exceptions_threshold:
             exc = ", ".join(element_ref(e) for e in missing)
-            lines.append(f"  <li>{attr_xml} (Missing: {exc})</li>")
+            lines.append(f"  <sli>{attr_xml}: All elements except {exc})</sli>")
         else:
             elems = ", ".join(element_ref(e) for e in sorted(present, key=str.lower))
-            lines.append(f"  <li>{attr_xml}: {elems}</li>")
+            lines.append(f"  <sli>{attr_xml}: {elems}</sli>")
 
-    lines.append("</ul>")
+    lines.append("</sl>")
     return "\n".join(lines)
 
 
@@ -139,7 +140,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
 def main(argv: list[str]) -> int:
     args = parse_args(argv)
     try:
-        report = build_report(
+        report_list = build_report(
             json_files=args.json_files,
             exclude_elements=set(args.exclude_element),
             exceptions_threshold=args.exceptions_threshold,
@@ -148,7 +149,22 @@ def main(argv: list[str]) -> int:
         print(exc, file=sys.stderr)
         return 2
 
-    print(report)
+    print('<?xml version="1.0" encoding="UTF-8"?>\n')
+    print("<!DOCTYPE reference PUBLIC \"-//OASIS//DTD DITA 2.0 Reference//EN\" \"reference.dtd\">\n")
+    print("<reference id=\"base-attributes-a-to-z\">\n")
+    print("<title>DITA Atrributes, A to Z</title>\n")
+    print("<shortdesc>This topic includes a simple list of all attributes defined on all elements in this specification, with a few exceptions.</shortdesc>\n")
+    print("<refbody><section>\n")
+    print("<p>The following exceptions apply:</p>")
+    print("<ul>\n")
+    print("<li>DITAVAL elements are not included.</li>")
+    print("<li>The <xref keyref=\"elements-no-topic-nesting\"/> element is not included.</li>")
+    print("</ul>\n")
+    print('<note type="reminder">Some attribtues are defined differently for different elements; ')
+    print('check the element description for details on values and any expected processing.</note>\n')
+    print(report_list)
+    print("</section></refbody>\n")
+    print("</reference>")
     return 0
 
 
