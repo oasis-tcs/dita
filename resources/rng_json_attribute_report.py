@@ -134,6 +134,12 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         default=10,
         help="If fewer than this many elements are missing an attribute, list Missing exceptions (default: 10).",
     )
+    parser.add_argument(
+        "--spec",
+        choices=("base", "techcomm"),
+        default="base",
+        help="Specification scope for the report. Use techcomm to add the technical communications note (default: base).",
+    )
     return parser.parse_args(argv)
 
 
@@ -151,15 +157,18 @@ def main(argv: list[str]) -> int:
 
     print('<?xml version="1.0" encoding="UTF-8"?>\n')
     print("<!DOCTYPE reference PUBLIC \"-//OASIS//DTD DITA 2.0 Reference//EN\" \"reference.dtd\">\n")
-    print("<reference id=\"base-attributes-a-to-z\">\n")
+    print("<reference id=\"attributes-a-to-z\">\n")
     print("<title>DITA Atrributes, A to Z</title>\n")
-    print("<shortdesc>This topic includes a simple list of all attributes defined on all elements in this specification, with a few exceptions.</shortdesc>\n")
+    print("<shortdesc>This topic includes a simple list of all attributes defined on all elements in this specification.</shortdesc>\n")
     print("<refbody><section>\n")
-    print("<p>The following exceptions apply:</p>")
-    print("<ul>\n")
-    print("<li>DITAVAL elements are not included.</li>")
-    print("<li>The <xref keyref=\"elements-no-topic-nesting\"/> element is not included.</li>")
-    print("</ul>\n")
+    if args.spec == "techcomm":
+        print("<p>This report includes only elements from the technical communications specification; it does not include elements from the base specification.</p>")
+    else:
+        print("<p>The following exceptions apply:</p>")
+        print("<ul>\n")
+        print("<li>DITAVAL elements are not included.</li>")
+        print("<li>The <xref keyref=\"elements-no-topic-nesting\"/> element is not included.</li>")
+        print("</ul>\n")
     print('<note type="reminder">Some attribtues are defined differently for different elements; ')
     print('check the element description for details on values and any expected processing.</note>\n')
     print(report_list)
