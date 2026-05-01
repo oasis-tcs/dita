@@ -19,6 +19,15 @@ from typing import Any, Iterable
 
 Report = dict[str, dict[str, str]]
 
+DEFAULT_DITA_ELEMENT_ATTRS: dict[str, str] = {
+    "dir": "(lro | ltr | rlo | rtl | -dita-use-conref-target)",
+    "ditaarch:DITAArchVersion": "2.0",
+    "specializations": "@props/audience @props/deliveryTarget @props/platform @props/product @props/otherprops",
+    "translate": "(no | yes | -dita-use-conref-target)",
+    "xml:lang": "CDATA",
+    "xmlns:ditaarch": "http://dita.oasis-open.org/architecture/2005/",
+}
+
 
 def element_ref(name: str) -> str:
     return f'<xref keyref="elements-{name}"/>'
@@ -60,6 +69,10 @@ def merge_reports(paths: Iterable[Path]) -> dict[str, set[str]]:
         report = load_report(path)
         for element_name, attrs in report.items():
             element_attr_map[element_name].update(attrs.keys())
+
+    if "dita" not in element_attr_map:
+        element_attr_map["dita"].update(DEFAULT_DITA_ELEMENT_ATTRS.keys())
+
     return element_attr_map
 
 
