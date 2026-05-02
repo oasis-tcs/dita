@@ -4,36 +4,53 @@
 <concept id="conformance" xml:lang="en-us">
   <title>Conformance</title>
   <shortdesc>An implementation is a conforming implementation of DITA if the implementation meets
-    the conditions that are described in Section 4.1. A document is a conforming DITA document if the
-    document meets the conditions in that are described in Section 4.2.</shortdesc>
+    the conditions that are described in Section 10.1. A document is a conforming DITA document if
+    the document meets the conditions in that are described in Section 10.2.</shortdesc>
   <conbody>
 <p>Conformance to the DITA specification allows documents and document types that are used with
 different processors to produce the same or similar results with little or no reimplementation or
 modification. Conformance also allows DITA specializations to work with any conforming DITA
 application, with at least the same level of support available to unspecialized documents.</p>
     <section id="implementations">
-<title>4.1 Conformance of DITA implementations</title>
+<title>10.1 Conformance of DITA implementations</title>
 <p>The DITA specification defines several core features, as summarized in the following list. Any
 implementation that supports a feature <term outputclass="RFC-2119">MUST</term> conform to all rules
 laid out in the section that describes the feature.</p>
-<draft-comment author="robander" audience="spec-editors" time="2017">It's quite possible the two
-        keyref items should be combined. Left separate just because I could envision applications
-        that support keys, but not keyscope.<p>Also possible the pulling/pushing of conref items
-          should be combined. But I can more easily envision a distinction here - an editor that
-          renders content references inline cannot know all instances of all topics that would
-            <i>push</i> content into the same topic.</p></draft-comment>
 <ol>
-<li>Specialization-based processing, as described in X.</li>
-<li>Resolving links to elements in DITA documents, as described in section X.</li>
-<li>Resolving <xmlatt>keyref</xmlatt> attributes to a key defined in a map, as described in section
-X.</li>
-<li>Resolving <xmlatt>keyref</xmlatt> attributes across key scopes, as described in section X.</li>
-<li>Pulling content references, as described in <xref keyref="conref"/></li>
-<li>Pushing content references, as described in <xref keyref="conref"/>.</li>
+  <li>Specialization-based processing, as described in <xref
+            href="../archSpec/base/specialization-class-attribute.dita"/>.</li>
+<!--<li>Resolving links to elements in DITA documents, as described in <xref href="../langRef/base/xref.dita"/> and <xref href="../langRef/base/linktext.dita"/>.</li>-->
+  <li>Resolving indirect key-based references using the <xmlatt>keyref</xmlatt> attribute, as
+          defined in <xref href="../archSpec/base/processing-key-references-general.dita"/>, <xref
+            href="../archSpec/base/processing-keyref-for-links.dita"/>, <xref
+            href="../archSpec/base/processing-keyref-on-topicref.dita"/>, and <xref
+            href="../archSpec/base/processing-keyref-for-text.dita"/>.</li>
+  <li>Referencing content for reuse within a document, as described in <xref
+            href="../archSpec/base/theconrefattribute.dita"/>, <xref
+            href="../archSpec/base/theconkeyrefattribute.dita"/>, <xref
+            href="../archSpec/base/theconrefendattribute.dita"/>, <xref
+            href="../archSpec/base/conref-processing.dita"/>, <xref
+            href="../archSpec/base/conref-attributes-specified-on-elements.dita"/>, and <xref
+            href="../archSpec/base/handling-xref-and-conref-within-topics.dita"/></li>
+  <li>Referencing a location to push reused content into another location, as described in <xref
+            href="../archSpec/base/theconactionattribute.dita"/>.</li>
 <li>Resolving conditional processing based on DITAVAL documents, as described in <xref
-            keyref="conditional-processing"/>.</li>
-<li>Resolving branch filtering markup, as described in <xref keyref="branch-filtering"/>.</li>
-<li>Resolving <xmlatt>chunk</xmlatt> attributes, as described in <xref keyref="chunking"/>.</li>
+            href="../archSpec/base/conditionalprocessingexpectations.dita"/>, <xref
+            href="../archSpec/base/usage-of-conditional-processing-attributes.dita"/>, <xref
+            href="../archSpec/base/usage-of-conditional-processing-attribute-groups.dita"/>, <xref
+            href="../archSpec/base/filtering.dita"/>, and <xref
+            href="../archSpec/base/flagging.dita"/>.</li>
+  <li>Resolving branch filtering markup, as described in <xref
+            href="../archSpec/base/branch-filtering-overview.dita"/>, <xref
+            href="../archSpec/base/branch-filtering-interactions.dita"/>, <xref
+            href="../archSpec/base/branch-filtering-single-set.dita"/>, <xref
+            href="../archSpec/base/branch-filtering-multiple-sets.dita"/>, <xref
+            href="../archSpec/base/branch-filtering-resource-names.dita"/>, and <xref
+            href="../archSpec/base/branch-filtering-implications-of-processing-order.dita"/>.</li>
+  <li>Resolving <xmlatt>chunk</xmlatt> attributes, as described in <xref
+            href="../archSpec/base/chunk-attribute-overview.dita"/>, <xref
+            href="../archSpec/base/chunk-attribute-combine.dita"/>, and <xref
+            href="../archSpec/base/chunk-attribute-split.dita"/>.</li>
 </ol>
       <!--<draft-comment author="robander">The section about rendering should be removed if we do not actually end up with any base DITA 2.0 elements with normative rendering expectations.</draft-comment>-->
 <p>In addition, certain DITA elements have normative rules associated regarding how to render or
@@ -67,33 +84,33 @@ outputclass="RFC-2119">SHOULD</term> indicate which elements are (or are not) su
 <p>Not all DITA features are relevant for all implementations. For example, a DITA editor that does
         not render content references in context does not need to conform to rules regarding the
           <xmlatt>conref</xmlatt> attribute. However, any application that renders content
-        references <term outputclass="RFC-2119">MUST</term> conform to the rules described in<xref
-          keyref="conref"/>.</p>
+        references <term outputclass="RFC-2119">MUST</term> conform to the rules described in the
+        section <xref href="../archSpec/base/conref.dita"/>.</p>
 <p>Implementations that support only a subset of DITA features are considered conforming as long as
 all supported features follow the requirements that are given in the DITA specification. An
 implementation that does not support a particular feature <term outputclass="RFC-2119">MUST</term>
 be prepared to interoperate with other implementations that do support the feature.</p>
 </section>
     <section id="documents">
-<title>4.2 Conformance of DITA documents</title>
+<title>10.2 Conformance of DITA documents</title>
 <p>A document conforms with the DITA standard if it meets all of the following conditions.</p>
 <ol>
 <li>A DITA document that refers to document type shells distributed by OASIS <term
 outputclass="RFC-2119">MUST</term> be valid according to both the grammar files and any assertions
 provided in the language reference.</li>
-<li>If a DITA document refers to a custom document type shell, that shell <term
-outputclass="RFC-2119">MUST</term> also conform to the rules laid out in <xref
-href="http://example.com" format="html" scope="external">X.X.X.X Rules for document-type
-shells</xref>.</li>
-<li>If a DITA document's custom document type shell includes constraints, that shell <term
-outputclass="RFC-2119">MUST</term> also conform to the rules laid out in <xref
-href="http://example.com" format="html" scope="external">X.X.X.X Constraint rules</xref></li>
-<li>If a DITA document uses specialized elements or attributes, those elements or attributes <term
-outputclass="RFC-2119">MUST</term> also conform to the rules laid out in <xref
-href="http://example.com" format="html" scope="external">X.X.X Specialization rules for element
-types</xref>, <xref href="http://example.com" format="html" scope="external">X.X.X Specialization
-rules for attributes</xref>, and <xref href="http://example.com" format="html" scope="external"
->X.X.X Class attribute rules and syntax</xref>.</li>
+        <li>If a DITA document's custom document type shell includes constraints, those constraints
+            <term outputclass="RFC-2119">MUST</term> also conform to the rules laid out in <xref
+            href="../archSpec/base/constraint-rules.dita"/></li>
+        <li>If a DITA document's custom document type shell includes expansion modules, those
+          moduless <term outputclass="RFC-2119">MUST</term> also conform to the rules laid out in
+            <xref href="../archSpec/base/expansion-module-rules.dita"/></li>
+        <li>If a DITA document uses specialized elements, those elements <term
+            outputclass="RFC-2119">MUST</term> also conform to the rules laid out in <xref
+            href="../archSpec/base/specialization-rules-elements.dita"/> and <xref
+            href="../archSpec/base/specialization-class-attribute.dita"/>.</li>
+        <li>If a DITA document uses specialized attributes, those attributes <term
+            outputclass="RFC-2119">MUST</term> also conform to the rules laid out in <xref
+              href="../archSpec/base/specialization-rules-attributes.dita"/> and <xref href="../archSpec/base/specialization-specializations-attribute.dita"/>.</li>
 </ol>
 </section>
   </conbody>
