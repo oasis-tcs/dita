@@ -177,7 +177,7 @@ def main(argv: list[str]) -> int:
     print('<?xml version="1.0" encoding="UTF-8"?>')
     print("<!DOCTYPE reference PUBLIC \"-//OASIS//DTD DITA 2.0 Reference//EN\" \"reference.dtd\">")
     print("<reference id=\"attributes-a-to-z\">")
-    print("<title>DITA Attributes, A to Z</title>")
+    print("<title>DITA attributes, A to Z</title>")
     print("<shortdesc>This topic includes a simple list of all attributes defined on all elements in this specification.</shortdesc>")
     print("<refbody><section>")
     if args.spec == "techcomm":
