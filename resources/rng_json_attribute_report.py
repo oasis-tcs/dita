@@ -181,7 +181,7 @@ def main(argv: list[str]) -> int:
     print("<shortdesc>This topic includes a simple list of all attributes defined on all elements in this specification.</shortdesc>")
     print("<refbody><section>")
     if args.spec == "techcomm":
-        print("<p>This report includes only elements from the technical communications specification; it does not include elements from the base specification.</p>")
+        print("<p>This report includes only elements from the DITA for Technical Content specification; it does not include elements from the base specification.</p>")
     else:
         print("<p>The following exceptions apply:</p>")
         print("<ul>")
