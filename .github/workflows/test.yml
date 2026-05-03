@@ -9,8 +9,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Check grammar report inputs
-        id: grammar-report-inputs
+      - name: Check test inputs
+        id: test_inputs
         shell: bash
         run: |
           set -euo pipefail
@@ -24,9 +24,15 @@ jobs:
           fi
 
           if git diff --name-only "$base" "${{ github.sha }}" | grep -Eq '^(\.github/|doctypes/)'; then
-            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "grammar_reports_changed=true" >> "$GITHUB_OUTPUT"
           else
-            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "grammar_reports_changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+          if git diff --name-only "$base" "${{ github.sha }}" | grep -Eq '^(\.github/|specification/)'; then
+            echo "specification_tests_changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "specification_tests_changed=false" >> "$GITHUB_OUTPUT"
           fi
       - name: Set up JDK 21
         uses: actions/setup-java@v4
@@ -35,7 +41,7 @@ jobs:
           java-version: '21'
           cache: 'gradle'
       - name: Compare DTD and Relax NG grammar reports
-        if: steps.grammar-report-inputs.outputs.changed == 'true'
+        if: steps.test_inputs.outputs.grammar_reports_changed == 'true'
         run: |
           set -e
           mkdir -p build/grammar-compare/classes build/grammar-compare/reports
@@ -122,12 +128,14 @@ jobs:
           #$DITA_HOME/bin/dita -install dita-ng.zip -v
           #rm dita-ng.zip
       - name: Extract codeblock content
+        if: steps.test_inputs.outputs.specification_tests_changed == 'true'
         run: |
           $DITA_HOME/bin/dita \
             -i $PWD/specification/dita-2.0-specification.ditamap \
             --filter $PWD/specification/resources/DITA2.0-spec.ditaval \
             -f extract-codeblock
       - name: Validate codeblock content
+        if: steps.test_inputs.outputs.specification_tests_changed == 'true'
         working-directory: .github
         run: |
           ./gradlew test \
@@ -159,6 +167,7 @@ jobs:
             --processing-mode=strict \
             -v
       - name: Test dita-2.0-specification.ditamap
+        if: steps.test_inputs.outputs.specification_tests_changed == 'true'
         run: |
           set -e
           $DITA_HOME/bin/dita \
