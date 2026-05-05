@@ -135,9 +135,16 @@
     </xsl:result-document>
   </xsl:template>
 
-  <xsl:template match="fragment[map | topicmeta | topicref | keydef | topicsubject | topicgroup | mapref]" mode="serialize">
+  <xsl:template match="fragment[map | topicmeta | topicref | keydef | topicsubject | topicgroup | mapref | reltable]" mode="serialize">
     <xsl:result-document href="{x:createFileName(., '.dita')}" doctype-public="-//OASIS//DTD DITA 2.0 Base Map//EN"
       doctype-system="map.dtd">
+      <xsl:apply-templates select="." mode="copy"/>
+    </xsl:result-document>
+  </xsl:template>
+
+  <xsl:template match="fragment[bookmap | booklists | frontmatter | bookmeta | backmatter | bookrights]" mode="serialize">
+    <xsl:result-document href="{x:createFileName(., '.dita')}"
+      doctype-public="-//OASIS//DTD DITA 2.0 BookMap//EN" doctype-system="bookmap.dtd">
       <xsl:apply-templates select="." mode="copy"/>
     </xsl:result-document>
   </xsl:template>
