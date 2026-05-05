@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.x Concept//EN" "concept.dtd">
+<concept id="reltable-establishes-linking-relationships">
+    <title>How relationship tables establish linking relationships</title>
+    <shortdesc>
+        In a DITA map, relationship tables establish linking relationships among topic references by
+        organizing <xmlelement>topicref</xmlelement> elements into rows, columns, and cells.
+    </shortdesc>
+    <conbody>
+        <p> A <xmlelement>reltable</xmlelement> element defines relationships that processors can
+            express as topic-to-topic links in generated output. By default, relationship-table
+            content is not rendered as part of navigation structures such as a table of
+            contents.</p>
+        <p> Relationship tables define relationships at the row level. A
+                <xmlelement>relrow</xmlelement> element establishes relationships among the topic
+            references that are contained in its <xmlelement>relcell</xmlelement> elements. Topic
+            references in different cells of the same row are related. By default, topic references
+            that are in the same cell do not establish linking relationships to each other.</p>
+        <p>Relationship table columns are typically used to group topic references that share some
+            trait. <ph otherprops="example">For example, a three column table might use the columns
+                to set up relationships between concept, task, and reference topics, while a two
+                column table might be used to set up relationships between local topics in the first
+                column and external resources in the second.</ph>.</p>
+        <p>A <xmlelement>relheader</xmlelement> element can act as a header for the table, using
+                <xmlelement>relcolspec</xmlelement> elements to explicitly lay out column semantics.
+                <ph otherprops="example">For example, the <xmlelement>relcolspec</xmlelement>
+                element can set <xmlatt>type</xmlatt> or <xmlatt>scope</xmlatt> to declare something
+                about the topic references in each column.</ph></p>
+        <p> By default, linking relationships in maps are reciprocal. Therefore, topics referenced
+            in different cells of the same row link to each other in both directions, subject to
+            processor rendering behavior. Authors can modify this default behavior using the
+                <xmlatt>linking</xmlatt> attribute. <ph otherprops="example">For example, setting
+                    <codeph>linking="targetonly"</codeph> on a relationship table cell means that
+                the row establishes links from other cells to that cell, but does not establish
+                links from that cell out to other topics in the row.</ph></p>
+        <p>Within the scope of a root map, the effective relationship table is the union of
+            relationship tables that occur in the map hierarchy.</p>
+        
+        <example>
+            <title>Sample relationship table</title>
+            <p> In the following example, <filepath>overview.dita</filepath>,
+                    <filepath>configure.dita</filepath>, <filepath>parameters.dita</filepath>, and
+                    <filepath>messages.dita</filepath> establish row-based related-link
+                relationships. By default, <filepath>parameters.dita</filepath> and
+                    <filepath>messages.dita</filepath> are not related to each other solely because
+                they are in the same cell.</p>
+            <ul id="ul_tpz_klt_djc">
+                <li><filepath>overview.dita</filepath> establishes a related-link relationship to
+                    all other topics in the row.</li>
+                <li><filepath>configure.dita</filepath> establishes a related-link relationship to
+                    all other topics in the row.</li>
+                <li><filepath>parameters.dita</filepath> and <filepath>messages.dita</filepath> do
+                    not establish related-link relationships to each other, but they both establish
+                    related-link relationships to <filepath>overview.dita</filepath> and
+                        <filepath>configure.dita</filepath> in the other cells.</li>
+            </ul>
+            <codeblock>
+&lt;map&gt;
+  &lt;reltable&gt;
+    &lt;relheader&gt;
+      &lt;relcolspec type="concept"/&gt;
+      &lt;relcolspec type="task"/&gt;
+      &lt;relcolspec type="reference"/&gt;
+    &lt;/relheader&gt;
+    &lt;relrow&gt;
+      &lt;relcell&gt;
+        &lt;topicref href="overview.dita"/&gt;
+      &lt;/relcell&gt;
+      &lt;relcell&gt;
+        &lt;topicref href="configure.dita"/&gt;
+      &lt;/relcell&gt;
+      &lt;relcell&gt;
+        &lt;topicref href="parameters.dita"/&gt;
+        &lt;topicref href="messages.dita"/&gt;
+      &lt;/relcell&gt;
+    &lt;/relrow&gt;
+  &lt;/reltable&gt;
+&lt;/map&gt;
+</codeblock>
+        </example>
+    </conbody>
+</concept>
