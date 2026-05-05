@@ -18,6 +18,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -82,8 +83,20 @@ public class CodeblockTest {
             DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
             final Resolver resolver = new Resolver(config);
             documentBuilder.setEntityResolver(resolver);
-            final Document doc = documentBuilder.parse(file.toFile());
-            fail("Failed to parse " + getLocation(doc) + ": " + e.getMessage());
+            String location;
+            try {
+                final Document doc = documentBuilder.parse(file.toFile());
+                location = getLocation(doc);
+            } catch (SAXException locationException) {
+                e.addSuppressed(locationException);
+                location = getLocation(file);
+                fail("Failed to parse " + location + ": " + e.getMessage()
+                        + "\n\nFailed to parse generated file while determining source location: "
+                        + locationException.getMessage()
+                        + "\n\nGenerated file content:\n"
+                        + getContent(file));
+            }
+            fail("Failed to parse " + location + ": " + e.getMessage());
         }
     }
 
@@ -138,5 +151,48 @@ public class CodeblockTest {
             }
         }
         return buf.toString();
+    }
+
+    private String getLocation(Path file) throws IOException {
+        final String content = getContent(file);
+        final StringBuilder buf = new StringBuilder();
+        final String xtrf = getProcessingInstruction(content, "xtrf");
+        if (xtrf != null) {
+            final URI root = Paths.get(System.getProperty("root")).toAbsolutePath().normalize().toUri();
+            final URI nodeValue = Paths.get(URI.create(xtrf)).toAbsolutePath().normalize().toUri();
+            final URI path = root.relativize(nodeValue);
+            buf.append("https://github.com/");
+            buf.append(System.getProperty("repository"));
+            buf.append("/blob/");
+            buf.append(System.getProperty("sha"));
+            buf.append("/");
+            buf.append(path);
+        } else {
+            buf.append(file);
+        }
+        final String xtrc = getProcessingInstruction(content, "xtrc");
+        if (xtrc != null) {
+            buf.append("#L");
+            buf.append(xtrc, xtrc.indexOf(";") + 1, xtrc.lastIndexOf(":"));
+        }
+        return buf.toString();
+    }
+
+    private String getContent(Path file) throws IOException {
+        return new String(Files.readAllBytes(file), StandardCharsets.UTF_8);
+    }
+
+    private String getProcessingInstruction(final String content, final String name) {
+        final String start = "<?" + name;
+        final int startIndex = content.indexOf(start);
+        if (startIndex == -1) {
+            return null;
+        }
+        final int valueStartIndex = startIndex + start.length();
+        final int endIndex = content.indexOf("?>", valueStartIndex);
+        if (endIndex == -1) {
+            return null;
+        }
+        return content.substring(valueStartIndex, endIndex).trim();
     }
 }
