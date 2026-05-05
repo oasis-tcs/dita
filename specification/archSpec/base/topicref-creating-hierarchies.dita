@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="topicref-hierarchies-navigation">
+    <title>How <xmlelement>topicref</xmlelement> elements establish hierarchies in a map</title>
+    <shortdesc> In a DITA map, <xmlelement>topicref</xmlelement> elements establish hierarchical
+        relationships among referenced topics and can define ordered sequences that processors can
+        use to derive navigation. </shortdesc>
+    <conbody>
+        <p> Map authors can use <xmlelement>topicref</xmlelement> elements to define the structural
+            organization of a publication. The nesting and order of
+                <xmlelement>topicref</xmlelement> elements provide the primary basis for
+            parent/child context and for sequential navigation in rendered output.  Processors can
+            use this organization to infer several relationships, while authors can use attributes
+            such as <xmlatt>collection-type</xmlatt> to make some of those relationships
+            explicit.</p>
+        <dl>
+            <dlentry>
+                <dt>Parent/child relationships</dt>
+                <dd>
+                    <p> A <xmlelement>topicref</xmlelement> element that contains other
+                            <xmlelement>topicref</xmlelement> elements establishes a hierarchical
+                        relationship in which the containing <xmlelement>topicref</xmlelement> is
+                        the parent and each nested <xmlelement>topicref</xmlelement> is a child. </p>
+                    <p> Processors use this hierarchy to determine structural context, for example,
+                        when generating navigation trees and breadcrumb paths. This allows for
+                        automated hierarchical relationships and linking based on map structure,
+                        rather than relying on links authored in the topic content.</p>
+                </dd>
+            </dlentry>
+            <dlentry>
+                <dt>Next/previous relationships</dt>
+                <dd>
+                    <p> Within a given branch of the map hierarchy, sibling
+                            <xmlelement>topicref</xmlelement> elements are ordered by document
+                        order. While these relationships are considered undered by default,
+                        processors can use this order in some contexts to determine effective
+                        next/previous relationships. Authors can also use
+                            <xmlatt>collection-type</xmlatt> to make the next/previous ordering
+                        explicit.</p>
+                </dd>
+            </dlentry>
+        </dl>
+        <p> Hierarchy and sequence are complementary. Nesting establishes containment and context,
+            while ordering establishes progression. </p>
+        <p> When processors derive navigation from a map, they use both the hierarchical position
+            and the relative order of <xmlelement>topicref</xmlelement> elements. </p>
+    </conbody>
+</concept>
