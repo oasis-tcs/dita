@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.x Concept//EN" "concept.dtd">
+<concept id="using-collection-type-and-linking-in-maps">
+    <title>Controlling link relationships with <xmlatt>collection-type</xmlatt> and
+            <xmlatt>linking</xmlatt></title>
+    <shortdesc> In DITA maps, the <xmlatt>collection-type</xmlatt> and <xmlatt>linking</xmlatt>
+        attributes can be used to modify default linking behavior and to make implied relationships
+        explicit.</shortdesc>
+    <conbody>
+        <p>DITA map structures imply relationships among referenced topics, which many processors
+            will use to generated related links. Map authors can refine that behavior by setting
+                <xmlatt>collection-type</xmlatt> and <xmlatt>linking</xmlatt> on elements within the
+            map.</p>
+        <p> The <xmlatt>collection-type</xmlatt> attribute specifies how child topic references of a
+            map branch relate to each other. This enables authors to make relationship intent
+            explicit in the map, rather than relying on processor defaults. <ph
+                outputclass="example">For example, the value <keyword>sequence</keyword> can
+                indicate ordered progression, while <codeph>family</codeph> can indicate that all
+                sibling topics within that branch are related.</ph></p>
+        <p> The <xmlatt>linking</xmlatt> attribute controls how a topic references participate in
+            map-based relationships. Authors can use these values to prevent undesired reciprocal
+            links, suppress participation in relationship calculations, or constrain linking
+            direction for supporting resources. <ph outputclass="example">For example, using the
+                value <keyword>none</keyword> indicates that no links should be generated to or from
+                the resource, while <keyword>targetonly</keyword> indicates that the a processor can
+                generate links to the referenced topic but should not generate links from that topic
+                to other resources.</ph></p>
+        <example>
+            <title>Example: Explicit control of sequence and link direction</title>
+            <p>In the following example, the first branch explicitly declares an ordered sequence. A
+                processor can use that to generate next and previous links among the three sibling
+                topics. In the relationship table, the reference-column setting
+                    <codeph>linking="targetonly"</codeph> indicates that related topics can link to
+                    <filepath>install-options.dita</filepath> without setting up reciprocal links
+                from that topic. </p>
+            <codeblock>
+&lt;map>
+  &lt;topicref href="installing.dita" collection-type="sequence">
+    &lt;topicref href="prerequisites.dita"/>
+    &lt;topicref href="install-software.dita"/>
+    &lt;topicref href="verify-installation.dita"/>
+  &lt;/topicref>
+
+  &lt;reltable>
+    &lt;relheader>
+      &lt;relcolspec type="task"/>
+      &lt;relcolspec type="reference" linking="targetonly"/>
+    &lt;/relheader>
+    &lt;relrow>
+      &lt;relcell>
+        &lt;topicref href="install-software.dita"/>
+      &lt;/relcell>
+      &lt;relcell>
+        &lt;topicref href="install-options.dita"/>
+      &lt;/relcell>
+    &lt;/relrow>
+  &lt;/reltable>
+&lt;/map>
+</codeblock>
+        </example>
+    </conbody>
+</concept>
