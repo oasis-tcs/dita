@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.x Concept//EN" "concept.dtd">
+<concept id="title-within-maps">
+    <title>Using titles in maps and submaps</title>
+    <shortdesc> Titles in DITA maps can serve different roles depending on where they are located.
+        The <xmlelement>titlealt</xmlelement> element and the alternative-title domain also provide
+        the ability to include a variety of different titles for additional purposes. This topic
+        serves as a guide for how implementations generally treat titles when publishing DITA
+        content.</shortdesc>
+    <conbody>
+        <p>Map authors use titles to label maps and map structures. Some of these titles are
+            expected to appear in any published version of the map, while others might serve as
+            metadata or might be ignored entirely by a processor. In most cases, a processor can
+            choose what titles to display and which to treat as metadata. While this topic is
+            intended to lay out some common expectations, the specification does lay out some </p>
+        <dl>
+            <dlentry>
+                <dt><xmlelement>title</xmlelement> in the root map</dt>
+                <dd>The title of the root map generally represents the title of the
+                    publication.</dd>
+            </dlentry>
+            <dlentry>
+                <dt><xmlelement>title</xmlelement> in a nested map</dt>
+                <dd>In most cases, processors will assemble a navigation tree for a document made up
+                    of the root map and all submaps. There is no default expectation that the title
+                    of a submap becomes part of the navigation hierarchy. However, a processor can
+                    make use of the title of a nested map if that is useful for a given publication
+                    format.</dd>
+            </dlentry>
+            <dlentry>
+                <dt><xmlelement>titlealt</xmlelement> within the <xmlelement>topicmeta</xmlelement>
+                    element</dt>
+                <dd>The behavior of alternative titles, whether in the
+                        <xmlelement>topicmeta</xmlelement> for a <xmlelement>map</xmlelement>
+                    element or for a <xmlelement>topicref</xmlelement> element, are governed by the
+                    rules laid out in <xref keyref="elements-titlealt"/>.</dd>
+            </dlentry>
+            <dlentry>
+                <dt><xmlelement>title</xmlelement> within <xmlelement>reltable</xmlelement></dt>
+                <dd>See <xref keyref="elements-reltable"/> for information about titles inside of
+                    relationship tables.</dd>
+            </dlentry>
+        </dl>
+    </conbody>
+</concept>
