@@ -19,9 +19,8 @@
     </metadata>
   </prolog>
   <conbody>
-    <p>The DITA architect decides to create a new attribute
-        (<xmlatt>cell-purpose</xmlatt>) and add it to the attribute lists
-      of the following elements:</p>
+    <p>The DITA architect decides to create a new attribute (<xmlatt>cellPurpose</xmlatt>) and add
+      it to the attribute lists of the following elements:</p>
     <ul>
       <li><xmlelement>colspec</xmlelement></li>
       <li><xmlelement>entry</xmlelement></li>
@@ -39,25 +38,24 @@
       decide the elements to which to apply the attribute.</p>
     <ol>
       <li><!--<draft-comment author="Kristen J Eberlein" time="07 June 2021"><p>Comments by Eliot Kimber: </p><p>[Re the entity to be used in the @specializations attribute]: "Should there be leading and trailing space in the replacement text?"</p><p>[Re adding the attribute to the elements]: "I first thought we shouldn't allow this specialization-and-integration-in-one kind of module but I convinced myself it's OK. However, we still need an example of not doing this, for example, taking an *existing* attribute domain and using a separate extension module to allow it in specific places, omitting the usual global integration."</p></draft-comment>-->First,
-        the DITA architect creates the expansion module for the
-          <xmlatt>cell-purpose</xmlatt> attribute:
+        the DITA architect creates the expansion module for the <xmlatt>cellPurpose</xmlatt>
+        attribute:
           <filepath>acme-cellPurposeAttExpansion.ent</filepath>.<codeblock>&lt;!-- Define the attribute -->
 &lt;!ENTITY % cellPurposeAtt-d-attribute-expansion
-  "cell-purpose  (sale | out-of-stock | new | last-chance | inherit | none)  #IMPLIED"
+  "cellPurpose  (sale | out-of-stock | new | last-chance | inherit | none)  #IMPLIED"
 &gt;
 
 &lt;!-- Declare the entity to be used in the @specializations attribute -->
-&lt;!ENTITY cellPurposeAtt-d-att "@base/cell-purpose" >
+&lt;!ENTITY cellPurposeAtt-d-att "@base/cellPurpose" >
 
 &lt;!-- Add the attribute to the elements. -->
 &lt;!ATTLIST entry %cellPurposeAtt-d-attribute-expansion;>
 &lt;!ATTLIST row %cellPurposeAtt-d-attribute-expansion;>
 &lt;!ATTLIST colspec %cellPurposeAtt-d-attribute-expansion;>
 &lt;!ATTLIST strow %cellPurposeAtt-d-attribute-expansion;>
-&lt;!ATTLIST stentry %cellPurposeAtt-d-attribute-expansion;></codeblock><note
-          rev="2.0">The attribute definition entity is optional. It is used
-          here to enable the DITA architect to add the same attribute with
-          the same tokens to several elements.</note></li>
+&lt;!ATTLIST stentry %cellPurposeAtt-d-attribute-expansion;></codeblock><note rev="2.0"
+          >The attribute definition entity is optional. It is used here to enable the DITA architect
+          to add the same attribute with the same tokens to several elements.</note></li>
       <li><ph rev="2.0">They then update</ph> the
           <filepath>catalog.xml</filepath> file to include the expansion
         module.<!-- <draft-comment author="Kristen J Eberlein" time="07 June 2021"><p>Comment by Eliot Kimber: "This is something almost everybody *would* do but it's not actually required since the use of catalogs is not required by DITA or by the use of DTDs generally, at least in theory (and in actual fact if you are an Author/Editor user, which doesn't support catalogs)."</p></draft-comment>--></li>
