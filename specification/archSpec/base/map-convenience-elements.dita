@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.x Concept//EN" "concept.dtd">
+<concept id="specialization-for-convenience-elements">
+    <title>Specialized convenience elements in the map group domain</title>
+    <shortdesc> DITA specialization can be used to create convenience elements that simplify
+        authoring while preserving the processing behavior of existing base elements. Most of the
+        elements in the map group domain are created for this purpose.</shortdesc>
+    <conbody>
+        <p>A convenience element is a specialization that adds clearer intent, default behavior, or
+            simpler markup for common authoring patterns. Because the element is specialized from an
+            existing base type, processors can continue to use the architectural semantics of the
+            base element. </p>
+        <p>Convenience specializations in maps can reduce repetitive attribute authoring, make map
+            structures easier to read, and improve consistency across large information sets. They
+            also enable information architects to express intent directly in markup, rather than
+            relying on implicit conventions. </p>
+        <p> The map group domain illustrates this pattern. Every element in this domain is a
+            specialization of  <xmlelement>topicref</xmlelement> created to support common authoring
+            pattern. The same functions can be accomplished with <xmlelement>topicref</xmlelement>,
+            but the elements are designed to make authoring easier and less error-prone.</p>
+        <p otherprops="example">For example, the <xmlelement>topichead</xmlelement> and
+                <xmlelement>topicgroup</xmlelement> elements each provide a way to group other
+            topics without directly referencing another resource. Each of these elements removes
+                <xmlatt>href</xmlatt> and <xmlatt>keyref</xmlatt> while keeping most other
+            attributes from the base <xmlelement>topicref</xmlelement> element. By also placing
+            restrictions on the use of titles, the <xmlelement>topicgroup</xmlelement> element also
+            provides a clearer way to group topic references without impacting the navigation
+            hierarchy of the map.</p>
+        <p otherprops="example">Similarly, any key definition created with
+                <xmlelement>keydef</xmlelement> can also be created with
+                <xmlelement>topicref</xmlelement>, but the <xmlelement>keydef</xmlelement> element
+            improves the authoring experience by requiring <xmlatt>keys</xmlatt> and setting a
+            default value for <xmlatt>processing-role</xmlatt> to treat the referenced resource as
+                <keyword>resource-only</keyword>.</p>
+    </conbody>
+</concept>
