@@ -41,7 +41,7 @@
 <!-- ============================================================= -->
 
 <!-- The <dita> element cannot be specialized, so it does not      -->
-<!-- a class attribute or a named entity for the element.          -->
+<!-- define a class attribute or use a named element entity.       -->
 
 <!ATTLIST dita
               specializations 

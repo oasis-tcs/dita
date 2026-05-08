@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng"
+                         schematypens="http://relaxng.org/ns/structure/1.0"?>
+<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:dita="http://dita.oasis-open.org/architecture/2005/" xmlns="http://relaxng.org/ns/structure/1.0"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <moduleDesc xmlns="http://dita.oasis-open.org/architecture/2005/">
+    <moduleTitle>DITA Base Element Module</moduleTitle>
+    <headerComment xml:space="preserve">
+=============================================================
+                   HEADER                                    
+=============================================================
+ MODULE:    DITA Base Element Module                            
+ VERSION:   2.0                                              
+ DATE:      [[[Release date]]]                                    
+ PURPOSE:   Defines the &lt;dita&gt; element for use in shells                             
+                                                             
+=============================================================
+
+=============================================================
+                   PUBLIC DOCUMENT TYPE DEFINITION           
+                   TYPICAL INVOCATION                        
+                                                             
+ Refer to this file by the following public identifier or an 
+      appropriate system identifier 
+ PUBLIC "-//OASIS//ELEMENT DITA 2.0 Element//EN"
+      Delivered as file "ditaelement.mod"                            
+
+=============================================================
+                                                             
+            (C) Copyright OASIS Open 2005, 2026.             
+            (C) Copyright IBM Corporation 2001, 2004.        
+            All Rights Reserved.                             
+                                                             
+ UPDATES:                                                    
+=============================================================
+      
+    </headerComment>
+    <moduleMetadata>
+      <moduleType>elementdomain</moduleType>
+      <moduleShortName>ditaelement</moduleShortName>
+      <modulePublicIds>
+        <dtdMod>-//OASIS//ELEMENT DITA<var presep=" " name="ditaver"/> Element//EN</dtdMod>
+        <rngMod>urn:pubid:oasis:names:tc:dita:rng:ditaelement.rng<var presep=":" name="ditaver"/></rngMod>
+      </modulePublicIds>
+    </moduleMetadata>
+  </moduleDesc>
+
+  <div>
+    <a:documentation>Define a container for topics in the DITA composite type</a:documentation>
+    <define name="dita.element">
+      <element name="dita">
+        <a:documentation>The &lt;dita&gt; element provides a top-level container for multiple topics when you create documents using the ditabase document type. The &lt;dita&gt; element lets you create any
+          sequence of concept, task, and reference topics, and the ditabase document type lets you further nest these topic types inside each other. The &lt;dita&gt; element has no particular output
+          implications; it simply allows you to create multiple topics of different types at the same level in a single document. Category: Ditabase document type</a:documentation>
+        <ref name="dita.attlist"/>
+        <oneOrMore>
+          <ref name="info-types"/>
+        </oneOrMore>
+      </element>
+    </define>
+    
+    <define name="dita.attlist" combine="interleave">
+      <ref name="arch-atts"/>
+      <ref name="localization-atts" dita:since="DITA 1.3"/>
+    </define>
+    
+  </div>
+
+</grammar>
