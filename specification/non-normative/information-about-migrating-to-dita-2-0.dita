@@ -189,6 +189,12 @@
                         <xmlatt>specializations</xmlatt>. This attribute is typically set to a
                     default inside of configured doctype shells; migration will typically be
                     required for shells but not for content.</li>
+                <li>The <xmlelement>dita</xmlelement> element is defined in the base specification,
+                    but was not defined as part of the base DTD or RelaxNG files in DITA 1.x. The
+                    element is now defined as a single-element module in the base specification, and
+                    that module is imported into the composite document type within the technical
+                    content grammar files. Custom shells that use the <xmlelement>dita</xmlelement>
+                    element can now import that module directly from the base vocabulary.</li>
             </ul>
         </section>
     </conbody>
