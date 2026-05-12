@@ -12,6 +12,12 @@
         topic ... Look at it in outline form, and check that the sections,
         titles, and content all make logical sense with the topic title of
         "Universal attribute group".</p>
+      <p>
+        <draft-comment author="robander">TO RESOLVE 13 May 2026: Not sure what to change here.
+          Looking at the topic at dita-lang.org, the only thing that really stands out is the
+          heading "Common attribute groups". Maybe we can delete that title, check the remaining
+          content in that section for accuracy, and be done?</draft-comment>
+      </p>
     </draft-comment></shortdesc>
   <prolog>
     <metadata>
@@ -60,6 +66,10 @@
                 <p>Why do we need to mention that two attributes are
                   available for specialization here? I think it makes the
                   paragraph hard to read.</p>
+                <p>
+                  <draft-comment author="robander">TO RESOLVE 13 May 2026: Agreed. Either take it
+                    out, or make that a second sentence if the info is useful.</draft-comment>
+                </p>
               </draft-comment>This group includes common metadata
               attributes, two of which are available for specialization:
                 <xmlatt>base</xmlatt>, <xmlatt>importance</xmlatt>,
@@ -83,6 +93,17 @@
               <p>Why do we provide information about specialization and
                 custom document-type shells here? I think that information
                 could be removed.</p>
+              <p>
+                <draft-comment author="robander">TO RESOLVE 13 May 2026: I think because they're all
+                  in all of the base shells distributed by oasis? But I don't care, fine with
+                  removing this<p>On second thought – it's because each of the groups above provides
+                    a list / summary of attributes in the group. These 5 are in the metadata group
+                    because they are picked up with that attribute group in the gramma files (via
+                    specialization), and on every element in the base vocabulary. I think it would
+                    be inconsistent for this section to group every attribute below *except* for
+                    those five. There may be a better way to phrase it, but I think they need to be
+                    listed</p></draft-comment>
+              </p>
             </draft-comment>
           </dd>
         </dlentry>
@@ -251,6 +272,15 @@
                 text"? And how about adding "Processors often add text or images to ensure that
                 readers of the generated content understand whether the step is optional or
                 required." to the end of the example?</p>
+              <p>
+                <draft-comment author="robander">TO RESOLVE 13 May 2026: <ul id="ul_bhy_2sz_fjc">
+                    <li>maybe change to "… although applications can modify how content is rendered
+                      based on the value of the <xmlatt>importance</xmlatt> attribute</li>
+                    <li>And update the example with something like "For example, in steps of a task
+                      topic, processors often add text or images to highlight that a step is
+                      optional or required"</li>
+                  </ul></draft-comment>
+              </p>
             </draft-comment></dd>
         </dlentry>
         <dlentry id="otherprops">
@@ -271,8 +301,10 @@
               processing.<draft-comment author="robander" audience="spec-editors">I don't like "The
               role must be consistent...", that seems like best practice that cannot be normative –
               and I could easily say outputclass="flashy" which makes my element show up with
-              sparkles, and has nothing to do with "the basic semantic and expectations for the
-              element".</draft-comment></dd>
+              sparkles, and has nothing to do with "the basic semantic and expectations for the element".<p>
+                <draft-comment author="robander">TO RESOLVE 13 May 2026: how about saying "the role
+                  can be", or even a lower-case should, rather than "must be"?</draft-comment>
+              </p></draft-comment></dd>
         </dlentry>
         <dlentry id="platform">
           <dt id="attr-platform"><xmlatt>platform</xmlatt>
@@ -281,8 +313,11 @@
             <draft-comment author="robander" audience="spec-editors">I think this could specify a
               platform that is not an operating system or hardware, right? The current definition
               explicitly limits platform to those two … maybe "Specifies a platform or platforms to
-              which the element applies, such as the operating system or hardware relevant to a
-              task."</draft-comment></dd>
+              which the element applies, such as the operating system or hardware relevant to a task."<p>
+                <draft-comment author="robander">TO RESOLVE 13 May 2026: maybe "Indicates the
+                  content is relevant to the specified platform, such as an operating system or
+                  hardware."</draft-comment>
+              </p></draft-comment></dd>
         </dlentry>
         <dlentry id="product">
           <dt id="attr-product"><xmlatt>product</xmlatt>
@@ -315,6 +350,12 @@
                 element was modified. The <xmlatt>rev</xmlatt> attribute can be used for flagging.
                 It cannot be used for filtering nor is it sufficient to be used for version control.
                   <ph conkeyref="reuse-attributes/may-inherit"/></p>
+              <p>
+                <draft-comment author="robander">TO RESOLVE 13 May 2026: Sounds good, I might say
+                  "can be used for flagging revisions" just because that sentence feels a bit odd
+                  ending in "for flagging" but really don't care, fine with using the text with or
+                  without that update.</draft-comment>
+              </p>
             </draft-comment>
           </dd>
         </dlentry>
@@ -337,6 +378,11 @@
                 suggested processing defaults for each element? I thought it covered whether an
                 element was block or in-line and whether there were considerations that translators
                 needed to be aware of.</p>
+              <p>
+                <draft-comment author="robander">TO RESOLVE 13 May 2026: Can we update to "See
+                  (link) for information on additional considerations on translating DITA
+                  elements."</draft-comment>
+              </p>
             </draft-comment></dd>
         </dlentry>
         <dlentry id="xmllang">
@@ -351,6 +397,11 @@
               time="29 September 2022" platform="dita">
               <p>Do we also want to direct readers to the architectural topics about the
                   <xmlatt>xml:lang</xmlatt> attribute?</p>
+              <p>
+                <draft-comment author="robander">TO RESOLVE 13 May 2026: Yes, should provide a cross
+                  reference, not sure if that will work in the lwdita spec but can figure that out
+                  later</draft-comment>
+              </p>
             </draft-comment></dd>
         </dlentry>
       </dl>
