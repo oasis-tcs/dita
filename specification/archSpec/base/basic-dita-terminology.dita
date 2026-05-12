@@ -15,7 +15,18 @@
                 assumes that we retain current use of "DITA processor" as used in the specification.
                 Jarno noted that HTML5 uses producer/ consumer, where producer is aimed more at
                 rules for authors / creators of DITA content and consumer is a tool that acts upon
-                the content.</p></draft-comment>
+                the content.</p><p>
+                <draft-comment author="robander">TO RESOLVE 11 May 2026: this is a hard one. How
+                    about we add the term but with a broad definition stating that a processor is an
+                    implementation of DITA that renders DITA content or implements features of the
+                    DITA specification. This <b>can</b> include editors that attempt to render DITA
+                    content as anything other than plain text, processors that render DITA content
+                    as some other format, content management systems that process relationships
+                    between DITA documents, and other systems that attempt to handle DITA content as
+                    anything other than plain XML.<p>Or, if we can't come up with wording that works
+                        with that, just skip this and not define a DITA
+                    processor.</p></draft-comment>
+            </p></draft-comment>
         <dl>
             <dlentry>
                 <dt>DITA document</dt>
@@ -34,8 +45,12 @@
                                     ONE document with sibling topics. Also, not to over-complicate,
                                     but an ordinary topic also allows sibling topics (as children),
                                     so what really distinguishes this is that it allows "root"
-                                    siblings, but I don't think we have a word for
-                                    that.</draft-comment></li>
+                                    siblings, but I don't think we have a word for that.<p>
+                                        <draft-comment author="robander">TO RESOLVE 11 May 2026:
+                                            recommend replacing with "...which cannot be
+                                            specialized, but which allows for a DITA document with
+                                            multiple root-level sibling topics"</draft-comment>
+                                    </p></draft-comment></li>
                         </ul></p>
                 </dd>
             </dlentry>
@@ -66,13 +81,23 @@
                         <p>Suggest removing the last sentence of the definition. It uses the word
                             'must'; also, it needs to be better aligned with the topic about
                             architectural attributes.</p>
+                        <p>
+                            <draft-comment author="robander" audience="spec-editors"
+                                time="26 may 2021">Having @class is such a core part of being a DITA
+                                element that I'd be inclined to keep it, except that 1) we could
+                                just remove "must" (it's a statement of fact, not a rule) and 2) I
+                                am continually confused by the term "exhibit" in this context. Also,
+                                &lt;dita> doesn't have class and is a DITA element, so it's an
+                                oddball.</draft-comment>
+                            <draft-comment author="robander">TO RESOLVE 11 May 2026: suggest we <ol
+                                    id="ol_kkn_l24_fjc">
+                                    <li>confirm that somewhere in this spec we do say that you have
+                                        to have <xmlatt>class</xmlatt>, which I'm pretty sure we do,
+                                        and then</li>
+                                    <li>delete the sentence as Kris suggested</li>
+                                </ol></draft-comment>
+                        </p>
                     </draft-comment>
-                    <draft-comment author="robander" audience="spec-editors" time="26 may 2021"
-                        >Having @class is such a core part of being a DITA element that I'd be
-                        inclined to keep it, except that 1) we could just remove "must" (it's a
-                        statement of fact, not a rule) and 2) I am continually confused by the term
-                        "exhibit" in this context. Also, &lt;dita> doesn't have class and is a DITA
-                        element, so it's an oddball.</draft-comment>
                 </dd>
             </dlentry>
             <dlentry>

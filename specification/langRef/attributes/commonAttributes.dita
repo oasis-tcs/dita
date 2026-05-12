@@ -102,6 +102,11 @@
                 element-reference topic, I want the attributes listed here
                 in the "Simple table group" to be hyperlinked to the actual
                 definition.</p>
+              <p>
+                <draft-comment author="robander">TO RESOLVE 13 May 2026: Not following - what
+                  updated linking is needed? Should &lt;simpletable> link back to the element, or
+                  was there a problem with the links that brought you here?</draft-comment>
+              </p>
             </draft-comment>
             <p id="simpletable-attr">This group includes attributes that
               are defined only on the <xmlelement>simpletable</xmlelement>
@@ -242,25 +247,21 @@
           <dt id="attr-chunk"><xmlatt>chunk</xmlatt>
             <ph otherprops="attr-list-label">(common map
             attributes)</ph></dt>
-          <dd>Specifies how a processor should render a map or branch of a
-            map. <ph otherprops="examples">For example, it can be used to
-              specify that individual topic documents should be rendered as
-              a single document, or that a single document with multiple
-              topics should be rendered as multiple documents.</ph><p>The
-              following values are valid:<dl>
+          <dd>Specifies how a processor should render a map or branch of a map. <ph
+              otherprops="examples">For example, it can be used to specify that individual topic
+              documents should be rendered as a single document, or that a single document with
+              multiple topics should be rendered as multiple documents.</ph><p>The following values
+              are valid:<dl>
                 <dlentry>
                   <dt>combine</dt>
-                  <dd><ph conkeyref="reuse-general/definitionChunkCombine"
-                    /></dd>
+                  <dd><ph conkeyref="reuse-general/definitionChunkCombine"/></dd>
                 </dlentry>
                 <dlentry>
                   <dt>split</dt>
-                  <dd><ph conkeyref="reuse-general/definitionChunkSplit"
-                    /></dd>
+                  <dd><ph conkeyref="reuse-general/definitionChunkSplit"/></dd>
                 </dlentry>
-              </dl></p><p conkeyref="reuse-attributes/custom-attr-tokens"
-              /><p>For a detailed description of the <xmlatt>chunk</xmlatt>
-              attribute and its usage, see <xref
+              </dl></p><p conkeyref="reuse-attributes/custom-attr-tokens"/><p>For a detailed
+              description of the <xmlatt>chunk</xmlatt> attribute and its usage, see <xref
                 href="../../archSpec/base/chunking.dita"/>.</p></dd>
         </dlentry>
         <dlentry id="collection-type" platform="dita">
@@ -323,6 +324,11 @@
                           is undefined. </dd>
                       </dlentry>
                     </dl>
+                    <p>
+                      <draft-comment author="robander">TO RESOLVE 13 May 2026: Make sure nothing
+                        here conflicts, and add a link from this to the architectural
+                        section</draft-comment>
+                    </p>
                   </draft-comment><draft-comment
                     author="Kristen J Eberlein" time="28 September 2022">
                     <p>In the definitions of the supported values, do we
@@ -330,6 +336,18 @@
                       Since we specify that
                         <xmlatt>collection-type</xmlatt> specifies "how
                       topics <b>or links</b> relate to each other" ...</p>
+                    <p>
+                      <draft-comment author="robander">TO RESOLVE 13 May 2026: Good point, no strong
+                        feeling, but we should be consistent here, we already use "topics", "child
+                        topics", "children", and "referenced topics". Maybe:<ul id="ul_dbr_ylz_fjc">
+                          <li>Start with "Specifies how child topic references or links within the
+                            current element relate to each other"? Since this applies to children
+                            and we only sort of say that in the definitions of the tokens</li>
+                          <li>When describing the tokens, maybe use "referenced resources", as in
+                            "Indicates that the order of the referenced resources is not
+                            significant"</li>
+                        </ul></draft-comment>
+                    </p>
                   </draft-comment></dd>
               </dlentry>
             </dl></dd>
@@ -378,11 +396,10 @@
         </dlentry>
         <dlentry id="duplicates" platform="dita">
           <dt id="attr-duplicates"><xmlatt>duplicates</xmlatt></dt>
-          <dd>Specifies whether duplicate links are removed from a group of
-            links. Duplicate links are links that address the same resource
-            using the same properties, such as link text and link role. How
-            duplicate links are determined is processor-specific. The
-            following values are valid:<dl>
+          <dd>Specifies whether duplicate links are removed from a group of links. Duplicate links
+            are links that address the same resource using the same properties, such as link text
+            and link role. How duplicate links are determined is processor-specific. The following
+            values are valid:<dl>
               <dlentry>
                 <dt>yes</dt>
                 <dd>Specifies that duplicate links are retained.</dd>
@@ -391,19 +408,19 @@
                 <dt>no</dt>
                 <dd>Specifies that duplicate links are removed.</dd>
               </dlentry>
-              <dlentry conkeyref="reuse-attributes/ditauseconref"
-                platform="dita">
+              <dlentry conkeyref="reuse-attributes/ditauseconref" platform="dita">
                 <dt> </dt>
                 <dd> </dd>
               </dlentry>
-            </dl><p>The suggested processing default is
-                <keyword>yes</keyword> within
-                <xmlelement>linklist</xmlelement> elements and
-                <keyword>no</keyword> for other links.</p><draft-comment
-              author="robander" time="Dec 28 2021">"How duplicate links are
-              determined is processor-specific" ==> this should be included
-              in any updates to standardize language around "implementation
-              dependent".</draft-comment></dd>
+            </dl><p>The suggested processing default is <keyword>yes</keyword> within
+                <xmlelement>linklist</xmlelement> elements and <keyword>no</keyword> for other
+              links.</p><draft-comment author="robander" time="Dec 28 2021">"How duplicate links are
+              determined is processor-specific" ==> this should be included in any updates to
+              standardize language around "implementation dependent".<p>
+                <draft-comment author="robander">TO RESOLVE 13 May 2026: Ugh, we still need to do
+                  this - a review of the spec for any wording that hits at this, and then make it
+                  specific. Maybe a magic robot can help find all instances here.</draft-comment>
+              </p></draft-comment></dd>
         </dlentry>
         <dlentry id="encoding">
           <dt id="attr-encoding"><xmlatt>encoding</xmlatt>
@@ -412,6 +429,10 @@
           <dd><draft-comment author="Kristen J Eberlein" time="29 April 2019"
               audience="spec-editors">
               <p>Can we replace "should" in the following definition?</p>
+              <p>
+                <draft-comment author="robander">TO RESOLVE 13 May 2026: we can change to
+                  "is"</draft-comment>
+              </p>
             </draft-comment>Specifies the character encoding to use when translating the character
             data from the referenced content. The value should be a valid encoding name. If not
             specified, processors may make attempts to automatically determine the correct encoding,
@@ -426,50 +447,41 @@
         <dlentry id="expanse">
           <dt id="attr-expanse"><xmlatt>expanse</xmlatt>
             <ph otherprops="attr-list-label">(display attributes)</ph></dt>
-          <dd>Specifies the horizontal placement of the element. The
-            following values are valid: <dl>
+          <dd>Specifies the horizontal placement of the element. The following values are valid: <dl>
               <dlentry>
                 <dt><keyword>column</keyword></dt>
-                <dd>Indicates that the element is aligned with the current
-                  column margin.</dd>
+                <dd>Indicates that the element is aligned with the current column margin.</dd>
               </dlentry>
               <dlentry>
                 <dt><keyword>page</keyword></dt>
-                <dd>Indicates that the element is placed on the left page
-                  margin for left-to-right presentation or the right page
-                  margin for right-to-left presentation.</dd>
+                <dd>Indicates that the element is placed on the left page margin for left-to-right
+                  presentation or the right page margin for right-to-left presentation.</dd>
               </dlentry>
               <dlentry>
                 <dt><keyword>spread</keyword></dt>
-                <dd>Indicates that the object is rendered across a
-                  multi-page spread. If the output format does not have
-                  anything that corresponds to spreads, then
-                    <keyword>spread</keyword> has the same meaning as
-                    <keyword>page</keyword>.</dd>
+                <dd>Indicates that the object is rendered across a multi-page spread. If the output
+                  format does not have anything that corresponds to spreads, then
+                    <keyword>spread</keyword> has the same meaning as <keyword>page</keyword>.</dd>
               </dlentry>
               <dlentry>
                 <dt><keyword>textline</keyword></dt>
-                <dd><ph rev="review-e">Indicates</ph> that the element is
-                  aligned with the left (for left-to-right presentation) or
-                  right (for right-to-left presentation) margin of the
-                  current text line and takes indentation into
-                  account.</dd>
+                <dd><ph rev="review-e">Indicates</ph> that the element is aligned with the left (for
+                  left-to-right presentation) or right (for right-to-left presentation) margin of
+                  the current text line and takes indentation into account.</dd>
               </dlentry>
-              <dlentry conkeyref="reuse-attributes/ditauseconref"
-                platform="dita">
+              <dlentry conkeyref="reuse-attributes/ditauseconref" platform="dita">
                 <dt> </dt>
                 <dd> </dd>
               </dlentry>
-            </dl><p conkeyref="reuse-general/pgwide-explain"
-              platform="dita"/><p>Some processors or output formats might
-              not support all
+            </dl><p conkeyref="reuse-general/pgwide-explain" platform="dita"/><p>Some processors or
+              output formats might not support all
             values.</p><!--<draft-comment author="robander" audience="spec-editors">This statement seems to get wrapped up in the "implementation dependent" discussion. Also note that "spread" already says "if possible" which also means that support can vary - we can probably remove "if possible" there, it seems redundant with this statement?<p>Same statement is repeated for @frame below.</p></draft-comment>--></dd>
         </dlentry>
         <dlentry id="expiry">
           <dt id="attr-expiry"><xmlatt>expiry</xmlatt>
             <ph otherprops="attr-list-label">(date attributes)</ph></dt>
-          <dd>Specifies the date when the information should be retired or
-            refreshed. <ph conkeyref="reuse-general/dateformat"/></dd>
+          <dd>Specifies the date when the information should be retired or refreshed. <ph
+              conkeyref="reuse-general/dateformat"/></dd>
         </dlentry>
         <dlentry id="format">
           <dt id="attr-format"><xmlatt>format</xmlatt>
@@ -532,8 +544,8 @@
         <dlentry id="golive">
           <dt id="attr-golive"><xmlatt>golive</xmlatt>
             <ph otherprops="attr-list-label">(date attributes)</ph></dt>
-          <dd>Specifies the publication or general availability (GA) date.
-              <ph conkeyref="reuse-general/dateformat"/></dd>
+          <dd>Specifies the publication or general availability (GA) date. <ph
+              conkeyref="reuse-general/dateformat"/></dd>
         </dlentry>
         <dlentry id="headers" platform="dita lwdita">
           <dt id="attr-headers"><xmlatt>headers</xmlatt></dt>
@@ -590,16 +602,16 @@
         </dlentry>
         <dlentry id="keyref">
           <dt id="attr-keyref"><xmlatt>keyref</xmlatt></dt>
-          <dd id="def-keyref"><ph id="keyrefDescription">Specifies a key
-              name that acts as a redirectable reference based on a key
-              definition within a map.<ph platform="dita"> See <xref
-                  keyref="attributes-keyref"/> for information on using
-                this attribute.</ph></ph><p platform="lwdita">For HDITA, the equivalent of
-                <xmlatt>keyref</xmlatt> is
-              <xmlatt>data-keyref</xmlatt></p><draft-comment
-              author="robander">The definiton above for @keyref should be
-              synchronized with the definition in the linked section on
-              keys.</draft-comment></dd>
+          <dd id="def-keyref"><ph id="keyrefDescription">Specifies a key name that acts as a
+              redirectable reference based on a key definition within a map.<ph platform="dita"> See
+                  <xref keyref="attributes-keyref"/> for information on using this
+              attribute.</ph></ph><p platform="lwdita">For HDITA, the equivalent of
+                <xmlatt>keyref</xmlatt> is <xmlatt>data-keyref</xmlatt></p><draft-comment
+              author="robander">The definiton above for @keyref should be synchronized with the
+              definition in the linked section on keys.<p>
+                <draft-comment author="robander">TO RESOLVE 13 May 2026: Check the topic we link to
+                  and make sure this is consistent, then remove the draft comment</draft-comment>
+              </p></draft-comment></dd>
         </dlentry>
         <dlentry platform="dita lwdita" id="keys">
           <dt id="attr-keys"><xmlatt>keys</xmlatt></dt>
@@ -629,127 +641,129 @@
                     />.</dd>
                 </dlentry>
               </dl>
+              <p>
+                <draft-comment author="robander">TO RESOLVE 13 May 2026: Double check each to make
+                  sure the latest content is consistent, and remove the draft comment<p>But also …
+                    it might be a good idea to keep this draft comment (and others for the
+                    keys/keyref stuff) until after that section is fully reviewed, so that we have
+                    an easy way to find these "content should be consistent"
+                  issues</p></draft-comment>
+              </p>
             </draft-comment></dd>
         </dlentry>
         <dlentry id="linking" platform="dita">
           <dt id="attr-linking"><xmlatt>linking</xmlatt>
             <ph otherprops="attr-list-label">(common map
             attributes)</ph></dt>
-          <dd>Specifies linking characteristics of a topic specific to the
-            location of this reference in a map. <ph
-              conkeyref="reuse-attributes/inherit-in-map"/>
-            <draft-comment author="robander" time="Dec 28 2021">The text
-              below matches <xref
+          <dd>Specifies linking characteristics of a topic specific to the location of this
+            reference in a map. <ph conkeyref="reuse-attributes/inherit-in-map"/>
+            <draft-comment author="robander" time="Dec 28 2021">The text below matches <xref
                 href="http://docs.oasis-open.org/dita/dita/v1.3/errata02/os/complete/part3-all-inclusive/langRef/attributes/commonMapAttributes.html#topicref-atts__linking"
-                format="html" scope="external">1.3 spec text</xref> but I'm
-              nervous about "cannot link" type definition. It's describing
-              how to generate links based on the current context in the map
-              - it's not describing what the topic itself is allowed to
-              link to, which is how I interpret "can".</draft-comment>The
-            following values are valid:<dl>
+                format="html" scope="external">1.3 spec text</xref> but I'm nervous about "cannot
+              link" type definition. It's describing how to generate links based on the current
+              context in the map - it's not describing what the topic itself is allowed to link to,
+              which is how I interpret "can".<p>
+                <draft-comment author="robander">TO RESOLVE 13 May 2026: Yeah we should remove the
+                  can/cannot and replace with a description of the intent here... like, targetonly
+                  "The topic or resource can be the target of any context based linking, but is not
+                  meant to be updated with links related to this context."<p>similarly, none could
+                    be "The topic or resource does not participate in any context-based
+                  linking"</p></draft-comment>
+              </p></draft-comment>The following values are valid:<dl>
               <dlentry>
                 <dt><keyword>targetonly</keyword></dt>
-                <dd>A topic can only be linked to and cannot link to other
-                  topics.</dd>
+                <dd>A topic can only be linked to and cannot link to other topics.</dd>
               </dlentry>
               <dlentry>
                 <dt><keyword>sourceonly</keyword></dt>
-                <dd>A topic cannot be linked to but can link to other
-                  topics.</dd>
+                <dd>A topic cannot be linked to but can link to other topics.</dd>
               </dlentry>
               <dlentry>
                 <dt>normal </dt>
-                <dd>A topic can be linked to and can link to other topics.
-                  Use this to override the linking value of a parent topic.
-                </dd>
+                <dd>A topic can be linked to and can link to other topics. Use this to override the
+                  linking value of a parent topic. </dd>
               </dlentry>
               <dlentry>
                 <dt>none </dt>
-                <dd>A topic cannot be linked to or link to other
-                  topics.</dd>
+                <dd>A topic cannot be linked to or link to other topics.</dd>
               </dlentry>
               <dlentry conkeyref="reuse-attributes/ditauseconref">
                 <dt> </dt>
                 <dd> </dd>
               </dlentry>
-            </dl><draft-comment author="Kristen J Eberlein"
-              time="28 September 2022">
-              <p>Here is the content from the "DITA map attributes"
-                topic:</p>
+            </dl><draft-comment author="Kristen J Eberlein" time="28 September 2022">
+              <p>Here is the content from the "DITA map attributes" topic:</p>
               <dl>
                 <dlentry>
                   <dt><xmlatt>linking</xmlatt></dt>
                   <dd>
-                    <p>By default, the relationships between the topics
-                      that are referenced in a map are reciprocal:</p>
+                    <p>By default, the relationships between the topics that are referenced in a map
+                      are reciprocal:</p>
                     <ul>
-                      <li>Child topics link to parent topics and vice
-                        versa. </li>
-                      <li>Next and previous topics in a sequence link to
-                        each other. </li>
+                      <li>Child topics link to parent topics and vice versa. </li>
+                      <li>Next and previous topics in a sequence link to each other. </li>
                       <li>Topics in a family link to their sibling topics. </li>
-                      <li>Topics referenced in the table cells of the same
-                        row in a relationship table link to each other. A
-                        topic referenced within a table cell does not (by
-                        default) link to other topics referenced in the
-                        same table cell. </li>
+                      <li>Topics referenced in the table cells of the same row in a relationship
+                        table link to each other. A topic referenced within a table cell does not
+                        (by default) link to other topics referenced in the same table cell. </li>
                     </ul>
-                    <p>This behavior can be modified by using the
-                        <xmlatt>linking</xmlatt> attribute, which enables
-                      an author or information architect to specify how a
-                      topic participates in a relationship. The following
-                      values are valid:</p>
+                    <p>This behavior can be modified by using the <xmlatt>linking</xmlatt>
+                      attribute, which enables an author or information architect to specify how a
+                      topic participates in a relationship. The following values are valid:</p>
                     <dl>
                       <dlentry>
                         <dt><codeph>linking="none"</codeph>
                         </dt>
-                        <dd>Specifies that the topic does not exist in the
-                          map for the purposes of calculating links. </dd>
+                        <dd>Specifies that the topic does not exist in the map for the purposes of
+                          calculating links. </dd>
                       </dlentry>
                       <dlentry>
                         <dt><codeph>linking="sourceonly"</codeph>
                         </dt>
-                        <dd>Specifies that the topic will link to its
-                          related topics but not vice versa. </dd>
+                        <dd>Specifies that the topic will link to its related topics but not vice
+                          versa. </dd>
                       </dlentry>
                       <dlentry>
                         <dt><codeph>linking="targetonly"</codeph>
                         </dt>
-                        <dd>Specifies that the related topics will link to
-                          it but not vice versa. </dd>
+                        <dd>Specifies that the related topics will link to it but not vice versa.
+                        </dd>
                       </dlentry>
                       <dlentry>
                         <dt><codeph>linking="normal"</codeph>
                         </dt>
-                        <dd>Default value. It specifies that linking will
-                          be reciprocal (the topic will link to related
-                          topics, and they will link back to it). </dd>
+                        <dd>Default value. It specifies that linking will be reciprocal (the topic
+                          will link to related topics, and they will link back to it). </dd>
                       </dlentry>
                     </dl>
-                    <p>Authors also can create links directly in a topic by
-                      using the <xmlelement>xref</xmlelement> or
-                        <xmlelement>link</xmlelement> elements, but in most
-                      cases map-based linking is preferable, because links
-                      in topics create dependencies between topics that can
-                      hinder reuse. </p>
-                    <p>Note that while the relationships between the topics
-                      that are referenced in a map are reciprocal, the
-                      relationships merely <i>imply</i> reciprocal links in
-                      generated output that includes links. The rendered
-                      navigation links are a function of the presentation
-                      style that is determined by the processor. </p>
+                    <p>Authors also can create links directly in a topic by using the
+                        <xmlelement>xref</xmlelement> or <xmlelement>link</xmlelement> elements, but
+                      in most cases map-based linking is preferable, because links in topics create
+                      dependencies between topics that can hinder reuse. </p>
+                    <p>Note that while the relationships between the topics that are referenced in a
+                      map are reciprocal, the relationships merely <i>imply</i> reciprocal links in
+                      generated output that includes links. The rendered navigation links are a
+                      function of the presentation style that is determined by the processor. </p>
                   </dd>
                 </dlentry>
               </dl>
+              <p>
+                <draft-comment author="robander">TO RESOLVE 13 May 2026: Ensure there is nothing
+                  conflicting, and add a link from here to the more architectural info that gives
+                  all the details</draft-comment>
+              </p>
             </draft-comment></dd>
         </dlentry>
         <dlentry id="name" platform="dita lwdita">
           <dt id="attr-name"><xmlatt>name</xmlatt>
             <ph otherprops="attr-list-label">(data-element
             attributes)</ph></dt>
-          <dd>Defines a unique name for the object.<draft-comment
-              author="robander" audience="spec-editors">Do we need to
-              specify the scope of "unique" here?</draft-comment></dd>
+          <dd>Defines a unique name for the object.<draft-comment author="robander"
+              audience="spec-editors">Do we need to specify the scope of "unique" here?<p>
+                <draft-comment author="robander">TO RESOLVE 13 May 2026: ha, it often won't be
+                  unique because you often use the same name for all instances of a specific type of
+                  metadata. Maybe we just get rid of "unique"</draft-comment>
+              </p></draft-comment></dd>
         </dlentry>
         <dlentry id="otherrole">
           <dt id="attr-otherrole"><xmlatt>otherrole</xmlatt></dt>
@@ -796,34 +810,28 @@
           <dt id="attr-processing-role"><xmlatt>processing-role</xmlatt>
             <ph otherprops="attr-list-label">(common map
             attributes)</ph></dt>
-          <dd id="def-processing-role">Specifies whether the referenced
-            resource is processed normally or treated as a resource that is
-            only included in order to resolve references, such as key or
-            content references. The following values are valid:<dl>
+          <dd id="def-processing-role">Specifies whether the referenced resource is processed
+            normally or treated as a resource that is only included in order to resolve references,
+            such as key or content references. The following values are valid:<dl>
               <dlentry>
                 <dt>normal </dt>
-                <dd>Indicates that the resource is a readable part of the
-                  information set. It is included in navigation and search
-                  results. This is the default value for the
+                <dd>Indicates that the resource is a readable part of the information set. It is
+                  included in navigation and search results. This is the default value for the
                     <xmlelement>topicref</xmlelement> element.</dd>
               </dlentry>
               <dlentry>
                 <dt>resource-only </dt>
-                <dd>Indicates that the resource should be used only for
-                  processing purposes. It is not included in navigation or
-                  search results, nor is it rendered as a topic. This is
-                  the default value for the <xmlelement>keydef</xmlelement>
-                  element.</dd>
+                <dd>Indicates that the resource should be used only for processing purposes. It is
+                  not included in navigation or search results, nor is it rendered as a topic. This
+                  is the default value for the <xmlelement>keydef</xmlelement> element.</dd>
               </dlentry>
             </dl><dl>
-              <dlentry conkeyref="reuse-attributes/ditauseconref"
-                platform="dita">
+              <dlentry conkeyref="reuse-attributes/ditauseconref" platform="dita">
                 <dt> </dt>
                 <dd> </dd>
               </dlentry>
-            </dl><p><ph conkeyref="reuse-attributes/may-inherit"/></p><p
-              platform="lwdita">For HDITA, the equivalent of
-                <xmlatt>processing-role</xmlatt> is
+            </dl><p><ph conkeyref="reuse-attributes/may-inherit"/></p><p platform="lwdita">For
+              HDITA, the equivalent of <xmlatt>processing-role</xmlatt> is
                 <xmlatt>data-processing-role</xmlatt>.</p></dd>
         </dlentry>
         <dlentry id="relcolwidth">
@@ -1047,21 +1055,23 @@
             <ph otherprops="attr-list-label">(common map
             attributes)</ph></dt>
           <dd>Specifies whether the target is available for searching. <ph
-              conkeyref="reuse-attributes/inherit-in-map"/> The following
-            values are valid: <keyword>yes</keyword>,
-            <keyword>no</keyword>, and
-              <keyword>-dita-use-conref-target</keyword>.<draft-comment
-              author="Kristen J Eberlein" time="28 September 2022">
-              <p>Here is the content from the "DITA map attributes"
-                topic:</p>
+              conkeyref="reuse-attributes/inherit-in-map"/> The following values are valid:
+              <keyword>yes</keyword>, <keyword>no</keyword>, and
+              <keyword>-dita-use-conref-target</keyword>.<draft-comment author="Kristen J Eberlein"
+              time="28 September 2022">
+              <p>Here is the content from the "DITA map attributes" topic:</p>
               <dl>
                 <dlentry>
                   <dt><xmlatt>search</xmlatt>
                   </dt>
-                  <dd> Specifies whether the topic is included in search
-                    indexes. </dd>
+                  <dd> Specifies whether the topic is included in search indexes. </dd>
                 </dlentry>
               </dl>
+              <p>
+                <draft-comment author="robander">TO RESOLVE 13 May 2026: Update to use the same
+                  description, these are very similar but not exact. If the description is this
+                  short and similar it should be reused with conref.</draft-comment>
+              </p>
             </draft-comment></dd>
         </dlentry>
         <dlentry id="specializations" platform="dita lwdita">
@@ -1103,10 +1113,8 @@
           <dt id="attr-toc"><xmlatt>toc</xmlatt>
             <ph otherprops="attr-list-label">(common map
             attributes)</ph></dt>
-          <dd>Specifies whether a topic appears in the table of contents
-            (TOC) based on the current map context. <ph
-              conkeyref="reuse-attributes/inherit-in-map"/> The following
-            values are valid:<dl>
+          <dd>Specifies whether a topic appears in the table of contents (TOC) based on the current
+            map context. <ph conkeyref="reuse-attributes/inherit-in-map"/> The following values are valid:<dl>
               <dlentry>
                 <dt>yes </dt>
                 <dd>The topic appears in a generated TOC.</dd>
@@ -1117,23 +1125,25 @@
               </dlentry>
               <dlentry>
                 <dt>-dita-use-conref-target </dt>
-                <dd>See <xref keyref="attributes-useconreftarget"/> for
-                  more information. </dd>
+                <dd>See <xref keyref="attributes-useconreftarget"/> for more information. </dd>
               </dlentry>
-            </dl><draft-comment author="Kristen J Eberlein"
-              time="28 September 2022">
-              <p>Here is the content from the "DITA map attributes"
-                topic:</p>
+            </dl><draft-comment author="Kristen J Eberlein" time="28 September 2022">
+              <p>Here is the content from the "DITA map attributes" topic:</p>
               <dl>
                 <dlentry>
                   <dt><xmlatt>toc</xmlatt></dt>
-                  <dd>Specifies whether topics are excluded from navigation
-                    output, such as a Web site map or an online table of
-                    contents. By default, <xmlelement>topicref</xmlelement>
-                    hierarchies are included in navigation output;
-                    relationship tables are excluded. </dd>
+                  <dd>Specifies whether topics are excluded from navigation output, such as a Web
+                    site map or an online table of contents. By default,
+                      <xmlelement>topicref</xmlelement> hierarchies are included in navigation
+                    output; relationship tables are excluded. </dd>
                 </dlentry>
               </dl>
+              <p>
+                <draft-comment author="robander">TO RESOLVE 13 May 2026: I read that and kind of
+                  hate "web site map". Kind of think we should delete that bit from the other topic,
+                  and replace the first sentence there with a reused sentence from
+                  here.</draft-comment>
+              </p>
             </draft-comment></dd>
         </dlentry>
         <dlentry id="type" platform="dita">

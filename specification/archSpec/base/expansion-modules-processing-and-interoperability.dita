@@ -20,6 +20,22 @@
             <p>And what happens if one wants to apply multiple expansion modules and a constraint to
                 an element type? I'm assuming that they would need to be aggregated into a single
                 element-configuration module.</p>
+            <p>
+                <draft-comment author="robander">TO RESOLVE 12 May 2026: <ul id="ul_ofx_gct_fjc">
+                        <li>why? I'd say - why not? if you have an expansion module for @thing1, and
+                            a module for @thing2, both DTD and RNG let you add them independently.
+                            This is because you can have multiple attribute definitions, they are
+                            all combined to create the set of attributes. We should not restrict
+                            this. (We cannot prevent it, and shouldn't say it's invalid.)</li>
+                        <li>For content models - yes, they must be combined, because unlike with
+                            attributes you only have one spot to declare the content model. So if
+                            you want to add 2 things into &lt;section> or &lt;body>, you have one
+                            spot to redeclare that content model.</li>
+                    </ul><p>It looks like we used to say this in the following commented-out
+                        paragraph. I'd suggest either restoring that paragraph, maybe with an edit,
+                        or just keep the current language and resolve the comment, because it's just
+                        how grammar files work.</p></draft-comment>
+            </p>
         </draft-comment>
         <!--<p>The attributes of an element may be contributed to from any number of attribute domain mix-in modules. However, only one constraint module may be applied to the attributes of a given element type. If multiple constraints need to be applied to a given element's attributes, they must be replaced by a new constraint that aggregates them together.</p>-->
         <p>Constraint modules cannot remove attributes that are contributed by expansion
