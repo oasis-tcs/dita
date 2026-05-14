@@ -1,46 +1,21 @@
-# The OASIS DITA 1.3 Errata 01 specification is delivered in four parts. 
+# The OASIS DITA 2.0 base specification (latest draft)
 
-Each part is built from DITA source, with content reused across the parts.
-DITAVAL documents are used to conditionally process each map in order to generate
-the final specification. This document describes which map and which DITAVAL
-document is used to generate the parts.
+This folder contains the source material for the latest draft of the DITA 2.0 base specification. Work on the specification is still in progress.
 
-## Darwin Information Typing Architecture (DITA) Part 0: Overview Plus Errata 01.
+The OASIS Darwin Information Typing Architecture (DITA) 2.0 base specification defines the overall DITA architecture along with the core topic and map elements. It defines all core DITA features, with grammar files for topics, maps, and subject schemes.
 
-Part 0 is built using the following root map: 
-`dita-1.3-specification-overview.ditamap`
+The base specification is designed for implementers and users who need only the most fundamental pieces of the DITA framework.
 
-Part 0 is built using the following DITAVAL document: 
-`resources/DITA1.3-spec-overview.ditaval`
+The specification is built from DITA source, and is intended to be reused for other specifications that build on the core DITA framework. For DITA 2.0, this includes the Technical Content specification and the Lightweight DITA specification.
 
-## Darwin Information Typing Architecture (DITA) Part 1: Base Edition Plus Errata 01. 
+The base specification is built using the following root map:
+`dita-2.0-specification.ditamap`
 
-This edition contains topic and map; it is designed for implementers and users who need only the most fundamental pieces of the DITA framework.
+The base specification is built using the following DITAVAL document:
+`DITA2.0-spec.ditaval`
 
-Part 1 is built using the following root map: 
-`dita-1.3-specification-base.ditamap`
+## OASIS DITA 2.0 Technical Content specification
 
-Part 1 is built using the following DITAVAL document: 
-`resources/DITA1.3-spec-base.ditaval`
-
-## Darwin Information Typing Architecture (DITA) Part 2: Technical Content Edition Plus Errata 01. 
-
-This edition contains the base architecture plus the technical-content specializations; it is designed for authors who use information typing and document complex applications and devices.
-
-Part 2 is built using the following root map: 
-`dita-1.3-specification-technicalContent.ditamap`
-
-Part 2 is built using the following DITAVAL document: 
-`resources/DITA1.3-spec-technicalContent.ditaval`
-
-
-## Darwin Information Typing Architecture (DITA) Part 3: All-Inclusive Edition Plus Errata 01.
-
-This edition contains the base architecture, technical content, and the learning and training specializations. It is designed for implementers who want all OASIS-approved specializations, as well as users who develop learning and training materials.
-
-Part 3 is built using the following root map: 
-`dita-1.3-specification-learningTraining.ditamap`
-
-Part 3 is built using the following DITAVAL document: 
-`resources/DITA1.3-spec-learningTraining.ditaval`
-
+The technical content specification, which defines specializations such as concept, task, reference, and book map,
+is managed and published separately from the base specification. The latest draft of that specification is
+at https://github.com/oasis-tcs/dita-techcomm/tree/DITA-2.0/specification
