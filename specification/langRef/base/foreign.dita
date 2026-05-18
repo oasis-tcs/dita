@@ -18,14 +18,13 @@
         specializations.</p>
       <p>The <xmlelement>foreign</xmlelement> element can contain non-DITA
         content or a mix of DITA and non-DITA content.</p>
-      <p>If alternate content is wanted, use or specialize the
-          <xmlelement>desc</xmlelement> element inside of the
-          <xmlelement>foreign</xmlelement> specialization. Such alternate
-        content needs to be valid wherever the
-          <xmlelement>foreign</xmlelement> specialization is valid. This
-        way, if a processor is not able to recognize or render the
-          <xmlelement>foreign</xmlelement> content itself, it can use the
-        alternate content from <xmlelement>desc</xmlelement>.</p>
+      <p>If alternate content is wanted, use or specialize the <xmlelement>desc</xmlelement> element
+        inside of the <xmlelement>foreign</xmlelement> specialization. Such alternate content needs
+        to be valid wherever the <xmlelement>foreign</xmlelement> specialization is valid. This way,
+        if a processor is not able to recognize or render the <xmlelement>foreign</xmlelement>
+        content itself, it can use the alternate content from <xmlelement>desc</xmlelement>. <ph
+          rev="2.0">Alternate content can also be provided using <xmlelement>image</xmlelement> or
+            <xmlelement>object</xmlelement>.</ph></p>
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
@@ -35,7 +34,34 @@
         warning.</p>
       <draft-comment author="Kristen J Eberlein" time="28 December 2021">The following content needs editing.<p>
           <draft-comment author="robander">TO RESOLVE 13 May 2026: We or the magic robots should do
-            a single editing pass and call it done</draft-comment>
+            a single editing pass and call it done<p>Also noted … the first rule, about &lt;desc>,
+              the 1.3 language (still present) says to treat like &lt;section>, but with no title. I
+              don't know anymore what that means, and desc is not allowed in section (my first read
+              is "treat desc in foreign like you would treat desc in section" but that can't be
+              right)</p><p>Suggested rework of the following paragraph and list:</p><p>By the nature
+              of the element, content within a <xmlelement>foreign</xmlelement> element is
+              unexpected in a DITA context. For this reason, the enabler of a foreign vocabulary
+              typically needs to extend tools or provide processing support for the new
+              content.</p><ul id="ul_bpr_hkm_hjc">
+              <li>If <xmlelement>foreign</xmlelement> contains more than one element to provide
+                alternative content, each should be processed.</li>
+              <li>When alternative content is provided using <xmlelement>desc</xmlelement>,
+                processors will typlically render each <xmlelement>desc</xmlelement> similar to a
+                  <xmlelement>div</xmlelement> in HTML, but this is not required.</li>
+              <li> If no <xmlelement>desc</xmlelement>, <xmlelement>object</xmlelement>, or
+                  <xmlelement>image</xmlelement> element is found within an instance of the
+                  <xmlelement>foreign</xmlelement> element, a processor can emit a warning about the
+                absence of processable content.</li>
+              <li>The base processing for <xmlelement>object</xmlelement> might emit the content of
+                  <xmlelement>foreign</xmlelement> as a file at the location specified by the
+                  <xmlatt>data</xmlatt> attribute of the <xmlelement>object</xmlelement> element,
+                turning the inline foreign content into a referenced object to be handled by
+                rendering tools.</li>
+              <li>When used to provide alternative content inside of
+                  <xmlelement>foreign</xmlelement>, the <xmlelement>object</xmlelement> element
+                should have a data attribute or a <xmlelement>foreign</xmlelement> sub-element but
+                not both. If both are present, a processor can choose which to ignore.</li>
+            </ul></draft-comment>
         </p></draft-comment>
       <p>The enabler of the foreign vocabulary must provide the processing and override the base
         processing for <xmlelement>foreign</xmlelement>. </p>
@@ -62,33 +88,20 @@
       <title>Attributes</title>
       <p conkeyref="reuse-attributes/only-universal"/>
     </section>
-<example id="example" otherprops="examples">       <title>Example</title>
-      <draft-comment author="Kristen J Eberlein" time="28 December 2021">
-        <p>Is the following example valid now that we have an SVG reference
-          domain?</p>
-        <p>
-          <draft-comment author="robander">TO RESOLVE 13 May 2026: I think we had that discussion in
-            1.3 and decided to just go with it, we can do the same here, particularly since that svg
-            domain is over in the technical content spec / not here in the base spec. BUT we should
-            change the container to &lt;svg-container> which matches what that technical-content
-            spec has. </draft-comment>
-        </p>
-      </draft-comment>
-      <p>The following code sample shows a specialization of
-          <xmlelement>foreign</xmlelement> that is used to hold SVG
-        elements. For this to work, the specialization module that defines
-          <xmlelement>svg</xmlelement> also needs to include the
-        definitions for the SVG elements.</p><codeblock>&lt;p&gt;... as in the formula 
-  <b>&lt;svg&gt;</b>
-    &lt;svg:svg width="100%" height="100%" version="1.1"
-xmlns="http://www.w3.org/2000/svg"&gt;
-
-&lt;ellipse cx="300" cy="150" rx="200" ry="80"
-style="fill:rgb(200,100,50);
-stroke:rgb(0,0,100);stroke-width:2"/&gt;
-
+<example id="example" otherprops="examples">
+      <title>Example </title>
+      <p>The following code sample shows a specialization of <xmlelement>foreign</xmlelement> that
+        is used to hold SVG elements. For this to work, the specialization module that defines
+          <xmlelement>svg-container</xmlelement> also needs to include the definitions for the SVG
+        elements.</p>
+      <codeblock>&lt;p&gt;To turn on your product, press the elliptical orange button:
+  <b>&lt;svg-container&gt;</b>
+    &lt;svg:svg width="100%" height="100%" version="1.1"&gt;
+      &lt;svg:ellipse cx="300" cy="150" rx="200" ry="80"
+        style="fill:rgb(200,100,50);
+        stroke:rgb(0,0,100);stroke-width:2"/&gt;
     &lt;/svg:svg&gt;    
-  <b>&lt;/svg&gt;</b>.
-&lt;/p&gt; </codeblock>     </example>
+  <b>&lt;/svg-container&gt;</b>.&lt;/p&gt;</codeblock>
+    </example>
 </refbody>
 </reference>
