@@ -431,14 +431,17 @@
               <p>Can we replace "should" in the following definition?</p>
               <p>
                 <draft-comment author="robander">TO RESOLVE 13 May 2026: we can change to
-                  "is"</draft-comment>
+                    "is"<p>Update 18 May 2026: made that change, but also noticed it says
+                    "processors may make attempts to..." which in this context really feels like a
+                    normative rule that was not marked as a normative rule. Changed to "can" for
+                    now.</p></draft-comment>
               </p>
             </draft-comment>Specifies the character encoding to use when translating the character
-            data from the referenced content. The value should be a valid encoding name. If not
-            specified, processors may make attempts to automatically determine the correct encoding,
-            for example using HTTP headers, through analysis of the binary structure of the
-            referenced data, or the <xmlpi>xml</xmlpi> processing instruction when including XML as
-            text. The resource should be treated as UTF-8 if no other encoding information can be
+            data from the referenced content. The value is a valid encoding name. If not specified,
+            processors can make attempts to automatically determine the correct encoding, for
+            example using HTTP headers, through analysis of the binary structure of the referenced
+            data, or the <xmlpi>xml</xmlpi> processing instruction when including XML as text. The
+            resource should be treated as UTF-8 if no other encoding information can be
               determined.<p>When <codeph>parse="xml"</codeph>, standard XML parsing rules apply for
               the detection of character encoding. The necessity and uses of
                 <xmlatt>encoding</xmlatt> for non-standard values of <xmlatt>parse</xmlatt> are
@@ -758,12 +761,7 @@
           <dt id="attr-name"><xmlatt>name</xmlatt>
             <ph otherprops="attr-list-label">(data-element
             attributes)</ph></dt>
-          <dd>Defines a unique name for the object.<draft-comment author="robander"
-              audience="spec-editors">Do we need to specify the scope of "unique" here?<p>
-                <draft-comment author="robander">TO RESOLVE 13 May 2026: ha, it often won't be
-                  unique because you often use the same name for all instances of a specific type of
-                  metadata. Maybe we just get rid of "unique"</draft-comment>
-              </p></draft-comment></dd>
+          <dd>Defines a name for the object.</dd>
         </dlentry>
         <dlentry id="otherrole">
           <dt id="attr-otherrole"><xmlatt>otherrole</xmlatt></dt>
