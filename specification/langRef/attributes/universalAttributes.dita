@@ -61,20 +61,9 @@
         <dlentry id="metadataatts">
           <dt>Metadata attributes</dt>
           <dd>
-            <p id="metadata-attr"><draft-comment
-                author="Kristen J Eberlein" time="31 December 2021">
-                <p>Why do we need to mention that two attributes are
-                  available for specialization here? I think it makes the
-                  paragraph hard to read.</p>
-                <p>
-                  <draft-comment author="robander">TO RESOLVE 13 May 2026: Agreed. Either take it
-                    out, or make that a second sentence if the info is useful.</draft-comment>
-                </p>
-              </draft-comment>This group includes common metadata
-              attributes, two of which are available for specialization:
-                <xmlatt>base</xmlatt>, <xmlatt>importance</xmlatt>,
-                <xmlatt>props</xmlatt>, <xmlatt>rev</xmlatt>, and
-                <xmlatt>status</xmlatt>.</p>
+            <p id="metadata-attr">This group includes common metadata attributes:
+                <xmlatt>base</xmlatt>, <xmlatt>importance</xmlatt>, <xmlatt>props</xmlatt>,
+                <xmlatt>rev</xmlatt>, and <xmlatt>status</xmlatt>.</p>
           </dd>
           <dd>
             <p id="specializations-of-props">The base DITA vocabulary from
@@ -263,25 +252,10 @@
               <keyword>obsolete</keyword>, <keyword>optional</keyword>,
               <keyword>recommended</keyword>, <keyword>required</keyword>,
             <keyword>urgent</keyword>, and <keyword>-dita-use-conref-target</keyword>. This
-            attribute is not used for conditional processing, although applications might use the
-            value of the <xmlatt>importance</xmlatt> attribute to highlight elements. <ph
-              otherprops="examples">For example, in steps of a task topic, the value of the
-                <xmlatt>importance</xmlatt> attribute indicates whether a step is optional or
-              required.</ph><draft-comment author="Kristen J Eberlein" time="29 September 2022">
-              <p>I think the phrase "to highlight elements" is a little off. Maybe "render generated
-                text"? And how about adding "Processors often add text or images to ensure that
-                readers of the generated content understand whether the step is optional or
-                required." to the end of the example?</p>
-              <p>
-                <draft-comment author="robander">TO RESOLVE 13 May 2026: <ul id="ul_bhy_2sz_fjc">
-                    <li>maybe change to "… although applications can modify how content is rendered
-                      based on the value of the <xmlatt>importance</xmlatt> attribute</li>
-                    <li>And update the example with something like "For example, in steps of a task
-                      topic, processors often add text or images to highlight that a step is
-                      optional or required"</li>
-                  </ul></draft-comment>
-              </p>
-            </draft-comment></dd>
+            attribute is not used for conditional processing, although applications can modify how
+            content is rendered based on the value of the <xmlatt>importance</xmlatt> attribute. <ph
+              otherprops="examples">For example, in steps of a task topic, processors often add text
+              or images to highlight that a step is marked optional or required.</ph></dd>
         </dlentry>
         <dlentry id="otherprops">
           <dt id="attr-otherprops"><xmlatt>otherprops</xmlatt>
@@ -294,30 +268,19 @@
         </dlentry>
         <dlentry id="outputclass">
           <dt id="attr-outputclass"><xmlatt>outputclass</xmlatt></dt>
-          <dd>Specifies a role that the element is playing. The role must be consistent with the
+          <!--Using lower case non normative should, replacing an earlier lower case must.-->
+          <dd>Specifies a role that the element is playing. The role should be consistent with the
             basic semantic and expectations for the element. In particular, the
               <xmlatt>outputclass</xmlatt> attribute can be used for styling during output
             processing; HTML output will typically preserve <xmlatt>outputclass</xmlatt> for CSS
-              processing.<draft-comment author="robander" audience="spec-editors">I don't like "The
-              role must be consistent...", that seems like best practice that cannot be normative –
-              and I could easily say outputclass="flashy" which makes my element show up with
-              sparkles, and has nothing to do with "the basic semantic and expectations for the element".<p>
-                <draft-comment author="robander">TO RESOLVE 13 May 2026: how about saying "the role
-                  can be", or even a lower-case should, rather than "must be"?</draft-comment>
-              </p></draft-comment></dd>
+            processing.</dd>
         </dlentry>
         <dlentry id="platform">
           <dt id="attr-platform"><xmlatt>platform</xmlatt>
             <i>(specialized attribute)</i></dt>
-          <dd>Indicates operating system and hardware. <ph conkeyref="reuse-attributes/may-inherit"/>
-            <draft-comment author="robander" audience="spec-editors">I think this could specify a
-              platform that is not an operating system or hardware, right? The current definition
-              explicitly limits platform to those two … maybe "Specifies a platform or platforms to
-              which the element applies, such as the operating system or hardware relevant to a task."<p>
-                <draft-comment author="robander">TO RESOLVE 13 May 2026: maybe "Indicates the
-                  content is relevant to the specified platform, such as an operating system or
-                  hardware."</draft-comment>
-              </p></draft-comment></dd>
+          <dd>Indicates that the content is relevant to the specified platform, such as an operating
+            system or hardware. <ph conkeyref="reuse-attributes/may-inherit"/>
+          </dd>
         </dlentry>
         <dlentry id="product">
           <dt id="attr-product"><xmlatt>product</xmlatt>
@@ -339,24 +302,10 @@
         </dlentry>
         <dlentry id="rev" platform="dita">
           <dt id="attr-rev"><xmlatt>rev</xmlatt></dt>
-          <dd>Specifies a revision level of an element that identifies when the element was added or
-            modified. It can be used to flag outputs when it matches a run-time parameter. It cannot
-            be used for filtering nor is it sufficient to be used for version control. <ph
-              conkeyref="reuse-attributes/may-inherit"/><draft-comment author="Kristen J Eberlein"
-              time="29 September 2022">
-              <p>I want to tweak this. How about the following? Also, neither definition describes
-                what values are permitted.</p>
-              <p>Specifies metadata that identifies when the element was added or the content of the
-                element was modified. The <xmlatt>rev</xmlatt> attribute can be used for flagging.
-                It cannot be used for filtering nor is it sufficient to be used for version control.
-                  <ph conkeyref="reuse-attributes/may-inherit"/></p>
-              <p>
-                <draft-comment author="robander">TO RESOLVE 13 May 2026: Sounds good, I might say
-                  "can be used for flagging revisions" just because that sentence feels a bit odd
-                  ending in "for flagging" but really don't care, fine with using the text with or
-                  without that update.</draft-comment>
-              </p>
-            </draft-comment>
+          <dd>Specifies metadata that identifies when the element was added or the content of the
+            element was modified. The <xmlatt>rev</xmlatt> attribute can be used for flagging
+            revisions when content is rendered. It cannot be used for filtering nor is it sufficient
+            to be used for version control. <ph conkeyref="reuse-attributes/may-inherit"/>
           </dd>
         </dlentry>
         <dlentry id="status" platform="dita">
@@ -372,18 +321,7 @@
                 <keyword>-dita-use-conref-target</keyword>.</ph><ph platform="lwdita">The following
               values are valid: <keyword>yes</keyword> and <keyword>no</keyword>.</ph><p
               platform="dita">See <xref href="../../non-normative/elementsMerged.dita"/> for
-              suggested processing defaults for each element.</p><draft-comment
-              author="Kristen J Eberlein" time="31 December 2021" platform="dita">
-              <p>Does <xref href="../../non-normative/elementsMerged.dita"/> really provide
-                suggested processing defaults for each element? I thought it covered whether an
-                element was block or in-line and whether there were considerations that translators
-                needed to be aware of.</p>
-              <p>
-                <draft-comment author="robander">TO RESOLVE 13 May 2026: Can we update to "See
-                  (link) for information on additional considerations on translating DITA
-                  elements."</draft-comment>
-              </p>
-            </draft-comment></dd>
+              additional considerations on translating DITA elements.</p></dd>
         </dlentry>
         <dlentry id="xmllang">
           <dt id="attr-xmllang"><xmlatt>xml:lang</xmlatt></dt>
@@ -391,18 +329,10 @@
             contained in an element. Valid values are language tokens or the null string. The
               <xmlatt>xml:lang</xmlatt> attribute and its values are described in the <xref
               format="html" scope="external" href="http://www.w3.org/TR/REC-xml/#sec-lang-tag"
-              >Extensible Markup Language 1.0 specification, fifth edition</xref>.<p
-              platform="lwdita">For HDITA, the equivalent attribute is
-              <xmlatt>lang</xmlatt>.</p><draft-comment author="Kristen J Eberlein"
-              time="29 September 2022" platform="dita">
-              <p>Do we also want to direct readers to the architectural topics about the
-                  <xmlatt>xml:lang</xmlatt> attribute?</p>
-              <p>
-                <draft-comment author="robander">TO RESOLVE 13 May 2026: Yes, should provide a cross
-                  reference, not sure if that will work in the lwdita spec but can figure that out
-                  later</draft-comment>
-              </p>
-            </draft-comment></dd>
+              >Extensible Markup Language 1.0 specification, fifth edition</xref>.<p>See <xref
+                keyref="xmllang-overview"/> for additional information about using the
+                <xmlatt>xml:lang</xmlatt> attribute.</p><p platform="lwdita">For HDITA, the
+              equivalent attribute is <xmlatt>lang</xmlatt>.</p></dd>
         </dlentry>
       </dl>
     </section>
