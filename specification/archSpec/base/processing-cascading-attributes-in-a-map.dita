@@ -12,27 +12,28 @@
             order:</p>
         <ol id="ol_6eb4fb9c-b56f-4471-bb2d-b183fef5980c">
             <li id="common-start">Evaluate <xmlatt>conref</xmlatt> and <xmlatt>keyref</xmlatt>
-                resolution for the element.</li>
+                resolution for the element. After resolving, continue to following steps to
+                determine effective values.</li>
             <li id="explicit-values">Evaluate explicit values in the document instance. If the
                 attribute is explicitly specified on the element, that value is part of the
                 effective value for this element.</li>
             <li id="evaluate-default-fixed">Evaluate default and fixed values from the XML grammar
                 for elements where no explicit value is specified on the element itself.</li>
-            <li id="common-end">Evaluate default values supplied by controlled values files for
-                elements where no value is established by steps 2 or 3.</li>
             <li id="attributes-cascade">Evaluate cascading values from containing map elements.
                 <ul>
                     <li>For single-value attributes, cascading applies only when no value is
-                        established by steps 2 through 4.</li>
+                        established by steps 2 or 3.</li>
                     <li>For multi-value attributes, cascading and merging behavior <term
                             outputclass="RFC-2119">MUST</term> follow the rules of
                             <xmlatt>cascade</xmlatt>.</li>
                 </ul>
             </li>
+            <li id="common-end">Evaluate default values supplied by controlled values files for
+                elements where no value is established by steps 2 through 4.</li>
             <li id="processing-defaults">Apply processing-supplied default values only when no value
                 is established by steps 2 through 5.</li>
             <li id="cascading-from-map">When values cascade from one map to a referenced map, only
-                values established by steps 1 through 5 are eligible to cascade. Values established
+                values established by steps 2 through 5 are eligible to cascade. Values established
                 only by processing-supplied defaults in step 6 <term outputclass="RFC-2119">MUST
                     NOT</term> cascade to referenced maps.</li>
             <li id="recursive-resolution">For each referenced map, repeat this sequence recursively.
