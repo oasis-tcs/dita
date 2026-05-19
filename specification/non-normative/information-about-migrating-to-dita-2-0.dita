@@ -211,6 +211,14 @@
                     that module is imported into the composite document type within the technical
                     content grammar files. Custom shells that use the <xmlelement>dita</xmlelement>
                     element can now import that module directly from the base vocabulary.</li>
+                <li>The <xmlatt>outputclass</xmlatt> attribute in DITA 1.x was defined directly on
+                    elements in the DTD and RelaxNG grammar files, but is now part of the universal
+                    attribute group. If a specialized element defined this attribute and also uses
+                    the universal attribute group, that extra definition is now redundant and will
+                    result in a parsing error against the DITA 2.x grammar files. The extra
+                    definition of <xmlatt>outputclass</xmlatt> needs to be removed from the element
+                    definition; the attribute will still be defined based on the copy in the
+                    universal attribute group.</li>
             </ul>
         </section>
     </conbody>
