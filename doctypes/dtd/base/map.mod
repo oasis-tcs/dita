@@ -442,7 +442,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                           CDATA
                                     #IMPLIED
                keys
-                          CDATA
+                          NMTOKENS
                                     #IMPLIED
                %impose-role-attribute;
                %topicref-atts;

@@ -146,7 +146,7 @@
                           CDATA
                                     #IMPLIED
                keys
-                          CDATA
+                          NMTOKENS
                                     #IMPLIED
                processing-role
                           (normal |
@@ -191,7 +191,7 @@
                           CDATA
                                     #IMPLIED
                keys
-                          CDATA
+                          NMTOKENS
                                     #IMPLIED
                collection-type
                           (choice |
@@ -391,7 +391,7 @@
                           CDATA
                                     #IMPLIED
                keys
-                          CDATA
+                          NMTOKENS
                                     #IMPLIED
                type
                           CDATA

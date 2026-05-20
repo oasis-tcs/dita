@@ -61,7 +61,7 @@
 >
 <!ENTITY % topichead.attributes
               "keys
-                          CDATA
+                          NMTOKENS
                                     #IMPLIED
                %topicref-atts;
                %univ-atts;"
@@ -98,7 +98,7 @@
                           CDATA
                                     #IMPLIED
                keys
-                          CDATA
+                          NMTOKENS
                                     #IMPLIED
                format
                           CDATA
@@ -125,7 +125,7 @@
                           CDATA
                                     #IMPLIED
                keys
-                          CDATA
+                          NMTOKENS
                                     #REQUIRED
                keyscope
                           CDATA
@@ -201,7 +201,7 @@
                           CDATA
                                     #IMPLIED
                keys
-                          CDATA
+                          NMTOKENS
                                     #IMPLIED
                keyscope
                           CDATA
