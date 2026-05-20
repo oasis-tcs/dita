@@ -271,6 +271,20 @@ to alert more birds to the presence of your bird feeder.&lt;/shortdesc&gt;
         header are an important accessibility aid that allow table navigation using assistive
         technology. See <xref keyref="accessibility-tables"/> for more information about creating
         accessible tables.</p>
+      <p id="precedence-summary">For DITA map attributes, effective values are resolved in this
+        order: explicit value, XML grammar default or fixed value, cascading value, controlled-value
+        default, and processing-supplied default.</p>
+      <p id="single-multi-summary">For single-value attributes, once a value is established at a
+        higher-precedence step, lower-precedence steps do not replace it. For multi-value
+        attributes, additive and non-additive behavior follows the rules of the
+          <xmlatt>cascade</xmlatt> attribute.</p>
+      <p id="canonical-cascading-rules">The complete normative cascading algorithm is defined in
+          <xref href="../archSpec/base/processing-cascading-attributes-in-a-map.dita"/>.</p>
+      <p id="controlled-default-precedence">Default controlled values from subject scheme maps are
+        evaluated after explicit values, XML grammar defaults, and cascading values, and before
+        processing-supplied defaults.</p>
+      <p id="validation-after-resolution">Validation of controlled values is evaluated after
+        effective attribute values are resolved.</p>
                 </section>
 
                 <section id="section-7">
