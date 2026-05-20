@@ -5,23 +5,9 @@
 <shortdesc>This topic defines the precedence rules for determining the effective value of an
 attribute.</shortdesc>
 <conbody>
-<p>When determining the effective value of an attribute, processors <term outputclass="RFC-2119"
->MUST</term> evaluate candidate values in the following precedence order:</p>
-<ol id="ol_o2r_b1f_t3b">
-<li>Explicit value specified in the document instance.</li>
-<li>Default or fixed value provided by the XML grammar.</li>
-<li>Cascading value supplied by containing elements or containing maps, where cascading is allowed
-for that attribute.</li>
-<li>Default controlled value supplied by a subject scheme map, as specified by
-<xmlelement>defaultSubject</xmlelement>.</li>
-<li>Processing-supplied default value.</li>
-</ol>
-<p>Processors <term outputclass="RFC-2119">MUST</term> evaluate this order from highest precedence
-to lowest precedence.</p>
-<p>For single-value attributes, once a value is established at a higher-precedence step, values
-from lower-precedence steps do not replace it. For multi-value attributes, additive or non-additive
-behavior <term outputclass="RFC-2119">MUST</term> follow the rules of the
-<xmlatt>cascade</xmlatt> attribute.</p>
+<p conkeyref="reuse-general/precedence-summary"/>
+<p conkeyref="reuse-general/single-multi-summary"/>
+<p conkeyref="reuse-general/canonical-cascading-rules"/>
 <p>For map processing details, including recursion across referenced maps and the rule that
 processing-supplied defaults do not cascade to referenced maps, see <xref
 href="processing-cascading-attributes-in-a-map.dita"/> and <xref
