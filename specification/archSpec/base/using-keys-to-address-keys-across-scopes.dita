@@ -12,42 +12,42 @@
 		<dlentry> 
 		  <dt>child scope 
 		  </dt> 
-		  <dd>A key scope that occurs directly within another key scope. For
-			 example, in the figure below, key scopes "A-1" and "A-2" are child scopes of
-			 key scope "A". 
-		  </dd> 
+		  <dd>A key scope that occurs directly within another key scope. <ph otherprops="examples">For
+						example, in the figure below, key scopes "A-1" and "A-2" are child scopes of
+						key scope "A".</ph>
+				</dd> 
 		</dlentry> 
 		<dlentry> 
 		  <dt>parent scope 
 		  </dt> 
-		  <dd>A key scope that occurs one level above another key scope. For
-			 example, in the figure below, key scope "A" is a parent scope of key scopes
-			 "A-1" and "A-2". 
-		  </dd> 
+		  <dd>A key scope that occurs one level above another key scope. <ph otherprops="examples">For
+						example, in the figure below, key scope "A" is a parent scope of key scopes
+						"A-1" and "A-2".</ph>
+				</dd> 
 		</dlentry> 
 		<dlentry> 
 		  <dt>ancestor scope 
 		  </dt> 
-		  <dd>A key scope that occurs any level above another key scope. For
-			 example, in the figure below, key scopes "A" and "Root" are both ancestor
-			 scopes of key scopes "A-1" and "A-2" 
-		  </dd> 
+		  <dd>A key scope that occurs any level above another key scope. <ph otherprops="examples">For
+						example, in the figure below, key scopes "A" and "Root" are both ancestor
+						scopes of key scopes "A-1" and "A-2".</ph>
+				</dd> 
 		</dlentry> 
 		<dlentry> 
 		  <dt>descendant scope 
 		  </dt> 
-		  <dd>A key scope that occurs any level below another key scope. For
-			 example, in the figure below, key scopes "A", "A-1", and "A-2" are all
-			 descendant scopes of the implicit, root key scope 
-		  </dd> 
+		  <dd>A key scope that occurs any level below another key scope. <ph otherprops="examples">For
+						example, in the figure below, key scopes "A", "A-1", and "A-2" are all
+						descendant scopes of the implicit, root key scope.</ph>
+				</dd> 
 		</dlentry> 
 		<dlentry> 
 		  <dt>sibling scope 
 		  </dt> 
-		  <dd>A key scope that shares a common parent with another key scope. For
-			 example, in the figure below, key scopes "A" and "B" are sibling scopes; they
-			 both are children of the implicit, root key scope. 
-		  </dd> 
+		  <dd>A key scope that shares a common parent with another key scope. <ph otherprops="examples"
+						>For example, in the figure below, key scopes "A" and "B" are sibling
+						scopes; they both are children of the implicit, root key scope.</ph>
+				</dd> 
 		</dlentry> 
 		<dlentry> 
 		  <dt>key scope hierarchy 
@@ -88,33 +88,28 @@
 		  does include scope-qualified keys from the child scopes. This enables sibling
 		  key scopes to have different key definitions for the same key name. 
 		</p> 
-		<p>A 
-		  <term>scope-qualified key name</term> is a key name, prepended by one
-		  or more key scope names 
-		  <ph>and separated by periods</ph>. For example, to reference a key
-		  "keyName" defined in a child scope named "keyScope", specify 
-		  <codeph>keyref="keyScope.keyName"</codeph>. 
-		</p> 
-		<p>If a key scope has multiple names, its keys can be addressed from its
-		  parent scope using any of the scope names. For example, if a key scope is
-		  defined with 
-		  <codeph>keyscope="a b c"</codeph>, and it contains a key name of
-		  "product", that key can be referenced from the parent scope by 
-		  <codeph>keyref="a.product"</codeph>, 
-		  <codeph>keyref="b.product"</codeph>, or 
-		  <codeph>keyref="c.product"</codeph> 
-		</p> 
-		<p>Because a child scope contributes its scope-qualified keys to its
-		  parent scope, and that parent scope contributes 
-		  <i>its</i> scope-qualified keys to 
-		  <i>its</i> parent scope, it is possible to address the keys in any
-		  descendant scope by using the scope-qualified key name. For example, consider a
-		  key scope named "ancestorScope" that has a child scope named "parentScope"
-		  which in turn has a child scope named "childScope". The scope "childScope"
-		  defines a key named "keyName". To reference the key "keyName" from scope
-		  "ancestorScope", specify the scope-qualified key name: 
-		  <codeph>keyref="parentScope.childScope.keyName"</codeph>. 
-		</p> 
+		<p>A <term>scope-qualified key name</term> is a key name, prepended by one or more key scope names
+				and separated by periods. <ph otherprops="examples">For example, to reference a key
+					"keyName" defined in a child scope named "keyScope", specify
+						<codeph>keyref="keyScope.keyName"</codeph>.</ph>
+			</p> 
+		<p>If a key scope has multiple names, its keys can be addressed from its parent scope using any of
+				the scope names. <ph otherprops="examples">For example, if a key scope is defined
+					with <codeph>keyscope="a b c"</codeph>, and it contains a key name of "product",
+					that key can be referenced from the parent scope by
+						<codeph>keyref="a.product"</codeph>, <codeph>keyref="b.product"</codeph>, or
+						<codeph>keyref="c.product"</codeph>.</ph>
+			</p> 
+		<p>Because a child scope contributes its scope-qualified keys to its parent scope, and that parent
+				scope contributes <i>its</i> scope-qualified keys to <i>its</i> parent scope, it is
+				possible to address the keys in any descendant scope by using the scope-qualified
+				key name. <ph otherprops="examples">For example, consider a key scope named
+					"ancestorScope" that has a child scope named "parentScope" which in turn has a
+					child scope named "childScope". The scope "childScope" defines a key named
+					"keyName". To reference the key "keyName" from scope "ancestorScope", specify
+					the scope-qualified key name:
+						<codeph>keyref="parentScope.childScope.keyName"</codeph>.</ph>
+			</p> 
 	 </section> 
 	 <section id="keys-in-sibling-key-scope"> 
 		<title>Keys that are defined in sibling key scopes</title> 
@@ -124,13 +119,12 @@
 		  child scope to reference its own scope-qualified keys, as well as those defined
 		  by its sibling scopes. 
 		</p> 
-		<p>For example, consider two sibling scopes, "scope1" and "scope2". Each
-		  scope defines the key "productName". References to "productName" in each scope
-		  resolve to the local definition. However, since each scope inherits the
-		  scope-qualified keys that are available in their parent scope, either scope can
-		  reference "scope1.productName" and "scope2.productName" to refer to the
-		  scope-specific definitions for that key. 
-		</p> 
+		<p otherprops="examples">For example, consider two sibling scopes, "scope1" and "scope2". Each
+				scope defines the key "productName". References to "productName" in each scope
+				resolve to the local definition. However, since each scope inherits the
+				scope-qualified keys that are available in their parent scope, either scope can
+				reference "scope1.productName" and "scope2.productName" to refer to the
+				scope-specific definitions for that key. </p> 
 	 </section> 
   </conbody>
 </concept>
