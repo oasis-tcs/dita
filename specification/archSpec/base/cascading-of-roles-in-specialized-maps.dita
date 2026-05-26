@@ -57,8 +57,8 @@
         <xmlatt>class</xmlatt> attribute of the referencing element cascades to top-level topicref
       elements in the referenced map. In situations where this should not happen—such as all
       elements from the mapgroup domain—the non-default behavior should be clearly specified.</p>
-  <p>For example, when a <xmlelement>chapter</xmlelement> element from the bookmap specialization
-      references a map, it supplies a role of "chapter" for each top-level
+  <p otherprops="examples">For example, when a <xmlelement>chapter</xmlelement> element from the
+      bookmap specialization references a map, it supplies a role of "chapter" for each top-level
         <xmlelement>topicref</xmlelement> element in the referenced map. When the
         <xmlelement>chapter</xmlelement> element references a branch in another map, it supplies a
       role of "chapter" for that branch. In effect, the <xmlatt>class</xmlatt> attribute for
@@ -72,13 +72,14 @@
       attribute from the <xmlelement>mapref</xmlelement> element (<codeph>"+ map/topicref
         mapgroup-d/mapref "</codeph>) does not cascade to the referenced map.</p>
   <p outputclass="errorcondition">In some cases, preserving the role of the referencing element
-      might result in out-of-context content. For example, a <xmlelement>chapter</xmlelement>
-      element that references a bookmap might pull in <xmlelement>part</xmlelement> elements that
-      contain nested <xmlelement>chapter</xmlelement> elements. Treating the
-        <xmlelement>part</xmlelement> element as a <xmlelement>chapter</xmlelement> will result in a
-      chapter that nests other chapters, which is not valid in bookmap and might not be
-      understandable by processors. The result is implementation specific<ph rev="review-k">.
-      P</ph>rocessors <term outputclass="RFC-2119">MAY</term> choose to treat this as an error,
-      issue a warning, or simply assign new roles to the problematic elements.</p>
+      might result in out-of-context content. <ph otherprops="examples">For example, a
+          <xmlelement>chapter</xmlelement> element that references a bookmap might pull in
+          <xmlelement>part</xmlelement> elements that contain nested
+          <xmlelement>chapter</xmlelement> elements. Treating the <xmlelement>part</xmlelement>
+        element as a <xmlelement>chapter</xmlelement> will result in a chapter that nests other
+        chapters, which is not valid in bookmap and might not be understandable by processors.</ph>
+      The result is implementation specific<ph rev="review-k">. P</ph>rocessors <term
+        outputclass="RFC-2119">MAY</term> choose to treat this as an error, issue a warning, or
+      simply assign new roles to the problematic elements.</p>
  </conbody>
 </concept>
