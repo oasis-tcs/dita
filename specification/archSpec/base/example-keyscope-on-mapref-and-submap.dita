@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.x Concept//EN" "concept.dtd">
+<concept id="example_keyscope_on_mapref_and_submap">
+    <title>Example: Key scopes specified on both the map reference and the root element of the
+        submap</title>
+    <shortdesc>In this scenario, a key scope is defined both on a reference to a nested map, and on
+        the root element of that nested map.</shortdesc>
+    <conbody>
+        <p>Consider the following DITA maps:</p>
+        <fig id="fig_rsk_yn3_pjc">
+            <title>Root map</title>
+            <codeblock>&lt;map>
+  &lt;mapref keyscope="A" href="installation.ditamap"/>
+  &lt;!-- ... -->
+&lt;/map></codeblock>
+        </fig>
+        <fig id="fig_ssk_yn3_pjc">
+            <title><filepath>installation.ditamap</filepath></title>
+            <codeblock>&lt;map keyscope="B">
+  &lt;!-- ... -->
+&lt;/map></codeblock>
+        </fig>
+        <p>Only one key scope is created; it has key scope names of "A" and "B".</p>
+    </conbody>
+</concept>
