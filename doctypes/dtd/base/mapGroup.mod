@@ -128,7 +128,7 @@
                           NMTOKENS
                                     #REQUIRED
                keyscope
-                          CDATA
+                          NMTOKENS
                                     #IMPLIED
                collection-type
                           (choice |
@@ -204,7 +204,7 @@
                           NMTOKENS
                                     #IMPLIED
                keyscope
-                          CDATA
+                          NMTOKENS
                                     #IMPLIED
                processing-role
                           (normal |

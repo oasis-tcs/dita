@@ -133,7 +133,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                           CDATA
                                     #IMPLIED
                keyscope
-                          CDATA
+                          NMTOKENS
                                     #IMPLIED
                subjectrefs
                           CDATA
@@ -188,7 +188,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                           CDATA
                                     #IMPLIED
                keyscope
-                          CDATA
+                          NMTOKENS
                                     #IMPLIED"
 >
 <!ENTITY % topicref-atts-no-toc-no-keyscope
@@ -286,7 +286,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA 2.0 Map//EN"
                           CDATA
                                     #IMPLIED
                keyscope
-                          CDATA
+                          NMTOKENS
                                     #IMPLIED
                subjectrefs
                           CDATA
