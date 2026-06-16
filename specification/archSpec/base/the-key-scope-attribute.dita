@@ -35,34 +35,7 @@
         map, two distinct key scopes with the same name have no relationship with each other aside
         from that implied by their relative locations in the key scope hierarchy. They do not, for
         example, share key definitions. The only processing impact of a key scope's names is in
-        defining the prefixes used when contributing qualified key names to the parent scope. For
-        example, consider the following map segment:</p>
-      <codeblock>&lt;map>
-  &lt;topicgroup keyscope="xyz" id="scope1">
-    &lt;keydef keys="a" id="def1"/>
-    &lt;!-- other topic references -->
-  &lt;/topicgroup>
-  &lt;topicgroup keyscope="xyz" id="scope2">
-    &lt;keydef keys="a" id="def2"/>
-    &lt;!-- other topic references -->
-  &lt;/topicgroup>
-  &lt;!-- lots of other content -->
-&lt;/map></codeblock>
-      <p>This map creates two distinct scopes that happen to use the same name
-          (<keyword>xyz</keyword>). This results in the following:</p>
-      <ul>
-        <li>Each <xmlelement>topicgroup</xmlelement> sets a scope of <keyword>xyz</keyword> and
-          includes a key <keyword>a</keyword>. From outside of those two scopes, references to
-            <codeph>keyref="xyz.a"</codeph> (key <keyword>a</keyword> within the scope
-            <keyword>xyz</keyword>) will always resolve to the first instance of that value, which
-          is in the first <xmlelement>topicgroup</xmlelement>.</li>
-        <li>Within the first <xmlelement>topicgroup</xmlelement>, content uses
-            <codeph>keyref="a"</codeph> will resolve to the key in that branch (defined on the
-          element with <codeph>id="def1"</codeph>).</li>
-        <li>Within the second <xmlelement>topicgroup</xmlelement>, content uses
-            <codeph>keyref="a"</codeph> will resolve to the key in that branch (defined on the
-          element with <codeph>id="def2"</codeph>).</li>
-      </ul>
+        defining the prefixes used when contributing qualified key names to the parent scope.</p>
     </section>
   </refbody>
 </reference>
