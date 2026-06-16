@@ -12,11 +12,10 @@
             <p>For references to topics, maps, and non-DITA resources, the value of the
                     <xmlatt>keyref</xmlatt> attribute is simply a key name (for example,
                     <codeph>keyref="topic-key"</codeph>). </p>
-            <p><ph >For references to non-topic elements within topics,</ph>
-                the value of the <xmlatt>keyref</xmlatt> attribute is a key name, a <ph
-                    >slash</ph> ("/"), and the ID of the target element (for
-                example, <codeph>keyref="topic-key/some-element-id"</codeph>.)</p>
-            <!--<draft-comment author="robander" time="September 16, 2014" disposition="informational">After discussing with Chris Nitchie, I've removed 2 copies of a clause from the previous paragraph, highlighted below in the original version:<p>If both <xmlatt>keyref</xmlatt> and <xmlatt>href</xmlatt> attributes are specified on an element, the <xmlatt>href</xmlatt> value <term outputclass="RFC-2119" rev="terminology">MUST</term> be used as a fallback address when the key name is undefined<b><i>, and <term outputclass="RFC-2119" rev="terminology">SHOULD</term> be used as a fallback address when the key name is defined but the key reference cannot be resolved to a resource</i></b>. If both <xmlatt>conkeyref</xmlatt> and <xmlatt>conref</xmlatt> attributes are specified on an element, the <xmlatt>conref</xmlatt> value <term outputclass="RFC-2119" rev="terminology">MUST</term> be used as a fallback address when the key name is undefined<b><i>, and <term outputclass="RFC-2119" rev="terminology">SHOULD</term> be used as a fallback address when the key name is defined but the key reference cannot be resolved to a resource</i></b>.</p><p>In our reading, the portion about a key being defined but not resolved conflicts with other language about processing, which for example states that key definitions without a link target or with linking="none" result in no link. That language is clear and conflicts with the removed language here, which suggested that given a valid key definition with no link target, processors should use the local @href as fallback.</p><p>The language could also have been interpreted as "If the resource referenced by a key definition does not exist, @href SHOULD be used as fallback", which does not seem like something we can or should enforce. If the key definition points to example.com, but that server is down, an application would seemingly have to 1) know this, 2) assume it does not exist, and 3) switch to using @href.</p><p>[Eliot Kimber, 7 December 2014] I agree with this analysis.</p></draft-comment>-->
+            <p>For references to non-topic elements within topics, the value of the
+                    <xmlatt>keyref</xmlatt> attribute is a key name, a slash ("/"), and the ID of
+                the target element (for example,
+                <codeph>keyref="topic-key/some-element-id"</codeph>.)</p>
         </section>
         <example id="example" otherprops="examples">
             <title>Example</title>

@@ -3,23 +3,12 @@
 <concept id="example-subjectrefs-attribute-with-key-scopes">
     <title>Example: <xmlatt>subjectrefs</xmlatt> attribute with key
     scopes</title>
-    <shortdesc></shortdesc>
+    <shortdesc>A subject scheme map can be included in a map as either a normal sub map or as a peer
+    root map and associated with a key scope on the map reference.</shortdesc>
   <conbody>
-    <draft-comment author="Kristen J Eberlein" time="29 July 2022">
-      <p>The following is content that Eliot Kimber suggested be included
-        in the DITA 2.0 specification as part of the review of proposal
-        #647. It has not been edited.</p>
-      <p>
-        <draft-comment author="robander">TO RESOLVE 12 May 2026: do an editing pass and then mark it
-          ready for larger TC review</draft-comment>
-      </p>
-    </draft-comment>
-    <p>A subject scheme map may be included in a map as either a normal sub
-      map or as a peer root map and associated with a key scope on the map
-      reference.</p>
-    <fig>
-      <title>A subject scheme map included as a sub map with a key scope: </title>
-      <codeblock>&lt;map>
+    <p>Consider the following map, in which a subject scheme map is included as a sub map with a key
+      scope:</p>
+    <codeblock>&lt;map>
  &lt;title>User assistance for the Acme Widget&lt;/title>
  &lt;!-- ... -->
  &lt;mapref keyscope="subjects" href="subjectschemes/subject-scheme-01.ditamap"/>
@@ -31,7 +20,6 @@
  &lt;/topicref>
  &lt;!-- ... --> 
 &lt;/map></codeblock>
-    </fig>
     <p> The keys defined in referenced subject scheme map are included in
       the referencing map's key space. References to the subject keys must
       be scope qualified (i.e., "subjects.installing"). Putting the subject
