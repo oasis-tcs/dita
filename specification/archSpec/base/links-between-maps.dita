@@ -12,36 +12,22 @@
             maps are managed in tandem, and that the author of the referencing map might have access
             to the referenced map. Adding a key scope to the reference indicates that the peer map
             should be treated as a separate deliverable for the purposes of linking.</p>
-    <draft-comment author="Kristen J Eberlein" time="19 April 2022">
-      <p>When this topic is reviewed, we should also check the definition
-        of <codeph>scope="peer"</codeph> in the <xmlatt>scope</xmlatt>
-        topic.</p>
-            <p>
-                <draft-comment author="robander">TO RESOLVE 12 May 2026: I suppose, just make sure
-                    we're consistent with language in that topic</draft-comment>
-            </p>
-    </draft-comment>
-  <p>The keys that are defined by the peer map belong to <ph >any key scopes
-                that are</ph> declared on the <xmlelement>topicref</xmlelement> element that
-            references that map. Such keys can be referenced from content in the referencing map by
-            using scope-qualified key names. However, processors handle references to keys that are
-            defined in peer maps differently from how they handle references to keys that are
-            defined in submaps.</p>
+  <p>The keys that are defined by the peer map belong to any key scopes that are declared on the
+                <xmlelement>topicref</xmlelement> element that references that map. Such keys can be
+            referenced from content in the referencing map by using scope-qualified key names.
+            However, processors handle references to keys that are defined in peer maps differently
+            from how they handle references to keys that are defined in submaps.</p>
+        <!--The following two paragraphs define an abstract concept where a peer map
+        might be available, or might not, and a processor might be able to resolve keys
+        in that peer map, or might not. The spec cannot normatively mandate what a
+        processor does here, because it cannot predict what it means to resolve
+        (or not resolve) cross deliverable links across all possible publication systems. -->
   <p>DITA processors are not required to resolve key references to peer maps. However, if all
             resources are available in the same processing or management context, processors have
             the potential to resolve key references to peer maps. There might be performance, scale,
             and user interface challenges in implementing such systems, but the ability to resolve
             any given reference is ensured when the source files are physically accessible.</p>
-        <draft-comment author="Kristen J Eberlein" time="04 July 2019" audience="tc-reviewers">
-            <p>Should the following statement about what processors do "when a reference to a peer
-                map cannot be resolved" contain RFC-2119 language?</p>
-            <p>
-                <draft-comment author="robander">TO RESOLVE 12 May 2026: I don't think so, because
-                    resolution is up to them, and it's meaningless to say processors MAY or SHOULD
-                    recover any way they wish</draft-comment>
-            </p>
-        </draft-comment>
-        <!--IGNORE may-must-should word-->
+        <!--IGNORE may-must-should word.-->
   <p>Note the inverse implication; if the peer map is not available, then it is impossible to
             resolve the key reference. Processors that resolve key references to peer maps should
             provide appropriate messages when a reference to a peer map cannot be resolved.
