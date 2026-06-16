@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.x Concept//EN" "concept.dtd">
+<concept id="example_keys_cross_deliverable">
+    <title>Example: Key scopes and cross deliverable linking</title>
+    <shortdesc>Scoped references to a peer map can be used to establish cross deliverable links.
+        When a processor has access to they keys in that peer map, it can use that information to
+        set up cross deliverable links.</shortdesc>
+    <conbody>
+        <p>Consider the following DITA maps <filepath>map-a.ditamap</filepath> and
+                <filepath>map-b.ditamap</filepath>. In this example,
+                <filepath>map-b.ditamap</filepath> is not a submap of Map A, it is a peer map. Map A
+            designates Map B as a peer map by using the following markup:<codeblock>&lt;map>
+  &lt;title>Map A&lt;/title>
+  &lt;topicref 
+    scope="peer"
+    format="ditamap"
+    keyscope="map-b"
+    href="../map-b/map-b.ditamap"
+    processing-role="resource-only"
+  />
+  &lt;!-- ... -->
+&lt;/map></codeblock></p>
+        <p>In the scenario above, a key reference with the name <keyword>map-b.samplekey</keyword>
+            is resolved to the key <keyword>samplekey</keyword> that is defined in the global scope
+            of Map B.</p>
+        <p>Now consider the map reference in map Map A:<codeblock>&lt;mapref 
+  keyscope="scope-b"
+  scope="peer"  
+  href="map-b.ditamap"
+/> </codeblock></p>
+        <p>The referenced map <filepath>map-b.ditamap</filepath> contains the following
+            markup:<codeblock>&lt;map keyscope="product-x">
+ &lt;!-- ... -->
+&lt;/map></codeblock></p>
+        <p>From the context of Map A, key references of the form <keyword>scope-b.somekey</keyword>
+            are resolved to keys that are defined in the global scope of Map B, but key references
+            of the form <keyword>product-x.somekey</keyword> are not. The presence of a
+                <xmlatt>keyscope</xmlatt> attribute on the <xmlelement>map</xmlelement> element in
+            Map B has no effect. A key reference to the scope <keyword>scope-b.somekey</keyword> is
+            equivalent to the unscoped reference <keyword>somekey</keyword> when processed in the
+            context of Map B as the root map. In both cases, the presence of
+                <xmlatt>keyscope</xmlatt> on the root element of Map B has no effect; in the first
+            case it is explicitly ignored, and in the second case the key reference is within the
+            scope <keyword>product-x</keyword> and so does not need to be scope qualified.</p>
+    </conbody>
+</concept>
