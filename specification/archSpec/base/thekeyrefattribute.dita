@@ -17,25 +17,20 @@
  </prolog>
  <refbody>
   <section id="section-1">
-   <draft-comment author="robander">This topic moved from the arch spec section. It needs editing
-     for<ul id="ul_fln_ssb_rpb">
-     <li>Overlap with existing content - likely needs to merge, definitely remove duplication</li>
-     <li>This topic uses a key and the langRef links to it from the definition for @keyref, so if
-      this topic goes away, be sure to update that keyref</li>
-    </ul><p>
-     <draft-comment author="robander">TO RESOLVE 13 May 2026: Looking at the TOC, it's probably fine
-      to keep a topic here about the keyref attribute, but maybe we should update the title to
-      "About the..." or "Using the..." or "Referencing a key name with the..."? Same goes for the
-      topic a bit further down, "The keyscope attribute"<p>Also, based on discussion at the TC
-       meeting May 12 2026, assuming we stick with the conclusion at that meeting that keyref can
-       only go to topics (from map) or topics + subelements (from topic), we should definitely call
-       that out here.</p></draft-comment>
-    </p></draft-comment>
-   <p>For elements that only refer to topics or non-DITA resources, the value of the
-     <xmlatt>keyref</xmlatt> attribute is a key name. For elements that <ph 
-     >can</ph> refer to elements within maps or topics, the value of the <xmlatt>keyref</xmlatt>
-    attribute is a key name, a <ph>slash</ph> ("/"), and the ID of the target element, where the key
-    name must be bound to either the map or topic that contains the target element. </p>
+   <!-- The following section was rewritten based on discussion at the TC on May 12, 2026.
+    The clarification is intended to simplify key resolution, in that any keyref within a map can
+    resolve to full topics, elements in a map, or non-DITA resources; key references in topics
+    can resolve to that, or to nested elements within topics. -->
+   <p>When used within a DITA map, the <xmlatt>keyref</xmlatt> attribute can only resolve to topics,
+    to elements within a DITA map, or to non-DITA resources.</p>
+   <p>When used within a DITA topic, the <xmlatt>keyref</xmlatt> attribute can can resolve to
+    topics, to elements within a DITA topic or map, or to non-DITA resources.</p>
+   <p>For references that refer to topics, to elements within a map, or to non-DITA resources, the
+    value of the <xmlatt>keyref</xmlatt> attribute is a key name.</p>
+   <p>For references that  refer to elements within a topic, the value of the
+     <xmlatt>keyref</xmlatt> attribute is a key name, a slash ("/"), and the ID of the target
+    element, where the key name must be bound to either the topic that contains the target
+    element.</p>
   </section>
  </refbody>
 </reference>
