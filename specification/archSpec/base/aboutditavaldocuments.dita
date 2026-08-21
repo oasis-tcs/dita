@@ -8,63 +8,44 @@
         <p>The markup for DITAVAL documents provides a standard way to
       define all conditional processing that is associated with the DITA
       specification.</p>
-        <p>Each rule in a DITAVAL document does one of the following:<ul id="ul_z3h_cs5_xsb">
-                <li>Defines a rendering behavior for an attribute and value
-          pair, for example, <codeph>audience="novice"</codeph>.</li>
-                <li>Defines a default behavior for a conditional processing attribute, such as
-                    defining a default rendering behavior of <keyword>exclude</keyword> for the
-                        <xmlatt>deliveryTarget</xmlatt>. With that default, any
-                        <xmlatt>deliveryTarget</xmlatt> value not otherwise defined in the document
-                    uses that default behavior of <keyword>exclude</keyword>.</li>
-                <li>Defines a default behavior for <b>all</b> conditional
-          processing attributes, such as defining a default rendering
-          behavior of <keyword>exclude</keyword>. With that default, any
-          conditional-processing attribute not otherwise defined in the
-          document uses that default behavior of
-          <keyword>exclude</keyword>.</li>
-            </ul></p>
-    <draft-comment author="Kristen J Eberlein" time="21 March 2022">
-      <p>Ideally, I'd like this topic to provide a more detailed overview
-        of what can be done with a DITAVAL document. What we say
-        immediately above is technically accurate, but it largely restates
-        what we have in the element-reference topics, rather than providing
-        a good conceptual overview with supporting details. Given the
-        complexity of conditional processing, I think that is what we need
-        here.</p>
-      <p>
-        <draft-comment author="robander">TO RESOLVE 11 May 2026: how about if we add a follow-up
-          paragraph that says "the behaviors above can be associated with the following actions"<ol
-            id="ol_mqm_1c4_fjc">
-            <li>Instruct processors to include matching content</li>
-            <li>Instruct processors to exclude matching content</li>
-            <li>Instruct processors to mark matching revisions</li>
-            <li>Instruct processors to flag matching content with styles also specified on the
-                <xmlelement>prop</xmlelement> or <xmlelement>revprop</xmlelement> element</li>
-            <li>Instruct processors to pass the matching attribute through to rendered output, when
-              applicable</li>
-            <li>Instruct processors to treat the matching content as if the element has an
-                <xmlatt>outputclass</xmlatt> attribute, with the value specified in the
-                <xmlelement>prop</xmlelement> (or revprop?) element using
-                <xmlatt>add-outputclass</xmlatt></li>
-          </ol></draft-comment>
-      </p>
-    </draft-comment>
+        <p id="ditaval-rules">Each rule in a DITAVAL document does one of the following:<ul
+        id="ul_z3h_cs5_xsb">
+        <li>Defines a rendering behavior for an attribute and value pair, for example,
+            <codeph>audience="novice"</codeph>.</li>
+        <li>Defines a default behavior for a conditional processing attribute, such as defining a
+          default rendering behavior of <keyword>exclude</keyword> for the
+            <xmlatt>deliveryTarget</xmlatt>. With that default, any <xmlatt>deliveryTarget</xmlatt>
+          value not otherwise defined in the document uses that default behavior of
+            <keyword>exclude</keyword>.</li>
+        <li>Defines a default behavior for <b>all</b> conditional processing attributes, such as
+          defining a default rendering behavior of <keyword>exclude</keyword>. With that default,
+          any conditional-processing attribute not otherwise defined in the document uses that
+          default behavior of <keyword>exclude</keyword>.</li>
+      </ul></p>
+    <p>Those rules in a DITAVAL document enable the following actions when a processor matches a
+      rule with a DITA element:<ol id="ol_mqm_1c4_fjc">
+        <li>A DITAVAL rule can instruct processors to include matching content.</li>
+        <li>A DITAVAL rule can instruct processors to exclude matching content.</li>
+        <li>A DITAVAL rule can instruct processors to flag matching revisions.</li>
+        <li>A DITAVAL rule can instruct processors to flag matching content with styles also
+          specified on the <xmlelement>prop</xmlelement> or <xmlelement>revprop</xmlelement>
+          elemen.t</li>
+        <li>A DITAVAL rule can instruct processors to pass the matching attribute through to
+          rendered output, for processors that are able to recognize and make use of the value.</li>
+        <li>A DITAVAL rule can instruct processors to treat the matching content as if the element
+          has an <xmlatt>outputclass</xmlatt> attribute, with the value specified in the
+            <xmlelement>prop</xmlelement> or <xmlelement>revprop</xmlelement> element using
+            <xmlatt>add-outputclass</xmlatt></li>
+      </ol></p>
+    <p>Processors can implement default behaviors for flagging. This might include alternate text to
+      indicate the start and end points of revised content or stylistic formatting when no specific
+      flagging behavior is specified.</p>
+    <p>A processor can choose to report conditional processing attribute values encountered in
+      content that do not have a conditional processing rule associated with them.</p>
         <p>While the DITAVAL markup is not part of the DITA topic or map
       vocabulary and cannot be specialized, the XML itself is part of the
       specification. See <xref
         href="../../langRef/containers/ditaval-elements.dita"/> for
       details.</p>
-    <draft-comment author="Kristen J Eberlein" time="21 March 2022">
-      <p>The topic (or another archSpec topic) needs to include the
-        following information:</p>
-      <p>Processors can implement default behaviors for flagging. This
-        might include alternate text to indicate the start and end points
-        of revised content or stylistic formatting when no specific
-        flagging behavior is specified.</p>
-      <p>
-        <draft-comment author="robander">TO RESOLVE 11 May 2026: how about we just add that sentence
-          here, or in the list I suggested adding above</draft-comment>
-      </p>
-    </draft-comment>
     </body>
 </topic>

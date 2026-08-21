@@ -3,8 +3,7 @@
 <concept xml:lang="en-us" id="flagging">
  <title>Flagging based on metadata attributes</title>
  <shortdesc>When rendering content, a conditional processing profile can be used to specify whether
-  an element's content is flagged based on its conditional processing
-  attributes.<!--Flagging is the application of text, images, or formatting during rendering. --></shortdesc>
+    an element's content is flagged based on its conditional processing attributes.</shortdesc>
  <conbody>
   <p otherprops="examples">For example, flagging can be used to highlight the fact that content
    applies to a specific audience or operating system. Flagging can also draw a reader's attention
@@ -21,20 +20,14 @@
       of the flagged content. If the <xmlatt>add-outputclass</xmlatt> attribute is present in the
       matching DITAVAL rule, the flagged element is treated as if the specified value is added to
       its <xmlatt>outputclass</xmlatt> attribute.</p>
+    <p>If a matching DITAVAL rule uses the attribute vaule <codeph>action="passthrough"</codeph>, a
+      processor is instructed to pass the attribute directly through to rendered output, which
+      enables flagging within rendering tools. How the attribute is passed through will depend on
+      the requirements of those rendering tools.</p>
   <p>When the same element evaluates as both flagged and included, the element is both flagged and
    included. When the same element evaluates as both flagged and filtered (for example, flagged
    because of a value for the <xmlatt>audience</xmlatt> attribute and filtered because of a value
    for the <xmlatt>product</xmlatt> attribute value), the element is filtered.</p>
-    <draft-comment author="Kristen J Eberlein" time="21 March 2022">
-      <p>I moved the following content from the
-          <xmlelement>style-conflict</xmlelement> topic, where it did not
-        belong. It's general information about how processors should handle
-        flagging.</p>
-      <p>
-        <draft-comment author="robander">TO RESOLVE 12 May 2026: I think no action is needed, can
-          remove this draft comment</draft-comment>
-      </p>
-    </draft-comment>
     <p><ph rev="review-m">When</ph> flagging methods are specified for
       elements at different levels of the containment hierarchy, the
       flagging method <ph rev="review-m">that is</ph> specified for the
