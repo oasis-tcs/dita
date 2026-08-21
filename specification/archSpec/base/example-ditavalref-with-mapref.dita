@@ -42,35 +42,9 @@
     &lt;topicref href="nestedTopic3.dita"/>
   <b>&lt;/topicgroup></b>
 &lt;/topicref>
-</codeblock><!--<draft-comment author="Kristen Eberlein" time="5 February 2014">@Robert, I think you've got an extra level of <xmlelement>topicref</xmlelement> here. We need to remove the bolded content.</draft-comment>--><!--<draft-comment author="robander" time="21 April 2014">Not in this case. That was intentional. It's part of the gray somewhat-underspecified-area around resolving a map reference. The grouping is there to show that there was a scope to the referenced map (scope in the general sense, not the keyscope sense). For example, consider this modified starting branch:<codeblock>&lt;topicref href="parent.dita">
-  &lt;topicref href="other.ditamap" format="ditamap">
-    &lt;ditavalref href="some.ditaval"/>
-  &lt;/topicref>
-  &lt;topicref href="wacky.ditamap"/>
-  &lt;topicref href="i-like-puffins.dita"/>
-&lt;/topicref></codeblock><p>In that case, if the "other.ditamap" is resolved with no grouping element and with ditavalref at the same level as the map reference, you get the following, which suddenly applies "some.ditaval" to the contents of wacky.ditamap and i-like-puffins.dita:</p><codeblock>&lt;topicref href="parent.dita">
-    &lt;ditavalref href="some.ditaval"/>
-    &lt;topicref href="nestedTopic1.dita">
-      &lt;topicref href="nestedTopic2.dita"/>
-    &lt;/topicref>
-    &lt;topicref href="nestedTopic3.dita"/>
-    ... contents of wacky.ditamap, now seem to be in the some.ditaval branch ...
-    &lt;topicref href="i-like-puffins.dita">
-      ... This one is also filtered by some.ditaval ...
-    &lt;/topicref>
-&lt;/topicref></codeblock><p>If we maintain that extra grouping element, then the original intent is preserved:</p><codeblock>&lt;topicref href="parent.dita">
-  &lt;topicref>
-    &lt;ditavalref href="some.ditaval"/>
-    &lt;topicref href="nestedTopic1.dita">
-      &lt;topicref href="nestedTopic2.dita"/>
-    &lt;/topicref>
-    &lt;topicref href="nestedTopic3.dita"/>
-  &lt;/topicref>
-  ... contents of wacky.ditamap, outside the some.ditaval branch ...
-  &lt;topicref href="i-like-puffins.dita">
-    ... This one is not in the filtered branch ...
-  &lt;/topicref>
-&lt;/topicref></codeblock><p>Chris Nitchie suggested rewriting as <xmlelement>topicgroup</xmlelement> which I've done.</p></draft-comment>--></p>
+</codeblock><!--There was a question raised about the prior example, 5 Feb 2014, asking if it includes an extra level of topicref (is that topicgroup needed).
+
+Answer: it is needed, the extra grouping is here are here to help show the scope of the referenced (originally nested) map. If other topic references existed under parent.dita, after the map reference, they would be after the topicgroup and thus unaffected by the branch filtering.--></p>
       <p>For the purposes of filtering, this map also could be rewritten as follows. </p>
       <codeblock>&lt;topicref href="parent.dita">
   &lt;topicref href="nestedTopic1.dita">
