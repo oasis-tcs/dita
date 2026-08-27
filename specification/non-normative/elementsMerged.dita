@@ -70,15 +70,12 @@
             translatable content. This column only appears in tables for
             the domain elements.</dd>
         </dlentry>
-        <!--<dlentry><dt>Block/inline presentation</dt><dd>Indicates whether the element is rendered in output as a single block or as an inline element. Metadata typically is not rendered, and so metadata elements are listed as <keyword>n/a (metadata).</keyword></dd></dlentry>-->
         <dlentry>
           <dt>Block/inline translation</dt>
-          <dd>Specifies whether the element represents a complete
-            translatable segment. The value <keyword>block</keyword>
-            indicates that the element is a single segment, while the value
-              <keyword>inline</keyword> indicates that the element is part
-            of a larger
-            segment.<!-- For example, the element <xmlelement>cmd</xmlelement> is presented inline with other elements, but it represents a complete translation segment.--></dd>
+          <dd>Specifies whether the element represents a complete translatable segment. The value
+              <keyword>block</keyword> indicates that the element is a single segment, while the
+            value <keyword>inline</keyword> indicates that the element is part of a larger
+            segment.</dd>
         </dlentry>
         <dlentry>
           <dt>Translatable content?</dt>
@@ -351,11 +348,11 @@
         </strow>
         <strow>
           <stentry><xmlelement>image</xmlelement>
-            <!--<xref href='"#elements/foreign1"' type="fn"></xref>--></stentry>
-          <stentry>block when <xmlatt>placement</xmlatt>= break, otherwise
-            inline</stentry>
+          </stentry>
+          <stentry>n/a (container element)</stentry>
           <stentry>yes</stentry>
-          <stentry/>
+          <stentry>The nested <xmlelement>alt</xmlelement> element has translatable text, and the
+            referenced image might require translation.</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>include</xmlelement></stentry>
@@ -758,25 +755,6 @@
           <stentry/>
         </strow>
       </simpletable>
-      <draft-comment author="Kristen J Eberlein" time="11 October 2022">
-        <p>We need to consider how we want to handle
-            <xmlelement>image</xmlelement> and
-            <xmlelement>hazardsymbol</xmlelement> (specialized from
-            <xmlelement>image</xmlelement>). The current wording in the
-          tables in awkward.</p>
-        <p>Also, Eliot pointed out the following in the Content Fusion
-          review: "<xmlelement>image</xmlelement> is not a block for
-          translation purposes, it is a container -- only the
-            <xmlelement>alt</xmlelement> element within
-            <xmlelement>image</xmlelement> contains translatable text.
-          Localization of the image would be separate."</p>
-        <p>
-          <draft-comment author="robander">TO RESOLVE 13 May 2026: For those two, can we change the
-            block/inline column to say "N/A (container element)", and in the final notes colum, say
-            that "The nested <xmlelement>alt</xmlelement> element has translatable text, and the
-            referenced image may also require translation."</draft-comment>
-        </p>
-      </draft-comment>
     </section>
     <section id="section-map">
       <title>Map elements</title>
@@ -956,8 +934,7 @@
           <stentry><xmlelement>hazardsymbol</xmlelement></stentry>
           <stentry><xmlelement>image</xmlelement></stentry>
           <stentry>yes</stentry>
-          <stentry>block when <xmlatt>placement</xmlatt>= break, otherwise
-            inline</stentry>
+          <stentry>n/a (container element)</stentry>
           <stentry>yes</stentry>
         </strow>
         <strow>
@@ -1263,7 +1240,7 @@
         <strow>
           <stentry><xmlelement>style-conflict</xmlelement></stentry>
           <stentry rev="review-s">n/a (empty)</stentry>
-          <stentry>n/a (empty element)</stentry>
+          <stentry>n/a (empty)</stentry>
         </strow>
         <strow>
           <stentry><xmlelement>val</xmlelement></stentry>

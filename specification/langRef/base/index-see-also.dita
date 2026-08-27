@@ -18,7 +18,6 @@
     </section>
     <section id="processing-expectations">
       <title>Processing expectations</title>
-      <!--Verified in following paragraph: using lower case "should" rather than RFC SHOULD.-->
       <p>Processors <term outputclass="RFC-2119">SHOULD</term> ignore an
           <xmlelement>index-see-also</xmlelement> element if its parent
           <xmlelement>indexterm</xmlelement> element contains any <xmlelement>indexterm</xmlelement>
@@ -26,7 +25,8 @@
     </section>
     <section id="attributes">
       <title>Attributes</title>
-      <p>The following attributes are available on this element: <ph conkeyref="reuse-attributes/ref-universalatts"/> and <xref
+      <p>The following attributes are available on this element: <ph
+          conkeyref="reuse-attributes/ref-universalatts"/> and <xref
           keyref="attributes-common/attr-keyref"><xmlatt>keyref</xmlatt></xref>.</p>
     </section>
 <example id="example" otherprops="examples">
@@ -53,16 +53,9 @@
     &lt;indexterm&gt;feeding&lt;/indexterm&gt;
   &lt;/index-see-also&gt;
 &lt;/indexterm&gt;</codeblock>
-        <!--<p>This code sample assumes that the following index entry exists within the DITA source:</p><codeblock>&lt;indexterm&gt;goldfish
-  &lt;indexterm&gt;feeding&lt;/indexterm&gt;
-&lt;/indexterm&gt;</codeblock>-->
-        <!--<p>This markup might generate an index entry such as the following:<image placement="break" href="../../resources/index-see-also.png"/></p>-->
-        <!--<lines>feeding 348
-    <i>see also</i> goldfish, feeding
-...
-goldfish
-    feeding 370</lines>-->
-      </fig>
-      <!--<draft-comment author="Kristen J Eberlein" time="09 August 2019"><p>We need to figure out how to tag representations of generated index entries. The above content is in a <xmlelement>lines</xmlelement> element, and the white space is removed.</p></draft-comment>--></example>
+        <p>This markup generates a primary index entry for "feeding" and a redirection that
+          instructs the reader to the secondary index term "feeding", such as "see also goldfish,
+          feeding".</p>
+      </fig></example>
 </refbody>
 </reference>
