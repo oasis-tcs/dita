@@ -41,6 +41,8 @@
                     generated index entry, and <xmlelement>index-see-also</xmlelement> element
                     provides only a redirection.</ph></li>
         </ul>
-        <!--<draft-comment author="Eliot Kimber" time="09 August 2019"><p>I know we recently discussed with Robert cases where both 1st and 2nd-level entries get page numbers in some IBM documents and in other places.</p><p>I think the issue was when you determine that there are or are not nested entries.</p><p>For example, if in one topic you have &lt;indexterm>apple&lt;/indexterm> and in another topic you have &lt;indexterm>apple&lt;indexterm>computer&lt;/indexterm>&lt;/indexter>, the author of the first topic would probably be surprised if the index as rendered was not:</p><p>apple 12</p><p> computer 14</p><p>or </p><p>apple 12</p><p>apple</p><p> computer 14</p><p>That is, there's the individual index terms as authored and then there's the effective index markup you would get by literally combining all the indexterm elements, merging matching entries.</p><p>I can imagine that some groups would want the above behavior and others would not, for example because they more carefully control their indexes and want to ensure that only leaf entries get page numbers.</p><p>So the spec definitely has to allow both behaviors.</p></draft-comment>-->
+        <!--From 2019 discussion between Eliot Kimber and Robert Anderson: the spec should leave some behaviors open around nested index terms and page locators. 
+
+For example, if one topic indexes the term "apple", and another indexes "apple" with a nested term "computer", some style guides might say that "apple" should not generate a page locator (in this case the author of the first topic probably needs some sort of warning). Other style guides might be fine with a page locator in one topic for "apple", and a page locator for the second topic for "apple, computer".-->
     </conbody>
 </concept>

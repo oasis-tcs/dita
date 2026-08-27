@@ -23,14 +23,12 @@
       <p><ph rev="review-m">Neither the <xmlelement>reprop</xmlelement>
           element or the <xmlatt>rev</xmlatt> attribute are</ph> designed
         to be used for version control.</p>
-      <!--<p>The <xmlatt>rev</xmlatt> attribute identifies when a particular section of a document was added or modified. The attribute is not considered a filtering attribute because this is not sufficient to be used for full version control, such as single-sourcing multiple product variants based on version level – it only represents one aspect of the revision level.</p>-->
     </section>
     <section id="rendering-expectations">
       <title>Rendering expectations</title>
       <p id="default-text">If no alternate text is specified, processors
         can provide default alternate text to indicate the start and end
         point of the flagged content.</p>
-      <!--<p><ph id="default-text">When no alternate text is specified for a revision flag, the default alternate text for <xmlelement>revprop</xmlelement> start of change is typically a localized translation of "Start of change", and the default alternate text for <xmlelement>revprop</xmlelement> end of change is typically a localized translation of "End of change". </ph></p>-->
       <div conkeyref="rendering-expectations/ditaval-rendering"/>
     </section>
     <section id="processing-expectations">
@@ -66,12 +64,10 @@
               </dlentry>
               <dlentry>
                 <dt>passthrough</dt>
-                <dd>Indicates that the content is included in the output
-                  and that the attribute value is preserved. This enables
-                  further processing by a runtime engine. The attribute
-                  value is preserved in the syntax that is required by the
-                  runtime
-                  engine.<!-- Values that are not explicitly passed through should be removed from the output stream, even though the content is still included.--></dd>
+                <dd>Indicates that the content is included in the output and that the attribute
+                  value is preserved. This enables further processing by a runtime engine. The
+                  attribute value is preserved in the syntax that is required by the runtime
+                  engine.</dd>
               </dlentry>
             </dl>
           </dd>
@@ -93,18 +89,8 @@
         </dlentry>
         <dlentry>
           <dt id="attr-changebar"><xmlatt>changebar</xmlatt></dt>
-          <dd>Specifies a color, style, or character to be used for
-            rendering a change bar.<draft-comment
-              author="Kristen J Eberlein" time="22 March 2022">
-              <p>Do we want to be more specify about what values are
-                supported here? Hex codes or names for color, character,
-                but what for styles? Refer to XSL: FO spec?</p>
-              <p>
-                <draft-comment author="robander">TO RESOLVE 13 May 2026: At this point I think no,
-                  whatever a processor wants to support they can use here, which also means if it
-                  was allowed in 1.x it's allowed in 2.0</draft-comment>
-              </p>
-            </draft-comment></dd>
+          <dd>Specifies a color, style, or character to be used for rendering a change
+            bar.<!--Discussion from 2022 about whether to be more specific about values here (hex for color, what styles? At this point no, stay consistent with 1.x which also did not specify a value.--></dd>
         </dlentry>
         <dlentry conkeyref="reuse-attributes/ditaval-color">
           <dt/>
