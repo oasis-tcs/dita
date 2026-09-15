@@ -7,11 +7,17 @@
  <conbody>
     <section id="section">
       <!--IGNORE may-must-should word-->
-      <p >The use of the phases "<xmlelement>map</xmlelement> element" or
+      <note>The use of the phases "<xmlelement>map</xmlelement> element" or
           "<xmlelement>topicref</xmlelement> element" should be interpreted as
           "<xmlelement>map</xmlelement> element and any specialization of
           <xmlelement>map</xmlelement> element " or " <xmlelement>topicref</xmlelement> element or
-        any specialization of <xmlelement>topicref</xmlelement> element."</p>
+        any specialization of <xmlelement>topicref</xmlelement> element."<p rev="review-keys">When
+          considering keys and key references, it is important to remember that
+            <xmlelement>keydef</xmlelement> is included among the <xmlelement>topicref</xmlelement>
+          specializations in this specification. The <xref keyref="elements-keydef"
+              ><xmlelement>keydef</xmlelement></xref> element is a convenience element that has a
+          required <xmlatt>keys</xmlatt> attribute, and provides a default value for the
+            <xmlatt>processing-role</xmlatt> attribute.</p></note>
     </section>
   <section id="definitions">
    <title>Definitions related to keys</title>
@@ -119,26 +125,29 @@
    </ol>
    <note>Because of rules 1 and 3, the key space that is associated with a child scope includes the
         scope-qualified copies of its own keys that are inherited from the key space of the parent
-        scope, as well as those from other "sibling" scopes.</note>
+        scope, as well as those from other "sibling" scopes. <ph rev="review-keys">Scope-qualified
+          keys are covered in more detail in <xref keyref="addressingkeysacrossscopes"/>.</ph></note>
   </section>
   <section id="effective-key-definition-full">
       <title>Effective key definitions</title>
       <p>A key space can contain many definitions for a given key, but only one definition is
         effective for the purpose of resolving key references.</p>
-      <p>When a key has a definition in <!--a parent scope's key space-->the key space that is <ph
-          >inherited from</ph> a parent scope, that definition is effective.
-        Otherwise, a key definition is effective if it is first in a breadth-first traversal of the
-        locally-scoped submaps beneath the scope-defining element. <ph >Put
-          another way, a key definition is effective if it is the first definition for that key name
-          in the shallowest map that contains that key definition.</ph> This allows higher-level map
+      <p>When a key has a definition in the key space that is inherited from a parent scope, that
+        definition is effective. Otherwise, a key definition is effective if it is first in a
+        breadth-first traversal of the locally-scoped submaps beneath the scope-defining element.
+        Put another way, a key definition is effective if it is the first definition for that key
+        name in the shallowest map that contains that key definition. This allows higher-level map
         authors to override keys defined in referenced submaps.</p>
+      <note id="note_r5q_clz_4kc" rev="review-keys">Because key definitions inherited from a parent
+        scope are effective, the reverse is also true: key definitions in a child key scope will not
+        override key definitions in the parent scope.</note>
       <note>A key definition that specifies more than one key name in its <xmlatt>keys</xmlatt>
         attribute <ph >might</ph> be the effective definition for some of its
         keys but not for others.</note>
       <p>Within a key scope, keys do not have to be defined before they are referenced. The key
         space is effective for the entire scope, so the order of key definitions and key references
-        relative to one another is not significant. <ph >This has the following
-          implications for processors:</ph></p>
+        relative to one another is not significant. This has the following implications for
+        processors:</p>
       <ul>
         <li>All key spaces for a root map must be determined before any key reference processing can
           be performed.</li>
