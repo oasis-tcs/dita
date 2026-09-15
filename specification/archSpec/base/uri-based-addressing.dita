@@ -9,7 +9,8 @@
   <conbody>
     <p>URI references address <term>resources</term> and (in some cases) subcomponents of those
       resources. In this context, a resource is a DITA document (map, topic, or DITA base document)
-      or a non-DITA resource (for example, an image, a Web page, or a PDF document).</p>
+      or a non-DITA resource (for example, an image, a Web page, <ph rev="review-keys">a text
+        file</ph>, or a PDF document).</p>
     <p>URI references that are URLs must conform to the rules for URLs and URIs. Windows paths that
       contain a backslash (\) are not valid URLs.</p>
     <section id="URIs">
@@ -24,8 +25,8 @@
       <p>For addressing DITA elements within maps and topics or individual topics within documents
         containing multiple topics, URI references must include the appropriate DITA-defined
         fragment identifier. URI references can be relative or absolute. A relative URI reference
-        can consist of just a fragment identifier. Such a reference is a reference to the document
-        that contains the reference.</p>
+        can consist of just a fragment identifier<ph rev="review-keys">, in which case that fragment
+          identifier identifies an element within the document that contains the reference.</ph></p>
     </section>
     <section id="non-dita">
       <title>Addressing non-DITA targets using a URI</title>
@@ -43,19 +44,20 @@
     </section>
     <section id="topics-with-uri">
       <title>Addressing topics using a URI</title>
-      <p>When addressing a DITA topic element, URI references <ph >can</ph>
-        include a fragment identifier that includes the ID of the topic element
-          (<codeph>filename.dita#topicId</codeph> or <codeph>#topicId</codeph>). <ph>When addressing
-          the DITA topic element that contains the URI reference, the URI reference <ph
-            >might</ph> include the same topic fragment identifier of "."
+      <p>When addressing a DITA topic element, URI references can include a fragment identifier that
+        includes the ID of the topic element (<codeph>filename.dita#topicId</codeph> or
+          <codeph>#topicId</codeph>). <ph>When addressing the DITA topic element that contains the
+          URI reference, the URI reference might include the same topic fragment identifier of "."
             (<codeph>#.</codeph>).</ph></p>
-      <p>Topics always can be addressed by a URI reference whose fragment identifier consists of the
-        topic ID. For the purposes of linking, a reference to a topic-containing document addresses
-        the first topic within that document in document order. For the purposes of rendering, a
-        reference to a topic-containing document addresses the root element of the document. </p>
+      <p>Topics always can be addressed by a URI reference <ph rev="review-keys">with a fragment
+          identifier consisting</ph> of the topic ID. For the purposes of linking, a reference to a
+        topic-containing document addresses the first topic within that document in document order.
+        For the purposes of rendering, a reference to a topic-containing document addresses the root
+        element of the document. </p>
       <p otherprops="examples" >Consider the following examples:<ul>
-          <li>Given a document whose root element is a topic, a URI reference (with no fragment
-            identifier) that addresses that document implicitly references the topic element.</li>
+          <li>Given a document <ph rev="review-keys">with a root topic element, a URI reference that
+              addresses the document without a fragment identifier implicitly references the root
+              topic element.</ph></li>
           <li>Given a <xmlelement>dita</xmlelement> document that contains multiple topics, for the
             purposes of linking, a URI reference that addresses the <xmlelement>dita</xmlelement>
             document implicitly references the first child topic.</li>
@@ -63,7 +65,7 @@
             purposes of rendering, a URI reference that addresses the <xmlelement>dita</xmlelement>
             document implicitly references all the topics that are contained by the
               <xmlelement>dita</xmlelement> element. This means that all the topics that are
-            contained by the<xmlelement>dita</xmlelement> element are rendered in the result.</li>
+            contained by the <xmlelement>dita</xmlelement> element are rendered in the result.</li>
         </ul></p>
     </section>
     <section id="non-topic-with-uri">

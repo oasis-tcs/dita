@@ -25,7 +25,8 @@
       non-topic elements only need to be unique within that topic. For example, within one document
       a section can have the same <xmlatt>id</xmlatt> as another section as long as the two are in
       different topics. This is true even if one of those topics is nested within the other; the
-      scope is determined by the closest topic element within the document hierarchy.</p>
+      scope is determined by the closest <ph rev="review-keys">ancestor</ph> topic element within
+      the document hierarchy.</p>
     <p>Within a map document, the values of the <xmlatt>id</xmlatt> attributes for all elements
         <term outputclass="RFC-2119">SHOULD</term> be unique. When two elements
       within a map have the same value for the <xmlatt>id</xmlatt> attribute, processors <term
@@ -73,8 +74,9 @@
     </fig>
     <note>For tools that automatically assign <xmlatt>id</xmlatt> attributes to elements, it is
       important to recognize that the presence or absence of an <xmlatt>id</xmlatt> attribute on the
-        <xmlelement>fn</xmlelement> element will affect how the element is processed. For most other
-      elements, the presence of a value for the <xmlatt>id</xmlatt> attribute has no impact on
-      processing.</note>
+        <xmlelement>fn</xmlelement> element will affect how the element is processed. <ph
+        rev="review-keys">For details on rendering <xmlelement>fn</xmlelement> elements, see <xref
+          keyref="elements-fn"/>.</ph><p>For most other elements, the presence of a value for the
+          <xmlatt>id</xmlatt> attribute has no impact on processing.</p></note>
   </conbody>
 </concept>
