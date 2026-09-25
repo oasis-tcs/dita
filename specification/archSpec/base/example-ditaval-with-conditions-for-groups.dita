@@ -2,13 +2,13 @@
 <!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA 2.0 Reference//EN" "reference.dtd">
 <reference id="example-ditaval-with-conditions-for-groups">
     <title>Example: DITAVAL with conditions for groups</title>
-    <shortdesc>In this advanced scenario, grouped values are used for filtewring within a
-    conditional processing attribute.</shortdesc>
+    <shortdesc>In this advanced scenario, grouped values are used for filtering within a conditional
+    processing attribute.</shortdesc>
     <refbody>
     <example>
       <fig>
         <codeblock>&lt;val>
-   &lt;prop action="exclude" att="product" val="appserver"/>
+   &lt;prop action="exclude" att="product" val="appServer"/>
    &lt;prop action="include" att="product" val="mySERVER"/>
    &lt;prop action="include" att="database" val="dbFIRST"/>
    &lt;prop action="include" att="database" val="dbSECOND"/>
@@ -66,12 +66,10 @@
                 newDB)"></codeph> is included, because both "dbFIRST" and
               "dbSECOND" are included, so the group evaluates to
               include.</li>
-            <li><codeph>&lt;p product="database(newDB)
-                appserver(mySERVER)"></codeph> is filtered out, because the
-              token "newDB" is excluded when found in the database group.
-              The entire "database" group on this paragraph evaluates to
-              "exclude", so the element is excluded, regardless of how the
-              "appServer" group evaluates.</li>
+            <li><codeph>&lt;p product="database(newDB) appServer(mySERVER)"></codeph> is filtered
+              out, because the token "newDB" is excluded when found in the database group. The
+              entire "database" group on this paragraph evaluates to "exclude", so the element is
+              excluded, regardless of how the "appServer" group evaluates.</li>
           </ul></p>
         <note>If two groups with the same name exist on different
           attributes, each group will evaluate the same way. For example,
