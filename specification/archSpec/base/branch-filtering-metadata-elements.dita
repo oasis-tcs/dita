@@ -6,8 +6,8 @@
         control changes to resource names and key scope names, so that each distinct filtered copy
         can be referenced in a predictable manner.</shortdesc>
     <conbody>
-        <p>The DITAVALref domain defines four elements to control URI and key scope values within
-            filtered map branches.</p>
+        <p>The DITAVAL-reference domain defines four elements to control URI and key scope values
+            within filtered map branches.</p>
         <dl>
             <dlentry>
                 <dt><xmlelement>dvrResourcePrefix</xmlelement></dt>
@@ -57,7 +57,7 @@
                     each key scope in the branch. If no key scope is specified for the branch, this
                     can be used to establish a new key scope, optionally combined with a value
                     specified in <xmlelement>dvrKeyscopeSuffix</xmlelement>.<p>For map branches that
-                        are procssed with this element, the value of the
+                        are processed with this element, the value of the
                             <xmlelement>dvrKeyscopePrefix</xmlelement> element contributes to the
                         effective key scope names of the branch. The effective key scope names start
                         with the value of the <xmlelement>dvrKeyscopePrefix</xmlelement> element.
@@ -107,8 +107,8 @@
 &lt;/topicref></codeblock>
         <p>The novice branch does not use any renaming, which allows it to be treated as the default
             copy of the branch. As a result, when the topics are filtered using the conditions that
-            are specified in <filepath>novice.ditaval</filepath>, the resource names and key names
-            are unmodified, so that references to the original resource name and key name will
+            are specified in <filepath>novice.ditaval</filepath>, the resource names and key scope
+            names are unmodified, so that references to the original resource name and key name will
             resolve to topics in the novice copy of the branch. This has the following effect on
             topics that are filtered using the conditions specified in
                 <filepath>admin.ditaval</filepath>:</p>
@@ -133,15 +133,15 @@
         </ul>
         <note>In general, the best way to <!--unambiguously -->reference a topic that will be
             modified based on branch filtering is to use a key rather than a URI. Key scopes and key
-            names (including those modified based on the elements above) must be calculated by
-            processors before other processing. This means that in the example above, a key
-            reference to <codeph>adminscope-prodFeatures.features</codeph> will always refer
-            explicitly to the instance of <filepath>productFeatures.dita</filepath> filtered against
-            the conditions in <filepath>admin.ditaval</filepath>, regardless of whether a processor
-            has performed the filtering yet. References that use the URI
+            names (including those modified based on the elements above) are calculated by
+            processors before they construct the effective map and key scope structure. This means
+            that in the example above, a key reference to
+                <codeph>adminscope-prodFeatures.features</codeph> will always refer explicitly to
+            the instance of <filepath>productFeatures.dita</filepath> filtered against the
+            conditions in <filepath>admin.ditaval</filepath>, regardless of whether a processor has
+            performed the filtering yet. References that use the URI
                 <filepath>productFeatures.dita</filepath> or
                 <filepath>admin-productFeatures.dita</filepath> could resolve differently (or fail
-            to resolve), as discussed in <xref
-                href="branch-filtering-implications-of-processing-order.dita"/>.</note>
+            to resolve), as discussed in <xref keyref="branch-filter-processing-order"/>.</note>
     </conbody>
 </concept>

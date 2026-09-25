@@ -42,10 +42,10 @@
 &lt;/topicref>
 &lt;topicref href="a.dita"/>
 &lt;topicref href="c-token.dita" keys="c"> 
-  &lt;!-- c-token.ditaval to be filtered by one.ditaval -->
+  &lt;!-- c-token.dita to be filtered by one.ditaval -->
 &lt;/topicref>
 &lt;topicref href="c-token.dita" keys="c"> 
-  &lt;!-- c-token.ditaval to be filtered by two.ditaval, key "c" ignored -->
+  &lt;!-- c-token.dita to be filtered by two.ditaval, key "c" ignored -->
 &lt;/topicref></codeblock>
       </p>
       <p>The equivalent map highlights several problems with the original source:<ul>
@@ -57,17 +57,17 @@
             the same problem.</li>
           <li>The file <filepath>c.dita</filepath> is filtered with two sets of conditions, each of
             which explicitly maps the filtered resource to <filepath>c-token.dita</filepath>. This
-            is an error condition that processors need to report.</li>
+            is an error condition that processors should report.</li>
           <li>In situations where resource names map directly to output file names, such as an HTML5
             rendering that creates files based on the original resource name, the following name
-            conflicts also occur. In this case a processor would need to report an error, use an
-            alternate naming scheme, or both:<ol>
+            conflicts also occur. In this case a processor should report an error, use an alternate
+            naming scheme, or both:<ol>
               <li><filepath>a.dita</filepath> generates <filepath>a.html</filepath> using three
-                alternate set of conditions. One version uses <filepath>one.ditaval</filepath>, one
+                alternate sets of conditions. One version uses <filepath>one.ditaval</filepath>, one
                 version uses <filepath>two.ditaval</filepath>, and the third version uses no
                 filtering.</li>
               <li><filepath>b.dita</filepath> generates <filepath>b.html</filepath> using two
-                alternate set of conditions. One version uses <filepath>one.ditaval</filepath>, and
+                alternate sets of conditions. One version uses <filepath>one.ditaval</filepath>, and
                 the other version uses <filepath>two.ditaval</filepath>.</li>
             </ol></li>
         </ul></p>
