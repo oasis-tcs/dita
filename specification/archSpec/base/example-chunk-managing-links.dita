@@ -4,11 +4,10 @@
 <title>Example: Managing links when chunking</title>
   <abstract>
     <!--<shortdesc>Link management with <xmlatt>chunk</xmlatt> is often straightforward<ph rev="review-h">. In</ph> most cases where URI-based linking is ambiguous, using indirect links and <xmlatt>keyref</xmlatt> will give the correct result.<draft-comment author="Kristen J Eberlein" time="03 February 2022"><p>This short description needs to be recrafted to more accurately convey the sense of what the topic covers. We accepted a DITAweb comment to that effect when this topic was reviewed.</p></draft-comment></shortdesc>-->
-    <shortdesc rev="review-h">If a topic is referenced more than once and
-      one of those instances involves chunking, links to that topic might
-      be ambiguous. In most of such cases, using key references to keys
-      that are defined directly on the chunked instance of the topic will
-      give the correct result.</shortdesc>
+    <shortdesc rev="review-h">If a topic is referenced more than once and one of those instances
+      involves chunking, links to that topic might be ambiguous. In most such cases, using key
+      references to keys that are defined directly on the chunked instance of the topic will give
+      the correct result.</shortdesc>
   </abstract>
   <prolog>
     <metadata>
@@ -134,17 +133,14 @@
             <filepath>splitThisChild.dita</filepath>. At the same time,
             <filepath>splitThis.dita</filepath> is rendered <i>in another
             context</i> as a single document, with a different name.</li>
-        <li>Based on the map above, the branch that starts with the
-          original source document <filepath>combineThis.dita</filepath> is
-          rendered as one document combined with the content of
-            <filepath>combinedChild.dita</filepath>. At the same time,
-          those two documents are rendered in another context as individual
-          documents. For this example, assume a processor generates the
-          combined document using the generated name
-            <filepath>combinThis-2.dita</filepath>, while the documents
-            <filepath>combineThis.dita</filepath> and
-            <filepath>combinedChild.dita</filepath> retain their names in
-          the other context.</li>
+        <li>Based on the map above, the branch that starts with the original source document
+            <filepath>combineThis.dita</filepath> is rendered as one document combined with the
+          content of <filepath>combinedChild.dita</filepath>. At the same time, those two documents
+          are rendered in another context as individual documents. For this example, assume a
+          processor generates the combined document using the generated name
+            <filepath>combineThis-2.dita</filepath>, while the documents
+            <filepath>combineThis.dita</filepath> and <filepath>combinedChild.dita</filepath> retain
+          their names in the other context.</li>
       </ul>
       <p rev="review-h">In this scenario, the links to the topic documents
         are now problematic:</p>
@@ -153,7 +149,7 @@
           direct URI references <codeph>href="splitThis.dita"</codeph>,
             <codeph>href="splitThis.dita#splitThisChild"</codeph>,
             <codeph>href="combineThis.dita"</codeph>, or
-            <codeph>href="combinedChild.dita"</codeph> are  ambiguous. They
+            <codeph>href="combinedChild.dita"</codeph> are ambiguous. They
           could <ph rev="review-h">resolve to either</ph> the chunked
           instance <ph rev="review-h">of the topic documents</ph> or to the
           individual topics in the other context. Implementations will have
@@ -169,12 +165,10 @@
           is the split copy in this map, but this is not guaranteed.</li>
       </ul>
       <p>All links <ph rev="review-h">that specify</ph>
-        <codeph>keyref="explicitSplitKey"</codeph>,
-          <codeph>keyref="combinedThisKey"</codeph>, or
-          <codeph>keyref="combinedChildKey"</codeph> are unambiguous. These
-        links can only resolve to the chunked instance <ph rev="review-h"
-          >of the topic documents</ph>, because <ph rev="review-h">the key
-          definitions</ph> are defined directly within the chunked
+        <codeph>keyref="explicitSplitKey"</codeph>, <codeph>keyref="combineThisKey"</codeph>, or
+          <codeph>keyref="combinedChildKey"</codeph> are unambiguous. These links can only resolve
+        to the chunked instance <ph rev="review-h">of the topic documents</ph>, because <ph
+          rev="review-h">the key definitions</ph> are defined directly within the chunked
         context.</p>
       <p>There is no way to unambiguously link to the child document that
         will result from splitting <filepath>splitThis.dita</filepath>.
