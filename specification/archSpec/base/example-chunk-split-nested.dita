@@ -3,7 +3,6 @@
 <concept id="concept_nl2_m4j_1gb" xml:lang="en">
   <title rev="review-h">Example: How <codeph>chunk="split"</codeph> affects the map
     hierarchy</title>
-  <!---->
 <shortdesc>Special attention is necessary when evaluating the map hierarchy
     that results from splitting <ph rev="review-h">documents that
       contain</ph> nested topics.</shortdesc>
@@ -84,8 +83,8 @@
           <filepath>middle.dita</filepath> are split and treated as
         multiple topic documents. <filepath>child.dita</filepath> is only a
         single topic and has nothing to split.</p>
-      <p rev="review-h">The following list addresses how the split
-        operation effects the map hierarchy:</p>
+      <p rev="review-h">The following list addresses how the split operation affects the map
+        hierarchy:</p>
       <ul id="ul_n3y_wng_thb">
         <li><filepath>ancestor.dita</filepath> has a root
             <xmlelement>dita</xmlelement> element, so it results in
@@ -111,12 +110,12 @@
   &lt;!-- More topics in ancestor composite document -->
   &lt;topicref href="ancestor-last.dita">
     &lt;topicref href="ancestor-last-child.dita"/>
-    &lt;!-- middle.dita now located here, as final child of
-         final topic child of &lt;dita> in ancestor.dita -->
+    &lt;!-- middle.dita now located here, in the final child of
+         the final root topic within &lt;dita> in ancestor.dita -->
     &lt;topicref href="middle-root.dita">
       &lt;topicref href="middle-child.dita"/>
-      &lt;!-- child.dita now located here, as final topic of
-           child root topic in middle.dita ancestor.dita -->
+      &lt;!-- child.dita now located here, within the last topic
+           child of the root topic in middle.dita -->
       &lt;topicref href="child.dita"/>
     &lt;/topicref>
   &lt;/topicref>
