@@ -59,7 +59,7 @@
       element. If a <xmlelement>topicref</xmlelement> refers to a branch of a map, the role is
       imposed only on the root element of that branch. If a <xmlelement>topicref</xmlelement> refers
       to an entire map, the role is imposed only on the highest-level topic references within that
-      map. The role does not cascade to other nested referencs within the map. For example, if a
+      map. The role does not cascade to other nested references within the map. For example, if a
         <xmlelement>chapter</xmlelement> element applied that role to every reference in another
       map, that map would be made up only of chapters nested within chapters.</p>
     <p>For elements that do not create a role for the referenced content, the
@@ -92,8 +92,8 @@
         for content in the other map.</p>
       <p>In an RNG grammar file, this default value can be set as
         follows:<codeblock base="ci-xml">&lt;optional>
-  &lt;attribute name="impose-role" a:defaultValue="keeptarget">
-    &lt;value>keeptarget&lt;/value>
+  &lt;attribute name="impose-role" a:defaultValue="impose">
+    &lt;value>impose&lt;/value>
   &lt;/attribute>
 &lt;/optional></codeblock></p>
       <p>In a DTD grammar file, this default value can be set as
@@ -167,10 +167,10 @@
       <p>Because the <xmlelement>chapter</xmlelement> element is defined with a fixed value of
           <keyword>impose</keyword> for the <xmlatt>impose-role</xmlatt> attribute, processors will
         impose the "chapter" role on the highest-level references within the nested map. This means
-        the processors imposes the role of "chapter" on all three branches in the nested map. As
-        with the previous example, the "chapter" role is not imposed on the child topics in each
-        branch. While processors do not need to literally resolve the content in a normal map, the
-        effective result is similar to this merged map:<codeblock base="ci-xml">&lt;bookmap>
+        the processors impose the role of "chapter" on all three branches in the nested map. As with
+        the previous example, the "chapter" role is not imposed on the child topics in each branch.
+        While processors do not need to literally resolve the content in a normal map, the effective
+        result is similar to this merged map:<codeblock base="ci-xml">&lt;bookmap>
   &lt;!-- ... title, front matter, and other chapters -->
   &lt;chapter href="branch1.dita"> &lt;!-- ... --> &lt;/chapter>
   &lt;chapter href="branch2.dita">
