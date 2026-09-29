@@ -4,8 +4,7 @@
  "reference.dtd">
 <reference id="relcolspec" xml:lang="en-us">
 <title><xmlelement>relcolspec</xmlelement></title>
-<shortdesc>A column specification in a relationship table column <ph
-      rev="review-b">that</ph> provides default attribute values for the
+<shortdesc>A column specification in a relationship table provides default attribute values for the
     references in that column of a relationship table.</shortdesc>
   <prolog>
     <metadata>
@@ -74,14 +73,11 @@
       <title>Attributes</title>
       <p>The following attributes are available on this element: <ph
           conkeyref="reuse-attributes/ref-universalatts"/> and <ph
-          conkeyref="reuse-attributes/ref-commonmapatts"/> (without
-          <xmlatt>keyscope</xmlatt> or <xmlatt>collection-type</xmlatt>),
-          <xref keyref="attributes-common/attr-type"
-          ><xmlatt>type</xmlatt></xref>, <xref
-          keyref="attributes-common/attr-scope"
-          ><xmlatt>scope</xmlatt></xref>, <ph rev="review-b">and</ph>
-        <xref keyref="attributes-common/attr-format"
-            ><xmlatt>format</xmlatt></xref>.</p>
+          conkeyref="reuse-attributes/ref-commonmapatts"/> (without <xmlatt>keyscope</xmlatt> or
+          <xmlatt>collection-type</xmlatt>), <xref keyref="attributes-common/attr-type"
+            ><xmlatt>type</xmlatt></xref>, <xref keyref="attributes-common/attr-scope"
+            ><xmlatt>scope</xmlatt></xref>, <ph rev="review-b">and</ph>
+        <xref keyref="attributes-common/attr-format"><xmlatt>format</xmlatt></xref>.</p>
     </section>
 <example id="example" otherprops="examples"><title>Examples</title>
       <p>The following section contains examples of how the
@@ -123,9 +119,8 @@
       </fig>
       <fig id="fig_y15_jrw_3nb">
         <title>Relationship table column headers with topics and titles</title>
-        <p>The following code sample shows how topics and titles can be
-          specified in a column header for relationship table column
-          header: </p>
+        <p>The following code sample shows how topics and titles can be provided in a column
+          specification to create relationship table column headers:</p>
         <codeblock>&lt;reltable>
   &lt;relheader>
     <b>&lt;relcolspec type="task"></b>
@@ -172,19 +167,16 @@
             <li><filepath>msg.dita</filepath> &lt;–> <filepath>login_error_1.dita</filepath></li>
             <li><filepath>msg.dita</filepath> &lt;–> <filepath>login_error_2.dita</filepath></li>
           </ul></p>
-        <p>Ignoring the headers for a moment, the
-            <xmlelement>reltable</xmlelement> here would ordinarily define
-          a two-way relationship between
-            <filepath>debug_login.dita</filepath> and
-            <filepath>login_error1.dita</filepath>. This typically will be
-          expressed as a link from each to the other. An application might
-          render the link with a language-appropriate heading such as
-          "Related reference", indicating that the target of the link is a
-          reference topic.</p>
+        <p>Ignoring the headers for a moment, the <xmlelement>reltable</xmlelement> here would
+          ordinarily define a two-way relationship between <filepath>debug_login.dita</filepath> and
+            <filepath>login_error_1.dita</filepath>. This typically will be expressed as a link from
+          each to the other. An application might render the link with a language-appropriate
+          heading such as "Related reference", indicating that the target of the link is a reference
+          topic.</p>
         <p>The headers change this by specifying a new title. In the second column, the
             <xmlelement>topicref</xmlelement> specifies a title of "Messages", which should now be
           used together with the link to anything in that column. So, a generated link from
-            <filepath>debug_login.dita</filepath> to <filepath>login_error1.dita</filepath> should
+            <filepath>debug_login.dita</filepath> to <filepath>login_error_1.dita</filepath> should
           be rendered together with the title of "Messages". How this is rendered together with the
           link is up to the application.</p>
       </fig></example>
