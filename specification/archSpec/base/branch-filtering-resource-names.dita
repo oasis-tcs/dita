@@ -24,21 +24,24 @@
                 <xmlelement>ditavalref</xmlelement> element are available to provide control over
             these values, so that keys, key scopes, and URIs can be individually referenced within a
             branch.</p>
-        <p>For example, the following map branch references two DITAVAL documents:</p>
-        <codeblock>&lt;topicref href="productFeatures.dita" keys="features" keyscope="prodFeatures">
+        <example id="branchfilterkeys">
+            <p>For example, the following map branch references two DITAVAL documents:</p>
+            <codeblock id="codeblock_lxs_3lt_tkc">&lt;topicref href="productFeatures.dita" keys="features" keyscope="prodFeatures">
   &lt;ditavalref href="novice.ditaval"/>
   &lt;ditavalref href="admin.ditaval"/>
   &lt;topicref href="newFeature.dita" keys="newThing"/>
 &lt;/topicref></codeblock>
-        <p>In this case, the processor has two effective copies of
-                <filepath>productFeatures.dita</filepath> and <filepath>newFeature.dita</filepath>.
-            One copy of each topic is filtered using the conditions specified in
-                <filepath>novice.ditaval</filepath>, and the other copy is filtered using the
-            conditions specified in <filepath>admin.ditaval</filepath>.</p>
-        <p>If an author has referenced a topic using <codeph>keyref="features"</codeph> or
-                <codeph>keyref="prodFeatures.features"</codeph>, a processor cannot distinguish
-            which filtered copy is the intended target. The metadata elements in the DITAVALref
-            domain provide a way to control this scenario.</p>
+            <p>In this case, the processor has two effective copies of
+                    <filepath>productFeatures.dita</filepath> and
+                    <filepath>newFeature.dita</filepath>. One copy of each topic is filtered using
+                the conditions specified in <filepath>novice.ditaval</filepath>, and the other copy
+                is filtered using the conditions specified in
+                <filepath>admin.ditaval</filepath>.</p>
+            <p>If an author has referenced a topic using <codeph>keyref="features"</codeph> or
+                    <codeph>keyref="prodFeatures.features"</codeph>, a processor cannot distinguish
+                which filtered copy is the intended target. The metadata elements in the DITAVALref
+                domain provide a way to control this scenario.</p>
+        </example>
     </conbody>
 </concept>
 
