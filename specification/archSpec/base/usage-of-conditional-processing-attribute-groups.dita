@@ -14,8 +14,8 @@
 <p>The following rules apply to groups within conditional processing attributes:</p>
     <ul >
       <li>Groups consist of a name immediately followed by a parenthetical group of zero or more
-        space-delimited string values. For example, <codeph>"groupName(valueOne
-        valueTwo)"</codeph>.</li>
+        space-delimited string values. <ph otherprops="examples">For example, <codeph>"groupName(valueOne
+        valueTwo)"</codeph>.</ph></li>
       <li>Groups cannot be nested.</li>
       <li>If two groups with the same name are found in a single attribute, they are treated as if
         all values are specified in the same group. The following values for the
@@ -30,14 +30,14 @@ otherprops="groupA(a b c) groupZ(APPNAME)"</codeblock></li>
 product="product(a b c) database(dbA dbB) appserver(mySERVER)"</codeblock></li>
     </ul>
     <p>An empty group within an attribute is equivalent to omitting that group from the attribute.
-      For example, <codeph>&lt;ph product="database() A"></codeph> is equivalent to <codeph>&lt;ph
+      <ph otherprops="examples">For example, <codeph>&lt;ph product="database() A"></codeph> is equivalent to <codeph>&lt;ph
         product="A"></codeph>. Similarly, <codeph>&lt;ph product="operatingSystem()"></codeph> is
       equivalent to <codeph>&lt;ph product=""></codeph>, which in turn is equivalent to
-        <codeph>&lt;ph></codeph>.</p>
+        <codeph>&lt;ph></codeph>.</ph></p>
     <p>If two groups with the same name exist on different attributes, a rule specified for that
-      group will evaluate the same way on each attribute. For example, if the group "sample" is
+      group will evaluate the same way on each attribute. <ph otherprops="examples">For example, if the group "sample" is
       specified within both <xmlatt>platform</xmlatt> and <xmlatt>otherprops</xmlatt>, a DITAVAL
-      rule for <codeph>sample="value"</codeph> will evaluate the same in each attribute. If there is
+      rule for <codeph>sample="value"</codeph> will evaluate the same in each attribute.</ph> If there is
       a need to distinguish between similarly named groups on different attributes, the best
       practice is to use more specific group names such as <varname>platformGroupname</varname> and
         <varname>productGroupname</varname>. Alternatively, DITAVAL rules can be specified based on
@@ -45,12 +45,12 @@ product="product(a b c) database(dbA dbB) appserver(mySERVER)"</codeblock></li>
     <p>If the same group name is used in different attributes, a complex scenario could be created
       where different defaults are specified for different attributes, with no rule set for a group
       or individual value. In this case a value might end up evaluating differently in the different
-      attributes. For example, a DITAVAL can set a default of "exclude" for
+      attributes. <ph otherprops="examples">For example, a DITAVAL can set a default of "exclude" for
         <xmlatt>platform</xmlatt> and a default of "flag" for <xmlatt>product</xmlatt>. If no rules
       are specified for group <codeph>oddgroup()</codeph>, or for the value
         <codeph>oddgroup="edgecase"</codeph>, the attribute
         <codeph>platform="oddgroup(edgecase)"</codeph> will evaluate to "exclude" while
-        <codeph>product="oddgroup(edgecase)"</codeph> will resolve to "flag". See <xref
+        <codeph>product="oddgroup(edgecase)"</codeph> will resolve to "flag".</ph> See <xref
         href="../../langRef/containers/ditaval-elements.dita"/> for information on how to change
       default behaviors in a DITAVAL profile.</p>
   </conbody>
