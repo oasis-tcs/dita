@@ -104,12 +104,13 @@
     </section>
     <example id="example" otherprops="examples">
       <title>Example</title>
-      <p>The following code sample shows how the
-          <xmlelement>revprop</xmlelement> element can be used to flag
-        content that has been marked with the <xmlatt>rev</xmlatt>
-        attribute. Elements that specify <codeph>rev="edits"</codeph> are
-        rendered in red text, and glyphs mark the start and end points of
-        the flagged revision. Alternate text is provided.</p>
+      <p>The following code sample shows how the <xmlelement>revprop</xmlelement> element can be
+        used to flag content that has been marked with the <xmlatt>rev</xmlatt> attribute. Elements
+        that specify <codeph>rev="edits"</codeph> are rendered in red text, and glyphs mark the
+        start and end points of the flagged revision. Alternate text <ph rev="review-condproc">for
+          the glyphs</ph> is provided. <ph rev="review-condproc">When the rendered format supports
+          change bars, elements that specify <codeph>rev="v2"</codeph> will be marked with the
+          change bar character "#".</ph></p>
       <codeblock>&lt;val>
   &lt;revprop action="flag" color="red" val="edits">
     &lt;startflag imageref="start-glyph.png">
@@ -119,6 +120,7 @@
       &lt;alt-text>End of revision&lt;/alt-text>
     &lt;/endflag>
   &lt;/revprop>
+  <ph rev="review-condproc">&lt;revprop action="flag" val="v2" changebar="#"/></ph>
 &lt;/val></codeblock>
     </example>
   </refbody>
