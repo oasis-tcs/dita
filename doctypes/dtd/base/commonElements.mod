@@ -644,8 +644,28 @@
                outputclass
                           CDATA
                                     #IMPLIED
+               importance
+                          (default |
+                           deprecated |
+                           high |
+                           low |
+                           normal |
+                           obsolete |
+                           optional |
+                           recommended |
+                           required |
+                           urgent |
+                           -dita-use-conref-target)
+                                    #IMPLIED
                rev
                           CDATA
+                                    #IMPLIED
+               status
+                          (changed |
+                           deleted |
+                           new |
+                           unchanged |
+                           -dita-use-conref-target)
                                     #IMPLIED"
 >
 <!ELEMENT  title %title.content;>
