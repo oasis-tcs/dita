@@ -83,7 +83,8 @@
                            -dita-use-conref-target)
                                     #IMPLIED
                format
-                          CDATA
+                          (ditaval)
+                                    #FIXED
                                     'ditaval'
                processing-role
                           CDATA
