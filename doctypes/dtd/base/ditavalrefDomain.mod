@@ -87,7 +87,8 @@
                                     #FIXED
                                     'ditaval'
                processing-role
-                          CDATA
+                          (resource-only)
+                                    #FIXED
                                     'resource-only'
                %impose-role-attribute-fixed-keeptarget;
                %ditavalref-univ-atts;"
