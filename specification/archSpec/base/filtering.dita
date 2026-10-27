@@ -30,14 +30,14 @@ attribute is treated as "include", because an omitted attribute cannot evaluate 
        <keyword>exclude</keyword>.</li>
      <li>If the attribute value does include groups, evaluate as follows, treating ungrouped tokens
       together as an implicit group:<ol>
-       <li>For each group (including any implicit group), if any string token inside the group
+       <li>For each group (including any implicit group), if <b>any</b> string token inside the group
         evaluates to <keyword>include</keyword>, the group evaluates to <keyword>include</keyword>.
-        In other words, a group evaluates to <keyword>exclude</keyword> only when <b>all</b> string
-        tokens in that group evaluate to <keyword>exclude</keyword>.</li>
-       <li>If any group within an attribute evaluates to <keyword>exclude</keyword>, that attribute
-        evaluates to <keyword>exclude</keyword>. In other words, the attribute evaluates to
+        <ph otherprops="examples">In other words, a group evaluates to <keyword>exclude</keyword> only when <b>all</b> string
+        tokens in that group evaluate to <keyword>exclude</keyword>.</ph></li>
+       <li>If <b>any</b> group within an attribute evaluates to <keyword>exclude</keyword>, that attribute
+        evaluates to <keyword>exclude</keyword>. <ph otherprops="examples">In other words, the attribute evaluates to
          <keyword>include</keyword> only when <b>all</b> groups in that attribute evaluate to
-         <keyword>include</keyword>.</li>
+         <keyword>include</keyword>.</ph></li>
       </ol></li>
     </ul></li>
    <li>If <b>any single attribute</b> evaluates to <keyword>exclude</keyword>, the element <ph
