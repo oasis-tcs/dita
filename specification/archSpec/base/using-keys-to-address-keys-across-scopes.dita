@@ -8,54 +8,62 @@
 	 <p>A root map might contain any number of key scopes; relationships between
 		key scopes are discussed using the following terms: 
 	 </p> 
-	 <dl> 
-		<dlentry> 
-		  <dt>child scope 
-		  </dt> 
-		  <dd>A key scope that occurs directly within another key scope. <ph otherprops="examples">For
-						example, in the figure below, key scopes "A-1" and "A-2" are child scopes of
-						key scope "A".</ph>
-				</dd> 
-		</dlentry> 
-		<dlentry> 
-		  <dt>parent scope 
-		  </dt> 
-		  <dd>A key scope that occurs one level above another key scope. <ph otherprops="examples">For
-						example, in the figure below, key scope "A" is a parent scope of key scopes
-						"A-1" and "A-2".</ph>
-				</dd> 
-		</dlentry> 
-		<dlentry> 
-		  <dt>ancestor scope 
-		  </dt> 
-		  <dd>A key scope that occurs any level above another key scope. <ph otherprops="examples">For
-						example, in the figure below, key scopes "A" and "Root" are both ancestor
-						scopes of key scopes "A-1" and "A-2".</ph>
-				</dd> 
-		</dlentry> 
-		<dlentry> 
-		  <dt>descendant scope 
-		  </dt> 
-		  <dd>A key scope that occurs any level below another key scope. <ph otherprops="examples">For
-						example, in the figure below, key scopes "A", "A-1", and "A-2" are all
-						descendant scopes of the implicit, root key scope.</ph>
-				</dd> 
-		</dlentry> 
-		<dlentry> 
-		  <dt>sibling scope 
-		  </dt> 
-		  <dd>A key scope that shares a common parent with another key scope. <ph otherprops="examples"
-						>For example, in the figure below, key scopes "A" and "B" are sibling
-						scopes; they both are children of the implicit, root key scope.</ph>
-				</dd> 
-		</dlentry> 
-		<dlentry> 
-		  <dt>key scope hierarchy 
-		  </dt> 
-		  <dd>A key scope and all of its descendant scopes. 
-		  </dd> 
-		</dlentry> 
-	 </dl> 
+	 <dl id="key-scope-terms">
+			<dlentry>
+				<dt>child scope</dt>
+				<dd>A key scope that occurs directly within another key scope. <ph
+						otherprops="examples">For example, in the figure below, key scopes "A-1" and
+						"A-2" are child scopes of key scope "A".</ph>
+				</dd>
+			</dlentry>
+			<dlentry>
+				<dt>parent scope</dt>
+				<dd>A key scope that occurs one level above another key scope. <ph
+						otherprops="examples">For example, in the figure below, key scope "A" is a
+						parent scope of key scopes "A-1" and "A-2".</ph>
+				</dd>
+			</dlentry>
+			<dlentry>
+				<dt>ancestor scope</dt>
+				<dd>A key scope that occurs any level above another key scope. <ph
+						otherprops="examples">For example, in the figure below, key scopes "A" and
+						"Root" are both ancestor scopes of key scopes "A-1" and "A-2".</ph>
+				</dd>
+			</dlentry>
+			<dlentry>
+				<dt>descendant scope</dt>
+				<dd>A key scope that occurs any level below another key scope. <ph
+						otherprops="examples">For example, in the figure below, key scopes "A",
+						"A-1", and "A-2" are all descendant scopes of the implicit, root key
+						scope.</ph>
+				</dd>
+			</dlentry>
+			<dlentry>
+				<dt>sibling scope</dt>
+				<dd>A key scope that shares a common parent with another key scope. <ph
+						otherprops="examples">For example, in the figure below, key scopes "A" and
+						"B" are sibling scopes; they both are children of the implicit, root key
+						scope.</ph>
+				</dd>
+			</dlentry>
+			<dlentry>
+				<dt>key scope hierarchy</dt>
+				<dd>A key scope and all of its descendant scopes. </dd>
+			</dlentry>
+			<dlentry rev="review-keys">
+				<dt>scope-qualified key name</dt>
+				<dd>A key name, prepended by one or more key scope names and separated by periods.
+						<ph otherprops="examples">For example, to reference a key "keyName" defined
+						in a child scope named "keyScope", specify the scope-qualified key name
+						"keyScope.keyName".</ph></dd>
+			</dlentry>
+			<dlentry rev="review-keys">
+				<dt>unqualified key name</dt>
+				<dd>A key name that is not qualified with a key scope. <ph otherprops="examples">For
+						example, <codeph>keyref="productName"</codeph> is a reference to the
+						unqualified key name "productName".</ph></dd>
+			</dlentry>
+		</dl> 
 	 <fig id="fig_DE65294F6EF64C129F38A19C66C40E3E"> 
 		<title>A key scope hierarchy</title> 
 		<image placement="break" href="../../images/key-scope-hierarchy.png"
@@ -88,11 +96,6 @@
 		  does include scope-qualified keys from the child scopes. This enables sibling
 		  key scopes to have different key definitions for the same key name. 
 		</p> 
-		<p>A <term>scope-qualified key name</term> is a key name, prepended by one or more key scope names
-				and separated by periods. <ph otherprops="examples">For example, to reference a key
-					"keyName" defined in a child scope named "keyScope", specify
-						<codeph>keyref="keyScope.keyName"</codeph>.</ph>
-			</p> 
 		<p>If a key scope has multiple names, its keys can be addressed from its parent scope using any of
 				the scope names. <ph otherprops="examples">For example, if a key scope is defined
 					with <codeph>keyscope="a b c"</codeph>, and it contains a key name of "product",
