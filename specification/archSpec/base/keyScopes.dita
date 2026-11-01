@@ -20,7 +20,8 @@
       attribute. Such elements, their contents, and any locally-scoped content referenced from
       within the element, are considered to be part of the scope. Keys defined within a scope are
       only directly referenceable from within the same scope. They can be referenced from the parent
-      scope using the scope's name, followed by a period, followed by the key name.</p>
+      scope <ph rev="review-keys">or a sibling scope</ph> using the scope's name, followed by a
+      period, followed by the key name.</p>
     <p id="non-intersecting">All key scopes are contiguous and non-intersecting. Within a root map,
       two distinct key scopes with the same name have no relationship with each other aside from
       that implied by their relative locations in the key scope hierarchy. They do not, for example,
@@ -34,6 +35,10 @@
         <li>The elements that are referenced by the scope-defining element or its descendants, minus
           the elements that are contained by child key scopes</li>
       </ul></p>
+    <note id="parent-child-inherit-restatement" rev="review-keys">Child key scopes are excluded from
+      the elements that make up the parent scope, but they inherit the parent scope's key
+      definitions. The child scope therefore has access to keys defined in its parent scope, while
+      keys defined within the child scope do not become part of the parent scope.</note>
     <p id="mapref-and-submap">If the <xmlatt>keyscope</xmlatt> attribute is specified on both a
       reference to a DITA map and the root element of the referenced map, only one scope is created;
       the submap does not create another level of scope hierarchy. The single key scope that results
@@ -41,18 +46,21 @@
         <xmlatt>keyscope</xmlatt> attribute on the map reference and the root element of the submap.
       This means that processors can resolve references to both the key scopes specified on the map
       reference and the key scopes specified on the root element of the submap.</p>
-    <p id="default-root-scope">The root element of a root map always defines a key scope, regardless
-      of whether a <xmlatt>keyscope</xmlatt> attribute is present. All key definitions and key
-      references exist within a key scope, even if it is an unnamed, implicit key scope that is
-      defined by the root element in the root map.</p>
+    <p id="default-root-scope">The root element of a root map always <ph rev="review-keys"
+        >creates</ph> a key scope, regardless of whether a <xmlatt>keyscope</xmlatt> attribute is
+      present. All key definitions and key references exist within a key scope, even if it is an
+      unnamed, implicit key scope that is <ph rev="review-keys">created</ph> by the root element in
+      the root map.</p>
     <p id="key-scope-key-space">Each key scope has its own key space that is used to resolve the key
       references that occur within the scope. The key space that is associated with a key scope
       includes all of the key definitions within the key scope. This means that different key scopes
       can have different effective key definitions:<ul id="ul_qhp_wym_pjc">
         <li>A given key can be defined in one scope, but not another.</li>
         <li> A given key also can be defined differently in different key scopes.</li>
+        <li rev="review-keys">A given key can be inherited from a parent key scope.</li>
       </ul></p>
-    <p> Key references in each key scope are resolved using the effective key definition that is
-      specified within its own key scope.</p>
+    <p> Key references in each key scope are resolved using the effective key definition that is <ph
+        rev="review-keys">either</ph> specified within its own key scope <ph rev="review-keys">or
+        inherited from a parent key scope</ph>.</p>
   </conbody>
 </concept>
