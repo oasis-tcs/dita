@@ -29,8 +29,13 @@ of the definition in DITA 1.x.-->
                     <p>When an empty element references a key definition that has a child
                             <xmlelement>topicmeta</xmlelement> element, content from that
                             <xmlelement>topicmeta</xmlelement> element is used to determine the
-                        effective content of the referencing element. Effective content from the key
-                        definition becomes the element content, with the following exceptions: </p>
+                        effective content of the referencing element. <ph rev="review-keys">The
+                            recommended mechanism for providing effective content within
+                                <xmlelement>topicmeta</xmlelement> is to use the
+                                <xmlelement>keytext</xmlelement> element, although alternative
+                            mechanisms are described below.</ph></p>
+                    <p>Effective content from the key definition becomes the element content, with
+                        the following exceptions: </p>
                     <ul id="ul_zlq_w1w_bpb">
                         <li>For empty <xmlelement>image</xmlelement> elements, the effective content
                             is used as alternate text. This is equivalent to creating an
@@ -64,8 +69,9 @@ of the definition in DITA 1.x.-->
                 <dt>Processing rules</dt>
                 <dd>
                     <p>Processors <term outputclass="RFC-2119">MUST</term> resolve variable text
-                        that is defined using keys by using the following sequence:<ol
-                            id="ol_amq_w1w_bpb">
+                        that is defined using keys by <ph rev="review-keys">applying the following
+                            rules in order, stopping as soon as the effective text content is
+                            determined:</ph><ol id="ol_amq_w1w_bpb">
                             <li>Effective text content is taken from the
                                     <xmlelement>keytext</xmlelement> element.</li>
                             <li>Effective text content is taken from the
