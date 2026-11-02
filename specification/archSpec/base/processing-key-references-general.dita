@@ -35,13 +35,13 @@
                 Consequently, different processors might produce different effective bindings for
                 the same map when there are key definitions that might be filtered out based on
                 their filtering attributes.</p>
-            <note>In order to retain backwards compatibility with DITA 1.0 and 1.1, the
-                specification does not mandate a processing order for different DITA features. This
-                makes it technically possible to determine an effective key definition, resolve
-                references to that key definition, and then filter out the definition. However, the
-                preferred approach is to take conditional processing into account when resolving
-                keys, so that key definitions which are excluded by processing are not used in
-                resolving key references.</note>
+            <note>In order to retain backwards compatibility with DITA <ph rev="review-keys"
+                    >1.x</ph>, the specification does not mandate a processing order for different
+                DITA features. This makes it technically possible to determine an effective key
+                definition, resolve references to that key definition, and then filter out the
+                definition. However, the preferred approach is to take conditional processing into
+                account when resolving keys, so that key definitions which are excluded by
+                processing are not used in resolving key references.</note>
         </section>
         <section id="reusing-topic-across-scopes">
             <title>Reusing a topic in multiple key scopes</title>
@@ -51,10 +51,10 @@
                 source topic in resolved output for each distinct set of effective key definitions
                 that are referenced by the topic. </p>
             <p>In such cases, authors can use <xmlelement>resourceid</xmlelement> within topic
-                references to specify distinct anchor components for each instance of the topic.</p>
-            <p> with the <xmlatt>appid-role</xmlatt> attribute set to
-                    <keyword>deliverable-anchor</keyword> to specify different source URIs for each
-                reference to a topic.</p>
+                references to specify distinct anchor components for each instance of the topic. <ph
+                    rev="review-keys">This is done by using <xmlelement>resourceid</xmlelement> with
+                    the <xmlatt>appid-role</xmlatt> attribute set to
+                        <keyword>deliverable-anchor</keyword>.</ph></p>
         </section>
         <section id="error-conditions">
             <title>Error conditions</title>
