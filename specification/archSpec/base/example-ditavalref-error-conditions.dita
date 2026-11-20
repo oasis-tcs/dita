@@ -57,11 +57,15 @@
             the same problem.</li>
           <li>The file <filepath>c.dita</filepath> is filtered with two sets of conditions, each of
             which explicitly maps the filtered resource to <filepath>c-token.dita</filepath>. This
-            is an error condition that processors should report.</li>
+            is an error condition that processors should report<ph rev="review-bf">, because the
+              markup explicitly instructs processors to use the same resource name with conflicting
+              conditions.</ph>.</li>
           <li>In situations where resource names map directly to output file names, such as an HTML5
             rendering that creates files based on the original resource name, the following name
-            conflicts also occur. In this case a processor should report an error, use an alternate
-            naming scheme, or both:<ol>
+            conflicts also occur. <ph rev="review-bf">While the map markup results in multiple
+              copies of <filepath>a.dita</filepath> and <filepath>b.dita</filepath>, it does not
+              specify how to name those copies.</ph> In this case a processor should report an
+            error, use an alternate naming scheme, or both:<ol>
               <li><filepath>a.dita</filepath> generates <filepath>a.html</filepath> using three
                 alternate sets of conditions. One version uses <filepath>one.ditaval</filepath>, one
                 version uses <filepath>two.ditaval</filepath>, and the third version uses no
