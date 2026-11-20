@@ -37,7 +37,10 @@
           potentially using other DITAVAL conditions that are specified externally.</li>
         <li>The second topic (<filepath>install.dita</filepath>) is filtered using any external
           conditions as well as the conditions that are specified in
-            <filepath>novice.ditaval</filepath>.</li>
+            <filepath>novice.ditaval</filepath>. <ph rev="review-bf">For this and other topics
+            filtered with <filepath>novice.ditaval</filepath>, any "exclude" conditions that are
+            specified externally will still be applied; once specified, "exclude" conditions are in
+            effect for the entire map or branch.</ph></li>
         <li>The third topic (<filepath>do-stuff.dita</filepath>) is filtered using any external
           conditions as well as the conditions that are specified in
             <filepath>novice.ditaval</filepath>.</li>
@@ -45,8 +48,8 @@
           entirely, because it is filtered out with the conditions that are specified for the
           branch.</li>
       </ul>
-      <p >In this example, no resources are renamed based on the
-          <xmlelement>ditavalref</xmlelement> processing.</p>
+      <p>In this example, no resources are renamed based on the <xmlelement>ditavalref</xmlelement>
+        processing.</p>
       <note>In cases where the original resource names map directly to names or anchors in a
         deliverable, the absence of renaming ensures that external links to those topics are stable
         regardless of whether a DITAVAL document is used.</note>
