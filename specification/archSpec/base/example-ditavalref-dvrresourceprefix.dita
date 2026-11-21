@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="example-ditavalref-dvrresourceprefix" rev="review-bf">
+  <title>Example: Using <xmlelement>dvrResourcePrefix</xmlelement> to control resource names</title>
+  <shortdesc>In this scenario, a <xmlelement>ditavalref</xmlelement> element uses the nested
+      <xmlelement>dvrResourcePrefix</xmlelement> element to control the names of resources within
+    the filtered branch.</shortdesc>
+  <conbody>
+    <p>The following code sample shows a simple branch with a parent and child topic, where the
+      branch uses a <xmlelement>ditavalref</xmlelement> element and
+        <xmlelement>dvrResourcePrefix</xmlelement>.<codeblock id="codeblock_tf2_1ps_hlc">&lt;topicref href="branch-01.dita">
+  &lt;ditavalref href="condition-01.ditaval">
+    &lt;ditavalmeta>
+      &lt;dvrResourcePrefix>cond01-&lt;/dvrResourcePrefix>
+    &lt;/ditavalmeta>
+  &lt;/ditavalref>
+  &lt;topicref href="topics/subtopic-01.dita"/>
+&lt;/topicref></codeblock></p>
+    <p>After the <xmlelement>ditavalref</xmlelement> is evaluated:<ul id="ul_syl_cy1_ppb">
+        <li>The effective file name of resource <filepath>branch-01.dita</filepath> is
+            <filepath>cond01-branch-01.dita</filepath>.</li>
+        <li>The effective file name of the resource <filepath>topics/subtopic-01.dita</filepath> is
+            <filepath>topics/cond01-subtopic-01.dita</filepath>.</li>
+      </ul></p>
+  </conbody>
+</concept>
