@@ -70,21 +70,7 @@
       <p id="attr-exception" outputclass="attr-exception">For this element, the <xmlatt>toc</xmlatt> attribute has a default
         value of <keyword>no</keyword>.</p>
     </section>
-<example id="example" otherprops="examples"><title>Example</title>
-      <draft-comment author="Kristen J Eberlein" time="22 November 2021">
-        <p>Consensus from editors' call today: this example needs a
-          significant rework.</p>
-        <p>
-          <draft-comment author="robander">TO RESOLVE 11 May 2026: See above. I think options are<ol
-              id="ol_ltk_qd4_fjc">
-              <li>Ask TC for volunteers to come up with a better one (which also might end up better
-                off in the arch topic)</li>
-              <li>Leave it alone (with some cleanup after it), and put a better one in the
-                architectural topic</li>
-              <li>Just do the cleanup after the table and move on</li>
-            </ol></draft-comment>
-        </p>
-      </draft-comment><p>In the following code sample, a relationship table is defined with three
+<example id="example" otherprops="examples"><title>Example</title><p>In the following code sample, a relationship table is defined with three
         columns: one for "concept", one for "task", and one for
         "reference". Three cells are defined within each row. The first
         cell contains one concept topic:
@@ -115,14 +101,7 @@
       &lt;/relcell&gt;
     &lt;/relrow&gt;
   &lt;/reltable&gt;
-&lt;/map&gt;</codeblock><p>A graphical version of the relationship table in an editor might look like this:</p>
-      <draft-comment author="Kristen J Eberlein" time="02 December 2021">
-        <p>Replace with a screen capture</p>
-        <p>
-          <draft-comment author="robander">TO RESOLVE 11 May 2026: recommend just leaving this as a
-            table, the intent is clear enough?</draft-comment>
-        </p>
-      </draft-comment><simpletable>
+&lt;/map&gt;</codeblock><p>A graphical version of the relationship table in an editor might look like this:</p><simpletable>
 <sthead>
 <stentry>type="concept"</stentry>
 <stentry>type="task"</stentry>
@@ -145,63 +124,40 @@
         solely as supporting information and should not link back to topics in other cells, you can
         set the <xmlatt>linking</xmlatt> attribute on the <xmlelement>relcell</xmlelement> or
           <xmlelement>relcolspec</xmlelement> to <keyword>targetonly</keyword>.</p><p>In this example, the related links would be as follows:</p>
-      <draft-comment author="Kristen J Eberlein" time="02 December 2021">
-        <p>Comment from Robert Anderson in the DITAweb review of this
-          topic:</p>
-        <p>This organization as a definition list bothers me; it's simply a
-          list of file names, it feels like there should be more
-          explanatory text, even something like "links to"</p>
-        <p>
-          <draft-comment author="robander">TO RESOLVE 11 May 2026: recommend keeping the definition
-            list layout, with a file name as the term, but replace the "definition" with prose that
-            explains what each item links to and why.<p>But it might also be good to move the
-              "Reltables are an inherently …" follow up paragraph over to the architectural spec
-              topic.</p></draft-comment>
-        </p>
-      </draft-comment>
       <dl>
         <dlentry>
           <dt><filepath>about-MyDevice.dita</filepath></dt>
-          <dd><filepath>setting-up-MyDevice.dita</filepath>,
-              <filepath>operating-MyDevice.dita</filepath>,
-              <filepath>MyDevice-settings.dita</filepath>,
-              <filepath>MyDevice-version-info.dita</filepath></dd>
+          <dd>This topic from the first column links to
+              <filepath>setting-up-MyDevice.dita</filepath> and
+              <filepath>operating-MyDevice.dita</filepath> from the task column, as well as to
+              <filepath>MyDevice-settings.dita</filepath> and
+              <filepath>MyDevice-version-info.dita</filepath> from the reference column.</dd>
         </dlentry>
         <dlentry>
-          <dt><filepath>setting-up-MyDevice.dita</filepath></dt>
-          <dd><filepath>about-MyDevice.dita</filepath>,
-              <filepath>MyDevice-settings.dita</filepath>,
-              <filepath>MyDevice-version-info.dita</filepath></dd>
+          <dt><filepath>setting-up-MyDevice.dita</filepath> and
+              <filepath>operating-MyDevice.dita</filepath></dt>
+          <dd>These topics link to <filepath>about-MyDevice.dita</filepath> from the concept column,
+            as well as to <filepath>MyDevice-settings.dita</filepath> and
+              <filepath>MyDevice-version-info.dita</filepath> from the reference column. They do not
+            link to each other, because topic references within the same cell do not establish a
+            linking relationship.</dd>
         </dlentry>
         <dlentry>
-          <dt><filepath>operating-MyDevice.dita</filepath></dt>
-          <dd><filepath>about-MyDevice.dita</filepath>,
-              <filepath>MyDevice-settings.dita</filepath>,
-              <filepath>MyDevice-version-info.dita</filepath></dd>
+          <dt><filepath>MyDevice-settings.dita</filepath> and
+              <filepath>MyDevice-version-info.dita</filepath></dt>
+          <dd>These topics link to <filepath>about-MyDevice.dita</filepath> from the concept column,
+            as well as to <filepath>setting-up-MyDevice.dita</filepath> and
+              <filepath>operating-MyDevice.dita</filepath> from the task column. They do not link to
+            each other, because topic references within the same cell do not establish a linking
+            relationship.</dd>
         </dlentry>
-        <dlentry>
-          <dt><filepath>MyDevice-settings.dita</filepath></dt>
-          <dd><filepath>about-MyDevice.dita</filepath>,
-              <filepath>setting-up-MyDevice.dita</filepath>,
-              <filepath>operating-MyDevice.dita</filepath></dd>
-        </dlentry>
-        <dlentry>
-          <dt>
-            <filepath>MyDevice-version-info.dita</filepath></dt>
-          <dd><filepath>about-MyDevice.dita</filepath>,
-              <filepath>setting-up-MyDevice.dita</filepath>,
-              <filepath>operating-MyDevice.dita</filepath></dd>
-        </dlentry>
-      </dl><p>Relationship tables are inherently an efficient way to manage these
-        links. In particular, they increase the prospect for reuse among
-        topics, because those topics do not contain context-specific links.
-        A relationship table also makes it easy to see and manage patterns;
-        for example, the fact that
-          <filepath>operating-MyDevice.dita</filepath> and
-          <filepath>setting-up-MyDevice.dita</filepath> have the same
-        relationships to supporting information is clear from the table,
-        but would require some comparison and counting to determine from
-        the list summary just before this paragraph.</p></example>
+      </dl><p>Relationship tables are inherently an efficient way to manage these links. In particular, they
+        increase the prospect for reuse among topics, because those topics do not contain
+        context-specific links. A relationship table also makes it easy to see and manage patterns.
+        For example, the fact that <filepath>operating-MyDevice.dita</filepath> and
+          <filepath>setting-up-MyDevice.dita</filepath> have the same relationships to supporting
+        information is clear from the table, but would require some comparison and counting to
+        determine from the list summary just before this paragraph.</p></example>
 </refbody>
 </reference>
 
