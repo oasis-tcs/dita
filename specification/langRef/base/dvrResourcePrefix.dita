@@ -33,63 +33,11 @@
           <xmlatt>name</xmlatt> attribute has a default value of
           <keyword>dvrResourcePrefix</keyword>.</p>
     </section>
-    <example id="example" otherprops="examples">
+    <example id="example" otherprops="examples" rev="review-bf">
       <title>Example</title>
-      <draft-comment author="robander" time="25 September 2026">This comment applies to all four
-        metadata elements in the <xmlelement>ditavalmeta</xmlelement> element.<p>Should these
-          examples move into the architectural specification with other branch filter examples?
-          These are not about the general filtering behavior, and each example is specific to the
-          element described. Examples in the architectural specification all focus on filtering.
-          However, these are clearly about processing impact, so might be better to group them with
-          all of the other branch filtering examples in that section, and turn the example sections
-          here into a reference - "See [branch filtering examples]".</p><p>If they do move, we would
-          end up with 5 new example topics – one each for the impact on resource prefix/sufix +
-          keyscope prefix/suffix, and another for the impact on resource IDs.</p></draft-comment>
-      <fig id="fig_twy_5w1_ppb">
-        <title>How <xmlelement>dvrResourcePrefix</xmlelement> affects resource file names</title>
-        <p>The following code sample shows a simple branch with a parent and child topic, where the
-          branch uses a <xmlelement>ditavalref</xmlelement> element and
-            <xmlelement>dvrResourcePrefix</xmlelement>.<codeblock>&lt;topicref href="branch-01.dita">
-  &lt;ditavalref href="condition-01.ditaval">
-    &lt;ditavalmeta>
-      &lt;dvrResourcePrefix>cond01-&lt;/dvrResourcePrefix>
-    &lt;/ditavalmeta>
-  &lt;/ditavalref>
-  &lt;topicref href="topics/subtopic-01.dita"/>
-&lt;/topicref></codeblock></p>
-        <p>After the <xmlelement>ditavalref</xmlelement> is evaluated:<ul id="ul_syl_cy1_ppb">
-            <li>The effective file name of the resource <filepath>subtopic-01.dita</filepath> is
-                <filepath>cond01-subtopic-01.dita</filepath>.</li>
-            <li>The effective file name of resource <filepath>branch-01.dita</filepath> is
-                <filepath>cond01-branch-01.dita</filepath>.</li>
-          </ul></p>
-      </fig>
-      <fig id="fig_s32_2y1_ppb">
-        <title>How <xmlelement>dvrResourcePrefix</xmlelement> interacts with
-            <xmlelement>resourceid</xmlelement></title>
-        <p>The following code sample shows the same branch with a parent and child topic, but in
-          this case the child topic specifies a deliverable anchor with
-            <xmlelement>resourceid</xmlelement>.<codeblock>&lt;topicref href="branch-01.dita">
-  &lt;ditavalref href="condition-01.ditaval">
-    &lt;ditavalmeta>
-      &lt;dvrResourcePrefix>cond01-&lt;/dvrResourcePrefix>
-    &lt;/ditavalmeta>
-  &lt;/ditavalref>
-  &lt;topicref href="topics/subtopic-01.dita">
-    &lt;topicmeta>
-      &lt;resourceid appid="ae35-unit-fault" appid-role="deliverable-anchor"/>
-    &lt;/topicmeta>
-  &lt;/topicref>
-&lt;/topicref></codeblock></p>
-        <p>After the <xmlelement>ditavalref</xmlelement> is evaluated:<ul id="ul_ybb_ly1_ppb">
-            <li>The effective file name of the resource <filepath>subtopic-01.dita</filepath> is
-                <filepath>cond01-subtopic-01.dita</filepath>.</li>
-            <li>The effective file name of resource <filepath>branch-01.dita</filepath> is
-                <filepath>cond01-branch-01.dita</filepath>.</li>
-            <li>The effective value of <xmlatt>appid</xmlatt> on <xmlelement>resourceid</xmlelement>
-              for the child topic is <keyword>cond01-ae35-unit-fault</keyword>.</li>
-          </ul></p>
-      </fig>
+      <p>For examples of the <xmlelement>dvrResourcePrefix</xmlelement> element, see <xref
+          keyref="archspec-example-dvrresourceprefix"/> and <xref
+          keyref="archspec-example-ditavalref-resourceid"/>.</p>
     </example>
   </refbody>
 </reference>
