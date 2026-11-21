@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept xml:lang="en-us" id="example-ditavalref-dvrkeyscopeprefix.dita" rev="review-bf">
+  <title>Example: Using <xmlelement>dvrKeyscopePrefix</xmlelement> to control key scope
+    names</title>
+  <shortdesc>In this scenario, a <xmlelement>ditavalref</xmlelement> element uses the nested
+      <xmlelement>dvrKeyscopePrefix</xmlelement> element to control the names of key scopes within
+    the filtered branch.</shortdesc>
+  <conbody>
+    <p>The following code sample shows how <xmlelement>dvrKeyscopePrefix</xmlelement> supplements
+      the existing key scope name of <keyword>branch-01</keyword> to establish two new effective key
+      scopes:<codeblock id="codeblock_vq2_4rs_hlc">&lt;topicref keys="branch-01"
+    href="branch-01.dita" 
+    keyscope="branch-01"
+  >
+  &lt;ditavalref href="condition-01.ditaval">
+    &lt;ditavalmeta>
+      &lt;dvrResourcePrefix>firstcond-&lt;/dvrResourcePrefix>
+      <b>&lt;dvrKeyscopePrefix>green-&lt;/dvrKeyscopePrefix></b>
+    &lt;/ditavalmeta>
+  &lt;/ditavalref>
+  &lt;ditavalref href="condition-01.ditaval">
+    &lt;ditavalmeta>
+      &lt;dvrResourcePrefix>secondcond-&lt;/dvrResourcePrefix>
+      <b>&lt;dvrKeyscopePrefix>blue-&lt;/dvrKeyscopePrefix></b>
+    &lt;/ditavalmeta>
+  &lt;/ditavalref>
+  &lt;keydef keys="productName">
+    &lt;topicmeta>&lt;keytext>Acme's Best Microchip&lt;/keytext>&lt;/topicmeta>
+  &lt;/keydef>
+  &lt;topicref href="topics/subtopic-01.dita"/>
+&lt;/topicref></codeblock></p>
+    <p>After the <xmlelement>ditavalref</xmlelement> elemets are evaluated:<ul id="ul_syl_cy1_ppb">
+        <li>With two <xmlelement>ditavalref</xmlelement> elemets, two effective copies of the branch
+          are created.</li>
+        <li>For the first effective copy of the branch:<ul id="ul_n25_xss_hlc">
+            <li>The effective key scope is <keyword>green-branch-01</keyword></li>
+            <li>The effective file names of the resources in the branch are
+                <filepath>firstcond-branch-01.dita</filepath> and
+                <filepath>topics/firstcond-subtopic-01.dita</filepath></li>
+          </ul></li>
+        <li>For the second effective copy of the branch:<ul id="ul_gvt_2ts_hlc">
+            <li>The effective key scope is <keyword>blue-branch-01</keyword></li>
+            <li>The effective file names of the resources in the branch are
+                <filepath>secondcond-branch-01.dita</filepath> and
+                <filepath>topics/secondcond-subtopic-01.dita</filepath></li>
+          </ul></li>
+      </ul></p>
+  </conbody>
+</concept>
