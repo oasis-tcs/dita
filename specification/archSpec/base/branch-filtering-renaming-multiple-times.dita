@@ -6,12 +6,15 @@
         effect to specify an additional <xmlelement>ditavalref</xmlelement>, where each
             <xmlelement>ditavalref</xmlelement> includes renaming metadata.</shortdesc>
     <conbody>
-        <p>When renaming, metadata on the <xmlelement>ditavalref</xmlelement> nested more deeply
-            within the branch appears closer to the original resource or key name.</p>
-        <example id="multipleditavalref">
+        <p rev="review-bf">When resource renaming metadata is specified at multiple levels of a
+            branch, the prefixes and suffixes are combined. Values specified by a more deeply nested
+                <xmlelement>ditavalref</xmlelement> element appear closer to the original resource
+            name.</p>
+        <example id="multipleditavalref-resource">
             <p>For example, the following code sample has two <xmlelement>ditavalref</xmlelement>
-                elements at different levels of the same branch:</p>
-        <codeblock>&lt;topicref href="branchParent.dita">
+                elements <ph rev="review-bf">with resource renaming metadata</ph> at different
+                levels of the same branch:</p>
+            <codeblock>&lt;topicref href="branchParent.dita">
   &lt;ditavalref href="parent.ditaval">
     &lt;ditavalmeta>
       &lt;dvrResourcePrefix>parentPrefix-&lt;/dvrResourcePrefix>
@@ -24,19 +27,48 @@
         &lt;dvrResourcePrefix>childPrefix-&lt;/dvrResourcePrefix>
       &lt;/ditavalmeta>
     &lt;/ditavalref>
+    &lt;!-- ... -->
   &lt;/topicref>
 &lt;/topicref></codeblock>
-        <p>In this situation, the resource <filepath>branchChild.dita</filepath> is given a prefix
-            based on both the reference to <filepath>parent.ditaval</filepath> and the reference to
-                <filepath>child.ditaval</filepath>. The value <keyword>childPrefix-</keyword> is
-            specified in the <xmlelement>ditavalref</xmlelement> that is nested more deeply within
-            the branch, so it appears closer to the original resource name. The resource
-                <filepath>branchChild.dita</filepath> would result in
-                <filepath>parentPrefix-childPrefix-branchChild.dita</filepath>. Suffixes (if
-            specified) would be added in a similar manner, resulting in a name like
-                <filepath>branchChild-childSuffix-parentSuffix.dita</filepath>. Note that the
-            hyphens in these examples are part of the specified prefix and suffix values; they are
-            not added automatically.</p>
+            <p>In this situation, the resource <filepath>branchChild.dita</filepath> is given a
+                prefix based on both the reference to <filepath>parent.ditaval</filepath> and the
+                reference to <filepath>child.ditaval</filepath>. The value
+                    <keyword>childPrefix-</keyword> is specified in the
+                    <xmlelement>ditavalref</xmlelement> that is nested more deeply within the
+                branch, so it appears closer to the original resource name. The resource
+                    <filepath>branchChild.dita</filepath> would result in
+                    <filepath>parentPrefix-childPrefix-branchChild.dita</filepath>. Suffixes (if
+                specified) would be added in a similar manner, resulting in a name like
+                    <filepath>branchChild-childSuffix-parentSuffix.dita</filepath>. Note that the
+                hyphens in these examples are part of the specified prefix and suffix values; they
+                are not added automatically.</p>
+        </example>
+        <example id="multipleditavalref-keyscope" rev="review-bf">
+            <p>In the following example, metadata in the <xmlelement>ditavalref</xmlelement> is used
+                to rename key scopes rather than resources.</p>
+            <codeblock id="codeblock_qj1_srv_3lc">&lt;topicref href="branchParent.dita" keyscope="branchscope">
+  &lt;ditavalref href="parent.ditaval">
+    &lt;ditavalmeta>
+      &lt;dvrKeyscopePrefix>parentPrefix-&lt;/dvrKeyscopePrefix>
+    &lt;/ditavalmeta>
+  &lt;/ditavalref>
+  &lt;!-- additional topics or layers of nesting -->
+  &lt;topicref href="branchChild.dita">
+    &lt;ditavalref href="child.ditaval">
+      &lt;ditavalmeta>
+        &lt;dvrKeyscopePrefix>childscope&lt;/dvrKeyscopePrefix>
+      &lt;/ditavalmeta>
+    &lt;/ditavalref>
+    &lt;!-- ... -->
+  &lt;/topicref>
+&lt;/topicref></codeblock>
+            <p>In this example, the scope name <keyword>branchscope</keyword> is modified with a key
+                scope prefix to make <keyword>parentPrefix-branchscope</keyword>. The child branch
+                has no authored <xmlatt>keyscope</xmlatt> attribute, so the key scope prefix at that
+                level creates a new scope named <keyword>childscope</keyword>. This scope is nested
+                within the scope <keyword>parentPrefix-branchscope</keyword>, creating the qualified
+                scope name <keyword>parentPrefix-branchscope.childscope</keyword> that can be used
+                to reference keys defined inside of that child branch.</p>
         </example>
     </conbody>
 </concept>

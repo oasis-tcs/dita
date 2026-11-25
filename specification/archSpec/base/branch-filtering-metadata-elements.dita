@@ -38,10 +38,10 @@
                         with the value of the <xmlelement>dvrResourceSuffix</xmlelement> element.
                         The base part of the resource file name consists of the portion of the file
                         name after any directory information, and before any period followed by the
-                        file extension. <ph otherprops="examples">For example, in the original file name
-                            <filepath>task/install.dita</filepath>, the base portion of the file
-                        name is "install".</ph></p><p>Some resources are not eligible for renaming, such
-                        as those marked with <codeph>scope="external"</codeph>.</p><p
+                        file extension. <ph otherprops="examples">For example, in the original file
+                            name <filepath>task/install.dita</filepath>, the base portion of the
+                            file name is "install".</ph></p><p>Some resources are not eligible for
+                        renaming, such as those marked with <codeph>scope="external"</codeph>.</p><p
                         conkeyref="reuse-general/dvrresourcesuffix-paths"/><p>If a topic reference
                         includes <xmlelement>resourceid</xmlelement> with the
                             <xmlatt>appid-role</xmlatt> attribute set to
@@ -54,17 +54,21 @@
                 <dt><xmlelement>dvrKeyscopePrefix</xmlelement></dt>
                 <dd><ph conkeyref="reuse-general/shortdesc-dvrKeyscopePrefix"/> This enables a map
                     author to specify a prefix that is added to the start of key scope names for
-                    each key scope in the branch. If no key scope is specified for the branch, this
-                    can be used to establish a new key scope, optionally combined with a value
-                    specified in <xmlelement>dvrKeyscopeSuffix</xmlelement>.<p>For map branches that
-                        are processed with this element, the value of the
+                    each key scope <ph rev="review-bf">name specified on</ph> the branch. If no key
+                    scope is specified for the branch, this can be used to establish a new key
+                    scope, optionally combined with a value specified in
+                        <xmlelement>dvrKeyscopeSuffix</xmlelement>.<p>For map branches that are
+                        processed with this element, the value of the
                             <xmlelement>dvrKeyscopePrefix</xmlelement> element contributes to the
-                        effective key scope names of the branch. The effective key scope names start
-                        with the value of the <xmlelement>dvrKeyscopePrefix</xmlelement> element.
-                        Note that if the branch as authored does not specify a
-                            <xmlatt>keyscope</xmlatt> value, specifying
-                            <xmlelement>dvrKeyscopePrefix</xmlelement> (without also specifying
-                            <xmlelement>dvrKeyscopeSuffix</xmlelement>) results in the branch
+                        effective key scope names of the branch. <ph rev="review-bf">The prefix is
+                            prepended to each name specified by the <xmlatt>keyscope</xmlatt>
+                            attribute on the parent element of the containing
+                                <xmlelement>ditavalref</xmlelement> element. As a result,</ph> the
+                        effective key scope names start with the value of the
+                            <xmlelement>dvrKeyscopePrefix</xmlelement> element. Note that if the
+                        branch as authored does not specify a <xmlatt>keyscope</xmlatt> value,
+                        specifying <xmlelement>dvrKeyscopePrefix</xmlelement> (without also
+                        specifying <xmlelement>dvrKeyscopeSuffix</xmlelement>) results in the branch
                         establishing a key scope <ph rev="review-bf">with a name equal to</ph> the
                         value of the <xmlelement>dvrKeyscopePrefix</xmlelement> element. The full
                         key scope names will also reflect the value of a
@@ -76,14 +80,18 @@
                 <dt><xmlelement>dvrKeyscopeSuffix</xmlelement></dt>
                 <dd><ph conkeyref="reuse-general/shortdesc-dvrKeyscopeSuffix"/> This enables a map
                     author to specify a suffix that is added to the end of key scope names for each
-                    key scope in the branch.<p>For map branches processed with this element, the
-                        value of the <xmlelement>dvrKeyscopeSuffix</xmlelement> element contributes
-                        to the effective key scope names of the branch. The effective key scope
-                        names end with the value of the <xmlelement>dvrKeyscopeSuffix</xmlelement>
-                        element. Note that if the branch as authored does not specify a
-                            <xmlatt>keyscope</xmlatt> value, specifying
-                            <xmlelement>dvrKeyscopeSuffix</xmlelement> (without also specifying
-                            <xmlelement>dvrKeyscopePrefix</xmlelement>) results in the branch
+                    key scope <ph rev="review-bf">name specified on</ph> the branch.<p>For map
+                        branches processed with this element, the value of the
+                            <xmlelement>dvrKeyscopeSuffix</xmlelement> element contributes to the
+                        effective key scope names of the branch. <ph rev="review-bf">The suffix is
+                            appended to each name specified by the <xmlatt>keyscope</xmlatt>
+                            attribute on the parent element of the containing
+                                <xmlelement>ditavalref</xmlelement> element. As a result,</ph> the
+                        effective key scope names end with the value of the
+                            <xmlelement>dvrKeyscopeSuffix</xmlelement> element. Note that if the
+                        branch as authored does not specify a <xmlatt>keyscope</xmlatt> value,
+                        specifying <xmlelement>dvrKeyscopeSuffix</xmlelement> (without also
+                        specifying <xmlelement>dvrKeyscopePrefix</xmlelement>) results in the branch
                         establishing a key scope <ph rev="review-bf">with a name equal to</ph> the
                         value of the <xmlelement>dvrKeyscopeSuffix</xmlelement> element. The full
                         key scope names will also reflect the value of a
