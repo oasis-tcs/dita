@@ -63,20 +63,18 @@
         <dlentry>
           <dt><xmlatt id="chunk">chunk</xmlatt>
           </dt>
-          <dd>Specifies that the processor generates an interim set of DITA
-            topics that are used as the input for the final processing.
-            This can produce the following output results: <ul>
-              <li>Multi-topic files are transformed into smaller files, for
-                example, individual HTML files for each DITA topic. </li>
-              <li>Individual DITA topics are combined into a single file.
-              </li>
-            </ul><p>Specifying a value for the <xmlatt>chunk</xmlatt>
-              attribute on a <xmlelement>map</xmlelement> element
-              establishes chunking behavior that applies to the entire map,
-              unless overridden by <xmlatt>chunk</xmlatt> attributes that
-              are set on more specific elements in the DITA map. For a
-              detailed description of the <xmlatt>chunk</xmlatt> attribute
-              and its usage, see <xref href="chunking.dita"/>. </p></dd>
+          <dd>Specifies that the processor will split or combine referenced topics when rendering.
+						This can produce the following output results: <ul>
+							<li>Multi-topic files are transformed into smaller files, for example,
+								individual HTML files for each DITA topic. </li>
+							<li>Individual DITA topics are combined into a single file. </li>
+						</ul><p>Specifying a value for the <xmlatt>chunk</xmlatt> attribute on a
+								<xmlelement>map</xmlelement> element establishes chunking behavior
+							that applies to the entire map, unless overridden by
+								<xmlatt>chunk</xmlatt> attributes that are set on more specific
+							elements in the DITA map. For a detailed description of the
+								<xmlatt>chunk</xmlatt> attribute and its usage, see <xref
+								href="chunking.dita"/>. </p></dd>
         </dlentry>
 				<dlentry>
 					<dt><xmlatt id="collection-type">collection-type</xmlatt>
@@ -95,17 +93,21 @@
 						elements, where it has the same behavior. Where the
 							<xmlatt>collection-type</xmlatt> attribute is available on elements that
 						cannot directly contain elements, the behavior of the attribute is
-						undefined. </dd>
+							undefined.<p>For additional information on how to manage linking with
+								<xmlatt>collection-type</xmlatt>, see <xref
+								keyref="controlling-linking"/>.</p>
+					</dd>
 				</dlentry>
         <dlentry>
           <dt><xmlatt id="keys">keys</xmlatt></dt>
-          <dd>Specifies one or more key names.</dd>
+          <dd>Specifies one or more key names. For more information about using keys for indirect
+						addressing, see <xref keyref="key-based-addressing"/>.</dd>
         </dlentry>
         <dlentry>
           <dt><xmlatt id="keyscope">keyscope</xmlatt></dt>
-          <dd>Defines a new scope for key definition and resolution, and
-            gives the scope one or more names. For more information about
-            key scopes, see <xref href="key-based-addressing.dita"/>.</dd>
+          <dd>Defines a new scope for key definition and resolution, and gives the scope one or more
+						names. For more information about key scopes, see <xref
+							keyref="key-scope-architecture"/>.</dd>
         </dlentry>
 				<dlentry>
 					<dt><xmlatt id="linking">linking</xmlatt></dt>
@@ -161,31 +163,34 @@
 							reciprocal links in generated output that includes links. The rendered
 							navigation links are a function of the presentation style that is
 							determined by the processor. </p>
+						<p>For additional information on how to manage linking with
+								<xmlatt>linking</xmlatt>, see <xref keyref="controlling-linking"
+							/>.</p>
 					</dd>
 				</dlentry>
         <dlentry>
           <dt><xmlatt id="processing-role">processing-role</xmlatt>
           </dt>
-          <dd>Specifies whether the topic or map referenced is processed
-            normally or treated as a resource that is only included in
-            order to resolve key or content references. <dl>
-              <dlentry>
-                <dt>processing-role="normal" </dt>
-                <dd>The topic is a readable part of the information set. It
-                  is included in navigation and search results. This is the
-                  default value for the <xmlelement>topicref</xmlelement>
-                  element.</dd>
-              </dlentry>
-              <dlentry>
-                <dt>processing-role="resource-only" </dt>
-                <dd>The topic is used only as a resource for processing. It
-                  is not included in navigation or search results, nor is
-                  it rendered as a topic. This is the default value for the
-                    <xmlelement>keydef</xmlelement> element. </dd>
-              </dlentry>
-            </dl><p>If the <xmlatt>processing-role</xmlatt> attribute is
-              not specified locally, the value cascades from the closest
-              element in the containment hierarchy. </p></dd>
+          <dd>Specifies whether the topic or map referenced is processed normally or treated as a
+						resource that is only included in order to resolve key or content
+						references. <dl>
+							<dlentry>
+								<dt>processing-role="normal" </dt>
+								<dd>The topic is a readable part of the information set. It is
+									included in navigation and search results. This is the default
+									value for the <xmlelement>topicref</xmlelement> element.</dd>
+							</dlentry>
+							<dlentry>
+								<dt>processing-role="resource-only" </dt>
+								<dd>The topic is used only as a resource for processing. It is not
+									included in navigation or search results, nor is it rendered as
+									a topic. This is the default value for the
+										<xmlelement>keydef</xmlelement> element. </dd>
+							</dlentry>
+						</dl><p>If the <xmlatt>processing-role</xmlatt> attribute is not specified
+							locally, the value can cascade from an ancestor. See <xref
+								keyref="cascading-attributes-in-map"/> for details on how attributes
+							cascade within a map.</p></dd>
         </dlentry>
         <dlentry>
           <dt><xmlatt id="search">search</xmlatt>
@@ -195,10 +200,11 @@
         </dlentry>
 				<dlentry>
 					<dt><xmlatt id="toc">toc</xmlatt></dt>
-					<dd>Specifies whether topics are included or excluded from navigation output, such as a Web
-						site map or an online table of contents. By default,
-							<xmlelement>topicref</xmlelement> hierarchies are included in navigation
-						output; relationship tables are excluded. </dd>
+					<dd>Specifies whether a topic appears in a publication's table of contents based on the current
+						map context. By default, <xmlelement>topicref</xmlelement> hierarchies are
+						included in navigation output; relationship tables are excluded. For more
+						details about this attribute, see <xref keyref="attributes-common/toc"
+								><xmlatt>toc</xmlatt></xref>.</dd>
 				</dlentry>
 			</dl>
 		</section> 
